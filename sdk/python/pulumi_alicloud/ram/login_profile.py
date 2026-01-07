@@ -228,6 +228,8 @@ class LoginProfile(pulumi.CustomResource):
             password="Example_1234")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Login Profile can be imported using the id, e.g.
@@ -279,6 +281,8 @@ class LoginProfile(pulumi.CustomResource):
             user_name=user.name,
             password="Example_1234")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -91,6 +91,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Rewrite Url Rule can be imported using the id, e.g.

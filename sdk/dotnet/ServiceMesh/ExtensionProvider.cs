@@ -114,6 +114,8 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Service Mesh Extension Provider can be imported using the id, e.g.

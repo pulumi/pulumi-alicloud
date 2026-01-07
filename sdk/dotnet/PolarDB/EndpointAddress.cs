@@ -73,6 +73,8 @@ namespace Pulumi.AliCloud.PolarDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// PolarDB endpoint address can be imported using the id, e.g.

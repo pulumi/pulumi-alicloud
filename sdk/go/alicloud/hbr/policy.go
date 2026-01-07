@@ -79,6 +79,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.

@@ -411,6 +411,8 @@ class ServiceSubscription(pulumi.CustomResource):
             notify_strategy="BACKOFF_RETRY")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Subscription can be imported using the id, e.g.
@@ -476,6 +478,8 @@ class ServiceSubscription(pulumi.CustomResource):
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

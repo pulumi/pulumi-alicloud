@@ -13,6 +13,130 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ReportTemplateReportScope struct {
+	// Key for reporting scope, currently supported:
+	// - AggregatorId
+	// - CompliancePackId
+	// - RuleId
+	Key *string `pulumi:"key"`
+	// The matching logic. Currently, only In is supported.
+	MatchType *string `pulumi:"matchType"`
+	// The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+	Value *string `pulumi:"value"`
+}
+
+// ReportTemplateReportScopeInput is an input type that accepts ReportTemplateReportScopeArgs and ReportTemplateReportScopeOutput values.
+// You can construct a concrete instance of `ReportTemplateReportScopeInput` via:
+//
+//	ReportTemplateReportScopeArgs{...}
+type ReportTemplateReportScopeInput interface {
+	pulumi.Input
+
+	ToReportTemplateReportScopeOutput() ReportTemplateReportScopeOutput
+	ToReportTemplateReportScopeOutputWithContext(context.Context) ReportTemplateReportScopeOutput
+}
+
+type ReportTemplateReportScopeArgs struct {
+	// Key for reporting scope, currently supported:
+	// - AggregatorId
+	// - CompliancePackId
+	// - RuleId
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The matching logic. Currently, only In is supported.
+	MatchType pulumi.StringPtrInput `pulumi:"matchType"`
+	// The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ReportTemplateReportScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportTemplateReportScope)(nil)).Elem()
+}
+
+func (i ReportTemplateReportScopeArgs) ToReportTemplateReportScopeOutput() ReportTemplateReportScopeOutput {
+	return i.ToReportTemplateReportScopeOutputWithContext(context.Background())
+}
+
+func (i ReportTemplateReportScopeArgs) ToReportTemplateReportScopeOutputWithContext(ctx context.Context) ReportTemplateReportScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportTemplateReportScopeOutput)
+}
+
+// ReportTemplateReportScopeArrayInput is an input type that accepts ReportTemplateReportScopeArray and ReportTemplateReportScopeArrayOutput values.
+// You can construct a concrete instance of `ReportTemplateReportScopeArrayInput` via:
+//
+//	ReportTemplateReportScopeArray{ ReportTemplateReportScopeArgs{...} }
+type ReportTemplateReportScopeArrayInput interface {
+	pulumi.Input
+
+	ToReportTemplateReportScopeArrayOutput() ReportTemplateReportScopeArrayOutput
+	ToReportTemplateReportScopeArrayOutputWithContext(context.Context) ReportTemplateReportScopeArrayOutput
+}
+
+type ReportTemplateReportScopeArray []ReportTemplateReportScopeInput
+
+func (ReportTemplateReportScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportTemplateReportScope)(nil)).Elem()
+}
+
+func (i ReportTemplateReportScopeArray) ToReportTemplateReportScopeArrayOutput() ReportTemplateReportScopeArrayOutput {
+	return i.ToReportTemplateReportScopeArrayOutputWithContext(context.Background())
+}
+
+func (i ReportTemplateReportScopeArray) ToReportTemplateReportScopeArrayOutputWithContext(ctx context.Context) ReportTemplateReportScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportTemplateReportScopeArrayOutput)
+}
+
+type ReportTemplateReportScopeOutput struct{ *pulumi.OutputState }
+
+func (ReportTemplateReportScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReportTemplateReportScope)(nil)).Elem()
+}
+
+func (o ReportTemplateReportScopeOutput) ToReportTemplateReportScopeOutput() ReportTemplateReportScopeOutput {
+	return o
+}
+
+func (o ReportTemplateReportScopeOutput) ToReportTemplateReportScopeOutputWithContext(ctx context.Context) ReportTemplateReportScopeOutput {
+	return o
+}
+
+// Key for reporting scope, currently supported:
+// - AggregatorId
+// - CompliancePackId
+// - RuleId
+func (o ReportTemplateReportScopeOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportTemplateReportScope) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The matching logic. Currently, only In is supported.
+func (o ReportTemplateReportScopeOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportTemplateReportScope) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+// The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+func (o ReportTemplateReportScopeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReportTemplateReportScope) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ReportTemplateReportScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (ReportTemplateReportScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReportTemplateReportScope)(nil)).Elem()
+}
+
+func (o ReportTemplateReportScopeArrayOutput) ToReportTemplateReportScopeArrayOutput() ReportTemplateReportScopeArrayOutput {
+	return o
+}
+
+func (o ReportTemplateReportScopeArrayOutput) ToReportTemplateReportScopeArrayOutputWithContext(ctx context.Context) ReportTemplateReportScopeArrayOutput {
+	return o
+}
+
+func (o ReportTemplateReportScopeArrayOutput) Index(i pulumi.IntInput) ReportTemplateReportScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportTemplateReportScope {
+		return vs[0].([]ReportTemplateReportScope)[vs[1].(int)]
+	}).(ReportTemplateReportScopeOutput)
+}
+
 type AssumeRole struct {
 	ExternalId *string `pulumi:"externalId"`
 	// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
@@ -1752,11 +1876,15 @@ func (o SignVersionOutput) Sls() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportTemplateReportScopeInput)(nil)).Elem(), ReportTemplateReportScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReportTemplateReportScopeArrayInput)(nil)).Elem(), ReportTemplateReportScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssumeRoleInput)(nil)).Elem(), AssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssumeRoleWithOidcInput)(nil)).Elem(), AssumeRoleWithOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsInput)(nil)).Elem(), EndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsArrayInput)(nil)).Elem(), EndpointsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignVersionInput)(nil)).Elem(), SignVersionArgs{})
+	pulumi.RegisterOutputType(ReportTemplateReportScopeOutput{})
+	pulumi.RegisterOutputType(ReportTemplateReportScopeArrayOutput{})
 	pulumi.RegisterOutputType(AssumeRoleOutput{})
 	pulumi.RegisterOutputType(AssumeRoleWithOidcOutput{})
 	pulumi.RegisterOutputType(EndpointsOutput{})

@@ -70,6 +70,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // WAF domain can be imported using the id, e.g.

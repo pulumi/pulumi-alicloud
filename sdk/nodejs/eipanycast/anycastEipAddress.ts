@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
+ * Provides a Eipanycast Anycast Eip Address resource.
+ *
+ * Anycast Elastic IP Address.
  *
  * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
  *
@@ -30,6 +32,8 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
@@ -80,7 +84,7 @@ export class AnycastEipAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Anycast EIP instance description.
+     * Anycast EIP instance description
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -88,7 +92,7 @@ export class AnycastEipAddress extends pulumi.CustomResource {
      */
     declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
-     * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
      */
     declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
@@ -169,7 +173,7 @@ export interface AnycastEipAddressState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Anycast EIP instance description.
+     * Anycast EIP instance description
      */
     description?: pulumi.Input<string>;
     /**
@@ -177,7 +181,7 @@ export interface AnycastEipAddressState {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -211,7 +215,7 @@ export interface AnycastEipAddressArgs {
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * Anycast EIP instance description.
+     * Anycast EIP instance description
      */
     description?: pulumi.Input<string>;
     /**
@@ -219,7 +223,7 @@ export interface AnycastEipAddressArgs {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
      */
     paymentType?: pulumi.Input<string>;
     /**

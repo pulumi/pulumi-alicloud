@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.

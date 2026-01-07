@@ -394,6 +394,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -660,14 +662,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> deletionProtection;
+    private Output<Boolean> deletionProtection;
 
     /**
      * @return Whether to enable cluster deletion protection.
      * 
      */
-    public Output<Optional<Boolean>> deletionProtection() {
-        return Codegen.optional(this.deletionProtection);
+    public Output<Boolean> deletionProtection() {
+        return this.deletionProtection;
     }
     /**
      * Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).

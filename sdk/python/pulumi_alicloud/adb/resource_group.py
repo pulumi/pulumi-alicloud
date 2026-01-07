@@ -621,6 +621,8 @@ class ResourceGroup(pulumi.CustomResource):
             db_cluster_id=default_db_cluster.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Adb Resource Group can be imported using the id, e.g.
@@ -709,6 +711,8 @@ class ResourceGroup(pulumi.CustomResource):
             node_num=0,
             db_cluster_id=default_db_cluster.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

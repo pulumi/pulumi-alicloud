@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ALB Acl can be imported using the id, e.g.

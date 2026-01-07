@@ -622,6 +622,8 @@ class SyntheticTask(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ARMS Synthetic Task can be imported using the id, e.g.
@@ -841,6 +843,8 @@ class SyntheticTask(pulumi.CustomResource):
             },
             resource_group_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -48,6 +48,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ECS Storage Capacity Unit can be imported using the id, e.g.

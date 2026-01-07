@@ -296,6 +296,8 @@ class App(pulumi.CustomResource):
             type="Android")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MHUB App can be imported using the id, e.g.
@@ -348,6 +350,8 @@ class App(pulumi.CustomResource):
             package_name="com.example.android",
             type="Android")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

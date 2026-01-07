@@ -319,6 +319,8 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
             field_value="sadfas")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Malicious File Whitelist Config can be imported using the id, e.g.
@@ -372,6 +374,8 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
             source="agentless",
             field_value="sadfas")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

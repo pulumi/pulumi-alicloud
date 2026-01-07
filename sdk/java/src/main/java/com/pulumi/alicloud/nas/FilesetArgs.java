@@ -18,14 +18,33 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final FilesetArgs Empty = new FilesetArgs();
 
     /**
-     * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * Description of Fileset.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * @return Description of Fileset.
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +52,14 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -63,14 +82,14 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path of the fileset.
+     * The path of Fileset.
      * 
      */
     @Import(name="fileSystemPath", required=true)
     private Output<String> fileSystemPath;
 
     /**
-     * @return The path of the fileset.
+     * @return The path of Fileset.
      * 
      */
     public Output<String> fileSystemPath() {
@@ -80,6 +99,7 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
     private FilesetArgs() {}
 
     private FilesetArgs(FilesetArgs $) {
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.fileSystemId = $.fileSystemId;
@@ -105,7 +125,32 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+         * @param deletionProtection The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+         * - true: Enable instance release protection.
+         * - false (default): Turn off instance release protection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+         * - true: Enable instance release protection.
+         * - false (default): Turn off instance release protection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param description Description of Fileset.
          * 
          * @return builder
          * 
@@ -116,7 +161,7 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+         * @param description Description of Fileset.
          * 
          * @return builder
          * 
@@ -126,7 +171,7 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -137,7 +182,7 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -168,7 +213,7 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemPath The path of the fileset.
+         * @param fileSystemPath The path of Fileset.
          * 
          * @return builder
          * 
@@ -179,7 +224,7 @@ public final class FilesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemPath The path of the fileset.
+         * @param fileSystemPath The path of Fileset.
          * 
          * @return builder
          * 

@@ -59,6 +59,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // SCDN Domain can be imported using the id, e.g.

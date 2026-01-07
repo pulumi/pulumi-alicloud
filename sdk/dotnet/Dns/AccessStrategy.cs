@@ -138,6 +138,8 @@ namespace Pulumi.AliCloud.Dns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DNS Access Strategy can be imported using the id, e.g.

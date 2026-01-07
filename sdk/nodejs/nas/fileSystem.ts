@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * File Storage (NAS) File System can be imported using the id, e.g.
@@ -126,13 +128,7 @@ export class FileSystem extends pulumi.CustomResource {
      * - cpfs: file storage CPFS
      */
     declare public readonly fileSystemType: pulumi.Output<string>;
-    /**
-     * String of keytab file content encrypted by base64
-     */
     declare public readonly keytab: pulumi.Output<string | undefined>;
-    /**
-     * String of the keytab file content encrypted by MD5
-     */
     declare public readonly keytabMd5: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS key.
@@ -159,6 +155,14 @@ export class FileSystem extends pulumi.CustomResource {
      */
     declare public readonly recycleBin: pulumi.Output<outputs.nas.FileSystemRecycleBin>;
     /**
+     * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     */
+    declare public readonly redundancyType: pulumi.Output<string>;
+    /**
+     * Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     */
+    declare public readonly redundancyVswitchIds: pulumi.Output<string[] | undefined>;
+    /**
      * RegionId
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
@@ -174,6 +178,9 @@ export class FileSystem extends pulumi.CustomResource {
      * Only extreme NAS is supported.
      *
      * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
@@ -241,6 +248,8 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["options"] = state?.options;
             resourceInputs["protocolType"] = state?.protocolType;
             resourceInputs["recycleBin"] = state?.recycleBin;
+            resourceInputs["redundancyType"] = state?.redundancyType;
+            resourceInputs["redundancyVswitchIds"] = state?.redundancyVswitchIds;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["smbAcl"] = state?.smbAcl;
@@ -270,6 +279,8 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["options"] = args?.options;
             resourceInputs["protocolType"] = args?.protocolType;
             resourceInputs["recycleBin"] = args?.recycleBin;
+            resourceInputs["redundancyType"] = args?.redundancyType;
+            resourceInputs["redundancyVswitchIds"] = args?.redundancyVswitchIds;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["smbAcl"] = args?.smbAcl;
             resourceInputs["snapshotId"] = args?.snapshotId;
@@ -336,13 +347,7 @@ export interface FileSystemState {
      * - cpfs: file storage CPFS
      */
     fileSystemType?: pulumi.Input<string>;
-    /**
-     * String of keytab file content encrypted by base64
-     */
     keytab?: pulumi.Input<string>;
-    /**
-     * String of the keytab file content encrypted by MD5
-     */
     keytabMd5?: pulumi.Input<string>;
     /**
      * The ID of the KMS key.
@@ -369,6 +374,14 @@ export interface FileSystemState {
      */
     recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin>;
     /**
+     * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     */
+    redundancyType?: pulumi.Input<string>;
+    /**
+     * Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     */
+    redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * RegionId
      */
     regionId?: pulumi.Input<string>;
@@ -384,6 +397,9 @@ export interface FileSystemState {
      * Only extreme NAS is supported.
      *
      * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -472,13 +488,7 @@ export interface FileSystemArgs {
      * - cpfs: file storage CPFS
      */
     fileSystemType?: pulumi.Input<string>;
-    /**
-     * String of keytab file content encrypted by base64
-     */
     keytab?: pulumi.Input<string>;
-    /**
-     * String of the keytab file content encrypted by MD5
-     */
     keytabMd5?: pulumi.Input<string>;
     /**
      * The ID of the KMS key.
@@ -505,6 +515,14 @@ export interface FileSystemArgs {
      */
     recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin>;
     /**
+     * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     */
+    redundancyType?: pulumi.Input<string>;
+    /**
+     * Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     */
+    redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -516,6 +534,9 @@ export interface FileSystemArgs {
      * Only extreme NAS is supported.
      *
      * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     snapshotId?: pulumi.Input<string>;
     /**

@@ -203,6 +203,8 @@ class BandwidthLimit(pulumi.CustomResource):
             bandwidth_limit=4)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN bandwidth limit can be imported using the id, e.g.
@@ -284,6 +286,8 @@ class BandwidthLimit(pulumi.CustomResource):
             ],
             bandwidth_limit=4)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

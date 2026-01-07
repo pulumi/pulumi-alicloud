@@ -206,6 +206,8 @@ class SwitchDasPro(pulumi.CustomResource):
             user_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DAS Switch Das Pro can be imported using the id, e.g.
@@ -278,6 +280,8 @@ class SwitchDasPro(pulumi.CustomResource):
             sql_retention=30,
             user_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

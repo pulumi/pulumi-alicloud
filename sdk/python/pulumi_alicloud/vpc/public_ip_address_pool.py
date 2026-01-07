@@ -397,6 +397,8 @@ class PublicIpAddressPool(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Public Ip Address Pool can be imported using the id, e.g.
@@ -449,6 +451,8 @@ class PublicIpAddressPool(pulumi.CustomResource):
             isp="BGP",
             resource_group_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

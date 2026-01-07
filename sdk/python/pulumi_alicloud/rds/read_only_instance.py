@@ -1654,6 +1654,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
             vswitch_id=example_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS readonly instance can be imported using the id, e.g.
@@ -1817,6 +1819,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

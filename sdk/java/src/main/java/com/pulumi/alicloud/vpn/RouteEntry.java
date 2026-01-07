@@ -151,6 +151,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * VPN route entry can be imported using the id(VpnGatewayId +&#34;:&#34;+ NextHop +&#34;:&#34;+ RouteDest), e.g.

@@ -59,6 +59,8 @@ namespace Pulumi.AliCloud.Nas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// File Storage (NAS) File System can be imported using the id, e.g.
@@ -125,15 +127,9 @@ namespace Pulumi.AliCloud.Nas
         [Output("fileSystemType")]
         public Output<string> FileSystemType { get; private set; } = null!;
 
-        /// <summary>
-        /// String of keytab file content encrypted by base64
-        /// </summary>
         [Output("keytab")]
         public Output<string?> Keytab { get; private set; } = null!;
 
-        /// <summary>
-        /// String of the keytab file content encrypted by MD5
-        /// </summary>
         [Output("keytabMd5")]
         public Output<string?> KeytabMd5 { get; private set; } = null!;
 
@@ -172,6 +168,18 @@ namespace Pulumi.AliCloud.Nas
         public Output<Outputs.FileSystemRecycleBin> RecycleBin { get; private set; } = null!;
 
         /// <summary>
+        /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        /// </summary>
+        [Output("redundancyType")]
+        public Output<string> RedundancyType { get; private set; } = null!;
+
+        /// <summary>
+        /// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+        /// </summary>
+        [Output("redundancyVswitchIds")]
+        public Output<ImmutableArray<string>> RedundancyVswitchIds { get; private set; } = null!;
+
+        /// <summary>
         /// RegionId
         /// </summary>
         [Output("regionId")]
@@ -193,6 +201,9 @@ namespace Pulumi.AliCloud.Nas
         /// Only extreme NAS is supported.
         /// 
         /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
@@ -343,15 +354,9 @@ namespace Pulumi.AliCloud.Nas
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
-        /// <summary>
-        /// String of keytab file content encrypted by base64
-        /// </summary>
         [Input("keytab")]
         public Input<string>? Keytab { get; set; }
 
-        /// <summary>
-        /// String of the keytab file content encrypted by MD5
-        /// </summary>
         [Input("keytabMd5")]
         public Input<string>? KeytabMd5 { get; set; }
 
@@ -390,6 +395,24 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.FileSystemRecycleBinArgs>? RecycleBin { get; set; }
 
         /// <summary>
+        /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
+
+        [Input("redundancyVswitchIds")]
+        private InputList<string>? _redundancyVswitchIds;
+
+        /// <summary>
+        /// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+        /// </summary>
+        public InputList<string> RedundancyVswitchIds
+        {
+            get => _redundancyVswitchIds ?? (_redundancyVswitchIds = new InputList<string>());
+            set => _redundancyVswitchIds = value;
+        }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -405,6 +428,9 @@ namespace Pulumi.AliCloud.Nas
         /// Only extreme NAS is supported.
         /// 
         /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -523,15 +549,9 @@ namespace Pulumi.AliCloud.Nas
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
-        /// <summary>
-        /// String of keytab file content encrypted by base64
-        /// </summary>
         [Input("keytab")]
         public Input<string>? Keytab { get; set; }
 
-        /// <summary>
-        /// String of the keytab file content encrypted by MD5
-        /// </summary>
         [Input("keytabMd5")]
         public Input<string>? KeytabMd5 { get; set; }
 
@@ -570,6 +590,24 @@ namespace Pulumi.AliCloud.Nas
         public Input<Inputs.FileSystemRecycleBinGetArgs>? RecycleBin { get; set; }
 
         /// <summary>
+        /// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
+
+        [Input("redundancyVswitchIds")]
+        private InputList<string>? _redundancyVswitchIds;
+
+        /// <summary>
+        /// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+        /// </summary>
+        public InputList<string> RedundancyVswitchIds
+        {
+            get => _redundancyVswitchIds ?? (_redundancyVswitchIds = new InputList<string>());
+            set => _redundancyVswitchIds = value;
+        }
+
+        /// <summary>
         /// RegionId
         /// </summary>
         [Input("regionId")]
@@ -591,6 +629,9 @@ namespace Pulumi.AliCloud.Nas
         /// Only extreme NAS is supported.
         /// 
         /// &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

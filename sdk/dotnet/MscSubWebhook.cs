@@ -46,6 +46,8 @@ namespace Pulumi.AliCloud
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Msc Sub Webhook can be imported using the id, e.g.

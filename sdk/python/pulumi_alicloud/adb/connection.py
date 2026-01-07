@@ -186,6 +186,8 @@ class Connection(pulumi.CustomResource):
             connection_prefix="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ADB connection can be imported using the id, e.g.
@@ -238,6 +240,8 @@ class Connection(pulumi.CustomResource):
             db_cluster_id=cluster.id,
             connection_prefix="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

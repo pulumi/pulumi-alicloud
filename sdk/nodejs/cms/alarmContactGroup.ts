@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.cms.AlarmContactGroup("example", {alarmContactGroupName: "tf-example"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * CMS Alarm Contact Group can be imported using the id, e.g.

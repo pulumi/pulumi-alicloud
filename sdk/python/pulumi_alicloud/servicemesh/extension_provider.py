@@ -243,6 +243,8 @@ class ExtensionProvider(pulumi.CustomResource):
             config="{\\"headersToDownstreamOnDeny\\":[\\"content-type\\",\\"set-cookie\\"],\\"headersToUpstreamOnAllow\\":[\\"authorization\\",\\"cookie\\",\\"path\\",\\"x-auth-request-access-token\\",\\"x-forwarded-access-token\\"],\\"includeRequestHeadersInCheck\\":[\\"cookie\\",\\"x-forward-access-token\\"],\\"oidc\\":{\\"clientID\\":\\"qweqweqwewqeqwe\\",\\"clientSecret\\":\\"asdasdasdasdsadas\\",\\"cookieExpire\\":\\"1000\\",\\"cookieRefresh\\":\\"500\\",\\"cookieSecret\\":\\"scxzcxzcxzcxzcxz\\",\\"issuerURI\\":\\"qweqwewqeqweqweqwe\\",\\"redirectDomain\\":\\"www.alicloud-provider.cn\\",\\"redirectProtocol\\":\\"http\\",\\"scopes\\":[\\"profile\\"]},\\"port\\":4180,\\"service\\":\\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\\",\\"timeout\\":\\"10s\\"}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Mesh Extension Provider can be imported using the id, e.g.
@@ -339,6 +341,8 @@ class ExtensionProvider(pulumi.CustomResource):
             type="httpextauth",
             config="{\\"headersToDownstreamOnDeny\\":[\\"content-type\\",\\"set-cookie\\"],\\"headersToUpstreamOnAllow\\":[\\"authorization\\",\\"cookie\\",\\"path\\",\\"x-auth-request-access-token\\",\\"x-forwarded-access-token\\"],\\"includeRequestHeadersInCheck\\":[\\"cookie\\",\\"x-forward-access-token\\"],\\"oidc\\":{\\"clientID\\":\\"qweqweqwewqeqwe\\",\\"clientSecret\\":\\"asdasdasdasdsadas\\",\\"cookieExpire\\":\\"1000\\",\\"cookieRefresh\\":\\"500\\",\\"cookieSecret\\":\\"scxzcxzcxzcxzcxz\\",\\"issuerURI\\":\\"qweqwewqeqweqweqwe\\",\\"redirectDomain\\":\\"www.alicloud-provider.cn\\",\\"redirectProtocol\\":\\"http\\",\\"scopes\\":[\\"profile\\"]},\\"port\\":4180,\\"service\\":\\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\\",\\"timeout\\":\\"10s\\"}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

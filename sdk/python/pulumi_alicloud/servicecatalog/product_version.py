@@ -317,6 +317,8 @@ class ProductVersion(pulumi.CustomResource):
             template_type="RosTerraformTemplate")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Catalog Product Version can be imported using the id, e.g.
@@ -375,6 +377,8 @@ class ProductVersion(pulumi.CustomResource):
             product_id=defaultmae_tc_e.id,
             template_type="RosTerraformTemplate")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -376,6 +376,8 @@ class Bundle(pulumi.CustomResource):
             user_disk_performance_level="PL1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Bundle can be imported using the id, e.g.
@@ -439,6 +441,8 @@ class Bundle(pulumi.CustomResource):
             root_disk_performance_level="PL1",
             user_disk_performance_level="PL1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

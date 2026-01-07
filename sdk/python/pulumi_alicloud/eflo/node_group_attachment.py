@@ -366,6 +366,8 @@ class NodeGroupAttachment(pulumi.CustomResource):
             vpc_id="vpc-uf6t73bb01dfprb2qvpqa")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Node Group Attachment can be imported using the id, e.g.
@@ -422,6 +424,8 @@ class NodeGroupAttachment(pulumi.CustomResource):
             node_id="e01-cn-smw4d1bzd0a",
             vpc_id="vpc-uf6t73bb01dfprb2qvpqa")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * const foo = new alicloud.pvtz.Zone("foo", {zoneName: "foo.example.com"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Private Zone can be imported using the id, e.g.

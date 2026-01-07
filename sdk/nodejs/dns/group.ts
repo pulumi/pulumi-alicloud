@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * // Add a new Domain group.
  * const group = new alicloud.dns.Group("group", {name: "testgroup"});
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class Group extends pulumi.CustomResource {
     /**

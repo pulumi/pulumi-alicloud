@@ -484,6 +484,8 @@ class Gateway(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Gateway can be imported using the id, e.g.
@@ -556,6 +558,8 @@ class Gateway(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

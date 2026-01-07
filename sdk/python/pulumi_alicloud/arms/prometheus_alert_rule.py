@@ -434,6 +434,8 @@ class PrometheusAlertRule(pulumi.CustomResource):
             notify_type="ALERT_MANAGER")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
@@ -496,6 +498,8 @@ class PrometheusAlertRule(pulumi.CustomResource):
             prometheus_alert_rule_name=name,
             notify_type="ALERT_MANAGER")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

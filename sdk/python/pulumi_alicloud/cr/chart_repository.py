@@ -240,6 +240,8 @@ class ChartRepository(pulumi.CustomResource):
             repo_name=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CR Chart Repository can be imported using the id, e.g.
@@ -300,6 +302,8 @@ class ChartRepository(pulumi.CustomResource):
             instance_id=example_chart_namespace.instance_id,
             repo_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

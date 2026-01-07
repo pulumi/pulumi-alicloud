@@ -294,6 +294,8 @@ class Group(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api gateway group can be imported using the id, e.g.
@@ -339,6 +341,8 @@ class Group(pulumi.CustomResource):
                 "jwt_claims": "*",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

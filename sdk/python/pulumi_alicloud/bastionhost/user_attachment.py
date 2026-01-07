@@ -184,6 +184,8 @@ class UserAttachment(pulumi.CustomResource):
             user_id=local_user.user_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host User Attachment can be imported using the id, e.g.
@@ -252,6 +254,8 @@ class UserAttachment(pulumi.CustomResource):
             user_group_id=default_user_group.user_group_id,
             user_id=local_user.user_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

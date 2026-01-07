@@ -171,6 +171,8 @@ class BasicAccelerateIp(pulumi.CustomResource):
             ip_set_id=default_basic_ip_set.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
@@ -225,6 +227,8 @@ class BasicAccelerateIp(pulumi.CustomResource):
             accelerator_id=default.id,
             ip_set_id=default_basic_ip_set.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

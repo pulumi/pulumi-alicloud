@@ -73,6 +73,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Resource Manager Shared Target can be imported using the id, e.g.

@@ -159,6 +159,8 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
             description="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB Global Database Network can be imported using the id, e.g.
@@ -216,6 +218,8 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             description="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

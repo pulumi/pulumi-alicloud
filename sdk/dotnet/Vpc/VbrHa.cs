@@ -104,6 +104,8 @@ namespace Pulumi.AliCloud.Vpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Vbr Ha can be imported using the id, e.g.

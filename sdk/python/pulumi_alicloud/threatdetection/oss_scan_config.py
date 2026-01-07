@@ -529,6 +529,8 @@ class OssScanConfig(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Oss Scan Config can be imported using the id, e.g.
@@ -625,6 +627,8 @@ class OssScanConfig(pulumi.CustomResource):
                 "/123",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

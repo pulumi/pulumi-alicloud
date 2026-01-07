@@ -56,6 +56,8 @@ namespace Pulumi.AliCloud.Oss
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS Bucket Style can be imported using the id, e.g.

@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Waiting Room Rule can be imported using the id, e.g.
@@ -107,11 +109,11 @@ export class WaitingRoomRule extends pulumi.CustomResource {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
-     * Rule enabled status, supporting:
-     * -'on': means enabled.
-     * -'off': means disabled.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -186,11 +188,11 @@ export interface WaitingRoomRuleState {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
-     * Rule enabled status, supporting:
-     * -'on': means enabled.
-     * -'off': means disabled.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     status?: pulumi.Input<string>;
     /**
@@ -218,11 +220,11 @@ export interface WaitingRoomRuleArgs {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
-     * Rule enabled status, supporting:
-     * -'on': means enabled.
-     * -'off': means disabled.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     status: pulumi.Input<string>;
     /**

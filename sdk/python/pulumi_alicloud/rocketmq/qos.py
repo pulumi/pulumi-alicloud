@@ -97,6 +97,8 @@ class Qos(pulumi.CustomResource):
         default = alicloud.sag.Qos("default", name="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag Qos can be imported using the id, e.g.
@@ -134,6 +136,8 @@ class Qos(pulumi.CustomResource):
 
         default = alicloud.sag.Qos("default", name="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

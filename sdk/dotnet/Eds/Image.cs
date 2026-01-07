@@ -98,6 +98,8 @@ namespace Pulumi.AliCloud.Eds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECD Image can be imported using the id, e.g.

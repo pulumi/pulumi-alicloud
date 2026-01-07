@@ -86,6 +86,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // CEN instance can be imported using the id, e.g.

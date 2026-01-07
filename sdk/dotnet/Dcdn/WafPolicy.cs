@@ -48,6 +48,8 @@ namespace Pulumi.AliCloud.Dcdn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DCDN Waf Policy can be imported using the id, e.g.

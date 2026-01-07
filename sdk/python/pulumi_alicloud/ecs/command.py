@@ -291,6 +291,8 @@ class Command(pulumi.CustomResource):
             working_dir="/root")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Command can be imported using the id, e.g.
@@ -337,6 +339,8 @@ class Command(pulumi.CustomResource):
             type="RunShellScript",
             working_dir="/root")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

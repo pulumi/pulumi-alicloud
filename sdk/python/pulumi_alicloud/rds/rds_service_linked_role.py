@@ -137,6 +137,8 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
         default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Service Linked Role can be imported using the id, e.g.
@@ -172,6 +174,8 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
 
         default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

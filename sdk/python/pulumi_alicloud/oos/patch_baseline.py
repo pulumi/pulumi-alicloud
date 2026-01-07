@@ -440,6 +440,8 @@ class PatchBaseline(pulumi.CustomResource):
             approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Patch Baseline can be imported using the id, e.g.
@@ -492,6 +494,8 @@ class PatchBaseline(pulumi.CustomResource):
             operation_system="Windows",
             approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

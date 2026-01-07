@@ -41,6 +41,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Page can be imported using the id, e.g.

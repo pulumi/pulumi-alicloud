@@ -208,6 +208,8 @@ class ConfigMap(pulumi.CustomResource):
             namespace_id=default_namespace.namespace_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless App Engine (SAE) Config Map can be imported using the id, e.g.
@@ -267,6 +269,8 @@ class ConfigMap(pulumi.CustomResource):
             name=name,
             namespace_id=default_namespace.namespace_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

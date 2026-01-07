@@ -32,9 +32,9 @@ class AnycastEipAddressArgs:
         :param pulumi.Input[_builtins.str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
         :param pulumi.Input[_builtins.int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps.
-        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description.
+        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
-        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: List of resource-bound tags.
         """
@@ -94,7 +94,7 @@ class AnycastEipAddressArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Anycast EIP instance description.
+        Anycast EIP instance description
         """
         return pulumi.get(self, "description")
 
@@ -118,7 +118,7 @@ class AnycastEipAddressArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         """
         return pulumi.get(self, "payment_type")
 
@@ -169,9 +169,9 @@ class _AnycastEipAddressState:
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
         :param pulumi.Input[_builtins.int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps.
         :param pulumi.Input[_builtins.str] create_time: Anycast EIP instance creation time.
-        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description.
+        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
-        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
@@ -238,7 +238,7 @@ class _AnycastEipAddressState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Anycast EIP instance description.
+        Anycast EIP instance description
         """
         return pulumi.get(self, "description")
 
@@ -262,7 +262,7 @@ class _AnycastEipAddressState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         """
         return pulumi.get(self, "payment_type")
 
@@ -335,7 +335,9 @@ class AnycastEipAddress(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
+        Provides a Eipanycast Anycast Eip Address resource.
+
+        Anycast Elastic IP Address.
 
         For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 
@@ -361,6 +363,8 @@ class AnycastEipAddress(pulumi.CustomResource):
             internet_charge_type="PayByTraffic",
             payment_type="PayAsYouGo")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -374,9 +378,9 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
         :param pulumi.Input[_builtins.int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps.
-        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description.
+        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
-        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: List of resource-bound tags.
@@ -388,7 +392,9 @@ class AnycastEipAddress(pulumi.CustomResource):
                  args: AnycastEipAddressArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
+        Provides a Eipanycast Anycast Eip Address resource.
+
+        Anycast Elastic IP Address.
 
         For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 
@@ -414,6 +420,8 @@ class AnycastEipAddress(pulumi.CustomResource):
             internet_charge_type="PayByTraffic",
             payment_type="PayAsYouGo")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -497,9 +505,9 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
         :param pulumi.Input[_builtins.int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps.
         :param pulumi.Input[_builtins.str] create_time: Anycast EIP instance creation time.
-        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description.
+        :param pulumi.Input[_builtins.str] description: Anycast EIP instance description
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
-        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        :param pulumi.Input[_builtins.str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
@@ -549,7 +557,7 @@ class AnycastEipAddress(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Anycast EIP instance description.
+        Anycast EIP instance description
         """
         return pulumi.get(self, "description")
 
@@ -565,7 +573,7 @@ class AnycastEipAddress(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         """
         return pulumi.get(self, "payment_type")
 

@@ -252,6 +252,21 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
+    }
+
+    /**
      * The ID of the resource group
      * 
      */
@@ -404,6 +419,7 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.ipv6Enable = $.ipv6Enable;
         this.ipv6Region = $.ipv6Region;
+        this.paused = $.paused;
         this.resourceGroupId = $.resourceGroupId;
         this.seoBypass = $.seoBypass;
         this.siteName = $.siteName;
@@ -754,6 +770,27 @@ public final class SiteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipv6Region(String ipv6Region) {
             return ipv6Region(Output.of(ipv6Region));
+        }
+
+        /**
+         * @param paused Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
+            return this;
+        }
+
+        /**
+         * @param paused Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
         }
 
         /**

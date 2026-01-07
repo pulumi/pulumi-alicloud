@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.

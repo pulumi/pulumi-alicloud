@@ -28,5 +28,6 @@ from .remote_adb_data_source import *
 from .streaming_data_service import *
 from .streaming_data_source import *
 from .streaming_job import *
+from .supabase_project import *
 from ._inputs import *
 from . import outputs

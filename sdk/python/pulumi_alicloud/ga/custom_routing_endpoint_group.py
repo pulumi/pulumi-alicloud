@@ -265,6 +265,8 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
             description="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Custom Routing Endpoint Group can be imported using the id, e.g.
@@ -334,6 +336,8 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
             custom_routing_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

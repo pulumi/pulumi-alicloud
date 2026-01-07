@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Gpdb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// AnalyticDB for PostgreSQL can be imported using the id, e.g.

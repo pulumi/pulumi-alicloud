@@ -195,6 +195,8 @@ class Policy(pulumi.CustomResource):
             policy_content="\\\\t\\\\t{\\\\\\"tags\\\\\\":{\\\\\\"CostCenter\\\\\\":{\\\\\\"tag_value\\\\\\":{\\\\\\"@@assign\\\\\\":[\\\\\\"Beijing\\\\\\",\\\\\\"Shanghai\\\\\\"]},\\\\\\"tag_key\\\\\\":{\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"}}}}\\n")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         TAG Policy can be imported using the id, e.g.
@@ -241,6 +243,8 @@ class Policy(pulumi.CustomResource):
             user_type="USER",
             policy_content="\\\\t\\\\t{\\\\\\"tags\\\\\\":{\\\\\\"CostCenter\\\\\\":{\\\\\\"tag_value\\\\\\":{\\\\\\"@@assign\\\\\\":[\\\\\\"Beijing\\\\\\",\\\\\\"Shanghai\\\\\\"]},\\\\\\"tag_key\\\\\\":{\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"}}}}\\n")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

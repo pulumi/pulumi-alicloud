@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.Ebs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EBS Replica Pair Drill can be imported using the id, e.g.

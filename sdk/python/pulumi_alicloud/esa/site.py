@@ -34,6 +34,7 @@ class SiteArgs:
                  flatten_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name_exclusive: Optional[pulumi.Input[_builtins.str]] = None,
@@ -62,6 +63,7 @@ class SiteArgs:
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
+        :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name_exclusive: Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
@@ -98,6 +100,8 @@ class SiteArgs:
             pulumi.set(__self__, "ipv6_enable", ipv6_enable)
         if ipv6_region is not None:
             pulumi.set(__self__, "ipv6_region", ipv6_region)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if seo_bypass is not None:
@@ -298,6 +302,18 @@ class SiteArgs:
         pulumi.set(self, "ipv6_region", value)
 
     @_builtins.property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "paused", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -400,6 +416,7 @@ class _SiteState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -430,6 +447,7 @@ class _SiteState:
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
+        :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name: The website name.
@@ -470,6 +488,8 @@ class _SiteState:
             pulumi.set(__self__, "ipv6_enable", ipv6_enable)
         if ipv6_region is not None:
             pulumi.set(__self__, "ipv6_region", ipv6_region)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if seo_bypass is not None:
@@ -674,6 +694,18 @@ class _SiteState:
         pulumi.set(self, "ipv6_region", value)
 
     @_builtins.property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "paused", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -802,6 +834,7 @@ class Site(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -851,6 +884,8 @@ class Site(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Site can be imported using the id, e.g.
@@ -879,6 +914,7 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
+        :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name: The website name.
@@ -934,6 +970,8 @@ class Site(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Site can be imported using the id, e.g.
@@ -971,6 +1009,7 @@ class Site(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
                  site_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1004,6 +1043,7 @@ class Site(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["ipv6_enable"] = ipv6_enable
             __props__.__dict__["ipv6_region"] = ipv6_region
+            __props__.__dict__["paused"] = paused
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["seo_bypass"] = seo_bypass
             if site_name is None and not opts.urn:
@@ -1041,6 +1081,7 @@ class Site(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_enable: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_region: Optional[pulumi.Input[_builtins.str]] = None,
+            paused: Optional[pulumi.Input[_builtins.bool]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             seo_bypass: Optional[pulumi.Input[_builtins.str]] = None,
             site_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1076,6 +1117,7 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6_region: The region in which Ipv6 is enabled. The default value is x.x:
                - 'x.x': Global.
                - 'Cn.cn ': Mainland China.
+        :param pulumi.Input[_builtins.bool] paused: Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] seo_bypass: Release the search engine crawler configuration. Value:
         :param pulumi.Input[_builtins.str] site_name: The website name.
@@ -1105,6 +1147,7 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ipv6_enable"] = ipv6_enable
         __props__.__dict__["ipv6_region"] = ipv6_region
+        __props__.__dict__["paused"] = paused
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["seo_bypass"] = seo_bypass
         __props__.__dict__["site_name"] = site_name
@@ -1239,6 +1282,14 @@ class Site(pulumi.CustomResource):
         - 'Cn.cn ': Mainland China.
         """
         return pulumi.get(self, "ipv6_region")
+
+    @_builtins.property
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        """
+        return pulumi.get(self, "paused")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")

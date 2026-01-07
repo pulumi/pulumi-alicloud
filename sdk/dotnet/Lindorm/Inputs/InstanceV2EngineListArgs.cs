@@ -26,6 +26,19 @@ namespace Pulumi.AliCloud.Lindorm.Inputs
 
         /// <summary>
         /// Engine
+        /// 
+        /// Enumeration value:
+        /// - `TABLE`: Wide table engine
+        /// - `TSDB`: Time series Engine
+        /// - `LSEARCH`: Search engine
+        /// - `LTS`: LTS engine
+        /// - `LVECTOR`: Vector engine
+        /// - `LCOLUMN`: Column-store engine
+        /// - `LAI`: AI engine
+        /// - `FILE`: The underlying file engine
+        /// - `LMESSAGE`: Message engine
+        /// - `LROW`: Wide table Engine 3.0
+        /// - `LSTREAM`: Stream engine
         /// </summary>
         [Input("engineType", required: true)]
         public Input<string> EngineType { get; set; } = null!;

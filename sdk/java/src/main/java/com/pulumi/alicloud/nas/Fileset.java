@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a File Storage (NAS) Fileset resource.
  * 
+ * Fileset of CPFS file system.
+ * 
  * For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
  * 
  * &gt; **NOTE:** Available since v1.153.0.
@@ -93,6 +95,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * File Storage (NAS) Fileset can be imported using the id, e.g.
@@ -105,28 +109,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nas/fileset:Fileset")
 public class Fileset extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The time when Fileset was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when Fileset was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> deletionProtection;
+
+    /**
+     * @return The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     * 
+     */
+    public Output<Boolean> deletionProtection() {
+        return this.deletionProtection;
+    }
+    /**
+     * Description of Fileset.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * @return Description of Fileset.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -147,42 +183,42 @@ public class Fileset extends com.pulumi.resources.CustomResource {
         return this.fileSystemId;
     }
     /**
-     * The path of the fileset.
+     * The path of Fileset.
      * 
      */
     @Export(name="fileSystemPath", refs={String.class}, tree="[0]")
     private Output<String> fileSystemPath;
 
     /**
-     * @return The path of the fileset.
+     * @return The path of Fileset.
      * 
      */
     public Output<String> fileSystemPath() {
         return this.fileSystemPath;
     }
     /**
-     * The first ID of the resource.
+     * Fileset ID
      * 
      */
     @Export(name="filesetId", refs={String.class}, tree="[0]")
     private Output<String> filesetId;
 
     /**
-     * @return The first ID of the resource.
+     * @return Fileset ID
      * 
      */
     public Output<String> filesetId() {
         return this.filesetId;
     }
     /**
-     * The status of the fileset.
+     * The status of Fileset. Includes:
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the fileset.
+     * @return The status of Fileset. Includes:
      * 
      */
     public Output<String> status() {

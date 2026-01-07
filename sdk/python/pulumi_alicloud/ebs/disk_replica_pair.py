@@ -790,6 +790,8 @@ class DiskReplicaPair(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
@@ -905,6 +907,8 @@ class DiskReplicaPair(pulumi.CustomResource):
             disk_id=default_ecs_disk.id,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

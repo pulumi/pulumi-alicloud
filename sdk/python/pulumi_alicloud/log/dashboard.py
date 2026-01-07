@@ -271,6 +271,8 @@ class Dashboard(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log Dashboard can be imported using the id, e.g.
@@ -359,6 +361,8 @@ class Dashboard(pulumi.CustomResource):
           ]
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

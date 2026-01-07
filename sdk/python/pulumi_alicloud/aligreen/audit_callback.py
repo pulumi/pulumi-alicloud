@@ -236,6 +236,8 @@ class AuditCallback(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Audit Callback can be imported using the id, e.g.
@@ -294,6 +296,8 @@ class AuditCallback(pulumi.CustomResource):
                 "pass",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

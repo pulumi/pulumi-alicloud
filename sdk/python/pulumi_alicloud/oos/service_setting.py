@@ -236,6 +236,8 @@ class ServiceSetting(pulumi.CustomResource):
             delivery_sls_project_name=default_project.project_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Service Setting can be imported using the id, e.g.
@@ -289,6 +291,8 @@ class ServiceSetting(pulumi.CustomResource):
             delivery_sls_enabled=True,
             delivery_sls_project_name=default_project.project_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

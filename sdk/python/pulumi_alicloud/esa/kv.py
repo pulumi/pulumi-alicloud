@@ -295,6 +295,8 @@ class Kv(pulumi.CustomResource):
             key="example_key")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Kv can be imported using the id, e.g.
@@ -345,6 +347,8 @@ class Kv(pulumi.CustomResource):
             namespace=default.id,
             key="example_key")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

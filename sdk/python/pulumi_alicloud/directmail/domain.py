@@ -109,6 +109,8 @@ class Domain(pulumi.CustomResource):
         example = alicloud.directmail.Domain("example", domain_name=f"alicloud-provider-{default['result']}.online")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Direct Mail Domain can be imported using the id, e.g.
@@ -148,6 +150,8 @@ class Domain(pulumi.CustomResource):
             max=99999)
         example = alicloud.directmail.Domain("example", domain_name=f"alicloud-provider-{default['result']}.online")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

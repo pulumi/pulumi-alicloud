@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  *
  * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cassandra cluster can be imported using the id, e.g.

@@ -34,7 +34,7 @@ class AlidnsRecordArgs:
         The set of arguments for constructing a AlidnsRecord resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
-        :param pulumi.Input[_builtins.str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        :param pulumi.Input[_builtins.str] type: The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         :param pulumi.Input[_builtins.str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         :param pulumi.Input[_builtins.str] lang: User language.
         :param pulumi.Input[_builtins.str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
@@ -91,7 +91,7 @@ class AlidnsRecordArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         """
         return pulumi.get(self, "type")
 
@@ -220,7 +220,7 @@ class _AlidnsRecordState:
         :param pulumi.Input[_builtins.str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         :param pulumi.Input[_builtins.str] status: The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
         :param pulumi.Input[_builtins.int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
-        :param pulumi.Input[_builtins.str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        :param pulumi.Input[_builtins.str] type: The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         :param pulumi.Input[_builtins.str] user_client_ip: The IP address of the client.
         :param pulumi.Input[_builtins.str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         """
@@ -347,7 +347,7 @@ class _AlidnsRecordState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         """
         return pulumi.get(self, "type")
 
@@ -428,6 +428,8 @@ class AlidnsRecord(pulumi.CustomResource):
             status="ENABLE")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns Domain Record can be imported using the id, e.g.
@@ -446,7 +448,7 @@ class AlidnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         :param pulumi.Input[_builtins.str] status: The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
         :param pulumi.Input[_builtins.int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
-        :param pulumi.Input[_builtins.str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        :param pulumi.Input[_builtins.str] type: The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         :param pulumi.Input[_builtins.str] user_client_ip: The IP address of the client.
         :param pulumi.Input[_builtins.str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         """
@@ -485,6 +487,8 @@ class AlidnsRecord(pulumi.CustomResource):
             remark="tf-example",
             status="ENABLE")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -584,7 +588,7 @@ class AlidnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
         :param pulumi.Input[_builtins.str] status: The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
         :param pulumi.Input[_builtins.int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
-        :param pulumi.Input[_builtins.str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        :param pulumi.Input[_builtins.str] type: The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         :param pulumi.Input[_builtins.str] user_client_ip: The IP address of the client.
         :param pulumi.Input[_builtins.str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         """
@@ -673,7 +677,7 @@ class AlidnsRecord(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         """
         return pulumi.get(self, "type")
 

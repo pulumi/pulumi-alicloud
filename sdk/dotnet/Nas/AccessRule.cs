@@ -58,6 +58,8 @@ namespace Pulumi.AliCloud.Nas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// NAS Access Rule can be imported using the id, e.g.

@@ -67,6 +67,8 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Click House Enterprise Db Cluster Public Endpoint can be imported using the id, e.g.

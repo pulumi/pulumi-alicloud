@@ -69,6 +69,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // CDN Domain can be imported using the id, e.g.

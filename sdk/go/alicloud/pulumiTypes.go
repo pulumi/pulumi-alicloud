@@ -270,6 +270,820 @@ func (o MilvusInstanceVswitchIdArrayOutput) Index(i pulumi.IntInput) MilvusInsta
 	}).(MilvusInstanceVswitchIdOutput)
 }
 
+type OpenApiExplorerApiMcpServerAdditionalApiDescription struct {
+	// The API name, such as ListApiMcpServers.
+	ApiName *string `pulumi:"apiName"`
+	// API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
+	//
+	// > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+	ApiOverrideJson *string `pulumi:"apiOverrideJson"`
+	// API version information, typically in date format, such as 2014-05-26.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
+	// Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
+	ConstParameters []OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter `pulumi:"constParameters"`
+	// By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
+	//
+	// > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+	EnableOutputSchema *bool `pulumi:"enableOutputSchema"`
+	// Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
+	// - SSE protocol: up to 30 minutes
+	// - Streamable HTTP protocol: up to 1 minute
+	//
+	// For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+	//
+	// > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+	ExecuteCliCommand *bool `pulumi:"executeCliCommand"`
+	// The name of the cloud product, such as Ecs.
+	Product *string `pulumi:"product"`
+}
+
+// OpenApiExplorerApiMcpServerAdditionalApiDescriptionInput is an input type that accepts OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs and OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerAdditionalApiDescriptionInput` via:
+//
+//	OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs{...}
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutputWithContext(context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs struct {
+	// The API name, such as ListApiMcpServers.
+	ApiName pulumi.StringPtrInput `pulumi:"apiName"`
+	// API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
+	//
+	// > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+	ApiOverrideJson pulumi.StringPtrInput `pulumi:"apiOverrideJson"`
+	// API version information, typically in date format, such as 2014-05-26.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
+	// Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
+	ConstParameters OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayInput `pulumi:"constParameters"`
+	// By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
+	//
+	// > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+	EnableOutputSchema pulumi.BoolPtrInput `pulumi:"enableOutputSchema"`
+	// Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
+	// - SSE protocol: up to 30 minutes
+	// - Streamable HTTP protocol: up to 1 minute
+	//
+	// For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+	//
+	// > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+	ExecuteCliCommand pulumi.BoolPtrInput `pulumi:"executeCliCommand"`
+	// The name of the cloud product, such as Ecs.
+	Product pulumi.StringPtrInput `pulumi:"product"`
+}
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescription)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput {
+	return i.ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput)
+}
+
+// OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayInput is an input type that accepts OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray and OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayInput` via:
+//
+//	OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray{ OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs{...} }
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutputWithContext(context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray []OpenApiExplorerApiMcpServerAdditionalApiDescriptionInput
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerAdditionalApiDescription)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput {
+	return i.ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescription)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput {
+	return o
+}
+
+// The API name, such as ListApiMcpServers.
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ApiName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) *string { return v.ApiName }).(pulumi.StringPtrOutput)
+}
+
+// API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
+//
+// > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ApiOverrideJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) *string { return v.ApiOverrideJson }).(pulumi.StringPtrOutput)
+}
+
+// API version information, typically in date format, such as 2014-05-26.
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
+// Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ConstParameters() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) []OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
+		return v.ConstParameters
+	}).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput)
+}
+
+// By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
+//
+// > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) EnableOutputSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) *bool { return v.EnableOutputSchema }).(pulumi.BoolPtrOutput)
+}
+
+// Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
+// - SSE protocol: up to 30 minutes
+// - Streamable HTTP protocol: up to 1 minute
+//
+// For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+//
+// > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) ExecuteCliCommand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) *bool { return v.ExecuteCliCommand }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the cloud product, such as Ecs.
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescription) *string { return v.Product }).(pulumi.StringPtrOutput)
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerAdditionalApiDescription)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput) Index(i pulumi.IntInput) OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenApiExplorerApiMcpServerAdditionalApiDescription {
+		return vs[0].([]OpenApiExplorerApiMcpServerAdditionalApiDescription)[vs[1].(int)]
+	}).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput)
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter struct {
+	// Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
+	//
+	// For RPC-style APIs, examples include:
+	// - Name: sets the Name parameter to a fixed value.
+	//
+	// For ROA-style APIs, examples include:
+	// - Name: sets a query or path parameter named Name to a fixed value;
+	// - body.Name: sets the Name field within the request body to a fixed value.
+	//
+	// Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+	//
+	// > **NOTE:** xMcpRegionId is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+	Key *string `pulumi:"key"`
+	// This property does not have a description in the spec, please add it before generating code.
+	Value *string `pulumi:"value"`
+}
+
+// OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterInput is an input type that accepts OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs and OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterInput` via:
+//
+//	OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs{...}
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutputWithContext(context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs struct {
+	// Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
+	//
+	// For RPC-style APIs, examples include:
+	// - Name: sets the Name parameter to a fixed value.
+	//
+	// For ROA-style APIs, examples include:
+	// - Name: sets a query or path parameter named Name to a fixed value;
+	// - body.Name: sets the Name field within the request body to a fixed value.
+	//
+	// Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+	//
+	// > **NOTE:** xMcpRegionId is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// This property does not have a description in the spec, please add it before generating code.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput {
+	return i.ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput)
+}
+
+// OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayInput is an input type that accepts OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray and OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayInput` via:
+//
+//	OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray{ OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs{...} }
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput
+	ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutputWithContext(context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray []OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterInput
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput {
+	return i.ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput {
+	return o
+}
+
+// Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
+//
+// For RPC-style APIs, examples include:
+// - Name: sets the Name parameter to a fixed value.
+//
+// For ROA-style APIs, examples include:
+// - Name: sets a query or path parameter named Name to a fixed value;
+// - body.Name: sets the Name field within the request body to a fixed value.
+//
+// Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+//
+// > **NOTE:** xMcpRegionId is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// This property does not have a description in the spec, please add it before generating code.
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput() OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput) ToOpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput) Index(i pulumi.IntInput) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
+		return vs[0].([]OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter)[vs[1].(int)]
+	}).(OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput)
+}
+
+type OpenApiExplorerApiMcpServerApi struct {
+	// API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+	ApiVersion string `pulumi:"apiVersion"`
+	// Product code, such as Ecs.
+	Product string `pulumi:"product"`
+	// Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+	Selectors []string `pulumi:"selectors"`
+}
+
+// OpenApiExplorerApiMcpServerApiInput is an input type that accepts OpenApiExplorerApiMcpServerApiArgs and OpenApiExplorerApiMcpServerApiOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerApiInput` via:
+//
+//	OpenApiExplorerApiMcpServerApiArgs{...}
+type OpenApiExplorerApiMcpServerApiInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerApiOutput() OpenApiExplorerApiMcpServerApiOutput
+	ToOpenApiExplorerApiMcpServerApiOutputWithContext(context.Context) OpenApiExplorerApiMcpServerApiOutput
+}
+
+type OpenApiExplorerApiMcpServerApiArgs struct {
+	// API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+	ApiVersion pulumi.StringInput `pulumi:"apiVersion"`
+	// Product code, such as Ecs.
+	Product pulumi.StringInput `pulumi:"product"`
+	// Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+	Selectors pulumi.StringArrayInput `pulumi:"selectors"`
+}
+
+func (OpenApiExplorerApiMcpServerApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerApi)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerApiArgs) ToOpenApiExplorerApiMcpServerApiOutput() OpenApiExplorerApiMcpServerApiOutput {
+	return i.ToOpenApiExplorerApiMcpServerApiOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerApiArgs) ToOpenApiExplorerApiMcpServerApiOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerApiOutput)
+}
+
+// OpenApiExplorerApiMcpServerApiArrayInput is an input type that accepts OpenApiExplorerApiMcpServerApiArray and OpenApiExplorerApiMcpServerApiArrayOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerApiArrayInput` via:
+//
+//	OpenApiExplorerApiMcpServerApiArray{ OpenApiExplorerApiMcpServerApiArgs{...} }
+type OpenApiExplorerApiMcpServerApiArrayInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerApiArrayOutput() OpenApiExplorerApiMcpServerApiArrayOutput
+	ToOpenApiExplorerApiMcpServerApiArrayOutputWithContext(context.Context) OpenApiExplorerApiMcpServerApiArrayOutput
+}
+
+type OpenApiExplorerApiMcpServerApiArray []OpenApiExplorerApiMcpServerApiInput
+
+func (OpenApiExplorerApiMcpServerApiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerApi)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerApiArray) ToOpenApiExplorerApiMcpServerApiArrayOutput() OpenApiExplorerApiMcpServerApiArrayOutput {
+	return i.ToOpenApiExplorerApiMcpServerApiArrayOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerApiArray) ToOpenApiExplorerApiMcpServerApiArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerApiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerApiArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerApiOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerApi)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerApiOutput) ToOpenApiExplorerApiMcpServerApiOutput() OpenApiExplorerApiMcpServerApiOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerApiOutput) ToOpenApiExplorerApiMcpServerApiOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerApiOutput {
+	return o
+}
+
+// API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+func (o OpenApiExplorerApiMcpServerApiOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerApi) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// Product code, such as Ecs.
+func (o OpenApiExplorerApiMcpServerApiOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerApi) string { return v.Product }).(pulumi.StringOutput)
+}
+
+// Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+func (o OpenApiExplorerApiMcpServerApiOutput) Selectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerApi) []string { return v.Selectors }).(pulumi.StringArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerApiArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerApiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerApi)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerApiArrayOutput) ToOpenApiExplorerApiMcpServerApiArrayOutput() OpenApiExplorerApiMcpServerApiArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerApiArrayOutput) ToOpenApiExplorerApiMcpServerApiArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerApiArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerApiArrayOutput) Index(i pulumi.IntInput) OpenApiExplorerApiMcpServerApiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenApiExplorerApiMcpServerApi {
+		return vs[0].([]OpenApiExplorerApiMcpServerApi)[vs[1].(int)]
+	}).(OpenApiExplorerApiMcpServerApiOutput)
+}
+
+type OpenApiExplorerApiMcpServerPrompt struct {
+	// Parameters for the prompt. See `arguments` below.
+	Arguments []OpenApiExplorerApiMcpServerPromptArgument `pulumi:"arguments"`
+	// Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+	Content *string `pulumi:"content"`
+	// Description of the prompt parameter.
+	Description *string `pulumi:"description"`
+	// Name of the prompt parameter.
+	Name *string `pulumi:"name"`
+}
+
+// OpenApiExplorerApiMcpServerPromptInput is an input type that accepts OpenApiExplorerApiMcpServerPromptArgs and OpenApiExplorerApiMcpServerPromptOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerPromptInput` via:
+//
+//	OpenApiExplorerApiMcpServerPromptArgs{...}
+type OpenApiExplorerApiMcpServerPromptInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerPromptOutput() OpenApiExplorerApiMcpServerPromptOutput
+	ToOpenApiExplorerApiMcpServerPromptOutputWithContext(context.Context) OpenApiExplorerApiMcpServerPromptOutput
+}
+
+type OpenApiExplorerApiMcpServerPromptArgs struct {
+	// Parameters for the prompt. See `arguments` below.
+	Arguments OpenApiExplorerApiMcpServerPromptArgumentArrayInput `pulumi:"arguments"`
+	// Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Description of the prompt parameter.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the prompt parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (OpenApiExplorerApiMcpServerPromptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerPrompt)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArgs) ToOpenApiExplorerApiMcpServerPromptOutput() OpenApiExplorerApiMcpServerPromptOutput {
+	return i.ToOpenApiExplorerApiMcpServerPromptOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArgs) ToOpenApiExplorerApiMcpServerPromptOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerPromptOutput)
+}
+
+// OpenApiExplorerApiMcpServerPromptArrayInput is an input type that accepts OpenApiExplorerApiMcpServerPromptArray and OpenApiExplorerApiMcpServerPromptArrayOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerPromptArrayInput` via:
+//
+//	OpenApiExplorerApiMcpServerPromptArray{ OpenApiExplorerApiMcpServerPromptArgs{...} }
+type OpenApiExplorerApiMcpServerPromptArrayInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerPromptArrayOutput() OpenApiExplorerApiMcpServerPromptArrayOutput
+	ToOpenApiExplorerApiMcpServerPromptArrayOutputWithContext(context.Context) OpenApiExplorerApiMcpServerPromptArrayOutput
+}
+
+type OpenApiExplorerApiMcpServerPromptArray []OpenApiExplorerApiMcpServerPromptInput
+
+func (OpenApiExplorerApiMcpServerPromptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerPrompt)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArray) ToOpenApiExplorerApiMcpServerPromptArrayOutput() OpenApiExplorerApiMcpServerPromptArrayOutput {
+	return i.ToOpenApiExplorerApiMcpServerPromptArrayOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArray) ToOpenApiExplorerApiMcpServerPromptArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerPromptArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerPromptOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerPromptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerPrompt)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerPromptOutput) ToOpenApiExplorerApiMcpServerPromptOutput() OpenApiExplorerApiMcpServerPromptOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerPromptOutput) ToOpenApiExplorerApiMcpServerPromptOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptOutput {
+	return o
+}
+
+// Parameters for the prompt. See `arguments` below.
+func (o OpenApiExplorerApiMcpServerPromptOutput) Arguments() OpenApiExplorerApiMcpServerPromptArgumentArrayOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPrompt) []OpenApiExplorerApiMcpServerPromptArgument {
+		return v.Arguments
+	}).(OpenApiExplorerApiMcpServerPromptArgumentArrayOutput)
+}
+
+// Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+func (o OpenApiExplorerApiMcpServerPromptOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPrompt) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Description of the prompt parameter.
+func (o OpenApiExplorerApiMcpServerPromptOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPrompt) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the prompt parameter.
+func (o OpenApiExplorerApiMcpServerPromptOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPrompt) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type OpenApiExplorerApiMcpServerPromptArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerPromptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerPrompt)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArrayOutput) ToOpenApiExplorerApiMcpServerPromptArrayOutput() OpenApiExplorerApiMcpServerPromptArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArrayOutput) ToOpenApiExplorerApiMcpServerPromptArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArrayOutput) Index(i pulumi.IntInput) OpenApiExplorerApiMcpServerPromptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenApiExplorerApiMcpServerPrompt {
+		return vs[0].([]OpenApiExplorerApiMcpServerPrompt)[vs[1].(int)]
+	}).(OpenApiExplorerApiMcpServerPromptOutput)
+}
+
+type OpenApiExplorerApiMcpServerPromptArgument struct {
+	// Description of the API MCP service.
+	Description *string `pulumi:"description"`
+	// Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+	Name *string `pulumi:"name"`
+	// Indicates whether the prompt parameter is required.
+	Required *bool `pulumi:"required"`
+}
+
+// OpenApiExplorerApiMcpServerPromptArgumentInput is an input type that accepts OpenApiExplorerApiMcpServerPromptArgumentArgs and OpenApiExplorerApiMcpServerPromptArgumentOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerPromptArgumentInput` via:
+//
+//	OpenApiExplorerApiMcpServerPromptArgumentArgs{...}
+type OpenApiExplorerApiMcpServerPromptArgumentInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerPromptArgumentOutput() OpenApiExplorerApiMcpServerPromptArgumentOutput
+	ToOpenApiExplorerApiMcpServerPromptArgumentOutputWithContext(context.Context) OpenApiExplorerApiMcpServerPromptArgumentOutput
+}
+
+type OpenApiExplorerApiMcpServerPromptArgumentArgs struct {
+	// Description of the API MCP service.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Indicates whether the prompt parameter is required.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+}
+
+func (OpenApiExplorerApiMcpServerPromptArgumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerPromptArgument)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArgumentArgs) ToOpenApiExplorerApiMcpServerPromptArgumentOutput() OpenApiExplorerApiMcpServerPromptArgumentOutput {
+	return i.ToOpenApiExplorerApiMcpServerPromptArgumentOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArgumentArgs) ToOpenApiExplorerApiMcpServerPromptArgumentOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptArgumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerPromptArgumentOutput)
+}
+
+// OpenApiExplorerApiMcpServerPromptArgumentArrayInput is an input type that accepts OpenApiExplorerApiMcpServerPromptArgumentArray and OpenApiExplorerApiMcpServerPromptArgumentArrayOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerPromptArgumentArrayInput` via:
+//
+//	OpenApiExplorerApiMcpServerPromptArgumentArray{ OpenApiExplorerApiMcpServerPromptArgumentArgs{...} }
+type OpenApiExplorerApiMcpServerPromptArgumentArrayInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutput() OpenApiExplorerApiMcpServerPromptArgumentArrayOutput
+	ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutputWithContext(context.Context) OpenApiExplorerApiMcpServerPromptArgumentArrayOutput
+}
+
+type OpenApiExplorerApiMcpServerPromptArgumentArray []OpenApiExplorerApiMcpServerPromptArgumentInput
+
+func (OpenApiExplorerApiMcpServerPromptArgumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerPromptArgument)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArgumentArray) ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutput() OpenApiExplorerApiMcpServerPromptArgumentArrayOutput {
+	return i.ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerPromptArgumentArray) ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptArgumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerPromptArgumentArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerPromptArgumentOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerPromptArgumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerPromptArgument)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArgumentOutput) ToOpenApiExplorerApiMcpServerPromptArgumentOutput() OpenApiExplorerApiMcpServerPromptArgumentOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArgumentOutput) ToOpenApiExplorerApiMcpServerPromptArgumentOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptArgumentOutput {
+	return o
+}
+
+// Description of the API MCP service.
+func (o OpenApiExplorerApiMcpServerPromptArgumentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPromptArgument) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+func (o OpenApiExplorerApiMcpServerPromptArgumentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPromptArgument) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the prompt parameter is required.
+func (o OpenApiExplorerApiMcpServerPromptArgumentOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerPromptArgument) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type OpenApiExplorerApiMcpServerPromptArgumentArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerPromptArgumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerPromptArgument)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArgumentArrayOutput) ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutput() OpenApiExplorerApiMcpServerPromptArgumentArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArgumentArrayOutput) ToOpenApiExplorerApiMcpServerPromptArgumentArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerPromptArgumentArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerPromptArgumentArrayOutput) Index(i pulumi.IntInput) OpenApiExplorerApiMcpServerPromptArgumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenApiExplorerApiMcpServerPromptArgument {
+		return vs[0].([]OpenApiExplorerApiMcpServerPromptArgument)[vs[1].(int)]
+	}).(OpenApiExplorerApiMcpServerPromptArgumentOutput)
+}
+
+type OpenApiExplorerApiMcpServerTerraformTool struct {
+	// Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+	Async       *bool   `pulumi:"async"`
+	Code        *string `pulumi:"code"`
+	Description *string `pulumi:"description"`
+	// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+	// - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+	// - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+	// - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+	DestroyPolicy *string `pulumi:"destroyPolicy"`
+	Name          *string `pulumi:"name"`
+}
+
+// OpenApiExplorerApiMcpServerTerraformToolInput is an input type that accepts OpenApiExplorerApiMcpServerTerraformToolArgs and OpenApiExplorerApiMcpServerTerraformToolOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerTerraformToolInput` via:
+//
+//	OpenApiExplorerApiMcpServerTerraformToolArgs{...}
+type OpenApiExplorerApiMcpServerTerraformToolInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerTerraformToolOutput() OpenApiExplorerApiMcpServerTerraformToolOutput
+	ToOpenApiExplorerApiMcpServerTerraformToolOutputWithContext(context.Context) OpenApiExplorerApiMcpServerTerraformToolOutput
+}
+
+type OpenApiExplorerApiMcpServerTerraformToolArgs struct {
+	// Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+	Async       pulumi.BoolPtrInput   `pulumi:"async"`
+	Code        pulumi.StringPtrInput `pulumi:"code"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+	// - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+	// - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+	// - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+	DestroyPolicy pulumi.StringPtrInput `pulumi:"destroyPolicy"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (OpenApiExplorerApiMcpServerTerraformToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerTerraformTool)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerTerraformToolArgs) ToOpenApiExplorerApiMcpServerTerraformToolOutput() OpenApiExplorerApiMcpServerTerraformToolOutput {
+	return i.ToOpenApiExplorerApiMcpServerTerraformToolOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerTerraformToolArgs) ToOpenApiExplorerApiMcpServerTerraformToolOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerTerraformToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerTerraformToolOutput)
+}
+
+// OpenApiExplorerApiMcpServerTerraformToolArrayInput is an input type that accepts OpenApiExplorerApiMcpServerTerraformToolArray and OpenApiExplorerApiMcpServerTerraformToolArrayOutput values.
+// You can construct a concrete instance of `OpenApiExplorerApiMcpServerTerraformToolArrayInput` via:
+//
+//	OpenApiExplorerApiMcpServerTerraformToolArray{ OpenApiExplorerApiMcpServerTerraformToolArgs{...} }
+type OpenApiExplorerApiMcpServerTerraformToolArrayInput interface {
+	pulumi.Input
+
+	ToOpenApiExplorerApiMcpServerTerraformToolArrayOutput() OpenApiExplorerApiMcpServerTerraformToolArrayOutput
+	ToOpenApiExplorerApiMcpServerTerraformToolArrayOutputWithContext(context.Context) OpenApiExplorerApiMcpServerTerraformToolArrayOutput
+}
+
+type OpenApiExplorerApiMcpServerTerraformToolArray []OpenApiExplorerApiMcpServerTerraformToolInput
+
+func (OpenApiExplorerApiMcpServerTerraformToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerTerraformTool)(nil)).Elem()
+}
+
+func (i OpenApiExplorerApiMcpServerTerraformToolArray) ToOpenApiExplorerApiMcpServerTerraformToolArrayOutput() OpenApiExplorerApiMcpServerTerraformToolArrayOutput {
+	return i.ToOpenApiExplorerApiMcpServerTerraformToolArrayOutputWithContext(context.Background())
+}
+
+func (i OpenApiExplorerApiMcpServerTerraformToolArray) ToOpenApiExplorerApiMcpServerTerraformToolArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerTerraformToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenApiExplorerApiMcpServerTerraformToolArrayOutput)
+}
+
+type OpenApiExplorerApiMcpServerTerraformToolOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerTerraformToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenApiExplorerApiMcpServerTerraformTool)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) ToOpenApiExplorerApiMcpServerTerraformToolOutput() OpenApiExplorerApiMcpServerTerraformToolOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) ToOpenApiExplorerApiMcpServerTerraformToolOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerTerraformToolOutput {
+	return o
+}
+
+// Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Async() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *bool { return v.Async }).(pulumi.BoolPtrOutput)
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+// - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+// - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+// - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) DestroyPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.DestroyPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type OpenApiExplorerApiMcpServerTerraformToolArrayOutput struct{ *pulumi.OutputState }
+
+func (OpenApiExplorerApiMcpServerTerraformToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OpenApiExplorerApiMcpServerTerraformTool)(nil)).Elem()
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolArrayOutput) ToOpenApiExplorerApiMcpServerTerraformToolArrayOutput() OpenApiExplorerApiMcpServerTerraformToolArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolArrayOutput) ToOpenApiExplorerApiMcpServerTerraformToolArrayOutputWithContext(ctx context.Context) OpenApiExplorerApiMcpServerTerraformToolArrayOutput {
+	return o
+}
+
+func (o OpenApiExplorerApiMcpServerTerraformToolArrayOutput) Index(i pulumi.IntInput) OpenApiExplorerApiMcpServerTerraformToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenApiExplorerApiMcpServerTerraformTool {
+		return vs[0].([]OpenApiExplorerApiMcpServerTerraformTool)[vs[1].(int)]
+	}).(OpenApiExplorerApiMcpServerTerraformToolOutput)
+}
+
 type ProviderAssumeRole struct {
 	ExternalId *string `pulumi:"externalId"`
 	// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
@@ -3819,6 +4633,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentArrayInput)(nil)).Elem(), MilvusInstanceComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceVswitchIdInput)(nil)).Elem(), MilvusInstanceVswitchIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceVswitchIdArrayInput)(nil)).Elem(), MilvusInstanceVswitchIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionInput)(nil)).Elem(), OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayInput)(nil)).Elem(), OpenApiExplorerApiMcpServerAdditionalApiDescriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterInput)(nil)).Elem(), OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayInput)(nil)).Elem(), OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerApiInput)(nil)).Elem(), OpenApiExplorerApiMcpServerApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerApiArrayInput)(nil)).Elem(), OpenApiExplorerApiMcpServerApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerPromptInput)(nil)).Elem(), OpenApiExplorerApiMcpServerPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerPromptArrayInput)(nil)).Elem(), OpenApiExplorerApiMcpServerPromptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerPromptArgumentInput)(nil)).Elem(), OpenApiExplorerApiMcpServerPromptArgumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerPromptArgumentArrayInput)(nil)).Elem(), OpenApiExplorerApiMcpServerPromptArgumentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerTerraformToolInput)(nil)).Elem(), OpenApiExplorerApiMcpServerTerraformToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiExplorerApiMcpServerTerraformToolArrayInput)(nil)).Elem(), OpenApiExplorerApiMcpServerTerraformToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRolePtrInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleWithOidcInput)(nil)).Elem(), ProviderAssumeRoleWithOidcArgs{})
@@ -3849,6 +4675,18 @@ func init() {
 	pulumi.RegisterOutputType(MilvusInstanceComponentArrayOutput{})
 	pulumi.RegisterOutputType(MilvusInstanceVswitchIdOutput{})
 	pulumi.RegisterOutputType(MilvusInstanceVswitchIdArrayOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerAdditionalApiDescriptionOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerAdditionalApiDescriptionArrayOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArrayOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerApiOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerApiArrayOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerPromptOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerPromptArrayOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerPromptArgumentOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerPromptArgumentArrayOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerTerraformToolOutput{})
+	pulumi.RegisterOutputType(OpenApiExplorerApiMcpServerTerraformToolArrayOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleWithOidcOutput{})

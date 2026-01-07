@@ -156,14 +156,14 @@ public final class VideoProcessingState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     @Import(name="sequence")
     private @Nullable Output<Integer> sequence;
 
     /**
-     * @return Order of rule execution. The smaller the value, the higher the priority for execution.
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     public Optional<Output<Integer>> sequence() {
@@ -175,13 +175,13 @@ public final class VideoProcessingState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
@@ -445,7 +445,7 @@ public final class VideoProcessingState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sequence Order of rule execution. The smaller the value, the higher the priority for execution.
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class VideoProcessingState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sequence Order of rule execution. The smaller the value, the higher the priority for execution.
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class VideoProcessingState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -482,7 +482,7 @@ public final class VideoProcessingState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

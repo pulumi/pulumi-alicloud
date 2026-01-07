@@ -280,6 +280,8 @@ class Command(pulumi.CustomResource):
             desktop_id=default_desktop.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Command can be imported using the id, e.g.
@@ -364,6 +366,8 @@ class Command(pulumi.CustomResource):
             command_type="RunPowerShellScript",
             desktop_id=default_desktop.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

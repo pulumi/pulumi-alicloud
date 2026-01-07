@@ -15,6 +15,54 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'DeploymentArtifactArgs',
+    'DeploymentArtifactArgsDict',
+    'DeploymentArtifactJarArtifactArgs',
+    'DeploymentArtifactJarArtifactArgsDict',
+    'DeploymentArtifactPythonArtifactArgs',
+    'DeploymentArtifactPythonArtifactArgsDict',
+    'DeploymentArtifactSqlArtifactArgs',
+    'DeploymentArtifactSqlArtifactArgsDict',
+    'DeploymentBatchResourceSettingArgs',
+    'DeploymentBatchResourceSettingArgsDict',
+    'DeploymentBatchResourceSettingBasicResourceSettingArgs',
+    'DeploymentBatchResourceSettingBasicResourceSettingArgsDict',
+    'DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs',
+    'DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict',
+    'DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs',
+    'DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict',
+    'DeploymentDeploymentTargetArgs',
+    'DeploymentDeploymentTargetArgsDict',
+    'DeploymentLocalVariableArgs',
+    'DeploymentLocalVariableArgsDict',
+    'DeploymentLoggingArgs',
+    'DeploymentLoggingArgsDict',
+    'DeploymentLoggingLog4jLoggerArgs',
+    'DeploymentLoggingLog4jLoggerArgsDict',
+    'DeploymentLoggingLogReservePolicyArgs',
+    'DeploymentLoggingLogReservePolicyArgsDict',
+    'DeploymentStreamingResourceSettingArgs',
+    'DeploymentStreamingResourceSettingArgsDict',
+    'DeploymentStreamingResourceSettingBasicResourceSettingArgs',
+    'DeploymentStreamingResourceSettingBasicResourceSettingArgsDict',
+    'DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs',
+    'DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict',
+    'DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs',
+    'DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict',
+    'DeploymentStreamingResourceSettingExpertResourceSettingArgs',
+    'DeploymentStreamingResourceSettingExpertResourceSettingArgsDict',
+    'DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs',
+    'DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgsDict',
+    'JobLocalVariableArgs',
+    'JobLocalVariableArgsDict',
+    'JobRestoreStrategyArgs',
+    'JobRestoreStrategyArgsDict',
+    'JobStatusArgs',
+    'JobStatusArgsDict',
+    'JobStatusFailureArgs',
+    'JobStatusFailureArgsDict',
+    'JobStatusRunningArgs',
+    'JobStatusRunningArgsDict',
     'VvpInstanceResourceSpecArgs',
     'VvpInstanceResourceSpecArgsDict',
     'VvpInstanceStorageArgs',
@@ -24,6 +72,1498 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class DeploymentArtifactArgsDict(TypedDict):
+        kind: pulumi.Input[_builtins.str]
+        """
+        Artifact type
+        """
+        jar_artifact: NotRequired[pulumi.Input['DeploymentArtifactJarArtifactArgsDict']]
+        """
+        JarArtifact See `jar_artifact` below.
+        """
+        python_artifact: NotRequired[pulumi.Input['DeploymentArtifactPythonArtifactArgsDict']]
+        """
+        PythonArtifact See `python_artifact` below.
+        """
+        sql_artifact: NotRequired[pulumi.Input['DeploymentArtifactSqlArtifactArgsDict']]
+        """
+        SqlArtifact See `sql_artifact` below.
+        """
+elif False:
+    DeploymentArtifactArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentArtifactArgs:
+    def __init__(__self__, *,
+                 kind: pulumi.Input[_builtins.str],
+                 jar_artifact: Optional[pulumi.Input['DeploymentArtifactJarArtifactArgs']] = None,
+                 python_artifact: Optional[pulumi.Input['DeploymentArtifactPythonArtifactArgs']] = None,
+                 sql_artifact: Optional[pulumi.Input['DeploymentArtifactSqlArtifactArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] kind: Artifact type
+        :param pulumi.Input['DeploymentArtifactJarArtifactArgs'] jar_artifact: JarArtifact See `jar_artifact` below.
+        :param pulumi.Input['DeploymentArtifactPythonArtifactArgs'] python_artifact: PythonArtifact See `python_artifact` below.
+        :param pulumi.Input['DeploymentArtifactSqlArtifactArgs'] sql_artifact: SqlArtifact See `sql_artifact` below.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if jar_artifact is not None:
+            pulumi.set(__self__, "jar_artifact", jar_artifact)
+        if python_artifact is not None:
+            pulumi.set(__self__, "python_artifact", python_artifact)
+        if sql_artifact is not None:
+            pulumi.set(__self__, "sql_artifact", sql_artifact)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[_builtins.str]:
+        """
+        Artifact type
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jarArtifact")
+    def jar_artifact(self) -> Optional[pulumi.Input['DeploymentArtifactJarArtifactArgs']]:
+        """
+        JarArtifact See `jar_artifact` below.
+        """
+        return pulumi.get(self, "jar_artifact")
+
+    @jar_artifact.setter
+    def jar_artifact(self, value: Optional[pulumi.Input['DeploymentArtifactJarArtifactArgs']]):
+        pulumi.set(self, "jar_artifact", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonArtifact")
+    def python_artifact(self) -> Optional[pulumi.Input['DeploymentArtifactPythonArtifactArgs']]:
+        """
+        PythonArtifact See `python_artifact` below.
+        """
+        return pulumi.get(self, "python_artifact")
+
+    @python_artifact.setter
+    def python_artifact(self, value: Optional[pulumi.Input['DeploymentArtifactPythonArtifactArgs']]):
+        pulumi.set(self, "python_artifact", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlArtifact")
+    def sql_artifact(self) -> Optional[pulumi.Input['DeploymentArtifactSqlArtifactArgs']]:
+        """
+        SqlArtifact See `sql_artifact` below.
+        """
+        return pulumi.get(self, "sql_artifact")
+
+    @sql_artifact.setter
+    def sql_artifact(self, value: Optional[pulumi.Input['DeploymentArtifactSqlArtifactArgs']]):
+        pulumi.set(self, "sql_artifact", value)
+
+
+if not MYPY:
+    class DeploymentArtifactJarArtifactArgsDict(TypedDict):
+        additional_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        """
+        entry_class: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Main class; you must specify the fully qualified class name
+        """
+        jar_uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Full URL path of the JAR job
+        """
+        main_args: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Startup arguments
+        """
+elif False:
+    DeploymentArtifactJarArtifactArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentArtifactJarArtifactArgs:
+    def __init__(__self__, *,
+                 additional_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entry_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 jar_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 main_args: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_dependencies: Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        :param pulumi.Input[_builtins.str] entry_class: Main class; you must specify the fully qualified class name
+        :param pulumi.Input[_builtins.str] jar_uri: Full URL path of the JAR job
+        :param pulumi.Input[_builtins.str] main_args: Startup arguments
+        """
+        if additional_dependencies is not None:
+            pulumi.set(__self__, "additional_dependencies", additional_dependencies)
+        if entry_class is not None:
+            pulumi.set(__self__, "entry_class", entry_class)
+        if jar_uri is not None:
+            pulumi.set(__self__, "jar_uri", jar_uri)
+        if main_args is not None:
+            pulumi.set(__self__, "main_args", main_args)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalDependencies")
+    def additional_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        """
+        return pulumi.get(self, "additional_dependencies")
+
+    @additional_dependencies.setter
+    def additional_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_dependencies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entryClass")
+    def entry_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Main class; you must specify the fully qualified class name
+        """
+        return pulumi.get(self, "entry_class")
+
+    @entry_class.setter
+    def entry_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entry_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jarUri")
+    def jar_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Full URL path of the JAR job
+        """
+        return pulumi.get(self, "jar_uri")
+
+    @jar_uri.setter
+    def jar_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "jar_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mainArgs")
+    def main_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Startup arguments
+        """
+        return pulumi.get(self, "main_args")
+
+    @main_args.setter
+    def main_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "main_args", value)
+
+
+if not MYPY:
+    class DeploymentArtifactPythonArtifactArgsDict(TypedDict):
+        additional_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        """
+        additional_python_archives: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        URL paths of dependent Python archive files
+        """
+        additional_python_libraries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        URL paths of dependent Python library files
+        """
+        entry_module: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Entry module for Python
+        """
+        main_args: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Startup arguments
+        """
+        python_artifact_uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Full URL path of the Python job
+        """
+elif False:
+    DeploymentArtifactPythonArtifactArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentArtifactPythonArtifactArgs:
+    def __init__(__self__, *,
+                 additional_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_python_archives: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_python_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entry_module: Optional[pulumi.Input[_builtins.str]] = None,
+                 main_args: Optional[pulumi.Input[_builtins.str]] = None,
+                 python_artifact_uri: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_dependencies: Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_python_archives: URL paths of dependent Python archive files
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_python_libraries: URL paths of dependent Python library files
+        :param pulumi.Input[_builtins.str] entry_module: Entry module for Python
+        :param pulumi.Input[_builtins.str] main_args: Startup arguments
+        :param pulumi.Input[_builtins.str] python_artifact_uri: Full URL path of the Python job
+        """
+        if additional_dependencies is not None:
+            pulumi.set(__self__, "additional_dependencies", additional_dependencies)
+        if additional_python_archives is not None:
+            pulumi.set(__self__, "additional_python_archives", additional_python_archives)
+        if additional_python_libraries is not None:
+            pulumi.set(__self__, "additional_python_libraries", additional_python_libraries)
+        if entry_module is not None:
+            pulumi.set(__self__, "entry_module", entry_module)
+        if main_args is not None:
+            pulumi.set(__self__, "main_args", main_args)
+        if python_artifact_uri is not None:
+            pulumi.set(__self__, "python_artifact_uri", python_artifact_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalDependencies")
+    def additional_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        """
+        return pulumi.get(self, "additional_dependencies")
+
+    @additional_dependencies.setter
+    def additional_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_dependencies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalPythonArchives")
+    def additional_python_archives(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        URL paths of dependent Python archive files
+        """
+        return pulumi.get(self, "additional_python_archives")
+
+    @additional_python_archives.setter
+    def additional_python_archives(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_python_archives", value)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalPythonLibraries")
+    def additional_python_libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        URL paths of dependent Python library files
+        """
+        return pulumi.get(self, "additional_python_libraries")
+
+    @additional_python_libraries.setter
+    def additional_python_libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_python_libraries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entryModule")
+    def entry_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Entry module for Python
+        """
+        return pulumi.get(self, "entry_module")
+
+    @entry_module.setter
+    def entry_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entry_module", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mainArgs")
+    def main_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Startup arguments
+        """
+        return pulumi.get(self, "main_args")
+
+    @main_args.setter
+    def main_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "main_args", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonArtifactUri")
+    def python_artifact_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Full URL path of the Python job
+        """
+        return pulumi.get(self, "python_artifact_uri")
+
+    @python_artifact_uri.setter
+    def python_artifact_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "python_artifact_uri", value)
+
+
+if not MYPY:
+    class DeploymentArtifactSqlArtifactArgsDict(TypedDict):
+        additional_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        """
+        sql_script: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Text content of the SQL job
+        """
+elif False:
+    DeploymentArtifactSqlArtifactArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentArtifactSqlArtifactArgs:
+    def __init__(__self__, *,
+                 additional_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sql_script: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_dependencies: Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        :param pulumi.Input[_builtins.str] sql_script: Text content of the SQL job
+        """
+        if additional_dependencies is not None:
+            pulumi.set(__self__, "additional_dependencies", additional_dependencies)
+        if sql_script is not None:
+            pulumi.set(__self__, "sql_script", sql_script)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalDependencies")
+    def additional_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+        """
+        return pulumi.get(self, "additional_dependencies")
+
+    @additional_dependencies.setter
+    def additional_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "additional_dependencies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlScript")
+    def sql_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Text content of the SQL job
+        """
+        return pulumi.get(self, "sql_script")
+
+    @sql_script.setter
+    def sql_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sql_script", value)
+
+
+if not MYPY:
+    class DeploymentBatchResourceSettingArgsDict(TypedDict):
+        basic_resource_setting: NotRequired[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingArgsDict']]
+        """
+        Resource settings for basic mode See `basic_resource_setting` below.
+        """
+        max_slot: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum number of slots
+        """
+elif False:
+    DeploymentBatchResourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentBatchResourceSettingArgs:
+    def __init__(__self__, *,
+                 basic_resource_setting: Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingArgs']] = None,
+                 max_slot: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingArgs'] basic_resource_setting: Resource settings for basic mode See `basic_resource_setting` below.
+        :param pulumi.Input[_builtins.int] max_slot: Maximum number of slots
+        """
+        if basic_resource_setting is not None:
+            pulumi.set(__self__, "basic_resource_setting", basic_resource_setting)
+        if max_slot is not None:
+            pulumi.set(__self__, "max_slot", max_slot)
+
+    @_builtins.property
+    @pulumi.getter(name="basicResourceSetting")
+    def basic_resource_setting(self) -> Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingArgs']]:
+        """
+        Resource settings for basic mode See `basic_resource_setting` below.
+        """
+        return pulumi.get(self, "basic_resource_setting")
+
+    @basic_resource_setting.setter
+    def basic_resource_setting(self, value: Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingArgs']]):
+        pulumi.set(self, "basic_resource_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxSlot")
+    def max_slot(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum number of slots
+        """
+        return pulumi.get(self, "max_slot")
+
+    @max_slot.setter
+    def max_slot(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_slot", value)
+
+
+if not MYPY:
+    class DeploymentBatchResourceSettingBasicResourceSettingArgsDict(TypedDict):
+        jobmanager_resource_setting_spec: NotRequired[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict']]
+        parallelism: NotRequired[pulumi.Input[_builtins.int]]
+        taskmanager_resource_setting_spec: NotRequired[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict']]
+elif False:
+    DeploymentBatchResourceSettingBasicResourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentBatchResourceSettingBasicResourceSettingArgs:
+    def __init__(__self__, *,
+                 jobmanager_resource_setting_spec: Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']] = None,
+                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
+                 taskmanager_resource_setting_spec: Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']] = None):
+        if jobmanager_resource_setting_spec is not None:
+            pulumi.set(__self__, "jobmanager_resource_setting_spec", jobmanager_resource_setting_spec)
+        if parallelism is not None:
+            pulumi.set(__self__, "parallelism", parallelism)
+        if taskmanager_resource_setting_spec is not None:
+            pulumi.set(__self__, "taskmanager_resource_setting_spec", taskmanager_resource_setting_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="jobmanagerResourceSettingSpec")
+    def jobmanager_resource_setting_spec(self) -> Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']]:
+        return pulumi.get(self, "jobmanager_resource_setting_spec")
+
+    @jobmanager_resource_setting_spec.setter
+    def jobmanager_resource_setting_spec(self, value: Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']]):
+        pulumi.set(self, "jobmanager_resource_setting_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "parallelism")
+
+    @parallelism.setter
+    def parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "parallelism", value)
+
+    @_builtins.property
+    @pulumi.getter(name="taskmanagerResourceSettingSpec")
+    def taskmanager_resource_setting_spec(self) -> Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']]:
+        return pulumi.get(self, "taskmanager_resource_setting_spec")
+
+    @taskmanager_resource_setting_spec.setter
+    def taskmanager_resource_setting_spec(self, value: Optional[pulumi.Input['DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']]):
+        pulumi.set(self, "taskmanager_resource_setting_spec", value)
+
+
+if not MYPY:
+    class DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.float]]
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.float]]
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DeploymentDeploymentTargetArgsDict(TypedDict):
+        mode: pulumi.Input[_builtins.str]
+        """
+        Deployment mode, valid values: PER_JOB or SESSION
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Deployment target name
+        """
+elif False:
+    DeploymentDeploymentTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentDeploymentTargetArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] mode: Deployment mode, valid values: PER_JOB or SESSION
+        :param pulumi.Input[_builtins.str] name: Deployment target name
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Deployment mode, valid values: PER_JOB or SESSION
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Deployment target name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class DeploymentLocalVariableArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Job variable name
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Job variable value
+        """
+elif False:
+    DeploymentLocalVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentLocalVariableArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Job variable name
+        :param pulumi.Input[_builtins.str] value: Job variable value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Job variable name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Job variable value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DeploymentLoggingArgsDict(TypedDict):
+        log4j2_configuration_template: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Custom log template
+        """
+        log4j_loggers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgsDict']]]]
+        """
+        log4j configuration   See `log4j_loggers` below.
+        """
+        log_reserve_policy: NotRequired[pulumi.Input['DeploymentLoggingLogReservePolicyArgsDict']]
+        """
+        Log retention policy   See `log_reserve_policy` below.
+        """
+        logging_profile: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Default system log template
+        """
+elif False:
+    DeploymentLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentLoggingArgs:
+    def __init__(__self__, *,
+                 log4j2_configuration_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 log4j_loggers: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgs']]]] = None,
+                 log_reserve_policy: Optional[pulumi.Input['DeploymentLoggingLogReservePolicyArgs']] = None,
+                 logging_profile: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] log4j2_configuration_template: Custom log template
+        :param pulumi.Input[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgs']]] log4j_loggers: log4j configuration   See `log4j_loggers` below.
+        :param pulumi.Input['DeploymentLoggingLogReservePolicyArgs'] log_reserve_policy: Log retention policy   See `log_reserve_policy` below.
+        :param pulumi.Input[_builtins.str] logging_profile: Default system log template
+        """
+        if log4j2_configuration_template is not None:
+            pulumi.set(__self__, "log4j2_configuration_template", log4j2_configuration_template)
+        if log4j_loggers is not None:
+            pulumi.set(__self__, "log4j_loggers", log4j_loggers)
+        if log_reserve_policy is not None:
+            pulumi.set(__self__, "log_reserve_policy", log_reserve_policy)
+        if logging_profile is not None:
+            pulumi.set(__self__, "logging_profile", logging_profile)
+
+    @_builtins.property
+    @pulumi.getter(name="log4j2ConfigurationTemplate")
+    def log4j2_configuration_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom log template
+        """
+        return pulumi.get(self, "log4j2_configuration_template")
+
+    @log4j2_configuration_template.setter
+    def log4j2_configuration_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "log4j2_configuration_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="log4jLoggers")
+    def log4j_loggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgs']]]]:
+        """
+        log4j configuration   See `log4j_loggers` below.
+        """
+        return pulumi.get(self, "log4j_loggers")
+
+    @log4j_loggers.setter
+    def log4j_loggers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgs']]]]):
+        pulumi.set(self, "log4j_loggers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReservePolicy")
+    def log_reserve_policy(self) -> Optional[pulumi.Input['DeploymentLoggingLogReservePolicyArgs']]:
+        """
+        Log retention policy   See `log_reserve_policy` below.
+        """
+        return pulumi.get(self, "log_reserve_policy")
+
+    @log_reserve_policy.setter
+    def log_reserve_policy(self, value: Optional[pulumi.Input['DeploymentLoggingLogReservePolicyArgs']]):
+        pulumi.set(self, "log_reserve_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingProfile")
+    def logging_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default system log template
+        """
+        return pulumi.get(self, "logging_profile")
+
+    @logging_profile.setter
+    def logging_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logging_profile", value)
+
+
+if not MYPY:
+    class DeploymentLoggingLog4jLoggerArgsDict(TypedDict):
+        logger_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Log output level
+        """
+        logger_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Class name for log output
+        """
+elif False:
+    DeploymentLoggingLog4jLoggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentLoggingLog4jLoggerArgs:
+    def __init__(__self__, *,
+                 logger_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 logger_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] logger_level: Log output level
+        :param pulumi.Input[_builtins.str] logger_name: Class name for log output
+        """
+        if logger_level is not None:
+            pulumi.set(__self__, "logger_level", logger_level)
+        if logger_name is not None:
+            pulumi.set(__self__, "logger_name", logger_name)
+
+    @_builtins.property
+    @pulumi.getter(name="loggerLevel")
+    def logger_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Log output level
+        """
+        return pulumi.get(self, "logger_level")
+
+    @logger_level.setter
+    def logger_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logger_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loggerName")
+    def logger_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Class name for log output
+        """
+        return pulumi.get(self, "logger_name")
+
+    @logger_name.setter
+    def logger_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logger_name", value)
+
+
+if not MYPY:
+    class DeploymentLoggingLogReservePolicyArgsDict(TypedDict):
+        expiration_days: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of days to retain logs after log retention is enabled
+        """
+        open_history: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable log retention
+        """
+elif False:
+    DeploymentLoggingLogReservePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentLoggingLogReservePolicyArgs:
+    def __init__(__self__, *,
+                 expiration_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 open_history: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.int] expiration_days: Number of days to retain logs after log retention is enabled
+        :param pulumi.Input[_builtins.bool] open_history: Whether to enable log retention
+        """
+        if expiration_days is not None:
+            pulumi.set(__self__, "expiration_days", expiration_days)
+        if open_history is not None:
+            pulumi.set(__self__, "open_history", open_history)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of days to retain logs after log retention is enabled
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "expiration_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openHistory")
+    def open_history(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable log retention
+        """
+        return pulumi.get(self, "open_history")
+
+    @open_history.setter
+    def open_history(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "open_history", value)
+
+
+if not MYPY:
+    class DeploymentStreamingResourceSettingArgsDict(TypedDict):
+        basic_resource_setting: NotRequired[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingArgsDict']]
+        """
+        Resource settings for basic mode See `basic_resource_setting` below.
+        """
+        expert_resource_setting: NotRequired[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingArgsDict']]
+        """
+        Expert mode resource settings See `expert_resource_setting` below.
+        """
+        resource_setting_mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Resource mode used in streaming mode, valid values: BASIC or EXPERT
+        """
+elif False:
+    DeploymentStreamingResourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentStreamingResourceSettingArgs:
+    def __init__(__self__, *,
+                 basic_resource_setting: Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingArgs']] = None,
+                 expert_resource_setting: Optional[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingArgs']] = None,
+                 resource_setting_mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingArgs'] basic_resource_setting: Resource settings for basic mode See `basic_resource_setting` below.
+        :param pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingArgs'] expert_resource_setting: Expert mode resource settings See `expert_resource_setting` below.
+        :param pulumi.Input[_builtins.str] resource_setting_mode: Resource mode used in streaming mode, valid values: BASIC or EXPERT
+        """
+        if basic_resource_setting is not None:
+            pulumi.set(__self__, "basic_resource_setting", basic_resource_setting)
+        if expert_resource_setting is not None:
+            pulumi.set(__self__, "expert_resource_setting", expert_resource_setting)
+        if resource_setting_mode is not None:
+            pulumi.set(__self__, "resource_setting_mode", resource_setting_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="basicResourceSetting")
+    def basic_resource_setting(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingArgs']]:
+        """
+        Resource settings for basic mode See `basic_resource_setting` below.
+        """
+        return pulumi.get(self, "basic_resource_setting")
+
+    @basic_resource_setting.setter
+    def basic_resource_setting(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingArgs']]):
+        pulumi.set(self, "basic_resource_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expertResourceSetting")
+    def expert_resource_setting(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingArgs']]:
+        """
+        Expert mode resource settings See `expert_resource_setting` below.
+        """
+        return pulumi.get(self, "expert_resource_setting")
+
+    @expert_resource_setting.setter
+    def expert_resource_setting(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingArgs']]):
+        pulumi.set(self, "expert_resource_setting", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceSettingMode")
+    def resource_setting_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource mode used in streaming mode, valid values: BASIC or EXPERT
+        """
+        return pulumi.get(self, "resource_setting_mode")
+
+    @resource_setting_mode.setter
+    def resource_setting_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_setting_mode", value)
+
+
+if not MYPY:
+    class DeploymentStreamingResourceSettingBasicResourceSettingArgsDict(TypedDict):
+        jobmanager_resource_setting_spec: NotRequired[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict']]
+        parallelism: NotRequired[pulumi.Input[_builtins.int]]
+        taskmanager_resource_setting_spec: NotRequired[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict']]
+elif False:
+    DeploymentStreamingResourceSettingBasicResourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentStreamingResourceSettingBasicResourceSettingArgs:
+    def __init__(__self__, *,
+                 jobmanager_resource_setting_spec: Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']] = None,
+                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
+                 taskmanager_resource_setting_spec: Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']] = None):
+        if jobmanager_resource_setting_spec is not None:
+            pulumi.set(__self__, "jobmanager_resource_setting_spec", jobmanager_resource_setting_spec)
+        if parallelism is not None:
+            pulumi.set(__self__, "parallelism", parallelism)
+        if taskmanager_resource_setting_spec is not None:
+            pulumi.set(__self__, "taskmanager_resource_setting_spec", taskmanager_resource_setting_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="jobmanagerResourceSettingSpec")
+    def jobmanager_resource_setting_spec(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']]:
+        return pulumi.get(self, "jobmanager_resource_setting_spec")
+
+    @jobmanager_resource_setting_spec.setter
+    def jobmanager_resource_setting_spec(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']]):
+        pulumi.set(self, "jobmanager_resource_setting_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "parallelism")
+
+    @parallelism.setter
+    def parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "parallelism", value)
+
+    @_builtins.property
+    @pulumi.getter(name="taskmanagerResourceSettingSpec")
+    def taskmanager_resource_setting_spec(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']]:
+        return pulumi.get(self, "taskmanager_resource_setting_spec")
+
+    @taskmanager_resource_setting_spec.setter
+    def taskmanager_resource_setting_spec(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']]):
+        pulumi.set(self, "taskmanager_resource_setting_spec", value)
+
+
+if not MYPY:
+    class DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.float]]
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.float]]
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class DeploymentStreamingResourceSettingExpertResourceSettingArgsDict(TypedDict):
+        jobmanager_resource_setting_spec: NotRequired[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgsDict']]
+        resource_plan: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Resource plan for expert mode
+        """
+elif False:
+    DeploymentStreamingResourceSettingExpertResourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentStreamingResourceSettingExpertResourceSettingArgs:
+    def __init__(__self__, *,
+                 jobmanager_resource_setting_spec: Optional[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs']] = None,
+                 resource_plan: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] resource_plan: Resource plan for expert mode
+        """
+        if jobmanager_resource_setting_spec is not None:
+            pulumi.set(__self__, "jobmanager_resource_setting_spec", jobmanager_resource_setting_spec)
+        if resource_plan is not None:
+            pulumi.set(__self__, "resource_plan", resource_plan)
+
+    @_builtins.property
+    @pulumi.getter(name="jobmanagerResourceSettingSpec")
+    def jobmanager_resource_setting_spec(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs']]:
+        return pulumi.get(self, "jobmanager_resource_setting_spec")
+
+    @jobmanager_resource_setting_spec.setter
+    def jobmanager_resource_setting_spec(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs']]):
+        pulumi.set(self, "jobmanager_resource_setting_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePlan")
+    def resource_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource plan for expert mode
+        """
+        return pulumi.get(self, "resource_plan")
+
+    @resource_plan.setter
+    def resource_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_plan", value)
+
+
+if not MYPY:
+    class DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.float]]
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class JobLocalVariableArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Local variables name
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Local variables value
+        """
+elif False:
+    JobLocalVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobLocalVariableArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Local variables name
+        :param pulumi.Input[_builtins.str] value: Local variables value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Local variables name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Local variables value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class JobRestoreStrategyArgsDict(TypedDict):
+        allow_non_restored_state: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Stateless startup
+        """
+        job_start_time_in_ms: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+        """
+        kind: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Restore type
+        """
+        savepoint_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        SavepointId
+        """
+elif False:
+    JobRestoreStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobRestoreStrategyArgs:
+    def __init__(__self__, *,
+                 allow_non_restored_state: Optional[pulumi.Input[_builtins.bool]] = None,
+                 job_start_time_in_ms: Optional[pulumi.Input[_builtins.int]] = None,
+                 kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 savepoint_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_non_restored_state: Stateless startup
+        :param pulumi.Input[_builtins.int] job_start_time_in_ms: Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+        :param pulumi.Input[_builtins.str] kind: Restore type
+        :param pulumi.Input[_builtins.str] savepoint_id: SavepointId
+        """
+        if allow_non_restored_state is not None:
+            pulumi.set(__self__, "allow_non_restored_state", allow_non_restored_state)
+        if job_start_time_in_ms is not None:
+            pulumi.set(__self__, "job_start_time_in_ms", job_start_time_in_ms)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if savepoint_id is not None:
+            pulumi.set(__self__, "savepoint_id", savepoint_id)
+
+    @_builtins.property
+    @pulumi.getter(name="allowNonRestoredState")
+    def allow_non_restored_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Stateless startup
+        """
+        return pulumi.get(self, "allow_non_restored_state")
+
+    @allow_non_restored_state.setter
+    def allow_non_restored_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_non_restored_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobStartTimeInMs")
+    def job_start_time_in_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+        """
+        return pulumi.get(self, "job_start_time_in_ms")
+
+    @job_start_time_in_ms.setter
+    def job_start_time_in_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "job_start_time_in_ms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Restore type
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="savepointId")
+    def savepoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        SavepointId
+        """
+        return pulumi.get(self, "savepoint_id")
+
+    @savepoint_id.setter
+    def savepoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "savepoint_id", value)
+
+
+if not MYPY:
+    class JobStatusArgsDict(TypedDict):
+        current_job_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Job current status
+        """
+        failure: NotRequired[pulumi.Input['JobStatusFailureArgsDict']]
+        """
+        Job failure information
+        """
+        health_score: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Job Run Health Score
+        """
+        risk_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Risk level, which indicates the risk level of the operation status of the job.
+        """
+        running: NotRequired[pulumi.Input['JobStatusRunningArgsDict']]
+        """
+        job running status, which has value when the job is Running.
+        """
+elif False:
+    JobStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobStatusArgs:
+    def __init__(__self__, *,
+                 current_job_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 failure: Optional[pulumi.Input['JobStatusFailureArgs']] = None,
+                 health_score: Optional[pulumi.Input[_builtins.int]] = None,
+                 risk_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 running: Optional[pulumi.Input['JobStatusRunningArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] current_job_status: Job current status
+        :param pulumi.Input['JobStatusFailureArgs'] failure: Job failure information
+        :param pulumi.Input[_builtins.int] health_score: Job Run Health Score
+        :param pulumi.Input[_builtins.str] risk_level: Risk level, which indicates the risk level of the operation status of the job.
+        :param pulumi.Input['JobStatusRunningArgs'] running: job running status, which has value when the job is Running.
+        """
+        if current_job_status is not None:
+            pulumi.set(__self__, "current_job_status", current_job_status)
+        if failure is not None:
+            pulumi.set(__self__, "failure", failure)
+        if health_score is not None:
+            pulumi.set(__self__, "health_score", health_score)
+        if risk_level is not None:
+            pulumi.set(__self__, "risk_level", risk_level)
+        if running is not None:
+            pulumi.set(__self__, "running", running)
+
+    @_builtins.property
+    @pulumi.getter(name="currentJobStatus")
+    def current_job_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Job current status
+        """
+        return pulumi.get(self, "current_job_status")
+
+    @current_job_status.setter
+    def current_job_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "current_job_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def failure(self) -> Optional[pulumi.Input['JobStatusFailureArgs']]:
+        """
+        Job failure information
+        """
+        return pulumi.get(self, "failure")
+
+    @failure.setter
+    def failure(self, value: Optional[pulumi.Input['JobStatusFailureArgs']]):
+        pulumi.set(self, "failure", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthScore")
+    def health_score(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Job Run Health Score
+        """
+        return pulumi.get(self, "health_score")
+
+    @health_score.setter
+    def health_score(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "health_score", value)
+
+    @_builtins.property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Risk level, which indicates the risk level of the operation status of the job.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @risk_level.setter
+    def risk_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "risk_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def running(self) -> Optional[pulumi.Input['JobStatusRunningArgs']]:
+        """
+        job running status, which has value when the job is Running.
+        """
+        return pulumi.get(self, "running")
+
+    @running.setter
+    def running(self, value: Optional[pulumi.Input['JobStatusRunningArgs']]):
+        pulumi.set(self, "running", value)
+
+
+if not MYPY:
+    class JobStatusFailureArgsDict(TypedDict):
+        failed_at: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Job failure time
+        """
+        message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Failure Information Details
+        """
+        reason: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Failure Reason
+        """
+elif False:
+    JobStatusFailureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobStatusFailureArgs:
+    def __init__(__self__, *,
+                 failed_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 message: Optional[pulumi.Input[_builtins.str]] = None,
+                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] failed_at: Job failure time
+        :param pulumi.Input[_builtins.str] message: Failure Information Details
+        :param pulumi.Input[_builtins.str] reason: Failure Reason
+        """
+        if failed_at is not None:
+            pulumi.set(__self__, "failed_at", failed_at)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter(name="failedAt")
+    def failed_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Job failure time
+        """
+        return pulumi.get(self, "failed_at")
+
+    @failed_at.setter
+    def failed_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "failed_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Failure Information Details
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Failure Reason
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "reason", value)
+
+
+if not MYPY:
+    class JobStatusRunningArgsDict(TypedDict):
+        observed_flink_job_restarts: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of job restarts
+        """
+        observed_flink_job_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Flink job status
+        """
+elif False:
+    JobStatusRunningArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobStatusRunningArgs:
+    def __init__(__self__, *,
+                 observed_flink_job_restarts: Optional[pulumi.Input[_builtins.int]] = None,
+                 observed_flink_job_status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] observed_flink_job_restarts: Number of job restarts
+        :param pulumi.Input[_builtins.str] observed_flink_job_status: Flink job status
+        """
+        if observed_flink_job_restarts is not None:
+            pulumi.set(__self__, "observed_flink_job_restarts", observed_flink_job_restarts)
+        if observed_flink_job_status is not None:
+            pulumi.set(__self__, "observed_flink_job_status", observed_flink_job_status)
+
+    @_builtins.property
+    @pulumi.getter(name="observedFlinkJobRestarts")
+    def observed_flink_job_restarts(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of job restarts
+        """
+        return pulumi.get(self, "observed_flink_job_restarts")
+
+    @observed_flink_job_restarts.setter
+    def observed_flink_job_restarts(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "observed_flink_job_restarts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="observedFlinkJobStatus")
+    def observed_flink_job_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Flink job status
+        """
+        return pulumi.get(self, "observed_flink_job_status")
+
+    @observed_flink_job_status.setter
+    def observed_flink_job_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "observed_flink_job_status", value)
+
 
 if not MYPY:
     class VvpInstanceResourceSpecArgsDict(TypedDict):

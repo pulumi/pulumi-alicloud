@@ -3,8 +3,11 @@
 
 package com.pulumi.alicloud.cs;
 
+import com.pulumi.alicloud.cs.inputs.NodePoolAutoModeArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolDataDiskArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolEfloNodeGroupArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolInstanceMetadataOptionsArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolInstancePatternArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
@@ -30,6 +33,21 @@ import javax.annotation.Nullable;
 public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolArgs Empty = new NodePoolArgs();
+
+    /**
+     * Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     * 
+     */
+    @Import(name="autoMode")
+    private @Nullable Output<NodePoolAutoModeArgs> autoMode;
+
+    /**
+     * @return Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     * 
+     */
+    public Optional<Output<NodePoolAutoModeArgs>> autoMode() {
+        return Optional.ofNullable(this.autoMode);
+    }
 
     /**
      * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
@@ -177,12 +195,16 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Lingjun node pool configuration. See `efloNodeGroup` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="efloNodeGroup")
     private @Nullable Output<NodePoolEfloNodeGroupArgs> efloNodeGroup;
 
     /**
      * @return Lingjun node pool configuration. See `efloNodeGroup` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<NodePoolEfloNodeGroupArgs>> efloNodeGroup() {
@@ -192,12 +214,16 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to force deletion.
      * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
+     * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
      * @return Whether to force deletion.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
      * 
      */
     public Optional<Output<Boolean>> forceDelete() {
@@ -246,7 +272,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      * 
      */
     @Import(name="imageType")
@@ -264,7 +291,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -299,6 +327,36 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
+    }
+
+    /**
+     * ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     * 
+     */
+    @Import(name="instanceMetadataOptions")
+    private @Nullable Output<NodePoolInstanceMetadataOptionsArgs> instanceMetadataOptions;
+
+    /**
+     * @return ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     * 
+     */
+    public Optional<Output<NodePoolInstanceMetadataOptionsArgs>> instanceMetadataOptions() {
+        return Optional.ofNullable(this.instanceMetadataOptions);
+    }
+
+    /**
+     * Instance property configuration. See `instancePatterns` below.
+     * 
+     */
+    @Import(name="instancePatterns")
+    private @Nullable Output<List<NodePoolInstancePatternArgs>> instancePatterns;
+
+    /**
+     * @return Instance property configuration. See `instancePatterns` below.
+     * 
+     */
+    public Optional<Output<List<NodePoolInstancePatternArgs>>> instancePatterns() {
+        return Optional.ofNullable(this.instancePatterns);
     }
 
     /**
@@ -759,17 +817,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
-    /**
-     * Rotary configuration. See `rollingPolicy` below.
-     * 
-     */
     @Import(name="rollingPolicy")
     private @Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy;
 
-    /**
-     * @return Rotary configuration. See `rollingPolicy` below.
-     * 
-     */
     public Optional<Output<NodePoolRollingPolicyArgs>> rollingPolicy() {
         return Optional.ofNullable(this.rollingPolicy);
     }
@@ -1217,17 +1267,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.unschedulable);
     }
 
-    /**
-     * Synchronously update node labels and taints.
-     * 
-     */
     @Import(name="updateNodes")
     private @Nullable Output<Boolean> updateNodes;
 
-    /**
-     * @return Synchronously update node labels and taints.
-     * 
-     */
     public Optional<Output<Boolean>> updateNodes() {
         return Optional.ofNullable(this.updateNodes);
     }
@@ -1265,6 +1307,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     private NodePoolArgs() {}
 
     private NodePoolArgs(NodePoolArgs $) {
+        this.autoMode = $.autoMode;
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.cisEnabled = $.cisEnabled;
@@ -1281,6 +1324,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.imageType = $.imageType;
         this.installCloudMonitor = $.installCloudMonitor;
         this.instanceChargeType = $.instanceChargeType;
+        this.instanceMetadataOptions = $.instanceMetadataOptions;
+        this.instancePatterns = $.instancePatterns;
         this.instanceTypes = $.instanceTypes;
         this.instances = $.instances;
         this.internetChargeType = $.internetChargeType;
@@ -1358,6 +1403,27 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NodePoolArgs defaults) {
             $ = new NodePoolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoMode Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMode(@Nullable Output<NodePoolAutoModeArgs> autoMode) {
+            $.autoMode = autoMode;
+            return this;
+        }
+
+        /**
+         * @param autoMode Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMode(NodePoolAutoModeArgs autoMode) {
+            return autoMode(Output.of(autoMode));
         }
 
         /**
@@ -1570,6 +1636,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param efloNodeGroup Lingjun node pool configuration. See `efloNodeGroup` below.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -1581,6 +1649,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param efloNodeGroup Lingjun node pool configuration. See `efloNodeGroup` below.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -1590,6 +1660,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param forceDelete Whether to force deletion.
+         * 
+         * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
          * 
          * @return builder
          * 
@@ -1601,6 +1673,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param forceDelete Whether to force deletion.
+         * 
+         * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
          * 
          * @return builder
          * 
@@ -1663,7 +1737,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * - `ContainerOS` : container-optimized image.
          * - `Ubuntu`: Ubuntu image.
          * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-         * - `Custom`: Custom image.
+         * - `Custom`：Custom image.
+         * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
          * 
          * @return builder
          * 
@@ -1685,7 +1760,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * - `ContainerOS` : container-optimized image.
          * - `Ubuntu`: Ubuntu image.
          * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-         * - `Custom`: Custom image.
+         * - `Custom`：Custom image.
+         * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
          * 
          * @return builder
          * 
@@ -1734,6 +1810,58 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
+        }
+
+        /**
+         * @param instanceMetadataOptions ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataOptions(@Nullable Output<NodePoolInstanceMetadataOptionsArgs> instanceMetadataOptions) {
+            $.instanceMetadataOptions = instanceMetadataOptions;
+            return this;
+        }
+
+        /**
+         * @param instanceMetadataOptions ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataOptions(NodePoolInstanceMetadataOptionsArgs instanceMetadataOptions) {
+            return instanceMetadataOptions(Output.of(instanceMetadataOptions));
+        }
+
+        /**
+         * @param instancePatterns Instance property configuration. See `instancePatterns` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instancePatterns(@Nullable Output<List<NodePoolInstancePatternArgs>> instancePatterns) {
+            $.instancePatterns = instancePatterns;
+            return this;
+        }
+
+        /**
+         * @param instancePatterns Instance property configuration. See `instancePatterns` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instancePatterns(List<NodePoolInstancePatternArgs> instancePatterns) {
+            return instancePatterns(Output.of(instancePatterns));
+        }
+
+        /**
+         * @param instancePatterns Instance property configuration. See `instancePatterns` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instancePatterns(NodePoolInstancePatternArgs... instancePatterns) {
+            return instancePatterns(List.of(instancePatterns));
         }
 
         /**
@@ -2402,23 +2530,11 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
-        /**
-         * @param rollingPolicy Rotary configuration. See `rollingPolicy` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rollingPolicy(@Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy) {
             $.rollingPolicy = rollingPolicy;
             return this;
         }
 
-        /**
-         * @param rollingPolicy Rotary configuration. See `rollingPolicy` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rollingPolicy(NodePoolRollingPolicyArgs rollingPolicy) {
             return rollingPolicy(Output.of(rollingPolicy));
         }
@@ -3068,23 +3184,11 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
             return unschedulable(Output.of(unschedulable));
         }
 
-        /**
-         * @param updateNodes Synchronously update node labels and taints.
-         * 
-         * @return builder
-         * 
-         */
         public Builder updateNodes(@Nullable Output<Boolean> updateNodes) {
             $.updateNodes = updateNodes;
             return this;
         }
 
-        /**
-         * @param updateNodes Synchronously update node labels and taints.
-         * 
-         * @return builder
-         * 
-         */
         public Builder updateNodes(Boolean updateNodes) {
             return updateNodes(Output.of(updateNodes));
         }

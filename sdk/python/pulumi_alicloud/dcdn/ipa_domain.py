@@ -238,6 +238,8 @@ class IpaDomain(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DCDN Ipa Domain can be imported using the id, e.g.
@@ -293,6 +295,8 @@ class IpaDomain(pulumi.CustomResource):
                 "weight": 10,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

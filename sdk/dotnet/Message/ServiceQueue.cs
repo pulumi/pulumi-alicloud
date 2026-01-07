@@ -43,6 +43,8 @@ namespace Pulumi.AliCloud.Message
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Message Service Queue can be imported using the id, e.g.

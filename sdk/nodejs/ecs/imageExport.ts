@@ -71,6 +71,8 @@ import * as utilities from "../utilities";
  *     ossPrefix: "ecsExport",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class ImageExport extends pulumi.CustomResource {
     /**

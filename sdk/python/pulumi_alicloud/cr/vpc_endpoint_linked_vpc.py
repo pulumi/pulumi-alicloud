@@ -271,6 +271,8 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
             enable_create_dns_record_in_pvzt=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.
@@ -341,6 +343,8 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
             module_name="Registry",
             enable_create_dns_record_in_pvzt=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -365,6 +365,8 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         ```
         For not specified values sets defaults.
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g.
@@ -421,6 +423,8 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             max_login_attempts=3)
         ```
         For not specified values sets defaults.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -15,9 +15,385 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceClientNodeConfiguration',
+    'InstanceDataNodeConfiguration',
+    'InstanceKibanaConfiguration',
+    'InstanceMasterConfiguration',
+    'InstanceWarmNodeConfiguration',
     'GetInstancesInstanceResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class InstanceClientNodeConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceClientNodeConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceClientNodeConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceClientNodeConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 amount: Optional[_builtins.int] = None,
+                 disk: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 spec: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int amount: Number of disks in the Elasticsearch cluster coordination node
+        :param _builtins.int disk: Elasticsearch cluster coordinates node disk size
+        :param _builtins.str disk_type: Elasticsearch cluster coordination node disk type
+        :param _builtins.str spec: Elasticsearch cluster coordination node specification
+        """
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> Optional[_builtins.int]:
+        """
+        Number of disks in the Elasticsearch cluster coordination node
+        """
+        return pulumi.get(self, "amount")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch cluster coordinates node disk size
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch cluster coordination node disk type
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch cluster coordination node specification
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class InstanceDataNodeConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskEncryption":
+            suggest = "disk_encryption"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceDataNodeConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceDataNodeConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceDataNodeConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 spec: _builtins.str,
+                 amount: Optional[_builtins.int] = None,
+                 disk: Optional[_builtins.int] = None,
+                 disk_encryption: Optional[_builtins.bool] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 performance_level: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str spec: Elasticsearch data node specification
+        :param _builtins.int amount: Number of data nodes in the Elasticsearch cluster
+        :param _builtins.int disk: Elasticsearch data node disk size
+        :param _builtins.bool disk_encryption: Whether the Elasticsearch data node disk is encrypted
+        :param _builtins.str disk_type: Elasticsearch cluster data node disk type
+        :param _builtins.str performance_level: Elasticsearch cluster data node Essd disk level
+        """
+        pulumi.set(__self__, "spec", spec)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> _builtins.str:
+        """
+        Elasticsearch data node specification
+        """
+        return pulumi.get(self, "spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> Optional[_builtins.int]:
+        """
+        Number of data nodes in the Elasticsearch cluster
+        """
+        return pulumi.get(self, "amount")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch data node disk size
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[_builtins.bool]:
+        """
+        Whether the Elasticsearch data node disk is encrypted
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch cluster data node disk type
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch cluster data node Essd disk level
+        """
+        return pulumi.get(self, "performance_level")
+
+
+@pulumi.output_type
+class InstanceKibanaConfiguration(dict):
+    def __init__(__self__, *,
+                 spec: _builtins.str,
+                 amount: Optional[_builtins.int] = None,
+                 disk: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str spec: Elasticsearch Kibana node disk specifications
+        :param _builtins.int amount: The number of disks of the Elasticsearch Kibana node. The default value is 1.
+        :param _builtins.int disk: Elasticsearch Kibana node disk size
+        """
+        pulumi.set(__self__, "spec", spec)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> _builtins.str:
+        """
+        Elasticsearch Kibana node disk specifications
+        """
+        return pulumi.get(self, "spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> Optional[_builtins.int]:
+        """
+        The number of disks of the Elasticsearch Kibana node. The default value is 1.
+        """
+        return pulumi.get(self, "amount")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch Kibana node disk size
+        """
+        return pulumi.get(self, "disk")
+
+
+@pulumi.output_type
+class InstanceMasterConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMasterConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMasterConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMasterConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 amount: Optional[_builtins.int] = None,
+                 disk: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 spec: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int amount: Elasticsearch proprietary master node number of disks
+        :param _builtins.int disk: Elasticsearch proprietary master node disk size
+        :param _builtins.str disk_type: Elasticsearch proprietary master node disk type
+        :param _builtins.str spec: Elasticsearch proprietary master node specifications
+        """
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch proprietary master node number of disks
+        """
+        return pulumi.get(self, "amount")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch proprietary master node disk size
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch proprietary master node disk type
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch proprietary master node specifications
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class InstanceWarmNodeConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskEncryption":
+            suggest = "disk_encryption"
+        elif key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceWarmNodeConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceWarmNodeConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceWarmNodeConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 amount: Optional[_builtins.int] = None,
+                 disk: Optional[_builtins.int] = None,
+                 disk_encryption: Optional[_builtins.bool] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 spec: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int amount: Elasticsearch cluster cold data node disk number
+        :param _builtins.int disk: Elasticsearch cluster cold data node disk size
+        :param _builtins.bool disk_encryption: Elasticsearch cluster cold data node Disk encryption
+        :param _builtins.str disk_type: Elasticsearch cluster cold data node disk type
+        :param _builtins.str spec: Elasticsearch cluster cold data node Disk Specification
+        """
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @_builtins.property
+    @pulumi.getter
+    def amount(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch cluster cold data node disk number
+        """
+        return pulumi.get(self, "amount")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Elasticsearch cluster cold data node disk size
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[_builtins.bool]:
+        """
+        Elasticsearch cluster cold data node Disk encryption
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch cluster cold data node disk type
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> Optional[_builtins.str]:
+        """
+        Elasticsearch cluster cold data node Disk Specification
+        """
+        return pulumi.get(self, "spec")
+
 
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):

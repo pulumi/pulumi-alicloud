@@ -648,6 +648,8 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             target_repo_name=target_registry_enterprise_repo.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Container Registry Sync Rule can be imported using the id, e.g.
@@ -756,6 +758,8 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             repo_name=source_registry_enterprise_repo.name,
             target_repo_name=target_registry_enterprise_repo.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

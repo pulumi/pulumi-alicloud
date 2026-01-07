@@ -132,6 +132,8 @@ class BucketMetaQuery(pulumi.CustomResource):
         default_bucket_meta_query = alicloud.oss.BucketMetaQuery("default", bucket=create_bucket.bucket)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Meta Query can be imported using the id, e.g.
@@ -178,6 +180,8 @@ class BucketMetaQuery(pulumi.CustomResource):
             bucket=f"{name}-{default['result']}")
         default_bucket_meta_query = alicloud.oss.BucketMetaQuery("default", bucket=create_bucket.bucket)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

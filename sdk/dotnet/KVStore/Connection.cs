@@ -84,6 +84,8 @@ namespace Pulumi.AliCloud.KVStore
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.

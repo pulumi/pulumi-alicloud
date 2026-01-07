@@ -137,6 +137,8 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Server Group can be imported using the id, e.g.

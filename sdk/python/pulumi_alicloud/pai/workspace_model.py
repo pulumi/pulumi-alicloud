@@ -492,6 +492,8 @@ class WorkspaceModel(pulumi.CustomResource):
             domain="aigc")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Model can be imported using the id, e.g.
@@ -570,6 +572,8 @@ class WorkspaceModel(pulumi.CustomResource):
             model_doc="https://eas-***.oss-cn-hangzhou.aliyuncs.com/s**.safetensors",
             domain="aigc")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

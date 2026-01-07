@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.mhub.Product("example", {productName: "example_value"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * MHUB Product can be imported using the id, e.g.

@@ -298,6 +298,8 @@ class EcFailoverTestJob(pulumi.CustomResource):
             ec_failover_test_job_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Ec Failover Test Job can be imported using the id, e.g.
@@ -353,6 +355,8 @@ class EcFailoverTestJob(pulumi.CustomResource):
             resource_type="PHYSICALCONNECTION",
             ec_failover_test_job_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

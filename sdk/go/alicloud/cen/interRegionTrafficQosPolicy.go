@@ -84,6 +84,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy can be imported using the id, e.g.

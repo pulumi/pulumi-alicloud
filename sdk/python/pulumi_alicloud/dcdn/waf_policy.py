@@ -197,6 +197,8 @@ class WafPolicy(pulumi.CustomResource):
             status="on")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DCDN Waf Policy can be imported using the id, e.g.
@@ -247,6 +249,8 @@ class WafPolicy(pulumi.CustomResource):
             policy_type="custom",
             status="on")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

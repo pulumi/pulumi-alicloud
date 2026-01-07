@@ -125,6 +125,8 @@ class ReplicaGroupDrill(pulumi.CustomResource):
         default = alicloud.ebs.ReplicaGroupDrill("default", group_id="pg-m1H9aaOUIGsDUwgZ")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EBS Replica Group Drill can be imported using the id, e.g.
@@ -164,6 +166,8 @@ class ReplicaGroupDrill(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ebs.ReplicaGroupDrill("default", group_id="pg-m1H9aaOUIGsDUwgZ")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -95,6 +95,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Schedulerx App Group can be imported using the id, e.g.
@@ -112,7 +114,7 @@ type AppGroup struct {
 	// - 2, k8s application.
 	AppType pulumi.IntPtrOutput `pulumi:"appType"`
 	// Application Version, 1: Basic Edition, 2: Professional Edition
-	AppVersion pulumi.StringPtrOutput `pulumi:"appVersion"`
+	AppVersion pulumi.StringOutput `pulumi:"appVersion"`
 	// Whether to delete the task in the application Group. The values are as follows:
 	DeleteJobs pulumi.BoolPtrOutput `pulumi:"deleteJobs"`
 	// Application Description
@@ -126,7 +128,7 @@ type AppGroup struct {
 	// The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
 	MaxConcurrency pulumi.IntPtrOutput `pulumi:"maxConcurrency"`
 	// Application Grouping Configurable Maximum Number of Tasks
-	MaxJobs pulumi.IntPtrOutput `pulumi:"maxJobs"`
+	MaxJobs pulumi.IntOutput `pulumi:"maxJobs"`
 	// Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
 	MonitorConfigJson pulumi.StringPtrOutput `pulumi:"monitorConfigJson"`
 	// Alarm contact JSON format.
@@ -435,8 +437,8 @@ func (o AppGroupOutput) AppType() pulumi.IntPtrOutput {
 }
 
 // Application Version, 1: Basic Edition, 2: Professional Edition
-func (o AppGroupOutput) AppVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppGroup) pulumi.StringPtrOutput { return v.AppVersion }).(pulumi.StringPtrOutput)
+func (o AppGroupOutput) AppVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.AppVersion }).(pulumi.StringOutput)
 }
 
 // Whether to delete the task in the application Group. The values are as follows:
@@ -467,8 +469,8 @@ func (o AppGroupOutput) MaxConcurrency() pulumi.IntPtrOutput {
 }
 
 // Application Grouping Configurable Maximum Number of Tasks
-func (o AppGroupOutput) MaxJobs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AppGroup) pulumi.IntPtrOutput { return v.MaxJobs }).(pulumi.IntPtrOutput)
+func (o AppGroupOutput) MaxJobs() pulumi.IntOutput {
+	return o.ApplyT(func(v *AppGroup) pulumi.IntOutput { return v.MaxJobs }).(pulumi.IntOutput)
 }
 
 // Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.

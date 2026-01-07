@@ -124,6 +124,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.duration);
     }
     /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableSsl;
+
+    /**
+     * @return Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> enableSsl() {
+        return Codegen.optional(this.enableSsl);
+    }
+    /**
      * List of domain names. See `endpoints` below.
      * 
      */

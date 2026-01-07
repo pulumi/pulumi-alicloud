@@ -104,6 +104,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * AnalyticDB for PostgreSQL&#39;s connection can be imported using the id, e.g.

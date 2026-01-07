@@ -52,6 +52,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Apsara Agile Live (IMP) App Template can be imported using the id, e.g.

@@ -287,6 +287,8 @@ class BasicThreshold(pulumi.CustomResource):
             pps=60000)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ddos Basic Threshold can be imported using the id, e.g.
@@ -364,6 +366,8 @@ class BasicThreshold(pulumi.CustomResource):
             bps=100,
             pps=60000)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

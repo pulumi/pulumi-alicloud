@@ -189,6 +189,8 @@ class PublicEndpoint(pulumi.CustomResource):
             connection_string_prefix=defaultaqnt22.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Enterprise Db Cluster Public Endpoint can be imported using the id, e.g.
@@ -259,6 +261,8 @@ class PublicEndpoint(pulumi.CustomResource):
             net_type="Public",
             connection_string_prefix=defaultaqnt22.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

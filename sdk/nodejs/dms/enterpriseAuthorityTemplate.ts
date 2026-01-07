@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * DMS Enterprise Authority Template can be imported using the id, e.g.

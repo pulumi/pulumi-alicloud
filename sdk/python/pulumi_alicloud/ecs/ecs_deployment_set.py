@@ -286,6 +286,8 @@ class EcsDeploymentSet(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Deployment Set can be imported using the id, e.g.
@@ -335,6 +337,8 @@ class EcsDeploymentSet(pulumi.CustomResource):
             deployment_set_name=name,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

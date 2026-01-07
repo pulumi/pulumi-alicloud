@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.

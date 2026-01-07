@@ -120,6 +120,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Module Support
 //
 // You can use to the existing vpc module

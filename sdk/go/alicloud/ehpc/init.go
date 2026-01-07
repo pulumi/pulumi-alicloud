@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ehpc/cluster:Cluster":
 		r = &Cluster{}
+	case "alicloud:ehpc/clusterV2:ClusterV2":
+		r = &ClusterV2{}
 	case "alicloud:ehpc/jobTemplate:JobTemplate":
 		r = &JobTemplate{}
+	case "alicloud:ehpc/queue:Queue":
+		r = &Queue{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -45,7 +49,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ehpc/clusterV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ehpc/jobTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ehpc/queue",
 		&module{version},
 	)
 }

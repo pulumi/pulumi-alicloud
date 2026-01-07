@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.kms.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +31,21 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * The name of the resource.
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable String instanceName;
+
+    /**
+     * @return The name of the resource.
+     * 
+     */
+    public Optional<String> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
      */
@@ -46,27 +60,12 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.outputFile);
     }
 
-    @Import(name="pageNumber")
-    private @Nullable Integer pageNumber;
-
-    public Optional<Integer> pageNumber() {
-        return Optional.ofNullable(this.pageNumber);
-    }
-
-    @Import(name="pageSize")
-    private @Nullable Integer pageSize;
-
-    public Optional<Integer> pageSize() {
-        return Optional.ofNullable(this.pageSize);
-    }
-
     private GetInstancesPlainArgs() {}
 
     private GetInstancesPlainArgs(GetInstancesPlainArgs $) {
         this.ids = $.ids;
+        this.instanceName = $.instanceName;
         this.outputFile = $.outputFile;
-        this.pageNumber = $.pageNumber;
-        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -109,6 +108,17 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
+         * @param instanceName The name of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable String instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
          * @return builder
@@ -116,16 +126,6 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
-            return this;
-        }
-
-        public Builder pageNumber(@Nullable Integer pageNumber) {
-            $.pageNumber = pageNumber;
-            return this;
-        }
-
-        public Builder pageSize(@Nullable Integer pageSize) {
-            $.pageSize = pageSize;
             return this;
         }
 

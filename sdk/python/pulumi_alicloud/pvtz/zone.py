@@ -435,6 +435,8 @@ class Zone(pulumi.CustomResource):
         foo = alicloud.pvtz.Zone("foo", zone_name="foo.example.com")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Zone can be imported using the id, e.g.
@@ -476,6 +478,8 @@ class Zone(pulumi.CustomResource):
 
         foo = alicloud.pvtz.Zone("foo", zone_name="foo.example.com")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

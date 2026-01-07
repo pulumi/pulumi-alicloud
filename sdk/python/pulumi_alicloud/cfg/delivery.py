@@ -503,6 +503,8 @@ class Delivery(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Config Delivery can be imported using the id, e.g.
@@ -593,6 +595,8 @@ class Delivery(pulumi.CustomResource):
             delivery_channel_type="SLS",
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

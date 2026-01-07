@@ -279,6 +279,8 @@ class Service(pulumi.CustomResource):
             }))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Service can be imported using the id, e.g.
@@ -344,6 +346,8 @@ class Service(pulumi.CustomResource):
                 "processor_type": "cpp",
             }))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -100,6 +100,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * RabbitMQ (AMQP) Binding can be imported using the id, e.g.

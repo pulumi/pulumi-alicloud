@@ -130,6 +130,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
@@ -140,7 +142,6 @@ import (
 type V3Function struct {
 	pulumi.CustomResourceState
 
-	// Function code ZIP package. code and customContainerConfig. See `code` below.
 	Code V3FunctionCodePtrOutput `pulumi:"code"`
 	// The code package size of the function returned by the system, in byte Example : 1024
 	CodeSize pulumi.IntOutput `pulumi:"codeSize"`
@@ -170,10 +171,12 @@ type V3Function struct {
 	GpuConfig V3FunctionGpuConfigPtrOutput `pulumi:"gpuConfig"`
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler pulumi.StringOutput `pulumi:"handler"`
+	// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+	IdleTimeout pulumi.IntPtrOutput `pulumi:"idleTimeout"`
 	// Maximum instance concurrency.
 	InstanceConcurrency pulumi.IntOutput `pulumi:"instanceConcurrency"`
 	// Instance isolation mode
-	InstanceIsolationMode pulumi.StringPtrOutput `pulumi:"instanceIsolationMode"`
+	InstanceIsolationMode pulumi.StringOutput `pulumi:"instanceIsolationMode"`
 	// Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 	InstanceLifecycleConfig V3FunctionInstanceLifecycleConfigPtrOutput `pulumi:"instanceLifecycleConfig"`
 	// Allow function to access public network
@@ -198,14 +201,14 @@ type V3Function struct {
 	NasConfig V3FunctionNasConfigOutput `pulumi:"nasConfig"`
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig V3FunctionOssMountConfigOutput `pulumi:"ossMountConfig"`
-	// Resource Group ID.
+	// Resource Group ID
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// Function runtime type.
+	// Function runtime type
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
-	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
+	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
 	// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
 	SessionAffinityConfig pulumi.StringPtrOutput `pulumi:"sessionAffinityConfig"`
 	// Function Status
@@ -260,7 +263,6 @@ func GetV3Function(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V3Function resources.
 type v3functionState struct {
-	// Function code ZIP package. code and customContainerConfig. See `code` below.
 	Code *V3FunctionCode `pulumi:"code"`
 	// The code package size of the function returned by the system, in byte Example : 1024
 	CodeSize *int `pulumi:"codeSize"`
@@ -290,6 +292,8 @@ type v3functionState struct {
 	GpuConfig *V3FunctionGpuConfig `pulumi:"gpuConfig"`
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler *string `pulumi:"handler"`
+	// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Maximum instance concurrency.
 	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
 	// Instance isolation mode
@@ -318,11 +322,11 @@ type v3functionState struct {
 	NasConfig *V3FunctionNasConfig `pulumi:"nasConfig"`
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig *V3FunctionOssMountConfig `pulumi:"ossMountConfig"`
-	// Resource Group ID.
+	// Resource Group ID
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role *string `pulumi:"role"`
-	// Function runtime type.
+	// Function runtime type
 	Runtime *string `pulumi:"runtime"`
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
@@ -345,7 +349,6 @@ type v3functionState struct {
 }
 
 type V3FunctionState struct {
-	// Function code ZIP package. code and customContainerConfig. See `code` below.
 	Code V3FunctionCodePtrInput
 	// The code package size of the function returned by the system, in byte Example : 1024
 	CodeSize pulumi.IntPtrInput
@@ -375,6 +378,8 @@ type V3FunctionState struct {
 	GpuConfig V3FunctionGpuConfigPtrInput
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler pulumi.StringPtrInput
+	// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+	IdleTimeout pulumi.IntPtrInput
 	// Maximum instance concurrency.
 	InstanceConcurrency pulumi.IntPtrInput
 	// Instance isolation mode
@@ -403,11 +408,11 @@ type V3FunctionState struct {
 	NasConfig V3FunctionNasConfigPtrInput
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig V3FunctionOssMountConfigPtrInput
-	// Resource Group ID.
+	// Resource Group ID
 	ResourceGroupId pulumi.StringPtrInput
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role pulumi.StringPtrInput
-	// Function runtime type.
+	// Function runtime type
 	Runtime pulumi.StringPtrInput
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity pulumi.StringPtrInput
@@ -434,7 +439,6 @@ func (V3FunctionState) ElementType() reflect.Type {
 }
 
 type v3functionArgs struct {
-	// Function code ZIP package. code and customContainerConfig. See `code` below.
 	Code *V3FunctionCode `pulumi:"code"`
 	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
 	Cpu *float64 `pulumi:"cpu"`
@@ -456,6 +460,8 @@ type v3functionArgs struct {
 	GpuConfig *V3FunctionGpuConfig `pulumi:"gpuConfig"`
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler string `pulumi:"handler"`
+	// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Maximum instance concurrency.
 	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
 	// Instance isolation mode
@@ -476,11 +482,11 @@ type v3functionArgs struct {
 	NasConfig *V3FunctionNasConfig `pulumi:"nasConfig"`
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig *V3FunctionOssMountConfig `pulumi:"ossMountConfig"`
-	// Resource Group ID.
+	// Resource Group ID
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role *string `pulumi:"role"`
-	// Function runtime type.
+	// Function runtime type
 	Runtime string `pulumi:"runtime"`
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
@@ -496,7 +502,6 @@ type v3functionArgs struct {
 
 // The set of arguments for constructing a V3Function resource.
 type V3FunctionArgs struct {
-	// Function code ZIP package. code and customContainerConfig. See `code` below.
 	Code V3FunctionCodePtrInput
 	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
 	Cpu pulumi.Float64PtrInput
@@ -518,6 +523,8 @@ type V3FunctionArgs struct {
 	GpuConfig V3FunctionGpuConfigPtrInput
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler pulumi.StringInput
+	// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+	IdleTimeout pulumi.IntPtrInput
 	// Maximum instance concurrency.
 	InstanceConcurrency pulumi.IntPtrInput
 	// Instance isolation mode
@@ -538,11 +545,11 @@ type V3FunctionArgs struct {
 	NasConfig V3FunctionNasConfigPtrInput
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig V3FunctionOssMountConfigPtrInput
-	// Resource Group ID.
+	// Resource Group ID
 	ResourceGroupId pulumi.StringPtrInput
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role pulumi.StringPtrInput
-	// Function runtime type.
+	// Function runtime type
 	Runtime pulumi.StringInput
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity pulumi.StringPtrInput
@@ -643,7 +650,6 @@ func (o V3FunctionOutput) ToV3FunctionOutputWithContext(ctx context.Context) V3F
 	return o
 }
 
-// Function code ZIP package. code and customContainerConfig. See `code` below.
 func (o V3FunctionOutput) Code() V3FunctionCodePtrOutput {
 	return o.ApplyT(func(v *V3Function) V3FunctionCodePtrOutput { return v.Code }).(V3FunctionCodePtrOutput)
 }
@@ -718,14 +724,19 @@ func (o V3FunctionOutput) Handler() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.Handler }).(pulumi.StringOutput)
 }
 
+// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+func (o V3FunctionOutput) IdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.IntPtrOutput { return v.IdleTimeout }).(pulumi.IntPtrOutput)
+}
+
 // Maximum instance concurrency.
 func (o V3FunctionOutput) InstanceConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.IntOutput { return v.InstanceConcurrency }).(pulumi.IntOutput)
 }
 
 // Instance isolation mode
-func (o V3FunctionOutput) InstanceIsolationMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.InstanceIsolationMode }).(pulumi.StringPtrOutput)
+func (o V3FunctionOutput) InstanceIsolationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.InstanceIsolationMode }).(pulumi.StringOutput)
 }
 
 // Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
@@ -788,7 +799,7 @@ func (o V3FunctionOutput) OssMountConfig() V3FunctionOssMountConfigOutput {
 	return o.ApplyT(func(v *V3Function) V3FunctionOssMountConfigOutput { return v.OssMountConfig }).(V3FunctionOssMountConfigOutput)
 }
 
-// Resource Group ID.
+// Resource Group ID
 func (o V3FunctionOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -798,14 +809,14 @@ func (o V3FunctionOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Function runtime type.
+// Function runtime type
 func (o V3FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
 // The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
-func (o V3FunctionOutput) SessionAffinity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.SessionAffinity }).(pulumi.StringPtrOutput)
+func (o V3FunctionOutput) SessionAffinity() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
 }
 
 // When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.

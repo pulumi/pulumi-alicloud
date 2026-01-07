@@ -225,6 +225,8 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Snapshot can be imported using the id, e.g.
@@ -281,6 +283,8 @@ class Snapshot(pulumi.CustomResource):
             retention_days=20,
             snapshot_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

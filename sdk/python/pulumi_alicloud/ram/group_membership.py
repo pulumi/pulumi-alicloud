@@ -104,10 +104,6 @@ class GroupMembership(pulumi.CustomResource):
                  user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a RAM Group membership resource.
-
-        > **NOTE:** Available since v1.0.0+.
-
         ## Example Usage
 
         ```python
@@ -144,6 +140,8 @@ class GroupMembership(pulumi.CustomResource):
                 user1.name,
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -165,10 +163,6 @@ class GroupMembership(pulumi.CustomResource):
                  args: GroupMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM Group membership resource.
-
-        > **NOTE:** Available since v1.0.0+.
-
         ## Example Usage
 
         ```python
@@ -205,6 +199,8 @@ class GroupMembership(pulumi.CustomResource):
                 user1.name,
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

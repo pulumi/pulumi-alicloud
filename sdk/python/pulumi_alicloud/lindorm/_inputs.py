@@ -21,6 +21,8 @@ __all__ = [
     'InstanceV2EngineListConnectAddressListArgsDict',
     'InstanceV2EngineListNodeGroupArgs',
     'InstanceV2EngineListNodeGroupArgsDict',
+    'InstanceV2WhiteIpListArgs',
+    'InstanceV2WhiteIpListArgsDict',
 ]
 
 MYPY = False
@@ -30,6 +32,19 @@ if not MYPY:
         engine_type: pulumi.Input[_builtins.str]
         """
         Engine
+
+        Enumeration value:
+        - `TABLE`: Wide table engine
+        - `TSDB`: Time series Engine
+        - `LSEARCH`: Search engine
+        - `LTS`: LTS engine
+        - `LVECTOR`: Vector engine
+        - `LCOLUMN`: Column-store engine
+        - `LAI`: AI engine
+        - `FILE`: The underlying file engine
+        - `LMESSAGE`: Message engine
+        - `LROW`: Wide table Engine 3.0
+        - `LSTREAM`: Stream engine
         """
         connect_address_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgsDict']]]]
         """
@@ -65,6 +80,19 @@ class InstanceV2EngineListArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] engine_type: Engine
+               
+               Enumeration value:
+               - `TABLE`: Wide table engine
+               - `TSDB`: Time series Engine
+               - `LSEARCH`: Search engine
+               - `LTS`: LTS engine
+               - `LVECTOR`: Vector engine
+               - `LCOLUMN`: Column-store engine
+               - `LAI`: AI engine
+               - `FILE`: The underlying file engine
+               - `LMESSAGE`: Message engine
+               - `LROW`: Wide table Engine 3.0
+               - `LSTREAM`: Stream engine
         :param pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]] connect_address_lists: Connect Address List
         :param pulumi.Input[_builtins.bool] is_last_version: Whether it is the latest version
         :param pulumi.Input[_builtins.str] latest_version: Latest Version
@@ -88,6 +116,19 @@ class InstanceV2EngineListArgs:
     def engine_type(self) -> pulumi.Input[_builtins.str]:
         """
         Engine
+
+        Enumeration value:
+        - `TABLE`: Wide table engine
+        - `TSDB`: Time series Engine
+        - `LSEARCH`: Search engine
+        - `LTS`: LTS engine
+        - `LVECTOR`: Vector engine
+        - `LCOLUMN`: Column-store engine
+        - `LAI`: AI engine
+        - `FILE`: The underlying file engine
+        - `LMESSAGE`: Message engine
+        - `LROW`: Wide table Engine 3.0
+        - `LSTREAM`: Stream engine
         """
         return pulumi.get(self, "engine_type")
 
@@ -237,6 +278,41 @@ if not MYPY:
         node_spec: pulumi.Input[_builtins.str]
         """
         Node Specifications
+        - Valid values when selecting cloud storage:
+        - **lindorm.c.2xlarge**, 8 cores 16GB
+        - **lindorm.g.2xlarge**, 8 cores 32GB
+        - **lindorm.c.4xlarge**, 16 cores 32GB
+        - **lindorm.g.4xlarge**, 16 cores 64GB
+        - **lindorm.c.8xlarge**, 32 core 64GB
+        - **lindorm.g.8xlarge**, 32 core 128GB
+        - **lindorm.g.8xlarge**, 8 cores 64GB
+        - **lindorm.r.4xlarge**, 16 cores 128GB
+        - **lindorm.r.8xlarge**, 32 cores 256GB
+        - Valid values when local disk storage is selected:
+        - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+        - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+        - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+        - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+        - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+        - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+        - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+        - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+        - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+        - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+        - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+        - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+        - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+        - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+        - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+        - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+        - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+        - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+        - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+        - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+        - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+        - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+        - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+        - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
         """
         resource_group_name: pulumi.Input[_builtins.str]
         """
@@ -294,6 +370,41 @@ class InstanceV2EngineListNodeGroupArgs:
         """
         :param pulumi.Input[_builtins.int] node_count: Number of nodes
         :param pulumi.Input[_builtins.str] node_spec: Node Specifications
+               - Valid values when selecting cloud storage:
+               - **lindorm.c.2xlarge**, 8 cores 16GB
+               - **lindorm.g.2xlarge**, 8 cores 32GB
+               - **lindorm.c.4xlarge**, 16 cores 32GB
+               - **lindorm.g.4xlarge**, 16 cores 64GB
+               - **lindorm.c.8xlarge**, 32 core 64GB
+               - **lindorm.g.8xlarge**, 32 core 128GB
+               - **lindorm.g.8xlarge**, 8 cores 64GB
+               - **lindorm.r.4xlarge**, 16 cores 128GB
+               - **lindorm.r.8xlarge**, 32 cores 256GB
+               - Valid values when local disk storage is selected:
+               - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+               - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+               - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+               - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+               - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+               - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+               - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+               - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+               - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+               - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+               - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+               - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+               - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+               - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+               - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+               - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+               - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+               - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+               - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+               - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+               - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+               - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+               - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+               - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
         :param pulumi.Input[_builtins.str] resource_group_name: Resource group name
         :param pulumi.Input[_builtins.str] category: Node Type
         :param pulumi.Input[_builtins.int] cpu_core_count: Number of CPU cores
@@ -341,6 +452,41 @@ class InstanceV2EngineListNodeGroupArgs:
     def node_spec(self) -> pulumi.Input[_builtins.str]:
         """
         Node Specifications
+        - Valid values when selecting cloud storage:
+        - **lindorm.c.2xlarge**, 8 cores 16GB
+        - **lindorm.g.2xlarge**, 8 cores 32GB
+        - **lindorm.c.4xlarge**, 16 cores 32GB
+        - **lindorm.g.4xlarge**, 16 cores 64GB
+        - **lindorm.c.8xlarge**, 32 core 64GB
+        - **lindorm.g.8xlarge**, 32 core 128GB
+        - **lindorm.g.8xlarge**, 8 cores 64GB
+        - **lindorm.r.4xlarge**, 16 cores 128GB
+        - **lindorm.r.8xlarge**, 32 cores 256GB
+        - Valid values when local disk storage is selected:
+        - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+        - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+        - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+        - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+        - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+        - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+        - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+        - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+        - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+        - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+        - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+        - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+        - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+        - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+        - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+        - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+        - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+        - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+        - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+        - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+        - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+        - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+        - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+        - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
         """
         return pulumi.get(self, "node_spec")
 
@@ -455,5 +601,55 @@ class InstanceV2EngineListNodeGroupArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class InstanceV2WhiteIpListArgsDict(TypedDict):
+        group_name: pulumi.Input[_builtins.str]
+        """
+        Group Name
+        """
+        ip_list: pulumi.Input[_builtins.str]
+        """
+        Whitelist information
+        """
+elif False:
+    InstanceV2WhiteIpListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceV2WhiteIpListArgs:
+    def __init__(__self__, *,
+                 group_name: pulumi.Input[_builtins.str],
+                 ip_list: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] group_name: Group Name
+        :param pulumi.Input[_builtins.str] ip_list: Whitelist information
+        """
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "ip_list", ip_list)
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Group Name
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipList")
+    def ip_list(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whitelist information
+        """
+        return pulumi.get(self, "ip_list")
+
+    @ip_list.setter
+    def ip_list(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ip_list", value)
 
 

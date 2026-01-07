@@ -70,6 +70,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Config Rule can be imported using the id, e.g.

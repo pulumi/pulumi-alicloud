@@ -336,6 +336,8 @@ class AccessManagement(pulumi.CustomResource):
             deprovision_strategy="DeprovisionForLastAccessAssignmentOnAccount")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO Access Assignment can be imported using the id, e.g.
@@ -415,6 +417,8 @@ class AccessManagement(pulumi.CustomResource):
             principal_id=default_user.user_id,
             deprovision_strategy="DeprovisionForLastAccessAssignmentOnAccount")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

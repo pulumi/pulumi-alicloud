@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.

@@ -66,6 +66,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Alidns Domain Record can be imported using the id, e.g.
@@ -92,7 +94,7 @@ type AlidnsRecord struct {
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
-	// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+	// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
@@ -158,7 +160,7 @@ type alidnsRecordState struct {
 	Status *string `pulumi:"status"`
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+	// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
 	Type *string `pulumi:"type"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -183,7 +185,7 @@ type AlidnsRecordState struct {
 	Status pulumi.StringPtrInput
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl pulumi.IntPtrInput
-	// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+	// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
 	Type pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
@@ -212,7 +214,7 @@ type alidnsRecordArgs struct {
 	Status *string `pulumi:"status"`
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+	// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
 	Type string `pulumi:"type"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -238,7 +240,7 @@ type AlidnsRecordArgs struct {
 	Status pulumi.StringPtrInput
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl pulumi.IntPtrInput
-	// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+	// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
 	Type pulumi.StringInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
@@ -373,7 +375,7 @@ func (o AlidnsRecordOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlidnsRecord) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }
 
-// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
 func (o AlidnsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlidnsRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -131,6 +131,8 @@ namespace Pulumi.AliCloud.Dms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DMS Enterprise can be imported using host and port, e.g.

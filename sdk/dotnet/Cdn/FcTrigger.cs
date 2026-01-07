@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.Cdn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CDN Fc Trigger can be imported using the id, e.g.

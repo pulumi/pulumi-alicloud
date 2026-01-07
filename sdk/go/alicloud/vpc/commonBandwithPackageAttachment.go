@@ -64,6 +64,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, e.g.

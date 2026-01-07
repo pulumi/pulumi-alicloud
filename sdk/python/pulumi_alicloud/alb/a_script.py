@@ -409,6 +409,8 @@ class AScript(pulumi.CustomResource):
             listener_id=default_listener.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) A Script can be imported using the id, e.g.
@@ -525,6 +527,8 @@ class AScript(pulumi.CustomResource):
             enabled=True,
             listener_id=default_listener.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

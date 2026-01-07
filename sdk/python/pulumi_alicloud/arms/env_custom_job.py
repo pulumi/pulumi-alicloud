@@ -251,6 +251,8 @@ class EnvCustomJob(pulumi.CustomResource):
             aliyun_lang="en")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ARMS Env Custom Job can be imported using the id, e.g.
@@ -322,6 +324,8 @@ class EnvCustomJob(pulumi.CustomResource):
         \"\"\",
             aliyun_lang="en")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

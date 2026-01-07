@@ -79,6 +79,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Container Registry Enterprise Edition Namespace can be imported using the id, e.g.

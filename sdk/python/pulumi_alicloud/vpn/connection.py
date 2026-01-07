@@ -824,6 +824,8 @@ class Connection(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN connection can be imported using the id, e.g.
@@ -982,6 +984,8 @@ class Connection(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

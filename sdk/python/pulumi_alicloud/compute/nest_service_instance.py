@@ -555,6 +555,8 @@ class NestServiceInstance(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Compute Nest Service Instance can be imported using the id, e.g.
@@ -655,6 +657,8 @@ class NestServiceInstance(pulumi.CustomResource):
                 "For": "ServiceInstance",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

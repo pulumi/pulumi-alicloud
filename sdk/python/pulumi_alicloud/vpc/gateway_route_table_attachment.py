@@ -212,6 +212,8 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
             route_table_id=example_route_table.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Gateway Route Table Attachment can be imported using the id, e.g.
@@ -263,6 +265,8 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
             ipv4_gateway_id=example_ipv4_gateway.id,
             route_table_id=example_route_table.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

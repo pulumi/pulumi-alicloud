@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.Pvtz
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Private Zone Record can be imported using the id, e.g.

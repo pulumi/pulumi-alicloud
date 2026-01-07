@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.mongodb.PrivateSrvNetworkAddress("default", {dbInstanceId: defaultHrZmxC.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Mongodb Private Srv Network Address can be imported using the id, e.g.

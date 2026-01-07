@@ -288,6 +288,8 @@ class RouterVpcAssociation(pulumi.CustomResource):
             vpc_id=default8q_at_d6.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Express Connect Router Vpc Association can be imported using the id, e.g.
@@ -345,6 +347,8 @@ class RouterVpcAssociation(pulumi.CustomResource):
             association_region_id="cn-hangzhou",
             vpc_id=default8q_at_d6.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

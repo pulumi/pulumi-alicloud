@@ -493,6 +493,8 @@ class ServiceCertificate(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SSL Certificates Certificate can be imported using the id, e.g.
@@ -595,6 +597,8 @@ class ServiceCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

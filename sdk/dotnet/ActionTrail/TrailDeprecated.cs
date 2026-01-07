@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.ActionTrail
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Action trail can be imported using the id, e.g.
@@ -123,7 +125,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> SlsWriteRoleArn { get; private set; } = null!;
 
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         [Output("trailName")]
         public Output<string> TrailName { get; private set; } = null!;

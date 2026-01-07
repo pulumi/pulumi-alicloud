@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "alicloud:kms/secret:Secret":
 		r = &Secret{}
+	case "alicloud:kms/valueAddedService:ValueAddedService":
+		r = &ValueAddedService{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -102,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"kms/secret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"kms/valueAddedService",
 		&module{version},
 	)
 }

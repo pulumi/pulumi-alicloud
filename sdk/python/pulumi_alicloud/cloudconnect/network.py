@@ -198,6 +198,8 @@ class Network(pulumi.CustomResource):
             is_default=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The cloud connect network instance can be imported using the id, e.g.
@@ -246,6 +248,8 @@ class Network(pulumi.CustomResource):
             cidr_block="192.168.0.0/24",
             is_default=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

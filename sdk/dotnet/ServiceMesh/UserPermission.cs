@@ -102,6 +102,8 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Service Mesh User Permission can be imported using the id, e.g.

@@ -86,6 +86,8 @@ import * as utilities from "../utilities";
  *     ecuInfos: [pulumi.all([defaultInstanceClusterAttachment.ecuMap, defaultInstance.id]).apply(([ecuMap, id]) => ecuMap[id])],
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class ApplicationScale extends pulumi.CustomResource {
     /**

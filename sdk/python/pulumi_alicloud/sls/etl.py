@@ -285,6 +285,8 @@ class Etl(pulumi.CustomResource):
             display_name="etl-1740472705-185721")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log Service (SLS) Etl can be imported using the id, e.g.
@@ -357,6 +359,8 @@ class Etl(pulumi.CustomResource):
             job_name="etl-1740472705-185721",
             display_name="etl-1740472705-185721")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

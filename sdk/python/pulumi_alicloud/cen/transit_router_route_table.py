@@ -273,6 +273,8 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN transit router route table  can be imported using the id, e.g.
@@ -316,6 +318,8 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             cen_id=example.id)
         example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

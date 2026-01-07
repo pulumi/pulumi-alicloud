@@ -180,6 +180,8 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Acl Entry Attachment can be imported using the id, e.g.
@@ -227,6 +229,8 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

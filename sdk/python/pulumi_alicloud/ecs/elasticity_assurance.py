@@ -733,6 +733,8 @@ class ElasticityAssurance(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Elasticity Assurance can be imported using the id, e.g.
@@ -812,6 +814,8 @@ class ElasticityAssurance(pulumi.CustomResource):
             assurance_times="Unlimited",
             resource_group_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

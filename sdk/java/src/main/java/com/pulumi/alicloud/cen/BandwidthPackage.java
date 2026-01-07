@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -29,6 +30,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/bandwidthPackage:BandwidthPackage")
 public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
+     * Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+     * 
+     */
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRenew;
+
+    /**
+     * @return Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      * 
      */
@@ -45,20 +68,12 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * The name of the bandwidth package. Defaults to null.
      * 
-     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
-     * 
-     * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
-     * 
      */
     @Export(name="cenBandwidthPackageName", refs={String.class}, tree="[0]")
     private Output<String> cenBandwidthPackageName;
 
     /**
      * @return The name of the bandwidth package. Defaults to null.
-     * 
-     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
-     * 
-     * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      * 
      */
     public Output<String> cenBandwidthPackageName() {

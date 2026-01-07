@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.directmail.Domain("example", {domainName: `alicloud-provider-${_default.result}.online`});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Direct Mail Domain can be imported using the id, e.g.

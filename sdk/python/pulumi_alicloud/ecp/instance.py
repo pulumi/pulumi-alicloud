@@ -656,6 +656,8 @@ class Instance(pulumi.CustomResource):
             force=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
@@ -743,6 +745,8 @@ class Instance(pulumi.CustomResource):
             description=name,
             force=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

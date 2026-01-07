@@ -230,6 +230,8 @@ class Cluster(pulumi.CustomResource):
             vpc_id=default_network.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EDAS cluster can be imported using the id, e.g.
@@ -280,6 +282,8 @@ class Cluster(pulumi.CustomResource):
             logical_region_id=default.regions[0].id,
             vpc_id=default_network.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

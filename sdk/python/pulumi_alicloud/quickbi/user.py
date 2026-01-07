@@ -255,6 +255,8 @@ class User(pulumi.CustomResource):
             user_type="Analyst")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Quick BI User can be imported using the id, e.g.
@@ -300,6 +302,8 @@ class User(pulumi.CustomResource):
             nick_name="example_value",
             user_type="Analyst")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

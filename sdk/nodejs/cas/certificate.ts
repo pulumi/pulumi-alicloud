@@ -88,6 +88,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * @deprecated This resource has been deprecated in favour of ServiceCertificate
  */
 export class Certificate extends pulumi.CustomResource {

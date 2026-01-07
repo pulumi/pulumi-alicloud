@@ -48,6 +48,8 @@ namespace Pulumi.AliCloud.ApiGateway
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Api Gateway Access Control List can be imported using the id, e.g.

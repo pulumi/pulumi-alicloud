@@ -376,6 +376,8 @@ class JdbcDataSource(pulumi.CustomResource):
             jdbc_user_name="example_001")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Jdbc Data Source can be imported using the id, e.g.
@@ -459,6 +461,8 @@ class JdbcDataSource(pulumi.CustomResource):
             data_source_type="mysql",
             jdbc_user_name="example_001")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

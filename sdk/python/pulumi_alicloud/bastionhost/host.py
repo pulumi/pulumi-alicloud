@@ -436,6 +436,8 @@ class Host(pulumi.CustomResource):
             source="Local")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Host can be imported using the id, e.g.
@@ -509,6 +511,8 @@ class Host(pulumi.CustomResource):
             os_type="Linux",
             source="Local")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

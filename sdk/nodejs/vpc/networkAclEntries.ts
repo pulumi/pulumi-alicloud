@@ -71,6 +71,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class NetworkAclEntries extends pulumi.CustomResource {
     /**

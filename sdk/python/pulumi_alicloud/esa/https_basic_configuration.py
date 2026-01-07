@@ -19,7 +19,7 @@ __all__ = ['HttpsBasicConfigurationArgs', 'HttpsBasicConfiguration']
 @pulumi.input_type
 class HttpsBasicConfigurationArgs:
     def __init__(__self__, *,
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  ciphersuite: Optional[pulumi.Input[_builtins.str]] = None,
                  ciphersuite_group: Optional[pulumi.Input[_builtins.str]] = None,
                  http2: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,7 +36,7 @@ class HttpsBasicConfigurationArgs:
                  tls13: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpsBasicConfiguration resource.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         :param pulumi.Input[_builtins.str] ciphersuite_group: Cipher suite group. Default is all cipher suites. Possible values:
                - all: All cipher suites.
@@ -107,14 +107,14 @@ class HttpsBasicConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -323,7 +323,7 @@ class _HttpsBasicConfigurationState:
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
                  tls12: Optional[pulumi.Input[_builtins.str]] = None,
@@ -356,7 +356,7 @@ class _HttpsBasicConfigurationState:
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -552,14 +552,14 @@ class _HttpsBasicConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -635,7 +635,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
                  tls12: Optional[pulumi.Input[_builtins.str]] = None,
@@ -685,6 +685,8 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             rule_enable="on")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Https Basic Configuration can be imported using the id, e.g.
@@ -720,7 +722,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -784,6 +786,8 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             rule_enable="on")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Https Basic Configuration can be imported using the id, e.g.
@@ -817,7 +821,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
                  tls12: Optional[pulumi.Input[_builtins.str]] = None,
@@ -870,7 +874,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
             sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             tls10: Optional[pulumi.Input[_builtins.str]] = None,
             tls11: Optional[pulumi.Input[_builtins.str]] = None,
             tls12: Optional[pulumi.Input[_builtins.str]] = None,
@@ -908,7 +912,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -1049,7 +1053,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site ID, which can be obtained by calling the ListSites interface.
         """

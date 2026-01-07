@@ -127,6 +127,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")
 public class InstanceClusterAttachment extends com.pulumi.resources.CustomResource {

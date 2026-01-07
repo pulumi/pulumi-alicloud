@@ -1069,6 +1069,8 @@ class BackupPolicy(pulumi.CustomResource):
         policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS backup policy can be imported using the id or instance id, e.g.
@@ -1172,6 +1174,8 @@ class BackupPolicy(pulumi.CustomResource):
             instance_name=name)
         policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

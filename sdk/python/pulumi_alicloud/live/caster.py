@@ -870,6 +870,8 @@ class Caster(pulumi.CustomResource):
             norm_type=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Live Caster can be imported using the id, e.g.
@@ -951,6 +953,8 @@ class Caster(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             norm_type=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -78,6 +78,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Vpc Peer Peer Connection can be imported using the id, e.g.

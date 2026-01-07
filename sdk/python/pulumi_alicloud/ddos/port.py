@@ -286,6 +286,8 @@ class Port(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ddos Coo Port can be imported using the id, e.g.
@@ -350,6 +352,8 @@ class Port(pulumi.CustomResource):
                 "2.2.2.2",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

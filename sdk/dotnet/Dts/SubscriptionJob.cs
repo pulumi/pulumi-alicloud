@@ -149,6 +149,8 @@ namespace Pulumi.AliCloud.Dts
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DTS Subscription Job can be imported using the id, e.g.

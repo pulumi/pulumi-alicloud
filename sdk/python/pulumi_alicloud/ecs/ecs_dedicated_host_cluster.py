@@ -229,6 +229,8 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Dedicated Host Cluster can be imported using the id, e.g.
@@ -276,6 +278,8 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
                 "For": "DDH_Cluster_Test",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

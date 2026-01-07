@@ -145,6 +145,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Hybrid Backup Recovery (HBR) Hana Backup Client can be imported using the id, e.g.

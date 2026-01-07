@@ -152,6 +152,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             disk_id=example_ecs_disk.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
@@ -219,6 +221,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             auto_snapshot_policy_id=example_auto_snapshot_policy.id,
             disk_id=example_ecs_disk.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

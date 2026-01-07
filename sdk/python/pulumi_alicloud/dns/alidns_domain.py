@@ -331,6 +331,8 @@ class AlidnsDomain(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns domain can be imported using the id or domain name, e.g.
@@ -378,6 +380,8 @@ class AlidnsDomain(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

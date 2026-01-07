@@ -185,6 +185,8 @@ class SecurityIp(pulumi.CustomResource):
             db_instance_id=defaultn0n_vr_n.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Enterprise Db Cluster Security I P can be imported using the id, e.g.
@@ -254,6 +256,8 @@ class SecurityIp(pulumi.CustomResource):
             security_ip_list="127.0.0.2",
             db_instance_id=defaultn0n_vr_n.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

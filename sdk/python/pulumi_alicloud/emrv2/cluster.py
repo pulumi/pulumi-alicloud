@@ -696,6 +696,8 @@ class Cluster(pulumi.CustomResource):
             cluster_type="DATAFLOW")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aliclioud E-MapReduce cluster can be imported using the id e.g.
@@ -861,6 +863,8 @@ class Cluster(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             cluster_type="DATAFLOW")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

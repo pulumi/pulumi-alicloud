@@ -883,6 +883,8 @@ class DbInstance(pulumi.CustomResource):
             vswitch_id=default_get_switches.vswitches[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SelectDB DBInstance can be imported using the id, e.g.
@@ -950,6 +952,8 @@ class DbInstance(pulumi.CustomResource):
             zone_id=default_get_switches.vswitches[0].zone_id,
             vswitch_id=default_get_switches.vswitches[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

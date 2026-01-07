@@ -433,6 +433,8 @@ class CycleTask(pulumi.CustomResource):
             enable=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Cycle Task can be imported using the id, e.g.
@@ -513,6 +515,8 @@ class CycleTask(pulumi.CustomResource):
             }),
             enable=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

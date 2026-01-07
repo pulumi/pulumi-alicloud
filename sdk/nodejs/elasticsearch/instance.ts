@@ -2,15 +2,65 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Elasticsearch Instance resource.
+ *
+ * For information about Elasticsearch Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/elasticsearch/2017-06-13/createInstance).
+ *
+ * > **NOTE:** Available since v1.30.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.elasticsearch.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.elasticsearch.Instance("default", {
+ *     description: name,
+ *     vswitchId: defaultSwitch.id,
+ *     password: "Examplw1234",
+ *     version: "7.10_with_X-Pack",
+ *     instanceChargeType: "PostPaid",
+ *     dataNodeAmount: 2,
+ *     dataNodeSpec: "elasticsearch.sn2ne.large",
+ *     dataNodeDiskSize: 20,
+ *     dataNodeDiskType: "cloud_ssd",
+ *     kibanaNodeSpec: "elasticsearch.sn2ne.large",
+ *     dataNodeDiskPerformanceLevel: "PL1",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
- * Elasticsearch can be imported using the id, e.g.
+ * Elasticsearch Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+ * $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -42,87 +92,140 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * Schema Type:
+     */
+    declare public /*out*/ readonly archType: pulumi.Output<string>;
+    /**
+     * Renewal Period
      */
     declare public readonly autoRenewDuration: pulumi.Output<number | undefined>;
     /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
+     *
+     * @deprecated Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
      */
-    declare public readonly clientNodeAmount: pulumi.Output<number | undefined>;
+    declare public readonly clientNodeAmount: pulumi.Output<number>;
+    /**
+     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     */
+    declare public readonly clientNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceClientNodeConfiguration>;
     /**
      * The client node spec. If specified, client node will be created.
+     *
+     * @deprecated Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
      */
-    declare public readonly clientNodeSpec: pulumi.Output<string | undefined>;
+    declare public readonly clientNodeSpec: pulumi.Output<string>;
+    /**
+     * Instance creation time
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
+     *
+     * @deprecated Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
      */
     declare public readonly dataNodeAmount: pulumi.Output<number>;
     /**
-     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     * Elasticsearch data node information See `dataNodeConfiguration` below.
      */
-    declare public readonly dataNodeDiskEncrypted: pulumi.Output<boolean | undefined>;
+    declare public readonly dataNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceDataNodeConfiguration>;
+    /**
+     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     *
+     * @deprecated Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.
+     */
+    declare public readonly dataNodeDiskEncrypted: pulumi.Output<boolean>;
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+     *
+     * @deprecated Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.
      */
-    declare public readonly dataNodeDiskPerformanceLevel: pulumi.Output<string | undefined>;
+    declare public readonly dataNodeDiskPerformanceLevel: pulumi.Output<string>;
     /**
      * The single data node storage space.
+     *
+     * @deprecated Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.
      */
     declare public readonly dataNodeDiskSize: pulumi.Output<number>;
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
+     *
+     * @deprecated Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.
      */
     declare public readonly dataNodeDiskType: pulumi.Output<string>;
     /**
      * The data node specifications of the Elasticsearch instance.
+     *
+     * @deprecated Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
      */
     declare public readonly dataNodeSpec: pulumi.Output<string>;
     /**
-     * The description of instance. It a string of 0 to 30 characters.
+     * Instance name
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Instance connection domain (only VPC network access supported).
+     * Elasticsearch cluster private domain name
      */
     declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
-     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * Whether to enable Kibana private network access.
+     *
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      */
-    declare public readonly enableKibanaPrivateNetwork: pulumi.Output<boolean | undefined>;
+    declare public readonly enableKibanaPrivateNetwork: pulumi.Output<boolean>;
     /**
-     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * Does Kibana enable public access
      */
-    declare public readonly enableKibanaPublicNetwork: pulumi.Output<boolean | undefined>;
+    declare public readonly enableKibanaPublicNetwork: pulumi.Output<boolean>;
     /**
-     * Bool, default to false. When it set to true, the instance can enable public network access。
+     * Whether to enable Kibana public network access.
+     *
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      */
-    declare public readonly enablePublic: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePublic: pulumi.Output<boolean>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
+    /**
+     * Version type.
+     */
+    declare public readonly instanceCategory: pulumi.Output<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
      */
-    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
-     * Kibana console domain (Internet access supported).
+     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     */
+    declare public readonly kibanaConfiguration: pulumi.Output<outputs.elasticsearch.InstanceKibanaConfiguration>;
+    /**
+     * Kibana address
      */
     declare public /*out*/ readonly kibanaDomain: pulumi.Output<string>;
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+     *
+     * @deprecated Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
      */
     declare public readonly kibanaNodeSpec: pulumi.Output<string>;
     /**
-     * Kibana console port.
+     * The port assigned by the Kibana node.
      */
     declare public /*out*/ readonly kibanaPort: pulumi.Output<number>;
     /**
-     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * Kibana private network security group ID
      */
     declare public readonly kibanaPrivateSecurityGroupId: pulumi.Output<string | undefined>;
     /**
-     * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * Cluster Kibana node private network access whitelist
      */
     declare public readonly kibanaPrivateWhitelists: pulumi.Output<string[]>;
     /**
-     * Set the Kibana's IP whitelist in internet network.
+     * Kibana private network access whitelist
      */
     declare public readonly kibanaWhitelists: pulumi.Output<string[]>;
     /**
@@ -134,71 +237,85 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
      */
-    declare public readonly masterNodeDiskType: pulumi.Output<string | undefined>;
+    declare public readonly masterConfiguration: pulumi.Output<outputs.elasticsearch.InstanceMasterConfiguration>;
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     *
+     * @deprecated Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.
+     */
+    declare public readonly masterNodeDiskType: pulumi.Output<string>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
+     *
+     * @deprecated Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
      */
-    declare public readonly masterNodeSpec: pulumi.Output<string | undefined>;
+    declare public readonly masterNodeSpec: pulumi.Output<string>;
+    declare public readonly orderActionType: pulumi.Output<string | undefined>;
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+     * The access password of the instance.
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly paymentType: pulumi.Output<string>;
+    /**
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     */
+    declare public readonly period: pulumi.Output<number>;
     /**
      * Instance connection port.
      */
     declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
-     * Set the instance's IP whitelist in VPC network.
+     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      */
     declare public readonly privateWhitelists: pulumi.Output<string[]>;
     /**
-     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
      */
-    declare public readonly protocol: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
-     * Instance connection public domain.
+     * The public network address of the current instance.
      */
     declare public /*out*/ readonly publicDomain: pulumi.Output<string>;
     /**
-     * Instance connection public port.
+     * Elasticsearch cluster public network access port
      */
     declare public /*out*/ readonly publicPort: pulumi.Output<number>;
     /**
-     * Set the instance's IP whitelist in internet network.
+     * Elasticseach public network access whitelist IP list
      */
     declare public readonly publicWhitelists: pulumi.Output<string[]>;
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * Renewal Status
      */
-    declare public readonly renewStatus: pulumi.Output<string | undefined>;
+    declare public readonly renewStatus: pulumi.Output<string>;
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * Renewal Period Unit
      */
-    declare public readonly renewalDurationUnit: pulumi.Output<string | undefined>;
+    declare public readonly renewalDurationUnit: pulumi.Output<string>;
     /**
-     * The ID of resource group which the Elasticsearch instance belongs.
+     * Resource group to which the instance belongs
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * Configuration information
      */
     declare public readonly settingConfig: pulumi.Output<{[key: string]: string}>;
     /**
-     * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+     * Instance change status
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * Collection of tag key-value pairs
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly updateStrategy: pulumi.Output<string | undefined>;
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * Instance version
      */
     declare public readonly version: pulumi.Output<string>;
     /**
@@ -207,28 +324,44 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Elasticsearch cluster's warm node quantity, between 3 and 50.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
      */
-    declare public readonly warmNodeAmount: pulumi.Output<number | undefined>;
+    declare public readonly warmNodeAmount: pulumi.Output<number>;
+    /**
+     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     */
+    declare public readonly warmNodeConfiguration: pulumi.Output<outputs.elasticsearch.InstanceWarmNodeConfiguration>;
     /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.
      */
-    declare public readonly warmNodeDiskEncrypted: pulumi.Output<boolean | undefined>;
+    declare public readonly warmNodeDiskEncrypted: pulumi.Output<boolean>;
     /**
      * The single warm node storage space, should between 500 and 20480
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.
      */
-    declare public readonly warmNodeDiskSize: pulumi.Output<number | undefined>;
+    declare public readonly warmNodeDiskSize: pulumi.Output<number>;
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.
      */
-    declare public readonly warmNodeDiskType: pulumi.Output<string | undefined>;
+    declare public readonly warmNodeDiskType: pulumi.Output<string>;
     /**
      * The warm node specifications of the Elasticsearch instance.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
      */
-    declare public readonly warmNodeSpec: pulumi.Output<string | undefined>;
+    declare public readonly warmNodeSpec: pulumi.Output<string>;
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * The number of zones in the Elasticsearch instance.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    declare public readonly zoneCount: pulumi.Output<number | undefined>;
+    declare public readonly zoneCount: pulumi.Output<number>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -243,10 +376,14 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["archType"] = state?.archType;
             resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["clientNodeAmount"] = state?.clientNodeAmount;
+            resourceInputs["clientNodeConfiguration"] = state?.clientNodeConfiguration;
             resourceInputs["clientNodeSpec"] = state?.clientNodeSpec;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataNodeAmount"] = state?.dataNodeAmount;
+            resourceInputs["dataNodeConfiguration"] = state?.dataNodeConfiguration;
             resourceInputs["dataNodeDiskEncrypted"] = state?.dataNodeDiskEncrypted;
             resourceInputs["dataNodeDiskPerformanceLevel"] = state?.dataNodeDiskPerformanceLevel;
             resourceInputs["dataNodeDiskSize"] = state?.dataNodeDiskSize;
@@ -257,7 +394,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableKibanaPrivateNetwork"] = state?.enableKibanaPrivateNetwork;
             resourceInputs["enableKibanaPublicNetwork"] = state?.enableKibanaPublicNetwork;
             resourceInputs["enablePublic"] = state?.enablePublic;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["instanceCategory"] = state?.instanceCategory;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["kibanaConfiguration"] = state?.kibanaConfiguration;
             resourceInputs["kibanaDomain"] = state?.kibanaDomain;
             resourceInputs["kibanaNodeSpec"] = state?.kibanaNodeSpec;
             resourceInputs["kibanaPort"] = state?.kibanaPort;
@@ -266,9 +406,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kibanaWhitelists"] = state?.kibanaWhitelists;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["masterConfiguration"] = state?.masterConfiguration;
             resourceInputs["masterNodeDiskType"] = state?.masterNodeDiskType;
             resourceInputs["masterNodeSpec"] = state?.masterNodeSpec;
+            resourceInputs["orderActionType"] = state?.orderActionType;
             resourceInputs["password"] = state?.password;
+            resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["port"] = state?.port;
             resourceInputs["privateWhitelists"] = state?.privateWhitelists;
@@ -282,9 +425,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["settingConfig"] = state?.settingConfig;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateStrategy"] = state?.updateStrategy;
             resourceInputs["version"] = state?.version;
             resourceInputs["vswitchId"] = state?.vswitchId;
             resourceInputs["warmNodeAmount"] = state?.warmNodeAmount;
+            resourceInputs["warmNodeConfiguration"] = state?.warmNodeConfiguration;
             resourceInputs["warmNodeDiskEncrypted"] = state?.warmNodeDiskEncrypted;
             resourceInputs["warmNodeDiskSize"] = state?.warmNodeDiskSize;
             resourceInputs["warmNodeDiskType"] = state?.warmNodeDiskType;
@@ -292,18 +437,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zoneCount"] = state?.zoneCount;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (args?.dataNodeAmount === undefined && !opts.urn) {
-                throw new Error("Missing required property 'dataNodeAmount'");
-            }
-            if (args?.dataNodeDiskSize === undefined && !opts.urn) {
-                throw new Error("Missing required property 'dataNodeDiskSize'");
-            }
-            if (args?.dataNodeDiskType === undefined && !opts.urn) {
-                throw new Error("Missing required property 'dataNodeDiskType'");
-            }
-            if (args?.dataNodeSpec === undefined && !opts.urn) {
-                throw new Error("Missing required property 'dataNodeSpec'");
-            }
             if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
@@ -312,8 +445,10 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
             resourceInputs["clientNodeAmount"] = args?.clientNodeAmount;
+            resourceInputs["clientNodeConfiguration"] = args?.clientNodeConfiguration;
             resourceInputs["clientNodeSpec"] = args?.clientNodeSpec;
             resourceInputs["dataNodeAmount"] = args?.dataNodeAmount;
+            resourceInputs["dataNodeConfiguration"] = args?.dataNodeConfiguration;
             resourceInputs["dataNodeDiskEncrypted"] = args?.dataNodeDiskEncrypted;
             resourceInputs["dataNodeDiskPerformanceLevel"] = args?.dataNodeDiskPerformanceLevel;
             resourceInputs["dataNodeDiskSize"] = args?.dataNodeDiskSize;
@@ -323,16 +458,22 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableKibanaPrivateNetwork"] = args?.enableKibanaPrivateNetwork;
             resourceInputs["enableKibanaPublicNetwork"] = args?.enableKibanaPublicNetwork;
             resourceInputs["enablePublic"] = args?.enablePublic;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["instanceCategory"] = args?.instanceCategory;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["kibanaConfiguration"] = args?.kibanaConfiguration;
             resourceInputs["kibanaNodeSpec"] = args?.kibanaNodeSpec;
             resourceInputs["kibanaPrivateSecurityGroupId"] = args?.kibanaPrivateSecurityGroupId;
             resourceInputs["kibanaPrivateWhitelists"] = args?.kibanaPrivateWhitelists;
             resourceInputs["kibanaWhitelists"] = args?.kibanaWhitelists;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["masterConfiguration"] = args?.masterConfiguration;
             resourceInputs["masterNodeDiskType"] = args?.masterNodeDiskType;
             resourceInputs["masterNodeSpec"] = args?.masterNodeSpec;
+            resourceInputs["orderActionType"] = args?.orderActionType;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["privateWhitelists"] = args?.privateWhitelists;
             resourceInputs["protocol"] = args?.protocol;
@@ -342,14 +483,18 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["settingConfig"] = args?.settingConfig;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["updateStrategy"] = args?.updateStrategy;
             resourceInputs["version"] = args?.version;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["warmNodeAmount"] = args?.warmNodeAmount;
+            resourceInputs["warmNodeConfiguration"] = args?.warmNodeConfiguration;
             resourceInputs["warmNodeDiskEncrypted"] = args?.warmNodeDiskEncrypted;
             resourceInputs["warmNodeDiskSize"] = args?.warmNodeDiskSize;
             resourceInputs["warmNodeDiskType"] = args?.warmNodeDiskType;
             resourceInputs["warmNodeSpec"] = args?.warmNodeSpec;
             resourceInputs["zoneCount"] = args?.zoneCount;
+            resourceInputs["archType"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["kibanaDomain"] = undefined /*out*/;
             resourceInputs["kibanaPort"] = undefined /*out*/;
@@ -370,87 +515,140 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * Schema Type:
+     */
+    archType?: pulumi.Input<string>;
+    /**
+     * Renewal Period
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
+     *
+     * @deprecated Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
      */
     clientNodeAmount?: pulumi.Input<number>;
     /**
+     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     */
+    clientNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceClientNodeConfiguration>;
+    /**
      * The client node spec. If specified, client node will be created.
+     *
+     * @deprecated Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
      */
     clientNodeSpec?: pulumi.Input<string>;
     /**
+     * Instance creation time
+     */
+    createTime?: pulumi.Input<string>;
+    /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
+     *
+     * @deprecated Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
      */
     dataNodeAmount?: pulumi.Input<number>;
     /**
+     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     */
+    dataNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceDataNodeConfiguration>;
+    /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     *
+     * @deprecated Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.
      */
     dataNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+     *
+     * @deprecated Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.
      */
     dataNodeDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The single data node storage space.
+     *
+     * @deprecated Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.
      */
     dataNodeDiskSize?: pulumi.Input<number>;
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
+     *
+     * @deprecated Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.
      */
     dataNodeDiskType?: pulumi.Input<string>;
     /**
      * The data node specifications of the Elasticsearch instance.
+     *
+     * @deprecated Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
      */
     dataNodeSpec?: pulumi.Input<string>;
     /**
-     * The description of instance. It a string of 0 to 30 characters.
+     * Instance name
      */
     description?: pulumi.Input<string>;
     /**
-     * Instance connection domain (only VPC network access supported).
+     * Elasticsearch cluster private domain name
      */
     domain?: pulumi.Input<string>;
     /**
-     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * Whether to enable Kibana private network access.
+     *
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      */
     enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * Does Kibana enable public access
      */
     enableKibanaPublicNetwork?: pulumi.Input<boolean>;
     /**
-     * Bool, default to false. When it set to true, the instance can enable public network access。
+     * Whether to enable Kibana public network access.
+     *
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      */
     enablePublic?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
+    /**
+     * Version type.
+     */
+    instanceCategory?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Kibana console domain (Internet access supported).
+     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     */
+    kibanaConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceKibanaConfiguration>;
+    /**
+     * Kibana address
      */
     kibanaDomain?: pulumi.Input<string>;
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+     *
+     * @deprecated Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
      */
     kibanaNodeSpec?: pulumi.Input<string>;
     /**
-     * Kibana console port.
+     * The port assigned by the Kibana node.
      */
     kibanaPort?: pulumi.Input<number>;
     /**
-     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * Kibana private network security group ID
      */
     kibanaPrivateSecurityGroupId?: pulumi.Input<string>;
     /**
-     * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * Cluster Kibana node private network access whitelist
      */
     kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set the Kibana's IP whitelist in internet network.
+     * Kibana private network access whitelist
      */
     kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -462,19 +660,32 @@ export interface InstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     */
+    masterConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceMasterConfiguration>;
+    /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     *
+     * @deprecated Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.
      */
     masterNodeDiskType?: pulumi.Input<string>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
+     *
+     * @deprecated Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
      */
     masterNodeSpec?: pulumi.Input<string>;
+    orderActionType?: pulumi.Input<string>;
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+     * The access password of the instance.
      */
     password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
     period?: pulumi.Input<number>;
     /**
@@ -482,51 +693,52 @@ export interface InstanceState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Set the instance's IP whitelist in VPC network.
+     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      */
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * Instance connection public domain.
+     * The public network address of the current instance.
      */
     publicDomain?: pulumi.Input<string>;
     /**
-     * Instance connection public port.
+     * Elasticsearch cluster public network access port
      */
     publicPort?: pulumi.Input<number>;
     /**
-     * Set the instance's IP whitelist in internet network.
+     * Elasticseach public network access whitelist IP list
      */
     publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * Renewal Status
      */
     renewStatus?: pulumi.Input<string>;
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * Renewal Period Unit
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * The ID of resource group which the Elasticsearch instance belongs.
+     * Resource group to which the instance belongs
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * Configuration information
      */
     settingConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+     * Instance change status
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * Collection of tag key-value pairs
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    updateStrategy?: pulumi.Input<string>;
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * Instance version
      */
     version?: pulumi.Input<string>;
     /**
@@ -535,26 +747,42 @@ export interface InstanceState {
     vswitchId?: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's warm node quantity, between 3 and 50.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
      */
     warmNodeAmount?: pulumi.Input<number>;
     /**
+     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     */
+    warmNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceWarmNodeConfiguration>;
+    /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.
      */
     warmNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The single warm node storage space, should between 500 and 20480
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.
      */
     warmNodeDiskSize?: pulumi.Input<number>;
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.
      */
     warmNodeDiskType?: pulumi.Input<string>;
     /**
      * The warm node specifications of the Elasticsearch instance.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
      */
     warmNodeSpec?: pulumi.Input<string>;
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * The number of zones in the Elasticsearch instance.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     zoneCount?: pulumi.Input<number>;
 }
@@ -564,75 +792,120 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * Renewal Period
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
+     *
+     * @deprecated Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.
      */
     clientNodeAmount?: pulumi.Input<number>;
     /**
+     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     */
+    clientNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceClientNodeConfiguration>;
+    /**
      * The client node spec. If specified, client node will be created.
+     *
+     * @deprecated Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
      */
     clientNodeSpec?: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
+     *
+     * @deprecated Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.
      */
-    dataNodeAmount: pulumi.Input<number>;
+    dataNodeAmount?: pulumi.Input<number>;
+    /**
+     * Elasticsearch data node information See `dataNodeConfiguration` below.
+     */
+    dataNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceDataNodeConfiguration>;
     /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     *
+     * @deprecated Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.
      */
     dataNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
+     *
+     * @deprecated Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.
      */
     dataNodeDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The single data node storage space.
+     *
+     * @deprecated Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.
      */
-    dataNodeDiskSize: pulumi.Input<number>;
+    dataNodeDiskSize?: pulumi.Input<number>;
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
+     *
+     * @deprecated Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.
      */
-    dataNodeDiskType: pulumi.Input<string>;
+    dataNodeDiskType?: pulumi.Input<string>;
     /**
      * The data node specifications of the Elasticsearch instance.
+     *
+     * @deprecated Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.
      */
-    dataNodeSpec: pulumi.Input<string>;
+    dataNodeSpec?: pulumi.Input<string>;
     /**
-     * The description of instance. It a string of 0 to 30 characters.
+     * Instance name
      */
     description?: pulumi.Input<string>;
     /**
-     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * Whether to enable Kibana private network access.
+     *
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      */
     enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * Does Kibana enable public access
      */
     enableKibanaPublicNetwork?: pulumi.Input<boolean>;
     /**
-     * Bool, default to false. When it set to true, the instance can enable public network access。
+     * Whether to enable Kibana public network access.
+     *
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      */
     enablePublic?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
+    /**
+     * Version type.
+     */
+    instanceCategory?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
+     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     */
+    kibanaConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceKibanaConfiguration>;
+    /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+     *
+     * @deprecated Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.
      */
     kibanaNodeSpec?: pulumi.Input<string>;
     /**
-     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * Kibana private network security group ID
      */
     kibanaPrivateSecurityGroupId?: pulumi.Input<string>;
     /**
-     * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * Cluster Kibana node private network access whitelist
      */
     kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set the Kibana's IP whitelist in internet network.
+     * Kibana private network access whitelist
      */
     kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -644,55 +917,69 @@ export interface InstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     */
+    masterConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceMasterConfiguration>;
+    /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     *
+     * @deprecated Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.
      */
     masterNodeDiskType?: pulumi.Input<string>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
+     *
+     * @deprecated Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
      */
     masterNodeSpec?: pulumi.Input<string>;
+    orderActionType?: pulumi.Input<string>;
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+     * The access password of the instance.
      */
     password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
     period?: pulumi.Input<number>;
     /**
-     * Set the instance's IP whitelist in VPC network.
+     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      */
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * Set the instance's IP whitelist in internet network.
+     * Elasticseach public network access whitelist IP list
      */
     publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * Renewal Status
      */
     renewStatus?: pulumi.Input<string>;
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * Renewal Period Unit
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * The ID of resource group which the Elasticsearch instance belongs.
+     * Resource group to which the instance belongs
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * Configuration information
      */
     settingConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A mapping of tags to assign to the resource.
+     * Collection of tag key-value pairs
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    updateStrategy?: pulumi.Input<string>;
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * Instance version
      */
     version: pulumi.Input<string>;
     /**
@@ -701,26 +988,42 @@ export interface InstanceArgs {
     vswitchId: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's warm node quantity, between 3 and 50.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.
      */
     warmNodeAmount?: pulumi.Input<number>;
     /**
+     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     */
+    warmNodeConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceWarmNodeConfiguration>;
+    /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.
      */
     warmNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The single warm node storage space, should between 500 and 20480
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.
      */
     warmNodeDiskSize?: pulumi.Input<number>;
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.
      */
     warmNodeDiskType?: pulumi.Input<string>;
     /**
      * The warm node specifications of the Elasticsearch instance.
+     *
+     * @deprecated Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.
      */
     warmNodeSpec?: pulumi.Input<string>;
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * The number of zones in the Elasticsearch instance.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     zoneCount?: pulumi.Input<number>;
 }

@@ -99,6 +99,8 @@ namespace Pulumi.AliCloud.CloudSso
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud SSO User Provisioning can be imported using the id, e.g.

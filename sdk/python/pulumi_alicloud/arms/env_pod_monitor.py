@@ -294,6 +294,8 @@ class EnvPodMonitor(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ARMS Env Pod Monitor can be imported using the id, e.g.
@@ -423,6 +425,8 @@ class EnvPodMonitor(pulumi.CustomResource):
             path: /metric
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

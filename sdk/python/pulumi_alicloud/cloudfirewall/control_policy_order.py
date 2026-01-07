@@ -174,6 +174,8 @@ class ControlPolicyOrder(pulumi.CustomResource):
             order=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Control Policy Order can be imported using the id, e.g.
@@ -229,6 +231,8 @@ class ControlPolicyOrder(pulumi.CustomResource):
             direction=default.direction,
             order=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

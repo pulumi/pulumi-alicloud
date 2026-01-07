@@ -302,6 +302,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // SLS Collection Policy can be imported using the id, e.g.

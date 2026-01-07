@@ -377,6 +377,8 @@ class ForwardingRule(pulumi.CustomResource):
             forwarding_rule_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Forwarding Rule can be imported using the id, e.g.
@@ -509,6 +511,8 @@ class ForwardingRule(pulumi.CustomResource):
             priority=2,
             forwarding_rule_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -318,6 +318,8 @@ class EcsKeyPair(pulumi.CustomResource):
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Key Pair can be imported using the id, e.g.
@@ -363,6 +365,8 @@ class EcsKeyPair(pulumi.CustomResource):
             key_pair_name="my_public_key",
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

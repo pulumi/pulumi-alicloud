@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.cloudsso.Directory("default", {directoryName: name});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud SSO Directory can be imported using the id, e.g.

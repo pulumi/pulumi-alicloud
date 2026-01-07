@@ -246,6 +246,8 @@ class ApplicationDeployment(pulumi.CustomResource):
             war_url="http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
@@ -320,6 +322,8 @@ class ApplicationDeployment(pulumi.CustomResource):
             group_id="all",
             war_url="http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param ApplicationDeploymentArgs args: The arguments to use to populate this resource's properties.

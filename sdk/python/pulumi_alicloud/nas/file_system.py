@@ -33,6 +33,8 @@ class FileSystemArgs:
                  nfs_acl: Optional[pulumi.Input['FileSystemNfsAclArgs']] = None,
                  options: Optional[pulumi.Input['FileSystemOptionsArgs']] = None,
                  recycle_bin: Optional[pulumi.Input['FileSystemRecycleBinArgs']] = None,
+                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 redundancy_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  smb_acl: Optional[pulumi.Input['FileSystemSmbAclArgs']] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -79,18 +81,21 @@ class FileSystemArgs:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
-        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
-        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: NFS ACL See `nfs_acl` below.
         :param pulumi.Input['FileSystemOptionsArgs'] options: Option. See `options` below.
         :param pulumi.Input['FileSystemRecycleBinArgs'] recycle_bin: Recycle Bin See `recycle_bin` below.
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input['FileSystemSmbAclArgs'] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
                > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
                This parameter must be configured when FileSystemType = cpfs.
@@ -130,6 +135,10 @@ class FileSystemArgs:
             pulumi.set(__self__, "options", options)
         if recycle_bin is not None:
             pulumi.set(__self__, "recycle_bin", recycle_bin)
+        if redundancy_type is not None:
+            pulumi.set(__self__, "redundancy_type", redundancy_type)
+        if redundancy_vswitch_ids is not None:
+            pulumi.set(__self__, "redundancy_vswitch_ids", redundancy_vswitch_ids)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if smb_acl is not None:
@@ -251,9 +260,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def keytab(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        String of keytab file content encrypted by base64
-        """
         return pulumi.get(self, "keytab")
 
     @keytab.setter
@@ -263,9 +269,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
     def keytab_md5(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        String of the keytab file content encrypted by MD5
-        """
         return pulumi.get(self, "keytab_md5")
 
     @keytab_md5.setter
@@ -322,6 +325,30 @@ class FileSystemArgs:
         pulumi.set(self, "recycle_bin", value)
 
     @_builtins.property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @redundancy_type.setter
+    def redundancy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redundancy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redundancyVswitchIds")
+    def redundancy_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+        """
+        return pulumi.get(self, "redundancy_vswitch_ids")
+
+    @redundancy_vswitch_ids.setter
+    def redundancy_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "redundancy_vswitch_ids", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -352,6 +379,9 @@ class FileSystemArgs:
         Only extreme NAS is supported.
 
         > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -435,6 +465,8 @@ class _FileSystemState:
                  options: Optional[pulumi.Input['FileSystemOptionsArgs']] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  recycle_bin: Optional[pulumi.Input['FileSystemRecycleBinArgs']] = None,
+                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 redundancy_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  smb_acl: Optional[pulumi.Input['FileSystemSmbAclArgs']] = None,
@@ -477,8 +509,6 @@ class _FileSystemState:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
-        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
-        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -488,12 +518,17 @@ class _FileSystemState:
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input['FileSystemRecycleBinArgs'] recycle_bin: Recycle Bin See `recycle_bin` below.
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input['FileSystemSmbAclArgs'] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
                > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
                - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
@@ -540,6 +575,10 @@ class _FileSystemState:
             pulumi.set(__self__, "protocol_type", protocol_type)
         if recycle_bin is not None:
             pulumi.set(__self__, "recycle_bin", recycle_bin)
+        if redundancy_type is not None:
+            pulumi.set(__self__, "redundancy_type", redundancy_type)
+        if redundancy_vswitch_ids is not None:
+            pulumi.set(__self__, "redundancy_vswitch_ids", redundancy_vswitch_ids)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
@@ -649,9 +688,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def keytab(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        String of keytab file content encrypted by base64
-        """
         return pulumi.get(self, "keytab")
 
     @keytab.setter
@@ -661,9 +697,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
     def keytab_md5(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        String of the keytab file content encrypted by MD5
-        """
         return pulumi.get(self, "keytab_md5")
 
     @keytab_md5.setter
@@ -735,6 +768,30 @@ class _FileSystemState:
         pulumi.set(self, "recycle_bin", value)
 
     @_builtins.property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @redundancy_type.setter
+    def redundancy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redundancy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redundancyVswitchIds")
+    def redundancy_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+        """
+        return pulumi.get(self, "redundancy_vswitch_ids")
+
+    @redundancy_vswitch_ids.setter
+    def redundancy_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "redundancy_vswitch_ids", value)
+
+    @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -777,6 +834,9 @@ class _FileSystemState:
         Only extreme NAS is supported.
 
         > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -889,6 +949,8 @@ class FileSystem(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']]] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  recycle_bin: Optional[pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 redundancy_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  smb_acl: Optional[pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -936,6 +998,8 @@ class FileSystem(pulumi.CustomResource):
             zone_id=default.zones[0].zone_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) File System can be imported using the id, e.g.
@@ -975,8 +1039,6 @@ class FileSystem(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
-        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
-        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -986,11 +1048,16 @@ class FileSystem(pulumi.CustomResource):
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: Recycle Bin See `recycle_bin` below.
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
                > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
                - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
                - When FileSystemType = extreme, the value is standard or advance.
@@ -1056,6 +1123,8 @@ class FileSystem(pulumi.CustomResource):
             zone_id=default.zones[0].zone_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) File System can be imported using the id, e.g.
@@ -1090,6 +1159,8 @@ class FileSystem(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']]] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  recycle_bin: Optional[pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 redundancy_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  smb_acl: Optional[pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1120,6 +1191,8 @@ class FileSystem(pulumi.CustomResource):
                 raise TypeError("Missing required property 'protocol_type'")
             __props__.__dict__["protocol_type"] = protocol_type
             __props__.__dict__["recycle_bin"] = recycle_bin
+            __props__.__dict__["redundancy_type"] = redundancy_type
+            __props__.__dict__["redundancy_vswitch_ids"] = redundancy_vswitch_ids
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["smb_acl"] = smb_acl
             __props__.__dict__["snapshot_id"] = snapshot_id
@@ -1155,6 +1228,8 @@ class FileSystem(pulumi.CustomResource):
             options: Optional[pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']]] = None,
             protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
             recycle_bin: Optional[pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+            redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
+            redundancy_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             smb_acl: Optional[pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']]] = None,
@@ -1202,8 +1277,6 @@ class FileSystem(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
-        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
-        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -1213,12 +1286,17 @@ class FileSystem(pulumi.CustomResource):
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: Recycle Bin See `recycle_bin` below.
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
                > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
                - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
@@ -1257,6 +1335,8 @@ class FileSystem(pulumi.CustomResource):
         __props__.__dict__["options"] = options
         __props__.__dict__["protocol_type"] = protocol_type
         __props__.__dict__["recycle_bin"] = recycle_bin
+        __props__.__dict__["redundancy_type"] = redundancy_type
+        __props__.__dict__["redundancy_vswitch_ids"] = redundancy_vswitch_ids
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["smb_acl"] = smb_acl
@@ -1337,17 +1417,11 @@ class FileSystem(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def keytab(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        String of keytab file content encrypted by base64
-        """
         return pulumi.get(self, "keytab")
 
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
     def keytab_md5(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        String of the keytab file content encrypted by MD5
-        """
         return pulumi.get(self, "keytab_md5")
 
     @_builtins.property
@@ -1395,6 +1469,22 @@ class FileSystem(pulumi.CustomResource):
         return pulumi.get(self, "recycle_bin")
 
     @_builtins.property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="redundancyVswitchIds")
+    def redundancy_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+        """
+        return pulumi.get(self, "redundancy_vswitch_ids")
+
+    @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1425,6 +1515,9 @@ class FileSystem(pulumi.CustomResource):
         Only extreme NAS is supported.
 
         > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "snapshot_id")
 

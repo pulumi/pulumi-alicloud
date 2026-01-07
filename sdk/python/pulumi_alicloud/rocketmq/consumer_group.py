@@ -362,6 +362,8 @@ class ConsumerGroup(pulumi.CustomResource):
             remark="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RocketMQ Consumer Group can be imported using the id, e.g.
@@ -462,6 +464,8 @@ class ConsumerGroup(pulumi.CustomResource):
             delivery_order_type="Concurrently",
             remark="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

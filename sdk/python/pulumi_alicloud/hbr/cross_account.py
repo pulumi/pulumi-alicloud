@@ -179,6 +179,8 @@ class CrossAccount(pulumi.CustomResource):
             alias=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Cross Account can be imported using the id, e.g.
@@ -225,6 +227,8 @@ class CrossAccount(pulumi.CustomResource):
             cross_account_role_name=name,
             alias=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

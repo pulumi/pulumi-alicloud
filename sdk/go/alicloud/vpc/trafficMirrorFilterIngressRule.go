@@ -59,6 +59,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.

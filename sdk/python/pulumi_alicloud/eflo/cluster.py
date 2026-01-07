@@ -569,6 +569,8 @@ class Cluster(pulumi.CustomResource):
             cluster_type="Lite")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Cluster can be imported using the id, e.g.
@@ -697,6 +699,8 @@ class Cluster(pulumi.CustomResource):
             cluster_name="tfacceflo7165",
             cluster_type="Lite")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

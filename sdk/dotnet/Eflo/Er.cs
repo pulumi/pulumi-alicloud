@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Eflo
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eflo Er can be imported using the id, e.g.

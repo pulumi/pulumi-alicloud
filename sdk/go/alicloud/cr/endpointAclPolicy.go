@@ -82,6 +82,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // CR Endpoint Acl Policy can be imported using the id, e.g.

@@ -224,6 +224,8 @@ class User(pulumi.CustomResource):
             password="Example_123")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD User can be imported using the id, e.g.
@@ -267,6 +269,8 @@ class User(pulumi.CustomResource):
             phone="18888888888",
             password="Example_123")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

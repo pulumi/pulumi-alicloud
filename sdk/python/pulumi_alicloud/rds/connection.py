@@ -250,6 +250,8 @@ class Connection(pulumi.CustomResource):
             connection_prefix="testabc")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS connection can be imported using the id, e.g.
@@ -312,6 +314,8 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             connection_prefix="testabc")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB account resource and used to manage databases.
+    /// Provides a Polar Db Account resource.
+    /// 
+    /// Database account information.
+    /// 
+    /// For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
     /// 
     /// &gt; **NOTE:** Available since v1.67.0.
     /// 
@@ -67,43 +71,66 @@ namespace Pulumi.AliCloud.PolarDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
-    /// PolarDB account can be imported using the id, e.g.
+    /// Polar Db Account can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
+    /// $ pulumi import alicloud:polardb/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// The description of the database account.
         /// </summary>
         [Output("accountDescription")]
         public Output<string?> AccountDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The lock status of the account. Valid values:
+        /// - `UnLock`: The account is not locked.
+        /// - `Lock`: The account is locked.
+        /// </summary>
+        [Output("accountLockState")]
+        public Output<string> AccountLockState { get; private set; } = null!;
+
+        /// <summary>
+        /// The account name. Must meet the following requirements:
+        /// - Start with a lowercase letter and end with a letter or number.
+        /// - Consists of lowercase letters, numbers, or underscores.
+        /// - The length is 2 to 16 characters.
+        /// - You cannot use some reserved usernames, such as root and admin.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        /// The account password. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields. Must  meet the following requirements:
+        /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        /// - Be 8 to 32 characters in length.
+        /// - Special characters include !@#$%^&amp;*()_+-=.
         /// </summary>
         [Output("accountPassword")]
-        public Output<string> AccountPassword { get; private set; } = null!;
+        public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+        /// The time when the password for the database account expires.
+        /// </summary>
+        [Output("accountPasswordValidTime")]
+        public Output<string> AccountPasswordValidTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         /// </summary>
         [Output("accountType")]
-        public Output<string?> AccountType { get; private set; } = null!;
+        public Output<string> AccountType { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of cluster in which account belongs.
+        /// The cluster ID.
         /// </summary>
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
@@ -119,6 +146,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.265.0) The status of the database account.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -171,22 +204,37 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// The description of the database account.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The lock status of the account. Valid values:
+        /// - `UnLock`: The account is not locked.
+        /// - `Lock`: The account is locked.
+        /// </summary>
+        [Input("accountLockState")]
+        public Input<string>? AccountLockState { get; set; }
+
+        /// <summary>
+        /// The account name. Must meet the following requirements:
+        /// - Start with a lowercase letter and end with a letter or number.
+        /// - Consists of lowercase letters, numbers, or underscores.
+        /// - The length is 2 to 16 characters.
+        /// - You cannot use some reserved usernames, such as root and admin.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
-        [Input("accountPassword", required: true)]
+        [Input("accountPassword")]
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        /// The account password. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields. Must  meet the following requirements:
+        /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        /// - Be 8 to 32 characters in length.
+        /// - Special characters include !@#$%^&amp;*()_+-=.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -199,13 +247,19 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+        /// The time when the password for the database account expires.
+        /// </summary>
+        [Input("accountPasswordValidTime")]
+        public Input<string>? AccountPasswordValidTime { get; set; }
+
+        /// <summary>
+        /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
 
         /// <summary>
-        /// The Id of cluster in which account belongs.
+        /// The cluster ID.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
@@ -237,13 +291,25 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// The description of the database account.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// The lock status of the account. Valid values:
+        /// - `UnLock`: The account is not locked.
+        /// - `Lock`: The account is locked.
+        /// </summary>
+        [Input("accountLockState")]
+        public Input<string>? AccountLockState { get; set; }
+
+        /// <summary>
+        /// The account name. Must meet the following requirements:
+        /// - Start with a lowercase letter and end with a letter or number.
+        /// - Consists of lowercase letters, numbers, or underscores.
+        /// - The length is 2 to 16 characters.
+        /// - You cannot use some reserved usernames, such as root and admin.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
@@ -252,7 +318,10 @@ namespace Pulumi.AliCloud.PolarDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        /// The account password. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields. Must  meet the following requirements:
+        /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        /// - Be 8 to 32 characters in length.
+        /// - Special characters include !@#$%^&amp;*()_+-=.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -265,13 +334,19 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+        /// The time when the password for the database account expires.
+        /// </summary>
+        [Input("accountPasswordValidTime")]
+        public Input<string>? AccountPasswordValidTime { get; set; }
+
+        /// <summary>
+        /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
 
         /// <summary>
-        /// The Id of cluster in which account belongs.
+        /// The cluster ID.
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
@@ -293,6 +368,12 @@ namespace Pulumi.AliCloud.PolarDB
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// (Available since v1.265.0) The status of the database account.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public AccountState()
         {

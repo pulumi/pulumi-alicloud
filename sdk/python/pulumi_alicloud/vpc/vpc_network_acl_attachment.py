@@ -24,8 +24,8 @@ class VpcNetworkAclAttachmentArgs:
                  resource_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a VpcNetworkAclAttachment resource.
-        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL.
-        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated resource.
+        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated  vswitch instance.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
         """
         pulumi.set(__self__, "network_acl_id", network_acl_id)
@@ -36,7 +36,7 @@ class VpcNetworkAclAttachmentArgs:
     @pulumi.getter(name="networkAclId")
     def network_acl_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the network ACL.
+        The ID of the network ACL instance.
         """
         return pulumi.get(self, "network_acl_id")
 
@@ -48,7 +48,7 @@ class VpcNetworkAclAttachmentArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the associated resource.
+        The ID of the associated  vswitch instance.
         """
         return pulumi.get(self, "resource_id")
 
@@ -78,8 +78,8 @@ class _VpcNetworkAclAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcNetworkAclAttachment resources.
-        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL.
-        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated resource.
+        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated  vswitch instance.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
         :param pulumi.Input[_builtins.str] status: The status of the Network Acl Attachment.
         """
@@ -96,7 +96,7 @@ class _VpcNetworkAclAttachmentState:
     @pulumi.getter(name="networkAclId")
     def network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the network ACL.
+        The ID of the network ACL instance.
         """
         return pulumi.get(self, "network_acl_id")
 
@@ -108,7 +108,7 @@ class _VpcNetworkAclAttachmentState:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the associated resource.
+        The ID of the associated  vswitch instance.
         """
         return pulumi.get(self, "resource_id")
 
@@ -152,11 +152,15 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
+        Provides a VPC Network Acl Attachment resource.
+
+        Resources associated with network Acl.
 
         For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 
         > **NOTE:** Available since v1.193.0.
+
+        > **WARNING:** Do not mix the use of this resource with the `resources` field in the `vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
 
         ## Example Usage
 
@@ -181,6 +185,8 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
             resource_id=default_switch.id,
             resource_type="VSwitch")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -192,8 +198,8 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL.
-        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated resource.
+        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated  vswitch instance.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
         """
         ...
@@ -203,11 +209,15 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
                  args: VpcNetworkAclAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
+        Provides a VPC Network Acl Attachment resource.
+
+        Resources associated with network Acl.
 
         For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 
         > **NOTE:** Available since v1.193.0.
+
+        > **WARNING:** Do not mix the use of this resource with the `resources` field in the `vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
 
         ## Example Usage
 
@@ -232,6 +242,8 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
             resource_id=default_switch.id,
             resource_type="VSwitch")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -299,8 +311,8 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL.
-        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated resource.
+        :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the associated  vswitch instance.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
         :param pulumi.Input[_builtins.str] status: The status of the Network Acl Attachment.
         """
@@ -318,7 +330,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
     @pulumi.getter(name="networkAclId")
     def network_acl_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the network ACL.
+        The ID of the network ACL instance.
         """
         return pulumi.get(self, "network_acl_id")
 
@@ -326,7 +338,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the associated resource.
+        The ID of the associated  vswitch instance.
         """
         return pulumi.get(self, "resource_id")
 

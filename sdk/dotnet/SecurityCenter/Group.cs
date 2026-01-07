@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Security Center Group can be imported using the id, e.g.

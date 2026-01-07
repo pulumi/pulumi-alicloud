@@ -390,6 +390,8 @@ class BasicEndpoint(pulumi.CustomResource):
             basic_endpoint_name="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Basic Endpoint can be imported using the id, e.g.
@@ -473,6 +475,8 @@ class BasicEndpoint(pulumi.CustomResource):
             endpoint_sub_address="192.168.0.1",
             basic_endpoint_name="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

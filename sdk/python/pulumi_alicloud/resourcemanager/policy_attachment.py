@@ -246,6 +246,8 @@ class PolicyAttachment(pulumi.CustomResource):
             resource_group_id=example.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Policy Attachment can be imported using the id, e.g.
@@ -314,6 +316,8 @@ class PolicyAttachment(pulumi.CustomResource):
             principal_type="IMSUser",
             resource_group_id=example.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

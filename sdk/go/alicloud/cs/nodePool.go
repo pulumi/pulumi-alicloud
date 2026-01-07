@@ -12,337 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Max: 99999,
-//				Min: 10000,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cloudEfficiency, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(enhanced.Zones[0].ZoneId),
-//				CpuCoreCount:       pulumi.IntRef(4),
-//				MemorySize:         pulumi.Float64Ref(8),
-//				KubernetesNodeRole: pulumi.StringRef("Worker"),
-//				SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-//				Input:   "10.0.0.0/8",
-//				Newbits: 8,
-//				Netnum:  36,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-//				Input:   "172.16.0.0/16",
-//				Newbits: 4,
-//				Netnum:  7,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-//				NamePrefix:  pulumi.Sprintf("terraform-example-%v", _default.Result),
-//				ClusterSpec: pulumi.String("ack.pro.small"),
-//				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				NewNatGateway:      pulumi.Bool(true),
-//				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
-//				ServiceCidr:        pulumi.String(invokeCidrsubnet1.Result),
-//				SlbInternetEnabled: pulumi.Bool(true),
-//				EnableRrsa:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
-//				KeyPairName: pulumi.Sprintf("terraform-example-%v", _default.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String(name),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            defaultKeyPair.KeyPairName,
-//				Labels: cs.NodePoolLabelArray{
-//					&cs.NodePoolLabelArgs{
-//						Key:   pulumi.String("test1"),
-//						Value: pulumi.String("nodepool"),
-//					},
-//					&cs.NodePoolLabelArgs{
-//						Key:   pulumi.String("test2"),
-//						Value: pulumi.String("nodepool"),
-//					},
-//				},
-//				Taints: cs.NodePoolTaintArray{
-//					&cs.NodePoolTaintArgs{
-//						Key:    pulumi.String("tf"),
-//						Effect: pulumi.String("NoSchedule"),
-//						Value:  pulumi.String("example"),
-//					},
-//					&cs.NodePoolTaintArgs{
-//						Key:    pulumi.String("tf2"),
-//						Effect: pulumi.String("NoSchedule"),
-//						Value:  pulumi.String("example2"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
-//			_, err = cs.NewNodePool(ctx, "desired_size", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("desired_size"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            defaultKeyPair.KeyPairName,
-//				DesiredSize:        pulumi.String("0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
-//			_, err = cs.NewNodePool(ctx, "maintenance", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("maintenance"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            defaultKeyPair.KeyPairName,
-//				DesiredSize:        pulumi.String("1"),
-//				Management: &cs.NodePoolManagementArgs{
-//					Enable:     pulumi.Bool(true),
-//					AutoRepair: pulumi.Bool(true),
-//					AutoRepairPolicy: &cs.NodePoolManagementAutoRepairPolicyArgs{
-//						RestartNode: pulumi.Bool(true),
-//					},
-//					AutoUpgrade: pulumi.Bool(true),
-//					AutoUpgradePolicy: &cs.NodePoolManagementAutoUpgradePolicyArgs{
-//						AutoUpgradeKubelet: pulumi.Bool(true),
-//					},
-//					AutoVulFix: pulumi.Bool(true),
-//					AutoVulFixPolicy: &cs.NodePoolManagementAutoVulFixPolicyArgs{
-//						VulLevel:    pulumi.String("asap"),
-//						RestartNode: pulumi.Bool(true),
-//					},
-//					MaxUnavailable: pulumi.Int(1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a node pool with spot instance.
-//			_, err = cs.NewNodePool(ctx, "spot_instance", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("spot_instance"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//					pulumi.String(cloudEfficiency.InstanceTypes[1].Id),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            defaultKeyPair.KeyPairName,
-//				DesiredSize:        pulumi.String("1"),
-//				SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
-//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
-//					&cs.NodePoolSpotPriceLimitArgs{
-//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//						PriceLimit:   pulumi.String("0.70"),
-//					},
-//					&cs.NodePoolSpotPriceLimitArgs{
-//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[1].Id),
-//						PriceLimit:   pulumi.String("0.72"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Use Spot instances to create a node pool with auto-scaling enabled
-//			_, err = cs.NewNodePool(ctx, "spot_auto_scaling", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("spot_auto_scaling"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            defaultKeyPair.KeyPairName,
-//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
-//					MinSize: pulumi.Int(1),
-//					MaxSize: pulumi.Int(10),
-//					Type:    pulumi.String("spot"),
-//				},
-//				SpotStrategy: pulumi.String("SpotWithPriceLimit"),
-//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
-//					&cs.NodePoolSpotPriceLimitArgs{
-//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//						PriceLimit:   pulumi.String("0.70"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a `PrePaid` node pool.
-//			_, err = cs.NewNodePool(ctx, "prepaid_node", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("prepaid_node"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//				},
-//				SystemDiskCategory:  pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:      pulumi.Int(40),
-//				KeyName:             defaultKeyPair.KeyPairName,
-//				InstanceChargeType:  pulumi.String("PrePaid"),
-//				Period:              pulumi.Int(1),
-//				PeriodUnit:          pulumi.String("Month"),
-//				AutoRenew:           pulumi.Bool(true),
-//				AutoRenewPeriod:     pulumi.Int(1),
-//				InstallCloudMonitor: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// #Create a node pool with customized kubelet parameters
-//			_, err = cs.NewNodePool(ctx, "customized_kubelet", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("customized_kubelet"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				InstanceChargeType: pulumi.String("PostPaid"),
-//				DesiredSize:        pulumi.String("0"),
-//				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
-//					RegistryPullQps:     pulumi.String("10"),
-//					RegistryBurst:       pulumi.String("5"),
-//					EventRecordQps:      pulumi.String("10"),
-//					EventBurst:          pulumi.String("5"),
-//					SerializeImagePulls: pulumi.String("true"),
-//					EvictionHard: pulumi.StringMap{
-//						"memory.available":  pulumi.String("1024Mi"),
-//						"nodefs.available":  pulumi.String("10%"),
-//						"nodefs.inodesFree": pulumi.String("5%"),
-//						"imagefs.available": pulumi.String("10%"),
-//					},
-//					SystemReserved: pulumi.StringMap{
-//						"cpu":               pulumi.String("1"),
-//						"memory":            pulumi.String("1Gi"),
-//						"ephemeral-storage": pulumi.String("10Gi"),
-//					},
-//					KubeReserved: pulumi.StringMap{
-//						"cpu":    pulumi.String("500m"),
-//						"memory": pulumi.String("1Gi"),
-//					},
-//					ContainerLogMaxSize:  pulumi.String("200Mi"),
-//					ContainerLogMaxFiles: pulumi.String("3"),
-//					MaxPods:              pulumi.String("100"),
-//					ReadOnlyPort:         pulumi.String("0"),
-//					AllowedUnsafeSysctls: pulumi.StringArray{
-//						pulumi.String("net.ipv4.route.min_pmtu"),
-//					},
-//				},
-//				RollingPolicy: &cs.NodePoolRollingPolicyArgs{
-//					MaxParallelism: pulumi.Int(1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -353,6 +22,8 @@ import (
 type NodePool struct {
 	pulumi.CustomResourceState
 
+	// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+	AutoMode NodePoolAutoModeOutput `pulumi:"autoMode"`
 	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
@@ -374,8 +45,12 @@ type NodePool struct {
 	// Number of expected nodes in the node pool.
 	DesiredSize pulumi.StringPtrOutput `pulumi:"desiredSize"`
 	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EfloNodeGroup NodePoolEfloNodeGroupPtrOutput `pulumi:"efloNodeGroup"`
 	// Whether to force deletion.
+	//
+	// > **NOTE:** This parameter only takes effect when deletion is triggered.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolOutput `pulumi:"formatDisk"`
@@ -392,12 +67,17 @@ type NodePool struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-	// - `Custom`: Custom image.
+	// - `Custom`：Custom image.
+	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	// ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+	InstanceMetadataOptions NodePoolInstanceMetadataOptionsOutput `pulumi:"instanceMetadataOptions"`
+	// Instance property configuration. See `instancePatterns` below.
+	InstancePatterns NodePoolInstancePatternArrayOutput `pulumi:"instancePatterns"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -468,9 +148,8 @@ type NodePool struct {
 	// The list of RDS instances.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Rotary configuration. See `rollingPolicy` below.
-	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
+	ResourceGroupId pulumi.StringOutput            `pulumi:"resourceGroupId"`
+	RollingPolicy   NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -544,8 +223,7 @@ type NodePool struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
-	// Synchronously update node labels and taints.
-	UpdateNodes pulumi.BoolPtrOutput `pulumi:"updateNodes"`
+	UpdateNodes   pulumi.BoolPtrOutput `pulumi:"updateNodes"`
 	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -596,6 +274,8 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
+	// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+	AutoMode *NodePoolAutoMode `pulumi:"autoMode"`
 	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
@@ -617,8 +297,12 @@ type nodePoolState struct {
 	// Number of expected nodes in the node pool.
 	DesiredSize *string `pulumi:"desiredSize"`
 	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EfloNodeGroup *NodePoolEfloNodeGroup `pulumi:"efloNodeGroup"`
 	// Whether to force deletion.
+	//
+	// > **NOTE:** This parameter only takes effect when deletion is triggered.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk *bool `pulumi:"formatDisk"`
@@ -635,12 +319,17 @@ type nodePoolState struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-	// - `Custom`: Custom image.
+	// - `Custom`：Custom image.
+	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+	InstanceMetadataOptions *NodePoolInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
+	// Instance property configuration. See `instancePatterns` below.
+	InstancePatterns []NodePoolInstancePattern `pulumi:"instancePatterns"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -711,9 +400,8 @@ type nodePoolState struct {
 	// The list of RDS instances.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rotary configuration. See `rollingPolicy` below.
-	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	RollingPolicy   *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -787,8 +475,7 @@ type nodePoolState struct {
 	Type *string `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
-	// Synchronously update node labels and taints.
-	UpdateNodes *bool `pulumi:"updateNodes"`
+	UpdateNodes   *bool `pulumi:"updateNodes"`
 	// Node custom data, base64-encoded.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -796,6 +483,8 @@ type nodePoolState struct {
 }
 
 type NodePoolState struct {
+	// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+	AutoMode NodePoolAutoModePtrInput
 	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrInput
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
@@ -817,8 +506,12 @@ type NodePoolState struct {
 	// Number of expected nodes in the node pool.
 	DesiredSize pulumi.StringPtrInput
 	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EfloNodeGroup NodePoolEfloNodeGroupPtrInput
 	// Whether to force deletion.
+	//
+	// > **NOTE:** This parameter only takes effect when deletion is triggered.
 	ForceDelete pulumi.BoolPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolPtrInput
@@ -835,12 +528,17 @@ type NodePoolState struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-	// - `Custom`: Custom image.
+	// - `Custom`：Custom image.
+	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType pulumi.StringPtrInput
+	// ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+	InstanceMetadataOptions NodePoolInstanceMetadataOptionsPtrInput
+	// Instance property configuration. See `instancePatterns` below.
+	InstancePatterns NodePoolInstancePatternArrayInput
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayInput
 	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -912,8 +610,7 @@ type NodePoolState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// Rotary configuration. See `rollingPolicy` below.
-	RollingPolicy NodePoolRollingPolicyPtrInput
+	RollingPolicy   NodePoolRollingPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -987,8 +684,7 @@ type NodePoolState struct {
 	Type pulumi.StringPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
-	// Synchronously update node labels and taints.
-	UpdateNodes pulumi.BoolPtrInput
+	UpdateNodes   pulumi.BoolPtrInput
 	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
@@ -1000,6 +696,8 @@ func (NodePoolState) ElementType() reflect.Type {
 }
 
 type nodePoolArgs struct {
+	// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+	AutoMode *NodePoolAutoMode `pulumi:"autoMode"`
 	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
@@ -1021,8 +719,12 @@ type nodePoolArgs struct {
 	// Number of expected nodes in the node pool.
 	DesiredSize *string `pulumi:"desiredSize"`
 	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EfloNodeGroup *NodePoolEfloNodeGroup `pulumi:"efloNodeGroup"`
 	// Whether to force deletion.
+	//
+	// > **NOTE:** This parameter only takes effect when deletion is triggered.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk *bool `pulumi:"formatDisk"`
@@ -1039,12 +741,17 @@ type nodePoolArgs struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-	// - `Custom`: Custom image.
+	// - `Custom`：Custom image.
+	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+	InstanceMetadataOptions *NodePoolInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
+	// Instance property configuration. See `instancePatterns` below.
+	InstancePatterns []NodePoolInstancePattern `pulumi:"instancePatterns"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -1113,9 +820,8 @@ type nodePoolArgs struct {
 	// The list of RDS instances.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rotary configuration. See `rollingPolicy` below.
-	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	RollingPolicy   *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -1187,8 +893,7 @@ type nodePoolArgs struct {
 	Type *string `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
-	// Synchronously update node labels and taints.
-	UpdateNodes *bool `pulumi:"updateNodes"`
+	UpdateNodes   *bool `pulumi:"updateNodes"`
 	// Node custom data, base64-encoded.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -1197,6 +902,8 @@ type nodePoolArgs struct {
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
+	// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+	AutoMode NodePoolAutoModePtrInput
 	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrInput
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
@@ -1218,8 +925,12 @@ type NodePoolArgs struct {
 	// Number of expected nodes in the node pool.
 	DesiredSize pulumi.StringPtrInput
 	// Lingjun node pool configuration. See `efloNodeGroup` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	EfloNodeGroup NodePoolEfloNodeGroupPtrInput
 	// Whether to force deletion.
+	//
+	// > **NOTE:** This parameter only takes effect when deletion is triggered.
 	ForceDelete pulumi.BoolPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolPtrInput
@@ -1236,12 +947,17 @@ type NodePoolArgs struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-	// - `Custom`: Custom image.
+	// - `Custom`：Custom image.
+	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType pulumi.StringPtrInput
+	// ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+	InstanceMetadataOptions NodePoolInstanceMetadataOptionsPtrInput
+	// Instance property configuration. See `instancePatterns` below.
+	InstancePatterns NodePoolInstancePatternArrayInput
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayInput
 	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -1311,8 +1027,7 @@ type NodePoolArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// Rotary configuration. See `rollingPolicy` below.
-	RollingPolicy NodePoolRollingPolicyPtrInput
+	RollingPolicy   NodePoolRollingPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -1384,8 +1099,7 @@ type NodePoolArgs struct {
 	Type pulumi.StringPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
-	// Synchronously update node labels and taints.
-	UpdateNodes pulumi.BoolPtrInput
+	UpdateNodes   pulumi.BoolPtrInput
 	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
@@ -1479,6 +1193,11 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
+// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+func (o NodePoolOutput) AutoMode() NodePoolAutoModeOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolAutoModeOutput { return v.AutoMode }).(NodePoolAutoModeOutput)
+}
+
 // Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 func (o NodePoolOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
@@ -1527,11 +1246,15 @@ func (o NodePoolOutput) DesiredSize() pulumi.StringPtrOutput {
 }
 
 // Lingjun node pool configuration. See `efloNodeGroup` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodePoolOutput) EfloNodeGroup() NodePoolEfloNodeGroupPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolEfloNodeGroupPtrOutput { return v.EfloNodeGroup }).(NodePoolEfloNodeGroupPtrOutput)
 }
 
 // Whether to force deletion.
+//
+// > **NOTE:** This parameter only takes effect when deletion is triggered.
 func (o NodePoolOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
@@ -1557,7 +1280,8 @@ func (o NodePoolOutput) ImageId() pulumi.StringOutput {
 // - `ContainerOS` : container-optimized image.
 // - `Ubuntu`: Ubuntu image.
 // - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-// - `Custom`: Custom image.
+// - `Custom`：Custom image.
+// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
 func (o NodePoolOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageType }).(pulumi.StringOutput)
 }
@@ -1570,6 +1294,16 @@ func (o NodePoolOutput) InstallCloudMonitor() pulumi.BoolPtrOutput {
 // Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 func (o NodePoolOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+func (o NodePoolOutput) InstanceMetadataOptions() NodePoolInstanceMetadataOptionsOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolInstanceMetadataOptionsOutput { return v.InstanceMetadataOptions }).(NodePoolInstanceMetadataOptionsOutput)
+}
+
+// Instance property configuration. See `instancePatterns` below.
+func (o NodePoolOutput) InstancePatterns() NodePoolInstancePatternArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolInstancePatternArrayOutput { return v.InstancePatterns }).(NodePoolInstancePatternArrayOutput)
 }
 
 // In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -1730,7 +1464,6 @@ func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Rotary configuration. See `rollingPolicy` below.
 func (o NodePoolOutput) RollingPolicy() NodePoolRollingPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRollingPolicyPtrOutput { return v.RollingPolicy }).(NodePoolRollingPolicyPtrOutput)
 }
@@ -1892,7 +1625,6 @@ func (o NodePoolOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.Unschedulable }).(pulumi.BoolPtrOutput)
 }
 
-// Synchronously update node labels and taints.
 func (o NodePoolOutput) UpdateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.UpdateNodes }).(pulumi.BoolPtrOutput)
 }

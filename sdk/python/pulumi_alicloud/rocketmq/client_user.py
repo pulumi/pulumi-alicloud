@@ -338,6 +338,8 @@ class ClientUser(pulumi.CustomResource):
             client_ip="192.1.10.0")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag ClientUser can be imported using the name, e.g.
@@ -395,6 +397,8 @@ class ClientUser(pulumi.CustomResource):
             password="example1234",
             client_ip="192.1.10.0")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

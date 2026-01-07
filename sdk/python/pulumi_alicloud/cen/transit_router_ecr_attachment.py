@@ -346,6 +346,8 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             ecr_owner_id=current.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN Transit Router Ecr Attachment can be imported using the id, e.g.
@@ -414,6 +416,8 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             transit_router_id=default_qa94_y1.transit_router_id,
             ecr_owner_id=current.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

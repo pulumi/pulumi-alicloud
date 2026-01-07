@@ -21,17 +21,23 @@ class FilesetArgs:
     def __init__(__self__, *,
                  file_system_id: pulumi.Input[_builtins.str],
                  file_system_path: pulumi.Input[_builtins.str],
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Fileset resource.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] file_system_path: The path of the fileset.
-        :param pulumi.Input[_builtins.str] description: The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
+        :param pulumi.Input[_builtins.str] file_system_path: The path of Fileset.
+        :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+               - true: Enable instance release protection.
+               - false (default): Turn off instance release protection
+        :param pulumi.Input[_builtins.str] description: Description of Fileset.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "file_system_id", file_system_id)
         pulumi.set(__self__, "file_system_path", file_system_path)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
@@ -53,7 +59,7 @@ class FilesetArgs:
     @pulumi.getter(name="fileSystemPath")
     def file_system_path(self) -> pulumi.Input[_builtins.str]:
         """
-        The path of the fileset.
+        The path of Fileset.
         """
         return pulumi.get(self, "file_system_path")
 
@@ -62,10 +68,24 @@ class FilesetArgs:
         pulumi.set(self, "file_system_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+        - true: Enable instance release protection.
+        - false (default): Turn off instance release protection
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        Description of Fileset.
         """
         return pulumi.get(self, "description")
 
@@ -77,7 +97,7 @@ class FilesetArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The dry run.
+        Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -89,6 +109,8 @@ class FilesetArgs:
 @pulumi.input_type
 class _FilesetState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -97,13 +119,21 @@ class _FilesetState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Fileset resources.
-        :param pulumi.Input[_builtins.str] description: The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
+        :param pulumi.Input[_builtins.str] create_time: The time when Fileset was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+               - true: Enable instance release protection.
+               - false (default): Turn off instance release protection
+        :param pulumi.Input[_builtins.str] description: Description of Fileset.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] file_system_path: The path of the fileset.
-        :param pulumi.Input[_builtins.str] fileset_id: The first ID of the resource.
-        :param pulumi.Input[_builtins.str] status: The status of the fileset.
+        :param pulumi.Input[_builtins.str] file_system_path: The path of Fileset.
+        :param pulumi.Input[_builtins.str] fileset_id: Fileset ID
+        :param pulumi.Input[_builtins.str] status: The status of Fileset. Includes:
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
@@ -118,10 +148,36 @@ class _FilesetState:
             pulumi.set(__self__, "status", status)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when Fileset was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+        - true: Enable instance release protection.
+        - false (default): Turn off instance release protection
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        Description of Fileset.
         """
         return pulumi.get(self, "description")
 
@@ -133,7 +189,7 @@ class _FilesetState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The dry run.
+        Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -157,7 +213,7 @@ class _FilesetState:
     @pulumi.getter(name="fileSystemPath")
     def file_system_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The path of the fileset.
+        The path of Fileset.
         """
         return pulumi.get(self, "file_system_path")
 
@@ -169,7 +225,7 @@ class _FilesetState:
     @pulumi.getter(name="filesetId")
     def fileset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The first ID of the resource.
+        Fileset ID
         """
         return pulumi.get(self, "fileset_id")
 
@@ -181,7 +237,7 @@ class _FilesetState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the fileset.
+        The status of Fileset. Includes:
         """
         return pulumi.get(self, "status")
 
@@ -196,6 +252,7 @@ class Fileset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -203,6 +260,8 @@ class Fileset(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a File Storage (NAS) Fileset resource.
+
+        Fileset of CPFS file system.
 
         For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 
@@ -238,6 +297,8 @@ class Fileset(pulumi.CustomResource):
             description="terraform-example",
             file_system_path="/example_path/")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -249,10 +310,13 @@ class Fileset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
+        :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+               - true: Enable instance release protection.
+               - false (default): Turn off instance release protection
+        :param pulumi.Input[_builtins.str] description: Description of Fileset.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] file_system_path: The path of the fileset.
+        :param pulumi.Input[_builtins.str] file_system_path: The path of Fileset.
         """
         ...
     @overload
@@ -262,6 +326,8 @@ class Fileset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a File Storage (NAS) Fileset resource.
+
+        Fileset of CPFS file system.
 
         For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 
@@ -297,6 +363,8 @@ class Fileset(pulumi.CustomResource):
             description="terraform-example",
             file_system_path="/example_path/")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -321,6 +389,7 @@ class Fileset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -334,6 +403,7 @@ class Fileset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FilesetArgs.__new__(FilesetArgs)
 
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
             if file_system_id is None and not opts.urn:
@@ -342,6 +412,7 @@ class Fileset(pulumi.CustomResource):
             if file_system_path is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_path'")
             __props__.__dict__["file_system_path"] = file_system_path
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["fileset_id"] = None
             __props__.__dict__["status"] = None
         super(Fileset, __self__).__init__(
@@ -354,6 +425,8 @@ class Fileset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
             file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -367,17 +440,23 @@ class Fileset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
+        :param pulumi.Input[_builtins.str] create_time: The time when Fileset was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+               - true: Enable instance release protection.
+               - false (default): Turn off instance release protection
+        :param pulumi.Input[_builtins.str] description: Description of Fileset.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] file_system_path: The path of the fileset.
-        :param pulumi.Input[_builtins.str] fileset_id: The first ID of the resource.
-        :param pulumi.Input[_builtins.str] status: The status of the fileset.
+        :param pulumi.Input[_builtins.str] file_system_path: The path of Fileset.
+        :param pulumi.Input[_builtins.str] fileset_id: Fileset ID
+        :param pulumi.Input[_builtins.str] status: The status of Fileset. Includes:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FilesetState.__new__(_FilesetState)
 
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["file_system_id"] = file_system_id
@@ -387,10 +466,28 @@ class Fileset(pulumi.CustomResource):
         return Fileset(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when Fileset was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[_builtins.bool]:
+        """
+        The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+        - true: Enable instance release protection.
+        - false (default): Turn off instance release protection
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        Description of Fileset.
         """
         return pulumi.get(self, "description")
 
@@ -398,7 +495,7 @@ class Fileset(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        The dry run.
+        Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -414,7 +511,7 @@ class Fileset(pulumi.CustomResource):
     @pulumi.getter(name="fileSystemPath")
     def file_system_path(self) -> pulumi.Output[_builtins.str]:
         """
-        The path of the fileset.
+        The path of Fileset.
         """
         return pulumi.get(self, "file_system_path")
 
@@ -422,7 +519,7 @@ class Fileset(pulumi.CustomResource):
     @pulumi.getter(name="filesetId")
     def fileset_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The first ID of the resource.
+        Fileset ID
         """
         return pulumi.get(self, "fileset_id")
 
@@ -430,7 +527,7 @@ class Fileset(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the fileset.
+        The status of Fileset. Includes:
         """
         return pulumi.get(self, "status")
 

@@ -720,6 +720,8 @@ class NodeGroup(pulumi.CustomResource):
             node_group_name="tfacceflo63657_update")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Node Group can be imported using the id, e.g.
@@ -908,6 +910,8 @@ class NodeGroup(pulumi.CustomResource):
             node_group_description="resource-example1",
             node_group_name="tfacceflo63657_update")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

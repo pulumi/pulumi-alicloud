@@ -80,6 +80,8 @@ namespace Pulumi.AliCloud.Vpn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// SSL-VPN server can be imported using the id, e.g.

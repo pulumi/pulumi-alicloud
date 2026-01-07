@@ -293,6 +293,8 @@ class RouteService(pulumi.CustomResource):
             host="100.118.28.52/32")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN Route Service can be imported using the id, e.g.
@@ -354,6 +356,8 @@ class RouteService(pulumi.CustomResource):
             cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

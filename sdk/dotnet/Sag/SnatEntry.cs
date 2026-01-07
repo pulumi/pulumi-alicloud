@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Sag
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// The Sag SnatEntry can be imported using the id, e.g.

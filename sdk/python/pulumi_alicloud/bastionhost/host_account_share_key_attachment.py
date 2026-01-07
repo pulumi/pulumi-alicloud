@@ -196,6 +196,8 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
             host_account_id=default_host_account.host_account_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Account Share Key Attachment can be imported using the id, e.g.
@@ -276,6 +278,8 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
             host_share_key_id=default_host_share_key.host_share_key_id,
             host_account_id=default_host_account.host_account_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

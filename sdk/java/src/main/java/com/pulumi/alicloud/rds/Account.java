@@ -93,6 +93,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * RDS account can be imported using the id, e.g.
@@ -127,6 +129,12 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     public Output<String> accountType() {
         return this.accountType;
+    }
+    @Export(name="checkPolicy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> checkPolicy;
+
+    public Output<Optional<Boolean>> checkPolicy() {
+        return Codegen.optional(this.checkPolicy);
     }
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;

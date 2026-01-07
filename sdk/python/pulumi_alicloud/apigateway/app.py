@@ -152,6 +152,8 @@ class App(pulumi.CustomResource):
             description="tf_example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api gateway app can be imported using the id, e.g.
@@ -185,6 +187,8 @@ class App(pulumi.CustomResource):
             name="tf_example",
             description="tf_example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

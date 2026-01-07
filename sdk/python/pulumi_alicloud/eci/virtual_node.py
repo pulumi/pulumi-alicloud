@@ -441,6 +441,8 @@ class VirtualNode(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECI Virtual Node can be imported using the id, e.g.
@@ -524,6 +526,8 @@ class VirtualNode(pulumi.CustomResource):
                 "value": "example",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

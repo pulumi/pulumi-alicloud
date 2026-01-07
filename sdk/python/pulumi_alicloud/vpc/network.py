@@ -1027,6 +1027,8 @@ class Network(pulumi.CustomResource):
             enable_ipv6=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC VPC can be imported using the id, e.g.
@@ -1122,6 +1124,8 @@ class Network(pulumi.CustomResource):
             vpc_name=name,
             enable_ipv6=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

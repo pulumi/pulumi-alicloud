@@ -192,6 +192,8 @@ class DeviceGroup(pulumi.CustomResource):
         example = alicloud.iot.DeviceGroup("example", group_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Iot Device Group can be imported using the id, e.g.
@@ -234,6 +236,8 @@ class DeviceGroup(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.iot.DeviceGroup("example", group_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

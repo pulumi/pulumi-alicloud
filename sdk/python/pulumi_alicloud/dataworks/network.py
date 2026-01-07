@@ -226,6 +226,8 @@ class Network(pulumi.CustomResource):
             dw_resource_group_id=default_v_jv_kvl.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Network can be imported using the id, e.g.
@@ -304,6 +306,8 @@ class Network(pulumi.CustomResource):
             vswitch_id=default675v38.id,
             dw_resource_group_id=default_v_jv_kvl.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

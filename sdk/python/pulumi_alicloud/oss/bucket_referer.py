@@ -273,6 +273,8 @@ class BucketReferer(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Referer can be imported using the id, e.g.
@@ -333,6 +335,8 @@ class BucketReferer(pulumi.CustomResource):
                 "*.example.com",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

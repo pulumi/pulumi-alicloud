@@ -194,6 +194,8 @@ class Backend(pulumi.CustomResource):
             backend_type="HTTP")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Backend can be imported using the id, e.g.
@@ -239,6 +241,8 @@ class Backend(pulumi.CustomResource):
             description=name,
             backend_type="HTTP")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

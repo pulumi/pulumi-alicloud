@@ -145,6 +145,8 @@ class Routine(pulumi.CustomResource):
             name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Routine can be imported using the id, e.g.
@@ -187,6 +189,8 @@ class Routine(pulumi.CustomResource):
             description=name,
             name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

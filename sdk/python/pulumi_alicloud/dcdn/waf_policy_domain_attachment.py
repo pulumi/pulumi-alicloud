@@ -152,6 +152,8 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
             policy_id=example_waf_policy.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DCDN Waf Policy Domain Attachment can be imported using the id, e.g.
@@ -219,6 +221,8 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
             domain_name=example_waf_domain.domain_name,
             policy_id=example_waf_policy.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

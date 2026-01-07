@@ -16,31 +16,63 @@ public final class RoutineRelatedRecordState extends com.pulumi.resources.Resour
 
     public static final RoutineRelatedRecordState Empty = new RoutineRelatedRecordState();
 
+    /**
+     * The routine name.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The routine name.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The record ID.
+     * 
+     */
     @Import(name="recordId")
     private @Nullable Output<Integer> recordId;
 
+    /**
+     * @return The record ID.
+     * 
+     */
     public Optional<Output<Integer>> recordId() {
         return Optional.ofNullable(this.recordId);
     }
 
+    /**
+     * The record name.
+     * 
+     */
     @Import(name="recordName")
     private @Nullable Output<String> recordName;
 
+    /**
+     * @return The record name.
+     * 
+     */
     public Optional<Output<String>> recordName() {
         return Optional.ofNullable(this.recordName);
     }
 
+    /**
+     * The website ID.
+     * 
+     */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
-    public Optional<Output<Integer>> siteId() {
+    /**
+     * @return The website ID.
+     * 
+     */
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
@@ -71,39 +103,87 @@ public final class RoutineRelatedRecordState extends com.pulumi.resources.Resour
             $ = new RoutineRelatedRecordState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The routine name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The routine name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param recordId The record ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recordId(@Nullable Output<Integer> recordId) {
             $.recordId = recordId;
             return this;
         }
 
+        /**
+         * @param recordId The record ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recordId(Integer recordId) {
             return recordId(Output.of(recordId));
         }
 
+        /**
+         * @param recordName The record name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recordName(@Nullable Output<String> recordName) {
             $.recordName = recordName;
             return this;
         }
 
+        /**
+         * @param recordName The record name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recordName(String recordName) {
             return recordName(Output.of(recordName));
         }
 
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        /**
+         * @param siteId The website ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
-        public Builder siteId(Integer siteId) {
+        /**
+         * @param siteId The website ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

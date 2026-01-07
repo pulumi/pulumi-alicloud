@@ -436,6 +436,8 @@ class HAVip(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The havip can be imported using the id, e.g.
@@ -486,6 +488,8 @@ class HAVip(pulumi.CustomResource):
             vswitch_id=example_switch.id,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

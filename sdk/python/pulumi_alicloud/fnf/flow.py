@@ -278,6 +278,8 @@ class Flow(pulumi.CustomResource):
             type="FDL")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless Workflow Flow can be imported using the id, e.g.
@@ -344,6 +346,8 @@ class Flow(pulumi.CustomResource):
             name="tf-example-flow",
             type="FDL")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

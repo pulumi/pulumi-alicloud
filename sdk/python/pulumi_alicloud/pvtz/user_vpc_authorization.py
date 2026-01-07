@@ -159,6 +159,8 @@ class UserVpcAuthorization(pulumi.CustomResource):
             auth_channel="RESOURCE_DIRECTORY")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Zone User Vpc Authorization can be imported using the id, e.g.
@@ -200,6 +202,8 @@ class UserVpcAuthorization(pulumi.CustomResource):
             authorized_user_id=authorized_user_id,
             auth_channel="RESOURCE_DIRECTORY")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

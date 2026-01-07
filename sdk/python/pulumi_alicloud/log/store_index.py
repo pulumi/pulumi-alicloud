@@ -356,6 +356,8 @@ class StoreIndex(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing sls module
@@ -432,6 +434,8 @@ class StoreIndex(pulumi.CustomResource):
         \\x09\"\"\",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

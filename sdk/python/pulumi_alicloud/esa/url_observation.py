@@ -184,6 +184,8 @@ class UrlObservation(pulumi.CustomResource):
             url="terraform.cn/a.html")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Url Observation can be imported using the id, e.g.
@@ -236,6 +238,8 @@ class UrlObservation(pulumi.CustomResource):
             site_id=default_site.id,
             url="terraform.cn/a.html")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

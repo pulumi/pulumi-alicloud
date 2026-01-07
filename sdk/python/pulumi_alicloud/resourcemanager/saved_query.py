@@ -177,6 +177,8 @@ class SavedQuery(pulumi.CustomResource):
             saved_query_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Saved Query can be imported using the id, e.g.
@@ -221,6 +223,8 @@ class SavedQuery(pulumi.CustomResource):
             expression="select * from resources limit 1;",
             saved_query_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -5,14 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Alikafka Sasl User resource.
+ * Provides an AliKafka Sasl User resource.
+ *
+ * For information about AliKafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
  *
  * > **NOTE:** Available since v1.66.0.
- *
- * > **NOTE:**  Only the following regions support create alikafka Sasl User.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
- *
- * For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
  *
  * ## Example Usage
  *
@@ -24,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -66,9 +63,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
- * Alikafka Sasl User can be imported using the id, e.g.
+ * AliKafka Sasl User can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
@@ -103,7 +102,7 @@ export class SaslUser extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
@@ -115,11 +114,18 @@ export class SaslUser extends pulumi.CustomResource {
      */
     declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     */
+    declare public readonly mechanism: pulumi.Output<string>;
+    /**
      * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string>;
     /**
-     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * The authentication mechanism. Default value: `plain`. Valid values:
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -143,6 +149,7 @@ export class SaslUser extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["mechanism"] = state?.mechanism;
             resourceInputs["password"] = state?.password;
             resourceInputs["type"] = state?.type;
             resourceInputs["username"] = state?.username;
@@ -157,6 +164,7 @@ export class SaslUser extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["mechanism"] = args?.mechanism;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["type"] = args?.type;
             resourceInputs["username"] = args?.username;
@@ -173,7 +181,7 @@ export class SaslUser extends pulumi.CustomResource {
  */
 export interface SaslUserState {
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -185,11 +193,18 @@ export interface SaslUserState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     */
+    mechanism?: pulumi.Input<string>;
+    /**
      * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     password?: pulumi.Input<string>;
     /**
-     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * The authentication mechanism. Default value: `plain`. Valid values:
      */
     type?: pulumi.Input<string>;
     /**
@@ -203,7 +218,7 @@ export interface SaslUserState {
  */
 export interface SaslUserArgs {
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      */
     instanceId: pulumi.Input<string>;
     /**
@@ -215,11 +230,18 @@ export interface SaslUserArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     */
+    mechanism?: pulumi.Input<string>;
+    /**
      * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     password?: pulumi.Input<string>;
     /**
-     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * The authentication mechanism. Default value: `plain`. Valid values:
      */
     type?: pulumi.Input<string>;
     /**

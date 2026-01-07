@@ -22,6 +22,7 @@ __all__ = [
     'BucketCnameCertificate',
     'BucketCorsCorsRule',
     'BucketCorsRule',
+    'BucketHttpsConfigCipherSuit',
     'BucketLifecycleRule',
     'BucketLifecycleRuleAbortMultipartUpload',
     'BucketLifecycleRuleExpiration',
@@ -488,6 +489,90 @@ class BucketCorsRule(dict):
         Specifies time in seconds that browser can cache the response for a preflight request.
         """
         return pulumi.get(self, "max_age_seconds")
+
+
+@pulumi.output_type
+class BucketHttpsConfigCipherSuit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customCipherSuites":
+            suggest = "custom_cipher_suites"
+        elif key == "strongCipherSuite":
+            suggest = "strong_cipher_suite"
+        elif key == "tls13CustomCipherSuites":
+            suggest = "tls13_custom_cipher_suites"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketHttpsConfigCipherSuit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketHttpsConfigCipherSuit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketHttpsConfigCipherSuit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_cipher_suites: Optional[Sequence[_builtins.str]] = None,
+                 enable: Optional[_builtins.bool] = None,
+                 strong_cipher_suite: Optional[_builtins.bool] = None,
+                 tls13_custom_cipher_suites: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] custom_cipher_suites: This field is used to configure custom encryption algorithm suites for TLS 1.2.
+        :param _builtins.bool enable: Configures TLS encryption algorithm suites. Valid values:
+               true: strong encryption algorithm suites or custom encryption algorithm suites.
+               false: all encryption algorithm suites (default).
+        :param _builtins.bool strong_cipher_suite: Specifies whether to use strong encryption algorithm suites. Valid values:
+               true: uses strong encryption algorithm suites.
+               false: uses custom encryption algorithm suites.
+        :param Sequence[_builtins.str] tls13_custom_cipher_suites: Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+        """
+        if custom_cipher_suites is not None:
+            pulumi.set(__self__, "custom_cipher_suites", custom_cipher_suites)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if strong_cipher_suite is not None:
+            pulumi.set(__self__, "strong_cipher_suite", strong_cipher_suite)
+        if tls13_custom_cipher_suites is not None:
+            pulumi.set(__self__, "tls13_custom_cipher_suites", tls13_custom_cipher_suites)
+
+    @_builtins.property
+    @pulumi.getter(name="customCipherSuites")
+    def custom_cipher_suites(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        This field is used to configure custom encryption algorithm suites for TLS 1.2.
+        """
+        return pulumi.get(self, "custom_cipher_suites")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[_builtins.bool]:
+        """
+        Configures TLS encryption algorithm suites. Valid values:
+        true: strong encryption algorithm suites or custom encryption algorithm suites.
+        false: all encryption algorithm suites (default).
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="strongCipherSuite")
+    def strong_cipher_suite(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to use strong encryption algorithm suites. Valid values:
+        true: uses strong encryption algorithm suites.
+        false: uses custom encryption algorithm suites.
+        """
+        return pulumi.get(self, "strong_cipher_suite")
+
+    @_builtins.property
+    @pulumi.getter(name="tls13CustomCipherSuites")
+    def tls13_custom_cipher_suites(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+        """
+        return pulumi.get(self, "tls13_custom_cipher_suites")
 
 
 @pulumi.output_type

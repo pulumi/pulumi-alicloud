@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * FCV3 Function Version can be imported using the id, e.g.
