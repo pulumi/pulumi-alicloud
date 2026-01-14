@@ -49,6 +49,7 @@ class ShardingInstanceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_type: Optional[pulumi.Input[_builtins.str]] = None,
                  order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
@@ -100,6 +101,7 @@ class ShardingInstanceArgs:
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
@@ -177,6 +179,8 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if protocol_type is not None:
@@ -554,6 +558,18 @@ class ShardingInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]:
+        """
+        Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
@@ -793,6 +809,7 @@ class _ShardingInstanceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_type: Optional[pulumi.Input[_builtins.str]] = None,
                  order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
@@ -846,6 +863,7 @@ class _ShardingInstanceState:
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
@@ -927,6 +945,8 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if protocol_type is not None:
@@ -1298,6 +1318,18 @@ class _ShardingInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]:
+        """
+        Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
@@ -1576,6 +1608,7 @@ class ShardingInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_type: Optional[pulumi.Input[_builtins.str]] = None,
                  order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1620,8 +1653,6 @@ class ShardingInstance(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
@@ -1629,11 +1660,11 @@ class ShardingInstance(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=zone_id)
+            zone_id=default.zones[1].id)
         default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
             engine_version="4.2",
             vswitch_id=default_switch.id,
-            zone_id=zone_id,
+            zone_id=default_switch.zone_id,
             name=name,
             mongo_lists=[
                 {
@@ -1704,6 +1735,7 @@ class ShardingInstance(pulumi.CustomResource):
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
@@ -1760,8 +1792,6 @@ class ShardingInstance(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
@@ -1769,11 +1799,11 @@ class ShardingInstance(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=zone_id)
+            zone_id=default.zones[1].id)
         default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
             engine_version="4.2",
             vswitch_id=default_switch.id,
-            zone_id=zone_id,
+            zone_id=default_switch.zone_id,
             name=name,
             mongo_lists=[
                 {
@@ -1853,6 +1883,7 @@ class ShardingInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_type: Optional[pulumi.Input[_builtins.str]] = None,
                  order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1911,6 +1942,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["order_type"] = order_type
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
             __props__.__dict__["protocol_type"] = protocol_type
             __props__.__dict__["provisioned_iops"] = provisioned_iops
@@ -1972,6 +2004,7 @@ class ShardingInstance(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network_type: Optional[pulumi.Input[_builtins.str]] = None,
             order_type: Optional[pulumi.Input[_builtins.str]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
             provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2030,6 +2063,7 @@ class ShardingInstance(pulumi.CustomResource):
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
@@ -2088,6 +2122,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["order_type"] = order_type
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["period"] = period
         __props__.__dict__["protocol_type"] = protocol_type
         __props__.__dict__["provisioned_iops"] = provisioned_iops
@@ -2329,6 +2364,14 @@ class ShardingInstance(pulumi.CustomResource):
         **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output[Sequence['outputs.ShardingInstanceParameter']]:
+        """
+        Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        """
+        return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter

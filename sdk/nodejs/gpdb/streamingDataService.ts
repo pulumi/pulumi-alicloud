@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a GPDB Streaming Data Service resource.
+ * Provides a AnalyticDB for PostgreSQL (GPDB) Streaming Data Service resource.
  *
- * For information about GPDB Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
+ * For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
  *
  * > **NOTE:** Available since v1.227.0.
  *
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GPDB Streaming Data Service can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
@@ -103,7 +103,7 @@ export class StreamingDataService extends pulumi.CustomResource {
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
-     * The creation time of the resource
+     * The description of the service.
      */
     declare public readonly serviceDescription: pulumi.Output<string | undefined>;
     /**
@@ -180,7 +180,7 @@ export interface StreamingDataServiceState {
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
-     * The creation time of the resource
+     * The description of the service.
      */
     serviceDescription?: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface StreamingDataServiceArgs {
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * The creation time of the resource
+     * The description of the service.
      */
     serviceDescription?: pulumi.Input<string>;
     /**

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a GPDB Streaming Data Service resource.
+    /// Provides a AnalyticDB for PostgreSQL (GPDB) Streaming Data Service resource.
     /// 
-    /// For information about GPDB Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
+    /// For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
     /// 
     /// &gt; **NOTE:** Available since v1.227.0.
     /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB Streaming Data Service can be imported using the id, e.g.
+    /// AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example &lt;db_instance_id&gt;:&lt;service_id&gt;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The description of the service.
         /// </summary>
         [Output("serviceDescription")]
         public Output<string?> ServiceDescription { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The description of the service.
         /// </summary>
         [Input("serviceDescription")]
         public Input<string>? ServiceDescription { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The description of the service.
         /// </summary>
         [Input("serviceDescription")]
         public Input<string>? ServiceDescription { get; set; }

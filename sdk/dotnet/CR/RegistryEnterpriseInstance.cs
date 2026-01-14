@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.CR
     /// <summary>
     /// Provides a CR Instance resource.
     /// 
-    /// For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+    /// For information about Container Registry Instance and how to use it, see [What is Container Registry](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry).
+    /// 
+    /// For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.124.0.
     /// 
@@ -141,6 +143,14 @@ namespace Pulumi.AliCloud.CR
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
+        /// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("namespaceQuota")]
+        public Output<int?> NamespaceQuota { get; private set; } = null!;
+
+        /// <summary>
         /// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         /// </summary>
         [Output("password")]
@@ -189,9 +199,15 @@ namespace Pulumi.AliCloud.CR
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group
+        /// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
         /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("repoQuota")]
+        public Output<int?> RepoQuota { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -201,6 +217,17 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of VPC access controls.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// 
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("vpcQuota")]
+        public Output<int?> VpcQuota { get; private set; } = null!;
 
 
         /// <summary>
@@ -311,6 +338,14 @@ namespace Pulumi.AliCloud.CR
             set => _kmsEncryptionContext = value;
         }
 
+        /// <summary>
+        /// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("namespaceQuota")]
+        public Input<int>? NamespaceQuota { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -364,12 +399,29 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
         /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("repoQuota")]
+        public Input<int>? RepoQuota { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The number of VPC access controls.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// 
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("vpcQuota")]
+        public Input<int>? VpcQuota { get; set; }
 
         public RegistryEnterpriseInstanceArgs()
         {
@@ -468,6 +520,14 @@ namespace Pulumi.AliCloud.CR
             set => _kmsEncryptionContext = value;
         }
 
+        /// <summary>
+        /// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("namespaceQuota")]
+        public Input<int>? NamespaceQuota { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -527,9 +587,15 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
         /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("repoQuota")]
+        public Input<int>? RepoQuota { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -539,6 +605,17 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The number of VPC access controls.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// 
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("vpcQuota")]
+        public Input<int>? VpcQuota { get; set; }
 
         public RegistryEnterpriseInstanceState()
         {

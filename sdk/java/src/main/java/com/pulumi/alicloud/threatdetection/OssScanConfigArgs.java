@@ -20,14 +20,14 @@ public final class OssScanConfigArgs extends com.pulumi.resources.ResourceArgs {
     public static final OssScanConfigArgs Empty = new OssScanConfigArgs();
 
     /**
-     * Indicates whether the prefixes of all objects are matched.
+     * Specifies whether to match the prefixes of all objects.
      * 
      */
     @Import(name="allKeyPrefix")
     private @Nullable Output<Boolean> allKeyPrefix;
 
     /**
-     * @return Indicates whether the prefixes of all objects are matched.
+     * @return Specifies whether to match the prefixes of all objects.
      * 
      */
     public Optional<Output<Boolean>> allKeyPrefix() {
@@ -251,7 +251,7 @@ public final class OssScanConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allKeyPrefix Indicates whether the prefixes of all objects are matched.
+         * @param allKeyPrefix Specifies whether to match the prefixes of all objects.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class OssScanConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allKeyPrefix Indicates whether the prefixes of all objects are matched.
+         * @param allKeyPrefix Specifies whether to match the prefixes of all objects.
          * 
          * @return builder
          * 

@@ -22,18 +22,25 @@ class ConsumerGroupArgs:
                  consumer_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 remark: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConsumerGroup resource.
-        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
+        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
         :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
-        :param pulumi.Input[_builtins.str] description: The description of the resource.
+        :param pulumi.Input[_builtins.str] description: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+        :param pulumi.Input[_builtins.str] remark: The remark of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "consumer_id", consumer_id)
         pulumi.set(__self__, "instance_id", instance_id)
         if description is not None:
+            warnings.warn("""Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""")
+        if description is not None:
             pulumi.set(__self__, "description", description)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -41,7 +48,7 @@ class ConsumerGroupArgs:
     @pulumi.getter(name="consumerId")
     def consumer_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the consumer group. The length cannot exceed 64 characters.
+        ID of the consumer group.
         """
         return pulumi.get(self, "consumer_id")
 
@@ -63,15 +70,28 @@ class ConsumerGroupArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""")
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the resource.
+        Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The remark of the resource.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
@@ -90,22 +110,37 @@ class ConsumerGroupArgs:
 class _ConsumerGroupState:
     def __init__(__self__, *,
                  consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 remark: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConsumerGroup resources.
-        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] description: The description of the resource.
+        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.268.0) The timestamp of when the group was created.
+        :param pulumi.Input[_builtins.str] description: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
         :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.268.0) The region ID.
+        :param pulumi.Input[_builtins.str] remark: The remark of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         if consumer_id is not None:
             pulumi.set(__self__, "consumer_id", consumer_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            warnings.warn("""Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -113,7 +148,7 @@ class _ConsumerGroupState:
     @pulumi.getter(name="consumerId")
     def consumer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the consumer group. The length cannot exceed 64 characters.
+        ID of the consumer group.
         """
         return pulumi.get(self, "consumer_id")
 
@@ -122,10 +157,23 @@ class _ConsumerGroupState:
         pulumi.set(self, "consumer_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Available since v1.268.0) The timestamp of when the group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""")
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the resource.
+        Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
         """
         return pulumi.get(self, "description")
 
@@ -144,6 +192,30 @@ class _ConsumerGroupState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.268.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The remark of the resource.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
@@ -167,15 +239,17 @@ class ConsumerGroup(pulumi.CustomResource):
                  consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 remark: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
+        Provides a Ali Kafka Consumer Group resource.
+
+        Group in kafka.
+
+        For information about Ali Kafka Consumer Group and how to use it, see [What is Consumer Group](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateConsumerGroup).
 
         > **NOTE:** Available since v1.56.0.
-
-        > **NOTE:**  Only the following regions support create alikafka consumer group.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
         ## Example Usage
 
@@ -184,51 +258,33 @@ class ConsumerGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("default", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("default",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
-        default_instance = alicloud.alikafka.Instance("default",
-            name=f"{name}-{default_integer['result']}",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=5,
-            io_max=20,
-            vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
+            name = "terraform-example"
+        default = alicloud.actiontrail.get_instances()
         default_consumer_group = alicloud.alikafka.ConsumerGroup("default",
-            consumer_id=name,
-            instance_id=default_instance.id)
+            instance_id=default.instances[0].id,
+            consumer_id=name)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        ALIKAFKA GROUP can be imported using the id, e.g.
+        AliKafka Consumer Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+        $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] description: The description of the resource.
+        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
+        :param pulumi.Input[_builtins.str] description: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
         :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] remark: The remark of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -238,12 +294,13 @@ class ConsumerGroup(pulumi.CustomResource):
                  args: ConsumerGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
+        Provides a Ali Kafka Consumer Group resource.
+
+        Group in kafka.
+
+        For information about Ali Kafka Consumer Group and how to use it, see [What is Consumer Group](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateConsumerGroup).
 
         > **NOTE:** Available since v1.56.0.
-
-        > **NOTE:**  Only the following regions support create alikafka consumer group.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
         ## Example Usage
 
@@ -252,44 +309,25 @@ class ConsumerGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("default", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("default",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
-        default_instance = alicloud.alikafka.Instance("default",
-            name=f"{name}-{default_integer['result']}",
-            partition_num=50,
-            disk_type=1,
-            disk_size=500,
-            deploy_type=5,
-            io_max=20,
-            vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
+            name = "terraform-example"
+        default = alicloud.actiontrail.get_instances()
         default_consumer_group = alicloud.alikafka.ConsumerGroup("default",
-            consumer_id=name,
-            instance_id=default_instance.id)
+            instance_id=default.instances[0].id,
+            consumer_id=name)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        ALIKAFKA GROUP can be imported using the id, e.g.
+        AliKafka Consumer Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+        $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -310,6 +348,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 remark: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -327,7 +366,10 @@ class ConsumerGroup(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["remark"] = remark
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(ConsumerGroup, __self__).__init__(
             'alicloud:alikafka/consumerGroup:ConsumerGroup',
             resource_name,
@@ -339,8 +381,11 @@ class ConsumerGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
+            remark: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ConsumerGroup':
         """
         Get an existing ConsumerGroup resource's state with the given name, id, and optional extra
@@ -349,9 +394,12 @@ class ConsumerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
-        :param pulumi.Input[_builtins.str] description: The description of the resource.
+        :param pulumi.Input[_builtins.str] consumer_id: ID of the consumer group.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.268.0) The timestamp of when the group was created.
+        :param pulumi.Input[_builtins.str] description: Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
         :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.268.0) The region ID.
+        :param pulumi.Input[_builtins.str] remark: The remark of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -359,8 +407,11 @@ class ConsumerGroup(pulumi.CustomResource):
         __props__ = _ConsumerGroupState.__new__(_ConsumerGroupState)
 
         __props__.__dict__["consumer_id"] = consumer_id
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["remark"] = remark
         __props__.__dict__["tags"] = tags
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -368,15 +419,24 @@ class ConsumerGroup(pulumi.CustomResource):
     @pulumi.getter(name="consumerId")
     def consumer_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the consumer group. The length cannot exceed 64 characters.
+        ID of the consumer group.
         """
         return pulumi.get(self, "consumer_id")
 
     @_builtins.property
-    @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.int]:
         """
-        The description of the resource.
+        (Available since v1.268.0) The timestamp of when the group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.""")
+    def description(self) -> pulumi.Output[_builtins.str]:
+        """
+        Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
         """
         return pulumi.get(self, "description")
 
@@ -387,6 +447,22 @@ class ConsumerGroup(pulumi.CustomResource):
         ID of the ALIKAFKA Instance that owns the groups.
         """
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.268.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def remark(self) -> pulumi.Output[_builtins.str]:
+        """
+        The remark of the resource.
+        """
+        return pulumi.get(self, "remark")
 
     @_builtins.property
     @pulumi.getter

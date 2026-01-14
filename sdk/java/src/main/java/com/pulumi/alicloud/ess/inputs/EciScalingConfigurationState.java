@@ -499,6 +499,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * Specifies whether to overwrite the data. Valid values: true, false.
+     * 
+     */
+    @Import(name="override")
+    private @Nullable Output<Boolean> override;
+
+    /**
+     * @return Specifies whether to overwrite the data. Valid values: true, false.
+     * 
+     */
+    public Optional<Output<Boolean>> override() {
+        return Optional.ofNullable(this.override);
+    }
+
+    /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      * 
      */
@@ -731,6 +746,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.loadBalancerWeight = $.loadBalancerWeight;
         this.memory = $.memory;
+        this.override = $.override;
         this.ramRoleName = $.ramRoleName;
         this.resourceGroupId = $.resourceGroupId;
         this.restartPolicy = $.restartPolicy;
@@ -1483,6 +1499,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder memory(Double memory) {
             return memory(Output.of(memory));
+        }
+
+        /**
+         * @param override Specifies whether to overwrite the data. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder override(@Nullable Output<Boolean> override) {
+            $.override = override;
+            return this;
+        }
+
+        /**
+         * @param override Specifies whether to overwrite the data. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder override(Boolean override) {
+            return override(Output.of(override));
         }
 
         /**

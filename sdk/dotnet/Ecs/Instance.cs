@@ -355,7 +355,8 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> IsOutdated { get; private set; } = null!;
 
         /// <summary>
-        /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+        /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `KeyName` can be modified. If you want to use `KeyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+        /// &gt; **NOTE:** When modifying `KeyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
@@ -619,10 +620,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> StoppedMode { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `SystemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         /// </summary>
         [Output("systemDiskAutoSnapshotPolicyId")]
-        public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
+        public Output<string> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
@@ -1009,7 +1010,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? IsOutdated { get; set; }
 
         /// <summary>
-        /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+        /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `KeyName` can be modified. If you want to use `KeyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+        /// &gt; **NOTE:** When modifying `KeyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -1259,7 +1261,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? StoppedMode { get; set; }
 
         /// <summary>
-        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `SystemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         /// </summary>
         [Input("systemDiskAutoSnapshotPolicyId")]
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
@@ -1637,7 +1639,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? IsOutdated { get; set; }
 
         /// <summary>
-        /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+        /// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `KeyName` can be modified. If you want to use `KeyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+        /// &gt; **NOTE:** When modifying `KeyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -1929,7 +1932,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? StoppedMode { get; set; }
 
         /// <summary>
-        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `SystemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
         /// </summary>
         [Input("systemDiskAutoSnapshotPolicyId")]
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }

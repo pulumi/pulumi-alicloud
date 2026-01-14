@@ -1561,6 +1561,7 @@
         "rdc/organization.ts",
         "rds/account.ts",
         "rds/accountPrivilege.ts",
+        "rds/aiInstance.ts",
         "rds/backupPolicy.ts",
         "rds/connection.ts",
         "rds/custom.ts",

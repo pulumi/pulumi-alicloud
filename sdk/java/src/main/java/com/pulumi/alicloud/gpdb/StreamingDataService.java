@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a GPDB Streaming Data Service resource.
+ * Provides a AnalyticDB for PostgreSQL (GPDB) Streaming Data Service resource.
  * 
- * For information about GPDB Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
+ * For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
  * 
  * &gt; **NOTE:** Available since v1.227.0.
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GPDB Streaming Data Service can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example &lt;db_instance_id&gt;:&lt;service_id&gt;
@@ -144,14 +144,14 @@ public class StreamingDataService extends com.pulumi.resources.CustomResource {
         return this.dbInstanceId;
     }
     /**
-     * The creation time of the resource
+     * The description of the service.
      * 
      */
     @Export(name="serviceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceDescription;
 
     /**
-     * @return The creation time of the resource
+     * @return The description of the service.
      * 
      */
     public Output<Optional<String>> serviceDescription() {

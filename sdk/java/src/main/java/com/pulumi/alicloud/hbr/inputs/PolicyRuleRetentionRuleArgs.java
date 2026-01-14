@@ -32,14 +32,14 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Retention time, in days.
+     * Retention time, in days
      * 
      */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
     /**
-     * @return Retention time, in days.
+     * @return Retention time, in days
      * 
      */
     public Optional<Output<Integer>> retention() {
@@ -93,7 +93,7 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param retention Retention time, in days.
+         * @param retention Retention time, in days
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param retention Retention time, in days.
+         * @param retention Retention time, in days
          * 
          * @return builder
          * 

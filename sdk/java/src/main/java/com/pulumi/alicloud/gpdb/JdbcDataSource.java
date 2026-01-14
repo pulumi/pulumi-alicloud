@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a GPDB Jdbc Data Source resource.
+ * Provides a AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source resource.
  * 
- * For information about GPDB Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
+ * For information about AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
  * 
  * &gt; **NOTE:** Available since v1.230.0.
  * 
@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  *             .dbInstanceId(defaulttuqTmM.id())
  *             .accountName("example_001")
  *             .accountPassword("example_001")
+ *             .accountType("Normal")
  *             .build());
  * 
  *         var defaultRXkfKL = new ExternalDataService("defaultRXkfKL", ExternalDataServiceArgs.builder()
@@ -125,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GPDB Jdbc Data Source can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:gpdb/jdbcDataSource:JdbcDataSource example &lt;db_instance_id&gt;:&lt;data_source_id&gt;

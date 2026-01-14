@@ -247,7 +247,7 @@ func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRule
 }
 
 type PolicyBindingAdvancedOptions struct {
-	// ECS Backup Advanced options. See `udmDetail` below.
+	// ECS Backup Advanced options See `udmDetail` below.
 	UdmDetail *PolicyBindingAdvancedOptionsUdmDetail `pulumi:"udmDetail"`
 }
 
@@ -263,7 +263,7 @@ type PolicyBindingAdvancedOptionsInput interface {
 }
 
 type PolicyBindingAdvancedOptionsArgs struct {
-	// ECS Backup Advanced options. See `udmDetail` below.
+	// ECS Backup Advanced options See `udmDetail` below.
 	UdmDetail PolicyBindingAdvancedOptionsUdmDetailPtrInput `pulumi:"udmDetail"`
 }
 
@@ -344,7 +344,7 @@ func (o PolicyBindingAdvancedOptionsOutput) ToPolicyBindingAdvancedOptionsPtrOut
 	}).(PolicyBindingAdvancedOptionsPtrOutput)
 }
 
-// ECS Backup Advanced options. See `udmDetail` below.
+// ECS Backup Advanced options See `udmDetail` below.
 func (o PolicyBindingAdvancedOptionsOutput) UdmDetail() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsUdmDetail { return v.UdmDetail }).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
 }
@@ -373,7 +373,7 @@ func (o PolicyBindingAdvancedOptionsPtrOutput) Elem() PolicyBindingAdvancedOptio
 	}).(PolicyBindingAdvancedOptionsOutput)
 }
 
-// ECS Backup Advanced options. See `udmDetail` below.
+// ECS Backup Advanced options See `udmDetail` below.
 func (o PolicyBindingAdvancedOptionsPtrOutput) UdmDetail() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsUdmDetail {
 		if v == nil {
@@ -384,11 +384,11 @@ func (o PolicyBindingAdvancedOptionsPtrOutput) UdmDetail() PolicyBindingAdvanced
 }
 
 type PolicyBindingAdvancedOptionsUdmDetail struct {
-	// Custom KMS key ID of encrypted copy.
+	// Custom KMS key ID of encrypted copy
 	DestinationKmsKeyId *string `pulumi:"destinationKmsKeyId"`
 	// The list of backup disks. If it is empty, all disks are backed up.
 	DiskIdLists []string `pulumi:"diskIdLists"`
-	// List of cloud disk IDs that are not backed up.
+	// List of cloud disk IDs that are not backed up
 	ExcludeDiskIdLists []string `pulumi:"excludeDiskIdLists"`
 }
 
@@ -404,11 +404,11 @@ type PolicyBindingAdvancedOptionsUdmDetailInput interface {
 }
 
 type PolicyBindingAdvancedOptionsUdmDetailArgs struct {
-	// Custom KMS key ID of encrypted copy.
+	// Custom KMS key ID of encrypted copy
 	DestinationKmsKeyId pulumi.StringPtrInput `pulumi:"destinationKmsKeyId"`
 	// The list of backup disks. If it is empty, all disks are backed up.
 	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
-	// List of cloud disk IDs that are not backed up.
+	// List of cloud disk IDs that are not backed up
 	ExcludeDiskIdLists pulumi.StringArrayInput `pulumi:"excludeDiskIdLists"`
 }
 
@@ -489,7 +489,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOpti
 	}).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
 }
 
-// Custom KMS key ID of encrypted copy.
+// Custom KMS key ID of encrypted copy
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.DestinationKmsKeyId }).(pulumi.StringPtrOutput)
 }
@@ -499,7 +499,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DiskIdLists() pulumi.String
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
 }
 
-// List of cloud disk IDs that are not backed up.
+// List of cloud disk IDs that are not backed up
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.ExcludeDiskIdLists }).(pulumi.StringArrayOutput)
 }
@@ -528,7 +528,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) Elem() PolicyBindingAdva
 	}).(PolicyBindingAdvancedOptionsUdmDetailOutput)
 }
 
-// Custom KMS key ID of encrypted copy.
+// Custom KMS key ID of encrypted copy
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
 		if v == nil {
@@ -548,7 +548,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DiskIdLists() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of cloud disk IDs that are not backed up.
+// List of cloud disk IDs that are not backed up
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) []string {
 		if v == nil {
@@ -559,25 +559,29 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pul
 }
 
 type PolicyRule struct {
-	// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+	// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
 	ArchiveDays *int `pulumi:"archiveDays"`
-	// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+	// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
 	BackupType *string `pulumi:"backupType"`
-	// This parameter is required only when `RuleType` is set to `BACKUP`.
+	// This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+	DataSourceFilters []PolicyRuleDataSourceFilter `pulumi:"dataSourceFilters"`
+	// This parameter is required only when `RuleType` is set to `BACKUP`
 	KeepLatestSnapshots *int `pulumi:"keepLatestSnapshots"`
-	// Only when the `RuleType` value is.
+	// Only when the `RuleType` value is
 	ReplicationRegionId *string `pulumi:"replicationRegionId"`
-	// Retention time, in days.
+	// Retention time, in days
 	Retention *int `pulumi:"retention"`
 	// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
 	RetentionRules []PolicyRuleRetentionRule `pulumi:"retentionRules"`
-	// Rule ID.
+	// Rule ID
 	RuleId *string `pulumi:"ruleId"`
-	// Rule Type.
+	// Rule Type
 	RuleType string `pulumi:"ruleType"`
 	// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 	Schedule *string `pulumi:"schedule"`
-	// Vault ID.
+	// This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+	TagFilters []PolicyRuleTagFilter `pulumi:"tagFilters"`
+	// Vault ID
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -593,25 +597,29 @@ type PolicyRuleInput interface {
 }
 
 type PolicyRuleArgs struct {
-	// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+	// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
 	ArchiveDays pulumi.IntPtrInput `pulumi:"archiveDays"`
-	// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+	// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
 	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
-	// This parameter is required only when `RuleType` is set to `BACKUP`.
+	// This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+	DataSourceFilters PolicyRuleDataSourceFilterArrayInput `pulumi:"dataSourceFilters"`
+	// This parameter is required only when `RuleType` is set to `BACKUP`
 	KeepLatestSnapshots pulumi.IntPtrInput `pulumi:"keepLatestSnapshots"`
-	// Only when the `RuleType` value is.
+	// Only when the `RuleType` value is
 	ReplicationRegionId pulumi.StringPtrInput `pulumi:"replicationRegionId"`
-	// Retention time, in days.
+	// Retention time, in days
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 	// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
 	RetentionRules PolicyRuleRetentionRuleArrayInput `pulumi:"retentionRules"`
-	// Rule ID.
+	// Rule ID
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
-	// Rule Type.
+	// Rule Type
 	RuleType pulumi.StringInput `pulumi:"ruleType"`
 	// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
-	// Vault ID.
+	// This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+	TagFilters PolicyRuleTagFilterArrayInput `pulumi:"tagFilters"`
+	// Vault ID
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 
@@ -666,27 +674,32 @@ func (o PolicyRuleOutput) ToPolicyRuleOutputWithContext(ctx context.Context) Pol
 	return o
 }
 
-// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
 func (o PolicyRuleOutput) ArchiveDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *int { return v.ArchiveDays }).(pulumi.IntPtrOutput)
 }
 
-// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
 func (o PolicyRuleOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// This parameter is required only when `RuleType` is set to `BACKUP`.
+// This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+func (o PolicyRuleOutput) DataSourceFilters() PolicyRuleDataSourceFilterArrayOutput {
+	return o.ApplyT(func(v PolicyRule) []PolicyRuleDataSourceFilter { return v.DataSourceFilters }).(PolicyRuleDataSourceFilterArrayOutput)
+}
+
+// This parameter is required only when `RuleType` is set to `BACKUP`
 func (o PolicyRuleOutput) KeepLatestSnapshots() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *int { return v.KeepLatestSnapshots }).(pulumi.IntPtrOutput)
 }
 
-// Only when the `RuleType` value is.
+// Only when the `RuleType` value is
 func (o PolicyRuleOutput) ReplicationRegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.ReplicationRegionId }).(pulumi.StringPtrOutput)
 }
 
-// Retention time, in days.
+// Retention time, in days
 func (o PolicyRuleOutput) Retention() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *int { return v.Retention }).(pulumi.IntPtrOutput)
 }
@@ -696,12 +709,12 @@ func (o PolicyRuleOutput) RetentionRules() PolicyRuleRetentionRuleArrayOutput {
 	return o.ApplyT(func(v PolicyRule) []PolicyRuleRetentionRule { return v.RetentionRules }).(PolicyRuleRetentionRuleArrayOutput)
 }
 
-// Rule ID.
+// Rule ID
 func (o PolicyRuleOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
-// Rule Type.
+// Rule Type
 func (o PolicyRuleOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyRule) string { return v.RuleType }).(pulumi.StringOutput)
 }
@@ -711,7 +724,12 @@ func (o PolicyRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
 
-// Vault ID.
+// This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+func (o PolicyRuleOutput) TagFilters() PolicyRuleTagFilterArrayOutput {
+	return o.ApplyT(func(v PolicyRule) []PolicyRuleTagFilter { return v.TagFilters }).(PolicyRuleTagFilterArrayOutput)
+}
+
+// Vault ID
 func (o PolicyRuleOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }
@@ -736,10 +754,107 @@ func (o PolicyRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleOutput {
 	}).(PolicyRuleOutput)
 }
 
+type PolicyRuleDataSourceFilter struct {
+	// The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+	SourceType *string `pulumi:"sourceType"`
+}
+
+// PolicyRuleDataSourceFilterInput is an input type that accepts PolicyRuleDataSourceFilterArgs and PolicyRuleDataSourceFilterOutput values.
+// You can construct a concrete instance of `PolicyRuleDataSourceFilterInput` via:
+//
+//	PolicyRuleDataSourceFilterArgs{...}
+type PolicyRuleDataSourceFilterInput interface {
+	pulumi.Input
+
+	ToPolicyRuleDataSourceFilterOutput() PolicyRuleDataSourceFilterOutput
+	ToPolicyRuleDataSourceFilterOutputWithContext(context.Context) PolicyRuleDataSourceFilterOutput
+}
+
+type PolicyRuleDataSourceFilterArgs struct {
+	// The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+}
+
+func (PolicyRuleDataSourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRuleDataSourceFilter)(nil)).Elem()
+}
+
+func (i PolicyRuleDataSourceFilterArgs) ToPolicyRuleDataSourceFilterOutput() PolicyRuleDataSourceFilterOutput {
+	return i.ToPolicyRuleDataSourceFilterOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleDataSourceFilterArgs) ToPolicyRuleDataSourceFilterOutputWithContext(ctx context.Context) PolicyRuleDataSourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleDataSourceFilterOutput)
+}
+
+// PolicyRuleDataSourceFilterArrayInput is an input type that accepts PolicyRuleDataSourceFilterArray and PolicyRuleDataSourceFilterArrayOutput values.
+// You can construct a concrete instance of `PolicyRuleDataSourceFilterArrayInput` via:
+//
+//	PolicyRuleDataSourceFilterArray{ PolicyRuleDataSourceFilterArgs{...} }
+type PolicyRuleDataSourceFilterArrayInput interface {
+	pulumi.Input
+
+	ToPolicyRuleDataSourceFilterArrayOutput() PolicyRuleDataSourceFilterArrayOutput
+	ToPolicyRuleDataSourceFilterArrayOutputWithContext(context.Context) PolicyRuleDataSourceFilterArrayOutput
+}
+
+type PolicyRuleDataSourceFilterArray []PolicyRuleDataSourceFilterInput
+
+func (PolicyRuleDataSourceFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRuleDataSourceFilter)(nil)).Elem()
+}
+
+func (i PolicyRuleDataSourceFilterArray) ToPolicyRuleDataSourceFilterArrayOutput() PolicyRuleDataSourceFilterArrayOutput {
+	return i.ToPolicyRuleDataSourceFilterArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleDataSourceFilterArray) ToPolicyRuleDataSourceFilterArrayOutputWithContext(ctx context.Context) PolicyRuleDataSourceFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleDataSourceFilterArrayOutput)
+}
+
+type PolicyRuleDataSourceFilterOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleDataSourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRuleDataSourceFilter)(nil)).Elem()
+}
+
+func (o PolicyRuleDataSourceFilterOutput) ToPolicyRuleDataSourceFilterOutput() PolicyRuleDataSourceFilterOutput {
+	return o
+}
+
+func (o PolicyRuleDataSourceFilterOutput) ToPolicyRuleDataSourceFilterOutputWithContext(ctx context.Context) PolicyRuleDataSourceFilterOutput {
+	return o
+}
+
+// The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+func (o PolicyRuleDataSourceFilterOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRuleDataSourceFilter) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+type PolicyRuleDataSourceFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleDataSourceFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRuleDataSourceFilter)(nil)).Elem()
+}
+
+func (o PolicyRuleDataSourceFilterArrayOutput) ToPolicyRuleDataSourceFilterArrayOutput() PolicyRuleDataSourceFilterArrayOutput {
+	return o
+}
+
+func (o PolicyRuleDataSourceFilterArrayOutput) ToPolicyRuleDataSourceFilterArrayOutputWithContext(ctx context.Context) PolicyRuleDataSourceFilterArrayOutput {
+	return o
+}
+
+func (o PolicyRuleDataSourceFilterArrayOutput) Index(i pulumi.IntInput) PolicyRuleDataSourceFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRuleDataSourceFilter {
+		return vs[0].([]PolicyRuleDataSourceFilter)[vs[1].(int)]
+	}).(PolicyRuleDataSourceFilterOutput)
+}
+
 type PolicyRuleRetentionRule struct {
 	// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
 	AdvancedRetentionType *string `pulumi:"advancedRetentionType"`
-	// Retention time, in days.
+	// Retention time, in days
 	Retention *int `pulumi:"retention"`
 }
 
@@ -757,7 +872,7 @@ type PolicyRuleRetentionRuleInput interface {
 type PolicyRuleRetentionRuleArgs struct {
 	// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
 	AdvancedRetentionType pulumi.StringPtrInput `pulumi:"advancedRetentionType"`
-	// Retention time, in days.
+	// Retention time, in days
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
 }
 
@@ -817,7 +932,7 @@ func (o PolicyRuleRetentionRuleOutput) AdvancedRetentionType() pulumi.StringPtrO
 	return o.ApplyT(func(v PolicyRuleRetentionRule) *string { return v.AdvancedRetentionType }).(pulumi.StringPtrOutput)
 }
 
-// Retention time, in days.
+// Retention time, in days
 func (o PolicyRuleRetentionRuleOutput) Retention() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRuleRetentionRule) *int { return v.Retention }).(pulumi.IntPtrOutput)
 }
@@ -840,6 +955,121 @@ func (o PolicyRuleRetentionRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRuleRetentionRule {
 		return vs[0].([]PolicyRuleRetentionRule)[vs[1].(int)]
 	}).(PolicyRuleRetentionRuleOutput)
+}
+
+type PolicyRuleTagFilter struct {
+	// The tag key.
+	Key *string `pulumi:"key"`
+	// Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+	Operator *string `pulumi:"operator"`
+	// The label value, which is empty and represents any value.
+	Value *string `pulumi:"value"`
+}
+
+// PolicyRuleTagFilterInput is an input type that accepts PolicyRuleTagFilterArgs and PolicyRuleTagFilterOutput values.
+// You can construct a concrete instance of `PolicyRuleTagFilterInput` via:
+//
+//	PolicyRuleTagFilterArgs{...}
+type PolicyRuleTagFilterInput interface {
+	pulumi.Input
+
+	ToPolicyRuleTagFilterOutput() PolicyRuleTagFilterOutput
+	ToPolicyRuleTagFilterOutputWithContext(context.Context) PolicyRuleTagFilterOutput
+}
+
+type PolicyRuleTagFilterArgs struct {
+	// The tag key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The label value, which is empty and represents any value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (PolicyRuleTagFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRuleTagFilter)(nil)).Elem()
+}
+
+func (i PolicyRuleTagFilterArgs) ToPolicyRuleTagFilterOutput() PolicyRuleTagFilterOutput {
+	return i.ToPolicyRuleTagFilterOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleTagFilterArgs) ToPolicyRuleTagFilterOutputWithContext(ctx context.Context) PolicyRuleTagFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleTagFilterOutput)
+}
+
+// PolicyRuleTagFilterArrayInput is an input type that accepts PolicyRuleTagFilterArray and PolicyRuleTagFilterArrayOutput values.
+// You can construct a concrete instance of `PolicyRuleTagFilterArrayInput` via:
+//
+//	PolicyRuleTagFilterArray{ PolicyRuleTagFilterArgs{...} }
+type PolicyRuleTagFilterArrayInput interface {
+	pulumi.Input
+
+	ToPolicyRuleTagFilterArrayOutput() PolicyRuleTagFilterArrayOutput
+	ToPolicyRuleTagFilterArrayOutputWithContext(context.Context) PolicyRuleTagFilterArrayOutput
+}
+
+type PolicyRuleTagFilterArray []PolicyRuleTagFilterInput
+
+func (PolicyRuleTagFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRuleTagFilter)(nil)).Elem()
+}
+
+func (i PolicyRuleTagFilterArray) ToPolicyRuleTagFilterArrayOutput() PolicyRuleTagFilterArrayOutput {
+	return i.ToPolicyRuleTagFilterArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleTagFilterArray) ToPolicyRuleTagFilterArrayOutputWithContext(ctx context.Context) PolicyRuleTagFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleTagFilterArrayOutput)
+}
+
+type PolicyRuleTagFilterOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleTagFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRuleTagFilter)(nil)).Elem()
+}
+
+func (o PolicyRuleTagFilterOutput) ToPolicyRuleTagFilterOutput() PolicyRuleTagFilterOutput {
+	return o
+}
+
+func (o PolicyRuleTagFilterOutput) ToPolicyRuleTagFilterOutputWithContext(ctx context.Context) PolicyRuleTagFilterOutput {
+	return o
+}
+
+// The tag key.
+func (o PolicyRuleTagFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRuleTagFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+func (o PolicyRuleTagFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRuleTagFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The label value, which is empty and represents any value.
+func (o PolicyRuleTagFilterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRuleTagFilter) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type PolicyRuleTagFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleTagFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRuleTagFilter)(nil)).Elem()
+}
+
+func (o PolicyRuleTagFilterArrayOutput) ToPolicyRuleTagFilterArrayOutput() PolicyRuleTagFilterArrayOutput {
+	return o
+}
+
+func (o PolicyRuleTagFilterArrayOutput) ToPolicyRuleTagFilterArrayOutputWithContext(ctx context.Context) PolicyRuleTagFilterArrayOutput {
+	return o
+}
+
+func (o PolicyRuleTagFilterArrayOutput) Index(i pulumi.IntInput) PolicyRuleTagFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRuleTagFilter {
+		return vs[0].([]PolicyRuleTagFilter)[vs[1].(int)]
+	}).(PolicyRuleTagFilterOutput)
 }
 
 type RestoreJobOtsDetail struct {
@@ -5668,8 +5898,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetailPtrInput)(nil)).Elem(), PolicyBindingAdvancedOptionsUdmDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleInput)(nil)).Elem(), PolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleArrayInput)(nil)).Elem(), PolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleDataSourceFilterInput)(nil)).Elem(), PolicyRuleDataSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleDataSourceFilterArrayInput)(nil)).Elem(), PolicyRuleDataSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleRetentionRuleInput)(nil)).Elem(), PolicyRuleRetentionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleRetentionRuleArrayInput)(nil)).Elem(), PolicyRuleRetentionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleTagFilterInput)(nil)).Elem(), PolicyRuleTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleTagFilterArrayInput)(nil)).Elem(), PolicyRuleTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailPtrInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailInput)(nil)).Elem(), ServerBackupPlanDetailArgs{})
@@ -5726,8 +5960,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsUdmDetailPtrOutput{})
 	pulumi.RegisterOutputType(PolicyRuleOutput{})
 	pulumi.RegisterOutputType(PolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(PolicyRuleDataSourceFilterOutput{})
+	pulumi.RegisterOutputType(PolicyRuleDataSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(PolicyRuleRetentionRuleOutput{})
 	pulumi.RegisterOutputType(PolicyRuleRetentionRuleArrayOutput{})
+	pulumi.RegisterOutputType(PolicyRuleTagFilterOutput{})
+	pulumi.RegisterOutputType(PolicyRuleTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(RestoreJobOtsDetailOutput{})
 	pulumi.RegisterOutputType(RestoreJobOtsDetailPtrOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailOutput{})

@@ -699,14 +699,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isOutdated);
     }
     /**
-     * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+     * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+     * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
      * 
      */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
     /**
-     * @return The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+     * @return The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+     * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
      * 
      */
     public Output<String> keyName() {
@@ -1307,18 +1309,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.stoppedMode;
     }
     /**
-     * The ID of the automatic snapshot policy applied to the system disk.
+     * The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
      * 
      */
     @Export(name="systemDiskAutoSnapshotPolicyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> systemDiskAutoSnapshotPolicyId;
+    private Output<String> systemDiskAutoSnapshotPolicyId;
 
     /**
-     * @return The ID of the automatic snapshot policy applied to the system disk.
+     * @return The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
      * 
      */
-    public Output<Optional<String>> systemDiskAutoSnapshotPolicyId() {
-        return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
+    public Output<String> systemDiskAutoSnapshotPolicyId() {
+        return this.systemDiskAutoSnapshotPolicyId;
     }
     /**
      * Specifies whether to enable the performance burst feature for the system disk. Valid values:

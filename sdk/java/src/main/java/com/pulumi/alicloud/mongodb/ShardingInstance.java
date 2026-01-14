@@ -8,6 +8,7 @@ import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceState;
 import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceConfigServerList;
 import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceMongoList;
+import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceParameter;
 import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceShardList;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -72,10 +73,6 @@ import javax.annotation.Nullable;
  *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
  *             .build());
  * 
- *         final var index = default_.zones().length().applyValue(_length -> _length - 1);
- * 
- *         final var zoneId = default_.zones()[index].id();
- * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.17.3.0/24")
@@ -85,13 +82,13 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(zoneId)
+ *             .zoneId(default_.zones()[1].id())
  *             .build());
  * 
  *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
  *             .engineVersion("4.2")
  *             .vswitchId(defaultSwitch.id())
- *             .zoneId(zoneId)
+ *             .zoneId(defaultSwitch.zoneId())
  *             .name(name)
  *             .mongoLists(            
  *                 ShardingInstanceMongoListArgs.builder()
@@ -520,6 +517,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> orderType() {
         return Codegen.optional(this.orderType);
+    }
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     * 
+     */
+    @Export(name="parameters", refs={List.class,ShardingInstanceParameter.class}, tree="[0,1]")
+    private Output<List<ShardingInstanceParameter>> parameters;
+
+    /**
+     * @return Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     * 
+     */
+    public Output<List<ShardingInstanceParameter>> parameters() {
+        return this.parameters;
     }
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.

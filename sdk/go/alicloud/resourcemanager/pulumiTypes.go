@@ -2054,8 +2054,18 @@ func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceG
 
 type ResourceShareResource struct {
 	// The ID of the shared resource.
+	//
+	// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+	//
+	// > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
 	ResourceId *string `pulumi:"resourceId"`
-	// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+	// Shared resource type.
+	//
+	// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+	//
+	// For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+	//
+	// > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -2072,8 +2082,18 @@ type ResourceShareResourceInput interface {
 
 type ResourceShareResourceArgs struct {
 	// The ID of the shared resource.
+	//
+	// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+	//
+	// > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+	// Shared resource type.
+	//
+	// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+	//
+	// For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+	//
+	// > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -2129,11 +2149,21 @@ func (o ResourceShareResourceOutput) ToResourceShareResourceOutputWithContext(ct
 }
 
 // The ID of the shared resource.
+//
+// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+//
+// > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
 func (o ResourceShareResourceOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceShareResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+// Shared resource type.
+//
+// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+//
+// For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+//
+// > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
 func (o ResourceShareResourceOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceShareResource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }

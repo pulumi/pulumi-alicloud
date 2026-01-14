@@ -131,7 +131,7 @@ import (
 type OssScanConfig struct {
 	pulumi.CustomResourceState
 
-	// Indicates whether the prefixes of all objects are matched.
+	// Specifies whether to match the prefixes of all objects.
 	AllKeyPrefix pulumi.BoolOutput `pulumi:"allKeyPrefix"`
 	// The names of the buckets.
 	BucketNameLists pulumi.StringArrayOutput `pulumi:"bucketNameLists"`
@@ -207,7 +207,7 @@ func GetOssScanConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OssScanConfig resources.
 type ossScanConfigState struct {
-	// Indicates whether the prefixes of all objects are matched.
+	// Specifies whether to match the prefixes of all objects.
 	AllKeyPrefix *bool `pulumi:"allKeyPrefix"`
 	// The names of the buckets.
 	BucketNameLists []string `pulumi:"bucketNameLists"`
@@ -236,7 +236,7 @@ type ossScanConfigState struct {
 }
 
 type OssScanConfigState struct {
-	// Indicates whether the prefixes of all objects are matched.
+	// Specifies whether to match the prefixes of all objects.
 	AllKeyPrefix pulumi.BoolPtrInput
 	// The names of the buckets.
 	BucketNameLists pulumi.StringArrayInput
@@ -269,7 +269,7 @@ func (OssScanConfigState) ElementType() reflect.Type {
 }
 
 type ossScanConfigArgs struct {
-	// Indicates whether the prefixes of all objects are matched.
+	// Specifies whether to match the prefixes of all objects.
 	AllKeyPrefix *bool `pulumi:"allKeyPrefix"`
 	// The names of the buckets.
 	BucketNameLists []string `pulumi:"bucketNameLists"`
@@ -299,7 +299,7 @@ type ossScanConfigArgs struct {
 
 // The set of arguments for constructing a OssScanConfig resource.
 type OssScanConfigArgs struct {
-	// Indicates whether the prefixes of all objects are matched.
+	// Specifies whether to match the prefixes of all objects.
 	AllKeyPrefix pulumi.BoolPtrInput
 	// The names of the buckets.
 	BucketNameLists pulumi.StringArrayInput
@@ -414,7 +414,7 @@ func (o OssScanConfigOutput) ToOssScanConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Indicates whether the prefixes of all objects are matched.
+// Specifies whether to match the prefixes of all objects.
 func (o OssScanConfigOutput) AllKeyPrefix() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.BoolOutput { return v.AllKeyPrefix }).(pulumi.BoolOutput)
 }

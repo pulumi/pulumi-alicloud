@@ -38,14 +38,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.vpc.HAVip;
- * import com.pulumi.alicloud.vpc.HAVipArgs;
+ * import com.pulumi.alicloud.vpc.HaVipv2;
+ * import com.pulumi.alicloud.vpc.HaVipv2Args;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
@@ -71,15 +71,14 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default_.zones()[0].id())
- *             .cpuCoreCount(1)
- *             .memorySize(2)
- *             .build());
- * 
- *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex("^ubuntu_18.*64")
  *             .owners("system")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .imageId(example.images()[0].id())
  *             .build());
  * 
  *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
@@ -94,13 +93,13 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var exampleHAVip = new HAVip("exampleHAVip", HAVipArgs.builder()
+ *         var exampleHaVipv2 = new HaVipv2("exampleHaVipv2", HaVipv2Args.builder()
  *             .vswitchId(exampleSwitch.id())
  *             .description(name)
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
+ *             .securityGroupName(name)
  *             .description(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
@@ -108,18 +107,19 @@ import javax.annotation.Nullable;
  *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .vswitchId(exampleSwitch.id())
- *             .imageId(exampleGetImages.images()[0].id())
- *             .instanceType(example.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
+ *             .imageId(example.images()[0].id())
+ *             .instanceType(exampleGetInstanceTypes.instanceTypes()[0].id())
+ *             .instanceChargeType("PostPaid")
  *             .internetChargeType("PayByTraffic")
  *             .internetMaxBandwidthOut(5)
  *             .securityGroups(exampleSecurityGroup.id())
  *             .instanceName(name)
  *             .userData("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+ *             .systemDiskCategory("cloud_essd")
  *             .build());
  * 
  *         var exampleHAVipAttachment = new HAVipAttachment("exampleHAVipAttachment", HAVipAttachmentArgs.builder()
- *             .haVipId(exampleHAVip.id())
+ *             .haVipId(exampleHaVipv2.id())
  *             .instanceId(exampleInstance.id())
  *             .build());
  * 

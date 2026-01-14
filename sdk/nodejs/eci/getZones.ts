@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+ * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *
@@ -50,12 +50,15 @@ export interface GetZonesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of eci Instance zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.eci.GetZonesZone[];
 }
 /**
- * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+ * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *

@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.mongodb.getZones({});
- * const index = _default.then(_default => _default.zones).length.apply(length => length - 1);
- * const zoneId = _default.then(_default => _default.zones[index].id);
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.17.3.0/24",
@@ -39,12 +37,12 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: zoneId,
+ *     zoneId: _default.then(_default => _default.zones?.[1]?.id),
  * });
  * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("default", {
  *     engineVersion: "4.2",
  *     vswitchId: defaultSwitch.id,
- *     zoneId: zoneId,
+ *     zoneId: defaultSwitch.zoneId,
  *     name: name,
  *     mongoLists: [
  *         {
@@ -224,6 +222,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly orderType: pulumi.Output<string | undefined>;
     /**
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     */
+    declare public readonly parameters: pulumi.Output<outputs.mongodb.ShardingInstanceParameter[]>;
+    /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
     declare public readonly period: pulumi.Output<number>;
@@ -350,6 +352,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["networkType"] = state?.networkType;
             resourceInputs["orderType"] = state?.orderType;
+            resourceInputs["parameters"] = state?.parameters;
             resourceInputs["period"] = state?.period;
             resourceInputs["protocolType"] = state?.protocolType;
             resourceInputs["provisionedIops"] = state?.provisionedIops;
@@ -408,6 +411,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["networkType"] = args?.networkType;
             resourceInputs["orderType"] = args?.orderType;
+            resourceInputs["parameters"] = args?.parameters;
             resourceInputs["period"] = args?.period;
             resourceInputs["protocolType"] = args?.protocolType;
             resourceInputs["provisionedIops"] = args?.provisionedIops;
@@ -552,6 +556,10 @@ export interface ShardingInstanceState {
      * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string>;
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceParameter>[]>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
@@ -756,6 +764,10 @@ export interface ShardingInstanceArgs {
      * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string>;
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceParameter>[]>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */

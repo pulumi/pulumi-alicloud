@@ -428,7 +428,7 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.secondaryCidrBlocks;
     }
     /**
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
+     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
      * @deprecated
      * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
@@ -439,7 +439,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> secondaryCidrMask;
 
     /**
-     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
+     * @return Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
      */
     public Output<Optional<Integer>> secondaryCidrMask() {

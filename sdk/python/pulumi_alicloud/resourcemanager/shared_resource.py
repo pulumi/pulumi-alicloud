@@ -19,37 +19,32 @@ __all__ = ['SharedResourceArgs', 'SharedResource']
 @pulumi.input_type
 class SharedResourceArgs:
     def __init__(__self__, *,
-                 resource_id: pulumi.Input[_builtins.str],
                  resource_share_id: pulumi.Input[_builtins.str],
-                 resource_type: pulumi.Input[_builtins.str]):
+                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedResource resource.
-        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
-        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
-               - `VSwitch`.
-               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-               - The following types are added after v1.192.0: `PrefixList` and `Image`.
-               - The following types are added after v1.194.1: `PublicIpAddressPool`.
-               - The following types are added after v1.208.0: `KMSInstance`.
-               - The following types are added after v1.240.0: `Snapshot`.
-               - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
+               
+               > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_share_id", resource_share_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of the shared resource.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @resource_id.setter
-    def resource_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "resource_id", value)
+        if permission_name is not None:
+            pulumi.set(__self__, "permission_name", permission_name)
+        if resource_arn is not None:
+            pulumi.set(__self__, "resource_arn", resource_arn)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareId")
@@ -64,22 +59,55 @@ class SharedResourceArgs:
         pulumi.set(self, "resource_share_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="resourceType")
-    def resource_type(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="permissionName")
+    def permission_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the shared resource. Valid values:
-        - `VSwitch`.
-        - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-        - The following types are added after v1.192.0: `PrefixList` and `Image`.
-        - The following types are added after v1.194.1: `PublicIpAddressPool`.
-        - The following types are added after v1.208.0: `KMSInstance`.
-        - The following types are added after v1.240.0: `Snapshot`.
-        - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "permission_name")
+
+    @permission_name.setter
+    def permission_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "permission_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceArn")
+    def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Associated resource ARN.
+
+        > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        """
+        return pulumi.get(self, "resource_arn")
+
+    @resource_arn.setter
+    def resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the shared resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the shared resource.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: pulumi.Input[_builtins.str]):
+    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
@@ -87,27 +115,32 @@ class SharedResourceArgs:
 class _SharedResourceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedResource resources.
-        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        :param pulumi.Input[_builtins.str] create_time: The time when the shared resource was associated with the resource share.
+        :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
+               
+               > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
-        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
-               - `VSwitch`.
-               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-               - The following types are added after v1.192.0: `PrefixList` and `Image`.
-               - The following types are added after v1.194.1: `PublicIpAddressPool`.
-               - The following types are added after v1.208.0: `KMSInstance`.
-               - The following types are added after v1.240.0: `Snapshot`.
-               - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
-        :param pulumi.Input[_builtins.str] status: The status of the Shared Resource.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
+        :param pulumi.Input[_builtins.str] status: The association status.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if permission_name is not None:
+            pulumi.set(__self__, "permission_name", permission_name)
+        if resource_arn is not None:
+            pulumi.set(__self__, "resource_arn", resource_arn)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if resource_share_id is not None:
@@ -121,13 +154,41 @@ class _SharedResourceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        The time when the shared resource was associated with the resource share.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="permissionName")
+    def permission_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "permission_name")
+
+    @permission_name.setter
+    def permission_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "permission_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceArn")
+    def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Associated resource ARN.
+
+        > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        """
+        return pulumi.get(self, "resource_arn")
+
+    @resource_arn.setter
+    def resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
@@ -157,14 +218,7 @@ class _SharedResourceState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the shared resource. Valid values:
-        - `VSwitch`.
-        - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-        - The following types are added after v1.192.0: `PrefixList` and `Image`.
-        - The following types are added after v1.194.1: `PublicIpAddressPool`.
-        - The following types are added after v1.208.0: `KMSInstance`.
-        - The following types are added after v1.240.0: `Snapshot`.
-        - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        The type of the shared resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -176,7 +230,7 @@ class _SharedResourceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the Shared Resource.
+        The association status.
         """
         return pulumi.get(self, "status")
 
@@ -191,6 +245,8 @@ class SharedResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -246,16 +302,15 @@ class SharedResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
+               
+               > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
-        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
-               - `VSwitch`.
-               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-               - The following types are added after v1.192.0: `PrefixList` and `Image`.
-               - The following types are added after v1.194.1: `PublicIpAddressPool`.
-               - The following types are added after v1.208.0: `KMSInstance`.
-               - The following types are added after v1.240.0: `Snapshot`.
-               - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
         """
         ...
     @overload
@@ -327,6 +382,8 @@ class SharedResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -339,14 +396,12 @@ class SharedResource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SharedResourceArgs.__new__(SharedResourceArgs)
 
-            if resource_id is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["permission_name"] = permission_name
+            __props__.__dict__["resource_arn"] = resource_arn
             __props__.__dict__["resource_id"] = resource_id
             if resource_share_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_id'")
             __props__.__dict__["resource_share_id"] = resource_share_id
-            if resource_type is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_type'")
             __props__.__dict__["resource_type"] = resource_type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
@@ -361,6 +416,8 @@ class SharedResource(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            permission_name: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -372,24 +429,25 @@ class SharedResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        :param pulumi.Input[_builtins.str] create_time: The time when the shared resource was associated with the resource share.
+        :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] resource_arn: Associated resource ARN.
+               
+               > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
-        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
-               - `VSwitch`.
-               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-               - The following types are added after v1.192.0: `PrefixList` and `Image`.
-               - The following types are added after v1.194.1: `PublicIpAddressPool`.
-               - The following types are added after v1.208.0: `KMSInstance`.
-               - The following types are added after v1.240.0: `Snapshot`.
-               - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
-        :param pulumi.Input[_builtins.str] status: The status of the Shared Resource.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource.
+        :param pulumi.Input[_builtins.str] status: The association status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SharedResourceState.__new__(_SharedResourceState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["permission_name"] = permission_name
+        __props__.__dict__["resource_arn"] = resource_arn
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_share_id"] = resource_share_id
         __props__.__dict__["resource_type"] = resource_type
@@ -400,9 +458,29 @@ class SharedResource(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        The time when the shared resource was associated with the resource share.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="permissionName")
+    def permission_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "permission_name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceArn")
+    def resource_arn(self) -> pulumi.Output[_builtins.str]:
+        """
+        Associated resource ARN.
+
+        > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        """
+        return pulumi.get(self, "resource_arn")
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
@@ -424,14 +502,7 @@ class SharedResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the shared resource. Valid values:
-        - `VSwitch`.
-        - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-        - The following types are added after v1.192.0: `PrefixList` and `Image`.
-        - The following types are added after v1.194.1: `PublicIpAddressPool`.
-        - The following types are added after v1.208.0: `KMSInstance`.
-        - The following types are added after v1.240.0: `Snapshot`.
-        - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        The type of the shared resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -439,7 +510,7 @@ class SharedResource(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the Shared Resource.
+        The association status.
         """
         return pulumi.get(self, "status")
 

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "alicloud:rds/accountPrivilege:AccountPrivilege":
 		r = &AccountPrivilege{}
+	case "alicloud:rds/aiInstance:AiInstance":
+		r = &AiInstance{}
 	case "alicloud:rds/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "alicloud:rds/connection:Connection":
@@ -92,6 +94,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/accountPrivilege",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/aiInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

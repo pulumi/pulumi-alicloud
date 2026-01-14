@@ -52,6 +52,7 @@ class EciScalingConfigurationArgs:
                  ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[_builtins.int]] = None,
                  memory: Optional[pulumi.Input[_builtins.float]] = None,
+                 override: Optional[pulumi.Input[_builtins.bool]] = None,
                  ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -106,6 +107,7 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[_builtins.int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[_builtins.int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[_builtins.float] memory: The amount of memory resources allocated to the container group.
+        :param pulumi.Input[_builtins.bool] override: Specifies whether to overwrite the data. Valid values: true, false.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
         :param pulumi.Input[_builtins.str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -189,6 +191,8 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "load_balancer_weight", load_balancer_weight)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if override is not None:
+            pulumi.set(__self__, "override", override)
         if ram_role_name is not None:
             pulumi.set(__self__, "ram_role_name", ram_role_name)
         if resource_group_id is not None:
@@ -595,6 +599,18 @@ class EciScalingConfigurationArgs:
         pulumi.set(self, "memory", value)
 
     @_builtins.property
+    @pulumi.getter
+    def override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to overwrite the data. Valid values: true, false.
+        """
+        return pulumi.get(self, "override")
+
+    @override.setter
+    def override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "override", value)
+
+    @_builtins.property
     @pulumi.getter(name="ramRoleName")
     def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -770,6 +786,7 @@ class _EciScalingConfigurationState:
                  ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[_builtins.int]] = None,
                  memory: Optional[pulumi.Input[_builtins.float]] = None,
+                 override: Optional[pulumi.Input[_builtins.bool]] = None,
                  ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -824,6 +841,7 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[_builtins.int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[_builtins.int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[_builtins.float] memory: The amount of memory resources allocated to the container group.
+        :param pulumi.Input[_builtins.bool] override: Specifies whether to overwrite the data. Valid values: true, false.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
         :param pulumi.Input[_builtins.str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -907,6 +925,8 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "load_balancer_weight", load_balancer_weight)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if override is not None:
+            pulumi.set(__self__, "override", override)
         if ram_role_name is not None:
             pulumi.set(__self__, "ram_role_name", ram_role_name)
         if resource_group_id is not None:
@@ -1303,6 +1323,18 @@ class _EciScalingConfigurationState:
         pulumi.set(self, "memory", value)
 
     @_builtins.property
+    @pulumi.getter
+    def override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to overwrite the data. Valid values: true, false.
+        """
+        return pulumi.get(self, "override")
+
+    @override.setter
+    def override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "override", value)
+
+    @_builtins.property
     @pulumi.getter(name="ramRoleName")
     def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1493,6 +1525,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[_builtins.int]] = None,
                  memory: Optional[pulumi.Input[_builtins.float]] = None,
+                 override: Optional[pulumi.Input[_builtins.bool]] = None,
                  ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1541,7 +1574,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=0,
@@ -1619,6 +1652,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[_builtins.int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[_builtins.float] memory: The amount of memory resources allocated to the container group.
+        :param pulumi.Input[_builtins.bool] override: Specifies whether to overwrite the data. Valid values: true, false.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
         :param pulumi.Input[_builtins.str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -1683,7 +1717,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=0,
@@ -1764,6 +1798,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[_builtins.int]] = None,
                  memory: Optional[pulumi.Input[_builtins.float]] = None,
+                 override: Optional[pulumi.Input[_builtins.bool]] = None,
                  ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1815,6 +1850,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["load_balancer_weight"] = load_balancer_weight
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["override"] = override
             __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restart_policy"] = restart_policy
@@ -1869,6 +1905,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
             load_balancer_weight: Optional[pulumi.Input[_builtins.int]] = None,
             memory: Optional[pulumi.Input[_builtins.float]] = None,
+            override: Optional[pulumi.Input[_builtins.bool]] = None,
             ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1928,6 +1965,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[_builtins.int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[_builtins.float] memory: The amount of memory resources allocated to the container group.
+        :param pulumi.Input[_builtins.bool] override: Specifies whether to overwrite the data. Valid values: true, false.
         :param pulumi.Input[_builtins.str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
         :param pulumi.Input[_builtins.str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -1985,6 +2023,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
         __props__.__dict__["load_balancer_weight"] = load_balancer_weight
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["override"] = override
         __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restart_policy"] = restart_policy
@@ -2248,6 +2287,14 @@ class EciScalingConfiguration(pulumi.CustomResource):
         The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def override(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to overwrite the data. Valid values: true, false.
+        """
+        return pulumi.get(self, "override")
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")

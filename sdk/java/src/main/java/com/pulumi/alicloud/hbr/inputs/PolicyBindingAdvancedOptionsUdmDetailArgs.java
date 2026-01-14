@@ -17,14 +17,14 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
     public static final PolicyBindingAdvancedOptionsUdmDetailArgs Empty = new PolicyBindingAdvancedOptionsUdmDetailArgs();
 
     /**
-     * Custom KMS key ID of encrypted copy.
+     * Custom KMS key ID of encrypted copy
      * 
      */
     @Import(name="destinationKmsKeyId")
     private @Nullable Output<String> destinationKmsKeyId;
 
     /**
-     * @return Custom KMS key ID of encrypted copy.
+     * @return Custom KMS key ID of encrypted copy
      * 
      */
     public Optional<Output<String>> destinationKmsKeyId() {
@@ -47,14 +47,14 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
     }
 
     /**
-     * List of cloud disk IDs that are not backed up.
+     * List of cloud disk IDs that are not backed up
      * 
      */
     @Import(name="excludeDiskIdLists")
     private @Nullable Output<List<String>> excludeDiskIdLists;
 
     /**
-     * @return List of cloud disk IDs that are not backed up.
+     * @return List of cloud disk IDs that are not backed up
      * 
      */
     public Optional<Output<List<String>>> excludeDiskIdLists() {
@@ -88,7 +88,7 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         }
 
         /**
-         * @param destinationKmsKeyId Custom KMS key ID of encrypted copy.
+         * @param destinationKmsKeyId Custom KMS key ID of encrypted copy
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         }
 
         /**
-         * @param destinationKmsKeyId Custom KMS key ID of encrypted copy.
+         * @param destinationKmsKeyId Custom KMS key ID of encrypted copy
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         }
 
         /**
-         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up.
+         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         }
 
         /**
-         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up.
+         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
         }
 
         /**
-         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up.
+         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up
          * 
          * @return builder
          * 

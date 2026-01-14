@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +17,56 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     public static final SharedResourceArgs Empty = new SharedResourceArgs();
 
     /**
+     * The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="permissionName")
+    private @Nullable Output<String> permissionName;
+
+    /**
+     * @return The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<String>> permissionName() {
+        return Optional.ofNullable(this.permissionName);
+    }
+
+    /**
+     * Associated resource ARN.
+     * 
+     * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
+     * 
+     */
+    @Import(name="resourceArn")
+    private @Nullable Output<String> resourceArn;
+
+    /**
+     * @return Associated resource ARN.
+     * 
+     * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
+     * 
+     */
+    public Optional<Output<String>> resourceArn() {
+        return Optional.ofNullable(this.resourceArn);
+    }
+
+    /**
      * The ID of the shared resource.
      * 
      */
-    @Import(name="resourceId", required=true)
-    private Output<String> resourceId;
+    @Import(name="resourceId")
+    private @Nullable Output<String> resourceId;
 
     /**
      * @return The ID of the shared resource.
      * 
      */
-    public Output<String> resourceId() {
-        return this.resourceId;
+    public Optional<Output<String>> resourceId() {
+        return Optional.ofNullable(this.resourceId);
     }
 
     /**
@@ -45,37 +85,25 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * The type of the shared resource.
      * 
      */
-    @Import(name="resourceType", required=true)
-    private Output<String> resourceType;
+    @Import(name="resourceType")
+    private @Nullable Output<String> resourceType;
 
     /**
-     * @return The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * @return The type of the shared resource.
      * 
      */
-    public Output<String> resourceType() {
-        return this.resourceType;
+    public Optional<Output<String>> resourceType() {
+        return Optional.ofNullable(this.resourceType);
     }
 
     private SharedResourceArgs() {}
 
     private SharedResourceArgs(SharedResourceArgs $) {
+        this.permissionName = $.permissionName;
+        this.resourceArn = $.resourceArn;
         this.resourceId = $.resourceId;
         this.resourceShareId = $.resourceShareId;
         this.resourceType = $.resourceType;
@@ -100,12 +128,62 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param permissionName The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionName(@Nullable Output<String> permissionName) {
+            $.permissionName = permissionName;
+            return this;
+        }
+
+        /**
+         * @param permissionName The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionName(String permissionName) {
+            return permissionName(Output.of(permissionName));
+        }
+
+        /**
+         * @param resourceArn Associated resource ARN.
+         * 
+         * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceArn(@Nullable Output<String> resourceArn) {
+            $.resourceArn = resourceArn;
+            return this;
+        }
+
+        /**
+         * @param resourceArn Associated resource ARN.
+         * 
+         * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceArn(String resourceArn) {
+            return resourceArn(Output.of(resourceArn));
+        }
+
+        /**
          * @param resourceId The ID of the shared resource.
          * 
          * @return builder
          * 
          */
-        public Builder resourceId(Output<String> resourceId) {
+        public Builder resourceId(@Nullable Output<String> resourceId) {
             $.resourceId = resourceId;
             return this;
         }
@@ -142,32 +220,18 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The type of the shared resource. Valid values:
-         * - `VSwitch`.
-         * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-         * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-         * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-         * - The following types are added after v1.208.0: `KMSInstance`.
-         * - The following types are added after v1.240.0: `Snapshot`.
-         * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+         * @param resourceType The type of the shared resource.
          * 
          * @return builder
          * 
          */
-        public Builder resourceType(Output<String> resourceType) {
+        public Builder resourceType(@Nullable Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
         /**
-         * @param resourceType The type of the shared resource. Valid values:
-         * - `VSwitch`.
-         * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-         * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-         * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-         * - The following types are added after v1.208.0: `KMSInstance`.
-         * - The following types are added after v1.240.0: `Snapshot`.
-         * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+         * @param resourceType The type of the shared resource.
          * 
          * @return builder
          * 
@@ -177,14 +241,8 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public SharedResourceArgs build() {
-            if ($.resourceId == null) {
-                throw new MissingRequiredPropertyException("SharedResourceArgs", "resourceId");
-            }
             if ($.resourceShareId == null) {
                 throw new MissingRequiredPropertyException("SharedResourceArgs", "resourceShareId");
-            }
-            if ($.resourceType == null) {
-                throw new MissingRequiredPropertyException("SharedResourceArgs", "resourceType");
             }
             return $;
         }

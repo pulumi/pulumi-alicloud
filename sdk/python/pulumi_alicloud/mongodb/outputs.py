@@ -22,6 +22,7 @@ __all__ = [
     'ServerlessInstanceSecurityIpGroup',
     'ShardingInstanceConfigServerList',
     'ShardingInstanceMongoList',
+    'ShardingInstanceParameter',
     'ShardingInstanceShardList',
     'ShardingNetworkPrivateAddressNetworkAddress',
     'ShardingNetworkPublicAddressNetworkAddress',
@@ -575,6 +576,35 @@ class ShardingInstanceMongoList(dict):
         The connection port of the Config Server node.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class ShardingInstanceParameter(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of the parameter.
+        :param _builtins.str value: The value of the parameter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

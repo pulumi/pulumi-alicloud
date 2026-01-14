@@ -241,7 +241,8 @@ type Instance struct {
 	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
-	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -345,8 +346,8 @@ type Instance struct {
 	// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
 	// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
-	// The ID of the automatic snapshot policy applied to the system disk.
-	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
+	// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	SystemDiskBurstingEnabled pulumi.BoolPtrOutput `pulumi:"systemDiskBurstingEnabled"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
@@ -528,7 +529,8 @@ type instanceState struct {
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type.
 	IsOutdated *bool `pulumi:"isOutdated"`
-	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -632,7 +634,7 @@ type instanceState struct {
 	// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
 	// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
 	StoppedMode *string `pulumi:"stoppedMode"`
-	// The ID of the automatic snapshot policy applied to the system disk.
+	// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
@@ -779,7 +781,8 @@ type InstanceState struct {
 	Ipv6Addresses pulumi.StringArrayInput
 	// Whether to use outdated instance type.
 	IsOutdated pulumi.BoolPtrInput
-	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -883,7 +886,7 @@ type InstanceState struct {
 	// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
 	// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
 	StoppedMode pulumi.StringPtrInput
-	// The ID of the automatic snapshot policy applied to the system disk.
+	// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
@@ -1026,7 +1029,8 @@ type instanceArgs struct {
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type.
 	IsOutdated *bool `pulumi:"isOutdated"`
-	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -1116,7 +1120,7 @@ type instanceArgs struct {
 	// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
 	// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
 	StoppedMode *string `pulumi:"stoppedMode"`
-	// The ID of the automatic snapshot policy applied to the system disk.
+	// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
@@ -1254,7 +1258,8 @@ type InstanceArgs struct {
 	Ipv6Addresses pulumi.StringArrayInput
 	// Whether to use outdated instance type.
 	IsOutdated pulumi.BoolPtrInput
-	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -1344,7 +1349,7 @@ type InstanceArgs struct {
 	// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
 	// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
 	StoppedMode pulumi.StringPtrInput
-	// The ID of the automatic snapshot policy applied to the system disk.
+	// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
@@ -1680,7 +1685,8 @@ func (o InstanceOutput) IsOutdated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.IsOutdated }).(pulumi.BoolPtrOutput)
 }
 
-// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 func (o InstanceOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
@@ -1904,9 +1910,9 @@ func (o InstanceOutput) StoppedMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StoppedMode }).(pulumi.StringOutput)
 }
 
-// The ID of the automatic snapshot policy applied to the system disk.
-func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+// The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
+func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringOutput)
 }
 
 // Specifies whether to enable the performance burst feature for the system disk. Valid values:

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class PolicyBindingAdvancedOptionsUdmDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom KMS key ID of encrypted copy.
+        /// Custom KMS key ID of encrypted copy
         /// </summary>
         [Input("destinationKmsKeyId")]
         public Input<string>? DestinationKmsKeyId { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         private InputList<string>? _excludeDiskIdLists;
 
         /// <summary>
-        /// List of cloud disk IDs that are not backed up.
+        /// List of cloud disk IDs that are not backed up
         /// </summary>
         public InputList<string> ExcludeDiskIdLists
         {

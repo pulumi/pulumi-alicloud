@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a GPDB Streaming Data Service resource.
+// Provides a AnalyticDB for PostgreSQL (GPDB) Streaming Data Service resource.
 //
-// For information about GPDB Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
+// For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
 //
 // > **NOTE:** Available since v1.227.0.
 //
@@ -102,7 +102,7 @@ import (
 //
 // ## Import
 //
-// GPDB Streaming Data Service can be imported using the id, e.g.
+// AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
@@ -114,7 +114,7 @@ type StreamingDataService struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the associated instance.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
-	// The creation time of the resource
+	// The description of the service.
 	ServiceDescription pulumi.StringPtrOutput `pulumi:"serviceDescription"`
 	// Service ID
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
@@ -169,7 +169,7 @@ type streamingDataServiceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The ID of the associated instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
-	// The creation time of the resource
+	// The description of the service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
 	// Service ID
 	ServiceId *string `pulumi:"serviceId"`
@@ -186,7 +186,7 @@ type StreamingDataServiceState struct {
 	CreateTime pulumi.StringPtrInput
 	// The ID of the associated instance.
 	DbInstanceId pulumi.StringPtrInput
-	// The creation time of the resource
+	// The description of the service.
 	ServiceDescription pulumi.StringPtrInput
 	// Service ID
 	ServiceId pulumi.StringPtrInput
@@ -205,7 +205,7 @@ func (StreamingDataServiceState) ElementType() reflect.Type {
 type streamingDataServiceArgs struct {
 	// The ID of the associated instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
-	// The creation time of the resource
+	// The description of the service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
 	// Service Name
 	ServiceName string `pulumi:"serviceName"`
@@ -217,7 +217,7 @@ type streamingDataServiceArgs struct {
 type StreamingDataServiceArgs struct {
 	// The ID of the associated instance.
 	DbInstanceId pulumi.StringInput
-	// The creation time of the resource
+	// The description of the service.
 	ServiceDescription pulumi.StringPtrInput
 	// Service Name
 	ServiceName pulumi.StringInput
@@ -322,7 +322,7 @@ func (o StreamingDataServiceOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamingDataService) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource
+// The description of the service.
 func (o StreamingDataServiceOutput) ServiceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamingDataService) pulumi.StringPtrOutput { return v.ServiceDescription }).(pulumi.StringPtrOutput)
 }

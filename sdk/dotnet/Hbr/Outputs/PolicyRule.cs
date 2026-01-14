@@ -14,23 +14,27 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class PolicyRule
     {
         /// <summary>
-        /// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        /// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
         /// </summary>
         public readonly int? ArchiveDays;
         /// <summary>
-        /// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+        /// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
         /// </summary>
         public readonly string? BackupType;
         /// <summary>
-        /// This parameter is required only when `RuleType` is set to `BACKUP`.
+        /// This parameter is required only when the value of RuleType is TAG. See `DataSourceFilters` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PolicyRuleDataSourceFilter> DataSourceFilters;
+        /// <summary>
+        /// This parameter is required only when `RuleType` is set to `BACKUP`
         /// </summary>
         public readonly int? KeepLatestSnapshots;
         /// <summary>
-        /// Only when the `RuleType` value is.
+        /// Only when the `RuleType` value is
         /// </summary>
         public readonly string? ReplicationRegionId;
         /// <summary>
-        /// Retention time, in days.
+        /// Retention time, in days
         /// </summary>
         public readonly int? Retention;
         /// <summary>
@@ -38,11 +42,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PolicyRuleRetentionRule> RetentionRules;
         /// <summary>
-        /// Rule ID.
+        /// Rule ID
         /// </summary>
         public readonly string? RuleId;
         /// <summary>
-        /// Rule Type.
+        /// Rule Type
         /// </summary>
         public readonly string RuleType;
         /// <summary>
@@ -50,7 +54,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string? Schedule;
         /// <summary>
-        /// Vault ID.
+        /// This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `TagFilters` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PolicyRuleTagFilter> TagFilters;
+        /// <summary>
+        /// Vault ID
         /// </summary>
         public readonly string? VaultId;
 
@@ -59,6 +67,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             int? archiveDays,
 
             string? backupType,
+
+            ImmutableArray<Outputs.PolicyRuleDataSourceFilter> dataSourceFilters,
 
             int? keepLatestSnapshots,
 
@@ -74,10 +84,13 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string? schedule,
 
+            ImmutableArray<Outputs.PolicyRuleTagFilter> tagFilters,
+
             string? vaultId)
         {
             ArchiveDays = archiveDays;
             BackupType = backupType;
+            DataSourceFilters = dataSourceFilters;
             KeepLatestSnapshots = keepLatestSnapshots;
             ReplicationRegionId = replicationRegionId;
             Retention = retention;
@@ -85,6 +98,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             RuleId = ruleId;
             RuleType = ruleType;
             Schedule = schedule;
+            TagFilters = tagFilters;
             VaultId = vaultId;
         }
     }

@@ -78,8 +78,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(myName),
-//				VpcId: defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String(myName),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -206,6 +206,8 @@ type EciScalingConfiguration struct {
 	LoadBalancerWeight pulumi.IntPtrOutput `pulumi:"loadBalancerWeight"`
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrOutput `pulumi:"memory"`
+	// Specifies whether to overwrite the data. Valid values: true, false.
+	Override pulumi.BoolPtrOutput `pulumi:"override"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	// ID of resource group.
@@ -345,6 +347,8 @@ type eciScalingConfigurationState struct {
 	LoadBalancerWeight *int `pulumi:"loadBalancerWeight"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
+	// Specifies whether to overwrite the data. Valid values: true, false.
+	Override *bool `pulumi:"override"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// ID of resource group.
@@ -452,6 +456,8 @@ type EciScalingConfigurationState struct {
 	LoadBalancerWeight pulumi.IntPtrInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
+	// Specifies whether to overwrite the data. Valid values: true, false.
+	Override pulumi.BoolPtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
 	// ID of resource group.
@@ -563,6 +569,8 @@ type eciScalingConfigurationArgs struct {
 	LoadBalancerWeight *int `pulumi:"loadBalancerWeight"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
+	// Specifies whether to overwrite the data. Valid values: true, false.
+	Override *bool `pulumi:"override"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// ID of resource group.
@@ -671,6 +679,8 @@ type EciScalingConfigurationArgs struct {
 	LoadBalancerWeight pulumi.IntPtrInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
+	// Specifies whether to overwrite the data. Valid values: true, false.
+	Override pulumi.BoolPtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
 	// ID of resource group.
@@ -960,6 +970,11 @@ func (o EciScalingConfigurationOutput) LoadBalancerWeight() pulumi.IntPtrOutput 
 // The amount of memory resources allocated to the container group.
 func (o EciScalingConfigurationOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies whether to overwrite the data. Valid values: true, false.
+func (o EciScalingConfigurationOutput) Override() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.Override }).(pulumi.BoolPtrOutput)
 }
 
 // The RAM role that the container group assumes. ECI and ECS share the same RAM role.

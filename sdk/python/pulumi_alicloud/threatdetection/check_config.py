@@ -400,6 +400,8 @@ class CheckConfig(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Check Config can be imported using the id, e.g.
@@ -470,6 +472,8 @@ class CheckConfig(pulumi.CustomResource):
                 "section_id": 515,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

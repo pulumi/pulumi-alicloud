@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(myName)
+ *             .securityGroupName(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -586,6 +586,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<Double>> memory() {
         return Codegen.optional(this.memory);
+    }
+    /**
+     * Specifies whether to overwrite the data. Valid values: true, false.
+     * 
+     */
+    @Export(name="override", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> override;
+
+    /**
+     * @return Specifies whether to overwrite the data. Valid values: true, false.
+     * 
+     */
+    public Output<Optional<Boolean>> override() {
+        return Codegen.optional(this.override);
     }
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.

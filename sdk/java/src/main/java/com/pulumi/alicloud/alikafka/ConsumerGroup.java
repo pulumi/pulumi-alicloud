@@ -10,18 +10,20 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
+ * Provides a Ali Kafka Consumer Group resource.
+ * 
+ * Group in kafka.
+ * 
+ * For information about Ali Kafka Consumer Group and how to use it, see [What is Consumer Group](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateConsumerGroup).
  * 
  * &gt; **NOTE:** Available since v1.56.0.
- * 
- * &gt; **NOTE:**  Only the following regions support create alikafka consumer group.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  * 
  * ## Example Usage
  * 
@@ -34,18 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroup;
- * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.alikafka.Instance;
- * import com.pulumi.alicloud.alikafka.InstanceArgs;
+ * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+ * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.alikafka.ConsumerGroup;
  * import com.pulumi.alicloud.alikafka.ConsumerGroupArgs;
  * import java.util.List;
@@ -62,44 +54,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
- *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("VSwitch")
- *             .build());
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .cidrBlock("172.16.0.0/12")
- *             .build());
- * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(default_.zones()[0].id())
- *             .build());
- * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .vpcId(defaultNetwork.id())
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
- *             .partitionNum(50)
- *             .diskType(1)
- *             .diskSize(500)
- *             .deployType(5)
- *             .ioMax(20)
- *             .vswitchId(defaultSwitch.id())
- *             .securityGroup(defaultSecurityGroup.id())
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
  *             .build());
  * 
  *         var defaultConsumerGroup = new ConsumerGroup("defaultConsumerGroup", ConsumerGroupArgs.builder()
+ *             .instanceId(default_.instances()[0].id())
  *             .consumerId(name)
- *             .instanceId(defaultInstance.id())
  *             .build());
  * 
  *     }
@@ -111,42 +72,60 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ALIKAFKA GROUP can be imported using the id, e.g.
+ * AliKafka Consumer Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+ * $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example &lt;instance_id&gt;:&lt;consumer_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:alikafka/consumerGroup:ConsumerGroup")
 public class ConsumerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the consumer group. The length cannot exceed 64 characters.
+     * ID of the consumer group.
      * 
      */
     @Export(name="consumerId", refs={String.class}, tree="[0]")
     private Output<String> consumerId;
 
     /**
-     * @return ID of the consumer group. The length cannot exceed 64 characters.
+     * @return ID of the consumer group.
      * 
      */
     public Output<String> consumerId() {
         return this.consumerId;
     }
     /**
-     * The description of the resource.
+     * (Available since v1.268.0) The timestamp of when the group was created.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
 
     /**
-     * @return The description of the resource.
+     * @return (Available since v1.268.0) The timestamp of when the group was created.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * 
+     * @deprecated
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * 
+     */
+    @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
@@ -161,6 +140,34 @@ public class ConsumerGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    /**
+     * (Available since v1.268.0) The region ID.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.268.0) The region ID.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The remark of the resource.
+     * 
+     */
+    @Export(name="remark", refs={String.class}, tree="[0]")
+    private Output<String> remark;
+
+    /**
+     * @return The remark of the resource.
+     * 
+     */
+    public Output<String> remark() {
+        return this.remark;
     }
     /**
      * A mapping of tags to assign to the resource.

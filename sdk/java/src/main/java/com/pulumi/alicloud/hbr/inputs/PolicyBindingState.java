@@ -209,7 +209,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      * 
      */
     @Import(name="sourceType")
@@ -222,7 +222,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      * 
      */
     public Optional<Output<String>> sourceType() {
@@ -544,7 +544,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
          * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
          * - `ECS_FILE`: indicates that the ECS file is backed up.
          * - `File`: indicates a local File backup.
-         * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+         * - `OTS`: indicates the Tablestore backup.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class PolicyBindingState extends com.pulumi.resources.ResourceArgs 
          * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
          * - `ECS_FILE`: indicates that the ECS file is backed up.
          * - `File`: indicates a local File backup.
-         * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+         * - `OTS`: indicates the Tablestore backup.
          * 
          * @return builder
          * 

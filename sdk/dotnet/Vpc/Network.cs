@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        /// Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         /// </summary>
         [Output("secondaryCidrMask")]
         public Output<int?> SecondaryCidrMask { get; private set; } = null!;
@@ -419,7 +419,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        /// Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         /// </summary>
         [Input("secondaryCidrMask")]
         public Input<int>? SecondaryCidrMask { get; set; }
@@ -641,7 +641,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        /// Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         /// </summary>
         [Input("secondaryCidrMask")]
         public Input<int>? SecondaryCidrMask { get; set; }

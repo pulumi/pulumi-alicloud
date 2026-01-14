@@ -7400,6 +7400,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "rds/aiInstance",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/aiInstance:AiInstance": "AiInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "rds/backupPolicy",
   "fqn": "pulumi_alicloud.rds",
   "classes": {

@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DRDS Polardb X Instance resource.
+ * Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
  *
- * For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
+ * PolarDB-X Database Instance.
+ *
+ * For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
  *
  * > **NOTE:** Available since v1.211.0.
  *
@@ -49,7 +51,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DRDS Polardb X Instance can be imported using the id, e.g.
+ * Distributed Relational Database Service (DRDS) Polardbx Instance can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
@@ -92,9 +94,13 @@ export class PolardbxInstance extends pulumi.CustomResource {
      */
     declare public readonly cnNodeCount: pulumi.Output<number>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Instance remarks
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Storage node specifications.
      */
@@ -104,9 +110,27 @@ export class PolardbxInstance extends pulumi.CustomResource {
      */
     declare public readonly dnNodeCount: pulumi.Output<number>;
     /**
+     * Engine version, default 5.7
+     */
+    declare public readonly engineVersion: pulumi.Output<string>;
+    /**
+     * Whether the instance is read-only.
+     */
+    declare public readonly isReadDbInstance: pulumi.Output<boolean | undefined>;
+    /**
+     * If the instance is a read-only instance, you must specify the primary instance.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly primaryDbInstanceName: pulumi.Output<string | undefined>;
+    /**
      * Primary Availability Zone.
      */
     declare public readonly primaryZone: pulumi.Output<string>;
+    /**
+     * The region ID of the resource
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The resource group ID can be empty. This parameter is not supported for the time being.
      */
@@ -116,7 +140,7 @@ export class PolardbxInstance extends pulumi.CustomResource {
      */
     declare public readonly secondaryZone: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -125,8 +149,6 @@ export class PolardbxInstance extends pulumi.CustomResource {
     declare public readonly tertiaryZone: pulumi.Output<string | undefined>;
     /**
      * Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      */
     declare public readonly topologyType: pulumi.Output<string>;
     /**
@@ -154,9 +176,14 @@ export class PolardbxInstance extends pulumi.CustomResource {
             resourceInputs["cnClass"] = state?.cnClass;
             resourceInputs["cnNodeCount"] = state?.cnNodeCount;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
             resourceInputs["dnClass"] = state?.dnClass;
             resourceInputs["dnNodeCount"] = state?.dnNodeCount;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["isReadDbInstance"] = state?.isReadDbInstance;
+            resourceInputs["primaryDbInstanceName"] = state?.primaryDbInstanceName;
             resourceInputs["primaryZone"] = state?.primaryZone;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["secondaryZone"] = state?.secondaryZone;
             resourceInputs["status"] = state?.status;
@@ -192,8 +219,12 @@ export class PolardbxInstance extends pulumi.CustomResource {
             }
             resourceInputs["cnClass"] = args?.cnClass;
             resourceInputs["cnNodeCount"] = args?.cnNodeCount;
+            resourceInputs["description"] = args?.description;
             resourceInputs["dnClass"] = args?.dnClass;
             resourceInputs["dnNodeCount"] = args?.dnNodeCount;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["isReadDbInstance"] = args?.isReadDbInstance;
+            resourceInputs["primaryDbInstanceName"] = args?.primaryDbInstanceName;
             resourceInputs["primaryZone"] = args?.primaryZone;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["secondaryZone"] = args?.secondaryZone;
@@ -202,6 +233,7 @@ export class PolardbxInstance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -222,9 +254,13 @@ export interface PolardbxInstanceState {
      */
     cnNodeCount?: pulumi.Input<number>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Instance remarks
+     */
+    description?: pulumi.Input<string>;
     /**
      * Storage node specifications.
      */
@@ -234,9 +270,27 @@ export interface PolardbxInstanceState {
      */
     dnNodeCount?: pulumi.Input<number>;
     /**
+     * Engine version, default 5.7
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * Whether the instance is read-only.
+     */
+    isReadDbInstance?: pulumi.Input<boolean>;
+    /**
+     * If the instance is a read-only instance, you must specify the primary instance.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    primaryDbInstanceName?: pulumi.Input<string>;
+    /**
      * Primary Availability Zone.
      */
     primaryZone?: pulumi.Input<string>;
+    /**
+     * The region ID of the resource
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The resource group ID can be empty. This parameter is not supported for the time being.
      */
@@ -246,7 +300,7 @@ export interface PolardbxInstanceState {
      */
     secondaryZone?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
@@ -255,8 +309,6 @@ export interface PolardbxInstanceState {
     tertiaryZone?: pulumi.Input<string>;
     /**
      * Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      */
     topologyType?: pulumi.Input<string>;
     /**
@@ -282,6 +334,10 @@ export interface PolardbxInstanceArgs {
      */
     cnNodeCount: pulumi.Input<number>;
     /**
+     * Instance remarks
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Storage node specifications.
      */
     dnClass: pulumi.Input<string>;
@@ -289,6 +345,20 @@ export interface PolardbxInstanceArgs {
      * The number of storage nodes.
      */
     dnNodeCount: pulumi.Input<number>;
+    /**
+     * Engine version, default 5.7
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * Whether the instance is read-only.
+     */
+    isReadDbInstance?: pulumi.Input<boolean>;
+    /**
+     * If the instance is a read-only instance, you must specify the primary instance.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    primaryDbInstanceName?: pulumi.Input<string>;
     /**
      * Primary Availability Zone.
      */
@@ -307,8 +377,6 @@ export interface PolardbxInstanceArgs {
     tertiaryZone?: pulumi.Input<string>;
     /**
      * Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      */
     topologyType: pulumi.Input<string>;
     /**

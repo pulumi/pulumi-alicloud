@@ -78,8 +78,16 @@ export class ResourceShare extends pulumi.CustomResource {
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly permissionNames: pulumi.Output<string[] | undefined>;
+    /**
+     * ResourceArns
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly resourceArns: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group
      */
@@ -93,7 +101,9 @@ export class ResourceShare extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly resourceShareOwner: pulumi.Output<string>;
     /**
-     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * List of shared resources. See `resources` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly resources: pulumi.Output<outputs.resourcemanager.ResourceShareResource[] | undefined>;
     /**
@@ -106,6 +116,8 @@ export class ResourceShare extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource user.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly targets: pulumi.Output<string[] | undefined>;
 
@@ -125,6 +137,7 @@ export class ResourceShare extends pulumi.CustomResource {
             resourceInputs["allowExternalTargets"] = state?.allowExternalTargets;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["permissionNames"] = state?.permissionNames;
+            resourceInputs["resourceArns"] = state?.resourceArns;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["resourceShareName"] = state?.resourceShareName;
             resourceInputs["resourceShareOwner"] = state?.resourceShareOwner;
@@ -139,6 +152,7 @@ export class ResourceShare extends pulumi.CustomResource {
             }
             resourceInputs["allowExternalTargets"] = args?.allowExternalTargets;
             resourceInputs["permissionNames"] = args?.permissionNames;
+            resourceInputs["resourceArns"] = args?.resourceArns;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["resourceShareName"] = args?.resourceShareName;
             resourceInputs["resources"] = args?.resources;
@@ -169,8 +183,16 @@ export interface ResourceShareState {
     createTime?: pulumi.Input<string>;
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     permissionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ResourceArns
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    resourceArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group
      */
@@ -184,7 +206,9 @@ export interface ResourceShareState {
      */
     resourceShareOwner?: pulumi.Input<string>;
     /**
-     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * List of shared resources. See `resources` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[]>;
     /**
@@ -197,6 +221,8 @@ export interface ResourceShareState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Resource user.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     targets?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -213,8 +239,16 @@ export interface ResourceShareArgs {
     allowExternalTargets?: pulumi.Input<boolean>;
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     permissionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ResourceArns
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    resourceArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group
      */
@@ -224,7 +258,9 @@ export interface ResourceShareArgs {
      */
     resourceShareName: pulumi.Input<string>;
     /**
-     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * List of shared resources. See `resources` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[]>;
     /**
@@ -233,6 +269,8 @@ export interface ResourceShareArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Resource user.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     targets?: pulumi.Input<pulumi.Input<string>[]>;
 }

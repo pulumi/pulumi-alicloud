@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -108,18 +109,54 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/sharedResource:SharedResource")
 public class SharedResource extends com.pulumi.resources.CustomResource {
     /**
-     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * The time when the shared resource was associated with the resource share.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * @return The time when the shared resource was associated with the resource share.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="permissionName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> permissionName;
+
+    /**
+     * @return The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<String>> permissionName() {
+        return Codegen.optional(this.permissionName);
+    }
+    /**
+     * Associated resource ARN.
+     * 
+     * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
+     * 
+     */
+    @Export(name="resourceArn", refs={String.class}, tree="[0]")
+    private Output<String> resourceArn;
+
+    /**
+     * @return Associated resource ARN.
+     * 
+     * &gt; **NOTE:**  This parameter is not available when the association type &#39;AssociationType&#39; is the resource consumer &#39;Target&#39;.
+     * 
+     */
+    public Output<String> resourceArn() {
+        return this.resourceArn;
     }
     /**
      * The ID of the shared resource.
@@ -150,42 +187,28 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
         return this.resourceShareId;
     }
     /**
-     * The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * The type of the shared resource.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * @return The type of the shared resource.
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
     }
     /**
-     * The status of the Shared Resource.
+     * The association status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Shared Resource.
+     * @return The association status.
      * 
      */
     public Output<String> status() {

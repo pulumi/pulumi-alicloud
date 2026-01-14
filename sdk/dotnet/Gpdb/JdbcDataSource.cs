@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a GPDB Jdbc Data Source resource.
+    /// Provides a AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source resource.
     /// 
-    /// For information about GPDB Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
+    /// For information about AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
     /// 
     /// &gt; **NOTE:** Available since v1.230.0.
     /// 
@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///         DbInstanceId = defaulttuqTmM.Id,
     ///         AccountName = "example_001",
     ///         AccountPassword = "example_001",
+    ///         AccountType = "Normal",
     ///     });
     /// 
     ///     var defaultRXkfKL = new AliCloud.Gpdb.ExternalDataService("defaultRXkfKL", new()
@@ -100,7 +101,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB Jdbc Data Source can be imported using the id, e.g.
+    /// AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/jdbcDataSource:JdbcDataSource example &lt;db_instance_id&gt;:&lt;data_source_id&gt;

@@ -215,6 +215,25 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     }
 
     /**
+     * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="namespaceQuota")
+    private @Nullable Output<Integer> namespaceQuota;
+
+    /**
+     * @return The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<Integer>> namespaceQuota() {
+        return Optional.ofNullable(this.namespaceQuota);
+    }
+
+    /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
@@ -327,9 +346,26 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the resource group
+     * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="repoQuota")
+    private @Nullable Output<Integer> repoQuota;
+
+    /**
+     * @return The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<Integer>> repoQuota() {
+        return Optional.ofNullable(this.repoQuota);
+    }
+
+    /**
+     * The ID of the resource group
      * 
      */
     @Import(name="resourceGroupId")
@@ -337,8 +373,6 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
 
     /**
      * @return The ID of the resource group
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -360,6 +394,29 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The number of VPC access controls.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="vpcQuota")
+    private @Nullable Output<Integer> vpcQuota;
+
+    /**
+     * @return The number of VPC access controls.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<Integer>> vpcQuota() {
+        return Optional.ofNullable(this.vpcQuota);
+    }
+
     private RegistryEnterpriseInstanceState() {}
 
     private RegistryEnterpriseInstanceState(RegistryEnterpriseInstanceState $) {
@@ -374,14 +431,17 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         this.instanceType = $.instanceType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.namespaceQuota = $.namespaceQuota;
         this.password = $.password;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.regionId = $.regionId;
         this.renewPeriod = $.renewPeriod;
         this.renewalStatus = $.renewalStatus;
+        this.repoQuota = $.repoQuota;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.vpcQuota = $.vpcQuota;
     }
 
     public static Builder builder() {
@@ -674,6 +734,31 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
+         * @param namespaceQuota The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceQuota(@Nullable Output<Integer> namespaceQuota) {
+            $.namespaceQuota = namespaceQuota;
+            return this;
+        }
+
+        /**
+         * @param namespaceQuota The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceQuota(Integer namespaceQuota) {
+            return namespaceQuota(Output.of(namespaceQuota));
+        }
+
+        /**
          * @param password Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
          * 
          * @return builder
@@ -822,9 +907,32 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param repoQuota The number of additional repositories to purchase. The value is an integral multiple of `1000`.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoQuota(@Nullable Output<Integer> repoQuota) {
+            $.repoQuota = repoQuota;
+            return this;
+        }
+
+        /**
+         * @param repoQuota The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoQuota(Integer repoQuota) {
+            return repoQuota(Output.of(repoQuota));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -836,8 +944,6 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
 
         /**
          * @param resourceGroupId The ID of the resource group
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -865,6 +971,35 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param vpcQuota The number of VPC access controls.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcQuota(@Nullable Output<Integer> vpcQuota) {
+            $.vpcQuota = vpcQuota;
+            return this;
+        }
+
+        /**
+         * @param vpcQuota The number of VPC access controls.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcQuota(Integer vpcQuota) {
+            return vpcQuota(Output.of(vpcQuota));
         }
 
         public RegistryEnterpriseInstanceState build() {

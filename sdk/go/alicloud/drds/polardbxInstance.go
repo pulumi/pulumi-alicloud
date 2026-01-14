@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DRDS Polardb X Instance resource.
+// Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
 //
-// For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
+// PolarDB-X Database Instance.
+//
+// For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
 //
 // > **NOTE:** Available since v1.211.0.
 //
@@ -88,7 +90,7 @@ import (
 //
 // ## Import
 //
-// DRDS Polardb X Instance can be imported using the id, e.g.
+// Distributed Relational Database Service (DRDS) Polardbx Instance can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
@@ -100,25 +102,35 @@ type PolardbxInstance struct {
 	CnClass pulumi.StringOutput `pulumi:"cnClass"`
 	// Number of computing nodes.
 	CnNodeCount pulumi.IntOutput `pulumi:"cnNodeCount"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Instance remarks
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Storage node specifications.
 	DnClass pulumi.StringOutput `pulumi:"dnClass"`
 	// The number of storage nodes.
 	DnNodeCount pulumi.IntOutput `pulumi:"dnNodeCount"`
+	// Engine version, default 5.7
+	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// Whether the instance is read-only.
+	IsReadDbInstance pulumi.BoolPtrOutput `pulumi:"isReadDbInstance"`
+	// If the instance is a read-only instance, you must specify the primary instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PrimaryDbInstanceName pulumi.StringPtrOutput `pulumi:"primaryDbInstanceName"`
 	// Primary Availability Zone.
 	PrimaryZone pulumi.StringOutput `pulumi:"primaryZone"`
+	// The region ID of the resource
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The resource group ID can be empty. This parameter is not supported for the time being.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Secondary availability zone.
 	SecondaryZone pulumi.StringPtrOutput `pulumi:"secondaryZone"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Third Availability Zone.
 	TertiaryZone pulumi.StringPtrOutput `pulumi:"tertiaryZone"`
 	// Topology type:
-	// - **3azones**: three available areas;
-	// - **1azone**: Single zone.
 	TopologyType pulumi.StringOutput `pulumi:"topologyType"`
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -184,25 +196,35 @@ type polardbxInstanceState struct {
 	CnClass *string `pulumi:"cnClass"`
 	// Number of computing nodes.
 	CnNodeCount *int `pulumi:"cnNodeCount"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
+	// Instance remarks
+	Description *string `pulumi:"description"`
 	// Storage node specifications.
 	DnClass *string `pulumi:"dnClass"`
 	// The number of storage nodes.
 	DnNodeCount *int `pulumi:"dnNodeCount"`
+	// Engine version, default 5.7
+	EngineVersion *string `pulumi:"engineVersion"`
+	// Whether the instance is read-only.
+	IsReadDbInstance *bool `pulumi:"isReadDbInstance"`
+	// If the instance is a read-only instance, you must specify the primary instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PrimaryDbInstanceName *string `pulumi:"primaryDbInstanceName"`
 	// Primary Availability Zone.
 	PrimaryZone *string `pulumi:"primaryZone"`
+	// The region ID of the resource
+	RegionId *string `pulumi:"regionId"`
 	// The resource group ID can be empty. This parameter is not supported for the time being.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Secondary availability zone.
 	SecondaryZone *string `pulumi:"secondaryZone"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 	// Third Availability Zone.
 	TertiaryZone *string `pulumi:"tertiaryZone"`
 	// Topology type:
-	// - **3azones**: three available areas;
-	// - **1azone**: Single zone.
 	TopologyType *string `pulumi:"topologyType"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
@@ -215,25 +237,35 @@ type PolardbxInstanceState struct {
 	CnClass pulumi.StringPtrInput
 	// Number of computing nodes.
 	CnNodeCount pulumi.IntPtrInput
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
+	// Instance remarks
+	Description pulumi.StringPtrInput
 	// Storage node specifications.
 	DnClass pulumi.StringPtrInput
 	// The number of storage nodes.
 	DnNodeCount pulumi.IntPtrInput
+	// Engine version, default 5.7
+	EngineVersion pulumi.StringPtrInput
+	// Whether the instance is read-only.
+	IsReadDbInstance pulumi.BoolPtrInput
+	// If the instance is a read-only instance, you must specify the primary instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PrimaryDbInstanceName pulumi.StringPtrInput
 	// Primary Availability Zone.
 	PrimaryZone pulumi.StringPtrInput
+	// The region ID of the resource
+	RegionId pulumi.StringPtrInput
 	// The resource group ID can be empty. This parameter is not supported for the time being.
 	ResourceGroupId pulumi.StringPtrInput
 	// Secondary availability zone.
 	SecondaryZone pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 	// Third Availability Zone.
 	TertiaryZone pulumi.StringPtrInput
 	// Topology type:
-	// - **3azones**: three available areas;
-	// - **1azone**: Single zone.
 	TopologyType pulumi.StringPtrInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
@@ -250,10 +282,20 @@ type polardbxInstanceArgs struct {
 	CnClass string `pulumi:"cnClass"`
 	// Number of computing nodes.
 	CnNodeCount int `pulumi:"cnNodeCount"`
+	// Instance remarks
+	Description *string `pulumi:"description"`
 	// Storage node specifications.
 	DnClass string `pulumi:"dnClass"`
 	// The number of storage nodes.
 	DnNodeCount int `pulumi:"dnNodeCount"`
+	// Engine version, default 5.7
+	EngineVersion *string `pulumi:"engineVersion"`
+	// Whether the instance is read-only.
+	IsReadDbInstance *bool `pulumi:"isReadDbInstance"`
+	// If the instance is a read-only instance, you must specify the primary instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PrimaryDbInstanceName *string `pulumi:"primaryDbInstanceName"`
 	// Primary Availability Zone.
 	PrimaryZone string `pulumi:"primaryZone"`
 	// The resource group ID can be empty. This parameter is not supported for the time being.
@@ -263,8 +305,6 @@ type polardbxInstanceArgs struct {
 	// Third Availability Zone.
 	TertiaryZone *string `pulumi:"tertiaryZone"`
 	// Topology type:
-	// - **3azones**: three available areas;
-	// - **1azone**: Single zone.
 	TopologyType string `pulumi:"topologyType"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
@@ -278,10 +318,20 @@ type PolardbxInstanceArgs struct {
 	CnClass pulumi.StringInput
 	// Number of computing nodes.
 	CnNodeCount pulumi.IntInput
+	// Instance remarks
+	Description pulumi.StringPtrInput
 	// Storage node specifications.
 	DnClass pulumi.StringInput
 	// The number of storage nodes.
 	DnNodeCount pulumi.IntInput
+	// Engine version, default 5.7
+	EngineVersion pulumi.StringPtrInput
+	// Whether the instance is read-only.
+	IsReadDbInstance pulumi.BoolPtrInput
+	// If the instance is a read-only instance, you must specify the primary instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PrimaryDbInstanceName pulumi.StringPtrInput
 	// Primary Availability Zone.
 	PrimaryZone pulumi.StringInput
 	// The resource group ID can be empty. This parameter is not supported for the time being.
@@ -291,8 +341,6 @@ type PolardbxInstanceArgs struct {
 	// Third Availability Zone.
 	TertiaryZone pulumi.StringPtrInput
 	// Topology type:
-	// - **3azones**: three available areas;
-	// - **1azone**: Single zone.
 	TopologyType pulumi.StringInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
@@ -397,9 +445,14 @@ func (o PolardbxInstanceOutput) CnNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.IntOutput { return v.CnNodeCount }).(pulumi.IntOutput)
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o PolardbxInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Instance remarks
+func (o PolardbxInstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Storage node specifications.
@@ -412,9 +465,31 @@ func (o PolardbxInstanceOutput) DnNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.IntOutput { return v.DnNodeCount }).(pulumi.IntOutput)
 }
 
+// Engine version, default 5.7
+func (o PolardbxInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// Whether the instance is read-only.
+func (o PolardbxInstanceOutput) IsReadDbInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.BoolPtrOutput { return v.IsReadDbInstance }).(pulumi.BoolPtrOutput)
+}
+
+// If the instance is a read-only instance, you must specify the primary instance.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o PolardbxInstanceOutput) PrimaryDbInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.PrimaryDbInstanceName }).(pulumi.StringPtrOutput)
+}
+
 // Primary Availability Zone.
 func (o PolardbxInstanceOutput) PrimaryZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.PrimaryZone }).(pulumi.StringOutput)
+}
+
+// The region ID of the resource
+func (o PolardbxInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The resource group ID can be empty. This parameter is not supported for the time being.
@@ -427,7 +502,7 @@ func (o PolardbxInstanceOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o PolardbxInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -438,8 +513,6 @@ func (o PolardbxInstanceOutput) TertiaryZone() pulumi.StringPtrOutput {
 }
 
 // Topology type:
-// - **3azones**: three available areas;
-// - **1azone**: Single zone.
 func (o PolardbxInstanceOutput) TopologyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.TopologyType }).(pulumi.StringOutput)
 }

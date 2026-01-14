@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CR Instance resource.
  *
- * For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+ * For information about Container Registry Instance and how to use it, see [What is Container Registry](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry).
+ *
+ * For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
  *
  * > **NOTE:** Available since v1.124.0.
  *
@@ -134,6 +136,12 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly namespaceQuota: pulumi.Output<number | undefined>;
+    /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
     declare public readonly password: pulumi.Output<string | undefined>;
@@ -170,15 +178,28 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     declare public readonly renewalStatus: pulumi.Output<string>;
     /**
-     * The ID of the resource group
+     * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
      *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly repoQuota: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the resource group
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Instance Status
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The number of VPC access controls.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     *
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    declare public readonly vpcQuota: pulumi.Output<number | undefined>;
 
     /**
      * Create a RegistryEnterpriseInstance resource with the given unique name, arguments, and options.
@@ -204,14 +225,17 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["namespaceQuota"] = state?.namespaceQuota;
             resourceInputs["password"] = state?.password;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["renewPeriod"] = state?.renewPeriod;
             resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["repoQuota"] = state?.repoQuota;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["vpcQuota"] = state?.vpcQuota;
         } else {
             const args = argsOrState as RegistryEnterpriseInstanceArgs | undefined;
             if (args?.instanceName === undefined && !opts.urn) {
@@ -230,12 +254,15 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["namespaceQuota"] = args?.namespaceQuota;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["renewPeriod"] = args?.renewPeriod;
             resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["repoQuota"] = args?.repoQuota;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["vpcQuota"] = args?.vpcQuota;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
@@ -312,6 +339,12 @@ export interface RegistryEnterpriseInstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    namespaceQuota?: pulumi.Input<number>;
+    /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
     password?: pulumi.Input<string>;
@@ -348,15 +381,28 @@ export interface RegistryEnterpriseInstanceState {
      */
     renewalStatus?: pulumi.Input<string>;
     /**
-     * The ID of the resource group
+     * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
      *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    repoQuota?: pulumi.Input<number>;
+    /**
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Instance Status
      */
     status?: pulumi.Input<string>;
+    /**
+     * The number of VPC access controls.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     *
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    vpcQuota?: pulumi.Input<number>;
 }
 
 /**
@@ -403,6 +449,12 @@ export interface RegistryEnterpriseInstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    namespaceQuota?: pulumi.Input<number>;
+    /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
     password?: pulumi.Input<string>;
@@ -435,9 +487,22 @@ export interface RegistryEnterpriseInstanceArgs {
      */
     renewalStatus?: pulumi.Input<string>;
     /**
+     * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    repoQuota?: pulumi.Input<number>;
+    /**
      * The ID of the resource group
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The number of VPC access controls.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    resourceGroupId?: pulumi.Input<string>;
+    vpcQuota?: pulumi.Input<number>;
 }

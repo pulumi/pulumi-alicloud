@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: myName,
+ *     securityGroupName: myName,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
@@ -242,6 +242,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     declare public readonly memory: pulumi.Output<number | undefined>;
     /**
+     * Specifies whether to overwrite the data. Valid values: true, false.
+     */
+    declare public readonly override: pulumi.Output<boolean | undefined>;
+    /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
     declare public readonly ramRoleName: pulumi.Output<string | undefined>;
@@ -343,6 +347,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["ipv6AddressCount"] = state?.ipv6AddressCount;
             resourceInputs["loadBalancerWeight"] = state?.loadBalancerWeight;
             resourceInputs["memory"] = state?.memory;
+            resourceInputs["override"] = state?.override;
             resourceInputs["ramRoleName"] = state?.ramRoleName;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["restartPolicy"] = state?.restartPolicy;
@@ -390,6 +395,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["ipv6AddressCount"] = args?.ipv6AddressCount;
             resourceInputs["loadBalancerWeight"] = args?.loadBalancerWeight;
             resourceInputs["memory"] = args?.memory;
+            resourceInputs["override"] = args?.override;
             resourceInputs["ramRoleName"] = args?.ramRoleName;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["restartPolicy"] = args?.restartPolicy;
@@ -542,6 +548,10 @@ export interface EciScalingConfigurationState {
      * The amount of memory resources allocated to the container group.
      */
     memory?: pulumi.Input<number>;
+    /**
+     * Specifies whether to overwrite the data. Valid values: true, false.
+     */
+    override?: pulumi.Input<boolean>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
@@ -736,6 +746,10 @@ export interface EciScalingConfigurationArgs {
      * The amount of memory resources allocated to the container group.
      */
     memory?: pulumi.Input<number>;
+    /**
+     * Specifies whether to overwrite the data. Valid values: true, false.
+     */
+    override?: pulumi.Input<boolean>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */

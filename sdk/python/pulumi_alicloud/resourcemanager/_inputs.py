@@ -878,10 +878,20 @@ if not MYPY:
         resource_id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The ID of the shared resource.
+
+        The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+
+        > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         """
         resource_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        Shared resource type.
+
+        The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+
+        For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+
+        > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         """
 elif False:
     ResourceShareResourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -893,7 +903,17 @@ class ResourceShareResourceArgs:
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
-        :param pulumi.Input[_builtins.str] resource_type: Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+               
+               The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+               
+               > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
+        :param pulumi.Input[_builtins.str] resource_type: Shared resource type.
+               
+               The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+               
+               For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+               
+               > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         """
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
@@ -905,6 +925,10 @@ class ResourceShareResourceArgs:
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the shared resource.
+
+        The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+
+        > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         """
         return pulumi.get(self, "resource_id")
 
@@ -916,7 +940,13 @@ class ResourceShareResourceArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        Shared resource type.
+
+        The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+
+        For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+
+        > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         """
         return pulumi.get(self, "resource_type")
 

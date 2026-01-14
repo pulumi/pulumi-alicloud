@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .account_privilege import *
+from .ai_instance import *
 from .backup_policy import *
 from .connection import *
 from .custom import *

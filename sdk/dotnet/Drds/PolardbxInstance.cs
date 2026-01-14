@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Drds
 {
     /// <summary>
-    /// Provides a DRDS Polardb X Instance resource.
+    /// Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
     /// 
-    /// For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
+    /// PolarDB-X Database Instance.
+    /// 
+    /// For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
     /// 
     /// &gt; **NOTE:** Available since v1.211.0.
     /// 
@@ -69,7 +71,7 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// ## Import
     /// 
-    /// DRDS Polardb X Instance can be imported using the id, e.g.
+    /// Distributed Relational Database Service (DRDS) Polardbx Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example &lt;id&gt;
@@ -91,10 +93,16 @@ namespace Pulumi.AliCloud.Drds
         public Output<int> CnNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance remarks
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Storage node specifications.
@@ -109,10 +117,36 @@ namespace Pulumi.AliCloud.Drds
         public Output<int> DnNodeCount { get; private set; } = null!;
 
         /// <summary>
+        /// Engine version, default 5.7
+        /// </summary>
+        [Output("engineVersion")]
+        public Output<string> EngineVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the instance is read-only.
+        /// </summary>
+        [Output("isReadDbInstance")]
+        public Output<bool?> IsReadDbInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// If the instance is a read-only instance, you must specify the primary instance.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("primaryDbInstanceName")]
+        public Output<string?> PrimaryDbInstanceName { get; private set; } = null!;
+
+        /// <summary>
         /// Primary Availability Zone.
         /// </summary>
         [Output("primaryZone")]
         public Output<string> PrimaryZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The resource group ID can be empty. This parameter is not supported for the time being.
@@ -127,7 +161,7 @@ namespace Pulumi.AliCloud.Drds
         public Output<string?> SecondaryZone { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -140,8 +174,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// Topology type:
-        /// - **3azones**: three available areas;
-        /// - **1azone**: Single zone.
         /// </summary>
         [Output("topologyType")]
         public Output<string> TopologyType { get; private set; } = null!;
@@ -217,6 +249,12 @@ namespace Pulumi.AliCloud.Drds
         public Input<int> CnNodeCount { get; set; } = null!;
 
         /// <summary>
+        /// Instance remarks
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Storage node specifications.
         /// </summary>
         [Input("dnClass", required: true)]
@@ -227,6 +265,26 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Input("dnNodeCount", required: true)]
         public Input<int> DnNodeCount { get; set; } = null!;
+
+        /// <summary>
+        /// Engine version, default 5.7
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Whether the instance is read-only.
+        /// </summary>
+        [Input("isReadDbInstance")]
+        public Input<bool>? IsReadDbInstance { get; set; }
+
+        /// <summary>
+        /// If the instance is a read-only instance, you must specify the primary instance.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("primaryDbInstanceName")]
+        public Input<string>? PrimaryDbInstanceName { get; set; }
 
         /// <summary>
         /// Primary Availability Zone.
@@ -254,8 +312,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// Topology type:
-        /// - **3azones**: three available areas;
-        /// - **1azone**: Single zone.
         /// </summary>
         [Input("topologyType", required: true)]
         public Input<string> TopologyType { get; set; } = null!;
@@ -293,10 +349,16 @@ namespace Pulumi.AliCloud.Drds
         public Input<int>? CnNodeCount { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Instance remarks
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Storage node specifications.
@@ -311,10 +373,36 @@ namespace Pulumi.AliCloud.Drds
         public Input<int>? DnNodeCount { get; set; }
 
         /// <summary>
+        /// Engine version, default 5.7
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Whether the instance is read-only.
+        /// </summary>
+        [Input("isReadDbInstance")]
+        public Input<bool>? IsReadDbInstance { get; set; }
+
+        /// <summary>
+        /// If the instance is a read-only instance, you must specify the primary instance.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("primaryDbInstanceName")]
+        public Input<string>? PrimaryDbInstanceName { get; set; }
+
+        /// <summary>
         /// Primary Availability Zone.
         /// </summary>
         [Input("primaryZone")]
         public Input<string>? PrimaryZone { get; set; }
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The resource group ID can be empty. This parameter is not supported for the time being.
@@ -329,7 +417,7 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -342,8 +430,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// Topology type:
-        /// - **3azones**: three available areas;
-        /// - **1azone**: Single zone.
         /// </summary>
         [Input("topologyType")]
         public Input<string>? TopologyType { get; set; }

@@ -10,15 +10,18 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DRDS Polardb X Instance resource.
+ * Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
  * 
- * For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
+ * PolarDB-X Database Instance.
+ * 
+ * For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
  * 
  * &gt; **NOTE:** Available since v1.211.0.
  * 
@@ -93,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DRDS Polardb X Instance can be imported using the id, e.g.
+ * Distributed Relational Database Service (DRDS) Polardbx Instance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example &lt;id&gt;
@@ -131,18 +134,32 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
         return this.cnNodeCount;
     }
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Instance remarks
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return Instance remarks
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * Storage node specifications.
@@ -173,6 +190,52 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
         return this.dnNodeCount;
     }
     /**
+     * Engine version, default 5.7
+     * 
+     */
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
+    private Output<String> engineVersion;
+
+    /**
+     * @return Engine version, default 5.7
+     * 
+     */
+    public Output<String> engineVersion() {
+        return this.engineVersion;
+    }
+    /**
+     * Whether the instance is read-only.
+     * 
+     */
+    @Export(name="isReadDbInstance", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isReadDbInstance;
+
+    /**
+     * @return Whether the instance is read-only.
+     * 
+     */
+    public Output<Optional<Boolean>> isReadDbInstance() {
+        return Codegen.optional(this.isReadDbInstance);
+    }
+    /**
+     * If the instance is a read-only instance, you must specify the primary instance.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="primaryDbInstanceName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> primaryDbInstanceName;
+
+    /**
+     * @return If the instance is a read-only instance, you must specify the primary instance.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<String>> primaryDbInstanceName() {
+        return Codegen.optional(this.primaryDbInstanceName);
+    }
+    /**
      * Primary Availability Zone.
      * 
      */
@@ -185,6 +248,20 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> primaryZone() {
         return this.primaryZone;
+    }
+    /**
+     * The region ID of the resource
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The region ID of the resource
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The resource group ID can be empty. This parameter is not supported for the time being.
@@ -215,14 +292,14 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryZone);
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
@@ -244,8 +321,6 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      * 
      */
     @Export(name="topologyType", refs={String.class}, tree="[0]")
@@ -253,8 +328,6 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      * 
      */
     public Output<String> topologyType() {

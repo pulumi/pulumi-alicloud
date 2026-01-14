@@ -18,9 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a HBR Policy Binding resource.
+ * Provides a Hybrid Backup Recovery (HBR) Policy Binding resource.
  * 
- * For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
+ * A policy binding relationship consists of a data source, a policy, and binding options.
+ * 
+ * For information about Hybrid Backup Recovery (HBR) Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
  * 
  * &gt; **NOTE:** Available since v1.221.0.
  * 
@@ -107,7 +109,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * HBR Policy Binding can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example &lt;policy_id&gt;:&lt;source_type&gt;:&lt;data_source_id&gt;
@@ -295,7 +297,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      * 
      */
     @Export(name="sourceType", refs={String.class}, tree="[0]")
@@ -308,7 +310,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      * 
      */
     public Output<String> sourceType() {

@@ -5,12 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
+ * Provides a Ali Kafka Consumer Group resource.
+ *
+ * Group in kafka.
+ *
+ * For information about Ali Kafka Consumer Group and how to use it, see [What is Consumer Group](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateConsumerGroup).
  *
  * > **NOTE:** Available since v1.56.0.
- *
- * > **NOTE:**  Only the following regions support create alikafka consumer group.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  *
  * ## Example Usage
  *
@@ -19,37 +20,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const defaultInteger = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
- * });
- * const _default = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "172.16.0.0/12"});
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.alikafka.Instance("default", {
- *     name: `${name}-${defaultInteger.result}`,
- *     partitionNum: 50,
- *     diskType: 1,
- *     diskSize: 500,
- *     deployType: 5,
- *     ioMax: 20,
- *     vswitchId: defaultSwitch.id,
- *     securityGroup: defaultSecurityGroup.id,
- * });
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.actiontrail.getInstances({});
  * const defaultConsumerGroup = new alicloud.alikafka.ConsumerGroup("default", {
+ *     instanceId: _default.then(_default => _default.instances?.[0]?.id),
  *     consumerId: name,
- *     instanceId: defaultInstance.id,
  * });
  * ```
  *
@@ -57,10 +34,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ALIKAFKA GROUP can be imported using the id, e.g.
+ * AliKafka Consumer Group can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+ * $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example <instance_id>:<consumer_id>
  * ```
  */
 export class ConsumerGroup extends pulumi.CustomResource {
@@ -92,17 +69,31 @@ export class ConsumerGroup extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the consumer group. The length cannot exceed 64 characters.
+     * ID of the consumer group.
      */
     declare public readonly consumerId: pulumi.Output<string>;
     /**
-     * The description of the resource.
+     * (Available since v1.268.0) The timestamp of when the group was created.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
+    /**
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     *
+     * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     */
+    declare public readonly description: pulumi.Output<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
     declare public readonly instanceId: pulumi.Output<string>;
+    /**
+     * (Available since v1.268.0) The region ID.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
+     * The remark of the resource.
+     */
+    declare public readonly remark: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -122,8 +113,11 @@ export class ConsumerGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConsumerGroupState | undefined;
             resourceInputs["consumerId"] = state?.consumerId;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["remark"] = state?.remark;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ConsumerGroupArgs | undefined;
@@ -136,7 +130,10 @@ export class ConsumerGroup extends pulumi.CustomResource {
             resourceInputs["consumerId"] = args?.consumerId;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["remark"] = args?.remark;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConsumerGroup.__pulumiType, name, resourceInputs, opts);
@@ -148,17 +145,31 @@ export class ConsumerGroup extends pulumi.CustomResource {
  */
 export interface ConsumerGroupState {
     /**
-     * ID of the consumer group. The length cannot exceed 64 characters.
+     * ID of the consumer group.
      */
     consumerId?: pulumi.Input<string>;
     /**
-     * The description of the resource.
+     * (Available since v1.268.0) The timestamp of when the group was created.
+     */
+    createTime?: pulumi.Input<number>;
+    /**
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     *
+     * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      */
     description?: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.268.0) The region ID.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The remark of the resource.
+     */
+    remark?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -170,17 +181,23 @@ export interface ConsumerGroupState {
  */
 export interface ConsumerGroupArgs {
     /**
-     * ID of the consumer group. The length cannot exceed 64 characters.
+     * ID of the consumer group.
      */
     consumerId: pulumi.Input<string>;
     /**
-     * The description of the resource.
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     *
+     * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      */
     description?: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The remark of the resource.
+     */
+    remark?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

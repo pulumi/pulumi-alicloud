@@ -15,6 +15,11 @@ export type AccountPrivilege = import("./accountPrivilege").AccountPrivilege;
 export const AccountPrivilege: typeof import("./accountPrivilege").AccountPrivilege = null as any;
 utilities.lazyLoad(exports, ["AccountPrivilege"], () => require("./accountPrivilege"));
 
+export { AiInstanceArgs, AiInstanceState } from "./aiInstance";
+export type AiInstance = import("./aiInstance").AiInstance;
+export const AiInstance: typeof import("./aiInstance").AiInstance = null as any;
+utilities.lazyLoad(exports, ["AiInstance"], () => require("./aiInstance"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
@@ -214,6 +219,8 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "alicloud:rds/accountPrivilege:AccountPrivilege":
                 return new AccountPrivilege(name, <any>undefined, { urn })
+            case "alicloud:rds/aiInstance:AiInstance":
+                return new AiInstance(name, <any>undefined, { urn })
             case "alicloud:rds/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:rds/connection:Connection":
@@ -267,6 +274,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "rds/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/accountPrivilege", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/aiInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/custom", _module)

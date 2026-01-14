@@ -37,10 +37,6 @@ namespace Pulumi.AliCloud.MongoDB
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
-    /// 
-    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
-    /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
@@ -52,14 +48,14 @@ namespace Pulumi.AliCloud.MongoDB
     ///         VswitchName = name,
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = zoneId,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id)),
     ///     });
     /// 
     ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("default", new()
     ///     {
     ///         EngineVersion = "4.2",
     ///         VswitchId = defaultSwitch.Id,
-    ///         ZoneId = zoneId,
+    ///         ZoneId = defaultSwitch.ZoneId,
     ///         Name = name,
     ///         MongoLists = new[]
     ///         {
@@ -274,6 +270,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
+
+        /// <summary>
+        /// Set of parameters needs to be set after mongodb instance was launched. See `Parameters` below.
+        /// </summary>
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.ShardingInstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when `InstanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
@@ -657,6 +659,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
+        [Input("parameters")]
+        private InputList<Inputs.ShardingInstanceParameterArgs>? _parameters;
+
+        /// <summary>
+        /// Set of parameters needs to be set after mongodb instance was launched. See `Parameters` below.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.ShardingInstanceParameterArgs>());
+            set => _parameters = value;
+        }
+
         /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when `InstanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         /// </summary>
@@ -1002,6 +1016,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
+
+        [Input("parameters")]
+        private InputList<Inputs.ShardingInstanceParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// Set of parameters needs to be set after mongodb instance was launched. See `Parameters` below.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceParameterGetArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.ShardingInstanceParameterGetArgs>());
+            set => _parameters = value;
+        }
 
         /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when `InstanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.

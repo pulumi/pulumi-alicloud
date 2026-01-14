@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public partial class OssScanConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates whether the prefixes of all objects are matched.
+        /// Specifies whether to match the prefixes of all objects.
         /// </summary>
         [Output("allKeyPrefix")]
         public Output<bool> AllKeyPrefix { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class OssScanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the prefixes of all objects are matched.
+        /// Specifies whether to match the prefixes of all objects.
         /// </summary>
         [Input("allKeyPrefix")]
         public Input<bool>? AllKeyPrefix { get; set; }
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class OssScanConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the prefixes of all objects are matched.
+        /// Specifies whether to match the prefixes of all objects.
         /// </summary>
         [Input("allKeyPrefix")]
         public Input<bool>? AllKeyPrefix { get; set; }

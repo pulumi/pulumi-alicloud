@@ -11,9 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a HBR Policy Binding resource.
+// Provides a Hybrid Backup Recovery (HBR) Policy Binding resource.
 //
-// For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
+// A policy binding relationship consists of a data source, a policy, and binding options.
+//
+// For information about Hybrid Backup Recovery (HBR) Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
 //
 // > **NOTE:** Available since v1.221.0.
 //
@@ -102,7 +104,7 @@ import (
 //
 // ## Import
 //
-// HBR Policy Binding can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>
@@ -142,7 +144,7 @@ type PolicyBinding struct {
 	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
 	// - `ECS_FILE`: indicates that the ECS file is backed up.
 	// - `File`: indicates a local File backup.
-	// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+	// - `OTS`: indicates the Tablestore backup.
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
@@ -210,7 +212,7 @@ type policyBindingState struct {
 	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
 	// - `ECS_FILE`: indicates that the ECS file is backed up.
 	// - `File`: indicates a local File backup.
-	// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+	// - `OTS`: indicates the Tablestore backup.
 	SourceType *string `pulumi:"sourceType"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit *string `pulumi:"speedLimit"`
@@ -249,7 +251,7 @@ type PolicyBindingState struct {
 	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
 	// - `ECS_FILE`: indicates that the ECS file is backed up.
 	// - `File`: indicates a local File backup.
-	// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+	// - `OTS`: indicates the Tablestore backup.
 	SourceType pulumi.StringPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit pulumi.StringPtrInput
@@ -290,7 +292,7 @@ type policyBindingArgs struct {
 	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
 	// - `ECS_FILE`: indicates that the ECS file is backed up.
 	// - `File`: indicates a local File backup.
-	// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+	// - `OTS`: indicates the Tablestore backup.
 	SourceType *string `pulumi:"sourceType"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit *string `pulumi:"speedLimit"`
@@ -328,7 +330,7 @@ type PolicyBindingArgs struct {
 	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
 	// - `ECS_FILE`: indicates that the ECS file is backed up.
 	// - `File`: indicates a local File backup.
-	// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+	// - `OTS`: indicates the Tablestore backup.
 	SourceType pulumi.StringPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit pulumi.StringPtrInput
@@ -489,7 +491,7 @@ func (o PolicyBindingOutput) Source() pulumi.StringPtrOutput {
 // - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
 // - `ECS_FILE`: indicates that the ECS file is backed up.
 // - `File`: indicates a local File backup.
-// - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+// - `OTS`: indicates the Tablestore backup.
 func (o PolicyBindingOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
 }

@@ -3,7 +3,9 @@
 
 package com.pulumi.alicloud.hbr.outputs;
 
+import com.pulumi.alicloud.hbr.outputs.PolicyRuleDataSourceFilter;
 import com.pulumi.alicloud.hbr.outputs.PolicyRuleRetentionRule;
+import com.pulumi.alicloud.hbr.outputs.PolicyRuleTagFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -16,27 +18,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyRule {
     /**
-     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
      * 
      */
     private @Nullable Integer archiveDays;
     /**
-     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
      * 
      */
     private @Nullable String backupType;
     /**
-     * @return This parameter is required only when `RuleType` is set to `BACKUP`.
+     * @return This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+     * 
+     */
+    private @Nullable List<PolicyRuleDataSourceFilter> dataSourceFilters;
+    /**
+     * @return This parameter is required only when `RuleType` is set to `BACKUP`
      * 
      */
     private @Nullable Integer keepLatestSnapshots;
     /**
-     * @return Only when the `RuleType` value is.
+     * @return Only when the `RuleType` value is
      * 
      */
     private @Nullable String replicationRegionId;
     /**
-     * @return Retention time, in days.
+     * @return Retention time, in days
      * 
      */
     private @Nullable Integer retention;
@@ -46,12 +53,12 @@ public final class PolicyRule {
      */
     private @Nullable List<PolicyRuleRetentionRule> retentionRules;
     /**
-     * @return Rule ID.
+     * @return Rule ID
      * 
      */
     private @Nullable String ruleId;
     /**
-     * @return Rule Type.
+     * @return Rule Type
      * 
      */
     private String ruleType;
@@ -61,42 +68,54 @@ public final class PolicyRule {
      */
     private @Nullable String schedule;
     /**
-     * @return Vault ID.
+     * @return This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+     * 
+     */
+    private @Nullable List<PolicyRuleTagFilter> tagFilters;
+    /**
+     * @return Vault ID
      * 
      */
     private @Nullable String vaultId;
 
     private PolicyRule() {}
     /**
-     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
      * 
      */
     public Optional<Integer> archiveDays() {
         return Optional.ofNullable(this.archiveDays);
     }
     /**
-     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
      * 
      */
     public Optional<String> backupType() {
         return Optional.ofNullable(this.backupType);
     }
     /**
-     * @return This parameter is required only when `RuleType` is set to `BACKUP`.
+     * @return This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+     * 
+     */
+    public List<PolicyRuleDataSourceFilter> dataSourceFilters() {
+        return this.dataSourceFilters == null ? List.of() : this.dataSourceFilters;
+    }
+    /**
+     * @return This parameter is required only when `RuleType` is set to `BACKUP`
      * 
      */
     public Optional<Integer> keepLatestSnapshots() {
         return Optional.ofNullable(this.keepLatestSnapshots);
     }
     /**
-     * @return Only when the `RuleType` value is.
+     * @return Only when the `RuleType` value is
      * 
      */
     public Optional<String> replicationRegionId() {
         return Optional.ofNullable(this.replicationRegionId);
     }
     /**
-     * @return Retention time, in days.
+     * @return Retention time, in days
      * 
      */
     public Optional<Integer> retention() {
@@ -110,14 +129,14 @@ public final class PolicyRule {
         return this.retentionRules == null ? List.of() : this.retentionRules;
     }
     /**
-     * @return Rule ID.
+     * @return Rule ID
      * 
      */
     public Optional<String> ruleId() {
         return Optional.ofNullable(this.ruleId);
     }
     /**
-     * @return Rule Type.
+     * @return Rule Type
      * 
      */
     public String ruleType() {
@@ -131,7 +150,14 @@ public final class PolicyRule {
         return Optional.ofNullable(this.schedule);
     }
     /**
-     * @return Vault ID.
+     * @return This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+     * 
+     */
+    public List<PolicyRuleTagFilter> tagFilters() {
+        return this.tagFilters == null ? List.of() : this.tagFilters;
+    }
+    /**
+     * @return Vault ID
      * 
      */
     public Optional<String> vaultId() {
@@ -149,6 +175,7 @@ public final class PolicyRule {
     public static final class Builder {
         private @Nullable Integer archiveDays;
         private @Nullable String backupType;
+        private @Nullable List<PolicyRuleDataSourceFilter> dataSourceFilters;
         private @Nullable Integer keepLatestSnapshots;
         private @Nullable String replicationRegionId;
         private @Nullable Integer retention;
@@ -156,12 +183,14 @@ public final class PolicyRule {
         private @Nullable String ruleId;
         private String ruleType;
         private @Nullable String schedule;
+        private @Nullable List<PolicyRuleTagFilter> tagFilters;
         private @Nullable String vaultId;
         public Builder() {}
         public Builder(PolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveDays = defaults.archiveDays;
     	      this.backupType = defaults.backupType;
+    	      this.dataSourceFilters = defaults.dataSourceFilters;
     	      this.keepLatestSnapshots = defaults.keepLatestSnapshots;
     	      this.replicationRegionId = defaults.replicationRegionId;
     	      this.retention = defaults.retention;
@@ -169,6 +198,7 @@ public final class PolicyRule {
     	      this.ruleId = defaults.ruleId;
     	      this.ruleType = defaults.ruleType;
     	      this.schedule = defaults.schedule;
+    	      this.tagFilters = defaults.tagFilters;
     	      this.vaultId = defaults.vaultId;
         }
 
@@ -183,6 +213,15 @@ public final class PolicyRule {
 
             this.backupType = backupType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dataSourceFilters(@Nullable List<PolicyRuleDataSourceFilter> dataSourceFilters) {
+
+            this.dataSourceFilters = dataSourceFilters;
+            return this;
+        }
+        public Builder dataSourceFilters(PolicyRuleDataSourceFilter... dataSourceFilters) {
+            return dataSourceFilters(List.of(dataSourceFilters));
         }
         @CustomType.Setter
         public Builder keepLatestSnapshots(@Nullable Integer keepLatestSnapshots) {
@@ -232,6 +271,15 @@ public final class PolicyRule {
             return this;
         }
         @CustomType.Setter
+        public Builder tagFilters(@Nullable List<PolicyRuleTagFilter> tagFilters) {
+
+            this.tagFilters = tagFilters;
+            return this;
+        }
+        public Builder tagFilters(PolicyRuleTagFilter... tagFilters) {
+            return tagFilters(List.of(tagFilters));
+        }
+        @CustomType.Setter
         public Builder vaultId(@Nullable String vaultId) {
 
             this.vaultId = vaultId;
@@ -241,6 +289,7 @@ public final class PolicyRule {
             final var _resultValue = new PolicyRule();
             _resultValue.archiveDays = archiveDays;
             _resultValue.backupType = backupType;
+            _resultValue.dataSourceFilters = dataSourceFilters;
             _resultValue.keepLatestSnapshots = keepLatestSnapshots;
             _resultValue.replicationRegionId = replicationRegionId;
             _resultValue.retention = retention;
@@ -248,6 +297,7 @@ public final class PolicyRule {
             _resultValue.ruleId = ruleId;
             _resultValue.ruleType = ruleType;
             _resultValue.schedule = schedule;
+            _resultValue.tagFilters = tagFilters;
             _resultValue.vaultId = vaultId;
             return _resultValue;
         }

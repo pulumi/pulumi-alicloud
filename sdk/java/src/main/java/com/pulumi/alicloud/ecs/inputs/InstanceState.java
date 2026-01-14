@@ -621,14 +621,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+     * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+     * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
      * 
      */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
-     * @return The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+     * @return The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+     * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
      * 
      */
     public Optional<Output<String>> keyName() {
@@ -1269,14 +1271,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the automatic snapshot policy applied to the system disk.
+     * The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
      * 
      */
     @Import(name="systemDiskAutoSnapshotPolicyId")
     private @Nullable Output<String> systemDiskAutoSnapshotPolicyId;
 
     /**
-     * @return The ID of the automatic snapshot policy applied to the system disk.
+     * @return The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
      * 
      */
     public Optional<Output<String>> systemDiskAutoSnapshotPolicyId() {
@@ -2494,7 +2496,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+         * @param keyName The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+         * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
          * 
          * @return builder
          * 
@@ -2505,7 +2508,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
+         * @param keyName The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+         * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
          * 
          * @return builder
          * 
@@ -3402,7 +3406,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskAutoSnapshotPolicyId The ID of the automatic snapshot policy applied to the system disk.
+         * @param systemDiskAutoSnapshotPolicyId The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
          * 
          * @return builder
          * 
@@ -3413,7 +3417,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskAutoSnapshotPolicyId The ID of the automatic snapshot policy applied to the system disk.
+         * @param systemDiskAutoSnapshotPolicyId The ID of the automatic snapshot policy applied to the system disk. **NOTE:** If you want to use `systemDiskAutoSnapshotPolicyId`, We recommend you to use the resource alicloud_ecs_auto_snapshot_policy_attachment.
          * 
          * @return builder
          * 

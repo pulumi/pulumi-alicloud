@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AiInstanceAuthConfigListArgs',
+    'AiInstanceAuthConfigListArgsDict',
+    'AiInstanceStorageConfigListArgs',
+    'AiInstanceStorageConfigListArgsDict',
     'CustomDataDiskArgs',
     'CustomDataDiskArgsDict',
     'CustomSystemDiskArgs',
@@ -56,6 +60,110 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AiInstanceAuthConfigListArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the configuration item.
+        """
+elif False:
+    AiInstanceAuthConfigListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiInstanceAuthConfigListArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+        :param pulumi.Input[_builtins.str] value: The value of the configuration item.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the configuration item.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AiInstanceStorageConfigListArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the configuration item.
+        """
+elif False:
+    AiInstanceStorageConfigListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiInstanceStorageConfigListArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+        :param pulumi.Input[_builtins.str] value: The value of the configuration item.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the configuration item.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
 
 if not MYPY:
     class CustomDataDiskArgsDict(TypedDict):

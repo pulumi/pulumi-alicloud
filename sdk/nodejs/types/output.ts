@@ -41728,14 +41728,14 @@ export namespace hbr {
 
     export interface PolicyBindingAdvancedOptions {
         /**
-         * ECS Backup Advanced options. See `udmDetail` below.
+         * ECS Backup Advanced options See `udmDetail` below.
          */
         udmDetail: outputs.hbr.PolicyBindingAdvancedOptionsUdmDetail;
     }
 
     export interface PolicyBindingAdvancedOptionsUdmDetail {
         /**
-         * Custom KMS key ID of encrypted copy.
+         * Custom KMS key ID of encrypted copy
          */
         destinationKmsKeyId?: string;
         /**
@@ -41743,30 +41743,34 @@ export namespace hbr {
          */
         diskIdLists?: string[];
         /**
-         * List of cloud disk IDs that are not backed up.
+         * List of cloud disk IDs that are not backed up
          */
         excludeDiskIdLists?: string[];
     }
 
     export interface PolicyRule {
         /**
-         * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
          */
         archiveDays: number;
         /**
-         * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+         * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
          */
         backupType?: string;
         /**
-         * This parameter is required only when `RuleType` is set to `BACKUP`.
+         * This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+         */
+        dataSourceFilters?: outputs.hbr.PolicyRuleDataSourceFilter[];
+        /**
+         * This parameter is required only when `RuleType` is set to `BACKUP`
          */
         keepLatestSnapshots?: number;
         /**
-         * Only when the `RuleType` value is.
+         * Only when the `RuleType` value is
          */
         replicationRegionId?: string;
         /**
-         * Retention time, in days.
+         * Retention time, in days
          */
         retention?: number;
         /**
@@ -41774,11 +41778,11 @@ export namespace hbr {
          */
         retentionRules?: outputs.hbr.PolicyRuleRetentionRule[];
         /**
-         * Rule ID.
+         * Rule ID
          */
         ruleId: string;
         /**
-         * Rule Type.
+         * Rule Type
          */
         ruleType: string;
         /**
@@ -41786,9 +41790,20 @@ export namespace hbr {
          */
         schedule?: string;
         /**
-         * Vault ID.
+         * This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+         */
+        tagFilters?: outputs.hbr.PolicyRuleTagFilter[];
+        /**
+         * Vault ID
          */
         vaultId?: string;
+    }
+
+    export interface PolicyRuleDataSourceFilter {
+        /**
+         * The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+         */
+        sourceType?: string;
     }
 
     export interface PolicyRuleRetentionRule {
@@ -41797,9 +41812,24 @@ export namespace hbr {
          */
         advancedRetentionType?: string;
         /**
-         * Retention time, in days.
+         * Retention time, in days
          */
         retention?: number;
+    }
+
+    export interface PolicyRuleTagFilter {
+        /**
+         * The tag key.
+         */
+        key?: string;
+        /**
+         * Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+         */
+        operator?: string;
+        /**
+         * The label value, which is empty and represents any value.
+         */
+        value?: string;
     }
 
     export interface RestoreJobOtsDetail {
@@ -44857,6 +44887,17 @@ export namespace mongodb {
          * The connection port of the Config Server node.
          */
         port: number;
+    }
+
+    export interface ShardingInstanceParameter {
+        /**
+         * The name of the parameter.
+         */
+        name: string;
+        /**
+         * The value of the parameter.
+         */
+        value: string;
     }
 
     export interface ShardingInstanceShardList {
@@ -50498,6 +50539,28 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface AiInstanceAuthConfigList {
+        /**
+         * The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+         */
+        name?: string;
+        /**
+         * The value of the configuration item.
+         */
+        value?: string;
+    }
+
+    export interface AiInstanceStorageConfigList {
+        /**
+         * The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+         */
+        name?: string;
+        /**
+         * The value of the configuration item.
+         */
+        value?: string;
+    }
+
     export interface CustomDataDisk {
         /**
          * Instance storage type
@@ -52647,10 +52710,20 @@ export namespace resourcemanager {
     export interface ResourceShareResource {
         /**
          * The ID of the shared resource.
+         *
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         *
+         * > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
          */
         resourceId?: string;
         /**
-         * Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         * Shared resource type.
+         *
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         *
+         * For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         *
+         * > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
          */
         resourceType?: string;
     }
