@@ -6665,7 +6665,13 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "data_source_filters": {
+                                    "maxItemsOne": false
+                                },
                                 "retention_rules": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_filters": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -7410,6 +7416,9 @@
                         "maxItemsOne": false
                     },
                     "mongo_list": {
+                        "maxItemsOne": false
+                    },
+                    "parameters": {
                         "maxItemsOne": false
                     },
                     "security_ip_list": {
@@ -8683,6 +8692,17 @@
             "alicloud_rds_account": {
                 "current": "alicloud:rds/rdsAccount:RdsAccount"
             },
+            "alicloud_rds_ai_instance": {
+                "current": "alicloud:rds/aiInstance:AiInstance",
+                "fields": {
+                    "auth_config_list": {
+                        "maxItemsOne": false
+                    },
+                    "storage_config_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_rds_backup": {
                 "current": "alicloud:rds/rdsBackup:RdsBackup"
             },
@@ -9111,6 +9131,9 @@
                 "current": "alicloud:resourcemanager/resourceShare:ResourceShare",
                 "fields": {
                     "permission_names": {
+                        "maxItemsOne": false
+                    },
+                    "resource_arns": {
                         "maxItemsOne": false
                     },
                     "resources": {
