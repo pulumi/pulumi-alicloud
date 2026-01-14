@@ -50,12 +50,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			index := len(_default.Zones).ApplyT(func(length int) (float64, error) {
-//				return float64(length.ApplyT(func(__convert float64) (float64, error) {
-//					return __convert - 1, nil
-//				}).(pulumi.Float64Output)), nil
-//			}).(pulumi.Float64Output)
-//			zoneId := _default.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
@@ -67,7 +61,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(zoneId),
+//				ZoneId:      pulumi.String(_default.Zones[1].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +69,7 @@ import (
 //			_, err = mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
 //				EngineVersion: pulumi.String("4.2"),
 //				VswitchId:     defaultSwitch.ID(),
-//				ZoneId:        pulumi.String(zoneId),
+//				ZoneId:        defaultSwitch.ZoneId,
 //				Name:          pulumi.String(name),
 //				MongoLists: mongodb.ShardingInstanceMongoListArray{
 //					&mongodb.ShardingInstanceMongoListArgs{
@@ -181,6 +175,8 @@ type ShardingInstance struct {
 	// - `DOWNGRADE`: The specifications are downgraded.
 	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+	Parameters ShardingInstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -333,6 +329,8 @@ type shardingInstanceState struct {
 	// - `DOWNGRADE`: The specifications are downgraded.
 	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+	Parameters []ShardingInstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -440,6 +438,8 @@ type ShardingInstanceState struct {
 	// - `DOWNGRADE`: The specifications are downgraded.
 	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+	Parameters ShardingInstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -551,6 +551,8 @@ type shardingInstanceArgs struct {
 	// - `DOWNGRADE`: The specifications are downgraded.
 	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+	Parameters []ShardingInstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -655,6 +657,8 @@ type ShardingInstanceArgs struct {
 	// - `DOWNGRADE`: The specifications are downgraded.
 	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+	Parameters ShardingInstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -923,6 +927,11 @@ func (o ShardingInstanceOutput) NetworkType() pulumi.StringOutput {
 //     **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 func (o ShardingInstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
+}
+
+// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+func (o ShardingInstanceOutput) Parameters() ShardingInstanceParameterArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceParameterArrayOutput { return v.Parameters }).(ShardingInstanceParameterArrayOutput)
 }
 
 // The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.

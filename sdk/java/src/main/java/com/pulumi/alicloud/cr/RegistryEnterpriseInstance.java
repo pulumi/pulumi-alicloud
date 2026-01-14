@@ -21,7 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CR Instance resource.
  * 
- * For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+ * For information about Container Registry Instance and how to use it, see [What is Container Registry](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry).
+ * 
+ * For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
  * 
  * &gt; **NOTE:** Available since v1.124.0.
  * 
@@ -268,6 +270,24 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
+     * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="namespaceQuota", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> namespaceQuota;
+
+    /**
+     * @return The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<Integer>> namespaceQuota() {
+        return Codegen.optional(this.namespaceQuota);
+    }
+    /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      * 
      */
@@ -374,9 +394,25 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
         return this.renewalStatus;
     }
     /**
-     * The ID of the resource group
+     * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="repoQuota", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> repoQuota;
+
+    /**
+     * @return The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<Integer>> repoQuota() {
+        return Codegen.optional(this.repoQuota);
+    }
+    /**
+     * The ID of the resource group
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
@@ -384,8 +420,6 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
 
     /**
      * @return The ID of the resource group
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> resourceGroupId() {
@@ -404,6 +438,28 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The number of VPC access controls.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="vpcQuota", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> vpcQuota;
+
+    /**
+     * @return The number of VPC access controls.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<Integer>> vpcQuota() {
+        return Codegen.optional(this.vpcQuota);
     }
 
     /**

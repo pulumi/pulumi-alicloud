@@ -20,6 +20,10 @@ public final class GetZonesResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of eci Instance zones. Each element contains the following attributes:
+     * 
+     */
     private List<GetZonesZone> zones;
 
     private GetZonesResult() {}
@@ -33,6 +37,10 @@ public final class GetZonesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of eci Instance zones. Each element contains the following attributes:
+     * 
+     */
     public List<GetZonesZone> zones() {
         return this.zones;
     }

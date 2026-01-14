@@ -27,6 +27,10 @@ class PolardbxInstanceArgs:
                  topology_type: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None):
@@ -38,10 +42,14 @@ class PolardbxInstanceArgs:
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
         :param pulumi.Input[_builtins.str] primary_zone: Primary Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
-               - **3azones**: three available areas;
-               - **1azone**: Single zone.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
+        :param pulumi.Input[_builtins.str] description: Instance remarks
+        :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
+        :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
+        :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
@@ -54,6 +62,14 @@ class PolardbxInstanceArgs:
         pulumi.set(__self__, "topology_type", topology_type)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if engine_version is not None:
+            pulumi.set(__self__, "engine_version", engine_version)
+        if is_read_db_instance is not None:
+            pulumi.set(__self__, "is_read_db_instance", is_read_db_instance)
+        if primary_db_instance_name is not None:
+            pulumi.set(__self__, "primary_db_instance_name", primary_db_instance_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone is not None:
@@ -126,8 +142,6 @@ class PolardbxInstanceArgs:
     def topology_type(self) -> pulumi.Input[_builtins.str]:
         """
         Topology type:
-        - **3azones**: three available areas;
-        - **1azone**: Single zone.
         """
         return pulumi.get(self, "topology_type")
 
@@ -158,6 +172,56 @@ class PolardbxInstanceArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Instance remarks
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Engine version, default 5.7
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "engine_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isReadDbInstance")
+    def is_read_db_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the instance is read-only.
+        """
+        return pulumi.get(self, "is_read_db_instance")
+
+    @is_read_db_instance.setter
+    def is_read_db_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_read_db_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryDbInstanceName")
+    def primary_db_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If the instance is a read-only instance, you must specify the primary instance.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "primary_db_instance_name")
+
+    @primary_db_instance_name.setter
+    def primary_db_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_db_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -202,9 +266,14 @@ class _PolardbxInstanceState:
                  cn_class: Optional[pulumi.Input[_builtins.str]] = None,
                  cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  dn_class: Optional[pulumi.Input[_builtins.str]] = None,
                  dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -216,17 +285,22 @@ class _PolardbxInstanceState:
         Input properties used for looking up and filtering PolardbxInstance resources.
         :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] description: Instance remarks
         :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
+        :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
+        :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
+        :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] primary_zone: Primary Availability Zone.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
-               - **3azones**: three available areas;
-               - **1azone**: Single zone.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
         """
@@ -236,12 +310,22 @@ class _PolardbxInstanceState:
             pulumi.set(__self__, "cn_node_count", cn_node_count)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if dn_class is not None:
             pulumi.set(__self__, "dn_class", dn_class)
         if dn_node_count is not None:
             pulumi.set(__self__, "dn_node_count", dn_node_count)
+        if engine_version is not None:
+            pulumi.set(__self__, "engine_version", engine_version)
+        if is_read_db_instance is not None:
+            pulumi.set(__self__, "is_read_db_instance", is_read_db_instance)
+        if primary_db_instance_name is not None:
+            pulumi.set(__self__, "primary_db_instance_name", primary_db_instance_name)
         if primary_zone is not None:
             pulumi.set(__self__, "primary_zone", primary_zone)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone is not None:
@@ -285,13 +369,25 @@ class _PolardbxInstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Instance remarks
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnClass")
@@ -318,6 +414,44 @@ class _PolardbxInstanceState:
         pulumi.set(self, "dn_node_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Engine version, default 5.7
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "engine_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isReadDbInstance")
+    def is_read_db_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the instance is read-only.
+        """
+        return pulumi.get(self, "is_read_db_instance")
+
+    @is_read_db_instance.setter
+    def is_read_db_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_read_db_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryDbInstanceName")
+    def primary_db_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If the instance is a read-only instance, you must specify the primary instance.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "primary_db_instance_name")
+
+    @primary_db_instance_name.setter
+    def primary_db_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_db_instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="primaryZone")
     def primary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -328,6 +462,18 @@ class _PolardbxInstanceState:
     @primary_zone.setter
     def primary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "primary_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -357,7 +503,7 @@ class _PolardbxInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -382,8 +528,6 @@ class _PolardbxInstanceState:
     def topology_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Topology type:
-        - **3azones**: three available areas;
-        - **1azone**: Single zone.
         """
         return pulumi.get(self, "topology_type")
 
@@ -424,8 +568,12 @@ class PolardbxInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cn_class: Optional[pulumi.Input[_builtins.str]] = None,
                  cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  dn_class: Optional[pulumi.Input[_builtins.str]] = None,
                  dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -435,9 +583,11 @@ class PolardbxInstance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a DRDS Polardb X Instance resource.
+        Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
 
-        For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
+        PolarDB-X Database Instance.
+
+        For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
 
         > **NOTE:** Available since v1.211.0.
 
@@ -477,7 +627,7 @@ class PolardbxInstance(pulumi.CustomResource):
 
         ## Import
 
-        DRDS Polardb X Instance can be imported using the id, e.g.
+        Distributed Relational Database Service (DRDS) Polardbx Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
@@ -487,15 +637,19 @@ class PolardbxInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
+        :param pulumi.Input[_builtins.str] description: Instance remarks
         :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
+        :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
+        :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
+        :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] primary_zone: Primary Availability Zone.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
-               - **3azones**: three available areas;
-               - **1azone**: Single zone.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
         """
@@ -506,9 +660,11 @@ class PolardbxInstance(pulumi.CustomResource):
                  args: PolardbxInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DRDS Polardb X Instance resource.
+        Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
 
-        For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
+        PolarDB-X Database Instance.
+
+        For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
 
         > **NOTE:** Available since v1.211.0.
 
@@ -548,7 +704,7 @@ class PolardbxInstance(pulumi.CustomResource):
 
         ## Import
 
-        DRDS Polardb X Instance can be imported using the id, e.g.
+        Distributed Relational Database Service (DRDS) Polardbx Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
@@ -571,8 +727,12 @@ class PolardbxInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cn_class: Optional[pulumi.Input[_builtins.str]] = None,
                  cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  dn_class: Optional[pulumi.Input[_builtins.str]] = None,
                  dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -595,12 +755,16 @@ class PolardbxInstance(pulumi.CustomResource):
             if cn_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'cn_node_count'")
             __props__.__dict__["cn_node_count"] = cn_node_count
+            __props__.__dict__["description"] = description
             if dn_class is None and not opts.urn:
                 raise TypeError("Missing required property 'dn_class'")
             __props__.__dict__["dn_class"] = dn_class
             if dn_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'dn_node_count'")
             __props__.__dict__["dn_node_count"] = dn_node_count
+            __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["is_read_db_instance"] = is_read_db_instance
+            __props__.__dict__["primary_db_instance_name"] = primary_db_instance_name
             if primary_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_zone'")
             __props__.__dict__["primary_zone"] = primary_zone
@@ -617,6 +781,7 @@ class PolardbxInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(PolardbxInstance, __self__).__init__(
             'alicloud:drds/polardbxInstance:PolardbxInstance',
@@ -631,9 +796,14 @@ class PolardbxInstance(pulumi.CustomResource):
             cn_class: Optional[pulumi.Input[_builtins.str]] = None,
             cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
             dn_class: Optional[pulumi.Input[_builtins.str]] = None,
             dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
+            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+            is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
+            primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -650,17 +820,22 @@ class PolardbxInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] description: Instance remarks
         :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
+        :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
+        :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
+        :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] primary_zone: Primary Availability Zone.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
-               - **3azones**: three available areas;
-               - **1azone**: Single zone.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
         """
@@ -671,9 +846,14 @@ class PolardbxInstance(pulumi.CustomResource):
         __props__.__dict__["cn_class"] = cn_class
         __props__.__dict__["cn_node_count"] = cn_node_count
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
         __props__.__dict__["dn_class"] = dn_class
         __props__.__dict__["dn_node_count"] = dn_node_count
+        __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["is_read_db_instance"] = is_read_db_instance
+        __props__.__dict__["primary_db_instance_name"] = primary_db_instance_name
         __props__.__dict__["primary_zone"] = primary_zone
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["secondary_zone"] = secondary_zone
         __props__.__dict__["status"] = status
@@ -703,9 +883,17 @@ class PolardbxInstance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Instance remarks
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="dnClass")
@@ -724,12 +912,46 @@ class PolardbxInstance(pulumi.CustomResource):
         return pulumi.get(self, "dn_node_count")
 
     @_builtins.property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        Engine version, default 5.7
+        """
+        return pulumi.get(self, "engine_version")
+
+    @_builtins.property
+    @pulumi.getter(name="isReadDbInstance")
+    def is_read_db_instance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the instance is read-only.
+        """
+        return pulumi.get(self, "is_read_db_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryDbInstanceName")
+    def primary_db_instance_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        If the instance is a read-only instance, you must specify the primary instance.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "primary_db_instance_name")
+
+    @_builtins.property
     @pulumi.getter(name="primaryZone")
     def primary_zone(self) -> pulumi.Output[_builtins.str]:
         """
         Primary Availability Zone.
         """
         return pulumi.get(self, "primary_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -751,7 +973,7 @@ class PolardbxInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -768,8 +990,6 @@ class PolardbxInstance(pulumi.CustomResource):
     def topology_type(self) -> pulumi.Output[_builtins.str]:
         """
         Topology type:
-        - **3azones**: three available areas;
-        - **1azone**: Single zone.
         """
         return pulumi.get(self, "topology_type")
 

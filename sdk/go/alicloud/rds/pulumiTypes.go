@@ -13,6 +13,218 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AiInstanceAuthConfigList struct {
+	// The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+	Name *string `pulumi:"name"`
+	// The value of the configuration item.
+	Value *string `pulumi:"value"`
+}
+
+// AiInstanceAuthConfigListInput is an input type that accepts AiInstanceAuthConfigListArgs and AiInstanceAuthConfigListOutput values.
+// You can construct a concrete instance of `AiInstanceAuthConfigListInput` via:
+//
+//	AiInstanceAuthConfigListArgs{...}
+type AiInstanceAuthConfigListInput interface {
+	pulumi.Input
+
+	ToAiInstanceAuthConfigListOutput() AiInstanceAuthConfigListOutput
+	ToAiInstanceAuthConfigListOutputWithContext(context.Context) AiInstanceAuthConfigListOutput
+}
+
+type AiInstanceAuthConfigListArgs struct {
+	// The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the configuration item.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiInstanceAuthConfigListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiInstanceAuthConfigList)(nil)).Elem()
+}
+
+func (i AiInstanceAuthConfigListArgs) ToAiInstanceAuthConfigListOutput() AiInstanceAuthConfigListOutput {
+	return i.ToAiInstanceAuthConfigListOutputWithContext(context.Background())
+}
+
+func (i AiInstanceAuthConfigListArgs) ToAiInstanceAuthConfigListOutputWithContext(ctx context.Context) AiInstanceAuthConfigListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiInstanceAuthConfigListOutput)
+}
+
+// AiInstanceAuthConfigListArrayInput is an input type that accepts AiInstanceAuthConfigListArray and AiInstanceAuthConfigListArrayOutput values.
+// You can construct a concrete instance of `AiInstanceAuthConfigListArrayInput` via:
+//
+//	AiInstanceAuthConfigListArray{ AiInstanceAuthConfigListArgs{...} }
+type AiInstanceAuthConfigListArrayInput interface {
+	pulumi.Input
+
+	ToAiInstanceAuthConfigListArrayOutput() AiInstanceAuthConfigListArrayOutput
+	ToAiInstanceAuthConfigListArrayOutputWithContext(context.Context) AiInstanceAuthConfigListArrayOutput
+}
+
+type AiInstanceAuthConfigListArray []AiInstanceAuthConfigListInput
+
+func (AiInstanceAuthConfigListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiInstanceAuthConfigList)(nil)).Elem()
+}
+
+func (i AiInstanceAuthConfigListArray) ToAiInstanceAuthConfigListArrayOutput() AiInstanceAuthConfigListArrayOutput {
+	return i.ToAiInstanceAuthConfigListArrayOutputWithContext(context.Background())
+}
+
+func (i AiInstanceAuthConfigListArray) ToAiInstanceAuthConfigListArrayOutputWithContext(ctx context.Context) AiInstanceAuthConfigListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiInstanceAuthConfigListArrayOutput)
+}
+
+type AiInstanceAuthConfigListOutput struct{ *pulumi.OutputState }
+
+func (AiInstanceAuthConfigListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiInstanceAuthConfigList)(nil)).Elem()
+}
+
+func (o AiInstanceAuthConfigListOutput) ToAiInstanceAuthConfigListOutput() AiInstanceAuthConfigListOutput {
+	return o
+}
+
+func (o AiInstanceAuthConfigListOutput) ToAiInstanceAuthConfigListOutputWithContext(ctx context.Context) AiInstanceAuthConfigListOutput {
+	return o
+}
+
+// The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+func (o AiInstanceAuthConfigListOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiInstanceAuthConfigList) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the configuration item.
+func (o AiInstanceAuthConfigListOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiInstanceAuthConfigList) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AiInstanceAuthConfigListArrayOutput struct{ *pulumi.OutputState }
+
+func (AiInstanceAuthConfigListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiInstanceAuthConfigList)(nil)).Elem()
+}
+
+func (o AiInstanceAuthConfigListArrayOutput) ToAiInstanceAuthConfigListArrayOutput() AiInstanceAuthConfigListArrayOutput {
+	return o
+}
+
+func (o AiInstanceAuthConfigListArrayOutput) ToAiInstanceAuthConfigListArrayOutputWithContext(ctx context.Context) AiInstanceAuthConfigListArrayOutput {
+	return o
+}
+
+func (o AiInstanceAuthConfigListArrayOutput) Index(i pulumi.IntInput) AiInstanceAuthConfigListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiInstanceAuthConfigList {
+		return vs[0].([]AiInstanceAuthConfigList)[vs[1].(int)]
+	}).(AiInstanceAuthConfigListOutput)
+}
+
+type AiInstanceStorageConfigList struct {
+	// The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+	Name *string `pulumi:"name"`
+	// The value of the configuration item.
+	Value *string `pulumi:"value"`
+}
+
+// AiInstanceStorageConfigListInput is an input type that accepts AiInstanceStorageConfigListArgs and AiInstanceStorageConfigListOutput values.
+// You can construct a concrete instance of `AiInstanceStorageConfigListInput` via:
+//
+//	AiInstanceStorageConfigListArgs{...}
+type AiInstanceStorageConfigListInput interface {
+	pulumi.Input
+
+	ToAiInstanceStorageConfigListOutput() AiInstanceStorageConfigListOutput
+	ToAiInstanceStorageConfigListOutputWithContext(context.Context) AiInstanceStorageConfigListOutput
+}
+
+type AiInstanceStorageConfigListArgs struct {
+	// The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the configuration item.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AiInstanceStorageConfigListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiInstanceStorageConfigList)(nil)).Elem()
+}
+
+func (i AiInstanceStorageConfigListArgs) ToAiInstanceStorageConfigListOutput() AiInstanceStorageConfigListOutput {
+	return i.ToAiInstanceStorageConfigListOutputWithContext(context.Background())
+}
+
+func (i AiInstanceStorageConfigListArgs) ToAiInstanceStorageConfigListOutputWithContext(ctx context.Context) AiInstanceStorageConfigListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiInstanceStorageConfigListOutput)
+}
+
+// AiInstanceStorageConfigListArrayInput is an input type that accepts AiInstanceStorageConfigListArray and AiInstanceStorageConfigListArrayOutput values.
+// You can construct a concrete instance of `AiInstanceStorageConfigListArrayInput` via:
+//
+//	AiInstanceStorageConfigListArray{ AiInstanceStorageConfigListArgs{...} }
+type AiInstanceStorageConfigListArrayInput interface {
+	pulumi.Input
+
+	ToAiInstanceStorageConfigListArrayOutput() AiInstanceStorageConfigListArrayOutput
+	ToAiInstanceStorageConfigListArrayOutputWithContext(context.Context) AiInstanceStorageConfigListArrayOutput
+}
+
+type AiInstanceStorageConfigListArray []AiInstanceStorageConfigListInput
+
+func (AiInstanceStorageConfigListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiInstanceStorageConfigList)(nil)).Elem()
+}
+
+func (i AiInstanceStorageConfigListArray) ToAiInstanceStorageConfigListArrayOutput() AiInstanceStorageConfigListArrayOutput {
+	return i.ToAiInstanceStorageConfigListArrayOutputWithContext(context.Background())
+}
+
+func (i AiInstanceStorageConfigListArray) ToAiInstanceStorageConfigListArrayOutputWithContext(ctx context.Context) AiInstanceStorageConfigListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiInstanceStorageConfigListArrayOutput)
+}
+
+type AiInstanceStorageConfigListOutput struct{ *pulumi.OutputState }
+
+func (AiInstanceStorageConfigListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiInstanceStorageConfigList)(nil)).Elem()
+}
+
+func (o AiInstanceStorageConfigListOutput) ToAiInstanceStorageConfigListOutput() AiInstanceStorageConfigListOutput {
+	return o
+}
+
+func (o AiInstanceStorageConfigListOutput) ToAiInstanceStorageConfigListOutputWithContext(ctx context.Context) AiInstanceStorageConfigListOutput {
+	return o
+}
+
+// The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+func (o AiInstanceStorageConfigListOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiInstanceStorageConfigList) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the configuration item.
+func (o AiInstanceStorageConfigListOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiInstanceStorageConfigList) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AiInstanceStorageConfigListArrayOutput struct{ *pulumi.OutputState }
+
+func (AiInstanceStorageConfigListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiInstanceStorageConfigList)(nil)).Elem()
+}
+
+func (o AiInstanceStorageConfigListArrayOutput) ToAiInstanceStorageConfigListArrayOutput() AiInstanceStorageConfigListArrayOutput {
+	return o
+}
+
+func (o AiInstanceStorageConfigListArrayOutput) ToAiInstanceStorageConfigListArrayOutputWithContext(ctx context.Context) AiInstanceStorageConfigListArrayOutput {
+	return o
+}
+
+func (o AiInstanceStorageConfigListArrayOutput) Index(i pulumi.IntInput) AiInstanceStorageConfigListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiInstanceStorageConfigList {
+		return vs[0].([]AiInstanceStorageConfigList)[vs[1].(int)]
+	}).(AiInstanceStorageConfigListOutput)
+}
+
 type CustomDataDisk struct {
 	// Instance storage type
 	// local_ssd: local SSD disk
@@ -5731,6 +5943,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AiInstanceAuthConfigListInput)(nil)).Elem(), AiInstanceAuthConfigListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiInstanceAuthConfigListArrayInput)(nil)).Elem(), AiInstanceAuthConfigListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiInstanceStorageConfigListInput)(nil)).Elem(), AiInstanceStorageConfigListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiInstanceStorageConfigListArrayInput)(nil)).Elem(), AiInstanceStorageConfigListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDataDiskInput)(nil)).Elem(), CustomDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDataDiskArrayInput)(nil)).Elem(), CustomDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSystemDiskInput)(nil)).Elem(), CustomSystemDiskArgs{})
@@ -5804,6 +6020,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlotsSlotArrayInput)(nil)).Elem(), GetSlotsSlotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(AiInstanceAuthConfigListOutput{})
+	pulumi.RegisterOutputType(AiInstanceAuthConfigListArrayOutput{})
+	pulumi.RegisterOutputType(AiInstanceStorageConfigListOutput{})
+	pulumi.RegisterOutputType(AiInstanceStorageConfigListArrayOutput{})
 	pulumi.RegisterOutputType(CustomDataDiskOutput{})
 	pulumi.RegisterOutputType(CustomDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(CustomSystemDiskOutput{})

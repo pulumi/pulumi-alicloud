@@ -1005,9 +1005,9 @@ public final class EciFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:eci/getVirtualNodes:getVirtualNodes", TypeShape.of(GetVirtualNodesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1049,9 +1049,9 @@ public final class EciFunctions {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1093,9 +1093,9 @@ public final class EciFunctions {
         return getZonesPlain(GetZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1137,9 +1137,9 @@ public final class EciFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1181,9 +1181,9 @@ public final class EciFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1225,9 +1225,9 @@ public final class EciFunctions {
         return Deployment.getInstance().invoke("alicloud:eci/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1269,9 +1269,9 @@ public final class EciFunctions {
         return Deployment.getInstance().invoke("alicloud:eci/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+     * This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 

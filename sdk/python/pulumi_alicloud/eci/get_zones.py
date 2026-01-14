@@ -54,6 +54,9 @@ class GetZonesResult:
     @_builtins.property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
+        """
+        A list of eci Instance zones. Each element contains the following attributes:
+        """
         return pulumi.get(self, "zones")
 
 
@@ -71,9 +74,9 @@ class AwaitableGetZonesResult(GetZonesResult):
 def get_zones(output_file: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+    This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 
@@ -102,9 +105,9 @@ def get_zones(output_file: Optional[_builtins.str] = None,
 def get_zones_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
-    This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+    This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 

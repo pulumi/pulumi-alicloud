@@ -112,6 +112,8 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="permissionNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> permissionNames;
@@ -119,9 +121,29 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
     /**
      * @return Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Output<Optional<List<String>>> permissionNames() {
         return Codegen.optional(this.permissionNames);
+    }
+    /**
+     * ResourceArns
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="resourceArns", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> resourceArns;
+
+    /**
+     * @return ResourceArns
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<List<String>>> resourceArns() {
+        return Codegen.optional(this.resourceArns);
     }
     /**
      * The ID of the resource group
@@ -166,14 +188,18 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
         return this.resourceShareOwner;
     }
     /**
-     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * List of shared resources. See `resources` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="resources", refs={List.class,ResourceShareResource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ResourceShareResource>> resources;
 
     /**
-     * @return List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * @return List of shared resources. See `resources` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<List<ResourceShareResource>>> resources() {
@@ -210,12 +236,16 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
     /**
      * Resource user.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="targets", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targets;
 
     /**
      * @return Resource user.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<List<String>>> targets() {

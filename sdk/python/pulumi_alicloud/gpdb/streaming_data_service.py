@@ -28,7 +28,7 @@ class StreamingDataServiceArgs:
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
         :param pulumi.Input[_builtins.str] service_name: Service Name
         :param pulumi.Input[_builtins.str] service_spec: Resource Specifications
-        :param pulumi.Input[_builtins.str] service_description: The creation time of the resource
+        :param pulumi.Input[_builtins.str] service_description: The description of the service.
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -76,7 +76,7 @@ class StreamingDataServiceArgs:
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The description of the service.
         """
         return pulumi.get(self, "service_description")
 
@@ -99,7 +99,7 @@ class _StreamingDataServiceState:
         Input properties used for looking up and filtering StreamingDataService resources.
         :param pulumi.Input[_builtins.str] create_time: Create time
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
-        :param pulumi.Input[_builtins.str] service_description: The creation time of the resource
+        :param pulumi.Input[_builtins.str] service_description: The description of the service.
         :param pulumi.Input[_builtins.str] service_id: Service ID
         :param pulumi.Input[_builtins.str] service_name: Service Name
         :param pulumi.Input[_builtins.str] service_spec: Resource Specifications
@@ -148,7 +148,7 @@ class _StreamingDataServiceState:
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The description of the service.
         """
         return pulumi.get(self, "service_description")
 
@@ -217,9 +217,9 @@ class StreamingDataService(pulumi.CustomResource):
                  service_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a GPDB Streaming Data Service resource.
+        Provides a AnalyticDB for PostgreSQL (GPDB) Streaming Data Service resource.
 
-        For information about GPDB Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
+        For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
 
         > **NOTE:** Available since v1.227.0.
 
@@ -269,7 +269,7 @@ class StreamingDataService(pulumi.CustomResource):
 
         ## Import
 
-        GPDB Streaming Data Service can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
@@ -278,7 +278,7 @@ class StreamingDataService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
-        :param pulumi.Input[_builtins.str] service_description: The creation time of the resource
+        :param pulumi.Input[_builtins.str] service_description: The description of the service.
         :param pulumi.Input[_builtins.str] service_name: Service Name
         :param pulumi.Input[_builtins.str] service_spec: Resource Specifications
         """
@@ -289,9 +289,9 @@ class StreamingDataService(pulumi.CustomResource):
                  args: StreamingDataServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a GPDB Streaming Data Service resource.
+        Provides a AnalyticDB for PostgreSQL (GPDB) Streaming Data Service resource.
 
-        For information about GPDB Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
+        For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
 
         > **NOTE:** Available since v1.227.0.
 
@@ -341,7 +341,7 @@ class StreamingDataService(pulumi.CustomResource):
 
         ## Import
 
-        GPDB Streaming Data Service can be imported using the id, e.g.
+        AnalyticDB for PostgreSQL (GPDB) Streaming Data Service can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
@@ -414,7 +414,7 @@ class StreamingDataService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Create time
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
-        :param pulumi.Input[_builtins.str] service_description: The creation time of the resource
+        :param pulumi.Input[_builtins.str] service_description: The description of the service.
         :param pulumi.Input[_builtins.str] service_id: Service ID
         :param pulumi.Input[_builtins.str] service_name: Service Name
         :param pulumi.Input[_builtins.str] service_spec: Resource Specifications
@@ -453,7 +453,7 @@ class StreamingDataService(pulumi.CustomResource):
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The creation time of the resource
+        The description of the service.
         """
         return pulumi.get(self, "service_description")
 

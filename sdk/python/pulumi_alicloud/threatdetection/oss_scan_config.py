@@ -40,7 +40,7 @@ class OssScanConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: The suffixes of the objects that are checked.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: The days when the check is performed. The value indicates the days of the week.
         :param pulumi.Input[_builtins.str] start_time: The start time of the check. The time is in the HH:mm:ss format.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Specifies whether to match the prefixes of all objects.
         :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
         :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decryption_lists: The decryption methods.
@@ -145,7 +145,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates whether the prefixes of all objects are matched.
+        Specifies whether to match the prefixes of all objects.
         """
         return pulumi.get(self, "all_key_prefix")
 
@@ -244,7 +244,7 @@ class _OssScanConfigState:
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssScanConfig resources.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Specifies whether to match the prefixes of all objects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
         :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
         :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
@@ -289,7 +289,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates whether the prefixes of all objects are matched.
+        Specifies whether to match the prefixes of all objects.
         """
         return pulumi.get(self, "all_key_prefix")
 
@@ -541,7 +541,7 @@ class OssScanConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Specifies whether to match the prefixes of all objects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
         :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
         :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
@@ -730,7 +730,7 @@ class OssScanConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Specifies whether to match the prefixes of all objects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
         :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
         :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
@@ -767,7 +767,7 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates whether the prefixes of all objects are matched.
+        Specifies whether to match the prefixes of all objects.
         """
         return pulumi.get(self, "all_key_prefix")
 

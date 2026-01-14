@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     public sealed class PolicyBindingAdvancedOptionsUdmDetail
     {
         /// <summary>
-        /// Custom KMS key ID of encrypted copy.
+        /// Custom KMS key ID of encrypted copy
         /// </summary>
         public readonly string? DestinationKmsKeyId;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DiskIdLists;
         /// <summary>
-        /// List of cloud disk IDs that are not backed up.
+        /// List of cloud disk IDs that are not backed up
         /// </summary>
         public readonly ImmutableArray<string> ExcludeDiskIdLists;
 

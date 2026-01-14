@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a HBR Policy Binding resource.
+ * Provides a Hybrid Backup Recovery (HBR) Policy Binding resource.
  *
- * For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
+ * A policy binding relationship consists of a data source, a policy, and binding options.
+ *
+ * For information about Hybrid Backup Recovery (HBR) Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
  *
  * > **NOTE:** Available since v1.221.0.
  *
@@ -62,7 +64,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HBR Policy Binding can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Policy Binding can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:hbr/policyBinding:PolicyBinding example <policy_id>:<source_type>:<data_source_id>
@@ -153,7 +155,7 @@ export class PolicyBinding extends pulumi.CustomResource {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      */
     declare public readonly sourceType: pulumi.Output<string>;
     /**
@@ -271,7 +273,7 @@ export interface PolicyBindingState {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      */
     sourceType?: pulumi.Input<string>;
     /**
@@ -337,7 +339,7 @@ export interface PolicyBindingArgs {
      * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
      * - `ECS_FILE`: indicates that the ECS file is backed up.
      * - `File`: indicates a local File backup.
-     * - `OTS`: (Available since v1.260.1) indicates the Tablestore backup.
+     * - `OTS`: indicates the Tablestore backup.
      */
     sourceType?: pulumi.Input<string>;
     /**

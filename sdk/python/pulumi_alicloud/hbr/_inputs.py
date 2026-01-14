@@ -25,8 +25,12 @@ __all__ = [
     'PolicyBindingAdvancedOptionsUdmDetailArgsDict',
     'PolicyRuleArgs',
     'PolicyRuleArgsDict',
+    'PolicyRuleDataSourceFilterArgs',
+    'PolicyRuleDataSourceFilterArgsDict',
     'PolicyRuleRetentionRuleArgs',
     'PolicyRuleRetentionRuleArgsDict',
+    'PolicyRuleTagFilterArgs',
+    'PolicyRuleTagFilterArgsDict',
     'RestoreJobOtsDetailArgs',
     'RestoreJobOtsDetailArgsDict',
     'ServerBackupPlanDetailArgs',
@@ -190,7 +194,7 @@ if not MYPY:
     class PolicyBindingAdvancedOptionsArgsDict(TypedDict):
         udm_detail: NotRequired[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgsDict']]
         """
-        ECS Backup Advanced options. See `udm_detail` below.
+        ECS Backup Advanced options See `udm_detail` below.
         """
 elif False:
     PolicyBindingAdvancedOptionsArgsDict: TypeAlias = Mapping[str, Any]
@@ -200,7 +204,7 @@ class PolicyBindingAdvancedOptionsArgs:
     def __init__(__self__, *,
                  udm_detail: Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']] = None):
         """
-        :param pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs'] udm_detail: ECS Backup Advanced options. See `udm_detail` below.
+        :param pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs'] udm_detail: ECS Backup Advanced options See `udm_detail` below.
         """
         if udm_detail is not None:
             pulumi.set(__self__, "udm_detail", udm_detail)
@@ -209,7 +213,7 @@ class PolicyBindingAdvancedOptionsArgs:
     @pulumi.getter(name="udmDetail")
     def udm_detail(self) -> Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']]:
         """
-        ECS Backup Advanced options. See `udm_detail` below.
+        ECS Backup Advanced options See `udm_detail` below.
         """
         return pulumi.get(self, "udm_detail")
 
@@ -222,7 +226,7 @@ if not MYPY:
     class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
         destination_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Custom KMS key ID of encrypted copy.
+        Custom KMS key ID of encrypted copy
         """
         disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -230,7 +234,7 @@ if not MYPY:
         """
         exclude_disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        List of cloud disk IDs that are not backed up.
+        List of cloud disk IDs that are not backed up
         """
 elif False:
     PolicyBindingAdvancedOptionsUdmDetailArgsDict: TypeAlias = Mapping[str, Any]
@@ -242,9 +246,9 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
                  disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  exclude_disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[_builtins.str] destination_kms_key_id: Custom KMS key ID of encrypted copy.
+        :param pulumi.Input[_builtins.str] destination_kms_key_id: Custom KMS key ID of encrypted copy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_disk_id_lists: List of cloud disk IDs that are not backed up.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_disk_id_lists: List of cloud disk IDs that are not backed up
         """
         if destination_kms_key_id is not None:
             pulumi.set(__self__, "destination_kms_key_id", destination_kms_key_id)
@@ -257,7 +261,7 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
     @pulumi.getter(name="destinationKmsKeyId")
     def destination_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Custom KMS key ID of encrypted copy.
+        Custom KMS key ID of encrypted copy
         """
         return pulumi.get(self, "destination_kms_key_id")
 
@@ -281,7 +285,7 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
     @pulumi.getter(name="excludeDiskIdLists")
     def exclude_disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of cloud disk IDs that are not backed up.
+        List of cloud disk IDs that are not backed up
         """
         return pulumi.get(self, "exclude_disk_id_lists")
 
@@ -294,27 +298,31 @@ if not MYPY:
     class PolicyRuleArgsDict(TypedDict):
         rule_type: pulumi.Input[_builtins.str]
         """
-        Rule Type.
+        Rule Type
         """
         archive_days: NotRequired[pulumi.Input[_builtins.int]]
         """
-        This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
         """
         backup_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+        This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
+        """
+        data_source_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgsDict']]]]
+        """
+        This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
         """
         keep_latest_snapshots: NotRequired[pulumi.Input[_builtins.int]]
         """
-        This parameter is required only when `RuleType` is set to `BACKUP`.
+        This parameter is required only when `RuleType` is set to `BACKUP`
         """
         replication_region_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Only when the `RuleType` value is.
+        Only when the `RuleType` value is
         """
         retention: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Retention time, in days.
+        Retention time, in days
         """
         retention_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgsDict']]]]
         """
@@ -322,15 +330,19 @@ if not MYPY:
         """
         rule_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Rule ID.
+        Rule ID
         """
         schedule: NotRequired[pulumi.Input[_builtins.str]]
         """
         This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
         """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgsDict']]]]
+        """
+        This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
+        """
         vault_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Vault ID.
+        Vault ID
         """
 elif False:
     PolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -341,30 +353,36 @@ class PolicyRuleArgs:
                  rule_type: pulumi.Input[_builtins.str],
                  archive_days: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_filters: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]] = None,
                  keep_latest_snapshots: Optional[pulumi.Input[_builtins.int]] = None,
                  replication_region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  retention: Optional[pulumi.Input[_builtins.int]] = None,
                  retention_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]] = None,
                  rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]] = None,
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] rule_type: Rule Type.
-        :param pulumi.Input[_builtins.int] archive_days: This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
-        :param pulumi.Input[_builtins.str] backup_type: This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
-        :param pulumi.Input[_builtins.int] keep_latest_snapshots: This parameter is required only when `RuleType` is set to `BACKUP`.
-        :param pulumi.Input[_builtins.str] replication_region_id: Only when the `RuleType` value is.
-        :param pulumi.Input[_builtins.int] retention: Retention time, in days.
+        :param pulumi.Input[_builtins.str] rule_type: Rule Type
+        :param pulumi.Input[_builtins.int] archive_days: This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
+        :param pulumi.Input[_builtins.str] backup_type: This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]] data_source_filters: This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
+        :param pulumi.Input[_builtins.int] keep_latest_snapshots: This parameter is required only when `RuleType` is set to `BACKUP`
+        :param pulumi.Input[_builtins.str] replication_region_id: Only when the `RuleType` value is
+        :param pulumi.Input[_builtins.int] retention: Retention time, in days
         :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]] retention_rules: This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
-        :param pulumi.Input[_builtins.str] rule_id: Rule ID.
+        :param pulumi.Input[_builtins.str] rule_id: Rule ID
         :param pulumi.Input[_builtins.str] schedule: This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
-        :param pulumi.Input[_builtins.str] vault_id: Vault ID.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]] tag_filters: This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
+        :param pulumi.Input[_builtins.str] vault_id: Vault ID
         """
         pulumi.set(__self__, "rule_type", rule_type)
         if archive_days is not None:
             pulumi.set(__self__, "archive_days", archive_days)
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
+        if data_source_filters is not None:
+            pulumi.set(__self__, "data_source_filters", data_source_filters)
         if keep_latest_snapshots is not None:
             pulumi.set(__self__, "keep_latest_snapshots", keep_latest_snapshots)
         if replication_region_id is not None:
@@ -377,6 +395,8 @@ class PolicyRuleArgs:
             pulumi.set(__self__, "rule_id", rule_id)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if tag_filters is not None:
+            pulumi.set(__self__, "tag_filters", tag_filters)
         if vault_id is not None:
             pulumi.set(__self__, "vault_id", vault_id)
 
@@ -384,7 +404,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Rule Type.
+        Rule Type
         """
         return pulumi.get(self, "rule_type")
 
@@ -396,7 +416,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="archiveDays")
     def archive_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
         """
         return pulumi.get(self, "archive_days")
 
@@ -408,7 +428,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+        This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
         """
         return pulumi.get(self, "backup_type")
 
@@ -417,10 +437,22 @@ class PolicyRuleArgs:
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataSourceFilters")
+    def data_source_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]:
+        """
+        This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
+        """
+        return pulumi.get(self, "data_source_filters")
+
+    @data_source_filters.setter
+    def data_source_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]):
+        pulumi.set(self, "data_source_filters", value)
+
+    @_builtins.property
     @pulumi.getter(name="keepLatestSnapshots")
     def keep_latest_snapshots(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        This parameter is required only when `RuleType` is set to `BACKUP`.
+        This parameter is required only when `RuleType` is set to `BACKUP`
         """
         return pulumi.get(self, "keep_latest_snapshots")
 
@@ -432,7 +464,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="replicationRegionId")
     def replication_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Only when the `RuleType` value is.
+        Only when the `RuleType` value is
         """
         return pulumi.get(self, "replication_region_id")
 
@@ -444,7 +476,7 @@ class PolicyRuleArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Retention time, in days.
+        Retention time, in days
         """
         return pulumi.get(self, "retention")
 
@@ -468,7 +500,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule ID.
+        Rule ID
         """
         return pulumi.get(self, "rule_id")
 
@@ -489,16 +521,60 @@ class PolicyRuleArgs:
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
+    @pulumi.getter(name="tagFilters")
+    def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]:
+        """
+        This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
+        """
+        return pulumi.get(self, "tag_filters")
+
+    @tag_filters.setter
+    def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]):
+        pulumi.set(self, "tag_filters", value)
+
+    @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Vault ID.
+        Vault ID
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
     def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
+
+
+if not MYPY:
+    class PolicyRuleDataSourceFilterArgsDict(TypedDict):
+        source_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+        """
+elif False:
+    PolicyRuleDataSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PolicyRuleDataSourceFilterArgs:
+    def __init__(__self__, *,
+                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] source_type: The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+        """
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_type", value)
 
 
 if not MYPY:
@@ -509,7 +585,7 @@ if not MYPY:
         """
         retention: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Retention time, in days.
+        Retention time, in days
         """
 elif False:
     PolicyRuleRetentionRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -521,7 +597,7 @@ class PolicyRuleRetentionRuleArgs:
                  retention: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] advanced_retention_type: Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
-        :param pulumi.Input[_builtins.int] retention: Retention time, in days.
+        :param pulumi.Input[_builtins.int] retention: Retention time, in days
         """
         if advanced_retention_type is not None:
             pulumi.set(__self__, "advanced_retention_type", advanced_retention_type)
@@ -544,13 +620,85 @@ class PolicyRuleRetentionRuleArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Retention time, in days.
+        Retention time, in days
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
     def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "retention", value)
+
+
+if not MYPY:
+    class PolicyRuleTagFilterArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The tag key.
+        """
+        operator: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The label value, which is empty and represents any value.
+        """
+elif False:
+    PolicyRuleTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PolicyRuleTagFilterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 operator: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The tag key.
+        :param pulumi.Input[_builtins.str] operator: Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+        :param pulumi.Input[_builtins.str] value: The label value, which is empty and represents any value.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The label value, which is empty and represents any value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

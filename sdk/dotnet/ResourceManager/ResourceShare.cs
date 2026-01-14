@@ -69,9 +69,19 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("permissionNames")]
         public Output<ImmutableArray<string>> PermissionNames { get; private set; } = null!;
+
+        /// <summary>
+        /// ResourceArns
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("resourceArns")]
+        public Output<ImmutableArray<string>> ResourceArns { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group
@@ -92,7 +102,9 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceShareOwner { get; private set; } = null!;
 
         /// <summary>
-        /// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Resources` below.
+        /// List of shared resources. See `Resources` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.ResourceShareResource>> Resources { get; private set; } = null!;
@@ -111,6 +123,8 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Resource user.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<string>> Targets { get; private set; } = null!;
@@ -174,11 +188,27 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<string> PermissionNames
         {
             get => _permissionNames ?? (_permissionNames = new InputList<string>());
             set => _permissionNames = value;
+        }
+
+        [Input("resourceArns")]
+        private InputList<string>? _resourceArns;
+
+        /// <summary>
+        /// ResourceArns
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        public InputList<string> ResourceArns
+        {
+            get => _resourceArns ?? (_resourceArns = new InputList<string>());
+            set => _resourceArns = value;
         }
 
         /// <summary>
@@ -197,7 +227,9 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<Inputs.ResourceShareResourceArgs>? _resources;
 
         /// <summary>
-        /// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Resources` below.
+        /// List of shared resources. See `Resources` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<Inputs.ResourceShareResourceArgs> Resources
         {
@@ -222,6 +254,8 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Resource user.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<string> Targets
         {
@@ -256,11 +290,27 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<string> PermissionNames
         {
             get => _permissionNames ?? (_permissionNames = new InputList<string>());
             set => _permissionNames = value;
+        }
+
+        [Input("resourceArns")]
+        private InputList<string>? _resourceArns;
+
+        /// <summary>
+        /// ResourceArns
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        public InputList<string> ResourceArns
+        {
+            get => _resourceArns ?? (_resourceArns = new InputList<string>());
+            set => _resourceArns = value;
         }
 
         /// <summary>
@@ -285,7 +335,9 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<Inputs.ResourceShareResourceGetArgs>? _resources;
 
         /// <summary>
-        /// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Resources` below.
+        /// List of shared resources. See `Resources` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<Inputs.ResourceShareResourceGetArgs> Resources
         {
@@ -316,6 +368,8 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Resource user.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         public InputList<string> Targets
         {

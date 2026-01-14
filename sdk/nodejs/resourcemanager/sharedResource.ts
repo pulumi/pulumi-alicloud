@@ -86,9 +86,21 @@ export class SharedResource extends pulumi.CustomResource {
     }
 
     /**
-     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * The time when the shared resource was associated with the resource share.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly permissionName: pulumi.Output<string | undefined>;
+    /**
+     * Associated resource ARN.
+     *
+     * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+     */
+    declare public readonly resourceArn: pulumi.Output<string>;
     /**
      * The ID of the shared resource.
      */
@@ -98,18 +110,11 @@ export class SharedResource extends pulumi.CustomResource {
      */
     declare public readonly resourceShareId: pulumi.Output<string>;
     /**
-     * The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * The type of the shared resource.
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
-     * The status of the Shared Resource.
+     * The association status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -127,21 +132,19 @@ export class SharedResource extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SharedResourceState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["permissionName"] = state?.permissionName;
+            resourceInputs["resourceArn"] = state?.resourceArn;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["resourceShareId"] = state?.resourceShareId;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SharedResourceArgs | undefined;
-            if (args?.resourceId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resourceId'");
-            }
             if (args?.resourceShareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if (args?.resourceType === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resourceType'");
-            }
+            resourceInputs["permissionName"] = args?.permissionName;
+            resourceInputs["resourceArn"] = args?.resourceArn;
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["resourceShareId"] = args?.resourceShareId;
             resourceInputs["resourceType"] = args?.resourceType;
@@ -158,9 +161,21 @@ export class SharedResource extends pulumi.CustomResource {
  */
 export interface SharedResourceState {
     /**
-     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * The time when the shared resource was associated with the resource share.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    permissionName?: pulumi.Input<string>;
+    /**
+     * Associated resource ARN.
+     *
+     * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+     */
+    resourceArn?: pulumi.Input<string>;
     /**
      * The ID of the shared resource.
      */
@@ -170,18 +185,11 @@ export interface SharedResourceState {
      */
     resourceShareId?: pulumi.Input<string>;
     /**
-     * The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * The type of the shared resource.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The status of the Shared Resource.
+     * The association status.
      */
     status?: pulumi.Input<string>;
 }
@@ -191,22 +199,27 @@ export interface SharedResourceState {
  */
 export interface SharedResourceArgs {
     /**
+     * The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    permissionName?: pulumi.Input<string>;
+    /**
+     * Associated resource ARN.
+     *
+     * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+     */
+    resourceArn?: pulumi.Input<string>;
+    /**
      * The ID of the shared resource.
      */
-    resourceId: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
     /**
      * The ID of the resource share.
      */
     resourceShareId: pulumi.Input<string>;
     /**
-     * The type of the shared resource. Valid values:
-     * - `VSwitch`.
-     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
-     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
-     * - The following types are added after v1.208.0: `KMSInstance`.
-     * - The following types are added after v1.240.0: `Snapshot`.
-     * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+     * The type of the shared resource.
      */
-    resourceType: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
 }

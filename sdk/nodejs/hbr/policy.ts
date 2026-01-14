@@ -97,9 +97,7 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly policyName: pulumi.Output<string | undefined>;
     /**
-     * The policy type. Valid values:
-     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
      */
     declare public readonly policyType: pulumi.Output<string>;
     /**
@@ -155,9 +153,7 @@ export interface PolicyState {
      */
     policyName?: pulumi.Input<string>;
     /**
-     * The policy type. Valid values:
-     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
      */
     policyType?: pulumi.Input<string>;
     /**
@@ -179,9 +175,7 @@ export interface PolicyArgs {
      */
     policyName?: pulumi.Input<string>;
     /**
-     * The policy type. Valid values:
-     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
      */
     policyType?: pulumi.Input<string>;
     /**

@@ -29,11 +29,14 @@ class RegistryEnterpriseInstanceArgs:
                  image_scanner: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
@@ -56,6 +59,9 @@ class RegistryEnterpriseInstanceArgs:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.int] namespace_quota: The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
@@ -71,7 +77,14 @@ class RegistryEnterpriseInstanceArgs:
                - ManualRenewal: manual renewal.
                
                Default ManualRenewal.
+        :param pulumi.Input[_builtins.int] repo_quota: The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -88,6 +101,8 @@ class RegistryEnterpriseInstanceArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if namespace_quota is not None:
+            pulumi.set(__self__, "namespace_quota", namespace_quota)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if period is not None:
@@ -96,8 +111,12 @@ class RegistryEnterpriseInstanceArgs:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if repo_quota is not None:
+            pulumi.set(__self__, "repo_quota", repo_quota)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if vpc_quota is not None:
+            pulumi.set(__self__, "vpc_quota", vpc_quota)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -208,6 +227,20 @@ class RegistryEnterpriseInstanceArgs:
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
+    @pulumi.getter(name="namespaceQuota")
+    def namespace_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "namespace_quota")
+
+    @namespace_quota.setter
+    def namespace_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "namespace_quota", value)
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -267,18 +300,47 @@ class RegistryEnterpriseInstanceArgs:
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="repoQuota")
+    def repo_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "repo_quota")
+
+    @repo_quota.setter
+    def repo_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "repo_quota", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the resource group
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcQuota")
+    def vpc_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of VPC access controls.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "vpc_quota")
+
+    @vpc_quota.setter
+    def vpc_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpc_quota", value)
 
 
 @pulumi.input_type
@@ -295,14 +357,17 @@ class _RegistryEnterpriseInstanceState:
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseInstance resources.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -327,6 +392,9 @@ class _RegistryEnterpriseInstanceState:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.int] namespace_quota: The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[_builtins.str] payment_type: Payment type, value:
                - Subscription: Prepaid.
@@ -345,10 +413,17 @@ class _RegistryEnterpriseInstanceState:
                - ManualRenewal: manual renewal.
                
                Default ManualRenewal.
+        :param pulumi.Input[_builtins.int] repo_quota: The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] status: Instance Status
+        :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] status: Instance Status
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -375,6 +450,8 @@ class _RegistryEnterpriseInstanceState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if namespace_quota is not None:
+            pulumi.set(__self__, "namespace_quota", namespace_quota)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if payment_type is not None:
@@ -387,10 +464,14 @@ class _RegistryEnterpriseInstanceState:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if repo_quota is not None:
+            pulumi.set(__self__, "repo_quota", repo_quota)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if vpc_quota is not None:
+            pulumi.set(__self__, "vpc_quota", vpc_quota)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -537,6 +618,20 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
+    @pulumi.getter(name="namespaceQuota")
+    def namespace_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "namespace_quota")
+
+    @namespace_quota.setter
+    def namespace_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "namespace_quota", value)
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -621,12 +716,24 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="repoQuota")
+    def repo_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "repo_quota")
+
+    @repo_quota.setter
+    def repo_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "repo_quota", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the resource group
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -646,6 +753,23 @@ class _RegistryEnterpriseInstanceState:
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcQuota")
+    def vpc_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of VPC access controls.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "vpc_quota")
+
+    @vpc_quota.setter
+    def vpc_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpc_quota", value)
+
 
 @pulumi.type_token("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance")
 class RegistryEnterpriseInstance(pulumi.CustomResource):
@@ -660,17 +784,22 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a CR Instance resource.
 
-        For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+        For information about Container Registry Instance and how to use it, see [What is Container Registry](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry).
+
+        For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
 
         > **NOTE:** Available since v1.124.0.
 
@@ -729,6 +858,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.int] namespace_quota: The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[_builtins.str] payment_type: Payment type, value:
                - Subscription: Prepaid.
@@ -746,7 +878,14 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                - ManualRenewal: manual renewal.
                
                Default ManualRenewal.
+        :param pulumi.Input[_builtins.int] repo_quota: The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -759,7 +898,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         """
         Provides a CR Instance resource.
 
-        For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+        For information about Container Registry Instance and how to use it, see [What is Container Registry](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry).
+
+        For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
 
         > **NOTE:** Available since v1.124.0.
 
@@ -820,12 +961,15 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -846,6 +990,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["namespace_quota"] = namespace_quota
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
@@ -853,7 +998,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["period"] = period
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["repo_quota"] = repo_quota
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["vpc_quota"] = vpc_quota
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_time"] = None
             __props__.__dict__["end_time"] = None
@@ -883,14 +1030,17 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             instance_type: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
             renew_period: Optional[pulumi.Input[_builtins.int]] = None,
             renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
+            repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegistryEnterpriseInstance':
+            status: Optional[pulumi.Input[_builtins.str]] = None,
+            vpc_quota: Optional[pulumi.Input[_builtins.int]] = None) -> 'RegistryEnterpriseInstance':
         """
         Get an existing RegistryEnterpriseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -920,6 +1070,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.int] namespace_quota: The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[_builtins.str] payment_type: Payment type, value:
                - Subscription: Prepaid.
@@ -938,10 +1091,17 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                - ManualRenewal: manual renewal.
                
                Default ManualRenewal.
+        :param pulumi.Input[_builtins.int] repo_quota: The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] status: Instance Status
+        :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] status: Instance Status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -958,14 +1118,17 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["namespace_quota"] = namespace_quota
         __props__.__dict__["password"] = password
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["repo_quota"] = repo_quota
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["vpc_quota"] = vpc_quota
         return RegistryEnterpriseInstance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1069,6 +1232,16 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         return pulumi.get(self, "kms_encryption_context")
 
     @_builtins.property
+    @pulumi.getter(name="namespaceQuota")
+    def namespace_quota(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "namespace_quota")
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1129,12 +1302,20 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         return pulumi.get(self, "renewal_status")
 
     @_builtins.property
+    @pulumi.getter(name="repoQuota")
+    def repo_quota(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        """
+        return pulumi.get(self, "repo_quota")
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the resource group
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1145,4 +1326,17 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         Instance Status
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcQuota")
+    def vpc_quota(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of VPC access controls.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "vpc_quota")
 

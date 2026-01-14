@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = myName,
+    ///         SecurityGroupName = myName,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -306,6 +306,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("memory")]
         public Output<double?> Memory { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to overwrite the data. Valid values: true, false.
+        /// </summary>
+        [Output("override")]
+        public Output<bool?> Override { get; private set; } = null!;
 
         /// <summary>
         /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -668,6 +674,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<double>? Memory { get; set; }
 
         /// <summary>
+        /// Specifies whether to overwrite the data. Valid values: true, false.
+        /// </summary>
+        [Input("override")]
+        public Input<bool>? Override { get; set; }
+
+        /// <summary>
         /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         /// </summary>
         [Input("ramRoleName")]
@@ -1006,6 +1018,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
+
+        /// <summary>
+        /// Specifies whether to overwrite the data. Valid values: true, false.
+        /// </summary>
+        [Input("override")]
+        public Input<bool>? Override { get; set; }
 
         /// <summary>
         /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.alikafka.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,14 +18,14 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
     public static final ConsumerGroupState Empty = new ConsumerGroupState();
 
     /**
-     * ID of the consumer group. The length cannot exceed 64 characters.
+     * ID of the consumer group.
      * 
      */
     @Import(name="consumerId")
     private @Nullable Output<String> consumerId;
 
     /**
-     * @return ID of the consumer group. The length cannot exceed 64 characters.
+     * @return ID of the consumer group.
      * 
      */
     public Optional<Output<String>> consumerId() {
@@ -32,16 +33,39 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of the resource.
+     * (Available since v1.268.0) The timestamp of when the group was created.
      * 
      */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.268.0) The timestamp of when the group was created.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * 
+     * @deprecated
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * 
+     */
+    @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the resource.
+     * @return Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * 
+     * @deprecated
+     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
      */
+    @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -59,6 +83,36 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
+     * (Available since v1.268.0) The region ID.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.268.0) The region ID.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The remark of the resource.
+     * 
+     */
+    @Import(name="remark")
+    private @Nullable Output<String> remark;
+
+    /**
+     * @return The remark of the resource.
+     * 
+     */
+    public Optional<Output<String>> remark() {
+        return Optional.ofNullable(this.remark);
     }
 
     /**
@@ -80,8 +134,11 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
 
     private ConsumerGroupState(ConsumerGroupState $) {
         this.consumerId = $.consumerId;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.instanceId = $.instanceId;
+        this.regionId = $.regionId;
+        this.remark = $.remark;
         this.tags = $.tags;
     }
 
@@ -104,7 +161,7 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param consumerId ID of the consumer group. The length cannot exceed 64 characters.
+         * @param consumerId ID of the consumer group.
          * 
          * @return builder
          * 
@@ -115,7 +172,7 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param consumerId ID of the consumer group. The length cannot exceed 64 characters.
+         * @param consumerId ID of the consumer group.
          * 
          * @return builder
          * 
@@ -125,22 +182,51 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the resource.
+         * @param createTime (Available since v1.268.0) The timestamp of when the group was created.
          * 
          * @return builder
          * 
          */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.268.0) The timestamp of when the group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+         * 
+         */
+        @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
         /**
-         * @param description The description of the resource.
+         * @param description Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+         * 
          */
+        @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -164,6 +250,48 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param regionId (Available since v1.268.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.268.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param remark The remark of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remark(@Nullable Output<String> remark) {
+            $.remark = remark;
+            return this;
+        }
+
+        /**
+         * @param remark The remark of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remark(String remark) {
+            return remark(Output.of(remark));
         }
 
         /**

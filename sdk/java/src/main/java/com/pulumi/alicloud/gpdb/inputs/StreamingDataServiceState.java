@@ -46,14 +46,14 @@ public final class StreamingDataServiceState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The creation time of the resource
+     * The description of the service.
      * 
      */
     @Import(name="serviceDescription")
     private @Nullable Output<String> serviceDescription;
 
     /**
-     * @return The creation time of the resource
+     * @return The description of the service.
      * 
      */
     public Optional<Output<String>> serviceDescription() {
@@ -193,7 +193,7 @@ public final class StreamingDataServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceDescription The creation time of the resource
+         * @param serviceDescription The description of the service.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class StreamingDataServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceDescription The creation time of the resource
+         * @param serviceDescription The description of the service.
          * 
          * @return builder
          * 

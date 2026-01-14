@@ -76,7 +76,7 @@ class NetworkArgs:
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
-        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         :param pulumi.Input[_builtins.str] system_route_table_description: The description of the route table.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_route_table_name: The name of the route table.
@@ -346,7 +346,7 @@ class NetworkArgs:
     @_utilities.deprecated("""Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
     def secondary_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         """
         return pulumi.get(self, "secondary_cidr_mask")
 
@@ -503,7 +503,7 @@ class _NetworkState:
         :param pulumi.Input[_builtins.str] router_id: The region ID of the VPC to which the route table belongs.
         :param pulumi.Input[_builtins.str] router_table_id: . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
-        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         :param pulumi.Input[_builtins.str] status: The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         :param pulumi.Input[_builtins.str] system_route_table_description: The description of the route table.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -864,7 +864,7 @@ class _NetworkState:
     @_utilities.deprecated("""Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
     def secondary_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         """
         return pulumi.get(self, "secondary_cidr_mask")
 
@@ -1070,7 +1070,7 @@ class Network(pulumi.CustomResource):
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
-        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         :param pulumi.Input[_builtins.str] system_route_table_description: The description of the route table.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_route_table_name: The name of the route table.
@@ -1293,7 +1293,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] router_id: The region ID of the VPC to which the route table belongs.
         :param pulumi.Input[_builtins.str] router_table_id: . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
-        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        :param pulumi.Input[_builtins.int] secondary_cidr_mask: Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         :param pulumi.Input[_builtins.str] status: The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         :param pulumi.Input[_builtins.str] system_route_table_description: The description of the route table.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -1534,7 +1534,7 @@ class Network(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
     def secondary_cidr_mask(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
+        Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         """
         return pulumi.get(self, "secondary_cidr_mask")
 

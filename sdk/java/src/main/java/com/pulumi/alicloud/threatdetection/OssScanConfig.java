@@ -129,14 +129,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:threatdetection/ossScanConfig:OssScanConfig")
 public class OssScanConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Indicates whether the prefixes of all objects are matched.
+     * Specifies whether to match the prefixes of all objects.
      * 
      */
     @Export(name="allKeyPrefix", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allKeyPrefix;
 
     /**
-     * @return Indicates whether the prefixes of all objects are matched.
+     * @return Specifies whether to match the prefixes of all objects.
      * 
      */
     public Output<Boolean> allKeyPrefix() {

@@ -10,12 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
+    /// Provides a Ali Kafka Consumer Group resource.
+    /// 
+    /// Group in kafka.
+    /// 
+    /// For information about Ali Kafka Consumer Group and how to use it, see [What is Consumer Group](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateConsumerGroup).
     /// 
     /// &gt; **NOTE:** Available since v1.56.0.
-    /// 
-    /// &gt; **NOTE:**  Only the following regions support create alikafka consumer group.
-    /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
     /// 
     /// ## Example Usage
     /// 
@@ -26,56 +27,17 @@ namespace Pulumi.AliCloud.AliKafka
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
-    ///     {
-    ///         Name = $"{name}-{defaultInteger.Result}",
-    ///         PartitionNum = 50,
-    ///         DiskType = 1,
-    ///         DiskSize = 500,
-    ///         DeployType = 5,
-    ///         IoMax = 20,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         SecurityGroup = defaultSecurityGroup.Id,
-    ///     });
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ActionTrail.GetInstances.Invoke();
     /// 
     ///     var defaultConsumerGroup = new AliCloud.AliKafka.ConsumerGroup("default", new()
     ///     {
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
     ///         ConsumerId = name,
-    ///         InstanceId = defaultInstance.Id,
     ///     });
     /// 
     /// });
@@ -85,32 +47,50 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Import
     /// 
-    /// ALIKAFKA GROUP can be imported using the id, e.g.
+    /// AliKafka Consumer Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+    /// $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup example &lt;instance_id&gt;:&lt;consumer_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/consumerGroup:ConsumerGroup")]
     public partial class ConsumerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the consumer group. The length cannot exceed 64 characters.
+        /// ID of the consumer group.
         /// </summary>
         [Output("consumerId")]
         public Output<string> ConsumerId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the resource.
+        /// (Available since v1.268.0) The timestamp of when the group was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `Description` has been deprecated from provider version 1.268.0. New field `Remark` instead.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.268.0) The region ID.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The remark of the resource.
+        /// </summary>
+        [Output("remark")]
+        public Output<string> Remark { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -165,13 +145,13 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class ConsumerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the consumer group. The length cannot exceed 64 characters.
+        /// ID of the consumer group.
         /// </summary>
         [Input("consumerId", required: true)]
         public Input<string> ConsumerId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the resource.
+        /// Field `Description` has been deprecated from provider version 1.268.0. New field `Remark` instead.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -181,6 +161,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// The remark of the resource.
+        /// </summary>
+        [Input("remark")]
+        public Input<string>? Remark { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -203,13 +189,19 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class ConsumerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the consumer group. The length cannot exceed 64 characters.
+        /// ID of the consumer group.
         /// </summary>
         [Input("consumerId")]
         public Input<string>? ConsumerId { get; set; }
 
         /// <summary>
-        /// The description of the resource.
+        /// (Available since v1.268.0) The timestamp of when the group was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Field `Description` has been deprecated from provider version 1.268.0. New field `Remark` instead.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -219,6 +211,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.268.0) The region ID.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The remark of the resource.
+        /// </summary>
+        [Input("remark")]
+        public Input<string>? Remark { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

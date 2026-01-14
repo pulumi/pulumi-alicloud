@@ -37,17 +37,16 @@ namespace Pulumi.AliCloud.Vpc
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var example = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
-    ///     });
-    /// 
-    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var example = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_18.*64",
     ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ImageId = example.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///     });
     /// 
     ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
@@ -64,7 +63,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var exampleHAVip = new AliCloud.Vpc.HAVip("example", new()
+    ///     var exampleHaVipv2 = new AliCloud.Vpc.HaVipv2("example", new()
     ///     {
     ///         VswitchId = exampleSwitch.Id,
     ///         Description = name,
@@ -72,7 +71,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         Description = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
@@ -81,9 +80,9 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchId = exampleSwitch.Id,
-    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         ImageId = example.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceChargeType = "PostPaid",
     ///         InternetChargeType = "PayByTraffic",
     ///         InternetMaxBandwidthOut = 5,
     ///         SecurityGroups = new[]
@@ -92,11 +91,12 @@ namespace Pulumi.AliCloud.Vpc
     ///         },
     ///         InstanceName = name,
     ///         UserData = "echo 'net.ipv4.ip_forward=1'&gt;&gt; /etc/sysctl.conf",
+    ///         SystemDiskCategory = "cloud_essd",
     ///     });
     /// 
     ///     var exampleHAVipAttachment = new AliCloud.Vpc.HAVipAttachment("example", new()
     ///     {
-    ///         HaVipId = exampleHAVip.Id,
+    ///         HaVipId = exampleHaVipv2.Id,
     ///         InstanceId = exampleInstance.Id,
     ///     });
     /// 

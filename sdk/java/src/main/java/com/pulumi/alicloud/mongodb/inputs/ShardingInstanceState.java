@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.inputs;
 
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceConfigServerListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceParameterArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -436,6 +437,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<List<ShardingInstanceParameterArgs>> parameters;
+
+    /**
+     * @return Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+     * 
+     */
+    public Optional<Output<List<ShardingInstanceParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
+    /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
@@ -777,6 +793,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.networkType = $.networkType;
         this.orderType = $.orderType;
+        this.parameters = $.parameters;
         this.period = $.period;
         this.protocolType = $.protocolType;
         this.provisionedIops = $.provisionedIops;
@@ -1430,6 +1447,37 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder orderType(String orderType) {
             return orderType(Output.of(orderType));
+        }
+
+        /**
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<List<ShardingInstanceParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(List<ShardingInstanceParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(ShardingInstanceParameterArgs... parameters) {
+            return parameters(List.of(parameters));
         }
 
         /**

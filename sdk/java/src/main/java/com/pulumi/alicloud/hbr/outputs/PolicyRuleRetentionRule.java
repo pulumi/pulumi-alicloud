@@ -18,7 +18,7 @@ public final class PolicyRuleRetentionRule {
      */
     private @Nullable String advancedRetentionType;
     /**
-     * @return Retention time, in days.
+     * @return Retention time, in days
      * 
      */
     private @Nullable Integer retention;
@@ -32,7 +32,7 @@ public final class PolicyRuleRetentionRule {
         return Optional.ofNullable(this.advancedRetentionType);
     }
     /**
-     * @return Retention time, in days.
+     * @return Retention time, in days
      * 
      */
     public Optional<Integer> retention() {

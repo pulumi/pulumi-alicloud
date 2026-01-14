@@ -249,11 +249,10 @@ class HAVipAttachment(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        example = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
+        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=example.images[0].id)
         example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -262,26 +261,27 @@ class HAVipAttachment(pulumi.CustomResource):
             cidr_block="10.4.0.0/24",
             vpc_id=example_network.id,
             zone_id=default.zones[0].id)
-        example_ha_vip = alicloud.vpc.HAVip("example",
+        example_ha_vipv2 = alicloud.vpc.HaVipv2("example",
             vswitch_id=example_switch.id,
             description=name)
         example_security_group = alicloud.ecs.SecurityGroup("example",
-            name=name,
+            security_group_name=name,
             description=name,
             vpc_id=example_network.id)
         example_instance = alicloud.ecs.Instance("example",
             availability_zone=default.zones[0].id,
             vswitch_id=example_switch.id,
-            image_id=example_get_images.images[0].id,
-            instance_type=example.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
+            image_id=example.images[0].id,
+            instance_type=example_get_instance_types.instance_types[0].id,
+            instance_charge_type="PostPaid",
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             security_groups=[example_security_group.id],
             instance_name=name,
-            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
+            system_disk_category="cloud_essd")
         example_ha_vip_attachment = alicloud.vpc.HAVipAttachment("example",
-            ha_vip_id=example_ha_vip.id,
+            ha_vip_id=example_ha_vipv2.id,
             instance_id=example_instance.id)
         ```
 
@@ -331,11 +331,10 @@ class HAVipAttachment(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        example = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
+        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=example.images[0].id)
         example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -344,26 +343,27 @@ class HAVipAttachment(pulumi.CustomResource):
             cidr_block="10.4.0.0/24",
             vpc_id=example_network.id,
             zone_id=default.zones[0].id)
-        example_ha_vip = alicloud.vpc.HAVip("example",
+        example_ha_vipv2 = alicloud.vpc.HaVipv2("example",
             vswitch_id=example_switch.id,
             description=name)
         example_security_group = alicloud.ecs.SecurityGroup("example",
-            name=name,
+            security_group_name=name,
             description=name,
             vpc_id=example_network.id)
         example_instance = alicloud.ecs.Instance("example",
             availability_zone=default.zones[0].id,
             vswitch_id=example_switch.id,
-            image_id=example_get_images.images[0].id,
-            instance_type=example.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
+            image_id=example.images[0].id,
+            instance_type=example_get_instance_types.instance_types[0].id,
+            instance_charge_type="PostPaid",
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             security_groups=[example_security_group.id],
             instance_name=name,
-            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
+            system_disk_category="cloud_essd")
         example_ha_vip_attachment = alicloud.vpc.HAVipAttachment("example",
-            ha_vip_id=example_ha_vip.id,
+            ha_vip_id=example_ha_vipv2.id,
             instance_id=example_instance.id)
         ```
 

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a GPDB Jdbc Data Source resource.
+// Provides a AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source resource.
 //
-// For information about GPDB Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
+// For information about AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
 //
 // > **NOTE:** Available since v1.230.0.
 //
@@ -87,6 +87,7 @@ import (
 //				DbInstanceId:       defaulttuqTmM.ID(),
 //				AccountName:        pulumi.String("example_001"),
 //				AccountPassword:    pulumi.String("example_001"),
+//				AccountType:        pulumi.String("Normal"),
 //			})
 //			if err != nil {
 //				return err
@@ -122,7 +123,7 @@ import (
 //
 // ## Import
 //
-// GPDB Jdbc Data Source can be imported using the id, e.g.
+// AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:gpdb/jdbcDataSource:JdbcDataSource example <db_instance_id>:<data_source_id>

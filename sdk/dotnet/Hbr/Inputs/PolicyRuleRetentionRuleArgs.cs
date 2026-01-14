@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public Input<string>? AdvancedRetentionType { get; set; }
 
         /// <summary>
-        /// Retention time, in days.
+        /// Retention time, in days
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }

@@ -114,7 +114,7 @@ export class OssScanConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Indicates whether the prefixes of all objects are matched.
+     * Specifies whether to match the prefixes of all objects.
      */
     declare public readonly allKeyPrefix: pulumi.Output<boolean>;
     /**
@@ -236,7 +236,7 @@ export class OssScanConfig extends pulumi.CustomResource {
  */
 export interface OssScanConfigState {
     /**
-     * Indicates whether the prefixes of all objects are matched.
+     * Specifies whether to match the prefixes of all objects.
      */
     allKeyPrefix?: pulumi.Input<boolean>;
     /**
@@ -294,7 +294,7 @@ export interface OssScanConfigState {
  */
 export interface OssScanConfigArgs {
     /**
-     * Indicates whether the prefixes of all objects are matched.
+     * Specifies whether to match the prefixes of all objects.
      */
     allKeyPrefix?: pulumi.Input<boolean>;
     /**

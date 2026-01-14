@@ -27,6 +27,8 @@ __all__ = [
     'ShardingInstanceConfigServerListArgsDict',
     'ShardingInstanceMongoListArgs',
     'ShardingInstanceMongoListArgsDict',
+    'ShardingInstanceParameterArgs',
+    'ShardingInstanceParameterArgsDict',
     'ShardingInstanceShardListArgs',
     'ShardingInstanceShardListArgsDict',
     'ShardingNetworkPrivateAddressNetworkAddressArgs',
@@ -724,6 +726,56 @@ class ShardingInstanceMongoListArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class ShardingInstanceParameterArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        The name of the parameter.
+        """
+        value: pulumi.Input[_builtins.str]
+        """
+        The value of the parameter.
+        """
+elif False:
+    ShardingInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ShardingInstanceParameterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the parameter.
+        :param pulumi.Input[_builtins.str] value: The value of the parameter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

@@ -106,22 +106,23 @@ import (
 type SharedResource struct {
 	pulumi.CustomResourceState
 
-	// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+	// The time when the shared resource was associated with the resource share.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PermissionName pulumi.StringPtrOutput `pulumi:"permissionName"`
+	// Associated resource ARN.
+	//
+	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+	ResourceArn pulumi.StringOutput `pulumi:"resourceArn"`
 	// The ID of the shared resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The ID of the resource share.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
-	// The type of the shared resource. Valid values:
-	// - `VSwitch`.
-	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-	// - The following types are added after v1.208.0: `KMSInstance`.
-	// - The following types are added after v1.240.0: `Snapshot`.
-	// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+	// The type of the shared resource.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// The status of the Shared Resource.
+	// The association status.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -132,14 +133,8 @@ func NewSharedResource(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ResourceId == nil {
-		return nil, errors.New("invalid value for required argument 'ResourceId'")
-	}
 	if args.ResourceShareId == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceShareId'")
-	}
-	if args.ResourceType == nil {
-		return nil, errors.New("invalid value for required argument 'ResourceType'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SharedResource
@@ -164,42 +159,44 @@ func GetSharedResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SharedResource resources.
 type sharedResourceState struct {
-	// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+	// The time when the shared resource was associated with the resource share.
 	CreateTime *string `pulumi:"createTime"`
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PermissionName *string `pulumi:"permissionName"`
+	// Associated resource ARN.
+	//
+	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+	ResourceArn *string `pulumi:"resourceArn"`
 	// The ID of the shared resource.
 	ResourceId *string `pulumi:"resourceId"`
 	// The ID of the resource share.
 	ResourceShareId *string `pulumi:"resourceShareId"`
-	// The type of the shared resource. Valid values:
-	// - `VSwitch`.
-	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-	// - The following types are added after v1.208.0: `KMSInstance`.
-	// - The following types are added after v1.240.0: `Snapshot`.
-	// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+	// The type of the shared resource.
 	ResourceType *string `pulumi:"resourceType"`
-	// The status of the Shared Resource.
+	// The association status.
 	Status *string `pulumi:"status"`
 }
 
 type SharedResourceState struct {
-	// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+	// The time when the shared resource was associated with the resource share.
 	CreateTime pulumi.StringPtrInput
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PermissionName pulumi.StringPtrInput
+	// Associated resource ARN.
+	//
+	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+	ResourceArn pulumi.StringPtrInput
 	// The ID of the shared resource.
 	ResourceId pulumi.StringPtrInput
 	// The ID of the resource share.
 	ResourceShareId pulumi.StringPtrInput
-	// The type of the shared resource. Valid values:
-	// - `VSwitch`.
-	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-	// - The following types are added after v1.208.0: `KMSInstance`.
-	// - The following types are added after v1.240.0: `Snapshot`.
-	// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+	// The type of the shared resource.
 	ResourceType pulumi.StringPtrInput
-	// The status of the Shared Resource.
+	// The association status.
 	Status pulumi.StringPtrInput
 }
 
@@ -208,36 +205,38 @@ func (SharedResourceState) ElementType() reflect.Type {
 }
 
 type sharedResourceArgs struct {
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PermissionName *string `pulumi:"permissionName"`
+	// Associated resource ARN.
+	//
+	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+	ResourceArn *string `pulumi:"resourceArn"`
 	// The ID of the shared resource.
-	ResourceId string `pulumi:"resourceId"`
+	ResourceId *string `pulumi:"resourceId"`
 	// The ID of the resource share.
 	ResourceShareId string `pulumi:"resourceShareId"`
-	// The type of the shared resource. Valid values:
-	// - `VSwitch`.
-	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-	// - The following types are added after v1.208.0: `KMSInstance`.
-	// - The following types are added after v1.240.0: `Snapshot`.
-	// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
-	ResourceType string `pulumi:"resourceType"`
+	// The type of the shared resource.
+	ResourceType *string `pulumi:"resourceType"`
 }
 
 // The set of arguments for constructing a SharedResource resource.
 type SharedResourceArgs struct {
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PermissionName pulumi.StringPtrInput
+	// Associated resource ARN.
+	//
+	// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+	ResourceArn pulumi.StringPtrInput
 	// The ID of the shared resource.
-	ResourceId pulumi.StringInput
+	ResourceId pulumi.StringPtrInput
 	// The ID of the resource share.
 	ResourceShareId pulumi.StringInput
-	// The type of the shared resource. Valid values:
-	// - `VSwitch`.
-	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-	// - The following types are added after v1.208.0: `KMSInstance`.
-	// - The following types are added after v1.240.0: `Snapshot`.
-	// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
-	ResourceType pulumi.StringInput
+	// The type of the shared resource.
+	ResourceType pulumi.StringPtrInput
 }
 
 func (SharedResourceArgs) ElementType() reflect.Type {
@@ -327,9 +326,23 @@ func (o SharedResourceOutput) ToSharedResourceOutputWithContext(ctx context.Cont
 	return o
 }
 
-// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+// The time when the shared resource was associated with the resource share.
 func (o SharedResourceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o SharedResourceOutput) PermissionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringPtrOutput { return v.PermissionName }).(pulumi.StringPtrOutput)
+}
+
+// Associated resource ARN.
+//
+// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+func (o SharedResourceOutput) ResourceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceArn }).(pulumi.StringOutput)
 }
 
 // The ID of the shared resource.
@@ -342,19 +355,12 @@ func (o SharedResourceOutput) ResourceShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceShareId }).(pulumi.StringOutput)
 }
 
-// The type of the shared resource. Valid values:
-// - `VSwitch`.
-// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-// - The following types are added after v1.208.0: `KMSInstance`.
-// - The following types are added after v1.240.0: `Snapshot`.
-// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+// The type of the shared resource.
 func (o SharedResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The status of the Shared Resource.
+// The association status.
 func (o SharedResourceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

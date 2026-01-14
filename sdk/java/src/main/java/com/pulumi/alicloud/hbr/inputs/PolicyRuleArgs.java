@@ -3,7 +3,9 @@
 
 package com.pulumi.alicloud.hbr.inputs;
 
+import com.pulumi.alicloud.hbr.inputs.PolicyRuleDataSourceFilterArgs;
 import com.pulumi.alicloud.hbr.inputs.PolicyRuleRetentionRuleArgs;
+import com.pulumi.alicloud.hbr.inputs.PolicyRuleTagFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -20,14 +22,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyRuleArgs Empty = new PolicyRuleArgs();
 
     /**
-     * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
      * 
      */
     @Import(name="archiveDays")
     private @Nullable Output<Integer> archiveDays;
 
     /**
-     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
      * 
      */
     public Optional<Output<Integer>> archiveDays() {
@@ -35,14 +37,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+     * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
      * 
      */
     @Import(name="backupType")
     private @Nullable Output<String> backupType;
 
     /**
-     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
      * 
      */
     public Optional<Output<String>> backupType() {
@@ -50,14 +52,29 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only when `RuleType` is set to `BACKUP`.
+     * This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+     * 
+     */
+    @Import(name="dataSourceFilters")
+    private @Nullable Output<List<PolicyRuleDataSourceFilterArgs>> dataSourceFilters;
+
+    /**
+     * @return This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+     * 
+     */
+    public Optional<Output<List<PolicyRuleDataSourceFilterArgs>>> dataSourceFilters() {
+        return Optional.ofNullable(this.dataSourceFilters);
+    }
+
+    /**
+     * This parameter is required only when `RuleType` is set to `BACKUP`
      * 
      */
     @Import(name="keepLatestSnapshots")
     private @Nullable Output<Integer> keepLatestSnapshots;
 
     /**
-     * @return This parameter is required only when `RuleType` is set to `BACKUP`.
+     * @return This parameter is required only when `RuleType` is set to `BACKUP`
      * 
      */
     public Optional<Output<Integer>> keepLatestSnapshots() {
@@ -65,14 +82,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only when the `RuleType` value is.
+     * Only when the `RuleType` value is
      * 
      */
     @Import(name="replicationRegionId")
     private @Nullable Output<String> replicationRegionId;
 
     /**
-     * @return Only when the `RuleType` value is.
+     * @return Only when the `RuleType` value is
      * 
      */
     public Optional<Output<String>> replicationRegionId() {
@@ -80,14 +97,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Retention time, in days.
+     * Retention time, in days
      * 
      */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
     /**
-     * @return Retention time, in days.
+     * @return Retention time, in days
      * 
      */
     public Optional<Output<Integer>> retention() {
@@ -110,14 +127,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule ID.
+     * Rule ID
      * 
      */
     @Import(name="ruleId")
     private @Nullable Output<String> ruleId;
 
     /**
-     * @return Rule ID.
+     * @return Rule ID
      * 
      */
     public Optional<Output<String>> ruleId() {
@@ -125,14 +142,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule Type.
+     * Rule Type
      * 
      */
     @Import(name="ruleType", required=true)
     private Output<String> ruleType;
 
     /**
-     * @return Rule Type.
+     * @return Rule Type
      * 
      */
     public Output<String> ruleType() {
@@ -155,14 +172,29 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Vault ID.
+     * This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+     * 
+     */
+    @Import(name="tagFilters")
+    private @Nullable Output<List<PolicyRuleTagFilterArgs>> tagFilters;
+
+    /**
+     * @return This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+     * 
+     */
+    public Optional<Output<List<PolicyRuleTagFilterArgs>>> tagFilters() {
+        return Optional.ofNullable(this.tagFilters);
+    }
+
+    /**
+     * Vault ID
      * 
      */
     @Import(name="vaultId")
     private @Nullable Output<String> vaultId;
 
     /**
-     * @return Vault ID.
+     * @return Vault ID
      * 
      */
     public Optional<Output<String>> vaultId() {
@@ -174,6 +206,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     private PolicyRuleArgs(PolicyRuleArgs $) {
         this.archiveDays = $.archiveDays;
         this.backupType = $.backupType;
+        this.dataSourceFilters = $.dataSourceFilters;
         this.keepLatestSnapshots = $.keepLatestSnapshots;
         this.replicationRegionId = $.replicationRegionId;
         this.retention = $.retention;
@@ -181,6 +214,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.ruleId = $.ruleId;
         this.ruleType = $.ruleType;
         this.schedule = $.schedule;
+        this.tagFilters = $.tagFilters;
         this.vaultId = $.vaultId;
     }
 
@@ -203,7 +237,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveDays This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * @param archiveDays This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
          * 
          * @return builder
          * 
@@ -214,7 +248,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveDays This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * @param archiveDays This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
          * 
          * @return builder
          * 
@@ -224,7 +258,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+         * @param backupType This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
          * 
          * @return builder
          * 
@@ -235,7 +269,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+         * @param backupType This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
          * 
          * @return builder
          * 
@@ -245,7 +279,38 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepLatestSnapshots This parameter is required only when `RuleType` is set to `BACKUP`.
+         * @param dataSourceFilters This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataSourceFilters(@Nullable Output<List<PolicyRuleDataSourceFilterArgs>> dataSourceFilters) {
+            $.dataSourceFilters = dataSourceFilters;
+            return this;
+        }
+
+        /**
+         * @param dataSourceFilters This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataSourceFilters(List<PolicyRuleDataSourceFilterArgs> dataSourceFilters) {
+            return dataSourceFilters(Output.of(dataSourceFilters));
+        }
+
+        /**
+         * @param dataSourceFilters This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataSourceFilters(PolicyRuleDataSourceFilterArgs... dataSourceFilters) {
+            return dataSourceFilters(List.of(dataSourceFilters));
+        }
+
+        /**
+         * @param keepLatestSnapshots This parameter is required only when `RuleType` is set to `BACKUP`
          * 
          * @return builder
          * 
@@ -256,7 +321,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepLatestSnapshots This parameter is required only when `RuleType` is set to `BACKUP`.
+         * @param keepLatestSnapshots This parameter is required only when `RuleType` is set to `BACKUP`
          * 
          * @return builder
          * 
@@ -266,7 +331,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationRegionId Only when the `RuleType` value is.
+         * @param replicationRegionId Only when the `RuleType` value is
          * 
          * @return builder
          * 
@@ -277,7 +342,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationRegionId Only when the `RuleType` value is.
+         * @param replicationRegionId Only when the `RuleType` value is
          * 
          * @return builder
          * 
@@ -287,7 +352,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retention Retention time, in days.
+         * @param retention Retention time, in days
          * 
          * @return builder
          * 
@@ -298,7 +363,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retention Retention time, in days.
+         * @param retention Retention time, in days
          * 
          * @return builder
          * 
@@ -339,7 +404,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleId Rule ID.
+         * @param ruleId Rule ID
          * 
          * @return builder
          * 
@@ -350,7 +415,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleId Rule ID.
+         * @param ruleId Rule ID
          * 
          * @return builder
          * 
@@ -360,7 +425,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleType Rule Type.
+         * @param ruleType Rule Type
          * 
          * @return builder
          * 
@@ -371,7 +436,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleType Rule Type.
+         * @param ruleType Rule Type
          * 
          * @return builder
          * 
@@ -402,7 +467,38 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vaultId Vault ID.
+         * @param tagFilters This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagFilters(@Nullable Output<List<PolicyRuleTagFilterArgs>> tagFilters) {
+            $.tagFilters = tagFilters;
+            return this;
+        }
+
+        /**
+         * @param tagFilters This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagFilters(List<PolicyRuleTagFilterArgs> tagFilters) {
+            return tagFilters(Output.of(tagFilters));
+        }
+
+        /**
+         * @param tagFilters This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagFilters(PolicyRuleTagFilterArgs... tagFilters) {
+            return tagFilters(List.of(tagFilters));
+        }
+
+        /**
+         * @param vaultId Vault ID
          * 
          * @return builder
          * 
@@ -413,7 +509,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vaultId Vault ID.
+         * @param vaultId Vault ID
          * 
          * @return builder
          * 

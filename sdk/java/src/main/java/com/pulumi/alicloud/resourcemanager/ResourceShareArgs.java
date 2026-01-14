@@ -42,6 +42,8 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="permissionNames")
     private @Nullable Output<List<String>> permissionNames;
@@ -49,9 +51,30 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Optional<Output<List<String>>> permissionNames() {
         return Optional.ofNullable(this.permissionNames);
+    }
+
+    /**
+     * ResourceArns
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="resourceArns")
+    private @Nullable Output<List<String>> resourceArns;
+
+    /**
+     * @return ResourceArns
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<List<String>>> resourceArns() {
+        return Optional.ofNullable(this.resourceArns);
     }
 
     /**
@@ -85,14 +108,18 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * List of shared resources. See `resources` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="resources")
     private @Nullable Output<List<ResourceShareResourceArgs>> resources;
 
     /**
-     * @return List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * @return List of shared resources. See `resources` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<List<ResourceShareResourceArgs>>> resources() {
@@ -117,12 +144,16 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Resource user.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="targets")
     private @Nullable Output<List<String>> targets;
 
     /**
      * @return Resource user.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<List<String>>> targets() {
@@ -134,6 +165,7 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
     private ResourceShareArgs(ResourceShareArgs $) {
         this.allowExternalTargets = $.allowExternalTargets;
         this.permissionNames = $.permissionNames;
+        this.resourceArns = $.resourceArns;
         this.resourceGroupId = $.resourceGroupId;
         this.resourceShareName = $.resourceShareName;
         this.resources = $.resources;
@@ -187,6 +219,8 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param permissionNames Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -198,6 +232,8 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param permissionNames Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -208,11 +244,50 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param permissionNames Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
         public Builder permissionNames(String... permissionNames) {
             return permissionNames(List.of(permissionNames));
+        }
+
+        /**
+         * @param resourceArns ResourceArns
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceArns(@Nullable Output<List<String>> resourceArns) {
+            $.resourceArns = resourceArns;
+            return this;
+        }
+
+        /**
+         * @param resourceArns ResourceArns
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceArns(List<String> resourceArns) {
+            return resourceArns(Output.of(resourceArns));
+        }
+
+        /**
+         * @param resourceArns ResourceArns
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceArns(String... resourceArns) {
+            return resourceArns(List.of(resourceArns));
         }
 
         /**
@@ -258,7 +333,9 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+         * @param resources List of shared resources. See `resources` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -269,7 +346,9 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+         * @param resources List of shared resources. See `resources` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -279,7 +358,9 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+         * @param resources List of shared resources. See `resources` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -312,6 +393,8 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param targets Resource user.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -323,6 +406,8 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param targets Resource user.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -332,6 +417,8 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param targets Resource user.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

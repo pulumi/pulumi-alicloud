@@ -14,7 +14,9 @@ import (
 
 // Provides a CR Instance resource.
 //
-// For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+// For information about Container Registry Instance and how to use it, see [What is Container Registry](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry).
+//
+// For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
 //
 // > **NOTE:** Available since v1.124.0.
 //
@@ -114,6 +116,10 @@ type RegistryEnterpriseInstance struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
+	// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	NamespaceQuota pulumi.IntPtrOutput `pulumi:"namespaceQuota"`
 	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Payment type, value:
@@ -137,12 +143,20 @@ type RegistryEnterpriseInstance struct {
 	//
 	// Default ManualRenewal.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
-	// The ID of the resource group
+	// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
 	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	RepoQuota pulumi.IntPtrOutput `pulumi:"repoQuota"`
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Instance Status
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The number of VPC access controls.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcQuota pulumi.IntPtrOutput `pulumi:"vpcQuota"`
 }
 
 // NewRegistryEnterpriseInstance registers a new resource with the given unique name, arguments, and options.
@@ -226,6 +240,10 @@ type registryEnterpriseInstanceState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	NamespaceQuota *int `pulumi:"namespaceQuota"`
 	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password *string `pulumi:"password"`
 	// Payment type, value:
@@ -249,12 +267,20 @@ type registryEnterpriseInstanceState struct {
 	//
 	// Default ManualRenewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
-	// The ID of the resource group
+	// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
 	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	RepoQuota *int `pulumi:"repoQuota"`
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance Status
 	Status *string `pulumi:"status"`
+	// The number of VPC access controls.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcQuota *int `pulumi:"vpcQuota"`
 }
 
 type RegistryEnterpriseInstanceState struct {
@@ -293,6 +319,10 @@ type RegistryEnterpriseInstanceState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	NamespaceQuota pulumi.IntPtrInput
 	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password pulumi.StringPtrInput
 	// Payment type, value:
@@ -316,12 +346,20 @@ type RegistryEnterpriseInstanceState struct {
 	//
 	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrInput
-	// The ID of the resource group
+	// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
 	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	RepoQuota pulumi.IntPtrInput
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Instance Status
 	Status pulumi.StringPtrInput
+	// The number of VPC access controls.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcQuota pulumi.IntPtrInput
 }
 
 func (RegistryEnterpriseInstanceState) ElementType() reflect.Type {
@@ -354,6 +392,10 @@ type registryEnterpriseInstanceArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	NamespaceQuota *int `pulumi:"namespaceQuota"`
 	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password *string `pulumi:"password"`
 	// Payment type, value:
@@ -375,10 +417,18 @@ type registryEnterpriseInstanceArgs struct {
 	//
 	// Default ManualRenewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	RepoQuota *int `pulumi:"repoQuota"`
 	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The number of VPC access controls.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	VpcQuota *int `pulumi:"vpcQuota"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseInstance resource.
@@ -408,6 +458,10 @@ type RegistryEnterpriseInstanceArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	NamespaceQuota pulumi.IntPtrInput
 	// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 	Password pulumi.StringPtrInput
 	// Payment type, value:
@@ -429,10 +483,18 @@ type RegistryEnterpriseInstanceArgs struct {
 	//
 	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrInput
+	// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	RepoQuota pulumi.IntPtrInput
 	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// The number of VPC access controls.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	ResourceGroupId pulumi.StringPtrInput
+	VpcQuota pulumi.IntPtrInput
 }
 
 func (RegistryEnterpriseInstanceArgs) ElementType() reflect.Type {
@@ -592,6 +654,13 @@ func (o RegistryEnterpriseInstanceOutput) KmsEncryptionContext() pulumi.StringMa
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
+// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o RegistryEnterpriseInstanceOutput) NamespaceQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.NamespaceQuota }).(pulumi.IntPtrOutput)
+}
+
 // Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
 func (o RegistryEnterpriseInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
@@ -633,9 +702,14 @@ func (o RegistryEnterpriseInstanceOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group
+// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
 //
-// The following arguments will be discarded. Please use new fields as soon as possible:
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o RegistryEnterpriseInstanceOutput) RepoQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.RepoQuota }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the resource group
 func (o RegistryEnterpriseInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -643,6 +717,15 @@ func (o RegistryEnterpriseInstanceOutput) ResourceGroupId() pulumi.StringOutput 
 // Instance Status
 func (o RegistryEnterpriseInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The number of VPC access controls.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o RegistryEnterpriseInstanceOutput) VpcQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.VpcQuota }).(pulumi.IntPtrOutput)
 }
 
 type RegistryEnterpriseInstanceArrayOutput struct{ *pulumi.OutputState }

@@ -29,9 +29,7 @@ class PolicyArgs:
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
-        :param pulumi.Input[_builtins.str] policy_type: The policy type. Valid values:
-               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules See `rules` below.
         """
         if policy_description is not None:
@@ -71,9 +69,7 @@ class PolicyArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy type. Valid values:
-        - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-        - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         """
         return pulumi.get(self, "policy_type")
 
@@ -107,9 +103,7 @@ class _PolicyState:
         :param pulumi.Input[_builtins.str] create_time: Policy creation time
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
-        :param pulumi.Input[_builtins.str] policy_type: The policy type. Valid values:
-               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules See `rules` below.
         """
         if create_time is not None:
@@ -163,9 +157,7 @@ class _PolicyState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy type. Valid values:
-        - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-        - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         """
         return pulumi.get(self, "policy_type")
 
@@ -250,9 +242,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
-        :param pulumi.Input[_builtins.str] policy_type: The policy type. Valid values:
-               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
         """
         ...
@@ -368,9 +358,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Policy creation time
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
-        :param pulumi.Input[_builtins.str] policy_type: The policy type. Valid values:
-               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -412,9 +400,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The policy type. Valid values:
-        - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-        - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
         """
         return pulumi.get(self, "policy_type")
 

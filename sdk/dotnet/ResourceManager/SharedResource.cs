@@ -85,10 +85,26 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class SharedResource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        /// The time when the shared resource was associated with the resource share.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("permissionName")]
+        public Output<string?> PermissionName { get; private set; } = null!;
+
+        /// <summary>
+        /// Associated resource ARN.
+        /// 
+        /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        /// </summary>
+        [Output("resourceArn")]
+        public Output<string> ResourceArn { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the shared resource.
@@ -103,20 +119,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceShareId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the shared resource. Valid values:
-        /// - `VSwitch`.
-        /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-        /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-        /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-        /// - The following types are added after v1.208.0: `KMSInstance`.
-        /// - The following types are added after v1.240.0: `Snapshot`.
-        /// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        /// The type of the shared resource.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Shared Resource.
+        /// The association status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -168,10 +177,26 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class SharedResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("permissionName")]
+        public Input<string>? PermissionName { get; set; }
+
+        /// <summary>
+        /// Associated resource ARN.
+        /// 
+        /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        /// </summary>
+        [Input("resourceArn")]
+        public Input<string>? ResourceArn { get; set; }
+
+        /// <summary>
         /// The ID of the shared resource.
         /// </summary>
-        [Input("resourceId", required: true)]
-        public Input<string> ResourceId { get; set; } = null!;
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// The ID of the resource share.
@@ -180,17 +205,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> ResourceShareId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the shared resource. Valid values:
-        /// - `VSwitch`.
-        /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-        /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-        /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-        /// - The following types are added after v1.208.0: `KMSInstance`.
-        /// - The following types are added after v1.240.0: `Snapshot`.
-        /// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        /// The type of the shared resource.
         /// </summary>
-        [Input("resourceType", required: true)]
-        public Input<string> ResourceType { get; set; } = null!;
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
 
         public SharedResourceArgs()
         {
@@ -201,10 +219,26 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class SharedResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        /// The time when the shared resource was associated with the resource share.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("permissionName")]
+        public Input<string>? PermissionName { get; set; }
+
+        /// <summary>
+        /// Associated resource ARN.
+        /// 
+        /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+        /// </summary>
+        [Input("resourceArn")]
+        public Input<string>? ResourceArn { get; set; }
 
         /// <summary>
         /// The ID of the shared resource.
@@ -219,20 +253,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The type of the shared resource. Valid values:
-        /// - `VSwitch`.
-        /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
-        /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
-        /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
-        /// - The following types are added after v1.208.0: `KMSInstance`.
-        /// - The following types are added after v1.240.0: `Snapshot`.
-        /// - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
+        /// The type of the shared resource.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// The status of the Shared Resource.
+        /// The association status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

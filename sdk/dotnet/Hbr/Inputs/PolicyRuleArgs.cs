@@ -13,31 +13,43 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class PolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        /// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
         /// </summary>
         [Input("archiveDays")]
         public Input<int>? ArchiveDays { get; set; }
 
         /// <summary>
-        /// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+        /// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
+        [Input("dataSourceFilters")]
+        private InputList<Inputs.PolicyRuleDataSourceFilterArgs>? _dataSourceFilters;
+
         /// <summary>
-        /// This parameter is required only when `RuleType` is set to `BACKUP`.
+        /// This parameter is required only when the value of RuleType is TAG. See `DataSourceFilters` below.
+        /// </summary>
+        public InputList<Inputs.PolicyRuleDataSourceFilterArgs> DataSourceFilters
+        {
+            get => _dataSourceFilters ?? (_dataSourceFilters = new InputList<Inputs.PolicyRuleDataSourceFilterArgs>());
+            set => _dataSourceFilters = value;
+        }
+
+        /// <summary>
+        /// This parameter is required only when `RuleType` is set to `BACKUP`
         /// </summary>
         [Input("keepLatestSnapshots")]
         public Input<int>? KeepLatestSnapshots { get; set; }
 
         /// <summary>
-        /// Only when the `RuleType` value is.
+        /// Only when the `RuleType` value is
         /// </summary>
         [Input("replicationRegionId")]
         public Input<string>? ReplicationRegionId { get; set; }
 
         /// <summary>
-        /// Retention time, in days.
+        /// Retention time, in days
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
@@ -55,13 +67,13 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         }
 
         /// <summary>
-        /// Rule ID.
+        /// Rule ID
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// Rule Type.
+        /// Rule Type
         /// </summary>
         [Input("ruleType", required: true)]
         public Input<string> RuleType { get; set; } = null!;
@@ -72,8 +84,20 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        [Input("tagFilters")]
+        private InputList<Inputs.PolicyRuleTagFilterArgs>? _tagFilters;
+
         /// <summary>
-        /// Vault ID.
+        /// This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `TagFilters` below.
+        /// </summary>
+        public InputList<Inputs.PolicyRuleTagFilterArgs> TagFilters
+        {
+            get => _tagFilters ?? (_tagFilters = new InputList<Inputs.PolicyRuleTagFilterArgs>());
+            set => _tagFilters = value;
+        }
+
+        /// <summary>
+        /// Vault ID
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

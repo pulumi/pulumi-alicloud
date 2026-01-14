@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eci
     public static class GetZones
     {
         /// <summary>
-        /// This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+        /// This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -41,9 +41,9 @@ namespace Pulumi.AliCloud.Eci
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:eci/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+        /// This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,9 +70,9 @@ namespace Pulumi.AliCloud.Eci
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:eci/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+        /// This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -137,6 +137,9 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of eci Instance zones. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]

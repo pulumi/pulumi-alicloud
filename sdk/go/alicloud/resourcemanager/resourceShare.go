@@ -73,20 +73,30 @@ type ResourceShare struct {
 	// The create time of resource share.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionNames pulumi.StringArrayOutput `pulumi:"permissionNames"`
+	// ResourceArns
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	ResourceArns pulumi.StringArrayOutput `pulumi:"resourceArns"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The name of resource share.
 	ResourceShareName pulumi.StringOutput `pulumi:"resourceShareName"`
 	// The owner of resource share,  `Self` and `OtherAccounts`.
 	ResourceShareOwner pulumi.StringOutput `pulumi:"resourceShareOwner"`
-	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	// List of shared resources. See `resources` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Resources ResourceShareResourceArrayOutput `pulumi:"resources"`
 	// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource user.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Targets pulumi.StringArrayOutput `pulumi:"targets"`
 }
 
@@ -130,20 +140,30 @@ type resourceShareState struct {
 	// The create time of resource share.
 	CreateTime *string `pulumi:"createTime"`
 	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionNames []string `pulumi:"permissionNames"`
+	// ResourceArns
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	ResourceArns []string `pulumi:"resourceArns"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of resource share.
 	ResourceShareName *string `pulumi:"resourceShareName"`
 	// The owner of resource share,  `Self` and `OtherAccounts`.
 	ResourceShareOwner *string `pulumi:"resourceShareOwner"`
-	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	// List of shared resources. See `resources` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Resources []ResourceShareResource `pulumi:"resources"`
 	// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// Resource user.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Targets []string `pulumi:"targets"`
 }
 
@@ -155,20 +175,30 @@ type ResourceShareState struct {
 	// The create time of resource share.
 	CreateTime pulumi.StringPtrInput
 	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionNames pulumi.StringArrayInput
+	// ResourceArns
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	ResourceArns pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// The name of resource share.
 	ResourceShareName pulumi.StringPtrInput
 	// The owner of resource share,  `Self` and `OtherAccounts`.
 	ResourceShareOwner pulumi.StringPtrInput
-	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	// List of shared resources. See `resources` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Resources ResourceShareResourceArrayInput
 	// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
 	// Resource user.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Targets pulumi.StringArrayInput
 }
 
@@ -182,16 +212,26 @@ type resourceShareArgs struct {
 	// - true: Allow sharing to any account.
 	AllowExternalTargets *bool `pulumi:"allowExternalTargets"`
 	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionNames []string `pulumi:"permissionNames"`
+	// ResourceArns
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	ResourceArns []string `pulumi:"resourceArns"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of resource share.
 	ResourceShareName string `pulumi:"resourceShareName"`
-	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	// List of shared resources. See `resources` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Resources []ResourceShareResource `pulumi:"resources"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// Resource user.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Targets []string `pulumi:"targets"`
 }
 
@@ -202,16 +242,26 @@ type ResourceShareArgs struct {
 	// - true: Allow sharing to any account.
 	AllowExternalTargets pulumi.BoolPtrInput
 	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PermissionNames pulumi.StringArrayInput
+	// ResourceArns
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	ResourceArns pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// The name of resource share.
 	ResourceShareName pulumi.StringInput
-	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	// List of shared resources. See `resources` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Resources ResourceShareResourceArrayInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
 	// Resource user.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Targets pulumi.StringArrayInput
 }
 
@@ -315,8 +365,17 @@ func (o ResourceShareOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ResourceShareOutput) PermissionNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringArrayOutput { return v.PermissionNames }).(pulumi.StringArrayOutput)
+}
+
+// ResourceArns
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o ResourceShareOutput) ResourceArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringArrayOutput { return v.ResourceArns }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the resource group
@@ -334,7 +393,9 @@ func (o ResourceShareOutput) ResourceShareOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareOwner }).(pulumi.StringOutput)
 }
 
-// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+// List of shared resources. See `resources` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ResourceShareOutput) Resources() ResourceShareResourceArrayOutput {
 	return o.ApplyT(func(v *ResourceShare) ResourceShareResourceArrayOutput { return v.Resources }).(ResourceShareResourceArrayOutput)
 }
@@ -350,6 +411,8 @@ func (o ResourceShareOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Resource user.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ResourceShareOutput) Targets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringArrayOutput { return v.Targets }).(pulumi.StringArrayOutput)
 }

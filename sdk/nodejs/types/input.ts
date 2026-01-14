@@ -15080,14 +15080,14 @@ export namespace hbr {
 
     export interface PolicyBindingAdvancedOptions {
         /**
-         * ECS Backup Advanced options. See `udmDetail` below.
+         * ECS Backup Advanced options See `udmDetail` below.
          */
         udmDetail?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptionsUdmDetail>;
     }
 
     export interface PolicyBindingAdvancedOptionsUdmDetail {
         /**
-         * Custom KMS key ID of encrypted copy.
+         * Custom KMS key ID of encrypted copy
          */
         destinationKmsKeyId?: pulumi.Input<string>;
         /**
@@ -15095,30 +15095,34 @@ export namespace hbr {
          */
         diskIdLists?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * List of cloud disk IDs that are not backed up.
+         * List of cloud disk IDs that are not backed up
          */
         excludeDiskIdLists?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface PolicyRule {
         /**
-         * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
          */
         archiveDays?: pulumi.Input<number>;
         /**
-         * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+         * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
          */
         backupType?: pulumi.Input<string>;
         /**
-         * This parameter is required only when `RuleType` is set to `BACKUP`.
+         * This parameter is required only when the value of RuleType is TAG. See `dataSourceFilters` below.
+         */
+        dataSourceFilters?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRuleDataSourceFilter>[]>;
+        /**
+         * This parameter is required only when `RuleType` is set to `BACKUP`
          */
         keepLatestSnapshots?: pulumi.Input<number>;
         /**
-         * Only when the `RuleType` value is.
+         * Only when the `RuleType` value is
          */
         replicationRegionId?: pulumi.Input<string>;
         /**
-         * Retention time, in days.
+         * Retention time, in days
          */
         retention?: pulumi.Input<number>;
         /**
@@ -15126,11 +15130,11 @@ export namespace hbr {
          */
         retentionRules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRuleRetentionRule>[]>;
         /**
-         * Rule ID.
+         * Rule ID
          */
         ruleId?: pulumi.Input<string>;
         /**
-         * Rule Type.
+         * Rule Type
          */
         ruleType: pulumi.Input<string>;
         /**
@@ -15138,9 +15142,20 @@ export namespace hbr {
          */
         schedule?: pulumi.Input<string>;
         /**
-         * Vault ID.
+         * This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tagFilters` below.
+         */
+        tagFilters?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRuleTagFilter>[]>;
+        /**
+         * Vault ID
          */
         vaultId?: pulumi.Input<string>;
+    }
+
+    export interface PolicyRuleDataSourceFilter {
+        /**
+         * The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+         */
+        sourceType?: pulumi.Input<string>;
     }
 
     export interface PolicyRuleRetentionRule {
@@ -15149,9 +15164,24 @@ export namespace hbr {
          */
         advancedRetentionType?: pulumi.Input<string>;
         /**
-         * Retention time, in days.
+         * Retention time, in days
          */
         retention?: pulumi.Input<number>;
+    }
+
+    export interface PolicyRuleTagFilter {
+        /**
+         * The tag key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * The label value, which is empty and represents any value.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface RestoreJobOtsDetail {
@@ -16344,6 +16374,17 @@ export namespace mongodb {
          * The connection port of the Config Server node.
          */
         port?: pulumi.Input<number>;
+    }
+
+    export interface ShardingInstanceParameter {
+        /**
+         * The name of the parameter.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The value of the parameter.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface ShardingInstanceShardList {
@@ -18212,6 +18253,28 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface AiInstanceAuthConfigList {
+        /**
+         * The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the configuration item.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface AiInstanceStorageConfigList {
+        /**
+         * The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The value of the configuration item.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface CustomDataDisk {
         /**
          * Instance storage type
@@ -19177,10 +19240,20 @@ export namespace resourcemanager {
     export interface ResourceShareResource {
         /**
          * The ID of the shared resource.
+         *
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         *
+         * > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
          */
         resourceId?: pulumi.Input<string>;
         /**
-         * Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         * Shared resource type.
+         *
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         *
+         * For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         *
+         * > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
          */
         resourceType?: pulumi.Input<string>;
     }

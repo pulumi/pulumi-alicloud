@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string? AdvancedRetentionType;
         /// <summary>
-        /// Retention time, in days.
+        /// Retention time, in days
         /// </summary>
         public readonly int? Retention;
 

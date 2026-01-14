@@ -820,6 +820,112 @@ func (o ShardingInstanceMongoListArrayOutput) Index(i pulumi.IntInput) ShardingI
 	}).(ShardingInstanceMongoListOutput)
 }
 
+type ShardingInstanceParameter struct {
+	// The name of the parameter.
+	Name string `pulumi:"name"`
+	// The value of the parameter.
+	Value string `pulumi:"value"`
+}
+
+// ShardingInstanceParameterInput is an input type that accepts ShardingInstanceParameterArgs and ShardingInstanceParameterOutput values.
+// You can construct a concrete instance of `ShardingInstanceParameterInput` via:
+//
+//	ShardingInstanceParameterArgs{...}
+type ShardingInstanceParameterInput interface {
+	pulumi.Input
+
+	ToShardingInstanceParameterOutput() ShardingInstanceParameterOutput
+	ToShardingInstanceParameterOutputWithContext(context.Context) ShardingInstanceParameterOutput
+}
+
+type ShardingInstanceParameterArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ShardingInstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceParameter)(nil)).Elem()
+}
+
+func (i ShardingInstanceParameterArgs) ToShardingInstanceParameterOutput() ShardingInstanceParameterOutput {
+	return i.ToShardingInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceParameterArgs) ToShardingInstanceParameterOutputWithContext(ctx context.Context) ShardingInstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceParameterOutput)
+}
+
+// ShardingInstanceParameterArrayInput is an input type that accepts ShardingInstanceParameterArray and ShardingInstanceParameterArrayOutput values.
+// You can construct a concrete instance of `ShardingInstanceParameterArrayInput` via:
+//
+//	ShardingInstanceParameterArray{ ShardingInstanceParameterArgs{...} }
+type ShardingInstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToShardingInstanceParameterArrayOutput() ShardingInstanceParameterArrayOutput
+	ToShardingInstanceParameterArrayOutputWithContext(context.Context) ShardingInstanceParameterArrayOutput
+}
+
+type ShardingInstanceParameterArray []ShardingInstanceParameterInput
+
+func (ShardingInstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceParameter)(nil)).Elem()
+}
+
+func (i ShardingInstanceParameterArray) ToShardingInstanceParameterArrayOutput() ShardingInstanceParameterArrayOutput {
+	return i.ToShardingInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceParameterArray) ToShardingInstanceParameterArrayOutputWithContext(ctx context.Context) ShardingInstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceParameterArrayOutput)
+}
+
+type ShardingInstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceParameter)(nil)).Elem()
+}
+
+func (o ShardingInstanceParameterOutput) ToShardingInstanceParameterOutput() ShardingInstanceParameterOutput {
+	return o
+}
+
+func (o ShardingInstanceParameterOutput) ToShardingInstanceParameterOutputWithContext(ctx context.Context) ShardingInstanceParameterOutput {
+	return o
+}
+
+// The name of the parameter.
+func (o ShardingInstanceParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ShardingInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the parameter.
+func (o ShardingInstanceParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ShardingInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ShardingInstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceParameter)(nil)).Elem()
+}
+
+func (o ShardingInstanceParameterArrayOutput) ToShardingInstanceParameterArrayOutput() ShardingInstanceParameterArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceParameterArrayOutput) ToShardingInstanceParameterArrayOutputWithContext(ctx context.Context) ShardingInstanceParameterArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceParameterArrayOutput) Index(i pulumi.IntInput) ShardingInstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceParameter {
+		return vs[0].([]ShardingInstanceParameter)[vs[1].(int)]
+	}).(ShardingInstanceParameterOutput)
+}
+
 type ShardingInstanceShardList struct {
 	// The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
@@ -3011,6 +3117,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceConfigServerListArrayInput)(nil)).Elem(), ShardingInstanceConfigServerListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListInput)(nil)).Elem(), ShardingInstanceMongoListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListArrayInput)(nil)).Elem(), ShardingInstanceMongoListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceParameterInput)(nil)).Elem(), ShardingInstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceParameterArrayInput)(nil)).Elem(), ShardingInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListInput)(nil)).Elem(), ShardingInstanceShardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListArrayInput)(nil)).Elem(), ShardingInstanceShardListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPrivateAddressNetworkAddressInput)(nil)).Elem(), ShardingNetworkPrivateAddressNetworkAddressArgs{})
@@ -3049,6 +3157,8 @@ func init() {
 	pulumi.RegisterOutputType(ShardingInstanceConfigServerListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMongoListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMongoListArrayOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceParameterOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingNetworkPrivateAddressNetworkAddressOutput{})

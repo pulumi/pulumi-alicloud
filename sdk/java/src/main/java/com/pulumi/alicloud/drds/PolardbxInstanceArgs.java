@@ -6,6 +6,7 @@ package com.pulumi.alicloud.drds;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -48,6 +49,21 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Instance remarks
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Instance remarks
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Storage node specifications.
      * 
      */
@@ -75,6 +91,55 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<Integer> dnNodeCount() {
         return this.dnNodeCount;
+    }
+
+    /**
+     * Engine version, default 5.7
+     * 
+     */
+    @Import(name="engineVersion")
+    private @Nullable Output<String> engineVersion;
+
+    /**
+     * @return Engine version, default 5.7
+     * 
+     */
+    public Optional<Output<String>> engineVersion() {
+        return Optional.ofNullable(this.engineVersion);
+    }
+
+    /**
+     * Whether the instance is read-only.
+     * 
+     */
+    @Import(name="isReadDbInstance")
+    private @Nullable Output<Boolean> isReadDbInstance;
+
+    /**
+     * @return Whether the instance is read-only.
+     * 
+     */
+    public Optional<Output<Boolean>> isReadDbInstance() {
+        return Optional.ofNullable(this.isReadDbInstance);
+    }
+
+    /**
+     * If the instance is a read-only instance, you must specify the primary instance.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="primaryDbInstanceName")
+    private @Nullable Output<String> primaryDbInstanceName;
+
+    /**
+     * @return If the instance is a read-only instance, you must specify the primary instance.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<String>> primaryDbInstanceName() {
+        return Optional.ofNullable(this.primaryDbInstanceName);
     }
 
     /**
@@ -139,8 +204,6 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      * 
      */
     @Import(name="topologyType", required=true)
@@ -148,8 +211,6 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Topology type:
-     * - **3azones**: three available areas;
-     * - **1azone**: Single zone.
      * 
      */
     public Output<String> topologyType() {
@@ -191,8 +252,12 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
     private PolardbxInstanceArgs(PolardbxInstanceArgs $) {
         this.cnClass = $.cnClass;
         this.cnNodeCount = $.cnNodeCount;
+        this.description = $.description;
         this.dnClass = $.dnClass;
         this.dnNodeCount = $.dnNodeCount;
+        this.engineVersion = $.engineVersion;
+        this.isReadDbInstance = $.isReadDbInstance;
+        this.primaryDbInstanceName = $.primaryDbInstanceName;
         this.primaryZone = $.primaryZone;
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryZone = $.secondaryZone;
@@ -263,6 +328,27 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param description Instance remarks
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Instance remarks
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param dnClass Storage node specifications.
          * 
          * @return builder
@@ -302,6 +388,73 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder dnNodeCount(Integer dnNodeCount) {
             return dnNodeCount(Output.of(dnNodeCount));
+        }
+
+        /**
+         * @param engineVersion Engine version, default 5.7
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineVersion(@Nullable Output<String> engineVersion) {
+            $.engineVersion = engineVersion;
+            return this;
+        }
+
+        /**
+         * @param engineVersion Engine version, default 5.7
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineVersion(String engineVersion) {
+            return engineVersion(Output.of(engineVersion));
+        }
+
+        /**
+         * @param isReadDbInstance Whether the instance is read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isReadDbInstance(@Nullable Output<Boolean> isReadDbInstance) {
+            $.isReadDbInstance = isReadDbInstance;
+            return this;
+        }
+
+        /**
+         * @param isReadDbInstance Whether the instance is read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isReadDbInstance(Boolean isReadDbInstance) {
+            return isReadDbInstance(Output.of(isReadDbInstance));
+        }
+
+        /**
+         * @param primaryDbInstanceName If the instance is a read-only instance, you must specify the primary instance.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryDbInstanceName(@Nullable Output<String> primaryDbInstanceName) {
+            $.primaryDbInstanceName = primaryDbInstanceName;
+            return this;
+        }
+
+        /**
+         * @param primaryDbInstanceName If the instance is a read-only instance, you must specify the primary instance.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryDbInstanceName(String primaryDbInstanceName) {
+            return primaryDbInstanceName(Output.of(primaryDbInstanceName));
         }
 
         /**
@@ -390,8 +543,6 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param topologyType Topology type:
-         * - **3azones**: three available areas;
-         * - **1azone**: Single zone.
          * 
          * @return builder
          * 
@@ -403,8 +554,6 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param topologyType Topology type:
-         * - **3azones**: three available areas;
-         * - **1azone**: Single zone.
          * 
          * @return builder
          * 

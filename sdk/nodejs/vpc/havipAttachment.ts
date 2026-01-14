@@ -26,15 +26,14 @@ import * as utilities from "../utilities";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const example = _default.then(_default => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: _default.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const exampleGetImages = alicloud.ecs.getImages({
+ * const example = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
  * });
+ * const exampleGetInstanceTypes = Promise.all([_default, example]).then(([_default, example]) => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     imageId: example.images?.[0]?.id,
+ * }));
  * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
@@ -45,29 +44,30 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const exampleHAVip = new alicloud.vpc.HAVip("example", {
+ * const exampleHaVipv2 = new alicloud.vpc.HaVipv2("example", {
  *     vswitchId: exampleSwitch.id,
  *     description: name,
  * });
  * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
- *     name: name,
+ *     securityGroupName: name,
  *     description: name,
  *     vpcId: exampleNetwork.id,
  * });
  * const exampleInstance = new alicloud.ecs.Instance("example", {
  *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchId: exampleSwitch.id,
- *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
- *     instanceType: example.then(example => example.instanceTypes?.[0]?.id),
- *     systemDiskCategory: "cloud_efficiency",
+ *     imageId: example.then(example => example.images?.[0]?.id),
+ *     instanceType: exampleGetInstanceTypes.then(exampleGetInstanceTypes => exampleGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     instanceChargeType: "PostPaid",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
  *     securityGroups: [exampleSecurityGroup.id],
  *     instanceName: name,
  *     userData: "echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
+ *     systemDiskCategory: "cloud_essd",
  * });
  * const exampleHAVipAttachment = new alicloud.vpc.HAVipAttachment("example", {
- *     haVipId: exampleHAVip.id,
+ *     haVipId: exampleHaVipv2.id,
  *     instanceId: exampleInstance.id,
  * });
  * ```

@@ -18,6 +18,10 @@ public final class ResourceShareResourceArgs extends com.pulumi.resources.Resour
     /**
      * The ID of the shared resource.
      * 
+     * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+     * 
+     * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
+     * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
@@ -25,20 +29,36 @@ public final class ResourceShareResourceArgs extends com.pulumi.resources.Resour
     /**
      * @return The ID of the shared resource.
      * 
+     * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+     * 
+     * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
+     * 
      */
     public Optional<Output<String>> resourceId() {
         return Optional.ofNullable(this.resourceId);
     }
 
     /**
-     * Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+     * Shared resource type.
+     * 
+     * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+     * 
+     * For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+     * 
+     * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+     * @return Shared resource type.
+     * 
+     * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+     * 
+     * For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+     * 
+     * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -73,6 +93,10 @@ public final class ResourceShareResourceArgs extends com.pulumi.resources.Resour
         /**
          * @param resourceId The ID of the shared resource.
          * 
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         * 
+         * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
+         * 
          * @return builder
          * 
          */
@@ -84,6 +108,10 @@ public final class ResourceShareResourceArgs extends com.pulumi.resources.Resour
         /**
          * @param resourceId The ID of the shared resource.
          * 
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         * 
+         * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
+         * 
          * @return builder
          * 
          */
@@ -92,7 +120,13 @@ public final class ResourceShareResourceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourceType Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         * @param resourceType Shared resource type.
+         * 
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         * 
+         * For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         * 
+         * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
          * 
          * @return builder
          * 
@@ -103,7 +137,13 @@ public final class ResourceShareResourceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourceType Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         * @param resourceType Shared resource type.
+         * 
+         * The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+         * 
+         * For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         * 
+         * &gt; **NOTE:**  &#39;Resources.N.ResourceId&#39; and&#39;resources. N.ResourceType&#39; appear in pairs and need to be set at the same time.
          * 
          * @return builder
          * 

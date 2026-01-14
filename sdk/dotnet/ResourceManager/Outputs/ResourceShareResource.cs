@@ -15,10 +15,20 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     {
         /// <summary>
         /// The ID of the shared resource.
+        /// 
+        /// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+        /// 
+        /// &gt; **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         /// </summary>
         public readonly string? ResourceId;
         /// <summary>
-        /// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        /// Shared resource type.
+        /// 
+        /// The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+        /// 
+        /// For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        /// 
+        /// &gt; **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
         /// </summary>
         public readonly string? ResourceType;
 

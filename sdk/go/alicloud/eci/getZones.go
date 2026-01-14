@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
+// This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // ## Example Usage
 //
@@ -60,9 +60,10 @@ type GetZonesArgs struct {
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Zones      []GetZonesZone `pulumi:"zones"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of eci Instance zones. Each element contains the following attributes:
+	Zones []GetZonesZone `pulumi:"zones"`
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
@@ -108,6 +109,7 @@ func (o GetZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of eci Instance zones. Each element contains the following attributes:
 func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
 }
