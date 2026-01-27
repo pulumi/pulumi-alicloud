@@ -294,6 +294,10 @@ class EventSource(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
+        > **NOTE:** Deprecated since v1.269.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_event_bridge_event_source_v2.
+
         ## Example Usage
 
         Basic Usage
@@ -367,6 +371,10 @@ class EventSource(pulumi.CustomResource):
         For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
 
         > **NOTE:** Available since v1.130.0.
+
+        > **NOTE:** Deprecated since v1.269.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_event_bridge_event_source_v2.
 
         ## Example Usage
 

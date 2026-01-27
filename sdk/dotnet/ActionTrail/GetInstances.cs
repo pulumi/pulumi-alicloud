@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
         ///     {
         ///         Name = instanceName,
         ///         PartitionNum = 50,
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
         ///     {
         ///         Name = instanceName,
         ///         PartitionNum = 50,
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
         ///     {
         ///         Name = instanceName,
         ///         PartitionNum = 50,

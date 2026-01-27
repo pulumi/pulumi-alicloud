@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Ram
         /// - If the mask is specified, RAM users can only log on from the specified IP address.
         /// - If you do not specify any mask, the login console function will apply to the entire network.
         /// 
-        /// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        /// &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
         /// 
         /// Configure a maximum of 40 logon masks, with a total length of 512 characters.
         /// </summary>
@@ -95,6 +95,18 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Output("loginSessionDuration")]
         public Output<int> LoginSessionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        /// </summary>
+        [Output("maxIdleDaysForAccessKeys")]
+        public Output<int> MaxIdleDaysForAccessKeys { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        /// </summary>
+        [Output("maxIdleDaysForUsers")]
+        public Output<int> MaxIdleDaysForUsers { get; private set; } = null!;
 
         /// <summary>
         /// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
@@ -229,7 +241,7 @@ namespace Pulumi.AliCloud.Ram
         /// - If the mask is specified, RAM users can only log on from the specified IP address.
         /// - If you do not specify any mask, the login console function will apply to the entire network.
         /// 
-        /// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        /// &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
         /// 
         /// Configure a maximum of 40 logon masks, with a total length of 512 characters.
         /// </summary>
@@ -243,6 +255,18 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Input("loginSessionDuration")]
         public Input<int>? LoginSessionDuration { get; set; }
+
+        /// <summary>
+        /// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        /// </summary>
+        [Input("maxIdleDaysForAccessKeys")]
+        public Input<int>? MaxIdleDaysForAccessKeys { get; set; }
+
+        /// <summary>
+        /// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        /// </summary>
+        [Input("maxIdleDaysForUsers")]
+        public Input<int>? MaxIdleDaysForUsers { get; set; }
 
         /// <summary>
         /// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
@@ -345,7 +369,7 @@ namespace Pulumi.AliCloud.Ram
         /// - If the mask is specified, RAM users can only log on from the specified IP address.
         /// - If you do not specify any mask, the login console function will apply to the entire network.
         /// 
-        /// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        /// &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
         /// 
         /// Configure a maximum of 40 logon masks, with a total length of 512 characters.
         /// </summary>
@@ -359,6 +383,18 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         [Input("loginSessionDuration")]
         public Input<int>? LoginSessionDuration { get; set; }
+
+        /// <summary>
+        /// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        /// </summary>
+        [Input("maxIdleDaysForAccessKeys")]
+        public Input<int>? MaxIdleDaysForAccessKeys { get; set; }
+
+        /// <summary>
+        /// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        /// </summary>
+        [Input("maxIdleDaysForUsers")]
+        public Input<int>? MaxIdleDaysForUsers { get; set; }
 
         /// <summary>
         /// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:

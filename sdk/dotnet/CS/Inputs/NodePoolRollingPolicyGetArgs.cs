@@ -13,10 +13,37 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolRollingPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum number of unusable nodes.
+        /// The upgrade interval time between batches, in minutes. This parameter only takes effect when `PausePolicy` is set to `NotPause`.
+        /// </summary>
+        [Input("batchInterval")]
+        public Input<string>? BatchInterval { get; set; }
+
+        /// <summary>
+        /// The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
         /// </summary>
         [Input("maxParallelism")]
         public Input<int>? MaxParallelism { get; set; }
+
+        [Input("nodeNames")]
+        private InputList<string>? _nodeNames;
+
+        /// <summary>
+        /// Specify the list of nodes to be upgraded.
+        /// </summary>
+        public InputList<string> NodeNames
+        {
+            get => _nodeNames ?? (_nodeNames = new InputList<string>());
+            set => _nodeNames = value;
+        }
+
+        /// <summary>
+        /// The auto-pause policy during node upgrade. Valid values:
+        /// - `FirstBatch`: Pause after the first batch is completed.
+        /// - `EveryBatch`: Pause after each batch is completed.
+        /// - `NotPause`: Do not pause during the upgrade process.
+        /// </summary>
+        [Input("pausePolicy")]
+        public Input<string>? PausePolicy { get; set; }
 
         public NodePoolRollingPolicyGetArgs()
         {

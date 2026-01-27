@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class MachineGroupGroupAttributeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The external management system identification on which the machine group depends.
+        /// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         /// </summary>
         [Input("externalName")]
         public Input<string>? ExternalName { get; set; }

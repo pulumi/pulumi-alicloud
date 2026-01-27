@@ -11,6 +11,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.139.0.
  *
+ * > **NOTE:** Deprecated since v1.269.0.
+ *
+ * > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -25,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  *
  * create a subscription instance
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";

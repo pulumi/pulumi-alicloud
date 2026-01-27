@@ -104,46 +104,58 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.groupAttribute);
     }
     /**
-     * Machine Group name
+     * The name of the machine group. The name must meet the following requirements:
+     * 
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
-     * @return Machine Group name
+     * @return The name of the machine group. The name must meet the following requirements:
+     * 
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      * 
      */
     public Output<String> groupName() {
         return this.groupName;
     }
     /**
-     * Machine group type, optional value is empty.
+     * The type of the machine group. Set the value to an empty string.
      * 
      */
     @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupType;
 
     /**
-     * @return Machine group type, optional value is empty.
+     * @return The type of the machine group. Set the value to an empty string.
      * 
      */
     public Output<Optional<String>> groupType() {
         return Codegen.optional(this.groupType);
     }
     /**
-     * Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * The identifier type of the machine group. Valid values:
+     * 
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      * 
      */
     @Export(name="machineIdentifyType", refs={String.class}, tree="[0]")
     private Output<String> machineIdentifyType;
 
     /**
-     * @return Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * @return The identifier type of the machine group. Valid values:
+     * 
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      * 
      */
     public Output<String> machineIdentifyType() {
@@ -168,14 +180,14 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
         return this.machineLists;
     }
     /**
-     * Project name
+     * The name of the project.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return Project name
+     * @return The name of the project.
      * 
      */
     public Output<String> projectName() {

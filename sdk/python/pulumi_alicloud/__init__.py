@@ -792,6 +792,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "alikafka/scheduledScalingRule",
+  "fqn": "pulumi_alicloud.alikafka",
+  "classes": {
+   "alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule": "ScheduledScalingRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "alikafka/topic",
   "fqn": "pulumi_alicloud.alikafka",
   "classes": {
@@ -1936,6 +1944,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/instanceV2",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/instanceV2:InstanceV2": "InstanceV2"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/ipsConfig",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -1988,6 +2004,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall": "VpcCenTrFirewall"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/vpcFirewallAclEngineMode",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode": "VpcFirewallAclEngineMode"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/vpcFirewallIpsConfig",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig": "VpcFirewallIpsConfig"
   }
  },
  {
@@ -4820,6 +4852,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eventbridge",
   "classes": {
    "alicloud:eventbridge/eventSource:EventSource": "EventSource"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eventbridge/eventSourceV2",
+  "fqn": "pulumi_alicloud.eventbridge",
+  "classes": {
+   "alicloud:eventbridge/eventSourceV2:EventSourceV2": "EventSourceV2"
   }
  },
  {

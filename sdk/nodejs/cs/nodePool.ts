@@ -398,6 +398,12 @@ export class NodePool extends pulumi.CustomResource {
     declare public readonly unschedulable: pulumi.Output<boolean | undefined>;
     declare public readonly updateNodes: pulumi.Output<boolean | undefined>;
     /**
+     * Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     *
+     * > **NOTE:** This parameter only applies during resource update.
+     */
+    declare public readonly upgradePolicy: pulumi.Output<outputs.cs.NodePoolUpgradePolicy | undefined>;
+    /**
      * Node custom data, base64-encoded.
      */
     declare public readonly userData: pulumi.Output<string | undefined>;
@@ -497,6 +503,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
             resourceInputs["unschedulable"] = state?.unschedulable;
             resourceInputs["updateNodes"] = state?.updateNodes;
+            resourceInputs["upgradePolicy"] = state?.upgradePolicy;
             resourceInputs["userData"] = state?.userData;
             resourceInputs["vswitchIds"] = state?.vswitchIds;
         } else {
@@ -580,6 +587,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["type"] = args?.type;
             resourceInputs["unschedulable"] = args?.unschedulable;
             resourceInputs["updateNodes"] = args?.updateNodes;
+            resourceInputs["upgradePolicy"] = args?.upgradePolicy;
             resourceInputs["userData"] = args?.userData;
             resourceInputs["vswitchIds"] = args?.vswitchIds;
             resourceInputs["nodePoolId"] = undefined /*out*/;
@@ -951,6 +959,12 @@ export interface NodePoolState {
     unschedulable?: pulumi.Input<boolean>;
     updateNodes?: pulumi.Input<boolean>;
     /**
+     * Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     *
+     * > **NOTE:** This parameter only applies during resource update.
+     */
+    upgradePolicy?: pulumi.Input<inputs.cs.NodePoolUpgradePolicy>;
+    /**
      * Node custom data, base64-encoded.
      */
     userData?: pulumi.Input<string>;
@@ -1310,6 +1324,12 @@ export interface NodePoolArgs {
      */
     unschedulable?: pulumi.Input<boolean>;
     updateNodes?: pulumi.Input<boolean>;
+    /**
+     * Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     *
+     * > **NOTE:** This parameter only applies during resource update.
+     */
+    upgradePolicy?: pulumi.Input<inputs.cs.NodePoolUpgradePolicy>;
     /**
      * Node custom data, base64-encoded.
      */

@@ -16,14 +16,14 @@ public final class MachineGroupGroupAttributeArgs extends com.pulumi.resources.R
     public static final MachineGroupGroupAttributeArgs Empty = new MachineGroupGroupAttributeArgs();
 
     /**
-     * The external management system identification on which the machine group depends.
+     * The identifier of the external management system on which the machine group depends. This parameter is empty by default.
      * 
      */
     @Import(name="externalName")
     private @Nullable Output<String> externalName;
 
     /**
-     * @return The external management system identification on which the machine group depends.
+     * @return The identifier of the external management system on which the machine group depends. This parameter is empty by default.
      * 
      */
     public Optional<Output<String>> externalName() {
@@ -71,7 +71,7 @@ public final class MachineGroupGroupAttributeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param externalName The external management system identification on which the machine group depends.
+         * @param externalName The identifier of the external management system on which the machine group depends. This parameter is empty by default.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class MachineGroupGroupAttributeArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param externalName The external management system identification on which the machine group depends.
+         * @param externalName The identifier of the external management system on which the machine group depends. This parameter is empty by default.
          * 
          * @return builder
          * 

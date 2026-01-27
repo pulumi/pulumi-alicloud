@@ -522,6 +522,14 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> UpdateNodes { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `UpgradePolicy` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update.
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.NodePoolUpgradePolicy?> UpgradePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Node custom data, base64-encoded.
         /// </summary>
         [Output("userData")]
@@ -1165,6 +1173,14 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? UpdateNodes { get; set; }
 
         /// <summary>
+        /// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `UpgradePolicy` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.NodePoolUpgradePolicyArgs>? UpgradePolicy { get; set; }
+
+        /// <summary>
         /// Node custom data, base64-encoded.
         /// </summary>
         [Input("userData")]
@@ -1781,6 +1797,14 @@ namespace Pulumi.AliCloud.CS
 
         [Input("updateNodes")]
         public Input<bool>? UpdateNodes { get; set; }
+
+        /// <summary>
+        /// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `UpgradePolicy` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.NodePoolUpgradePolicyGetArgs>? UpgradePolicy { get; set; }
 
         /// <summary>
         /// Node custom data, base64-encoded.

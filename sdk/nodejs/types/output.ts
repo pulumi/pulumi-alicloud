@@ -15848,6 +15848,166 @@ export namespace cs {
         clusterCert: string;
     }
 
+    export interface GetClustersCluster {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Intelligent managed mode configuration.
+         */
+        autoMode: outputs.cs.GetClustersClusterAutoMode;
+        /**
+         * The local domain name of the cluster.
+         */
+        clusterDomain: string;
+        /**
+         * The cluster ID.
+         */
+        clusterId: string;
+        /**
+         * Custom cluster name.
+         */
+        clusterName: string;
+        /**
+         * The specification of the clusters to query. Valid values:
+         * - `ack.pro.small`: ACK Pro clusters.
+         * - `ack.standard`: ACK Basic clusters.
+         */
+        clusterSpec: string;
+        /**
+         * The type of the clusters to query. Valid values:
+         * - `Kubernetes`: ACK dedicated clusters.
+         * - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+         * - `ExternalKubernetes`: registered clusters.
+         */
+        clusterType: string;
+        /**
+         * The current version of the cluster.
+         */
+        currentVersion: string;
+        /**
+         * Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
+         */
+        deletionProtection: boolean;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The IP protocol stack of the cluster.
+         */
+        ipStack: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Cluster maintenance window.
+         */
+        maintenanceWindow: outputs.cs.GetClustersClusterMaintenanceWindow;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of IP addresses per node, determined by specifying the CIDR block of the network.
+         */
+        nodeCidrMask: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The automatic operations and maintenance policy for the cluster.
+         */
+        operationPolicy: outputs.cs.GetClustersClusterOperationPolicy;
+        /**
+         * The CIDR block for the pod network.
+         */
+        podCidr: string;
+        /**
+         * The subtype of the clusters to query. Valid values:
+         * - `Default`: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+         * - `Edge`: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+         * - `Serverless`: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+         * - `Lingjun`: ACK Lingjun Pro clusters.
+         */
+        profile: string;
+        /**
+         * kube-proxy proxy mode.
+         */
+        proxyMode: string;
+        /**
+         * The region ID where the cluster is deployed.
+         */
+        regionId: string;
+        /**
+         * The resource group ID of the cluster.
+         */
+        resourceGroupId: string;
+        /**
+         * The security group ID for the control plane.
+         */
+        securityGroupId: string;
+        /**
+         * The Service CIDR block.
+         */
+        serviceCidr: string;
+        /**
+         * Cluster operational status.
+         */
+        state: string;
+        /**
+         * Cluster resource tags.
+         */
+        tags: {[key: string]: string};
+        /**
+         * Cluster time zone.
+         */
+        timezone: string;
+        /**
+         * The Virtual Private Cloud (VPC) used by the cluster.
+         */
+        vpcId: string;
+        /**
+         * Virtual switches for the cluster control plane.
+         */
+        vswitchIds: string[];
+    }
+
+    export interface GetClustersClusterAutoMode {
+        /**
+         * Whether to enable cluster automatic upgrade.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetClustersClusterMaintenanceWindow {
+        /**
+         * The duration of the maintenance window.
+         */
+        duration: string;
+        /**
+         * Indicates whether to enable the maintenance window.
+         */
+        enable: boolean;
+        /**
+         * Maintenance start time.
+         */
+        maintenanceTime: string;
+        /**
+         * The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
+         */
+        recurrence: string;
+        /**
+         * The maintenance cycle.
+         */
+        weeklyPeriod: string;
+    }
+
+    export interface GetClustersClusterOperationPolicy {
+        /**
+         * Cluster automatic upgrade.
+         */
+        clusterAutoUpgrade: outputs.cs.GetClustersClusterOperationPolicyClusterAutoUpgrade;
+    }
+
+    export interface GetClustersClusterOperationPolicyClusterAutoUpgrade {
+        /**
+         * Cluster automatic upgrade frequency.
+         */
+        channel: string;
+        /**
+         * Whether to enable cluster automatic upgrade.
+         */
+        enabled: boolean;
+    }
+
     export interface GetEdgeKubernetesClustersCluster {
         /**
          * The ID of availability zone.
@@ -15937,9 +16097,12 @@ export namespace cs {
          * The ID of availability zone.
          */
         availabilityZone: string;
+        /**
+         * The cluster network type.
+         */
         clusterNetworkType: string;
         /**
-         * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+         * Map of kubernetes cluster connection information.
          */
         connections: outputs.cs.GetKubernetesClustersClusterConnections;
         /**
@@ -15958,7 +16121,13 @@ export namespace cs {
          * A list of one element containing information about the associated log store. It contains the following attributes:
          */
         logConfigs: outputs.cs.GetKubernetesClustersClusterLogConfig[];
+        /**
+         * Whether to enable master payment auto-renew
+         */
         masterAutoRenew: boolean;
+        /**
+         * Master payment auto-renew period.
+         */
         masterAutoRenewPeriod: number;
         /**
          * The system disk category of master node.
@@ -15968,6 +16137,9 @@ export namespace cs {
          * The system disk size of master node.
          */
         masterDiskSize: number;
+        /**
+         * Master payment type.
+         */
         masterInstanceChargeType: string;
         /**
          * The instance type of master node.
@@ -15977,7 +16149,13 @@ export namespace cs {
          * List of cluster master nodes. It contains several attributes to `Block Nodes`.
          */
         masterNodes: outputs.cs.GetKubernetesClustersClusterMasterNode[];
+        /**
+         * Master payment period.
+         */
         masterPeriod: number;
+        /**
+         * Master payment period unit.
+         */
         masterPeriodUnit: string;
         /**
          * Node name.
@@ -15991,11 +16169,17 @@ export namespace cs {
          * The network mask used on pods for each node.
          */
         nodeCidrMask: number;
+        /**
+         * The CIDR block for the pod network.
+         */
         podCidr: string;
         /**
          * The ID of security group where the current cluster worker node is located.
          */
         securityGroupId: string;
+        /**
+         * The CIDR block for the service network.
+         */
         serviceCidr: string;
         /**
          * Whether internet load balancer for API Server is created
@@ -16009,7 +16193,13 @@ export namespace cs {
          * The ID of VSwitches where the current cluster is located.
          */
         vswitchIds: string[];
+        /**
+         * Whether to enable worker payment auto-renew.
+         */
         workerAutoRenew: boolean;
+        /**
+         * Worker payment auto-renew period
+         */
         workerAutoRenewPeriod: number;
         /**
          * The data disk size of worker node.
@@ -16027,6 +16217,9 @@ export namespace cs {
          * The system disk size of worker node.
          */
         workerDiskSize: number;
+        /**
+         * Worker payment type
+         */
         workerInstanceChargeType: string;
         /**
          * The instance type of worker node.
@@ -16040,7 +16233,13 @@ export namespace cs {
          * The ECS instance node number in the current container cluster.
          */
         workerNumbers: number[];
+        /**
+         * Worker payment period.
+         */
         workerPeriod: number;
+        /**
+         * Worker payment period unit.
+         */
         workerPeriodUnit: string;
     }
 
@@ -17124,6 +17323,9 @@ export namespace cs {
          * Whether the cluster support delete protection.
          */
         deletionProtection: boolean;
+        /**
+         * Whether to create internet eip for API Server.
+         */
         endpointPublicAccessEnabled: boolean;
         /**
          * The ID of the container cluster.
@@ -17141,6 +17343,9 @@ export namespace cs {
          * The ID of security group where the current cluster  is located.
          */
         securityGroupId: string;
+        /**
+         * A map of tags assigned to the kubernetes cluster.
+         */
         tags: {[key: string]: string};
         /**
          * The ID of VPC where the current cluster is located.
@@ -17732,6 +17937,25 @@ export namespace cs {
         rrsaOidcIssuerUrl: string;
     }
 
+    export interface ManagedKubernetesUpgradePolicy {
+        /**
+         * Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+         *
+         * for example:
+         * ```
+         * # Upgrade cluster version with control plane only
+         * version = "1.32.1-aliyun.1"
+         *
+         * upgrade_policy {
+         * control_plane_only = true
+         * }
+         * ```
+         *
+         * > **NOTE:** After the upgrade completes, you may remove the `upgradePolicy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+         */
+        controlPlaneOnly?: boolean;
+    }
+
     export interface NodePoolAutoMode {
         /**
          * Whether to enable auto mode. Valid values:
@@ -18135,9 +18359,24 @@ export namespace cs {
 
     export interface NodePoolRollingPolicy {
         /**
-         * The maximum number of unusable nodes.
+         * The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
+         */
+        batchInterval?: string;
+        /**
+         * The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
          */
         maxParallelism?: number;
+        /**
+         * Specify the list of nodes to be upgraded.
+         */
+        nodeNames?: string[];
+        /**
+         * The auto-pause policy during node upgrade. Valid values:
+         * - `FirstBatch`: Pause after the first batch is completed.
+         * - `EveryBatch`: Pause after each batch is completed.
+         * - `NotPause`: Do not pause during the upgrade process.
+         */
+        pausePolicy?: string;
     }
 
     export interface NodePoolScalingConfig {
@@ -18202,6 +18441,29 @@ export namespace cs {
          * Specifies whether to enable confidential computing for the cluster.
          */
         teeEnable?: boolean;
+    }
+
+    export interface NodePoolUpgradePolicy {
+        /**
+         * Node system Image ID
+         */
+        imageId?: string;
+        /**
+         * Node Kubernetes version
+         */
+        kubernetesVersion?: string;
+        /**
+         * Node runtime type
+         */
+        runtime?: string;
+        /**
+         * Node Runtime Version
+         */
+        runtimeVersion?: string;
+        /**
+         * Whether to use replacement disk upgrade
+         */
+        useReplace?: boolean;
     }
 
     export interface ServerlessKubernetesAddon {
@@ -35515,6 +35777,252 @@ export namespace eventbridge {
          * The ID of the VSwitch.
          */
         vswitcheId?: string;
+    }
+
+    export interface EventSourceV2SourceHttpEventParameters {
+        /**
+         * IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+         */
+        ips?: string[];
+        /**
+         * The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+         * - GET
+         * - POST
+         * - PUT
+         * - PATCH
+         * - DELETE
+         * - HEAD
+         * - OPTIONS
+         * - TRACE
+         * - CONNECT
+         */
+        methods?: string[];
+        /**
+         * The public network request URL.
+         */
+        publicWebHookUrls: string[];
+        /**
+         * Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+         */
+        referers?: string[];
+        /**
+         * Select the type of security configuration. The optional range is as follows:
+         * - none: No configuration is required.
+         * - ip:IP segment.
+         * - referer: Security domain name.
+         */
+        securityConfig?: string;
+        /**
+         * The protocol type supported by the generated Webhook. The value description is as follows:
+         * - HTTP
+         * - HTTPS
+         * - HTTP&HTTPS
+         */
+        type?: string;
+        /**
+         * The intranet request URL.
+         */
+        vpcWebHookUrls: string[];
+    }
+
+    export interface EventSourceV2SourceKafkaParameters {
+        /**
+         * The Group ID of the consumer who subscribes to the Topic.
+         */
+        consumerGroup?: string;
+        /**
+         * The instance ID.
+         */
+        instanceId?: string;
+        /**
+         * Network configuration: Default (Default network) and public network (self-built network).
+         */
+        network?: string;
+        /**
+         * Consumption sites.
+         */
+        offsetReset?: string;
+        /**
+         * The region ID.
+         */
+        regionId?: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId?: string;
+        /**
+         * The topic name.
+         */
+        topic?: string;
+        /**
+         * The VPC ID.
+         */
+        vpcId?: string;
+        /**
+         * The vSwitch ID.
+         */
+        vswitchIds?: string;
+    }
+
+    export interface EventSourceV2SourceMnsParameters {
+        /**
+         * Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+         */
+        isBase64Decode?: boolean;
+        /**
+         * The name of the Queue of the lightweight message Queue (formerly MNS).
+         */
+        queueName?: string;
+        /**
+         * The region of the lightweight message queue (formerly MNS).
+         */
+        regionId?: string;
+    }
+
+    export interface EventSourceV2SourceOssEventParameters {
+        /**
+         * OSS event type list.
+         */
+        eventTypes?: string[];
+        /**
+         * Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+         */
+        matchRules?: outputs.eventbridge.EventSourceV2SourceOssEventParametersMatchRule[][];
+        /**
+         * The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+         */
+        stsRoleArn?: string;
+    }
+
+    export interface EventSourceV2SourceOssEventParametersMatchRule {
+        matchState?: string;
+        name?: string;
+        prefix?: string;
+        suffix?: string;
+    }
+
+    export interface EventSourceV2SourceRabbitMqParameters {
+        /**
+         * The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        instanceId?: string;
+        /**
+         * The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        queueName?: string;
+        /**
+         * The region of the RabbitMQ instance.
+         */
+        regionId?: string;
+        /**
+         * The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        virtualHostName?: string;
+    }
+
+    export interface EventSourceV2SourceRocketmqParameters {
+        /**
+         * ACL or not.
+         */
+        authType?: string;
+        /**
+         * The Group ID of the RocketMQ version of message queue.
+         */
+        groupId?: string;
+        /**
+         * Instance access point.
+         */
+        instanceEndpoint?: string;
+        /**
+         * The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        instanceId?: string;
+        /**
+         * Instance network.
+         */
+        instanceNetwork?: string;
+        /**
+         * The instance password.
+         */
+        instancePassword?: string;
+        /**
+         * The ID of the security group.
+         */
+        instanceSecurityGroupId?: string;
+        /**
+         * The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+         */
+        instanceType?: string;
+        /**
+         * The instance user name.
+         */
+        instanceUsername?: string;
+        /**
+         * The ID of the VPC.
+         */
+        instanceVpcId?: string;
+        /**
+         * The vSwitch ID.
+         */
+        instanceVswitchIds?: string;
+        /**
+         * The consumption point of the message. The value description is as follows:
+         * - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+         * - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+         * - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+         * Default value: `CONSUME_FROM_LAST_OFFSET`.
+         */
+        offset?: string;
+        /**
+         * The region of the RocketMQ instance.
+         */
+        regionId?: string;
+        /**
+         * The filter label of the message.
+         */
+        tag?: string;
+        /**
+         * The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+         */
+        timestamp?: number;
+        /**
+         * The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        topic?: string;
+    }
+
+    export interface EventSourceV2SourceScheduledEventParameters {
+        /**
+         * Cron expression
+         */
+        schedule?: string;
+        /**
+         * The Cron execution time zone.
+         */
+        timeZone?: string;
+        /**
+         * JSON string
+         */
+        userData: string;
+    }
+
+    export interface EventSourceV2SourceSlsParameters {
+        /**
+         * Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+         */
+        consumePosition?: string;
+        /**
+         * The logstore of log service SLS.
+         */
+        logStore?: string;
+        /**
+         * The log project of log service SLS.
+         */
+        project?: string;
+        /**
+         * When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+         */
+        roleName?: string;
     }
 
     export interface GetEventBusesBus {
@@ -53001,7 +53509,7 @@ export namespace rocketmq {
         /**
          * message send receive ratio.  Value range: [0.2, 0.5].
          */
-        sendReceiveRatio?: number;
+        sendReceiveRatio: number;
         /**
          * Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
          */
@@ -59286,7 +59794,7 @@ export namespace sls {
 
     export interface MachineGroupGroupAttribute {
         /**
-         * The external management system identification on which the machine group depends.
+         * The identifier of the external management system on which the machine group depends. This parameter is empty by default.
          */
         externalName?: string;
         /**
@@ -60383,6 +60891,57 @@ export namespace threatdetection {
          * Destination port.
          */
         targetPort: number;
+    }
+
+    export interface InstancePostPayModuleSwitchObj {
+        /**
+         * Agentless Detection Module. Valid values:
+         */
+        agentless?: number;
+        /**
+         * Anti-Ransomware Module. Valid values:
+         */
+        antiRansomware?: number;
+        /**
+         * Basic service module. Valid values:
+         */
+        basicService?: number;
+        /**
+         * Cloud Security Configuration Check Module. Valid values:
+         */
+        cspm?: number;
+        /**
+         * Threat Analysis and Response Module. Valid values:
+         */
+        ctdr?: number;
+        /**
+         * Log Management Module. Valid values:
+         */
+        ctdrStorage?: number;
+        /**
+         * Host and Container Security Module. Valid values:
+         */
+        postHost?: number;
+        /**
+         * Application Protection Module. Valid values:
+         */
+        rasp?: number;
+        /**
+         * Malicious File Detection SDK Module. Valid values:
+         */
+        sdk?: number;
+        /**
+         * Serverless Security Module. Valid values:
+         */
+        serverless?: number;
+        /**
+         * Vulnerability Repair Module. Valid values:
+         */
+        vul?: number;
+        /**
+         * File Tamper Protection Module. Valid values:
+         */
+        webLock?: number;
     }
 
     export interface SasTrailServiceTrail {
@@ -64598,6 +65157,10 @@ export namespace wafv3 {
          */
         accountIdentifiers?: outputs.wafv3.DefenseRuleConfigAccountIdentifier[];
         /**
+         * Whether the new Web core protection rules are automatically updated. Values:
+         */
+        autoUpdate?: boolean;
+        /**
          * The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
          */
         bypassRegularRules?: string[];
@@ -64651,7 +65214,7 @@ export namespace wafv3 {
          * - service: indicates that the effective object is a protected object.
          * - rule: indicates that the effective object is a single rule.
          */
-        ccEffect?: string;
+        ccEffect: string;
         /**
          * Whether to open the speed limit. Value:
          * - 0: indicates that the speed limit is off.
@@ -64662,6 +65225,10 @@ export namespace wafv3 {
          * The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
          */
         cnRegions?: string;
+        /**
+         * The type to enable decoding. Value:
+         */
+        codecLists?: string[];
         /**
          * The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
          */
@@ -64695,15 +65262,7 @@ export namespace wafv3 {
          */
         remoteAddrs?: string[];
         /**
-         * Protection rule action. Value:
-         * - block: Indicates an intercept.
-         * - monitor: indicates observation.
-         * - js: indicates JS validation.
-         * - captcha: Indicates a slider.
-         * - captcha_strict: indicates a strict slider.
-         * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-         *
-         * > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+         * Web core protection rule action. Valid values:
          */
         ruleAction?: string;
         /**
@@ -64730,6 +65289,10 @@ export namespace wafv3 {
          * The address of the cached page.
          */
         url?: string;
+        /**
+         * The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+         */
+        wafBaseConfigs?: outputs.wafv3.DefenseRuleConfigWafBaseConfig[];
     }
 
     export interface DefenseRuleConfigAccountIdentifier {
@@ -64925,6 +65488,36 @@ export namespace wafv3 {
         start?: number;
     }
 
+    export interface DefenseRuleConfigWafBaseConfig {
+        /**
+         * The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+         */
+        ruleBatchOperationConfig?: string;
+        /**
+         * The configuration of the Web core protection rules to be modified. See `ruleDetail` below.
+         */
+        ruleDetails?: outputs.wafv3.DefenseRuleConfigWafBaseConfigRuleDetail[];
+        /**
+         * The type of the rule. Valid values:
+         */
+        ruleType?: string;
+    }
+
+    export interface DefenseRuleConfigWafBaseConfigRuleDetail {
+        /**
+         * Web core protection rule action. Valid values:
+         */
+        ruleAction?: string;
+        /**
+         * The protection rule ID.
+         */
+        ruleId?: string;
+        /**
+         * Protection rule status.
+         */
+        ruleStatus?: number;
+    }
+
     export interface DomainListen {
         /**
          * The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
@@ -65023,6 +65616,14 @@ export namespace wafv3 {
          */
         focusHttpBackend?: boolean;
         /**
+         * Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+         */
+        http2Origin?: boolean;
+        /**
+         * The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+         */
+        http2OriginMaxConcurrency?: number;
+        /**
          * Specifies whether to enable the persistent connection feature. Valid values:
          */
         keepalive?: boolean;
@@ -65043,6 +65644,11 @@ export namespace wafv3 {
          * The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
          */
         loadbalance: string;
+        /**
+         * The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * > **NOTE:** This parameter is supported only by the Ultimate edition.
+         */
+        maxBodySize: number;
         /**
          * The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          */

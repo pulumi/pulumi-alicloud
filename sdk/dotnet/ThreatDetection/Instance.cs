@@ -94,20 +94,41 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<int?> PostPaidFlag { get; private set; } = null!;
 
         /// <summary>
-        /// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        /// Automatic binding switch for new assets in host and container protection. Valid values:
+        /// </summary>
+        [Output("postPaidHostAutoBind")]
+        public Output<int> PostPaidHostAutoBind { get; private set; } = null!;
+
+        /// <summary>
+        /// The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        /// </summary>
+        [Output("postPaidHostAutoBindVersion")]
+        public Output<int> PostPaidHostAutoBindVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         /// - Key:
-        /// - `VUL`: vulnerability repair module
-        /// - `CSPM`: Cloud platform configuration check module
-        /// - `AGENTLESS`: AGENTLESS detection module
-        /// - `SERVERLESS`:Serverless asset module
-        /// - `CTDR`: threat analysis and response module
-        /// - `POST_HOST`: Host and container security module
-        /// - Value:0 means off, 1 means on
-        /// 
-        /// &gt; **NOTE:**  The module value of the unpassed value will not change.
+        /// - `VUL`: Vulnerability Repair Module.
+        /// - `CSPM`: Cloud Security Posture Management Module.
+        /// - `AGENTLESS`: Agentless Detection Module.
+        /// - `SERVERLESS`: Serverless Security Module.
+        /// - `CTDR`: Threat Analysis and Response Module.
+        /// - `POST_HOST`: Host and Container Security Module.
+        /// - `SDK`: Malicious File Detection SDK Module.
+        /// - `RASP`: Application Protection Module.
+        /// - `CTDR_STORAGE`: Log Management Module.
+        /// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+        /// - Value: `0` means off, `1` means on
+        /// &gt; **NOTE:** Field `PostPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `PostPayModuleSwitchObj` instead.
         /// </summary>
         [Output("postPayModuleSwitch")]
         public Output<string?> PostPayModuleSwitch { get; private set; } = null!;
+
+        /// <summary>
+        /// Pay-as-you-go module switch. See `PostPayModuleSwitchObj` below.
+        /// </summary>
+        [Output("postPayModuleSwitchObj")]
+        public Output<Outputs.InstancePostPayModuleSwitchObj> PostPayModuleSwitchObj { get; private set; } = null!;
 
         /// <summary>
         /// Number of application protection licenses. Interval type, value interval:[1,100000000].
@@ -415,20 +436,41 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? PostPaidFlag { get; set; }
 
         /// <summary>
-        /// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        /// Automatic binding switch for new assets in host and container protection. Valid values:
+        /// </summary>
+        [Input("postPaidHostAutoBind")]
+        public Input<int>? PostPaidHostAutoBind { get; set; }
+
+        /// <summary>
+        /// The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        /// </summary>
+        [Input("postPaidHostAutoBindVersion")]
+        public Input<int>? PostPaidHostAutoBindVersion { get; set; }
+
+        /// <summary>
+        /// The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         /// - Key:
-        /// - `VUL`: vulnerability repair module
-        /// - `CSPM`: Cloud platform configuration check module
-        /// - `AGENTLESS`: AGENTLESS detection module
-        /// - `SERVERLESS`:Serverless asset module
-        /// - `CTDR`: threat analysis and response module
-        /// - `POST_HOST`: Host and container security module
-        /// - Value:0 means off, 1 means on
-        /// 
-        /// &gt; **NOTE:**  The module value of the unpassed value will not change.
+        /// - `VUL`: Vulnerability Repair Module.
+        /// - `CSPM`: Cloud Security Posture Management Module.
+        /// - `AGENTLESS`: Agentless Detection Module.
+        /// - `SERVERLESS`: Serverless Security Module.
+        /// - `CTDR`: Threat Analysis and Response Module.
+        /// - `POST_HOST`: Host and Container Security Module.
+        /// - `SDK`: Malicious File Detection SDK Module.
+        /// - `RASP`: Application Protection Module.
+        /// - `CTDR_STORAGE`: Log Management Module.
+        /// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+        /// - Value: `0` means off, `1` means on
+        /// &gt; **NOTE:** Field `PostPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `PostPayModuleSwitchObj` instead.
         /// </summary>
         [Input("postPayModuleSwitch")]
         public Input<string>? PostPayModuleSwitch { get; set; }
+
+        /// <summary>
+        /// Pay-as-you-go module switch. See `PostPayModuleSwitchObj` below.
+        /// </summary>
+        [Input("postPayModuleSwitchObj")]
+        public Input<Inputs.InstancePostPayModuleSwitchObjArgs>? PostPayModuleSwitchObj { get; set; }
 
         /// <summary>
         /// Number of application protection licenses. Interval type, value interval:[1,100000000].
@@ -698,20 +740,41 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? PostPaidFlag { get; set; }
 
         /// <summary>
-        /// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        /// Automatic binding switch for new assets in host and container protection. Valid values:
+        /// </summary>
+        [Input("postPaidHostAutoBind")]
+        public Input<int>? PostPaidHostAutoBind { get; set; }
+
+        /// <summary>
+        /// The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        /// </summary>
+        [Input("postPaidHostAutoBindVersion")]
+        public Input<int>? PostPaidHostAutoBindVersion { get; set; }
+
+        /// <summary>
+        /// The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         /// - Key:
-        /// - `VUL`: vulnerability repair module
-        /// - `CSPM`: Cloud platform configuration check module
-        /// - `AGENTLESS`: AGENTLESS detection module
-        /// - `SERVERLESS`:Serverless asset module
-        /// - `CTDR`: threat analysis and response module
-        /// - `POST_HOST`: Host and container security module
-        /// - Value:0 means off, 1 means on
-        /// 
-        /// &gt; **NOTE:**  The module value of the unpassed value will not change.
+        /// - `VUL`: Vulnerability Repair Module.
+        /// - `CSPM`: Cloud Security Posture Management Module.
+        /// - `AGENTLESS`: Agentless Detection Module.
+        /// - `SERVERLESS`: Serverless Security Module.
+        /// - `CTDR`: Threat Analysis and Response Module.
+        /// - `POST_HOST`: Host and Container Security Module.
+        /// - `SDK`: Malicious File Detection SDK Module.
+        /// - `RASP`: Application Protection Module.
+        /// - `CTDR_STORAGE`: Log Management Module.
+        /// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+        /// - Value: `0` means off, `1` means on
+        /// &gt; **NOTE:** Field `PostPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `PostPayModuleSwitchObj` instead.
         /// </summary>
         [Input("postPayModuleSwitch")]
         public Input<string>? PostPayModuleSwitch { get; set; }
+
+        /// <summary>
+        /// Pay-as-you-go module switch. See `PostPayModuleSwitchObj` below.
+        /// </summary>
+        [Input("postPayModuleSwitchObj")]
+        public Input<Inputs.InstancePostPayModuleSwitchObjGetArgs>? PostPayModuleSwitchObj { get; set; }
 
         /// <summary>
         /// Number of application protection licenses. Interval type, value interval:[1,100000000].

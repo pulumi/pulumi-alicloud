@@ -12,6 +12,7 @@ import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesOperationPolicyArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesRrsaMetadataArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesUpgradePolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -666,16 +667,12 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
-     * 
      */
     @Import(name="skipSetCertificateAuthority")
     private @Nullable Output<Boolean> skipSetCertificateAuthority;
 
     /**
      * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-     * 
-     * *Network params*
      * 
      */
     public Optional<Output<Boolean>> skipSetCertificateAuthority() {
@@ -778,6 +775,27 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> timezone() {
         return Optional.ofNullable(this.timezone);
+    }
+
+    /**
+     * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     * *Network params*
+     * 
+     */
+    @Import(name="upgradePolicy")
+    private @Nullable Output<ManagedKubernetesUpgradePolicyArgs> upgradePolicy;
+
+    /**
+     * @return Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     * *Network params*
+     * 
+     */
+    public Optional<Output<ManagedKubernetesUpgradePolicyArgs>> upgradePolicy() {
+        return Optional.ofNullable(this.upgradePolicy);
     }
 
     /**
@@ -952,6 +970,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.slbIntranet = $.slbIntranet;
         this.tags = $.tags;
         this.timezone = $.timezone;
+        this.upgradePolicy = $.upgradePolicy;
         this.userCa = $.userCa;
         this.version = $.version;
         this.vpcId = $.vpcId;
@@ -1897,8 +1916,6 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         /**
          * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
-         * *Network params*
-         * 
          * @return builder
          * 
          */
@@ -1909,8 +1926,6 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-         * 
-         * *Network params*
          * 
          * @return builder
          * 
@@ -2051,6 +2066,33 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          */
         public Builder timezone(String timezone) {
             return timezone(Output.of(timezone));
+        }
+
+        /**
+         * @param upgradePolicy Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+         * &gt; **NOTE:** This parameter only applies during resource update.
+         * 
+         * *Network params*
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(@Nullable Output<ManagedKubernetesUpgradePolicyArgs> upgradePolicy) {
+            $.upgradePolicy = upgradePolicy;
+            return this;
+        }
+
+        /**
+         * @param upgradePolicy Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+         * &gt; **NOTE:** This parameter only applies during resource update.
+         * 
+         * *Network params*
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(ManagedKubernetesUpgradePolicyArgs upgradePolicy) {
+            return upgradePolicy(Output.of(upgradePolicy));
         }
 
         /**

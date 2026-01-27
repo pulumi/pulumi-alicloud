@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         VpcId = defaultNetwork.Id,
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
         ///     {
         ///         Name = name,
         ///         PartitionNum = 50,
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// ",
         ///     });
         /// 
-        ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("default", new()
+        ///     var defaultSaslUser = new AliCloud.Alikafka.SaslUser("default", new()
         ///     {
         ///         InstanceId = defaultInstance.Id,
         ///         Username = name,
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         VpcId = defaultNetwork.Id,
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
         ///     {
         ///         Name = name,
         ///         PartitionNum = 50,
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// ",
         ///     });
         /// 
-        ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("default", new()
+        ///     var defaultSaslUser = new AliCloud.Alikafka.SaslUser("default", new()
         ///     {
         ///         InstanceId = defaultInstance.Id,
         ///         Username = name,
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         VpcId = defaultNetwork.Id,
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
         ///     {
         ///         Name = name,
         ///         PartitionNum = 50,
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// ",
         ///     });
         /// 
-        ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("default", new()
+        ///     var defaultSaslUser = new AliCloud.Alikafka.SaslUser("default", new()
         ///     {
         ///         InstanceId = defaultInstance.Id,
         ///         Username = name,

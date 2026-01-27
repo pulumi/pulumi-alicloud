@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DefenseRuleConfigAccountIdentifier> AccountIdentifiers;
         /// <summary>
+        /// Whether the new Web core protection rules are automatically updated. Values:
+        /// </summary>
+        public readonly bool? AutoUpdate;
+        /// <summary>
         /// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
         /// </summary>
         public readonly ImmutableArray<string> BypassRegularRules;
@@ -87,6 +91,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string? CnRegions;
         /// <summary>
+        /// The type to enable decoding. Value:
+        /// </summary>
+        public readonly ImmutableArray<string> CodecLists;
+        /// <summary>
         /// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `Conditions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.DefenseRuleConfigCondition> Conditions;
@@ -119,15 +127,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RemoteAddrs;
         /// <summary>
-        /// Protection rule action. Value:
-        /// - block: Indicates an intercept.
-        /// - monitor: indicates observation.
-        /// - js: indicates JS validation.
-        /// - captcha: Indicates a slider.
-        /// - captcha_strict: indicates a strict slider.
-        /// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-        /// 
-        /// &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        /// Web core protection rule action. Valid values:
         /// </summary>
         public readonly string? RuleAction;
         /// <summary>
@@ -154,12 +154,18 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// The address of the cached page.
         /// </summary>
         public readonly string? Url;
+        /// <summary>
+        /// The configuration of the Web core protection rules to be modified. See `WafBaseConfig` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DefenseRuleConfigWafBaseConfig> WafBaseConfigs;
 
         [OutputConstructor]
         private DefenseRuleConfig(
             string? abroadRegions,
 
             ImmutableArray<Outputs.DefenseRuleConfigAccountIdentifier> accountIdentifiers,
+
+            bool? autoUpdate,
 
             ImmutableArray<string> bypassRegularRules,
 
@@ -172,6 +178,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
             int? ccStatus,
 
             string? cnRegions,
+
+            ImmutableArray<string> codecLists,
 
             ImmutableArray<Outputs.DefenseRuleConfigCondition> conditions,
 
@@ -197,16 +205,20 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             string? ua,
 
-            string? url)
+            string? url,
+
+            ImmutableArray<Outputs.DefenseRuleConfigWafBaseConfig> wafBaseConfigs)
         {
             AbroadRegions = abroadRegions;
             AccountIdentifiers = accountIdentifiers;
+            AutoUpdate = autoUpdate;
             BypassRegularRules = bypassRegularRules;
             BypassRegularTypes = bypassRegularTypes;
             BypassTags = bypassTags;
             CcEffect = ccEffect;
             CcStatus = ccStatus;
             CnRegions = cnRegions;
+            CodecLists = codecLists;
             Conditions = conditions;
             GrayConfig = grayConfig;
             GrayStatus = grayStatus;
@@ -220,6 +232,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
             TimeConfig = timeConfig;
             Ua = ua;
             Url = url;
+            WafBaseConfigs = wafBaseConfigs;
         }
     }
 }

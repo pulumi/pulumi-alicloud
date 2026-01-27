@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:cloudfirewall/instanceMember:InstanceMember":
 		r = &InstanceMember{}
+	case "alicloud:cloudfirewall/instanceV2:InstanceV2":
+		r = &InstanceV2{}
 	case "alicloud:cloudfirewall/ipsConfig:IpsConfig":
 		r = &IpsConfig{}
 	case "alicloud:cloudfirewall/natFirewall:NatFirewall":
@@ -53,6 +55,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ThreatIntelligenceSwitch{}
 	case "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall":
 		r = &VpcCenTrFirewall{}
+	case "alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode":
+		r = &VpcFirewallAclEngineMode{}
+	case "alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig":
+		r = &VpcFirewallIpsConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -113,6 +119,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cloudfirewall/instanceV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cloudfirewall/ipsConfig",
 		&module{version},
 	)
@@ -144,6 +155,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/vpcCenTrFirewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/vpcFirewallAclEngineMode",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/vpcFirewallIpsConfig",
 		&module{version},
 	)
 }

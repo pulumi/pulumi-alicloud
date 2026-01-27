@@ -69,6 +69,8 @@ __all__ = [
     'ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict',
     'ManagedKubernetesRrsaMetadataArgs',
     'ManagedKubernetesRrsaMetadataArgsDict',
+    'ManagedKubernetesUpgradePolicyArgs',
+    'ManagedKubernetesUpgradePolicyArgsDict',
     'NodePoolAutoModeArgs',
     'NodePoolAutoModeArgsDict',
     'NodePoolDataDiskArgs',
@@ -107,6 +109,8 @@ __all__ = [
     'NodePoolTaintArgsDict',
     'NodePoolTeeConfigArgs',
     'NodePoolTeeConfigArgsDict',
+    'NodePoolUpgradePolicyArgs',
+    'NodePoolUpgradePolicyArgsDict',
     'ServerlessKubernetesAddonArgs',
     'ServerlessKubernetesAddonArgsDict',
     'ServerlessKubernetesDeleteOptionArgs',
@@ -3106,6 +3110,74 @@ class ManagedKubernetesRrsaMetadataArgs:
 
 
 if not MYPY:
+    class ManagedKubernetesUpgradePolicyArgsDict(TypedDict):
+        control_plane_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+
+        for example:
+        ```
+        # Upgrade cluster version with control plane only
+        version = "1.32.1-aliyun.1"
+
+        upgrade_policy {
+        control_plane_only = true
+        }
+        ```
+
+        > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+        """
+elif False:
+    ManagedKubernetesUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ManagedKubernetesUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 control_plane_only: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] control_plane_only: Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+               
+               for example:
+               ```
+               # Upgrade cluster version with control plane only
+               version = "1.32.1-aliyun.1"
+               
+               upgrade_policy {
+               control_plane_only = true
+               }
+               ```
+               
+               > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+        """
+        if control_plane_only is not None:
+            pulumi.set(__self__, "control_plane_only", control_plane_only)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneOnly")
+    def control_plane_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+
+        for example:
+        ```
+        # Upgrade cluster version with control plane only
+        version = "1.32.1-aliyun.1"
+
+        upgrade_policy {
+        control_plane_only = true
+        }
+        ```
+
+        > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+        """
+        return pulumi.get(self, "control_plane_only")
+
+    @control_plane_only.setter
+    def control_plane_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "control_plane_only", value)
+
+
+if not MYPY:
     class NodePoolAutoModeArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -5010,9 +5082,24 @@ class NodePoolPrivatePoolOptionsArgs:
 
 if not MYPY:
     class NodePoolRollingPolicyArgsDict(TypedDict):
+        batch_interval: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
+        """
         max_parallelism: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The maximum number of unusable nodes.
+        The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
+        """
+        node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Specify the list of nodes to be upgraded.
+        """
+        pause_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The auto-pause policy during node upgrade. Valid values:
+        - `FirstBatch`: Pause after the first batch is completed.
+        - `EveryBatch`: Pause after each batch is completed.
+        - `NotPause`: Do not pause during the upgrade process.
         """
 elif False:
     NodePoolRollingPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -5020,24 +5107,78 @@ elif False:
 @pulumi.input_type
 class NodePoolRollingPolicyArgs:
     def __init__(__self__, *,
-                 max_parallelism: Optional[pulumi.Input[_builtins.int]] = None):
+                 batch_interval: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_parallelism: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pause_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] max_parallelism: The maximum number of unusable nodes.
+        :param pulumi.Input[_builtins.str] batch_interval: The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
+        :param pulumi.Input[_builtins.int] max_parallelism: The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_names: Specify the list of nodes to be upgraded.
+        :param pulumi.Input[_builtins.str] pause_policy: The auto-pause policy during node upgrade. Valid values:
+               - `FirstBatch`: Pause after the first batch is completed.
+               - `EveryBatch`: Pause after each batch is completed.
+               - `NotPause`: Do not pause during the upgrade process.
         """
+        if batch_interval is not None:
+            pulumi.set(__self__, "batch_interval", batch_interval)
         if max_parallelism is not None:
             pulumi.set(__self__, "max_parallelism", max_parallelism)
+        if node_names is not None:
+            pulumi.set(__self__, "node_names", node_names)
+        if pause_policy is not None:
+            pulumi.set(__self__, "pause_policy", pause_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="batchInterval")
+    def batch_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
+        """
+        return pulumi.get(self, "batch_interval")
+
+    @batch_interval.setter
+    def batch_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "batch_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="maxParallelism")
     def max_parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum number of unusable nodes.
+        The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
         """
         return pulumi.get(self, "max_parallelism")
 
     @max_parallelism.setter
     def max_parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "max_parallelism", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeNames")
+    def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specify the list of nodes to be upgraded.
+        """
+        return pulumi.get(self, "node_names")
+
+    @node_names.setter
+    def node_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "node_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pausePolicy")
+    def pause_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The auto-pause policy during node upgrade. Valid values:
+        - `FirstBatch`: Pause after the first batch is completed.
+        - `EveryBatch`: Pause after each batch is completed.
+        - `NotPause`: Do not pause during the upgrade process.
+        """
+        return pulumi.get(self, "pause_policy")
+
+    @pause_policy.setter
+    def pause_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pause_policy", value)
 
 
 if not MYPY:
@@ -5345,6 +5486,118 @@ class NodePoolTeeConfigArgs:
     @tee_enable.setter
     def tee_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "tee_enable", value)
+
+
+if not MYPY:
+    class NodePoolUpgradePolicyArgsDict(TypedDict):
+        image_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Node system Image ID
+        """
+        kubernetes_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Node Kubernetes version
+        """
+        runtime: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Node runtime type
+        """
+        runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Node Runtime Version
+        """
+        use_replace: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to use replacement disk upgrade
+        """
+elif False:
+    NodePoolUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 kubernetes_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
+                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_replace: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] image_id: Node system Image ID
+        :param pulumi.Input[_builtins.str] kubernetes_version: Node Kubernetes version
+        :param pulumi.Input[_builtins.str] runtime: Node runtime type
+        :param pulumi.Input[_builtins.str] runtime_version: Node Runtime Version
+        :param pulumi.Input[_builtins.bool] use_replace: Whether to use replacement disk upgrade
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if runtime is not None:
+            pulumi.set(__self__, "runtime", runtime)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+        if use_replace is not None:
+            pulumi.set(__self__, "use_replace", use_replace)
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node system Image ID
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node Kubernetes version
+        """
+        return pulumi.get(self, "kubernetes_version")
+
+    @kubernetes_version.setter
+    def kubernetes_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kubernetes_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node runtime type
+        """
+        return pulumi.get(self, "runtime")
+
+    @runtime.setter
+    def runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node Runtime Version
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "runtime_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useReplace")
+    def use_replace(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to use replacement disk upgrade
+        """
+        return pulumi.get(self, "use_replace")
+
+    @use_replace.setter
+    def use_replace(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_replace", value)
 
 
 if not MYPY:

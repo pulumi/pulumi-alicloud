@@ -60,6 +60,7 @@ class ManagedKubernetesArgs:
                  slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 upgrade_policy: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']] = None,
                  user_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -114,8 +115,6 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-               
-               *Network params*
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
@@ -123,6 +122,10 @@ class ManagedKubernetesArgs:
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
+        :param pulumi.Input['ManagedKubernetesUpgradePolicyArgs'] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               > **NOTE:** This parameter only applies during resource update.
+               
+               *Network params*
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
@@ -224,6 +227,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if user_ca is not None:
             pulumi.set(__self__, "user_ca", user_ca)
         if version is not None:
@@ -674,8 +679,6 @@ class ManagedKubernetesArgs:
     def skip_set_certificate_authority(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-
-        *Network params*
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -722,6 +725,21 @@ class ManagedKubernetesArgs:
     @timezone.setter
     def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "timezone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]:
+        """
+        Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+        > **NOTE:** This parameter only applies during resource update.
+
+        *Network params*
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="userCa")
@@ -839,6 +857,7 @@ class _ManagedKubernetesState:
                  slb_intranet: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 upgrade_policy: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']] = None,
                  user_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -899,8 +918,6 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-               
-               *Network params*
         :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
@@ -911,6 +928,10 @@ class _ManagedKubernetesState:
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
+        :param pulumi.Input['ManagedKubernetesUpgradePolicyArgs'] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               > **NOTE:** This parameter only applies during resource update.
+               
+               *Network params*
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC where the current cluster is located.
@@ -1031,6 +1052,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if user_ca is not None:
             pulumi.set(__self__, "user_ca", user_ca)
         if version is not None:
@@ -1534,8 +1557,6 @@ class _ManagedKubernetesState:
     def skip_set_certificate_authority(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-
-        *Network params*
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -1618,6 +1639,21 @@ class _ManagedKubernetesState:
     @timezone.setter
     def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "timezone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]:
+        """
+        Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+        > **NOTE:** This parameter only applies during resource update.
+
+        *Network params*
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="userCa")
@@ -1755,6 +1791,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
                  user_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2116,8 +2153,6 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-               
-               *Network params*
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
@@ -2125,6 +2160,10 @@ class ManagedKubernetes(pulumi.CustomResource):
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
+        :param pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               > **NOTE:** This parameter only applies during resource update.
+               
+               *Network params*
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
@@ -2502,6 +2541,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
                  user_ca: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2555,6 +2595,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
+            __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["user_ca"] = user_ca
             __props__.__dict__["version"] = version
             __props__.__dict__["vswitch_ids"] = vswitch_ids
@@ -2625,6 +2666,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             slb_intranet: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             timezone: Optional[pulumi.Input[_builtins.str]] = None,
+            upgrade_policy: Optional[pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
             user_ca: Optional[pulumi.Input[_builtins.str]] = None,
             version: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2690,8 +2732,6 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-               
-               *Network params*
         :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
@@ -2702,6 +2742,10 @@ class ManagedKubernetes(pulumi.CustomResource):
                * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
                * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
                * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
+        :param pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']] upgrade_policy: Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+               > **NOTE:** This parameter only applies during resource update.
+               
+               *Network params*
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC where the current cluster is located.
@@ -2765,6 +2809,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["slb_intranet"] = slb_intranet
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
+        __props__.__dict__["upgrade_policy"] = upgrade_policy
         __props__.__dict__["user_ca"] = user_ca
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_id"] = vpc_id
@@ -3103,8 +3148,6 @@ class ManagedKubernetes(pulumi.CustomResource):
     def skip_set_certificate_authority(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
-
-        *Network params*
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -3159,6 +3202,17 @@ class ManagedKubernetes(pulumi.CustomResource):
         * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         """
         return pulumi.get(self, "timezone")
+
+    @_builtins.property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> pulumi.Output[Optional['outputs.ManagedKubernetesUpgradePolicy']]:
+        """
+        Configuration block for cluster upgrade operations. See `upgrade_policy` below.
+        > **NOTE:** This parameter only applies during resource update.
+
+        *Network params*
+        """
+        return pulumi.get(self, "upgrade_policy")
 
     @_builtins.property
     @pulumi.getter(name="userCa")

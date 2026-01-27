@@ -35,6 +35,11 @@ export const getClusterCredential: typeof import("./getClusterCredential").getCl
 export const getClusterCredentialOutput: typeof import("./getClusterCredential").getClusterCredentialOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterCredential","getClusterCredentialOutput"], () => require("./getClusterCredential"));
 
+export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
+export const getClusters: typeof import("./getClusters").getClusters = null as any;
+export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
+
 export { GetEdgeKubernetesClustersArgs, GetEdgeKubernetesClustersResult, GetEdgeKubernetesClustersOutputArgs } from "./getEdgeKubernetesClusters";
 export const getEdgeKubernetesClusters: typeof import("./getEdgeKubernetesClusters").getEdgeKubernetesClusters = null as any;
 export const getEdgeKubernetesClustersOutput: typeof import("./getEdgeKubernetesClusters").getEdgeKubernetesClustersOutput = null as any;

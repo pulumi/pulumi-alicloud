@@ -87,19 +87,25 @@ type MachineGroup struct {
 
 	// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
 	GroupAttribute MachineGroupGroupAttributePtrOutput `pulumi:"groupAttribute"`
-	// Machine Group name
+	// The name of the machine group. The name must meet the following requirements:
+	//
+	// - The name of each machine group in a project must be unique.
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// - It must start and end with a lowercase letter or a digit.
+	// - It must be 3 to 128 characters in length.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// Machine group type, optional value is empty.
+	// The type of the machine group. Set the value to an empty string.
 	GroupType pulumi.StringPtrOutput `pulumi:"groupType"`
-	// Machine identification type.
-	// - ip: ip address Machine Group.
-	// - userdefined: user-defined identity Machine Group.
+	// The identifier type of the machine group. Valid values:
+	//
+	// - ip: The machine group uses IP addresses as identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	MachineIdentifyType pulumi.StringOutput `pulumi:"machineIdentifyType"`
 	// The identification information of the machine group.
 	// - If machineidentifiytype is configured to ip, enter the ip address of the server.
 	// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
 	MachineLists pulumi.StringArrayOutput `pulumi:"machineLists"`
-	// Project name
+	// The name of the project.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 }
 
@@ -147,38 +153,50 @@ func GetMachineGroup(ctx *pulumi.Context,
 type machineGroupState struct {
 	// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
 	GroupAttribute *MachineGroupGroupAttribute `pulumi:"groupAttribute"`
-	// Machine Group name
+	// The name of the machine group. The name must meet the following requirements:
+	//
+	// - The name of each machine group in a project must be unique.
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// - It must start and end with a lowercase letter or a digit.
+	// - It must be 3 to 128 characters in length.
 	GroupName *string `pulumi:"groupName"`
-	// Machine group type, optional value is empty.
+	// The type of the machine group. Set the value to an empty string.
 	GroupType *string `pulumi:"groupType"`
-	// Machine identification type.
-	// - ip: ip address Machine Group.
-	// - userdefined: user-defined identity Machine Group.
+	// The identifier type of the machine group. Valid values:
+	//
+	// - ip: The machine group uses IP addresses as identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	MachineIdentifyType *string `pulumi:"machineIdentifyType"`
 	// The identification information of the machine group.
 	// - If machineidentifiytype is configured to ip, enter the ip address of the server.
 	// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
 	MachineLists []string `pulumi:"machineLists"`
-	// Project name
+	// The name of the project.
 	ProjectName *string `pulumi:"projectName"`
 }
 
 type MachineGroupState struct {
 	// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
 	GroupAttribute MachineGroupGroupAttributePtrInput
-	// Machine Group name
+	// The name of the machine group. The name must meet the following requirements:
+	//
+	// - The name of each machine group in a project must be unique.
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// - It must start and end with a lowercase letter or a digit.
+	// - It must be 3 to 128 characters in length.
 	GroupName pulumi.StringPtrInput
-	// Machine group type, optional value is empty.
+	// The type of the machine group. Set the value to an empty string.
 	GroupType pulumi.StringPtrInput
-	// Machine identification type.
-	// - ip: ip address Machine Group.
-	// - userdefined: user-defined identity Machine Group.
+	// The identifier type of the machine group. Valid values:
+	//
+	// - ip: The machine group uses IP addresses as identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	MachineIdentifyType pulumi.StringPtrInput
 	// The identification information of the machine group.
 	// - If machineidentifiytype is configured to ip, enter the ip address of the server.
 	// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
 	MachineLists pulumi.StringArrayInput
-	// Project name
+	// The name of the project.
 	ProjectName pulumi.StringPtrInput
 }
 
@@ -189,19 +207,25 @@ func (MachineGroupState) ElementType() reflect.Type {
 type machineGroupArgs struct {
 	// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
 	GroupAttribute *MachineGroupGroupAttribute `pulumi:"groupAttribute"`
-	// Machine Group name
+	// The name of the machine group. The name must meet the following requirements:
+	//
+	// - The name of each machine group in a project must be unique.
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// - It must start and end with a lowercase letter or a digit.
+	// - It must be 3 to 128 characters in length.
 	GroupName string `pulumi:"groupName"`
-	// Machine group type, optional value is empty.
+	// The type of the machine group. Set the value to an empty string.
 	GroupType *string `pulumi:"groupType"`
-	// Machine identification type.
-	// - ip: ip address Machine Group.
-	// - userdefined: user-defined identity Machine Group.
+	// The identifier type of the machine group. Valid values:
+	//
+	// - ip: The machine group uses IP addresses as identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	MachineIdentifyType string `pulumi:"machineIdentifyType"`
 	// The identification information of the machine group.
 	// - If machineidentifiytype is configured to ip, enter the ip address of the server.
 	// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
 	MachineLists []string `pulumi:"machineLists"`
-	// Project name
+	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
 
@@ -209,19 +233,25 @@ type machineGroupArgs struct {
 type MachineGroupArgs struct {
 	// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
 	GroupAttribute MachineGroupGroupAttributePtrInput
-	// Machine Group name
+	// The name of the machine group. The name must meet the following requirements:
+	//
+	// - The name of each machine group in a project must be unique.
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// - It must start and end with a lowercase letter or a digit.
+	// - It must be 3 to 128 characters in length.
 	GroupName pulumi.StringInput
-	// Machine group type, optional value is empty.
+	// The type of the machine group. Set the value to an empty string.
 	GroupType pulumi.StringPtrInput
-	// Machine identification type.
-	// - ip: ip address Machine Group.
-	// - userdefined: user-defined identity Machine Group.
+	// The identifier type of the machine group. Valid values:
+	//
+	// - ip: The machine group uses IP addresses as identifiers.
+	// - userdefined: The machine group uses custom identifiers.
 	MachineIdentifyType pulumi.StringInput
 	// The identification information of the machine group.
 	// - If machineidentifiytype is configured to ip, enter the ip address of the server.
 	// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
 	MachineLists pulumi.StringArrayInput
-	// Project name
+	// The name of the project.
 	ProjectName pulumi.StringInput
 }
 
@@ -317,19 +347,25 @@ func (o MachineGroupOutput) GroupAttribute() MachineGroupGroupAttributePtrOutput
 	return o.ApplyT(func(v *MachineGroup) MachineGroupGroupAttributePtrOutput { return v.GroupAttribute }).(MachineGroupGroupAttributePtrOutput)
 }
 
-// Machine Group name
+// The name of the machine group. The name must meet the following requirements:
+//
+// - The name of each machine group in a project must be unique.
+// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+// - It must start and end with a lowercase letter or a digit.
+// - It must be 3 to 128 characters in length.
 func (o MachineGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Machine group type, optional value is empty.
+// The type of the machine group. Set the value to an empty string.
 func (o MachineGroupOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MachineGroup) pulumi.StringPtrOutput { return v.GroupType }).(pulumi.StringPtrOutput)
 }
 
-// Machine identification type.
-// - ip: ip address Machine Group.
-// - userdefined: user-defined identity Machine Group.
+// The identifier type of the machine group. Valid values:
+//
+// - ip: The machine group uses IP addresses as identifiers.
+// - userdefined: The machine group uses custom identifiers.
 func (o MachineGroupOutput) MachineIdentifyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineGroup) pulumi.StringOutput { return v.MachineIdentifyType }).(pulumi.StringOutput)
 }
@@ -341,7 +377,7 @@ func (o MachineGroupOutput) MachineLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MachineGroup) pulumi.StringArrayOutput { return v.MachineLists }).(pulumi.StringArrayOutput)
 }
 
-// Project name
+// The name of the project.
 func (o MachineGroupOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineGroup) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }

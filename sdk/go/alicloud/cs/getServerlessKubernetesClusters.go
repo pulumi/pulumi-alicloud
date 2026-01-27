@@ -13,9 +13,9 @@ import (
 
 // This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 //
-// > **NOTE:** Available since 1.58.0
+// > **NOTE:** Available since v1.58.0
 //
-// > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+// > **NOTE:** From version v1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
 //
 // ## Example Usage
 //

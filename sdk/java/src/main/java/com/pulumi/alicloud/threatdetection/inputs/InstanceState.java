@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.threatdetection.inputs;
 
+import com.pulumi.alicloud.threatdetection.inputs.InstancePostPayModuleSwitchObjArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -200,38 +201,97 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
-     * - Key:
-     * - `VUL`: vulnerability repair module
-     * - `CSPM`: Cloud platform configuration check module
-     * - `AGENTLESS`: AGENTLESS detection module
-     * - `SERVERLESS`:Serverless asset module
-     * - `CTDR`: threat analysis and response module
-     * - `POST_HOST`: Host and container security module
-     * - Value:0 means off, 1 means on
-     * 
-     * &gt; **NOTE:**  The module value of the unpassed value will not change.
+     * Automatic binding switch for new assets in host and container protection. Valid values:
      * 
      */
+    @Import(name="postPaidHostAutoBind")
+    private @Nullable Output<Integer> postPaidHostAutoBind;
+
+    /**
+     * @return Automatic binding switch for new assets in host and container protection. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> postPaidHostAutoBind() {
+        return Optional.ofNullable(this.postPaidHostAutoBind);
+    }
+
+    /**
+     * The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+     * 
+     */
+    @Import(name="postPaidHostAutoBindVersion")
+    private @Nullable Output<Integer> postPaidHostAutoBindVersion;
+
+    /**
+     * @return The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> postPaidHostAutoBindVersion() {
+        return Optional.ofNullable(this.postPaidHostAutoBindVersion);
+    }
+
+    /**
+     * The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
+     * - Key:
+     * - `VUL`: Vulnerability Repair Module.
+     * - `CSPM`: Cloud Security Posture Management Module.
+     * - `AGENTLESS`: Agentless Detection Module.
+     * - `SERVERLESS`: Serverless Security Module.
+     * - `CTDR`: Threat Analysis and Response Module.
+     * - `POST_HOST`: Host and Container Security Module.
+     * - `SDK`: Malicious File Detection SDK Module.
+     * - `RASP`: Application Protection Module.
+     * - `CTDR_STORAGE`: Log Management Module.
+     * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+     * - Value: `0` means off, `1` means on
+     * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+     * 
+     * @deprecated
+     * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+     * 
+     */
+    @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
     @Import(name="postPayModuleSwitch")
     private @Nullable Output<String> postPayModuleSwitch;
 
     /**
-     * @return Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * @return The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
      * - Key:
-     * - `VUL`: vulnerability repair module
-     * - `CSPM`: Cloud platform configuration check module
-     * - `AGENTLESS`: AGENTLESS detection module
-     * - `SERVERLESS`:Serverless asset module
-     * - `CTDR`: threat analysis and response module
-     * - `POST_HOST`: Host and container security module
-     * - Value:0 means off, 1 means on
+     * - `VUL`: Vulnerability Repair Module.
+     * - `CSPM`: Cloud Security Posture Management Module.
+     * - `AGENTLESS`: Agentless Detection Module.
+     * - `SERVERLESS`: Serverless Security Module.
+     * - `CTDR`: Threat Analysis and Response Module.
+     * - `POST_HOST`: Host and Container Security Module.
+     * - `SDK`: Malicious File Detection SDK Module.
+     * - `RASP`: Application Protection Module.
+     * - `CTDR_STORAGE`: Log Management Module.
+     * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+     * - Value: `0` means off, `1` means on
+     * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
-     * &gt; **NOTE:**  The module value of the unpassed value will not change.
+     * @deprecated
+     * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      */
+    @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
     public Optional<Output<String>> postPayModuleSwitch() {
         return Optional.ofNullable(this.postPayModuleSwitch);
+    }
+
+    /**
+     * Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
+     * 
+     */
+    @Import(name="postPayModuleSwitchObj")
+    private @Nullable Output<InstancePostPayModuleSwitchObjArgs> postPayModuleSwitchObj;
+
+    /**
+     * @return Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
+     * 
+     */
+    public Optional<Output<InstancePostPayModuleSwitchObjArgs>> postPayModuleSwitchObj() {
+        return Optional.ofNullable(this.postPayModuleSwitchObj);
     }
 
     /**
@@ -705,7 +765,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.postPaidFlag = $.postPaidFlag;
+        this.postPaidHostAutoBind = $.postPaidHostAutoBind;
+        this.postPaidHostAutoBindVersion = $.postPaidHostAutoBindVersion;
         this.postPayModuleSwitch = $.postPayModuleSwitch;
+        this.postPayModuleSwitchObj = $.postPayModuleSwitchObj;
         this.raspCount = $.raspCount;
         this.renewPeriod = $.renewPeriod;
         this.renewalPeriodUnit = $.renewalPeriodUnit;
@@ -993,44 +1056,121 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postPayModuleSwitch Pay-as-you-go module switch mapping, in JsonString format. Valid values:
-         * - Key:
-         * - `VUL`: vulnerability repair module
-         * - `CSPM`: Cloud platform configuration check module
-         * - `AGENTLESS`: AGENTLESS detection module
-         * - `SERVERLESS`:Serverless asset module
-         * - `CTDR`: threat analysis and response module
-         * - `POST_HOST`: Host and container security module
-         * - Value:0 means off, 1 means on
-         * 
-         * &gt; **NOTE:**  The module value of the unpassed value will not change.
+         * @param postPaidHostAutoBind Automatic binding switch for new assets in host and container protection. Valid values:
          * 
          * @return builder
          * 
          */
+        public Builder postPaidHostAutoBind(@Nullable Output<Integer> postPaidHostAutoBind) {
+            $.postPaidHostAutoBind = postPaidHostAutoBind;
+            return this;
+        }
+
+        /**
+         * @param postPaidHostAutoBind Automatic binding switch for new assets in host and container protection. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPaidHostAutoBind(Integer postPaidHostAutoBind) {
+            return postPaidHostAutoBind(Output.of(postPaidHostAutoBind));
+        }
+
+        /**
+         * @param postPaidHostAutoBindVersion The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPaidHostAutoBindVersion(@Nullable Output<Integer> postPaidHostAutoBindVersion) {
+            $.postPaidHostAutoBindVersion = postPaidHostAutoBindVersion;
+            return this;
+        }
+
+        /**
+         * @param postPaidHostAutoBindVersion The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPaidHostAutoBindVersion(Integer postPaidHostAutoBindVersion) {
+            return postPaidHostAutoBindVersion(Output.of(postPaidHostAutoBindVersion));
+        }
+
+        /**
+         * @param postPayModuleSwitch The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
+         * - Key:
+         * - `VUL`: Vulnerability Repair Module.
+         * - `CSPM`: Cloud Security Posture Management Module.
+         * - `AGENTLESS`: Agentless Detection Module.
+         * - `SERVERLESS`: Serverless Security Module.
+         * - `CTDR`: Threat Analysis and Response Module.
+         * - `POST_HOST`: Host and Container Security Module.
+         * - `SDK`: Malicious File Detection SDK Module.
+         * - `RASP`: Application Protection Module.
+         * - `CTDR_STORAGE`: Log Management Module.
+         * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+         * - Value: `0` means off, `1` means on
+         * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+         * 
+         */
+        @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
         public Builder postPayModuleSwitch(@Nullable Output<String> postPayModuleSwitch) {
             $.postPayModuleSwitch = postPayModuleSwitch;
             return this;
         }
 
         /**
-         * @param postPayModuleSwitch Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+         * @param postPayModuleSwitch The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
          * - Key:
-         * - `VUL`: vulnerability repair module
-         * - `CSPM`: Cloud platform configuration check module
-         * - `AGENTLESS`: AGENTLESS detection module
-         * - `SERVERLESS`:Serverless asset module
-         * - `CTDR`: threat analysis and response module
-         * - `POST_HOST`: Host and container security module
-         * - Value:0 means off, 1 means on
+         * - `VUL`: Vulnerability Repair Module.
+         * - `CSPM`: Cloud Security Posture Management Module.
+         * - `AGENTLESS`: Agentless Detection Module.
+         * - `SERVERLESS`: Serverless Security Module.
+         * - `CTDR`: Threat Analysis and Response Module.
+         * - `POST_HOST`: Host and Container Security Module.
+         * - `SDK`: Malicious File Detection SDK Module.
+         * - `RASP`: Application Protection Module.
+         * - `CTDR_STORAGE`: Log Management Module.
+         * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+         * - Value: `0` means off, `1` means on
+         * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
          * 
-         * &gt; **NOTE:**  The module value of the unpassed value will not change.
+         * @return builder
+         * 
+         * @deprecated
+         * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+         * 
+         */
+        @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
+        public Builder postPayModuleSwitch(String postPayModuleSwitch) {
+            return postPayModuleSwitch(Output.of(postPayModuleSwitch));
+        }
+
+        /**
+         * @param postPayModuleSwitchObj Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
          * 
          * @return builder
          * 
          */
-        public Builder postPayModuleSwitch(String postPayModuleSwitch) {
-            return postPayModuleSwitch(Output.of(postPayModuleSwitch));
+        public Builder postPayModuleSwitchObj(@Nullable Output<InstancePostPayModuleSwitchObjArgs> postPayModuleSwitchObj) {
+            $.postPayModuleSwitchObj = postPayModuleSwitchObj;
+            return this;
+        }
+
+        /**
+         * @param postPayModuleSwitchObj Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPayModuleSwitchObj(InstancePostPayModuleSwitchObjArgs postPayModuleSwitchObj) {
+            return postPayModuleSwitchObj(Output.of(postPayModuleSwitchObj));
         }
 
         /**

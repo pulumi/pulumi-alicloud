@@ -33,14 +33,24 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Machine Group name
+     * The name of the machine group. The name must meet the following requirements:
+     * 
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      * 
      */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
-     * @return Machine Group name
+     * @return The name of the machine group. The name must meet the following requirements:
+     * 
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      * 
      */
     public Optional<Output<String>> groupName() {
@@ -48,14 +58,14 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Machine group type, optional value is empty.
+     * The type of the machine group. Set the value to an empty string.
      * 
      */
     @Import(name="groupType")
     private @Nullable Output<String> groupType;
 
     /**
-     * @return Machine group type, optional value is empty.
+     * @return The type of the machine group. Set the value to an empty string.
      * 
      */
     public Optional<Output<String>> groupType() {
@@ -63,18 +73,20 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * The identifier type of the machine group. Valid values:
+     * 
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      * 
      */
     @Import(name="machineIdentifyType")
     private @Nullable Output<String> machineIdentifyType;
 
     /**
-     * @return Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * @return The identifier type of the machine group. Valid values:
+     * 
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      * 
      */
     public Optional<Output<String>> machineIdentifyType() {
@@ -101,14 +113,14 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project name
+     * The name of the project.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return Project name
+     * @return The name of the project.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -166,7 +178,12 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName Machine Group name
+         * @param groupName The name of the machine group. The name must meet the following requirements:
+         * 
+         * - The name of each machine group in a project must be unique.
+         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+         * - It must start and end with a lowercase letter or a digit.
+         * - It must be 3 to 128 characters in length.
          * 
          * @return builder
          * 
@@ -177,7 +194,12 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName Machine Group name
+         * @param groupName The name of the machine group. The name must meet the following requirements:
+         * 
+         * - The name of each machine group in a project must be unique.
+         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+         * - It must start and end with a lowercase letter or a digit.
+         * - It must be 3 to 128 characters in length.
          * 
          * @return builder
          * 
@@ -187,7 +209,7 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType Machine group type, optional value is empty.
+         * @param groupType The type of the machine group. Set the value to an empty string.
          * 
          * @return builder
          * 
@@ -198,7 +220,7 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType Machine group type, optional value is empty.
+         * @param groupType The type of the machine group. Set the value to an empty string.
          * 
          * @return builder
          * 
@@ -208,9 +230,10 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machineIdentifyType Machine identification type.
-         * - ip: ip address Machine Group.
-         * - userdefined: user-defined identity Machine Group.
+         * @param machineIdentifyType The identifier type of the machine group. Valid values:
+         * 
+         * - ip: The machine group uses IP addresses as identifiers.
+         * - userdefined: The machine group uses custom identifiers.
          * 
          * @return builder
          * 
@@ -221,9 +244,10 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machineIdentifyType Machine identification type.
-         * - ip: ip address Machine Group.
-         * - userdefined: user-defined identity Machine Group.
+         * @param machineIdentifyType The identifier type of the machine group. Valid values:
+         * 
+         * - ip: The machine group uses IP addresses as identifiers.
+         * - userdefined: The machine group uses custom identifiers.
          * 
          * @return builder
          * 
@@ -270,7 +294,7 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Project name
+         * @param projectName The name of the project.
          * 
          * @return builder
          * 
@@ -281,7 +305,7 @@ public final class MachineGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Project name
+         * @param projectName The name of the project.
          * 
          * @return builder
          * 

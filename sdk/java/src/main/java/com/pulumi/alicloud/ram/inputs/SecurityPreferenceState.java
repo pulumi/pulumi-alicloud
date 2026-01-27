@@ -136,7 +136,11 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
+     * @deprecated
+     * This property has been deprecated as it is no longer supported by Aliyun.
+     * 
      */
+    @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
     @Import(name="enforceMfaForLogin")
     private @Nullable Output<Boolean> enforceMfaForLogin;
 
@@ -144,7 +148,11 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      * @return Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
+     * @deprecated
+     * This property has been deprecated as it is no longer supported by Aliyun.
+     * 
      */
+    @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
     public Optional<Output<Boolean>> enforceMfaForLogin() {
         return Optional.ofNullable(this.enforceMfaForLogin);
     }
@@ -154,7 +162,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      * - If the mask is specified, RAM users can only log on from the specified IP address.
      * - If you do not specify any mask, the login console function will apply to the entire network.
      * 
-     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
      * 
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
@@ -167,7 +175,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      * - If the mask is specified, RAM users can only log on from the specified IP address.
      * - If you do not specify any mask, the login console function will apply to the entire network.
      * 
-     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
      * 
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
@@ -193,6 +201,36 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      */
     public Optional<Output<Integer>> loginSessionDuration() {
         return Optional.ofNullable(this.loginSessionDuration);
+    }
+
+    /**
+     * The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    @Import(name="maxIdleDaysForAccessKeys")
+    private @Nullable Output<Integer> maxIdleDaysForAccessKeys;
+
+    /**
+     * @return The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    public Optional<Output<Integer>> maxIdleDaysForAccessKeys() {
+        return Optional.ofNullable(this.maxIdleDaysForAccessKeys);
+    }
+
+    /**
+     * The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    @Import(name="maxIdleDaysForUsers")
+    private @Nullable Output<Integer> maxIdleDaysForUsers;
+
+    /**
+     * @return The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    public Optional<Output<Integer>> maxIdleDaysForUsers() {
+        return Optional.ofNullable(this.maxIdleDaysForUsers);
     }
 
     /**
@@ -270,6 +308,8 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
         this.enforceMfaForLogin = $.enforceMfaForLogin;
         this.loginNetworkMasks = $.loginNetworkMasks;
         this.loginSessionDuration = $.loginSessionDuration;
+        this.maxIdleDaysForAccessKeys = $.maxIdleDaysForAccessKeys;
+        this.maxIdleDaysForUsers = $.maxIdleDaysForUsers;
         this.mfaOperationForLogin = $.mfaOperationForLogin;
         this.operationForRiskLogin = $.operationForRiskLogin;
         this.verificationTypes = $.verificationTypes;
@@ -449,7 +489,11 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property has been deprecated as it is no longer supported by Aliyun.
+         * 
          */
+        @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
         public Builder enforceMfaForLogin(@Nullable Output<Boolean> enforceMfaForLogin) {
             $.enforceMfaForLogin = enforceMfaForLogin;
             return this;
@@ -461,7 +505,11 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property has been deprecated as it is no longer supported by Aliyun.
+         * 
          */
+        @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
         public Builder enforceMfaForLogin(Boolean enforceMfaForLogin) {
             return enforceMfaForLogin(Output.of(enforceMfaForLogin));
         }
@@ -471,7 +519,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          * - If the mask is specified, RAM users can only log on from the specified IP address.
          * - If you do not specify any mask, the login console function will apply to the entire network.
          * 
-         * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+         * &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
          * 
          * Configure a maximum of 40 logon masks, with a total length of 512 characters.
          * 
@@ -488,7 +536,7 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          * - If the mask is specified, RAM users can only log on from the specified IP address.
          * - If you do not specify any mask, the login console function will apply to the entire network.
          * 
-         * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+         * &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
          * 
          * Configure a maximum of 40 logon masks, with a total length of 512 characters.
          * 
@@ -522,6 +570,48 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          */
         public Builder loginSessionDuration(Integer loginSessionDuration) {
             return loginSessionDuration(Output.of(loginSessionDuration));
+        }
+
+        /**
+         * @param maxIdleDaysForAccessKeys The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxIdleDaysForAccessKeys(@Nullable Output<Integer> maxIdleDaysForAccessKeys) {
+            $.maxIdleDaysForAccessKeys = maxIdleDaysForAccessKeys;
+            return this;
+        }
+
+        /**
+         * @param maxIdleDaysForAccessKeys The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxIdleDaysForAccessKeys(Integer maxIdleDaysForAccessKeys) {
+            return maxIdleDaysForAccessKeys(Output.of(maxIdleDaysForAccessKeys));
+        }
+
+        /**
+         * @param maxIdleDaysForUsers The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxIdleDaysForUsers(@Nullable Output<Integer> maxIdleDaysForUsers) {
+            $.maxIdleDaysForUsers = maxIdleDaysForUsers;
+            return this;
+        }
+
+        /**
+         * @param maxIdleDaysForUsers The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxIdleDaysForUsers(Integer maxIdleDaysForUsers) {
+            return maxIdleDaysForUsers(Output.of(maxIdleDaysForUsers));
         }
 
         /**

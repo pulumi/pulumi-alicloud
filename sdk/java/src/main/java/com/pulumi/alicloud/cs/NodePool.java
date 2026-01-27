@@ -20,6 +20,7 @@ import com.pulumi.alicloud.cs.outputs.NodePoolScalingConfig;
 import com.pulumi.alicloud.cs.outputs.NodePoolSpotPriceLimit;
 import com.pulumi.alicloud.cs.outputs.NodePoolTaint;
 import com.pulumi.alicloud.cs.outputs.NodePoolTeeConfig;
+import com.pulumi.alicloud.cs.outputs.NodePoolUpgradePolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -1215,6 +1216,24 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> updateNodes() {
         return Codegen.optional(this.updateNodes);
+    }
+    /**
+     * Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     */
+    @Export(name="upgradePolicy", refs={NodePoolUpgradePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ NodePoolUpgradePolicy> upgradePolicy;
+
+    /**
+     * @return Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     */
+    public Output<Optional<NodePoolUpgradePolicy>> upgradePolicy() {
+        return Codegen.optional(this.upgradePolicy);
     }
     /**
      * Node custom data, base64-encoded.

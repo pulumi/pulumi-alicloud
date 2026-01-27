@@ -29,16 +29,22 @@ class MachineGroupArgs:
                  group_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineGroup resource.
-        :param pulumi.Input[_builtins.str] group_name: Machine Group name
-        :param pulumi.Input[_builtins.str] machine_identify_type: Machine identification type.
-               - ip: ip address Machine Group.
-               - userdefined: user-defined identity Machine Group.
+        :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
+               
+               - The name of each machine group in a project must be unique.
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+               - It must start and end with a lowercase letter or a digit.
+               - It must be 3 to 128 characters in length.
+        :param pulumi.Input[_builtins.str] machine_identify_type: The identifier type of the machine group. Valid values:
+               
+               - ip: The machine group uses IP addresses as identifiers.
+               - userdefined: The machine group uses custom identifiers.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_lists: The identification information of the machine group.
                - If machineidentifiytype is configured to ip, enter the ip address of the server.
                - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
-        :param pulumi.Input[_builtins.str] project_name: Project name
+        :param pulumi.Input[_builtins.str] project_name: The name of the project.
         :param pulumi.Input['MachineGroupGroupAttributeArgs'] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
-        :param pulumi.Input[_builtins.str] group_type: Machine group type, optional value is empty.
+        :param pulumi.Input[_builtins.str] group_type: The type of the machine group. Set the value to an empty string.
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "machine_identify_type", machine_identify_type)
@@ -53,7 +59,12 @@ class MachineGroupArgs:
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Machine Group name
+        The name of the machine group. The name must meet the following requirements:
+
+        - The name of each machine group in a project must be unique.
+        - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+        - It must start and end with a lowercase letter or a digit.
+        - It must be 3 to 128 characters in length.
         """
         return pulumi.get(self, "group_name")
 
@@ -65,9 +76,10 @@ class MachineGroupArgs:
     @pulumi.getter(name="machineIdentifyType")
     def machine_identify_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Machine identification type.
-        - ip: ip address Machine Group.
-        - userdefined: user-defined identity Machine Group.
+        The identifier type of the machine group. Valid values:
+
+        - ip: The machine group uses IP addresses as identifiers.
+        - userdefined: The machine group uses custom identifiers.
         """
         return pulumi.get(self, "machine_identify_type")
 
@@ -93,7 +105,7 @@ class MachineGroupArgs:
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Project name
+        The name of the project.
         """
         return pulumi.get(self, "project_name")
 
@@ -117,7 +129,7 @@ class MachineGroupArgs:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Machine group type, optional value is empty.
+        The type of the machine group. Set the value to an empty string.
         """
         return pulumi.get(self, "group_type")
 
@@ -138,15 +150,21 @@ class _MachineGroupState:
         """
         Input properties used for looking up and filtering MachineGroup resources.
         :param pulumi.Input['MachineGroupGroupAttributeArgs'] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
-        :param pulumi.Input[_builtins.str] group_name: Machine Group name
-        :param pulumi.Input[_builtins.str] group_type: Machine group type, optional value is empty.
-        :param pulumi.Input[_builtins.str] machine_identify_type: Machine identification type.
-               - ip: ip address Machine Group.
-               - userdefined: user-defined identity Machine Group.
+        :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
+               
+               - The name of each machine group in a project must be unique.
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+               - It must start and end with a lowercase letter or a digit.
+               - It must be 3 to 128 characters in length.
+        :param pulumi.Input[_builtins.str] group_type: The type of the machine group. Set the value to an empty string.
+        :param pulumi.Input[_builtins.str] machine_identify_type: The identifier type of the machine group. Valid values:
+               
+               - ip: The machine group uses IP addresses as identifiers.
+               - userdefined: The machine group uses custom identifiers.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_lists: The identification information of the machine group.
                - If machineidentifiytype is configured to ip, enter the ip address of the server.
                - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
-        :param pulumi.Input[_builtins.str] project_name: Project name
+        :param pulumi.Input[_builtins.str] project_name: The name of the project.
         """
         if group_attribute is not None:
             pulumi.set(__self__, "group_attribute", group_attribute)
@@ -177,7 +195,12 @@ class _MachineGroupState:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Machine Group name
+        The name of the machine group. The name must meet the following requirements:
+
+        - The name of each machine group in a project must be unique.
+        - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+        - It must start and end with a lowercase letter or a digit.
+        - It must be 3 to 128 characters in length.
         """
         return pulumi.get(self, "group_name")
 
@@ -189,7 +212,7 @@ class _MachineGroupState:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Machine group type, optional value is empty.
+        The type of the machine group. Set the value to an empty string.
         """
         return pulumi.get(self, "group_type")
 
@@ -201,9 +224,10 @@ class _MachineGroupState:
     @pulumi.getter(name="machineIdentifyType")
     def machine_identify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Machine identification type.
-        - ip: ip address Machine Group.
-        - userdefined: user-defined identity Machine Group.
+        The identifier type of the machine group. Valid values:
+
+        - ip: The machine group uses IP addresses as identifiers.
+        - userdefined: The machine group uses custom identifiers.
         """
         return pulumi.get(self, "machine_identify_type")
 
@@ -229,7 +253,7 @@ class _MachineGroupState:
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Project name
+        The name of the project.
         """
         return pulumi.get(self, "project_name")
 
@@ -300,15 +324,21 @@ class MachineGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
-        :param pulumi.Input[_builtins.str] group_name: Machine Group name
-        :param pulumi.Input[_builtins.str] group_type: Machine group type, optional value is empty.
-        :param pulumi.Input[_builtins.str] machine_identify_type: Machine identification type.
-               - ip: ip address Machine Group.
-               - userdefined: user-defined identity Machine Group.
+        :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
+               
+               - The name of each machine group in a project must be unique.
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+               - It must start and end with a lowercase letter or a digit.
+               - It must be 3 to 128 characters in length.
+        :param pulumi.Input[_builtins.str] group_type: The type of the machine group. Set the value to an empty string.
+        :param pulumi.Input[_builtins.str] machine_identify_type: The identifier type of the machine group. Valid values:
+               
+               - ip: The machine group uses IP addresses as identifiers.
+               - userdefined: The machine group uses custom identifiers.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_lists: The identification information of the machine group.
                - If machineidentifiytype is configured to ip, enter the ip address of the server.
                - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
-        :param pulumi.Input[_builtins.str] project_name: Project name
+        :param pulumi.Input[_builtins.str] project_name: The name of the project.
         """
         ...
     @overload
@@ -430,15 +460,21 @@ class MachineGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
-        :param pulumi.Input[_builtins.str] group_name: Machine Group name
-        :param pulumi.Input[_builtins.str] group_type: Machine group type, optional value is empty.
-        :param pulumi.Input[_builtins.str] machine_identify_type: Machine identification type.
-               - ip: ip address Machine Group.
-               - userdefined: user-defined identity Machine Group.
+        :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
+               
+               - The name of each machine group in a project must be unique.
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+               - It must start and end with a lowercase letter or a digit.
+               - It must be 3 to 128 characters in length.
+        :param pulumi.Input[_builtins.str] group_type: The type of the machine group. Set the value to an empty string.
+        :param pulumi.Input[_builtins.str] machine_identify_type: The identifier type of the machine group. Valid values:
+               
+               - ip: The machine group uses IP addresses as identifiers.
+               - userdefined: The machine group uses custom identifiers.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_lists: The identification information of the machine group.
                - If machineidentifiytype is configured to ip, enter the ip address of the server.
                - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
-        :param pulumi.Input[_builtins.str] project_name: Project name
+        :param pulumi.Input[_builtins.str] project_name: The name of the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -464,7 +500,12 @@ class MachineGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Machine Group name
+        The name of the machine group. The name must meet the following requirements:
+
+        - The name of each machine group in a project must be unique.
+        - It can contain only lowercase letters, digits, hyphens (-), and underscores (\\_).
+        - It must start and end with a lowercase letter or a digit.
+        - It must be 3 to 128 characters in length.
         """
         return pulumi.get(self, "group_name")
 
@@ -472,7 +513,7 @@ class MachineGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Machine group type, optional value is empty.
+        The type of the machine group. Set the value to an empty string.
         """
         return pulumi.get(self, "group_type")
 
@@ -480,9 +521,10 @@ class MachineGroup(pulumi.CustomResource):
     @pulumi.getter(name="machineIdentifyType")
     def machine_identify_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Machine identification type.
-        - ip: ip address Machine Group.
-        - userdefined: user-defined identity Machine Group.
+        The identifier type of the machine group. Valid values:
+
+        - ip: The machine group uses IP addresses as identifiers.
+        - userdefined: The machine group uses custom identifiers.
         """
         return pulumi.get(self, "machine_identify_type")
 
@@ -500,7 +542,7 @@ class MachineGroup(pulumi.CustomResource):
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Project name
+        The name of the project.
         """
         return pulumi.get(self, "project_name")
 

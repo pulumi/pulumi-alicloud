@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MachineGroupGroupAttribute {
     /**
-     * @return The external management system identification on which the machine group depends.
+     * @return The identifier of the external management system on which the machine group depends. This parameter is empty by default.
      * 
      */
     private @Nullable String externalName;
@@ -24,7 +24,7 @@ public final class MachineGroupGroupAttribute {
 
     private MachineGroupGroupAttribute() {}
     /**
-     * @return The external management system identification on which the machine group depends.
+     * @return The identifier of the external management system on which the machine group depends. This parameter is empty by default.
      * 
      */
     public Optional<String> externalName() {

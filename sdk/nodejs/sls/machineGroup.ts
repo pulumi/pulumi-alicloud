@@ -83,17 +83,23 @@ export class MachineGroup extends pulumi.CustomResource {
      */
     declare public readonly groupAttribute: pulumi.Output<outputs.sls.MachineGroupGroupAttribute | undefined>;
     /**
-     * Machine Group name
+     * The name of the machine group. The name must meet the following requirements:
+     *
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      */
     declare public readonly groupName: pulumi.Output<string>;
     /**
-     * Machine group type, optional value is empty.
+     * The type of the machine group. Set the value to an empty string.
      */
     declare public readonly groupType: pulumi.Output<string | undefined>;
     /**
-     * Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * The identifier type of the machine group. Valid values:
+     *
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      */
     declare public readonly machineIdentifyType: pulumi.Output<string>;
     /**
@@ -103,7 +109,7 @@ export class MachineGroup extends pulumi.CustomResource {
      */
     declare public readonly machineLists: pulumi.Output<string[]>;
     /**
-     * Project name
+     * The name of the project.
      */
     declare public readonly projectName: pulumi.Output<string>;
 
@@ -161,17 +167,23 @@ export interface MachineGroupState {
      */
     groupAttribute?: pulumi.Input<inputs.sls.MachineGroupGroupAttribute>;
     /**
-     * Machine Group name
+     * The name of the machine group. The name must meet the following requirements:
+     *
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      */
     groupName?: pulumi.Input<string>;
     /**
-     * Machine group type, optional value is empty.
+     * The type of the machine group. Set the value to an empty string.
      */
     groupType?: pulumi.Input<string>;
     /**
-     * Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * The identifier type of the machine group. Valid values:
+     *
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      */
     machineIdentifyType?: pulumi.Input<string>;
     /**
@@ -181,7 +193,7 @@ export interface MachineGroupState {
      */
     machineLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Project name
+     * The name of the project.
      */
     projectName?: pulumi.Input<string>;
 }
@@ -195,17 +207,23 @@ export interface MachineGroupArgs {
      */
     groupAttribute?: pulumi.Input<inputs.sls.MachineGroupGroupAttribute>;
     /**
-     * Machine Group name
+     * The name of the machine group. The name must meet the following requirements:
+     *
+     * - The name of each machine group in a project must be unique.
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It must start and end with a lowercase letter or a digit.
+     * - It must be 3 to 128 characters in length.
      */
     groupName: pulumi.Input<string>;
     /**
-     * Machine group type, optional value is empty.
+     * The type of the machine group. Set the value to an empty string.
      */
     groupType?: pulumi.Input<string>;
     /**
-     * Machine identification type.
-     * - ip: ip address Machine Group.
-     * - userdefined: user-defined identity Machine Group.
+     * The identifier type of the machine group. Valid values:
+     *
+     * - ip: The machine group uses IP addresses as identifiers.
+     * - userdefined: The machine group uses custom identifiers.
      */
     machineIdentifyType: pulumi.Input<string>;
     /**
@@ -215,7 +233,7 @@ export interface MachineGroupArgs {
      */
     machineLists: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Project name
+     * The name of the project.
      */
     projectName: pulumi.Input<string>;
 }

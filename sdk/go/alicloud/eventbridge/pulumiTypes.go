@@ -1769,6 +1769,2071 @@ func (o ConnectionNetworkParametersPtrOutput) VswitcheId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type EventSourceV2SourceHttpEventParameters struct {
+	// IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+	Ips []string `pulumi:"ips"`
+	// The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+	// - GET
+	// - POST
+	// - PUT
+	// - PATCH
+	// - DELETE
+	// - HEAD
+	// - OPTIONS
+	// - TRACE
+	// - CONNECT
+	Methods []string `pulumi:"methods"`
+	// The public network request URL.
+	PublicWebHookUrls []string `pulumi:"publicWebHookUrls"`
+	// Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+	Referers []string `pulumi:"referers"`
+	// Select the type of security configuration. The optional range is as follows:
+	// - none: No configuration is required.
+	// - ip:IP segment.
+	// - referer: Security domain name.
+	SecurityConfig *string `pulumi:"securityConfig"`
+	// The protocol type supported by the generated Webhook. The value description is as follows:
+	// - HTTP
+	// - HTTPS
+	// - HTTP&HTTPS
+	Type *string `pulumi:"type"`
+	// The intranet request URL.
+	VpcWebHookUrls []string `pulumi:"vpcWebHookUrls"`
+}
+
+// EventSourceV2SourceHttpEventParametersInput is an input type that accepts EventSourceV2SourceHttpEventParametersArgs and EventSourceV2SourceHttpEventParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceHttpEventParametersInput` via:
+//
+//	EventSourceV2SourceHttpEventParametersArgs{...}
+type EventSourceV2SourceHttpEventParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceHttpEventParametersOutput() EventSourceV2SourceHttpEventParametersOutput
+	ToEventSourceV2SourceHttpEventParametersOutputWithContext(context.Context) EventSourceV2SourceHttpEventParametersOutput
+}
+
+type EventSourceV2SourceHttpEventParametersArgs struct {
+	// IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+	// - GET
+	// - POST
+	// - PUT
+	// - PATCH
+	// - DELETE
+	// - HEAD
+	// - OPTIONS
+	// - TRACE
+	// - CONNECT
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The public network request URL.
+	PublicWebHookUrls pulumi.StringArrayInput `pulumi:"publicWebHookUrls"`
+	// Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+	Referers pulumi.StringArrayInput `pulumi:"referers"`
+	// Select the type of security configuration. The optional range is as follows:
+	// - none: No configuration is required.
+	// - ip:IP segment.
+	// - referer: Security domain name.
+	SecurityConfig pulumi.StringPtrInput `pulumi:"securityConfig"`
+	// The protocol type supported by the generated Webhook. The value description is as follows:
+	// - HTTP
+	// - HTTPS
+	// - HTTP&HTTPS
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The intranet request URL.
+	VpcWebHookUrls pulumi.StringArrayInput `pulumi:"vpcWebHookUrls"`
+}
+
+func (EventSourceV2SourceHttpEventParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceHttpEventParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceHttpEventParametersArgs) ToEventSourceV2SourceHttpEventParametersOutput() EventSourceV2SourceHttpEventParametersOutput {
+	return i.ToEventSourceV2SourceHttpEventParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceHttpEventParametersArgs) ToEventSourceV2SourceHttpEventParametersOutputWithContext(ctx context.Context) EventSourceV2SourceHttpEventParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceHttpEventParametersOutput)
+}
+
+func (i EventSourceV2SourceHttpEventParametersArgs) ToEventSourceV2SourceHttpEventParametersPtrOutput() EventSourceV2SourceHttpEventParametersPtrOutput {
+	return i.ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceHttpEventParametersArgs) ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceHttpEventParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceHttpEventParametersOutput).ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceHttpEventParametersPtrInput is an input type that accepts EventSourceV2SourceHttpEventParametersArgs, EventSourceV2SourceHttpEventParametersPtr and EventSourceV2SourceHttpEventParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceHttpEventParametersPtrInput` via:
+//
+//	        EventSourceV2SourceHttpEventParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceHttpEventParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceHttpEventParametersPtrOutput() EventSourceV2SourceHttpEventParametersPtrOutput
+	ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(context.Context) EventSourceV2SourceHttpEventParametersPtrOutput
+}
+
+type eventSourceV2SourceHttpEventParametersPtrType EventSourceV2SourceHttpEventParametersArgs
+
+func EventSourceV2SourceHttpEventParametersPtr(v *EventSourceV2SourceHttpEventParametersArgs) EventSourceV2SourceHttpEventParametersPtrInput {
+	return (*eventSourceV2SourceHttpEventParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceHttpEventParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceHttpEventParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceHttpEventParametersPtrType) ToEventSourceV2SourceHttpEventParametersPtrOutput() EventSourceV2SourceHttpEventParametersPtrOutput {
+	return i.ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceHttpEventParametersPtrType) ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceHttpEventParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceHttpEventParametersPtrOutput)
+}
+
+type EventSourceV2SourceHttpEventParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceHttpEventParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceHttpEventParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceHttpEventParametersOutput) ToEventSourceV2SourceHttpEventParametersOutput() EventSourceV2SourceHttpEventParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceHttpEventParametersOutput) ToEventSourceV2SourceHttpEventParametersOutputWithContext(ctx context.Context) EventSourceV2SourceHttpEventParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceHttpEventParametersOutput) ToEventSourceV2SourceHttpEventParametersPtrOutput() EventSourceV2SourceHttpEventParametersPtrOutput {
+	return o.ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceHttpEventParametersOutput) ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceHttpEventParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceHttpEventParameters) *EventSourceV2SourceHttpEventParameters {
+		return &v
+	}).(EventSourceV2SourceHttpEventParametersPtrOutput)
+}
+
+// IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+func (o EventSourceV2SourceHttpEventParametersOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+// - GET
+// - POST
+// - PUT
+// - PATCH
+// - DELETE
+// - HEAD
+// - OPTIONS
+// - TRACE
+// - CONNECT
+func (o EventSourceV2SourceHttpEventParametersOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The public network request URL.
+func (o EventSourceV2SourceHttpEventParametersOutput) PublicWebHookUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) []string { return v.PublicWebHookUrls }).(pulumi.StringArrayOutput)
+}
+
+// Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+func (o EventSourceV2SourceHttpEventParametersOutput) Referers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) []string { return v.Referers }).(pulumi.StringArrayOutput)
+}
+
+// Select the type of security configuration. The optional range is as follows:
+// - none: No configuration is required.
+// - ip:IP segment.
+// - referer: Security domain name.
+func (o EventSourceV2SourceHttpEventParametersOutput) SecurityConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) *string { return v.SecurityConfig }).(pulumi.StringPtrOutput)
+}
+
+// The protocol type supported by the generated Webhook. The value description is as follows:
+// - HTTP
+// - HTTPS
+// - HTTP&HTTPS
+func (o EventSourceV2SourceHttpEventParametersOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The intranet request URL.
+func (o EventSourceV2SourceHttpEventParametersOutput) VpcWebHookUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceHttpEventParameters) []string { return v.VpcWebHookUrls }).(pulumi.StringArrayOutput)
+}
+
+type EventSourceV2SourceHttpEventParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceHttpEventParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceHttpEventParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) ToEventSourceV2SourceHttpEventParametersPtrOutput() EventSourceV2SourceHttpEventParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) ToEventSourceV2SourceHttpEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceHttpEventParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) Elem() EventSourceV2SourceHttpEventParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) EventSourceV2SourceHttpEventParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceHttpEventParameters
+		return ret
+	}).(EventSourceV2SourceHttpEventParametersOutput)
+}
+
+// IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ips
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+// - GET
+// - POST
+// - PUT
+// - PATCH
+// - DELETE
+// - HEAD
+// - OPTIONS
+// - TRACE
+// - CONNECT
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The public network request URL.
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) PublicWebHookUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicWebHookUrls
+	}).(pulumi.StringArrayOutput)
+}
+
+// Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) Referers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Referers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Select the type of security configuration. The optional range is as follows:
+// - none: No configuration is required.
+// - ip:IP segment.
+// - referer: Security domain name.
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) SecurityConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// The protocol type supported by the generated Webhook. The value description is as follows:
+// - HTTP
+// - HTTPS
+// - HTTP&HTTPS
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The intranet request URL.
+func (o EventSourceV2SourceHttpEventParametersPtrOutput) VpcWebHookUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceHttpEventParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcWebHookUrls
+	}).(pulumi.StringArrayOutput)
+}
+
+type EventSourceV2SourceKafkaParameters struct {
+	// The Group ID of the consumer who subscribes to the Topic.
+	ConsumerGroup *string `pulumi:"consumerGroup"`
+	// The instance ID.
+	InstanceId *string `pulumi:"instanceId"`
+	// Network configuration: Default (Default network) and public network (self-built network).
+	Network *string `pulumi:"network"`
+	// Consumption sites.
+	OffsetReset *string `pulumi:"offsetReset"`
+	// The region ID.
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the security group.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The topic name.
+	Topic *string `pulumi:"topic"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
+	// The vSwitch ID.
+	VswitchIds *string `pulumi:"vswitchIds"`
+}
+
+// EventSourceV2SourceKafkaParametersInput is an input type that accepts EventSourceV2SourceKafkaParametersArgs and EventSourceV2SourceKafkaParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceKafkaParametersInput` via:
+//
+//	EventSourceV2SourceKafkaParametersArgs{...}
+type EventSourceV2SourceKafkaParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceKafkaParametersOutput() EventSourceV2SourceKafkaParametersOutput
+	ToEventSourceV2SourceKafkaParametersOutputWithContext(context.Context) EventSourceV2SourceKafkaParametersOutput
+}
+
+type EventSourceV2SourceKafkaParametersArgs struct {
+	// The Group ID of the consumer who subscribes to the Topic.
+	ConsumerGroup pulumi.StringPtrInput `pulumi:"consumerGroup"`
+	// The instance ID.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// Network configuration: Default (Default network) and public network (self-built network).
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Consumption sites.
+	OffsetReset pulumi.StringPtrInput `pulumi:"offsetReset"`
+	// The region ID.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// The topic name.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+	// The VPC ID.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The vSwitch ID.
+	VswitchIds pulumi.StringPtrInput `pulumi:"vswitchIds"`
+}
+
+func (EventSourceV2SourceKafkaParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceKafkaParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceKafkaParametersArgs) ToEventSourceV2SourceKafkaParametersOutput() EventSourceV2SourceKafkaParametersOutput {
+	return i.ToEventSourceV2SourceKafkaParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceKafkaParametersArgs) ToEventSourceV2SourceKafkaParametersOutputWithContext(ctx context.Context) EventSourceV2SourceKafkaParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceKafkaParametersOutput)
+}
+
+func (i EventSourceV2SourceKafkaParametersArgs) ToEventSourceV2SourceKafkaParametersPtrOutput() EventSourceV2SourceKafkaParametersPtrOutput {
+	return i.ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceKafkaParametersArgs) ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceKafkaParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceKafkaParametersOutput).ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceKafkaParametersPtrInput is an input type that accepts EventSourceV2SourceKafkaParametersArgs, EventSourceV2SourceKafkaParametersPtr and EventSourceV2SourceKafkaParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceKafkaParametersPtrInput` via:
+//
+//	        EventSourceV2SourceKafkaParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceKafkaParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceKafkaParametersPtrOutput() EventSourceV2SourceKafkaParametersPtrOutput
+	ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(context.Context) EventSourceV2SourceKafkaParametersPtrOutput
+}
+
+type eventSourceV2SourceKafkaParametersPtrType EventSourceV2SourceKafkaParametersArgs
+
+func EventSourceV2SourceKafkaParametersPtr(v *EventSourceV2SourceKafkaParametersArgs) EventSourceV2SourceKafkaParametersPtrInput {
+	return (*eventSourceV2SourceKafkaParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceKafkaParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceKafkaParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceKafkaParametersPtrType) ToEventSourceV2SourceKafkaParametersPtrOutput() EventSourceV2SourceKafkaParametersPtrOutput {
+	return i.ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceKafkaParametersPtrType) ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceKafkaParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceKafkaParametersPtrOutput)
+}
+
+type EventSourceV2SourceKafkaParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceKafkaParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceKafkaParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceKafkaParametersOutput) ToEventSourceV2SourceKafkaParametersOutput() EventSourceV2SourceKafkaParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceKafkaParametersOutput) ToEventSourceV2SourceKafkaParametersOutputWithContext(ctx context.Context) EventSourceV2SourceKafkaParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceKafkaParametersOutput) ToEventSourceV2SourceKafkaParametersPtrOutput() EventSourceV2SourceKafkaParametersPtrOutput {
+	return o.ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceKafkaParametersOutput) ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceKafkaParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceKafkaParameters) *EventSourceV2SourceKafkaParameters {
+		return &v
+	}).(EventSourceV2SourceKafkaParametersPtrOutput)
+}
+
+// The Group ID of the consumer who subscribes to the Topic.
+func (o EventSourceV2SourceKafkaParametersOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
+}
+
+// The instance ID.
+func (o EventSourceV2SourceKafkaParametersOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Network configuration: Default (Default network) and public network (self-built network).
+func (o EventSourceV2SourceKafkaParametersOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Consumption sites.
+func (o EventSourceV2SourceKafkaParametersOutput) OffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.OffsetReset }).(pulumi.StringPtrOutput)
+}
+
+// The region ID.
+func (o EventSourceV2SourceKafkaParametersOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group.
+func (o EventSourceV2SourceKafkaParametersOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The topic name.
+func (o EventSourceV2SourceKafkaParametersOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID.
+func (o EventSourceV2SourceKafkaParametersOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The vSwitch ID.
+func (o EventSourceV2SourceKafkaParametersOutput) VswitchIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceKafkaParameters) *string { return v.VswitchIds }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceKafkaParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceKafkaParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceKafkaParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceKafkaParametersPtrOutput) ToEventSourceV2SourceKafkaParametersPtrOutput() EventSourceV2SourceKafkaParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceKafkaParametersPtrOutput) ToEventSourceV2SourceKafkaParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceKafkaParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceKafkaParametersPtrOutput) Elem() EventSourceV2SourceKafkaParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) EventSourceV2SourceKafkaParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceKafkaParameters
+		return ret
+	}).(EventSourceV2SourceKafkaParametersOutput)
+}
+
+// The Group ID of the consumer who subscribes to the Topic.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance ID.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network configuration: Default (Default network) and public network (self-built network).
+func (o EventSourceV2SourceKafkaParametersPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Consumption sites.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) OffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetReset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region ID.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The topic name.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The vSwitch ID.
+func (o EventSourceV2SourceKafkaParametersPtrOutput) VswitchIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceKafkaParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchIds
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceMnsParameters struct {
+	// Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+	IsBase64Decode *bool `pulumi:"isBase64Decode"`
+	// The name of the Queue of the lightweight message Queue (formerly MNS).
+	QueueName *string `pulumi:"queueName"`
+	// The region of the lightweight message queue (formerly MNS).
+	RegionId *string `pulumi:"regionId"`
+}
+
+// EventSourceV2SourceMnsParametersInput is an input type that accepts EventSourceV2SourceMnsParametersArgs and EventSourceV2SourceMnsParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceMnsParametersInput` via:
+//
+//	EventSourceV2SourceMnsParametersArgs{...}
+type EventSourceV2SourceMnsParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceMnsParametersOutput() EventSourceV2SourceMnsParametersOutput
+	ToEventSourceV2SourceMnsParametersOutputWithContext(context.Context) EventSourceV2SourceMnsParametersOutput
+}
+
+type EventSourceV2SourceMnsParametersArgs struct {
+	// Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+	IsBase64Decode pulumi.BoolPtrInput `pulumi:"isBase64Decode"`
+	// The name of the Queue of the lightweight message Queue (formerly MNS).
+	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
+	// The region of the lightweight message queue (formerly MNS).
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+}
+
+func (EventSourceV2SourceMnsParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceMnsParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceMnsParametersArgs) ToEventSourceV2SourceMnsParametersOutput() EventSourceV2SourceMnsParametersOutput {
+	return i.ToEventSourceV2SourceMnsParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceMnsParametersArgs) ToEventSourceV2SourceMnsParametersOutputWithContext(ctx context.Context) EventSourceV2SourceMnsParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceMnsParametersOutput)
+}
+
+func (i EventSourceV2SourceMnsParametersArgs) ToEventSourceV2SourceMnsParametersPtrOutput() EventSourceV2SourceMnsParametersPtrOutput {
+	return i.ToEventSourceV2SourceMnsParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceMnsParametersArgs) ToEventSourceV2SourceMnsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceMnsParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceMnsParametersOutput).ToEventSourceV2SourceMnsParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceMnsParametersPtrInput is an input type that accepts EventSourceV2SourceMnsParametersArgs, EventSourceV2SourceMnsParametersPtr and EventSourceV2SourceMnsParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceMnsParametersPtrInput` via:
+//
+//	        EventSourceV2SourceMnsParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceMnsParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceMnsParametersPtrOutput() EventSourceV2SourceMnsParametersPtrOutput
+	ToEventSourceV2SourceMnsParametersPtrOutputWithContext(context.Context) EventSourceV2SourceMnsParametersPtrOutput
+}
+
+type eventSourceV2SourceMnsParametersPtrType EventSourceV2SourceMnsParametersArgs
+
+func EventSourceV2SourceMnsParametersPtr(v *EventSourceV2SourceMnsParametersArgs) EventSourceV2SourceMnsParametersPtrInput {
+	return (*eventSourceV2SourceMnsParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceMnsParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceMnsParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceMnsParametersPtrType) ToEventSourceV2SourceMnsParametersPtrOutput() EventSourceV2SourceMnsParametersPtrOutput {
+	return i.ToEventSourceV2SourceMnsParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceMnsParametersPtrType) ToEventSourceV2SourceMnsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceMnsParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceMnsParametersPtrOutput)
+}
+
+type EventSourceV2SourceMnsParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceMnsParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceMnsParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceMnsParametersOutput) ToEventSourceV2SourceMnsParametersOutput() EventSourceV2SourceMnsParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceMnsParametersOutput) ToEventSourceV2SourceMnsParametersOutputWithContext(ctx context.Context) EventSourceV2SourceMnsParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceMnsParametersOutput) ToEventSourceV2SourceMnsParametersPtrOutput() EventSourceV2SourceMnsParametersPtrOutput {
+	return o.ToEventSourceV2SourceMnsParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceMnsParametersOutput) ToEventSourceV2SourceMnsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceMnsParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceMnsParameters) *EventSourceV2SourceMnsParameters {
+		return &v
+	}).(EventSourceV2SourceMnsParametersPtrOutput)
+}
+
+// Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+func (o EventSourceV2SourceMnsParametersOutput) IsBase64Decode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceMnsParameters) *bool { return v.IsBase64Decode }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Queue of the lightweight message Queue (formerly MNS).
+func (o EventSourceV2SourceMnsParametersOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceMnsParameters) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// The region of the lightweight message queue (formerly MNS).
+func (o EventSourceV2SourceMnsParametersOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceMnsParameters) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceMnsParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceMnsParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceMnsParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceMnsParametersPtrOutput) ToEventSourceV2SourceMnsParametersPtrOutput() EventSourceV2SourceMnsParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceMnsParametersPtrOutput) ToEventSourceV2SourceMnsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceMnsParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceMnsParametersPtrOutput) Elem() EventSourceV2SourceMnsParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceMnsParameters) EventSourceV2SourceMnsParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceMnsParameters
+		return ret
+	}).(EventSourceV2SourceMnsParametersOutput)
+}
+
+// Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+func (o EventSourceV2SourceMnsParametersPtrOutput) IsBase64Decode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceMnsParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsBase64Decode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Queue of the lightweight message Queue (formerly MNS).
+func (o EventSourceV2SourceMnsParametersPtrOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceMnsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the lightweight message queue (formerly MNS).
+func (o EventSourceV2SourceMnsParametersPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceMnsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceOssEventParameters struct {
+	// OSS event type list.
+	EventTypes []string `pulumi:"eventTypes"`
+	// Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+	MatchRules [][]EventSourceV2SourceOssEventParametersMatchRule `pulumi:"matchRules"`
+	// The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+	StsRoleArn *string `pulumi:"stsRoleArn"`
+}
+
+// EventSourceV2SourceOssEventParametersInput is an input type that accepts EventSourceV2SourceOssEventParametersArgs and EventSourceV2SourceOssEventParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceOssEventParametersInput` via:
+//
+//	EventSourceV2SourceOssEventParametersArgs{...}
+type EventSourceV2SourceOssEventParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceOssEventParametersOutput() EventSourceV2SourceOssEventParametersOutput
+	ToEventSourceV2SourceOssEventParametersOutputWithContext(context.Context) EventSourceV2SourceOssEventParametersOutput
+}
+
+type EventSourceV2SourceOssEventParametersArgs struct {
+	// OSS event type list.
+	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+	// Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+	MatchRules EventSourceV2SourceOssEventParametersMatchRuleArrayArrayInput `pulumi:"matchRules"`
+	// The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+	StsRoleArn pulumi.StringPtrInput `pulumi:"stsRoleArn"`
+}
+
+func (EventSourceV2SourceOssEventParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceOssEventParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceOssEventParametersArgs) ToEventSourceV2SourceOssEventParametersOutput() EventSourceV2SourceOssEventParametersOutput {
+	return i.ToEventSourceV2SourceOssEventParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceOssEventParametersArgs) ToEventSourceV2SourceOssEventParametersOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceOssEventParametersOutput)
+}
+
+func (i EventSourceV2SourceOssEventParametersArgs) ToEventSourceV2SourceOssEventParametersPtrOutput() EventSourceV2SourceOssEventParametersPtrOutput {
+	return i.ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceOssEventParametersArgs) ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceOssEventParametersOutput).ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceOssEventParametersPtrInput is an input type that accepts EventSourceV2SourceOssEventParametersArgs, EventSourceV2SourceOssEventParametersPtr and EventSourceV2SourceOssEventParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceOssEventParametersPtrInput` via:
+//
+//	        EventSourceV2SourceOssEventParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceOssEventParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceOssEventParametersPtrOutput() EventSourceV2SourceOssEventParametersPtrOutput
+	ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(context.Context) EventSourceV2SourceOssEventParametersPtrOutput
+}
+
+type eventSourceV2SourceOssEventParametersPtrType EventSourceV2SourceOssEventParametersArgs
+
+func EventSourceV2SourceOssEventParametersPtr(v *EventSourceV2SourceOssEventParametersArgs) EventSourceV2SourceOssEventParametersPtrInput {
+	return (*eventSourceV2SourceOssEventParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceOssEventParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceOssEventParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceOssEventParametersPtrType) ToEventSourceV2SourceOssEventParametersPtrOutput() EventSourceV2SourceOssEventParametersPtrOutput {
+	return i.ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceOssEventParametersPtrType) ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceOssEventParametersPtrOutput)
+}
+
+type EventSourceV2SourceOssEventParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceOssEventParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceOssEventParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceOssEventParametersOutput) ToEventSourceV2SourceOssEventParametersOutput() EventSourceV2SourceOssEventParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersOutput) ToEventSourceV2SourceOssEventParametersOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersOutput) ToEventSourceV2SourceOssEventParametersPtrOutput() EventSourceV2SourceOssEventParametersPtrOutput {
+	return o.ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceOssEventParametersOutput) ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceOssEventParameters) *EventSourceV2SourceOssEventParameters {
+		return &v
+	}).(EventSourceV2SourceOssEventParametersPtrOutput)
+}
+
+// OSS event type list.
+func (o EventSourceV2SourceOssEventParametersOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParameters) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+func (o EventSourceV2SourceOssEventParametersOutput) MatchRules() EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParameters) [][]EventSourceV2SourceOssEventParametersMatchRule {
+		return v.MatchRules
+	}).(EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput)
+}
+
+// The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+func (o EventSourceV2SourceOssEventParametersOutput) StsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParameters) *string { return v.StsRoleArn }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceOssEventParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceOssEventParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceOssEventParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceOssEventParametersPtrOutput) ToEventSourceV2SourceOssEventParametersPtrOutput() EventSourceV2SourceOssEventParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersPtrOutput) ToEventSourceV2SourceOssEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersPtrOutput) Elem() EventSourceV2SourceOssEventParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceOssEventParameters) EventSourceV2SourceOssEventParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceOssEventParameters
+		return ret
+	}).(EventSourceV2SourceOssEventParametersOutput)
+}
+
+// OSS event type list.
+func (o EventSourceV2SourceOssEventParametersPtrOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceOssEventParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+func (o EventSourceV2SourceOssEventParametersPtrOutput) MatchRules() EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceOssEventParameters) [][]EventSourceV2SourceOssEventParametersMatchRule {
+		if v == nil {
+			return nil
+		}
+		return v.MatchRules
+	}).(EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput)
+}
+
+// The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+func (o EventSourceV2SourceOssEventParametersPtrOutput) StsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceOssEventParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StsRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceOssEventParametersMatchRule struct {
+	MatchState *string `pulumi:"matchState"`
+	Name       *string `pulumi:"name"`
+	Prefix     *string `pulumi:"prefix"`
+	Suffix     *string `pulumi:"suffix"`
+}
+
+// EventSourceV2SourceOssEventParametersMatchRuleInput is an input type that accepts EventSourceV2SourceOssEventParametersMatchRuleArgs and EventSourceV2SourceOssEventParametersMatchRuleOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceOssEventParametersMatchRuleInput` via:
+//
+//	EventSourceV2SourceOssEventParametersMatchRuleArgs{...}
+type EventSourceV2SourceOssEventParametersMatchRuleInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceOssEventParametersMatchRuleOutput() EventSourceV2SourceOssEventParametersMatchRuleOutput
+	ToEventSourceV2SourceOssEventParametersMatchRuleOutputWithContext(context.Context) EventSourceV2SourceOssEventParametersMatchRuleOutput
+}
+
+type EventSourceV2SourceOssEventParametersMatchRuleArgs struct {
+	MatchState pulumi.StringPtrInput `pulumi:"matchState"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Prefix     pulumi.StringPtrInput `pulumi:"prefix"`
+	Suffix     pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (EventSourceV2SourceOssEventParametersMatchRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceOssEventParametersMatchRule)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceOssEventParametersMatchRuleArgs) ToEventSourceV2SourceOssEventParametersMatchRuleOutput() EventSourceV2SourceOssEventParametersMatchRuleOutput {
+	return i.ToEventSourceV2SourceOssEventParametersMatchRuleOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceOssEventParametersMatchRuleArgs) ToEventSourceV2SourceOssEventParametersMatchRuleOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersMatchRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceOssEventParametersMatchRuleOutput)
+}
+
+// EventSourceV2SourceOssEventParametersMatchRuleArrayInput is an input type that accepts EventSourceV2SourceOssEventParametersMatchRuleArray and EventSourceV2SourceOssEventParametersMatchRuleArrayOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceOssEventParametersMatchRuleArrayInput` via:
+//
+//	EventSourceV2SourceOssEventParametersMatchRuleArray{ EventSourceV2SourceOssEventParametersMatchRuleArgs{...} }
+type EventSourceV2SourceOssEventParametersMatchRuleArrayInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutput() EventSourceV2SourceOssEventParametersMatchRuleArrayOutput
+	ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutputWithContext(context.Context) EventSourceV2SourceOssEventParametersMatchRuleArrayOutput
+}
+
+type EventSourceV2SourceOssEventParametersMatchRuleArray []EventSourceV2SourceOssEventParametersMatchRuleInput
+
+func (EventSourceV2SourceOssEventParametersMatchRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventSourceV2SourceOssEventParametersMatchRule)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceOssEventParametersMatchRuleArray) ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutput() EventSourceV2SourceOssEventParametersMatchRuleArrayOutput {
+	return i.ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceOssEventParametersMatchRuleArray) ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersMatchRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceOssEventParametersMatchRuleArrayOutput)
+}
+
+type EventSourceV2SourceOssEventParametersMatchRuleOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceOssEventParametersMatchRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceOssEventParametersMatchRule)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleOutput) ToEventSourceV2SourceOssEventParametersMatchRuleOutput() EventSourceV2SourceOssEventParametersMatchRuleOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleOutput) ToEventSourceV2SourceOssEventParametersMatchRuleOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersMatchRuleOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleOutput) MatchState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParametersMatchRule) *string { return v.MatchState }).(pulumi.StringPtrOutput)
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParametersMatchRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParametersMatchRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceOssEventParametersMatchRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceOssEventParametersMatchRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceOssEventParametersMatchRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventSourceV2SourceOssEventParametersMatchRule)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleArrayOutput) ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutput() EventSourceV2SourceOssEventParametersMatchRuleArrayOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleArrayOutput) ToEventSourceV2SourceOssEventParametersMatchRuleArrayOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersMatchRuleArrayOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleArrayOutput) Index(i pulumi.IntInput) EventSourceV2SourceOssEventParametersMatchRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventSourceV2SourceOssEventParametersMatchRule {
+		return vs[0].([]EventSourceV2SourceOssEventParametersMatchRule)[vs[1].(int)]
+	}).(EventSourceV2SourceOssEventParametersMatchRuleOutput)
+}
+
+type EventSourceV2SourceRabbitMqParameters struct {
+	// The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	InstanceId *string `pulumi:"instanceId"`
+	// The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	QueueName *string `pulumi:"queueName"`
+	// The region of the RabbitMQ instance.
+	RegionId *string `pulumi:"regionId"`
+	// The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	VirtualHostName *string `pulumi:"virtualHostName"`
+}
+
+// EventSourceV2SourceRabbitMqParametersInput is an input type that accepts EventSourceV2SourceRabbitMqParametersArgs and EventSourceV2SourceRabbitMqParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceRabbitMqParametersInput` via:
+//
+//	EventSourceV2SourceRabbitMqParametersArgs{...}
+type EventSourceV2SourceRabbitMqParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceRabbitMqParametersOutput() EventSourceV2SourceRabbitMqParametersOutput
+	ToEventSourceV2SourceRabbitMqParametersOutputWithContext(context.Context) EventSourceV2SourceRabbitMqParametersOutput
+}
+
+type EventSourceV2SourceRabbitMqParametersArgs struct {
+	// The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
+	// The region of the RabbitMQ instance.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	VirtualHostName pulumi.StringPtrInput `pulumi:"virtualHostName"`
+}
+
+func (EventSourceV2SourceRabbitMqParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceRabbitMqParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceRabbitMqParametersArgs) ToEventSourceV2SourceRabbitMqParametersOutput() EventSourceV2SourceRabbitMqParametersOutput {
+	return i.ToEventSourceV2SourceRabbitMqParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceRabbitMqParametersArgs) ToEventSourceV2SourceRabbitMqParametersOutputWithContext(ctx context.Context) EventSourceV2SourceRabbitMqParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceRabbitMqParametersOutput)
+}
+
+func (i EventSourceV2SourceRabbitMqParametersArgs) ToEventSourceV2SourceRabbitMqParametersPtrOutput() EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return i.ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceRabbitMqParametersArgs) ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceRabbitMqParametersOutput).ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceRabbitMqParametersPtrInput is an input type that accepts EventSourceV2SourceRabbitMqParametersArgs, EventSourceV2SourceRabbitMqParametersPtr and EventSourceV2SourceRabbitMqParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceRabbitMqParametersPtrInput` via:
+//
+//	        EventSourceV2SourceRabbitMqParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceRabbitMqParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceRabbitMqParametersPtrOutput() EventSourceV2SourceRabbitMqParametersPtrOutput
+	ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(context.Context) EventSourceV2SourceRabbitMqParametersPtrOutput
+}
+
+type eventSourceV2SourceRabbitMqParametersPtrType EventSourceV2SourceRabbitMqParametersArgs
+
+func EventSourceV2SourceRabbitMqParametersPtr(v *EventSourceV2SourceRabbitMqParametersArgs) EventSourceV2SourceRabbitMqParametersPtrInput {
+	return (*eventSourceV2SourceRabbitMqParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceRabbitMqParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceRabbitMqParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceRabbitMqParametersPtrType) ToEventSourceV2SourceRabbitMqParametersPtrOutput() EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return i.ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceRabbitMqParametersPtrType) ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceRabbitMqParametersPtrOutput)
+}
+
+type EventSourceV2SourceRabbitMqParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceRabbitMqParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceRabbitMqParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceRabbitMqParametersOutput) ToEventSourceV2SourceRabbitMqParametersOutput() EventSourceV2SourceRabbitMqParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRabbitMqParametersOutput) ToEventSourceV2SourceRabbitMqParametersOutputWithContext(ctx context.Context) EventSourceV2SourceRabbitMqParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRabbitMqParametersOutput) ToEventSourceV2SourceRabbitMqParametersPtrOutput() EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return o.ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceRabbitMqParametersOutput) ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceRabbitMqParameters) *EventSourceV2SourceRabbitMqParameters {
+		return &v
+	}).(EventSourceV2SourceRabbitMqParametersPtrOutput)
+}
+
+// The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRabbitMqParametersOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRabbitMqParameters) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRabbitMqParametersOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRabbitMqParameters) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// The region of the RabbitMQ instance.
+func (o EventSourceV2SourceRabbitMqParametersOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRabbitMqParameters) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRabbitMqParametersOutput) VirtualHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRabbitMqParameters) *string { return v.VirtualHostName }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceRabbitMqParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceRabbitMqParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceRabbitMqParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) ToEventSourceV2SourceRabbitMqParametersPtrOutput() EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) ToEventSourceV2SourceRabbitMqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRabbitMqParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) Elem() EventSourceV2SourceRabbitMqParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRabbitMqParameters) EventSourceV2SourceRabbitMqParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceRabbitMqParameters
+		return ret
+	}).(EventSourceV2SourceRabbitMqParametersOutput)
+}
+
+// The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRabbitMqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRabbitMqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the RabbitMQ instance.
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRabbitMqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRabbitMqParametersPtrOutput) VirtualHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRabbitMqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualHostName
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceRocketmqParameters struct {
+	// ACL or not.
+	AuthType *string `pulumi:"authType"`
+	// The Group ID of the RocketMQ version of message queue.
+	GroupId *string `pulumi:"groupId"`
+	// Instance access point.
+	InstanceEndpoint *string `pulumi:"instanceEndpoint"`
+	// The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	InstanceId *string `pulumi:"instanceId"`
+	// Instance network.
+	InstanceNetwork *string `pulumi:"instanceNetwork"`
+	// The instance password.
+	InstancePassword *string `pulumi:"instancePassword"`
+	// The ID of the security group.
+	InstanceSecurityGroupId *string `pulumi:"instanceSecurityGroupId"`
+	// The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+	InstanceType *string `pulumi:"instanceType"`
+	// The instance user name.
+	InstanceUsername *string `pulumi:"instanceUsername"`
+	// The ID of the VPC.
+	InstanceVpcId *string `pulumi:"instanceVpcId"`
+	// The vSwitch ID.
+	InstanceVswitchIds *string `pulumi:"instanceVswitchIds"`
+	// The consumption point of the message. The value description is as follows:
+	// - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+	// - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+	// - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+	//   Default value: `CONSUME_FROM_LAST_OFFSET`.
+	Offset *string `pulumi:"offset"`
+	// The region of the RocketMQ instance.
+	RegionId *string `pulumi:"regionId"`
+	// The filter label of the message.
+	Tag *string `pulumi:"tag"`
+	// The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+	Timestamp *float64 `pulumi:"timestamp"`
+	// The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	Topic *string `pulumi:"topic"`
+}
+
+// EventSourceV2SourceRocketmqParametersInput is an input type that accepts EventSourceV2SourceRocketmqParametersArgs and EventSourceV2SourceRocketmqParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceRocketmqParametersInput` via:
+//
+//	EventSourceV2SourceRocketmqParametersArgs{...}
+type EventSourceV2SourceRocketmqParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceRocketmqParametersOutput() EventSourceV2SourceRocketmqParametersOutput
+	ToEventSourceV2SourceRocketmqParametersOutputWithContext(context.Context) EventSourceV2SourceRocketmqParametersOutput
+}
+
+type EventSourceV2SourceRocketmqParametersArgs struct {
+	// ACL or not.
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// The Group ID of the RocketMQ version of message queue.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Instance access point.
+	InstanceEndpoint pulumi.StringPtrInput `pulumi:"instanceEndpoint"`
+	// The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// Instance network.
+	InstanceNetwork pulumi.StringPtrInput `pulumi:"instanceNetwork"`
+	// The instance password.
+	InstancePassword pulumi.StringPtrInput `pulumi:"instancePassword"`
+	// The ID of the security group.
+	InstanceSecurityGroupId pulumi.StringPtrInput `pulumi:"instanceSecurityGroupId"`
+	// The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The instance user name.
+	InstanceUsername pulumi.StringPtrInput `pulumi:"instanceUsername"`
+	// The ID of the VPC.
+	InstanceVpcId pulumi.StringPtrInput `pulumi:"instanceVpcId"`
+	// The vSwitch ID.
+	InstanceVswitchIds pulumi.StringPtrInput `pulumi:"instanceVswitchIds"`
+	// The consumption point of the message. The value description is as follows:
+	// - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+	// - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+	// - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+	//   Default value: `CONSUME_FROM_LAST_OFFSET`.
+	Offset pulumi.StringPtrInput `pulumi:"offset"`
+	// The region of the RocketMQ instance.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The filter label of the message.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+	Timestamp pulumi.Float64PtrInput `pulumi:"timestamp"`
+	// The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (EventSourceV2SourceRocketmqParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceRocketmqParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceRocketmqParametersArgs) ToEventSourceV2SourceRocketmqParametersOutput() EventSourceV2SourceRocketmqParametersOutput {
+	return i.ToEventSourceV2SourceRocketmqParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceRocketmqParametersArgs) ToEventSourceV2SourceRocketmqParametersOutputWithContext(ctx context.Context) EventSourceV2SourceRocketmqParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceRocketmqParametersOutput)
+}
+
+func (i EventSourceV2SourceRocketmqParametersArgs) ToEventSourceV2SourceRocketmqParametersPtrOutput() EventSourceV2SourceRocketmqParametersPtrOutput {
+	return i.ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceRocketmqParametersArgs) ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRocketmqParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceRocketmqParametersOutput).ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceRocketmqParametersPtrInput is an input type that accepts EventSourceV2SourceRocketmqParametersArgs, EventSourceV2SourceRocketmqParametersPtr and EventSourceV2SourceRocketmqParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceRocketmqParametersPtrInput` via:
+//
+//	        EventSourceV2SourceRocketmqParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceRocketmqParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceRocketmqParametersPtrOutput() EventSourceV2SourceRocketmqParametersPtrOutput
+	ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(context.Context) EventSourceV2SourceRocketmqParametersPtrOutput
+}
+
+type eventSourceV2SourceRocketmqParametersPtrType EventSourceV2SourceRocketmqParametersArgs
+
+func EventSourceV2SourceRocketmqParametersPtr(v *EventSourceV2SourceRocketmqParametersArgs) EventSourceV2SourceRocketmqParametersPtrInput {
+	return (*eventSourceV2SourceRocketmqParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceRocketmqParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceRocketmqParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceRocketmqParametersPtrType) ToEventSourceV2SourceRocketmqParametersPtrOutput() EventSourceV2SourceRocketmqParametersPtrOutput {
+	return i.ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceRocketmqParametersPtrType) ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRocketmqParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceRocketmqParametersPtrOutput)
+}
+
+type EventSourceV2SourceRocketmqParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceRocketmqParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceRocketmqParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceRocketmqParametersOutput) ToEventSourceV2SourceRocketmqParametersOutput() EventSourceV2SourceRocketmqParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRocketmqParametersOutput) ToEventSourceV2SourceRocketmqParametersOutputWithContext(ctx context.Context) EventSourceV2SourceRocketmqParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRocketmqParametersOutput) ToEventSourceV2SourceRocketmqParametersPtrOutput() EventSourceV2SourceRocketmqParametersPtrOutput {
+	return o.ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceRocketmqParametersOutput) ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRocketmqParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceRocketmqParameters) *EventSourceV2SourceRocketmqParameters {
+		return &v
+	}).(EventSourceV2SourceRocketmqParametersPtrOutput)
+}
+
+// ACL or not.
+func (o EventSourceV2SourceRocketmqParametersOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The Group ID of the RocketMQ version of message queue.
+func (o EventSourceV2SourceRocketmqParametersOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Instance access point.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Instance network.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceNetwork }).(pulumi.StringPtrOutput)
+}
+
+// The instance password.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstancePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstancePassword }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The instance user name.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceVpcId }).(pulumi.StringPtrOutput)
+}
+
+// The vSwitch ID.
+func (o EventSourceV2SourceRocketmqParametersOutput) InstanceVswitchIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.InstanceVswitchIds }).(pulumi.StringPtrOutput)
+}
+
+// The consumption point of the message. The value description is as follows:
+//   - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+//   - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+//   - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+//     Default value: `CONSUME_FROM_LAST_OFFSET`.
+func (o EventSourceV2SourceRocketmqParametersOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.Offset }).(pulumi.StringPtrOutput)
+}
+
+// The region of the RocketMQ instance.
+func (o EventSourceV2SourceRocketmqParametersOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The filter label of the message.
+func (o EventSourceV2SourceRocketmqParametersOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+func (o EventSourceV2SourceRocketmqParametersOutput) Timestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *float64 { return v.Timestamp }).(pulumi.Float64PtrOutput)
+}
+
+// The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRocketmqParametersOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceRocketmqParameters) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceRocketmqParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceRocketmqParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceRocketmqParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) ToEventSourceV2SourceRocketmqParametersPtrOutput() EventSourceV2SourceRocketmqParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) ToEventSourceV2SourceRocketmqParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceRocketmqParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) Elem() EventSourceV2SourceRocketmqParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) EventSourceV2SourceRocketmqParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceRocketmqParameters
+		return ret
+	}).(EventSourceV2SourceRocketmqParametersOutput)
+}
+
+// ACL or not.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Group ID of the RocketMQ version of message queue.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance access point.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance network.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance password.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstancePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance user name.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceVpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The vSwitch ID.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) InstanceVswitchIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceVswitchIds
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consumption point of the message. The value description is as follows:
+//   - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+//   - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+//   - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+//     Default value: `CONSUME_FROM_LAST_OFFSET`.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) Offset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the RocketMQ instance.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The filter label of the message.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) Timestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Timestamp
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+func (o EventSourceV2SourceRocketmqParametersPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceRocketmqParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceScheduledEventParameters struct {
+	// Cron expression
+	Schedule *string `pulumi:"schedule"`
+	// The Cron execution time zone.
+	TimeZone *string `pulumi:"timeZone"`
+	// JSON string
+	UserData *string `pulumi:"userData"`
+}
+
+// EventSourceV2SourceScheduledEventParametersInput is an input type that accepts EventSourceV2SourceScheduledEventParametersArgs and EventSourceV2SourceScheduledEventParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceScheduledEventParametersInput` via:
+//
+//	EventSourceV2SourceScheduledEventParametersArgs{...}
+type EventSourceV2SourceScheduledEventParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceScheduledEventParametersOutput() EventSourceV2SourceScheduledEventParametersOutput
+	ToEventSourceV2SourceScheduledEventParametersOutputWithContext(context.Context) EventSourceV2SourceScheduledEventParametersOutput
+}
+
+type EventSourceV2SourceScheduledEventParametersArgs struct {
+	// Cron expression
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// The Cron execution time zone.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+	// JSON string
+	UserData pulumi.StringPtrInput `pulumi:"userData"`
+}
+
+func (EventSourceV2SourceScheduledEventParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceScheduledEventParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceScheduledEventParametersArgs) ToEventSourceV2SourceScheduledEventParametersOutput() EventSourceV2SourceScheduledEventParametersOutput {
+	return i.ToEventSourceV2SourceScheduledEventParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceScheduledEventParametersArgs) ToEventSourceV2SourceScheduledEventParametersOutputWithContext(ctx context.Context) EventSourceV2SourceScheduledEventParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceScheduledEventParametersOutput)
+}
+
+func (i EventSourceV2SourceScheduledEventParametersArgs) ToEventSourceV2SourceScheduledEventParametersPtrOutput() EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return i.ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceScheduledEventParametersArgs) ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceScheduledEventParametersOutput).ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceScheduledEventParametersPtrInput is an input type that accepts EventSourceV2SourceScheduledEventParametersArgs, EventSourceV2SourceScheduledEventParametersPtr and EventSourceV2SourceScheduledEventParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceScheduledEventParametersPtrInput` via:
+//
+//	        EventSourceV2SourceScheduledEventParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceScheduledEventParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceScheduledEventParametersPtrOutput() EventSourceV2SourceScheduledEventParametersPtrOutput
+	ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(context.Context) EventSourceV2SourceScheduledEventParametersPtrOutput
+}
+
+type eventSourceV2SourceScheduledEventParametersPtrType EventSourceV2SourceScheduledEventParametersArgs
+
+func EventSourceV2SourceScheduledEventParametersPtr(v *EventSourceV2SourceScheduledEventParametersArgs) EventSourceV2SourceScheduledEventParametersPtrInput {
+	return (*eventSourceV2SourceScheduledEventParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceScheduledEventParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceScheduledEventParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceScheduledEventParametersPtrType) ToEventSourceV2SourceScheduledEventParametersPtrOutput() EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return i.ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceScheduledEventParametersPtrType) ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceScheduledEventParametersPtrOutput)
+}
+
+type EventSourceV2SourceScheduledEventParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceScheduledEventParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceScheduledEventParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceScheduledEventParametersOutput) ToEventSourceV2SourceScheduledEventParametersOutput() EventSourceV2SourceScheduledEventParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceScheduledEventParametersOutput) ToEventSourceV2SourceScheduledEventParametersOutputWithContext(ctx context.Context) EventSourceV2SourceScheduledEventParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceScheduledEventParametersOutput) ToEventSourceV2SourceScheduledEventParametersPtrOutput() EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return o.ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceScheduledEventParametersOutput) ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceScheduledEventParameters) *EventSourceV2SourceScheduledEventParameters {
+		return &v
+	}).(EventSourceV2SourceScheduledEventParametersPtrOutput)
+}
+
+// Cron expression
+func (o EventSourceV2SourceScheduledEventParametersOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceScheduledEventParameters) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The Cron execution time zone.
+func (o EventSourceV2SourceScheduledEventParametersOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceScheduledEventParameters) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// JSON string
+func (o EventSourceV2SourceScheduledEventParametersOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceScheduledEventParameters) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceScheduledEventParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceScheduledEventParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceScheduledEventParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceScheduledEventParametersPtrOutput) ToEventSourceV2SourceScheduledEventParametersPtrOutput() EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceScheduledEventParametersPtrOutput) ToEventSourceV2SourceScheduledEventParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceScheduledEventParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceScheduledEventParametersPtrOutput) Elem() EventSourceV2SourceScheduledEventParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceScheduledEventParameters) EventSourceV2SourceScheduledEventParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceScheduledEventParameters
+		return ret
+	}).(EventSourceV2SourceScheduledEventParametersOutput)
+}
+
+// Cron expression
+func (o EventSourceV2SourceScheduledEventParametersPtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceScheduledEventParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron execution time zone.
+func (o EventSourceV2SourceScheduledEventParametersPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceScheduledEventParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// JSON string
+func (o EventSourceV2SourceScheduledEventParametersPtrOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceScheduledEventParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserData
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceSlsParameters struct {
+	// Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+	ConsumePosition *string `pulumi:"consumePosition"`
+	// The logstore of log service SLS.
+	LogStore *string `pulumi:"logStore"`
+	// The log project of log service SLS.
+	Project *string `pulumi:"project"`
+	// When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+	RoleName *string `pulumi:"roleName"`
+}
+
+// EventSourceV2SourceSlsParametersInput is an input type that accepts EventSourceV2SourceSlsParametersArgs and EventSourceV2SourceSlsParametersOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceSlsParametersInput` via:
+//
+//	EventSourceV2SourceSlsParametersArgs{...}
+type EventSourceV2SourceSlsParametersInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceSlsParametersOutput() EventSourceV2SourceSlsParametersOutput
+	ToEventSourceV2SourceSlsParametersOutputWithContext(context.Context) EventSourceV2SourceSlsParametersOutput
+}
+
+type EventSourceV2SourceSlsParametersArgs struct {
+	// Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+	ConsumePosition pulumi.StringPtrInput `pulumi:"consumePosition"`
+	// The logstore of log service SLS.
+	LogStore pulumi.StringPtrInput `pulumi:"logStore"`
+	// The log project of log service SLS.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
+}
+
+func (EventSourceV2SourceSlsParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceSlsParameters)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceSlsParametersArgs) ToEventSourceV2SourceSlsParametersOutput() EventSourceV2SourceSlsParametersOutput {
+	return i.ToEventSourceV2SourceSlsParametersOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceSlsParametersArgs) ToEventSourceV2SourceSlsParametersOutputWithContext(ctx context.Context) EventSourceV2SourceSlsParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceSlsParametersOutput)
+}
+
+func (i EventSourceV2SourceSlsParametersArgs) ToEventSourceV2SourceSlsParametersPtrOutput() EventSourceV2SourceSlsParametersPtrOutput {
+	return i.ToEventSourceV2SourceSlsParametersPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceSlsParametersArgs) ToEventSourceV2SourceSlsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceSlsParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceSlsParametersOutput).ToEventSourceV2SourceSlsParametersPtrOutputWithContext(ctx)
+}
+
+// EventSourceV2SourceSlsParametersPtrInput is an input type that accepts EventSourceV2SourceSlsParametersArgs, EventSourceV2SourceSlsParametersPtr and EventSourceV2SourceSlsParametersPtrOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceSlsParametersPtrInput` via:
+//
+//	        EventSourceV2SourceSlsParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventSourceV2SourceSlsParametersPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceSlsParametersPtrOutput() EventSourceV2SourceSlsParametersPtrOutput
+	ToEventSourceV2SourceSlsParametersPtrOutputWithContext(context.Context) EventSourceV2SourceSlsParametersPtrOutput
+}
+
+type eventSourceV2SourceSlsParametersPtrType EventSourceV2SourceSlsParametersArgs
+
+func EventSourceV2SourceSlsParametersPtr(v *EventSourceV2SourceSlsParametersArgs) EventSourceV2SourceSlsParametersPtrInput {
+	return (*eventSourceV2SourceSlsParametersPtrType)(v)
+}
+
+func (*eventSourceV2SourceSlsParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceSlsParameters)(nil)).Elem()
+}
+
+func (i *eventSourceV2SourceSlsParametersPtrType) ToEventSourceV2SourceSlsParametersPtrOutput() EventSourceV2SourceSlsParametersPtrOutput {
+	return i.ToEventSourceV2SourceSlsParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceV2SourceSlsParametersPtrType) ToEventSourceV2SourceSlsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceSlsParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceSlsParametersPtrOutput)
+}
+
+type EventSourceV2SourceSlsParametersOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceSlsParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceV2SourceSlsParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceSlsParametersOutput) ToEventSourceV2SourceSlsParametersOutput() EventSourceV2SourceSlsParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceSlsParametersOutput) ToEventSourceV2SourceSlsParametersOutputWithContext(ctx context.Context) EventSourceV2SourceSlsParametersOutput {
+	return o
+}
+
+func (o EventSourceV2SourceSlsParametersOutput) ToEventSourceV2SourceSlsParametersPtrOutput() EventSourceV2SourceSlsParametersPtrOutput {
+	return o.ToEventSourceV2SourceSlsParametersPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceV2SourceSlsParametersOutput) ToEventSourceV2SourceSlsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceSlsParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventSourceV2SourceSlsParameters) *EventSourceV2SourceSlsParameters {
+		return &v
+	}).(EventSourceV2SourceSlsParametersPtrOutput)
+}
+
+// Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+func (o EventSourceV2SourceSlsParametersOutput) ConsumePosition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceSlsParameters) *string { return v.ConsumePosition }).(pulumi.StringPtrOutput)
+}
+
+// The logstore of log service SLS.
+func (o EventSourceV2SourceSlsParametersOutput) LogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceSlsParameters) *string { return v.LogStore }).(pulumi.StringPtrOutput)
+}
+
+// The log project of log service SLS.
+func (o EventSourceV2SourceSlsParametersOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceSlsParameters) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+func (o EventSourceV2SourceSlsParametersOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventSourceV2SourceSlsParameters) *string { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+type EventSourceV2SourceSlsParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceSlsParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceV2SourceSlsParameters)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceSlsParametersPtrOutput) ToEventSourceV2SourceSlsParametersPtrOutput() EventSourceV2SourceSlsParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceSlsParametersPtrOutput) ToEventSourceV2SourceSlsParametersPtrOutputWithContext(ctx context.Context) EventSourceV2SourceSlsParametersPtrOutput {
+	return o
+}
+
+func (o EventSourceV2SourceSlsParametersPtrOutput) Elem() EventSourceV2SourceSlsParametersOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceSlsParameters) EventSourceV2SourceSlsParameters {
+		if v != nil {
+			return *v
+		}
+		var ret EventSourceV2SourceSlsParameters
+		return ret
+	}).(EventSourceV2SourceSlsParametersOutput)
+}
+
+// Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+func (o EventSourceV2SourceSlsParametersPtrOutput) ConsumePosition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceSlsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumePosition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The logstore of log service SLS.
+func (o EventSourceV2SourceSlsParametersPtrOutput) LogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceSlsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The log project of log service SLS.
+func (o EventSourceV2SourceSlsParametersPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceSlsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+func (o EventSourceV2SourceSlsParametersPtrOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventSourceV2SourceSlsParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleName
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuleTarget struct {
 	// The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
 	DeadLetterQueue *RuleTargetDeadLetterQueue `pulumi:"deadLetterQueue"`
@@ -2734,6 +4799,51 @@ func (o GetRulesRuleTargetArrayOutput) Index(i pulumi.IntInput) GetRulesRuleTarg
 	}).(GetRulesRuleTargetOutput)
 }
 
+type EventSourceV2SourceOssEventParametersMatchRuleArrayArray []EventSourceV2SourceOssEventParametersMatchRuleArrayInput
+
+func (EventSourceV2SourceOssEventParametersMatchRuleArrayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]EventSourceV2SourceOssEventParametersMatchRule)(nil)).Elem()
+}
+
+func (i EventSourceV2SourceOssEventParametersMatchRuleArrayArray) ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput() EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput {
+	return i.ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutputWithContext(context.Background())
+}
+
+func (i EventSourceV2SourceOssEventParametersMatchRuleArrayArray) ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput)
+}
+
+// EventSourceV2SourceOssEventParametersMatchRuleArrayArrayInput is an input type that accepts EventSourceV2SourceOssEventParametersMatchRuleArrayArray and EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput values.
+// You can construct a concrete instance of `EventSourceV2SourceOssEventParametersMatchRuleArrayArrayInput` via:
+//
+//	EventSourceV2SourceOssEventParametersMatchRuleArrayArray{ EventSourceV2SourceOssEventParametersMatchRuleArray{ EventSourceV2SourceOssEventParametersMatchRuleArgs{...} } }
+type EventSourceV2SourceOssEventParametersMatchRuleArrayArrayInput interface {
+	pulumi.Input
+
+	ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput() EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput
+	ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutputWithContext(context.Context) EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput
+}
+
+type EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput struct{ *pulumi.OutputState }
+
+func (EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]EventSourceV2SourceOssEventParametersMatchRule)(nil)).Elem()
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput) ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput() EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput) ToEventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutputWithContext(ctx context.Context) EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput {
+	return o
+}
+
+func (o EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput) Index(i pulumi.IntInput) EventSourceV2SourceOssEventParametersMatchRuleArrayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) []EventSourceV2SourceOssEventParametersMatchRule {
+		return vs[0].([][]EventSourceV2SourceOssEventParametersMatchRule)[vs[1].(int)]
+	}).(EventSourceV2SourceOssEventParametersMatchRuleArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiDestinationHttpApiParametersInput)(nil)).Elem(), ApiDestinationHttpApiParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiDestinationHttpApiParametersPtrInput)(nil)).Elem(), ApiDestinationHttpApiParametersArgs{})
@@ -2757,6 +4867,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayInput)(nil)).Elem(), ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionNetworkParametersInput)(nil)).Elem(), ConnectionNetworkParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionNetworkParametersPtrInput)(nil)).Elem(), ConnectionNetworkParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceHttpEventParametersInput)(nil)).Elem(), EventSourceV2SourceHttpEventParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceHttpEventParametersPtrInput)(nil)).Elem(), EventSourceV2SourceHttpEventParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceKafkaParametersInput)(nil)).Elem(), EventSourceV2SourceKafkaParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceKafkaParametersPtrInput)(nil)).Elem(), EventSourceV2SourceKafkaParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceMnsParametersInput)(nil)).Elem(), EventSourceV2SourceMnsParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceMnsParametersPtrInput)(nil)).Elem(), EventSourceV2SourceMnsParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceOssEventParametersInput)(nil)).Elem(), EventSourceV2SourceOssEventParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceOssEventParametersPtrInput)(nil)).Elem(), EventSourceV2SourceOssEventParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceOssEventParametersMatchRuleInput)(nil)).Elem(), EventSourceV2SourceOssEventParametersMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceOssEventParametersMatchRuleArrayInput)(nil)).Elem(), EventSourceV2SourceOssEventParametersMatchRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceRabbitMqParametersInput)(nil)).Elem(), EventSourceV2SourceRabbitMqParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceRabbitMqParametersPtrInput)(nil)).Elem(), EventSourceV2SourceRabbitMqParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceRocketmqParametersInput)(nil)).Elem(), EventSourceV2SourceRocketmqParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceRocketmqParametersPtrInput)(nil)).Elem(), EventSourceV2SourceRocketmqParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceScheduledEventParametersInput)(nil)).Elem(), EventSourceV2SourceScheduledEventParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceScheduledEventParametersPtrInput)(nil)).Elem(), EventSourceV2SourceScheduledEventParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceSlsParametersInput)(nil)).Elem(), EventSourceV2SourceSlsParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceSlsParametersPtrInput)(nil)).Elem(), EventSourceV2SourceSlsParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetInput)(nil)).Elem(), RuleTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetArrayInput)(nil)).Elem(), RuleTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetDeadLetterQueueInput)(nil)).Elem(), RuleTargetDeadLetterQueueArgs{})
@@ -2771,6 +4899,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleTargetInput)(nil)).Elem(), GetRulesRuleTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleTargetArrayInput)(nil)).Elem(), GetRulesRuleTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventSourceV2SourceOssEventParametersMatchRuleArrayArrayInput)(nil)).Elem(), EventSourceV2SourceOssEventParametersMatchRuleArrayArray{})
 	pulumi.RegisterOutputType(ApiDestinationHttpApiParametersOutput{})
 	pulumi.RegisterOutputType(ApiDestinationHttpApiParametersPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionAuthParametersOutput{})
@@ -2793,6 +4922,24 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionNetworkParametersOutput{})
 	pulumi.RegisterOutputType(ConnectionNetworkParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceHttpEventParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceHttpEventParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceKafkaParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceKafkaParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceMnsParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceMnsParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceOssEventParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceOssEventParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceOssEventParametersMatchRuleOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceOssEventParametersMatchRuleArrayOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceRabbitMqParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceRabbitMqParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceRocketmqParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceRocketmqParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceScheduledEventParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceScheduledEventParametersPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceSlsParametersOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceSlsParametersPtrOutput{})
 	pulumi.RegisterOutputType(RuleTargetOutput{})
 	pulumi.RegisterOutputType(RuleTargetArrayOutput{})
 	pulumi.RegisterOutputType(RuleTargetDeadLetterQueueOutput{})
@@ -2807,4 +4954,5 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleTargetOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleTargetArrayOutput{})
+	pulumi.RegisterOutputType(EventSourceV2SourceOssEventParametersMatchRuleArrayArrayOutput{})
 }

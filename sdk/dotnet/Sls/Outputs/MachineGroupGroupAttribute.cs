@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class MachineGroupGroupAttribute
     {
         /// <summary>
-        /// The external management system identification on which the machine group depends.
+        /// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         /// </summary>
         public readonly string? ExternalName;
         /// <summary>

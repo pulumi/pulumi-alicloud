@@ -132,9 +132,9 @@ def get_serverless_kubernetes_clusters(enable_details: Optional[_builtins.bool] 
     """
     This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 
-    > **NOTE:** Available since 1.58.0
+    > **NOTE:** Available since v1.58.0
 
-    > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+    > **NOTE:** From version v1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 
     ## Example Usage
 
@@ -183,9 +183,9 @@ def get_serverless_kubernetes_clusters_output(enable_details: Optional[pulumi.In
     """
     This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 
-    > **NOTE:** Available since 1.58.0
+    > **NOTE:** Available since v1.58.0
 
-    > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+    > **NOTE:** From version v1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 
     ## Example Usage
 

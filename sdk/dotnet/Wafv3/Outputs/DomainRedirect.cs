@@ -34,6 +34,14 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly bool? FocusHttpBackend;
         /// <summary>
+        /// Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+        /// </summary>
+        public readonly bool? Http2Origin;
+        /// <summary>
+        /// The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+        /// </summary>
+        public readonly int? Http2OriginMaxConcurrency;
+        /// <summary>
         /// Specifies whether to enable the persistent connection feature. Valid values:
         /// </summary>
         public readonly bool? Keepalive;
@@ -54,6 +62,11 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         /// </summary>
         public readonly string Loadbalance;
+        /// <summary>
+        /// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        /// &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+        /// </summary>
+        public readonly int? MaxBodySize;
         /// <summary>
         /// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         /// </summary>
@@ -96,6 +109,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             bool? focusHttpBackend,
 
+            bool? http2Origin,
+
+            int? http2OriginMaxConcurrency,
+
             bool? keepalive,
 
             int? keepaliveRequests,
@@ -103,6 +120,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
             int? keepaliveTimeout,
 
             string loadbalance,
+
+            int? maxBodySize,
 
             int? readTimeout,
 
@@ -122,10 +141,13 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
             BackupBackends = backupBackends;
             ConnectTimeout = connectTimeout;
             FocusHttpBackend = focusHttpBackend;
+            Http2Origin = http2Origin;
+            Http2OriginMaxConcurrency = http2OriginMaxConcurrency;
             Keepalive = keepalive;
             KeepaliveRequests = keepaliveRequests;
             KeepaliveTimeout = keepaliveTimeout;
             Loadbalance = loadbalance;
+            MaxBodySize = maxBodySize;
             ReadTimeout = readTimeout;
             RequestHeaders = requestHeaders;
             Retry = retry;

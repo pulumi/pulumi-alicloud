@@ -27,6 +27,8 @@ __all__ = [
     'HoneypotProbeHoneypotBindListArgsDict',
     'HoneypotProbeHoneypotBindListBindPortListArgs',
     'HoneypotProbeHoneypotBindListBindPortListArgsDict',
+    'InstancePostPayModuleSwitchObjArgs',
+    'InstancePostPayModuleSwitchObjArgsDict',
     'SasTrailServiceTrailArgs',
     'SasTrailServiceTrailArgsDict',
 ]
@@ -497,6 +499,258 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @target_port.setter
     def target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "target_port", value)
+
+
+if not MYPY:
+    class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
+        agentless: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Agentless Detection Module. Valid values:
+        """
+        anti_ransomware: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Anti-Ransomware Module. Valid values:
+        """
+        basic_service: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Basic service module. Valid values:
+        """
+        cspm: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Cloud Security Configuration Check Module. Valid values:
+        """
+        ctdr: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Threat Analysis and Response Module. Valid values:
+        """
+        ctdr_storage: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Log Management Module. Valid values:
+        """
+        post_host: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Host and Container Security Module. Valid values:
+        """
+        rasp: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Application Protection Module. Valid values:
+        """
+        sdk: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Malicious File Detection SDK Module. Valid values:
+        """
+        serverless: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Serverless Security Module. Valid values:
+        """
+        vul: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Vulnerability Repair Module. Valid values:
+        """
+        web_lock: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        File Tamper Protection Module. Valid values:
+        """
+elif False:
+    InstancePostPayModuleSwitchObjArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePostPayModuleSwitchObjArgs:
+    def __init__(__self__, *,
+                 agentless: Optional[pulumi.Input[_builtins.int]] = None,
+                 anti_ransomware: Optional[pulumi.Input[_builtins.int]] = None,
+                 basic_service: Optional[pulumi.Input[_builtins.int]] = None,
+                 cspm: Optional[pulumi.Input[_builtins.int]] = None,
+                 ctdr: Optional[pulumi.Input[_builtins.int]] = None,
+                 ctdr_storage: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_host: Optional[pulumi.Input[_builtins.int]] = None,
+                 rasp: Optional[pulumi.Input[_builtins.int]] = None,
+                 sdk: Optional[pulumi.Input[_builtins.int]] = None,
+                 serverless: Optional[pulumi.Input[_builtins.int]] = None,
+                 vul: Optional[pulumi.Input[_builtins.int]] = None,
+                 web_lock: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] agentless: Agentless Detection Module. Valid values:
+        :param pulumi.Input[_builtins.int] anti_ransomware: Anti-Ransomware Module. Valid values:
+        :param pulumi.Input[_builtins.int] basic_service: Basic service module. Valid values:
+        :param pulumi.Input[_builtins.int] cspm: Cloud Security Configuration Check Module. Valid values:
+        :param pulumi.Input[_builtins.int] ctdr: Threat Analysis and Response Module. Valid values:
+        :param pulumi.Input[_builtins.int] ctdr_storage: Log Management Module. Valid values:
+        :param pulumi.Input[_builtins.int] post_host: Host and Container Security Module. Valid values:
+        :param pulumi.Input[_builtins.int] rasp: Application Protection Module. Valid values:
+        :param pulumi.Input[_builtins.int] sdk: Malicious File Detection SDK Module. Valid values:
+        :param pulumi.Input[_builtins.int] serverless: Serverless Security Module. Valid values:
+        :param pulumi.Input[_builtins.int] vul: Vulnerability Repair Module. Valid values:
+        :param pulumi.Input[_builtins.int] web_lock: File Tamper Protection Module. Valid values:
+        """
+        if agentless is not None:
+            pulumi.set(__self__, "agentless", agentless)
+        if anti_ransomware is not None:
+            pulumi.set(__self__, "anti_ransomware", anti_ransomware)
+        if basic_service is not None:
+            pulumi.set(__self__, "basic_service", basic_service)
+        if cspm is not None:
+            pulumi.set(__self__, "cspm", cspm)
+        if ctdr is not None:
+            pulumi.set(__self__, "ctdr", ctdr)
+        if ctdr_storage is not None:
+            pulumi.set(__self__, "ctdr_storage", ctdr_storage)
+        if post_host is not None:
+            pulumi.set(__self__, "post_host", post_host)
+        if rasp is not None:
+            pulumi.set(__self__, "rasp", rasp)
+        if sdk is not None:
+            pulumi.set(__self__, "sdk", sdk)
+        if serverless is not None:
+            pulumi.set(__self__, "serverless", serverless)
+        if vul is not None:
+            pulumi.set(__self__, "vul", vul)
+        if web_lock is not None:
+            pulumi.set(__self__, "web_lock", web_lock)
+
+    @_builtins.property
+    @pulumi.getter
+    def agentless(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Agentless Detection Module. Valid values:
+        """
+        return pulumi.get(self, "agentless")
+
+    @agentless.setter
+    def agentless(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "agentless", value)
+
+    @_builtins.property
+    @pulumi.getter(name="antiRansomware")
+    def anti_ransomware(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Anti-Ransomware Module. Valid values:
+        """
+        return pulumi.get(self, "anti_ransomware")
+
+    @anti_ransomware.setter
+    def anti_ransomware(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "anti_ransomware", value)
+
+    @_builtins.property
+    @pulumi.getter(name="basicService")
+    def basic_service(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Basic service module. Valid values:
+        """
+        return pulumi.get(self, "basic_service")
+
+    @basic_service.setter
+    def basic_service(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "basic_service", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cspm(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Cloud Security Configuration Check Module. Valid values:
+        """
+        return pulumi.get(self, "cspm")
+
+    @cspm.setter
+    def cspm(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cspm", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ctdr(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Threat Analysis and Response Module. Valid values:
+        """
+        return pulumi.get(self, "ctdr")
+
+    @ctdr.setter
+    def ctdr(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ctdr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ctdrStorage")
+    def ctdr_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Log Management Module. Valid values:
+        """
+        return pulumi.get(self, "ctdr_storage")
+
+    @ctdr_storage.setter
+    def ctdr_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ctdr_storage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postHost")
+    def post_host(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Host and Container Security Module. Valid values:
+        """
+        return pulumi.get(self, "post_host")
+
+    @post_host.setter
+    def post_host(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "post_host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rasp(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Application Protection Module. Valid values:
+        """
+        return pulumi.get(self, "rasp")
+
+    @rasp.setter
+    def rasp(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "rasp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdk(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Malicious File Detection SDK Module. Valid values:
+        """
+        return pulumi.get(self, "sdk")
+
+    @sdk.setter
+    def sdk(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sdk", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def serverless(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Serverless Security Module. Valid values:
+        """
+        return pulumi.get(self, "serverless")
+
+    @serverless.setter
+    def serverless(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "serverless", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def vul(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Vulnerability Repair Module. Valid values:
+        """
+        return pulumi.get(self, "vul")
+
+    @vul.setter
+    def vul(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vul", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webLock")
+    def web_lock(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        File Tamper Protection Module. Valid values:
+        """
+        return pulumi.get(self, "web_lock")
+
+    @web_lock.setter
+    def web_lock(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "web_lock", value)
 
 
 if not MYPY:

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -96,19 +98,36 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly postPaidFlag: pulumi.Output<number | undefined>;
     /**
-     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * Automatic binding switch for new assets in host and container protection. Valid values:
+     */
+    declare public readonly postPaidHostAutoBind: pulumi.Output<number>;
+    /**
+     * The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+     */
+    declare public readonly postPaidHostAutoBindVersion: pulumi.Output<number>;
+    /**
+     * The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
      * - Key:
-     * - `VUL`: vulnerability repair module
-     * - `CSPM`: Cloud platform configuration check module
-     * - `AGENTLESS`: AGENTLESS detection module
-     * - `SERVERLESS`:Serverless asset module
-     * - `CTDR`: threat analysis and response module
-     * - `POST_HOST`: Host and container security module
-     * - Value:0 means off, 1 means on
+     * - `VUL`: Vulnerability Repair Module.
+     * - `CSPM`: Cloud Security Posture Management Module.
+     * - `AGENTLESS`: Agentless Detection Module.
+     * - `SERVERLESS`: Serverless Security Module.
+     * - `CTDR`: Threat Analysis and Response Module.
+     * - `POST_HOST`: Host and Container Security Module.
+     * - `SDK`: Malicious File Detection SDK Module.
+     * - `RASP`: Application Protection Module.
+     * - `CTDR_STORAGE`: Log Management Module.
+     * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+     * - Value: `0` means off, `1` means on
+     * > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      *
-     * > **NOTE:**  The module value of the unpassed value will not change.
+     * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      */
     declare public readonly postPayModuleSwitch: pulumi.Output<string | undefined>;
+    /**
+     * Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
+     */
+    declare public readonly postPayModuleSwitchObj: pulumi.Output<outputs.threatdetection.InstancePostPayModuleSwitchObj>;
     /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */
@@ -278,7 +297,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["postPaidFlag"] = state?.postPaidFlag;
+            resourceInputs["postPaidHostAutoBind"] = state?.postPaidHostAutoBind;
+            resourceInputs["postPaidHostAutoBindVersion"] = state?.postPaidHostAutoBindVersion;
             resourceInputs["postPayModuleSwitch"] = state?.postPayModuleSwitch;
+            resourceInputs["postPayModuleSwitchObj"] = state?.postPayModuleSwitchObj;
             resourceInputs["raspCount"] = state?.raspCount;
             resourceInputs["renewPeriod"] = state?.renewPeriod;
             resourceInputs["renewalPeriodUnit"] = state?.renewalPeriodUnit;
@@ -317,7 +339,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["postPaidFlag"] = args?.postPaidFlag;
+            resourceInputs["postPaidHostAutoBind"] = args?.postPaidHostAutoBind;
+            resourceInputs["postPaidHostAutoBindVersion"] = args?.postPaidHostAutoBindVersion;
             resourceInputs["postPayModuleSwitch"] = args?.postPayModuleSwitch;
+            resourceInputs["postPayModuleSwitchObj"] = args?.postPayModuleSwitchObj;
             resourceInputs["raspCount"] = args?.raspCount;
             resourceInputs["renewPeriod"] = args?.renewPeriod;
             resourceInputs["renewalPeriodUnit"] = args?.renewalPeriodUnit;
@@ -408,19 +433,36 @@ export interface InstanceState {
      */
     postPaidFlag?: pulumi.Input<number>;
     /**
-     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * Automatic binding switch for new assets in host and container protection. Valid values:
+     */
+    postPaidHostAutoBind?: pulumi.Input<number>;
+    /**
+     * The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+     */
+    postPaidHostAutoBindVersion?: pulumi.Input<number>;
+    /**
+     * The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
      * - Key:
-     * - `VUL`: vulnerability repair module
-     * - `CSPM`: Cloud platform configuration check module
-     * - `AGENTLESS`: AGENTLESS detection module
-     * - `SERVERLESS`:Serverless asset module
-     * - `CTDR`: threat analysis and response module
-     * - `POST_HOST`: Host and container security module
-     * - Value:0 means off, 1 means on
+     * - `VUL`: Vulnerability Repair Module.
+     * - `CSPM`: Cloud Security Posture Management Module.
+     * - `AGENTLESS`: Agentless Detection Module.
+     * - `SERVERLESS`: Serverless Security Module.
+     * - `CTDR`: Threat Analysis and Response Module.
+     * - `POST_HOST`: Host and Container Security Module.
+     * - `SDK`: Malicious File Detection SDK Module.
+     * - `RASP`: Application Protection Module.
+     * - `CTDR_STORAGE`: Log Management Module.
+     * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+     * - Value: `0` means off, `1` means on
+     * > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      *
-     * > **NOTE:**  The module value of the unpassed value will not change.
+     * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      */
     postPayModuleSwitch?: pulumi.Input<string>;
+    /**
+     * Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
+     */
+    postPayModuleSwitchObj?: pulumi.Input<inputs.threatdetection.InstancePostPayModuleSwitchObj>;
     /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */
@@ -623,19 +665,36 @@ export interface InstanceArgs {
      */
     postPaidFlag?: pulumi.Input<number>;
     /**
-     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * Automatic binding switch for new assets in host and container protection. Valid values:
+     */
+    postPaidHostAutoBind?: pulumi.Input<number>;
+    /**
+     * The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+     */
+    postPaidHostAutoBindVersion?: pulumi.Input<number>;
+    /**
+     * The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
      * - Key:
-     * - `VUL`: vulnerability repair module
-     * - `CSPM`: Cloud platform configuration check module
-     * - `AGENTLESS`: AGENTLESS detection module
-     * - `SERVERLESS`:Serverless asset module
-     * - `CTDR`: threat analysis and response module
-     * - `POST_HOST`: Host and container security module
-     * - Value:0 means off, 1 means on
+     * - `VUL`: Vulnerability Repair Module.
+     * - `CSPM`: Cloud Security Posture Management Module.
+     * - `AGENTLESS`: Agentless Detection Module.
+     * - `SERVERLESS`: Serverless Security Module.
+     * - `CTDR`: Threat Analysis and Response Module.
+     * - `POST_HOST`: Host and Container Security Module.
+     * - `SDK`: Malicious File Detection SDK Module.
+     * - `RASP`: Application Protection Module.
+     * - `CTDR_STORAGE`: Log Management Module.
+     * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+     * - Value: `0` means off, `1` means on
+     * > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      *
-     * > **NOTE:**  The module value of the unpassed value will not change.
+     * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      */
     postPayModuleSwitch?: pulumi.Input<string>;
+    /**
+     * Pay-as-you-go module switch. See `postPayModuleSwitchObj` below.
+     */
+    postPayModuleSwitchObj?: pulumi.Input<inputs.threatdetection.InstancePostPayModuleSwitchObj>;
     /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */

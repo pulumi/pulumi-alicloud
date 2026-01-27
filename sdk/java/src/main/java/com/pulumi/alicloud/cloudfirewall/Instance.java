@@ -23,6 +23,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.139.0.
  * 
+ * &gt; **NOTE:** Deprecated since v1.269.0.
+ * 
+ * &gt; **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -61,7 +65,6 @@ import javax.annotation.Nullable;
  * </pre>
  * 
  * create a subscription instance
- * 
  * <pre>
  * {@code
  * package generated_program;

@@ -4138,6 +4138,159 @@ func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesUpgradePolicy struct {
+	// Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+	//
+	// for example:
+	//
+	// > **NOTE:** After the upgrade completes, you may remove the `upgradePolicy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+	ControlPlaneOnly *bool `pulumi:"controlPlaneOnly"`
+}
+
+// ManagedKubernetesUpgradePolicyInput is an input type that accepts ManagedKubernetesUpgradePolicyArgs and ManagedKubernetesUpgradePolicyOutput values.
+// You can construct a concrete instance of `ManagedKubernetesUpgradePolicyInput` via:
+//
+//	ManagedKubernetesUpgradePolicyArgs{...}
+type ManagedKubernetesUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesUpgradePolicyOutput() ManagedKubernetesUpgradePolicyOutput
+	ToManagedKubernetesUpgradePolicyOutputWithContext(context.Context) ManagedKubernetesUpgradePolicyOutput
+}
+
+type ManagedKubernetesUpgradePolicyArgs struct {
+	// Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+	//
+	// for example:
+	//
+	// > **NOTE:** After the upgrade completes, you may remove the `upgradePolicy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+	ControlPlaneOnly pulumi.BoolPtrInput `pulumi:"controlPlaneOnly"`
+}
+
+func (ManagedKubernetesUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesUpgradePolicy)(nil)).Elem()
+}
+
+func (i ManagedKubernetesUpgradePolicyArgs) ToManagedKubernetesUpgradePolicyOutput() ManagedKubernetesUpgradePolicyOutput {
+	return i.ToManagedKubernetesUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesUpgradePolicyArgs) ToManagedKubernetesUpgradePolicyOutputWithContext(ctx context.Context) ManagedKubernetesUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesUpgradePolicyOutput)
+}
+
+func (i ManagedKubernetesUpgradePolicyArgs) ToManagedKubernetesUpgradePolicyPtrOutput() ManagedKubernetesUpgradePolicyPtrOutput {
+	return i.ToManagedKubernetesUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesUpgradePolicyArgs) ToManagedKubernetesUpgradePolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesUpgradePolicyOutput).ToManagedKubernetesUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesUpgradePolicyPtrInput is an input type that accepts ManagedKubernetesUpgradePolicyArgs, ManagedKubernetesUpgradePolicyPtr and ManagedKubernetesUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesUpgradePolicyPtrInput` via:
+//
+//	        ManagedKubernetesUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesUpgradePolicyPtrOutput() ManagedKubernetesUpgradePolicyPtrOutput
+	ToManagedKubernetesUpgradePolicyPtrOutputWithContext(context.Context) ManagedKubernetesUpgradePolicyPtrOutput
+}
+
+type managedKubernetesUpgradePolicyPtrType ManagedKubernetesUpgradePolicyArgs
+
+func ManagedKubernetesUpgradePolicyPtr(v *ManagedKubernetesUpgradePolicyArgs) ManagedKubernetesUpgradePolicyPtrInput {
+	return (*managedKubernetesUpgradePolicyPtrType)(v)
+}
+
+func (*managedKubernetesUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesUpgradePolicy)(nil)).Elem()
+}
+
+func (i *managedKubernetesUpgradePolicyPtrType) ToManagedKubernetesUpgradePolicyPtrOutput() ManagedKubernetesUpgradePolicyPtrOutput {
+	return i.ToManagedKubernetesUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesUpgradePolicyPtrType) ToManagedKubernetesUpgradePolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesUpgradePolicyPtrOutput)
+}
+
+type ManagedKubernetesUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesUpgradePolicy)(nil)).Elem()
+}
+
+func (o ManagedKubernetesUpgradePolicyOutput) ToManagedKubernetesUpgradePolicyOutput() ManagedKubernetesUpgradePolicyOutput {
+	return o
+}
+
+func (o ManagedKubernetesUpgradePolicyOutput) ToManagedKubernetesUpgradePolicyOutputWithContext(ctx context.Context) ManagedKubernetesUpgradePolicyOutput {
+	return o
+}
+
+func (o ManagedKubernetesUpgradePolicyOutput) ToManagedKubernetesUpgradePolicyPtrOutput() ManagedKubernetesUpgradePolicyPtrOutput {
+	return o.ToManagedKubernetesUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesUpgradePolicyOutput) ToManagedKubernetesUpgradePolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesUpgradePolicy) *ManagedKubernetesUpgradePolicy {
+		return &v
+	}).(ManagedKubernetesUpgradePolicyPtrOutput)
+}
+
+// Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+//
+// for example:
+//
+// > **NOTE:** After the upgrade completes, you may remove the `upgradePolicy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+func (o ManagedKubernetesUpgradePolicyOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesUpgradePolicy) *bool { return v.ControlPlaneOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesUpgradePolicy)(nil)).Elem()
+}
+
+func (o ManagedKubernetesUpgradePolicyPtrOutput) ToManagedKubernetesUpgradePolicyPtrOutput() ManagedKubernetesUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesUpgradePolicyPtrOutput) ToManagedKubernetesUpgradePolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesUpgradePolicyPtrOutput) Elem() ManagedKubernetesUpgradePolicyOutput {
+	return o.ApplyT(func(v *ManagedKubernetesUpgradePolicy) ManagedKubernetesUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesUpgradePolicy
+		return ret
+	}).(ManagedKubernetesUpgradePolicyOutput)
+}
+
+// Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+//
+// for example:
+//
+// > **NOTE:** After the upgrade completes, you may remove the `upgradePolicy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+func (o ManagedKubernetesUpgradePolicyPtrOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
 type NodePoolAutoMode struct {
 	// Whether to enable auto mode. Valid values:
 	Enabled *bool `pulumi:"enabled"`
@@ -7052,8 +7205,17 @@ func (o NodePoolPrivatePoolOptionsPtrOutput) PrivatePoolOptionsMatchCriteria() p
 }
 
 type NodePoolRollingPolicy struct {
-	// The maximum number of unusable nodes.
+	// The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
+	BatchInterval *string `pulumi:"batchInterval"`
+	// The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
 	MaxParallelism *int `pulumi:"maxParallelism"`
+	// Specify the list of nodes to be upgraded.
+	NodeNames []string `pulumi:"nodeNames"`
+	// The auto-pause policy during node upgrade. Valid values:
+	// - `FirstBatch`: Pause after the first batch is completed.
+	// - `EveryBatch`: Pause after each batch is completed.
+	// - `NotPause`: Do not pause during the upgrade process.
+	PausePolicy *string `pulumi:"pausePolicy"`
 }
 
 // NodePoolRollingPolicyInput is an input type that accepts NodePoolRollingPolicyArgs and NodePoolRollingPolicyOutput values.
@@ -7068,8 +7230,17 @@ type NodePoolRollingPolicyInput interface {
 }
 
 type NodePoolRollingPolicyArgs struct {
-	// The maximum number of unusable nodes.
+	// The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
+	BatchInterval pulumi.StringPtrInput `pulumi:"batchInterval"`
+	// The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
 	MaxParallelism pulumi.IntPtrInput `pulumi:"maxParallelism"`
+	// Specify the list of nodes to be upgraded.
+	NodeNames pulumi.StringArrayInput `pulumi:"nodeNames"`
+	// The auto-pause policy during node upgrade. Valid values:
+	// - `FirstBatch`: Pause after the first batch is completed.
+	// - `EveryBatch`: Pause after each batch is completed.
+	// - `NotPause`: Do not pause during the upgrade process.
+	PausePolicy pulumi.StringPtrInput `pulumi:"pausePolicy"`
 }
 
 func (NodePoolRollingPolicyArgs) ElementType() reflect.Type {
@@ -7149,9 +7320,27 @@ func (o NodePoolRollingPolicyOutput) ToNodePoolRollingPolicyPtrOutputWithContext
 	}).(NodePoolRollingPolicyPtrOutput)
 }
 
-// The maximum number of unusable nodes.
+// The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
+func (o NodePoolRollingPolicyOutput) BatchInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolRollingPolicy) *string { return v.BatchInterval }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
 func (o NodePoolRollingPolicyOutput) MaxParallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolRollingPolicy) *int { return v.MaxParallelism }).(pulumi.IntPtrOutput)
+}
+
+// Specify the list of nodes to be upgraded.
+func (o NodePoolRollingPolicyOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolRollingPolicy) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
+}
+
+// The auto-pause policy during node upgrade. Valid values:
+// - `FirstBatch`: Pause after the first batch is completed.
+// - `EveryBatch`: Pause after each batch is completed.
+// - `NotPause`: Do not pause during the upgrade process.
+func (o NodePoolRollingPolicyOutput) PausePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolRollingPolicy) *string { return v.PausePolicy }).(pulumi.StringPtrOutput)
 }
 
 type NodePoolRollingPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -7178,7 +7367,17 @@ func (o NodePoolRollingPolicyPtrOutput) Elem() NodePoolRollingPolicyOutput {
 	}).(NodePoolRollingPolicyOutput)
 }
 
-// The maximum number of unusable nodes.
+// The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
+func (o NodePoolRollingPolicyPtrOutput) BatchInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolRollingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BatchInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
 func (o NodePoolRollingPolicyPtrOutput) MaxParallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolRollingPolicy) *int {
 		if v == nil {
@@ -7186,6 +7385,29 @@ func (o NodePoolRollingPolicyPtrOutput) MaxParallelism() pulumi.IntPtrOutput {
 		}
 		return v.MaxParallelism
 	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the list of nodes to be upgraded.
+func (o NodePoolRollingPolicyPtrOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolRollingPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The auto-pause policy during node upgrade. Valid values:
+// - `FirstBatch`: Pause after the first batch is completed.
+// - `EveryBatch`: Pause after each batch is completed.
+// - `NotPause`: Do not pause during the upgrade process.
+func (o NodePoolRollingPolicyPtrOutput) PausePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolRollingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PausePolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolScalingConfig struct {
@@ -7794,6 +8016,219 @@ func (o NodePoolTeeConfigPtrOutput) TeeEnable() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.TeeEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolUpgradePolicy struct {
+	// Node system Image ID
+	ImageId *string `pulumi:"imageId"`
+	// Node Kubernetes version
+	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// Node runtime type
+	Runtime *string `pulumi:"runtime"`
+	// Node Runtime Version
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+	// Whether to use replacement disk upgrade
+	UseReplace *bool `pulumi:"useReplace"`
+}
+
+// NodePoolUpgradePolicyInput is an input type that accepts NodePoolUpgradePolicyArgs and NodePoolUpgradePolicyOutput values.
+// You can construct a concrete instance of `NodePoolUpgradePolicyInput` via:
+//
+//	NodePoolUpgradePolicyArgs{...}
+type NodePoolUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolUpgradePolicyOutput() NodePoolUpgradePolicyOutput
+	ToNodePoolUpgradePolicyOutputWithContext(context.Context) NodePoolUpgradePolicyOutput
+}
+
+type NodePoolUpgradePolicyArgs struct {
+	// Node system Image ID
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// Node Kubernetes version
+	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
+	// Node runtime type
+	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
+	// Node Runtime Version
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+	// Whether to use replacement disk upgrade
+	UseReplace pulumi.BoolPtrInput `pulumi:"useReplace"`
+}
+
+func (NodePoolUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (i NodePoolUpgradePolicyArgs) ToNodePoolUpgradePolicyOutput() NodePoolUpgradePolicyOutput {
+	return i.ToNodePoolUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolUpgradePolicyArgs) ToNodePoolUpgradePolicyOutputWithContext(ctx context.Context) NodePoolUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolUpgradePolicyOutput)
+}
+
+func (i NodePoolUpgradePolicyArgs) ToNodePoolUpgradePolicyPtrOutput() NodePoolUpgradePolicyPtrOutput {
+	return i.ToNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolUpgradePolicyArgs) ToNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolUpgradePolicyOutput).ToNodePoolUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolUpgradePolicyPtrInput is an input type that accepts NodePoolUpgradePolicyArgs, NodePoolUpgradePolicyPtr and NodePoolUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolUpgradePolicyPtrInput` via:
+//
+//	        NodePoolUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolUpgradePolicyPtrOutput() NodePoolUpgradePolicyPtrOutput
+	ToNodePoolUpgradePolicyPtrOutputWithContext(context.Context) NodePoolUpgradePolicyPtrOutput
+}
+
+type nodePoolUpgradePolicyPtrType NodePoolUpgradePolicyArgs
+
+func NodePoolUpgradePolicyPtr(v *NodePoolUpgradePolicyArgs) NodePoolUpgradePolicyPtrInput {
+	return (*nodePoolUpgradePolicyPtrType)(v)
+}
+
+func (*nodePoolUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (i *nodePoolUpgradePolicyPtrType) ToNodePoolUpgradePolicyPtrOutput() NodePoolUpgradePolicyPtrOutput {
+	return i.ToNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolUpgradePolicyPtrType) ToNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolUpgradePolicyPtrOutput)
+}
+
+type NodePoolUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (o NodePoolUpgradePolicyOutput) ToNodePoolUpgradePolicyOutput() NodePoolUpgradePolicyOutput {
+	return o
+}
+
+func (o NodePoolUpgradePolicyOutput) ToNodePoolUpgradePolicyOutputWithContext(ctx context.Context) NodePoolUpgradePolicyOutput {
+	return o
+}
+
+func (o NodePoolUpgradePolicyOutput) ToNodePoolUpgradePolicyPtrOutput() NodePoolUpgradePolicyPtrOutput {
+	return o.ToNodePoolUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolUpgradePolicyOutput) ToNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolUpgradePolicy) *NodePoolUpgradePolicy {
+		return &v
+	}).(NodePoolUpgradePolicyPtrOutput)
+}
+
+// Node system Image ID
+func (o NodePoolUpgradePolicyOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolUpgradePolicy) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Node Kubernetes version
+func (o NodePoolUpgradePolicyOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolUpgradePolicy) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
+}
+
+// Node runtime type
+func (o NodePoolUpgradePolicyOutput) Runtime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolUpgradePolicy) *string { return v.Runtime }).(pulumi.StringPtrOutput)
+}
+
+// Node Runtime Version
+func (o NodePoolUpgradePolicyOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolUpgradePolicy) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use replacement disk upgrade
+func (o NodePoolUpgradePolicyOutput) UseReplace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolUpgradePolicy) *bool { return v.UseReplace }).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolUpgradePolicy)(nil)).Elem()
+}
+
+func (o NodePoolUpgradePolicyPtrOutput) ToNodePoolUpgradePolicyPtrOutput() NodePoolUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolUpgradePolicyPtrOutput) ToNodePoolUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolUpgradePolicyPtrOutput) Elem() NodePoolUpgradePolicyOutput {
+	return o.ApplyT(func(v *NodePoolUpgradePolicy) NodePoolUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolUpgradePolicy
+		return ret
+	}).(NodePoolUpgradePolicyOutput)
+}
+
+// Node system Image ID
+func (o NodePoolUpgradePolicyPtrOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolUpgradePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node Kubernetes version
+func (o NodePoolUpgradePolicyPtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolUpgradePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node runtime type
+func (o NodePoolUpgradePolicyPtrOutput) Runtime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolUpgradePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Runtime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node Runtime Version
+func (o NodePoolUpgradePolicyPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolUpgradePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use replacement disk upgrade
+func (o NodePoolUpgradePolicyPtrOutput) UseReplace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseReplace
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -8935,6 +9370,601 @@ func (o GetClusterCredentialCertificateAuthorityOutput) ClusterCert() pulumi.Str
 	return o.ApplyT(func(v GetClusterCredentialCertificateAuthority) string { return v.ClusterCert }).(pulumi.StringOutput)
 }
 
+type GetClustersCluster struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Intelligent managed mode configuration.
+	AutoMode GetClustersClusterAutoMode `pulumi:"autoMode"`
+	// The local domain name of the cluster.
+	ClusterDomain string `pulumi:"clusterDomain"`
+	// The cluster ID.
+	ClusterId string `pulumi:"clusterId"`
+	// Custom cluster name.
+	ClusterName string `pulumi:"clusterName"`
+	// The specification of the clusters to query. Valid values:
+	// - `ack.pro.small`: ACK Pro clusters.
+	// - `ack.standard`: ACK Basic clusters.
+	ClusterSpec string `pulumi:"clusterSpec"`
+	// The type of the clusters to query. Valid values:
+	// - `Kubernetes`: ACK dedicated clusters.
+	// - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+	// - `ExternalKubernetes`: registered clusters.
+	ClusterType string `pulumi:"clusterType"`
+	// The current version of the cluster.
+	CurrentVersion string `pulumi:"currentVersion"`
+	// Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The IP protocol stack of the cluster.
+	IpStack string `pulumi:"ipStack"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Cluster maintenance window.
+	MaintenanceWindow GetClustersClusterMaintenanceWindow `pulumi:"maintenanceWindow"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of IP addresses per node, determined by specifying the CIDR block of the network.
+	NodeCidrMask string `pulumi:"nodeCidrMask"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The automatic operations and maintenance policy for the cluster.
+	OperationPolicy GetClustersClusterOperationPolicy `pulumi:"operationPolicy"`
+	// The CIDR block for the pod network.
+	PodCidr string `pulumi:"podCidr"`
+	// The subtype of the clusters to query. Valid values:
+	// - `Default`: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// - `Edge`: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// - `Serverless`: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// - `Lingjun`: ACK Lingjun Pro clusters.
+	Profile string `pulumi:"profile"`
+	// kube-proxy proxy mode.
+	ProxyMode string `pulumi:"proxyMode"`
+	// The region ID where the cluster is deployed.
+	RegionId string `pulumi:"regionId"`
+	// The resource group ID of the cluster.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The security group ID for the control plane.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The Service CIDR block.
+	ServiceCidr string `pulumi:"serviceCidr"`
+	// Cluster operational status.
+	State string `pulumi:"state"`
+	// Cluster resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Cluster time zone.
+	Timezone string `pulumi:"timezone"`
+	// The Virtual Private Cloud (VPC) used by the cluster.
+	VpcId string `pulumi:"vpcId"`
+	// Virtual switches for the cluster control plane.
+	VswitchIds []string `pulumi:"vswitchIds"`
+}
+
+// GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
+// You can construct a concrete instance of `GetClustersClusterInput` via:
+//
+//	GetClustersClusterArgs{...}
+type GetClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterOutput() GetClustersClusterOutput
+	ToGetClustersClusterOutputWithContext(context.Context) GetClustersClusterOutput
+}
+
+type GetClustersClusterArgs struct {
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Intelligent managed mode configuration.
+	AutoMode GetClustersClusterAutoModeInput `pulumi:"autoMode"`
+	// The local domain name of the cluster.
+	ClusterDomain pulumi.StringInput `pulumi:"clusterDomain"`
+	// The cluster ID.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Custom cluster name.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The specification of the clusters to query. Valid values:
+	// - `ack.pro.small`: ACK Pro clusters.
+	// - `ack.standard`: ACK Basic clusters.
+	ClusterSpec pulumi.StringInput `pulumi:"clusterSpec"`
+	// The type of the clusters to query. Valid values:
+	// - `Kubernetes`: ACK dedicated clusters.
+	// - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+	// - `ExternalKubernetes`: registered clusters.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The current version of the cluster.
+	CurrentVersion pulumi.StringInput `pulumi:"currentVersion"`
+	// Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP protocol stack of the cluster.
+	IpStack pulumi.StringInput `pulumi:"ipStack"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. Cluster maintenance window.
+	MaintenanceWindow GetClustersClusterMaintenanceWindowInput `pulumi:"maintenanceWindow"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The number of IP addresses per node, determined by specifying the CIDR block of the network.
+	NodeCidrMask pulumi.StringInput `pulumi:"nodeCidrMask"`
+	// **NOTE:** This field is only available when `enableDetails` is `true`. The automatic operations and maintenance policy for the cluster.
+	OperationPolicy GetClustersClusterOperationPolicyInput `pulumi:"operationPolicy"`
+	// The CIDR block for the pod network.
+	PodCidr pulumi.StringInput `pulumi:"podCidr"`
+	// The subtype of the clusters to query. Valid values:
+	// - `Default`: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+	// - `Edge`: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+	// - `Serverless`: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+	// - `Lingjun`: ACK Lingjun Pro clusters.
+	Profile pulumi.StringInput `pulumi:"profile"`
+	// kube-proxy proxy mode.
+	ProxyMode pulumi.StringInput `pulumi:"proxyMode"`
+	// The region ID where the cluster is deployed.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The resource group ID of the cluster.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The security group ID for the control plane.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The Service CIDR block.
+	ServiceCidr pulumi.StringInput `pulumi:"serviceCidr"`
+	// Cluster operational status.
+	State pulumi.StringInput `pulumi:"state"`
+	// Cluster resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Cluster time zone.
+	Timezone pulumi.StringInput `pulumi:"timezone"`
+	// The Virtual Private Cloud (VPC) used by the cluster.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// Virtual switches for the cluster control plane.
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
+}
+
+func (GetClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
+}
+
+func (i GetClustersClusterArgs) ToGetClustersClusterOutput() GetClustersClusterOutput {
+	return i.ToGetClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOutput)
+}
+
+// GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterArrayInput` via:
+//
+//	GetClustersClusterArray{ GetClustersClusterArgs{...} }
+type GetClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput
+	ToGetClustersClusterArrayOutputWithContext(context.Context) GetClustersClusterArrayOutput
+}
+
+type GetClustersClusterArray []GetClustersClusterInput
+
+func (GetClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
+}
+
+func (i GetClustersClusterArray) ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput {
+	return i.ToGetClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx context.Context) GetClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
+}
+
+type GetClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
+}
+
+func (o GetClustersClusterOutput) ToGetClustersClusterOutput() GetClustersClusterOutput {
+	return o
+}
+
+func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
+	return o
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Intelligent managed mode configuration.
+func (o GetClustersClusterOutput) AutoMode() GetClustersClusterAutoModeOutput {
+	return o.ApplyT(func(v GetClustersCluster) GetClustersClusterAutoMode { return v.AutoMode }).(GetClustersClusterAutoModeOutput)
+}
+
+// The local domain name of the cluster.
+func (o GetClustersClusterOutput) ClusterDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterDomain }).(pulumi.StringOutput)
+}
+
+// The cluster ID.
+func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Custom cluster name.
+func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The specification of the clusters to query. Valid values:
+// - `ack.pro.small`: ACK Pro clusters.
+// - `ack.standard`: ACK Basic clusters.
+func (o GetClustersClusterOutput) ClusterSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterSpec }).(pulumi.StringOutput)
+}
+
+// The type of the clusters to query. Valid values:
+// - `Kubernetes`: ACK dedicated clusters.
+// - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+// - `ExternalKubernetes`: registered clusters.
+func (o GetClustersClusterOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The current version of the cluster.
+func (o GetClustersClusterOutput) CurrentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CurrentVersion }).(pulumi.StringOutput)
+}
+
+// Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
+func (o GetClustersClusterOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP protocol stack of the cluster.
+func (o GetClustersClusterOutput) IpStack() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.IpStack }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. Cluster maintenance window.
+func (o GetClustersClusterOutput) MaintenanceWindow() GetClustersClusterMaintenanceWindowOutput {
+	return o.ApplyT(func(v GetClustersCluster) GetClustersClusterMaintenanceWindow { return v.MaintenanceWindow }).(GetClustersClusterMaintenanceWindowOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The number of IP addresses per node, determined by specifying the CIDR block of the network.
+func (o GetClustersClusterOutput) NodeCidrMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.NodeCidrMask }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is only available when `enableDetails` is `true`. The automatic operations and maintenance policy for the cluster.
+func (o GetClustersClusterOutput) OperationPolicy() GetClustersClusterOperationPolicyOutput {
+	return o.ApplyT(func(v GetClustersCluster) GetClustersClusterOperationPolicy { return v.OperationPolicy }).(GetClustersClusterOperationPolicyOutput)
+}
+
+// The CIDR block for the pod network.
+func (o GetClustersClusterOutput) PodCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
+}
+
+// The subtype of the clusters to query. Valid values:
+// - `Default`: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+// - `Edge`: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+// - `Serverless`: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+// - `Lingjun`: ACK Lingjun Pro clusters.
+func (o GetClustersClusterOutput) Profile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Profile }).(pulumi.StringOutput)
+}
+
+// kube-proxy proxy mode.
+func (o GetClustersClusterOutput) ProxyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ProxyMode }).(pulumi.StringOutput)
+}
+
+// The region ID where the cluster is deployed.
+func (o GetClustersClusterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The resource group ID of the cluster.
+func (o GetClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The security group ID for the control plane.
+func (o GetClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The Service CIDR block.
+func (o GetClustersClusterOutput) ServiceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ServiceCidr }).(pulumi.StringOutput)
+}
+
+// Cluster operational status.
+func (o GetClustersClusterOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Cluster resource tags.
+func (o GetClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Cluster time zone.
+func (o GetClustersClusterOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+// The Virtual Private Cloud (VPC) used by the cluster.
+func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// Virtual switches for the cluster control plane.
+func (o GetClustersClusterOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+type GetClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
+}
+
+func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContext(ctx context.Context) GetClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
+		return vs[0].([]GetClustersCluster)[vs[1].(int)]
+	}).(GetClustersClusterOutput)
+}
+
+type GetClustersClusterAutoMode struct {
+	// Whether to enable cluster automatic upgrade.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClustersClusterAutoModeInput is an input type that accepts GetClustersClusterAutoModeArgs and GetClustersClusterAutoModeOutput values.
+// You can construct a concrete instance of `GetClustersClusterAutoModeInput` via:
+//
+//	GetClustersClusterAutoModeArgs{...}
+type GetClustersClusterAutoModeInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAutoModeOutput() GetClustersClusterAutoModeOutput
+	ToGetClustersClusterAutoModeOutputWithContext(context.Context) GetClustersClusterAutoModeOutput
+}
+
+type GetClustersClusterAutoModeArgs struct {
+	// Whether to enable cluster automatic upgrade.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClustersClusterAutoModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAutoMode)(nil)).Elem()
+}
+
+func (i GetClustersClusterAutoModeArgs) ToGetClustersClusterAutoModeOutput() GetClustersClusterAutoModeOutput {
+	return i.ToGetClustersClusterAutoModeOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAutoModeArgs) ToGetClustersClusterAutoModeOutputWithContext(ctx context.Context) GetClustersClusterAutoModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAutoModeOutput)
+}
+
+type GetClustersClusterAutoModeOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAutoModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAutoMode)(nil)).Elem()
+}
+
+func (o GetClustersClusterAutoModeOutput) ToGetClustersClusterAutoModeOutput() GetClustersClusterAutoModeOutput {
+	return o
+}
+
+func (o GetClustersClusterAutoModeOutput) ToGetClustersClusterAutoModeOutputWithContext(ctx context.Context) GetClustersClusterAutoModeOutput {
+	return o
+}
+
+// Whether to enable cluster automatic upgrade.
+func (o GetClustersClusterAutoModeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersClusterAutoMode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClustersClusterMaintenanceWindow struct {
+	// The duration of the maintenance window.
+	Duration string `pulumi:"duration"`
+	// Indicates whether to enable the maintenance window.
+	Enable bool `pulumi:"enable"`
+	// Maintenance start time.
+	MaintenanceTime string `pulumi:"maintenanceTime"`
+	// The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
+	Recurrence string `pulumi:"recurrence"`
+	// The maintenance cycle.
+	WeeklyPeriod string `pulumi:"weeklyPeriod"`
+}
+
+// GetClustersClusterMaintenanceWindowInput is an input type that accepts GetClustersClusterMaintenanceWindowArgs and GetClustersClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetClustersClusterMaintenanceWindowInput` via:
+//
+//	GetClustersClusterMaintenanceWindowArgs{...}
+type GetClustersClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterMaintenanceWindowOutput() GetClustersClusterMaintenanceWindowOutput
+	ToGetClustersClusterMaintenanceWindowOutputWithContext(context.Context) GetClustersClusterMaintenanceWindowOutput
+}
+
+type GetClustersClusterMaintenanceWindowArgs struct {
+	// The duration of the maintenance window.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Indicates whether to enable the maintenance window.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Maintenance start time.
+	MaintenanceTime pulumi.StringInput `pulumi:"maintenanceTime"`
+	// The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	// The maintenance cycle.
+	WeeklyPeriod pulumi.StringInput `pulumi:"weeklyPeriod"`
+}
+
+func (GetClustersClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetClustersClusterMaintenanceWindowArgs) ToGetClustersClusterMaintenanceWindowOutput() GetClustersClusterMaintenanceWindowOutput {
+	return i.ToGetClustersClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterMaintenanceWindowArgs) ToGetClustersClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetClustersClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterMaintenanceWindowOutput)
+}
+
+type GetClustersClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetClustersClusterMaintenanceWindowOutput) ToGetClustersClusterMaintenanceWindowOutput() GetClustersClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetClustersClusterMaintenanceWindowOutput) ToGetClustersClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetClustersClusterMaintenanceWindowOutput {
+	return o
+}
+
+// The duration of the maintenance window.
+func (o GetClustersClusterMaintenanceWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Indicates whether to enable the maintenance window.
+func (o GetClustersClusterMaintenanceWindowOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersClusterMaintenanceWindow) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Maintenance start time.
+func (o GetClustersClusterMaintenanceWindowOutput) MaintenanceTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterMaintenanceWindow) string { return v.MaintenanceTime }).(pulumi.StringOutput)
+}
+
+// The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
+func (o GetClustersClusterMaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterMaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+}
+
+// The maintenance cycle.
+func (o GetClustersClusterMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterMaintenanceWindow) string { return v.WeeklyPeriod }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterOperationPolicy struct {
+	// Cluster automatic upgrade.
+	ClusterAutoUpgrade GetClustersClusterOperationPolicyClusterAutoUpgrade `pulumi:"clusterAutoUpgrade"`
+}
+
+// GetClustersClusterOperationPolicyInput is an input type that accepts GetClustersClusterOperationPolicyArgs and GetClustersClusterOperationPolicyOutput values.
+// You can construct a concrete instance of `GetClustersClusterOperationPolicyInput` via:
+//
+//	GetClustersClusterOperationPolicyArgs{...}
+type GetClustersClusterOperationPolicyInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterOperationPolicyOutput() GetClustersClusterOperationPolicyOutput
+	ToGetClustersClusterOperationPolicyOutputWithContext(context.Context) GetClustersClusterOperationPolicyOutput
+}
+
+type GetClustersClusterOperationPolicyArgs struct {
+	// Cluster automatic upgrade.
+	ClusterAutoUpgrade GetClustersClusterOperationPolicyClusterAutoUpgradeInput `pulumi:"clusterAutoUpgrade"`
+}
+
+func (GetClustersClusterOperationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterOperationPolicy)(nil)).Elem()
+}
+
+func (i GetClustersClusterOperationPolicyArgs) ToGetClustersClusterOperationPolicyOutput() GetClustersClusterOperationPolicyOutput {
+	return i.ToGetClustersClusterOperationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterOperationPolicyArgs) ToGetClustersClusterOperationPolicyOutputWithContext(ctx context.Context) GetClustersClusterOperationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOperationPolicyOutput)
+}
+
+type GetClustersClusterOperationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterOperationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterOperationPolicy)(nil)).Elem()
+}
+
+func (o GetClustersClusterOperationPolicyOutput) ToGetClustersClusterOperationPolicyOutput() GetClustersClusterOperationPolicyOutput {
+	return o
+}
+
+func (o GetClustersClusterOperationPolicyOutput) ToGetClustersClusterOperationPolicyOutputWithContext(ctx context.Context) GetClustersClusterOperationPolicyOutput {
+	return o
+}
+
+// Cluster automatic upgrade.
+func (o GetClustersClusterOperationPolicyOutput) ClusterAutoUpgrade() GetClustersClusterOperationPolicyClusterAutoUpgradeOutput {
+	return o.ApplyT(func(v GetClustersClusterOperationPolicy) GetClustersClusterOperationPolicyClusterAutoUpgrade {
+		return v.ClusterAutoUpgrade
+	}).(GetClustersClusterOperationPolicyClusterAutoUpgradeOutput)
+}
+
+type GetClustersClusterOperationPolicyClusterAutoUpgrade struct {
+	// Cluster automatic upgrade frequency.
+	Channel string `pulumi:"channel"`
+	// Whether to enable cluster automatic upgrade.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClustersClusterOperationPolicyClusterAutoUpgradeInput is an input type that accepts GetClustersClusterOperationPolicyClusterAutoUpgradeArgs and GetClustersClusterOperationPolicyClusterAutoUpgradeOutput values.
+// You can construct a concrete instance of `GetClustersClusterOperationPolicyClusterAutoUpgradeInput` via:
+//
+//	GetClustersClusterOperationPolicyClusterAutoUpgradeArgs{...}
+type GetClustersClusterOperationPolicyClusterAutoUpgradeInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutput() GetClustersClusterOperationPolicyClusterAutoUpgradeOutput
+	ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutputWithContext(context.Context) GetClustersClusterOperationPolicyClusterAutoUpgradeOutput
+}
+
+type GetClustersClusterOperationPolicyClusterAutoUpgradeArgs struct {
+	// Cluster automatic upgrade frequency.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// Whether to enable cluster automatic upgrade.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClustersClusterOperationPolicyClusterAutoUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (i GetClustersClusterOperationPolicyClusterAutoUpgradeArgs) ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutput() GetClustersClusterOperationPolicyClusterAutoUpgradeOutput {
+	return i.ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterOperationPolicyClusterAutoUpgradeArgs) ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutputWithContext(ctx context.Context) GetClustersClusterOperationPolicyClusterAutoUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOperationPolicyClusterAutoUpgradeOutput)
+}
+
+type GetClustersClusterOperationPolicyClusterAutoUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutput() GetClustersClusterOperationPolicyClusterAutoUpgradeOutput {
+	return o
+}
+
+func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) ToGetClustersClusterOperationPolicyClusterAutoUpgradeOutputWithContext(ctx context.Context) GetClustersClusterOperationPolicyClusterAutoUpgradeOutput {
+	return o
+}
+
+// Cluster automatic upgrade frequency.
+func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterOperationPolicyClusterAutoUpgrade) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// Whether to enable cluster automatic upgrade.
+func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersClusterOperationPolicyClusterAutoUpgrade) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type GetEdgeKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
@@ -9410,9 +10440,10 @@ func (o GetKubernetesAddonsAddonArrayOutput) Index(i pulumi.IntInput) GetKuberne
 
 type GetKubernetesClustersCluster struct {
 	// The ID of availability zone.
-	AvailabilityZone   string `pulumi:"availabilityZone"`
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// The cluster network type.
 	ClusterNetworkType string `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// Map of kubernetes cluster connection information.
 	Connections GetKubernetesClustersClusterConnections `pulumi:"connections"`
 	// ID of the node.
 	Id string `pulumi:"id"`
@@ -9421,38 +10452,47 @@ type GetKubernetesClustersCluster struct {
 	// The keypair of ssh login cluster node, you have to create it first.
 	KeyName string `pulumi:"keyName"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfigs            []GetKubernetesClustersClusterLogConfig `pulumi:"logConfigs"`
-	MasterAutoRenew       bool                                    `pulumi:"masterAutoRenew"`
-	MasterAutoRenewPeriod int                                     `pulumi:"masterAutoRenewPeriod"`
+	LogConfigs []GetKubernetesClustersClusterLogConfig `pulumi:"logConfigs"`
+	// Whether to enable master payment auto-renew
+	MasterAutoRenew bool `pulumi:"masterAutoRenew"`
+	// Master payment auto-renew period.
+	MasterAutoRenewPeriod int `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node.
 	MasterDiskCategory string `pulumi:"masterDiskCategory"`
 	// The system disk size of master node.
-	MasterDiskSize           int    `pulumi:"masterDiskSize"`
+	MasterDiskSize int `pulumi:"masterDiskSize"`
+	// Master payment type.
 	MasterInstanceChargeType string `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node.
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
-	MasterNodes      []GetKubernetesClustersClusterMasterNode `pulumi:"masterNodes"`
-	MasterPeriod     int                                      `pulumi:"masterPeriod"`
-	MasterPeriodUnit string                                   `pulumi:"masterPeriodUnit"`
+	MasterNodes []GetKubernetesClustersClusterMasterNode `pulumi:"masterNodes"`
+	// Master payment period.
+	MasterPeriod int `pulumi:"masterPeriod"`
+	// Master payment period unit.
+	MasterPeriodUnit string `pulumi:"masterPeriodUnit"`
 	// Node name.
 	Name string `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The network mask used on pods for each node.
-	NodeCidrMask int    `pulumi:"nodeCidrMask"`
-	PodCidr      string `pulumi:"podCidr"`
+	NodeCidrMask int `pulumi:"nodeCidrMask"`
+	// The CIDR block for the pod network.
+	PodCidr string `pulumi:"podCidr"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	ServiceCidr     string `pulumi:"serviceCidr"`
+	// The CIDR block for the service network.
+	ServiceCidr string `pulumi:"serviceCidr"`
 	// Whether internet load balancer for API Server is created
 	SlbInternetEnabled bool `pulumi:"slbInternetEnabled"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of VSwitches where the current cluster is located.
-	VswitchIds            []string `pulumi:"vswitchIds"`
-	WorkerAutoRenew       bool     `pulumi:"workerAutoRenew"`
-	WorkerAutoRenewPeriod int      `pulumi:"workerAutoRenewPeriod"`
+	VswitchIds []string `pulumi:"vswitchIds"`
+	// Whether to enable worker payment auto-renew.
+	WorkerAutoRenew bool `pulumi:"workerAutoRenew"`
+	// Worker payment auto-renew period
+	WorkerAutoRenewPeriod int `pulumi:"workerAutoRenewPeriod"`
 	// The data disk size of worker node.
 	WorkerDataDiskCategory string `pulumi:"workerDataDiskCategory"`
 	// The data disk category of worker node.
@@ -9460,15 +10500,18 @@ type GetKubernetesClustersCluster struct {
 	// The system disk category of worker node.
 	WorkerDiskCategory string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node.
-	WorkerDiskSize           int    `pulumi:"workerDiskSize"`
+	WorkerDiskSize int `pulumi:"workerDiskSize"`
+	// Worker payment type
 	WorkerInstanceChargeType string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes []GetKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
 	// The ECS instance node number in the current container cluster.
-	WorkerNumbers    []int  `pulumi:"workerNumbers"`
-	WorkerPeriod     int    `pulumi:"workerPeriod"`
+	WorkerNumbers []int `pulumi:"workerNumbers"`
+	// Worker payment period.
+	WorkerPeriod int `pulumi:"workerPeriod"`
+	// Worker payment period unit.
 	WorkerPeriodUnit string `pulumi:"workerPeriodUnit"`
 }
 
@@ -9485,9 +10528,10 @@ type GetKubernetesClustersClusterInput interface {
 
 type GetKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
-	AvailabilityZone   pulumi.StringInput `pulumi:"availabilityZone"`
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// The cluster network type.
 	ClusterNetworkType pulumi.StringInput `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// Map of kubernetes cluster connection information.
 	Connections GetKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
 	// ID of the node.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -9496,38 +10540,47 @@ type GetKubernetesClustersClusterArgs struct {
 	// The keypair of ssh login cluster node, you have to create it first.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfigs            GetKubernetesClustersClusterLogConfigArrayInput `pulumi:"logConfigs"`
-	MasterAutoRenew       pulumi.BoolInput                                `pulumi:"masterAutoRenew"`
-	MasterAutoRenewPeriod pulumi.IntInput                                 `pulumi:"masterAutoRenewPeriod"`
+	LogConfigs GetKubernetesClustersClusterLogConfigArrayInput `pulumi:"logConfigs"`
+	// Whether to enable master payment auto-renew
+	MasterAutoRenew pulumi.BoolInput `pulumi:"masterAutoRenew"`
+	// Master payment auto-renew period.
+	MasterAutoRenewPeriod pulumi.IntInput `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node.
 	MasterDiskCategory pulumi.StringInput `pulumi:"masterDiskCategory"`
 	// The system disk size of master node.
-	MasterDiskSize           pulumi.IntInput    `pulumi:"masterDiskSize"`
+	MasterDiskSize pulumi.IntInput `pulumi:"masterDiskSize"`
+	// Master payment type.
 	MasterInstanceChargeType pulumi.StringInput `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node.
 	MasterInstanceTypes pulumi.StringArrayInput `pulumi:"masterInstanceTypes"`
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
-	MasterNodes      GetKubernetesClustersClusterMasterNodeArrayInput `pulumi:"masterNodes"`
-	MasterPeriod     pulumi.IntInput                                  `pulumi:"masterPeriod"`
-	MasterPeriodUnit pulumi.StringInput                               `pulumi:"masterPeriodUnit"`
+	MasterNodes GetKubernetesClustersClusterMasterNodeArrayInput `pulumi:"masterNodes"`
+	// Master payment period.
+	MasterPeriod pulumi.IntInput `pulumi:"masterPeriod"`
+	// Master payment period unit.
+	MasterPeriodUnit pulumi.StringInput `pulumi:"masterPeriodUnit"`
 	// Node name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The network mask used on pods for each node.
-	NodeCidrMask pulumi.IntInput    `pulumi:"nodeCidrMask"`
-	PodCidr      pulumi.StringInput `pulumi:"podCidr"`
+	NodeCidrMask pulumi.IntInput `pulumi:"nodeCidrMask"`
+	// The CIDR block for the pod network.
+	PodCidr pulumi.StringInput `pulumi:"podCidr"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	ServiceCidr     pulumi.StringInput `pulumi:"serviceCidr"`
+	// The CIDR block for the service network.
+	ServiceCidr pulumi.StringInput `pulumi:"serviceCidr"`
 	// Whether internet load balancer for API Server is created
 	SlbInternetEnabled pulumi.BoolInput `pulumi:"slbInternetEnabled"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of VSwitches where the current cluster is located.
-	VswitchIds            pulumi.StringArrayInput `pulumi:"vswitchIds"`
-	WorkerAutoRenew       pulumi.BoolInput        `pulumi:"workerAutoRenew"`
-	WorkerAutoRenewPeriod pulumi.IntInput         `pulumi:"workerAutoRenewPeriod"`
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
+	// Whether to enable worker payment auto-renew.
+	WorkerAutoRenew pulumi.BoolInput `pulumi:"workerAutoRenew"`
+	// Worker payment auto-renew period
+	WorkerAutoRenewPeriod pulumi.IntInput `pulumi:"workerAutoRenewPeriod"`
 	// The data disk size of worker node.
 	WorkerDataDiskCategory pulumi.StringInput `pulumi:"workerDataDiskCategory"`
 	// The data disk category of worker node.
@@ -9535,16 +10588,19 @@ type GetKubernetesClustersClusterArgs struct {
 	// The system disk category of worker node.
 	WorkerDiskCategory pulumi.StringInput `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node.
-	WorkerDiskSize           pulumi.IntInput    `pulumi:"workerDiskSize"`
+	WorkerDiskSize pulumi.IntInput `pulumi:"workerDiskSize"`
+	// Worker payment type
 	WorkerInstanceChargeType pulumi.StringInput `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node.
 	WorkerInstanceTypes pulumi.StringArrayInput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes GetKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
 	// The ECS instance node number in the current container cluster.
-	WorkerNumbers    pulumi.IntArrayInput `pulumi:"workerNumbers"`
-	WorkerPeriod     pulumi.IntInput      `pulumi:"workerPeriod"`
-	WorkerPeriodUnit pulumi.StringInput   `pulumi:"workerPeriodUnit"`
+	WorkerNumbers pulumi.IntArrayInput `pulumi:"workerNumbers"`
+	// Worker payment period.
+	WorkerPeriod pulumi.IntInput `pulumi:"workerPeriod"`
+	// Worker payment period unit.
+	WorkerPeriodUnit pulumi.StringInput `pulumi:"workerPeriodUnit"`
 }
 
 func (GetKubernetesClustersClusterArgs) ElementType() reflect.Type {
@@ -9603,11 +10659,12 @@ func (o GetKubernetesClustersClusterOutput) AvailabilityZone() pulumi.StringOutp
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The cluster network type.
 func (o GetKubernetesClustersClusterOutput) ClusterNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+// Map of kubernetes cluster connection information.
 func (o GetKubernetesClustersClusterOutput) Connections() GetKubernetesClustersClusterConnectionsOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) GetKubernetesClustersClusterConnections { return v.Connections }).(GetKubernetesClustersClusterConnectionsOutput)
 }
@@ -9632,10 +10689,12 @@ func (o GetKubernetesClustersClusterOutput) LogConfigs() GetKubernetesClustersCl
 	return o.ApplyT(func(v GetKubernetesClustersCluster) []GetKubernetesClustersClusterLogConfig { return v.LogConfigs }).(GetKubernetesClustersClusterLogConfigArrayOutput)
 }
 
+// Whether to enable master payment auto-renew
 func (o GetKubernetesClustersClusterOutput) MasterAutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) bool { return v.MasterAutoRenew }).(pulumi.BoolOutput)
 }
 
+// Master payment auto-renew period.
 func (o GetKubernetesClustersClusterOutput) MasterAutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.MasterAutoRenewPeriod }).(pulumi.IntOutput)
 }
@@ -9650,6 +10709,7 @@ func (o GetKubernetesClustersClusterOutput) MasterDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.MasterDiskSize }).(pulumi.IntOutput)
 }
 
+// Master payment type.
 func (o GetKubernetesClustersClusterOutput) MasterInstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.MasterInstanceChargeType }).(pulumi.StringOutput)
 }
@@ -9664,10 +10724,12 @@ func (o GetKubernetesClustersClusterOutput) MasterNodes() GetKubernetesClustersC
 	return o.ApplyT(func(v GetKubernetesClustersCluster) []GetKubernetesClustersClusterMasterNode { return v.MasterNodes }).(GetKubernetesClustersClusterMasterNodeArrayOutput)
 }
 
+// Master payment period.
 func (o GetKubernetesClustersClusterOutput) MasterPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.MasterPeriod }).(pulumi.IntOutput)
 }
 
+// Master payment period unit.
 func (o GetKubernetesClustersClusterOutput) MasterPeriodUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.MasterPeriodUnit }).(pulumi.StringOutput)
 }
@@ -9687,6 +10749,7 @@ func (o GetKubernetesClustersClusterOutput) NodeCidrMask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.NodeCidrMask }).(pulumi.IntOutput)
 }
 
+// The CIDR block for the pod network.
 func (o GetKubernetesClustersClusterOutput) PodCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
 }
@@ -9696,6 +10759,7 @@ func (o GetKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutpu
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// The CIDR block for the service network.
 func (o GetKubernetesClustersClusterOutput) ServiceCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.ServiceCidr }).(pulumi.StringOutput)
 }
@@ -9715,10 +10779,12 @@ func (o GetKubernetesClustersClusterOutput) VswitchIds() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v GetKubernetesClustersCluster) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
+// Whether to enable worker payment auto-renew.
 func (o GetKubernetesClustersClusterOutput) WorkerAutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) bool { return v.WorkerAutoRenew }).(pulumi.BoolOutput)
 }
 
+// Worker payment auto-renew period
 func (o GetKubernetesClustersClusterOutput) WorkerAutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerAutoRenewPeriod }).(pulumi.IntOutput)
 }
@@ -9743,6 +10809,7 @@ func (o GetKubernetesClustersClusterOutput) WorkerDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerDiskSize }).(pulumi.IntOutput)
 }
 
+// Worker payment type
 func (o GetKubernetesClustersClusterOutput) WorkerInstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.WorkerInstanceChargeType }).(pulumi.StringOutput)
 }
@@ -9762,10 +10829,12 @@ func (o GetKubernetesClustersClusterOutput) WorkerNumbers() pulumi.IntArrayOutpu
 	return o.ApplyT(func(v GetKubernetesClustersCluster) []int { return v.WorkerNumbers }).(pulumi.IntArrayOutput)
 }
 
+// Worker payment period.
 func (o GetKubernetesClustersClusterOutput) WorkerPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerPeriod }).(pulumi.IntOutput)
 }
 
+// Worker payment period unit.
 func (o GetKubernetesClustersClusterOutput) WorkerPeriodUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.WorkerPeriodUnit }).(pulumi.StringOutput)
 }
@@ -14358,7 +15427,8 @@ type GetServerlessKubernetesClustersCluster struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnections `pulumi:"connections"`
 	// Whether the cluster support delete protection.
-	DeletionProtection          bool `pulumi:"deletionProtection"`
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// Whether to create internet eip for API Server.
 	EndpointPublicAccessEnabled bool `pulumi:"endpointPublicAccessEnabled"`
 	// The ID of the container cluster.
 	Id string `pulumi:"id"`
@@ -14367,8 +15437,9 @@ type GetServerlessKubernetesClustersCluster struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The ID of security group where the current cluster  is located.
-	SecurityGroupId string            `pulumi:"securityGroupId"`
-	Tags            map[string]string `pulumi:"tags"`
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// A map of tags assigned to the kubernetes cluster.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of vSwitch where the current cluster is located.
@@ -14390,7 +15461,8 @@ type GetServerlessKubernetesClustersClusterArgs struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
 	// Whether the cluster support delete protection.
-	DeletionProtection          pulumi.BoolInput `pulumi:"deletionProtection"`
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// Whether to create internet eip for API Server.
 	EndpointPublicAccessEnabled pulumi.BoolInput `pulumi:"endpointPublicAccessEnabled"`
 	// The ID of the container cluster.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -14399,8 +15471,9 @@ type GetServerlessKubernetesClustersClusterArgs struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The ID of security group where the current cluster  is located.
-	SecurityGroupId pulumi.StringInput    `pulumi:"securityGroupId"`
-	Tags            pulumi.StringMapInput `pulumi:"tags"`
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// A map of tags assigned to the kubernetes cluster.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of vSwitch where the current cluster is located.
@@ -14470,6 +15543,7 @@ func (o GetServerlessKubernetesClustersClusterOutput) DeletionProtection() pulum
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+// Whether to create internet eip for API Server.
 func (o GetServerlessKubernetesClustersClusterOutput) EndpointPublicAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) bool { return v.EndpointPublicAccessEnabled }).(pulumi.BoolOutput)
 }
@@ -14494,6 +15568,7 @@ func (o GetServerlessKubernetesClustersClusterOutput) SecurityGroupId() pulumi.S
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// A map of tags assigned to the kubernetes cluster.
 func (o GetServerlessKubernetesClustersClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -14653,6 +15728,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput)(nil)).Elem(), ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesUpgradePolicyInput)(nil)).Elem(), ManagedKubernetesUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesUpgradePolicyPtrInput)(nil)).Elem(), ManagedKubernetesUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoModeInput)(nil)).Elem(), NodePoolAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoModePtrInput)(nil)).Elem(), NodePoolAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
@@ -14691,6 +15768,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintArrayInput)(nil)).Elem(), NodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTeeConfigInput)(nil)).Elem(), NodePoolTeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTeeConfigPtrInput)(nil)).Elem(), NodePoolTeeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradePolicyInput)(nil)).Elem(), NodePoolUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradePolicyPtrInput)(nil)).Elem(), NodePoolUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonInput)(nil)).Elem(), ServerlessKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonArrayInput)(nil)).Elem(), ServerlessKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesDeleteOptionInput)(nil)).Elem(), ServerlessKubernetesDeleteOptionArgs{})
@@ -14706,6 +15785,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeInput)(nil)).Elem(), SwarmNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeArrayInput)(nil)).Elem(), SwarmNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCredentialCertificateAuthorityInput)(nil)).Elem(), GetClusterCredentialCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAutoModeInput)(nil)).Elem(), GetClustersClusterAutoModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterMaintenanceWindowInput)(nil)).Elem(), GetClustersClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterOperationPolicyInput)(nil)).Elem(), GetClustersClusterOperationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterOperationPolicyClusterAutoUpgradeInput)(nil)).Elem(), GetClustersClusterOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterConnectionsArgs{})
@@ -14824,6 +15909,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesUpgradePolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoModeOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoModePtrOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
@@ -14862,6 +15949,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolTeeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolTeeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolUpgradePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesDeleteOptionOutput{})
@@ -14877,6 +15966,12 @@ func init() {
 	pulumi.RegisterOutputType(SwarmNodeOutput{})
 	pulumi.RegisterOutputType(SwarmNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterCredentialCertificateAuthorityOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAutoModeOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterOperationPolicyOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterOperationPolicyClusterAutoUpgradeOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterConnectionsOutput{})

@@ -114,7 +114,7 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
-    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */

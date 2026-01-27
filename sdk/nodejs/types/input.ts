@@ -5917,6 +5917,25 @@ export namespace cs {
         rrsaOidcIssuerUrl?: pulumi.Input<string>;
     }
 
+    export interface ManagedKubernetesUpgradePolicy {
+        /**
+         * Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+         *
+         * for example:
+         * ```
+         * # Upgrade cluster version with control plane only
+         * version = "1.32.1-aliyun.1"
+         *
+         * upgrade_policy {
+         * control_plane_only = true
+         * }
+         * ```
+         *
+         * > **NOTE:** After the upgrade completes, you may remove the `upgradePolicy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+         */
+        controlPlaneOnly?: pulumi.Input<boolean>;
+    }
+
     export interface NodePoolAutoMode {
         /**
          * Whether to enable auto mode. Valid values:
@@ -6320,9 +6339,24 @@ export namespace cs {
 
     export interface NodePoolRollingPolicy {
         /**
-         * The maximum number of unusable nodes.
+         * The upgrade interval time between batches, in minutes. This parameter only takes effect when `pausePolicy` is set to `NotPause`.
+         */
+        batchInterval?: pulumi.Input<string>;
+        /**
+         * The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
          */
         maxParallelism?: pulumi.Input<number>;
+        /**
+         * Specify the list of nodes to be upgraded.
+         */
+        nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The auto-pause policy during node upgrade. Valid values:
+         * - `FirstBatch`: Pause after the first batch is completed.
+         * - `EveryBatch`: Pause after each batch is completed.
+         * - `NotPause`: Do not pause during the upgrade process.
+         */
+        pausePolicy?: pulumi.Input<string>;
     }
 
     export interface NodePoolScalingConfig {
@@ -6387,6 +6421,29 @@ export namespace cs {
          * Specifies whether to enable confidential computing for the cluster.
          */
         teeEnable?: pulumi.Input<boolean>;
+    }
+
+    export interface NodePoolUpgradePolicy {
+        /**
+         * Node system Image ID
+         */
+        imageId?: pulumi.Input<string>;
+        /**
+         * Node Kubernetes version
+         */
+        kubernetesVersion?: pulumi.Input<string>;
+        /**
+         * Node runtime type
+         */
+        runtime?: pulumi.Input<string>;
+        /**
+         * Node Runtime Version
+         */
+        runtimeVersion?: pulumi.Input<string>;
+        /**
+         * Whether to use replacement disk upgrade
+         */
+        useReplace?: pulumi.Input<boolean>;
     }
 
     export interface ServerlessKubernetesAddon {
@@ -13404,6 +13461,252 @@ export namespace eventbridge {
          * The ID of the VSwitch.
          */
         vswitcheId?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceHttpEventParameters {
+        /**
+         * IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+         */
+        ips?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+         * - GET
+         * - POST
+         * - PUT
+         * - PATCH
+         * - DELETE
+         * - HEAD
+         * - OPTIONS
+         * - TRACE
+         * - CONNECT
+         */
+        methods?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The public network request URL.
+         */
+        publicWebHookUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+         */
+        referers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Select the type of security configuration. The optional range is as follows:
+         * - none: No configuration is required.
+         * - ip:IP segment.
+         * - referer: Security domain name.
+         */
+        securityConfig?: pulumi.Input<string>;
+        /**
+         * The protocol type supported by the generated Webhook. The value description is as follows:
+         * - HTTP
+         * - HTTPS
+         * - HTTP&HTTPS
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * The intranet request URL.
+         */
+        vpcWebHookUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EventSourceV2SourceKafkaParameters {
+        /**
+         * The Group ID of the consumer who subscribes to the Topic.
+         */
+        consumerGroup?: pulumi.Input<string>;
+        /**
+         * The instance ID.
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * Network configuration: Default (Default network) and public network (self-built network).
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * Consumption sites.
+         */
+        offsetReset?: pulumi.Input<string>;
+        /**
+         * The region ID.
+         */
+        regionId?: pulumi.Input<string>;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId?: pulumi.Input<string>;
+        /**
+         * The topic name.
+         */
+        topic?: pulumi.Input<string>;
+        /**
+         * The VPC ID.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * The vSwitch ID.
+         */
+        vswitchIds?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceMnsParameters {
+        /**
+         * Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+         */
+        isBase64Decode?: pulumi.Input<boolean>;
+        /**
+         * The name of the Queue of the lightweight message Queue (formerly MNS).
+         */
+        queueName?: pulumi.Input<string>;
+        /**
+         * The region of the lightweight message queue (formerly MNS).
+         */
+        regionId?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceOssEventParameters {
+        /**
+         * OSS event type list.
+         */
+        eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+         */
+        matchRules?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.eventbridge.EventSourceV2SourceOssEventParametersMatchRule>[]>[]>;
+        /**
+         * The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+         */
+        stsRoleArn?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceOssEventParametersMatchRule {
+        matchState?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
+        prefix?: pulumi.Input<string>;
+        suffix?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceRabbitMqParameters {
+        /**
+         * The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        queueName?: pulumi.Input<string>;
+        /**
+         * The region of the RabbitMQ instance.
+         */
+        regionId?: pulumi.Input<string>;
+        /**
+         * The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        virtualHostName?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceRocketmqParameters {
+        /**
+         * ACL or not.
+         */
+        authType?: pulumi.Input<string>;
+        /**
+         * The Group ID of the RocketMQ version of message queue.
+         */
+        groupId?: pulumi.Input<string>;
+        /**
+         * Instance access point.
+         */
+        instanceEndpoint?: pulumi.Input<string>;
+        /**
+         * The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * Instance network.
+         */
+        instanceNetwork?: pulumi.Input<string>;
+        /**
+         * The instance password.
+         */
+        instancePassword?: pulumi.Input<string>;
+        /**
+         * The ID of the security group.
+         */
+        instanceSecurityGroupId?: pulumi.Input<string>;
+        /**
+         * The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The instance user name.
+         */
+        instanceUsername?: pulumi.Input<string>;
+        /**
+         * The ID of the VPC.
+         */
+        instanceVpcId?: pulumi.Input<string>;
+        /**
+         * The vSwitch ID.
+         */
+        instanceVswitchIds?: pulumi.Input<string>;
+        /**
+         * The consumption point of the message. The value description is as follows:
+         * - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+         * - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+         * - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+         * Default value: `CONSUME_FROM_LAST_OFFSET`.
+         */
+        offset?: pulumi.Input<string>;
+        /**
+         * The region of the RocketMQ instance.
+         */
+        regionId?: pulumi.Input<string>;
+        /**
+         * The filter label of the message.
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+         */
+        timestamp?: pulumi.Input<number>;
+        /**
+         * The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+         */
+        topic?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceScheduledEventParameters {
+        /**
+         * Cron expression
+         */
+        schedule?: pulumi.Input<string>;
+        /**
+         * The Cron execution time zone.
+         */
+        timeZone?: pulumi.Input<string>;
+        /**
+         * JSON string
+         */
+        userData?: pulumi.Input<string>;
+    }
+
+    export interface EventSourceV2SourceSlsParameters {
+        /**
+         * Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+         */
+        consumePosition?: pulumi.Input<string>;
+        /**
+         * The logstore of log service SLS.
+         */
+        logStore?: pulumi.Input<string>;
+        /**
+         * The log project of log service SLS.
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+         */
+        roleName?: pulumi.Input<string>;
     }
 
     export interface RuleTarget {
@@ -21408,7 +21711,7 @@ export namespace sls {
 
     export interface MachineGroupGroupAttribute {
         /**
-         * The external management system identification on which the machine group depends.
+         * The identifier of the external management system on which the machine group depends. This parameter is empty by default.
          */
         externalName?: pulumi.Input<string>;
         /**
@@ -21866,6 +22169,57 @@ export namespace threatdetection {
          * Destination port.
          */
         targetPort?: pulumi.Input<number>;
+    }
+
+    export interface InstancePostPayModuleSwitchObj {
+        /**
+         * Agentless Detection Module. Valid values:
+         */
+        agentless?: pulumi.Input<number>;
+        /**
+         * Anti-Ransomware Module. Valid values:
+         */
+        antiRansomware?: pulumi.Input<number>;
+        /**
+         * Basic service module. Valid values:
+         */
+        basicService?: pulumi.Input<number>;
+        /**
+         * Cloud Security Configuration Check Module. Valid values:
+         */
+        cspm?: pulumi.Input<number>;
+        /**
+         * Threat Analysis and Response Module. Valid values:
+         */
+        ctdr?: pulumi.Input<number>;
+        /**
+         * Log Management Module. Valid values:
+         */
+        ctdrStorage?: pulumi.Input<number>;
+        /**
+         * Host and Container Security Module. Valid values:
+         */
+        postHost?: pulumi.Input<number>;
+        /**
+         * Application Protection Module. Valid values:
+         */
+        rasp?: pulumi.Input<number>;
+        /**
+         * Malicious File Detection SDK Module. Valid values:
+         */
+        sdk?: pulumi.Input<number>;
+        /**
+         * Serverless Security Module. Valid values:
+         */
+        serverless?: pulumi.Input<number>;
+        /**
+         * Vulnerability Repair Module. Valid values:
+         */
+        vul?: pulumi.Input<number>;
+        /**
+         * File Tamper Protection Module. Valid values:
+         */
+        webLock?: pulumi.Input<number>;
     }
 
     export interface SasTrailServiceTrail {
@@ -22755,6 +23109,10 @@ export namespace wafv3 {
          */
         accountIdentifiers?: pulumi.Input<pulumi.Input<inputs.wafv3.DefenseRuleConfigAccountIdentifier>[]>;
         /**
+         * Whether the new Web core protection rules are automatically updated. Values:
+         */
+        autoUpdate?: pulumi.Input<boolean>;
+        /**
          * The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
          */
         bypassRegularRules?: pulumi.Input<pulumi.Input<string>[]>;
@@ -22820,6 +23178,10 @@ export namespace wafv3 {
          */
         cnRegions?: pulumi.Input<string>;
         /**
+         * The type to enable decoding. Value:
+         */
+        codecLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
          */
         conditions?: pulumi.Input<pulumi.Input<inputs.wafv3.DefenseRuleConfigCondition>[]>;
@@ -22852,15 +23214,7 @@ export namespace wafv3 {
          */
         remoteAddrs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Protection rule action. Value:
-         * - block: Indicates an intercept.
-         * - monitor: indicates observation.
-         * - js: indicates JS validation.
-         * - captcha: Indicates a slider.
-         * - captcha_strict: indicates a strict slider.
-         * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-         *
-         * > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+         * Web core protection rule action. Valid values:
          */
         ruleAction?: pulumi.Input<string>;
         /**
@@ -22887,6 +23241,10 @@ export namespace wafv3 {
          * The address of the cached page.
          */
         url?: pulumi.Input<string>;
+        /**
+         * The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+         */
+        wafBaseConfigs?: pulumi.Input<pulumi.Input<inputs.wafv3.DefenseRuleConfigWafBaseConfig>[]>;
     }
 
     export interface DefenseRuleConfigAccountIdentifier {
@@ -23082,6 +23440,36 @@ export namespace wafv3 {
         start?: pulumi.Input<number>;
     }
 
+    export interface DefenseRuleConfigWafBaseConfig {
+        /**
+         * The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+         */
+        ruleBatchOperationConfig?: pulumi.Input<string>;
+        /**
+         * The configuration of the Web core protection rules to be modified. See `ruleDetail` below.
+         */
+        ruleDetails?: pulumi.Input<pulumi.Input<inputs.wafv3.DefenseRuleConfigWafBaseConfigRuleDetail>[]>;
+        /**
+         * The type of the rule. Valid values:
+         */
+        ruleType?: pulumi.Input<string>;
+    }
+
+    export interface DefenseRuleConfigWafBaseConfigRuleDetail {
+        /**
+         * Web core protection rule action. Valid values:
+         */
+        ruleAction?: pulumi.Input<string>;
+        /**
+         * The protection rule ID.
+         */
+        ruleId?: pulumi.Input<string>;
+        /**
+         * Protection rule status.
+         */
+        ruleStatus?: pulumi.Input<number>;
+    }
+
     export interface DomainListen {
         /**
          * The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
@@ -23180,6 +23568,14 @@ export namespace wafv3 {
          */
         focusHttpBackend?: pulumi.Input<boolean>;
         /**
+         * Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+         */
+        http2Origin?: pulumi.Input<boolean>;
+        /**
+         * The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+         */
+        http2OriginMaxConcurrency?: pulumi.Input<number>;
+        /**
          * Specifies whether to enable the persistent connection feature. Valid values:
          */
         keepalive?: pulumi.Input<boolean>;
@@ -23200,6 +23596,11 @@ export namespace wafv3 {
          * The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
          */
         loadbalance: pulumi.Input<string>;
+        /**
+         * The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * > **NOTE:** This parameter is supported only by the Ultimate edition.
+         */
+        maxBodySize?: pulumi.Input<number>;
         /**
          * The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          */

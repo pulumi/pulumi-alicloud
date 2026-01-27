@@ -8,8 +8,10 @@ import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
 import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
 import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
 import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
+import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigWafBaseConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -50,6 +52,21 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<List<DefenseRuleConfigAccountIdentifierArgs>>> accountIdentifiers() {
         return Optional.ofNullable(this.accountIdentifiers);
+    }
+
+    /**
+     * Whether the new Web core protection rules are automatically updated. Values:
+     * 
+     */
+    @Import(name="autoUpdate")
+    private @Nullable Output<Boolean> autoUpdate;
+
+    /**
+     * @return Whether the new Web core protection rules are automatically updated. Values:
+     * 
+     */
+    public Optional<Output<Boolean>> autoUpdate() {
+        return Optional.ofNullable(this.autoUpdate);
     }
 
     /**
@@ -225,6 +242,21 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The type to enable decoding. Value:
+     * 
+     */
+    @Import(name="codecLists")
+    private @Nullable Output<List<String>> codecLists;
+
+    /**
+     * @return The type to enable decoding. Value:
+     * 
+     */
+    public Optional<Output<List<String>>> codecLists() {
+        return Optional.ofNullable(this.codecLists);
+    }
+
+    /**
      * The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
      * 
      */
@@ -338,30 +370,14 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Protection rule action. Value:
-     * - block: Indicates an intercept.
-     * - monitor: indicates observation.
-     * - js: indicates JS validation.
-     * - captcha: Indicates a slider.
-     * - captcha_strict: indicates a strict slider.
-     * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-     * 
-     * &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+     * Web core protection rule action. Valid values:
      * 
      */
     @Import(name="ruleAction")
     private @Nullable Output<String> ruleAction;
 
     /**
-     * @return Protection rule action. Value:
-     * - block: Indicates an intercept.
-     * - monitor: indicates observation.
-     * - js: indicates JS validation.
-     * - captcha: Indicates a slider.
-     * - captcha_strict: indicates a strict slider.
-     * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-     * 
-     * &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+     * @return Web core protection rule action. Valid values:
      * 
      */
     public Optional<Output<String>> ruleAction() {
@@ -451,17 +467,34 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+     * 
+     */
+    @Import(name="wafBaseConfigs")
+    private @Nullable Output<List<DefenseRuleConfigWafBaseConfigArgs>> wafBaseConfigs;
+
+    /**
+     * @return The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+     * 
+     */
+    public Optional<Output<List<DefenseRuleConfigWafBaseConfigArgs>>> wafBaseConfigs() {
+        return Optional.ofNullable(this.wafBaseConfigs);
+    }
+
     private DefenseRuleConfigArgs() {}
 
     private DefenseRuleConfigArgs(DefenseRuleConfigArgs $) {
         this.abroadRegions = $.abroadRegions;
         this.accountIdentifiers = $.accountIdentifiers;
+        this.autoUpdate = $.autoUpdate;
         this.bypassRegularRules = $.bypassRegularRules;
         this.bypassRegularTypes = $.bypassRegularTypes;
         this.bypassTags = $.bypassTags;
         this.ccEffect = $.ccEffect;
         this.ccStatus = $.ccStatus;
         this.cnRegions = $.cnRegions;
+        this.codecLists = $.codecLists;
         this.conditions = $.conditions;
         this.grayConfig = $.grayConfig;
         this.grayStatus = $.grayStatus;
@@ -475,6 +508,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         this.timeConfig = $.timeConfig;
         this.ua = $.ua;
         this.url = $.url;
+        this.wafBaseConfigs = $.wafBaseConfigs;
     }
 
     public static Builder builder() {
@@ -545,6 +579,27 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder accountIdentifiers(DefenseRuleConfigAccountIdentifierArgs... accountIdentifiers) {
             return accountIdentifiers(List.of(accountIdentifiers));
+        }
+
+        /**
+         * @param autoUpdate Whether the new Web core protection rules are automatically updated. Values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpdate(@Nullable Output<Boolean> autoUpdate) {
+            $.autoUpdate = autoUpdate;
+            return this;
+        }
+
+        /**
+         * @param autoUpdate Whether the new Web core protection rules are automatically updated. Values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpdate(Boolean autoUpdate) {
+            return autoUpdate(Output.of(autoUpdate));
         }
 
         /**
@@ -823,6 +878,37 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param codecLists The type to enable decoding. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codecLists(@Nullable Output<List<String>> codecLists) {
+            $.codecLists = codecLists;
+            return this;
+        }
+
+        /**
+         * @param codecLists The type to enable decoding. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codecLists(List<String> codecLists) {
+            return codecLists(Output.of(codecLists));
+        }
+
+        /**
+         * @param codecLists The type to enable decoding. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codecLists(String... codecLists) {
+            return codecLists(List.of(codecLists));
+        }
+
+        /**
          * @param conditions The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
          * 
          * @return builder
@@ -998,15 +1084,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleAction Protection rule action. Value:
-         * - block: Indicates an intercept.
-         * - monitor: indicates observation.
-         * - js: indicates JS validation.
-         * - captcha: Indicates a slider.
-         * - captcha_strict: indicates a strict slider.
-         * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-         * 
-         * &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+         * @param ruleAction Web core protection rule action. Valid values:
          * 
          * @return builder
          * 
@@ -1017,15 +1095,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ruleAction Protection rule action. Value:
-         * - block: Indicates an intercept.
-         * - monitor: indicates observation.
-         * - js: indicates JS validation.
-         * - captcha: Indicates a slider.
-         * - captcha_strict: indicates a strict slider.
-         * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-         * 
-         * &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+         * @param ruleAction Web core protection rule action. Valid values:
          * 
          * @return builder
          * 
@@ -1145,6 +1215,37 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param wafBaseConfigs The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wafBaseConfigs(@Nullable Output<List<DefenseRuleConfigWafBaseConfigArgs>> wafBaseConfigs) {
+            $.wafBaseConfigs = wafBaseConfigs;
+            return this;
+        }
+
+        /**
+         * @param wafBaseConfigs The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wafBaseConfigs(List<DefenseRuleConfigWafBaseConfigArgs> wafBaseConfigs) {
+            return wafBaseConfigs(Output.of(wafBaseConfigs));
+        }
+
+        /**
+         * @param wafBaseConfigs The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wafBaseConfigs(DefenseRuleConfigWafBaseConfigArgs... wafBaseConfigs) {
+            return wafBaseConfigs(List.of(wafBaseConfigs));
         }
 
         public DefenseRuleConfigArgs build() {

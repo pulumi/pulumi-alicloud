@@ -26,6 +26,8 @@ __all__ = [
     'DefenseRuleConfigTimeConfigTimePeriod',
     'DefenseRuleConfigTimeConfigWeekTimePeriod',
     'DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod',
+    'DefenseRuleConfigWafBaseConfig',
+    'DefenseRuleConfigWafBaseConfigRuleDetail',
     'DomainListen',
     'DomainRedirect',
     'DomainRedirectRequestHeader',
@@ -45,6 +47,8 @@ class DefenseRuleConfig(dict):
             suggest = "abroad_regions"
         elif key == "accountIdentifiers":
             suggest = "account_identifiers"
+        elif key == "autoUpdate":
+            suggest = "auto_update"
         elif key == "bypassRegularRules":
             suggest = "bypass_regular_rules"
         elif key == "bypassRegularTypes":
@@ -57,6 +61,8 @@ class DefenseRuleConfig(dict):
             suggest = "cc_status"
         elif key == "cnRegions":
             suggest = "cn_regions"
+        elif key == "codecLists":
+            suggest = "codec_lists"
         elif key == "grayConfig":
             suggest = "gray_config"
         elif key == "grayStatus":
@@ -73,6 +79,8 @@ class DefenseRuleConfig(dict):
             suggest = "throttle_type"
         elif key == "timeConfig":
             suggest = "time_config"
+        elif key == "wafBaseConfigs":
+            suggest = "waf_base_configs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfig. Access the value via the '{suggest}' property getter instead.")
@@ -88,12 +96,14 @@ class DefenseRuleConfig(dict):
     def __init__(__self__, *,
                  abroad_regions: Optional[_builtins.str] = None,
                  account_identifiers: Optional[Sequence['outputs.DefenseRuleConfigAccountIdentifier']] = None,
+                 auto_update: Optional[_builtins.bool] = None,
                  bypass_regular_rules: Optional[Sequence[_builtins.str]] = None,
                  bypass_regular_types: Optional[Sequence[_builtins.str]] = None,
                  bypass_tags: Optional[Sequence[_builtins.str]] = None,
                  cc_effect: Optional[_builtins.str] = None,
                  cc_status: Optional[_builtins.int] = None,
                  cn_regions: Optional[_builtins.str] = None,
+                 codec_lists: Optional[Sequence[_builtins.str]] = None,
                  conditions: Optional[Sequence['outputs.DefenseRuleConfigCondition']] = None,
                  gray_config: Optional['outputs.DefenseRuleConfigGrayConfig'] = None,
                  gray_status: Optional[_builtins.int] = None,
@@ -106,10 +116,12 @@ class DefenseRuleConfig(dict):
                  throttle_type: Optional[_builtins.str] = None,
                  time_config: Optional['outputs.DefenseRuleConfigTimeConfig'] = None,
                  ua: Optional[_builtins.str] = None,
-                 url: Optional[_builtins.str] = None):
+                 url: Optional[_builtins.str] = None,
+                 waf_base_configs: Optional[Sequence['outputs.DefenseRuleConfigWafBaseConfig']] = None):
         """
         :param _builtins.str abroad_regions: The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
         :param Sequence['DefenseRuleConfigAccountIdentifierArgs'] account_identifiers: The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+        :param _builtins.bool auto_update: Whether the new Web core protection rules are automatically updated. Values:
         :param Sequence[_builtins.str] bypass_regular_rules: The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
         :param Sequence[_builtins.str] bypass_regular_types: The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
                - sqli: Indicates SQL injection.
@@ -157,6 +169,7 @@ class DefenseRuleConfig(dict):
                - 0: indicates that the speed limit is off.
                - 1: Indicates that the speed limit is on.
         :param _builtins.str cn_regions: The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+        :param Sequence[_builtins.str] codec_lists: The type to enable decoding. Value:
         :param Sequence['DefenseRuleConfigConditionArgs'] conditions: The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
         :param 'DefenseRuleConfigGrayConfigArgs' gray_config: The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `gray_config` below.
         :param _builtins.int gray_status: Specifies whether to enable canary release for the rule. Valid values:
@@ -168,15 +181,7 @@ class DefenseRuleConfig(dict):
         :param _builtins.str protocol: The protocol type of the cached page address. Valid values: http, https.
         :param 'DefenseRuleConfigRateLimitArgs' rate_limit: The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
         :param Sequence[_builtins.str] remote_addrs: The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
-        :param _builtins.str rule_action: Protection rule action. Value:
-               - block: Indicates an intercept.
-               - monitor: indicates observation.
-               - js: indicates JS validation.
-               - captcha: Indicates a slider.
-               - captcha_strict: indicates a strict slider.
-               - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-               
-               > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        :param _builtins.str rule_action: Web core protection rule action. Valid values:
         :param _builtins.int throttle_threhold: The throttling threshold. Valid values:
                - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
                - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
@@ -186,11 +191,14 @@ class DefenseRuleConfig(dict):
         :param 'DefenseRuleConfigTimeConfigArgs' time_config: The scheduled rule configuration. The value is a JSON.  See `time_config` below.
         :param _builtins.str ua: The User-Agent string that is allowed for access to the address.
         :param _builtins.str url: The address of the cached page.
+        :param Sequence['DefenseRuleConfigWafBaseConfigArgs'] waf_base_configs: The configuration of the Web core protection rules to be modified. See `waf_base_config` below.
         """
         if abroad_regions is not None:
             pulumi.set(__self__, "abroad_regions", abroad_regions)
         if account_identifiers is not None:
             pulumi.set(__self__, "account_identifiers", account_identifiers)
+        if auto_update is not None:
+            pulumi.set(__self__, "auto_update", auto_update)
         if bypass_regular_rules is not None:
             pulumi.set(__self__, "bypass_regular_rules", bypass_regular_rules)
         if bypass_regular_types is not None:
@@ -203,6 +211,8 @@ class DefenseRuleConfig(dict):
             pulumi.set(__self__, "cc_status", cc_status)
         if cn_regions is not None:
             pulumi.set(__self__, "cn_regions", cn_regions)
+        if codec_lists is not None:
+            pulumi.set(__self__, "codec_lists", codec_lists)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
         if gray_config is not None:
@@ -229,6 +239,8 @@ class DefenseRuleConfig(dict):
             pulumi.set(__self__, "ua", ua)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if waf_base_configs is not None:
+            pulumi.set(__self__, "waf_base_configs", waf_base_configs)
 
     @_builtins.property
     @pulumi.getter(name="abroadRegions")
@@ -245,6 +257,14 @@ class DefenseRuleConfig(dict):
         The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
         """
         return pulumi.get(self, "account_identifiers")
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpdate")
+    def auto_update(self) -> Optional[_builtins.bool]:
+        """
+        Whether the new Web core protection rules are automatically updated. Values:
+        """
+        return pulumi.get(self, "auto_update")
 
     @_builtins.property
     @pulumi.getter(name="bypassRegularRules")
@@ -336,6 +356,14 @@ class DefenseRuleConfig(dict):
         return pulumi.get(self, "cn_regions")
 
     @_builtins.property
+    @pulumi.getter(name="codecLists")
+    def codec_lists(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The type to enable decoding. Value:
+        """
+        return pulumi.get(self, "codec_lists")
+
+    @_builtins.property
     @pulumi.getter
     def conditions(self) -> Optional[Sequence['outputs.DefenseRuleConfigCondition']]:
         """
@@ -399,15 +427,7 @@ class DefenseRuleConfig(dict):
     @pulumi.getter(name="ruleAction")
     def rule_action(self) -> Optional[_builtins.str]:
         """
-        Protection rule action. Value:
-        - block: Indicates an intercept.
-        - monitor: indicates observation.
-        - js: indicates JS validation.
-        - captcha: Indicates a slider.
-        - captcha_strict: indicates a strict slider.
-        - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-
-        > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        Web core protection rule action. Valid values:
         """
         return pulumi.get(self, "rule_action")
 
@@ -454,6 +474,14 @@ class DefenseRuleConfig(dict):
         The address of the cached page.
         """
         return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="wafBaseConfigs")
+    def waf_base_configs(self) -> Optional[Sequence['outputs.DefenseRuleConfigWafBaseConfig']]:
+        """
+        The configuration of the Web core protection rules to be modified. See `waf_base_config` below.
+        """
+        return pulumi.get(self, "waf_base_configs")
 
 
 @pulumi.output_type
@@ -1092,6 +1120,134 @@ class DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod(dict):
 
 
 @pulumi.output_type
+class DefenseRuleConfigWafBaseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleBatchOperationConfig":
+            suggest = "rule_batch_operation_config"
+        elif key == "ruleDetails":
+            suggest = "rule_details"
+        elif key == "ruleType":
+            suggest = "rule_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfigWafBaseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefenseRuleConfigWafBaseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefenseRuleConfigWafBaseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_batch_operation_config: Optional[_builtins.str] = None,
+                 rule_details: Optional[Sequence['outputs.DefenseRuleConfigWafBaseConfigRuleDetail']] = None,
+                 rule_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str rule_batch_operation_config: The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+        :param Sequence['DefenseRuleConfigWafBaseConfigRuleDetailArgs'] rule_details: The configuration of the Web core protection rules to be modified. See `rule_detail` below.
+        :param _builtins.str rule_type: The type of the rule. Valid values:
+        """
+        if rule_batch_operation_config is not None:
+            pulumi.set(__self__, "rule_batch_operation_config", rule_batch_operation_config)
+        if rule_details is not None:
+            pulumi.set(__self__, "rule_details", rule_details)
+        if rule_type is not None:
+            pulumi.set(__self__, "rule_type", rule_type)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleBatchOperationConfig")
+    def rule_batch_operation_config(self) -> Optional[_builtins.str]:
+        """
+        The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+        """
+        return pulumi.get(self, "rule_batch_operation_config")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleDetails")
+    def rule_details(self) -> Optional[Sequence['outputs.DefenseRuleConfigWafBaseConfigRuleDetail']]:
+        """
+        The configuration of the Web core protection rules to be modified. See `rule_detail` below.
+        """
+        return pulumi.get(self, "rule_details")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the rule. Valid values:
+        """
+        return pulumi.get(self, "rule_type")
+
+
+@pulumi.output_type
+class DefenseRuleConfigWafBaseConfigRuleDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleAction":
+            suggest = "rule_action"
+        elif key == "ruleId":
+            suggest = "rule_id"
+        elif key == "ruleStatus":
+            suggest = "rule_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfigWafBaseConfigRuleDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefenseRuleConfigWafBaseConfigRuleDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefenseRuleConfigWafBaseConfigRuleDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_action: Optional[_builtins.str] = None,
+                 rule_id: Optional[_builtins.str] = None,
+                 rule_status: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str rule_action: Web core protection rule action. Valid values:
+        :param _builtins.str rule_id: The protection rule ID.
+        :param _builtins.int rule_status: Protection rule status.
+        """
+        if rule_action is not None:
+            pulumi.set(__self__, "rule_action", rule_action)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if rule_status is not None:
+            pulumi.set(__self__, "rule_status", rule_status)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleAction")
+    def rule_action(self) -> Optional[_builtins.str]:
+        """
+        Web core protection rule action. Valid values:
+        """
+        return pulumi.get(self, "rule_action")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[_builtins.str]:
+        """
+        The protection rule ID.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleStatus")
+    def rule_status(self) -> Optional[_builtins.int]:
+        """
+        Protection rule status.
+        """
+        return pulumi.get(self, "rule_status")
+
+
+@pulumi.output_type
 class DomainListen(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1372,10 +1528,16 @@ class DomainRedirect(dict):
             suggest = "connect_timeout"
         elif key == "focusHttpBackend":
             suggest = "focus_http_backend"
+        elif key == "http2Origin":
+            suggest = "http2_origin"
+        elif key == "http2OriginMaxConcurrency":
+            suggest = "http2_origin_max_concurrency"
         elif key == "keepaliveRequests":
             suggest = "keepalive_requests"
         elif key == "keepaliveTimeout":
             suggest = "keepalive_timeout"
+        elif key == "maxBodySize":
+            suggest = "max_body_size"
         elif key == "readTimeout":
             suggest = "read_timeout"
         elif key == "requestHeaders":
@@ -1406,9 +1568,12 @@ class DomainRedirect(dict):
                  backup_backends: Optional[Sequence[_builtins.str]] = None,
                  connect_timeout: Optional[_builtins.int] = None,
                  focus_http_backend: Optional[_builtins.bool] = None,
+                 http2_origin: Optional[_builtins.bool] = None,
+                 http2_origin_max_concurrency: Optional[_builtins.int] = None,
                  keepalive: Optional[_builtins.bool] = None,
                  keepalive_requests: Optional[_builtins.int] = None,
                  keepalive_timeout: Optional[_builtins.int] = None,
+                 max_body_size: Optional[_builtins.int] = None,
                  read_timeout: Optional[_builtins.int] = None,
                  request_headers: Optional[Sequence['outputs.DomainRedirectRequestHeader']] = None,
                  retry: Optional[_builtins.bool] = None,
@@ -1426,6 +1591,8 @@ class DomainRedirect(dict):
         :param _builtins.int connect_timeout: Connection timeout duration. Unit: seconds.
                Value range: 1~3600. Default value: 5.
         :param _builtins.bool focus_http_backend: Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
+        :param _builtins.bool http2_origin: Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+        :param _builtins.int http2_origin_max_concurrency: The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
         :param _builtins.bool keepalive: Specifies whether to enable the persistent connection feature. Valid values:
         :param _builtins.int keepalive_requests: The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
                
@@ -1434,6 +1601,8 @@ class DomainRedirect(dict):
         :param _builtins.int keepalive_timeout: Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
                
                > **NOTE:**  How long the multiplexed long connection is idle and then released.
+        :param _builtins.int max_body_size: The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+               > **NOTE:** This parameter is supported only by the Ultimate edition.
         :param _builtins.int read_timeout: The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         :param Sequence['DomainRedirectRequestHeaderArgs'] request_headers: The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
                By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
@@ -1454,12 +1623,18 @@ class DomainRedirect(dict):
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if focus_http_backend is not None:
             pulumi.set(__self__, "focus_http_backend", focus_http_backend)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
+        if http2_origin_max_concurrency is not None:
+            pulumi.set(__self__, "http2_origin_max_concurrency", http2_origin_max_concurrency)
         if keepalive is not None:
             pulumi.set(__self__, "keepalive", keepalive)
         if keepalive_requests is not None:
             pulumi.set(__self__, "keepalive_requests", keepalive_requests)
         if keepalive_timeout is not None:
             pulumi.set(__self__, "keepalive_timeout", keepalive_timeout)
+        if max_body_size is not None:
+            pulumi.set(__self__, "max_body_size", max_body_size)
         if read_timeout is not None:
             pulumi.set(__self__, "read_timeout", read_timeout)
         if request_headers is not None:
@@ -1520,6 +1695,22 @@ class DomainRedirect(dict):
         return pulumi.get(self, "focus_http_backend")
 
     @_builtins.property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+        """
+        return pulumi.get(self, "http2_origin")
+
+    @_builtins.property
+    @pulumi.getter(name="http2OriginMaxConcurrency")
+    def http2_origin_max_concurrency(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+        """
+        return pulumi.get(self, "http2_origin_max_concurrency")
+
+    @_builtins.property
     @pulumi.getter
     def keepalive(self) -> Optional[_builtins.bool]:
         """
@@ -1547,6 +1738,15 @@ class DomainRedirect(dict):
         > **NOTE:**  How long the multiplexed long connection is idle and then released.
         """
         return pulumi.get(self, "keepalive_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="maxBodySize")
+    def max_body_size(self) -> Optional[_builtins.int]:
+        """
+        The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        > **NOTE:** This parameter is supported only by the Ultimate edition.
+        """
+        return pulumi.get(self, "max_body_size")
 
     @_builtins.property
     @pulumi.getter(name="readTimeout")

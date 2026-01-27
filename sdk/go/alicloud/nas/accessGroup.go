@@ -11,10 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a NAS Access Group resource. File system Access Group.
+// Provides a File Storage (NAS) Access Group resource.
 //
-// In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
-// For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
+// File system Access Group.
+//
+// For information about File Storage (NAS) Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup).
 //
 // > **NOTE:** Available since v1.33.0.
 //
@@ -63,7 +64,7 @@ import (
 //
 // ## Import
 //
-// NAS Access Group can be imported using the id, e.g.
+// File Storage (NAS) Access Group can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
@@ -79,10 +80,13 @@ type AccessGroup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Permission group description information.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// File system type. Value:
+	// File system type.
+	//
+	// Value:
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
-	//   The following arguments will be discarded. Please use new fields as soon as possible:
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType pulumi.StringPtrOutput `pulumi:"fileSystemType"`
 	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
@@ -134,10 +138,13 @@ type accessGroupState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Permission group description information.
 	Description *string `pulumi:"description"`
-	// File system type. Value:
+	// File system type.
+	//
+	// Value:
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
-	//   The following arguments will be discarded. Please use new fields as soon as possible:
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType *string `pulumi:"fileSystemType"`
 	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
@@ -160,10 +167,13 @@ type AccessGroupState struct {
 	CreateTime pulumi.StringPtrInput
 	// Permission group description information.
 	Description pulumi.StringPtrInput
-	// File system type. Value:
+	// File system type.
+	//
+	// Value:
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
-	//   The following arguments will be discarded. Please use new fields as soon as possible:
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType pulumi.StringPtrInput
 	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
@@ -188,10 +198,13 @@ type accessGroupArgs struct {
 	AccessGroupType *string `pulumi:"accessGroupType"`
 	// Permission group description information.
 	Description *string `pulumi:"description"`
-	// File system type. Value:
+	// File system type.
+	//
+	// Value:
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
-	//   The following arguments will be discarded. Please use new fields as soon as possible:
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType *string `pulumi:"fileSystemType"`
 	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
@@ -211,10 +224,13 @@ type AccessGroupArgs struct {
 	AccessGroupType pulumi.StringPtrInput
 	// Permission group description information.
 	Description pulumi.StringPtrInput
-	// File system type. Value:
+	// File system type.
+	//
+	// Value:
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
-	//   The following arguments will be discarded. Please use new fields as soon as possible:
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType pulumi.StringPtrInput
 	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
@@ -333,10 +349,13 @@ func (o AccessGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// File system type. Value:
-//   - standard (default): Universal NAS
-//   - extreme: extreme NAS
-//     The following arguments will be discarded. Please use new fields as soon as possible:
+// File system type.
+//
+// Value:
+// - standard (default): Universal NAS
+// - extreme: extreme NAS
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o AccessGroupOutput) FileSystemType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.FileSystemType }).(pulumi.StringPtrOutput)
 }

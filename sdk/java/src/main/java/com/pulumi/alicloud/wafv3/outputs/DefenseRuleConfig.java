@@ -8,7 +8,9 @@ import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigCondition;
 import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigGrayConfig;
 import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigRateLimit;
 import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigTimeConfig;
+import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigWafBaseConfig;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +30,11 @@ public final class DefenseRuleConfig {
      * 
      */
     private @Nullable List<DefenseRuleConfigAccountIdentifier> accountIdentifiers;
+    /**
+     * @return Whether the new Web core protection rules are automatically updated. Values:
+     * 
+     */
+    private @Nullable Boolean autoUpdate;
     /**
      * @return The list of regular rule IDs that are not detected. The value is in the [&#34;XX1&#34;, &#34;XX2&#34;,...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
      * 
@@ -100,6 +107,11 @@ public final class DefenseRuleConfig {
      */
     private @Nullable String cnRegions;
     /**
+     * @return The type to enable decoding. Value:
+     * 
+     */
+    private @Nullable List<String> codecLists;
+    /**
      * @return The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
      * 
      */
@@ -139,15 +151,7 @@ public final class DefenseRuleConfig {
      */
     private @Nullable List<String> remoteAddrs;
     /**
-     * @return Protection rule action. Value:
-     * - block: Indicates an intercept.
-     * - monitor: indicates observation.
-     * - js: indicates JS validation.
-     * - captcha: Indicates a slider.
-     * - captcha_strict: indicates a strict slider.
-     * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-     * 
-     * &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+     * @return Web core protection rule action. Valid values:
      * 
      */
     private @Nullable String ruleAction;
@@ -180,6 +184,11 @@ public final class DefenseRuleConfig {
      * 
      */
     private @Nullable String url;
+    /**
+     * @return The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+     * 
+     */
+    private @Nullable List<DefenseRuleConfigWafBaseConfig> wafBaseConfigs;
 
     private DefenseRuleConfig() {}
     /**
@@ -195,6 +204,13 @@ public final class DefenseRuleConfig {
      */
     public List<DefenseRuleConfigAccountIdentifier> accountIdentifiers() {
         return this.accountIdentifiers == null ? List.of() : this.accountIdentifiers;
+    }
+    /**
+     * @return Whether the new Web core protection rules are automatically updated. Values:
+     * 
+     */
+    public Optional<Boolean> autoUpdate() {
+        return Optional.ofNullable(this.autoUpdate);
     }
     /**
      * @return The list of regular rule IDs that are not detected. The value is in the [&#34;XX1&#34;, &#34;XX2&#34;,...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
@@ -280,6 +296,13 @@ public final class DefenseRuleConfig {
         return Optional.ofNullable(this.cnRegions);
     }
     /**
+     * @return The type to enable decoding. Value:
+     * 
+     */
+    public List<String> codecLists() {
+        return this.codecLists == null ? List.of() : this.codecLists;
+    }
+    /**
      * @return The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
      * 
      */
@@ -333,15 +356,7 @@ public final class DefenseRuleConfig {
         return this.remoteAddrs == null ? List.of() : this.remoteAddrs;
     }
     /**
-     * @return Protection rule action. Value:
-     * - block: Indicates an intercept.
-     * - monitor: indicates observation.
-     * - js: indicates JS validation.
-     * - captcha: Indicates a slider.
-     * - captcha_strict: indicates a strict slider.
-     * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-     * 
-     * &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+     * @return Web core protection rule action. Valid values:
      * 
      */
     public Optional<String> ruleAction() {
@@ -386,6 +401,13 @@ public final class DefenseRuleConfig {
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
+    /**
+     * @return The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+     * 
+     */
+    public List<DefenseRuleConfigWafBaseConfig> wafBaseConfigs() {
+        return this.wafBaseConfigs == null ? List.of() : this.wafBaseConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -398,12 +420,14 @@ public final class DefenseRuleConfig {
     public static final class Builder {
         private @Nullable String abroadRegions;
         private @Nullable List<DefenseRuleConfigAccountIdentifier> accountIdentifiers;
+        private @Nullable Boolean autoUpdate;
         private @Nullable List<String> bypassRegularRules;
         private @Nullable List<String> bypassRegularTypes;
         private @Nullable List<String> bypassTags;
         private @Nullable String ccEffect;
         private @Nullable Integer ccStatus;
         private @Nullable String cnRegions;
+        private @Nullable List<String> codecLists;
         private @Nullable List<DefenseRuleConfigCondition> conditions;
         private @Nullable DefenseRuleConfigGrayConfig grayConfig;
         private @Nullable Integer grayStatus;
@@ -417,17 +441,20 @@ public final class DefenseRuleConfig {
         private @Nullable DefenseRuleConfigTimeConfig timeConfig;
         private @Nullable String ua;
         private @Nullable String url;
+        private @Nullable List<DefenseRuleConfigWafBaseConfig> wafBaseConfigs;
         public Builder() {}
         public Builder(DefenseRuleConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abroadRegions = defaults.abroadRegions;
     	      this.accountIdentifiers = defaults.accountIdentifiers;
+    	      this.autoUpdate = defaults.autoUpdate;
     	      this.bypassRegularRules = defaults.bypassRegularRules;
     	      this.bypassRegularTypes = defaults.bypassRegularTypes;
     	      this.bypassTags = defaults.bypassTags;
     	      this.ccEffect = defaults.ccEffect;
     	      this.ccStatus = defaults.ccStatus;
     	      this.cnRegions = defaults.cnRegions;
+    	      this.codecLists = defaults.codecLists;
     	      this.conditions = defaults.conditions;
     	      this.grayConfig = defaults.grayConfig;
     	      this.grayStatus = defaults.grayStatus;
@@ -441,6 +468,7 @@ public final class DefenseRuleConfig {
     	      this.timeConfig = defaults.timeConfig;
     	      this.ua = defaults.ua;
     	      this.url = defaults.url;
+    	      this.wafBaseConfigs = defaults.wafBaseConfigs;
         }
 
         @CustomType.Setter
@@ -457,6 +485,12 @@ public final class DefenseRuleConfig {
         }
         public Builder accountIdentifiers(DefenseRuleConfigAccountIdentifier... accountIdentifiers) {
             return accountIdentifiers(List.of(accountIdentifiers));
+        }
+        @CustomType.Setter
+        public Builder autoUpdate(@Nullable Boolean autoUpdate) {
+
+            this.autoUpdate = autoUpdate;
+            return this;
         }
         @CustomType.Setter
         public Builder bypassRegularRules(@Nullable List<String> bypassRegularRules) {
@@ -502,6 +536,15 @@ public final class DefenseRuleConfig {
 
             this.cnRegions = cnRegions;
             return this;
+        }
+        @CustomType.Setter
+        public Builder codecLists(@Nullable List<String> codecLists) {
+
+            this.codecLists = codecLists;
+            return this;
+        }
+        public Builder codecLists(String... codecLists) {
+            return codecLists(List.of(codecLists));
         }
         @CustomType.Setter
         public Builder conditions(@Nullable List<DefenseRuleConfigCondition> conditions) {
@@ -587,16 +630,27 @@ public final class DefenseRuleConfig {
             this.url = url;
             return this;
         }
+        @CustomType.Setter
+        public Builder wafBaseConfigs(@Nullable List<DefenseRuleConfigWafBaseConfig> wafBaseConfigs) {
+
+            this.wafBaseConfigs = wafBaseConfigs;
+            return this;
+        }
+        public Builder wafBaseConfigs(DefenseRuleConfigWafBaseConfig... wafBaseConfigs) {
+            return wafBaseConfigs(List.of(wafBaseConfigs));
+        }
         public DefenseRuleConfig build() {
             final var _resultValue = new DefenseRuleConfig();
             _resultValue.abroadRegions = abroadRegions;
             _resultValue.accountIdentifiers = accountIdentifiers;
+            _resultValue.autoUpdate = autoUpdate;
             _resultValue.bypassRegularRules = bypassRegularRules;
             _resultValue.bypassRegularTypes = bypassRegularTypes;
             _resultValue.bypassTags = bypassTags;
             _resultValue.ccEffect = ccEffect;
             _resultValue.ccStatus = ccStatus;
             _resultValue.cnRegions = cnRegions;
+            _resultValue.codecLists = codecLists;
             _resultValue.conditions = conditions;
             _resultValue.grayConfig = grayConfig;
             _resultValue.grayStatus = grayStatus;
@@ -610,6 +664,7 @@ public final class DefenseRuleConfig {
             _resultValue.timeConfig = timeConfig;
             _resultValue.ua = ua;
             _resultValue.url = url;
+            _resultValue.wafBaseConfigs = wafBaseConfigs;
             return _resultValue;
         }
     }

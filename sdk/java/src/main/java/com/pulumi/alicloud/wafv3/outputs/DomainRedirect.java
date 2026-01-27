@@ -41,6 +41,16 @@ public final class DomainRedirect {
      */
     private @Nullable Boolean focusHttpBackend;
     /**
+     * @return Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+     * 
+     */
+    private @Nullable Boolean http2Origin;
+    /**
+     * @return The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+     * 
+     */
+    private @Nullable Integer http2OriginMaxConcurrency;
+    /**
      * @return Specifies whether to enable the persistent connection feature. Valid values:
      * 
      */
@@ -64,6 +74,12 @@ public final class DomainRedirect {
      * 
      */
     private String loadbalance;
+    /**
+     * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+     * 
+     */
+    private @Nullable Integer maxBodySize;
     /**
      * @return The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
      * 
@@ -137,6 +153,20 @@ public final class DomainRedirect {
         return Optional.ofNullable(this.focusHttpBackend);
     }
     /**
+     * @return Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+     * 
+     */
+    public Optional<Boolean> http2Origin() {
+        return Optional.ofNullable(this.http2Origin);
+    }
+    /**
+     * @return The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+     * 
+     */
+    public Optional<Integer> http2OriginMaxConcurrency() {
+        return Optional.ofNullable(this.http2OriginMaxConcurrency);
+    }
+    /**
      * @return Specifies whether to enable the persistent connection feature. Valid values:
      * 
      */
@@ -167,6 +197,14 @@ public final class DomainRedirect {
      */
     public String loadbalance() {
         return this.loadbalance;
+    }
+    /**
+     * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+     * 
+     */
+    public Optional<Integer> maxBodySize() {
+        return Optional.ofNullable(this.maxBodySize);
     }
     /**
      * @return The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -234,10 +272,13 @@ public final class DomainRedirect {
         private @Nullable List<String> backupBackends;
         private @Nullable Integer connectTimeout;
         private @Nullable Boolean focusHttpBackend;
+        private @Nullable Boolean http2Origin;
+        private @Nullable Integer http2OriginMaxConcurrency;
         private @Nullable Boolean keepalive;
         private @Nullable Integer keepaliveRequests;
         private @Nullable Integer keepaliveTimeout;
         private String loadbalance;
+        private @Nullable Integer maxBodySize;
         private @Nullable Integer readTimeout;
         private @Nullable List<DomainRedirectRequestHeader> requestHeaders;
         private @Nullable Boolean retry;
@@ -252,10 +293,13 @@ public final class DomainRedirect {
     	      this.backupBackends = defaults.backupBackends;
     	      this.connectTimeout = defaults.connectTimeout;
     	      this.focusHttpBackend = defaults.focusHttpBackend;
+    	      this.http2Origin = defaults.http2Origin;
+    	      this.http2OriginMaxConcurrency = defaults.http2OriginMaxConcurrency;
     	      this.keepalive = defaults.keepalive;
     	      this.keepaliveRequests = defaults.keepaliveRequests;
     	      this.keepaliveTimeout = defaults.keepaliveTimeout;
     	      this.loadbalance = defaults.loadbalance;
+    	      this.maxBodySize = defaults.maxBodySize;
     	      this.readTimeout = defaults.readTimeout;
     	      this.requestHeaders = defaults.requestHeaders;
     	      this.retry = defaults.retry;
@@ -296,6 +340,18 @@ public final class DomainRedirect {
             return this;
         }
         @CustomType.Setter
+        public Builder http2Origin(@Nullable Boolean http2Origin) {
+
+            this.http2Origin = http2Origin;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder http2OriginMaxConcurrency(@Nullable Integer http2OriginMaxConcurrency) {
+
+            this.http2OriginMaxConcurrency = http2OriginMaxConcurrency;
+            return this;
+        }
+        @CustomType.Setter
         public Builder keepalive(@Nullable Boolean keepalive) {
 
             this.keepalive = keepalive;
@@ -319,6 +375,12 @@ public final class DomainRedirect {
               throw new MissingRequiredPropertyException("DomainRedirect", "loadbalance");
             }
             this.loadbalance = loadbalance;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxBodySize(@Nullable Integer maxBodySize) {
+
+            this.maxBodySize = maxBodySize;
             return this;
         }
         @CustomType.Setter
@@ -372,10 +434,13 @@ public final class DomainRedirect {
             _resultValue.backupBackends = backupBackends;
             _resultValue.connectTimeout = connectTimeout;
             _resultValue.focusHttpBackend = focusHttpBackend;
+            _resultValue.http2Origin = http2Origin;
+            _resultValue.http2OriginMaxConcurrency = http2OriginMaxConcurrency;
             _resultValue.keepalive = keepalive;
             _resultValue.keepaliveRequests = keepaliveRequests;
             _resultValue.keepaliveTimeout = keepaliveTimeout;
             _resultValue.loadbalance = loadbalance;
+            _resultValue.maxBodySize = maxBodySize;
             _resultValue.readTimeout = readTimeout;
             _resultValue.requestHeaders = requestHeaders;
             _resultValue.retry = retry;

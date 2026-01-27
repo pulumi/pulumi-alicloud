@@ -362,8 +362,6 @@ type ManagedKubernetes struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-	//
-	// *Network params*
 	SkipSetCertificateAuthority pulumi.BoolPtrOutput `pulumi:"skipSetCertificateAuthority"`
 	// The ID of APIServer load balancer.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
@@ -381,6 +379,11 @@ type ManagedKubernetes struct {
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	// > **NOTE:** This parameter only applies during resource update.
+	//
+	// *Network params*
+	UpgradePolicy ManagedKubernetesUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
@@ -534,8 +537,6 @@ type managedKubernetesState struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-	//
-	// *Network params*
 	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
 	// The ID of APIServer load balancer.
 	SlbId *string `pulumi:"slbId"`
@@ -553,6 +554,11 @@ type managedKubernetesState struct {
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone *string `pulumi:"timezone"`
+	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	// > **NOTE:** This parameter only applies during resource update.
+	//
+	// *Network params*
+	UpgradePolicy *ManagedKubernetesUpgradePolicy `pulumi:"upgradePolicy"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
@@ -677,8 +683,6 @@ type ManagedKubernetesState struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-	//
-	// *Network params*
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
 	// The ID of APIServer load balancer.
 	SlbId pulumi.StringPtrInput
@@ -696,6 +700,11 @@ type ManagedKubernetesState struct {
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone pulumi.StringPtrInput
+	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	// > **NOTE:** This parameter only applies during resource update.
+	//
+	// *Network params*
+	UpgradePolicy ManagedKubernetesUpgradePolicyPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
@@ -814,8 +823,6 @@ type managedKubernetesArgs struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-	//
-	// *Network params*
 	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
 	// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -827,6 +834,11 @@ type managedKubernetesArgs struct {
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone *string `pulumi:"timezone"`
+	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	// > **NOTE:** This parameter only applies during resource update.
+	//
+	// *Network params*
+	UpgradePolicy *ManagedKubernetesUpgradePolicy `pulumi:"upgradePolicy"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
@@ -938,8 +950,6 @@ type ManagedKubernetesArgs struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-	//
-	// *Network params*
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
 	// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -951,6 +961,11 @@ type ManagedKubernetesArgs struct {
 	// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
 	// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 	Timezone pulumi.StringPtrInput
+	// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+	// > **NOTE:** This parameter only applies during resource update.
+	//
+	// *Network params*
+	UpgradePolicy ManagedKubernetesUpgradePolicyPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
@@ -1274,8 +1289,6 @@ func (o ManagedKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 }
 
 // Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-//
-// *Network params*
 func (o ManagedKubernetesOutput) SkipSetCertificateAuthority() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolPtrOutput { return v.SkipSetCertificateAuthority }).(pulumi.BoolPtrOutput)
 }
@@ -1312,6 +1325,14 @@ func (o ManagedKubernetesOutput) Tags() pulumi.StringMapOutput {
 // * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
 func (o ManagedKubernetesOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+// > **NOTE:** This parameter only applies during resource update.
+//
+// *Network params*
+func (o ManagedKubernetesOutput) UpgradePolicy() ManagedKubernetesUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesUpgradePolicyPtrOutput { return v.UpgradePolicy }).(ManagedKubernetesUpgradePolicyPtrOutput)
 }
 
 // The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.

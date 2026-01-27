@@ -30,6 +30,12 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
             set => _accountIdentifiers = value;
         }
 
+        /// <summary>
+        /// Whether the new Web core protection rules are automatically updated. Values:
+        /// </summary>
+        [Input("autoUpdate")]
+        public Input<bool>? AutoUpdate { get; set; }
+
         [Input("bypassRegularRules")]
         private InputList<string>? _bypassRegularRules;
 
@@ -125,6 +131,18 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         [Input("cnRegions")]
         public Input<string>? CnRegions { get; set; }
 
+        [Input("codecLists")]
+        private InputList<string>? _codecLists;
+
+        /// <summary>
+        /// The type to enable decoding. Value:
+        /// </summary>
+        public InputList<string> CodecLists
+        {
+            get => _codecLists ?? (_codecLists = new InputList<string>());
+            set => _codecLists = value;
+        }
+
         [Input("conditions")]
         private InputList<Inputs.DefenseRuleConfigConditionGetArgs>? _conditions;
 
@@ -184,15 +202,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         }
 
         /// <summary>
-        /// Protection rule action. Value:
-        /// - block: Indicates an intercept.
-        /// - monitor: indicates observation.
-        /// - js: indicates JS validation.
-        /// - captcha: Indicates a slider.
-        /// - captcha_strict: indicates a strict slider.
-        /// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-        /// 
-        /// &gt; **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        /// Web core protection rule action. Valid values:
         /// </summary>
         [Input("ruleAction")]
         public Input<string>? RuleAction { get; set; }
@@ -230,6 +240,18 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("wafBaseConfigs")]
+        private InputList<Inputs.DefenseRuleConfigWafBaseConfigGetArgs>? _wafBaseConfigs;
+
+        /// <summary>
+        /// The configuration of the Web core protection rules to be modified. See `WafBaseConfig` below.
+        /// </summary>
+        public InputList<Inputs.DefenseRuleConfigWafBaseConfigGetArgs> WafBaseConfigs
+        {
+            get => _wafBaseConfigs ?? (_wafBaseConfigs = new InputList<Inputs.DefenseRuleConfigWafBaseConfigGetArgs>());
+            set => _wafBaseConfigs = value;
+        }
 
         public DefenseRuleConfigGetArgs()
         {
