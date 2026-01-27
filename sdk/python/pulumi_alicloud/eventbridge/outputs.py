@@ -27,6 +27,15 @@ __all__ = [
     'ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter',
     'ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter',
     'ConnectionNetworkParameters',
+    'EventSourceV2SourceHttpEventParameters',
+    'EventSourceV2SourceKafkaParameters',
+    'EventSourceV2SourceMnsParameters',
+    'EventSourceV2SourceOssEventParameters',
+    'EventSourceV2SourceOssEventParametersMatchRule',
+    'EventSourceV2SourceRabbitMqParameters',
+    'EventSourceV2SourceRocketmqParameters',
+    'EventSourceV2SourceScheduledEventParameters',
+    'EventSourceV2SourceSlsParameters',
     'RuleTarget',
     'RuleTargetDeadLetterQueue',
     'RuleTargetParamList',
@@ -671,6 +680,936 @@ class ConnectionNetworkParameters(dict):
         The ID of the VSwitch.
         """
         return pulumi.get(self, "vswitche_id")
+
+
+@pulumi.output_type
+class EventSourceV2SourceHttpEventParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicWebHookUrls":
+            suggest = "public_web_hook_urls"
+        elif key == "securityConfig":
+            suggest = "security_config"
+        elif key == "vpcWebHookUrls":
+            suggest = "vpc_web_hook_urls"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceHttpEventParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceHttpEventParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceHttpEventParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ips: Optional[Sequence[_builtins.str]] = None,
+                 methods: Optional[Sequence[_builtins.str]] = None,
+                 public_web_hook_urls: Optional[Sequence[_builtins.str]] = None,
+                 referers: Optional[Sequence[_builtins.str]] = None,
+                 security_config: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 vpc_web_hook_urls: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] ips: IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+        :param Sequence[_builtins.str] methods: The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+               - GET
+               - POST
+               - PUT
+               - PATCH
+               - DELETE
+               - HEAD
+               - OPTIONS
+               - TRACE
+               - CONNECT
+        :param Sequence[_builtins.str] public_web_hook_urls: The public network request URL.
+        :param Sequence[_builtins.str] referers: Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+        :param _builtins.str security_config: Select the type of security configuration. The optional range is as follows:
+               - none: No configuration is required.
+               - ip:IP segment.
+               - referer: Security domain name.
+        :param _builtins.str type: The protocol type supported by the generated Webhook. The value description is as follows:
+               - HTTP
+               - HTTPS
+               - HTTP&HTTPS
+        :param Sequence[_builtins.str] vpc_web_hook_urls: The intranet request URL.
+        """
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if public_web_hook_urls is not None:
+            pulumi.set(__self__, "public_web_hook_urls", public_web_hook_urls)
+        if referers is not None:
+            pulumi.set(__self__, "referers", referers)
+        if security_config is not None:
+            pulumi.set(__self__, "security_config", security_config)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vpc_web_hook_urls is not None:
+            pulumi.set(__self__, "vpc_web_hook_urls", vpc_web_hook_urls)
+
+    @_builtins.property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+        """
+        return pulumi.get(self, "ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+        - HEAD
+        - OPTIONS
+        - TRACE
+        - CONNECT
+        """
+        return pulumi.get(self, "methods")
+
+    @_builtins.property
+    @pulumi.getter(name="publicWebHookUrls")
+    def public_web_hook_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The public network request URL.
+        """
+        return pulumi.get(self, "public_web_hook_urls")
+
+    @_builtins.property
+    @pulumi.getter
+    def referers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+        """
+        return pulumi.get(self, "referers")
+
+    @_builtins.property
+    @pulumi.getter(name="securityConfig")
+    def security_config(self) -> Optional[_builtins.str]:
+        """
+        Select the type of security configuration. The optional range is as follows:
+        - none: No configuration is required.
+        - ip:IP segment.
+        - referer: Security domain name.
+        """
+        return pulumi.get(self, "security_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The protocol type supported by the generated Webhook. The value description is as follows:
+        - HTTP
+        - HTTPS
+        - HTTP&HTTPS
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcWebHookUrls")
+    def vpc_web_hook_urls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The intranet request URL.
+        """
+        return pulumi.get(self, "vpc_web_hook_urls")
+
+
+@pulumi.output_type
+class EventSourceV2SourceKafkaParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumerGroup":
+            suggest = "consumer_group"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "offsetReset":
+            suggest = "offset_reset"
+        elif key == "regionId":
+            suggest = "region_id"
+        elif key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vswitchIds":
+            suggest = "vswitch_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceKafkaParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceKafkaParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceKafkaParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consumer_group: Optional[_builtins.str] = None,
+                 instance_id: Optional[_builtins.str] = None,
+                 network: Optional[_builtins.str] = None,
+                 offset_reset: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None,
+                 security_group_id: Optional[_builtins.str] = None,
+                 topic: Optional[_builtins.str] = None,
+                 vpc_id: Optional[_builtins.str] = None,
+                 vswitch_ids: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str consumer_group: The Group ID of the consumer who subscribes to the Topic.
+        :param _builtins.str instance_id: The instance ID.
+        :param _builtins.str network: Network configuration: Default (Default network) and public network (self-built network).
+        :param _builtins.str offset_reset: Consumption sites.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str security_group_id: The ID of the security group.
+        :param _builtins.str topic: The topic name.
+        :param _builtins.str vpc_id: The VPC ID.
+        :param _builtins.str vswitch_ids: The vSwitch ID.
+        """
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if offset_reset is not None:
+            pulumi.set(__self__, "offset_reset", offset_reset)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[_builtins.str]:
+        """
+        The Group ID of the consumer who subscribes to the Topic.
+        """
+        return pulumi.get(self, "consumer_group")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        Network configuration: Default (Default network) and public network (self-built network).
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="offsetReset")
+    def offset_reset(self) -> Optional[_builtins.str]:
+        """
+        Consumption sites.
+        """
+        return pulumi.get(self, "offset_reset")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> Optional[_builtins.str]:
+        """
+        The topic name.
+        """
+        return pulumi.get(self, "topic")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[_builtins.str]:
+        """
+        The vSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class EventSourceV2SourceMnsParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isBase64Decode":
+            suggest = "is_base64_decode"
+        elif key == "queueName":
+            suggest = "queue_name"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceMnsParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceMnsParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceMnsParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_base64_decode: Optional[_builtins.bool] = None,
+                 queue_name: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool is_base64_decode: Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+        :param _builtins.str queue_name: The name of the Queue of the lightweight message Queue (formerly MNS).
+        :param _builtins.str region_id: The region of the lightweight message queue (formerly MNS).
+        """
+        if is_base64_decode is not None:
+            pulumi.set(__self__, "is_base64_decode", is_base64_decode)
+        if queue_name is not None:
+            pulumi.set(__self__, "queue_name", queue_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter(name="isBase64Decode")
+    def is_base64_decode(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+        """
+        return pulumi.get(self, "is_base64_decode")
+
+    @_builtins.property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Queue of the lightweight message Queue (formerly MNS).
+        """
+        return pulumi.get(self, "queue_name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region of the lightweight message queue (formerly MNS).
+        """
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class EventSourceV2SourceOssEventParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventTypes":
+            suggest = "event_types"
+        elif key == "matchRules":
+            suggest = "match_rules"
+        elif key == "stsRoleArn":
+            suggest = "sts_role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceOssEventParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceOssEventParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceOssEventParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_types: Optional[Sequence[_builtins.str]] = None,
+                 match_rules: Optional[Sequence[Sequence['outputs.EventSourceV2SourceOssEventParametersMatchRule']]] = None,
+                 sts_role_arn: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] event_types: OSS event type list.
+        :param Sequence[Sequence['EventSourceV2SourceOssEventParametersMatchRuleArgs']] match_rules: Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+        :param _builtins.str sts_role_arn: The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+        """
+        if event_types is not None:
+            pulumi.set(__self__, "event_types", event_types)
+        if match_rules is not None:
+            pulumi.set(__self__, "match_rules", match_rules)
+        if sts_role_arn is not None:
+            pulumi.set(__self__, "sts_role_arn", sts_role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="eventTypes")
+    def event_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        OSS event type list.
+        """
+        return pulumi.get(self, "event_types")
+
+    @_builtins.property
+    @pulumi.getter(name="matchRules")
+    def match_rules(self) -> Optional[Sequence[Sequence['outputs.EventSourceV2SourceOssEventParametersMatchRule']]]:
+        """
+        Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+        """
+        return pulumi.get(self, "match_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="stsRoleArn")
+    def sts_role_arn(self) -> Optional[_builtins.str]:
+        """
+        The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+        """
+        return pulumi.get(self, "sts_role_arn")
+
+
+@pulumi.output_type
+class EventSourceV2SourceOssEventParametersMatchRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchState":
+            suggest = "match_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceOssEventParametersMatchRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceOssEventParametersMatchRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceOssEventParametersMatchRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_state: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 suffix: Optional[_builtins.str] = None):
+        if match_state is not None:
+            pulumi.set(__self__, "match_state", match_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter(name="matchState")
+    def match_state(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def suffix(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class EventSourceV2SourceRabbitMqParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "queueName":
+            suggest = "queue_name"
+        elif key == "regionId":
+            suggest = "region_id"
+        elif key == "virtualHostName":
+            suggest = "virtual_host_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceRabbitMqParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceRabbitMqParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceRabbitMqParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_id: Optional[_builtins.str] = None,
+                 queue_name: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None,
+                 virtual_host_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str instance_id: The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        :param _builtins.str queue_name: The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        :param _builtins.str region_id: The region of the RabbitMQ instance.
+        :param _builtins.str virtual_host_name: The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if queue_name is not None:
+            pulumi.set(__self__, "queue_name", queue_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if virtual_host_name is not None:
+            pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        return pulumi.get(self, "queue_name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region of the RabbitMQ instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="virtualHostName")
+    def virtual_host_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        return pulumi.get(self, "virtual_host_name")
+
+
+@pulumi.output_type
+class EventSourceV2SourceRocketmqParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authType":
+            suggest = "auth_type"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "instanceEndpoint":
+            suggest = "instance_endpoint"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceNetwork":
+            suggest = "instance_network"
+        elif key == "instancePassword":
+            suggest = "instance_password"
+        elif key == "instanceSecurityGroupId":
+            suggest = "instance_security_group_id"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "instanceUsername":
+            suggest = "instance_username"
+        elif key == "instanceVpcId":
+            suggest = "instance_vpc_id"
+        elif key == "instanceVswitchIds":
+            suggest = "instance_vswitch_ids"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceRocketmqParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceRocketmqParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceRocketmqParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_type: Optional[_builtins.str] = None,
+                 group_id: Optional[_builtins.str] = None,
+                 instance_endpoint: Optional[_builtins.str] = None,
+                 instance_id: Optional[_builtins.str] = None,
+                 instance_network: Optional[_builtins.str] = None,
+                 instance_password: Optional[_builtins.str] = None,
+                 instance_security_group_id: Optional[_builtins.str] = None,
+                 instance_type: Optional[_builtins.str] = None,
+                 instance_username: Optional[_builtins.str] = None,
+                 instance_vpc_id: Optional[_builtins.str] = None,
+                 instance_vswitch_ids: Optional[_builtins.str] = None,
+                 offset: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None,
+                 tag: Optional[_builtins.str] = None,
+                 timestamp: Optional[_builtins.float] = None,
+                 topic: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_type: ACL or not.
+        :param _builtins.str group_id: The Group ID of the RocketMQ version of message queue.
+        :param _builtins.str instance_endpoint: Instance access point.
+        :param _builtins.str instance_id: The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        :param _builtins.str instance_network: Instance network.
+        :param _builtins.str instance_password: The instance password.
+        :param _builtins.str instance_security_group_id: The ID of the security group.
+        :param _builtins.str instance_type: The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+        :param _builtins.str instance_username: The instance user name.
+        :param _builtins.str instance_vpc_id: The ID of the VPC.
+        :param _builtins.str instance_vswitch_ids: The vSwitch ID.
+        :param _builtins.str offset: The consumption point of the message. The value description is as follows:
+               - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+               - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+               - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+               Default value: `CONSUME_FROM_LAST_OFFSET`.
+        :param _builtins.str region_id: The region of the RocketMQ instance.
+        :param _builtins.str tag: The filter label of the message.
+        :param _builtins.float timestamp: The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+        :param _builtins.str topic: The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if instance_endpoint is not None:
+            pulumi.set(__self__, "instance_endpoint", instance_endpoint)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_network is not None:
+            pulumi.set(__self__, "instance_network", instance_network)
+        if instance_password is not None:
+            pulumi.set(__self__, "instance_password", instance_password)
+        if instance_security_group_id is not None:
+            pulumi.set(__self__, "instance_security_group_id", instance_security_group_id)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if instance_username is not None:
+            pulumi.set(__self__, "instance_username", instance_username)
+        if instance_vpc_id is not None:
+            pulumi.set(__self__, "instance_vpc_id", instance_vpc_id)
+        if instance_vswitch_ids is not None:
+            pulumi.set(__self__, "instance_vswitch_ids", instance_vswitch_ids)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @_builtins.property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[_builtins.str]:
+        """
+        ACL or not.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.str]:
+        """
+        The Group ID of the RocketMQ version of message queue.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceEndpoint")
+    def instance_endpoint(self) -> Optional[_builtins.str]:
+        """
+        Instance access point.
+        """
+        return pulumi.get(self, "instance_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceNetwork")
+    def instance_network(self) -> Optional[_builtins.str]:
+        """
+        Instance network.
+        """
+        return pulumi.get(self, "instance_network")
+
+    @_builtins.property
+    @pulumi.getter(name="instancePassword")
+    def instance_password(self) -> Optional[_builtins.str]:
+        """
+        The instance password.
+        """
+        return pulumi.get(self, "instance_password")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSecurityGroupId")
+    def instance_security_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "instance_security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[_builtins.str]:
+        """
+        The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+        """
+        return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceUsername")
+    def instance_username(self) -> Optional[_builtins.str]:
+        """
+        The instance user name.
+        """
+        return pulumi.get(self, "instance_username")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceVpcId")
+    def instance_vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "instance_vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceVswitchIds")
+    def instance_vswitch_ids(self) -> Optional[_builtins.str]:
+        """
+        The vSwitch ID.
+        """
+        return pulumi.get(self, "instance_vswitch_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[_builtins.str]:
+        """
+        The consumption point of the message. The value description is as follows:
+        - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+        - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+        - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+        Default value: `CONSUME_FROM_LAST_OFFSET`.
+        """
+        return pulumi.get(self, "offset")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region of the RocketMQ instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> Optional[_builtins.str]:
+        """
+        The filter label of the message.
+        """
+        return pulumi.get(self, "tag")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> Optional[_builtins.float]:
+        """
+        The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+        """
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter
+    def topic(self) -> Optional[_builtins.str]:
+        """
+        The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+        """
+        return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class EventSourceV2SourceScheduledEventParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeZone":
+            suggest = "time_zone"
+        elif key == "userData":
+            suggest = "user_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceScheduledEventParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceScheduledEventParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceScheduledEventParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 schedule: Optional[_builtins.str] = None,
+                 time_zone: Optional[_builtins.str] = None,
+                 user_data: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str schedule: Cron expression
+        :param _builtins.str time_zone: The Cron execution time zone.
+        :param _builtins.str user_data: JSON string
+        """
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> Optional[_builtins.str]:
+        """
+        Cron expression
+        """
+        return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[_builtins.str]:
+        """
+        The Cron execution time zone.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[_builtins.str]:
+        """
+        JSON string
+        """
+        return pulumi.get(self, "user_data")
+
+
+@pulumi.output_type
+class EventSourceV2SourceSlsParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumePosition":
+            suggest = "consume_position"
+        elif key == "logStore":
+            suggest = "log_store"
+        elif key == "roleName":
+            suggest = "role_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventSourceV2SourceSlsParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventSourceV2SourceSlsParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventSourceV2SourceSlsParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_position: Optional[_builtins.str] = None,
+                 log_store: Optional[_builtins.str] = None,
+                 project: Optional[_builtins.str] = None,
+                 role_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str consume_position: Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+        :param _builtins.str log_store: The logstore of log service SLS.
+        :param _builtins.str project: The log project of log service SLS.
+        :param _builtins.str role_name: When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+        """
+        if consume_position is not None:
+            pulumi.set(__self__, "consume_position", consume_position)
+        if log_store is not None:
+            pulumi.set(__self__, "log_store", log_store)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @_builtins.property
+    @pulumi.getter(name="consumePosition")
+    def consume_position(self) -> Optional[_builtins.str]:
+        """
+        Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+        """
+        return pulumi.get(self, "consume_position")
+
+    @_builtins.property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> Optional[_builtins.str]:
+        """
+        The logstore of log service SLS.
+        """
+        return pulumi.get(self, "log_store")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> Optional[_builtins.str]:
+        """
+        The log project of log service SLS.
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[_builtins.str]:
+        """
+        When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+        """
+        return pulumi.get(self, "role_name")
 
 
 @pulumi.output_type

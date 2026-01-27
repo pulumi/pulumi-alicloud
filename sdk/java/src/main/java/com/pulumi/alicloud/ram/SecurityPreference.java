@@ -141,7 +141,11 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
+     * @deprecated
+     * This property has been deprecated as it is no longer supported by Aliyun.
+     * 
      */
+    @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
     @Export(name="enforceMfaForLogin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enforceMfaForLogin;
 
@@ -158,7 +162,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * - If the mask is specified, RAM users can only log on from the specified IP address.
      * - If you do not specify any mask, the login console function will apply to the entire network.
      * 
-     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
      * 
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
@@ -171,7 +175,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * - If the mask is specified, RAM users can only log on from the specified IP address.
      * - If you do not specify any mask, the login console function will apply to the entire network.
      * 
-     * When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+     * &gt; NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
      * 
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      * 
@@ -196,6 +200,34 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> loginSessionDuration() {
         return this.loginSessionDuration;
+    }
+    /**
+     * The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    @Export(name="maxIdleDaysForAccessKeys", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxIdleDaysForAccessKeys;
+
+    /**
+     * @return The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    public Output<Integer> maxIdleDaysForAccessKeys() {
+        return this.maxIdleDaysForAccessKeys;
+    }
+    /**
+     * The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    @Export(name="maxIdleDaysForUsers", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxIdleDaysForUsers;
+
+    /**
+     * @return The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+     * 
+     */
+    public Output<Integer> maxIdleDaysForUsers() {
+        return this.maxIdleDaysForUsers;
     }
     /**
      * MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:

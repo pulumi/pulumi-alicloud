@@ -649,8 +649,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
-        /// 
-        /// *Network params*
         /// </summary>
         [Output("skipSetCertificateAuthority")]
         public Output<bool?> SkipSetCertificateAuthority { get; private set; } = null!;
@@ -694,6 +692,15 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration block for cluster upgrade operations. See `UpgradePolicy` below.
+        /// &gt; **NOTE:** This parameter only applies during resource update.
+        /// 
+        /// *Network params*
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.ManagedKubernetesUpgradePolicy?> UpgradePolicy { get; private set; } = null!;
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -1042,8 +1049,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
-        /// 
-        /// *Network params*
         /// </summary>
         [Input("skipSetCertificateAuthority")]
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
@@ -1075,6 +1080,15 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
+
+        /// <summary>
+        /// Configuration block for cluster upgrade operations. See `UpgradePolicy` below.
+        /// &gt; **NOTE:** This parameter only applies during resource update.
+        /// 
+        /// *Network params*
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.ManagedKubernetesUpgradePolicyArgs>? UpgradePolicy { get; set; }
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -1416,8 +1430,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`. For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
-        /// 
-        /// *Network params*
         /// </summary>
         [Input("skipSetCertificateAuthority")]
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
@@ -1467,6 +1479,15 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
+
+        /// <summary>
+        /// Configuration block for cluster upgrade operations. See `UpgradePolicy` below.
+        /// &gt; **NOTE:** This parameter only applies during resource update.
+        /// 
+        /// *Network params*
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.ManagedKubernetesUpgradePolicyGetArgs>? UpgradePolicy { get; set; }
 
         /// <summary>
         /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.

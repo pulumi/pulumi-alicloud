@@ -1851,7 +1851,7 @@ class MachineGroupGroupAttribute(dict):
                  external_name: Optional[_builtins.str] = None,
                  group_topic: Optional[_builtins.str] = None):
         """
-        :param _builtins.str external_name: The external management system identification on which the machine group depends.
+        :param _builtins.str external_name: The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         :param _builtins.str group_topic: The log topic of the machine group.
         """
         if external_name is not None:
@@ -1863,7 +1863,7 @@ class MachineGroupGroupAttribute(dict):
     @pulumi.getter(name="externalName")
     def external_name(self) -> Optional[_builtins.str]:
         """
-        The external management system identification on which the machine group depends.
+        The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         """
         return pulumi.get(self, "external_name")
 

@@ -714,6 +714,10 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.139.0.
 
+        > **NOTE:** Deprecated since v1.269.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
+
         ## Example Usage
 
         Basic Usage
@@ -728,7 +732,6 @@ class Instance(pulumi.CustomResource):
         ```
 
         create a subscription instance
-
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -790,6 +793,10 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.139.0.
 
+        > **NOTE:** Deprecated since v1.269.0.
+
+        > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
+
         ## Example Usage
 
         Basic Usage
@@ -804,7 +811,6 @@ class Instance(pulumi.CustomResource):
         ```
 
         create a subscription instance
-
         ```python
         import pulumi
         import pulumi_alicloud as alicloud

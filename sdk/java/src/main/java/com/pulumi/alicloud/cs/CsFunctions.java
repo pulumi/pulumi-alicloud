@@ -8,6 +8,8 @@ import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
 import com.pulumi.alicloud.cs.inputs.GetAckServicePlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
 import com.pulumi.alicloud.cs.inputs.GetClusterCredentialPlainArgs;
+import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+import com.pulumi.alicloud.cs.inputs.GetClustersPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
 import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
@@ -36,6 +38,7 @@ import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
 import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersPlainArgs;
 import com.pulumi.alicloud.cs.outputs.GetAckServiceResult;
 import com.pulumi.alicloud.cs.outputs.GetClusterCredentialResult;
+import com.pulumi.alicloud.cs.outputs.GetClustersResult;
 import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonMetadataResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonsResult;
@@ -346,6 +349,650 @@ public final class CsFunctions {
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClustersResult> getClusters() {
+        return getClusters(GetClustersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClustersResult> getClustersPlain() {
+        return getClustersPlain(GetClustersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
+        return getClusters(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
+        return getClustersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
+     * 
+     * &gt; **NOTE:** Available since v1.269.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-k");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-g");
+     *         final var vsw1Cidr = config.get("vsw1Cidr").orElse("10.1.0.0/24");
+     *         final var vsw2Cidr = config.get("vsw2Cidr").orElse("10.1.1.0/24");
+     *         final var containerCidr = config.get("containerCidr").orElse("172.17.3.0/24");
+     *         final var serviceCidr = config.get("serviceCidr").orElse("172.17.2.0/24");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .securityGroupName("tf-example-security-group")
+     *             .securityGroupType("normal")
+     *             .build());
+     * 
+     *         var default0 = new Switch("default0", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(vsw1Cidr)
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var default1 = new Switch("default1", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock(vsw2Cidr)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .podCidr(containerCidr)
+     *             .vswitchIds(            
+     *                 default0.id(),
+     *                 default1.id())
+     *             .serviceCidr(serviceCidr)
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .clusterSpec("ack.pro.small")
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
+     *             .ids(defaultManagedKubernetes.id())
+     *             .nameRegex(defaultManagedKubernetes.name())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cs/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
@@ -4922,9 +5569,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -4970,9 +5617,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5018,9 +5665,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5066,9 +5713,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5114,9 +5761,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5162,9 +5809,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 
@@ -5210,9 +5857,9 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since 1.58.0
+     * &gt; **NOTE:** Available since v1.58.0
      * 
-     * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
+     * &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters&#39; kube config information by `kubeConfigFilePrefix`.
      * 
      * ## Example Usage
      * 

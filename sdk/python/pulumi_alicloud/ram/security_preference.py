@@ -28,6 +28,8 @@ class SecurityPreferenceArgs:
                  enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
                  login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
                  mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -57,12 +59,14 @@ class SecurityPreferenceArgs:
                - If the mask is specified, RAM users can only log on from the specified IP address.
                - If you do not specify any mask, the login console function will apply to the entire network.
                
-               When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+               > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
                
                Configure a maximum of 40 logon masks, with a total length of 512 characters.
         :param pulumi.Input[_builtins.int] login_session_duration: The validity period of the logon session of RAM users.
                Valid values: 1 to 24. Unit: hours.
                Default value: 6.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_access_keys: The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_users: The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         :param pulumi.Input[_builtins.str] mfa_operation_for_login: MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
                - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
                - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -89,11 +93,18 @@ class SecurityPreferenceArgs:
         if enable_save_mfa_ticket is not None:
             pulumi.set(__self__, "enable_save_mfa_ticket", enable_save_mfa_ticket)
         if enforce_mfa_for_login is not None:
+            warnings.warn("""This property has been deprecated as it is no longer supported by Aliyun.""", DeprecationWarning)
+            pulumi.log.warn("""enforce_mfa_for_login is deprecated: This property has been deprecated as it is no longer supported by Aliyun.""")
+        if enforce_mfa_for_login is not None:
             pulumi.set(__self__, "enforce_mfa_for_login", enforce_mfa_for_login)
         if login_network_masks is not None:
             pulumi.set(__self__, "login_network_masks", login_network_masks)
         if login_session_duration is not None:
             pulumi.set(__self__, "login_session_duration", login_session_duration)
+        if max_idle_days_for_access_keys is not None:
+            pulumi.set(__self__, "max_idle_days_for_access_keys", max_idle_days_for_access_keys)
+        if max_idle_days_for_users is not None:
+            pulumi.set(__self__, "max_idle_days_for_users", max_idle_days_for_users)
         if mfa_operation_for_login is not None:
             pulumi.set(__self__, "mfa_operation_for_login", mfa_operation_for_login)
         if operation_for_risk_login is not None:
@@ -187,6 +198,7 @@ class SecurityPreferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="enforceMfaForLogin")
+    @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
     def enforce_mfa_for_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
@@ -206,7 +218,7 @@ class SecurityPreferenceArgs:
         - If the mask is specified, RAM users can only log on from the specified IP address.
         - If you do not specify any mask, the login console function will apply to the entire network.
 
-        When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 
         Configure a maximum of 40 logon masks, with a total length of 512 characters.
         """
@@ -229,6 +241,30 @@ class SecurityPreferenceArgs:
     @login_session_duration.setter
     def login_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "login_session_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxIdleDaysForAccessKeys")
+    def max_idle_days_for_access_keys(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        """
+        return pulumi.get(self, "max_idle_days_for_access_keys")
+
+    @max_idle_days_for_access_keys.setter
+    def max_idle_days_for_access_keys(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_idle_days_for_access_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxIdleDaysForUsers")
+    def max_idle_days_for_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        """
+        return pulumi.get(self, "max_idle_days_for_users")
+
+    @max_idle_days_for_users.setter
+    def max_idle_days_for_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_idle_days_for_users", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaOperationForLogin")
@@ -288,6 +324,8 @@ class _SecurityPreferenceState:
                  enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
                  login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
                  mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -317,12 +355,14 @@ class _SecurityPreferenceState:
                - If the mask is specified, RAM users can only log on from the specified IP address.
                - If you do not specify any mask, the login console function will apply to the entire network.
                
-               When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+               > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
                
                Configure a maximum of 40 logon masks, with a total length of 512 characters.
         :param pulumi.Input[_builtins.int] login_session_duration: The validity period of the logon session of RAM users.
                Valid values: 1 to 24. Unit: hours.
                Default value: 6.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_access_keys: The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_users: The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         :param pulumi.Input[_builtins.str] mfa_operation_for_login: MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
                - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
                - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -349,11 +389,18 @@ class _SecurityPreferenceState:
         if enable_save_mfa_ticket is not None:
             pulumi.set(__self__, "enable_save_mfa_ticket", enable_save_mfa_ticket)
         if enforce_mfa_for_login is not None:
+            warnings.warn("""This property has been deprecated as it is no longer supported by Aliyun.""", DeprecationWarning)
+            pulumi.log.warn("""enforce_mfa_for_login is deprecated: This property has been deprecated as it is no longer supported by Aliyun.""")
+        if enforce_mfa_for_login is not None:
             pulumi.set(__self__, "enforce_mfa_for_login", enforce_mfa_for_login)
         if login_network_masks is not None:
             pulumi.set(__self__, "login_network_masks", login_network_masks)
         if login_session_duration is not None:
             pulumi.set(__self__, "login_session_duration", login_session_duration)
+        if max_idle_days_for_access_keys is not None:
+            pulumi.set(__self__, "max_idle_days_for_access_keys", max_idle_days_for_access_keys)
+        if max_idle_days_for_users is not None:
+            pulumi.set(__self__, "max_idle_days_for_users", max_idle_days_for_users)
         if mfa_operation_for_login is not None:
             pulumi.set(__self__, "mfa_operation_for_login", mfa_operation_for_login)
         if operation_for_risk_login is not None:
@@ -447,6 +494,7 @@ class _SecurityPreferenceState:
 
     @_builtins.property
     @pulumi.getter(name="enforceMfaForLogin")
+    @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
     def enforce_mfa_for_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
@@ -466,7 +514,7 @@ class _SecurityPreferenceState:
         - If the mask is specified, RAM users can only log on from the specified IP address.
         - If you do not specify any mask, the login console function will apply to the entire network.
 
-        When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 
         Configure a maximum of 40 logon masks, with a total length of 512 characters.
         """
@@ -489,6 +537,30 @@ class _SecurityPreferenceState:
     @login_session_duration.setter
     def login_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "login_session_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxIdleDaysForAccessKeys")
+    def max_idle_days_for_access_keys(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        """
+        return pulumi.get(self, "max_idle_days_for_access_keys")
+
+    @max_idle_days_for_access_keys.setter
+    def max_idle_days_for_access_keys(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_idle_days_for_access_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxIdleDaysForUsers")
+    def max_idle_days_for_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        """
+        return pulumi.get(self, "max_idle_days_for_users")
+
+    @max_idle_days_for_users.setter
+    def max_idle_days_for_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_idle_days_for_users", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaOperationForLogin")
@@ -551,6 +623,8 @@ class SecurityPreference(pulumi.CustomResource):
                  enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
                  login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
                  mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -590,12 +664,14 @@ class SecurityPreference(pulumi.CustomResource):
                - If the mask is specified, RAM users can only log on from the specified IP address.
                - If you do not specify any mask, the login console function will apply to the entire network.
                
-               When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+               > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
                
                Configure a maximum of 40 logon masks, with a total length of 512 characters.
         :param pulumi.Input[_builtins.int] login_session_duration: The validity period of the logon session of RAM users.
                Valid values: 1 to 24. Unit: hours.
                Default value: 6.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_access_keys: The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_users: The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         :param pulumi.Input[_builtins.str] mfa_operation_for_login: MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
                - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
                - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -648,6 +724,8 @@ class SecurityPreference(pulumi.CustomResource):
                  enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
                  login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
                  mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -669,6 +747,8 @@ class SecurityPreference(pulumi.CustomResource):
             __props__.__dict__["enforce_mfa_for_login"] = enforce_mfa_for_login
             __props__.__dict__["login_network_masks"] = login_network_masks
             __props__.__dict__["login_session_duration"] = login_session_duration
+            __props__.__dict__["max_idle_days_for_access_keys"] = max_idle_days_for_access_keys
+            __props__.__dict__["max_idle_days_for_users"] = max_idle_days_for_users
             __props__.__dict__["mfa_operation_for_login"] = mfa_operation_for_login
             __props__.__dict__["operation_for_risk_login"] = operation_for_risk_login
             __props__.__dict__["verification_types"] = verification_types
@@ -691,6 +771,8 @@ class SecurityPreference(pulumi.CustomResource):
             enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
             login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
             login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+            max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
+            max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
             mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
             operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
             verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityPreference':
@@ -725,12 +807,14 @@ class SecurityPreference(pulumi.CustomResource):
                - If the mask is specified, RAM users can only log on from the specified IP address.
                - If you do not specify any mask, the login console function will apply to the entire network.
                
-               When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+               > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
                
                Configure a maximum of 40 logon masks, with a total length of 512 characters.
         :param pulumi.Input[_builtins.int] login_session_duration: The validity period of the logon session of RAM users.
                Valid values: 1 to 24. Unit: hours.
                Default value: 6.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_access_keys: The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        :param pulumi.Input[_builtins.int] max_idle_days_for_users: The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         :param pulumi.Input[_builtins.str] mfa_operation_for_login: MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
                - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
                - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -757,6 +841,8 @@ class SecurityPreference(pulumi.CustomResource):
         __props__.__dict__["enforce_mfa_for_login"] = enforce_mfa_for_login
         __props__.__dict__["login_network_masks"] = login_network_masks
         __props__.__dict__["login_session_duration"] = login_session_duration
+        __props__.__dict__["max_idle_days_for_access_keys"] = max_idle_days_for_access_keys
+        __props__.__dict__["max_idle_days_for_users"] = max_idle_days_for_users
         __props__.__dict__["mfa_operation_for_login"] = mfa_operation_for_login
         __props__.__dict__["operation_for_risk_login"] = operation_for_risk_login
         __props__.__dict__["verification_types"] = verification_types
@@ -824,6 +910,7 @@ class SecurityPreference(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enforceMfaForLogin")
+    @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
     def enforce_mfa_for_login(self) -> pulumi.Output[_builtins.bool]:
         """
         Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
@@ -839,7 +926,7 @@ class SecurityPreference(pulumi.CustomResource):
         - If the mask is specified, RAM users can only log on from the specified IP address.
         - If you do not specify any mask, the login console function will apply to the entire network.
 
-        When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+        > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 
         Configure a maximum of 40 logon masks, with a total length of 512 characters.
         """
@@ -854,6 +941,22 @@ class SecurityPreference(pulumi.CustomResource):
         Default value: 6.
         """
         return pulumi.get(self, "login_session_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="maxIdleDaysForAccessKeys")
+    def max_idle_days_for_access_keys(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        """
+        return pulumi.get(self, "max_idle_days_for_access_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="maxIdleDaysForUsers")
+    def max_idle_days_for_users(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+        """
+        return pulumi.get(self, "max_idle_days_for_users")
 
     @_builtins.property
     @pulumi.getter(name="mfaOperationForLogin")

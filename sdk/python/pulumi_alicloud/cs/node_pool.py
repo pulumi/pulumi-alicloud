@@ -97,6 +97,7 @@ class NodePoolArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[_builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
+                 upgrade_policy: Optional[pulumi.Input['NodePoolUpgradePolicyArgs']] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
@@ -213,6 +214,9 @@ class NodePoolArgs:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input['NodePoolUpgradePolicyArgs'] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -382,6 +386,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "unschedulable", unschedulable)
         if update_nodes is not None:
             pulumi.set(__self__, "update_nodes", update_nodes)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if vswitch_ids is not None:
@@ -1337,6 +1343,20 @@ class NodePoolArgs:
         pulumi.set(self, "update_nodes", value)
 
     @_builtins.property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['NodePoolUpgradePolicyArgs']]:
+        """
+        Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+
+        > **NOTE:** This parameter only applies during resource update.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['NodePoolUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1442,6 +1462,7 @@ class _NodePoolState:
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[_builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
+                 upgrade_policy: Optional[pulumi.Input['NodePoolUpgradePolicyArgs']] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
@@ -1560,6 +1581,9 @@ class _NodePoolState:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input['NodePoolUpgradePolicyArgs'] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -1734,6 +1758,8 @@ class _NodePoolState:
             pulumi.set(__self__, "unschedulable", unschedulable)
         if update_nodes is not None:
             pulumi.set(__self__, "update_nodes", update_nodes)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if vswitch_ids is not None:
@@ -2713,6 +2739,20 @@ class _NodePoolState:
         pulumi.set(self, "update_nodes", value)
 
     @_builtins.property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['NodePoolUpgradePolicyArgs']]:
+        """
+        Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+
+        > **NOTE:** This parameter only applies during resource update.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['NodePoolUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -2819,6 +2859,7 @@ class NodePool(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[_builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -2945,6 +2986,9 @@ class NodePool(pulumi.CustomResource):
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -3054,6 +3098,7 @@ class NodePool(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  unschedulable: Optional[pulumi.Input[_builtins.bool]] = None,
                  update_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -3143,6 +3188,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["unschedulable"] = unschedulable
             __props__.__dict__["update_nodes"] = update_nodes
+            __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["node_pool_id"] = None
@@ -3237,6 +3283,7 @@ class NodePool(pulumi.CustomResource):
             type: Optional[pulumi.Input[_builtins.str]] = None,
             unschedulable: Optional[pulumi.Input[_builtins.bool]] = None,
             update_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
+            upgrade_policy: Optional[pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']]] = None,
             user_data: Optional[pulumi.Input[_builtins.str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'NodePool':
         """
@@ -3360,6 +3407,9 @@ class NodePool(pulumi.CustomResource):
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -3445,6 +3495,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["unschedulable"] = unschedulable
         __props__.__dict__["update_nodes"] = update_nodes
+        __props__.__dict__["upgrade_policy"] = upgrade_policy
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return NodePool(resource_name, opts=opts, __props__=__props__)
@@ -4109,6 +4160,16 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> pulumi.Output[Optional[_builtins.bool]]:
         return pulumi.get(self, "update_nodes")
+
+    @_builtins.property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> pulumi.Output[Optional['outputs.NodePoolUpgradePolicy']]:
+        """
+        Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
+
+        > **NOTE:** This parameter only applies during resource update.
+        """
+        return pulumi.get(self, "upgrade_policy")
 
     @_builtins.property
     @pulumi.getter(name="userData")

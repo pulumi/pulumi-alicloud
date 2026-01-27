@@ -76,21 +76,27 @@ namespace Pulumi.AliCloud.Sls
         public Output<Outputs.MachineGroupGroupAttribute?> GroupAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// Machine Group name
+        /// The name of the machine group. The name must meet the following requirements:
+        /// 
+        /// - The name of each machine group in a project must be unique.
+        /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+        /// - It must start and end with a lowercase letter or a digit.
+        /// - It must be 3 to 128 characters in length.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Machine group type, optional value is empty.
+        /// The type of the machine group. Set the value to an empty string.
         /// </summary>
         [Output("groupType")]
         public Output<string?> GroupType { get; private set; } = null!;
 
         /// <summary>
-        /// Machine identification type.
-        /// - ip: ip address Machine Group.
-        /// - userdefined: user-defined identity Machine Group.
+        /// The identifier type of the machine group. Valid values:
+        /// 
+        /// - ip: The machine group uses IP addresses as identifiers.
+        /// - userdefined: The machine group uses custom identifiers.
         /// </summary>
         [Output("machineIdentifyType")]
         public Output<string> MachineIdentifyType { get; private set; } = null!;
@@ -104,7 +110,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<ImmutableArray<string>> MachineLists { get; private set; } = null!;
 
         /// <summary>
-        /// Project name
+        /// The name of the project.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -162,21 +168,27 @@ namespace Pulumi.AliCloud.Sls
         public Input<Inputs.MachineGroupGroupAttributeArgs>? GroupAttribute { get; set; }
 
         /// <summary>
-        /// Machine Group name
+        /// The name of the machine group. The name must meet the following requirements:
+        /// 
+        /// - The name of each machine group in a project must be unique.
+        /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+        /// - It must start and end with a lowercase letter or a digit.
+        /// - It must be 3 to 128 characters in length.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// Machine group type, optional value is empty.
+        /// The type of the machine group. Set the value to an empty string.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// Machine identification type.
-        /// - ip: ip address Machine Group.
-        /// - userdefined: user-defined identity Machine Group.
+        /// The identifier type of the machine group. Valid values:
+        /// 
+        /// - ip: The machine group uses IP addresses as identifiers.
+        /// - userdefined: The machine group uses custom identifiers.
         /// </summary>
         [Input("machineIdentifyType", required: true)]
         public Input<string> MachineIdentifyType { get; set; } = null!;
@@ -196,7 +208,7 @@ namespace Pulumi.AliCloud.Sls
         }
 
         /// <summary>
-        /// Project name
+        /// The name of the project.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -216,21 +228,27 @@ namespace Pulumi.AliCloud.Sls
         public Input<Inputs.MachineGroupGroupAttributeGetArgs>? GroupAttribute { get; set; }
 
         /// <summary>
-        /// Machine Group name
+        /// The name of the machine group. The name must meet the following requirements:
+        /// 
+        /// - The name of each machine group in a project must be unique.
+        /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+        /// - It must start and end with a lowercase letter or a digit.
+        /// - It must be 3 to 128 characters in length.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// Machine group type, optional value is empty.
+        /// The type of the machine group. Set the value to an empty string.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// Machine identification type.
-        /// - ip: ip address Machine Group.
-        /// - userdefined: user-defined identity Machine Group.
+        /// The identifier type of the machine group. Valid values:
+        /// 
+        /// - ip: The machine group uses IP addresses as identifiers.
+        /// - userdefined: The machine group uses custom identifiers.
         /// </summary>
         [Input("machineIdentifyType")]
         public Input<string>? MachineIdentifyType { get; set; }
@@ -250,7 +268,7 @@ namespace Pulumi.AliCloud.Sls
         }
 
         /// <summary>
-        /// Project name
+        /// The name of the project.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

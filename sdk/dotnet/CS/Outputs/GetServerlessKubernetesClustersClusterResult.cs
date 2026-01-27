@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Whether the cluster support delete protection.
         /// </summary>
         public readonly bool DeletionProtection;
+        /// <summary>
+        /// Whether to create internet eip for API Server.
+        /// </summary>
         public readonly bool EndpointPublicAccessEnabled;
         /// <summary>
         /// The ID of the container cluster.
@@ -38,6 +41,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of security group where the current cluster  is located.
         /// </summary>
         public readonly string SecurityGroupId;
+        /// <summary>
+        /// A map of tags assigned to the kubernetes cluster.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of VPC where the current cluster is located.

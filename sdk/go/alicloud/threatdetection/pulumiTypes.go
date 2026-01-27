@@ -843,6 +843,352 @@ func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) Index(i pulumi.Int
 	}).(HoneypotProbeHoneypotBindListBindPortListOutput)
 }
 
+type InstancePostPayModuleSwitchObj struct {
+	// Agentless Detection Module. Valid values:
+	Agentless *int `pulumi:"agentless"`
+	// Anti-Ransomware Module. Valid values:
+	AntiRansomware *int `pulumi:"antiRansomware"`
+	// Basic service module. Valid values:
+	BasicService *int `pulumi:"basicService"`
+	// Cloud Security Configuration Check Module. Valid values:
+	Cspm *int `pulumi:"cspm"`
+	// Threat Analysis and Response Module. Valid values:
+	Ctdr *int `pulumi:"ctdr"`
+	// Log Management Module. Valid values:
+	CtdrStorage *int `pulumi:"ctdrStorage"`
+	// Host and Container Security Module. Valid values:
+	PostHost *int `pulumi:"postHost"`
+	// Application Protection Module. Valid values:
+	Rasp *int `pulumi:"rasp"`
+	// Malicious File Detection SDK Module. Valid values:
+	Sdk *int `pulumi:"sdk"`
+	// Serverless Security Module. Valid values:
+	Serverless *int `pulumi:"serverless"`
+	// Vulnerability Repair Module. Valid values:
+	Vul *int `pulumi:"vul"`
+	// File Tamper Protection Module. Valid values:
+	WebLock *int `pulumi:"webLock"`
+}
+
+// InstancePostPayModuleSwitchObjInput is an input type that accepts InstancePostPayModuleSwitchObjArgs and InstancePostPayModuleSwitchObjOutput values.
+// You can construct a concrete instance of `InstancePostPayModuleSwitchObjInput` via:
+//
+//	InstancePostPayModuleSwitchObjArgs{...}
+type InstancePostPayModuleSwitchObjInput interface {
+	pulumi.Input
+
+	ToInstancePostPayModuleSwitchObjOutput() InstancePostPayModuleSwitchObjOutput
+	ToInstancePostPayModuleSwitchObjOutputWithContext(context.Context) InstancePostPayModuleSwitchObjOutput
+}
+
+type InstancePostPayModuleSwitchObjArgs struct {
+	// Agentless Detection Module. Valid values:
+	Agentless pulumi.IntPtrInput `pulumi:"agentless"`
+	// Anti-Ransomware Module. Valid values:
+	AntiRansomware pulumi.IntPtrInput `pulumi:"antiRansomware"`
+	// Basic service module. Valid values:
+	BasicService pulumi.IntPtrInput `pulumi:"basicService"`
+	// Cloud Security Configuration Check Module. Valid values:
+	Cspm pulumi.IntPtrInput `pulumi:"cspm"`
+	// Threat Analysis and Response Module. Valid values:
+	Ctdr pulumi.IntPtrInput `pulumi:"ctdr"`
+	// Log Management Module. Valid values:
+	CtdrStorage pulumi.IntPtrInput `pulumi:"ctdrStorage"`
+	// Host and Container Security Module. Valid values:
+	PostHost pulumi.IntPtrInput `pulumi:"postHost"`
+	// Application Protection Module. Valid values:
+	Rasp pulumi.IntPtrInput `pulumi:"rasp"`
+	// Malicious File Detection SDK Module. Valid values:
+	Sdk pulumi.IntPtrInput `pulumi:"sdk"`
+	// Serverless Security Module. Valid values:
+	Serverless pulumi.IntPtrInput `pulumi:"serverless"`
+	// Vulnerability Repair Module. Valid values:
+	Vul pulumi.IntPtrInput `pulumi:"vul"`
+	// File Tamper Protection Module. Valid values:
+	WebLock pulumi.IntPtrInput `pulumi:"webLock"`
+}
+
+func (InstancePostPayModuleSwitchObjArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePostPayModuleSwitchObj)(nil)).Elem()
+}
+
+func (i InstancePostPayModuleSwitchObjArgs) ToInstancePostPayModuleSwitchObjOutput() InstancePostPayModuleSwitchObjOutput {
+	return i.ToInstancePostPayModuleSwitchObjOutputWithContext(context.Background())
+}
+
+func (i InstancePostPayModuleSwitchObjArgs) ToInstancePostPayModuleSwitchObjOutputWithContext(ctx context.Context) InstancePostPayModuleSwitchObjOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePostPayModuleSwitchObjOutput)
+}
+
+func (i InstancePostPayModuleSwitchObjArgs) ToInstancePostPayModuleSwitchObjPtrOutput() InstancePostPayModuleSwitchObjPtrOutput {
+	return i.ToInstancePostPayModuleSwitchObjPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePostPayModuleSwitchObjArgs) ToInstancePostPayModuleSwitchObjPtrOutputWithContext(ctx context.Context) InstancePostPayModuleSwitchObjPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePostPayModuleSwitchObjOutput).ToInstancePostPayModuleSwitchObjPtrOutputWithContext(ctx)
+}
+
+// InstancePostPayModuleSwitchObjPtrInput is an input type that accepts InstancePostPayModuleSwitchObjArgs, InstancePostPayModuleSwitchObjPtr and InstancePostPayModuleSwitchObjPtrOutput values.
+// You can construct a concrete instance of `InstancePostPayModuleSwitchObjPtrInput` via:
+//
+//	        InstancePostPayModuleSwitchObjArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePostPayModuleSwitchObjPtrInput interface {
+	pulumi.Input
+
+	ToInstancePostPayModuleSwitchObjPtrOutput() InstancePostPayModuleSwitchObjPtrOutput
+	ToInstancePostPayModuleSwitchObjPtrOutputWithContext(context.Context) InstancePostPayModuleSwitchObjPtrOutput
+}
+
+type instancePostPayModuleSwitchObjPtrType InstancePostPayModuleSwitchObjArgs
+
+func InstancePostPayModuleSwitchObjPtr(v *InstancePostPayModuleSwitchObjArgs) InstancePostPayModuleSwitchObjPtrInput {
+	return (*instancePostPayModuleSwitchObjPtrType)(v)
+}
+
+func (*instancePostPayModuleSwitchObjPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePostPayModuleSwitchObj)(nil)).Elem()
+}
+
+func (i *instancePostPayModuleSwitchObjPtrType) ToInstancePostPayModuleSwitchObjPtrOutput() InstancePostPayModuleSwitchObjPtrOutput {
+	return i.ToInstancePostPayModuleSwitchObjPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePostPayModuleSwitchObjPtrType) ToInstancePostPayModuleSwitchObjPtrOutputWithContext(ctx context.Context) InstancePostPayModuleSwitchObjPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePostPayModuleSwitchObjPtrOutput)
+}
+
+type InstancePostPayModuleSwitchObjOutput struct{ *pulumi.OutputState }
+
+func (InstancePostPayModuleSwitchObjOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePostPayModuleSwitchObj)(nil)).Elem()
+}
+
+func (o InstancePostPayModuleSwitchObjOutput) ToInstancePostPayModuleSwitchObjOutput() InstancePostPayModuleSwitchObjOutput {
+	return o
+}
+
+func (o InstancePostPayModuleSwitchObjOutput) ToInstancePostPayModuleSwitchObjOutputWithContext(ctx context.Context) InstancePostPayModuleSwitchObjOutput {
+	return o
+}
+
+func (o InstancePostPayModuleSwitchObjOutput) ToInstancePostPayModuleSwitchObjPtrOutput() InstancePostPayModuleSwitchObjPtrOutput {
+	return o.ToInstancePostPayModuleSwitchObjPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePostPayModuleSwitchObjOutput) ToInstancePostPayModuleSwitchObjPtrOutputWithContext(ctx context.Context) InstancePostPayModuleSwitchObjPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePostPayModuleSwitchObj) *InstancePostPayModuleSwitchObj {
+		return &v
+	}).(InstancePostPayModuleSwitchObjPtrOutput)
+}
+
+// Agentless Detection Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Agentless() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Agentless }).(pulumi.IntPtrOutput)
+}
+
+// Anti-Ransomware Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) AntiRansomware() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.AntiRansomware }).(pulumi.IntPtrOutput)
+}
+
+// Basic service module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) BasicService() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.BasicService }).(pulumi.IntPtrOutput)
+}
+
+// Cloud Security Configuration Check Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Cspm() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Cspm }).(pulumi.IntPtrOutput)
+}
+
+// Threat Analysis and Response Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Ctdr() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Ctdr }).(pulumi.IntPtrOutput)
+}
+
+// Log Management Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) CtdrStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.CtdrStorage }).(pulumi.IntPtrOutput)
+}
+
+// Host and Container Security Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) PostHost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.PostHost }).(pulumi.IntPtrOutput)
+}
+
+// Application Protection Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Rasp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Rasp }).(pulumi.IntPtrOutput)
+}
+
+// Malicious File Detection SDK Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Sdk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Sdk }).(pulumi.IntPtrOutput)
+}
+
+// Serverless Security Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Serverless() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Serverless }).(pulumi.IntPtrOutput)
+}
+
+// Vulnerability Repair Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) Vul() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Vul }).(pulumi.IntPtrOutput)
+}
+
+// File Tamper Protection Module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) WebLock() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.WebLock }).(pulumi.IntPtrOutput)
+}
+
+type InstancePostPayModuleSwitchObjPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePostPayModuleSwitchObjPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePostPayModuleSwitchObj)(nil)).Elem()
+}
+
+func (o InstancePostPayModuleSwitchObjPtrOutput) ToInstancePostPayModuleSwitchObjPtrOutput() InstancePostPayModuleSwitchObjPtrOutput {
+	return o
+}
+
+func (o InstancePostPayModuleSwitchObjPtrOutput) ToInstancePostPayModuleSwitchObjPtrOutputWithContext(ctx context.Context) InstancePostPayModuleSwitchObjPtrOutput {
+	return o
+}
+
+func (o InstancePostPayModuleSwitchObjPtrOutput) Elem() InstancePostPayModuleSwitchObjOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) InstancePostPayModuleSwitchObj {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePostPayModuleSwitchObj
+		return ret
+	}).(InstancePostPayModuleSwitchObjOutput)
+}
+
+// Agentless Detection Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Agentless() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Agentless
+	}).(pulumi.IntPtrOutput)
+}
+
+// Anti-Ransomware Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) AntiRansomware() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AntiRansomware
+	}).(pulumi.IntPtrOutput)
+}
+
+// Basic service module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) BasicService() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BasicService
+	}).(pulumi.IntPtrOutput)
+}
+
+// Cloud Security Configuration Check Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Cspm() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cspm
+	}).(pulumi.IntPtrOutput)
+}
+
+// Threat Analysis and Response Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Ctdr() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ctdr
+	}).(pulumi.IntPtrOutput)
+}
+
+// Log Management Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) CtdrStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CtdrStorage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Host and Container Security Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) PostHost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PostHost
+	}).(pulumi.IntPtrOutput)
+}
+
+// Application Protection Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Rasp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Rasp
+	}).(pulumi.IntPtrOutput)
+}
+
+// Malicious File Detection SDK Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Sdk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Sdk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Serverless Security Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Serverless() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Serverless
+	}).(pulumi.IntPtrOutput)
+}
+
+// Vulnerability Repair Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) Vul() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vul
+	}).(pulumi.IntPtrOutput)
+}
+
+// File Tamper Protection Module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) WebLock() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WebLock
+	}).(pulumi.IntPtrOutput)
+}
+
 type SasTrailServiceTrail struct {
 	// Service tracking on status. The value is:
 	// - **on:** Open
@@ -4195,6 +4541,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListArrayInput)(nil)).Elem(), HoneypotProbeHoneypotBindListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListBindPortListInput)(nil)).Elem(), HoneypotProbeHoneypotBindListBindPortListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListBindPortListArrayInput)(nil)).Elem(), HoneypotProbeHoneypotBindListBindPortListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePostPayModuleSwitchObjInput)(nil)).Elem(), InstancePostPayModuleSwitchObjArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePostPayModuleSwitchObjPtrInput)(nil)).Elem(), InstancePostPayModuleSwitchObjArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SasTrailServiceTrailInput)(nil)).Elem(), SasTrailServiceTrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SasTrailServiceTrailPtrInput)(nil)).Elem(), SasTrailServiceTrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAntiBruteForceRulesRuleInput)(nil)).Elem(), GetAntiBruteForceRulesRuleArgs{})
@@ -4252,6 +4600,8 @@ func init() {
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListArrayOutput{})
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListBindPortListOutput{})
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListBindPortListArrayOutput{})
+	pulumi.RegisterOutputType(InstancePostPayModuleSwitchObjOutput{})
+	pulumi.RegisterOutputType(InstancePostPayModuleSwitchObjPtrOutput{})
 	pulumi.RegisterOutputType(SasTrailServiceTrailOutput{})
 	pulumi.RegisterOutputType(SasTrailServiceTrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAntiBruteForceRulesRuleOutput{})

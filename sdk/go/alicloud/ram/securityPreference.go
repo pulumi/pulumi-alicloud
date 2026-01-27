@@ -47,12 +47,14 @@ type SecurityPreference struct {
 	EnableSaveMfaTicket pulumi.BoolOutput `pulumi:"enableSaveMfaTicket"`
 	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+	//
+	// Deprecated: This property has been deprecated as it is no longer supported by Aliyun.
 	EnforceMfaForLogin pulumi.BoolOutput `pulumi:"enforceMfaForLogin"`
 	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
 	// - If the mask is specified, RAM users can only log on from the specified IP address.
 	// - If you do not specify any mask, the login console function will apply to the entire network.
 	//
-	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	// > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 	//
 	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks pulumi.StringPtrOutput `pulumi:"loginNetworkMasks"`
@@ -60,6 +62,10 @@ type SecurityPreference struct {
 	// Valid values: 1 to 24. Unit: hours.
 	// Default value: 6.
 	LoginSessionDuration pulumi.IntOutput `pulumi:"loginSessionDuration"`
+	// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForAccessKeys pulumi.IntOutput `pulumi:"maxIdleDaysForAccessKeys"`
+	// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForUsers pulumi.IntOutput `pulumi:"maxIdleDaysForUsers"`
 	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
 	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
 	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -133,12 +139,14 @@ type securityPreferenceState struct {
 	EnableSaveMfaTicket *bool `pulumi:"enableSaveMfaTicket"`
 	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+	//
+	// Deprecated: This property has been deprecated as it is no longer supported by Aliyun.
 	EnforceMfaForLogin *bool `pulumi:"enforceMfaForLogin"`
 	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
 	// - If the mask is specified, RAM users can only log on from the specified IP address.
 	// - If you do not specify any mask, the login console function will apply to the entire network.
 	//
-	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	// > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 	//
 	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks *string `pulumi:"loginNetworkMasks"`
@@ -146,6 +154,10 @@ type securityPreferenceState struct {
 	// Valid values: 1 to 24. Unit: hours.
 	// Default value: 6.
 	LoginSessionDuration *int `pulumi:"loginSessionDuration"`
+	// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForAccessKeys *int `pulumi:"maxIdleDaysForAccessKeys"`
+	// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForUsers *int `pulumi:"maxIdleDaysForUsers"`
 	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
 	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
 	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -190,12 +202,14 @@ type SecurityPreferenceState struct {
 	EnableSaveMfaTicket pulumi.BoolPtrInput
 	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+	//
+	// Deprecated: This property has been deprecated as it is no longer supported by Aliyun.
 	EnforceMfaForLogin pulumi.BoolPtrInput
 	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
 	// - If the mask is specified, RAM users can only log on from the specified IP address.
 	// - If you do not specify any mask, the login console function will apply to the entire network.
 	//
-	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	// > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 	//
 	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks pulumi.StringPtrInput
@@ -203,6 +217,10 @@ type SecurityPreferenceState struct {
 	// Valid values: 1 to 24. Unit: hours.
 	// Default value: 6.
 	LoginSessionDuration pulumi.IntPtrInput
+	// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForAccessKeys pulumi.IntPtrInput
+	// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForUsers pulumi.IntPtrInput
 	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
 	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
 	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -251,12 +269,14 @@ type securityPreferenceArgs struct {
 	EnableSaveMfaTicket *bool `pulumi:"enableSaveMfaTicket"`
 	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+	//
+	// Deprecated: This property has been deprecated as it is no longer supported by Aliyun.
 	EnforceMfaForLogin *bool `pulumi:"enforceMfaForLogin"`
 	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
 	// - If the mask is specified, RAM users can only log on from the specified IP address.
 	// - If you do not specify any mask, the login console function will apply to the entire network.
 	//
-	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	// > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 	//
 	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks *string `pulumi:"loginNetworkMasks"`
@@ -264,6 +284,10 @@ type securityPreferenceArgs struct {
 	// Valid values: 1 to 24. Unit: hours.
 	// Default value: 6.
 	LoginSessionDuration *int `pulumi:"loginSessionDuration"`
+	// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForAccessKeys *int `pulumi:"maxIdleDaysForAccessKeys"`
+	// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForUsers *int `pulumi:"maxIdleDaysForUsers"`
 	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
 	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
 	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -309,12 +333,14 @@ type SecurityPreferenceArgs struct {
 	EnableSaveMfaTicket pulumi.BoolPtrInput
 	// Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+	//
+	// Deprecated: This property has been deprecated as it is no longer supported by Aliyun.
 	EnforceMfaForLogin pulumi.BoolPtrInput
 	// The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
 	// - If the mask is specified, RAM users can only log on from the specified IP address.
 	// - If you do not specify any mask, the login console function will apply to the entire network.
 	//
-	// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+	// > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 	//
 	// Configure a maximum of 40 logon masks, with a total length of 512 characters.
 	LoginNetworkMasks pulumi.StringPtrInput
@@ -322,6 +348,10 @@ type SecurityPreferenceArgs struct {
 	// Valid values: 1 to 24. Unit: hours.
 	// Default value: 6.
 	LoginSessionDuration pulumi.IntPtrInput
+	// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForAccessKeys pulumi.IntPtrInput
+	// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+	MaxIdleDaysForUsers pulumi.IntPtrInput
 	// MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
 	// - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
 	// - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
@@ -470,6 +500,8 @@ func (o SecurityPreferenceOutput) EnableSaveMfaTicket() pulumi.BoolOutput {
 
 // Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
 // Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
+//
+// Deprecated: This property has been deprecated as it is no longer supported by Aliyun.
 func (o SecurityPreferenceOutput) EnforceMfaForLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.BoolOutput { return v.EnforceMfaForLogin }).(pulumi.BoolOutput)
 }
@@ -478,7 +510,7 @@ func (o SecurityPreferenceOutput) EnforceMfaForLogin() pulumi.BoolOutput {
 // - If the mask is specified, RAM users can only log on from the specified IP address.
 // - If you do not specify any mask, the login console function will apply to the entire network.
 //
-// When you need to configure multiple login masks, use a semicolon (;) to separate them, for example: 192.168.0.0/16;10.0.0.0/8.
+// > NOTE: When you need to configure multiple login masks, use a semicolon `;` to separate them, for example: `192.168.0.0/16;10.0.0.0/8`.
 //
 // Configure a maximum of 40 logon masks, with a total length of 512 characters.
 func (o SecurityPreferenceOutput) LoginNetworkMasks() pulumi.StringPtrOutput {
@@ -490,6 +522,16 @@ func (o SecurityPreferenceOutput) LoginNetworkMasks() pulumi.StringPtrOutput {
 // Default value: 6.
 func (o SecurityPreferenceOutput) LoginSessionDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *SecurityPreference) pulumi.IntOutput { return v.LoginSessionDuration }).(pulumi.IntOutput)
+}
+
+// The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+func (o SecurityPreferenceOutput) MaxIdleDaysForAccessKeys() pulumi.IntOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.IntOutput { return v.MaxIdleDaysForAccessKeys }).(pulumi.IntOutput)
+}
+
+// The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
+func (o SecurityPreferenceOutput) MaxIdleDaysForUsers() pulumi.IntOutput {
+	return o.ApplyT(func(v *SecurityPreference) pulumi.IntOutput { return v.MaxIdleDaysForUsers }).(pulumi.IntOutput)
 }
 
 // MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:

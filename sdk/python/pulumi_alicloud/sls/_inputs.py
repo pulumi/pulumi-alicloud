@@ -2429,7 +2429,7 @@ if not MYPY:
     class MachineGroupGroupAttributeArgsDict(TypedDict):
         external_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The external management system identification on which the machine group depends.
+        The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         """
         group_topic: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2444,7 +2444,7 @@ class MachineGroupGroupAttributeArgs:
                  external_name: Optional[pulumi.Input[_builtins.str]] = None,
                  group_topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] external_name: The external management system identification on which the machine group depends.
+        :param pulumi.Input[_builtins.str] external_name: The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         :param pulumi.Input[_builtins.str] group_topic: The log topic of the machine group.
         """
         if external_name is not None:
@@ -2456,7 +2456,7 @@ class MachineGroupGroupAttributeArgs:
     @pulumi.getter(name="externalName")
     def external_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The external management system identification on which the machine group depends.
+        The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         """
         return pulumi.get(self, "external_name")
 

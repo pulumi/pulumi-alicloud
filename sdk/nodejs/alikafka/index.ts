@@ -30,6 +30,11 @@ export type SaslUser = import("./saslUser").SaslUser;
 export const SaslUser: typeof import("./saslUser").SaslUser = null as any;
 utilities.lazyLoad(exports, ["SaslUser"], () => require("./saslUser"));
 
+export { ScheduledScalingRuleArgs, ScheduledScalingRuleState } from "./scheduledScalingRule";
+export type ScheduledScalingRule = import("./scheduledScalingRule").ScheduledScalingRule;
+export const ScheduledScalingRule: typeof import("./scheduledScalingRule").ScheduledScalingRule = null as any;
+utilities.lazyLoad(exports, ["ScheduledScalingRule"], () => require("./scheduledScalingRule"));
+
 export { TopicArgs, TopicState } from "./topic";
 export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
@@ -50,6 +55,8 @@ const _module = {
                 return new SaslAcl(name, <any>undefined, { urn })
             case "alicloud:alikafka/saslUser:SaslUser":
                 return new SaslUser(name, <any>undefined, { urn })
+            case "alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule":
+                return new ScheduledScalingRule(name, <any>undefined, { urn })
             case "alicloud:alikafka/topic:Topic":
                 return new Topic(name, <any>undefined, { urn })
             default:
@@ -62,4 +69,5 @@ pulumi.runtime.registerResourceModule("alicloud", "alikafka/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/instanceAllowedIpAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/saslAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/saslUser", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alikafka/scheduledScalingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/topic", _module)

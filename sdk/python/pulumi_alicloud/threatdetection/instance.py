@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -28,7 +30,10 @@ class InstanceArgs:
                  modify_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
                  post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_pay_module_switch_obj: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']] = None,
                  rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -75,17 +80,23 @@ class InstanceArgs:
                
                > **NOTE:**  must be set when creating a prepaid instance.
         :param pulumi.Input[_builtins.int] post_paid_flag: Post-paid signage. Value:
-        :param pulumi.Input[_builtins.str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind: Automatic binding switch for new assets in host and container protection. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind_version: The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        :param pulumi.Input[_builtins.str] post_pay_module_switch: The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
                - Key:
-               - `VUL`: vulnerability repair module
-               - `CSPM`: Cloud platform configuration check module
-               - `AGENTLESS`: AGENTLESS detection module
-               - `SERVERLESS`:Serverless asset module
-               - `CTDR`: threat analysis and response module
-               - `POST_HOST`: Host and container security module
-               - Value:0 means off, 1 means on
-               
-               > **NOTE:**  The module value of the unpassed value will not change.
+               - `VUL`: Vulnerability Repair Module.
+               - `CSPM`: Cloud Security Posture Management Module.
+               - `AGENTLESS`: Agentless Detection Module.
+               - `SERVERLESS`: Serverless Security Module.
+               - `CTDR`: Threat Analysis and Response Module.
+               - `POST_HOST`: Host and Container Security Module.
+               - `SDK`: Malicious File Detection SDK Module.
+               - `RASP`: Application Protection Module.
+               - `CTDR_STORAGE`: Log Management Module.
+               - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+               - Value: `0` means off, `1` means on
+               > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
+        :param pulumi.Input['InstancePostPayModuleSwitchObjArgs'] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -179,8 +190,17 @@ class InstanceArgs:
             pulumi.set(__self__, "period", period)
         if post_paid_flag is not None:
             pulumi.set(__self__, "post_paid_flag", post_paid_flag)
+        if post_paid_host_auto_bind is not None:
+            pulumi.set(__self__, "post_paid_host_auto_bind", post_paid_host_auto_bind)
+        if post_paid_host_auto_bind_version is not None:
+            pulumi.set(__self__, "post_paid_host_auto_bind_version", post_paid_host_auto_bind_version)
+        if post_pay_module_switch is not None:
+            warnings.warn("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""", DeprecationWarning)
+            pulumi.log.warn("""post_pay_module_switch is deprecated: Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
         if post_pay_module_switch is not None:
             pulumi.set(__self__, "post_pay_module_switch", post_pay_module_switch)
+        if post_pay_module_switch_obj is not None:
+            pulumi.set(__self__, "post_pay_module_switch_obj", post_pay_module_switch_obj)
         if rasp_count is not None:
             pulumi.set(__self__, "rasp_count", rasp_count)
         if renew_period is not None:
@@ -350,26 +370,66 @@ class InstanceArgs:
         pulumi.set(self, "post_paid_flag", value)
 
     @_builtins.property
+    @pulumi.getter(name="postPaidHostAutoBind")
+    def post_paid_host_auto_bind(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Automatic binding switch for new assets in host and container protection. Valid values:
+        """
+        return pulumi.get(self, "post_paid_host_auto_bind")
+
+    @post_paid_host_auto_bind.setter
+    def post_paid_host_auto_bind(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "post_paid_host_auto_bind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postPaidHostAutoBindVersion")
+    def post_paid_host_auto_bind_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        """
+        return pulumi.get(self, "post_paid_host_auto_bind_version")
+
+    @post_paid_host_auto_bind_version.setter
+    def post_paid_host_auto_bind_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "post_paid_host_auto_bind_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="postPayModuleSwitch")
+    @_utilities.deprecated("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
     def post_pay_module_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         - Key:
-        - `VUL`: vulnerability repair module
-        - `CSPM`: Cloud platform configuration check module
-        - `AGENTLESS`: AGENTLESS detection module
-        - `SERVERLESS`:Serverless asset module
-        - `CTDR`: threat analysis and response module
-        - `POST_HOST`: Host and container security module
-        - Value:0 means off, 1 means on
-
-        > **NOTE:**  The module value of the unpassed value will not change.
+        - `VUL`: Vulnerability Repair Module.
+        - `CSPM`: Cloud Security Posture Management Module.
+        - `AGENTLESS`: Agentless Detection Module.
+        - `SERVERLESS`: Serverless Security Module.
+        - `CTDR`: Threat Analysis and Response Module.
+        - `POST_HOST`: Host and Container Security Module.
+        - `SDK`: Malicious File Detection SDK Module.
+        - `RASP`: Application Protection Module.
+        - `CTDR_STORAGE`: Log Management Module.
+        - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+        - Value: `0` means off, `1` means on
+        > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         """
         return pulumi.get(self, "post_pay_module_switch")
 
     @post_pay_module_switch.setter
     def post_pay_module_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "post_pay_module_switch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postPayModuleSwitchObj")
+    def post_pay_module_switch_obj(self) -> Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]:
+        """
+        Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
+        """
+        return pulumi.get(self, "post_pay_module_switch_obj")
+
+    @post_pay_module_switch_obj.setter
+    def post_pay_module_switch_obj(self, value: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]):
+        pulumi.set(self, "post_pay_module_switch_obj", value)
 
     @_builtins.property
     @pulumi.getter(name="raspCount")
@@ -710,7 +770,10 @@ class _InstanceState:
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
                  post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_pay_module_switch_obj: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']] = None,
                  rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -759,17 +822,23 @@ class _InstanceState:
                
                > **NOTE:**  must be set when creating a prepaid instance.
         :param pulumi.Input[_builtins.int] post_paid_flag: Post-paid signage. Value:
-        :param pulumi.Input[_builtins.str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind: Automatic binding switch for new assets in host and container protection. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind_version: The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        :param pulumi.Input[_builtins.str] post_pay_module_switch: The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
                - Key:
-               - `VUL`: vulnerability repair module
-               - `CSPM`: Cloud platform configuration check module
-               - `AGENTLESS`: AGENTLESS detection module
-               - `SERVERLESS`:Serverless asset module
-               - `CTDR`: threat analysis and response module
-               - `POST_HOST`: Host and container security module
-               - Value:0 means off, 1 means on
-               
-               > **NOTE:**  The module value of the unpassed value will not change.
+               - `VUL`: Vulnerability Repair Module.
+               - `CSPM`: Cloud Security Posture Management Module.
+               - `AGENTLESS`: Agentless Detection Module.
+               - `SERVERLESS`: Serverless Security Module.
+               - `CTDR`: Threat Analysis and Response Module.
+               - `POST_HOST`: Host and Container Security Module.
+               - `SDK`: Malicious File Detection SDK Module.
+               - `RASP`: Application Protection Module.
+               - `CTDR_STORAGE`: Log Management Module.
+               - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+               - Value: `0` means off, `1` means on
+               > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
+        :param pulumi.Input['InstancePostPayModuleSwitchObjArgs'] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -867,8 +936,17 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if post_paid_flag is not None:
             pulumi.set(__self__, "post_paid_flag", post_paid_flag)
+        if post_paid_host_auto_bind is not None:
+            pulumi.set(__self__, "post_paid_host_auto_bind", post_paid_host_auto_bind)
+        if post_paid_host_auto_bind_version is not None:
+            pulumi.set(__self__, "post_paid_host_auto_bind_version", post_paid_host_auto_bind_version)
+        if post_pay_module_switch is not None:
+            warnings.warn("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""", DeprecationWarning)
+            pulumi.log.warn("""post_pay_module_switch is deprecated: Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
         if post_pay_module_switch is not None:
             pulumi.set(__self__, "post_pay_module_switch", post_pay_module_switch)
+        if post_pay_module_switch_obj is not None:
+            pulumi.set(__self__, "post_pay_module_switch_obj", post_pay_module_switch_obj)
         if rasp_count is not None:
             pulumi.set(__self__, "rasp_count", rasp_count)
         if renew_period is not None:
@@ -1052,26 +1130,66 @@ class _InstanceState:
         pulumi.set(self, "post_paid_flag", value)
 
     @_builtins.property
+    @pulumi.getter(name="postPaidHostAutoBind")
+    def post_paid_host_auto_bind(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Automatic binding switch for new assets in host and container protection. Valid values:
+        """
+        return pulumi.get(self, "post_paid_host_auto_bind")
+
+    @post_paid_host_auto_bind.setter
+    def post_paid_host_auto_bind(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "post_paid_host_auto_bind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postPaidHostAutoBindVersion")
+    def post_paid_host_auto_bind_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        """
+        return pulumi.get(self, "post_paid_host_auto_bind_version")
+
+    @post_paid_host_auto_bind_version.setter
+    def post_paid_host_auto_bind_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "post_paid_host_auto_bind_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="postPayModuleSwitch")
+    @_utilities.deprecated("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
     def post_pay_module_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         - Key:
-        - `VUL`: vulnerability repair module
-        - `CSPM`: Cloud platform configuration check module
-        - `AGENTLESS`: AGENTLESS detection module
-        - `SERVERLESS`:Serverless asset module
-        - `CTDR`: threat analysis and response module
-        - `POST_HOST`: Host and container security module
-        - Value:0 means off, 1 means on
-
-        > **NOTE:**  The module value of the unpassed value will not change.
+        - `VUL`: Vulnerability Repair Module.
+        - `CSPM`: Cloud Security Posture Management Module.
+        - `AGENTLESS`: Agentless Detection Module.
+        - `SERVERLESS`: Serverless Security Module.
+        - `CTDR`: Threat Analysis and Response Module.
+        - `POST_HOST`: Host and Container Security Module.
+        - `SDK`: Malicious File Detection SDK Module.
+        - `RASP`: Application Protection Module.
+        - `CTDR_STORAGE`: Log Management Module.
+        - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+        - Value: `0` means off, `1` means on
+        > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         """
         return pulumi.get(self, "post_pay_module_switch")
 
     @post_pay_module_switch.setter
     def post_pay_module_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "post_pay_module_switch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postPayModuleSwitchObj")
+    def post_pay_module_switch_obj(self) -> Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]:
+        """
+        Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
+        """
+        return pulumi.get(self, "post_pay_module_switch_obj")
+
+    @post_pay_module_switch_obj.setter
+    def post_pay_module_switch_obj(self, value: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]):
+        pulumi.set(self, "post_pay_module_switch_obj", value)
 
     @_builtins.property
     @pulumi.getter(name="raspCount")
@@ -1426,7 +1544,10 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
                  post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_pay_module_switch_obj: Optional[pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
                  rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1483,17 +1604,23 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:**  must be set when creating a prepaid instance.
         :param pulumi.Input[_builtins.int] post_paid_flag: Post-paid signage. Value:
-        :param pulumi.Input[_builtins.str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind: Automatic binding switch for new assets in host and container protection. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind_version: The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        :param pulumi.Input[_builtins.str] post_pay_module_switch: The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
                - Key:
-               - `VUL`: vulnerability repair module
-               - `CSPM`: Cloud platform configuration check module
-               - `AGENTLESS`: AGENTLESS detection module
-               - `SERVERLESS`:Serverless asset module
-               - `CTDR`: threat analysis and response module
-               - `POST_HOST`: Host and container security module
-               - Value:0 means off, 1 means on
-               
-               > **NOTE:**  The module value of the unpassed value will not change.
+               - `VUL`: Vulnerability Repair Module.
+               - `CSPM`: Cloud Security Posture Management Module.
+               - `AGENTLESS`: Agentless Detection Module.
+               - `SERVERLESS`: Serverless Security Module.
+               - `CTDR`: Threat Analysis and Response Module.
+               - `POST_HOST`: Host and Container Security Module.
+               - `SDK`: Malicious File Detection SDK Module.
+               - `RASP`: Application Protection Module.
+               - `CTDR_STORAGE`: Log Management Module.
+               - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+               - Value: `0` means off, `1` means on
+               > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
+        :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -1606,7 +1733,10 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
                  post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 post_pay_module_switch_obj: Optional[pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
                  rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1650,7 +1780,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["post_paid_flag"] = post_paid_flag
+            __props__.__dict__["post_paid_host_auto_bind"] = post_paid_host_auto_bind
+            __props__.__dict__["post_paid_host_auto_bind_version"] = post_paid_host_auto_bind_version
             __props__.__dict__["post_pay_module_switch"] = post_pay_module_switch
+            __props__.__dict__["post_pay_module_switch_obj"] = post_pay_module_switch_obj
             __props__.__dict__["rasp_count"] = rasp_count
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_period_unit"] = renewal_period_unit
@@ -1696,7 +1829,10 @@ class Instance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
+            post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
+            post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
             post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
+            post_pay_module_switch_obj: Optional[pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
             rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
             renew_period: Optional[pulumi.Input[_builtins.int]] = None,
             renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1750,17 +1886,23 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:**  must be set when creating a prepaid instance.
         :param pulumi.Input[_builtins.int] post_paid_flag: Post-paid signage. Value:
-        :param pulumi.Input[_builtins.str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind: Automatic binding switch for new assets in host and container protection. Valid values:
+        :param pulumi.Input[_builtins.int] post_paid_host_auto_bind_version: The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        :param pulumi.Input[_builtins.str] post_pay_module_switch: The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
                - Key:
-               - `VUL`: vulnerability repair module
-               - `CSPM`: Cloud platform configuration check module
-               - `AGENTLESS`: AGENTLESS detection module
-               - `SERVERLESS`:Serverless asset module
-               - `CTDR`: threat analysis and response module
-               - `POST_HOST`: Host and container security module
-               - Value:0 means off, 1 means on
-               
-               > **NOTE:**  The module value of the unpassed value will not change.
+               - `VUL`: Vulnerability Repair Module.
+               - `CSPM`: Cloud Security Posture Management Module.
+               - `AGENTLESS`: Agentless Detection Module.
+               - `SERVERLESS`: Serverless Security Module.
+               - `CTDR`: Threat Analysis and Response Module.
+               - `POST_HOST`: Host and Container Security Module.
+               - `SDK`: Malicious File Detection SDK Module.
+               - `RASP`: Application Protection Module.
+               - `CTDR_STORAGE`: Log Management Module.
+               - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+               - Value: `0` means off, `1` means on
+               > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
+        :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -1849,7 +1991,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["post_paid_flag"] = post_paid_flag
+        __props__.__dict__["post_paid_host_auto_bind"] = post_paid_host_auto_bind
+        __props__.__dict__["post_paid_host_auto_bind_version"] = post_paid_host_auto_bind_version
         __props__.__dict__["post_pay_module_switch"] = post_pay_module_switch
+        __props__.__dict__["post_pay_module_switch_obj"] = post_pay_module_switch_obj
         __props__.__dict__["rasp_count"] = rasp_count
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_period_unit"] = renewal_period_unit
@@ -1970,22 +2115,50 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "post_paid_flag")
 
     @_builtins.property
+    @pulumi.getter(name="postPaidHostAutoBind")
+    def post_paid_host_auto_bind(self) -> pulumi.Output[_builtins.int]:
+        """
+        Automatic binding switch for new assets in host and container protection. Valid values:
+        """
+        return pulumi.get(self, "post_paid_host_auto_bind")
+
+    @_builtins.property
+    @pulumi.getter(name="postPaidHostAutoBindVersion")
+    def post_paid_host_auto_bind_version(self) -> pulumi.Output[_builtins.int]:
+        """
+        The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
+        """
+        return pulumi.get(self, "post_paid_host_auto_bind_version")
+
+    @_builtins.property
     @pulumi.getter(name="postPayModuleSwitch")
+    @_utilities.deprecated("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
     def post_pay_module_switch(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         - Key:
-        - `VUL`: vulnerability repair module
-        - `CSPM`: Cloud platform configuration check module
-        - `AGENTLESS`: AGENTLESS detection module
-        - `SERVERLESS`:Serverless asset module
-        - `CTDR`: threat analysis and response module
-        - `POST_HOST`: Host and container security module
-        - Value:0 means off, 1 means on
-
-        > **NOTE:**  The module value of the unpassed value will not change.
+        - `VUL`: Vulnerability Repair Module.
+        - `CSPM`: Cloud Security Posture Management Module.
+        - `AGENTLESS`: Agentless Detection Module.
+        - `SERVERLESS`: Serverless Security Module.
+        - `CTDR`: Threat Analysis and Response Module.
+        - `POST_HOST`: Host and Container Security Module.
+        - `SDK`: Malicious File Detection SDK Module.
+        - `RASP`: Application Protection Module.
+        - `CTDR_STORAGE`: Log Management Module.
+        - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
+        - Value: `0` means off, `1` means on
+        > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         """
         return pulumi.get(self, "post_pay_module_switch")
+
+    @_builtins.property
+    @pulumi.getter(name="postPayModuleSwitchObj")
+    def post_pay_module_switch_obj(self) -> pulumi.Output['outputs.InstancePostPayModuleSwitchObj']:
+        """
+        Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
+        """
+        return pulumi.get(self, "post_pay_module_switch_obj")
 
     @_builtins.property
     @pulumi.getter(name="raspCount")

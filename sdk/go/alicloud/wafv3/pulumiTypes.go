@@ -18,6 +18,8 @@ type DefenseRuleConfig struct {
 	AbroadRegions *string `pulumi:"abroadRegions"`
 	// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
 	AccountIdentifiers []DefenseRuleConfigAccountIdentifier `pulumi:"accountIdentifiers"`
+	// Whether the new Web core protection rules are automatically updated. Values:
+	AutoUpdate *bool `pulumi:"autoUpdate"`
 	// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
 	BypassRegularRules []string `pulumi:"bypassRegularRules"`
 	// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
@@ -71,6 +73,8 @@ type DefenseRuleConfig struct {
 	CcStatus *int `pulumi:"ccStatus"`
 	// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
 	CnRegions *string `pulumi:"cnRegions"`
+	// The type to enable decoding. Value:
+	CodecLists []string `pulumi:"codecLists"`
 	// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
 	Conditions []DefenseRuleConfigCondition `pulumi:"conditions"`
 	// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
@@ -89,15 +93,7 @@ type DefenseRuleConfig struct {
 	RateLimit *DefenseRuleConfigRateLimit `pulumi:"rateLimit"`
 	// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
 	RemoteAddrs []string `pulumi:"remoteAddrs"`
-	// Protection rule action. Value:
-	// - block: Indicates an intercept.
-	// - monitor: indicates observation.
-	// - js: indicates JS validation.
-	// - captcha: Indicates a slider.
-	// - captcha_strict: indicates a strict slider.
-	// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-	//
-	// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+	// Web core protection rule action. Valid values:
 	RuleAction *string `pulumi:"ruleAction"`
 	// The throttling threshold. Valid values:
 	// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
@@ -113,6 +109,8 @@ type DefenseRuleConfig struct {
 	Ua *string `pulumi:"ua"`
 	// The address of the cached page.
 	Url *string `pulumi:"url"`
+	// The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+	WafBaseConfigs []DefenseRuleConfigWafBaseConfig `pulumi:"wafBaseConfigs"`
 }
 
 // DefenseRuleConfigInput is an input type that accepts DefenseRuleConfigArgs and DefenseRuleConfigOutput values.
@@ -131,6 +129,8 @@ type DefenseRuleConfigArgs struct {
 	AbroadRegions pulumi.StringPtrInput `pulumi:"abroadRegions"`
 	// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
 	AccountIdentifiers DefenseRuleConfigAccountIdentifierArrayInput `pulumi:"accountIdentifiers"`
+	// Whether the new Web core protection rules are automatically updated. Values:
+	AutoUpdate pulumi.BoolPtrInput `pulumi:"autoUpdate"`
 	// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
 	BypassRegularRules pulumi.StringArrayInput `pulumi:"bypassRegularRules"`
 	// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
@@ -184,6 +184,8 @@ type DefenseRuleConfigArgs struct {
 	CcStatus pulumi.IntPtrInput `pulumi:"ccStatus"`
 	// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
 	CnRegions pulumi.StringPtrInput `pulumi:"cnRegions"`
+	// The type to enable decoding. Value:
+	CodecLists pulumi.StringArrayInput `pulumi:"codecLists"`
 	// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
 	Conditions DefenseRuleConfigConditionArrayInput `pulumi:"conditions"`
 	// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
@@ -202,15 +204,7 @@ type DefenseRuleConfigArgs struct {
 	RateLimit DefenseRuleConfigRateLimitPtrInput `pulumi:"rateLimit"`
 	// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
 	RemoteAddrs pulumi.StringArrayInput `pulumi:"remoteAddrs"`
-	// Protection rule action. Value:
-	// - block: Indicates an intercept.
-	// - monitor: indicates observation.
-	// - js: indicates JS validation.
-	// - captcha: Indicates a slider.
-	// - captcha_strict: indicates a strict slider.
-	// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-	//
-	// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+	// Web core protection rule action. Valid values:
 	RuleAction pulumi.StringPtrInput `pulumi:"ruleAction"`
 	// The throttling threshold. Valid values:
 	// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
@@ -226,6 +220,8 @@ type DefenseRuleConfigArgs struct {
 	Ua pulumi.StringPtrInput `pulumi:"ua"`
 	// The address of the cached page.
 	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+	WafBaseConfigs DefenseRuleConfigWafBaseConfigArrayInput `pulumi:"wafBaseConfigs"`
 }
 
 func (DefenseRuleConfigArgs) ElementType() reflect.Type {
@@ -315,6 +311,11 @@ func (o DefenseRuleConfigOutput) AccountIdentifiers() DefenseRuleConfigAccountId
 	return o.ApplyT(func(v DefenseRuleConfig) []DefenseRuleConfigAccountIdentifier { return v.AccountIdentifiers }).(DefenseRuleConfigAccountIdentifierArrayOutput)
 }
 
+// Whether the new Web core protection rules are automatically updated. Values:
+func (o DefenseRuleConfigOutput) AutoUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *bool { return v.AutoUpdate }).(pulumi.BoolPtrOutput)
+}
+
 // The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
 func (o DefenseRuleConfigOutput) BypassRegularRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.BypassRegularRules }).(pulumi.StringArrayOutput)
@@ -386,6 +387,11 @@ func (o DefenseRuleConfigOutput) CnRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.CnRegions }).(pulumi.StringPtrOutput)
 }
 
+// The type to enable decoding. Value:
+func (o DefenseRuleConfigOutput) CodecLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.CodecLists }).(pulumi.StringArrayOutput)
+}
+
 // The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
 func (o DefenseRuleConfigOutput) Conditions() DefenseRuleConfigConditionArrayOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) []DefenseRuleConfigCondition { return v.Conditions }).(DefenseRuleConfigConditionArrayOutput)
@@ -425,15 +431,7 @@ func (o DefenseRuleConfigOutput) RemoteAddrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.RemoteAddrs }).(pulumi.StringArrayOutput)
 }
 
-// Protection rule action. Value:
-// - block: Indicates an intercept.
-// - monitor: indicates observation.
-// - js: indicates JS validation.
-// - captcha: Indicates a slider.
-// - captcha_strict: indicates a strict slider.
-// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-//
-// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+// Web core protection rule action. Valid values:
 func (o DefenseRuleConfigOutput) RuleAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.RuleAction }).(pulumi.StringPtrOutput)
 }
@@ -465,6 +463,11 @@ func (o DefenseRuleConfigOutput) Ua() pulumi.StringPtrOutput {
 // The address of the cached page.
 func (o DefenseRuleConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+func (o DefenseRuleConfigOutput) WafBaseConfigs() DefenseRuleConfigWafBaseConfigArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []DefenseRuleConfigWafBaseConfig { return v.WafBaseConfigs }).(DefenseRuleConfigWafBaseConfigArrayOutput)
 }
 
 type DefenseRuleConfigPtrOutput struct{ *pulumi.OutputState }
@@ -509,6 +512,16 @@ func (o DefenseRuleConfigPtrOutput) AccountIdentifiers() DefenseRuleConfigAccoun
 		}
 		return v.AccountIdentifiers
 	}).(DefenseRuleConfigAccountIdentifierArrayOutput)
+}
+
+// Whether the new Web core protection rules are automatically updated. Values:
+func (o DefenseRuleConfigPtrOutput) AutoUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpdate
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
@@ -612,6 +625,16 @@ func (o DefenseRuleConfigPtrOutput) CnRegions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The type to enable decoding. Value:
+func (o DefenseRuleConfigPtrOutput) CodecLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CodecLists
+	}).(pulumi.StringArrayOutput)
+}
+
 // The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
 func (o DefenseRuleConfigPtrOutput) Conditions() DefenseRuleConfigConditionArrayOutput {
 	return o.ApplyT(func(v *DefenseRuleConfig) []DefenseRuleConfigCondition {
@@ -686,15 +709,7 @@ func (o DefenseRuleConfigPtrOutput) RemoteAddrs() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Protection rule action. Value:
-// - block: Indicates an intercept.
-// - monitor: indicates observation.
-// - js: indicates JS validation.
-// - captcha: Indicates a slider.
-// - captcha_strict: indicates a strict slider.
-// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
-//
-// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+// Web core protection rule action. Valid values:
 func (o DefenseRuleConfigPtrOutput) RuleAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenseRuleConfig) *string {
 		if v == nil {
@@ -756,6 +771,16 @@ func (o DefenseRuleConfigPtrOutput) Url() pulumi.StringPtrOutput {
 		}
 		return v.Url
 	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the Web core protection rules to be modified. See `wafBaseConfig` below.
+func (o DefenseRuleConfigPtrOutput) WafBaseConfigs() DefenseRuleConfigWafBaseConfigArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []DefenseRuleConfigWafBaseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WafBaseConfigs
+	}).(DefenseRuleConfigWafBaseConfigArrayOutput)
 }
 
 type DefenseRuleConfigAccountIdentifier struct {
@@ -2246,6 +2271,238 @@ func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) Index(i p
 	}).(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput)
 }
 
+type DefenseRuleConfigWafBaseConfig struct {
+	// The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+	RuleBatchOperationConfig *string `pulumi:"ruleBatchOperationConfig"`
+	// The configuration of the Web core protection rules to be modified. See `ruleDetail` below.
+	RuleDetails []DefenseRuleConfigWafBaseConfigRuleDetail `pulumi:"ruleDetails"`
+	// The type of the rule. Valid values:
+	RuleType *string `pulumi:"ruleType"`
+}
+
+// DefenseRuleConfigWafBaseConfigInput is an input type that accepts DefenseRuleConfigWafBaseConfigArgs and DefenseRuleConfigWafBaseConfigOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigWafBaseConfigInput` via:
+//
+//	DefenseRuleConfigWafBaseConfigArgs{...}
+type DefenseRuleConfigWafBaseConfigInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigWafBaseConfigOutput() DefenseRuleConfigWafBaseConfigOutput
+	ToDefenseRuleConfigWafBaseConfigOutputWithContext(context.Context) DefenseRuleConfigWafBaseConfigOutput
+}
+
+type DefenseRuleConfigWafBaseConfigArgs struct {
+	// The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+	RuleBatchOperationConfig pulumi.StringPtrInput `pulumi:"ruleBatchOperationConfig"`
+	// The configuration of the Web core protection rules to be modified. See `ruleDetail` below.
+	RuleDetails DefenseRuleConfigWafBaseConfigRuleDetailArrayInput `pulumi:"ruleDetails"`
+	// The type of the rule. Valid values:
+	RuleType pulumi.StringPtrInput `pulumi:"ruleType"`
+}
+
+func (DefenseRuleConfigWafBaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigWafBaseConfigArgs) ToDefenseRuleConfigWafBaseConfigOutput() DefenseRuleConfigWafBaseConfigOutput {
+	return i.ToDefenseRuleConfigWafBaseConfigOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigWafBaseConfigArgs) ToDefenseRuleConfigWafBaseConfigOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigWafBaseConfigOutput)
+}
+
+// DefenseRuleConfigWafBaseConfigArrayInput is an input type that accepts DefenseRuleConfigWafBaseConfigArray and DefenseRuleConfigWafBaseConfigArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigWafBaseConfigArrayInput` via:
+//
+//	DefenseRuleConfigWafBaseConfigArray{ DefenseRuleConfigWafBaseConfigArgs{...} }
+type DefenseRuleConfigWafBaseConfigArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigWafBaseConfigArrayOutput() DefenseRuleConfigWafBaseConfigArrayOutput
+	ToDefenseRuleConfigWafBaseConfigArrayOutputWithContext(context.Context) DefenseRuleConfigWafBaseConfigArrayOutput
+}
+
+type DefenseRuleConfigWafBaseConfigArray []DefenseRuleConfigWafBaseConfigInput
+
+func (DefenseRuleConfigWafBaseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigWafBaseConfigArray) ToDefenseRuleConfigWafBaseConfigArrayOutput() DefenseRuleConfigWafBaseConfigArrayOutput {
+	return i.ToDefenseRuleConfigWafBaseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigWafBaseConfigArray) ToDefenseRuleConfigWafBaseConfigArrayOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigWafBaseConfigArrayOutput)
+}
+
+type DefenseRuleConfigWafBaseConfigOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigWafBaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigWafBaseConfigOutput) ToDefenseRuleConfigWafBaseConfigOutput() DefenseRuleConfigWafBaseConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigWafBaseConfigOutput) ToDefenseRuleConfigWafBaseConfigOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigOutput {
+	return o
+}
+
+// The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
+func (o DefenseRuleConfigWafBaseConfigOutput) RuleBatchOperationConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigWafBaseConfig) *string { return v.RuleBatchOperationConfig }).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the Web core protection rules to be modified. See `ruleDetail` below.
+func (o DefenseRuleConfigWafBaseConfigOutput) RuleDetails() DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfigWafBaseConfig) []DefenseRuleConfigWafBaseConfigRuleDetail {
+		return v.RuleDetails
+	}).(DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput)
+}
+
+// The type of the rule. Valid values:
+func (o DefenseRuleConfigWafBaseConfigOutput) RuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigWafBaseConfig) *string { return v.RuleType }).(pulumi.StringPtrOutput)
+}
+
+type DefenseRuleConfigWafBaseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigWafBaseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigWafBaseConfigArrayOutput) ToDefenseRuleConfigWafBaseConfigArrayOutput() DefenseRuleConfigWafBaseConfigArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigWafBaseConfigArrayOutput) ToDefenseRuleConfigWafBaseConfigArrayOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigWafBaseConfigArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigWafBaseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigWafBaseConfig {
+		return vs[0].([]DefenseRuleConfigWafBaseConfig)[vs[1].(int)]
+	}).(DefenseRuleConfigWafBaseConfigOutput)
+}
+
+type DefenseRuleConfigWafBaseConfigRuleDetail struct {
+	// Web core protection rule action. Valid values:
+	RuleAction *string `pulumi:"ruleAction"`
+	// The protection rule ID.
+	RuleId *string `pulumi:"ruleId"`
+	// Protection rule status.
+	RuleStatus *int `pulumi:"ruleStatus"`
+}
+
+// DefenseRuleConfigWafBaseConfigRuleDetailInput is an input type that accepts DefenseRuleConfigWafBaseConfigRuleDetailArgs and DefenseRuleConfigWafBaseConfigRuleDetailOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigWafBaseConfigRuleDetailInput` via:
+//
+//	DefenseRuleConfigWafBaseConfigRuleDetailArgs{...}
+type DefenseRuleConfigWafBaseConfigRuleDetailInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigWafBaseConfigRuleDetailOutput() DefenseRuleConfigWafBaseConfigRuleDetailOutput
+	ToDefenseRuleConfigWafBaseConfigRuleDetailOutputWithContext(context.Context) DefenseRuleConfigWafBaseConfigRuleDetailOutput
+}
+
+type DefenseRuleConfigWafBaseConfigRuleDetailArgs struct {
+	// Web core protection rule action. Valid values:
+	RuleAction pulumi.StringPtrInput `pulumi:"ruleAction"`
+	// The protection rule ID.
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	// Protection rule status.
+	RuleStatus pulumi.IntPtrInput `pulumi:"ruleStatus"`
+}
+
+func (DefenseRuleConfigWafBaseConfigRuleDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigWafBaseConfigRuleDetailArgs) ToDefenseRuleConfigWafBaseConfigRuleDetailOutput() DefenseRuleConfigWafBaseConfigRuleDetailOutput {
+	return i.ToDefenseRuleConfigWafBaseConfigRuleDetailOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigWafBaseConfigRuleDetailArgs) ToDefenseRuleConfigWafBaseConfigRuleDetailOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigRuleDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigWafBaseConfigRuleDetailOutput)
+}
+
+// DefenseRuleConfigWafBaseConfigRuleDetailArrayInput is an input type that accepts DefenseRuleConfigWafBaseConfigRuleDetailArray and DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigWafBaseConfigRuleDetailArrayInput` via:
+//
+//	DefenseRuleConfigWafBaseConfigRuleDetailArray{ DefenseRuleConfigWafBaseConfigRuleDetailArgs{...} }
+type DefenseRuleConfigWafBaseConfigRuleDetailArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutput() DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput
+	ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(context.Context) DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput
+}
+
+type DefenseRuleConfigWafBaseConfigRuleDetailArray []DefenseRuleConfigWafBaseConfigRuleDetailInput
+
+func (DefenseRuleConfigWafBaseConfigRuleDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigWafBaseConfigRuleDetailArray) ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutput() DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return i.ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigWafBaseConfigRuleDetailArray) ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput)
+}
+
+type DefenseRuleConfigWafBaseConfigRuleDetailOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigWafBaseConfigRuleDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigWafBaseConfigRuleDetailOutput) ToDefenseRuleConfigWafBaseConfigRuleDetailOutput() DefenseRuleConfigWafBaseConfigRuleDetailOutput {
+	return o
+}
+
+func (o DefenseRuleConfigWafBaseConfigRuleDetailOutput) ToDefenseRuleConfigWafBaseConfigRuleDetailOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigRuleDetailOutput {
+	return o
+}
+
+// Web core protection rule action. Valid values:
+func (o DefenseRuleConfigWafBaseConfigRuleDetailOutput) RuleAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigWafBaseConfigRuleDetail) *string { return v.RuleAction }).(pulumi.StringPtrOutput)
+}
+
+// The protection rule ID.
+func (o DefenseRuleConfigWafBaseConfigRuleDetailOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigWafBaseConfigRuleDetail) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+}
+
+// Protection rule status.
+func (o DefenseRuleConfigWafBaseConfigRuleDetailOutput) RuleStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigWafBaseConfigRuleDetail) *int { return v.RuleStatus }).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput) ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutput() DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput) ToDefenseRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(ctx context.Context) DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigWafBaseConfigRuleDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigWafBaseConfigRuleDetail {
+		return vs[0].([]DefenseRuleConfigWafBaseConfigRuleDetail)[vs[1].(int)]
+	}).(DefenseRuleConfigWafBaseConfigRuleDetailOutput)
+}
+
 type DomainListen struct {
 	// The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
 	CertId *string `pulumi:"certId"`
@@ -2720,6 +2977,10 @@ type DomainRedirect struct {
 	ConnectTimeout *int `pulumi:"connectTimeout"`
 	// Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	FocusHttpBackend *bool `pulumi:"focusHttpBackend"`
+	// Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+	Http2Origin *bool `pulumi:"http2Origin"`
+	// The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+	Http2OriginMaxConcurrency *int `pulumi:"http2OriginMaxConcurrency"`
 	// Specifies whether to enable the persistent connection feature. Valid values:
 	Keepalive *bool `pulumi:"keepalive"`
 	// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
@@ -2732,6 +2993,9 @@ type DomainRedirect struct {
 	KeepaliveTimeout *int `pulumi:"keepaliveTimeout"`
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance string `pulumi:"loadbalance"`
+	// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+	// > **NOTE:** This parameter is supported only by the Ultimate edition.
+	MaxBodySize *int `pulumi:"maxBodySize"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 	ReadTimeout *int `pulumi:"readTimeout"`
 	// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
@@ -2775,6 +3039,10 @@ type DomainRedirectArgs struct {
 	ConnectTimeout pulumi.IntPtrInput `pulumi:"connectTimeout"`
 	// Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	FocusHttpBackend pulumi.BoolPtrInput `pulumi:"focusHttpBackend"`
+	// Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+	Http2Origin pulumi.BoolPtrInput `pulumi:"http2Origin"`
+	// The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+	Http2OriginMaxConcurrency pulumi.IntPtrInput `pulumi:"http2OriginMaxConcurrency"`
 	// Specifies whether to enable the persistent connection feature. Valid values:
 	Keepalive pulumi.BoolPtrInput `pulumi:"keepalive"`
 	// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
@@ -2787,6 +3055,9 @@ type DomainRedirectArgs struct {
 	KeepaliveTimeout pulumi.IntPtrInput `pulumi:"keepaliveTimeout"`
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance pulumi.StringInput `pulumi:"loadbalance"`
+	// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+	// > **NOTE:** This parameter is supported only by the Ultimate edition.
+	MaxBodySize pulumi.IntPtrInput `pulumi:"maxBodySize"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 	ReadTimeout pulumi.IntPtrInput `pulumi:"readTimeout"`
 	// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
@@ -2907,6 +3178,16 @@ func (o DomainRedirectOutput) FocusHttpBackend() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *bool { return v.FocusHttpBackend }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+func (o DomainRedirectOutput) Http2Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DomainRedirect) *bool { return v.Http2Origin }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+func (o DomainRedirectOutput) Http2OriginMaxConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainRedirect) *int { return v.Http2OriginMaxConcurrency }).(pulumi.IntPtrOutput)
+}
+
 // Specifies whether to enable the persistent connection feature. Valid values:
 func (o DomainRedirectOutput) Keepalive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *bool { return v.Keepalive }).(pulumi.BoolPtrOutput)
@@ -2929,6 +3210,12 @@ func (o DomainRedirectOutput) KeepaliveTimeout() pulumi.IntPtrOutput {
 // The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 func (o DomainRedirectOutput) Loadbalance() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirect) string { return v.Loadbalance }).(pulumi.StringOutput)
+}
+
+// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+// > **NOTE:** This parameter is supported only by the Ultimate edition.
+func (o DomainRedirectOutput) MaxBodySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainRedirect) *int { return v.MaxBodySize }).(pulumi.IntPtrOutput)
 }
 
 // The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -3037,6 +3324,26 @@ func (o DomainRedirectPtrOutput) FocusHttpBackend() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+func (o DomainRedirectPtrOutput) Http2Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Http2Origin
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+func (o DomainRedirectPtrOutput) Http2OriginMaxConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DomainRedirect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Http2OriginMaxConcurrency
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specifies whether to enable the persistent connection feature. Valid values:
 func (o DomainRedirectPtrOutput) Keepalive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *bool {
@@ -3079,6 +3386,17 @@ func (o DomainRedirectPtrOutput) Loadbalance() pulumi.StringPtrOutput {
 		}
 		return &v.Loadbalance
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+// > **NOTE:** This parameter is supported only by the Ultimate edition.
+func (o DomainRedirectPtrOutput) MaxBodySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DomainRedirect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBodySize
+	}).(pulumi.IntPtrOutput)
 }
 
 // The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -4081,6 +4399,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodArrayInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigWafBaseConfigInput)(nil)).Elem(), DefenseRuleConfigWafBaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigWafBaseConfigArrayInput)(nil)).Elem(), DefenseRuleConfigWafBaseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigWafBaseConfigRuleDetailInput)(nil)).Elem(), DefenseRuleConfigWafBaseConfigRuleDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigWafBaseConfigRuleDetailArrayInput)(nil)).Elem(), DefenseRuleConfigWafBaseConfigRuleDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenPtrInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectInput)(nil)).Elem(), DomainRedirectArgs{})
@@ -4117,6 +4439,10 @@ func init() {
 	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigWafBaseConfigOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigWafBaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigWafBaseConfigRuleDetailOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigWafBaseConfigRuleDetailArrayOutput{})
 	pulumi.RegisterOutputType(DomainListenOutput{})
 	pulumi.RegisterOutputType(DomainListenPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})

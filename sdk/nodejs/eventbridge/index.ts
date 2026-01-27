@@ -25,6 +25,11 @@ export type EventSource = import("./eventSource").EventSource;
 export const EventSource: typeof import("./eventSource").EventSource = null as any;
 utilities.lazyLoad(exports, ["EventSource"], () => require("./eventSource"));
 
+export { EventSourceV2Args, EventSourceV2State } from "./eventSourceV2";
+export type EventSourceV2 = import("./eventSourceV2").EventSourceV2;
+export const EventSourceV2: typeof import("./eventSourceV2").EventSourceV2 = null as any;
+utilities.lazyLoad(exports, ["EventSourceV2"], () => require("./eventSourceV2"));
+
 export { GetEventBusesArgs, GetEventBusesResult, GetEventBusesOutputArgs } from "./getEventBuses";
 export const getEventBuses: typeof import("./getEventBuses").getEventBuses = null as any;
 export const getEventBusesOutput: typeof import("./getEventBuses").getEventBusesOutput = null as any;
@@ -73,6 +78,8 @@ const _module = {
                 return new EventBus(name, <any>undefined, { urn })
             case "alicloud:eventbridge/eventSource:EventSource":
                 return new EventSource(name, <any>undefined, { urn })
+            case "alicloud:eventbridge/eventSourceV2:EventSourceV2":
+                return new EventSourceV2(name, <any>undefined, { urn })
             case "alicloud:eventbridge/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             case "alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole":
@@ -88,6 +95,7 @@ pulumi.runtime.registerResourceModule("alicloud", "eventbridge/apiDestination", 
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventBus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventSource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventSourceV2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/serviceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/slr", _module)

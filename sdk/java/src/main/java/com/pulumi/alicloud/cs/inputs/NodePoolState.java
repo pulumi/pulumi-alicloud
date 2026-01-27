@@ -17,6 +17,7 @@ import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolTaintArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolTeeConfigArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolUpgradePolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -1304,6 +1305,25 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     */
+    @Import(name="upgradePolicy")
+    private @Nullable Output<NodePoolUpgradePolicyArgs> upgradePolicy;
+
+    /**
+     * @return Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     */
+    public Optional<Output<NodePoolUpgradePolicyArgs>> upgradePolicy() {
+        return Optional.ofNullable(this.upgradePolicy);
+    }
+
+    /**
      * Node custom data, base64-encoded.
      * 
      */
@@ -1414,6 +1434,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.type = $.type;
         this.unschedulable = $.unschedulable;
         this.updateNodes = $.updateNodes;
+        this.upgradePolicy = $.upgradePolicy;
         this.userData = $.userData;
         this.vswitchIds = $.vswitchIds;
     }
@@ -3264,6 +3285,31 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         public Builder updateNodes(Boolean updateNodes) {
             return updateNodes(Output.of(updateNodes));
+        }
+
+        /**
+         * @param upgradePolicy Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(@Nullable Output<NodePoolUpgradePolicyArgs> upgradePolicy) {
+            $.upgradePolicy = upgradePolicy;
+            return this;
+        }
+
+        /**
+         * @param upgradePolicy Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(NodePoolUpgradePolicyArgs upgradePolicy) {
+            return upgradePolicy(Output.of(upgradePolicy));
         }
 
         /**

@@ -15,6 +15,7 @@ import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesOperationPolicy;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRrsaMetadata;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesUpgradePolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -986,16 +987,12 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
-     * 
      */
     @Export(name="skipSetCertificateAuthority", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipSetCertificateAuthority;
 
     /**
      * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-     * 
-     * *Network params*
      * 
      */
     public Output<Optional<Boolean>> skipSetCertificateAuthority() {
@@ -1092,6 +1089,26 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
+    }
+    /**
+     * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     * *Network params*
+     * 
+     */
+    @Export(name="upgradePolicy", refs={ManagedKubernetesUpgradePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ ManagedKubernetesUpgradePolicy> upgradePolicy;
+
+    /**
+     * @return Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * &gt; **NOTE:** This parameter only applies during resource update.
+     * 
+     * *Network params*
+     * 
+     */
+    public Output<Optional<ManagedKubernetesUpgradePolicy>> upgradePolicy() {
+        return Codegen.optional(this.upgradePolicy);
     }
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.

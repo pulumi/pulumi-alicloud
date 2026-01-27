@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SaslAcl{}
 	case "alicloud:alikafka/saslUser:SaslUser":
 		r = &SaslUser{}
+	case "alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule":
+		r = &ScheduledScalingRule{}
 	case "alicloud:alikafka/topic:Topic":
 		r = &Topic{}
 	default:
@@ -69,6 +71,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"alikafka/saslUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"alikafka/scheduledScalingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

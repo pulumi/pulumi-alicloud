@@ -23,6 +23,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.130.0.
  * 
+ * &gt; **NOTE:** Deprecated since v1.269.0.
+ * 
+ * &gt; **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_event_bridge_event_source_v2.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

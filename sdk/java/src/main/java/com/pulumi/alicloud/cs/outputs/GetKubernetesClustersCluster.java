@@ -22,9 +22,13 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private String availabilityZone;
+    /**
+     * @return The cluster network type.
+     * 
+     */
     private String clusterNetworkType;
     /**
-     * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return Map of kubernetes cluster connection information.
      * 
      */
     private GetKubernetesClustersClusterConnections connections;
@@ -48,7 +52,15 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private List<GetKubernetesClustersClusterLogConfig> logConfigs;
+    /**
+     * @return Whether to enable master payment auto-renew
+     * 
+     */
     private Boolean masterAutoRenew;
+    /**
+     * @return Master payment auto-renew period.
+     * 
+     */
     private Integer masterAutoRenewPeriod;
     /**
      * @return The system disk category of master node.
@@ -60,6 +72,10 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private Integer masterDiskSize;
+    /**
+     * @return Master payment type.
+     * 
+     */
     private String masterInstanceChargeType;
     /**
      * @return The instance type of master node.
@@ -71,7 +87,15 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private List<GetKubernetesClustersClusterMasterNode> masterNodes;
+    /**
+     * @return Master payment period.
+     * 
+     */
     private Integer masterPeriod;
+    /**
+     * @return Master payment period unit.
+     * 
+     */
     private String masterPeriodUnit;
     /**
      * @return Node name.
@@ -88,12 +112,20 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private Integer nodeCidrMask;
+    /**
+     * @return The CIDR block for the pod network.
+     * 
+     */
     private String podCidr;
     /**
      * @return The ID of security group where the current cluster worker node is located.
      * 
      */
     private String securityGroupId;
+    /**
+     * @return The CIDR block for the service network.
+     * 
+     */
     private String serviceCidr;
     /**
      * @return Whether internet load balancer for API Server is created
@@ -110,7 +142,15 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private List<String> vswitchIds;
+    /**
+     * @return Whether to enable worker payment auto-renew.
+     * 
+     */
     private Boolean workerAutoRenew;
+    /**
+     * @return Worker payment auto-renew period
+     * 
+     */
     private Integer workerAutoRenewPeriod;
     /**
      * @return The data disk size of worker node.
@@ -132,6 +172,10 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private Integer workerDiskSize;
+    /**
+     * @return Worker payment type
+     * 
+     */
     private String workerInstanceChargeType;
     /**
      * @return The instance type of worker node.
@@ -148,7 +192,15 @@ public final class GetKubernetesClustersCluster {
      * 
      */
     private List<Integer> workerNumbers;
+    /**
+     * @return Worker payment period.
+     * 
+     */
     private Integer workerPeriod;
+    /**
+     * @return Worker payment period unit.
+     * 
+     */
     private String workerPeriodUnit;
 
     private GetKubernetesClustersCluster() {}
@@ -159,11 +211,15 @@ public final class GetKubernetesClustersCluster {
     public String availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * @return The cluster network type.
+     * 
+     */
     public String clusterNetworkType() {
         return this.clusterNetworkType;
     }
     /**
-     * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return Map of kubernetes cluster connection information.
      * 
      */
     public GetKubernetesClustersClusterConnections connections() {
@@ -197,9 +253,17 @@ public final class GetKubernetesClustersCluster {
     public List<GetKubernetesClustersClusterLogConfig> logConfigs() {
         return this.logConfigs;
     }
+    /**
+     * @return Whether to enable master payment auto-renew
+     * 
+     */
     public Boolean masterAutoRenew() {
         return this.masterAutoRenew;
     }
+    /**
+     * @return Master payment auto-renew period.
+     * 
+     */
     public Integer masterAutoRenewPeriod() {
         return this.masterAutoRenewPeriod;
     }
@@ -217,6 +281,10 @@ public final class GetKubernetesClustersCluster {
     public Integer masterDiskSize() {
         return this.masterDiskSize;
     }
+    /**
+     * @return Master payment type.
+     * 
+     */
     public String masterInstanceChargeType() {
         return this.masterInstanceChargeType;
     }
@@ -234,9 +302,17 @@ public final class GetKubernetesClustersCluster {
     public List<GetKubernetesClustersClusterMasterNode> masterNodes() {
         return this.masterNodes;
     }
+    /**
+     * @return Master payment period.
+     * 
+     */
     public Integer masterPeriod() {
         return this.masterPeriod;
     }
+    /**
+     * @return Master payment period unit.
+     * 
+     */
     public String masterPeriodUnit() {
         return this.masterPeriodUnit;
     }
@@ -261,6 +337,10 @@ public final class GetKubernetesClustersCluster {
     public Integer nodeCidrMask() {
         return this.nodeCidrMask;
     }
+    /**
+     * @return The CIDR block for the pod network.
+     * 
+     */
     public String podCidr() {
         return this.podCidr;
     }
@@ -271,6 +351,10 @@ public final class GetKubernetesClustersCluster {
     public String securityGroupId() {
         return this.securityGroupId;
     }
+    /**
+     * @return The CIDR block for the service network.
+     * 
+     */
     public String serviceCidr() {
         return this.serviceCidr;
     }
@@ -295,9 +379,17 @@ public final class GetKubernetesClustersCluster {
     public List<String> vswitchIds() {
         return this.vswitchIds;
     }
+    /**
+     * @return Whether to enable worker payment auto-renew.
+     * 
+     */
     public Boolean workerAutoRenew() {
         return this.workerAutoRenew;
     }
+    /**
+     * @return Worker payment auto-renew period
+     * 
+     */
     public Integer workerAutoRenewPeriod() {
         return this.workerAutoRenewPeriod;
     }
@@ -329,6 +421,10 @@ public final class GetKubernetesClustersCluster {
     public Integer workerDiskSize() {
         return this.workerDiskSize;
     }
+    /**
+     * @return Worker payment type
+     * 
+     */
     public String workerInstanceChargeType() {
         return this.workerInstanceChargeType;
     }
@@ -353,9 +449,17 @@ public final class GetKubernetesClustersCluster {
     public List<Integer> workerNumbers() {
         return this.workerNumbers;
     }
+    /**
+     * @return Worker payment period.
+     * 
+     */
     public Integer workerPeriod() {
         return this.workerPeriod;
     }
+    /**
+     * @return Worker payment period unit.
+     * 
+     */
     public String workerPeriodUnit() {
         return this.workerPeriodUnit;
     }

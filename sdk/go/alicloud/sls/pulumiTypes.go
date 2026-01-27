@@ -4280,7 +4280,7 @@ func (o LogtailConfigOutputDetailPtrOutput) Region() pulumi.StringPtrOutput {
 }
 
 type MachineGroupGroupAttribute struct {
-	// The external management system identification on which the machine group depends.
+	// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
 	ExternalName *string `pulumi:"externalName"`
 	// The log topic of the machine group.
 	GroupTopic *string `pulumi:"groupTopic"`
@@ -4298,7 +4298,7 @@ type MachineGroupGroupAttributeInput interface {
 }
 
 type MachineGroupGroupAttributeArgs struct {
-	// The external management system identification on which the machine group depends.
+	// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
 	ExternalName pulumi.StringPtrInput `pulumi:"externalName"`
 	// The log topic of the machine group.
 	GroupTopic pulumi.StringPtrInput `pulumi:"groupTopic"`
@@ -4381,7 +4381,7 @@ func (o MachineGroupGroupAttributeOutput) ToMachineGroupGroupAttributePtrOutputW
 	}).(MachineGroupGroupAttributePtrOutput)
 }
 
-// The external management system identification on which the machine group depends.
+// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
 func (o MachineGroupGroupAttributeOutput) ExternalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MachineGroupGroupAttribute) *string { return v.ExternalName }).(pulumi.StringPtrOutput)
 }
@@ -4415,7 +4415,7 @@ func (o MachineGroupGroupAttributePtrOutput) Elem() MachineGroupGroupAttributeOu
 	}).(MachineGroupGroupAttributeOutput)
 }
 
-// The external management system identification on which the machine group depends.
+// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
 func (o MachineGroupGroupAttributePtrOutput) ExternalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MachineGroupGroupAttribute) *string {
 		if v == nil {

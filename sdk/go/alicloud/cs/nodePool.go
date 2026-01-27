@@ -224,6 +224,10 @@ type NodePool struct {
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
 	UpdateNodes   pulumi.BoolPtrOutput `pulumi:"updateNodes"`
+	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update.
+	UpgradePolicy NodePoolUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -476,6 +480,10 @@ type nodePoolState struct {
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
 	UpdateNodes   *bool `pulumi:"updateNodes"`
+	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update.
+	UpgradePolicy *NodePoolUpgradePolicy `pulumi:"upgradePolicy"`
 	// Node custom data, base64-encoded.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -685,6 +693,10 @@ type NodePoolState struct {
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
 	UpdateNodes   pulumi.BoolPtrInput
+	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update.
+	UpgradePolicy NodePoolUpgradePolicyPtrInput
 	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
@@ -894,6 +906,10 @@ type nodePoolArgs struct {
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
 	UpdateNodes   *bool `pulumi:"updateNodes"`
+	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update.
+	UpgradePolicy *NodePoolUpgradePolicy `pulumi:"upgradePolicy"`
 	// Node custom data, base64-encoded.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -1100,6 +1116,10 @@ type NodePoolArgs struct {
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
 	UpdateNodes   pulumi.BoolPtrInput
+	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update.
+	UpgradePolicy NodePoolUpgradePolicyPtrInput
 	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
@@ -1627,6 +1647,13 @@ func (o NodePoolOutput) Unschedulable() pulumi.BoolPtrOutput {
 
 func (o NodePoolOutput) UpdateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.UpdateNodes }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
+//
+// > **NOTE:** This parameter only applies during resource update.
+func (o NodePoolOutput) UpgradePolicy() NodePoolUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolUpgradePolicyPtrOutput { return v.UpgradePolicy }).(NodePoolUpgradePolicyPtrOutput)
 }
 
 // Node custom data, base64-encoded.

@@ -643,7 +643,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
         """

@@ -10,8 +10,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -79,7 +81,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")
 public class PcaCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The key algorithm type of the root CA certificate. The key algorithm is expressed using the &#39;_&lt; key length&gt;&#39; format. Value:
+     * The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
      * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
      * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
      * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
@@ -87,14 +89,14 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
      * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
      * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
      * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
-     *   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
+     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      * 
      */
     @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output<String> algorithm;
 
     /**
-     * @return The key algorithm type of the root CA certificate. The key algorithm is expressed using the &#39;_&lt; key length&gt;&#39; format. Value:
+     * @return The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
      * - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
      * - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
      * - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
@@ -102,7 +104,7 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
      * - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
      * - `ECC_512`: The signature algorithm is Sha256WithECDSA.
      * - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
-     *   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
+     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      * 
      */
     public Output<String> algorithm() {
@@ -113,6 +115,24 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> aliasName() {
         return Codegen.optional(this.aliasName);
+    }
+    /**
+     * The type of the CA certificate. Default value: `ROOT`. Valid values:
+     * - `ROOT`: A root CA certificate.
+     * - `SUB_ROOT`: A subordinate CA certificate.
+     * 
+     */
+    @Export(name="certificateType", refs={String.class}, tree="[0]")
+    private Output<String> certificateType;
+
+    /**
+     * @return The type of the CA certificate. Default value: `ROOT`. Valid values:
+     * - `ROOT`: A root CA certificate.
+     * - `SUB_ROOT`: A subordinate CA certificate.
+     * 
+     */
+    public Output<String> certificateType() {
+        return this.certificateType;
     }
     /**
      * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
@@ -143,6 +163,48 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.countryCode);
     }
     /**
+     * The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * 
+     */
+    @Export(name="crlDay", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> crlDay;
+
+    /**
+     * @return The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * 
+     */
+    public Output<Optional<Integer>> crlDay() {
+        return Codegen.optional(this.crlDay);
+    }
+    /**
+     * This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+     * 
+     */
+    @Export(name="enableCrl", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableCrl;
+
+    /**
+     * @return This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> enableCrl() {
+        return Codegen.optional(this.enableCrl);
+    }
+    /**
+     * The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * 
+     */
+    @Export(name="extendedKeyUsages", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> extendedKeyUsages;
+
+    /**
+     * @return The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * 
+     */
+    public Output<Optional<List<String>>> extendedKeyUsages() {
+        return Codegen.optional(this.extendedKeyUsages);
+    }
+    /**
      * Name of the city where the organization is located. Support the use of Chinese, English characters.
      * 
      */
@@ -157,14 +219,14 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
         return this.locality;
     }
     /**
-     * The name of the organization (corresponding to your enterprise or company) associated with the root CA certificate. Support the use of Chinese, English characters.
+     * The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
      * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
-     * @return The name of the organization (corresponding to your enterprise or company) associated with the root CA certificate. Support the use of Chinese, English characters.
+     * @return The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
      * 
      */
     public Output<String> organization() {
@@ -183,6 +245,36 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> organizationUnit() {
         return this.organizationUnit;
+    }
+    /**
+     * The unique identifier of the root CA certificate.
+     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+     * 
+     */
+    @Export(name="parentIdentifier", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parentIdentifier;
+
+    /**
+     * @return The unique identifier of the root CA certificate.
+     * &gt; **NOTE:** If `certificateType` is set to `SUB_ROOT`, `parentIdentifier` is required.
+     * 
+     */
+    public Output<Optional<String>> parentIdentifier() {
+        return Codegen.optional(this.parentIdentifier);
+    }
+    /**
+     * The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * 
+     */
+    @Export(name="pathLenConstraint", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> pathLenConstraint;
+
+    /**
+     * @return The certificate path length. Default value: `0`. **Note:** `pathLenConstraint` takes effect only if `certificateType` is set to `SUB_ROOT`.
+     * 
+     */
+    public Output<Optional<Integer>> pathLenConstraint() {
+        return Codegen.optional(this.pathLenConstraint);
     }
     /**
      * A resource property field representing the resource group.
@@ -241,7 +333,7 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The validity period of the root CA certificate, in years.
+     * The validity period of the CA certificate, in years.
      * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
      * 
      */
@@ -249,7 +341,7 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
     private Output<Integer> years;
 
     /**
-     * @return The validity period of the root CA certificate, in years.
+     * @return The validity period of the CA certificate, in years.
      * &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
      * 
      */

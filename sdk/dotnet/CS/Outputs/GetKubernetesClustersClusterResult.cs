@@ -17,9 +17,12 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of availability zone.
         /// </summary>
         public readonly string AvailabilityZone;
+        /// <summary>
+        /// The cluster network type.
+        /// </summary>
         public readonly string ClusterNetworkType;
         /// <summary>
-        /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        /// Map of kubernetes cluster connection information.
         /// </summary>
         public readonly Outputs.GetKubernetesClustersClusterConnectionsResult Connections;
         /// <summary>
@@ -38,7 +41,13 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// A list of one element containing information about the associated log store. It contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClustersClusterLogConfigResult> LogConfigs;
+        /// <summary>
+        /// Whether to enable master payment auto-renew
+        /// </summary>
         public readonly bool MasterAutoRenew;
+        /// <summary>
+        /// Master payment auto-renew period.
+        /// </summary>
         public readonly int MasterAutoRenewPeriod;
         /// <summary>
         /// The system disk category of master node.
@@ -48,6 +57,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The system disk size of master node.
         /// </summary>
         public readonly int MasterDiskSize;
+        /// <summary>
+        /// Master payment type.
+        /// </summary>
         public readonly string MasterInstanceChargeType;
         /// <summary>
         /// The instance type of master node.
@@ -57,7 +69,13 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// List of cluster master nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClustersClusterMasterNodeResult> MasterNodes;
+        /// <summary>
+        /// Master payment period.
+        /// </summary>
         public readonly int MasterPeriod;
+        /// <summary>
+        /// Master payment period unit.
+        /// </summary>
         public readonly string MasterPeriodUnit;
         /// <summary>
         /// Node name.
@@ -71,11 +89,17 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The network mask used on pods for each node.
         /// </summary>
         public readonly int NodeCidrMask;
+        /// <summary>
+        /// The CIDR block for the pod network.
+        /// </summary>
         public readonly string PodCidr;
         /// <summary>
         /// The ID of security group where the current cluster worker node is located.
         /// </summary>
         public readonly string SecurityGroupId;
+        /// <summary>
+        /// The CIDR block for the service network.
+        /// </summary>
         public readonly string ServiceCidr;
         /// <summary>
         /// Whether internet load balancer for API Server is created
@@ -89,7 +113,13 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of VSwitches where the current cluster is located.
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
+        /// <summary>
+        /// Whether to enable worker payment auto-renew.
+        /// </summary>
         public readonly bool WorkerAutoRenew;
+        /// <summary>
+        /// Worker payment auto-renew period
+        /// </summary>
         public readonly int WorkerAutoRenewPeriod;
         /// <summary>
         /// The data disk size of worker node.
@@ -107,6 +137,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The system disk size of worker node.
         /// </summary>
         public readonly int WorkerDiskSize;
+        /// <summary>
+        /// Worker payment type
+        /// </summary>
         public readonly string WorkerInstanceChargeType;
         /// <summary>
         /// The instance type of worker node.
@@ -120,7 +153,13 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ECS instance node number in the current container cluster.
         /// </summary>
         public readonly ImmutableArray<int> WorkerNumbers;
+        /// <summary>
+        /// Worker payment period.
+        /// </summary>
         public readonly int WorkerPeriod;
+        /// <summary>
+        /// Worker payment period unit.
+        /// </summary>
         public readonly string WorkerPeriodUnit;
 
         [OutputConstructor]

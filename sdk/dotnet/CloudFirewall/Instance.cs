@@ -16,6 +16,10 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.139.0.
     /// 
+    /// &gt; **NOTE:** Deprecated since v1.269.0.
+    /// 
+    /// &gt; **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -39,7 +43,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// ```
     /// 
     /// create a subscription instance
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

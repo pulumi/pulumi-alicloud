@@ -208,14 +208,14 @@ public class SecurityGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
      * @return The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).

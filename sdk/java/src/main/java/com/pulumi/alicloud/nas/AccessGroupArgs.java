@@ -61,20 +61,26 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * File system type. Value:
+     * File system type.
+     * 
+     * Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
-     *   The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="fileSystemType")
     private @Nullable Output<String> fileSystemType;
 
     /**
-     * @return File system type. Value:
+     * @return File system type.
+     * 
+     * Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
-     *   The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> fileSystemType() {
@@ -220,10 +226,13 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemType File system type. Value:
+         * @param fileSystemType File system type.
+         * 
+         * Value:
          * - standard (default): Universal NAS
          * - extreme: extreme NAS
-         *   The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -234,10 +243,13 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemType File system type. Value:
+         * @param fileSystemType File system type.
+         * 
+         * Value:
          * - standard (default): Universal NAS
          * - extreme: extreme NAS
-         *   The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

@@ -53,6 +53,18 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         public Input<bool>? FocusHttpBackend { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+        /// </summary>
+        [Input("http2Origin")]
+        public Input<bool>? Http2Origin { get; set; }
+
+        /// <summary>
+        /// The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+        /// </summary>
+        [Input("http2OriginMaxConcurrency")]
+        public Input<int>? Http2OriginMaxConcurrency { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the persistent connection feature. Valid values:
         /// </summary>
         [Input("keepalive")]
@@ -80,6 +92,13 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         /// </summary>
         [Input("loadbalance", required: true)]
         public Input<string> Loadbalance { get; set; } = null!;
+
+        /// <summary>
+        /// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        /// &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+        /// </summary>
+        [Input("maxBodySize")]
+        public Input<int>? MaxBodySize { get; set; }
 
         /// <summary>
         /// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.

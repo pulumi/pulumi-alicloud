@@ -89,6 +89,36 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+     * 
+     */
+    @Import(name="http2Origin")
+    private @Nullable Output<Boolean> http2Origin;
+
+    /**
+     * @return Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> http2Origin() {
+        return Optional.ofNullable(this.http2Origin);
+    }
+
+    /**
+     * The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+     * 
+     */
+    @Import(name="http2OriginMaxConcurrency")
+    private @Nullable Output<Integer> http2OriginMaxConcurrency;
+
+    /**
+     * @return The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+     * 
+     */
+    public Optional<Output<Integer>> http2OriginMaxConcurrency() {
+        return Optional.ofNullable(this.http2OriginMaxConcurrency);
+    }
+
+    /**
      * Specifies whether to enable the persistent connection feature. Valid values:
      * 
      */
@@ -154,6 +184,23 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> loadbalance() {
         return this.loadbalance;
+    }
+
+    /**
+     * The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+     * 
+     */
+    @Import(name="maxBodySize")
+    private @Nullable Output<Integer> maxBodySize;
+
+    /**
+     * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+     * 
+     */
+    public Optional<Output<Integer>> maxBodySize() {
+        return Optional.ofNullable(this.maxBodySize);
     }
 
     /**
@@ -274,10 +321,13 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         this.backupBackends = $.backupBackends;
         this.connectTimeout = $.connectTimeout;
         this.focusHttpBackend = $.focusHttpBackend;
+        this.http2Origin = $.http2Origin;
+        this.http2OriginMaxConcurrency = $.http2OriginMaxConcurrency;
         this.keepalive = $.keepalive;
         this.keepaliveRequests = $.keepaliveRequests;
         this.keepaliveTimeout = $.keepaliveTimeout;
         this.loadbalance = $.loadbalance;
+        this.maxBodySize = $.maxBodySize;
         this.readTimeout = $.readTimeout;
         this.requestHeaders = $.requestHeaders;
         this.retry = $.retry;
@@ -421,6 +471,48 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param http2Origin Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder http2Origin(@Nullable Output<Boolean> http2Origin) {
+            $.http2Origin = http2Origin;
+            return this;
+        }
+
+        /**
+         * @param http2Origin Specifies whether to enable HTTP/2 for back-to-origin traffic. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder http2Origin(Boolean http2Origin) {
+            return http2Origin(Output.of(http2Origin));
+        }
+
+        /**
+         * @param http2OriginMaxConcurrency The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder http2OriginMaxConcurrency(@Nullable Output<Integer> http2OriginMaxConcurrency) {
+            $.http2OriginMaxConcurrency = http2OriginMaxConcurrency;
+            return this;
+        }
+
+        /**
+         * @param http2OriginMaxConcurrency The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder http2OriginMaxConcurrency(Integer http2OriginMaxConcurrency) {
+            return http2OriginMaxConcurrency(Output.of(http2OriginMaxConcurrency));
+        }
+
+        /**
          * @param keepalive Specifies whether to enable the persistent connection feature. Valid values:
          * 
          * @return builder
@@ -510,6 +602,29 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder loadbalance(String loadbalance) {
             return loadbalance(Output.of(loadbalance));
+        }
+
+        /**
+         * @param maxBodySize The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxBodySize(@Nullable Output<Integer> maxBodySize) {
+            $.maxBodySize = maxBodySize;
+            return this;
+        }
+
+        /**
+         * @param maxBodySize The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxBodySize(Integer maxBodySize) {
+            return maxBodySize(Output.of(maxBodySize));
         }
 
         /**

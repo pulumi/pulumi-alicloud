@@ -43,6 +43,7 @@ __all__ = [
     'ManagedKubernetesOperationPolicy',
     'ManagedKubernetesOperationPolicyClusterAutoUpgrade',
     'ManagedKubernetesRrsaMetadata',
+    'ManagedKubernetesUpgradePolicy',
     'NodePoolAutoMode',
     'NodePoolDataDisk',
     'NodePoolEfloNodeGroup',
@@ -62,6 +63,7 @@ __all__ = [
     'NodePoolSpotPriceLimit',
     'NodePoolTaint',
     'NodePoolTeeConfig',
+    'NodePoolUpgradePolicy',
     'ServerlessKubernetesAddon',
     'ServerlessKubernetesDeleteOption',
     'ServerlessKubernetesMaintenanceWindow',
@@ -70,6 +72,11 @@ __all__ = [
     'ServerlessKubernetesRrsaMetadata',
     'SwarmNode',
     'GetClusterCredentialCertificateAuthorityResult',
+    'GetClustersClusterResult',
+    'GetClustersClusterAutoModeResult',
+    'GetClustersClusterMaintenanceWindowResult',
+    'GetClustersClusterOperationPolicyResult',
+    'GetClustersClusterOperationPolicyClusterAutoUpgradeResult',
     'GetEdgeKubernetesClustersClusterResult',
     'GetEdgeKubernetesClustersClusterConnectionsResult',
     'GetEdgeKubernetesClustersClusterWorkerNodeResult',
@@ -2296,6 +2303,66 @@ class ManagedKubernetesRrsaMetadata(dict):
 
 
 @pulumi.output_type
+class ManagedKubernetesUpgradePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneOnly":
+            suggest = "control_plane_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesUpgradePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesUpgradePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesUpgradePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool control_plane_only: Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+               
+               for example:
+               ```
+               # Upgrade cluster version with control plane only
+               version = "1.32.1-aliyun.1"
+               
+               upgrade_policy {
+               control_plane_only = true
+               }
+               ```
+               
+               > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+        """
+        if control_plane_only is not None:
+            pulumi.set(__self__, "control_plane_only", control_plane_only)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneOnly")
+    def control_plane_only(self) -> Optional[_builtins.bool]:
+        """
+        Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+
+        for example:
+        ```
+        # Upgrade cluster version with control plane only
+        version = "1.32.1-aliyun.1"
+
+        upgrade_policy {
+        control_plane_only = true
+        }
+        ```
+
+        > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+        """
+        return pulumi.get(self, "control_plane_only")
+
+
+@pulumi.output_type
 class NodePoolAutoMode(dict):
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None):
@@ -3756,8 +3823,14 @@ class NodePoolRollingPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxParallelism":
+        if key == "batchInterval":
+            suggest = "batch_interval"
+        elif key == "maxParallelism":
             suggest = "max_parallelism"
+        elif key == "nodeNames":
+            suggest = "node_names"
+        elif key == "pausePolicy":
+            suggest = "pause_policy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolRollingPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -3771,20 +3844,62 @@ class NodePoolRollingPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 max_parallelism: Optional[_builtins.int] = None):
+                 batch_interval: Optional[_builtins.str] = None,
+                 max_parallelism: Optional[_builtins.int] = None,
+                 node_names: Optional[Sequence[_builtins.str]] = None,
+                 pause_policy: Optional[_builtins.str] = None):
         """
-        :param _builtins.int max_parallelism: The maximum number of unusable nodes.
+        :param _builtins.str batch_interval: The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
+        :param _builtins.int max_parallelism: The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
+        :param Sequence[_builtins.str] node_names: Specify the list of nodes to be upgraded.
+        :param _builtins.str pause_policy: The auto-pause policy during node upgrade. Valid values:
+               - `FirstBatch`: Pause after the first batch is completed.
+               - `EveryBatch`: Pause after each batch is completed.
+               - `NotPause`: Do not pause during the upgrade process.
         """
+        if batch_interval is not None:
+            pulumi.set(__self__, "batch_interval", batch_interval)
         if max_parallelism is not None:
             pulumi.set(__self__, "max_parallelism", max_parallelism)
+        if node_names is not None:
+            pulumi.set(__self__, "node_names", node_names)
+        if pause_policy is not None:
+            pulumi.set(__self__, "pause_policy", pause_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="batchInterval")
+    def batch_interval(self) -> Optional[_builtins.str]:
+        """
+        The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
+        """
+        return pulumi.get(self, "batch_interval")
 
     @_builtins.property
     @pulumi.getter(name="maxParallelism")
     def max_parallelism(self) -> Optional[_builtins.int]:
         """
-        The maximum number of unusable nodes.
+        The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
         """
         return pulumi.get(self, "max_parallelism")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeNames")
+    def node_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specify the list of nodes to be upgraded.
+        """
+        return pulumi.get(self, "node_names")
+
+    @_builtins.property
+    @pulumi.getter(name="pausePolicy")
+    def pause_policy(self) -> Optional[_builtins.str]:
+        """
+        The auto-pause policy during node upgrade. Valid values:
+        - `FirstBatch`: Pause after the first batch is completed.
+        - `EveryBatch`: Pause after each batch is completed.
+        - `NotPause`: Do not pause during the upgrade process.
+        """
+        return pulumi.get(self, "pause_policy")
 
 
 @pulumi.output_type
@@ -4029,6 +4144,96 @@ class NodePoolTeeConfig(dict):
         Specifies whether to enable confidential computing for the cluster.
         """
         return pulumi.get(self, "tee_enable")
+
+
+@pulumi.output_type
+class NodePoolUpgradePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageId":
+            suggest = "image_id"
+        elif key == "kubernetesVersion":
+            suggest = "kubernetes_version"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+        elif key == "useReplace":
+            suggest = "use_replace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolUpgradePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolUpgradePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolUpgradePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_id: Optional[_builtins.str] = None,
+                 kubernetes_version: Optional[_builtins.str] = None,
+                 runtime: Optional[_builtins.str] = None,
+                 runtime_version: Optional[_builtins.str] = None,
+                 use_replace: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str image_id: Node system Image ID
+        :param _builtins.str kubernetes_version: Node Kubernetes version
+        :param _builtins.str runtime: Node runtime type
+        :param _builtins.str runtime_version: Node Runtime Version
+        :param _builtins.bool use_replace: Whether to use replacement disk upgrade
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+        if runtime is not None:
+            pulumi.set(__self__, "runtime", runtime)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+        if use_replace is not None:
+            pulumi.set(__self__, "use_replace", use_replace)
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[_builtins.str]:
+        """
+        Node system Image ID
+        """
+        return pulumi.get(self, "image_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[_builtins.str]:
+        """
+        Node Kubernetes version
+        """
+        return pulumi.get(self, "kubernetes_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def runtime(self) -> Optional[_builtins.str]:
+        """
+        Node runtime type
+        """
+        return pulumi.get(self, "runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[_builtins.str]:
+        """
+        Node Runtime Version
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @_builtins.property
+    @pulumi.getter(name="useReplace")
+    def use_replace(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use replacement disk upgrade
+        """
+        return pulumi.get(self, "use_replace")
 
 
 @pulumi.output_type
@@ -4622,6 +4827,433 @@ class GetClusterCredentialCertificateAuthorityResult(dict):
 
 
 @pulumi.output_type
+class GetClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 auto_mode: 'outputs.GetClustersClusterAutoModeResult',
+                 cluster_domain: _builtins.str,
+                 cluster_id: _builtins.str,
+                 cluster_name: _builtins.str,
+                 cluster_spec: _builtins.str,
+                 cluster_type: _builtins.str,
+                 current_version: _builtins.str,
+                 deletion_protection: _builtins.bool,
+                 id: _builtins.str,
+                 ip_stack: _builtins.str,
+                 maintenance_window: 'outputs.GetClustersClusterMaintenanceWindowResult',
+                 node_cidr_mask: _builtins.str,
+                 operation_policy: 'outputs.GetClustersClusterOperationPolicyResult',
+                 pod_cidr: _builtins.str,
+                 profile: _builtins.str,
+                 proxy_mode: _builtins.str,
+                 region_id: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 security_group_id: _builtins.str,
+                 service_cidr: _builtins.str,
+                 state: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 timezone: _builtins.str,
+                 vpc_id: _builtins.str,
+                 vswitch_ids: Sequence[_builtins.str]):
+        """
+        :param 'GetClustersClusterAutoModeArgs' auto_mode: **NOTE:** This field is only available when `enable_details` is `true`. Intelligent managed mode configuration.
+        :param _builtins.str cluster_domain: The local domain name of the cluster.
+        :param _builtins.str cluster_id: The cluster ID.
+        :param _builtins.str cluster_name: Custom cluster name.
+        :param _builtins.str cluster_spec: The specification of the clusters to query. Valid values:
+               - `ack.pro.small`: ACK Pro clusters.
+               - `ack.standard`: ACK Basic clusters.
+        :param _builtins.str cluster_type: The type of the clusters to query. Valid values:
+               - `Kubernetes`: ACK dedicated clusters.
+               - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+               - `ExternalKubernetes`: registered clusters.
+        :param _builtins.str current_version: The current version of the cluster.
+        :param _builtins.bool deletion_protection: Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str ip_stack: The IP protocol stack of the cluster.
+        :param 'GetClustersClusterMaintenanceWindowArgs' maintenance_window: **NOTE:** This field is only available when `enable_details` is `true`. Cluster maintenance window.
+        :param _builtins.str node_cidr_mask: **NOTE:** This field is only available when `enable_details` is `true`. The number of IP addresses per node, determined by specifying the CIDR block of the network.
+        :param 'GetClustersClusterOperationPolicyArgs' operation_policy: **NOTE:** This field is only available when `enable_details` is `true`. The automatic operations and maintenance policy for the cluster.
+        :param _builtins.str pod_cidr: The CIDR block for the pod network.
+        :param _builtins.str profile: The subtype of the clusters to query. Valid values:
+               - `Default`: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+               - `Edge`: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+               - `Serverless`: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+               - `Lingjun`: ACK Lingjun Pro clusters.
+        :param _builtins.str proxy_mode: kube-proxy proxy mode.
+        :param _builtins.str region_id: The region ID where the cluster is deployed.
+        :param _builtins.str resource_group_id: The resource group ID of the cluster.
+        :param _builtins.str security_group_id: The security group ID for the control plane.
+        :param _builtins.str service_cidr: The Service CIDR block.
+        :param _builtins.str state: Cluster operational status.
+        :param Mapping[str, _builtins.str] tags: Cluster resource tags.
+        :param _builtins.str timezone: Cluster time zone.
+        :param _builtins.str vpc_id: The Virtual Private Cloud (VPC) used by the cluster.
+        :param Sequence[_builtins.str] vswitch_ids: Virtual switches for the cluster control plane.
+        """
+        pulumi.set(__self__, "auto_mode", auto_mode)
+        pulumi.set(__self__, "cluster_domain", cluster_domain)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_spec", cluster_spec)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "current_version", current_version)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_stack", ip_stack)
+        pulumi.set(__self__, "maintenance_window", maintenance_window)
+        pulumi.set(__self__, "node_cidr_mask", node_cidr_mask)
+        pulumi.set(__self__, "operation_policy", operation_policy)
+        pulumi.set(__self__, "pod_cidr", pod_cidr)
+        pulumi.set(__self__, "profile", profile)
+        pulumi.set(__self__, "proxy_mode", proxy_mode)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "service_cidr", service_cidr)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "timezone", timezone)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> 'outputs.GetClustersClusterAutoModeResult':
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Intelligent managed mode configuration.
+        """
+        return pulumi.get(self, "auto_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterDomain")
+    def cluster_domain(self) -> _builtins.str:
+        """
+        The local domain name of the cluster.
+        """
+        return pulumi.get(self, "cluster_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> _builtins.str:
+        """
+        The cluster ID.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> _builtins.str:
+        """
+        Custom cluster name.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> _builtins.str:
+        """
+        The specification of the clusters to query. Valid values:
+        - `ack.pro.small`: ACK Pro clusters.
+        - `ack.standard`: ACK Basic clusters.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> _builtins.str:
+        """
+        The type of the clusters to query. Valid values:
+        - `Kubernetes`: ACK dedicated clusters.
+        - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
+        - `ExternalKubernetes`: registered clusters.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @_builtins.property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> _builtins.str:
+        """
+        The current version of the cluster.
+        """
+        return pulumi.get(self, "current_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> _builtins.bool:
+        """
+        Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipStack")
+    def ip_stack(self) -> _builtins.str:
+        """
+        The IP protocol stack of the cluster.
+        """
+        return pulumi.get(self, "ip_stack")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> 'outputs.GetClustersClusterMaintenanceWindowResult':
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Cluster maintenance window.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCidrMask")
+    def node_cidr_mask(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The number of IP addresses per node, determined by specifying the CIDR block of the network.
+        """
+        return pulumi.get(self, "node_cidr_mask")
+
+    @_builtins.property
+    @pulumi.getter(name="operationPolicy")
+    def operation_policy(self) -> 'outputs.GetClustersClusterOperationPolicyResult':
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The automatic operations and maintenance policy for the cluster.
+        """
+        return pulumi.get(self, "operation_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="podCidr")
+    def pod_cidr(self) -> _builtins.str:
+        """
+        The CIDR block for the pod network.
+        """
+        return pulumi.get(self, "pod_cidr")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> _builtins.str:
+        """
+        The subtype of the clusters to query. Valid values:
+        - `Default`: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
+        - `Edge`: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
+        - `Serverless`: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
+        - `Lingjun`: ACK Lingjun Pro clusters.
+        """
+        return pulumi.get(self, "profile")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyMode")
+    def proxy_mode(self) -> _builtins.str:
+        """
+        kube-proxy proxy mode.
+        """
+        return pulumi.get(self, "proxy_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID where the cluster is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The resource group ID of the cluster.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        The security group ID for the control plane.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceCidr")
+    def service_cidr(self) -> _builtins.str:
+        """
+        The Service CIDR block.
+        """
+        return pulumi.get(self, "service_cidr")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Cluster operational status.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Cluster resource tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timezone(self) -> _builtins.str:
+        """
+        Cluster time zone.
+        """
+        return pulumi.get(self, "timezone")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        The Virtual Private Cloud (VPC) used by the cluster.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[_builtins.str]:
+        """
+        Virtual switches for the cluster control plane.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetClustersClusterAutoModeResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether to enable cluster automatic upgrade.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enable cluster automatic upgrade.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClustersClusterMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 duration: _builtins.str,
+                 enable: _builtins.bool,
+                 maintenance_time: _builtins.str,
+                 recurrence: _builtins.str,
+                 weekly_period: _builtins.str):
+        """
+        :param _builtins.str duration: The duration of the maintenance window.
+        :param _builtins.bool enable: Indicates whether to enable the maintenance window.
+        :param _builtins.str maintenance_time: Maintenance start time.
+        :param _builtins.str recurrence: The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
+        :param _builtins.str weekly_period: The maintenance cycle.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "maintenance_time", maintenance_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "weekly_period", weekly_period)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        The duration of the maintenance window.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> _builtins.bool:
+        """
+        Indicates whether to enable the maintenance window.
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> _builtins.str:
+        """
+        Maintenance start time.
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> _builtins.str:
+        """
+        The recurrence rule for the maintenance window, defined using RFC5545 Recurrence Rule syntax.
+        """
+        return pulumi.get(self, "recurrence")
+
+    @_builtins.property
+    @pulumi.getter(name="weeklyPeriod")
+    def weekly_period(self) -> _builtins.str:
+        """
+        The maintenance cycle.
+        """
+        return pulumi.get(self, "weekly_period")
+
+
+@pulumi.output_type
+class GetClustersClusterOperationPolicyResult(dict):
+    def __init__(__self__, *,
+                 cluster_auto_upgrade: 'outputs.GetClustersClusterOperationPolicyClusterAutoUpgradeResult'):
+        """
+        :param 'GetClustersClusterOperationPolicyClusterAutoUpgradeArgs' cluster_auto_upgrade: Cluster automatic upgrade.
+        """
+        pulumi.set(__self__, "cluster_auto_upgrade", cluster_auto_upgrade)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterAutoUpgrade")
+    def cluster_auto_upgrade(self) -> 'outputs.GetClustersClusterOperationPolicyClusterAutoUpgradeResult':
+        """
+        Cluster automatic upgrade.
+        """
+        return pulumi.get(self, "cluster_auto_upgrade")
+
+
+@pulumi.output_type
+class GetClustersClusterOperationPolicyClusterAutoUpgradeResult(dict):
+    def __init__(__self__, *,
+                 channel: _builtins.str,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.str channel: Cluster automatic upgrade frequency.
+        :param _builtins.bool enabled: Whether to enable cluster automatic upgrade.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def channel(self) -> _builtins.str:
+        """
+        Cluster automatic upgrade frequency.
+        """
+        return pulumi.get(self, "channel")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enable cluster automatic upgrade.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetEdgeKubernetesClustersClusterResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str,
@@ -4889,29 +5521,42 @@ class GetKubernetesClustersClusterResult(dict):
                  worker_period_unit: _builtins.str):
         """
         :param _builtins.str availability_zone: The ID of availability zone.
-        :param 'GetKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        :param _builtins.str cluster_network_type: The cluster network type.
+        :param 'GetKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information.
         :param _builtins.str id: ID of the node.
         :param _builtins.str image_id: The ID of node image.
         :param _builtins.str key_name: The keypair of ssh login cluster node, you have to create it first.
         :param Sequence['GetKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
+        :param _builtins.bool master_auto_renew: Whether to enable master payment auto-renew
+        :param _builtins.int master_auto_renew_period: Master payment auto-renew period.
         :param _builtins.str master_disk_category: The system disk category of master node.
         :param _builtins.int master_disk_size: The system disk size of master node.
+        :param _builtins.str master_instance_charge_type: Master payment type.
         :param Sequence[_builtins.str] master_instance_types: The instance type of master node.
         :param Sequence['GetKubernetesClustersClusterMasterNodeArgs'] master_nodes: List of cluster master nodes. It contains several attributes to `Block Nodes`.
+        :param _builtins.int master_period: Master payment period.
+        :param _builtins.str master_period_unit: Master payment period unit.
         :param _builtins.str name: Node name.
         :param _builtins.str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param _builtins.int node_cidr_mask: The network mask used on pods for each node.
+        :param _builtins.str pod_cidr: The CIDR block for the pod network.
         :param _builtins.str security_group_id: The ID of security group where the current cluster worker node is located.
+        :param _builtins.str service_cidr: The CIDR block for the service network.
         :param _builtins.bool slb_internet_enabled: Whether internet load balancer for API Server is created
         :param _builtins.str vpc_id: The ID of VPC where the current cluster is located.
         :param Sequence[_builtins.str] vswitch_ids: The ID of VSwitches where the current cluster is located.
+        :param _builtins.bool worker_auto_renew: Whether to enable worker payment auto-renew.
+        :param _builtins.int worker_auto_renew_period: Worker payment auto-renew period
         :param _builtins.str worker_data_disk_category: The data disk size of worker node.
         :param _builtins.int worker_data_disk_size: The data disk category of worker node.
         :param _builtins.str worker_disk_category: The system disk category of worker node.
         :param _builtins.int worker_disk_size: The system disk size of worker node.
+        :param _builtins.str worker_instance_charge_type: Worker payment type
         :param Sequence[_builtins.str] worker_instance_types: The instance type of worker node.
         :param Sequence['GetKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         :param Sequence[_builtins.int] worker_numbers: The ECS instance node number in the current container cluster.
+        :param _builtins.int worker_period: Worker payment period.
+        :param _builtins.str worker_period_unit: Worker payment period unit.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "cluster_network_type", cluster_network_type)
@@ -4962,13 +5607,16 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="clusterNetworkType")
     def cluster_network_type(self) -> _builtins.str:
+        """
+        The cluster network type.
+        """
         return pulumi.get(self, "cluster_network_type")
 
     @_builtins.property
     @pulumi.getter
     def connections(self) -> 'outputs.GetKubernetesClustersClusterConnectionsResult':
         """
-        Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -5007,11 +5655,17 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="masterAutoRenew")
     def master_auto_renew(self) -> _builtins.bool:
+        """
+        Whether to enable master payment auto-renew
+        """
         return pulumi.get(self, "master_auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="masterAutoRenewPeriod")
     def master_auto_renew_period(self) -> _builtins.int:
+        """
+        Master payment auto-renew period.
+        """
         return pulumi.get(self, "master_auto_renew_period")
 
     @_builtins.property
@@ -5033,6 +5687,9 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="masterInstanceChargeType")
     def master_instance_charge_type(self) -> _builtins.str:
+        """
+        Master payment type.
+        """
         return pulumi.get(self, "master_instance_charge_type")
 
     @_builtins.property
@@ -5054,11 +5711,17 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="masterPeriod")
     def master_period(self) -> _builtins.int:
+        """
+        Master payment period.
+        """
         return pulumi.get(self, "master_period")
 
     @_builtins.property
     @pulumi.getter(name="masterPeriodUnit")
     def master_period_unit(self) -> _builtins.str:
+        """
+        Master payment period unit.
+        """
         return pulumi.get(self, "master_period_unit")
 
     @_builtins.property
@@ -5088,6 +5751,9 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> _builtins.str:
+        """
+        The CIDR block for the pod network.
+        """
         return pulumi.get(self, "pod_cidr")
 
     @_builtins.property
@@ -5101,6 +5767,9 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="serviceCidr")
     def service_cidr(self) -> _builtins.str:
+        """
+        The CIDR block for the service network.
+        """
         return pulumi.get(self, "service_cidr")
 
     @_builtins.property
@@ -5130,11 +5799,17 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="workerAutoRenew")
     def worker_auto_renew(self) -> _builtins.bool:
+        """
+        Whether to enable worker payment auto-renew.
+        """
         return pulumi.get(self, "worker_auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> _builtins.int:
+        """
+        Worker payment auto-renew period
+        """
         return pulumi.get(self, "worker_auto_renew_period")
 
     @_builtins.property
@@ -5172,6 +5847,9 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="workerInstanceChargeType")
     def worker_instance_charge_type(self) -> _builtins.str:
+        """
+        Worker payment type
+        """
         return pulumi.get(self, "worker_instance_charge_type")
 
     @_builtins.property
@@ -5201,11 +5879,17 @@ class GetKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="workerPeriod")
     def worker_period(self) -> _builtins.int:
+        """
+        Worker payment period.
+        """
         return pulumi.get(self, "worker_period")
 
     @_builtins.property
     @pulumi.getter(name="workerPeriodUnit")
     def worker_period_unit(self) -> _builtins.str:
+        """
+        Worker payment period unit.
+        """
         return pulumi.get(self, "worker_period_unit")
 
 
@@ -8194,10 +8878,12 @@ class GetServerlessKubernetesClustersClusterResult(dict):
         """
         :param 'GetServerlessKubernetesClustersClusterConnectionsArgs' connections: Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
         :param _builtins.bool deletion_protection: Whether the cluster support delete protection.
+        :param _builtins.bool endpoint_public_access_enabled: Whether to create internet eip for API Server.
         :param _builtins.str id: The ID of the container cluster.
         :param _builtins.str name: The name of the container cluster.
         :param _builtins.str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param _builtins.str security_group_id: The ID of security group where the current cluster  is located.
+        :param Mapping[str, _builtins.str] tags: A map of tags assigned to the kubernetes cluster.
         :param _builtins.str vpc_id: The ID of VPC where the current cluster is located.
         :param _builtins.str vswitch_id: The ID of vSwitch where the current cluster is located.
         """
@@ -8231,6 +8917,9 @@ class GetServerlessKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="endpointPublicAccessEnabled")
     def endpoint_public_access_enabled(self) -> _builtins.bool:
+        """
+        Whether to create internet eip for API Server.
+        """
         return pulumi.get(self, "endpoint_public_access_enabled")
 
     @_builtins.property
@@ -8268,6 +8957,9 @@ class GetServerlessKubernetesClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A map of tags assigned to the kubernetes cluster.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property

@@ -516,8 +516,6 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     declare public readonly serviceCidr: pulumi.Output<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-     *
-     * *Network params*
      */
     declare public readonly skipSetCertificateAuthority: pulumi.Output<boolean | undefined>;
     /**
@@ -548,6 +546,13 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
     declare public readonly timezone: pulumi.Output<string | undefined>;
+    /**
+     * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * > **NOTE:** This parameter only applies during resource update.
+     *
+     * *Network params*
+     */
+    declare public readonly upgradePolicy: pulumi.Output<outputs.cs.ManagedKubernetesUpgradePolicy | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
@@ -643,6 +648,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["slbIntranet"] = state?.slbIntranet;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["upgradePolicy"] = state?.upgradePolicy;
             resourceInputs["userCa"] = state?.userCa;
             resourceInputs["version"] = state?.version;
             resourceInputs["vpcId"] = state?.vpcId;
@@ -691,6 +697,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["slbInternetEnabled"] = args?.slbInternetEnabled;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["upgradePolicy"] = args?.upgradePolicy;
             resourceInputs["userCa"] = args?.userCa;
             resourceInputs["version"] = args?.version;
             resourceInputs["vswitchIds"] = args?.vswitchIds;
@@ -890,8 +897,6 @@ export interface ManagedKubernetesState {
     serviceCidr?: pulumi.Input<string>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-     *
-     * *Network params*
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean>;
     /**
@@ -922,6 +927,13 @@ export interface ManagedKubernetesState {
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
     timezone?: pulumi.Input<string>;
+    /**
+     * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * > **NOTE:** This parameter only applies during resource update.
+     *
+     * *Network params*
+     */
+    upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
@@ -1120,8 +1132,6 @@ export interface ManagedKubernetesArgs {
     serviceCidr?: pulumi.Input<string>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
-     *
-     * *Network params*
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean>;
     /**
@@ -1140,6 +1150,13 @@ export interface ManagedKubernetesArgs {
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
     timezone?: pulumi.Input<string>;
+    /**
+     * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
+     * > **NOTE:** This parameter only applies during resource update.
+     *
+     * *Network params*
+     */
+    upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */

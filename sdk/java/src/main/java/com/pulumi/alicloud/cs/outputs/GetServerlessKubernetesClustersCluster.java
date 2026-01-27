@@ -23,6 +23,10 @@ public final class GetServerlessKubernetesClustersCluster {
      * 
      */
     private Boolean deletionProtection;
+    /**
+     * @return Whether to create internet eip for API Server.
+     * 
+     */
     private Boolean endpointPublicAccessEnabled;
     /**
      * @return The ID of the container cluster.
@@ -44,6 +48,10 @@ public final class GetServerlessKubernetesClustersCluster {
      * 
      */
     private String securityGroupId;
+    /**
+     * @return A map of tags assigned to the kubernetes cluster.
+     * 
+     */
     private Map<String,String> tags;
     /**
      * @return The ID of VPC where the current cluster is located.
@@ -71,6 +79,10 @@ public final class GetServerlessKubernetesClustersCluster {
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
+    /**
+     * @return Whether to create internet eip for API Server.
+     * 
+     */
     public Boolean endpointPublicAccessEnabled() {
         return this.endpointPublicAccessEnabled;
     }
@@ -102,6 +114,10 @@ public final class GetServerlessKubernetesClustersCluster {
     public String securityGroupId() {
         return this.securityGroupId;
     }
+    /**
+     * @return A map of tags assigned to the kubernetes cluster.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags;
     }

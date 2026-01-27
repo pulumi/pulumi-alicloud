@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NAS Access Group resource. File system Access Group.
+ * Provides a File Storage (NAS) Access Group resource.
  *
- * In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
- * For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
+ * File system Access Group.
+ *
+ * For information about File Storage (NAS) Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup).
  *
  * > **NOTE:** Available since v1.33.0.
  *
@@ -37,7 +38,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NAS Access Group can be imported using the id, e.g.
+ * File Storage (NAS) Access Group can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/accessGroup:AccessGroup example <access_group_name>:<file_system_type>
@@ -88,9 +89,13 @@ export class AccessGroup extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * File system type. Value:
+     * File system type.
+     *
+     * Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
+     *
+     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly fileSystemType: pulumi.Output<string | undefined>;
@@ -169,9 +174,13 @@ export interface AccessGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * File system type. Value:
+     * File system type.
+     *
+     * Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
+     *
+     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     fileSystemType?: pulumi.Input<string>;
@@ -210,9 +219,13 @@ export interface AccessGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * File system type. Value:
+     * File system type.
+     *
+     * Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
+     *
+     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     fileSystemType?: pulumi.Input<string>;
