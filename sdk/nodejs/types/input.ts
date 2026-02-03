@@ -3560,13 +3560,67 @@ export namespace clickhouseenterprisedbcluster {
         dmlAuthority: pulumi.Input<number>;
     }
 
+    export interface ClickHouseEnterpriseDbClusterEndpoint {
+        /**
+         * The computing group ID.
+         */
+        computingGroupId?: pulumi.Input<string>;
+        /**
+         * The instance connection string.
+         */
+        connectionString?: pulumi.Input<string>;
+        /**
+         * The endpoint name.
+         */
+        endpointName?: pulumi.Input<string>;
+        /**
+         * The IP address.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * The network type of the connection string.
+         */
+        netType?: pulumi.Input<string>;
+        /**
+         * A list of port details.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterEndpointPort>[]>;
+        /**
+         * The instance status.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * The VPC ID.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * The VPC instance ID.
+         */
+        vpcInstanceId?: pulumi.Input<string>;
+        /**
+         * vSwitch ID.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface ClickHouseEnterpriseDbClusterEndpointPort {
+        /**
+         * The access port.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The protocol type.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
     export interface ClickHouseEnterpriseDbClusterMultiZone {
         /**
-         * The vSwtichID list.
+         * List of vSwitch IDs.
          */
         vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The zone ID.
+         * Zone ID.
          */
         zoneId?: pulumi.Input<string>;
     }
@@ -10297,6 +10351,10 @@ export namespace ehpc {
 
     export interface ClusterV2ClusterCredentials {
         /**
+         * The SSH key of root of the cluster node.
+         */
+        keyPairName?: pulumi.Input<string>;
+        /**
          * The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
          */
         password?: pulumi.Input<string>;
@@ -14168,6 +14226,33 @@ export namespace fc {
          * Private Key in PEM format
          */
         privateKey?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainCorsConfig {
+        /**
+         * Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+         */
+        allowCredentials?: pulumi.Input<boolean>;
+        /**
+         * List of allowed request headers, such as Content-Type, Authorization, etc.
+         */
+        allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+         */
+        allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+         */
+        allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of response headers that can be exposed to the browser.
+         */
+        exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+         */
+        maxAge?: pulumi.Input<number>;
     }
 
     export interface V3CustomDomainRouteConfig {

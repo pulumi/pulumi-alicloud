@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     /// Click House Enterprise Db Cluster Backup Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example &lt;db_instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy")]

@@ -94,12 +94,12 @@ import (
 // Elasticsearch Instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
+// $ pulumi import alicloud:elasticsearch/instance:Instance example <instance_id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Schema Type:
+	// Schema Type:.
 	ArchType pulumi.StringOutput `pulumi:"archType"`
 	// Renewal Period
 	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
@@ -113,7 +113,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
 	ClientNodeSpec pulumi.StringOutput `pulumi:"clientNodeSpec"`
-	// Instance creation time
+	// Instance creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	//
@@ -143,7 +143,7 @@ type Instance struct {
 	DataNodeSpec pulumi.StringOutput `pulumi:"dataNodeSpec"`
 	// Instance name
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Elasticsearch cluster private domain name
+	// Elasticsearch cluster private domain name.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Whether to enable Kibana private network access.
 	//
@@ -168,7 +168,7 @@ type Instance struct {
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
 	KibanaConfiguration InstanceKibanaConfigurationOutput `pulumi:"kibanaConfiguration"`
-	// Kibana address
+	// Kibana address.
 	KibanaDomain pulumi.StringOutput `pulumi:"kibanaDomain"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
@@ -303,7 +303,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Schema Type:
+	// Schema Type:.
 	ArchType *string `pulumi:"archType"`
 	// Renewal Period
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
@@ -317,7 +317,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
 	ClientNodeSpec *string `pulumi:"clientNodeSpec"`
-	// Instance creation time
+	// Instance creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	//
@@ -347,7 +347,7 @@ type instanceState struct {
 	DataNodeSpec *string `pulumi:"dataNodeSpec"`
 	// Instance name
 	Description *string `pulumi:"description"`
-	// Elasticsearch cluster private domain name
+	// Elasticsearch cluster private domain name.
 	Domain *string `pulumi:"domain"`
 	// Whether to enable Kibana private network access.
 	//
@@ -372,7 +372,7 @@ type instanceState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
 	KibanaConfiguration *InstanceKibanaConfiguration `pulumi:"kibanaConfiguration"`
-	// Kibana address
+	// Kibana address.
 	KibanaDomain *string `pulumi:"kibanaDomain"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
@@ -465,7 +465,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// Schema Type:
+	// Schema Type:.
 	ArchType pulumi.StringPtrInput
 	// Renewal Period
 	AutoRenewDuration pulumi.IntPtrInput
@@ -479,7 +479,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.
 	ClientNodeSpec pulumi.StringPtrInput
-	// Instance creation time
+	// Instance creation time.
 	CreateTime pulumi.StringPtrInput
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	//
@@ -509,7 +509,7 @@ type InstanceState struct {
 	DataNodeSpec pulumi.StringPtrInput
 	// Instance name
 	Description pulumi.StringPtrInput
-	// Elasticsearch cluster private domain name
+	// Elasticsearch cluster private domain name.
 	Domain pulumi.StringPtrInput
 	// Whether to enable Kibana private network access.
 	//
@@ -534,7 +534,7 @@ type InstanceState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Elasticsearch Kibana node settings See `kibanaConfiguration` below.
 	KibanaConfiguration InstanceKibanaConfigurationPtrInput
-	// Kibana address
+	// Kibana address.
 	KibanaDomain pulumi.StringPtrInput
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	//
@@ -1006,7 +1006,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Schema Type:
+// Schema Type:.
 func (o InstanceOutput) ArchType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ArchType }).(pulumi.StringOutput)
 }
@@ -1035,7 +1035,7 @@ func (o InstanceOutput) ClientNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ClientNodeSpec }).(pulumi.StringOutput)
 }
 
-// Instance creation time
+// Instance creation time.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1092,7 +1092,7 @@ func (o InstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Elasticsearch cluster private domain name
+// Elasticsearch cluster private domain name.
 func (o InstanceOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
@@ -1141,7 +1141,7 @@ func (o InstanceOutput) KibanaConfiguration() InstanceKibanaConfigurationOutput 
 	return o.ApplyT(func(v *Instance) InstanceKibanaConfigurationOutput { return v.KibanaConfiguration }).(InstanceKibanaConfigurationOutput)
 }
 
-// Kibana address
+// Kibana address.
 func (o InstanceOutput) KibanaDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KibanaDomain }).(pulumi.StringOutput)
 }

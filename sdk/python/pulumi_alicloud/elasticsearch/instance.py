@@ -964,12 +964,12 @@ class _InstanceState:
                  zone_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.str] arch_type: Schema Type:
+        :param pulumi.Input[_builtins.str] arch_type: Schema Type:.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
         :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
-        :param pulumi.Input[_builtins.str] create_time: Instance creation time
+        :param pulumi.Input[_builtins.str] create_time: Instance creation time.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -978,7 +978,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[_builtins.str] description: Instance name
-        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name
+        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name.
         :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
                
                The meaning of the value is as follows:
@@ -993,7 +993,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
-        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address
+        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[_builtins.int] kibana_port: The port assigned by the Kibana node.
         :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
@@ -1205,7 +1205,7 @@ class _InstanceState:
     @pulumi.getter(name="archType")
     def arch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Schema Type:
+        Schema Type:.
         """
         return pulumi.get(self, "arch_type")
 
@@ -1267,7 +1267,7 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance creation time
+        Instance creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -1381,7 +1381,7 @@ class _InstanceState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch cluster private domain name
+        Elasticsearch cluster private domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -1483,7 +1483,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaDomain")
     def kibana_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Kibana address
+        Kibana address.
         """
         return pulumi.get(self, "kibana_domain")
 
@@ -2038,7 +2038,7 @@ class Instance(pulumi.CustomResource):
         Elasticsearch Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
+        $ pulumi import alicloud:elasticsearch/instance:Instance example <instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -2160,7 +2160,7 @@ class Instance(pulumi.CustomResource):
         Elasticsearch Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
+        $ pulumi import alicloud:elasticsearch/instance:Instance example <instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -2378,12 +2378,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] arch_type: Schema Type:
+        :param pulumi.Input[_builtins.str] arch_type: Schema Type:.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
         :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
-        :param pulumi.Input[_builtins.str] create_time: Instance creation time
+        :param pulumi.Input[_builtins.str] create_time: Instance creation time.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
         :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -2392,7 +2392,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[_builtins.str] description: Instance name
-        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name
+        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name.
         :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
                
                The meaning of the value is as follows:
@@ -2407,7 +2407,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
-        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address
+        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[_builtins.int] kibana_port: The port assigned by the Kibana node.
         :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
@@ -2514,7 +2514,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="archType")
     def arch_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Schema Type:
+        Schema Type:.
         """
         return pulumi.get(self, "arch_type")
 
@@ -2556,7 +2556,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance creation time
+        Instance creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -2634,7 +2634,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Elasticsearch cluster private domain name
+        Elasticsearch cluster private domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -2704,7 +2704,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaDomain")
     def kibana_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Kibana address
+        Kibana address.
         """
         return pulumi.get(self, "kibana_domain")
 

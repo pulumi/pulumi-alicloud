@@ -8,6 +8,7 @@ import com.pulumi.alicloud.fc.V3CustomDomainArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainState;
 import com.pulumi.alicloud.fc.outputs.V3CustomDomainAuthConfig;
 import com.pulumi.alicloud.fc.outputs.V3CustomDomainCertConfig;
+import com.pulumi.alicloud.fc.outputs.V3CustomDomainCorsConfig;
 import com.pulumi.alicloud.fc.outputs.V3CustomDomainRouteConfig;
 import com.pulumi.alicloud.fc.outputs.V3CustomDomainTlsConfig;
 import com.pulumi.alicloud.fc.outputs.V3CustomDomainWafConfig;
@@ -20,14 +21,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a FCV3 Custom Domain resource.
+ * Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
  * 
  * Custom Domain names allow users to access FC functions through custom domain names, providing convenience for building Web services using function compute.
  * You can bind a custom domain name to Function Compute and set different paths to different functions of different services.
  * 
- * For information about FCV3 Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
- * 
- * &gt; **NOTE:** This content is a technical preview, and should not be relied on in a production environment.
+ * For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
  * 
  * &gt; **NOTE:** Available since v1.228.0.
  * 
@@ -228,38 +227,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FCV3 Custom Domain can be imported using the id, e.g.
+ * Function Compute Service V3 (FCV3) Custom Domain can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example &lt;id&gt;
+ * $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example &lt;custom_domain_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:fc/v3CustomDomain:V3CustomDomain")
 public class V3CustomDomain extends com.pulumi.resources.CustomResource {
     /**
-     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * The ID of your Alibaba Cloud account (primary account).
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * @return The ID of your Alibaba Cloud account (primary account).
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * (Available since v1.234.0) API version of Function Compute
+     * API version of Function Compute.
      * 
      */
     @Export(name="apiVersion", refs={String.class}, tree="[0]")
     private Output<String> apiVersion;
 
     /**
-     * @return (Available since v1.234.0) API version of Function Compute
+     * @return API version of Function Compute.
      * 
      */
     public Output<String> apiVersion() {
@@ -294,14 +293,28 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return this.certConfig;
     }
     /**
-     * The creation time of the resource
+     * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     * 
+     */
+    @Export(name="corsConfig", refs={V3CustomDomainCorsConfig.class}, tree="[0]")
+    private Output</* @Nullable */ V3CustomDomainCorsConfig> corsConfig;
+
+    /**
+     * @return Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     * 
+     */
+    public Output<Optional<V3CustomDomainCorsConfig>> corsConfig() {
+        return Codegen.optional(this.corsConfig);
+    }
+    /**
+     * The creation time of the resource.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Output<String> createTime() {
@@ -322,14 +335,14 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return this.customDomainName;
     }
     /**
-     * (Available since v1.234.0) The last time the custom domain name was Updated
+     * The last time the custom domain name was Updated.
      * 
      */
     @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifiedTime;
 
     /**
-     * @return (Available since v1.234.0) The last time the custom domain name was Updated
+     * @return The last time the custom domain name was Updated.
      * 
      */
     public Output<String> lastModifiedTime() {
@@ -364,14 +377,14 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routeConfig);
     }
     /**
-     * (Available since v1.234.0) Number of subdomains
+     * Number of subdomains.
      * 
      */
     @Export(name="subdomainCount", refs={String.class}, tree="[0]")
     private Output<String> subdomainCount;
 
     /**
-     * @return (Available since v1.234.0) Number of subdomains
+     * @return Number of subdomains.
      * 
      */
     public Output<String> subdomainCount() {

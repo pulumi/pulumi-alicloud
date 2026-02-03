@@ -469,6 +469,10 @@ class ClusterV2AddonArgs:
 
 if not MYPY:
     class ClusterV2ClusterCredentialsArgsDict(TypedDict):
+        key_pair_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The SSH key of root of the cluster node.
+        """
         password: NotRequired[pulumi.Input[_builtins.str]]
         """
         The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
@@ -479,12 +483,28 @@ elif False:
 @pulumi.input_type
 class ClusterV2ClusterCredentialsArgs:
     def __init__(__self__, *,
+                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] key_pair_name: The SSH key of root of the cluster node.
         :param pulumi.Input[_builtins.str] password: The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
         """
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+
+    @_builtins.property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The SSH key of root of the cluster node.
+        """
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter

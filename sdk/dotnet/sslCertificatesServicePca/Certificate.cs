@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.sslCertificatesService
+namespace Pulumi.AliCloud.sslCertificatesServicePca
 {
     /// <summary>
     /// Provides a SSL Certificates Pca Certificate resource.
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.SslCertificatesService.PcaCertificate("default", new()
+    ///     var @default = new AliCloud.SslCertificatesServicePca.Certificate("default", new()
     ///     {
     ///         Organization = "a",
     ///         Years = 1,
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.sslCertificatesService
     /// SSL Certificates Pca Certificate can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example &lt;id&gt;
+    /// $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example &lt;id&gt;
     /// ```
     /// </summary>
-    [AliCloudResourceType("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")]
-    public partial class PcaCertificate : global::Pulumi.CustomResource
+    [AliCloudResourceType("alicloud:sslcertificatesservicepca/certificate:Certificate")]
+    public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `CrlDay` takes effect only if `CertificateType` is set to `SUB_ROOT`.
         /// </summary>
         [Output("crlDay")]
-        public Output<int?> CrlDay { get; private set; } = null!;
+        public Output<int> CrlDay { get; private set; } = null!;
 
         /// <summary>
         /// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
@@ -175,19 +175,19 @@ namespace Pulumi.AliCloud.sslCertificatesService
 
 
         /// <summary>
-        /// Create a PcaCertificate resource with the given unique name, arguments, and options.
+        /// Create a Certificate resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PcaCertificate(string name, PcaCertificateArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate", name, args ?? new PcaCertificateArgs(), MakeResourceOptions(options, ""))
+        public Certificate(string name, CertificateArgs args, CustomResourceOptions? options = null)
+            : base("alicloud:sslcertificatesservicepca/certificate:Certificate", name, args ?? new CertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private PcaCertificate(string name, Input<string> id, PcaCertificateState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate", name, state, MakeResourceOptions(options, id))
+        private Certificate(string name, Input<string> id, CertificateState? state = null, CustomResourceOptions? options = null)
+            : base("alicloud:sslcertificatesservicepca/certificate:Certificate", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -196,6 +196,10 @@ namespace Pulumi.AliCloud.sslCertificatesService
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -203,7 +207,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
             return merged;
         }
         /// <summary>
-        /// Get an existing PcaCertificate resource's state with the given name, ID, and optional extra
+        /// Get an existing Certificate resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -211,13 +215,13 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static PcaCertificate Get(string name, Input<string> id, PcaCertificateState? state = null, CustomResourceOptions? options = null)
+        public static Certificate Get(string name, Input<string> id, CertificateState? state = null, CustomResourceOptions? options = null)
         {
-            return new PcaCertificate(name, id, state, options);
+            return new Certificate(name, id, state, options);
         }
     }
 
-    public sealed class PcaCertificateArgs : global::Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
@@ -342,13 +346,13 @@ namespace Pulumi.AliCloud.sslCertificatesService
         [Input("years", required: true)]
         public Input<int> Years { get; set; } = null!;
 
-        public PcaCertificateArgs()
+        public CertificateArgs()
         {
         }
-        public static new PcaCertificateArgs Empty => new PcaCertificateArgs();
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 
-    public sealed class PcaCertificateState : global::Pulumi.ResourceArgs
+    public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
@@ -479,9 +483,9 @@ namespace Pulumi.AliCloud.sslCertificatesService
         [Input("years")]
         public Input<int>? Years { get; set; }
 
-        public PcaCertificateState()
+        public CertificateState()
         {
         }
-        public static new PcaCertificateState Empty => new PcaCertificateState();
+        public static new CertificateState Empty => new CertificateState();
     }
 }

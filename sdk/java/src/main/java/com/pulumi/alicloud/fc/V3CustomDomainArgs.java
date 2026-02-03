@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc;
 
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainAuthConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainCertConfigArgs;
+import com.pulumi.alicloud.fc.inputs.V3CustomDomainCorsConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainRouteConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainTlsConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainWafConfigArgs;
@@ -48,6 +49,21 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<V3CustomDomainCertConfigArgs>> certConfig() {
         return Optional.ofNullable(this.certConfig);
+    }
+
+    /**
+     * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     * 
+     */
+    @Import(name="corsConfig")
+    private @Nullable Output<V3CustomDomainCorsConfigArgs> corsConfig;
+
+    /**
+     * @return Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     * 
+     */
+    public Optional<Output<V3CustomDomainCorsConfigArgs>> corsConfig() {
+        return Optional.ofNullable(this.corsConfig);
     }
 
     /**
@@ -130,6 +146,7 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     private V3CustomDomainArgs(V3CustomDomainArgs $) {
         this.authConfig = $.authConfig;
         this.certConfig = $.certConfig;
+        this.corsConfig = $.corsConfig;
         this.customDomainName = $.customDomainName;
         this.protocol = $.protocol;
         this.routeConfig = $.routeConfig;
@@ -195,6 +212,27 @@ public final class V3CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder certConfig(V3CustomDomainCertConfigArgs certConfig) {
             return certConfig(Output.of(certConfig));
+        }
+
+        /**
+         * @param corsConfig Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder corsConfig(@Nullable Output<V3CustomDomainCorsConfigArgs> corsConfig) {
+            $.corsConfig = corsConfig;
+            return this;
+        }
+
+        /**
+         * @param corsConfig Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder corsConfig(V3CustomDomainCorsConfigArgs corsConfig) {
+            return corsConfig(Output.of(corsConfig));
         }
 
         /**

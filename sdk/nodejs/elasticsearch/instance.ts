@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * Elasticsearch Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
+ * $ pulumi import alicloud:elasticsearch/instance:Instance example <instance_id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -92,7 +92,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Schema Type:
+     * Schema Type:.
      */
     declare public /*out*/ readonly archType: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly clientNodeSpec: pulumi.Output<string>;
     /**
-     * Instance creation time
+     * Instance creation time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Elasticsearch cluster private domain name
+     * Elasticsearch cluster private domain name.
      */
     declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
@@ -203,7 +203,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly kibanaConfiguration: pulumi.Output<outputs.elasticsearch.InstanceKibanaConfiguration>;
     /**
-     * Kibana address
+     * Kibana address.
      */
     declare public /*out*/ readonly kibanaDomain: pulumi.Output<string>;
     /**
@@ -515,7 +515,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Schema Type:
+     * Schema Type:.
      */
     archType?: pulumi.Input<string>;
     /**
@@ -539,7 +539,7 @@ export interface InstanceState {
      */
     clientNodeSpec?: pulumi.Input<string>;
     /**
-     * Instance creation time
+     * Instance creation time.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -587,7 +587,7 @@ export interface InstanceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Elasticsearch cluster private domain name
+     * Elasticsearch cluster private domain name.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -626,7 +626,7 @@ export interface InstanceState {
      */
     kibanaConfiguration?: pulumi.Input<inputs.elasticsearch.InstanceKibanaConfiguration>;
     /**
-     * Kibana address
+     * Kibana address.
      */
     kibanaDomain?: pulumi.Input<string>;
     /**

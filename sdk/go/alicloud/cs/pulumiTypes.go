@@ -14908,19 +14908,19 @@ func (o GetRegistryEnterpriseNamespacesNamespaceArrayOutput) Index(i pulumi.IntI
 }
 
 type GetRegistryEnterpriseReposRepo struct {
-	// ID of Container Registry Enterprise Edition repository.
+	// The ID of the Repository.
 	Id string `pulumi:"id"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition repository.
+	// The name of the Repository.
 	Name string `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	// The name of the namespace to which the Repository belongs.
 	Namespace string `pulumi:"namespace"`
-	// `PUBLIC` or `PRIVATE`, repository's visibility.
+	// The type of the Repository.
 	RepoType string `pulumi:"repoType"`
-	// The repository general information.
+	// The summary of the Repository.
 	Summary string `pulumi:"summary"`
-	// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+	// A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
 	Tags []GetRegistryEnterpriseReposRepoTag `pulumi:"tags"`
 }
 
@@ -14936,19 +14936,19 @@ type GetRegistryEnterpriseReposRepoInput interface {
 }
 
 type GetRegistryEnterpriseReposRepoArgs struct {
-	// ID of Container Registry Enterprise Edition repository.
+	// The ID of the Repository.
 	Id pulumi.StringInput `pulumi:"id"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition repository.
+	// The name of the Repository.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	// The name of the namespace to which the Repository belongs.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// `PUBLIC` or `PRIVATE`, repository's visibility.
+	// The type of the Repository.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
-	// The repository general information.
+	// The summary of the Repository.
 	Summary pulumi.StringInput `pulumi:"summary"`
-	// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+	// A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
 	Tags GetRegistryEnterpriseReposRepoTagArrayInput `pulumi:"tags"`
 }
 
@@ -15003,37 +15003,37 @@ func (o GetRegistryEnterpriseReposRepoOutput) ToGetRegistryEnterpriseReposRepoOu
 	return o
 }
 
-// ID of Container Registry Enterprise Edition repository.
+// The ID of the Repository.
 func (o GetRegistryEnterpriseReposRepoOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of Container Registry Enterprise Edition instance.
+// The ID of the Container Registry instance.
 func (o GetRegistryEnterpriseReposRepoOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition repository.
+// The name of the Repository.
 func (o GetRegistryEnterpriseReposRepoOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+// The name of the namespace to which the Repository belongs.
 func (o GetRegistryEnterpriseReposRepoOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// `PUBLIC` or `PRIVATE`, repository's visibility.
+// The type of the Repository.
 func (o GetRegistryEnterpriseReposRepoOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
-// The repository general information.
+// The summary of the Repository.
 func (o GetRegistryEnterpriseReposRepoOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Summary }).(pulumi.StringOutput)
 }
 
-// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+// A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
 func (o GetRegistryEnterpriseReposRepoOutput) Tags() GetRegistryEnterpriseReposRepoTagArrayOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) []GetRegistryEnterpriseReposRepoTag { return v.Tags }).(GetRegistryEnterpriseReposRepoTagArrayOutput)
 }
@@ -15059,19 +15059,19 @@ func (o GetRegistryEnterpriseReposRepoArrayOutput) Index(i pulumi.IntInput) GetR
 }
 
 type GetRegistryEnterpriseReposRepoTag struct {
-	// Digest of this image.
+	// The digest of the image.
 	Digest string `pulumi:"digest"`
-	// Create time of this image, unix time in nanoseconds.
+	// The time when the image was created.
 	ImageCreate string `pulumi:"imageCreate"`
-	// Id of this image.
+	// The ID of the image.
 	ImageId string `pulumi:"imageId"`
-	// Status of this image, in bytes.
+	// The size of the image.
 	ImageSize int `pulumi:"imageSize"`
-	// Last update time of this image, unix time in nanoseconds.
+	// The time when the image was last updated.
 	ImageUpdate string `pulumi:"imageUpdate"`
-	// Status of this image.
+	// The status of the image.
 	Status string `pulumi:"status"`
-	// Tag of this image.
+	// The tag of the image.
 	Tag string `pulumi:"tag"`
 }
 
@@ -15087,19 +15087,19 @@ type GetRegistryEnterpriseReposRepoTagInput interface {
 }
 
 type GetRegistryEnterpriseReposRepoTagArgs struct {
-	// Digest of this image.
+	// The digest of the image.
 	Digest pulumi.StringInput `pulumi:"digest"`
-	// Create time of this image, unix time in nanoseconds.
+	// The time when the image was created.
 	ImageCreate pulumi.StringInput `pulumi:"imageCreate"`
-	// Id of this image.
+	// The ID of the image.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// Status of this image, in bytes.
+	// The size of the image.
 	ImageSize pulumi.IntInput `pulumi:"imageSize"`
-	// Last update time of this image, unix time in nanoseconds.
+	// The time when the image was last updated.
 	ImageUpdate pulumi.StringInput `pulumi:"imageUpdate"`
-	// Status of this image.
+	// The status of the image.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Tag of this image.
+	// The tag of the image.
 	Tag pulumi.StringInput `pulumi:"tag"`
 }
 
@@ -15154,37 +15154,37 @@ func (o GetRegistryEnterpriseReposRepoTagOutput) ToGetRegistryEnterpriseReposRep
 	return o
 }
 
-// Digest of this image.
+// The digest of the image.
 func (o GetRegistryEnterpriseReposRepoTagOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.Digest }).(pulumi.StringOutput)
 }
 
-// Create time of this image, unix time in nanoseconds.
+// The time when the image was created.
 func (o GetRegistryEnterpriseReposRepoTagOutput) ImageCreate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.ImageCreate }).(pulumi.StringOutput)
 }
 
-// Id of this image.
+// The ID of the image.
 func (o GetRegistryEnterpriseReposRepoTagOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// Status of this image, in bytes.
+// The size of the image.
 func (o GetRegistryEnterpriseReposRepoTagOutput) ImageSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) int { return v.ImageSize }).(pulumi.IntOutput)
 }
 
-// Last update time of this image, unix time in nanoseconds.
+// The time when the image was last updated.
 func (o GetRegistryEnterpriseReposRepoTagOutput) ImageUpdate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.ImageUpdate }).(pulumi.StringOutput)
 }
 
-// Status of this image.
+// The status of the image.
 func (o GetRegistryEnterpriseReposRepoTagOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Tag of this image.
+// The tag of the image.
 func (o GetRegistryEnterpriseReposRepoTagOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.Tag }).(pulumi.StringOutput)
 }

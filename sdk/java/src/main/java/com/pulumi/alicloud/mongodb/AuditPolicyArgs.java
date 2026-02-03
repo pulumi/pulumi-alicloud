@@ -48,6 +48,21 @@ public final class AuditPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      * 
      */
@@ -67,6 +82,7 @@ public final class AuditPolicyArgs extends com.pulumi.resources.ResourceArgs {
     private AuditPolicyArgs(AuditPolicyArgs $) {
         this.auditStatus = $.auditStatus;
         this.dbInstanceId = $.dbInstanceId;
+        this.filter = $.filter;
         this.storagePeriod = $.storagePeriod;
     }
 
@@ -128,6 +144,27 @@ public final class AuditPolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbInstanceId(String dbInstanceId) {
             return dbInstanceId(Output.of(dbInstanceId));
+        }
+
+        /**
+         * @param filter The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
         }
 
         /**

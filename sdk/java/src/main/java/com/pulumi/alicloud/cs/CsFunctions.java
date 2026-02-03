@@ -5097,11 +5097,13 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", TypeShape.of(GetRegistryEnterpriseNamespacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+     * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.87.0+
+     * &gt; **NOTE:** Available since v1.87.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -5111,6 +5113,11 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -5125,14 +5132,33 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId("cri-xx")
-     *             .nameRegex("my-repos")
-     *             .outputFile("my-repo-json")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex("default-nodeleting")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.repos());
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(default_.ids()[0])
+     *             .name(name)
+     *             .autoCreate(true)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseNamespace.instanceId())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary(name)
+     *             .build());
+     * 
+     *         final var ids = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .ids(defaultRegistryEnterpriseRepo.repoId())
+     *             .instanceId(defaultRegistryEnterpriseRepo.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("crEeReposId0", ids.applyValue(_ids -> _ids.repos()[0].id()));
      *     }
      * }
      * }
@@ -5143,11 +5169,13 @@ public final class CsFunctions {
         return getRegistryEnterpriseRepos(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+     * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.87.0+
+     * &gt; **NOTE:** Available since v1.87.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -5157,6 +5185,11 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -5171,14 +5204,33 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId("cri-xx")
-     *             .nameRegex("my-repos")
-     *             .outputFile("my-repo-json")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex("default-nodeleting")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.repos());
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(default_.ids()[0])
+     *             .name(name)
+     *             .autoCreate(true)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseNamespace.instanceId())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary(name)
+     *             .build());
+     * 
+     *         final var ids = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .ids(defaultRegistryEnterpriseRepo.repoId())
+     *             .instanceId(defaultRegistryEnterpriseRepo.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("crEeReposId0", ids.applyValue(_ids -> _ids.repos()[0].id()));
      *     }
      * }
      * }
@@ -5189,11 +5241,13 @@ public final class CsFunctions {
         return getRegistryEnterpriseReposPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+     * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.87.0+
+     * &gt; **NOTE:** Available since v1.87.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -5203,6 +5257,11 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -5217,14 +5276,33 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId("cri-xx")
-     *             .nameRegex("my-repos")
-     *             .outputFile("my-repo-json")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex("default-nodeleting")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.repos());
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(default_.ids()[0])
+     *             .name(name)
+     *             .autoCreate(true)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseNamespace.instanceId())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary(name)
+     *             .build());
+     * 
+     *         final var ids = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .ids(defaultRegistryEnterpriseRepo.repoId())
+     *             .instanceId(defaultRegistryEnterpriseRepo.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("crEeReposId0", ids.applyValue(_ids -> _ids.repos()[0].id()));
      *     }
      * }
      * }
@@ -5235,11 +5313,13 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", TypeShape.of(GetRegistryEnterpriseReposResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+     * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.87.0+
+     * &gt; **NOTE:** Available since v1.87.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -5249,6 +5329,11 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -5263,14 +5348,33 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId("cri-xx")
-     *             .nameRegex("my-repos")
-     *             .outputFile("my-repo-json")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex("default-nodeleting")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.repos());
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(default_.ids()[0])
+     *             .name(name)
+     *             .autoCreate(true)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseNamespace.instanceId())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary(name)
+     *             .build());
+     * 
+     *         final var ids = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .ids(defaultRegistryEnterpriseRepo.repoId())
+     *             .instanceId(defaultRegistryEnterpriseRepo.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("crEeReposId0", ids.applyValue(_ids -> _ids.repos()[0].id()));
      *     }
      * }
      * }
@@ -5281,11 +5385,13 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", TypeShape.of(GetRegistryEnterpriseReposResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+     * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.87.0+
+     * &gt; **NOTE:** Available since v1.87.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -5295,6 +5401,11 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -5309,14 +5420,33 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId("cri-xx")
-     *             .nameRegex("my-repos")
-     *             .outputFile("my-repo-json")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
+     *             .nameRegex("default-nodeleting")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.repos());
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(default_.ids()[0])
+     *             .name(name)
+     *             .autoCreate(true)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseNamespace.instanceId())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary(name)
+     *             .build());
+     * 
+     *         final var ids = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
+     *             .ids(defaultRegistryEnterpriseRepo.repoId())
+     *             .instanceId(defaultRegistryEnterpriseRepo.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("crEeReposId0", ids.applyValue(_ids -> _ids.repos()[0].id()));
      *     }
      * }
      * }

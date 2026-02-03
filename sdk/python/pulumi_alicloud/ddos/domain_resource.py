@@ -26,6 +26,11 @@ class DomainResourceArgs:
                  proxy_types: pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]],
                  real_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  rs_type: pulumi.Input[_builtins.int],
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
+                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -33,7 +38,8 @@ class DomainResourceArgs:
                  custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
                  https_ext: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DomainResource resource.
         :param pulumi.Input[_builtins.str] domain: The domain name for which you want to configure the Static Page Caching policy.
@@ -43,6 +49,20 @@ class DomainResourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[_builtins.str] ai_mode: the mode of the Intelligent Protection policy.
+               - watch: the Warning mode
+               - defense: the Defense mode
+        :param pulumi.Input[_builtins.str] ai_template: the level of the Intelligent Protection policy.
+               - level30: the Low level
+               - level60: the Normal level
+               - level90: the Strict level
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] black_lists: ip blacklist
+        :param pulumi.Input[_builtins.int] bw_list_enable: The status of the blacklist and whitelist feature. Valid values:
+               - 0: Disabled
+               - 1: Enabled
+        :param pulumi.Input[_builtins.str] cc_global_switch: CC safety protection switch.
+               - 0: Disabled
+               - 1: Enabled
         :param pulumi.Input[_builtins.str] cert: The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -77,12 +97,23 @@ class DomainResourceArgs:
                
                > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
         :param pulumi.Input[_builtins.bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "instance_ids", instance_ids)
         pulumi.set(__self__, "proxy_types", proxy_types)
         pulumi.set(__self__, "real_servers", real_servers)
         pulumi.set(__self__, "rs_type", rs_type)
+        if ai_mode is not None:
+            pulumi.set(__self__, "ai_mode", ai_mode)
+        if ai_template is not None:
+            pulumi.set(__self__, "ai_template", ai_template)
+        if black_lists is not None:
+            pulumi.set(__self__, "black_lists", black_lists)
+        if bw_list_enable is not None:
+            pulumi.set(__self__, "bw_list_enable", bw_list_enable)
+        if cc_global_switch is not None:
+            pulumi.set(__self__, "cc_global_switch", cc_global_switch)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
         if cert_identifier is not None:
@@ -99,6 +130,8 @@ class DomainResourceArgs:
             pulumi.set(__self__, "key", key)
         if ocsp_enabled is not None:
             pulumi.set(__self__, "ocsp_enabled", ocsp_enabled)
+        if white_lists is not None:
+            pulumi.set(__self__, "white_lists", white_lists)
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +194,75 @@ class DomainResourceArgs:
     @rs_type.setter
     def rs_type(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "rs_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiMode")
+    def ai_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        the mode of the Intelligent Protection policy.
+        - watch: the Warning mode
+        - defense: the Defense mode
+        """
+        return pulumi.get(self, "ai_mode")
+
+    @ai_mode.setter
+    def ai_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiTemplate")
+    def ai_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        the level of the Intelligent Protection policy.
+        - level30: the Low level
+        - level60: the Normal level
+        - level90: the Strict level
+        """
+        return pulumi.get(self, "ai_template")
+
+    @ai_template.setter
+    def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="blackLists")
+    def black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        ip blacklist
+        """
+        return pulumi.get(self, "black_lists")
+
+    @black_lists.setter
+    def black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "black_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bwListEnable")
+    def bw_list_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The status of the blacklist and whitelist feature. Valid values:
+        - 0: Disabled
+        - 1: Enabled
+        """
+        return pulumi.get(self, "bw_list_enable")
+
+    @bw_list_enable.setter
+    def bw_list_enable(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bw_list_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ccGlobalSwitch")
+    def cc_global_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CC safety protection switch.
+        - 0: Disabled
+        - 1: Enabled
+        """
+        return pulumi.get(self, "cc_global_switch")
+
+    @cc_global_switch.setter
+    def cc_global_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cc_global_switch", value)
 
     @_builtins.property
     @pulumi.getter
@@ -284,10 +386,27 @@ class DomainResourceArgs:
     def ocsp_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "ocsp_enabled", value)
 
+    @_builtins.property
+    @pulumi.getter(name="whiteLists")
+    def white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IP whitelist list.
+        """
+        return pulumi.get(self, "white_lists")
+
+    @white_lists.setter
+    def white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "white_lists", value)
+
 
 @pulumi.input_type
 class _DomainResourceState:
     def __init__(__self__, *,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
+                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -301,9 +420,24 @@ class _DomainResourceState:
                  ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rs_type: Optional[pulumi.Input[_builtins.int]] = None):
+                 rs_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainResource resources.
+        :param pulumi.Input[_builtins.str] ai_mode: the mode of the Intelligent Protection policy.
+               - watch: the Warning mode
+               - defense: the Defense mode
+        :param pulumi.Input[_builtins.str] ai_template: the level of the Intelligent Protection policy.
+               - level30: the Low level
+               - level60: the Normal level
+               - level90: the Strict level
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] black_lists: ip blacklist
+        :param pulumi.Input[_builtins.int] bw_list_enable: The status of the blacklist and whitelist feature. Valid values:
+               - 0: Disabled
+               - 1: Enabled
+        :param pulumi.Input[_builtins.str] cc_global_switch: CC safety protection switch.
+               - 0: Disabled
+               - 1: Enabled
         :param pulumi.Input[_builtins.str] cert: The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -346,7 +480,18 @@ class _DomainResourceState:
         :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
+        if ai_mode is not None:
+            pulumi.set(__self__, "ai_mode", ai_mode)
+        if ai_template is not None:
+            pulumi.set(__self__, "ai_template", ai_template)
+        if black_lists is not None:
+            pulumi.set(__self__, "black_lists", black_lists)
+        if bw_list_enable is not None:
+            pulumi.set(__self__, "bw_list_enable", bw_list_enable)
+        if cc_global_switch is not None:
+            pulumi.set(__self__, "cc_global_switch", cc_global_switch)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
         if cert_identifier is not None:
@@ -375,6 +520,77 @@ class _DomainResourceState:
             pulumi.set(__self__, "real_servers", real_servers)
         if rs_type is not None:
             pulumi.set(__self__, "rs_type", rs_type)
+        if white_lists is not None:
+            pulumi.set(__self__, "white_lists", white_lists)
+
+    @_builtins.property
+    @pulumi.getter(name="aiMode")
+    def ai_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        the mode of the Intelligent Protection policy.
+        - watch: the Warning mode
+        - defense: the Defense mode
+        """
+        return pulumi.get(self, "ai_mode")
+
+    @ai_mode.setter
+    def ai_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiTemplate")
+    def ai_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        the level of the Intelligent Protection policy.
+        - level30: the Low level
+        - level60: the Normal level
+        - level90: the Strict level
+        """
+        return pulumi.get(self, "ai_template")
+
+    @ai_template.setter
+    def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ai_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="blackLists")
+    def black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        ip blacklist
+        """
+        return pulumi.get(self, "black_lists")
+
+    @black_lists.setter
+    def black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "black_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bwListEnable")
+    def bw_list_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The status of the blacklist and whitelist feature. Valid values:
+        - 0: Disabled
+        - 1: Enabled
+        """
+        return pulumi.get(self, "bw_list_enable")
+
+    @bw_list_enable.setter
+    def bw_list_enable(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bw_list_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ccGlobalSwitch")
+    def cc_global_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CC safety protection switch.
+        - 0: Disabled
+        - 1: Enabled
+        """
+        return pulumi.get(self, "cc_global_switch")
+
+    @cc_global_switch.setter
+    def cc_global_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cc_global_switch", value)
 
     @_builtins.property
     @pulumi.getter
@@ -572,6 +788,18 @@ class _DomainResourceState:
     def rs_type(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "rs_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="whiteLists")
+    def white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IP whitelist list.
+        """
+        return pulumi.get(self, "white_lists")
+
+    @white_lists.setter
+    def white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "white_lists", value)
+
 
 @pulumi.type_token("alicloud:ddos/domainResource:DomainResource")
 class DomainResource(pulumi.CustomResource):
@@ -579,6 +807,11 @@ class DomainResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
+                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -592,6 +825,7 @@ class DomainResource(pulumi.CustomResource):
                  proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ddos Coo Domain Resource resource.
@@ -653,6 +887,20 @@ class DomainResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] ai_mode: the mode of the Intelligent Protection policy.
+               - watch: the Warning mode
+               - defense: the Defense mode
+        :param pulumi.Input[_builtins.str] ai_template: the level of the Intelligent Protection policy.
+               - level30: the Low level
+               - level60: the Normal level
+               - level90: the Strict level
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] black_lists: ip blacklist
+        :param pulumi.Input[_builtins.int] bw_list_enable: The status of the blacklist and whitelist feature. Valid values:
+               - 0: Disabled
+               - 1: Enabled
+        :param pulumi.Input[_builtins.str] cc_global_switch: CC safety protection switch.
+               - 0: Disabled
+               - 1: Enabled
         :param pulumi.Input[_builtins.str] cert: The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -694,6 +942,7 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         ...
     @overload
@@ -774,6 +1023,11 @@ class DomainResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
+                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
                  cert: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -787,6 +1041,7 @@ class DomainResource(pulumi.CustomResource):
                  proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -796,8 +1051,13 @@ class DomainResource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainResourceArgs.__new__(DomainResourceArgs)
 
+            __props__.__dict__["ai_mode"] = ai_mode
+            __props__.__dict__["ai_template"] = ai_template
+            __props__.__dict__["black_lists"] = black_lists
+            __props__.__dict__["bw_list_enable"] = bw_list_enable
+            __props__.__dict__["cc_global_switch"] = cc_global_switch
             __props__.__dict__["cert"] = None if cert is None else pulumi.Output.secret(cert)
-            __props__.__dict__["cert_identifier"] = cert_identifier
+            __props__.__dict__["cert_identifier"] = None if cert_identifier is None else pulumi.Output.secret(cert_identifier)
             __props__.__dict__["cert_name"] = cert_name
             __props__.__dict__["cert_region"] = None if cert_region is None else pulumi.Output.secret(cert_region)
             __props__.__dict__["custom_headers"] = custom_headers
@@ -819,8 +1079,9 @@ class DomainResource(pulumi.CustomResource):
             if rs_type is None and not opts.urn:
                 raise TypeError("Missing required property 'rs_type'")
             __props__.__dict__["rs_type"] = rs_type
+            __props__.__dict__["white_lists"] = white_lists
             __props__.__dict__["cname"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cert", "certRegion", "key"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cert", "certIdentifier", "certRegion", "key"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DomainResource, __self__).__init__(
             'alicloud:ddos/domainResource:DomainResource',
@@ -832,6 +1093,11 @@ class DomainResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
+            ai_template: Optional[pulumi.Input[_builtins.str]] = None,
+            black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
+            cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
             cert: Optional[pulumi.Input[_builtins.str]] = None,
             cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
             cert_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -845,7 +1111,8 @@ class DomainResource(pulumi.CustomResource):
             ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rs_type: Optional[pulumi.Input[_builtins.int]] = None) -> 'DomainResource':
+            rs_type: Optional[pulumi.Input[_builtins.int]] = None,
+            white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DomainResource':
         """
         Get an existing DomainResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -853,6 +1120,20 @@ class DomainResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] ai_mode: the mode of the Intelligent Protection policy.
+               - watch: the Warning mode
+               - defense: the Defense mode
+        :param pulumi.Input[_builtins.str] ai_template: the level of the Intelligent Protection policy.
+               - level30: the Low level
+               - level60: the Normal level
+               - level90: the Strict level
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] black_lists: ip blacklist
+        :param pulumi.Input[_builtins.int] bw_list_enable: The status of the blacklist and whitelist feature. Valid values:
+               - 0: Disabled
+               - 1: Enabled
+        :param pulumi.Input[_builtins.str] cc_global_switch: CC safety protection switch.
+               - 0: Disabled
+               - 1: Enabled
         :param pulumi.Input[_builtins.str] cert: The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -895,11 +1176,17 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DomainResourceState.__new__(_DomainResourceState)
 
+        __props__.__dict__["ai_mode"] = ai_mode
+        __props__.__dict__["ai_template"] = ai_template
+        __props__.__dict__["black_lists"] = black_lists
+        __props__.__dict__["bw_list_enable"] = bw_list_enable
+        __props__.__dict__["cc_global_switch"] = cc_global_switch
         __props__.__dict__["cert"] = cert
         __props__.__dict__["cert_identifier"] = cert_identifier
         __props__.__dict__["cert_name"] = cert_name
@@ -914,7 +1201,57 @@ class DomainResource(pulumi.CustomResource):
         __props__.__dict__["proxy_types"] = proxy_types
         __props__.__dict__["real_servers"] = real_servers
         __props__.__dict__["rs_type"] = rs_type
+        __props__.__dict__["white_lists"] = white_lists
         return DomainResource(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="aiMode")
+    def ai_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        the mode of the Intelligent Protection policy.
+        - watch: the Warning mode
+        - defense: the Defense mode
+        """
+        return pulumi.get(self, "ai_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="aiTemplate")
+    def ai_template(self) -> pulumi.Output[_builtins.str]:
+        """
+        the level of the Intelligent Protection policy.
+        - level30: the Low level
+        - level60: the Normal level
+        - level90: the Strict level
+        """
+        return pulumi.get(self, "ai_template")
+
+    @_builtins.property
+    @pulumi.getter(name="blackLists")
+    def black_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        ip blacklist
+        """
+        return pulumi.get(self, "black_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="bwListEnable")
+    def bw_list_enable(self) -> pulumi.Output[_builtins.int]:
+        """
+        The status of the blacklist and whitelist feature. Valid values:
+        - 0: Disabled
+        - 1: Enabled
+        """
+        return pulumi.get(self, "bw_list_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="ccGlobalSwitch")
+    def cc_global_switch(self) -> pulumi.Output[_builtins.str]:
+        """
+        CC safety protection switch.
+        - 0: Disabled
+        - 1: Enabled
+        """
+        return pulumi.get(self, "cc_global_switch")
 
     @_builtins.property
     @pulumi.getter
@@ -1055,4 +1392,12 @@ class DomainResource(pulumi.CustomResource):
         The address type of the origin server. Valid values:
         """
         return pulumi.get(self, "rs_type")
+
+    @_builtins.property
+    @pulumi.getter(name="whiteLists")
+    def white_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        IP whitelist list.
+        """
+        return pulumi.get(self, "white_lists")
 

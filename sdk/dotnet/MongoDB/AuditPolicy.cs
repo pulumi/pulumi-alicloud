@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// Mongodb Audit Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;db_instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/auditPolicy:AuditPolicy")]
@@ -32,6 +32,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
         /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
@@ -98,6 +104,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
+        /// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
         /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         /// </summary>
         [Input("storagePeriod")]
@@ -122,6 +134,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
+
+        /// <summary>
+        /// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.

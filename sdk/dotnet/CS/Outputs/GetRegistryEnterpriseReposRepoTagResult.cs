@@ -14,31 +14,31 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetRegistryEnterpriseReposRepoTagResult
     {
         /// <summary>
-        /// Digest of this image.
+        /// The digest of the image.
         /// </summary>
         public readonly string Digest;
         /// <summary>
-        /// Create time of this image, unix time in nanoseconds.
+        /// The time when the image was created.
         /// </summary>
         public readonly string ImageCreate;
         /// <summary>
-        /// Id of this image.
+        /// The ID of the image.
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// Status of this image, in bytes.
+        /// The size of the image.
         /// </summary>
         public readonly int ImageSize;
         /// <summary>
-        /// Last update time of this image, unix time in nanoseconds.
+        /// The time when the image was last updated.
         /// </summary>
         public readonly string ImageUpdate;
         /// <summary>
-        /// Status of this image.
+        /// The status of the image.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Tag of this image.
+        /// The tag of the image.
         /// </summary>
         public readonly string Tag;
 

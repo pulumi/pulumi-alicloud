@@ -10,12 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.alikafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
+    /// Provides a Alikafka Sasl Acl resource.
+    /// 
+    /// Kafka access control.
+    /// 
+    /// For information about Alikafka Sasl Acl and how to use it, see [What is Sasl Acl](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateAcl).
     /// 
     /// &gt; **NOTE:** Available since v1.66.0.
-    /// 
-    /// &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
-    /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
     /// 
     /// ## Example Usage
     /// 
@@ -32,6 +33,12 @@ namespace Pulumi.AliCloud.alikafka
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -54,12 +61,6 @@ namespace Pulumi.AliCloud.alikafka
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
-    ///     });
-    /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Alikafka.Instance("default", new()
@@ -108,53 +109,90 @@ namespace Pulumi.AliCloud.alikafka
     /// 
     /// ## Import
     /// 
-    /// ALIKAFKA GROUP can be imported using the id, e.g.
+    /// Alikafka Sasl Acl can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+    /// $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example &lt;instance_id&gt;:&lt;username&gt;:&lt;acl_resource_type&gt;:&lt;acl_resource_name&gt;:&lt;acl_resource_pattern_type&gt;:&lt;acl_operation_type&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/saslAcl:SaslAcl")]
     public partial class SaslAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Operation type for this acl. The operation type can only be "Write" and "Read".
+        /// Operation type. Valid values:
+        /// - `Write`: write
+        /// - `Read`: read
+        /// - `Describe`: read TransactionalId
+        /// - `IdempotentWrite`: idempotent write to Cluster
+        /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
         /// </summary>
         [Output("aclOperationType")]
         public Output<string> AclOperationType { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for this acl. The resource name should be a topic or consumer group name.
+        /// Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+        /// - `Write`: write
+        /// - `Read`: read
+        /// - `Describe`: read TransactionalId
+        /// - `IdempotentWrite`: idempotent write to Cluster
+        /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        /// &gt; **NOTE:**  `AclOperationTypes` is only supported for Serverless instances.
+        /// </summary>
+        [Output("aclOperationTypes")]
+        public Output<string?> AclOperationTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// Authorization method. Value:
+        /// - `DENY`: deny.
+        /// - `ALLOW`: allow.
+        /// &gt; **NOTE:**  `AclPermissionType` is only supported for Serverless instances.
+        /// </summary>
+        [Output("aclPermissionType")]
+        public Output<string> AclPermissionType { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name.
+        /// - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+        /// - You can use an asterisk (*) to represent all resources of this type.
         /// </summary>
         [Output("aclResourceName")]
         public Output<string> AclResourceName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+        /// Match the pattern. Valid values:
+        /// - `LITERAL`: exact match
+        /// - `PREFIXED`: prefix matching
         /// </summary>
         [Output("aclResourcePatternType")]
         public Output<string> AclResourcePatternType { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        /// The resource type. Valid values:
+        /// - `Topic`: the message Topic.
+        /// - `Group`: consumer Group.
+        /// - `Cluster`: the instance.
+        /// - `TransactionalId`: transaction ID.
         /// </summary>
         [Output("aclResourceType")]
         public Output<string> AclResourceType { get; private set; } = null!;
 
         /// <summary>
         /// The host of the acl.
+        /// &gt; **NOTE:** From version 1.270.0, `Host` can be set.
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the groups.
+        /// The instance ID.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        /// The user name.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -206,37 +244,80 @@ namespace Pulumi.AliCloud.alikafka
     public sealed class SaslAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Operation type for this acl. The operation type can only be "Write" and "Read".
+        /// Operation type. Valid values:
+        /// - `Write`: write
+        /// - `Read`: read
+        /// - `Describe`: read TransactionalId
+        /// - `IdempotentWrite`: idempotent write to Cluster
+        /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
         /// </summary>
         [Input("aclOperationType", required: true)]
         public Input<string> AclOperationType { get; set; } = null!;
 
         /// <summary>
-        /// Resource name for this acl. The resource name should be a topic or consumer group name.
+        /// Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+        /// - `Write`: write
+        /// - `Read`: read
+        /// - `Describe`: read TransactionalId
+        /// - `IdempotentWrite`: idempotent write to Cluster
+        /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        /// &gt; **NOTE:**  `AclOperationTypes` is only supported for Serverless instances.
+        /// </summary>
+        [Input("aclOperationTypes")]
+        public Input<string>? AclOperationTypes { get; set; }
+
+        /// <summary>
+        /// Authorization method. Value:
+        /// - `DENY`: deny.
+        /// - `ALLOW`: allow.
+        /// &gt; **NOTE:**  `AclPermissionType` is only supported for Serverless instances.
+        /// </summary>
+        [Input("aclPermissionType")]
+        public Input<string>? AclPermissionType { get; set; }
+
+        /// <summary>
+        /// The resource name.
+        /// - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+        /// - You can use an asterisk (*) to represent all resources of this type.
         /// </summary>
         [Input("aclResourceName", required: true)]
         public Input<string> AclResourceName { get; set; } = null!;
 
         /// <summary>
-        /// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+        /// Match the pattern. Valid values:
+        /// - `LITERAL`: exact match
+        /// - `PREFIXED`: prefix matching
         /// </summary>
         [Input("aclResourcePatternType", required: true)]
         public Input<string> AclResourcePatternType { get; set; } = null!;
 
         /// <summary>
-        /// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        /// The resource type. Valid values:
+        /// - `Topic`: the message Topic.
+        /// - `Group`: consumer Group.
+        /// - `Cluster`: the instance.
+        /// - `TransactionalId`: transaction ID.
         /// </summary>
         [Input("aclResourceType", required: true)]
         public Input<string> AclResourceType { get; set; } = null!;
 
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the groups.
+        /// The host of the acl.
+        /// &gt; **NOTE:** From version 1.270.0, `Host` can be set.
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// The instance ID.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        /// The user name.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -250,43 +331,80 @@ namespace Pulumi.AliCloud.alikafka
     public sealed class SaslAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Operation type for this acl. The operation type can only be "Write" and "Read".
+        /// Operation type. Valid values:
+        /// - `Write`: write
+        /// - `Read`: read
+        /// - `Describe`: read TransactionalId
+        /// - `IdempotentWrite`: idempotent write to Cluster
+        /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
         /// </summary>
         [Input("aclOperationType")]
         public Input<string>? AclOperationType { get; set; }
 
         /// <summary>
-        /// Resource name for this acl. The resource name should be a topic or consumer group name.
+        /// Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+        /// - `Write`: write
+        /// - `Read`: read
+        /// - `Describe`: read TransactionalId
+        /// - `IdempotentWrite`: idempotent write to Cluster
+        /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        /// &gt; **NOTE:**  `AclOperationTypes` is only supported for Serverless instances.
+        /// </summary>
+        [Input("aclOperationTypes")]
+        public Input<string>? AclOperationTypes { get; set; }
+
+        /// <summary>
+        /// Authorization method. Value:
+        /// - `DENY`: deny.
+        /// - `ALLOW`: allow.
+        /// &gt; **NOTE:**  `AclPermissionType` is only supported for Serverless instances.
+        /// </summary>
+        [Input("aclPermissionType")]
+        public Input<string>? AclPermissionType { get; set; }
+
+        /// <summary>
+        /// The resource name.
+        /// - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+        /// - You can use an asterisk (*) to represent all resources of this type.
         /// </summary>
         [Input("aclResourceName")]
         public Input<string>? AclResourceName { get; set; }
 
         /// <summary>
-        /// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+        /// Match the pattern. Valid values:
+        /// - `LITERAL`: exact match
+        /// - `PREFIXED`: prefix matching
         /// </summary>
         [Input("aclResourcePatternType")]
         public Input<string>? AclResourcePatternType { get; set; }
 
         /// <summary>
-        /// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        /// The resource type. Valid values:
+        /// - `Topic`: the message Topic.
+        /// - `Group`: consumer Group.
+        /// - `Cluster`: the instance.
+        /// - `TransactionalId`: transaction ID.
         /// </summary>
         [Input("aclResourceType")]
         public Input<string>? AclResourceType { get; set; }
 
         /// <summary>
         /// The host of the acl.
+        /// &gt; **NOTE:** From version 1.270.0, `Host` can be set.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the groups.
+        /// The instance ID.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        /// The user name.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

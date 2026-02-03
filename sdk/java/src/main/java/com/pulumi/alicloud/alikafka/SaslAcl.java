@@ -11,15 +11,17 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
+ * Provides a Alikafka Sasl Acl resource.
+ * 
+ * Kafka access control.
+ * 
+ * For information about Alikafka Sasl Acl and how to use it, see [What is Sasl Acl](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateAcl).
  * 
  * &gt; **NOTE:** Available since v1.66.0.
- * 
- * &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  * 
  * ## Example Usage
  * 
@@ -32,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -40,8 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.alikafka.Instance;
  * import com.pulumi.alicloud.alikafka.InstanceArgs;
  * import com.pulumi.alicloud.alikafka.Topic;
@@ -65,6 +67,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -83,11 +90,6 @@ import javax.annotation.Nullable;
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
- *             .build());
- * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -134,66 +136,142 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ALIKAFKA GROUP can be imported using the id, e.g.
+ * Alikafka Sasl Acl can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+ * $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example &lt;instance_id&gt;:&lt;username&gt;:&lt;acl_resource_type&gt;:&lt;acl_resource_name&gt;:&lt;acl_resource_pattern_type&gt;:&lt;acl_operation_type&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:alikafka/saslAcl:SaslAcl")
 public class SaslAcl extends com.pulumi.resources.CustomResource {
     /**
-     * Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
+     * Operation type. Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      * 
      */
     @Export(name="aclOperationType", refs={String.class}, tree="[0]")
     private Output<String> aclOperationType;
 
     /**
-     * @return Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
+     * @return Operation type. Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      * 
      */
     public Output<String> aclOperationType() {
         return this.aclOperationType;
     }
     /**
-     * Resource name for this acl. The resource name should be a topic or consumer group name.
+     * Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
+     * 
+     */
+    @Export(name="aclOperationTypes", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> aclOperationTypes;
+
+    /**
+     * @return Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
+     * 
+     */
+    public Output<Optional<String>> aclOperationTypes() {
+        return Codegen.optional(this.aclOperationTypes);
+    }
+    /**
+     * Authorization method. Value:
+     * - `DENY`: deny.
+     * - `ALLOW`: allow.
+     * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
+     * 
+     */
+    @Export(name="aclPermissionType", refs={String.class}, tree="[0]")
+    private Output<String> aclPermissionType;
+
+    /**
+     * @return Authorization method. Value:
+     * - `DENY`: deny.
+     * - `ALLOW`: allow.
+     * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
+     * 
+     */
+    public Output<String> aclPermissionType() {
+        return this.aclPermissionType;
+    }
+    /**
+     * The resource name.
+     * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+     * - You can use an asterisk (*) to represent all resources of this type.
      * 
      */
     @Export(name="aclResourceName", refs={String.class}, tree="[0]")
     private Output<String> aclResourceName;
 
     /**
-     * @return Resource name for this acl. The resource name should be a topic or consumer group name.
+     * @return The resource name.
+     * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+     * - You can use an asterisk (*) to represent all resources of this type.
      * 
      */
     public Output<String> aclResourceName() {
         return this.aclResourceName;
     }
     /**
-     * Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
+     * Match the pattern. Valid values:
+     * - `LITERAL`: exact match
+     * - `PREFIXED`: prefix matching
      * 
      */
     @Export(name="aclResourcePatternType", refs={String.class}, tree="[0]")
     private Output<String> aclResourcePatternType;
 
     /**
-     * @return Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
+     * @return Match the pattern. Valid values:
+     * - `LITERAL`: exact match
+     * - `PREFIXED`: prefix matching
      * 
      */
     public Output<String> aclResourcePatternType() {
         return this.aclResourcePatternType;
     }
     /**
-     * Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
+     * The resource type. Valid values:
+     * - `Topic`: the message Topic.
+     * - `Group`: consumer Group.
+     * - `Cluster`: the instance.
+     * - `TransactionalId`: transaction ID.
      * 
      */
     @Export(name="aclResourceType", refs={String.class}, tree="[0]")
     private Output<String> aclResourceType;
 
     /**
-     * @return Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
+     * @return The resource type. Valid values:
+     * - `Topic`: the message Topic.
+     * - `Group`: consumer Group.
+     * - `Cluster`: the instance.
+     * - `TransactionalId`: transaction ID.
      * 
      */
     public Output<String> aclResourceType() {
@@ -201,6 +279,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
     }
     /**
      * The host of the acl.
+     * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
@@ -208,34 +287,35 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The host of the acl.
+     * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
     public Output<String> host() {
         return this.host;
     }
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return ID of the ALIKAFKA Instance that owns the groups.
+     * @return The instance ID.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+     * The user name.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+     * @return The user name.
      * 
      */
     public Output<String> username() {

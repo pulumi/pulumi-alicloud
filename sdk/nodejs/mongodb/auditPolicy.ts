@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Mongodb Audit Policy can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <id>
+ * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
  * ```
  */
 export class AuditPolicy extends pulumi.CustomResource {
@@ -50,6 +50,10 @@ export class AuditPolicy extends pulumi.CustomResource {
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
+     * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     */
+    declare public readonly filter: pulumi.Output<string>;
+    /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
     declare public readonly storagePeriod: pulumi.Output<number>;
@@ -69,6 +73,7 @@ export class AuditPolicy extends pulumi.CustomResource {
             const state = argsOrState as AuditPolicyState | undefined;
             resourceInputs["auditStatus"] = state?.auditStatus;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["filter"] = state?.filter;
             resourceInputs["storagePeriod"] = state?.storagePeriod;
         } else {
             const args = argsOrState as AuditPolicyArgs | undefined;
@@ -80,6 +85,7 @@ export class AuditPolicy extends pulumi.CustomResource {
             }
             resourceInputs["auditStatus"] = args?.auditStatus;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["filter"] = args?.filter;
             resourceInputs["storagePeriod"] = args?.storagePeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -100,6 +106,10 @@ export interface AuditPolicyState {
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
+     * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     */
+    filter?: pulumi.Input<string>;
+    /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
     storagePeriod?: pulumi.Input<number>;
@@ -117,6 +127,10 @@ export interface AuditPolicyArgs {
      * Database Instance Id
      */
     dbInstanceId: pulumi.Input<string>;
+    /**
+     * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     */
+    filter?: pulumi.Input<string>;
     /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */

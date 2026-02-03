@@ -109,21 +109,21 @@ import javax.annotation.Nullable;
  * Elasticsearch Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:elasticsearch/instance:Instance example &lt;id&gt;
+ * $ pulumi import alicloud:elasticsearch/instance:Instance example &lt;instance_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:elasticsearch/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Schema Type:
+     * Schema Type:.
      * 
      */
     @Export(name="archType", refs={String.class}, tree="[0]")
     private Output<String> archType;
 
     /**
-     * @return Schema Type:
+     * @return Schema Type:.
      * 
      */
     public Output<String> archType() {
@@ -194,14 +194,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.clientNodeSpec;
     }
     /**
-     * Instance creation time
+     * Instance creation time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Instance creation time
+     * @return Instance creation time.
      * 
      */
     public Output<String> createTime() {
@@ -344,14 +344,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Elasticsearch cluster private domain name
+     * Elasticsearch cluster private domain name.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return Elasticsearch cluster private domain name
+     * @return Elasticsearch cluster private domain name.
      * 
      */
     public Output<String> domain() {
@@ -468,14 +468,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaConfiguration;
     }
     /**
-     * Kibana address
+     * Kibana address.
      * 
      */
     @Export(name="kibanaDomain", refs={String.class}, tree="[0]")
     private Output<String> kibanaDomain;
 
     /**
-     * @return Kibana address
+     * @return Kibana address.
      * 
      */
     public Output<String> kibanaDomain() {

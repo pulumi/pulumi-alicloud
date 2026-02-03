@@ -225,7 +225,7 @@ class BackupPolicy(pulumi.CustomResource):
         Click House Enterprise Db Cluster Backup Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example <id>
+        $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example <db_instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -299,7 +299,7 @@ class BackupPolicy(pulumi.CustomResource):
         Click House Enterprise Db Cluster Backup Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example <id>
+        $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example <db_instance_id>
         ```
 
         :param str resource_name: The name of the resource.

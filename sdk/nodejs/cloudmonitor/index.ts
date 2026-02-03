@@ -15,6 +15,11 @@ export const getServiceMetricAlarmRules: typeof import("./getServiceMetricAlarmR
 export const getServiceMetricAlarmRulesOutput: typeof import("./getServiceMetricAlarmRules").getServiceMetricAlarmRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceMetricAlarmRules","getServiceMetricAlarmRulesOutput"], () => require("./getServiceMetricAlarmRules"));
 
+export { ServiceAgentConfigArgs, ServiceAgentConfigState } from "./serviceAgentConfig";
+export type ServiceAgentConfig = import("./serviceAgentConfig").ServiceAgentConfig;
+export const ServiceAgentConfig: typeof import("./serviceAgentConfig").ServiceAgentConfig = null as any;
+utilities.lazyLoad(exports, ["ServiceAgentConfig"], () => require("./serviceAgentConfig"));
+
 export { ServiceBasicPublicArgs, ServiceBasicPublicState } from "./serviceBasicPublic";
 export type ServiceBasicPublic = import("./serviceBasicPublic").ServiceBasicPublic;
 export const ServiceBasicPublic: typeof import("./serviceBasicPublic").ServiceBasicPublic = null as any;
@@ -45,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig":
+                return new ServiceAgentConfig(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic":
                 return new ServiceBasicPublic(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic":
@@ -60,6 +67,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceAgentConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceBasicPublic", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceEnterprisePublic", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceGroupMonitoringAgentProcess", _module)

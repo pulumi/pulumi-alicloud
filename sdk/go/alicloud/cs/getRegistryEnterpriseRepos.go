@@ -11,11 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+// This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.87.0+
+// > **NOTE:** Available since v1.87.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -24,21 +26,51 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
-//			myRepos, err := cs.GetRegistryEnterpriseRepos(ctx, &cs.GetRegistryEnterpriseReposArgs{
-//				InstanceId: "cri-xx",
-//				NameRegex:  pulumi.StringRef("my-repos"),
-//				OutputFile: pulumi.StringRef("my-repo-json"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cs.GetRegistryEnterpriseInstances(ctx, &cs.GetRegistryEnterpriseInstancesArgs{
+//				NameRegex: pulumi.StringRef("default-nodeleting"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("output", myRepos.Repos)
+//			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        pulumi.String(_default.Ids[0]),
+//				Name:              pulumi.String(name),
+//				AutoCreate:        pulumi.Bool(true),
+//				DefaultVisibility: pulumi.String("PRIVATE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "default", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: defaultRegistryEnterpriseNamespace.InstanceId,
+//				Namespace:  defaultRegistryEnterpriseNamespace.Name,
+//				Name:       pulumi.String(name),
+//				RepoType:   pulumi.String("PRIVATE"),
+//				Summary:    pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := cs.GetRegistryEnterpriseReposOutput(ctx, cs.GetRegistryEnterpriseReposOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultRegistryEnterpriseRepo.RepoId,
+//				},
+//				InstanceId: defaultRegistryEnterpriseRepo.InstanceId,
+//			}, nil)
+//			ctx.Export("crEeReposId0", ids.ApplyT(func(ids cs.GetRegistryEnterpriseReposResult) (*string, error) {
+//				return &ids.Repos[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -56,15 +88,15 @@ func GetRegistryEnterpriseRepos(ctx *pulumi.Context, args *GetRegistryEnterprise
 
 // A collection of arguments for invoking getRegistryEnterpriseRepos.
 type GetRegistryEnterpriseReposArgs struct {
-	// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of ids to filter results by repository id.
+	// A list of Repository IDs.
 	Ids []string `pulumi:"ids"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry instance.
 	InstanceId string `pulumi:"instanceId"`
-	// A regex string to filter results by repository name.
+	// A regex string to filter results by Repository name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	// The name of the namespace to which the Repository belongs.
 	Namespace *string `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -74,18 +106,17 @@ type GetRegistryEnterpriseReposArgs struct {
 type GetRegistryEnterpriseReposResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry instance to which the Repository belongs.
 	InstanceId string  `pulumi:"instanceId"`
 	NameRegex  *string `pulumi:"nameRegex"`
-	// A list of repository names.
+	// A list of Repository names.
 	Names []string `pulumi:"names"`
-	// Name of Container Registry Enterprise Edition namespace where repo is located.
+	// The name of the namespace to which the Repository belongs.
 	Namespace  *string `pulumi:"namespace"`
 	OutputFile *string `pulumi:"outputFile"`
-	// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+	// A list of Repositories. Each element contains the following attributes:
 	Repos []GetRegistryEnterpriseReposRepo `pulumi:"repos"`
 }
 
@@ -100,15 +131,15 @@ func GetRegistryEnterpriseReposOutput(ctx *pulumi.Context, args GetRegistryEnter
 
 // A collection of arguments for invoking getRegistryEnterpriseRepos.
 type GetRegistryEnterpriseReposOutputArgs struct {
-	// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// A list of ids to filter results by repository id.
+	// A list of Repository IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// A regex string to filter results by repository name.
+	// A regex string to filter results by Repository name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	// The name of the namespace to which the Repository belongs.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -142,12 +173,11 @@ func (o GetRegistryEnterpriseReposResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
 func (o GetRegistryEnterpriseReposResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// ID of Container Registry Enterprise Edition instance.
+// The ID of the Container Registry instance to which the Repository belongs.
 func (o GetRegistryEnterpriseReposResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -156,12 +186,12 @@ func (o GetRegistryEnterpriseReposResultOutput) NameRegex() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of repository names.
+// A list of Repository names.
 func (o GetRegistryEnterpriseReposResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
-// Name of Container Registry Enterprise Edition namespace where repo is located.
+// The name of the namespace to which the Repository belongs.
 func (o GetRegistryEnterpriseReposResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -170,7 +200,7 @@ func (o GetRegistryEnterpriseReposResultOutput) OutputFile() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+// A list of Repositories. Each element contains the following attributes:
 func (o GetRegistryEnterpriseReposResultOutput) Repos() GetRegistryEnterpriseReposRepoArrayOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) []GetRegistryEnterpriseReposRepo { return v.Repos }).(GetRegistryEnterpriseReposRepoArrayOutput)
 }

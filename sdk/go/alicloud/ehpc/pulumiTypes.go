@@ -616,6 +616,8 @@ func (o ClusterV2AddonArrayOutput) Index(i pulumi.IntInput) ClusterV2AddonOutput
 }
 
 type ClusterV2ClusterCredentials struct {
+	// The SSH key of root of the cluster node.
+	KeyPairName *string `pulumi:"keyPairName"`
 	// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
 	Password *string `pulumi:"password"`
 }
@@ -632,6 +634,8 @@ type ClusterV2ClusterCredentialsInput interface {
 }
 
 type ClusterV2ClusterCredentialsArgs struct {
+	// The SSH key of root of the cluster node.
+	KeyPairName pulumi.StringPtrInput `pulumi:"keyPairName"`
 	// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
 	Password pulumi.StringPtrInput `pulumi:"password"`
 }
@@ -713,6 +717,11 @@ func (o ClusterV2ClusterCredentialsOutput) ToClusterV2ClusterCredentialsPtrOutpu
 	}).(ClusterV2ClusterCredentialsPtrOutput)
 }
 
+// The SSH key of root of the cluster node.
+func (o ClusterV2ClusterCredentialsOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ClusterCredentials) *string { return v.KeyPairName }).(pulumi.StringPtrOutput)
+}
+
 // The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
 func (o ClusterV2ClusterCredentialsOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterV2ClusterCredentials) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -740,6 +749,16 @@ func (o ClusterV2ClusterCredentialsPtrOutput) Elem() ClusterV2ClusterCredentials
 		var ret ClusterV2ClusterCredentials
 		return ret
 	}).(ClusterV2ClusterCredentialsOutput)
+}
+
+// The SSH key of root of the cluster node.
+func (o ClusterV2ClusterCredentialsPtrOutput) KeyPairName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ClusterCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyPairName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /

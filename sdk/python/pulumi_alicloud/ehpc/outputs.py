@@ -338,13 +338,42 @@ class ClusterV2Addon(dict):
 
 @pulumi.output_type
 class ClusterV2ClusterCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyPairName":
+            suggest = "key_pair_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2ClusterCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2ClusterCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2ClusterCredentials.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 key_pair_name: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None):
         """
+        :param _builtins.str key_pair_name: The SSH key of root of the cluster node.
         :param _builtins.str password: The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
         """
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+
+    @_builtins.property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[_builtins.str]:
+        """
+        The SSH key of root of the cluster node.
+        """
+        return pulumi.get(self, "key_pair_name")
 
     @_builtins.property
     @pulumi.getter

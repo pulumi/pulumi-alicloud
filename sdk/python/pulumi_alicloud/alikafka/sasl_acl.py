@@ -24,15 +24,46 @@ class SaslAclArgs:
                  acl_resource_pattern_type: pulumi.Input[_builtins.str],
                  acl_resource_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 username: pulumi.Input[_builtins.str]):
+                 username: pulumi.Input[_builtins.str],
+                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SaslAcl resource.
-        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
-        :param pulumi.Input[_builtins.str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
-        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[_builtins.str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
-        :param pulumi.Input[_builtins.str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
+               - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+               - You can use an asterisk (*) to represent all resources of this type.
+        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Match the pattern. Valid values:
+               - `LITERAL`: exact match
+               - `PREFIXED`: prefix matching
+        :param pulumi.Input[_builtins.str] acl_resource_type: The resource type. Valid values:
+               - `Topic`: the message Topic.
+               - `Group`: consumer Group.
+               - `Cluster`: the instance.
+               - `TransactionalId`: transaction ID.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
+        :param pulumi.Input[_builtins.str] username: The user name.
+        :param pulumi.Input[_builtins.str] acl_operation_types: Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
+               - `DENY`: deny.
+               - `ALLOW`: allow.
+               > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] host: The host of the acl.
+               > **NOTE:** From version 1.270.0, `host` can be set.
         """
         pulumi.set(__self__, "acl_operation_type", acl_operation_type)
         pulumi.set(__self__, "acl_resource_name", acl_resource_name)
@@ -40,12 +71,24 @@ class SaslAclArgs:
         pulumi.set(__self__, "acl_resource_type", acl_resource_type)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "username", username)
+        if acl_operation_types is not None:
+            pulumi.set(__self__, "acl_operation_types", acl_operation_types)
+        if acl_permission_type is not None:
+            pulumi.set(__self__, "acl_permission_type", acl_permission_type)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
 
     @_builtins.property
     @pulumi.getter(name="aclOperationType")
     def acl_operation_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Operation type for this acl. The operation type can only be "Write" and "Read".
+        Operation type. Valid values:
+        - `Write`: write
+        - `Read`: read
+        - `Describe`: read TransactionalId
+        - `IdempotentWrite`: idempotent write to Cluster
+        - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
         """
         return pulumi.get(self, "acl_operation_type")
 
@@ -57,7 +100,9 @@ class SaslAclArgs:
     @pulumi.getter(name="aclResourceName")
     def acl_resource_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource name for this acl. The resource name should be a topic or consumer group name.
+        The resource name.
+        - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+        - You can use an asterisk (*) to represent all resources of this type.
         """
         return pulumi.get(self, "acl_resource_name")
 
@@ -69,7 +114,9 @@ class SaslAclArgs:
     @pulumi.getter(name="aclResourcePatternType")
     def acl_resource_pattern_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+        Match the pattern. Valid values:
+        - `LITERAL`: exact match
+        - `PREFIXED`: prefix matching
         """
         return pulumi.get(self, "acl_resource_pattern_type")
 
@@ -81,7 +128,11 @@ class SaslAclArgs:
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        The resource type. Valid values:
+        - `Topic`: the message Topic.
+        - `Group`: consumer Group.
+        - `Cluster`: the instance.
+        - `TransactionalId`: transaction ID.
         """
         return pulumi.get(self, "acl_resource_type")
 
@@ -93,7 +144,7 @@ class SaslAclArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the ALIKAFKA Instance that owns the groups.
+        The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -105,7 +156,7 @@ class SaslAclArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        The user name.
         """
         return pulumi.get(self, "username")
 
@@ -113,11 +164,60 @@ class SaslAclArgs:
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
 
+    @_builtins.property
+    @pulumi.getter(name="aclOperationTypes")
+    def acl_operation_types(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+        - `Write`: write
+        - `Read`: read
+        - `Describe`: read TransactionalId
+        - `IdempotentWrite`: idempotent write to Cluster
+        - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        """
+        return pulumi.get(self, "acl_operation_types")
+
+    @acl_operation_types.setter
+    def acl_operation_types(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "acl_operation_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPermissionType")
+    def acl_permission_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Authorization method. Value:
+        - `DENY`: deny.
+        - `ALLOW`: allow.
+        > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        """
+        return pulumi.get(self, "acl_permission_type")
+
+    @acl_permission_type.setter
+    def acl_permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "acl_permission_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The host of the acl.
+        > **NOTE:** From version 1.270.0, `host` can be set.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
 
 @pulumi.input_type
 class _SaslAclState:
     def __init__(__self__, *,
                  acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -126,16 +226,47 @@ class _SaslAclState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SaslAcl resources.
-        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
-        :param pulumi.Input[_builtins.str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
-        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[_builtins.str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_operation_types: Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
+               - `DENY`: deny.
+               - `ALLOW`: allow.
+               > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
+               - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+               - You can use an asterisk (*) to represent all resources of this type.
+        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Match the pattern. Valid values:
+               - `LITERAL`: exact match
+               - `PREFIXED`: prefix matching
+        :param pulumi.Input[_builtins.str] acl_resource_type: The resource type. Valid values:
+               - `Topic`: the message Topic.
+               - `Group`: consumer Group.
+               - `Cluster`: the instance.
+               - `TransactionalId`: transaction ID.
         :param pulumi.Input[_builtins.str] host: The host of the acl.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
-        :param pulumi.Input[_builtins.str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+               > **NOTE:** From version 1.270.0, `host` can be set.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
+        :param pulumi.Input[_builtins.str] username: The user name.
         """
         if acl_operation_type is not None:
             pulumi.set(__self__, "acl_operation_type", acl_operation_type)
+        if acl_operation_types is not None:
+            pulumi.set(__self__, "acl_operation_types", acl_operation_types)
+        if acl_permission_type is not None:
+            pulumi.set(__self__, "acl_permission_type", acl_permission_type)
         if acl_resource_name is not None:
             pulumi.set(__self__, "acl_resource_name", acl_resource_name)
         if acl_resource_pattern_type is not None:
@@ -153,7 +284,13 @@ class _SaslAclState:
     @pulumi.getter(name="aclOperationType")
     def acl_operation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operation type for this acl. The operation type can only be "Write" and "Read".
+        Operation type. Valid values:
+        - `Write`: write
+        - `Read`: read
+        - `Describe`: read TransactionalId
+        - `IdempotentWrite`: idempotent write to Cluster
+        - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
         """
         return pulumi.get(self, "acl_operation_type")
 
@@ -162,10 +299,46 @@ class _SaslAclState:
         pulumi.set(self, "acl_operation_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="aclOperationTypes")
+    def acl_operation_types(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+        - `Write`: write
+        - `Read`: read
+        - `Describe`: read TransactionalId
+        - `IdempotentWrite`: idempotent write to Cluster
+        - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        """
+        return pulumi.get(self, "acl_operation_types")
+
+    @acl_operation_types.setter
+    def acl_operation_types(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "acl_operation_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPermissionType")
+    def acl_permission_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Authorization method. Value:
+        - `DENY`: deny.
+        - `ALLOW`: allow.
+        > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        """
+        return pulumi.get(self, "acl_permission_type")
+
+    @acl_permission_type.setter
+    def acl_permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "acl_permission_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="aclResourceName")
     def acl_resource_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource name for this acl. The resource name should be a topic or consumer group name.
+        The resource name.
+        - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+        - You can use an asterisk (*) to represent all resources of this type.
         """
         return pulumi.get(self, "acl_resource_name")
 
@@ -177,7 +350,9 @@ class _SaslAclState:
     @pulumi.getter(name="aclResourcePatternType")
     def acl_resource_pattern_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+        Match the pattern. Valid values:
+        - `LITERAL`: exact match
+        - `PREFIXED`: prefix matching
         """
         return pulumi.get(self, "acl_resource_pattern_type")
 
@@ -189,7 +364,11 @@ class _SaslAclState:
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        The resource type. Valid values:
+        - `Topic`: the message Topic.
+        - `Group`: consumer Group.
+        - `Cluster`: the instance.
+        - `TransactionalId`: transaction ID.
         """
         return pulumi.get(self, "acl_resource_type")
 
@@ -202,6 +381,7 @@ class _SaslAclState:
     def host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The host of the acl.
+        > **NOTE:** From version 1.270.0, `host` can be set.
         """
         return pulumi.get(self, "host")
 
@@ -213,7 +393,7 @@ class _SaslAclState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the ALIKAFKA Instance that owns the groups.
+        The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -225,7 +405,7 @@ class _SaslAclState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        The user name.
         """
         return pulumi.get(self, "username")
 
@@ -241,19 +421,23 @@ class SaslAcl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
+        Provides a Alikafka Sasl Acl resource.
+
+        Kafka access control.
+
+        For information about Alikafka Sasl Acl and how to use it, see [What is Sasl Acl](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateAcl).
 
         > **NOTE:** Available since v1.66.0.
-
-        > **NOTE:**  Only the following regions support create alikafka sasl user.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
         ## Example Usage
 
@@ -268,6 +452,9 @@ class SaslAcl(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -278,9 +465,6 @@ class SaslAcl(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
         default_instance = alicloud.alikafka.Instance("default",
             name=f"{name}-{default_integer['result']}",
             partition_num=50,
@@ -314,20 +498,48 @@ class SaslAcl(pulumi.CustomResource):
 
         ## Import
 
-        ALIKAFKA GROUP can be imported using the id, e.g.
+        Alikafka Sasl Acl can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+        $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example <instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
-        :param pulumi.Input[_builtins.str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
-        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[_builtins.str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
-        :param pulumi.Input[_builtins.str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_operation_types: Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
+               - `DENY`: deny.
+               - `ALLOW`: allow.
+               > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
+               - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+               - You can use an asterisk (*) to represent all resources of this type.
+        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Match the pattern. Valid values:
+               - `LITERAL`: exact match
+               - `PREFIXED`: prefix matching
+        :param pulumi.Input[_builtins.str] acl_resource_type: The resource type. Valid values:
+               - `Topic`: the message Topic.
+               - `Group`: consumer Group.
+               - `Cluster`: the instance.
+               - `TransactionalId`: transaction ID.
+        :param pulumi.Input[_builtins.str] host: The host of the acl.
+               > **NOTE:** From version 1.270.0, `host` can be set.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
+        :param pulumi.Input[_builtins.str] username: The user name.
         """
         ...
     @overload
@@ -336,12 +548,13 @@ class SaslAcl(pulumi.CustomResource):
                  args: SaslAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
+        Provides a Alikafka Sasl Acl resource.
+
+        Kafka access control.
+
+        For information about Alikafka Sasl Acl and how to use it, see [What is Sasl Acl](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateAcl).
 
         > **NOTE:** Available since v1.66.0.
-
-        > **NOTE:**  Only the following regions support create alikafka sasl user.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
         ## Example Usage
 
@@ -356,6 +569,9 @@ class SaslAcl(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -366,9 +582,6 @@ class SaslAcl(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
         default_instance = alicloud.alikafka.Instance("default",
             name=f"{name}-{default_integer['result']}",
             partition_num=50,
@@ -402,10 +615,10 @@ class SaslAcl(pulumi.CustomResource):
 
         ## Import
 
-        ALIKAFKA GROUP can be imported using the id, e.g.
+        Alikafka Sasl Acl can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/saslAcl:SaslAcl acl alikafka_post-cn-123455abc:username:Topic:test-topic:LITERAL:Write
+        $ pulumi import alicloud:alikafka/saslAcl:SaslAcl example <instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -424,9 +637,12 @@ class SaslAcl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
                  acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -441,6 +657,8 @@ class SaslAcl(pulumi.CustomResource):
             if acl_operation_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_operation_type'")
             __props__.__dict__["acl_operation_type"] = acl_operation_type
+            __props__.__dict__["acl_operation_types"] = acl_operation_types
+            __props__.__dict__["acl_permission_type"] = acl_permission_type
             if acl_resource_name is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_name'")
             __props__.__dict__["acl_resource_name"] = acl_resource_name
@@ -450,13 +668,13 @@ class SaslAcl(pulumi.CustomResource):
             if acl_resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_type'")
             __props__.__dict__["acl_resource_type"] = acl_resource_type
+            __props__.__dict__["host"] = host
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
-            __props__.__dict__["host"] = None
         super(SaslAcl, __self__).__init__(
             'alicloud:alikafka/saslAcl:SaslAcl',
             resource_name,
@@ -468,6 +686,8 @@ class SaslAcl(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
+            acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
+            acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
             acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
             acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
             acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -481,19 +701,48 @@ class SaslAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
-        :param pulumi.Input[_builtins.str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
-        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[_builtins.str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        :param pulumi.Input[_builtins.str] acl_operation_type: Operation type. Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_operation_types: Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+               - `Write`: write
+               - `Read`: read
+               - `Describe`: read TransactionalId
+               - `IdempotentWrite`: idempotent write to Cluster
+               - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+               - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
+               - `DENY`: deny.
+               - `ALLOW`: allow.
+               > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
+               - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+               - You can use an asterisk (*) to represent all resources of this type.
+        :param pulumi.Input[_builtins.str] acl_resource_pattern_type: Match the pattern. Valid values:
+               - `LITERAL`: exact match
+               - `PREFIXED`: prefix matching
+        :param pulumi.Input[_builtins.str] acl_resource_type: The resource type. Valid values:
+               - `Topic`: the message Topic.
+               - `Group`: consumer Group.
+               - `Cluster`: the instance.
+               - `TransactionalId`: transaction ID.
         :param pulumi.Input[_builtins.str] host: The host of the acl.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
-        :param pulumi.Input[_builtins.str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+               > **NOTE:** From version 1.270.0, `host` can be set.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
+        :param pulumi.Input[_builtins.str] username: The user name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SaslAclState.__new__(_SaslAclState)
 
         __props__.__dict__["acl_operation_type"] = acl_operation_type
+        __props__.__dict__["acl_operation_types"] = acl_operation_types
+        __props__.__dict__["acl_permission_type"] = acl_permission_type
         __props__.__dict__["acl_resource_name"] = acl_resource_name
         __props__.__dict__["acl_resource_pattern_type"] = acl_resource_pattern_type
         __props__.__dict__["acl_resource_type"] = acl_resource_type
@@ -506,15 +755,49 @@ class SaslAcl(pulumi.CustomResource):
     @pulumi.getter(name="aclOperationType")
     def acl_operation_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Operation type for this acl. The operation type can only be "Write" and "Read".
+        Operation type. Valid values:
+        - `Write`: write
+        - `Read`: read
+        - `Describe`: read TransactionalId
+        - `IdempotentWrite`: idempotent write to Cluster
+        - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
         """
         return pulumi.get(self, "acl_operation_type")
+
+    @_builtins.property
+    @pulumi.getter(name="aclOperationTypes")
+    def acl_operation_types(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+        - `Write`: write
+        - `Read`: read
+        - `Describe`: read TransactionalId
+        - `IdempotentWrite`: idempotent write to Cluster
+        - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+        - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+        > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+        """
+        return pulumi.get(self, "acl_operation_types")
+
+    @_builtins.property
+    @pulumi.getter(name="aclPermissionType")
+    def acl_permission_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Authorization method. Value:
+        - `DENY`: deny.
+        - `ALLOW`: allow.
+        > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+        """
+        return pulumi.get(self, "acl_permission_type")
 
     @_builtins.property
     @pulumi.getter(name="aclResourceName")
     def acl_resource_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource name for this acl. The resource name should be a topic or consumer group name.
+        The resource name.
+        - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+        - You can use an asterisk (*) to represent all resources of this type.
         """
         return pulumi.get(self, "acl_resource_name")
 
@@ -522,7 +805,9 @@ class SaslAcl(pulumi.CustomResource):
     @pulumi.getter(name="aclResourcePatternType")
     def acl_resource_pattern_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
+        Match the pattern. Valid values:
+        - `LITERAL`: exact match
+        - `PREFIXED`: prefix matching
         """
         return pulumi.get(self, "acl_resource_pattern_type")
 
@@ -530,7 +815,11 @@ class SaslAcl(pulumi.CustomResource):
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
+        The resource type. Valid values:
+        - `Topic`: the message Topic.
+        - `Group`: consumer Group.
+        - `Cluster`: the instance.
+        - `TransactionalId`: transaction ID.
         """
         return pulumi.get(self, "acl_resource_type")
 
@@ -539,6 +828,7 @@ class SaslAcl(pulumi.CustomResource):
     def host(self) -> pulumi.Output[_builtins.str]:
         """
         The host of the acl.
+        > **NOTE:** From version 1.270.0, `host` can be set.
         """
         return pulumi.get(self, "host")
 
@@ -546,7 +836,7 @@ class SaslAcl(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the ALIKAFKA Instance that owns the groups.
+        The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -554,7 +844,7 @@ class SaslAcl(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+        The user name.
         """
         return pulumi.get(self, "username")
 

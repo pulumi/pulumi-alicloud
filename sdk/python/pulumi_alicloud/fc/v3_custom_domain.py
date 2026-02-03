@@ -23,6 +23,7 @@ class V3CustomDomainArgs:
     def __init__(__self__, *,
                  auth_config: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']] = None,
                  cert_config: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']] = None,
+                 cors_config: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']] = None,
                  custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  route_config: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']] = None,
@@ -32,6 +33,7 @@ class V3CustomDomainArgs:
         The set of arguments for constructing a V3CustomDomain resource.
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input['V3CustomDomainCertConfigArgs'] cert_config: HTTPS certificate information See `cert_config` below.
+        :param pulumi.Input['V3CustomDomainCorsConfigArgs'] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
         :param pulumi.Input[_builtins.str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         :param pulumi.Input['V3CustomDomainRouteConfigArgs'] route_config: Route matching rule configuration See `route_config` below.
@@ -42,6 +44,8 @@ class V3CustomDomainArgs:
             pulumi.set(__self__, "auth_config", auth_config)
         if cert_config is not None:
             pulumi.set(__self__, "cert_config", cert_config)
+        if cors_config is not None:
+            pulumi.set(__self__, "cors_config", cors_config)
         if custom_domain_name is not None:
             pulumi.set(__self__, "custom_domain_name", custom_domain_name)
         if protocol is not None:
@@ -76,6 +80,18 @@ class V3CustomDomainArgs:
     @cert_config.setter
     def cert_config(self, value: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="corsConfig")
+    def cors_config(self) -> Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]:
+        """
+        Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
+        """
+        return pulumi.get(self, "cors_config")
+
+    @cors_config.setter
+    def cors_config(self, value: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]):
+        pulumi.set(self, "cors_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainName")
@@ -145,6 +161,7 @@ class _V3CustomDomainState:
                  api_version: Optional[pulumi.Input[_builtins.str]] = None,
                  auth_config: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']] = None,
                  cert_config: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']] = None,
+                 cors_config: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -155,16 +172,17 @@ class _V3CustomDomainState:
                  waf_config: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3CustomDomain resources.
-        :param pulumi.Input[_builtins.str] account_id: (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
-        :param pulumi.Input[_builtins.str] api_version: (Available since v1.234.0) API version of Function Compute
+        :param pulumi.Input[_builtins.str] account_id: The ID of your Alibaba Cloud account (primary account).
+        :param pulumi.Input[_builtins.str] api_version: API version of Function Compute.
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input['V3CustomDomainCertConfigArgs'] cert_config: HTTPS certificate information See `cert_config` below.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input['V3CustomDomainCorsConfigArgs'] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
-        :param pulumi.Input[_builtins.str] last_modified_time: (Available since v1.234.0) The last time the custom domain name was Updated
+        :param pulumi.Input[_builtins.str] last_modified_time: The last time the custom domain name was Updated.
         :param pulumi.Input[_builtins.str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         :param pulumi.Input['V3CustomDomainRouteConfigArgs'] route_config: Route matching rule configuration See `route_config` below.
-        :param pulumi.Input[_builtins.str] subdomain_count: (Available since v1.234.0) Number of subdomains
+        :param pulumi.Input[_builtins.str] subdomain_count: Number of subdomains.
         :param pulumi.Input['V3CustomDomainTlsConfigArgs'] tls_config: TLS configuration information See `tls_config` below.
         :param pulumi.Input['V3CustomDomainWafConfigArgs'] waf_config: Web application firewall configuration information See `waf_config` below.
         """
@@ -176,6 +194,8 @@ class _V3CustomDomainState:
             pulumi.set(__self__, "auth_config", auth_config)
         if cert_config is not None:
             pulumi.set(__self__, "cert_config", cert_config)
+        if cors_config is not None:
+            pulumi.set(__self__, "cors_config", cors_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if custom_domain_name is not None:
@@ -197,7 +217,7 @@ class _V3CustomDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        The ID of your Alibaba Cloud account (primary account).
         """
         return pulumi.get(self, "account_id")
 
@@ -209,7 +229,7 @@ class _V3CustomDomainState:
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.234.0) API version of Function Compute
+        API version of Function Compute.
         """
         return pulumi.get(self, "api_version")
 
@@ -242,10 +262,22 @@ class _V3CustomDomainState:
         pulumi.set(self, "cert_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="corsConfig")
+    def cors_config(self) -> Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]:
+        """
+        Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
+        """
+        return pulumi.get(self, "cors_config")
+
+    @cors_config.setter
+    def cors_config(self, value: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]):
+        pulumi.set(self, "cors_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -269,7 +301,7 @@ class _V3CustomDomainState:
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.234.0) The last time the custom domain name was Updated
+        The last time the custom domain name was Updated.
         """
         return pulumi.get(self, "last_modified_time")
 
@@ -305,7 +337,7 @@ class _V3CustomDomainState:
     @pulumi.getter(name="subdomainCount")
     def subdomain_count(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.234.0) Number of subdomains
+        Number of subdomains.
         """
         return pulumi.get(self, "subdomain_count")
 
@@ -346,6 +378,7 @@ class V3CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
                  cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+                 cors_config: Optional[pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
                  custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  route_config: Optional[pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
@@ -353,14 +386,12 @@ class V3CustomDomain(pulumi.CustomResource):
                  waf_config: Optional[pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None,
                  __props__=None):
         """
-        Provides a FCV3 Custom Domain resource.
+        Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
 
         Custom Domain names allow users to access FC functions through custom domain names, providing convenience for building Web services using function compute.
         You can bind a custom domain name to Function Compute and set different paths to different functions of different services.
 
-        For information about FCV3 Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
-
-        > **NOTE:** This content is a technical preview, and should not be relied on in a production environment.
+        For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
 
         > **NOTE:** Available since v1.228.0.
 
@@ -546,16 +577,17 @@ class V3CustomDomain(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Custom Domain can be imported using the id, e.g.
+        Function Compute Service V3 (FCV3) Custom Domain can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <id>
+        $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <custom_domain_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']] cert_config: HTTPS certificate information See `cert_config` below.
+        :param pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
         :param pulumi.Input[_builtins.str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         :param pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']] route_config: Route matching rule configuration See `route_config` below.
@@ -569,14 +601,12 @@ class V3CustomDomain(pulumi.CustomResource):
                  args: Optional[V3CustomDomainArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a FCV3 Custom Domain resource.
+        Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
 
         Custom Domain names allow users to access FC functions through custom domain names, providing convenience for building Web services using function compute.
         You can bind a custom domain name to Function Compute and set different paths to different functions of different services.
 
-        For information about FCV3 Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
-
-        > **NOTE:** This content is a technical preview, and should not be relied on in a production environment.
+        For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
 
         > **NOTE:** Available since v1.228.0.
 
@@ -762,10 +792,10 @@ class V3CustomDomain(pulumi.CustomResource):
 
         ## Import
 
-        FCV3 Custom Domain can be imported using the id, e.g.
+        Function Compute Service V3 (FCV3) Custom Domain can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <id>
+        $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <custom_domain_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -785,6 +815,7 @@ class V3CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
                  cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+                 cors_config: Optional[pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
                  custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  route_config: Optional[pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
@@ -801,6 +832,7 @@ class V3CustomDomain(pulumi.CustomResource):
 
             __props__.__dict__["auth_config"] = auth_config
             __props__.__dict__["cert_config"] = cert_config
+            __props__.__dict__["cors_config"] = cors_config
             __props__.__dict__["custom_domain_name"] = custom_domain_name
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["route_config"] = route_config
@@ -825,6 +857,7 @@ class V3CustomDomain(pulumi.CustomResource):
             api_version: Optional[pulumi.Input[_builtins.str]] = None,
             auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
             cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+            cors_config: Optional[pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
             last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -840,16 +873,17 @@ class V3CustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
-        :param pulumi.Input[_builtins.str] api_version: (Available since v1.234.0) API version of Function Compute
+        :param pulumi.Input[_builtins.str] account_id: The ID of your Alibaba Cloud account (primary account).
+        :param pulumi.Input[_builtins.str] api_version: API version of Function Compute.
         :param pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']] cert_config: HTTPS certificate information See `cert_config` below.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']] cors_config: Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] custom_domain_name: The name of the resource
-        :param pulumi.Input[_builtins.str] last_modified_time: (Available since v1.234.0) The last time the custom domain name was Updated
+        :param pulumi.Input[_builtins.str] last_modified_time: The last time the custom domain name was Updated.
         :param pulumi.Input[_builtins.str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         :param pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']] route_config: Route matching rule configuration See `route_config` below.
-        :param pulumi.Input[_builtins.str] subdomain_count: (Available since v1.234.0) Number of subdomains
+        :param pulumi.Input[_builtins.str] subdomain_count: Number of subdomains.
         :param pulumi.Input[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']] tls_config: TLS configuration information See `tls_config` below.
         :param pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']] waf_config: Web application firewall configuration information See `waf_config` below.
         """
@@ -861,6 +895,7 @@ class V3CustomDomain(pulumi.CustomResource):
         __props__.__dict__["api_version"] = api_version
         __props__.__dict__["auth_config"] = auth_config
         __props__.__dict__["cert_config"] = cert_config
+        __props__.__dict__["cors_config"] = cors_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_domain_name"] = custom_domain_name
         __props__.__dict__["last_modified_time"] = last_modified_time
@@ -875,7 +910,7 @@ class V3CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        The ID of your Alibaba Cloud account (primary account).
         """
         return pulumi.get(self, "account_id")
 
@@ -883,7 +918,7 @@ class V3CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.234.0) API version of Function Compute
+        API version of Function Compute.
         """
         return pulumi.get(self, "api_version")
 
@@ -904,10 +939,18 @@ class V3CustomDomain(pulumi.CustomResource):
         return pulumi.get(self, "cert_config")
 
     @_builtins.property
+    @pulumi.getter(name="corsConfig")
+    def cors_config(self) -> pulumi.Output[Optional['outputs.V3CustomDomainCorsConfig']]:
+        """
+        Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
+        """
+        return pulumi.get(self, "cors_config")
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -923,7 +966,7 @@ class V3CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.234.0) The last time the custom domain name was Updated
+        The last time the custom domain name was Updated.
         """
         return pulumi.get(self, "last_modified_time")
 
@@ -947,7 +990,7 @@ class V3CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="subdomainCount")
     def subdomain_count(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.234.0) Number of subdomains
+        Number of subdomains.
         """
         return pulumi.get(self, "subdomain_count")
 

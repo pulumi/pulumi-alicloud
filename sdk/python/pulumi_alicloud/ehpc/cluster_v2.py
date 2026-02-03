@@ -294,7 +294,7 @@ class _ClusterV2State:
         :param pulumi.Input[_builtins.str] cluster_vpc_id: The ID of the virtual private cloud (VPC) in which the cluster resides.
         :param pulumi.Input[_builtins.str] cluster_vswitch_id: The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
                You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
-        :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+        :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created.
         :param pulumi.Input[_builtins.bool] deletion_protection: The idle duration of the compute nodes allowed by the cluster.
         :param pulumi.Input['ClusterV2ManagerArgs'] manager: The configurations of the cluster management node. See `manager` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
@@ -442,7 +442,7 @@ class _ClusterV2State:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+        The time when the cluster was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -666,7 +666,7 @@ class ClusterV2(pulumi.CustomResource):
         Ehpc Cluster V2 can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <id>
+        $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <cluster_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -837,7 +837,7 @@ class ClusterV2(pulumi.CustomResource):
         Ehpc Cluster V2 can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <id>
+        $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <cluster_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -947,7 +947,7 @@ class ClusterV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_vpc_id: The ID of the virtual private cloud (VPC) in which the cluster resides.
         :param pulumi.Input[_builtins.str] cluster_vswitch_id: The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
                You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
-        :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+        :param pulumi.Input[_builtins.str] create_time: The time when the cluster was created.
         :param pulumi.Input[_builtins.bool] deletion_protection: The idle duration of the compute nodes allowed by the cluster.
         :param pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']] manager: The configurations of the cluster management node. See `manager` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the cluster belongs.
@@ -1054,7 +1054,7 @@ class ClusterV2(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+        The time when the cluster was created.
         """
         return pulumi.get(self, "create_time")
 

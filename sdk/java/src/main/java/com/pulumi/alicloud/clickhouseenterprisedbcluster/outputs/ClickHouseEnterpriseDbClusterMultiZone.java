@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickHouseEnterpriseDbClusterMultiZone {
     /**
-     * @return The vSwtichID list.
+     * @return List of vSwitch IDs.
      * 
      */
     private @Nullable List<String> vswitchIds;
     /**
-     * @return The zone ID.
+     * @return Zone ID.
      * 
      */
     private @Nullable String zoneId;
 
     private ClickHouseEnterpriseDbClusterMultiZone() {}
     /**
-     * @return The vSwtichID list.
+     * @return List of vSwitch IDs.
      * 
      */
     public List<String> vswitchIds() {
         return this.vswitchIds == null ? List.of() : this.vswitchIds;
     }
     /**
-     * @return The zone ID.
+     * @return Zone ID.
      * 
      */
     public Optional<String> zoneId() {

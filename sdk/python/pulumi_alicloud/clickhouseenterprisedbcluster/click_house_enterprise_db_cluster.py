@@ -21,27 +21,51 @@ __all__ = ['ClickHouseEnterpriseDbClusterArgs', 'ClickHouseEnterpriseDbCluster']
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterArgs:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_zones: Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_max: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_min: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClickHouseEnterpriseDbCluster resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]] multi_zones: The list of multi-zone information. See `multi_zones` below.
-        :param pulumi.Input[_builtins.str] scale_max: The maximum value of serverless auto scaling.
-        :param pulumi.Input[_builtins.str] scale_min: The minimum value of serverless auto scaling.
+        :param pulumi.Input[_builtins.str] description: Cluster description.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]] multi_zones: The multi-zone configuration. See `multi_zones` below.
+        :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        :param pulumi.Input[_builtins.int] node_scale_max: Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        :param pulumi.Input[_builtins.int] node_scale_min: The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID of the cluster.
+        :param pulumi.Input[_builtins.str] scale_max: The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[_builtins.str] scale_min: The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag information.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
+        :param pulumi.Input[_builtins.str] vswitch_id: vSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if multi_zones is not None:
             pulumi.set(__self__, "multi_zones", multi_zones)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if node_scale_max is not None:
+            pulumi.set(__self__, "node_scale_max", node_scale_max)
+        if node_scale_min is not None:
+            pulumi.set(__self__, "node_scale_min", node_scale_min)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scale_max is not None:
             pulumi.set(__self__, "scale_max", scale_max)
         if scale_min is not None:
             pulumi.set(__self__, "scale_min", scale_min)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -50,10 +74,22 @@ class ClickHouseEnterpriseDbClusterArgs:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
     @pulumi.getter(name="multiZones")
     def multi_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]]]:
         """
-        The list of multi-zone information. See `multi_zones` below.
+        The multi-zone configuration. See `multi_zones` below.
         """
         return pulumi.get(self, "multi_zones")
 
@@ -62,10 +98,58 @@ class ClickHouseEnterpriseDbClusterArgs:
         pulumi.set(self, "multi_zones", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeScaleMax")
+    def node_scale_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        """
+        return pulumi.get(self, "node_scale_max")
+
+    @node_scale_max.setter
+    def node_scale_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_scale_max", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeScaleMin")
+    def node_scale_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        """
+        return pulumi.get(self, "node_scale_min")
+
+    @node_scale_min.setter
+    def node_scale_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_scale_min", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource group ID of the cluster.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="scaleMax")
     def scale_max(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The maximum value of serverless auto scaling.
+        The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         """
         return pulumi.get(self, "scale_max")
 
@@ -77,13 +161,25 @@ class ClickHouseEnterpriseDbClusterArgs:
     @pulumi.getter(name="scaleMin")
     def scale_min(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The minimum value of serverless auto scaling.
+        The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         """
         return pulumi.get(self, "scale_min")
 
     @scale_min.setter
     def scale_min(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "scale_min", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tag information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
@@ -101,7 +197,7 @@ class ClickHouseEnterpriseDbClusterArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The vSwitch ID.
+        vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -125,39 +221,99 @@ class ClickHouseEnterpriseDbClusterArgs:
 @pulumi.input_type
 class _ClickHouseEnterpriseDbClusterState:
     def __init__(__self__, *,
+                 category: Optional[pulumi.Input[_builtins.str]] = None,
+                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 computing_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointArgs']]]] = None,
+                 engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_zones: Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_max: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_min: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_quota: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClickHouseEnterpriseDbCluster resources.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]] multi_zones: The list of multi-zone information. See `multi_zones` below.
-        :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
-        :param pulumi.Input[_builtins.str] scale_max: The maximum value of serverless auto scaling.
-        :param pulumi.Input[_builtins.str] scale_min: The minimum value of serverless auto scaling.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] category: Instance type.
+        :param pulumi.Input[_builtins.str] charge_type: The billing method.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] computing_group_ids: List of computing group IDs.
+        :param pulumi.Input[_builtins.str] create_time: The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        :param pulumi.Input[_builtins.str] description: Cluster description.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointArgs']]] endpoints: List of endpoint details.
+        :param pulumi.Input[_builtins.str] engine_minor_version: The minor version number of the cluster engine.
+        :param pulumi.Input[_builtins.str] instance_network_type: Network type of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]] multi_zones: The multi-zone configuration. See `multi_zones` below.
+        :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        :param pulumi.Input[_builtins.int] node_scale_max: Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        :param pulumi.Input[_builtins.int] node_scale_min: The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        :param pulumi.Input[_builtins.str] region_id: The region ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID of the cluster.
+        :param pulumi.Input[_builtins.str] scale_max: The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[_builtins.str] scale_min: The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[_builtins.str] status: The instance status.
+        :param pulumi.Input[_builtins.str] storage_quota: Pre-purchased storage capacity (GB).
+        :param pulumi.Input[_builtins.int] storage_size: The storage capacity.
+        :param pulumi.Input[_builtins.str] storage_type: The storage type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag information.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
+        :param pulumi.Input[_builtins.str] vswitch_id: vSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if charge_type is not None:
+            pulumi.set(__self__, "charge_type", charge_type)
+        if computing_group_ids is not None:
+            pulumi.set(__self__, "computing_group_ids", computing_group_ids)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if engine_minor_version is not None:
+            pulumi.set(__self__, "engine_minor_version", engine_minor_version)
+        if instance_network_type is not None:
+            pulumi.set(__self__, "instance_network_type", instance_network_type)
         if multi_zones is not None:
             pulumi.set(__self__, "multi_zones", multi_zones)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if node_scale_max is not None:
+            pulumi.set(__self__, "node_scale_max", node_scale_max)
+        if node_scale_min is not None:
+            pulumi.set(__self__, "node_scale_min", node_scale_min)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scale_max is not None:
             pulumi.set(__self__, "scale_max", scale_max)
         if scale_min is not None:
             pulumi.set(__self__, "scale_min", scale_min)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if storage_quota is not None:
+            pulumi.set(__self__, "storage_quota", storage_quota)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -166,10 +322,46 @@ class _ClickHouseEnterpriseDbClusterState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Instance type.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter(name="chargeType")
+    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The billing method.
+        """
+        return pulumi.get(self, "charge_type")
+
+    @charge_type.setter
+    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="computingGroupIds")
+    def computing_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of computing group IDs.
+        """
+        return pulumi.get(self, "computing_group_ids")
+
+    @computing_group_ids.setter
+    def computing_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "computing_group_ids", value)
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
         """
         return pulumi.get(self, "create_time")
 
@@ -178,10 +370,58 @@ class _ClickHouseEnterpriseDbClusterState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointArgs']]]]:
+        """
+        List of endpoint details.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointArgs']]]]):
+        pulumi.set(self, "endpoints", value)
+
+    @_builtins.property
+    @pulumi.getter(name="engineMinorVersion")
+    def engine_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The minor version number of the cluster engine.
+        """
+        return pulumi.get(self, "engine_minor_version")
+
+    @engine_minor_version.setter
+    def engine_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "engine_minor_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceNetworkType")
+    def instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Network type of the instance.
+        """
+        return pulumi.get(self, "instance_network_type")
+
+    @instance_network_type.setter
+    def instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_network_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="multiZones")
     def multi_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]]]:
         """
-        The list of multi-zone information. See `multi_zones` below.
+        The multi-zone configuration. See `multi_zones` below.
         """
         return pulumi.get(self, "multi_zones")
 
@@ -190,10 +430,46 @@ class _ClickHouseEnterpriseDbClusterState:
         pulumi.set(self, "multi_zones", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeScaleMax")
+    def node_scale_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        """
+        return pulumi.get(self, "node_scale_max")
+
+    @node_scale_max.setter
+    def node_scale_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_scale_max", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeScaleMin")
+    def node_scale_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        """
+        return pulumi.get(self, "node_scale_min")
+
+    @node_scale_min.setter
+    def node_scale_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_scale_min", value)
+
+    @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region ID of the resource
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
@@ -202,10 +478,22 @@ class _ClickHouseEnterpriseDbClusterState:
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource group ID of the cluster.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="scaleMax")
     def scale_max(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The maximum value of serverless auto scaling.
+        The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         """
         return pulumi.get(self, "scale_max")
 
@@ -217,7 +505,7 @@ class _ClickHouseEnterpriseDbClusterState:
     @pulumi.getter(name="scaleMin")
     def scale_min(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The minimum value of serverless auto scaling.
+        The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         """
         return pulumi.get(self, "scale_min")
 
@@ -229,13 +517,61 @@ class _ClickHouseEnterpriseDbClusterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource
+        The instance status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageQuota")
+    def storage_quota(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Pre-purchased storage capacity (GB).
+        """
+        return pulumi.get(self, "storage_quota")
+
+    @storage_quota.setter
+    def storage_quota(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_quota", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The storage capacity.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "storage_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The storage type.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tag information.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
@@ -253,7 +589,7 @@ class _ClickHouseEnterpriseDbClusterState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The vSwitch ID.
+        vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -280,19 +616,25 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_max: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_min: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Click House Enterprise D B Cluster resource.
+        Provides a Click House Enterprise Db Cluster resource.
 
         Enterprise Edition Cluster Resources.
 
-        For information about Click House Enterprise D B Cluster and how to use it, see [What is Enterprise D B Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
+        For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
 
         > **NOTE:** Available since v1.247.0.
 
@@ -371,19 +713,25 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
 
         ## Import
 
-        Click House Enterprise D B Cluster can be imported using the id, e.g.
+        Click House Enterprise Db Cluster can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <id>
+        $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <db_instance_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]] multi_zones: The list of multi-zone information. See `multi_zones` below.
-        :param pulumi.Input[_builtins.str] scale_max: The maximum value of serverless auto scaling.
-        :param pulumi.Input[_builtins.str] scale_min: The minimum value of serverless auto scaling.
+        :param pulumi.Input[_builtins.str] description: Cluster description.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]] multi_zones: The multi-zone configuration. See `multi_zones` below.
+        :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        :param pulumi.Input[_builtins.int] node_scale_max: Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        :param pulumi.Input[_builtins.int] node_scale_min: The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID of the cluster.
+        :param pulumi.Input[_builtins.str] scale_max: The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[_builtins.str] scale_min: The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag information.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
+        :param pulumi.Input[_builtins.str] vswitch_id: vSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         """
         ...
@@ -393,11 +741,11 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
                  args: Optional[ClickHouseEnterpriseDbClusterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Click House Enterprise D B Cluster resource.
+        Provides a Click House Enterprise Db Cluster resource.
 
         Enterprise Edition Cluster Resources.
 
-        For information about Click House Enterprise D B Cluster and how to use it, see [What is Enterprise D B Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
+        For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
 
         > **NOTE:** Available since v1.247.0.
 
@@ -476,10 +824,10 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
 
         ## Import
 
-        Click House Enterprise D B Cluster can be imported using the id, e.g.
+        Click House Enterprise Db Cluster can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <id>
+        $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <db_instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -497,9 +845,15 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]]] = None,
+                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_max: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_min: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -512,15 +866,30 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClickHouseEnterpriseDbClusterArgs.__new__(ClickHouseEnterpriseDbClusterArgs)
 
+            __props__.__dict__["description"] = description
             __props__.__dict__["multi_zones"] = multi_zones
+            __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["node_scale_max"] = node_scale_max
+            __props__.__dict__["node_scale_min"] = node_scale_min
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["scale_max"] = scale_max
             __props__.__dict__["scale_min"] = scale_min
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["category"] = None
+            __props__.__dict__["charge_type"] = None
+            __props__.__dict__["computing_group_ids"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["endpoints"] = None
+            __props__.__dict__["engine_minor_version"] = None
+            __props__.__dict__["instance_network_type"] = None
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["storage_quota"] = None
+            __props__.__dict__["storage_size"] = None
+            __props__.__dict__["storage_type"] = None
         super(ClickHouseEnterpriseDbCluster, __self__).__init__(
             'alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster',
             resource_name,
@@ -531,12 +900,27 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            category: Optional[pulumi.Input[_builtins.str]] = None,
+            charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+            computing_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
+            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict']]]]] = None,
+            engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
+            instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
             multi_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]]] = None,
+            node_count: Optional[pulumi.Input[_builtins.int]] = None,
+            node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
+            node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             scale_max: Optional[pulumi.Input[_builtins.str]] = None,
             scale_min: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            storage_quota: Optional[pulumi.Input[_builtins.str]] = None,
+            storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+            storage_type: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
             vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClickHouseEnterpriseDbCluster':
@@ -547,68 +931,186 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]] multi_zones: The list of multi-zone information. See `multi_zones` below.
-        :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
-        :param pulumi.Input[_builtins.str] scale_max: The maximum value of serverless auto scaling.
-        :param pulumi.Input[_builtins.str] scale_min: The minimum value of serverless auto scaling.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] category: Instance type.
+        :param pulumi.Input[_builtins.str] charge_type: The billing method.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] computing_group_ids: List of computing group IDs.
+        :param pulumi.Input[_builtins.str] create_time: The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        :param pulumi.Input[_builtins.str] description: Cluster description.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict']]]] endpoints: List of endpoint details.
+        :param pulumi.Input[_builtins.str] engine_minor_version: The minor version number of the cluster engine.
+        :param pulumi.Input[_builtins.str] instance_network_type: Network type of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict']]]] multi_zones: The multi-zone configuration. See `multi_zones` below.
+        :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        :param pulumi.Input[_builtins.int] node_scale_max: Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        :param pulumi.Input[_builtins.int] node_scale_min: The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        :param pulumi.Input[_builtins.str] region_id: The region ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group ID of the cluster.
+        :param pulumi.Input[_builtins.str] scale_max: The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[_builtins.str] scale_min: The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+        :param pulumi.Input[_builtins.str] status: The instance status.
+        :param pulumi.Input[_builtins.str] storage_quota: Pre-purchased storage capacity (GB).
+        :param pulumi.Input[_builtins.int] storage_size: The storage capacity.
+        :param pulumi.Input[_builtins.str] storage_type: The storage type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag information.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
+        :param pulumi.Input[_builtins.str] vswitch_id: vSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClickHouseEnterpriseDbClusterState.__new__(_ClickHouseEnterpriseDbClusterState)
 
+        __props__.__dict__["category"] = category
+        __props__.__dict__["charge_type"] = charge_type
+        __props__.__dict__["computing_group_ids"] = computing_group_ids
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["endpoints"] = endpoints
+        __props__.__dict__["engine_minor_version"] = engine_minor_version
+        __props__.__dict__["instance_network_type"] = instance_network_type
         __props__.__dict__["multi_zones"] = multi_zones
+        __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["node_scale_max"] = node_scale_max
+        __props__.__dict__["node_scale_min"] = node_scale_min
         __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scale_max"] = scale_max
         __props__.__dict__["scale_min"] = scale_min
         __props__.__dict__["status"] = status
+        __props__.__dict__["storage_quota"] = storage_quota
+        __props__.__dict__["storage_size"] = storage_size
+        __props__.__dict__["storage_type"] = storage_type
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return ClickHouseEnterpriseDbCluster(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter
+    def category(self) -> pulumi.Output[_builtins.str]:
+        """
+        Instance type.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="chargeType")
+    def charge_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The billing method.
+        """
+        return pulumi.get(self, "charge_type")
+
+    @_builtins.property
+    @pulumi.getter(name="computingGroupIds")
+    def computing_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of computing group IDs.
+        """
+        return pulumi.get(self, "computing_group_ids")
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource
+        The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[_builtins.str]:
+        """
+        Cluster description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> pulumi.Output[Sequence['outputs.ClickHouseEnterpriseDbClusterEndpoint']]:
+        """
+        List of endpoint details.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="engineMinorVersion")
+    def engine_minor_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The minor version number of the cluster engine.
+        """
+        return pulumi.get(self, "engine_minor_version")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceNetworkType")
+    def instance_network_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Network type of the instance.
+        """
+        return pulumi.get(self, "instance_network_type")
 
     @_builtins.property
     @pulumi.getter(name="multiZones")
     def multi_zones(self) -> pulumi.Output[Sequence['outputs.ClickHouseEnterpriseDbClusterMultiZone']]:
         """
-        The list of multi-zone information. See `multi_zones` below.
+        The multi-zone configuration. See `multi_zones` below.
         """
         return pulumi.get(self, "multi_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        """
+        return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeScaleMax")
+    def node_scale_max(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        """
+        return pulumi.get(self, "node_scale_max")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeScaleMin")
+    def node_scale_min(self) -> pulumi.Output[_builtins.int]:
+        """
+        The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        """
+        return pulumi.get(self, "node_scale_min")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The region ID of the resource
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
-    @pulumi.getter(name="scaleMax")
-    def scale_max(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The maximum value of serverless auto scaling.
+        Resource group ID of the cluster.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="scaleMax")
+    def scale_max(self) -> pulumi.Output[_builtins.str]:
+        """
+        The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         """
         return pulumi.get(self, "scale_max")
 
     @_builtins.property
     @pulumi.getter(name="scaleMin")
-    def scale_min(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def scale_min(self) -> pulumi.Output[_builtins.str]:
         """
-        The minimum value of serverless auto scaling.
+        The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         """
         return pulumi.get(self, "scale_min")
 
@@ -616,9 +1118,41 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The instance status.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="storageQuota")
+    def storage_quota(self) -> pulumi.Output[_builtins.str]:
+        """
+        Pre-purchased storage capacity (GB).
+        """
+        return pulumi.get(self, "storage_quota")
+
+    @_builtins.property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> pulumi.Output[_builtins.int]:
+        """
+        The storage capacity.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The storage type.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Tag information.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
@@ -632,7 +1166,7 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The vSwitch ID.
+        vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 

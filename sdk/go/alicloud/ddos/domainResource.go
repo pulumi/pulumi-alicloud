@@ -104,6 +104,25 @@ import (
 type DomainResource struct {
 	pulumi.CustomResourceState
 
+	// the mode of the Intelligent Protection policy.
+	// - watch: the Warning mode
+	// - defense: the Defense mode
+	AiMode pulumi.StringOutput `pulumi:"aiMode"`
+	// the level of the Intelligent Protection policy.
+	// - level30: the Low level
+	// - level60: the Normal level
+	// - level90: the Strict level
+	AiTemplate pulumi.StringOutput `pulumi:"aiTemplate"`
+	// ip blacklist
+	BlackLists pulumi.StringArrayOutput `pulumi:"blackLists"`
+	// The status of the blacklist and whitelist feature. Valid values:
+	// - 0: Disabled
+	// - 1: Enabled
+	BwListEnable pulumi.IntOutput `pulumi:"bwListEnable"`
+	// CC safety protection switch.
+	// - 0: Disabled
+	// - 1: Enabled
+	CcGlobalSwitch pulumi.StringOutput `pulumi:"ccGlobalSwitch"`
 	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 	//
 	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -160,6 +179,8 @@ type DomainResource struct {
 	RealServers pulumi.StringArrayOutput `pulumi:"realServers"`
 	// The address type of the origin server. Valid values:
 	RsType pulumi.IntOutput `pulumi:"rsType"`
+	// IP whitelist list.
+	WhiteLists pulumi.StringArrayOutput `pulumi:"whiteLists"`
 }
 
 // NewDomainResource registers a new resource with the given unique name, arguments, and options.
@@ -187,6 +208,9 @@ func NewDomainResource(ctx *pulumi.Context,
 	if args.Cert != nil {
 		args.Cert = pulumi.ToSecret(args.Cert).(pulumi.StringPtrInput)
 	}
+	if args.CertIdentifier != nil {
+		args.CertIdentifier = pulumi.ToSecret(args.CertIdentifier).(pulumi.StringPtrInput)
+	}
 	if args.CertRegion != nil {
 		args.CertRegion = pulumi.ToSecret(args.CertRegion).(pulumi.StringPtrInput)
 	}
@@ -195,6 +219,7 @@ func NewDomainResource(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"cert",
+		"certIdentifier",
 		"certRegion",
 		"key",
 	})
@@ -222,6 +247,25 @@ func GetDomainResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainResource resources.
 type domainResourceState struct {
+	// the mode of the Intelligent Protection policy.
+	// - watch: the Warning mode
+	// - defense: the Defense mode
+	AiMode *string `pulumi:"aiMode"`
+	// the level of the Intelligent Protection policy.
+	// - level30: the Low level
+	// - level60: the Normal level
+	// - level90: the Strict level
+	AiTemplate *string `pulumi:"aiTemplate"`
+	// ip blacklist
+	BlackLists []string `pulumi:"blackLists"`
+	// The status of the blacklist and whitelist feature. Valid values:
+	// - 0: Disabled
+	// - 1: Enabled
+	BwListEnable *int `pulumi:"bwListEnable"`
+	// CC safety protection switch.
+	// - 0: Disabled
+	// - 1: Enabled
+	CcGlobalSwitch *string `pulumi:"ccGlobalSwitch"`
 	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 	//
 	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -278,9 +322,30 @@ type domainResourceState struct {
 	RealServers []string `pulumi:"realServers"`
 	// The address type of the origin server. Valid values:
 	RsType *int `pulumi:"rsType"`
+	// IP whitelist list.
+	WhiteLists []string `pulumi:"whiteLists"`
 }
 
 type DomainResourceState struct {
+	// the mode of the Intelligent Protection policy.
+	// - watch: the Warning mode
+	// - defense: the Defense mode
+	AiMode pulumi.StringPtrInput
+	// the level of the Intelligent Protection policy.
+	// - level30: the Low level
+	// - level60: the Normal level
+	// - level90: the Strict level
+	AiTemplate pulumi.StringPtrInput
+	// ip blacklist
+	BlackLists pulumi.StringArrayInput
+	// The status of the blacklist and whitelist feature. Valid values:
+	// - 0: Disabled
+	// - 1: Enabled
+	BwListEnable pulumi.IntPtrInput
+	// CC safety protection switch.
+	// - 0: Disabled
+	// - 1: Enabled
+	CcGlobalSwitch pulumi.StringPtrInput
 	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 	//
 	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -337,6 +402,8 @@ type DomainResourceState struct {
 	RealServers pulumi.StringArrayInput
 	// The address type of the origin server. Valid values:
 	RsType pulumi.IntPtrInput
+	// IP whitelist list.
+	WhiteLists pulumi.StringArrayInput
 }
 
 func (DomainResourceState) ElementType() reflect.Type {
@@ -344,6 +411,25 @@ func (DomainResourceState) ElementType() reflect.Type {
 }
 
 type domainResourceArgs struct {
+	// the mode of the Intelligent Protection policy.
+	// - watch: the Warning mode
+	// - defense: the Defense mode
+	AiMode *string `pulumi:"aiMode"`
+	// the level of the Intelligent Protection policy.
+	// - level30: the Low level
+	// - level60: the Normal level
+	// - level90: the Strict level
+	AiTemplate *string `pulumi:"aiTemplate"`
+	// ip blacklist
+	BlackLists []string `pulumi:"blackLists"`
+	// The status of the blacklist and whitelist feature. Valid values:
+	// - 0: Disabled
+	// - 1: Enabled
+	BwListEnable *int `pulumi:"bwListEnable"`
+	// CC safety protection switch.
+	// - 0: Disabled
+	// - 1: Enabled
+	CcGlobalSwitch *string `pulumi:"ccGlobalSwitch"`
 	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 	//
 	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -398,10 +484,31 @@ type domainResourceArgs struct {
 	RealServers []string `pulumi:"realServers"`
 	// The address type of the origin server. Valid values:
 	RsType int `pulumi:"rsType"`
+	// IP whitelist list.
+	WhiteLists []string `pulumi:"whiteLists"`
 }
 
 // The set of arguments for constructing a DomainResource resource.
 type DomainResourceArgs struct {
+	// the mode of the Intelligent Protection policy.
+	// - watch: the Warning mode
+	// - defense: the Defense mode
+	AiMode pulumi.StringPtrInput
+	// the level of the Intelligent Protection policy.
+	// - level30: the Low level
+	// - level60: the Normal level
+	// - level90: the Strict level
+	AiTemplate pulumi.StringPtrInput
+	// ip blacklist
+	BlackLists pulumi.StringArrayInput
+	// The status of the blacklist and whitelist feature. Valid values:
+	// - 0: Disabled
+	// - 1: Enabled
+	BwListEnable pulumi.IntPtrInput
+	// CC safety protection switch.
+	// - 0: Disabled
+	// - 1: Enabled
+	CcGlobalSwitch pulumi.StringPtrInput
 	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 	//
 	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -456,6 +563,8 @@ type DomainResourceArgs struct {
 	RealServers pulumi.StringArrayInput
 	// The address type of the origin server. Valid values:
 	RsType pulumi.IntInput
+	// IP whitelist list.
+	WhiteLists pulumi.StringArrayInput
 }
 
 func (DomainResourceArgs) ElementType() reflect.Type {
@@ -543,6 +652,40 @@ func (o DomainResourceOutput) ToDomainResourceOutput() DomainResourceOutput {
 
 func (o DomainResourceOutput) ToDomainResourceOutputWithContext(ctx context.Context) DomainResourceOutput {
 	return o
+}
+
+// the mode of the Intelligent Protection policy.
+// - watch: the Warning mode
+// - defense: the Defense mode
+func (o DomainResourceOutput) AiMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.AiMode }).(pulumi.StringOutput)
+}
+
+// the level of the Intelligent Protection policy.
+// - level30: the Low level
+// - level60: the Normal level
+// - level90: the Strict level
+func (o DomainResourceOutput) AiTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.AiTemplate }).(pulumi.StringOutput)
+}
+
+// ip blacklist
+func (o DomainResourceOutput) BlackLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.BlackLists }).(pulumi.StringArrayOutput)
+}
+
+// The status of the blacklist and whitelist feature. Valid values:
+// - 0: Disabled
+// - 1: Enabled
+func (o DomainResourceOutput) BwListEnable() pulumi.IntOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.IntOutput { return v.BwListEnable }).(pulumi.IntOutput)
+}
+
+// CC safety protection switch.
+// - 0: Disabled
+// - 1: Enabled
+func (o DomainResourceOutput) CcGlobalSwitch() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.CcGlobalSwitch }).(pulumi.StringOutput)
 }
 
 // The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
@@ -641,6 +784,11 @@ func (o DomainResourceOutput) RealServers() pulumi.StringArrayOutput {
 // The address type of the origin server. Valid values:
 func (o DomainResourceOutput) RsType() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.IntOutput { return v.RsType }).(pulumi.IntOutput)
+}
+
+// IP whitelist list.
+func (o DomainResourceOutput) WhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.WhiteLists }).(pulumi.StringArrayOutput)
 }
 
 type DomainResourceArrayOutput struct{ *pulumi.OutputState }

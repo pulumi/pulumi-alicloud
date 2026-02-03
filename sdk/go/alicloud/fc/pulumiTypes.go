@@ -4165,6 +4165,238 @@ func (o V3CustomDomainCertConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type V3CustomDomainCorsConfig struct {
+	// Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// List of allowed request headers, such as Content-Type, Authorization, etc.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// List of response headers that can be exposed to the browser.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+	MaxAge *int `pulumi:"maxAge"`
+}
+
+// V3CustomDomainCorsConfigInput is an input type that accepts V3CustomDomainCorsConfigArgs and V3CustomDomainCorsConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainCorsConfigInput` via:
+//
+//	V3CustomDomainCorsConfigArgs{...}
+type V3CustomDomainCorsConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainCorsConfigOutput() V3CustomDomainCorsConfigOutput
+	ToV3CustomDomainCorsConfigOutputWithContext(context.Context) V3CustomDomainCorsConfigOutput
+}
+
+type V3CustomDomainCorsConfigArgs struct {
+	// Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// List of allowed request headers, such as Content-Type, Authorization, etc.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// List of response headers that can be exposed to the browser.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+}
+
+func (V3CustomDomainCorsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainCorsConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainCorsConfigArgs) ToV3CustomDomainCorsConfigOutput() V3CustomDomainCorsConfigOutput {
+	return i.ToV3CustomDomainCorsConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainCorsConfigArgs) ToV3CustomDomainCorsConfigOutputWithContext(ctx context.Context) V3CustomDomainCorsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainCorsConfigOutput)
+}
+
+func (i V3CustomDomainCorsConfigArgs) ToV3CustomDomainCorsConfigPtrOutput() V3CustomDomainCorsConfigPtrOutput {
+	return i.ToV3CustomDomainCorsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainCorsConfigArgs) ToV3CustomDomainCorsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCorsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainCorsConfigOutput).ToV3CustomDomainCorsConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainCorsConfigPtrInput is an input type that accepts V3CustomDomainCorsConfigArgs, V3CustomDomainCorsConfigPtr and V3CustomDomainCorsConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainCorsConfigPtrInput` via:
+//
+//	        V3CustomDomainCorsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainCorsConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainCorsConfigPtrOutput() V3CustomDomainCorsConfigPtrOutput
+	ToV3CustomDomainCorsConfigPtrOutputWithContext(context.Context) V3CustomDomainCorsConfigPtrOutput
+}
+
+type v3customDomainCorsConfigPtrType V3CustomDomainCorsConfigArgs
+
+func V3CustomDomainCorsConfigPtr(v *V3CustomDomainCorsConfigArgs) V3CustomDomainCorsConfigPtrInput {
+	return (*v3customDomainCorsConfigPtrType)(v)
+}
+
+func (*v3customDomainCorsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainCorsConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainCorsConfigPtrType) ToV3CustomDomainCorsConfigPtrOutput() V3CustomDomainCorsConfigPtrOutput {
+	return i.ToV3CustomDomainCorsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainCorsConfigPtrType) ToV3CustomDomainCorsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCorsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainCorsConfigPtrOutput)
+}
+
+type V3CustomDomainCorsConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainCorsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainCorsConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainCorsConfigOutput) ToV3CustomDomainCorsConfigOutput() V3CustomDomainCorsConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainCorsConfigOutput) ToV3CustomDomainCorsConfigOutputWithContext(ctx context.Context) V3CustomDomainCorsConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainCorsConfigOutput) ToV3CustomDomainCorsConfigPtrOutput() V3CustomDomainCorsConfigPtrOutput {
+	return o.ToV3CustomDomainCorsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainCorsConfigOutput) ToV3CustomDomainCorsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCorsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainCorsConfig) *V3CustomDomainCorsConfig {
+		return &v
+	}).(V3CustomDomainCorsConfigPtrOutput)
+}
+
+// Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+func (o V3CustomDomainCorsConfigOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainCorsConfig) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// List of allowed request headers, such as Content-Type, Authorization, etc.
+func (o V3CustomDomainCorsConfigOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainCorsConfig) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+func (o V3CustomDomainCorsConfigOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainCorsConfig) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+func (o V3CustomDomainCorsConfigOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainCorsConfig) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
+}
+
+// List of response headers that can be exposed to the browser.
+func (o V3CustomDomainCorsConfigOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainCorsConfig) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+func (o V3CustomDomainCorsConfigOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainCorsConfig) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+type V3CustomDomainCorsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainCorsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainCorsConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainCorsConfigPtrOutput) ToV3CustomDomainCorsConfigPtrOutput() V3CustomDomainCorsConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainCorsConfigPtrOutput) ToV3CustomDomainCorsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCorsConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainCorsConfigPtrOutput) Elem() V3CustomDomainCorsConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) V3CustomDomainCorsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainCorsConfig
+		return ret
+	}).(V3CustomDomainCorsConfigOutput)
+}
+
+// Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+func (o V3CustomDomainCorsConfigPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of allowed request headers, such as Content-Type, Authorization, etc.
+func (o V3CustomDomainCorsConfigPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+func (o V3CustomDomainCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+func (o V3CustomDomainCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of response headers that can be exposed to the browser.
+func (o V3CustomDomainCorsConfigPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+func (o V3CustomDomainCorsConfigPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainCorsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
 type V3CustomDomainRouteConfig struct {
 	// Routing Configuration List See `routes` below.
 	Routes []V3CustomDomainRouteConfigRoute `pulumi:"routes"`
@@ -10862,7 +11094,7 @@ type GetV3FunctionsFunction struct {
 	// Status code of the reason that caused the last function update operation status to the current value
 	LastUpdateStatusReasonCode string `pulumi:"lastUpdateStatusReasonCode"`
 	// The list of layers.
-	Layers []string `pulumi:"layers"`
+	Layers []GetV3FunctionsFunctionLayer `pulumi:"layers"`
 	// The logs generated by the function are written to the configured Logstore.
 	LogConfig GetV3FunctionsFunctionLogConfig `pulumi:"logConfig"`
 	// The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
@@ -10960,7 +11192,7 @@ type GetV3FunctionsFunctionArgs struct {
 	// Status code of the reason that caused the last function update operation status to the current value
 	LastUpdateStatusReasonCode pulumi.StringInput `pulumi:"lastUpdateStatusReasonCode"`
 	// The list of layers.
-	Layers pulumi.StringArrayInput `pulumi:"layers"`
+	Layers GetV3FunctionsFunctionLayerArrayInput `pulumi:"layers"`
 	// The logs generated by the function are written to the configured Logstore.
 	LogConfig GetV3FunctionsFunctionLogConfigInput `pulumi:"logConfig"`
 	// The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
@@ -11178,8 +11410,8 @@ func (o GetV3FunctionsFunctionOutput) LastUpdateStatusReasonCode() pulumi.String
 }
 
 // The list of layers.
-func (o GetV3FunctionsFunctionOutput) Layers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetV3FunctionsFunction) []string { return v.Layers }).(pulumi.StringArrayOutput)
+func (o GetV3FunctionsFunctionOutput) Layers() GetV3FunctionsFunctionLayerArrayOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunction) []GetV3FunctionsFunctionLayer { return v.Layers }).(GetV3FunctionsFunctionLayerArrayOutput)
 }
 
 // The logs generated by the function are written to the configured Logstore.
@@ -12242,6 +12474,112 @@ func (o GetV3FunctionsFunctionInvocationRestrictionOutput) Reason() pulumi.Strin
 	return o.ApplyT(func(v GetV3FunctionsFunctionInvocationRestriction) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+type GetV3FunctionsFunctionLayer struct {
+	// The resource identifier of the layer version.
+	Arn string `pulumi:"arn"`
+	// The size of the layer code package. Unit: bytes.
+	Size string `pulumi:"size"`
+}
+
+// GetV3FunctionsFunctionLayerInput is an input type that accepts GetV3FunctionsFunctionLayerArgs and GetV3FunctionsFunctionLayerOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionLayerInput` via:
+//
+//	GetV3FunctionsFunctionLayerArgs{...}
+type GetV3FunctionsFunctionLayerInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionLayerOutput() GetV3FunctionsFunctionLayerOutput
+	ToGetV3FunctionsFunctionLayerOutputWithContext(context.Context) GetV3FunctionsFunctionLayerOutput
+}
+
+type GetV3FunctionsFunctionLayerArgs struct {
+	// The resource identifier of the layer version.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// The size of the layer code package. Unit: bytes.
+	Size pulumi.StringInput `pulumi:"size"`
+}
+
+func (GetV3FunctionsFunctionLayerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionLayer)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionLayerArgs) ToGetV3FunctionsFunctionLayerOutput() GetV3FunctionsFunctionLayerOutput {
+	return i.ToGetV3FunctionsFunctionLayerOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionLayerArgs) ToGetV3FunctionsFunctionLayerOutputWithContext(ctx context.Context) GetV3FunctionsFunctionLayerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionLayerOutput)
+}
+
+// GetV3FunctionsFunctionLayerArrayInput is an input type that accepts GetV3FunctionsFunctionLayerArray and GetV3FunctionsFunctionLayerArrayOutput values.
+// You can construct a concrete instance of `GetV3FunctionsFunctionLayerArrayInput` via:
+//
+//	GetV3FunctionsFunctionLayerArray{ GetV3FunctionsFunctionLayerArgs{...} }
+type GetV3FunctionsFunctionLayerArrayInput interface {
+	pulumi.Input
+
+	ToGetV3FunctionsFunctionLayerArrayOutput() GetV3FunctionsFunctionLayerArrayOutput
+	ToGetV3FunctionsFunctionLayerArrayOutputWithContext(context.Context) GetV3FunctionsFunctionLayerArrayOutput
+}
+
+type GetV3FunctionsFunctionLayerArray []GetV3FunctionsFunctionLayerInput
+
+func (GetV3FunctionsFunctionLayerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionLayer)(nil)).Elem()
+}
+
+func (i GetV3FunctionsFunctionLayerArray) ToGetV3FunctionsFunctionLayerArrayOutput() GetV3FunctionsFunctionLayerArrayOutput {
+	return i.ToGetV3FunctionsFunctionLayerArrayOutputWithContext(context.Background())
+}
+
+func (i GetV3FunctionsFunctionLayerArray) ToGetV3FunctionsFunctionLayerArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionLayerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetV3FunctionsFunctionLayerArrayOutput)
+}
+
+type GetV3FunctionsFunctionLayerOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionLayerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetV3FunctionsFunctionLayer)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionLayerOutput) ToGetV3FunctionsFunctionLayerOutput() GetV3FunctionsFunctionLayerOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionLayerOutput) ToGetV3FunctionsFunctionLayerOutputWithContext(ctx context.Context) GetV3FunctionsFunctionLayerOutput {
+	return o
+}
+
+// The resource identifier of the layer version.
+func (o GetV3FunctionsFunctionLayerOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionLayer) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The size of the layer code package. Unit: bytes.
+func (o GetV3FunctionsFunctionLayerOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v GetV3FunctionsFunctionLayer) string { return v.Size }).(pulumi.StringOutput)
+}
+
+type GetV3FunctionsFunctionLayerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetV3FunctionsFunctionLayerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetV3FunctionsFunctionLayer)(nil)).Elem()
+}
+
+func (o GetV3FunctionsFunctionLayerArrayOutput) ToGetV3FunctionsFunctionLayerArrayOutput() GetV3FunctionsFunctionLayerArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionLayerArrayOutput) ToGetV3FunctionsFunctionLayerArrayOutputWithContext(ctx context.Context) GetV3FunctionsFunctionLayerArrayOutput {
+	return o
+}
+
+func (o GetV3FunctionsFunctionLayerArrayOutput) Index(i pulumi.IntInput) GetV3FunctionsFunctionLayerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetV3FunctionsFunctionLayer {
+		return vs[0].([]GetV3FunctionsFunctionLayer)[vs[1].(int)]
+	}).(GetV3FunctionsFunctionLayerOutput)
+}
+
 type GetV3FunctionsFunctionLogConfig struct {
 	// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
 	EnableInstanceMetrics bool `pulumi:"enableInstanceMetrics"`
@@ -13260,6 +13598,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainAuthConfigPtrInput)(nil)).Elem(), V3CustomDomainAuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainCertConfigInput)(nil)).Elem(), V3CustomDomainCertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainCertConfigPtrInput)(nil)).Elem(), V3CustomDomainCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainCorsConfigInput)(nil)).Elem(), V3CustomDomainCorsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainCorsConfigPtrInput)(nil)).Elem(), V3CustomDomainCorsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigInput)(nil)).Elem(), V3CustomDomainRouteConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigPtrInput)(nil)).Elem(), V3CustomDomainRouteConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteArgs{})
@@ -13357,6 +13697,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionInstanceLifecycleConfigInitializerInput)(nil)).Elem(), GetV3FunctionsFunctionInstanceLifecycleConfigInitializerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionInstanceLifecycleConfigPreStopInput)(nil)).Elem(), GetV3FunctionsFunctionInstanceLifecycleConfigPreStopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionInvocationRestrictionInput)(nil)).Elem(), GetV3FunctionsFunctionInvocationRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionLayerInput)(nil)).Elem(), GetV3FunctionsFunctionLayerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionLayerArrayInput)(nil)).Elem(), GetV3FunctionsFunctionLayerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionLogConfigInput)(nil)).Elem(), GetV3FunctionsFunctionLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionNasConfigInput)(nil)).Elem(), GetV3FunctionsFunctionNasConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetV3FunctionsFunctionNasConfigMountPointInput)(nil)).Elem(), GetV3FunctionsFunctionNasConfigMountPointArgs{})
@@ -13423,6 +13765,8 @@ func init() {
 	pulumi.RegisterOutputType(V3CustomDomainAuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3CustomDomainCertConfigOutput{})
 	pulumi.RegisterOutputType(V3CustomDomainCertConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainCorsConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainCorsConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3CustomDomainRouteConfigOutput{})
 	pulumi.RegisterOutputType(V3CustomDomainRouteConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteOutput{})
@@ -13520,6 +13864,8 @@ func init() {
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionInstanceLifecycleConfigInitializerOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionInstanceLifecycleConfigPreStopOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionInvocationRestrictionOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionLayerOutput{})
+	pulumi.RegisterOutputType(GetV3FunctionsFunctionLayerArrayOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionLogConfigOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionNasConfigOutput{})
 	pulumi.RegisterOutputType(GetV3FunctionsFunctionNasConfigMountPointOutput{})

@@ -18,14 +18,14 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
     public static final GetRegistryEnterpriseReposPlainArgs Empty = new GetRegistryEnterpriseReposPlainArgs();
 
     /**
-     * Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -33,14 +33,14 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * A list of ids to filter results by repository id.
+     * A list of Repository IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of ids to filter results by repository id.
+     * @return A list of Repository IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -48,14 +48,14 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private String instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry instance.
      * 
      */
     public String instanceId() {
@@ -63,14 +63,14 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * A regex string to filter results by repository name.
+     * A regex string to filter results by Repository name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by repository name.
+     * @return A regex string to filter results by Repository name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -78,14 +78,14 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     * The name of the namespace to which the Repository belongs.
      * 
      */
     @Import(name="namespace")
     private @Nullable String namespace;
 
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     * @return The name of the namespace to which the Repository belongs.
      * 
      */
     public Optional<String> namespace() {
@@ -137,7 +137,7 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enableDetails Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ids A list of ids to filter results by repository id.
+         * @param ids A list of Repository IDs.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ids A list of ids to filter results by repository id.
+         * @param ids A list of Repository IDs.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry instance.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param nameRegex A regex string to filter results by repository name.
+         * @param nameRegex A regex string to filter results by Repository name.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class GetRegistryEnterpriseReposPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param namespace Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+         * @param namespace The name of the namespace to which the Repository belongs.
          * 
          * @return builder
          * 

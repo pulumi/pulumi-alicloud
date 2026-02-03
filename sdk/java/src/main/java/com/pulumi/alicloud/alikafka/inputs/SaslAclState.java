@@ -16,14 +16,26 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     public static final SaslAclState Empty = new SaslAclState();
 
     /**
-     * Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
+     * Operation type. Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      * 
      */
     @Import(name="aclOperationType")
     private @Nullable Output<String> aclOperationType;
 
     /**
-     * @return Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
+     * @return Operation type. Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      * 
      */
     public Optional<Output<String>> aclOperationType() {
@@ -31,14 +43,68 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name for this acl. The resource name should be a topic or consumer group name.
+     * Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
+     * 
+     */
+    @Import(name="aclOperationTypes")
+    private @Nullable Output<String> aclOperationTypes;
+
+    /**
+     * @return Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+     * - `Write`: write
+     * - `Read`: read
+     * - `Describe`: read TransactionalId
+     * - `IdempotentWrite`: idempotent write to Cluster
+     * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+     * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
+     * 
+     */
+    public Optional<Output<String>> aclOperationTypes() {
+        return Optional.ofNullable(this.aclOperationTypes);
+    }
+
+    /**
+     * Authorization method. Value:
+     * - `DENY`: deny.
+     * - `ALLOW`: allow.
+     * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
+     * 
+     */
+    @Import(name="aclPermissionType")
+    private @Nullable Output<String> aclPermissionType;
+
+    /**
+     * @return Authorization method. Value:
+     * - `DENY`: deny.
+     * - `ALLOW`: allow.
+     * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
+     * 
+     */
+    public Optional<Output<String>> aclPermissionType() {
+        return Optional.ofNullable(this.aclPermissionType);
+    }
+
+    /**
+     * The resource name.
+     * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+     * - You can use an asterisk (*) to represent all resources of this type.
      * 
      */
     @Import(name="aclResourceName")
     private @Nullable Output<String> aclResourceName;
 
     /**
-     * @return Resource name for this acl. The resource name should be a topic or consumer group name.
+     * @return The resource name.
+     * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+     * - You can use an asterisk (*) to represent all resources of this type.
      * 
      */
     public Optional<Output<String>> aclResourceName() {
@@ -46,14 +112,18 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
+     * Match the pattern. Valid values:
+     * - `LITERAL`: exact match
+     * - `PREFIXED`: prefix matching
      * 
      */
     @Import(name="aclResourcePatternType")
     private @Nullable Output<String> aclResourcePatternType;
 
     /**
-     * @return Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
+     * @return Match the pattern. Valid values:
+     * - `LITERAL`: exact match
+     * - `PREFIXED`: prefix matching
      * 
      */
     public Optional<Output<String>> aclResourcePatternType() {
@@ -61,14 +131,22 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
+     * The resource type. Valid values:
+     * - `Topic`: the message Topic.
+     * - `Group`: consumer Group.
+     * - `Cluster`: the instance.
+     * - `TransactionalId`: transaction ID.
      * 
      */
     @Import(name="aclResourceType")
     private @Nullable Output<String> aclResourceType;
 
     /**
-     * @return Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
+     * @return The resource type. Valid values:
+     * - `Topic`: the message Topic.
+     * - `Group`: consumer Group.
+     * - `Cluster`: the instance.
+     * - `TransactionalId`: transaction ID.
      * 
      */
     public Optional<Output<String>> aclResourceType() {
@@ -77,6 +155,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The host of the acl.
+     * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
     @Import(name="host")
@@ -84,6 +163,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The host of the acl.
+     * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
     public Optional<Output<String>> host() {
@@ -91,14 +171,14 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return ID of the ALIKAFKA Instance that owns the groups.
+     * @return The instance ID.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -106,14 +186,14 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+     * The user name.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+     * @return The user name.
      * 
      */
     public Optional<Output<String>> username() {
@@ -124,6 +204,8 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
 
     private SaslAclState(SaslAclState $) {
         this.aclOperationType = $.aclOperationType;
+        this.aclOperationTypes = $.aclOperationTypes;
+        this.aclPermissionType = $.aclPermissionType;
         this.aclResourceName = $.aclResourceName;
         this.aclResourcePatternType = $.aclResourcePatternType;
         this.aclResourceType = $.aclResourceType;
@@ -151,7 +233,13 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclOperationType Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
+         * @param aclOperationType Operation type. Valid values:
+         * - `Write`: write
+         * - `Read`: read
+         * - `Describe`: read TransactionalId
+         * - `IdempotentWrite`: idempotent write to Cluster
+         * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+         * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
          * 
          * @return builder
          * 
@@ -162,7 +250,13 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclOperationType Operation type for this acl. The operation type can only be &#34;Write&#34; and &#34;Read&#34;.
+         * @param aclOperationType Operation type. Valid values:
+         * - `Write`: write
+         * - `Read`: read
+         * - `Describe`: read TransactionalId
+         * - `IdempotentWrite`: idempotent write to Cluster
+         * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+         * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
          * 
          * @return builder
          * 
@@ -172,7 +266,71 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceName Resource name for this acl. The resource name should be a topic or consumer group name.
+         * @param aclOperationTypes Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+         * - `Write`: write
+         * - `Read`: read
+         * - `Describe`: read TransactionalId
+         * - `IdempotentWrite`: idempotent write to Cluster
+         * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+         * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+         * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclOperationTypes(@Nullable Output<String> aclOperationTypes) {
+            $.aclOperationTypes = aclOperationTypes;
+            return this;
+        }
+
+        /**
+         * @param aclOperationTypes Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
+         * - `Write`: write
+         * - `Read`: read
+         * - `Describe`: read TransactionalId
+         * - `IdempotentWrite`: idempotent write to Cluster
+         * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
+         * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+         * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclOperationTypes(String aclOperationTypes) {
+            return aclOperationTypes(Output.of(aclOperationTypes));
+        }
+
+        /**
+         * @param aclPermissionType Authorization method. Value:
+         * - `DENY`: deny.
+         * - `ALLOW`: allow.
+         * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPermissionType(@Nullable Output<String> aclPermissionType) {
+            $.aclPermissionType = aclPermissionType;
+            return this;
+        }
+
+        /**
+         * @param aclPermissionType Authorization method. Value:
+         * - `DENY`: deny.
+         * - `ALLOW`: allow.
+         * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPermissionType(String aclPermissionType) {
+            return aclPermissionType(Output.of(aclPermissionType));
+        }
+
+        /**
+         * @param aclResourceName The resource name.
+         * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+         * - You can use an asterisk (*) to represent all resources of this type.
          * 
          * @return builder
          * 
@@ -183,7 +341,9 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceName Resource name for this acl. The resource name should be a topic or consumer group name.
+         * @param aclResourceName The resource name.
+         * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
+         * - You can use an asterisk (*) to represent all resources of this type.
          * 
          * @return builder
          * 
@@ -193,7 +353,9 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourcePatternType Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
+         * @param aclResourcePatternType Match the pattern. Valid values:
+         * - `LITERAL`: exact match
+         * - `PREFIXED`: prefix matching
          * 
          * @return builder
          * 
@@ -204,7 +366,9 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourcePatternType Resource pattern type for this acl. The resource pattern support two types &#34;LITERAL&#34; and &#34;PREFIXED&#34;. &#34;LITERAL&#34;: A literal name defines the full name of a resource. The special wildcard character &#34;*&#34; can be used to represent a resource with any name. &#34;PREFIXED&#34;: A prefixed name defines a prefix for a resource.
+         * @param aclResourcePatternType Match the pattern. Valid values:
+         * - `LITERAL`: exact match
+         * - `PREFIXED`: prefix matching
          * 
          * @return builder
          * 
@@ -214,7 +378,11 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceType Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
+         * @param aclResourceType The resource type. Valid values:
+         * - `Topic`: the message Topic.
+         * - `Group`: consumer Group.
+         * - `Cluster`: the instance.
+         * - `TransactionalId`: transaction ID.
          * 
          * @return builder
          * 
@@ -225,7 +393,11 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceType Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
+         * @param aclResourceType The resource type. Valid values:
+         * - `Topic`: the message Topic.
+         * - `Group`: consumer Group.
+         * - `Cluster`: the instance.
+         * - `TransactionalId`: transaction ID.
          * 
          * @return builder
          * 
@@ -236,6 +408,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host of the acl.
+         * &gt; **NOTE:** From version 1.270.0, `host` can be set.
          * 
          * @return builder
          * 
@@ -247,6 +420,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host of the acl.
+         * &gt; **NOTE:** From version 1.270.0, `host` can be set.
          * 
          * @return builder
          * 
@@ -256,7 +430,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId ID of the ALIKAFKA Instance that owns the groups.
+         * @param instanceId The instance ID.
          * 
          * @return builder
          * 
@@ -267,7 +441,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId ID of the ALIKAFKA Instance that owns the groups.
+         * @param instanceId The instance ID.
          * 
          * @return builder
          * 
@@ -277,7 +451,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+         * @param username The user name.
          * 
          * @return builder
          * 
@@ -288,7 +462,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
+         * @param username The user name.
          * 
          * @return builder
          * 

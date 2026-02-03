@@ -292,6 +292,8 @@ if typing.TYPE_CHECKING:
     sms = __sms
     import pulumi_alicloud.sslcertificatesservice as __sslcertificatesservice
     sslcertificatesservice = __sslcertificatesservice
+    import pulumi_alicloud.sslcertificatesservicepca as __sslcertificatesservicepca
+    sslcertificatesservicepca = __sslcertificatesservicepca
     import pulumi_alicloud.starrocks as __starrocks
     starrocks = __starrocks
     import pulumi_alicloud.tag as __tag
@@ -447,6 +449,7 @@ else:
     sls = _utilities.lazy_import('pulumi_alicloud.sls')
     sms = _utilities.lazy_import('pulumi_alicloud.sms')
     sslcertificatesservice = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservice')
+    sslcertificatesservicepca = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservicepca')
     starrocks = _utilities.lazy_import('pulumi_alicloud.starrocks')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
     threatdetection = _utilities.lazy_import('pulumi_alicloud.threatdetection')
@@ -1816,6 +1819,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "clickhouseenterprisedbcluster/computingGroup",
+  "fqn": "pulumi_alicloud.clickhouseenterprisedbcluster",
+  "classes": {
+   "alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup": "ComputingGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "clickhouseenterprisedbcluster/publicEndpoint",
   "fqn": "pulumi_alicloud.clickhouseenterprisedbcluster",
   "classes": {
@@ -2020,6 +2031,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig": "VpcFirewallIpsConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudmonitor/serviceAgentConfig",
+  "fqn": "pulumi_alicloud.cloudmonitor",
+  "classes": {
+   "alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig": "ServiceAgentConfig"
   }
  },
  {
@@ -6128,6 +6147,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "maxcompute/tenantRoleUserAttachment",
+  "fqn": "pulumi_alicloud.maxcompute",
+  "classes": {
+   "alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment": "TenantRoleUserAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "maxcompute/tunnelQuotaTimer",
   "fqn": "pulumi_alicloud.maxcompute",
   "classes": {
@@ -8540,6 +8567,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sslcertificatesservice",
   "classes": {
    "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate": "PcaCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservicepca/cert",
+  "fqn": "pulumi_alicloud.sslcertificatesservicepca",
+  "classes": {
+   "alicloud:sslcertificatesservicepca/cert:Cert": "Cert"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservicepca/certificate",
+  "fqn": "pulumi_alicloud.sslcertificatesservicepca",
+  "classes": {
+   "alicloud:sslcertificatesservicepca/certificate:Certificate": "Certificate"
   }
  },
  {
