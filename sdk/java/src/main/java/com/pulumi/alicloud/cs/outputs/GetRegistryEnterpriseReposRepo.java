@@ -13,86 +13,86 @@ import java.util.Objects;
 @CustomType
 public final class GetRegistryEnterpriseReposRepo {
     /**
-     * @return ID of Container Registry Enterprise Edition repository.
+     * @return The ID of the Repository.
      * 
      */
     private String id;
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry instance.
      * 
      */
     private String instanceId;
     /**
-     * @return Name of Container Registry Enterprise Edition repository.
+     * @return The name of the Repository.
      * 
      */
     private String name;
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     * @return The name of the namespace to which the Repository belongs.
      * 
      */
     private String namespace;
     /**
-     * @return `PUBLIC` or `PRIVATE`, repository&#39;s visibility.
+     * @return The type of the Repository.
      * 
      */
     private String repoType;
     /**
-     * @return The repository general information.
+     * @return The summary of the Repository.
      * 
      */
     private String summary;
     /**
-     * @return A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+     * @return A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private List<GetRegistryEnterpriseReposRepoTag> tags;
 
     private GetRegistryEnterpriseReposRepo() {}
     /**
-     * @return ID of Container Registry Enterprise Edition repository.
+     * @return The ID of the Repository.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry instance.
      * 
      */
     public String instanceId() {
         return this.instanceId;
     }
     /**
-     * @return Name of Container Registry Enterprise Edition repository.
+     * @return The name of the Repository.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     * @return The name of the namespace to which the Repository belongs.
      * 
      */
     public String namespace() {
         return this.namespace;
     }
     /**
-     * @return `PUBLIC` or `PRIVATE`, repository&#39;s visibility.
+     * @return The type of the Repository.
      * 
      */
     public String repoType() {
         return this.repoType;
     }
     /**
-     * @return The repository general information.
+     * @return The summary of the Repository.
      * 
      */
     public String summary() {
         return this.summary;
     }
     /**
-     * @return A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+     * @return A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public List<GetRegistryEnterpriseReposRepoTag> tags() {

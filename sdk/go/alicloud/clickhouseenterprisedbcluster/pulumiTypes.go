@@ -207,10 +207,296 @@ func (o AccountDmlAuthSettingPtrOutput) DmlAuthority() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ClickHouseEnterpriseDbClusterEndpoint struct {
+	// The computing group ID.
+	ComputingGroupId *string `pulumi:"computingGroupId"`
+	// The instance connection string.
+	ConnectionString *string `pulumi:"connectionString"`
+	// The endpoint name.
+	EndpointName *string `pulumi:"endpointName"`
+	// The IP address.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The network type of the connection string.
+	NetType *string `pulumi:"netType"`
+	// A list of port details.
+	Ports []ClickHouseEnterpriseDbClusterEndpointPort `pulumi:"ports"`
+	// The instance status.
+	Status *string `pulumi:"status"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
+	// The VPC instance ID.
+	VpcInstanceId *string `pulumi:"vpcInstanceId"`
+	// vSwitch ID.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// ClickHouseEnterpriseDbClusterEndpointInput is an input type that accepts ClickHouseEnterpriseDbClusterEndpointArgs and ClickHouseEnterpriseDbClusterEndpointOutput values.
+// You can construct a concrete instance of `ClickHouseEnterpriseDbClusterEndpointInput` via:
+//
+//	ClickHouseEnterpriseDbClusterEndpointArgs{...}
+type ClickHouseEnterpriseDbClusterEndpointInput interface {
+	pulumi.Input
+
+	ToClickHouseEnterpriseDbClusterEndpointOutput() ClickHouseEnterpriseDbClusterEndpointOutput
+	ToClickHouseEnterpriseDbClusterEndpointOutputWithContext(context.Context) ClickHouseEnterpriseDbClusterEndpointOutput
+}
+
+type ClickHouseEnterpriseDbClusterEndpointArgs struct {
+	// The computing group ID.
+	ComputingGroupId pulumi.StringPtrInput `pulumi:"computingGroupId"`
+	// The instance connection string.
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// The endpoint name.
+	EndpointName pulumi.StringPtrInput `pulumi:"endpointName"`
+	// The IP address.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The network type of the connection string.
+	NetType pulumi.StringPtrInput `pulumi:"netType"`
+	// A list of port details.
+	Ports ClickHouseEnterpriseDbClusterEndpointPortArrayInput `pulumi:"ports"`
+	// The instance status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The VPC ID.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The VPC instance ID.
+	VpcInstanceId pulumi.StringPtrInput `pulumi:"vpcInstanceId"`
+	// vSwitch ID.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (ClickHouseEnterpriseDbClusterEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpoint)(nil)).Elem()
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointArgs) ToClickHouseEnterpriseDbClusterEndpointOutput() ClickHouseEnterpriseDbClusterEndpointOutput {
+	return i.ToClickHouseEnterpriseDbClusterEndpointOutputWithContext(context.Background())
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointArgs) ToClickHouseEnterpriseDbClusterEndpointOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickHouseEnterpriseDbClusterEndpointOutput)
+}
+
+// ClickHouseEnterpriseDbClusterEndpointArrayInput is an input type that accepts ClickHouseEnterpriseDbClusterEndpointArray and ClickHouseEnterpriseDbClusterEndpointArrayOutput values.
+// You can construct a concrete instance of `ClickHouseEnterpriseDbClusterEndpointArrayInput` via:
+//
+//	ClickHouseEnterpriseDbClusterEndpointArray{ ClickHouseEnterpriseDbClusterEndpointArgs{...} }
+type ClickHouseEnterpriseDbClusterEndpointArrayInput interface {
+	pulumi.Input
+
+	ToClickHouseEnterpriseDbClusterEndpointArrayOutput() ClickHouseEnterpriseDbClusterEndpointArrayOutput
+	ToClickHouseEnterpriseDbClusterEndpointArrayOutputWithContext(context.Context) ClickHouseEnterpriseDbClusterEndpointArrayOutput
+}
+
+type ClickHouseEnterpriseDbClusterEndpointArray []ClickHouseEnterpriseDbClusterEndpointInput
+
+func (ClickHouseEnterpriseDbClusterEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClickHouseEnterpriseDbClusterEndpoint)(nil)).Elem()
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointArray) ToClickHouseEnterpriseDbClusterEndpointArrayOutput() ClickHouseEnterpriseDbClusterEndpointArrayOutput {
+	return i.ToClickHouseEnterpriseDbClusterEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointArray) ToClickHouseEnterpriseDbClusterEndpointArrayOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickHouseEnterpriseDbClusterEndpointArrayOutput)
+}
+
+type ClickHouseEnterpriseDbClusterEndpointOutput struct{ *pulumi.OutputState }
+
+func (ClickHouseEnterpriseDbClusterEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpoint)(nil)).Elem()
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) ToClickHouseEnterpriseDbClusterEndpointOutput() ClickHouseEnterpriseDbClusterEndpointOutput {
+	return o
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) ToClickHouseEnterpriseDbClusterEndpointOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointOutput {
+	return o
+}
+
+// The computing group ID.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) ComputingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.ComputingGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The instance connection string.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint name.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) EndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.EndpointName }).(pulumi.StringPtrOutput)
+}
+
+// The IP address.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the connection string.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+// A list of port details.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) Ports() ClickHouseEnterpriseDbClusterEndpointPortArrayOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) []ClickHouseEnterpriseDbClusterEndpointPort {
+		return v.Ports
+	}).(ClickHouseEnterpriseDbClusterEndpointPortArrayOutput)
+}
+
+// The instance status.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The VPC instance ID.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) VpcInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.VpcInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// vSwitch ID.
+func (o ClickHouseEnterpriseDbClusterEndpointOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpoint) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type ClickHouseEnterpriseDbClusterEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ClickHouseEnterpriseDbClusterEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClickHouseEnterpriseDbClusterEndpoint)(nil)).Elem()
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointArrayOutput) ToClickHouseEnterpriseDbClusterEndpointArrayOutput() ClickHouseEnterpriseDbClusterEndpointArrayOutput {
+	return o
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointArrayOutput) ToClickHouseEnterpriseDbClusterEndpointArrayOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointArrayOutput {
+	return o
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointArrayOutput) Index(i pulumi.IntInput) ClickHouseEnterpriseDbClusterEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClickHouseEnterpriseDbClusterEndpoint {
+		return vs[0].([]ClickHouseEnterpriseDbClusterEndpoint)[vs[1].(int)]
+	}).(ClickHouseEnterpriseDbClusterEndpointOutput)
+}
+
+type ClickHouseEnterpriseDbClusterEndpointPort struct {
+	// The access port.
+	Port *int `pulumi:"port"`
+	// The protocol type.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// ClickHouseEnterpriseDbClusterEndpointPortInput is an input type that accepts ClickHouseEnterpriseDbClusterEndpointPortArgs and ClickHouseEnterpriseDbClusterEndpointPortOutput values.
+// You can construct a concrete instance of `ClickHouseEnterpriseDbClusterEndpointPortInput` via:
+//
+//	ClickHouseEnterpriseDbClusterEndpointPortArgs{...}
+type ClickHouseEnterpriseDbClusterEndpointPortInput interface {
+	pulumi.Input
+
+	ToClickHouseEnterpriseDbClusterEndpointPortOutput() ClickHouseEnterpriseDbClusterEndpointPortOutput
+	ToClickHouseEnterpriseDbClusterEndpointPortOutputWithContext(context.Context) ClickHouseEnterpriseDbClusterEndpointPortOutput
+}
+
+type ClickHouseEnterpriseDbClusterEndpointPortArgs struct {
+	// The access port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The protocol type.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (ClickHouseEnterpriseDbClusterEndpointPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpointPort)(nil)).Elem()
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointPortArgs) ToClickHouseEnterpriseDbClusterEndpointPortOutput() ClickHouseEnterpriseDbClusterEndpointPortOutput {
+	return i.ToClickHouseEnterpriseDbClusterEndpointPortOutputWithContext(context.Background())
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointPortArgs) ToClickHouseEnterpriseDbClusterEndpointPortOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickHouseEnterpriseDbClusterEndpointPortOutput)
+}
+
+// ClickHouseEnterpriseDbClusterEndpointPortArrayInput is an input type that accepts ClickHouseEnterpriseDbClusterEndpointPortArray and ClickHouseEnterpriseDbClusterEndpointPortArrayOutput values.
+// You can construct a concrete instance of `ClickHouseEnterpriseDbClusterEndpointPortArrayInput` via:
+//
+//	ClickHouseEnterpriseDbClusterEndpointPortArray{ ClickHouseEnterpriseDbClusterEndpointPortArgs{...} }
+type ClickHouseEnterpriseDbClusterEndpointPortArrayInput interface {
+	pulumi.Input
+
+	ToClickHouseEnterpriseDbClusterEndpointPortArrayOutput() ClickHouseEnterpriseDbClusterEndpointPortArrayOutput
+	ToClickHouseEnterpriseDbClusterEndpointPortArrayOutputWithContext(context.Context) ClickHouseEnterpriseDbClusterEndpointPortArrayOutput
+}
+
+type ClickHouseEnterpriseDbClusterEndpointPortArray []ClickHouseEnterpriseDbClusterEndpointPortInput
+
+func (ClickHouseEnterpriseDbClusterEndpointPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClickHouseEnterpriseDbClusterEndpointPort)(nil)).Elem()
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointPortArray) ToClickHouseEnterpriseDbClusterEndpointPortArrayOutput() ClickHouseEnterpriseDbClusterEndpointPortArrayOutput {
+	return i.ToClickHouseEnterpriseDbClusterEndpointPortArrayOutputWithContext(context.Background())
+}
+
+func (i ClickHouseEnterpriseDbClusterEndpointPortArray) ToClickHouseEnterpriseDbClusterEndpointPortArrayOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClickHouseEnterpriseDbClusterEndpointPortArrayOutput)
+}
+
+type ClickHouseEnterpriseDbClusterEndpointPortOutput struct{ *pulumi.OutputState }
+
+func (ClickHouseEnterpriseDbClusterEndpointPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpointPort)(nil)).Elem()
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointPortOutput) ToClickHouseEnterpriseDbClusterEndpointPortOutput() ClickHouseEnterpriseDbClusterEndpointPortOutput {
+	return o
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointPortOutput) ToClickHouseEnterpriseDbClusterEndpointPortOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointPortOutput {
+	return o
+}
+
+// The access port.
+func (o ClickHouseEnterpriseDbClusterEndpointPortOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpointPort) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The protocol type.
+func (o ClickHouseEnterpriseDbClusterEndpointPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterEndpointPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ClickHouseEnterpriseDbClusterEndpointPortArrayOutput struct{ *pulumi.OutputState }
+
+func (ClickHouseEnterpriseDbClusterEndpointPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClickHouseEnterpriseDbClusterEndpointPort)(nil)).Elem()
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointPortArrayOutput) ToClickHouseEnterpriseDbClusterEndpointPortArrayOutput() ClickHouseEnterpriseDbClusterEndpointPortArrayOutput {
+	return o
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointPortArrayOutput) ToClickHouseEnterpriseDbClusterEndpointPortArrayOutputWithContext(ctx context.Context) ClickHouseEnterpriseDbClusterEndpointPortArrayOutput {
+	return o
+}
+
+func (o ClickHouseEnterpriseDbClusterEndpointPortArrayOutput) Index(i pulumi.IntInput) ClickHouseEnterpriseDbClusterEndpointPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClickHouseEnterpriseDbClusterEndpointPort {
+		return vs[0].([]ClickHouseEnterpriseDbClusterEndpointPort)[vs[1].(int)]
+	}).(ClickHouseEnterpriseDbClusterEndpointPortOutput)
+}
+
 type ClickHouseEnterpriseDbClusterMultiZone struct {
-	// The vSwtichID list.
+	// List of vSwitch IDs.
 	VswitchIds []string `pulumi:"vswitchIds"`
-	// The zone ID.
+	// Zone ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -226,9 +512,9 @@ type ClickHouseEnterpriseDbClusterMultiZoneInput interface {
 }
 
 type ClickHouseEnterpriseDbClusterMultiZoneArgs struct {
-	// The vSwtichID list.
+	// List of vSwitch IDs.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
-	// The zone ID.
+	// Zone ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -283,12 +569,12 @@ func (o ClickHouseEnterpriseDbClusterMultiZoneOutput) ToClickHouseEnterpriseDbCl
 	return o
 }
 
-// The vSwtichID list.
+// List of vSwitch IDs.
 func (o ClickHouseEnterpriseDbClusterMultiZoneOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterMultiZone) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
-// The zone ID.
+// Zone ID.
 func (o ClickHouseEnterpriseDbClusterMultiZoneOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickHouseEnterpriseDbClusterMultiZone) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -316,10 +602,18 @@ func (o ClickHouseEnterpriseDbClusterMultiZoneArrayOutput) Index(i pulumi.IntInp
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountDmlAuthSettingInput)(nil)).Elem(), AccountDmlAuthSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountDmlAuthSettingPtrInput)(nil)).Elem(), AccountDmlAuthSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpointInput)(nil)).Elem(), ClickHouseEnterpriseDbClusterEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpointArrayInput)(nil)).Elem(), ClickHouseEnterpriseDbClusterEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpointPortInput)(nil)).Elem(), ClickHouseEnterpriseDbClusterEndpointPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClickHouseEnterpriseDbClusterEndpointPortArrayInput)(nil)).Elem(), ClickHouseEnterpriseDbClusterEndpointPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickHouseEnterpriseDbClusterMultiZoneInput)(nil)).Elem(), ClickHouseEnterpriseDbClusterMultiZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClickHouseEnterpriseDbClusterMultiZoneArrayInput)(nil)).Elem(), ClickHouseEnterpriseDbClusterMultiZoneArray{})
 	pulumi.RegisterOutputType(AccountDmlAuthSettingOutput{})
 	pulumi.RegisterOutputType(AccountDmlAuthSettingPtrOutput{})
+	pulumi.RegisterOutputType(ClickHouseEnterpriseDbClusterEndpointOutput{})
+	pulumi.RegisterOutputType(ClickHouseEnterpriseDbClusterEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ClickHouseEnterpriseDbClusterEndpointPortOutput{})
+	pulumi.RegisterOutputType(ClickHouseEnterpriseDbClusterEndpointPortArrayOutput{})
 	pulumi.RegisterOutputType(ClickHouseEnterpriseDbClusterMultiZoneOutput{})
 	pulumi.RegisterOutputType(ClickHouseEnterpriseDbClusterMultiZoneArrayOutput{})
 }

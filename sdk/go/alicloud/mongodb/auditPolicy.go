@@ -17,7 +17,7 @@ import (
 // Mongodb Audit Policy can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <id>
+// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
 // ```
 type AuditPolicy struct {
 	pulumi.CustomResourceState
@@ -26,6 +26,8 @@ type AuditPolicy struct {
 	AuditStatus pulumi.StringOutput `pulumi:"auditStatus"`
 	// Database Instance Id
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
+	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+	Filter pulumi.StringOutput `pulumi:"filter"`
 	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod pulumi.IntOutput `pulumi:"storagePeriod"`
 }
@@ -70,6 +72,8 @@ type auditPolicyState struct {
 	AuditStatus *string `pulumi:"auditStatus"`
 	// Database Instance Id
 	DbInstanceId *string `pulumi:"dbInstanceId"`
+	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+	Filter *string `pulumi:"filter"`
 	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod *int `pulumi:"storagePeriod"`
 }
@@ -79,6 +83,8 @@ type AuditPolicyState struct {
 	AuditStatus pulumi.StringPtrInput
 	// Database Instance Id
 	DbInstanceId pulumi.StringPtrInput
+	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+	Filter pulumi.StringPtrInput
 	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod pulumi.IntPtrInput
 }
@@ -92,6 +98,8 @@ type auditPolicyArgs struct {
 	AuditStatus string `pulumi:"auditStatus"`
 	// Database Instance Id
 	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+	Filter *string `pulumi:"filter"`
 	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod *int `pulumi:"storagePeriod"`
 }
@@ -102,6 +110,8 @@ type AuditPolicyArgs struct {
 	AuditStatus pulumi.StringInput
 	// Database Instance Id
 	DbInstanceId pulumi.StringInput
+	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+	Filter pulumi.StringPtrInput
 	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod pulumi.IntPtrInput
 }
@@ -201,6 +211,11 @@ func (o AuditPolicyOutput) AuditStatus() pulumi.StringOutput {
 // Database Instance Id
 func (o AuditPolicyOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+func (o AuditPolicyOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
 // Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.

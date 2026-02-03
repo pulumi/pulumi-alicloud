@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Click House Enterprise D B Cluster resource.
+ * Provides a Click House Enterprise Db Cluster resource.
  *
  * Enterprise Edition Cluster Resources.
  *
- * For information about Click House Enterprise D B Cluster and how to use it, see [What is Enterprise D B Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
+ * For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
  *
  * > **NOTE:** Available since v1.247.0.
  *
@@ -76,10 +76,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Click House Enterprise D B Cluster can be imported using the id, e.g.
+ * Click House Enterprise Db Cluster can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <id>
+ * $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <db_instance_id>
  * ```
  */
 export class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
@@ -111,35 +111,95 @@ export class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the resource
+     * Instance type.
+     */
+    declare public /*out*/ readonly category: pulumi.Output<string>;
+    /**
+     * The billing method.
+     */
+    declare public /*out*/ readonly chargeType: pulumi.Output<string>;
+    /**
+     * List of computing group IDs.
+     */
+    declare public /*out*/ readonly computingGroupIds: pulumi.Output<string[]>;
+    /**
+     * The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The list of multi-zone information. See `multiZones` below.
+     * Cluster description.
+     */
+    declare public readonly description: pulumi.Output<string>;
+    /**
+     * List of endpoint details.
+     */
+    declare public /*out*/ readonly endpoints: pulumi.Output<outputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterEndpoint[]>;
+    /**
+     * The minor version number of the cluster engine.
+     */
+    declare public /*out*/ readonly engineMinorVersion: pulumi.Output<string>;
+    /**
+     * Network type of the instance.
+     */
+    declare public /*out*/ readonly instanceNetworkType: pulumi.Output<string>;
+    /**
+     * The multi-zone configuration. See `multiZones` below.
      */
     declare public readonly multiZones: pulumi.Output<outputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone[]>;
     /**
-     * The region ID of the resource
+     * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     */
+    declare public readonly nodeCount: pulumi.Output<number>;
+    /**
+     * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     */
+    declare public readonly nodeScaleMax: pulumi.Output<number>;
+    /**
+     * The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     */
+    declare public readonly nodeScaleMin: pulumi.Output<number>;
+    /**
+     * The region ID.
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
-     * The maximum value of serverless auto scaling.
+     * Resource group ID of the cluster.
      */
-    declare public readonly scaleMax: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * The minimum value of serverless auto scaling.
+     * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
-    declare public readonly scaleMin: pulumi.Output<string | undefined>;
+    declare public readonly scaleMax: pulumi.Output<string>;
     /**
-     * The status of the resource
+     * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+     */
+    declare public readonly scaleMin: pulumi.Output<string>;
+    /**
+     * The instance status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * Pre-purchased storage capacity (GB).
+     */
+    declare public /*out*/ readonly storageQuota: pulumi.Output<string>;
+    /**
+     * The storage capacity.
+     */
+    declare public /*out*/ readonly storageSize: pulumi.Output<number>;
+    /**
+     * The storage type.
+     */
+    declare public /*out*/ readonly storageType: pulumi.Output<string>;
+    /**
+     * Tag information.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID.
      */
     declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
-     * The vSwitch ID.
+     * vSwitch ID.
      */
     declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
@@ -160,26 +220,56 @@ export class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClickHouseEnterpriseDbClusterState | undefined;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["chargeType"] = state?.chargeType;
+            resourceInputs["computingGroupIds"] = state?.computingGroupIds;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpoints"] = state?.endpoints;
+            resourceInputs["engineMinorVersion"] = state?.engineMinorVersion;
+            resourceInputs["instanceNetworkType"] = state?.instanceNetworkType;
             resourceInputs["multiZones"] = state?.multiZones;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodeScaleMax"] = state?.nodeScaleMax;
+            resourceInputs["nodeScaleMin"] = state?.nodeScaleMin;
             resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["scaleMax"] = state?.scaleMax;
             resourceInputs["scaleMin"] = state?.scaleMin;
             resourceInputs["status"] = state?.status;
+            resourceInputs["storageQuota"] = state?.storageQuota;
+            resourceInputs["storageSize"] = state?.storageSize;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vswitchId"] = state?.vswitchId;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ClickHouseEnterpriseDbClusterArgs | undefined;
+            resourceInputs["description"] = args?.description;
             resourceInputs["multiZones"] = args?.multiZones;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["nodeScaleMax"] = args?.nodeScaleMax;
+            resourceInputs["nodeScaleMin"] = args?.nodeScaleMin;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["scaleMax"] = args?.scaleMax;
             resourceInputs["scaleMin"] = args?.scaleMin;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["category"] = undefined /*out*/;
+            resourceInputs["chargeType"] = undefined /*out*/;
+            resourceInputs["computingGroupIds"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["engineMinorVersion"] = undefined /*out*/;
+            resourceInputs["instanceNetworkType"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storageQuota"] = undefined /*out*/;
+            resourceInputs["storageSize"] = undefined /*out*/;
+            resourceInputs["storageType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClickHouseEnterpriseDbCluster.__pulumiType, name, resourceInputs, opts);
@@ -191,35 +281,95 @@ export class ClickHouseEnterpriseDbCluster extends pulumi.CustomResource {
  */
 export interface ClickHouseEnterpriseDbClusterState {
     /**
-     * The creation time of the resource
+     * Instance type.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * The billing method.
+     */
+    chargeType?: pulumi.Input<string>;
+    /**
+     * List of computing group IDs.
+     */
+    computingGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The list of multi-zone information. See `multiZones` below.
+     * Cluster description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * List of endpoint details.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterEndpoint>[]>;
+    /**
+     * The minor version number of the cluster engine.
+     */
+    engineMinorVersion?: pulumi.Input<string>;
+    /**
+     * Network type of the instance.
+     */
+    instanceNetworkType?: pulumi.Input<string>;
+    /**
+     * The multi-zone configuration. See `multiZones` below.
      */
     multiZones?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone>[]>;
     /**
-     * The region ID of the resource
+     * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
+     * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     */
+    nodeScaleMax?: pulumi.Input<number>;
+    /**
+     * The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     */
+    nodeScaleMin?: pulumi.Input<number>;
+    /**
+     * The region ID.
      */
     regionId?: pulumi.Input<string>;
     /**
-     * The maximum value of serverless auto scaling.
+     * Resource group ID of the cluster.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
     scaleMax?: pulumi.Input<string>;
     /**
-     * The minimum value of serverless auto scaling.
+     * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
     scaleMin?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The instance status.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Pre-purchased storage capacity (GB).
+     */
+    storageQuota?: pulumi.Input<string>;
+    /**
+     * The storage capacity.
+     */
+    storageSize?: pulumi.Input<number>;
+    /**
+     * The storage type.
+     */
+    storageType?: pulumi.Input<string>;
+    /**
+     * Tag information.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The vSwitch ID.
+     * vSwitch ID.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -233,23 +383,47 @@ export interface ClickHouseEnterpriseDbClusterState {
  */
 export interface ClickHouseEnterpriseDbClusterArgs {
     /**
-     * The list of multi-zone information. See `multiZones` below.
+     * Cluster description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The multi-zone configuration. See `multiZones` below.
      */
     multiZones?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone>[]>;
     /**
-     * The maximum value of serverless auto scaling.
+     * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
+     * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     */
+    nodeScaleMax?: pulumi.Input<number>;
+    /**
+     * The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     */
+    nodeScaleMin?: pulumi.Input<number>;
+    /**
+     * Resource group ID of the cluster.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
     scaleMax?: pulumi.Input<string>;
     /**
-     * The minimum value of serverless auto scaling.
+     * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
     scaleMin?: pulumi.Input<string>;
+    /**
+     * Tag information.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The vSwitch ID.
+     * vSwitch ID.
      */
     vswitchId?: pulumi.Input<string>;
     /**

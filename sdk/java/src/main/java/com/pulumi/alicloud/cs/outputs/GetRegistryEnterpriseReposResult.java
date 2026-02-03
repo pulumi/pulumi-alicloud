@@ -21,30 +21,26 @@ public final class GetRegistryEnterpriseReposResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
-     * 
-     */
     private List<String> ids;
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry instance to which the Repository belongs.
      * 
      */
     private String instanceId;
     private @Nullable String nameRegex;
     /**
-     * @return A list of repository names.
+     * @return A list of Repository names.
      * 
      */
     private List<String> names;
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where repo is located.
+     * @return The name of the namespace to which the Repository belongs.
      * 
      */
     private @Nullable String namespace;
     private @Nullable String outputFile;
     /**
-     * @return A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+     * @return A list of Repositories. Each element contains the following attributes:
      * 
      */
     private List<GetRegistryEnterpriseReposRepo> repos;
@@ -60,15 +56,11 @@ public final class GetRegistryEnterpriseReposResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry instance to which the Repository belongs.
      * 
      */
     public String instanceId() {
@@ -78,14 +70,14 @@ public final class GetRegistryEnterpriseReposResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of repository names.
+     * @return A list of Repository names.
      * 
      */
     public List<String> names() {
         return this.names;
     }
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where repo is located.
+     * @return The name of the namespace to which the Repository belongs.
      * 
      */
     public Optional<String> namespace() {
@@ -95,7 +87,7 @@ public final class GetRegistryEnterpriseReposResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+     * @return A list of Repositories. Each element contains the following attributes:
      * 
      */
     public List<GetRegistryEnterpriseReposRepo> repos() {

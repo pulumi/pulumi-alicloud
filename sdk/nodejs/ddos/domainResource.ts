@@ -91,6 +91,35 @@ export class DomainResource extends pulumi.CustomResource {
     }
 
     /**
+     * the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     */
+    declare public readonly aiMode: pulumi.Output<string>;
+    /**
+     * the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     */
+    declare public readonly aiTemplate: pulumi.Output<string>;
+    /**
+     * ip blacklist
+     */
+    declare public readonly blackLists: pulumi.Output<string[] | undefined>;
+    /**
+     * The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     */
+    declare public readonly bwListEnable: pulumi.Output<number>;
+    /**
+     * CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     */
+    declare public readonly ccGlobalSwitch: pulumi.Output<string>;
+    /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -174,6 +203,10 @@ export class DomainResource extends pulumi.CustomResource {
      * The address type of the origin server. Valid values:
      */
     declare public readonly rsType: pulumi.Output<number>;
+    /**
+     * IP whitelist list.
+     */
+    declare public readonly whiteLists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DomainResource resource with the given unique name, arguments, and options.
@@ -188,6 +221,11 @@ export class DomainResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainResourceState | undefined;
+            resourceInputs["aiMode"] = state?.aiMode;
+            resourceInputs["aiTemplate"] = state?.aiTemplate;
+            resourceInputs["blackLists"] = state?.blackLists;
+            resourceInputs["bwListEnable"] = state?.bwListEnable;
+            resourceInputs["ccGlobalSwitch"] = state?.ccGlobalSwitch;
             resourceInputs["cert"] = state?.cert;
             resourceInputs["certIdentifier"] = state?.certIdentifier;
             resourceInputs["certName"] = state?.certName;
@@ -202,6 +240,7 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["proxyTypes"] = state?.proxyTypes;
             resourceInputs["realServers"] = state?.realServers;
             resourceInputs["rsType"] = state?.rsType;
+            resourceInputs["whiteLists"] = state?.whiteLists;
         } else {
             const args = argsOrState as DomainResourceArgs | undefined;
             if (args?.domain === undefined && !opts.urn) {
@@ -219,8 +258,13 @@ export class DomainResource extends pulumi.CustomResource {
             if (args?.rsType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rsType'");
             }
+            resourceInputs["aiMode"] = args?.aiMode;
+            resourceInputs["aiTemplate"] = args?.aiTemplate;
+            resourceInputs["blackLists"] = args?.blackLists;
+            resourceInputs["bwListEnable"] = args?.bwListEnable;
+            resourceInputs["ccGlobalSwitch"] = args?.ccGlobalSwitch;
             resourceInputs["cert"] = args?.cert ? pulumi.secret(args.cert) : undefined;
-            resourceInputs["certIdentifier"] = args?.certIdentifier;
+            resourceInputs["certIdentifier"] = args?.certIdentifier ? pulumi.secret(args.certIdentifier) : undefined;
             resourceInputs["certName"] = args?.certName;
             resourceInputs["certRegion"] = args?.certRegion ? pulumi.secret(args.certRegion) : undefined;
             resourceInputs["customHeaders"] = args?.customHeaders;
@@ -232,10 +276,11 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["proxyTypes"] = args?.proxyTypes;
             resourceInputs["realServers"] = args?.realServers;
             resourceInputs["rsType"] = args?.rsType;
+            resourceInputs["whiteLists"] = args?.whiteLists;
             resourceInputs["cname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["cert", "certRegion", "key"] };
+        const secretOpts = { additionalSecretOutputs: ["cert", "certIdentifier", "certRegion", "key"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DomainResource.__pulumiType, name, resourceInputs, opts);
     }
@@ -245,6 +290,35 @@ export class DomainResource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DomainResource resources.
  */
 export interface DomainResourceState {
+    /**
+     * the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     */
+    aiMode?: pulumi.Input<string>;
+    /**
+     * the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     */
+    aiTemplate?: pulumi.Input<string>;
+    /**
+     * ip blacklist
+     */
+    blackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     */
+    bwListEnable?: pulumi.Input<number>;
+    /**
+     * CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     */
+    ccGlobalSwitch?: pulumi.Input<string>;
     /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      *
@@ -329,12 +403,45 @@ export interface DomainResourceState {
      * The address type of the origin server. Valid values:
      */
     rsType?: pulumi.Input<number>;
+    /**
+     * IP whitelist list.
+     */
+    whiteLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a DomainResource resource.
  */
 export interface DomainResourceArgs {
+    /**
+     * the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     */
+    aiMode?: pulumi.Input<string>;
+    /**
+     * the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     */
+    aiTemplate?: pulumi.Input<string>;
+    /**
+     * ip blacklist
+     */
+    blackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     */
+    bwListEnable?: pulumi.Input<number>;
+    /**
+     * CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     */
+    ccGlobalSwitch?: pulumi.Input<string>;
     /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      *
@@ -415,4 +522,8 @@ export interface DomainResourceArgs {
      * The address type of the origin server. Valid values:
      */
     rsType: pulumi.Input<number>;
+    /**
+     * IP whitelist list.
+     */
+    whiteLists?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  * Ehpc Cluster V2 can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example &lt;id&gt;
+ * $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example &lt;cluster_id&gt;
  * ```
  * 
  */
@@ -352,14 +352,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterVswitchId);
     }
     /**
-     * The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+     * The time when the cluster was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+     * @return The time when the cluster was created.
      * 
      */
     public Output<String> createTime() {

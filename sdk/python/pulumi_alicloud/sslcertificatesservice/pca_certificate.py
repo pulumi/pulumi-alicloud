@@ -626,8 +626,13 @@ class _PcaCertificateState:
         pulumi.set(self, "years", value)
 
 
+warnings.warn("""alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")
 class PcaCertificate(pulumi.CustomResource):
+    warnings.warn("""alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -665,7 +670,7 @@ class PcaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.sslcertificatesservice.PcaCertificate("default",
+        default = alicloud.sslcertificatesservicepca.Certificate("default",
             organization="a",
             years=1,
             locality="a",
@@ -738,7 +743,7 @@ class PcaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.sslcertificatesservice.PcaCertificate("default",
+        default = alicloud.sslcertificatesservicepca.Certificate("default",
             organization="a",
             years=1,
             locality="a",
@@ -792,6 +797,7 @@ class PcaCertificate(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  years: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""PcaCertificate is deprecated: alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -968,7 +974,7 @@ class PcaCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="crlDay")
-    def crl_day(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def crl_day(self) -> pulumi.Output[_builtins.int]:
         """
         The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
         """

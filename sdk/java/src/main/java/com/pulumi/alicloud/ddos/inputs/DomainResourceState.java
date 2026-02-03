@@ -20,6 +20,99 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     public static final DomainResourceState Empty = new DomainResourceState();
 
     /**
+     * the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     * 
+     */
+    @Import(name="aiMode")
+    private @Nullable Output<String> aiMode;
+
+    /**
+     * @return the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     * 
+     */
+    public Optional<Output<String>> aiMode() {
+        return Optional.ofNullable(this.aiMode);
+    }
+
+    /**
+     * the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     * 
+     */
+    @Import(name="aiTemplate")
+    private @Nullable Output<String> aiTemplate;
+
+    /**
+     * @return the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     * 
+     */
+    public Optional<Output<String>> aiTemplate() {
+        return Optional.ofNullable(this.aiTemplate);
+    }
+
+    /**
+     * ip blacklist
+     * 
+     */
+    @Import(name="blackLists")
+    private @Nullable Output<List<String>> blackLists;
+
+    /**
+     * @return ip blacklist
+     * 
+     */
+    public Optional<Output<List<String>>> blackLists() {
+        return Optional.ofNullable(this.blackLists);
+    }
+
+    /**
+     * The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    @Import(name="bwListEnable")
+    private @Nullable Output<Integer> bwListEnable;
+
+    /**
+     * @return The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    public Optional<Output<Integer>> bwListEnable() {
+        return Optional.ofNullable(this.bwListEnable);
+    }
+
+    /**
+     * CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    @Import(name="ccGlobalSwitch")
+    private @Nullable Output<String> ccGlobalSwitch;
+
+    /**
+     * @return CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    public Optional<Output<String>> ccGlobalSwitch() {
+        return Optional.ofNullable(this.ccGlobalSwitch);
+    }
+
+    /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      * 
      * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -285,9 +378,29 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.rsType);
     }
 
+    /**
+     * IP whitelist list.
+     * 
+     */
+    @Import(name="whiteLists")
+    private @Nullable Output<List<String>> whiteLists;
+
+    /**
+     * @return IP whitelist list.
+     * 
+     */
+    public Optional<Output<List<String>>> whiteLists() {
+        return Optional.ofNullable(this.whiteLists);
+    }
+
     private DomainResourceState() {}
 
     private DomainResourceState(DomainResourceState $) {
+        this.aiMode = $.aiMode;
+        this.aiTemplate = $.aiTemplate;
+        this.blackLists = $.blackLists;
+        this.bwListEnable = $.bwListEnable;
+        this.ccGlobalSwitch = $.ccGlobalSwitch;
         this.cert = $.cert;
         this.certIdentifier = $.certIdentifier;
         this.certName = $.certName;
@@ -302,6 +415,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         this.proxyTypes = $.proxyTypes;
         this.realServers = $.realServers;
         this.rsType = $.rsType;
+        this.whiteLists = $.whiteLists;
     }
 
     public static Builder builder() {
@@ -320,6 +434,139 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
 
         public Builder(DomainResourceState defaults) {
             $ = new DomainResourceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aiMode the mode of the Intelligent Protection policy.
+         * - watch: the Warning mode
+         * - defense: the Defense mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiMode(@Nullable Output<String> aiMode) {
+            $.aiMode = aiMode;
+            return this;
+        }
+
+        /**
+         * @param aiMode the mode of the Intelligent Protection policy.
+         * - watch: the Warning mode
+         * - defense: the Defense mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiMode(String aiMode) {
+            return aiMode(Output.of(aiMode));
+        }
+
+        /**
+         * @param aiTemplate the level of the Intelligent Protection policy.
+         * - level30: the Low level
+         * - level60: the Normal level
+         * - level90: the Strict level
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiTemplate(@Nullable Output<String> aiTemplate) {
+            $.aiTemplate = aiTemplate;
+            return this;
+        }
+
+        /**
+         * @param aiTemplate the level of the Intelligent Protection policy.
+         * - level30: the Low level
+         * - level60: the Normal level
+         * - level90: the Strict level
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiTemplate(String aiTemplate) {
+            return aiTemplate(Output.of(aiTemplate));
+        }
+
+        /**
+         * @param blackLists ip blacklist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blackLists(@Nullable Output<List<String>> blackLists) {
+            $.blackLists = blackLists;
+            return this;
+        }
+
+        /**
+         * @param blackLists ip blacklist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blackLists(List<String> blackLists) {
+            return blackLists(Output.of(blackLists));
+        }
+
+        /**
+         * @param blackLists ip blacklist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blackLists(String... blackLists) {
+            return blackLists(List.of(blackLists));
+        }
+
+        /**
+         * @param bwListEnable The status of the blacklist and whitelist feature. Valid values:
+         * - 0: Disabled
+         * - 1: Enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bwListEnable(@Nullable Output<Integer> bwListEnable) {
+            $.bwListEnable = bwListEnable;
+            return this;
+        }
+
+        /**
+         * @param bwListEnable The status of the blacklist and whitelist feature. Valid values:
+         * - 0: Disabled
+         * - 1: Enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bwListEnable(Integer bwListEnable) {
+            return bwListEnable(Output.of(bwListEnable));
+        }
+
+        /**
+         * @param ccGlobalSwitch CC safety protection switch.
+         * - 0: Disabled
+         * - 1: Enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ccGlobalSwitch(@Nullable Output<String> ccGlobalSwitch) {
+            $.ccGlobalSwitch = ccGlobalSwitch;
+            return this;
+        }
+
+        /**
+         * @param ccGlobalSwitch CC safety protection switch.
+         * - 0: Disabled
+         * - 1: Enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ccGlobalSwitch(String ccGlobalSwitch) {
+            return ccGlobalSwitch(Output.of(ccGlobalSwitch));
         }
 
         /**
@@ -700,6 +947,37 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder rsType(Integer rsType) {
             return rsType(Output.of(rsType));
+        }
+
+        /**
+         * @param whiteLists IP whitelist list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whiteLists(@Nullable Output<List<String>> whiteLists) {
+            $.whiteLists = whiteLists;
+            return this;
+        }
+
+        /**
+         * @param whiteLists IP whitelist list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whiteLists(List<String> whiteLists) {
+            return whiteLists(Output.of(whiteLists));
+        }
+
+        /**
+         * @param whiteLists IP whitelist list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whiteLists(String... whiteLists) {
+            return whiteLists(List.of(whiteLists));
         }
 
         public DomainResourceState build() {

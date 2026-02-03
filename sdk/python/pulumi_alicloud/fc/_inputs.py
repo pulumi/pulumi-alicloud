@@ -67,6 +67,8 @@ __all__ = [
     'V3CustomDomainAuthConfigArgsDict',
     'V3CustomDomainCertConfigArgs',
     'V3CustomDomainCertConfigArgsDict',
+    'V3CustomDomainCorsConfigArgs',
+    'V3CustomDomainCorsConfigArgsDict',
     'V3CustomDomainRouteConfigArgs',
     'V3CustomDomainRouteConfigArgsDict',
     'V3CustomDomainRouteConfigRouteArgs',
@@ -1745,6 +1747,138 @@ class V3CustomDomainCertConfigArgs:
     @private_key.setter
     def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "private_key", value)
+
+
+if not MYPY:
+    class V3CustomDomainCorsConfigArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of allowed request headers, such as Content-Type, Authorization, etc.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of response headers that can be exposed to the browser.
+        """
+        max_age: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+        """
+elif False:
+    V3CustomDomainCorsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V3CustomDomainCorsConfigArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_age: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_credentials: Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_headers: List of allowed request headers, such as Content-Type, Authorization, etc.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_methods: List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_origins: List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expose_headers: List of response headers that can be exposed to the browser.
+        :param pulumi.Input[_builtins.int] max_age: Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @_builtins.property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed request headers, such as Content-Type, Authorization, etc.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allow_origins", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of response headers that can be exposed to the browser.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_age", value)
 
 
 if not MYPY:

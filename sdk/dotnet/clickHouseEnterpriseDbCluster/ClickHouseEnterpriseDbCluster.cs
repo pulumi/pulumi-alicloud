@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
 {
     /// <summary>
-    /// Provides a Click House Enterprise D B Cluster resource.
+    /// Provides a Click House Enterprise Db Cluster resource.
     /// 
     /// Enterprise Edition Cluster Resources.
     /// 
-    /// For information about Click House Enterprise D B Cluster and how to use it, see [What is Enterprise D B Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
+    /// For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
     /// 
     /// &gt; **NOTE:** Available since v1.247.0.
     /// 
@@ -109,50 +109,140 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     /// 
     /// ## Import
     /// 
-    /// Click House Enterprise D B Cluster can be imported using the id, e.g.
+    /// Click House Enterprise Db Cluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example &lt;id&gt;
+    /// $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example &lt;db_instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster")]
     public partial class ClickHouseEnterpriseDbCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the resource
+        /// Instance type.
+        /// </summary>
+        [Output("category")]
+        public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing method.
+        /// </summary>
+        [Output("chargeType")]
+        public Output<string> ChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// List of computing group IDs.
+        /// </summary>
+        [Output("computingGroupIds")]
+        public Output<ImmutableArray<string>> ComputingGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The list of multi-zone information. See `MultiZones` below.
+        /// Cluster description.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// List of endpoint details.
+        /// </summary>
+        [Output("endpoints")]
+        public Output<ImmutableArray<Outputs.ClickHouseEnterpriseDbClusterEndpoint>> Endpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// The minor version number of the cluster engine.
+        /// </summary>
+        [Output("engineMinorVersion")]
+        public Output<string> EngineMinorVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Network type of the instance.
+        /// </summary>
+        [Output("instanceNetworkType")]
+        public Output<string> InstanceNetworkType { get; private set; } = null!;
+
+        /// <summary>
+        /// The multi-zone configuration. See `MultiZones` below.
         /// </summary>
         [Output("multiZones")]
         public Output<ImmutableArray<Outputs.ClickHouseEnterpriseDbClusterMultiZone>> MultiZones { get; private set; } = null!;
 
         /// <summary>
-        /// The region ID of the resource
+        /// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        /// </summary>
+        [Output("nodeCount")]
+        public Output<int> NodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        /// </summary>
+        [Output("nodeScaleMax")]
+        public Output<int> NodeScaleMax { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        /// </summary>
+        [Output("nodeScaleMin")]
+        public Output<int> NodeScaleMin { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum value of serverless auto scaling.
+        /// Resource group ID of the cluster.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         /// </summary>
         [Output("scaleMax")]
-        public Output<string?> ScaleMax { get; private set; } = null!;
+        public Output<string> ScaleMax { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum value of serverless auto scaling.
+        /// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         /// </summary>
         [Output("scaleMin")]
-        public Output<string?> ScaleMin { get; private set; } = null!;
+        public Output<string> ScaleMin { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The instance status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Pre-purchased storage capacity (GB).
+        /// </summary>
+        [Output("storageQuota")]
+        public Output<string> StorageQuota { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage capacity.
+        /// </summary>
+        [Output("storageSize")]
+        public Output<int> StorageSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage type.
+        /// </summary>
+        [Output("storageType")]
+        public Output<string> StorageType { get; private set; } = null!;
+
+        /// <summary>
+        /// Tag information.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The VPC ID.
@@ -161,7 +251,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The vSwitch ID.
+        /// vSwitch ID.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -218,11 +308,17 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
 
     public sealed class ClickHouseEnterpriseDbClusterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster description.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("multiZones")]
         private InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneArgs>? _multiZones;
 
         /// <summary>
-        /// The list of multi-zone information. See `MultiZones` below.
+        /// The multi-zone configuration. See `MultiZones` below.
         /// </summary>
         public InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneArgs> MultiZones
         {
@@ -231,16 +327,52 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         }
 
         /// <summary>
-        /// The maximum value of serverless auto scaling.
+        /// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        /// </summary>
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
+
+        /// <summary>
+        /// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        /// </summary>
+        [Input("nodeScaleMax")]
+        public Input<int>? NodeScaleMax { get; set; }
+
+        /// <summary>
+        /// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        /// </summary>
+        [Input("nodeScaleMin")]
+        public Input<int>? NodeScaleMin { get; set; }
+
+        /// <summary>
+        /// Resource group ID of the cluster.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         /// </summary>
         [Input("scaleMax")]
         public Input<string>? ScaleMax { get; set; }
 
         /// <summary>
-        /// The minimum value of serverless auto scaling.
+        /// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         /// </summary>
         [Input("scaleMin")]
         public Input<string>? ScaleMin { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Tag information.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The VPC ID.
@@ -249,7 +381,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vSwitch ID.
+        /// vSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -269,16 +401,70 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     public sealed class ClickHouseEnterpriseDbClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the resource
+        /// Instance type.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// The billing method.
+        /// </summary>
+        [Input("chargeType")]
+        public Input<string>? ChargeType { get; set; }
+
+        [Input("computingGroupIds")]
+        private InputList<string>? _computingGroupIds;
+
+        /// <summary>
+        /// List of computing group IDs.
+        /// </summary>
+        public InputList<string> ComputingGroupIds
+        {
+            get => _computingGroupIds ?? (_computingGroupIds = new InputList<string>());
+            set => _computingGroupIds = value;
+        }
+
+        /// <summary>
+        /// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Cluster description.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("endpoints")]
+        private InputList<Inputs.ClickHouseEnterpriseDbClusterEndpointGetArgs>? _endpoints;
+
+        /// <summary>
+        /// List of endpoint details.
+        /// </summary>
+        public InputList<Inputs.ClickHouseEnterpriseDbClusterEndpointGetArgs> Endpoints
+        {
+            get => _endpoints ?? (_endpoints = new InputList<Inputs.ClickHouseEnterpriseDbClusterEndpointGetArgs>());
+            set => _endpoints = value;
+        }
+
+        /// <summary>
+        /// The minor version number of the cluster engine.
+        /// </summary>
+        [Input("engineMinorVersion")]
+        public Input<string>? EngineMinorVersion { get; set; }
+
+        /// <summary>
+        /// Network type of the instance.
+        /// </summary>
+        [Input("instanceNetworkType")]
+        public Input<string>? InstanceNetworkType { get; set; }
 
         [Input("multiZones")]
         private InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneGetArgs>? _multiZones;
 
         /// <summary>
-        /// The list of multi-zone information. See `MultiZones` below.
+        /// The multi-zone configuration. See `MultiZones` below.
         /// </summary>
         public InputList<Inputs.ClickHouseEnterpriseDbClusterMultiZoneGetArgs> MultiZones
         {
@@ -287,28 +473,82 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         }
 
         /// <summary>
-        /// The region ID of the resource
+        /// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+        /// </summary>
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
+
+        /// <summary>
+        /// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+        /// </summary>
+        [Input("nodeScaleMax")]
+        public Input<int>? NodeScaleMax { get; set; }
+
+        /// <summary>
+        /// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+        /// </summary>
+        [Input("nodeScaleMin")]
+        public Input<int>? NodeScaleMin { get; set; }
+
+        /// <summary>
+        /// The region ID.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// The maximum value of serverless auto scaling.
+        /// Resource group ID of the cluster.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         /// </summary>
         [Input("scaleMax")]
         public Input<string>? ScaleMax { get; set; }
 
         /// <summary>
-        /// The minimum value of serverless auto scaling.
+        /// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
         /// </summary>
         [Input("scaleMin")]
         public Input<string>? ScaleMin { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The instance status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Pre-purchased storage capacity (GB).
+        /// </summary>
+        [Input("storageQuota")]
+        public Input<string>? StorageQuota { get; set; }
+
+        /// <summary>
+        /// The storage capacity.
+        /// </summary>
+        [Input("storageSize")]
+        public Input<int>? StorageSize { get; set; }
+
+        /// <summary>
+        /// The storage type.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Tag information.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The VPC ID.
@@ -317,7 +557,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vSwitch ID.
+        /// vSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

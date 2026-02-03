@@ -12,6 +12,22 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
 
     public sealed class ClusterV2ClusterCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("keyPairName")]
+        private Input<string>? _keyPairName;
+
+        /// <summary>
+        /// The SSH key of root of the cluster node.
+        /// </summary>
+        public Input<string>? KeyPairName
+        {
+            get => _keyPairName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyPairName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("password")]
         private Input<string>? _password;
 

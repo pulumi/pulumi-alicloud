@@ -194,7 +194,7 @@ import (
 // Ehpc Cluster V2 can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <id>
+// $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <cluster_id>
 // ```
 type ClusterV2 struct {
 	pulumi.CustomResourceState
@@ -226,7 +226,7 @@ type ClusterV2 struct {
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
 	// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
 	ClusterVswitchId pulumi.StringPtrOutput `pulumi:"clusterVswitchId"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+	// The time when the cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The idle duration of the compute nodes allowed by the cluster.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -315,7 +315,7 @@ type clusterV2State struct {
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
 	// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
 	ClusterVswitchId *string `pulumi:"clusterVswitchId"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+	// The time when the cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The idle duration of the compute nodes allowed by the cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -358,7 +358,7 @@ type ClusterV2State struct {
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
 	// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
 	ClusterVswitchId pulumi.StringPtrInput
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+	// The time when the cluster was created.
 	CreateTime pulumi.StringPtrInput
 	// The idle duration of the compute nodes allowed by the cluster.
 	DeletionProtection pulumi.BoolPtrInput
@@ -598,7 +598,7 @@ func (o ClusterV2Output) ClusterVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.ClusterVswitchId }).(pulumi.StringPtrOutput)
 }
 
-// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+// The time when the cluster was created.
 func (o ClusterV2Output) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }

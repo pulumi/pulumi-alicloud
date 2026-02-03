@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * Mongodb Audit Policy can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;db_instance_id&gt;
  * ```
  * 
  */
@@ -53,6 +53,20 @@ public class AuditPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
+    }
+    /**
+     * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     * 
+     */
+    @Export(name="filter", refs={String.class}, tree="[0]")
+    private Output<String> filter;
+
+    /**
+     * @return The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
+     * 
+     */
+    public Output<String> filter() {
+        return this.filter;
     }
     /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.

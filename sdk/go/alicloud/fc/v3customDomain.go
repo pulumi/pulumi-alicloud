@@ -11,14 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a FCV3 Custom Domain resource.
+// Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
 //
 // Custom Domain names allow users to access FC functions through custom domain names, providing convenience for building Web services using function compute.
 // You can bind a custom domain name to Function Compute and set different paths to different functions of different services.
 //
-// For information about FCV3 Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
-//
-// > **NOTE:** This content is a technical preview, and should not be relied on in a production environment.
+// For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
 //
 // > **NOTE:** Available since v1.228.0.
 //
@@ -236,33 +234,35 @@ import (
 //
 // ## Import
 //
-// FCV3 Custom Domain can be imported using the id, e.g.
+// Function Compute Service V3 (FCV3) Custom Domain can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <id>
+// $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <custom_domain_name>
 // ```
 type V3CustomDomain struct {
 	pulumi.CustomResourceState
 
-	// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+	// The ID of your Alibaba Cloud account (primary account).
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// (Available since v1.234.0) API version of Function Compute
+	// API version of Function Compute.
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig V3CustomDomainAuthConfigPtrOutput `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig V3CustomDomainCertConfigOutput `pulumi:"certConfig"`
-	// The creation time of the resource
+	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+	CorsConfig V3CustomDomainCorsConfigPtrOutput `pulumi:"corsConfig"`
+	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of the resource
 	CustomDomainName pulumi.StringOutput `pulumi:"customDomainName"`
-	// (Available since v1.234.0) The last time the custom domain name was Updated
+	// The last time the custom domain name was Updated.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// Route matching rule configuration See `routeConfig` below.
 	RouteConfig V3CustomDomainRouteConfigPtrOutput `pulumi:"routeConfig"`
-	// (Available since v1.234.0) Number of subdomains
+	// Number of subdomains.
 	SubdomainCount pulumi.StringOutput `pulumi:"subdomainCount"`
 	// TLS configuration information See `tlsConfig` below.
 	TlsConfig V3CustomDomainTlsConfigOutput `pulumi:"tlsConfig"`
@@ -300,25 +300,27 @@ func GetV3CustomDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V3CustomDomain resources.
 type v3customDomainState struct {
-	// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+	// The ID of your Alibaba Cloud account (primary account).
 	AccountId *string `pulumi:"accountId"`
-	// (Available since v1.234.0) API version of Function Compute
+	// API version of Function Compute.
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig *V3CustomDomainAuthConfig `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig *V3CustomDomainCertConfig `pulumi:"certConfig"`
-	// The creation time of the resource
+	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+	CorsConfig *V3CustomDomainCorsConfig `pulumi:"corsConfig"`
+	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
 	// The name of the resource
 	CustomDomainName *string `pulumi:"customDomainName"`
-	// (Available since v1.234.0) The last time the custom domain name was Updated
+	// The last time the custom domain name was Updated.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 	Protocol *string `pulumi:"protocol"`
 	// Route matching rule configuration See `routeConfig` below.
 	RouteConfig *V3CustomDomainRouteConfig `pulumi:"routeConfig"`
-	// (Available since v1.234.0) Number of subdomains
+	// Number of subdomains.
 	SubdomainCount *string `pulumi:"subdomainCount"`
 	// TLS configuration information See `tlsConfig` below.
 	TlsConfig *V3CustomDomainTlsConfig `pulumi:"tlsConfig"`
@@ -327,25 +329,27 @@ type v3customDomainState struct {
 }
 
 type V3CustomDomainState struct {
-	// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+	// The ID of your Alibaba Cloud account (primary account).
 	AccountId pulumi.StringPtrInput
-	// (Available since v1.234.0) API version of Function Compute
+	// API version of Function Compute.
 	ApiVersion pulumi.StringPtrInput
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig V3CustomDomainAuthConfigPtrInput
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig V3CustomDomainCertConfigPtrInput
-	// The creation time of the resource
+	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+	CorsConfig V3CustomDomainCorsConfigPtrInput
+	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
 	// The name of the resource
 	CustomDomainName pulumi.StringPtrInput
-	// (Available since v1.234.0) The last time the custom domain name was Updated
+	// The last time the custom domain name was Updated.
 	LastModifiedTime pulumi.StringPtrInput
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 	Protocol pulumi.StringPtrInput
 	// Route matching rule configuration See `routeConfig` below.
 	RouteConfig V3CustomDomainRouteConfigPtrInput
-	// (Available since v1.234.0) Number of subdomains
+	// Number of subdomains.
 	SubdomainCount pulumi.StringPtrInput
 	// TLS configuration information See `tlsConfig` below.
 	TlsConfig V3CustomDomainTlsConfigPtrInput
@@ -362,6 +366,8 @@ type v3customDomainArgs struct {
 	AuthConfig *V3CustomDomainAuthConfig `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig *V3CustomDomainCertConfig `pulumi:"certConfig"`
+	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+	CorsConfig *V3CustomDomainCorsConfig `pulumi:"corsConfig"`
 	// The name of the resource
 	CustomDomainName *string `pulumi:"customDomainName"`
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
@@ -380,6 +386,8 @@ type V3CustomDomainArgs struct {
 	AuthConfig V3CustomDomainAuthConfigPtrInput
 	// HTTPS certificate information See `certConfig` below.
 	CertConfig V3CustomDomainCertConfigPtrInput
+	// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+	CorsConfig V3CustomDomainCorsConfigPtrInput
 	// The name of the resource
 	CustomDomainName pulumi.StringPtrInput
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
@@ -479,12 +487,12 @@ func (o V3CustomDomainOutput) ToV3CustomDomainOutputWithContext(ctx context.Cont
 	return o
 }
 
-// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+// The ID of your Alibaba Cloud account (primary account).
 func (o V3CustomDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (Available since v1.234.0) API version of Function Compute
+// API version of Function Compute.
 func (o V3CustomDomainOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
 }
@@ -499,7 +507,12 @@ func (o V3CustomDomainOutput) CertConfig() V3CustomDomainCertConfigOutput {
 	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainCertConfigOutput { return v.CertConfig }).(V3CustomDomainCertConfigOutput)
 }
 
-// The creation time of the resource
+// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+func (o V3CustomDomainOutput) CorsConfig() V3CustomDomainCorsConfigPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainCorsConfigPtrOutput { return v.CorsConfig }).(V3CustomDomainCorsConfigPtrOutput)
+}
+
+// The creation time of the resource.
 func (o V3CustomDomainOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -509,7 +522,7 @@ func (o V3CustomDomainOutput) CustomDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.CustomDomainName }).(pulumi.StringOutput)
 }
 
-// (Available since v1.234.0) The last time the custom domain name was Updated
+// The last time the custom domain name was Updated.
 func (o V3CustomDomainOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
@@ -524,7 +537,7 @@ func (o V3CustomDomainOutput) RouteConfig() V3CustomDomainRouteConfigPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainRouteConfigPtrOutput { return v.RouteConfig }).(V3CustomDomainRouteConfigPtrOutput)
 }
 
-// (Available since v1.234.0) Number of subdomains
+// Number of subdomains.
 func (o V3CustomDomainOutput) SubdomainCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.SubdomainCount }).(pulumi.StringOutput)
 }

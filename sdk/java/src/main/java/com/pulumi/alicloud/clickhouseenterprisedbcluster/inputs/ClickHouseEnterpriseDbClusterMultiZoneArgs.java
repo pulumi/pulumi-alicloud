@@ -17,14 +17,14 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
     public static final ClickHouseEnterpriseDbClusterMultiZoneArgs Empty = new ClickHouseEnterpriseDbClusterMultiZoneArgs();
 
     /**
-     * The vSwtichID list.
+     * List of vSwitch IDs.
      * 
      */
     @Import(name="vswitchIds")
     private @Nullable Output<List<String>> vswitchIds;
 
     /**
-     * @return The vSwtichID list.
+     * @return List of vSwitch IDs.
      * 
      */
     public Optional<Output<List<String>>> vswitchIds() {
@@ -32,14 +32,14 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
     }
 
     /**
-     * The zone ID.
+     * Zone ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID.
+     * @return Zone ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -72,7 +72,7 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
         }
 
         /**
-         * @param vswitchIds The vSwtichID list.
+         * @param vswitchIds List of vSwitch IDs.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
         }
 
         /**
-         * @param vswitchIds The vSwtichID list.
+         * @param vswitchIds List of vSwitch IDs.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
         }
 
         /**
-         * @param vswitchIds The vSwtichID list.
+         * @param vswitchIds List of vSwitch IDs.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
         }
 
         /**
-         * @param zoneId The zone ID.
+         * @param zoneId Zone ID.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClickHouseEnterpriseDbClusterMultiZoneArgs extends com.pulumi
         }
 
         /**
-         * @param zoneId The zone ID.
+         * @param zoneId Zone ID.
          * 
          * @return builder
          * 

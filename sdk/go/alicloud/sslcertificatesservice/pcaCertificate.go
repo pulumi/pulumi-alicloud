@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservice"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicepca"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sslcertificatesservice.NewPcaCertificate(ctx, "default", &sslcertificatesservice.PcaCertificateArgs{
+//			_, err := sslcertificatesservicepca.NewCertificate(ctx, "default", &sslcertificatesservicepca.CertificateArgs{
 //				Organization:     pulumi.String("a"),
 //				Years:            pulumi.Int(1),
 //				Locality:         pulumi.String("a"),
@@ -62,6 +62,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <id>
 // ```
+//
+// Deprecated: alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate
 type PcaCertificate struct {
 	pulumi.CustomResourceState
 
@@ -85,7 +87,7 @@ type PcaCertificate struct {
 	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
-	CrlDay pulumi.IntPtrOutput `pulumi:"crlDay"`
+	CrlDay pulumi.IntOutput `pulumi:"crlDay"`
 	// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
 	EnableCrl pulumi.BoolPtrOutput `pulumi:"enableCrl"`
 	// The extended key usages. **Note:** `extendedKeyUsages` takes effect only if `certificateType` is set to `SUB_ROOT`.
@@ -484,8 +486,8 @@ func (o PcaCertificateOutput) CountryCode() pulumi.StringPtrOutput {
 }
 
 // The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
-func (o PcaCertificateOutput) CrlDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PcaCertificate) pulumi.IntPtrOutput { return v.CrlDay }).(pulumi.IntPtrOutput)
+func (o PcaCertificateOutput) CrlDay() pulumi.IntOutput {
+	return o.ApplyT(func(v *PcaCertificate) pulumi.IntOutput { return v.CrlDay }).(pulumi.IntOutput)
 }
 
 // This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:

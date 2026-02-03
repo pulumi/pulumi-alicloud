@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.sslcertificatesservice.PcaCertificate;
- * import com.pulumi.alicloud.sslcertificatesservice.PcaCertificateArgs;
+ * import com.pulumi.alicloud.sslcertificatesservicepca.Certificate;
+ * import com.pulumi.alicloud.sslcertificatesservicepca.CertificateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PcaCertificate("default", PcaCertificateArgs.builder()
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .organization("a")
  *             .years(1)
  *             .locality("a")
@@ -77,7 +77,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example &lt;id&gt;
  * ```
  * 
+ * @deprecated
+ * alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate
+ * 
  */
+@Deprecated /* alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate */
 @ResourceType(type="alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate")
 public class PcaCertificate extends com.pulumi.resources.CustomResource {
     /**
@@ -167,14 +171,14 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="crlDay", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> crlDay;
+    private Output<Integer> crlDay;
 
     /**
      * @return The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crlDay` takes effect only if `certificateType` is set to `SUB_ROOT`.
      * 
      */
-    public Output<Optional<Integer>> crlDay() {
-        return Codegen.optional(this.crlDay);
+    public Output<Integer> crlDay() {
+        return this.crlDay;
     }
     /**
      * This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:

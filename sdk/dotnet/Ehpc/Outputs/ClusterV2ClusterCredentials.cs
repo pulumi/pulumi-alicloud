@@ -14,13 +14,21 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
     public sealed class ClusterV2ClusterCredentials
     {
         /// <summary>
+        /// The SSH key of root of the cluster node.
+        /// </summary>
+        public readonly string? KeyPairName;
+        /// <summary>
         /// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ &amp; * - = + { } [ ] : ; ',. ? /
         /// </summary>
         public readonly string? Password;
 
         [OutputConstructor]
-        private ClusterV2ClusterCredentials(string? password)
+        private ClusterV2ClusterCredentials(
+            string? keyPairName,
+
+            string? password)
         {
+            KeyPairName = keyPairName;
             Password = password;
         }
     }

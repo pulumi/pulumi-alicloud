@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster.Outputs
     public sealed class ClickHouseEnterpriseDbClusterMultiZone
     {
         /// <summary>
-        /// The vSwtichID list.
+        /// List of vSwitch IDs.
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
         /// <summary>
-        /// The zone ID.
+        /// Zone ID.
         /// </summary>
         public readonly string? ZoneId;
 

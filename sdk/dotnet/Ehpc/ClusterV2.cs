@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Ehpc
     /// Ehpc Cluster V2 can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example &lt;id&gt;
+    /// $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example &lt;cluster_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ehpc/clusterV2:ClusterV2")]
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> ClusterVswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+        /// The time when the cluster was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -539,7 +539,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? ClusterVswitchId { get; set; }
 
         /// <summary>
-        /// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+        /// The time when the cluster was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }

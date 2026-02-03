@@ -7,23 +7,41 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+ * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.87.0+
+ * > **NOTE:** Available since v1.87.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
- *     instanceId: "cri-xx",
- *     nameRegex: "my-repos",
- *     outputFile: "my-repo-json",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.cs.getRegistryEnterpriseInstances({
+ *     nameRegex: "default-nodeleting",
  * });
- * export const output = myRepos.then(myRepos => myRepos.repos);
+ * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("default", {
+ *     instanceId: _default.then(_default => _default.ids?.[0]),
+ *     name: name,
+ *     autoCreate: true,
+ *     defaultVisibility: "PRIVATE",
+ * });
+ * const defaultRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("default", {
+ *     instanceId: defaultRegistryEnterpriseNamespace.instanceId,
+ *     namespace: defaultRegistryEnterpriseNamespace.name,
+ *     name: name,
+ *     repoType: "PRIVATE",
+ *     summary: name,
+ * });
+ * const ids = alicloud.cs.getRegistryEnterpriseReposOutput({
+ *     ids: [defaultRegistryEnterpriseRepo.repoId],
+ *     instanceId: defaultRegistryEnterpriseRepo.instanceId,
+ * });
+ * export const crEeReposId0 = ids.apply(ids => ids.repos?.[0]?.id);
  * ```
  */
 export function getRegistryEnterpriseRepos(args: GetRegistryEnterpriseReposArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseReposResult> {
@@ -43,23 +61,23 @@ export function getRegistryEnterpriseRepos(args: GetRegistryEnterpriseReposArgs,
  */
 export interface GetRegistryEnterpriseReposArgs {
     /**
-     * Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
-     * A list of ids to filter results by repository id.
+     * A list of Repository IDs.
      */
     ids?: string[];
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry instance.
      */
     instanceId: string;
     /**
-     * A regex string to filter results by repository name.
+     * A regex string to filter results by Repository name.
      */
     nameRegex?: string;
     /**
-     * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     * The name of the namespace to which the Repository belongs.
      */
     namespace?: string;
     /**
@@ -77,47 +95,62 @@ export interface GetRegistryEnterpriseReposResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
-     */
     readonly ids: string[];
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry instance to which the Repository belongs.
      */
     readonly instanceId: string;
     readonly nameRegex?: string;
     /**
-     * A list of repository names.
+     * A list of Repository names.
      */
     readonly names: string[];
     /**
-     * Name of Container Registry Enterprise Edition namespace where repo is located.
+     * The name of the namespace to which the Repository belongs.
      */
     readonly namespace?: string;
     readonly outputFile?: string;
     /**
-     * A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+     * A list of Repositories. Each element contains the following attributes:
      */
     readonly repos: outputs.cs.GetRegistryEnterpriseReposRepo[];
 }
 /**
- * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+ * This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.87.0+
+ * > **NOTE:** Available since v1.87.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
- *     instanceId: "cri-xx",
- *     nameRegex: "my-repos",
- *     outputFile: "my-repo-json",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.cs.getRegistryEnterpriseInstances({
+ *     nameRegex: "default-nodeleting",
  * });
- * export const output = myRepos.then(myRepos => myRepos.repos);
+ * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("default", {
+ *     instanceId: _default.then(_default => _default.ids?.[0]),
+ *     name: name,
+ *     autoCreate: true,
+ *     defaultVisibility: "PRIVATE",
+ * });
+ * const defaultRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("default", {
+ *     instanceId: defaultRegistryEnterpriseNamespace.instanceId,
+ *     namespace: defaultRegistryEnterpriseNamespace.name,
+ *     name: name,
+ *     repoType: "PRIVATE",
+ *     summary: name,
+ * });
+ * const ids = alicloud.cs.getRegistryEnterpriseReposOutput({
+ *     ids: [defaultRegistryEnterpriseRepo.repoId],
+ *     instanceId: defaultRegistryEnterpriseRepo.instanceId,
+ * });
+ * export const crEeReposId0 = ids.apply(ids => ids.repos?.[0]?.id);
  * ```
  */
 export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
@@ -137,23 +170,23 @@ export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseRepo
  */
 export interface GetRegistryEnterpriseReposOutputArgs {
     /**
-     * Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * A list of ids to filter results by repository id.
+     * A list of Repository IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * A regex string to filter results by repository name.
+     * A regex string to filter results by Repository name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+     * The name of the namespace to which the Repository belongs.
      */
     namespace?: pulumi.Input<string>;
     /**

@@ -8544,13 +8544,13 @@ class GetRegistryEnterpriseReposRepoResult(dict):
                  summary: _builtins.str,
                  tags: Sequence['outputs.GetRegistryEnterpriseReposRepoTagResult']):
         """
-        :param _builtins.str id: ID of Container Registry Enterprise Edition repository.
-        :param _builtins.str instance_id: ID of Container Registry Enterprise Edition instance.
-        :param _builtins.str name: Name of Container Registry Enterprise Edition repository.
-        :param _builtins.str namespace: Name of Container Registry Enterprise Edition namespace where the repositories are located in.
-        :param _builtins.str repo_type: `PUBLIC` or `PRIVATE`, repository's visibility.
-        :param _builtins.str summary: The repository general information.
-        :param Sequence['GetRegistryEnterpriseReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+        :param _builtins.str id: The ID of the Repository.
+        :param _builtins.str instance_id: The ID of the Container Registry instance.
+        :param _builtins.str name: The name of the Repository.
+        :param _builtins.str namespace: The name of the namespace to which the Repository belongs.
+        :param _builtins.str repo_type: The type of the Repository.
+        :param _builtins.str summary: The summary of the Repository.
+        :param Sequence['GetRegistryEnterpriseReposRepoTagArgs'] tags: A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -8564,7 +8564,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of Container Registry Enterprise Edition repository.
+        The ID of the Repository.
         """
         return pulumi.get(self, "id")
 
@@ -8572,7 +8572,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -8580,7 +8580,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of Container Registry Enterprise Edition repository.
+        The name of the Repository.
         """
         return pulumi.get(self, "name")
 
@@ -8588,7 +8588,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter
     def namespace(self) -> _builtins.str:
         """
-        Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+        The name of the namespace to which the Repository belongs.
         """
         return pulumi.get(self, "namespace")
 
@@ -8596,7 +8596,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter(name="repoType")
     def repo_type(self) -> _builtins.str:
         """
-        `PUBLIC` or `PRIVATE`, repository's visibility.
+        The type of the Repository.
         """
         return pulumi.get(self, "repo_type")
 
@@ -8604,7 +8604,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter
     def summary(self) -> _builtins.str:
         """
-        The repository general information.
+        The summary of the Repository.
         """
         return pulumi.get(self, "summary")
 
@@ -8612,7 +8612,7 @@ class GetRegistryEnterpriseReposRepoResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetRegistryEnterpriseReposRepoTagResult']:
         """
-        A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+        A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "tags")
 
@@ -8628,13 +8628,13 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
                  status: _builtins.str,
                  tag: _builtins.str):
         """
-        :param _builtins.str digest: Digest of this image.
-        :param _builtins.str image_create: Create time of this image, unix time in nanoseconds.
-        :param _builtins.str image_id: Id of this image.
-        :param _builtins.int image_size: Status of this image, in bytes.
-        :param _builtins.str image_update: Last update time of this image, unix time in nanoseconds.
-        :param _builtins.str status: Status of this image.
-        :param _builtins.str tag: Tag of this image.
+        :param _builtins.str digest: The digest of the image.
+        :param _builtins.str image_create: The time when the image was created.
+        :param _builtins.str image_id: The ID of the image.
+        :param _builtins.int image_size: The size of the image.
+        :param _builtins.str image_update: The time when the image was last updated.
+        :param _builtins.str status: The status of the image.
+        :param _builtins.str tag: The tag of the image.
         """
         pulumi.set(__self__, "digest", digest)
         pulumi.set(__self__, "image_create", image_create)
@@ -8648,7 +8648,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter
     def digest(self) -> _builtins.str:
         """
-        Digest of this image.
+        The digest of the image.
         """
         return pulumi.get(self, "digest")
 
@@ -8656,7 +8656,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter(name="imageCreate")
     def image_create(self) -> _builtins.str:
         """
-        Create time of this image, unix time in nanoseconds.
+        The time when the image was created.
         """
         return pulumi.get(self, "image_create")
 
@@ -8664,7 +8664,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter(name="imageId")
     def image_id(self) -> _builtins.str:
         """
-        Id of this image.
+        The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
@@ -8672,7 +8672,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter(name="imageSize")
     def image_size(self) -> _builtins.int:
         """
-        Status of this image, in bytes.
+        The size of the image.
         """
         return pulumi.get(self, "image_size")
 
@@ -8680,7 +8680,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter(name="imageUpdate")
     def image_update(self) -> _builtins.str:
         """
-        Last update time of this image, unix time in nanoseconds.
+        The time when the image was last updated.
         """
         return pulumi.get(self, "image_update")
 
@@ -8688,7 +8688,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Status of this image.
+        The status of the image.
         """
         return pulumi.get(self, "status")
 
@@ -8696,7 +8696,7 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
     @pulumi.getter
     def tag(self) -> _builtins.str:
         """
-        Tag of this image.
+        The tag of the image.
         """
         return pulumi.get(self, "tag")
 

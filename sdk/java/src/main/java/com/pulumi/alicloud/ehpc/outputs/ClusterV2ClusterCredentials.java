@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2ClusterCredentials {
     /**
+     * @return The SSH key of root of the cluster node.
+     * 
+     */
+    private @Nullable String keyPairName;
+    /**
      * @return The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! {@literal @} # $ % ^ &amp; * - = + { } [ ] : ; &#39;,. ? /
      * 
      */
     private @Nullable String password;
 
     private ClusterV2ClusterCredentials() {}
+    /**
+     * @return The SSH key of root of the cluster node.
+     * 
+     */
+    public Optional<String> keyPairName() {
+        return Optional.ofNullable(this.keyPairName);
+    }
     /**
      * @return The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! {@literal @} # $ % ^ &amp; * - = + { } [ ] : ; &#39;,. ? /
      * 
@@ -35,13 +47,21 @@ public final class ClusterV2ClusterCredentials {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String keyPairName;
         private @Nullable String password;
         public Builder() {}
         public Builder(ClusterV2ClusterCredentials defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.keyPairName = defaults.keyPairName;
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
+        public Builder keyPairName(@Nullable String keyPairName) {
+
+            this.keyPairName = keyPairName;
+            return this;
+        }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
 
@@ -50,6 +70,7 @@ public final class ClusterV2ClusterCredentials {
         }
         public ClusterV2ClusterCredentials build() {
             final var _resultValue = new ClusterV2ClusterCredentials();
+            _resultValue.keyPairName = keyPairName;
             _resultValue.password = password;
             return _resultValue;
         }

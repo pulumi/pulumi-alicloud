@@ -6,22 +6,25 @@ package com.pulumi.alicloud.clickhouseenterprisedbcluster;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs;
 import com.pulumi.alicloud.clickhouseenterprisedbcluster.inputs.ClickHouseEnterpriseDbClusterState;
+import com.pulumi.alicloud.clickhouseenterprisedbcluster.outputs.ClickHouseEnterpriseDbClusterEndpoint;
 import com.pulumi.alicloud.clickhouseenterprisedbcluster.outputs.ClickHouseEnterpriseDbClusterMultiZone;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Click House Enterprise D B Cluster resource.
+ * Provides a Click House Enterprise Db Cluster resource.
  * 
  * Enterprise Edition Cluster Resources.
  * 
- * For information about Click House Enterprise D B Cluster and how to use it, see [What is Enterprise D B Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
+ * For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
  * 
  * &gt; **NOTE:** Available since v1.247.0.
  * 
@@ -118,98 +121,308 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Click House Enterprise D B Cluster can be imported using the id, e.g.
+ * Click House Enterprise Db Cluster can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example &lt;id&gt;
+ * $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example &lt;db_instance_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster")
 public class ClickHouseEnterpriseDbCluster extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the resource
+     * Instance type.
+     * 
+     */
+    @Export(name="category", refs={String.class}, tree="[0]")
+    private Output<String> category;
+
+    /**
+     * @return Instance type.
+     * 
+     */
+    public Output<String> category() {
+        return this.category;
+    }
+    /**
+     * The billing method.
+     * 
+     */
+    @Export(name="chargeType", refs={String.class}, tree="[0]")
+    private Output<String> chargeType;
+
+    /**
+     * @return The billing method.
+     * 
+     */
+    public Output<String> chargeType() {
+        return this.chargeType;
+    }
+    /**
+     * List of computing group IDs.
+     * 
+     */
+    @Export(name="computingGroupIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> computingGroupIds;
+
+    /**
+     * @return List of computing group IDs.
+     * 
+     */
+    public Output<List<String>> computingGroupIds() {
+        return this.computingGroupIds;
+    }
+    /**
+     * The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The list of multi-zone information. See `multiZones` below.
+     * Cluster description.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return Cluster description.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
+     * List of endpoint details.
+     * 
+     */
+    @Export(name="endpoints", refs={List.class,ClickHouseEnterpriseDbClusterEndpoint.class}, tree="[0,1]")
+    private Output<List<ClickHouseEnterpriseDbClusterEndpoint>> endpoints;
+
+    /**
+     * @return List of endpoint details.
+     * 
+     */
+    public Output<List<ClickHouseEnterpriseDbClusterEndpoint>> endpoints() {
+        return this.endpoints;
+    }
+    /**
+     * The minor version number of the cluster engine.
+     * 
+     */
+    @Export(name="engineMinorVersion", refs={String.class}, tree="[0]")
+    private Output<String> engineMinorVersion;
+
+    /**
+     * @return The minor version number of the cluster engine.
+     * 
+     */
+    public Output<String> engineMinorVersion() {
+        return this.engineMinorVersion;
+    }
+    /**
+     * Network type of the instance.
+     * 
+     */
+    @Export(name="instanceNetworkType", refs={String.class}, tree="[0]")
+    private Output<String> instanceNetworkType;
+
+    /**
+     * @return Network type of the instance.
+     * 
+     */
+    public Output<String> instanceNetworkType() {
+        return this.instanceNetworkType;
+    }
+    /**
+     * The multi-zone configuration. See `multiZones` below.
      * 
      */
     @Export(name="multiZones", refs={List.class,ClickHouseEnterpriseDbClusterMultiZone.class}, tree="[0,1]")
     private Output<List<ClickHouseEnterpriseDbClusterMultiZone>> multiZones;
 
     /**
-     * @return The list of multi-zone information. See `multiZones` below.
+     * @return The multi-zone configuration. See `multiZones` below.
      * 
      */
     public Output<List<ClickHouseEnterpriseDbClusterMultiZone>> multiZones() {
         return this.multiZones;
     }
     /**
-     * The region ID of the resource
+     * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     * 
+     */
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> nodeCount;
+
+    /**
+     * @return The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     * 
+     */
+    public Output<Integer> nodeCount() {
+        return this.nodeCount;
+    }
+    /**
+     * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     * 
+     */
+    @Export(name="nodeScaleMax", refs={Integer.class}, tree="[0]")
+    private Output<Integer> nodeScaleMax;
+
+    /**
+     * @return Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     * 
+     */
+    public Output<Integer> nodeScaleMax() {
+        return this.nodeScaleMax;
+    }
+    /**
+     * The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     * 
+     */
+    @Export(name="nodeScaleMin", refs={Integer.class}, tree="[0]")
+    private Output<Integer> nodeScaleMin;
+
+    /**
+     * @return The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     * 
+     */
+    public Output<Integer> nodeScaleMin() {
+        return this.nodeScaleMin;
+    }
+    /**
+     * The region ID.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return The region ID of the resource
+     * @return The region ID.
      * 
      */
     public Output<String> regionId() {
         return this.regionId;
     }
     /**
-     * The maximum value of serverless auto scaling.
+     * Resource group ID of the cluster.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return Resource group ID of the cluster.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
     @Export(name="scaleMax", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> scaleMax;
+    private Output<String> scaleMax;
 
     /**
-     * @return The maximum value of serverless auto scaling.
+     * @return The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
-    public Output<Optional<String>> scaleMax() {
-        return Codegen.optional(this.scaleMax);
+    public Output<String> scaleMax() {
+        return this.scaleMax;
     }
     /**
-     * The minimum value of serverless auto scaling.
+     * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
     @Export(name="scaleMin", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> scaleMin;
+    private Output<String> scaleMin;
 
     /**
-     * @return The minimum value of serverless auto scaling.
+     * @return The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
-    public Output<Optional<String>> scaleMin() {
-        return Codegen.optional(this.scaleMin);
+    public Output<String> scaleMin() {
+        return this.scaleMin;
     }
     /**
-     * The status of the resource
+     * The instance status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The instance status.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Pre-purchased storage capacity (GB).
+     * 
+     */
+    @Export(name="storageQuota", refs={String.class}, tree="[0]")
+    private Output<String> storageQuota;
+
+    /**
+     * @return Pre-purchased storage capacity (GB).
+     * 
+     */
+    public Output<String> storageQuota() {
+        return this.storageQuota;
+    }
+    /**
+     * The storage capacity.
+     * 
+     */
+    @Export(name="storageSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> storageSize;
+
+    /**
+     * @return The storage capacity.
+     * 
+     */
+    public Output<Integer> storageSize() {
+        return this.storageSize;
+    }
+    /**
+     * The storage type.
+     * 
+     */
+    @Export(name="storageType", refs={String.class}, tree="[0]")
+    private Output<String> storageType;
+
+    /**
+     * @return The storage type.
+     * 
+     */
+    public Output<String> storageType() {
+        return this.storageType;
+    }
+    /**
+     * Tag information.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Tag information.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The VPC ID.
@@ -226,14 +439,14 @@ public class ClickHouseEnterpriseDbCluster extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.vpcId);
     }
     /**
-     * The vSwitch ID.
+     * vSwitch ID.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The vSwitch ID.
+     * @return vSwitch ID.
      * 
      */
     public Output<Optional<String>> vswitchId() {

@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Click House Enterprise D B Cluster resource.
+// Provides a Click House Enterprise Db Cluster resource.
 //
 // Enterprise Edition Cluster Resources.
 //
-// For information about Click House Enterprise D B Cluster and how to use it, see [What is Enterprise D B Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
+// For information about Click House Enterprise Db Cluster and how to use it, see [What is Enterprise Db Cluster](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateDBInstance).
 //
 // > **NOTE:** Available since v1.247.0.
 //
@@ -144,29 +144,59 @@ import (
 //
 // ## Import
 //
-// Click House Enterprise D B Cluster can be imported using the id, e.g.
+// Click House Enterprise Db Cluster can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <id>
+// $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <db_instance_id>
 // ```
 type ClickHouseEnterpriseDbCluster struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the resource
+	// Instance type.
+	Category pulumi.StringOutput `pulumi:"category"`
+	// The billing method.
+	ChargeType pulumi.StringOutput `pulumi:"chargeType"`
+	// List of computing group IDs.
+	ComputingGroupIds pulumi.StringArrayOutput `pulumi:"computingGroupIds"`
+	// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The list of multi-zone information. See `multiZones` below.
+	// Cluster description.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// List of endpoint details.
+	Endpoints ClickHouseEnterpriseDbClusterEndpointArrayOutput `pulumi:"endpoints"`
+	// The minor version number of the cluster engine.
+	EngineMinorVersion pulumi.StringOutput `pulumi:"engineMinorVersion"`
+	// Network type of the instance.
+	InstanceNetworkType pulumi.StringOutput `pulumi:"instanceNetworkType"`
+	// The multi-zone configuration. See `multiZones` below.
 	MultiZones ClickHouseEnterpriseDbClusterMultiZoneArrayOutput `pulumi:"multiZones"`
-	// The region ID of the resource
+	// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
+	// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+	NodeScaleMax pulumi.IntOutput `pulumi:"nodeScaleMax"`
+	// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+	NodeScaleMin pulumi.IntOutput `pulumi:"nodeScaleMin"`
+	// The region ID.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
-	// The maximum value of serverless auto scaling.
-	ScaleMax pulumi.StringPtrOutput `pulumi:"scaleMax"`
-	// The minimum value of serverless auto scaling.
-	ScaleMin pulumi.StringPtrOutput `pulumi:"scaleMin"`
-	// The status of the resource
+	// Resource group ID of the cluster.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+	ScaleMax pulumi.StringOutput `pulumi:"scaleMax"`
+	// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+	ScaleMin pulumi.StringOutput `pulumi:"scaleMin"`
+	// The instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Pre-purchased storage capacity (GB).
+	StorageQuota pulumi.StringOutput `pulumi:"storageQuota"`
+	// The storage capacity.
+	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
+	// The storage type.
+	StorageType pulumi.StringOutput `pulumi:"storageType"`
+	// Tag information.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
-	// The vSwitch ID.
+	// vSwitch ID.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
@@ -202,42 +232,102 @@ func GetClickHouseEnterpriseDbCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClickHouseEnterpriseDbCluster resources.
 type clickHouseEnterpriseDbClusterState struct {
-	// The creation time of the resource
+	// Instance type.
+	Category *string `pulumi:"category"`
+	// The billing method.
+	ChargeType *string `pulumi:"chargeType"`
+	// List of computing group IDs.
+	ComputingGroupIds []string `pulumi:"computingGroupIds"`
+	// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime *string `pulumi:"createTime"`
-	// The list of multi-zone information. See `multiZones` below.
+	// Cluster description.
+	Description *string `pulumi:"description"`
+	// List of endpoint details.
+	Endpoints []ClickHouseEnterpriseDbClusterEndpoint `pulumi:"endpoints"`
+	// The minor version number of the cluster engine.
+	EngineMinorVersion *string `pulumi:"engineMinorVersion"`
+	// Network type of the instance.
+	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
+	// The multi-zone configuration. See `multiZones` below.
 	MultiZones []ClickHouseEnterpriseDbClusterMultiZone `pulumi:"multiZones"`
-	// The region ID of the resource
+	// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+	NodeScaleMax *int `pulumi:"nodeScaleMax"`
+	// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+	NodeScaleMin *int `pulumi:"nodeScaleMin"`
+	// The region ID.
 	RegionId *string `pulumi:"regionId"`
-	// The maximum value of serverless auto scaling.
+	// Resource group ID of the cluster.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMax *string `pulumi:"scaleMax"`
-	// The minimum value of serverless auto scaling.
+	// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMin *string `pulumi:"scaleMin"`
-	// The status of the resource
+	// The instance status.
 	Status *string `pulumi:"status"`
+	// Pre-purchased storage capacity (GB).
+	StorageQuota *string `pulumi:"storageQuota"`
+	// The storage capacity.
+	StorageSize *int `pulumi:"storageSize"`
+	// The storage type.
+	StorageType *string `pulumi:"storageType"`
+	// Tag information.
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
-	// The vSwitch ID.
+	// vSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ClickHouseEnterpriseDbClusterState struct {
-	// The creation time of the resource
+	// Instance type.
+	Category pulumi.StringPtrInput
+	// The billing method.
+	ChargeType pulumi.StringPtrInput
+	// List of computing group IDs.
+	ComputingGroupIds pulumi.StringArrayInput
+	// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime pulumi.StringPtrInput
-	// The list of multi-zone information. See `multiZones` below.
+	// Cluster description.
+	Description pulumi.StringPtrInput
+	// List of endpoint details.
+	Endpoints ClickHouseEnterpriseDbClusterEndpointArrayInput
+	// The minor version number of the cluster engine.
+	EngineMinorVersion pulumi.StringPtrInput
+	// Network type of the instance.
+	InstanceNetworkType pulumi.StringPtrInput
+	// The multi-zone configuration. See `multiZones` below.
 	MultiZones ClickHouseEnterpriseDbClusterMultiZoneArrayInput
-	// The region ID of the resource
+	// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+	NodeCount pulumi.IntPtrInput
+	// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+	NodeScaleMax pulumi.IntPtrInput
+	// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+	NodeScaleMin pulumi.IntPtrInput
+	// The region ID.
 	RegionId pulumi.StringPtrInput
-	// The maximum value of serverless auto scaling.
+	// Resource group ID of the cluster.
+	ResourceGroupId pulumi.StringPtrInput
+	// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMax pulumi.StringPtrInput
-	// The minimum value of serverless auto scaling.
+	// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMin pulumi.StringPtrInput
-	// The status of the resource
+	// The instance status.
 	Status pulumi.StringPtrInput
+	// Pre-purchased storage capacity (GB).
+	StorageQuota pulumi.StringPtrInput
+	// The storage capacity.
+	StorageSize pulumi.IntPtrInput
+	// The storage type.
+	StorageType pulumi.StringPtrInput
+	// Tag information.
+	Tags pulumi.StringMapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
-	// The vSwitch ID.
+	// vSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID.
 	ZoneId pulumi.StringPtrInput
@@ -248,15 +338,27 @@ func (ClickHouseEnterpriseDbClusterState) ElementType() reflect.Type {
 }
 
 type clickHouseEnterpriseDbClusterArgs struct {
-	// The list of multi-zone information. See `multiZones` below.
+	// Cluster description.
+	Description *string `pulumi:"description"`
+	// The multi-zone configuration. See `multiZones` below.
 	MultiZones []ClickHouseEnterpriseDbClusterMultiZone `pulumi:"multiZones"`
-	// The maximum value of serverless auto scaling.
+	// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+	NodeScaleMax *int `pulumi:"nodeScaleMax"`
+	// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+	NodeScaleMin *int `pulumi:"nodeScaleMin"`
+	// Resource group ID of the cluster.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMax *string `pulumi:"scaleMax"`
-	// The minimum value of serverless auto scaling.
+	// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMin *string `pulumi:"scaleMin"`
+	// Tag information.
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
-	// The vSwitch ID.
+	// vSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -264,15 +366,27 @@ type clickHouseEnterpriseDbClusterArgs struct {
 
 // The set of arguments for constructing a ClickHouseEnterpriseDbCluster resource.
 type ClickHouseEnterpriseDbClusterArgs struct {
-	// The list of multi-zone information. See `multiZones` below.
+	// Cluster description.
+	Description pulumi.StringPtrInput
+	// The multi-zone configuration. See `multiZones` below.
 	MultiZones ClickHouseEnterpriseDbClusterMultiZoneArrayInput
-	// The maximum value of serverless auto scaling.
+	// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+	NodeCount pulumi.IntPtrInput
+	// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+	NodeScaleMax pulumi.IntPtrInput
+	// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+	NodeScaleMin pulumi.IntPtrInput
+	// Resource group ID of the cluster.
+	ResourceGroupId pulumi.StringPtrInput
+	// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMax pulumi.StringPtrInput
-	// The minimum value of serverless auto scaling.
+	// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
 	ScaleMin pulumi.StringPtrInput
+	// Tag information.
+	Tags pulumi.StringMapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
-	// The vSwitch ID.
+	// vSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID.
 	ZoneId pulumi.StringPtrInput
@@ -365,36 +479,113 @@ func (o ClickHouseEnterpriseDbClusterOutput) ToClickHouseEnterpriseDbClusterOutp
 	return o
 }
 
-// The creation time of the resource
+// Instance type.
+func (o ClickHouseEnterpriseDbClusterOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// The billing method.
+func (o ClickHouseEnterpriseDbClusterOutput) ChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// List of computing group IDs.
+func (o ClickHouseEnterpriseDbClusterOutput) ComputingGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringArrayOutput { return v.ComputingGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
 func (o ClickHouseEnterpriseDbClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The list of multi-zone information. See `multiZones` below.
+// Cluster description.
+func (o ClickHouseEnterpriseDbClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// List of endpoint details.
+func (o ClickHouseEnterpriseDbClusterOutput) Endpoints() ClickHouseEnterpriseDbClusterEndpointArrayOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) ClickHouseEnterpriseDbClusterEndpointArrayOutput {
+		return v.Endpoints
+	}).(ClickHouseEnterpriseDbClusterEndpointArrayOutput)
+}
+
+// The minor version number of the cluster engine.
+func (o ClickHouseEnterpriseDbClusterOutput) EngineMinorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.EngineMinorVersion }).(pulumi.StringOutput)
+}
+
+// Network type of the instance.
+func (o ClickHouseEnterpriseDbClusterOutput) InstanceNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.InstanceNetworkType }).(pulumi.StringOutput)
+}
+
+// The multi-zone configuration. See `multiZones` below.
 func (o ClickHouseEnterpriseDbClusterOutput) MultiZones() ClickHouseEnterpriseDbClusterMultiZoneArrayOutput {
 	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) ClickHouseEnterpriseDbClusterMultiZoneArrayOutput {
 		return v.MultiZones
 	}).(ClickHouseEnterpriseDbClusterMultiZoneArrayOutput)
 }
 
-// The region ID of the resource
+// The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+func (o ClickHouseEnterpriseDbClusterOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+func (o ClickHouseEnterpriseDbClusterOutput) NodeScaleMax() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.IntOutput { return v.NodeScaleMax }).(pulumi.IntOutput)
+}
+
+// The minimum value for serverless node auto-scaling. Valid values: 4–32.
+func (o ClickHouseEnterpriseDbClusterOutput) NodeScaleMin() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.IntOutput { return v.NodeScaleMin }).(pulumi.IntOutput)
+}
+
+// The region ID.
 func (o ClickHouseEnterpriseDbClusterOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The maximum value of serverless auto scaling.
-func (o ClickHouseEnterpriseDbClusterOutput) ScaleMax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringPtrOutput { return v.ScaleMax }).(pulumi.StringPtrOutput)
+// Resource group ID of the cluster.
+func (o ClickHouseEnterpriseDbClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The minimum value of serverless auto scaling.
-func (o ClickHouseEnterpriseDbClusterOutput) ScaleMin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringPtrOutput { return v.ScaleMin }).(pulumi.StringPtrOutput)
+// The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+func (o ClickHouseEnterpriseDbClusterOutput) ScaleMax() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.ScaleMax }).(pulumi.StringOutput)
 }
 
-// The status of the resource
+// The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
+func (o ClickHouseEnterpriseDbClusterOutput) ScaleMin() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.ScaleMin }).(pulumi.StringOutput)
+}
+
+// The instance status.
 func (o ClickHouseEnterpriseDbClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Pre-purchased storage capacity (GB).
+func (o ClickHouseEnterpriseDbClusterOutput) StorageQuota() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.StorageQuota }).(pulumi.StringOutput)
+}
+
+// The storage capacity.
+func (o ClickHouseEnterpriseDbClusterOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.IntOutput { return v.StorageSize }).(pulumi.IntOutput)
+}
+
+// The storage type.
+func (o ClickHouseEnterpriseDbClusterOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Tag information.
+func (o ClickHouseEnterpriseDbClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The VPC ID.
@@ -402,7 +593,7 @@ func (o ClickHouseEnterpriseDbClusterOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// The vSwitch ID.
+// vSwitch ID.
 func (o ClickHouseEnterpriseDbClusterOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickHouseEnterpriseDbCluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

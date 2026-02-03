@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "alicloud:maxcompute/roleUserAttachment:RoleUserAttachment":
 		r = &RoleUserAttachment{}
+	case "alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment":
+		r = &TenantRoleUserAttachment{}
 	case "alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer":
 		r = &TunnelQuotaTimer{}
 	default:
@@ -76,6 +78,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"maxcompute/roleUserAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/tenantRoleUserAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

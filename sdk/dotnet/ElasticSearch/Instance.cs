@@ -76,14 +76,14 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// Elasticsearch Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:elasticsearch/instance:Instance example &lt;id&gt;
+    /// $ pulumi import alicloud:elasticsearch/instance:Instance example &lt;instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:elasticsearch/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Schema Type:
+        /// Schema Type:.
         /// </summary>
         [Output("archType")]
         public Output<string> ArchType { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> ClientNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Instance creation time
+        /// Instance creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch cluster private domain name
+        /// Elasticsearch cluster private domain name.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<Outputs.InstanceKibanaConfiguration> KibanaConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Kibana address
+        /// Kibana address.
         /// </summary>
         [Output("kibanaDomain")]
         public Output<string> KibanaDomain { get; private set; } = null!;
@@ -849,7 +849,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Schema Type:
+        /// Schema Type:.
         /// </summary>
         [Input("archType")]
         public Input<string>? ArchType { get; set; }
@@ -879,7 +879,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? ClientNodeSpec { get; set; }
 
         /// <summary>
-        /// Instance creation time
+        /// Instance creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -933,7 +933,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Elasticsearch cluster private domain name
+        /// Elasticsearch cluster private domain name.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -986,7 +986,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<Inputs.InstanceKibanaConfigurationGetArgs>? KibanaConfiguration { get; set; }
 
         /// <summary>
-        /// Kibana address
+        /// Kibana address.
         /// </summary>
         [Input("kibanaDomain")]
         public Input<string>? KibanaDomain { get; set; }

@@ -91,6 +91,45 @@ namespace Pulumi.AliCloud.Ddos
     public partial class DomainResource : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// the mode of the Intelligent Protection policy.
+        /// - watch: the Warning mode
+        /// - defense: the Defense mode
+        /// </summary>
+        [Output("aiMode")]
+        public Output<string> AiMode { get; private set; } = null!;
+
+        /// <summary>
+        /// the level of the Intelligent Protection policy.
+        /// - level30: the Low level
+        /// - level60: the Normal level
+        /// - level90: the Strict level
+        /// </summary>
+        [Output("aiTemplate")]
+        public Output<string> AiTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// ip blacklist
+        /// </summary>
+        [Output("blackLists")]
+        public Output<ImmutableArray<string>> BlackLists { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the blacklist and whitelist feature. Valid values:
+        /// - 0: Disabled
+        /// - 1: Enabled
+        /// </summary>
+        [Output("bwListEnable")]
+        public Output<int> BwListEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// CC safety protection switch.
+        /// - 0: Disabled
+        /// - 1: Enabled
+        /// </summary>
+        [Output("ccGlobalSwitch")]
+        public Output<string> CcGlobalSwitch { get; private set; } = null!;
+
+        /// <summary>
         /// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
         /// 
         /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -202,6 +241,12 @@ namespace Pulumi.AliCloud.Ddos
         [Output("rsType")]
         public Output<int> RsType { get; private set; } = null!;
 
+        /// <summary>
+        /// IP whitelist list.
+        /// </summary>
+        [Output("whiteLists")]
+        public Output<ImmutableArray<string>> WhiteLists { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DomainResource resource with the given unique name, arguments, and options.
@@ -228,6 +273,7 @@ namespace Pulumi.AliCloud.Ddos
                 AdditionalSecretOutputs =
                 {
                     "cert",
+                    "certIdentifier",
                     "certRegion",
                     "key",
                 },
@@ -254,6 +300,51 @@ namespace Pulumi.AliCloud.Ddos
 
     public sealed class DomainResourceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the mode of the Intelligent Protection policy.
+        /// - watch: the Warning mode
+        /// - defense: the Defense mode
+        /// </summary>
+        [Input("aiMode")]
+        public Input<string>? AiMode { get; set; }
+
+        /// <summary>
+        /// the level of the Intelligent Protection policy.
+        /// - level30: the Low level
+        /// - level60: the Normal level
+        /// - level90: the Strict level
+        /// </summary>
+        [Input("aiTemplate")]
+        public Input<string>? AiTemplate { get; set; }
+
+        [Input("blackLists")]
+        private InputList<string>? _blackLists;
+
+        /// <summary>
+        /// ip blacklist
+        /// </summary>
+        public InputList<string> BlackLists
+        {
+            get => _blackLists ?? (_blackLists = new InputList<string>());
+            set => _blackLists = value;
+        }
+
+        /// <summary>
+        /// The status of the blacklist and whitelist feature. Valid values:
+        /// - 0: Disabled
+        /// - 1: Enabled
+        /// </summary>
+        [Input("bwListEnable")]
+        public Input<int>? BwListEnable { get; set; }
+
+        /// <summary>
+        /// CC safety protection switch.
+        /// - 0: Disabled
+        /// - 1: Enabled
+        /// </summary>
+        [Input("ccGlobalSwitch")]
+        public Input<string>? CcGlobalSwitch { get; set; }
+
         [Input("cert")]
         private Input<string>? _cert;
 
@@ -272,13 +363,23 @@ namespace Pulumi.AliCloud.Ddos
             }
         }
 
+        [Input("certIdentifier")]
+        private Input<string>? _certIdentifier;
+
         /// <summary>
         /// The name of the certificate.
         /// 
         /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `CertIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `CertIdentifier` is `123-cn-hangzhou`.
         /// </summary>
-        [Input("certIdentifier")]
-        public Input<string>? CertIdentifier { get; set; }
+        public Input<string>? CertIdentifier
+        {
+            get => _certIdentifier;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certIdentifier = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
@@ -408,6 +509,18 @@ namespace Pulumi.AliCloud.Ddos
         [Input("rsType", required: true)]
         public Input<int> RsType { get; set; } = null!;
 
+        [Input("whiteLists")]
+        private InputList<string>? _whiteLists;
+
+        /// <summary>
+        /// IP whitelist list.
+        /// </summary>
+        public InputList<string> WhiteLists
+        {
+            get => _whiteLists ?? (_whiteLists = new InputList<string>());
+            set => _whiteLists = value;
+        }
+
         public DomainResourceArgs()
         {
         }
@@ -416,6 +529,51 @@ namespace Pulumi.AliCloud.Ddos
 
     public sealed class DomainResourceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the mode of the Intelligent Protection policy.
+        /// - watch: the Warning mode
+        /// - defense: the Defense mode
+        /// </summary>
+        [Input("aiMode")]
+        public Input<string>? AiMode { get; set; }
+
+        /// <summary>
+        /// the level of the Intelligent Protection policy.
+        /// - level30: the Low level
+        /// - level60: the Normal level
+        /// - level90: the Strict level
+        /// </summary>
+        [Input("aiTemplate")]
+        public Input<string>? AiTemplate { get; set; }
+
+        [Input("blackLists")]
+        private InputList<string>? _blackLists;
+
+        /// <summary>
+        /// ip blacklist
+        /// </summary>
+        public InputList<string> BlackLists
+        {
+            get => _blackLists ?? (_blackLists = new InputList<string>());
+            set => _blackLists = value;
+        }
+
+        /// <summary>
+        /// The status of the blacklist and whitelist feature. Valid values:
+        /// - 0: Disabled
+        /// - 1: Enabled
+        /// </summary>
+        [Input("bwListEnable")]
+        public Input<int>? BwListEnable { get; set; }
+
+        /// <summary>
+        /// CC safety protection switch.
+        /// - 0: Disabled
+        /// - 1: Enabled
+        /// </summary>
+        [Input("ccGlobalSwitch")]
+        public Input<string>? CcGlobalSwitch { get; set; }
+
         [Input("cert")]
         private Input<string>? _cert;
 
@@ -434,13 +592,23 @@ namespace Pulumi.AliCloud.Ddos
             }
         }
 
+        [Input("certIdentifier")]
+        private Input<string>? _certIdentifier;
+
         /// <summary>
         /// The name of the certificate.
         /// 
         /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `CertIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `CertIdentifier` is `123-cn-hangzhou`.
         /// </summary>
-        [Input("certIdentifier")]
-        public Input<string>? CertIdentifier { get; set; }
+        public Input<string>? CertIdentifier
+        {
+            get => _certIdentifier;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certIdentifier = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
@@ -575,6 +743,18 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Input("rsType")]
         public Input<int>? RsType { get; set; }
+
+        [Input("whiteLists")]
+        private InputList<string>? _whiteLists;
+
+        /// <summary>
+        /// IP whitelist list.
+        /// </summary>
+        public InputList<string> WhiteLists
+        {
+            get => _whiteLists ?? (_whiteLists = new InputList<string>());
+            set => _whiteLists = value;
+        }
 
         public DomainResourceState()
         {

@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster":
 		r = &ClickHouseEnterpriseDbCluster{}
+	case "alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup":
+		r = &ComputingGroup{}
 	case "alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint":
 		r = &PublicEndpoint{}
 	case "alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp":
@@ -57,6 +59,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"clickhouseenterprisedbcluster/computingGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

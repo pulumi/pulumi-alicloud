@@ -12,86 +12,86 @@ import java.util.Objects;
 @CustomType
 public final class GetRegistryEnterpriseReposRepoTag {
     /**
-     * @return Digest of this image.
+     * @return The digest of the image.
      * 
      */
     private String digest;
     /**
-     * @return Create time of this image, unix time in nanoseconds.
+     * @return The time when the image was created.
      * 
      */
     private String imageCreate;
     /**
-     * @return Id of this image.
+     * @return The ID of the image.
      * 
      */
     private String imageId;
     /**
-     * @return Status of this image, in bytes.
+     * @return The size of the image.
      * 
      */
     private Integer imageSize;
     /**
-     * @return Last update time of this image, unix time in nanoseconds.
+     * @return The time when the image was last updated.
      * 
      */
     private String imageUpdate;
     /**
-     * @return Status of this image.
+     * @return The status of the image.
      * 
      */
     private String status;
     /**
-     * @return Tag of this image.
+     * @return The tag of the image.
      * 
      */
     private String tag;
 
     private GetRegistryEnterpriseReposRepoTag() {}
     /**
-     * @return Digest of this image.
+     * @return The digest of the image.
      * 
      */
     public String digest() {
         return this.digest;
     }
     /**
-     * @return Create time of this image, unix time in nanoseconds.
+     * @return The time when the image was created.
      * 
      */
     public String imageCreate() {
         return this.imageCreate;
     }
     /**
-     * @return Id of this image.
+     * @return The ID of the image.
      * 
      */
     public String imageId() {
         return this.imageId;
     }
     /**
-     * @return Status of this image, in bytes.
+     * @return The size of the image.
      * 
      */
     public Integer imageSize() {
         return this.imageSize;
     }
     /**
-     * @return Last update time of this image, unix time in nanoseconds.
+     * @return The time when the image was last updated.
      * 
      */
     public String imageUpdate() {
         return this.imageUpdate;
     }
     /**
-     * @return Status of this image.
+     * @return The status of the image.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return Tag of this image.
+     * @return The tag of the image.
      * 
      */
     public String tag() {

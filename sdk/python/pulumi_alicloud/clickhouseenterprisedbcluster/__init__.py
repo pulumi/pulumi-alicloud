@@ -9,6 +9,7 @@ import typing
 from .account import *
 from .backup_policy import *
 from .click_house_enterprise_db_cluster import *
+from .computing_group import *
 from .public_endpoint import *
 from .security_ip import *
 from ._inputs import *

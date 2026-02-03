@@ -146,7 +146,7 @@ import * as utilities from "../utilities";
  * Ehpc Cluster V2 can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <id>
+ * $ pulumi import alicloud:ehpc/clusterV2:ClusterV2 example <cluster_id>
  * ```
  */
 export class ClusterV2 extends pulumi.CustomResource {
@@ -221,7 +221,7 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     declare public readonly clusterVswitchId: pulumi.Output<string | undefined>;
     /**
-     * The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+     * The time when the cluster was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -351,7 +351,7 @@ export interface ClusterV2State {
      */
     clusterVswitchId?: pulumi.Input<string>;
     /**
-     * The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+     * The time when the cluster was created.
      */
     createTime?: pulumi.Input<string>;
     /**

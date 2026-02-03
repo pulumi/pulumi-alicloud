@@ -72,16 +72,13 @@ class GetRegistryEnterpriseReposResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry instance to which the Repository belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -94,7 +91,7 @@ class GetRegistryEnterpriseReposResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        A list of repository names.
+        A list of Repository names.
         """
         return pulumi.get(self, "names")
 
@@ -102,7 +99,7 @@ class GetRegistryEnterpriseReposResult:
     @pulumi.getter
     def namespace(self) -> Optional[_builtins.str]:
         """
-        Name of Container Registry Enterprise Edition namespace where repo is located.
+        The name of the namespace to which the Repository belongs.
         """
         return pulumi.get(self, "namespace")
 
@@ -115,7 +112,7 @@ class GetRegistryEnterpriseReposResult:
     @pulumi.getter
     def repos(self) -> Sequence['outputs.GetRegistryEnterpriseReposRepoResult']:
         """
-        A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+        A list of Repositories. Each element contains the following attributes:
         """
         return pulumi.get(self, "repos")
 
@@ -145,29 +142,45 @@ def get_registry_enterprise_repos(enable_details: Optional[_builtins.bool] = Non
                                   output_file: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryEnterpriseReposResult:
     """
-    This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+    This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.87.0+
+    > **NOTE:** Available since v1.87.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
-    my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
-        name_regex="my-repos",
-        output_file="my-repo-json")
-    pulumi.export("output", my_repos.repos)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.cs.get_registry_enterprise_instances(name_regex="default-nodeleting")
+    default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+        instance_id=default.ids[0],
+        name=name,
+        auto_create=True,
+        default_visibility="PRIVATE")
+    default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("default",
+        instance_id=default_registry_enterprise_namespace.instance_id,
+        namespace=default_registry_enterprise_namespace.name,
+        name=name,
+        repo_type="PRIVATE",
+        summary=name)
+    ids = alicloud.cs.get_registry_enterprise_repos_output(ids=[default_registry_enterprise_repo.repo_id],
+        instance_id=default_registry_enterprise_repo.instance_id)
+    pulumi.export("crEeReposId0", ids.repos[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
-    :param Sequence[_builtins.str] ids: A list of ids to filter results by repository id.
-    :param _builtins.str instance_id: ID of Container Registry Enterprise Edition instance.
-    :param _builtins.str name_regex: A regex string to filter results by repository name.
-    :param _builtins.str namespace: Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Repository IDs.
+    :param _builtins.str instance_id: The ID of the Container Registry instance.
+    :param _builtins.str name_regex: A regex string to filter results by Repository name.
+    :param _builtins.str namespace: The name of the namespace to which the Repository belongs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -198,29 +211,45 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
                                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseReposResult]:
     """
-    This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+    This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.87.0+
+    > **NOTE:** Available since v1.87.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
-    my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
-        name_regex="my-repos",
-        output_file="my-repo-json")
-    pulumi.export("output", my_repos.repos)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.cs.get_registry_enterprise_instances(name_regex="default-nodeleting")
+    default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+        instance_id=default.ids[0],
+        name=name,
+        auto_create=True,
+        default_visibility="PRIVATE")
+    default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("default",
+        instance_id=default_registry_enterprise_namespace.instance_id,
+        namespace=default_registry_enterprise_namespace.name,
+        name=name,
+        repo_type="PRIVATE",
+        summary=name)
+    ids = alicloud.cs.get_registry_enterprise_repos_output(ids=[default_registry_enterprise_repo.repo_id],
+        instance_id=default_registry_enterprise_repo.instance_id)
+    pulumi.export("crEeReposId0", ids.repos[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
-    :param Sequence[_builtins.str] ids: A list of ids to filter results by repository id.
-    :param _builtins.str instance_id: ID of Container Registry Enterprise Edition instance.
-    :param _builtins.str name_regex: A regex string to filter results by repository name.
-    :param _builtins.str namespace: Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Repository IDs.
+    :param _builtins.str instance_id: The ID of the Container Registry instance.
+    :param _builtins.str name_regex: A regex string to filter results by Repository name.
+    :param _builtins.str namespace: The name of the namespace to which the Repository belongs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

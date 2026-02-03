@@ -6,8 +6,10 @@ package com.pulumi.alicloud.clickhouseenterprisedbcluster;
 import com.pulumi.alicloud.clickhouseenterprisedbcluster.inputs.ClickHouseEnterpriseDbClusterMultiZoneArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +20,29 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
     public static final ClickHouseEnterpriseDbClusterArgs Empty = new ClickHouseEnterpriseDbClusterArgs();
 
     /**
-     * The list of multi-zone information. See `multiZones` below.
+     * Cluster description.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Cluster description.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The multi-zone configuration. See `multiZones` below.
      * 
      */
     @Import(name="multiZones")
     private @Nullable Output<List<ClickHouseEnterpriseDbClusterMultiZoneArgs>> multiZones;
 
     /**
-     * @return The list of multi-zone information. See `multiZones` below.
+     * @return The multi-zone configuration. See `multiZones` below.
      * 
      */
     public Optional<Output<List<ClickHouseEnterpriseDbClusterMultiZoneArgs>>> multiZones() {
@@ -33,14 +50,74 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
     }
 
     /**
-     * The maximum value of serverless auto scaling.
+     * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Output<Integer> nodeCount;
+
+    /**
+     * @return The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+     * 
+     */
+    public Optional<Output<Integer>> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+
+    /**
+     * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     * 
+     */
+    @Import(name="nodeScaleMax")
+    private @Nullable Output<Integer> nodeScaleMax;
+
+    /**
+     * @return Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+     * 
+     */
+    public Optional<Output<Integer>> nodeScaleMax() {
+        return Optional.ofNullable(this.nodeScaleMax);
+    }
+
+    /**
+     * The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     * 
+     */
+    @Import(name="nodeScaleMin")
+    private @Nullable Output<Integer> nodeScaleMin;
+
+    /**
+     * @return The minimum value for serverless node auto-scaling. Valid values: 4–32.
+     * 
+     */
+    public Optional<Output<Integer>> nodeScaleMin() {
+        return Optional.ofNullable(this.nodeScaleMin);
+    }
+
+    /**
+     * Resource group ID of the cluster.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return Resource group ID of the cluster.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
     @Import(name="scaleMax")
     private @Nullable Output<String> scaleMax;
 
     /**
-     * @return The maximum value of serverless auto scaling.
+     * @return The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
     public Optional<Output<String>> scaleMax() {
@@ -48,18 +125,33 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
     }
 
     /**
-     * The minimum value of serverless auto scaling.
+     * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
     @Import(name="scaleMin")
     private @Nullable Output<String> scaleMin;
 
     /**
-     * @return The minimum value of serverless auto scaling.
+     * @return The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      * 
      */
     public Optional<Output<String>> scaleMin() {
         return Optional.ofNullable(this.scaleMin);
+    }
+
+    /**
+     * Tag information.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Tag information.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -78,14 +170,14 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
     }
 
     /**
-     * The vSwitch ID.
+     * vSwitch ID.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vSwitch ID.
+     * @return vSwitch ID.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -110,9 +202,15 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
     private ClickHouseEnterpriseDbClusterArgs() {}
 
     private ClickHouseEnterpriseDbClusterArgs(ClickHouseEnterpriseDbClusterArgs $) {
+        this.description = $.description;
         this.multiZones = $.multiZones;
+        this.nodeCount = $.nodeCount;
+        this.nodeScaleMax = $.nodeScaleMax;
+        this.nodeScaleMin = $.nodeScaleMin;
+        this.resourceGroupId = $.resourceGroupId;
         this.scaleMax = $.scaleMax;
         this.scaleMin = $.scaleMin;
+        this.tags = $.tags;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -137,7 +235,28 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param multiZones The list of multi-zone information. See `multiZones` below.
+         * @param description Cluster description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Cluster description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param multiZones The multi-zone configuration. See `multiZones` below.
          * 
          * @return builder
          * 
@@ -148,7 +267,7 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param multiZones The list of multi-zone information. See `multiZones` below.
+         * @param multiZones The multi-zone configuration. See `multiZones` below.
          * 
          * @return builder
          * 
@@ -158,7 +277,7 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param multiZones The list of multi-zone information. See `multiZones` below.
+         * @param multiZones The multi-zone configuration. See `multiZones` below.
          * 
          * @return builder
          * 
@@ -168,7 +287,91 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param scaleMax The maximum value of serverless auto scaling.
+         * @param nodeCount The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param nodeCount The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(Integer nodeCount) {
+            return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param nodeScaleMax Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeScaleMax(@Nullable Output<Integer> nodeScaleMax) {
+            $.nodeScaleMax = nodeScaleMax;
+            return this;
+        }
+
+        /**
+         * @param nodeScaleMax Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeScaleMax(Integer nodeScaleMax) {
+            return nodeScaleMax(Output.of(nodeScaleMax));
+        }
+
+        /**
+         * @param nodeScaleMin The minimum value for serverless node auto-scaling. Valid values: 4–32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeScaleMin(@Nullable Output<Integer> nodeScaleMin) {
+            $.nodeScaleMin = nodeScaleMin;
+            return this;
+        }
+
+        /**
+         * @param nodeScaleMin The minimum value for serverless node auto-scaling. Valid values: 4–32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeScaleMin(Integer nodeScaleMin) {
+            return nodeScaleMin(Output.of(nodeScaleMin));
+        }
+
+        /**
+         * @param resourceGroupId Resource group ID of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId Resource group ID of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param scaleMax The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
          * 
          * @return builder
          * 
@@ -179,7 +382,7 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param scaleMax The maximum value of serverless auto scaling.
+         * @param scaleMax The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
          * 
          * @return builder
          * 
@@ -189,7 +392,7 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param scaleMin The minimum value of serverless auto scaling.
+         * @param scaleMin The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
          * 
          * @return builder
          * 
@@ -200,13 +403,34 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param scaleMin The minimum value of serverless auto scaling.
+         * @param scaleMin The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
          * 
          * @return builder
          * 
          */
         public Builder scaleMin(String scaleMin) {
             return scaleMin(Output.of(scaleMin));
+        }
+
+        /**
+         * @param tags Tag information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tag information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
@@ -231,7 +455,7 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vswitchId The vSwitch ID.
+         * @param vswitchId vSwitch ID.
          * 
          * @return builder
          * 
@@ -242,7 +466,7 @@ public final class ClickHouseEnterpriseDbClusterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vswitchId The vSwitch ID.
+         * @param vswitchId vSwitch ID.
          * 
          * @return builder
          * 

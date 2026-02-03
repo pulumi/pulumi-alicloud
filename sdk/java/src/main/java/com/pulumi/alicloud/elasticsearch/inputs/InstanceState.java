@@ -25,14 +25,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Schema Type:
+     * Schema Type:.
      * 
      */
     @Import(name="archType")
     private @Nullable Output<String> archType;
 
     /**
-     * @return Schema Type:
+     * @return Schema Type:.
      * 
      */
     public Optional<Output<String>> archType() {
@@ -116,14 +116,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance creation time
+     * Instance creation time.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Instance creation time
+     * @return Instance creation time.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -299,14 +299,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch cluster private domain name
+     * Elasticsearch cluster private domain name.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Elasticsearch cluster private domain name
+     * @return Elasticsearch cluster private domain name.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -435,14 +435,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kibana address
+     * Kibana address.
      * 
      */
     @Import(name="kibanaDomain")
     private @Nullable Output<String> kibanaDomain;
 
     /**
-     * @return Kibana address
+     * @return Kibana address.
      * 
      */
     public Optional<Output<String>> kibanaDomain() {
@@ -1124,7 +1124,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archType Schema Type:
+         * @param archType Schema Type:.
          * 
          * @return builder
          * 
@@ -1135,7 +1135,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archType Schema Type:
+         * @param archType Schema Type:.
          * 
          * @return builder
          * 
@@ -1245,7 +1245,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Instance creation time
+         * @param createTime Instance creation time.
          * 
          * @return builder
          * 
@@ -1256,7 +1256,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Instance creation time
+         * @param createTime Instance creation time.
          * 
          * @return builder
          * 
@@ -1482,7 +1482,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Elasticsearch cluster private domain name
+         * @param domain Elasticsearch cluster private domain name.
          * 
          * @return builder
          * 
@@ -1493,7 +1493,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Elasticsearch cluster private domain name
+         * @param domain Elasticsearch cluster private domain name.
          * 
          * @return builder
          * 
@@ -1662,7 +1662,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaDomain Kibana address
+         * @param kibanaDomain Kibana address.
          * 
          * @return builder
          * 
@@ -1673,7 +1673,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaDomain Kibana address
+         * @param kibanaDomain Kibana address.
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster.Inputs
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// The vSwtichID list.
+        /// List of vSwitch IDs.
         /// </summary>
         public InputList<string> VswitchIds
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster.Inputs
         }
 
         /// <summary>
-        /// The zone ID.
+        /// Zone ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

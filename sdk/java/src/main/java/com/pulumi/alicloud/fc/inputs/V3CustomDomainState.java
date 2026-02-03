@@ -5,6 +5,7 @@ package com.pulumi.alicloud.fc.inputs;
 
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainAuthConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainCertConfigArgs;
+import com.pulumi.alicloud.fc.inputs.V3CustomDomainCorsConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainRouteConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainTlsConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3CustomDomainWafConfigArgs;
@@ -21,14 +22,14 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     public static final V3CustomDomainState Empty = new V3CustomDomainState();
 
     /**
-     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * The ID of your Alibaba Cloud account (primary account).
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * @return The ID of your Alibaba Cloud account (primary account).
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -36,14 +37,14 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Available since v1.234.0) API version of Function Compute
+     * API version of Function Compute.
      * 
      */
     @Import(name="apiVersion")
     private @Nullable Output<String> apiVersion;
 
     /**
-     * @return (Available since v1.234.0) API version of Function Compute
+     * @return API version of Function Compute.
      * 
      */
     public Optional<Output<String>> apiVersion() {
@@ -81,14 +82,29 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The creation time of the resource
+     * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     * 
+     */
+    @Import(name="corsConfig")
+    private @Nullable Output<V3CustomDomainCorsConfigArgs> corsConfig;
+
+    /**
+     * @return Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     * 
+     */
+    public Optional<Output<V3CustomDomainCorsConfigArgs>> corsConfig() {
+        return Optional.ofNullable(this.corsConfig);
+    }
+
+    /**
+     * The creation time of the resource.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The creation time of the resource.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -111,14 +127,14 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Available since v1.234.0) The last time the custom domain name was Updated
+     * The last time the custom domain name was Updated.
      * 
      */
     @Import(name="lastModifiedTime")
     private @Nullable Output<String> lastModifiedTime;
 
     /**
-     * @return (Available since v1.234.0) The last time the custom domain name was Updated
+     * @return The last time the custom domain name was Updated.
      * 
      */
     public Optional<Output<String>> lastModifiedTime() {
@@ -156,14 +172,14 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Available since v1.234.0) Number of subdomains
+     * Number of subdomains.
      * 
      */
     @Import(name="subdomainCount")
     private @Nullable Output<String> subdomainCount;
 
     /**
-     * @return (Available since v1.234.0) Number of subdomains
+     * @return Number of subdomains.
      * 
      */
     public Optional<Output<String>> subdomainCount() {
@@ -207,6 +223,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         this.apiVersion = $.apiVersion;
         this.authConfig = $.authConfig;
         this.certConfig = $.certConfig;
+        this.corsConfig = $.corsConfig;
         this.createTime = $.createTime;
         this.customDomainName = $.customDomainName;
         this.lastModifiedTime = $.lastModifiedTime;
@@ -236,7 +253,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+         * @param accountId The ID of your Alibaba Cloud account (primary account).
          * 
          * @return builder
          * 
@@ -247,7 +264,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+         * @param accountId The ID of your Alibaba Cloud account (primary account).
          * 
          * @return builder
          * 
@@ -257,7 +274,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param apiVersion (Available since v1.234.0) API version of Function Compute
+         * @param apiVersion API version of Function Compute.
          * 
          * @return builder
          * 
@@ -268,7 +285,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param apiVersion (Available since v1.234.0) API version of Function Compute
+         * @param apiVersion API version of Function Compute.
          * 
          * @return builder
          * 
@@ -320,7 +337,28 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param corsConfig Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder corsConfig(@Nullable Output<V3CustomDomainCorsConfigArgs> corsConfig) {
+            $.corsConfig = corsConfig;
+            return this;
+        }
+
+        /**
+         * @param corsConfig Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder corsConfig(V3CustomDomainCorsConfigArgs corsConfig) {
+            return corsConfig(Output.of(corsConfig));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -331,7 +369,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The creation time of the resource.
          * 
          * @return builder
          * 
@@ -362,7 +400,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param lastModifiedTime (Available since v1.234.0) The last time the custom domain name was Updated
+         * @param lastModifiedTime The last time the custom domain name was Updated.
          * 
          * @return builder
          * 
@@ -373,7 +411,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param lastModifiedTime (Available since v1.234.0) The last time the custom domain name was Updated
+         * @param lastModifiedTime The last time the custom domain name was Updated.
          * 
          * @return builder
          * 
@@ -425,7 +463,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subdomainCount (Available since v1.234.0) Number of subdomains
+         * @param subdomainCount Number of subdomains.
          * 
          * @return builder
          * 
@@ -436,7 +474,7 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subdomainCount (Available since v1.234.0) Number of subdomains
+         * @param subdomainCount Number of subdomains.
          * 
          * @return builder
          * 

@@ -20,6 +20,11 @@ export type ClickHouseEnterpriseDbCluster = import("./clickHouseEnterpriseDbClus
 export const ClickHouseEnterpriseDbCluster: typeof import("./clickHouseEnterpriseDbCluster").ClickHouseEnterpriseDbCluster = null as any;
 utilities.lazyLoad(exports, ["ClickHouseEnterpriseDbCluster"], () => require("./clickHouseEnterpriseDbCluster"));
 
+export { ComputingGroupArgs, ComputingGroupState } from "./computingGroup";
+export type ComputingGroup = import("./computingGroup").ComputingGroup;
+export const ComputingGroup: typeof import("./computingGroup").ComputingGroup = null as any;
+utilities.lazyLoad(exports, ["ComputingGroup"], () => require("./computingGroup"));
+
 export { PublicEndpointArgs, PublicEndpointState } from "./publicEndpoint";
 export type PublicEndpoint = import("./publicEndpoint").PublicEndpoint;
 export const PublicEndpoint: typeof import("./publicEndpoint").PublicEndpoint = null as any;
@@ -41,6 +46,8 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster":
                 return new ClickHouseEnterpriseDbCluster(name, <any>undefined, { urn })
+            case "alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup":
+                return new ComputingGroup(name, <any>undefined, { urn })
             case "alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint":
                 return new PublicEndpoint(name, <any>undefined, { urn })
             case "alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp":
@@ -53,5 +60,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "clickhouseenterprisedbcluster/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "clickhouseenterprisedbcluster/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "clickhouseenterprisedbcluster/computingGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "clickhouseenterprisedbcluster/publicEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "clickhouseenterprisedbcluster/securityIp", _module)

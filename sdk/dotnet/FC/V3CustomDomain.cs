@@ -10,14 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC
 {
     /// <summary>
-    /// Provides a FCV3 Custom Domain resource.
+    /// Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
     /// 
     /// Custom Domain names allow users to access FC functions through custom domain names, providing convenience for building Web services using function compute.
     /// You can bind a custom domain name to Function Compute and set different paths to different functions of different services.
     /// 
-    /// For information about FCV3 Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
-    /// 
-    /// &gt; **NOTE:** This content is a technical preview, and should not be relied on in a production environment.
+    /// For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
     /// 
     /// &gt; **NOTE:** Available since v1.228.0.
     /// 
@@ -231,23 +229,23 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// ## Import
     /// 
-    /// FCV3 Custom Domain can be imported using the id, e.g.
+    /// Function Compute Service V3 (FCV3) Custom Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example &lt;id&gt;
+    /// $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example &lt;custom_domain_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/v3CustomDomain:V3CustomDomain")]
     public partial class V3CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        /// The ID of your Alibaba Cloud account (primary account).
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.234.0) API version of Function Compute
+        /// API version of Function Compute.
         /// </summary>
         [Output("apiVersion")]
         public Output<string> ApiVersion { get; private set; } = null!;
@@ -265,7 +263,13 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3CustomDomainCertConfig> CertConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `CorsConfig` below.
+        /// </summary>
+        [Output("corsConfig")]
+        public Output<Outputs.V3CustomDomainCorsConfig?> CorsConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -277,7 +281,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CustomDomainName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.234.0) The last time the custom domain name was Updated
+        /// The last time the custom domain name was Updated.
         /// </summary>
         [Output("lastModifiedTime")]
         public Output<string> LastModifiedTime { get; private set; } = null!;
@@ -295,7 +299,7 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3CustomDomainRouteConfig?> RouteConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.234.0) Number of subdomains
+        /// Number of subdomains.
         /// </summary>
         [Output("subdomainCount")]
         public Output<string> SubdomainCount { get; private set; } = null!;
@@ -371,6 +375,12 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3CustomDomainCertConfigArgs>? CertConfig { get; set; }
 
         /// <summary>
+        /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `CorsConfig` below.
+        /// </summary>
+        [Input("corsConfig")]
+        public Input<Inputs.V3CustomDomainCorsConfigArgs>? CorsConfig { get; set; }
+
+        /// <summary>
         /// The name of the resource
         /// </summary>
         [Input("customDomainName")]
@@ -409,13 +419,13 @@ namespace Pulumi.AliCloud.FC
     public sealed class V3CustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        /// The ID of your Alibaba Cloud account (primary account).
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// (Available since v1.234.0) API version of Function Compute
+        /// API version of Function Compute.
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -433,7 +443,13 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3CustomDomainCertConfigGetArgs>? CertConfig { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `CorsConfig` below.
+        /// </summary>
+        [Input("corsConfig")]
+        public Input<Inputs.V3CustomDomainCorsConfigGetArgs>? CorsConfig { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -445,7 +461,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CustomDomainName { get; set; }
 
         /// <summary>
-        /// (Available since v1.234.0) The last time the custom domain name was Updated
+        /// The last time the custom domain name was Updated.
         /// </summary>
         [Input("lastModifiedTime")]
         public Input<string>? LastModifiedTime { get; set; }
@@ -463,7 +479,7 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3CustomDomainRouteConfigGetArgs>? RouteConfig { get; set; }
 
         /// <summary>
-        /// (Available since v1.234.0) Number of subdomains
+        /// Number of subdomains.
         /// </summary>
         [Input("subdomainCount")]
         public Input<string>? SubdomainCount { get; set; }

@@ -222,6 +222,7 @@ import * as slb from "./slb";
 import * as sls from "./sls";
 import * as sms from "./sms";
 import * as sslcertificatesservice from "./sslcertificatesservice";
+import * as sslcertificatesservicepca from "./sslcertificatesservicepca";
 import * as starrocks from "./starrocks";
 import * as tag from "./tag";
 import * as threatdetection from "./threatdetection";
@@ -368,6 +369,7 @@ export {
     sls,
     sms,
     sslcertificatesservice,
+    sslcertificatesservicepca,
     starrocks,
     tag,
     threatdetection,

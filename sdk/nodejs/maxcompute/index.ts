@@ -45,6 +45,11 @@ export type RoleUserAttachment = import("./roleUserAttachment").RoleUserAttachme
 export const RoleUserAttachment: typeof import("./roleUserAttachment").RoleUserAttachment = null as any;
 utilities.lazyLoad(exports, ["RoleUserAttachment"], () => require("./roleUserAttachment"));
 
+export { TenantRoleUserAttachmentArgs, TenantRoleUserAttachmentState } from "./tenantRoleUserAttachment";
+export type TenantRoleUserAttachment = import("./tenantRoleUserAttachment").TenantRoleUserAttachment;
+export const TenantRoleUserAttachment: typeof import("./tenantRoleUserAttachment").TenantRoleUserAttachment = null as any;
+utilities.lazyLoad(exports, ["TenantRoleUserAttachment"], () => require("./tenantRoleUserAttachment"));
+
 export { TunnelQuotaTimerArgs, TunnelQuotaTimerState } from "./tunnelQuotaTimer";
 export type TunnelQuotaTimer = import("./tunnelQuotaTimer").TunnelQuotaTimer;
 export const TunnelQuotaTimer: typeof import("./tunnelQuotaTimer").TunnelQuotaTimer = null as any;
@@ -67,6 +72,8 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "alicloud:maxcompute/roleUserAttachment:RoleUserAttachment":
                 return new RoleUserAttachment(name, <any>undefined, { urn })
+            case "alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment":
+                return new TenantRoleUserAttachment(name, <any>undefined, { urn })
             case "alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer":
                 return new TunnelQuotaTimer(name, <any>undefined, { urn })
             default:
@@ -80,4 +87,5 @@ pulumi.runtime.registerResourceModule("alicloud", "maxcompute/quotaPlan", _modul
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/quotaSchedule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/role", _module)
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/roleUserAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "maxcompute/tenantRoleUserAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/tunnelQuotaTimer", _module)

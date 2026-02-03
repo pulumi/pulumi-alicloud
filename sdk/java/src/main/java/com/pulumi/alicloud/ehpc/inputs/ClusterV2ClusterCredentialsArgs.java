@@ -16,6 +16,21 @@ public final class ClusterV2ClusterCredentialsArgs extends com.pulumi.resources.
     public static final ClusterV2ClusterCredentialsArgs Empty = new ClusterV2ClusterCredentialsArgs();
 
     /**
+     * The SSH key of root of the cluster node.
+     * 
+     */
+    @Import(name="keyPairName")
+    private @Nullable Output<String> keyPairName;
+
+    /**
+     * @return The SSH key of root of the cluster node.
+     * 
+     */
+    public Optional<Output<String>> keyPairName() {
+        return Optional.ofNullable(this.keyPairName);
+    }
+
+    /**
      * The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! {@literal @} # $ % ^ &amp; * - = + { } [ ] : ; &#39;,. ? /
      * 
      */
@@ -33,6 +48,7 @@ public final class ClusterV2ClusterCredentialsArgs extends com.pulumi.resources.
     private ClusterV2ClusterCredentialsArgs() {}
 
     private ClusterV2ClusterCredentialsArgs(ClusterV2ClusterCredentialsArgs $) {
+        this.keyPairName = $.keyPairName;
         this.password = $.password;
     }
 
@@ -52,6 +68,27 @@ public final class ClusterV2ClusterCredentialsArgs extends com.pulumi.resources.
 
         public Builder(ClusterV2ClusterCredentialsArgs defaults) {
             $ = new ClusterV2ClusterCredentialsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param keyPairName The SSH key of root of the cluster node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPairName(@Nullable Output<String> keyPairName) {
+            $.keyPairName = keyPairName;
+            return this;
+        }
+
+        /**
+         * @param keyPairName The SSH key of root of the cluster node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPairName(String keyPairName) {
+            return keyPairName(Output.of(keyPairName));
         }
 
         /**

@@ -7,14 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a FCV3 Custom Domain resource.
+ * Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
  *
  * Custom Domain names allow users to access FC functions through custom domain names, providing convenience for building Web services using function compute.
  * You can bind a custom domain name to Function Compute and set different paths to different functions of different services.
  *
- * For information about FCV3 Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
- *
- * > **NOTE:** This content is a technical preview, and should not be relied on in a production environment.
+ * For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
  *
  * > **NOTE:** Available since v1.228.0.
  *
@@ -191,10 +189,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FCV3 Custom Domain can be imported using the id, e.g.
+ * Function Compute Service V3 (FCV3) Custom Domain can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <id>
+ * $ pulumi import alicloud:fc/v3CustomDomain:V3CustomDomain example <custom_domain_name>
  * ```
  */
 export class V3CustomDomain extends pulumi.CustomResource {
@@ -226,11 +224,11 @@ export class V3CustomDomain extends pulumi.CustomResource {
     }
 
     /**
-     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * The ID of your Alibaba Cloud account (primary account).
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
-     * (Available since v1.234.0) API version of Function Compute
+     * API version of Function Compute.
      */
     declare public /*out*/ readonly apiVersion: pulumi.Output<string>;
     /**
@@ -242,7 +240,11 @@ export class V3CustomDomain extends pulumi.CustomResource {
      */
     declare public readonly certConfig: pulumi.Output<outputs.fc.V3CustomDomainCertConfig>;
     /**
-     * The creation time of the resource
+     * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     */
+    declare public readonly corsConfig: pulumi.Output<outputs.fc.V3CustomDomainCorsConfig | undefined>;
+    /**
+     * The creation time of the resource.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -250,7 +252,7 @@ export class V3CustomDomain extends pulumi.CustomResource {
      */
     declare public readonly customDomainName: pulumi.Output<string>;
     /**
-     * (Available since v1.234.0) The last time the custom domain name was Updated
+     * The last time the custom domain name was Updated.
      */
     declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
@@ -262,7 +264,7 @@ export class V3CustomDomain extends pulumi.CustomResource {
      */
     declare public readonly routeConfig: pulumi.Output<outputs.fc.V3CustomDomainRouteConfig | undefined>;
     /**
-     * (Available since v1.234.0) Number of subdomains
+     * Number of subdomains.
      */
     declare public /*out*/ readonly subdomainCount: pulumi.Output<string>;
     /**
@@ -291,6 +293,7 @@ export class V3CustomDomain extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = state?.apiVersion;
             resourceInputs["authConfig"] = state?.authConfig;
             resourceInputs["certConfig"] = state?.certConfig;
+            resourceInputs["corsConfig"] = state?.corsConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customDomainName"] = state?.customDomainName;
             resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
@@ -303,6 +306,7 @@ export class V3CustomDomain extends pulumi.CustomResource {
             const args = argsOrState as V3CustomDomainArgs | undefined;
             resourceInputs["authConfig"] = args?.authConfig;
             resourceInputs["certConfig"] = args?.certConfig;
+            resourceInputs["corsConfig"] = args?.corsConfig;
             resourceInputs["customDomainName"] = args?.customDomainName;
             resourceInputs["protocol"] = args?.protocol;
             resourceInputs["routeConfig"] = args?.routeConfig;
@@ -324,11 +328,11 @@ export class V3CustomDomain extends pulumi.CustomResource {
  */
 export interface V3CustomDomainState {
     /**
-     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * The ID of your Alibaba Cloud account (primary account).
      */
     accountId?: pulumi.Input<string>;
     /**
-     * (Available since v1.234.0) API version of Function Compute
+     * API version of Function Compute.
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -340,7 +344,11 @@ export interface V3CustomDomainState {
      */
     certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig>;
     /**
-     * The creation time of the resource
+     * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     */
+    corsConfig?: pulumi.Input<inputs.fc.V3CustomDomainCorsConfig>;
+    /**
+     * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -348,7 +356,7 @@ export interface V3CustomDomainState {
      */
     customDomainName?: pulumi.Input<string>;
     /**
-     * (Available since v1.234.0) The last time the custom domain name was Updated
+     * The last time the custom domain name was Updated.
      */
     lastModifiedTime?: pulumi.Input<string>;
     /**
@@ -360,7 +368,7 @@ export interface V3CustomDomainState {
      */
     routeConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfig>;
     /**
-     * (Available since v1.234.0) Number of subdomains
+     * Number of subdomains.
      */
     subdomainCount?: pulumi.Input<string>;
     /**
@@ -385,6 +393,10 @@ export interface V3CustomDomainArgs {
      * HTTPS certificate information See `certConfig` below.
      */
     certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig>;
+    /**
+     * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
+     */
+    corsConfig?: pulumi.Input<inputs.fc.V3CustomDomainCorsConfig>;
     /**
      * The name of the resource
      */

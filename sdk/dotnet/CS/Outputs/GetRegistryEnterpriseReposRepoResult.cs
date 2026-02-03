@@ -14,31 +14,31 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetRegistryEnterpriseReposRepoResult
     {
         /// <summary>
-        /// ID of Container Registry Enterprise Edition repository.
+        /// The ID of the Repository.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry instance.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// Name of Container Registry Enterprise Edition repository.
+        /// The name of the Repository.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+        /// The name of the namespace to which the Repository belongs.
         /// </summary>
         public readonly string Namespace;
         /// <summary>
-        /// `PUBLIC` or `PRIVATE`, repository's visibility.
+        /// The type of the Repository.
         /// </summary>
         public readonly string RepoType;
         /// <summary>
-        /// The repository general information.
+        /// The summary of the Repository.
         /// </summary>
         public readonly string Summary;
         /// <summary>
-        /// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+        /// A list of image tags belong to this Repository. **Note:** `Tags` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegistryEnterpriseReposRepoTagResult> Tags;
 

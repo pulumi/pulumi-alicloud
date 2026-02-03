@@ -42,6 +42,7 @@ __all__ = [
     'V3AsyncInvokeConfigDestinationConfigOnSuccess',
     'V3CustomDomainAuthConfig',
     'V3CustomDomainCertConfig',
+    'V3CustomDomainCorsConfig',
     'V3CustomDomainRouteConfig',
     'V3CustomDomainRouteConfigRoute',
     'V3CustomDomainRouteConfigRouteRewriteConfig',
@@ -98,6 +99,7 @@ __all__ = [
     'GetV3FunctionsFunctionInstanceLifecycleConfigInitializerResult',
     'GetV3FunctionsFunctionInstanceLifecycleConfigPreStopResult',
     'GetV3FunctionsFunctionInvocationRestrictionResult',
+    'GetV3FunctionsFunctionLayerResult',
     'GetV3FunctionsFunctionLogConfigResult',
     'GetV3FunctionsFunctionNasConfigResult',
     'GetV3FunctionsFunctionNasConfigMountPointResult',
@@ -1378,6 +1380,112 @@ class V3CustomDomainCertConfig(dict):
         Private Key in PEM format
         """
         return pulumi.get(self, "private_key")
+
+
+@pulumi.output_type
+class V3CustomDomainCorsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainCorsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainCorsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainCorsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[_builtins.bool] = None,
+                 allow_headers: Optional[Sequence[_builtins.str]] = None,
+                 allow_methods: Optional[Sequence[_builtins.str]] = None,
+                 allow_origins: Optional[Sequence[_builtins.str]] = None,
+                 expose_headers: Optional[Sequence[_builtins.str]] = None,
+                 max_age: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool allow_credentials: Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+        :param Sequence[_builtins.str] allow_headers: List of allowed request headers, such as Content-Type, Authorization, etc.
+        :param Sequence[_builtins.str] allow_methods: List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+        :param Sequence[_builtins.str] allow_origins: List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        :param Sequence[_builtins.str] expose_headers: List of response headers that can be exposed to the browser.
+        :param _builtins.int max_age: Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @_builtins.property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[_builtins.bool]:
+        """
+        Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @_builtins.property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed request headers, such as Content-Type, Authorization, etc.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of response headers that can be exposed to the browser.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[_builtins.int]:
+        """
+        Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+        """
+        return pulumi.get(self, "max_age")
 
 
 @pulumi.output_type
@@ -4150,7 +4258,7 @@ class GetV3FunctionsFunctionResult(dict):
                  last_update_status: _builtins.str,
                  last_update_status_reason: _builtins.str,
                  last_update_status_reason_code: _builtins.str,
-                 layers: Sequence[_builtins.str],
+                 layers: Sequence['outputs.GetV3FunctionsFunctionLayerResult'],
                  log_config: 'outputs.GetV3FunctionsFunctionLogConfigResult',
                  memory_size: _builtins.int,
                  nas_config: 'outputs.GetV3FunctionsFunctionNasConfigResult',
@@ -4193,7 +4301,7 @@ class GetV3FunctionsFunctionResult(dict):
         :param _builtins.str last_update_status: The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
         :param _builtins.str last_update_status_reason: The reason that caused the last function to update the Operation State to the current value
         :param _builtins.str last_update_status_reason_code: Status code of the reason that caused the last function update operation status to the current value
-        :param Sequence[_builtins.str] layers: The list of layers.
+        :param Sequence['GetV3FunctionsFunctionLayerArgs'] layers: The list of layers.
         :param 'GetV3FunctionsFunctionLogConfigArgs' log_config: The logs generated by the function are written to the configured Logstore.
         :param _builtins.int memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param 'GetV3FunctionsFunctionNasConfigArgs' nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource.
@@ -4456,7 +4564,7 @@ class GetV3FunctionsFunctionResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def layers(self) -> Sequence[_builtins.str]:
+    def layers(self) -> Sequence['outputs.GetV3FunctionsFunctionLayerResult']:
         """
         The list of layers.
         """
@@ -5146,6 +5254,35 @@ class GetV3FunctionsFunctionInvocationRestrictionResult(dict):
         Disable Reason.
         """
         return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionLayerResult(dict):
+    def __init__(__self__, *,
+                 arn: _builtins.str,
+                 size: _builtins.str):
+        """
+        :param _builtins.str arn: The resource identifier of the layer version.
+        :param _builtins.str size: The size of the layer code package. Unit: bytes.
+        """
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> _builtins.str:
+        """
+        The resource identifier of the layer version.
+        """
+        return pulumi.get(self, "arn")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.str:
+        """
+        The size of the layer code package. Unit: bytes.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type

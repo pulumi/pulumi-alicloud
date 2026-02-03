@@ -12,11 +12,13 @@ namespace Pulumi.AliCloud.CS
     public static class GetRegistryEnterpriseRepos
     {
         /// <summary>
-        /// This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+        /// This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.87.0+
+        /// &gt; **NOTE:** Available since v1.87.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -26,17 +28,42 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
-        ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
-        ///         InstanceId = "cri-xx",
-        ///         NameRegex = "my-repos",
-        ///         OutputFile = "my-repo-json",
+        ///         NameRegex = "default-nodeleting",
+        ///     });
+        /// 
+        ///     var defaultRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("default", new()
+        ///     {
+        ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getRegistryEnterpriseInstancesResult =&gt; getRegistryEnterpriseInstancesResult.Ids[0])),
+        ///         Name = name,
+        ///         AutoCreate = true,
+        ///         DefaultVisibility = "PRIVATE",
+        ///     });
+        /// 
+        ///     var defaultRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("default", new()
+        ///     {
+        ///         InstanceId = defaultRegistryEnterpriseNamespace.InstanceId,
+        ///         Namespace = defaultRegistryEnterpriseNamespace.Name,
+        ///         Name = name,
+        ///         RepoType = "PRIVATE",
+        ///         Summary = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRegistryEnterpriseRepo.RepoId,
+        ///         },
+        ///         InstanceId = defaultRegistryEnterpriseRepo.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["output"] = myRepos.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos),
+        ///         ["crEeReposId0"] = ids.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -45,11 +72,13 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseReposResult>("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args ?? new GetRegistryEnterpriseReposArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+        /// This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.87.0+
+        /// &gt; **NOTE:** Available since v1.87.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -59,17 +88,42 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
-        ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
-        ///         InstanceId = "cri-xx",
-        ///         NameRegex = "my-repos",
-        ///         OutputFile = "my-repo-json",
+        ///         NameRegex = "default-nodeleting",
+        ///     });
+        /// 
+        ///     var defaultRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("default", new()
+        ///     {
+        ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getRegistryEnterpriseInstancesResult =&gt; getRegistryEnterpriseInstancesResult.Ids[0])),
+        ///         Name = name,
+        ///         AutoCreate = true,
+        ///         DefaultVisibility = "PRIVATE",
+        ///     });
+        /// 
+        ///     var defaultRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("default", new()
+        ///     {
+        ///         InstanceId = defaultRegistryEnterpriseNamespace.InstanceId,
+        ///         Namespace = defaultRegistryEnterpriseNamespace.Name,
+        ///         Name = name,
+        ///         RepoType = "PRIVATE",
+        ///         Summary = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRegistryEnterpriseRepo.RepoId,
+        ///         },
+        ///         InstanceId = defaultRegistryEnterpriseRepo.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["output"] = myRepos.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos),
+        ///         ["crEeReposId0"] = ids.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -78,11 +132,13 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseReposResult>("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args ?? new GetRegistryEnterpriseReposInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+        /// This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.87.0+
+        /// &gt; **NOTE:** Available since v1.87.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -92,17 +148,42 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
-        ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
-        ///         InstanceId = "cri-xx",
-        ///         NameRegex = "my-repos",
-        ///         OutputFile = "my-repo-json",
+        ///         NameRegex = "default-nodeleting",
+        ///     });
+        /// 
+        ///     var defaultRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("default", new()
+        ///     {
+        ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getRegistryEnterpriseInstancesResult =&gt; getRegistryEnterpriseInstancesResult.Ids[0])),
+        ///         Name = name,
+        ///         AutoCreate = true,
+        ///         DefaultVisibility = "PRIVATE",
+        ///     });
+        /// 
+        ///     var defaultRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("default", new()
+        ///     {
+        ///         InstanceId = defaultRegistryEnterpriseNamespace.InstanceId,
+        ///         Namespace = defaultRegistryEnterpriseNamespace.Name,
+        ///         Name = name,
+        ///         RepoType = "PRIVATE",
+        ///         Summary = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRegistryEnterpriseRepo.RepoId,
+        ///         },
+        ///         InstanceId = defaultRegistryEnterpriseRepo.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["output"] = myRepos.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos),
+        ///         ["crEeReposId0"] = ids.Apply(getRegistryEnterpriseReposResult =&gt; getRegistryEnterpriseReposResult.Repos[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -115,7 +196,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetRegistryEnterpriseReposArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `Tags` in attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -124,7 +205,7 @@ namespace Pulumi.AliCloud.CS
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ids to filter results by repository id.
+        /// A list of Repository IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -133,19 +214,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by repository name.
+        /// A regex string to filter results by Repository name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+        /// The name of the namespace to which the Repository belongs.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
@@ -165,7 +246,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetRegistryEnterpriseReposInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `Tags` in attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -174,7 +255,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of ids to filter results by repository id.
+        /// A list of Repository IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -183,19 +264,19 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by repository name.
+        /// A regex string to filter results by Repository name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+        /// The name of the namespace to which the Repository belongs.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -221,26 +302,23 @@ namespace Pulumi.AliCloud.CS
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry instance to which the Repository belongs.
         /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of repository names.
+        /// A list of Repository names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where repo is located.
+        /// The name of the namespace to which the Repository belongs.
         /// </summary>
         public readonly string? Namespace;
         public readonly string? OutputFile;
         /// <summary>
-        /// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+        /// A list of Repositories. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegistryEnterpriseReposRepoResult> Repos;
 

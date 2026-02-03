@@ -105,6 +105,94 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ddos/domainResource:DomainResource")
 public class DomainResource extends com.pulumi.resources.CustomResource {
     /**
+     * the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     * 
+     */
+    @Export(name="aiMode", refs={String.class}, tree="[0]")
+    private Output<String> aiMode;
+
+    /**
+     * @return the mode of the Intelligent Protection policy.
+     * - watch: the Warning mode
+     * - defense: the Defense mode
+     * 
+     */
+    public Output<String> aiMode() {
+        return this.aiMode;
+    }
+    /**
+     * the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     * 
+     */
+    @Export(name="aiTemplate", refs={String.class}, tree="[0]")
+    private Output<String> aiTemplate;
+
+    /**
+     * @return the level of the Intelligent Protection policy.
+     * - level30: the Low level
+     * - level60: the Normal level
+     * - level90: the Strict level
+     * 
+     */
+    public Output<String> aiTemplate() {
+        return this.aiTemplate;
+    }
+    /**
+     * ip blacklist
+     * 
+     */
+    @Export(name="blackLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> blackLists;
+
+    /**
+     * @return ip blacklist
+     * 
+     */
+    public Output<Optional<List<String>>> blackLists() {
+        return Codegen.optional(this.blackLists);
+    }
+    /**
+     * The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    @Export(name="bwListEnable", refs={Integer.class}, tree="[0]")
+    private Output<Integer> bwListEnable;
+
+    /**
+     * @return The status of the blacklist and whitelist feature. Valid values:
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    public Output<Integer> bwListEnable() {
+        return this.bwListEnable;
+    }
+    /**
+     * CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    @Export(name="ccGlobalSwitch", refs={String.class}, tree="[0]")
+    private Output<String> ccGlobalSwitch;
+
+    /**
+     * @return CC safety protection switch.
+     * - 0: Disabled
+     * - 1: Enabled
+     * 
+     */
+    public Output<String> ccGlobalSwitch() {
+        return this.ccGlobalSwitch;
+    }
+    /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      * 
      * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
@@ -356,6 +444,20 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     public Output<Integer> rsType() {
         return this.rsType;
     }
+    /**
+     * IP whitelist list.
+     * 
+     */
+    @Export(name="whiteLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> whiteLists;
+
+    /**
+     * @return IP whitelist list.
+     * 
+     */
+    public Output<Optional<List<String>>> whiteLists() {
+        return Codegen.optional(this.whiteLists);
+    }
 
     /**
      *
@@ -398,6 +500,7 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "cert",
+                "certIdentifier",
                 "certRegion",
                 "key"
             ))

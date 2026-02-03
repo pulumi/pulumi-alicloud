@@ -164,14 +164,14 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+     * The time when the cluster was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+     * @return The time when the cluster was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -493,7 +493,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+         * @param createTime The time when the cluster was created.
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see ISO 8601.
+         * @param createTime The time when the cluster was created.
          * 
          * @return builder
          * 

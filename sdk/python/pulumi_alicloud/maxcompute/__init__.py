@@ -14,6 +14,7 @@ from .quota_plan import *
 from .quota_schedule import *
 from .role import *
 from .role_user_attachment import *
+from .tenant_role_user_attachment import *
 from .tunnel_quota_timer import *
 from ._inputs import *
 from . import outputs
