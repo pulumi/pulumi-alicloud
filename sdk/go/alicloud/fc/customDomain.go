@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"

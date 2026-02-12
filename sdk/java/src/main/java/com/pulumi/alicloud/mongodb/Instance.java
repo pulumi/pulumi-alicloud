@@ -801,9 +801,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> srcDbInstanceId() {
         return Codegen.optional(this.srcDbInstanceId);
     }
+    /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
+     * 
+     */
     @Export(name="sslAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslAction;
 
+    /**
+     * @return Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
+     * 
+     */
     public Output<Optional<String>> sslAction() {
         return Codegen.optional(this.sslAction);
     }

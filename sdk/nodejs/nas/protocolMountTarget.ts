@@ -125,6 +125,11 @@ export class ProtocolMountTarget extends pulumi.CustomResource {
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * DryRun
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Protocol Service Mount Target ID
@@ -254,6 +259,11 @@ export interface ProtocolMountTargetState {
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
     description?: pulumi.Input<string>;
+    /**
+     * DryRun
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     dryRun?: pulumi.Input<boolean>;
     /**
      * Protocol Service Mount Target ID
@@ -327,6 +337,11 @@ export interface ProtocolMountTargetArgs {
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
     description?: pulumi.Input<string>;
+    /**
+     * DryRun
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the file system.

@@ -10,6 +10,76 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MaxCompute
 {
     /// <summary>
+    /// Provides a Max Compute Tunnel Quota Timer resource.
+    /// 
+    /// For information about Max Compute Tunnel Quota Timer and how to use it, see [What is Tunnel Quota Timer](https://www.alibabacloud.com/help/en/).
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.260.0`.
+    /// 
+    /// &gt; **NOTE:** Deprecated since v1.260.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.MaxCompute.TunnelQuotaTimer("default", new()
+    ///     {
+    ///         QuotaTimers = new[]
+    ///         {
+    ///             new AliCloud.MaxCompute.Inputs.TunnelQuotaTimerQuotaTimerArgs
+    ///             {
+    ///                 BeginTime = "00:00",
+    ///                 EndTime = "01:00",
+    ///                 TunnelQuotaParameter = new AliCloud.MaxCompute.Inputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs
+    ///                 {
+    ///                     SlotNum = 50,
+    ///                     ElasticReservedSlotNum = 50,
+    ///                 },
+    ///             },
+    ///             new AliCloud.MaxCompute.Inputs.TunnelQuotaTimerQuotaTimerArgs
+    ///             {
+    ///                 BeginTime = "01:00",
+    ///                 EndTime = "02:00",
+    ///                 TunnelQuotaParameter = new AliCloud.MaxCompute.Inputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs
+    ///                 {
+    ///                     SlotNum = 50,
+    ///                     ElasticReservedSlotNum = 50,
+    ///                 },
+    ///             },
+    ///             new AliCloud.MaxCompute.Inputs.TunnelQuotaTimerQuotaTimerArgs
+    ///             {
+    ///                 BeginTime = "02:00",
+    ///                 EndTime = "24:00",
+    ///                 TunnelQuotaParameter = new AliCloud.MaxCompute.Inputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs
+    ///                 {
+    ///                     SlotNum = 50,
+    ///                     ElasticReservedSlotNum = 50,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Nickname = "ot_terraform_p",
+    ///         TimeZone = "Asia/Shanghai",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.maxcompute.TunnelQuotaTimer` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.maxcompute.TunnelQuotaTimer`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Max Compute Tunnel Quota Timer can be imported using the id, e.g.

@@ -94,9 +94,17 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.isp);
     }
 
+    /**
+     * The resource ID in terraform of VPC Public Ip Address Pool.
+     * 
+     */
     @Import(name="publicIpAddressPoolId")
     private @Nullable Output<String> publicIpAddressPoolId;
 
+    /**
+     * @return The resource ID in terraform of VPC Public Ip Address Pool.
+     * 
+     */
     public Optional<Output<String>> publicIpAddressPoolId() {
         return Optional.ofNullable(this.publicIpAddressPoolId);
     }
@@ -351,11 +359,23 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
             return isp(Output.of(isp));
         }
 
+        /**
+         * @param publicIpAddressPoolId The resource ID in terraform of VPC Public Ip Address Pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicIpAddressPoolId(@Nullable Output<String> publicIpAddressPoolId) {
             $.publicIpAddressPoolId = publicIpAddressPoolId;
             return this;
         }
 
+        /**
+         * @param publicIpAddressPoolId The resource ID in terraform of VPC Public Ip Address Pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
             return publicIpAddressPoolId(Output.of(publicIpAddressPoolId));
         }

@@ -31,16 +31,32 @@ public final class OpenApiExplorerApiMcpServerTerraformToolArgs extends com.pulu
         return Optional.ofNullable(this.async);
     }
 
+    /**
+     * Terraform Tool code. Overview of the HCL Language
+     * 
+     */
     @Import(name="code")
     private @Nullable Output<String> code;
 
+    /**
+     * @return Terraform Tool code. Overview of the HCL Language
+     * 
+     */
     public Optional<Output<String>> code() {
         return Optional.ofNullable(this.code);
     }
 
+    /**
+     * Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -66,9 +82,17 @@ public final class OpenApiExplorerApiMcpServerTerraformToolArgs extends com.pulu
         return Optional.ofNullable(this.destroyPolicy);
     }
 
+    /**
+     * The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -122,20 +146,44 @@ public final class OpenApiExplorerApiMcpServerTerraformToolArgs extends com.pulu
             return async(Output.of(async));
         }
 
+        /**
+         * @param code Terraform Tool code. Overview of the HCL Language
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(@Nullable Output<String> code) {
             $.code = code;
             return this;
         }
 
+        /**
+         * @param code Terraform Tool code. Overview of the HCL Language
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(String code) {
             return code(Output.of(code));
         }
 
+        /**
+         * @param description Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -167,11 +215,23 @@ public final class OpenApiExplorerApiMcpServerTerraformToolArgs extends com.pulu
             return destroyPolicy(Output.of(destroyPolicy));
         }
 
+        /**
+         * @param name The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

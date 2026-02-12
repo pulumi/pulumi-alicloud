@@ -43,6 +43,7 @@ class GetExpressSyncsSyncResult(dict):
         :param _builtins.str description: The description of the Express Sync.
         :param _builtins.str express_sync_id: The ID of the Express Sync.
         :param _builtins.str express_sync_name: The name of the Express Sync.
+        :param _builtins.str id: The resource ID in terraform of Express Sync. The value is formate as <express_sync_id>.
         :param _builtins.str mns_topic: The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -105,6 +106,9 @@ class GetExpressSyncsSyncResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Express Sync. The value is formate as <express_sync_id>.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

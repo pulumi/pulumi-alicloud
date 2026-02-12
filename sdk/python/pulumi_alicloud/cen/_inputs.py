@@ -25,71 +25,66 @@ __all__ = [
     'TransitRouterVpnAttachmentZoneArgsDict',
 ]
 
-MYPY = False
+class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
+    address_family: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP Address Family
+    """
+    dst_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination network segment of the traffic message.
+    The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+    """
+    dst_port_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
 
-if not MYPY:
-    class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
-        address_family: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP Address Family
-        """
-        dst_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination network segment of the traffic message.
-        The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
-        """
-        dst_port_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
+    The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
 
-        The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.
+    The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+    - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+    - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+    - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+    """
+    match_dscp: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The DSCP value of the traffic message. Valid values: `0` to **63 * *.
 
-        The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
-        - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
-        - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
-        - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
-        """
-        match_dscp: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The DSCP value of the traffic message. Valid values: `0` to **63 * *.
+    The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
 
-        The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.
+    > **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type of the traffic message.
+    Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+    """
+    src_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source network segment of the traffic message.
+    The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+    """
+    src_port_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
 
-        > **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type of the traffic message.
-        Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
-        """
-        src_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source network segment of the traffic message.
-        The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
-        """
-        src_port_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
+    The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
 
-        The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.
-
-        The current parameter supports entering up to two port numbers. The input format is described as follows:
-        - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
-        - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
-        - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
-        """
-        traffic_match_rule_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description information of the stream classification rule.
-        The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
-        """
-        traffic_match_rule_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the stream classification rule.
-        The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
-        """
-elif False:
-    TrafficMarkingPolicyTrafficMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
+    The current parameter supports entering up to two port numbers. The input format is described as follows:
+    - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+    - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+    - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+    """
+    traffic_match_rule_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description information of the stream classification rule.
+    The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+    """
+    traffic_match_rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the stream classification rule.
+    The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+    """
 
 @pulumi.input_type
 class TrafficMarkingPolicyTrafficMatchRuleArgs:
@@ -288,14 +283,11 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         pulumi.set(self, "traffic_match_rule_name", value)
 
 
-if not MYPY:
-    class TransitRouterMulticastDomainOptionsArgsDict(TypedDict):
-        igmpv2_support: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
-        """
-elif False:
-    TransitRouterMulticastDomainOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class TransitRouterMulticastDomainOptionsArgsDict(TypedDict):
+    igmpv2_support: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
+    """
 
 @pulumi.input_type
 class TransitRouterMulticastDomainOptionsArgs:
@@ -320,20 +312,17 @@ class TransitRouterMulticastDomainOptionsArgs:
         pulumi.set(self, "igmpv2_support", value)
 
 
-if not MYPY:
-    class TransitRouterVpcAttachmentZoneMappingArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
-        - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
-        - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
-        """
-elif False:
-    TransitRouterVpcAttachmentZoneMappingArgsDict: TypeAlias = Mapping[str, Any]
+class TransitRouterVpcAttachmentZoneMappingArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+    - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+    - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+    """
 
 @pulumi.input_type
 class TransitRouterVpcAttachmentZoneMappingArgs:
@@ -376,15 +365,12 @@ class TransitRouterVpcAttachmentZoneMappingArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class TransitRouterVpnAttachmentZoneArgsDict(TypedDict):
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The zone ID of the read-only instance.
-        You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
-        """
-elif False:
-    TransitRouterVpnAttachmentZoneArgsDict: TypeAlias = Mapping[str, Any]
+class TransitRouterVpnAttachmentZoneArgsDict(TypedDict):
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The zone ID of the read-only instance.
+    You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
+    """
 
 @pulumi.input_type
 class TransitRouterVpnAttachmentZoneArgs:

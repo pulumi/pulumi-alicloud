@@ -12,6 +12,12 @@ namespace Pulumi.AliCloud.Kms
     public static class GetCiphertext
     {
         /// <summary>
+        /// Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+        /// 
+        /// &gt; **NOTE:** Available since v1.63.0.
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage
@@ -43,6 +49,12 @@ namespace Pulumi.AliCloud.Kms
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+        /// 
+        /// &gt; **NOTE:** Available since v1.63.0.
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage
@@ -74,6 +86,12 @@ namespace Pulumi.AliCloud.Kms
             => global::Pulumi.Deployment.Instance.Invoke<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+        /// 
+        /// &gt; **NOTE:** Available since v1.63.0.
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage

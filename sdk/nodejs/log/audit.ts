@@ -177,6 +177,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * > **NOTE:** The UI settings of collection policy scripts for related products (such as rds, slb and etc.) will be cleared when imported using terraform. So you need to modify collection policy scripts directly if you want to edit collection policy in terraform.
+ *
  * Log audit can be imported using the id, e.g.
  *
  * ```sh

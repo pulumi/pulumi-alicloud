@@ -55,6 +55,9 @@ class V3FunctionArgs:
         The set of arguments for constructing a V3Function resource.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.str] runtime: Function runtime type
+        :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input['V3FunctionCustomContainerConfigArgs'] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
         :param pulumi.Input['V3FunctionCustomDnsArgs'] custom_dns: Function custom DNS configuration See `custom_dns` below.
@@ -169,6 +172,11 @@ class V3FunctionArgs:
     @_builtins.property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input['V3FunctionCodeArgs']]:
+        """
+        Function code ZIP package. code and customContainerConfig. See `code` below.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -547,6 +555,9 @@ class _V3FunctionState:
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3Function resources.
+        :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the function.
@@ -677,6 +688,11 @@ class _V3FunctionState:
     @_builtins.property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input['V3FunctionCodeArgs']]:
+        """
+        Function code ZIP package. code and customContainerConfig. See `code` below.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -1309,6 +1325,9 @@ class V3Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
         :param pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']] custom_dns: Function custom DNS configuration See `custom_dns` below.
@@ -1598,6 +1617,9 @@ class V3Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the function.
@@ -1691,6 +1713,11 @@ class V3Function(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def code(self) -> pulumi.Output[Optional['outputs.V3FunctionCode']]:
+        """
+        Function code ZIP package. code and customContainerConfig. See `code` below.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "code")
 
     @_builtins.property

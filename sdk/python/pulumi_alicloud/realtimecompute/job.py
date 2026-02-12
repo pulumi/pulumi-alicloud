@@ -40,6 +40,9 @@ class JobArgs:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['JobRestoreStrategyArgs'] restore_strategy: Restore strategy See `restore_strategy` below.
         :param pulumi.Input['JobStatusArgs'] status: job status See `status` below.
+        :param pulumi.Input[_builtins.str] stop_strategy: Job Stop Policy
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "resource_id", resource_id)
@@ -145,6 +148,11 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="stopStrategy")
     def stop_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Job Stop Policy
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "stop_strategy")
 
     @stop_strategy.setter
@@ -176,6 +184,9 @@ class _JobState:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['JobRestoreStrategyArgs'] restore_strategy: Restore strategy See `restore_strategy` below.
         :param pulumi.Input['JobStatusArgs'] status: job status See `status` below.
+        :param pulumi.Input[_builtins.str] stop_strategy: Job Stop Policy
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         if deployment_id is not None:
             pulumi.set(__self__, "deployment_id", deployment_id)
@@ -297,6 +308,11 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="stopStrategy")
     def stop_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Job Stop Policy
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "stop_strategy")
 
     @stop_strategy.setter
@@ -420,6 +436,9 @@ class Job(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']] restore_strategy: Restore strategy See `restore_strategy` below.
         :param pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']] status: job status See `status` below.
+        :param pulumi.Input[_builtins.str] stop_strategy: Job Stop Policy
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         ...
     @overload
@@ -598,6 +617,9 @@ class Job(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']] restore_strategy: Restore strategy See `restore_strategy` below.
         :param pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']] status: job status See `status` below.
+        :param pulumi.Input[_builtins.str] stop_strategy: Job Stop Policy
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -683,5 +705,10 @@ class Job(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="stopStrategy")
     def stop_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Job Stop Policy
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "stop_strategy")
 

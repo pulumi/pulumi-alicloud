@@ -16,6 +16,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a MNS queue resource.
+ * 
+ * &gt; **NOTE:** Terraform will auto build a mns queue  while it uses `alicloud.mns.Queue` to build a mns queue resource.
+ * 
+ * &gt; **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_queue.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

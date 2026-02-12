@@ -82,7 +82,10 @@ type WafRuleset struct {
 	// waf rule set id
 	RulesetId pulumi.IntOutput `pulumi:"rulesetId"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      pulumi.StringOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// The site version.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Rule Set Status
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -131,8 +134,11 @@ type wafRulesetState struct {
 	// waf rule set id
 	RulesetId *int `pulumi:"rulesetId"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      *string `pulumi:"siteId"`
-	SiteVersion *int    `pulumi:"siteVersion"`
+	SiteId *string `pulumi:"siteId"`
+	// The site version.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	SiteVersion *int `pulumi:"siteVersion"`
 	// Rule Set Status
 	Status *string `pulumi:"status"`
 }
@@ -145,7 +151,10 @@ type WafRulesetState struct {
 	// waf rule set id
 	RulesetId pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      pulumi.StringPtrInput
+	SiteId pulumi.StringPtrInput
+	// The site version.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 	SiteVersion pulumi.IntPtrInput
 	// Rule Set Status
 	Status pulumi.StringPtrInput
@@ -161,8 +170,11 @@ type wafRulesetArgs struct {
 	// The WAF phase
 	Phase string `pulumi:"phase"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      string `pulumi:"siteId"`
-	SiteVersion *int   `pulumi:"siteVersion"`
+	SiteId string `pulumi:"siteId"`
+	// The site version.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	SiteVersion *int `pulumi:"siteVersion"`
 	// Rule Set Status
 	Status *string `pulumi:"status"`
 }
@@ -174,7 +186,10 @@ type WafRulesetArgs struct {
 	// The WAF phase
 	Phase pulumi.StringInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      pulumi.StringInput
+	SiteId pulumi.StringInput
+	// The site version.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 	SiteVersion pulumi.IntPtrInput
 	// Rule Set Status
 	Status pulumi.StringPtrInput
@@ -287,6 +302,9 @@ func (o WafRulesetOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WafRuleset) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
+// The site version.
+//
+// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o WafRulesetOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRuleset) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

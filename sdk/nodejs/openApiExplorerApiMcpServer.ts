@@ -326,6 +326,9 @@ export class OpenApiExplorerApiMcpServer extends pulumi.CustomResource {
      * Enabled system services.
      */
     declare public readonly systemTools: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     */
     declare public readonly terraformTools: pulumi.Output<outputs.OpenApiExplorerApiMcpServerTerraformTool[] | undefined>;
     /**
      * When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
@@ -463,6 +466,9 @@ export interface OpenApiExplorerApiMcpServerState {
      * Enabled system services.
      */
     systemTools?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     */
     terraformTools?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerTerraformTool>[]>;
     /**
      * When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
@@ -539,6 +545,9 @@ export interface OpenApiExplorerApiMcpServerArgs {
      * Enabled system services.
      */
     systemTools?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     */
     terraformTools?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerTerraformTool>[]>;
     /**
      * When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.

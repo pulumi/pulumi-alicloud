@@ -12,6 +12,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a EIP Bandwidth Plan (CBWP) Common Bandwidth Package resource.
+//
+// > **NOTE:** Terraform will auto build common bandwidth package instance while it uses `vpc.CommonBandwithPackage` to build a common bandwidth package resource.
+//
+// For additional details, see the documentation[https://help.aliyun.com/zh/internet-shared-bandwidth/user-guide/internet-shared-bandwidth-overview?spm=a2c4g.11186623.help-menu-55092.d_1_0.492c69ffKLbVqS].
+//
+// For information about EIP Bandwidth Plan (CBWP) Common Bandwidth Package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/en/eip-bandwidth-plan).
+//
+// > **NOTE:** Available since v1.23.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
+//				BandwidthPackageName: pulumi.String(name),
+//				Description:          pulumi.String(name),
+//				Isp:                  pulumi.String("BGP"),
+//				Bandwidth:            pulumi.String("1000"),
+//				Ratio:                pulumi.Int(100),
+//				InternetChargeType:   pulumi.String("PayByBandwidth"),
+//				ResourceGroupId:      pulumi.String(_default.Ids[0]),
+//				SecurityProtectionTypes: pulumi.StringArray{
+//					pulumi.String("AntiDDoS_Enhanced"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `vpc.CommonBandwithPackage` or removing it from your configuration
+//
+// The `vpc.CommonBandwithPackage` resource allows you to manage  `internetChargeType = "PayBy95"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.

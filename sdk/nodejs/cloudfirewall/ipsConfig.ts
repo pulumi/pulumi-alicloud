@@ -5,12 +5,50 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Cloud Firewall IPS Config resource.
+ *
+ * Support interception mode modification.
+ *
+ * For information about Cloud Firewall IPS Config and how to use it, see [What is IPS Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeDefaultIPSConfig).
+ *
+ * > **NOTE:** Available since v1.249.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cloudfirewall.Instance("default", {paymentType: "PayAsYouGo"});
+ * const defaultIpsConfig = new alicloud.cloudfirewall.IpsConfig("default", {
+ *     lang: "zh",
+ *     maxSdl: 1000,
+ *     basicRules: 1,
+ *     runMode: 1,
+ *     ctiRules: 0,
+ *     patchRules: 0,
+ *     ruleClass: 1,
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.cloudfirewall.IpsConfig` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.IpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Firewall IPS Config can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cloudfirewall/ipsConfig:IpsConfig example 
+ * $ terraform import alicloud_cloud_firewall_ips_config.example 
  * ```
  */
 export class IpsConfig extends pulumi.CustomResource {

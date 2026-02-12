@@ -18,6 +18,80 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESA Transport Layer Application resource.
+ * 
+ * Transport Layer Acceleration Application.
+ * 
+ * For information about ESA Transport Layer Application and how to use it, see [What is Transport Layer Application](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateTransportLayerApplication).
+ * 
+ * &gt; **NOTE:** Available since v1.260.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.esa.EsaFunctions;
+ * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+ * import com.pulumi.alicloud.esa.TransportLayerApplication;
+ * import com.pulumi.alicloud.esa.TransportLayerApplicationArgs;
+ * import com.pulumi.alicloud.esa.inputs.TransportLayerApplicationRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+ *             .planSubscribeType("enterpriseplan")
+ *             .siteName("gositecdn.cn")
+ *             .build());
+ * 
+ *         var defaultTransportLayerApplication = new TransportLayerApplication("defaultTransportLayerApplication", TransportLayerApplicationArgs.builder()
+ *             .recordName("resource2.gositecdn.cn")
+ *             .siteId(default_.sites()[0].siteId())
+ *             .ipAccessRule("off")
+ *             .ipv6("off")
+ *             .crossBorderOptimization("off")
+ *             .rules(TransportLayerApplicationRuleArgs.builder()
+ *                 .source("1.2.3.4")
+ *                 .comment("transportLayerApplication")
+ *                 .edgePort("80")
+ *                 .sourceType("ip")
+ *                 .protocol("TCP")
+ *                 .sourcePort("8080")
+ *                 .clientIpPassThroughMode("off")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.esa.TransportLayerApplication` or removing it from your configuration
+ * 
+ * The `alicloud.esa.TransportLayerApplication` resource allows you to manage  `status = &#34;active&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Transport Layer Application can be imported using the id, e.g.

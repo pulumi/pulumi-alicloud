@@ -7,6 +7,112 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Eflo Node resource.
+ *
+ * Large computing node.
+ *
+ * For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+ *
+ * > **NOTE:** Available since v1.246.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNode = new alicloud.eflo.Node("default", {
+ *     period: 36,
+ *     discountLevel: "36",
+ *     billingCycle: "1month",
+ *     classify: "gpuserver",
+ *     zone: "cn-hangzhou-b",
+ *     productForm: "instance",
+ *     paymentRatio: "0",
+ *     hpnZone: "B1",
+ *     serverArch: "bmserver",
+ *     machineType: "efg1.nvga1n",
+ *     stageNum: "36",
+ *     renewalStatus: "AutoRenewal",
+ *     renewPeriod: 36,
+ *     status: "Unused",
+ * });
+ * ```
+ * Creating a PayAsYouGo eflo node
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const payasyougo = new alicloud.eflo.Node("payasyougo", {
+ *     machineType: "efg1.nvga8n",
+ *     paymentType: "PayAsYouGo",
+ *     hpnZone: "A1",
+ *     productForm: "instance",
+ *     renewalStatus: "ManualRenewal",
+ *     zone: "cn-wulanchabu-a",
+ *     tags: {
+ *         From: "Terraform",
+ *     },
+ *     clusterId: "i11922307xxxxxxx",
+ *     nodeGroupId: "i1254705xxxxxxxx",
+ *     hostname: "terraform-example",
+ *     loginPassword: "xxxxxxxx",
+ *     dataDisks: [
+ *         {
+ *             size: 120,
+ *             category: "cloud_essd",
+ *             performanceLevel: "PL0",
+ *         },
+ *         {
+ *             size: 120,
+ *             category: "cloud_essd",
+ *             performanceLevel: "PL1",
+ *         },
+ *     ],
+ *     ipAllocationPolicies: [{
+ *         machineTypePolicies: [{
+ *             machineType: "efg1.nvga8n",
+ *             bonds: [
+ *                 {
+ *                     subnet: "subnet-x1xxx",
+ *                     name: "example01",
+ *                 },
+ *                 {
+ *                     subnet: "subnet-xxxx",
+ *                     name: "example02",
+ *                 },
+ *                 {
+ *                     subnet: "subnet-xxxx",
+ *                     name: "example03",
+ *                 },
+ *                 {
+ *                     subnet: "subnet-xxxx",
+ *                     name: "example04",
+ *                 },
+ *                 {
+ *                     subnet: "subnet-xxxx",
+ *                     name: "example05",
+ *                 },
+ *             ],
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.eflo.Node` or removing it from your configuration
+ *
+ * The `alicloud.eflo.Node` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Eflo Node can be imported using the id, e.g.

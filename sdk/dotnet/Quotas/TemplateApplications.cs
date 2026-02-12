@@ -10,6 +10,62 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas
 {
     /// <summary>
+    /// Provides a Quotas Template Applications resource. Template Batch Application.
+    /// 
+    /// For information about Quotas Template Applications and how to use it, see [What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate).
+    /// 
+    /// &gt; **NOTE:** Available since v1.214.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var account = new AliCloud.ResourceManager.Account("account", new()
+    ///     {
+    ///         DisplayName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultTemplateApplications = new AliCloud.Quotas.TemplateApplications("default", new()
+    ///     {
+    ///         EnvLanguage = "zh",
+    ///         NoticeType = 0,
+    ///         QuotaCategory = "WhiteListLabel",
+    ///         DesireValue = 1,
+    ///         Reason = "example",
+    ///         QuotaActionCode = "quotas.label_multi/A",
+    ///         AliyunUids = new[]
+    ///         {
+    ///             account.Id,
+    ///         },
+    ///         ProductCode = "quotas",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.quotas.TemplateApplications` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.quotas.TemplateApplications`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Quotas Template Applications can be imported using the id, e.g.

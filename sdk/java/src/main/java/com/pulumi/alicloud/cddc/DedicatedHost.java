@@ -19,6 +19,109 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ApsaraDB for MyBase Dedicated Host resource.
+ * 
+ * For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhost).
+ * 
+ * &gt; **NOTE:** Available since v1.147.0.
+ * 
+ * &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cddc.CddcFunctions;
+ * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroup;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroupArgs;
+ * import com.pulumi.alicloud.cddc.inputs.GetHostEcsLevelInfosArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHost;
+ * import com.pulumi.alicloud.cddc.DedicatedHostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = CddcFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.ids()[0])
+ *             .build());
+ * 
+ *         var defaultDedicatedHostGroup = new DedicatedHostGroup("defaultDedicatedHostGroup", DedicatedHostGroupArgs.builder()
+ *             .engine("MySQL")
+ *             .vpcId(defaultNetwork.id())
+ *             .cpuAllocationRatio(101)
+ *             .memAllocationRatio(50)
+ *             .diskAllocationRatio(200)
+ *             .allocationPolicy("Evenly")
+ *             .hostReplacePolicy("Manual")
+ *             .dedicatedHostGroupDesc(name)
+ *             .build());
+ * 
+ *         final var defaultGetHostEcsLevelInfos = CddcFunctions.getHostEcsLevelInfos(GetHostEcsLevelInfosArgs.builder()
+ *             .dbType("mysql")
+ *             .zoneId(default_.ids()[0])
+ *             .storageType("cloud_essd")
+ *             .build());
+ * 
+ *         var defaultDedicatedHost = new DedicatedHost("defaultDedicatedHost", DedicatedHostArgs.builder()
+ *             .hostName(name)
+ *             .dedicatedHostGroupId(defaultDedicatedHostGroup.id())
+ *             .hostClass(defaultGetHostEcsLevelInfos.infos()[0].resClassCode())
+ *             .zoneId(default_.ids()[0])
+ *             .vswitchId(defaultSwitch.id())
+ *             .paymentType("Subscription")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "CDDC_DEDICATED")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cddc.DedicatedHost` or removing it from your configuration
+ * 
+ * The `alicloud.cddc.DedicatedHost` resource allows you to manage `paymentType = &#34;Subscription&#34;` host instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Host Instance.
+ * You can resume managing the subscription host instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

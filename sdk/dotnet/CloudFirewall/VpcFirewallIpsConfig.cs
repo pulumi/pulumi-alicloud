@@ -10,6 +10,48 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudFirewall
 {
     /// <summary>
+    /// Provides a Cloud Firewall Vpc Firewall Ips Config resource.
+    /// 
+    /// IP configuration of VPC firewall.
+    /// 
+    /// For information about Cloud Firewall Vpc Firewall Ips Config and how to use it, see [What is Vpc Firewall Ips Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallDefaultIPSConfig).
+    /// 
+    /// &gt; **NOTE:** Available since v1.269.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.CloudFirewall.VpcFirewallIpsConfig("default", new()
+    ///     {
+    ///         EnableAllPatch = 0,
+    ///         BasicRules = 0,
+    ///         RunMode = 0,
+    ///         VpcFirewallId = "vfw-tr-bb81adb2d8184bc290a5",
+    ///         RuleClass = "0",
+    ///         Lang = "cn-shenzhen",
+    ///         MemberUid = "1094685339207557",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cloudfirewall.VpcFirewallIpsConfig` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.cloudfirewall.VpcFirewallIpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Vpc Firewall Ips Config can be imported using the id, e.g.

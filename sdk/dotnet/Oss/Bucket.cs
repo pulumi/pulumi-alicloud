@@ -751,6 +751,9 @@ namespace Pulumi.AliCloud.Oss
         [Output("acl")]
         public Output<string> Acl { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the bucket. If omitted, Terraform will assign a random and unique name.
+        /// </summary>
         [Output("bucket")]
         public Output<string> BucketName { get; private set; } = null!;
 
@@ -938,6 +941,9 @@ namespace Pulumi.AliCloud.Oss
         [Input("acl")]
         public Input<string>? Acl { get; set; }
 
+        /// <summary>
+        /// The name of the bucket. If omitted, Terraform will assign a random and unique name.
+        /// </summary>
         [Input("bucket")]
         public Input<string>? BucketName { get; set; }
 
@@ -1075,6 +1081,9 @@ namespace Pulumi.AliCloud.Oss
         [Input("acl")]
         public Input<string>? Acl { get; set; }
 
+        /// <summary>
+        /// The name of the bucket. If omitted, Terraform will assign a random and unique name.
+        /// </summary>
         [Input("bucket")]
         public Input<string>? BucketName { get; set; }
 

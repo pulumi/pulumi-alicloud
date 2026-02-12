@@ -12,6 +12,107 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ApsaraDB for MyBase Dedicated Host resource.
+//
+// For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhost).
+//
+// > **NOTE:** Available since v1.147.0.
+//
+// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cddc.GetZones(ctx, &cddc.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
+//				Engine:                 pulumi.String("MySQL"),
+//				VpcId:                  defaultNetwork.ID(),
+//				CpuAllocationRatio:     pulumi.Int(101),
+//				MemAllocationRatio:     pulumi.Int(50),
+//				DiskAllocationRatio:    pulumi.Int(200),
+//				AllocationPolicy:       pulumi.String("Evenly"),
+//				HostReplacePolicy:      pulumi.String("Manual"),
+//				DedicatedHostGroupDesc: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
+//				DbType:      "mysql",
+//				ZoneId:      _default.Ids[0],
+//				StorageType: "cloud_essd",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cddc.NewDedicatedHost(ctx, "default", &cddc.DedicatedHostArgs{
+//				HostName:             pulumi.String(name),
+//				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
+//				HostClass:            pulumi.String(defaultGetHostEcsLevelInfos.Infos[0].ResClassCode),
+//				ZoneId:               pulumi.String(_default.Ids[0]),
+//				VswitchId:            defaultSwitch.ID(),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("CDDC_DEDICATED"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cddc.DedicatedHost` or removing it from your configuration
+//
+// The `cddc.DedicatedHost` resource allows you to manage `paymentType = "Subscription"` host instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Host Instance.
+// You can resume managing the subscription host instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

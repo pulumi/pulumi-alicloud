@@ -10,6 +10,799 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
+    /// Provides a Container Service for Kubernetes (ACK) Nodepool resource.
+    /// 
+    /// This resource will help you to manage node pool in Kubernetes Cluster, see [What is kubernetes node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+    /// 
+    /// &gt; **NOTE:** Available since v1.97.0.
+    /// 
+    /// &gt; **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
+    /// 
+    /// &gt; **NOTE:** From version 1.109.1, support remove node pool nodes.
+    /// 
+    /// &gt; **NOTE:** From version 1.111.0, support auto scaling node pool. For more information on how to use auto scaling node pools, see [Use Terraform to create an elastic node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools). With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+    /// 
+    /// &gt; **NOTE:** ACK adds a new RamRole (AliyunCSManagedAutoScalerRole) for the permission control of the node pool with auto-scaling enabled. If you are using a node pool with auto scaling, please click [AliyunCSManagedAutoScalerRole](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedAutoScalerRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedAutoScalerRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+    /// 
+    /// &gt; **NOTE:** ACK adds a new RamRole（AliyunCSManagedNlcRole） for the permission control of the management node pool. If you use the management node pool, please click [AliyunCSManagedNlcRole](https://ram.console.aliyun.com/role/authorization?spm=5176.2020520152.0.0.387f16ddEOZxMv&amp;request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedNlcRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedNlcRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+    /// 
+    /// &gt; **NOTE:** From version 1.123.1, supports the creation of a node pool of spot instance.
+    /// 
+    /// &gt; **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+    /// 
+    /// &gt; **NOTE:** From version 1.127.0, support for adding existing nodes to the node pool. In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+    /// 
+    /// &gt; **NOTE:** From version 1.149.0, support for specifying deploymentSet for node pools.
+    /// 
+    /// &gt; **NOTE:** From version 1.158.0, Support for specifying the desired size of nodes for the node pool, for more information, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3)
+    /// 
+    /// &gt; **NOTE:** From version 1.166.0, Support configuring system disk encryption.
+    /// 
+    /// &gt; **NOTE:** From version 1.177.0+, Support `KmsEncryptionContext`, `RdsInstances`, `SystemDiskSnapshotPolicyId` and `CpuPolicy`, add spot strategy `SpotAsPriceGo` and `NoSpot`.
+    /// 
+    /// &gt; **NOTE:** From version 1.180.0+, Support worker nodes customized kubelet parameters by field `KubeletConfiguration` and `RolloutPolicy`.
+    /// 
+    /// &gt; **NOTE:** From version 1.185.0+, Field `RolloutPolicy` will be deprecated and please use field `RollingPolicy` instead.
+    /// 
+    /// For information about Container Service for Kubernetes (ACK) Nodepool and how to use it, see [What is Nodepool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+    /// 
+    /// &gt; **NOTE:** Available since v1.97.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var cloudEfficiency = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Worker",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         NamePrefix = $"terraform-example-{@default.Result}",
+    ///         ClusterSpec = "ack.pro.small",
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = true,
+    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "10.0.0.0/8",
+    ///             Newbits = 8,
+    ///             Netnum = 36,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "172.16.0.0/16",
+    ///             Newbits = 4,
+    ///             Netnum = 7,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SlbInternetEnabled = true,
+    ///         EnableRrsa = true,
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("default", new()
+    ///     {
+    ///         KeyPairName = $"terraform-example-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultNodePool = new AliCloud.CS.NodePool("default", new()
+    ///     {
+    ///         NodePoolName = name,
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         Labels = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolLabelArgs
+    ///             {
+    ///                 Key = "test1",
+    ///                 Value = "nodepool",
+    ///             },
+    ///             new AliCloud.CS.Inputs.NodePoolLabelArgs
+    ///             {
+    ///                 Key = "test2",
+    ///                 Value = "nodepool",
+    ///             },
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolTaintArgs
+    ///             {
+    ///                 Key = "tf",
+    ///                 Effect = "NoSchedule",
+    ///                 Value = "example",
+    ///             },
+    ///             new AliCloud.CS.Inputs.NodePoolTaintArgs
+    ///             {
+    ///                 Key = "tf2",
+    ///                 Effect = "NoSchedule",
+    ///                 Value = "example2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+    ///     var desiredSize = new AliCloud.CS.NodePool("desired_size", new()
+    ///     {
+    ///         NodePoolName = "desired_size",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         DesiredSize = "0",
+    ///     });
+    /// 
+    ///     // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+    ///     var maintenance = new AliCloud.CS.NodePool("maintenance", new()
+    ///     {
+    ///         NodePoolName = "maintenance",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         DesiredSize = "1",
+    ///         Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
+    ///         {
+    ///             Enable = true,
+    ///             AutoRepair = true,
+    ///             AutoRepairPolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoRepairPolicyArgs
+    ///             {
+    ///                 RestartNode = true,
+    ///             },
+    ///             AutoUpgrade = true,
+    ///             AutoUpgradePolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoUpgradePolicyArgs
+    ///             {
+    ///                 AutoUpgradeKubelet = true,
+    ///             },
+    ///             AutoVulFix = true,
+    ///             AutoVulFixPolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoVulFixPolicyArgs
+    ///             {
+    ///                 VulLevel = "asap",
+    ///                 RestartNode = true,
+    ///             },
+    ///             MaxUnavailable = 1,
+    ///         },
+    ///     });
+    /// 
+    ///     //Create a node pool with spot instance.
+    ///     var spotInstance = new AliCloud.CS.NodePool("spot_instance", new()
+    ///     {
+    ///         NodePoolName = "spot_instance",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         DesiredSize = "1",
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SpotPriceLimits = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
+    ///             {
+    ///                 InstanceType = cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///                 PriceLimit = "0.70",
+    ///             },
+    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
+    ///             {
+    ///                 InstanceType = cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.Id),
+    ///                 PriceLimit = "0.72",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Use Spot instances to create a node pool with auto-scaling enabled
+    ///     var spotAutoScaling = new AliCloud.CS.NodePool("spot_auto_scaling", new()
+    ///     {
+    ///         NodePoolName = "spot_auto_scaling",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///         {
+    ///             MinSize = 1,
+    ///             MaxSize = 10,
+    ///             Type = "spot",
+    ///         },
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SpotPriceLimits = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
+    ///             {
+    ///                 InstanceType = cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///                 PriceLimit = "0.70",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Create a `PrePaid` node pool.
+    ///     var prepaidNode = new AliCloud.CS.NodePool("prepaid_node", new()
+    ///     {
+    ///         NodePoolName = "prepaid_node",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         InstanceChargeType = "PrePaid",
+    ///         Period = 1,
+    ///         PeriodUnit = "Month",
+    ///         AutoRenew = true,
+    ///         AutoRenewPeriod = 1,
+    ///         InstallCloudMonitor = true,
+    ///     });
+    /// 
+    ///     //#Create a node pool with customized kubelet parameters
+    ///     var customizedKubelet = new AliCloud.CS.NodePool("customized_kubelet", new()
+    ///     {
+    ///         NodePoolName = "customized_kubelet",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         InstanceChargeType = "PostPaid",
+    ///         DesiredSize = "0",
+    ///         KubeletConfiguration = new AliCloud.CS.Inputs.NodePoolKubeletConfigurationArgs
+    ///         {
+    ///             RegistryPullQps = "10",
+    ///             RegistryBurst = "5",
+    ///             EventRecordQps = "10",
+    ///             EventBurst = "5",
+    ///             SerializeImagePulls = "true",
+    ///             EvictionHard = 
+    ///             {
+    ///                 { "memory.available", "1024Mi" },
+    ///                 { "nodefs.available", "10%" },
+    ///                 { "nodefs.inodesFree", "5%" },
+    ///                 { "imagefs.available", "10%" },
+    ///             },
+    ///             SystemReserved = 
+    ///             {
+    ///                 { "cpu", "1" },
+    ///                 { "memory", "1Gi" },
+    ///                 { "ephemeral-storage", "10Gi" },
+    ///             },
+    ///             KubeReserved = 
+    ///             {
+    ///                 { "cpu", "500m" },
+    ///                 { "memory", "1Gi" },
+    ///             },
+    ///             ContainerLogMaxSize = "200Mi",
+    ///             ContainerLogMaxFiles = "3",
+    ///             MaxPods = "100",
+    ///             ReadOnlyPort = "0",
+    ///             AllowedUnsafeSysctls = new[]
+    ///             {
+    ///                 "net.ipv4.route.min_pmtu",
+    ///             },
+    ///         },
+    ///         RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
+    ///         {
+    ///             MaxParallelism = 1,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ACK Auto Mode NodePool:
+    /// 
+    /// ACK nodepool with Auto Mode
+    /// Nodepools enable Auto Mode can only be created in Auto Mode clusters. An Auto Mode cluster automatically creates a Auto Mode node pool when creating cluster, which you can import using terraform import. You can also create a new Auto Mode node pool using the following code.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var regionId = config.Get("regionId") ?? "cn-hangzhou";
+    ///     // The cluster specifications of kubernetes cluster,which can be empty. Valid values:ack.standard : Standard managed clusters; ack.pro.small : Professional managed clusters.
+    ///     var clusterSpec = config.Get("clusterSpec") ?? "ack.pro.small";
+    ///     // The availability zones of vswitches.
+    ///     var availabilityZone = config.GetObject&lt;dynamic&gt;("availabilityZone") ?? new[]
+    ///     {
+    ///         "cn-hangzhou-i",
+    ///         "cn-hangzhou-j",
+    ///         "cn-hangzhou-k",
+    ///     };
+    ///     // List of existing node vswitch ids for terway.
+    ///     var nodeVswitchIds = config.GetObject&lt;string[]&gt;("nodeVswitchIds") ?? new[] {};
+    ///     // List of cidr blocks used to create several new vswitches when 'node_vswitch_ids' is not specified.
+    ///     var nodeVswitchCidrs = config.GetObject&lt;string[]&gt;("nodeVswitchCidrs") ?? new[]
+    ///     {
+    ///         "172.16.0.0/23",
+    ///         "172.16.2.0/23",
+    ///         "172.16.4.0/23",
+    ///     };
+    ///     // List of existing pod vswitch ids for terway.
+    ///     var terwayVswitchIds = config.GetObject&lt;string[]&gt;("terwayVswitchIds") ?? new[] {};
+    ///     // List of cidr blocks used to create several new vswitches when 'terway_vswitch_ids' is not specified.
+    ///     var terwayVswitchCidrs = config.GetObject&lt;string[]&gt;("terwayVswitchCidrs") ?? new[]
+    ///     {
+    ///         "172.16.208.0/20",
+    ///         "172.16.224.0/20",
+    ///         "172.16.240.0/20",
+    ///     };
+    ///     var clusterAddons = config.GetObject&lt;ClusterAddons[]&gt;("clusterAddons") ?? new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "metrics-server" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "managed-coredns" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "managed-security-inspector" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "ack-cost-exporter" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"ENITrunking\":\"true\"}" },
+    ///             { "disabled", false },
+    ///             { "name", "terway-controlplane" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"NetworkPolicy\":\"false\",\"ENITrunking\":\"true\",\"IPVlan\":\"false\"}" },
+    ///             { "disabled", false },
+    ///             { "name", "terway-eniip" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "csi-plugin" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "managed-csiprovisioner" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"CnfsOssEnable\":\"false\",\"CnfsNasEnable\":\"false\"}" },
+    ///             { "disabled", false },
+    ///             { "name", "storage-operator" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"IngressDashboardEnabled\":\"true\"}" },
+    ///             { "disabled", false },
+    ///             { "name", "loongcollector" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"sls_project_name\":\"\"}" },
+    ///             { "disabled", false },
+    ///             { "name", "ack-node-problem-detector" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", true },
+    ///             { "name", "nginx-ingress-controller" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"albIngress\":{\"CreateDefaultALBConfig\":false}}" },
+    ///             { "disabled", false },
+    ///             { "name", "alb-ingress-controller" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", "{\"prometheusMode\":\"default\"}" },
+    ///             { "disabled", false },
+    ///             { "name", "arms-prometheus" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "alicloud-monitor-controller" },
+    ///         },
+    ///         
+    ///         {
+    ///             { "config", null },
+    ///             { "disabled", false },
+    ///             { "name", "managed-aliyun-acr-credential-helper" },
+    ///         },
+    ///     };
+    ///     // The name prefix used to create managed kubernetes cluster.
+    ///     var k8sNamePrefix = config.Get("k8sNamePrefix") ?? "tf-ack-hangzhou";
+    ///     var k8sNameTerway = Std.Join.Invoke(new()
+    ///     {
+    ///         Separator = "-",
+    ///         Input = new[]
+    ///         {
+    ///             k8sNamePrefix,
+    ///             "terway",
+    ///         },
+    ///     }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///     {
+    ///         Input = invoke.Result,
+    ///         Offset = 0,
+    ///         Length = 63,
+    ///     })).Apply(invoke =&gt; invoke.Result);
+    /// 
+    ///     var newVpcName = "tf-vpc-172-16";
+    /// 
+    ///     var nodepoolName = "default-nodepool";
+    /// 
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = newVpcName,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var vswitches = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (nodeVswitchIds.Length &gt; 0 ? 0 : nodeVswitchCidrs.Length); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vswitches.Add(new AliCloud.Vpc.Switch($"vswitches-{range.Value}", new()
+    ///         {
+    ///             VpcId = @default.Id,
+    ///             CidrBlock = nodeVswitchCidrs[range.Value],
+    ///             ZoneId = availabilityZone[range.Value],
+    ///         }));
+    ///     }
+    ///     var terwayVswitches = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (terwayVswitchIds.Length &gt; 0 ? 0 : terwayVswitchCidrs.Length); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         terwayVswitches.Add(new AliCloud.Vpc.Switch($"terway_vswitches-{range.Value}", new()
+    ///         {
+    ///             VpcId = @default.Id,
+    ///             CidrBlock = terwayVswitchCidrs[range.Value],
+    ///             ZoneId = availabilityZone[range.Value],
+    ///         }));
+    ///     }
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         Addons = clusterAddons.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry =&gt; 
+    ///         {
+    ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = Std.Lookup.Invoke(new()
+    ///                 {
+    ///                     Map = entry.Value,
+    ///                     Key = "name",
+    ///                     Default = clusterAddons,
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///                 Config = Std.Lookup.Invoke(new()
+    ///                 {
+    ///                     Map = entry.Value,
+    ///                     Key = "config",
+    ///                     Default = clusterAddons,
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///                 Disabled = Std.Lookup.Invoke(new()
+    ///                 {
+    ///                     Map = entry.Value,
+    ///                     Key = "disabled",
+    ///                     Default = clusterAddons,
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             };
+    ///         }).ToList(),
+    ///         Name = k8sNameTerway,
+    ///         ClusterSpec = clusterSpec,
+    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         PodVswitchIds = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         NewNatGateway = true,
+    ///         ServiceCidr = "10.11.0.0/16",
+    ///         SlbInternetEnabled = true,
+    ///         EnableRrsa = true,
+    ///         ControlPlaneLogComponents = new[]
+    ///         {
+    ///             "apiserver",
+    ///             "kcm",
+    ///             "scheduler",
+    ///             "ccm",
+    ///         },
+    ///         AutoMode = new AliCloud.CS.Inputs.ManagedKubernetesAutoModeArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         MaintenanceWindow = new AliCloud.CS.Inputs.ManagedKubernetesMaintenanceWindowArgs
+    ///         {
+    ///             Duration = "3h",
+    ///             WeeklyPeriod = "Monday",
+    ///             Enable = true,
+    ///             MaintenanceTime = "2025-07-07T00:00:00.000+08:00",
+    ///         },
+    ///         OperationPolicy = new AliCloud.CS.Inputs.ManagedKubernetesOperationPolicyArgs
+    ///         {
+    ///             ClusterAutoUpgrade = new AliCloud.CS.Inputs.ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs
+    ///             {
+    ///                 Channel = "stable",
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var autoModeExample = new AliCloud.CS.NodePool("auto_mode_example", new()
+    ///     {
+    ///         NodePoolName = nodepoolName,
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         AutoMode = new AliCloud.CS.Inputs.NodePoolAutoModeArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///         {
+    ///             MaxSize = 50,
+    ///             MinSize = 0,
+    ///         },
+    ///         InstancePatterns = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolInstancePatternArgs
+    ///             {
+    ///                 MinCpuCores = 4,
+    ///                 MaxCpuCores = 16,
+    ///                 MinMemorySize = 8,
+    ///                 MaxMemorySize = 32,
+    ///                 InstanceFamilyLevel = "EnterpriseLevel",
+    ///                 InstanceTypeFamilies = new[]
+    ///                 {
+    ///                     "ecs.u1",
+    ///                     "ecs.g6",
+    ///                     "ecs.c6",
+    ///                     "ecs.r6",
+    ///                     "ecs.g7",
+    ///                     "ecs.c7",
+    ///                     "ecs.r7",
+    ///                     "ecs.g8i",
+    ///                     "ecs.c8i",
+    ///                     "ecs.r8i",
+    ///                 },
+    ///                 ExcludedInstanceTypes = new[]
+    ///                 {
+    ///                     "ecs.c6t.*",
+    ///                     "ecs.g6t.*",
+    ///                     "ecs.t5.*",
+    ///                     "ecs.t6.*",
+    ///                     "ecs.vgn.*",
+    ///                     "ecs.sgn.*",
+    ///                 },
+    ///                 InstanceCategories = new[]
+    ///                 {
+    ///                     "General-purpose",
+    ///                 },
+    ///                 CpuArchitectures = new[]
+    ///                 {
+    ///                     "X86",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolDataDiskArgs
+    ///             {
+    ///                 Size = 120,
+    ///                 Encrypted = "false",
+    ///                 Category = "cloud_essd",
+    ///             },
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolLabelArgs
+    ///             {
+    ///                 Key = "example1",
+    ///                 Value = "nodepool",
+    ///             },
+    ///             new AliCloud.CS.Inputs.NodePoolLabelArgs
+    ///             {
+    ///                 Key = "example2",
+    ///                 Value = "nodepool",
+    ///             },
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.NodePoolTaintArgs
+    ///             {
+    ///                 Key = "tf",
+    ///                 Effect = "NoSchedule",
+    ///                 Value = "example",
+    ///             },
+    ///             new AliCloud.CS.Inputs.NodePoolTaintArgs
+    ///             {
+    ///                 Key = "tf2",
+    ///                 Effect = "NoSchedule",
+    ///                 Value = "example2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Upgrade a node pool with upgrade_policy and rolling_policy
+    ///     var upgradeNodepool = new AliCloud.CS.NodePool("upgrade_nodepool", new()
+    ///     {
+    ///         NodePoolName = "upgrade_nodepool",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             "ecs.c6.xlarge",
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         DesiredSize = "2",
+    ///         RuntimeName = "containerd",
+    ///         RuntimeVersion = "1.6.39",
+    ///         ImageId = "aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd",
+    ///         UpgradePolicy = new AliCloud.CS.Inputs.NodePoolUpgradePolicyArgs
+    ///         {
+    ///             ImageId = "aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd",
+    ///             Runtime = "containerd",
+    ///             RuntimeVersion = "1.6.39",
+    ///             KubernetesVersion = defaultManagedKubernetes.Version,
+    ///             UseReplace = true,
+    ///         },
+    ///         RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
+    ///         {
+    ///             MaxParallelism = 1,
+    ///             BatchInterval = "1",
+    ///             PausePolicy = "NotPause",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// 
+    /// public class ClusterAddons
+    /// {
+    ///     public string config { get; set; }
+    ///     public bool disabled { get; set; }
+    ///     public string name { get; set; }
+    /// }
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -332,6 +1125,11 @@ namespace Pulumi.AliCloud.CS
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// Rotary configuration. See `RollingPolicy` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("rollingPolicy")]
         public Output<Outputs.NodePoolRollingPolicy?> RollingPolicy { get; private set; } = null!;
 
@@ -518,6 +1316,11 @@ namespace Pulumi.AliCloud.CS
         [Output("unschedulable")]
         public Output<bool?> Unschedulable { get; private set; } = null!;
 
+        /// <summary>
+        /// Synchronously update node labels and taints.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("updateNodes")]
         public Output<bool?> UpdateNodes { get; private set; } = null!;
 
@@ -959,6 +1762,11 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// Rotary configuration. See `RollingPolicy` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyArgs>? RollingPolicy { get; set; }
 
@@ -1169,6 +1977,11 @@ namespace Pulumi.AliCloud.CS
         [Input("unschedulable")]
         public Input<bool>? Unschedulable { get; set; }
 
+        /// <summary>
+        /// Synchronously update node labels and taints.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("updateNodes")]
         public Input<bool>? UpdateNodes { get; set; }
 
@@ -1579,6 +2392,11 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// Rotary configuration. See `RollingPolicy` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyGetArgs>? RollingPolicy { get; set; }
 
@@ -1795,6 +2613,11 @@ namespace Pulumi.AliCloud.CS
         [Input("unschedulable")]
         public Input<bool>? Unschedulable { get; set; }
 
+        /// <summary>
+        /// Synchronously update node labels and taints.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("updateNodes")]
         public Input<bool>? UpdateNodes { get; set; }
 

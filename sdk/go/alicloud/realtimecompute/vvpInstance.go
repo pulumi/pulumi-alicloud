@@ -12,6 +12,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Realtime Compute Vvp Instance resource.
+//
+// For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+//
+// > **NOTE:** Available since v1.214.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/realtimecompute"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zoneId := "cn-hangzhou-i"
+//			if param := cfg.Get("zoneId"); param != "" {
+//				zoneId = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(zoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultOSS, err := oss.NewBucket(ctx, "defaultOSS", &oss.BucketArgs{
+//				Bucket: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = realtimecompute.NewVvpInstance(ctx, "default", &realtimecompute.VvpInstanceArgs{
+//				Storage: &realtimecompute.VvpInstanceStorageArgs{
+//					Oss: &realtimecompute.VvpInstanceStorageOssArgs{
+//						Bucket: defaultOSS.Bucket,
+//					},
+//				},
+//				VvpInstanceName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				VpcId:           pulumi.String(defaultGetNetworks.Ids[0]),
+//				ZoneId:          pulumi.String(zoneId),
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.String(defaultGetSwitches.Ids[0]),
+//				},
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `realtimecompute.VvpInstance` or removing it from your configuration
+//
+// The `realtimecompute.VvpInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Realtime Compute Vvp Instance can be imported using the id, e.g.

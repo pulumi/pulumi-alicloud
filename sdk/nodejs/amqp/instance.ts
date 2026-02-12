@@ -5,6 +5,60 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a RabbitMQ (AMQP) Instance resource.
+ *
+ * The instance of Amqp.
+ *
+ * For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createinstance).
+ *
+ * > **NOTE:** Available since v1.128.0.
+ *
+ * ## Example Usage
+ *
+ * Create a RabbitMQ (AMQP) enterprise edition Instance.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.amqp.Instance("default", {
+ *     instanceName: name,
+ *     instanceType: "enterprise",
+ *     maxTps: "1000",
+ *     queueCapacity: "50",
+ *     periodCycle: "Year",
+ *     supportEip: false,
+ *     period: 1,
+ *     autoRenew: true,
+ *     paymentType: "Subscription",
+ * });
+ * ```
+ *
+ * Create a RabbitMQ (AMQP) serverless edition Instance.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.amqp.Instance("default", {
+ *     instanceName: name,
+ *     paymentType: "PayAsYouGo",
+ *     serverlessChargeType: "onDemand",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.amqp.Instance` or removing it from your configuration
+ *
+ * The `alicloud.amqp.Instance` resource allows you to manage  `paymentType = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Amqp Instance can be imported using the id, e.g.

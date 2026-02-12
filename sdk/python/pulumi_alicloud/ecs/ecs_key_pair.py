@@ -29,6 +29,10 @@ class EcsKeyPairArgs:
         """
         The set of arguments for constructing a EcsKeyPair resource.
         :param pulumi.Input[_builtins.str] key_file: The key file.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] public_key: The public key of the key pair.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the key pair.
@@ -68,6 +72,11 @@ class EcsKeyPairArgs:
     @pulumi.getter(name="keyName")
     @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+
+        > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -77,6 +86,9 @@ class EcsKeyPairArgs:
     @_builtins.property
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
+        """
         return pulumi.get(self, "key_name_prefix")
 
     @key_name_prefix.setter
@@ -149,6 +161,10 @@ class _EcsKeyPairState:
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the key pair was created.
         :param pulumi.Input[_builtins.str] finger_print: The fingerprint of the key pair.
         :param pulumi.Input[_builtins.str] key_file: The key file.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] public_key: The public key of the key pair.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the key pair.
@@ -216,6 +232,11 @@ class _EcsKeyPairState:
     @pulumi.getter(name="keyName")
     @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+
+        > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -225,6 +246,9 @@ class _EcsKeyPairState:
     @_builtins.property
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
+        """
         return pulumi.get(self, "key_name_prefix")
 
     @key_name_prefix.setter
@@ -331,6 +355,10 @@ class EcsKeyPair(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_file: The key file.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] public_key: The public key of the key pair.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the key pair.
@@ -445,6 +473,10 @@ class EcsKeyPair(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the key pair was created.
         :param pulumi.Input[_builtins.str] finger_print: The fingerprint of the key pair.
         :param pulumi.Input[_builtins.str] key_file: The key file.
+        :param pulumi.Input[_builtins.str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+               
+               > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[_builtins.str] public_key: The public key of the key pair.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the key pair.
@@ -493,11 +525,19 @@ class EcsKeyPair(pulumi.CustomResource):
     @pulumi.getter(name="keyName")
     @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+
+        > **NOTE:** If `key_pair_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        """
         return pulumi.get(self, "key_name")
 
     @_builtins.property
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The key pair name's prefix. It is conflict with `key_pair_name`. If it is specified, terraform will using it to build the only key name.
+        """
         return pulumi.get(self, "key_name_prefix")
 
     @_builtins.property

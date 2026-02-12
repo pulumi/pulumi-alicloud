@@ -44,6 +44,7 @@ class BucketArgs:
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input['BucketAccessMonitorArgs'] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket. If omitted, Terraform will assign a random and unique name.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         :param pulumi.Input[_builtins.bool] lifecycle_rule_allow_same_action_overlap: A boolean that indicates lifecycle rules allow prefix overlap.
@@ -134,6 +135,9 @@ class BucketArgs:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the bucket. If omitted, Terraform will assign a random and unique name.
+        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -365,6 +369,7 @@ class _BucketState:
         Input properties used for looking up and filtering Bucket resources.
         :param pulumi.Input['BucketAccessMonitorArgs'] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket. If omitted, Terraform will assign a random and unique name.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.str] creation_date: The creation date of the bucket.
         :param pulumi.Input[_builtins.str] extranet_endpoint: The extranet access endpoint of the bucket.
@@ -470,6 +475,9 @@ class _BucketState:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the bucket. If omitted, Terraform will assign a random and unique name.
+        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -1178,6 +1186,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket. If omitted, Terraform will assign a random and unique name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         :param pulumi.Input[_builtins.bool] lifecycle_rule_allow_same_action_overlap: A boolean that indicates lifecycle rules allow prefix overlap.
@@ -1729,6 +1738,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket. If omitted, Terraform will assign a random and unique name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[_builtins.str] creation_date: The creation date of the bucket.
         :param pulumi.Input[_builtins.str] extranet_endpoint: The extranet access endpoint of the bucket.
@@ -1801,6 +1811,9 @@ class Bucket(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the bucket. If omitted, Terraform will assign a random and unique name.
+        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property

@@ -79,9 +79,21 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:esa/ratePlanInstance:RatePlanInstance")
 public class RatePlanInstance extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to enable auto payment.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
+    /**
+     * @return Specifies whether to enable auto payment.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }

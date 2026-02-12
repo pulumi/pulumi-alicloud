@@ -5,6 +5,54 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
+ *
+ * > **NOTE:** Available since v1.94.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create resource
+ * const example = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ * });
+ * const exampleCluster = new alicloud.mse.Cluster("example", {
+ *     clusterSpecification: "MSE_SC_1_2_60_c",
+ *     clusterType: "Nacos-Ans",
+ *     clusterVersion: "NACOS_2_0_0",
+ *     versionCode: "NACOS_2_3_2_1",
+ *     instanceCount: 3,
+ *     netType: "privatenet",
+ *     pubNetworkFlow: "1",
+ *     connectionType: "slb",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_pro",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.mse.Cluster` or removing it from your configuration
+ *
+ * The `alicloud.mse.Cluster` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * MSE Cluster can be imported using the id, e.g.

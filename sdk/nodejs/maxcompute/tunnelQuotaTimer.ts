@@ -7,6 +7,62 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Max Compute Tunnel Quota Timer resource.
+ *
+ * For information about Max Compute Tunnel Quota Timer and how to use it, see [What is Tunnel Quota Timer](https://www.alibabacloud.com/help/en/).
+ *
+ * > **DEPRECATED:**  This resource has been deprecated from version `1.260.0`.
+ *
+ * > **NOTE:** Deprecated since v1.260.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.maxcompute.TunnelQuotaTimer("default", {
+ *     quotaTimers: [
+ *         {
+ *             beginTime: "00:00",
+ *             endTime: "01:00",
+ *             tunnelQuotaParameter: {
+ *                 slotNum: 50,
+ *                 elasticReservedSlotNum: 50,
+ *             },
+ *         },
+ *         {
+ *             beginTime: "01:00",
+ *             endTime: "02:00",
+ *             tunnelQuotaParameter: {
+ *                 slotNum: 50,
+ *                 elasticReservedSlotNum: 50,
+ *             },
+ *         },
+ *         {
+ *             beginTime: "02:00",
+ *             endTime: "24:00",
+ *             tunnelQuotaParameter: {
+ *                 slotNum: 50,
+ *                 elasticReservedSlotNum: 50,
+ *             },
+ *         },
+ *     ],
+ *     nickname: "ot_terraform_p",
+ *     timeZone: "Asia/Shanghai",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.maxcompute.TunnelQuotaTimer` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.maxcompute.TunnelQuotaTimer`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Max Compute Tunnel Quota Timer can be imported using the id, e.g.

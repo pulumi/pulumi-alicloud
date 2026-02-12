@@ -235,6 +235,92 @@ class ClientInstanceAttachment(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a EAIS Client Instance Attachment resource.
+
+        Bind an ECS or ECI instance.
+
+        For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
+
+        > **NOTE:** Available since v1.246.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone = config.get("zone")
+        if zone is None:
+            zone = "cn-hangzhou-i"
+        ecs_image = config.get("ecsImage")
+        if ecs_image is None:
+            ecs_image = "ubuntu_20_04_x64_20G_alibase_20230316.vhd"
+        ecs_type = config.get("ecsType")
+        if ecs_type is None:
+            ecs_type = "ecs.g7.large"
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        category = config.get("category")
+        if category is None:
+            category = "ei"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example = alicloud.ecs.get_instance_types(availability_zone="cn-hangzhou-i",
+            cpu_core_count=1,
+            memory_size=2)
+        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            owners="system")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id="cn-hangzhou-i")
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            security_group_name=name,
+            description=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("example",
+            availability_zone="cn-hangzhou-i",
+            vswitch_id=example_switch.id,
+            image_id=example_get_images.images[0].id,
+            instance_type=example.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[example_security_group.id],
+            instance_name=name,
+            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+        eais = alicloud.eais.Instance("eais",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            security_group_id=example_security_group.id,
+            instance_type="eais.ei-a6.2xlarge",
+            category="ei")
+        default_client_instance_attachment = alicloud.eais.ClientInstanceAttachment("default",
+            instance_id=eais.id,
+            client_instance_id=example_instance.id,
+            category="ei",
+            status="Bound",
+            ei_instance_type="eais.ei-a6.2xlarge")
+        ```
+
+        ### Deleting `eais.ClientInstanceAttachment` or removing it from your configuration
+
+        The `eais.ClientInstanceAttachment` resource allows you to manage  `category = "eais"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EAIS Client Instance Attachment can be imported using the id, e.g.
@@ -258,6 +344,92 @@ class ClientInstanceAttachment(pulumi.CustomResource):
                  args: ClientInstanceAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a EAIS Client Instance Attachment resource.
+
+        Bind an ECS or ECI instance.
+
+        For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
+
+        > **NOTE:** Available since v1.246.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone = config.get("zone")
+        if zone is None:
+            zone = "cn-hangzhou-i"
+        ecs_image = config.get("ecsImage")
+        if ecs_image is None:
+            ecs_image = "ubuntu_20_04_x64_20G_alibase_20230316.vhd"
+        ecs_type = config.get("ecsType")
+        if ecs_type is None:
+            ecs_type = "ecs.g7.large"
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        category = config.get("category")
+        if category is None:
+            category = "ei"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example = alicloud.ecs.get_instance_types(availability_zone="cn-hangzhou-i",
+            cpu_core_count=1,
+            memory_size=2)
+        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            owners="system")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id="cn-hangzhou-i")
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            security_group_name=name,
+            description=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("example",
+            availability_zone="cn-hangzhou-i",
+            vswitch_id=example_switch.id,
+            image_id=example_get_images.images[0].id,
+            instance_type=example.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[example_security_group.id],
+            instance_name=name,
+            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+        eais = alicloud.eais.Instance("eais",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            security_group_id=example_security_group.id,
+            instance_type="eais.ei-a6.2xlarge",
+            category="ei")
+        default_client_instance_attachment = alicloud.eais.ClientInstanceAttachment("default",
+            instance_id=eais.id,
+            client_instance_id=example_instance.id,
+            category="ei",
+            status="Bound",
+            ei_instance_type="eais.ei-a6.2xlarge")
+        ```
+
+        ### Deleting `eais.ClientInstanceAttachment` or removing it from your configuration
+
+        The `eais.ClientInstanceAttachment` resource allows you to manage  `category = "eais"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EAIS Client Instance Attachment can be imported using the id, e.g.

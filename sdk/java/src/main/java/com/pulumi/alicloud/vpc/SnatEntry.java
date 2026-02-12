@@ -116,6 +116,8 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_table_id&gt;:&lt;snat_entry_id&gt;
  * ```
  * 
+ * **NOTE:** Before provider version 1.37.0, NAT Gateway Snat Entry can be imported using the id, e.g.
+ * 
  * ```sh
  * $ pulumi import alicloud:vpc/snatEntry:SnatEntry example &lt;snat_entry_id&gt;
  * ```

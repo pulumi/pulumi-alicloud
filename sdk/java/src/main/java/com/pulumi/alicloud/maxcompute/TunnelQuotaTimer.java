@@ -17,6 +17,85 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Max Compute Tunnel Quota Timer resource.
+ * 
+ * For information about Max Compute Tunnel Quota Timer and how to use it, see [What is Tunnel Quota Timer](https://www.alibabacloud.com/help/en/).
+ * 
+ * &gt; **DEPRECATED:**  This resource has been deprecated from version `1.260.0`.
+ * 
+ * &gt; **NOTE:** Deprecated since v1.260.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.maxcompute.TunnelQuotaTimer;
+ * import com.pulumi.alicloud.maxcompute.TunnelQuotaTimerArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.TunnelQuotaTimerQuotaTimerArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new TunnelQuotaTimer("default", TunnelQuotaTimerArgs.builder()
+ *             .quotaTimers(            
+ *                 TunnelQuotaTimerQuotaTimerArgs.builder()
+ *                     .beginTime("00:00")
+ *                     .endTime("01:00")
+ *                     .tunnelQuotaParameter(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs.builder()
+ *                         .slotNum(50)
+ *                         .elasticReservedSlotNum(50)
+ *                         .build())
+ *                     .build(),
+ *                 TunnelQuotaTimerQuotaTimerArgs.builder()
+ *                     .beginTime("01:00")
+ *                     .endTime("02:00")
+ *                     .tunnelQuotaParameter(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs.builder()
+ *                         .slotNum(50)
+ *                         .elasticReservedSlotNum(50)
+ *                         .build())
+ *                     .build(),
+ *                 TunnelQuotaTimerQuotaTimerArgs.builder()
+ *                     .beginTime("02:00")
+ *                     .endTime("24:00")
+ *                     .tunnelQuotaParameter(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs.builder()
+ *                         .slotNum(50)
+ *                         .elasticReservedSlotNum(50)
+ *                         .build())
+ *                     .build())
+ *             .nickname("ot_terraform_p")
+ *             .timeZone("Asia/Shanghai")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.maxcompute.TunnelQuotaTimer` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.maxcompute.TunnelQuotaTimer`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Max Compute Tunnel Quota Timer can be imported using the id, e.g.

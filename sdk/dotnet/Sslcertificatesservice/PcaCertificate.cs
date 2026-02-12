@@ -71,6 +71,11 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         [Output("algorithm")]
         public Output<string> Algorithm { get; private set; } = null!;
 
+        /// <summary>
+        /// A custom alias for the certificate, used to define a user-friendly name.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("aliasName")]
         public Output<string?> AliasName { get; private set; } = null!;
 
@@ -234,6 +239,11 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
+        /// <summary>
+        /// A custom alias for the certificate, used to define a user-friendly name.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("aliasName")]
         public Input<string>? AliasName { get; set; }
 
@@ -365,6 +375,11 @@ namespace Pulumi.AliCloud.Sslcertificatesservice
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
+        /// <summary>
+        /// A custom alias for the certificate, used to define a user-friendly name.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("aliasName")]
         public Input<string>? AliasName { get; set; }
 

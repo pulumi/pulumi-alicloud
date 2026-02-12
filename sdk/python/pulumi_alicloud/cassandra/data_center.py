@@ -581,7 +581,6 @@ class DataCenter(pulumi.CustomResource):
         ## Import
 
         If you need full function, please import Cassandra cluster first.
-
         Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 
         ```sh
@@ -669,7 +668,6 @@ class DataCenter(pulumi.CustomResource):
         ## Import
 
         If you need full function, please import Cassandra cluster first.
-
         Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 
         ```sh

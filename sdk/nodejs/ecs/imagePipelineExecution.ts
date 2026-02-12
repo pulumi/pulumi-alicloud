@@ -5,6 +5,62 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ECS Image Pipeline Execution resource.
+ *
+ * The mirror template performs the build mirror task.
+ *
+ * For information about ECS Image Pipeline Execution and how to use it, see [What is Image Pipeline Execution](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-startimagepipelineexecution).
+ *
+ * > **NOTE:** Available since v1.237.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const pipelineExecution_vpc = new alicloud.vpc.Network("pipelineExecution-vpc", {
+ *     description: "example-pipeline",
+ *     enableIpv6: true,
+ *     vpcName: name,
+ * });
+ * const vs = new alicloud.vpc.Switch("vs", {
+ *     description: "pipelineExecution-start",
+ *     vpcId: pipelineExecution_vpc.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     zoneId: "cn-hangzhou-i",
+ * });
+ * const pipelineExection_pipeline = new alicloud.ecs.EcsImagePipeline("pipelineExection-pipeline", {
+ *     baseImageType: "IMAGE",
+ *     description: "example",
+ *     systemDiskSize: 40,
+ *     vswitchId: vs.id,
+ *     addAccounts: ["1284387915995949"],
+ *     imageName: "example-image-pipeline",
+ *     deleteInstanceOnFailure: true,
+ *     internetMaxBandwidthOut: 5,
+ *     toRegionIds: ["cn-beijing"],
+ *     baseImage: "aliyun_3_x64_20G_dengbao_alibase_20240819.vhd",
+ *     buildContent: "COMPONENT ic-bp122acttbs2sxdyq2ky",
+ * });
+ * const _default = new alicloud.ecs.ImagePipelineExecution("default", {imagePipelineId: pipelineExection_pipeline.id});
+ * ```
+ *
+ * ### Deleting `alicloud.ecs.ImagePipelineExecution` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.ecs.ImagePipelineExecution`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ECS Image Pipeline Execution can be imported using the id, e.g.

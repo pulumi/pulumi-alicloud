@@ -36,9 +36,23 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:wafv3/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
+    /**
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
+    /**
+     * @return The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> accessType() {
         return Codegen.optional(this.accessType);
     }

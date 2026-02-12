@@ -400,7 +400,12 @@ type Instance struct {
 	// - Subscription: the subscription billing method.
 	// - PayAsYouGo: the pay-as-you-go billing method.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// The subscription duration. Unit: month. The value must be an integral multiple of 12.
+	//
+	// > **NOTE:**   This parameter is required if you create a subscription instance.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// KMS Instance commodity type (software/hardware)
 	ProductVersion pulumi.StringOutput `pulumi:"productVersion"`
 	// The auto-renewal period. Unit: month.
@@ -412,7 +417,12 @@ type Instance struct {
 	// - AutoRenewal: The instance is automatically renewed.
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
-	RenewStatus       pulumi.StringOutput    `pulumi:"renewStatus"`
+	RenewStatus pulumi.StringOutput `pulumi:"renewStatus"`
+	// Automatic renewal period unit, value:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	RenewalPeriodUnit pulumi.StringPtrOutput `pulumi:"renewalPeriodUnit"`
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum pulumi.IntPtrOutput `pulumi:"secretNum"`
@@ -496,7 +506,12 @@ type instanceState struct {
 	// - Subscription: the subscription billing method.
 	// - PayAsYouGo: the pay-as-you-go billing method.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The subscription duration. Unit: month. The value must be an integral multiple of 12.
+	//
+	// > **NOTE:**   This parameter is required if you create a subscription instance.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period *int `pulumi:"period"`
 	// KMS Instance commodity type (software/hardware)
 	ProductVersion *string `pulumi:"productVersion"`
 	// The auto-renewal period. Unit: month.
@@ -508,7 +523,12 @@ type instanceState struct {
 	// - AutoRenewal: The instance is automatically renewed.
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
-	RenewStatus       *string `pulumi:"renewStatus"`
+	RenewStatus *string `pulumi:"renewStatus"`
+	// Automatic renewal period unit, value:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum *int `pulumi:"secretNum"`
@@ -554,7 +574,12 @@ type InstanceState struct {
 	// - Subscription: the subscription billing method.
 	// - PayAsYouGo: the pay-as-you-go billing method.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The subscription duration. Unit: month. The value must be an integral multiple of 12.
+	//
+	// > **NOTE:**   This parameter is required if you create a subscription instance.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period pulumi.IntPtrInput
 	// KMS Instance commodity type (software/hardware)
 	ProductVersion pulumi.StringPtrInput
 	// The auto-renewal period. Unit: month.
@@ -566,7 +591,12 @@ type InstanceState struct {
 	// - AutoRenewal: The instance is automatically renewed.
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
-	RenewStatus       pulumi.StringPtrInput
+	RenewStatus pulumi.StringPtrInput
+	// Automatic renewal period unit, value:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	RenewalPeriodUnit pulumi.StringPtrInput
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum pulumi.IntPtrInput
@@ -610,7 +640,12 @@ type instanceArgs struct {
 	// - Subscription: the subscription billing method.
 	// - PayAsYouGo: the pay-as-you-go billing method.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The subscription duration. Unit: month. The value must be an integral multiple of 12.
+	//
+	// > **NOTE:**   This parameter is required if you create a subscription instance.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period *int `pulumi:"period"`
 	// KMS Instance commodity type (software/hardware)
 	ProductVersion *string `pulumi:"productVersion"`
 	// The auto-renewal period. Unit: month.
@@ -622,7 +657,12 @@ type instanceArgs struct {
 	// - AutoRenewal: The instance is automatically renewed.
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
-	RenewStatus       *string `pulumi:"renewStatus"`
+	RenewStatus *string `pulumi:"renewStatus"`
+	// Automatic renewal period unit, value:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum *int `pulumi:"secretNum"`
@@ -661,7 +701,12 @@ type InstanceArgs struct {
 	// - Subscription: the subscription billing method.
 	// - PayAsYouGo: the pay-as-you-go billing method.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The subscription duration. Unit: month. The value must be an integral multiple of 12.
+	//
+	// > **NOTE:**   This parameter is required if you create a subscription instance.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period pulumi.IntPtrInput
 	// KMS Instance commodity type (software/hardware)
 	ProductVersion pulumi.StringPtrInput
 	// The auto-renewal period. Unit: month.
@@ -673,7 +718,12 @@ type InstanceArgs struct {
 	// - AutoRenewal: The instance is automatically renewed.
 	// - ManualRenewal: The instance is manually renewed.
 	// - NotRenewal: The instance is not renewed.
-	RenewStatus       pulumi.StringPtrInput
+	RenewStatus pulumi.StringPtrInput
+	// Automatic renewal period unit, value:
+	// - M: Month.
+	// - Y: Year.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	RenewalPeriodUnit pulumi.StringPtrInput
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum pulumi.IntPtrInput
@@ -833,6 +883,11 @@ func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The subscription duration. Unit: month. The value must be an integral multiple of 12.
+//
+// > **NOTE:**   This parameter is required if you create a subscription instance.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -858,6 +913,11 @@ func (o InstanceOutput) RenewStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewStatus }).(pulumi.StringOutput)
 }
 
+// Automatic renewal period unit, value:
+// - M: Month.
+// - Y: Year.
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o InstanceOutput) RenewalPeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalPeriodUnit }).(pulumi.StringPtrOutput)
 }

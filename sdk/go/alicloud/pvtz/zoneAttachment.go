@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides vpcs bound to Alicloud Private Zone resource.
+//
+// > **NOTE:** Available since v1.13.0.
+//
+// > **NOTE:** Terraform will auto bind vpc to a Private Zone while it uses `pvtz.ZoneAttachment` to build a Private Zone and VPC binding resource.
+//
 // ## Example Usage
 //
 // # Using `vpcIds` to attach being in same region several vpc instances to a private zone
@@ -190,7 +196,7 @@ import (
 //
 // ## Import
 //
-// Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
+// Private Zone attachment can be imported using the id(same with `zoneId`), e.g.
 //
 // ```sh
 // $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456

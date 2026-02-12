@@ -68,6 +68,10 @@ public final class GetAppGroupsGroup {
      * 
      */
     private Integer hasPendingQuotaReviewTask;
+    /**
+     * @return The resource ID in terraform of App Group. It is the same as `appGroupName`.
+     * 
+     */
     private String id;
     /**
      * @return The Instance ID.
@@ -218,6 +222,10 @@ public final class GetAppGroupsGroup {
     public Integer hasPendingQuotaReviewTask() {
         return this.hasPendingQuotaReviewTask;
     }
+    /**
+     * @return The resource ID in terraform of App Group. It is the same as `appGroupName`.
+     * 
+     */
     public String id() {
         return this.id;
     }

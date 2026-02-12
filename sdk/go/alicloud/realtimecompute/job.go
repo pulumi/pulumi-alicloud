@@ -169,7 +169,10 @@ type Job struct {
 	// Restore strategy See `restoreStrategy` below.
 	RestoreStrategy JobRestoreStrategyPtrOutput `pulumi:"restoreStrategy"`
 	// job status See `status` below.
-	Status       JobStatusOutput        `pulumi:"status"`
+	Status JobStatusOutput `pulumi:"status"`
+	// Job Stop Policy
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	StopStrategy pulumi.StringPtrOutput `pulumi:"stopStrategy"`
 }
 
@@ -226,8 +229,11 @@ type jobState struct {
 	// Restore strategy See `restoreStrategy` below.
 	RestoreStrategy *JobRestoreStrategy `pulumi:"restoreStrategy"`
 	// job status See `status` below.
-	Status       *JobStatus `pulumi:"status"`
-	StopStrategy *string    `pulumi:"stopStrategy"`
+	Status *JobStatus `pulumi:"status"`
+	// Job Stop Policy
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	StopStrategy *string `pulumi:"stopStrategy"`
 }
 
 type JobState struct {
@@ -248,7 +254,10 @@ type JobState struct {
 	// Restore strategy See `restoreStrategy` below.
 	RestoreStrategy JobRestoreStrategyPtrInput
 	// job status See `status` below.
-	Status       JobStatusPtrInput
+	Status JobStatusPtrInput
+	// Job Stop Policy
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	StopStrategy pulumi.StringPtrInput
 }
 
@@ -272,8 +281,11 @@ type jobArgs struct {
 	// Restore strategy See `restoreStrategy` below.
 	RestoreStrategy *JobRestoreStrategy `pulumi:"restoreStrategy"`
 	// job status See `status` below.
-	Status       *JobStatus `pulumi:"status"`
-	StopStrategy *string    `pulumi:"stopStrategy"`
+	Status *JobStatus `pulumi:"status"`
+	// Job Stop Policy
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	StopStrategy *string `pulumi:"stopStrategy"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -293,7 +305,10 @@ type JobArgs struct {
 	// Restore strategy See `restoreStrategy` below.
 	RestoreStrategy JobRestoreStrategyPtrInput
 	// job status See `status` below.
-	Status       JobStatusPtrInput
+	Status JobStatusPtrInput
+	// Job Stop Policy
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	StopStrategy pulumi.StringPtrInput
 }
 
@@ -426,6 +441,9 @@ func (o JobOutput) Status() JobStatusOutput {
 	return o.ApplyT(func(v *Job) JobStatusOutput { return v.Status }).(JobStatusOutput)
 }
 
+// Job Stop Policy
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o JobOutput) StopStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.StopStrategy }).(pulumi.StringPtrOutput)
 }

@@ -104,9 +104,17 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientReadTimeout);
     }
 
+    /**
+     * Use this to mark a terraform configuration file source.
+     * 
+     */
     @Import(name="configurationSource")
     private @Nullable Output<String> configurationSource;
 
+    /**
+     * @return Use this to mark a terraform configuration file source.
+     * 
+     */
     public Optional<Output<String>> configurationSource() {
         return Optional.ofNullable(this.configurationSource);
     }
@@ -541,11 +549,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return clientReadTimeout(Output.of(clientReadTimeout));
         }
 
+        /**
+         * @param configurationSource Use this to mark a terraform configuration file source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configurationSource(@Nullable Output<String> configurationSource) {
             $.configurationSource = configurationSource;
             return this;
         }
 
+        /**
+         * @param configurationSource Use this to mark a terraform configuration file source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configurationSource(String configurationSource) {
             return configurationSource(Output.of(configurationSource));
         }

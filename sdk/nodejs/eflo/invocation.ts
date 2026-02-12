@@ -5,6 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Eflo Invocation resource.
+ *
+ * Cloud assistant command execution on the node.
+ *
+ * For information about Eflo Invocation and how to use it, see [What is Invocation](https://next.api.alibabacloud.com/document/eflo-controller/2022-12-15/RunCommand).
+ *
+ * > **NOTE:** Available since v1.246.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ### Deleting `alicloud.eflo.Invocation` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.eflo.Invocation`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Eflo Invocation can be imported using the id, e.g.

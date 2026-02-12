@@ -191,6 +191,11 @@ export class NodeGroup extends pulumi.CustomResource {
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
+    /**
+     * ID of promotion option.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly promotionOptionNo: pulumi.Output<string | undefined>;
     /**
      * The region ID of the node group.
@@ -359,6 +364,11 @@ export interface NodeGroupState {
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * ID of promotion option.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     promotionOptionNo?: pulumi.Input<string>;
     /**
      * The region ID of the node group.
@@ -459,6 +469,11 @@ export interface NodeGroupArgs {
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * ID of promotion option.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     promotionOptionNo?: pulumi.Input<string>;
     /**
      * Number of nodes.

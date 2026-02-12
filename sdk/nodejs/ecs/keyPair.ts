@@ -77,6 +77,9 @@ export class KeyPair extends pulumi.CustomResource {
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     declare public readonly keyName: pulumi.Output<string>;
+    /**
+     * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     */
     declare public readonly keyNamePrefix: pulumi.Output<string | undefined>;
     declare public readonly keyPairName: pulumi.Output<string>;
     /**
@@ -87,6 +90,10 @@ export class KeyPair extends pulumi.CustomResource {
      * The Id of resource group which the key pair belongs.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -144,6 +151,9 @@ export interface KeyPairState {
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
+    /**
+     * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     */
     keyNamePrefix?: pulumi.Input<string>;
     keyPairName?: pulumi.Input<string>;
     /**
@@ -154,6 +164,10 @@ export interface KeyPairState {
      * The Id of resource group which the key pair belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -171,6 +185,9 @@ export interface KeyPairArgs {
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
+    /**
+     * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     */
     keyNamePrefix?: pulumi.Input<string>;
     keyPairName?: pulumi.Input<string>;
     /**
@@ -181,5 +198,9 @@ export interface KeyPairArgs {
      * The Id of resource group which the key pair belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

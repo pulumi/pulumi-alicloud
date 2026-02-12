@@ -21,24 +21,19 @@ __all__ = [
     'VscMountPointInstanceVscArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class VscMountPointInstanceArgsDict(TypedDict):
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the ECS instance to which the HDFS file system is mounted.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the ECS instance on which the HDFS file system is mounted.
-        """
-        vscs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgsDict']]]]
-        """
-        The VSC list of mounted HDFS file systems.
-        """
-elif False:
-    VscMountPointInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class VscMountPointInstanceArgsDict(TypedDict):
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the ECS instance to which the HDFS file system is mounted.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the ECS instance on which the HDFS file system is mounted.
+    """
+    vscs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgsDict']]]]
+    """
+    The VSC list of mounted HDFS file systems.
+    """
 
 @pulumi.input_type
 class VscMountPointInstanceArgs:
@@ -95,22 +90,19 @@ class VscMountPointInstanceArgs:
         pulumi.set(self, "vscs", value)
 
 
-if not MYPY:
-    class VscMountPointInstanceVscArgsDict(TypedDict):
-        vsc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VSC Channel primary key representation, used to retrieve the specified VSC Channel.
-        """
-        vsc_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VSC Mount status.
-        """
-        vsc_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VSC type.
-        """
-elif False:
-    VscMountPointInstanceVscArgsDict: TypeAlias = Mapping[str, Any]
+class VscMountPointInstanceVscArgsDict(TypedDict):
+    vsc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+    """
+    vsc_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VSC Mount status.
+    """
+    vsc_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VSC type.
+    """
 
 @pulumi.input_type
 class VscMountPointInstanceVscArgs:

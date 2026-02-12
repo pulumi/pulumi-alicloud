@@ -10,12 +10,65 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudFirewall
 {
     /// <summary>
+    /// Provides a Cloud Firewall IPS Config resource.
+    /// 
+    /// Support interception mode modification.
+    /// 
+    /// For information about Cloud Firewall IPS Config and how to use it, see [What is IPS Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeDefaultIPSConfig).
+    /// 
+    /// &gt; **NOTE:** Available since v1.249.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.CloudFirewall.Instance("default", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
+    /// 
+    ///     var defaultIpsConfig = new AliCloud.CloudFirewall.IpsConfig("default", new()
+    ///     {
+    ///         Lang = "zh",
+    ///         MaxSdl = 1000,
+    ///         BasicRules = 1,
+    ///         RunMode = 1,
+    ///         CtiRules = 0,
+    ///         PatchRules = 0,
+    ///         RuleClass = 1,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cloudfirewall.IpsConfig` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.cloudfirewall.IpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall IPS Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cloudfirewall/ipsConfig:IpsConfig example 
+    /// $ terraform import alicloud_cloud_firewall_ips_config.example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/ipsConfig:IpsConfig")]

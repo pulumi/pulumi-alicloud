@@ -95,32 +95,27 @@ __all__ = [
     'SlsGroupSlsGroupConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AlarmCompositeExpressionArgsDict(TypedDict):
-        expression_list_join: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
-        """
-        expression_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgsDict']]]]
-        """
-        The trigger conditions that are created in standard mode. See `expression_list` below.
-        """
-        expression_raw: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The trigger conditions that are created by using expressions.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive triggers.
-        """
-elif False:
-    AlarmCompositeExpressionArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmCompositeExpressionArgsDict(TypedDict):
+    expression_list_join: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+    """
+    expression_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgsDict']]]]
+    """
+    The trigger conditions that are created in standard mode. See `expression_list` below.
+    """
+    expression_raw: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The trigger conditions that are created by using expressions.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive triggers.
+    """
 
 @pulumi.input_type
 class AlarmCompositeExpressionArgs:
@@ -209,27 +204,24 @@ class AlarmCompositeExpressionArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class AlarmCompositeExpressionExpressionListArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        metric_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The metric that is used to monitor the cloud service.
-        """
-        period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical period of the metric. Unit: seconds. Default value: `300`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-        """
-elif False:
-    AlarmCompositeExpressionExpressionListArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmCompositeExpressionExpressionListArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    metric_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The metric that is used to monitor the cloud service.
+    """
+    period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical period of the metric. Unit: seconds. Default value: `300`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+    """
 
 @pulumi.input_type
 class AlarmCompositeExpressionExpressionListArgs:
@@ -314,26 +306,23 @@ class AlarmCompositeExpressionExpressionListArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class AlarmEscalationsCriticalArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Critical level alarm threshold value, which must be a numeric value currently.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Critical level alarm retry times. Default value: `3`.
-        """
-elif False:
-    AlarmEscalationsCriticalArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmEscalationsCriticalArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Critical level alarm threshold value, which must be a numeric value currently.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Critical level alarm retry times. Default value: `3`.
+    """
 
 @pulumi.input_type
 class AlarmEscalationsCriticalArgs:
@@ -406,26 +395,23 @@ class AlarmEscalationsCriticalArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class AlarmEscalationsInfoArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Info level alarm threshold value, which must be a numeric value currently.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Info level alarm retry times. Default value: `3`.
-        """
-elif False:
-    AlarmEscalationsInfoArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmEscalationsInfoArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Info level alarm threshold value, which must be a numeric value currently.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Info level alarm retry times. Default value: `3`.
+    """
 
 @pulumi.input_type
 class AlarmEscalationsInfoArgs:
@@ -498,26 +484,23 @@ class AlarmEscalationsInfoArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class AlarmEscalationsWarnArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Warn level alarm threshold value, which must be a numeric value currently.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Warn level alarm retry times. Default value: `3`.
-        """
-elif False:
-    AlarmEscalationsWarnArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmEscalationsWarnArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Warn level alarm threshold value, which must be a numeric value currently.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Warn level alarm retry times. Default value: `3`.
+    """
 
 @pulumi.input_type
 class AlarmEscalationsWarnArgs:
@@ -590,26 +573,23 @@ class AlarmEscalationsWarnArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class AlarmPrometheusArgsDict(TypedDict):
-        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-        """
-        prom_ql: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
-        """
-elif False:
-    AlarmPrometheusArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmPrometheusArgsDict(TypedDict):
+    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+    """
+    prom_ql: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+    """
 
 @pulumi.input_type
 class AlarmPrometheusArgs:
@@ -682,30 +662,27 @@ class AlarmPrometheusArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class AlarmTargetArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
-        - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
-        - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
-        - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
-        - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
-        """
-        json_params: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameters of the alert callback. The parameters are in the JSON format.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-        """
-        target_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
-        """
-elif False:
-    AlarmTargetArgsDict: TypeAlias = Mapping[str, Any]
+class AlarmTargetArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
+    - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
+    - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+    - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+    - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+    """
+    json_params: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameters of the alert callback. The parameters are in the JSON format.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+    """
+    target_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
+    """
 
 @pulumi.input_type
 class AlarmTargetArgs:
@@ -786,18 +763,15 @@ class AlarmTargetArgs:
         pulumi.set(self, "target_id", value)
 
 
-if not MYPY:
-    class DynamicTagGroupMatchExpressArgsDict(TypedDict):
-        tag_value: pulumi.Input[_builtins.str]
-        """
-        The tag values of the cloud resources.
-        """
-        tag_value_match_function: pulumi.Input[_builtins.str]
-        """
-        The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
-        """
-elif False:
-    DynamicTagGroupMatchExpressArgsDict: TypeAlias = Mapping[str, Any]
+class DynamicTagGroupMatchExpressArgsDict(TypedDict):
+    tag_value: pulumi.Input[_builtins.str]
+    """
+    The tag values of the cloud resources.
+    """
+    tag_value_match_function: pulumi.Input[_builtins.str]
+    """
+    The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+    """
 
 @pulumi.input_type
 class DynamicTagGroupMatchExpressArgs:
@@ -836,22 +810,19 @@ class DynamicTagGroupMatchExpressArgs:
         pulumi.set(self, "tag_value_match_function", value)
 
 
-if not MYPY:
-    class EventRuleContactParameterArgsDict(TypedDict):
-        contact_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the alert contact group.
-        """
-        contact_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the recipient that receives alert notifications.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alert level and the corresponding notification methods.
-        """
-elif False:
-    EventRuleContactParameterArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleContactParameterArgsDict(TypedDict):
+    contact_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the alert contact group.
+    """
+    contact_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the recipient that receives alert notifications.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alert level and the corresponding notification methods.
+    """
 
 @pulumi.input_type
 class EventRuleContactParameterArgs:
@@ -908,38 +879,35 @@ class EventRuleContactParameterArgs:
         pulumi.set(self, "level", value)
 
 
-if not MYPY:
-    class EventRuleEventPatternArgsDict(TypedDict):
-        product: pulumi.Input[_builtins.str]
-        """
-        The type of the cloud service.
-        """
-        event_type_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The type of the event-triggered alert rule. Valid values:
-        - `StatusNotification`: fault notifications.
-        - `Exception`: exceptions.
-        - `Maintenance`: O&M.
-        - `*`: all types.
-        """
-        level_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The level of the event-triggered alert rule. Valid values:
-        - `CRITICAL`: critical.
-        - `WARN`: warning.
-        - `INFO`: information.
-        - `*`: all types.
-        """
-        name_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The name of the event-triggered alert rule.
-        """
-        sql_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
-        """
-elif False:
-    EventRuleEventPatternArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleEventPatternArgsDict(TypedDict):
+    product: pulumi.Input[_builtins.str]
+    """
+    The type of the cloud service.
+    """
+    event_type_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The type of the event-triggered alert rule. Valid values:
+    - `StatusNotification`: fault notifications.
+    - `Exception`: exceptions.
+    - `Maintenance`: O&M.
+    - `*`: all types.
+    """
+    level_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The level of the event-triggered alert rule. Valid values:
+    - `CRITICAL`: critical.
+    - `WARN`: warning.
+    - `INFO`: information.
+    - `*`: all types.
+    """
+    name_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The name of the event-triggered alert rule.
+    """
+    sql_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
+    """
 
 @pulumi.input_type
 class EventRuleEventPatternArgs:
@@ -1043,30 +1011,27 @@ class EventRuleEventPatternArgs:
         pulumi.set(self, "sql_filter", value)
 
 
-if not MYPY:
-    class EventRuleFcParameterArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.211.1) The ARN of the API operation.
-        """
-        fc_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the recipient that receives alert notifications.
-        """
-        function_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the function.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region where Function Compute is deployed.
-        """
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Function Compute service.
-        """
-elif False:
-    EventRuleFcParameterArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleFcParameterArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.211.1) The ARN of the API operation.
+    """
+    fc_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the recipient that receives alert notifications.
+    """
+    function_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the function.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region where Function Compute is deployed.
+    """
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Function Compute service.
+    """
 
 @pulumi.input_type
 class EventRuleFcParameterArgs:
@@ -1155,30 +1120,27 @@ class EventRuleFcParameterArgs:
         pulumi.set(self, "service_name", value)
 
 
-if not MYPY:
-    class EventRuleMnsParameterArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.211.1) The ARN of the API operation.
-        """
-        mns_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the recipient that receives alert notifications.
-        """
-        queue: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the MNS queue.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region where Message Service (MNS) is deployed.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MNS topic.
-        """
-elif False:
-    EventRuleMnsParameterArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleMnsParameterArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.211.1) The ARN of the API operation.
+    """
+    mns_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the recipient that receives alert notifications.
+    """
+    queue: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the MNS queue.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region where Message Service (MNS) is deployed.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The MNS topic.
+    """
 
 @pulumi.input_type
 class EventRuleMnsParameterArgs:
@@ -1267,38 +1229,35 @@ class EventRuleMnsParameterArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class EventRuleOpenApiParameterArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The API name.
-        """
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.211.1) The ARN of the API operation.
-        """
-        open_api_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the recipient that receives alert notifications sent by an API callback.
-        """
-        product: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the cloud service to which the API operation belongs.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region where the resource resides.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the role.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the API.
-        """
-elif False:
-    EventRuleOpenApiParameterArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleOpenApiParameterArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The API name.
+    """
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.211.1) The ARN of the API operation.
+    """
+    open_api_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the recipient that receives alert notifications sent by an API callback.
+    """
+    product: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the cloud service to which the API operation belongs.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region where the resource resides.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the role.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the API.
+    """
 
 @pulumi.input_type
 class EventRuleOpenApiParameterArgs:
@@ -1419,30 +1378,27 @@ class EventRuleOpenApiParameterArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class EventRuleSlsParameterArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.211.1) The ARN of the API operation.
-        """
-        log_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Simple Log Service Logstore.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Simple Log Service project.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region where Simple Log Service is deployed.
-        """
-        sls_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the recipient that receives alert notifications.
-        """
-elif False:
-    EventRuleSlsParameterArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleSlsParameterArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.211.1) The ARN of the API operation.
+    """
+    log_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Simple Log Service Logstore.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Simple Log Service project.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region where Simple Log Service is deployed.
+    """
+    sls_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the recipient that receives alert notifications.
+    """
 
 @pulumi.input_type
 class EventRuleSlsParameterArgs:
@@ -1531,26 +1487,23 @@ class EventRuleSlsParameterArgs:
         pulumi.set(self, "sls_parameters_id", value)
 
 
-if not MYPY:
-    class EventRuleWebhookParameterArgsDict(TypedDict):
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP request method.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the protocol.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The callback URL.
-        """
-        webhook_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the recipient that receives alert notifications.
-        """
-elif False:
-    EventRuleWebhookParameterArgsDict: TypeAlias = Mapping[str, Any]
+class EventRuleWebhookParameterArgsDict(TypedDict):
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP request method.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the protocol.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The callback URL.
+    """
+    webhook_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the recipient that receives alert notifications.
+    """
 
 @pulumi.input_type
 class EventRuleWebhookParameterArgs:
@@ -1623,22 +1576,19 @@ class EventRuleWebhookParameterArgs:
         pulumi.set(self, "webhook_parameters_id", value)
 
 
-if not MYPY:
-    class GroupMetricRuleEscalationsArgsDict(TypedDict):
-        critical: NotRequired[pulumi.Input['GroupMetricRuleEscalationsCriticalArgsDict']]
-        """
-        The critical level. See `critical` below.
-        """
-        info: NotRequired[pulumi.Input['GroupMetricRuleEscalationsInfoArgsDict']]
-        """
-        The info level. See `info` below.
-        """
-        warn: NotRequired[pulumi.Input['GroupMetricRuleEscalationsWarnArgsDict']]
-        """
-        The warn level. See `warn` below.
-        """
-elif False:
-    GroupMetricRuleEscalationsArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMetricRuleEscalationsArgsDict(TypedDict):
+    critical: NotRequired[pulumi.Input['GroupMetricRuleEscalationsCriticalArgsDict']]
+    """
+    The critical level. See `critical` below.
+    """
+    info: NotRequired[pulumi.Input['GroupMetricRuleEscalationsInfoArgsDict']]
+    """
+    The info level. See `info` below.
+    """
+    warn: NotRequired[pulumi.Input['GroupMetricRuleEscalationsWarnArgsDict']]
+    """
+    The warn level. See `warn` below.
+    """
 
 @pulumi.input_type
 class GroupMetricRuleEscalationsArgs:
@@ -1695,26 +1645,23 @@ class GroupMetricRuleEscalationsArgs:
         pulumi.set(self, "warn", value)
 
 
-if not MYPY:
-    class GroupMetricRuleEscalationsCriticalArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The comparison operator of the threshold for warn-level alerts.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical aggregation method for warn-level alerts.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The threshold for warn-level alerts.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-        """
-elif False:
-    GroupMetricRuleEscalationsCriticalArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMetricRuleEscalationsCriticalArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The comparison operator of the threshold for warn-level alerts.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical aggregation method for warn-level alerts.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The threshold for warn-level alerts.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+    """
 
 @pulumi.input_type
 class GroupMetricRuleEscalationsCriticalArgs:
@@ -1787,26 +1734,23 @@ class GroupMetricRuleEscalationsCriticalArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class GroupMetricRuleEscalationsInfoArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The comparison operator of the threshold for warn-level alerts.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical aggregation method for warn-level alerts.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The threshold for warn-level alerts.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-        """
-elif False:
-    GroupMetricRuleEscalationsInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMetricRuleEscalationsInfoArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The comparison operator of the threshold for warn-level alerts.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical aggregation method for warn-level alerts.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The threshold for warn-level alerts.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+    """
 
 @pulumi.input_type
 class GroupMetricRuleEscalationsInfoArgs:
@@ -1879,26 +1823,23 @@ class GroupMetricRuleEscalationsInfoArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class GroupMetricRuleEscalationsWarnArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The comparison operator of the threshold for warn-level alerts.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical aggregation method for warn-level alerts.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The threshold for warn-level alerts.
-        """
-        times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-        """
-elif False:
-    GroupMetricRuleEscalationsWarnArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMetricRuleEscalationsWarnArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The comparison operator of the threshold for warn-level alerts.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical aggregation method for warn-level alerts.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The threshold for warn-level alerts.
+    """
+    times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+    """
 
 @pulumi.input_type
 class GroupMetricRuleEscalationsWarnArgs:
@@ -1971,27 +1912,24 @@ class GroupMetricRuleEscalationsWarnArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class GroupMetricRuleTargetArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alibaba Cloud Resource Name (ARN) of the resource.
-        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the resource for which alerts are triggered.
-        """
-        json_params: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameters of the alert callback. The parameters are in the JSON format.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-        """
-elif False:
-    GroupMetricRuleTargetArgsDict: TypeAlias = Mapping[str, Any]
+class GroupMetricRuleTargetArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alibaba Cloud Resource Name (ARN) of the resource.
+    > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the resource for which alerts are triggered.
+    """
+    json_params: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameters of the alert callback. The parameters are in the JSON format.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
+    """
 
 @pulumi.input_type
 class GroupMetricRuleTargetArgs:
@@ -2066,18 +2004,15 @@ class GroupMetricRuleTargetArgs:
         pulumi.set(self, "level", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskAttachLabelArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag key of the metric.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag value of the metric.
-        """
-elif False:
-    HybridMonitorSlsTaskAttachLabelArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskAttachLabelArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag key of the metric.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag value of the metric.
+    """
 
 @pulumi.input_type
 class HybridMonitorSlsTaskAttachLabelArgs:
@@ -2118,26 +2053,23 @@ class HybridMonitorSlsTaskAttachLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskSlsProcessConfigArgsDict(TypedDict):
-        expresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict']]]]
-        """
-        The extended field that specifies the result of basic operations that are performed on aggregation results.
-        """
-        filter: NotRequired[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict']]
-        """
-        The conditions that are used to filter logs imported from Log Service. See `filter` below.
-        """
-        group_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict']]]]
-        """
-        The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
-        """
-        statistics: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict']]]]
-        """
-        The method that is used to aggregate logs imported from Log Service. See `statistics` below.
-        """
-elif False:
-    HybridMonitorSlsTaskSlsProcessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskSlsProcessConfigArgsDict(TypedDict):
+    expresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict']]]]
+    """
+    The extended field that specifies the result of basic operations that are performed on aggregation results.
+    """
+    filter: NotRequired[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict']]
+    """
+    The conditions that are used to filter logs imported from Log Service. See `filter` below.
+    """
+    group_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict']]]]
+    """
+    The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
+    """
+    statistics: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict']]]]
+    """
+    The method that is used to aggregate logs imported from Log Service. See `statistics` below.
+    """
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigArgs:
@@ -2210,18 +2142,15 @@ class HybridMonitorSlsTaskSlsProcessConfigArgs:
         pulumi.set(self, "statistics", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict(TypedDict):
-        alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-        """
-        express: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The extended field that specifies the result of basic operations that are performed on aggregation results.
-        """
-elif False:
-    HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict(TypedDict):
+    alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+    """
+    express: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The extended field that specifies the result of basic operations that are performed on aggregation results.
+    """
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
@@ -2262,18 +2191,15 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
         pulumi.set(self, "express", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict(TypedDict):
-        filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict']]]]
-        """
-        The conditions that are used to filter logs imported from Log Service. See `filters` below.
-        """
-        relation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
-        """
-elif False:
-    HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict(TypedDict):
+    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict']]]]
+    """
+    The conditions that are used to filter logs imported from Log Service. See `filters` below.
+    """
+    relation: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+    """
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
@@ -2314,19 +2240,16 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
         pulumi.set(self, "relation", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict(TypedDict):
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
-        """
-        sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the key that is used to filter logs imported from Log Service.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict(TypedDict):
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
+    """
+    sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the key that is used to filter logs imported from Log Service.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
@@ -2379,18 +2302,15 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict(TypedDict):
-        alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-        """
-        sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the key that is used to filter logs imported from Log Service.
-        """
-elif False:
-    HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict(TypedDict):
+    alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+    """
+    sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the key that is used to filter logs imported from Log Service.
+    """
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
@@ -2431,32 +2351,29 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
         pulumi.set(self, "sls_key_name", value)
 
 
-if not MYPY:
-    class HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict(TypedDict):
-        alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-        """
-        function: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
-        """
-        parameter_one: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the function that is used to aggregate logs imported from Log Service.
-        - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
-        - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
-        """
-        parameter_two: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
-        """
-        sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the key that is used to filter logs imported from Log Service.
-        """
-elif False:
-    HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict: TypeAlias = Mapping[str, Any]
+class HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict(TypedDict):
+    alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+    """
+    function: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+    """
+    parameter_one: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the function that is used to aggregate logs imported from Log Service.
+    - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+    - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+    """
+    parameter_two: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+    """
+    sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the key that is used to filter logs imported from Log Service.
+    """
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
@@ -2549,18 +2466,15 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
         pulumi.set(self, "sls_key_name", value)
 
 
-if not MYPY:
-    class MetricRuleBlackListMetricArgsDict(TypedDict):
-        metric_name: pulumi.Input[_builtins.str]
-        """
-        The name of the monitoring indicator.
-        """
-        resource: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
-        """
-elif False:
-    MetricRuleBlackListMetricArgsDict: TypeAlias = Mapping[str, Any]
+class MetricRuleBlackListMetricArgsDict(TypedDict):
+    metric_name: pulumi.Input[_builtins.str]
+    """
+    The name of the monitoring indicator.
+    """
+    resource: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
+    """
 
 @pulumi.input_type
 class MetricRuleBlackListMetricArgs:
@@ -2600,37 +2514,34 @@ class MetricRuleBlackListMetricArgs:
         pulumi.set(self, "resource", value)
 
 
-if not MYPY:
-    class MetricRuleTemplateAlertTemplateArgsDict(TypedDict):
-        category: pulumi.Input[_builtins.str]
-        """
-        The abbreviation of the Alibaba Cloud service name.
-        > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
-        """
-        metric_name: pulumi.Input[_builtins.str]
-        """
-        The name of the metric.
-        > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        The namespace of the cloud service.
-        > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        """
-        rule_name: pulumi.Input[_builtins.str]
-        """
-        The name of the alert rule.
-        """
-        escalations: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgsDict']]
-        """
-        The information about the trigger condition based on the alert level. See `escalations` below.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-        """
-elif False:
-    MetricRuleTemplateAlertTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class MetricRuleTemplateAlertTemplateArgsDict(TypedDict):
+    category: pulumi.Input[_builtins.str]
+    """
+    The abbreviation of the Alibaba Cloud service name.
+    > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
+    """
+    metric_name: pulumi.Input[_builtins.str]
+    """
+    The name of the metric.
+    > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    The namespace of the cloud service.
+    > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+    """
+    rule_name: pulumi.Input[_builtins.str]
+    """
+    The name of the alert rule.
+    """
+    escalations: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgsDict']]
+    """
+    The information about the trigger condition based on the alert level. See `escalations` below.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+    """
 
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateArgs:
@@ -2737,22 +2648,19 @@ class MetricRuleTemplateAlertTemplateArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class MetricRuleTemplateAlertTemplateEscalationsArgsDict(TypedDict):
-        critical: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict']]
-        """
-        The condition for triggering critical-level alerts. See `critical` below.
-        """
-        info: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict']]
-        """
-        The condition for triggering info-level alerts. See `info` below.
-        """
-        warn: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict']]
-        """
-        The condition for triggering warn-level alerts. See `warn` below.
-        """
-elif False:
-    MetricRuleTemplateAlertTemplateEscalationsArgsDict: TypeAlias = Mapping[str, Any]
+class MetricRuleTemplateAlertTemplateEscalationsArgsDict(TypedDict):
+    critical: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict']]
+    """
+    The condition for triggering critical-level alerts. See `critical` below.
+    """
+    info: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict']]
+    """
+    The condition for triggering info-level alerts. See `info` below.
+    """
+    warn: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict']]
+    """
+    The condition for triggering warn-level alerts. See `warn` below.
+    """
 
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsArgs:
@@ -2809,26 +2717,23 @@ class MetricRuleTemplateAlertTemplateEscalationsArgs:
         pulumi.set(self, "warn", value)
 
 
-if not MYPY:
-    class MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical aggregation method for warn-level alerts.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The threshold for warn-level alerts.
-        """
-        times: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-        """
-elif False:
-    MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict: TypeAlias = Mapping[str, Any]
+class MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical aggregation method for warn-level alerts.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The threshold for warn-level alerts.
+    """
+    times: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+    """
 
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
@@ -2901,26 +2806,23 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical aggregation method for warn-level alerts.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The threshold for warn-level alerts.
-        """
-        times: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-        """
-elif False:
-    MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict: TypeAlias = Mapping[str, Any]
+class MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical aggregation method for warn-level alerts.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The threshold for warn-level alerts.
+    """
+    times: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+    """
 
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
@@ -2993,26 +2895,23 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        """
-        statistics: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The statistical aggregation method for warn-level alerts.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The threshold for warn-level alerts.
-        """
-        times: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-        """
-elif False:
-    MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict: TypeAlias = Mapping[str, Any]
+class MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+    """
+    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The statistical aggregation method for warn-level alerts.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The threshold for warn-level alerts.
+    """
+    times: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+    """
 
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
@@ -3085,26 +2984,23 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
         pulumi.set(self, "times", value)
 
 
-if not MYPY:
-    class MonitorGroupInstancesInstanceArgsDict(TypedDict):
-        category: pulumi.Input[_builtins.str]
-        """
-        The category of instance.
-        """
-        instance_id: pulumi.Input[_builtins.str]
-        """
-        The id of instance.
-        """
-        instance_name: pulumi.Input[_builtins.str]
-        """
-        The name of instance.
-        """
-        region_id: pulumi.Input[_builtins.str]
-        """
-        The region id of instance.
-        """
-elif False:
-    MonitorGroupInstancesInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class MonitorGroupInstancesInstanceArgsDict(TypedDict):
+    category: pulumi.Input[_builtins.str]
+    """
+    The category of instance.
+    """
+    instance_id: pulumi.Input[_builtins.str]
+    """
+    The id of instance.
+    """
+    instance_name: pulumi.Input[_builtins.str]
+    """
+    The name of instance.
+    """
+    region_id: pulumi.Input[_builtins.str]
+    """
+    The region id of instance.
+    """
 
 @pulumi.input_type
 class MonitorGroupInstancesInstanceArgs:
@@ -3173,26 +3069,23 @@ class MonitorGroupInstancesInstanceArgs:
         pulumi.set(self, "region_id", value)
 
 
-if not MYPY:
-    class SiteMonitorCustomScheduleArgsDict(TypedDict):
-        days: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The days in a week.
-        """
-        end_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The end time of the detection. Unit: hours.
-        """
-        start_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The start time of the detection. Unit: hours.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time zone of the detection.
-        """
-elif False:
-    SiteMonitorCustomScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class SiteMonitorCustomScheduleArgsDict(TypedDict):
+    days: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The days in a week.
+    """
+    end_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The end time of the detection. Unit: hours.
+    """
+    start_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The start time of the detection. Unit: hours.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time zone of the detection.
+    """
 
 @pulumi.input_type
 class SiteMonitorCustomScheduleArgs:
@@ -3265,22 +3158,19 @@ class SiteMonitorCustomScheduleArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class SiteMonitorIspCityArgsDict(TypedDict):
-        city: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the city.
-        """
-        isp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the carrier.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
-        """
-elif False:
-    SiteMonitorIspCityArgsDict: TypeAlias = Mapping[str, Any]
+class SiteMonitorIspCityArgsDict(TypedDict):
+    city: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the city.
+    """
+    isp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the carrier.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+    """
 
 @pulumi.input_type
 class SiteMonitorIspCityArgs:
@@ -3337,151 +3227,148 @@ class SiteMonitorIspCityArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class SiteMonitorOptionJsonArgsDict(TypedDict):
-        assertions: NotRequired[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgsDict']]]]
-        """
-        Assertion configuration group. See `assertions` below.
-        """
-        attempts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of retries after DNS failed.
-        """
-        cookie: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cookie that sends the HTTP request.
-        """
-        diagnosis_mtr: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable automatic MTR network diagnosis after a task failure. Value:
-        - false: does not enable automatic MTR network diagnosis.
-        - true to turn on automatic MTR network diagnostics.
-        """
-        diagnosis_ping: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the automatic PING network delay detection after the task fails. Value:
-        - false: does not enable automatic PING network delay detection.
-        - true: Enable automatic PING network delay detection.
-        """
-        dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        List of DNS hijacking configurations.
-        """
-        dns_match_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Matching Rules for DNS. Value:
-        - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
-        - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
-        - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
-        - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
-        """
-        dns_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the DNS server.
+class SiteMonitorOptionJsonArgsDict(TypedDict):
+    assertions: NotRequired[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgsDict']]]]
+    """
+    Assertion configuration group. See `assertions` below.
+    """
+    attempts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of retries after DNS failed.
+    """
+    cookie: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cookie that sends the HTTP request.
+    """
+    diagnosis_mtr: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable automatic MTR network diagnosis after a task failure. Value:
+    - false: does not enable automatic MTR network diagnosis.
+    - true to turn on automatic MTR network diagnostics.
+    """
+    diagnosis_ping: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable the automatic PING network delay detection after the task fails. Value:
+    - false: does not enable automatic PING network delay detection.
+    - true: Enable automatic PING network delay detection.
+    """
+    dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    List of DNS hijacking configurations.
+    """
+    dns_match_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Matching Rules for DNS. Value:
+    - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+    - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+    - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+    - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+    """
+    dns_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the DNS server.
 
-        > **NOTE:**  only applicable to DNS probe types.
-        """
-        dns_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS resolution type. Only applicable to DNS probe types. Value:
-        - A (default): specifies the IP address corresponding to the host name or domain name.
-        - CNAME: maps multiple domain names to another domain name.
-        - NS: specifies that the domain name is resolved by a DNS server.
-        - MX: point domain name to a mail server address.
-        - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
-        """
-        expect_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alias or address to be resolved.
+    > **NOTE:**  only applicable to DNS probe types.
+    """
+    dns_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS resolution type. Only applicable to DNS probe types. Value:
+    - A (default): specifies the IP address corresponding to the host name or domain name.
+    - CNAME: maps multiple domain names to another domain name.
+    - NS: specifies that the domain name is resolved by a DNS server.
+    - MX: point domain name to a mail server address.
+    - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+    """
+    expect_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alias or address to be resolved.
 
-        > **NOTE:**  This parameter applies only to DNS probe types.
-        """
-        failure_rate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Packet loss rate.
+    > **NOTE:**  This parameter applies only to DNS probe types.
+    """
+    failure_rate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Packet loss rate.
 
-        > **NOTE:**  This parameter only applies to PING probe types.
-        """
-        header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP request header.
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP request method. Value:
-        - get
-        - post
-        - head
-        """
-        is_base_encode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the parameter' Password' is Base64 encoded.
-        - true: Yes.
-        - false: No.
-        """
-        match_rule: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether alarm rules are included. Value:
-        - 0: Yes.
-        - 1: No.
-        """
-        min_tls_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password of the SMTP, POP3, or FTP probe type.
-        """
-        ping_num: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The heartbeat of the PING probe type.
-        """
-        ping_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        PING the port. Applies to TCP PING.
-        """
-        ping_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The PING protocol type. Value:
-        - icmp
-        - tcp
-        - udp
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ports of TCP, UDP, SMTP, and POP3 probe types.
-        """
-        request_content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The request content of the HTTP probe type.
-        """
-        request_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP request content format. Value:
-        - hex: hexadecimal format.
-        - text: text format.
-        """
-        response_content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match the response content.
-        """
-        response_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP response content format. Value:
-        - hex: hexadecimal format.
-        - text: text format.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout time. Unit: milliseconds.
-        """
-        user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username of FTP, SMTP, or pop3.
-        """
-elif False:
-    SiteMonitorOptionJsonArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  This parameter only applies to PING probe types.
+    """
+    header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP request header.
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP request method. Value:
+    - get
+    - post
+    - head
+    """
+    is_base_encode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the parameter' Password' is Base64 encoded.
+    - true: Yes.
+    - false: No.
+    """
+    match_rule: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether alarm rules are included. Value:
+    - 0: Yes.
+    - 1: No.
+    """
+    min_tls_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password of the SMTP, POP3, or FTP probe type.
+    """
+    ping_num: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The heartbeat of the PING probe type.
+    """
+    ping_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    PING the port. Applies to TCP PING.
+    """
+    ping_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The PING protocol type. Value:
+    - icmp
+    - tcp
+    - udp
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Ports of TCP, UDP, SMTP, and POP3 probe types.
+    """
+    request_content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The request content of the HTTP probe type.
+    """
+    request_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP request content format. Value:
+    - hex: hexadecimal format.
+    - text: text format.
+    """
+    response_content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match the response content.
+    """
+    response_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP response content format. Value:
+    - hex: hexadecimal format.
+    - text: text format.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout time. Unit: milliseconds.
+    """
+    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username of FTP, SMTP, or pop3.
+    """
 
 @pulumi.input_type
 class SiteMonitorOptionJsonArgs:
@@ -3988,27 +3875,24 @@ class SiteMonitorOptionJsonArgs:
         pulumi.set(self, "user_name", value)
 
 
-if not MYPY:
-    class SiteMonitorOptionJsonAssertionArgsDict(TypedDict):
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Assertion comparison operator. Value:
-        - contains: contains.
-        - doesNotContain: does not contain.
-        - matches: regular matching.
-        - doesNotMatch: regular mismatch.
-        - is: Numeric equals or character matches equals.
-        - isNot: not equal.
-        - Lesthan: less.
-        - moreThan: Greater.
-        """
-        target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Assertion matches the target numeric value or character of the comparison.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SiteMonitorOptionJsonAssertionArgsDict: TypeAlias = Mapping[str, Any]
+class SiteMonitorOptionJsonAssertionArgsDict(TypedDict):
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Assertion comparison operator. Value:
+    - contains: contains.
+    - doesNotContain: does not contain.
+    - matches: regular matching.
+    - doesNotMatch: regular mismatch.
+    - is: Numeric equals or character matches equals.
+    - isNot: not equal.
+    - Lesthan: less.
+    - moreThan: Greater.
+    """
+    target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Assertion matches the target numeric value or character of the comparison.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SiteMonitorOptionJsonAssertionArgs:
@@ -4077,26 +3961,23 @@ class SiteMonitorOptionJsonAssertionArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class SlsGroupSlsGroupConfigArgsDict(TypedDict):
-        sls_logstore: pulumi.Input[_builtins.str]
-        """
-        The name of the Log Store.
-        """
-        sls_project: pulumi.Input[_builtins.str]
-        """
-        The name of the Project.
-        """
-        sls_region: pulumi.Input[_builtins.str]
-        """
-        The Sls Region.
-        """
-        sls_user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Sls User.
-        """
-elif False:
-    SlsGroupSlsGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class SlsGroupSlsGroupConfigArgsDict(TypedDict):
+    sls_logstore: pulumi.Input[_builtins.str]
+    """
+    The name of the Log Store.
+    """
+    sls_project: pulumi.Input[_builtins.str]
+    """
+    The name of the Project.
+    """
+    sls_region: pulumi.Input[_builtins.str]
+    """
+    The Sls Region.
+    """
+    sls_user_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Sls User.
+    """
 
 @pulumi.input_type
 class SlsGroupSlsGroupConfigArgs:

@@ -205,13 +205,9 @@ class ExtensionProvider(pulumi.CustomResource):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                     vpc_id=pulumi.Output.all(
-                        id=default_network[0].id,
-                        value=default_get_networks.ids[0] if length.apply(lambda __convert: __convert > 0) else id
-        ).apply(lambda resolved_outputs: pulumi.Output.all(
                         length=len(default_get_networks.ids),
-                        id=resolved_outputs['id']
-        ).apply(lambda resolved_outputs: resolved_outputs['value'])
-        )
+                        id=default_network[0].id
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else resolved_outputs['id'])
         ,
                     cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                         newbits=8,
@@ -304,13 +300,9 @@ class ExtensionProvider(pulumi.CustomResource):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                     vpc_id=pulumi.Output.all(
-                        id=default_network[0].id,
-                        value=default_get_networks.ids[0] if length.apply(lambda __convert: __convert > 0) else id
-        ).apply(lambda resolved_outputs: pulumi.Output.all(
                         length=len(default_get_networks.ids),
-                        id=resolved_outputs['id']
-        ).apply(lambda resolved_outputs: resolved_outputs['value'])
-        )
+                        id=default_network[0].id
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else resolved_outputs['id'])
         ,
                     cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                         newbits=8,

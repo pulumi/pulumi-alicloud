@@ -12,6 +12,56 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Threat Detection Asset Selection Config resource.
+//
+// Asset selection configuration.
+//
+// For information about Threat Detection Asset Selection Config and how to use it, see [What is Asset Selection Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAssetSelectionConfig).
+//
+// > **NOTE:** Available since v1.245.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := threatdetection.NewAssetSelectionConfig(ctx, "default", &threatdetection.AssetSelectionConfigArgs{
+//				BusinessType: pulumi.String("agentlesss_vul_white_1"),
+//				TargetType:   pulumi.String("instance"),
+//				Platform:     pulumi.String("all"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `threatdetection.AssetSelectionConfig` or removing it from your configuration
+//
+// Terraform cannot destroy resource `threatdetection.AssetSelectionConfig`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection Asset Selection Config can be imported using the id, e.g.

@@ -82,7 +82,7 @@ import (
 // Threat Detection Honeypot Preset can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example <id>
+// $terraform import alicloud_threat_detection_honeypot_preset.example <id>
 // ```
 type HoneypotPreset struct {
 	pulumi.CustomResourceState

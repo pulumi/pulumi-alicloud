@@ -12,6 +12,310 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a CDDC Dedicated Propre Host resource. MyBase proprietary cluster host resources, you need to add a whitelist to purchase a proprietary version of the cluster.
+//
+// For information about CDDC Dedicated Propre Host and how to use it, see [What is Dedicated Propre Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/api-cddc-2020-03-20-creatededicatedhostgroup).
+//
+// > **NOTE:** Available since v1.210.0.
+//
+// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// InstanceTypeFamily: pulumi.StringRef("ecs.g6e"),
+// NetworkType: pulumi.StringRef("Vpc"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _, err = ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^aliyun_3_x64_20G_scc*"),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// CpuCoreCount: pulumi.IntRef(2),
+// MemorySize: pulumi.Float64Ref(4),
+// SystemDiskCategory: pulumi.StringRef("cloud_essd"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("^default-NODELETING$"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef("cn-hangzhou-i"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSecurityGroups, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+// NameRegex: pulumi.StringRef("tf-exampleacc-cddc-dedicated_propre_host"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if length > 0 {
+// tmp0 = 0
+// } else {
+// tmp0 = 1
+// }
+// var defaultSecurityGroup []*ecs.SecurityGroup
+// for index := 0; index < float64(len(defaultGetSecurityGroups.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp0, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
+// VpcId: pulumi.String(defaultGetSwitches.Vswitches[0].VpcId),
+// Name: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup = append(defaultSecurityGroup, __res)
+// }
+// defaultGetEcsDeploymentSets, err := ecs.GetEcsDeploymentSets(ctx, &ecs.GetEcsDeploymentSetsArgs{
+// NameRegex: pulumi.StringRef("tf-exampleacc-cddc-dedicated_propre_host"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp1 float64
+// if length > 0 {
+// tmp1 = 0
+// } else {
+// tmp1 = 1
+// }
+// var defaultEcsDeploymentSet []*ecs.EcsDeploymentSet
+// for index := 0; index < float64(len(defaultGetEcsDeploymentSets.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp1, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewEcsDeploymentSet(ctx, fmt.Sprintf("default-%v", key0), &ecs.EcsDeploymentSetArgs{
+// Strategy: pulumi.String("Availability"),
+// Domain: pulumi.String("Default"),
+// Granularity: pulumi.String("Host"),
+// DeploymentSetName: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
+// Description: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsDeploymentSet = append(defaultEcsDeploymentSet, __res)
+// }
+// defaultGetKeyPairs, err := ecs.GetKeyPairs(ctx, &ecs.GetKeyPairsArgs{
+// NameRegex: pulumi.StringRef("tf-exampleacc-cddc-dedicated_propre_host"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp2 float64
+// if length > 0 {
+// tmp2 = 0
+// } else {
+// tmp2 = 1
+// }
+// var defaultKeyPair []*ecs.KeyPair
+// for index := 0; index < float64(len(defaultGetKeyPairs.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp2, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewKeyPair(ctx, fmt.Sprintf("default-%v", key0), &ecs.KeyPairArgs{
+// KeyPairName: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultKeyPair = append(defaultKeyPair, __res)
+// }
+// defaultGetDedicatedHostGroups, err := cddc.GetDedicatedHostGroups(ctx, &cddc.GetDedicatedHostGroupsArgs{
+// Engine: pulumi.StringRef("MySQL"),
+// NameRegex: pulumi.StringRef("tf-exampleacc-cddc-dedicated_propre_host"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp3 float64
+// if length > 0 {
+// tmp3 = 0
+// } else {
+// tmp3 = 1
+// }
+// var defaultDedicatedHostGroup []*cddc.DedicatedHostGroup
+// for index := 0; index < float64(len(defaultGetDedicatedHostGroups.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp3, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := cddc.NewDedicatedHostGroup(ctx, fmt.Sprintf("default-%v", key0), &cddc.DedicatedHostGroupArgs{
+// Engine: pulumi.String("MySQL"),
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// CpuAllocationRatio: pulumi.Int(101),
+// MemAllocationRatio: pulumi.Int(50),
+// DiskAllocationRatio: pulumi.Int(200),
+// AllocationPolicy: pulumi.String("Evenly"),
+// HostReplacePolicy: pulumi.String("Manual"),
+// DedicatedHostGroupDesc: pulumi.String("tf-exampleacc-cddc-dedicated_propre_host"),
+// OpenPermission: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// defaultDedicatedHostGroup = append(defaultDedicatedHostGroup, __res)
+// }
+// var tmp4 *interface{}
+// if length > 0 {
+// tmp4 = defaultGetSecurityGroups.Ids[0]
+// } else {
+// tmp4 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:91,12-38),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// alicloudSecurityGroupId := len(defaultGetSecurityGroups.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp4, nil
+// }).(pulumi.Interface{}PtrOutput)
+// var tmp5 *interface{}
+// if length > 0 {
+// tmp5 = defaultGetEcsDeploymentSets.Sets[0].DeploymentSetId
+// } else {
+// tmp5 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:94,12-41),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// alicloudEcsDeploymentSetId := len(defaultGetEcsDeploymentSets.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp5, nil
+// }).(pulumi.Interface{}PtrOutput)
+// var tmp6 *interface{}
+// if length > 0 {
+// tmp6 = defaultGetKeyPairs.Ids[0]
+// } else {
+// tmp6 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:97,12-32),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// _ = len(defaultGetKeyPairs.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp6, nil
+// }).(pulumi.Interface{}PtrOutput)
+// var tmp7 *interface{}
+// if length > 0 {
+// tmp7 = defaultGetDedicatedHostGroups.Ids[0]
+// } else {
+// tmp7 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:100,12-43),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// dedicatedHostGroupId := len(defaultGetDedicatedHostGroups.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp7, nil
+// }).(pulumi.Interface{}PtrOutput)
+// _, err = cddc.NewDedicatedPropreHost(ctx, "default", &cddc.DedicatedPropreHostArgs{
+// VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+// EcsInstanceName: pulumi.String("exampleTf"),
+// EcsDeploymentSetId: pulumi.Any(alicloudEcsDeploymentSetId),
+// AutoRenew: pulumi.String("false"),
+// SecurityGroupId: pulumi.Any(alicloudSecurityGroupId),
+// DedicatedHostGroupId: pulumi.Any(dedicatedHostGroupId),
+// EcsHostName: pulumi.String("exampleTf"),
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// EcsUniqueSuffix: pulumi.String("false"),
+// PasswordInherit: pulumi.String("false"),
+// Engine: pulumi.String("mysql"),
+// Period: pulumi.String("1"),
+// OsPassword: pulumi.String("YourPassword123!"),
+// EcsZoneId: pulumi.String("cn-hangzhou-i"),
+// EcsClassLists: cddc.DedicatedPropreHostEcsClassListArray{
+// &cddc.DedicatedPropreHostEcsClassListArgs{
+// DiskType: pulumi.String("cloud_essd"),
+// SysDiskType: pulumi.String("cloud_essd"),
+// DiskCount: pulumi.Int(1),
+// SystemDiskPerformanceLevel: pulumi.String("PL1"),
+// DataDiskPerformanceLevel: pulumi.String("PL1"),
+// DiskCapacity: pulumi.Int(40),
+// InstanceType: pulumi.String("ecs.c6a.large"),
+// SysDiskCapacity: pulumi.Int(40),
+// },
+// },
+// PaymentType: pulumi.String("Subscription"),
+// ImageId: pulumi.String("m-bp1d13fxs1ymbvw1dk5g"),
+// PeriodType: pulumi.String("Monthly"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
+// ### Deleting `cddc.DedicatedPropreHost` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cddc.DedicatedPropreHost`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // CDDC Dedicated Propre Host can be imported using the id, e.g.

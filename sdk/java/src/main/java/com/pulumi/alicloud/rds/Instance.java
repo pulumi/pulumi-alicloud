@@ -23,6 +23,781 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+ * 
+ * For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+ * 
+ * &gt; **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
+ * **NOTE:** Available since v1.155.0.
+ * 
+ * ## Example Usage
+ * 
+ * ### Create RDS MySQL instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vpcId(exampleNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.zones()[0].id())
+ *             .vswitchName("terraform-example")
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name("terraform-example")
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName("terraform-example")
+ *             .vswitchId(exampleSwitch.id())
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a RDS MySQL instance with specific parameters
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.inputs.InstanceParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vpcId(exampleNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.zones()[0].id())
+ *             .vswitchName("terraform-example")
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name("terraform-example")
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName("terraform-example")
+ *             .vswitchId(exampleSwitch.id())
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .parameters(            
+ *                 InstanceParameterArgs.builder()
+ *                     .name("delayed_insert_timeout")
+ *                     .value("600")
+ *                     .build(),
+ *                 InstanceParameterArgs.builder()
+ *                     .name("max_length_for_sort_data")
+ *                     .value("2048")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Create a High Availability RDS MySQL Instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("exampleSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(exampleNetwork.id())
+ *                 .cidrBlock(StdFunctions.format(FormatArgs.builder()
+ *                     .input("172.16.%d.0/24")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .zoneId(example.zones()[range.value()].id())
+ *                 .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                     .input("terraform_example_%d")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name("terraform-example")
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName("terraform-example")
+ *             .vswitchId(StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(exampleSwitch.stream().map(element -> element.id()).collect(toList()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .zoneId(example.zones()[0].id())
+ *             .zoneIdSlaveA(example.zones()[1].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a High Availability RDS MySQL Instance with multi zones
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("HighAvailability")
+ *             .instanceChargeType("PostPaid")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("exampleSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(exampleNetwork.id())
+ *                 .cidrBlock(StdFunctions.format(FormatArgs.builder()
+ *                     .input("172.16.%d.0/24")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .zoneId(example.zones()[range.value()].id())
+ *                 .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                     .input("%s_%d")
+ *                     .args(                    
+ *                         name,
+ *                         range.value())
+ *                     .build()).result())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("HighAvailability")
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName(name)
+ *             .vswitchId(StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(exampleSwitch.stream().map(element -> element.id()).collect(toList()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .zoneId(example.zones()[0].id())
+ *             .zoneIdSlaveA(example.zones()[1].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create an Enterprise Edition RDS MySQL Instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .dbInstanceStorageType("local_ssd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .dbInstanceStorageType("local_ssd")
+ *             .instanceChargeType("PostPaid")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("exampleSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(exampleNetwork.id())
+ *                 .cidrBlock(StdFunctions.format(FormatArgs.builder()
+ *                     .input("172.16.%d.0/24")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .zoneId(example.zones()[range.value()].id())
+ *                 .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                     .input("%s_%d")
+ *                     .args(                    
+ *                         name,
+ *                         range.value())
+ *                     .build()).result())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("Finance")
+ *             .instanceType("mysql.n2.xlarge.25")
+ *             .instanceStorage(20)
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName(name)
+ *             .vswitchId(StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(exampleSwitch.stream().map(element -> element.id()).collect(toList()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("local_ssd")
+ *             .zoneId(example.zones()[0].id())
+ *             .zoneIdSlaveA(example.zones()[1].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a Serverless RDS MySQL Instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.inputs.InstanceServerlessConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-accdbinstance");
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("Serverless")
+ *             .category("serverless_basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.ids()[1])
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("serverless_basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("Serverless")
+ *             .commodityCode("rds_serverless_public_cn")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vpcId(exampleNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.ids()[1])
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceChargeType("Serverless")
+ *             .instanceName(name)
+ *             .zoneId(example.ids()[1])
+ *             .vswitchId(exampleSwitch.id())
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .category("serverless_basic")
+ *             .serverlessConfigs(InstanceServerlessConfigArgs.builder()
+ *                 .maxCapacity(8.0)
+ *                 .minCapacity(0.5)
+ *                 .autoPause(false)
+ *                 .switchForce(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a Serverless RDS PostgreSQL Instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.inputs.InstanceServerlessConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-accdbinstance");
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("PostgreSQL")
+ *             .engineVersion("14.0")
+ *             .instanceChargeType("Serverless")
+ *             .category("serverless_basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.ids()[1])
+ *             .engine("PostgreSQL")
+ *             .engineVersion("14.0")
+ *             .category("serverless_basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("Serverless")
+ *             .commodityCode("rds_serverless_public_cn")
+ *             .build());
+ * 
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .zoneId(example.ids()[1])
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("PostgreSQL")
+ *             .engineVersion("14.0")
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceChargeType("Serverless")
+ *             .instanceName(name)
+ *             .zoneId(example.ids()[1])
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .category("serverless_basic")
+ *             .serverlessConfigs(InstanceServerlessConfigArgs.builder()
+ *                 .maxCapacity(12.0)
+ *                 .minCapacity(0.5)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Create a Serverless RDS SQLServer Instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.inputs.InstanceServerlessConfigArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-accdbinstance");
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("SQLServer")
+ *             .engineVersion("2019_std_sl")
+ *             .instanceChargeType("Serverless")
+ *             .category("serverless_ha")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.ids()[1])
+ *             .engine("SQLServer")
+ *             .engineVersion("2019_std_sl")
+ *             .category("serverless_ha")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("Serverless")
+ *             .commodityCode("rds_serverless_public_cn")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vpcId(exampleNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.ids()[1])
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .engine("SQLServer")
+ *             .engineVersion("2019_std_sl")
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceChargeType("Serverless")
+ *             .instanceName(name)
+ *             .zoneId(example.ids()[1])
+ *             .zoneIdSlaveA(example.ids()[1])
+ *             .vswitchId(StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(                
+ *                     exampleSwitch.id(),
+ *                     exampleSwitch.id())
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .category("serverless_ha")
+ *             .serverlessConfigs(InstanceServerlessConfigArgs.builder()
+ *                 .maxCapacity(8.0)
+ *                 .minCapacity(2.0)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.rds.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.rds.Instance` resource allows you to manage `instanceChargeType = &#34;Prepaid&#34;` db instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
+ * You can resume managing the subscription db instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * RDS instance can be imported using the id, e.g.

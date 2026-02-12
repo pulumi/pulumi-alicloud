@@ -5,6 +5,50 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This resource has been deprecated and using alicloud.wafv3.Instance instead.
+ *
+ * Provides a WAF Instance resource to create instance in the Web Application Firewall.
+ *
+ * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+ *
+ * > **NOTE:** Available since v1.83.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.waf.getInstances({});
+ * const defaultInstance: alicloud.waf.Instance[] = [];
+ * _default.then(_default => _default.instances).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         defaultInstance.push(new alicloud.waf.Instance(`default-${range.value}`, {
+ *             bigScreen: "0",
+ *             exclusiveIpPackage: "1",
+ *             extBandwidth: "50",
+ *             extDomainPackage: "1",
+ *             packageCode: "version_3",
+ *             prefessionalService: "false",
+ *             subscriptionType: "Subscription",
+ *             period: 1,
+ *             wafLog: "false",
+ *             logStorage: "3",
+ *             logTime: "180",
+ *             resourceGroupId: "rs-abc12345",
+ *         }));
+ *     }
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.waf.Instance` or removing it from your configuration
+ *
+ * The `alicloud.waf.Instance` resource allows you to manage `subscriptionType = "Subscription"` WAF instance, but Terraform cannot destroy it before it is expired.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the WAF Instance.
+ * You can resume managing the subscription WAF instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * WAF instance can be imported using the id, e.g.

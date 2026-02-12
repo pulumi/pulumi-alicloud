@@ -10,6 +10,63 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides an ECS Disk resource.
+    /// 
+    /// For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.122.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleKey = new AliCloud.Kms.Key("example", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var exampleEcsDisk = new AliCloud.Ecs.EcsDisk("example", new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         DiskName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         Category = "cloud_efficiency",
+    ///         Size = 30,
+    ///         Encrypted = true,
+    ///         KmsKeyId = exampleKey.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "terraform-example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.ecs.EcsDisk` or removing it from your configuration
+    /// 
+    /// The `alicloud.ecs.EcsDisk` resource allows you to manage `PaymentType = "Subscription"` and `DeleteWithInstance = true` disk,
+    /// but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
+    /// remove it from your state file and management, but will not destroy it.
+    /// If you want to delete it, you can change it to `PayAsYouGo` and setting `DeleteWithInstance = true` and detach it from instance.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECS Disk can be imported using the id, e.g.

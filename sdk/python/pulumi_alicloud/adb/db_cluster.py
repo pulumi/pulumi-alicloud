@@ -1124,6 +1124,43 @@ class DBCluster(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
+
+        For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/product-overview/what-is-analyticdb-for-mysql).
+
+        > **NOTE:** Available since v1.121.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch_id = default_get_switches.ids[0]
+        cluster = alicloud.adb.DBCluster("cluster",
+            db_cluster_category="MixedStorage",
+            mode="flexible",
+            compute_resource="8Core32GB",
+            vswitch_id=vswitch_id,
+            description=name)
+        ```
+
+        ### Removing adb.Cluster from your configuration
+
+        The adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is PrePaid(PostPaid type can destroy normally). Removing this resource from your configuration will remove it from your state file and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -1180,6 +1217,43 @@ class DBCluster(pulumi.CustomResource):
                  args: DBClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
+
+        For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/product-overview/what-is-analyticdb-for-mysql).
+
+        > **NOTE:** Available since v1.121.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch_id = default_get_switches.ids[0]
+        cluster = alicloud.adb.DBCluster("cluster",
+            db_cluster_category="MixedStorage",
+            mode="flexible",
+            compute_resource="8Core32GB",
+            vswitch_id=vswitch_id,
+            description=name)
+        ```
+
+        ### Removing adb.Cluster from your configuration
+
+        The adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is PrePaid(PostPaid type can destroy normally). Removing this resource from your configuration will remove it from your state file and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.

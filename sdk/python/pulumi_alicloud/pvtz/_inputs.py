@@ -27,28 +27,23 @@ __all__ = [
     'ZoneUserInfoArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EndpointIpConfigArgsDict(TypedDict):
-        cidr_block: pulumi.Input[_builtins.str]
-        """
-        The Subnet mask.
-        """
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The Vswitch id.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The Zone ID.
-        """
-        ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
-        """
-elif False:
-    EndpointIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointIpConfigArgsDict(TypedDict):
+    cidr_block: pulumi.Input[_builtins.str]
+    """
+    The Subnet mask.
+    """
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The Vswitch id.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The Zone ID.
+    """
+    ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+    """
 
 @pulumi.input_type
 class EndpointIpConfigArgs:
@@ -118,18 +113,15 @@ class EndpointIpConfigArgs:
         pulumi.set(self, "ip", value)
 
 
-if not MYPY:
-    class RuleAttachmentVpcArgsDict(TypedDict):
-        region_id: pulumi.Input[_builtins.str]
-        """
-        The region of the vpc. If not set, the current region will instead of.
-        """
-        vpc_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
-        """
-elif False:
-    RuleAttachmentVpcArgsDict: TypeAlias = Mapping[str, Any]
+class RuleAttachmentVpcArgsDict(TypedDict):
+    region_id: pulumi.Input[_builtins.str]
+    """
+    The region of the vpc. If not set, the current region will instead of.
+    """
+    vpc_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+    """
 
 @pulumi.input_type
 class RuleAttachmentVpcArgs:
@@ -168,18 +160,15 @@ class RuleAttachmentVpcArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class RuleForwardIpArgsDict(TypedDict):
-        ip: pulumi.Input[_builtins.str]
-        """
-        The ip of the forwarding destination.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port of the forwarding destination.
-        """
-elif False:
-    RuleForwardIpArgsDict: TypeAlias = Mapping[str, Any]
+class RuleForwardIpArgsDict(TypedDict):
+    ip: pulumi.Input[_builtins.str]
+    """
+    The ip of the forwarding destination.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port of the forwarding destination.
+    """
 
 @pulumi.input_type
 class RuleForwardIpArgs:
@@ -218,18 +207,15 @@ class RuleForwardIpArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ZoneAttachmentVpcArgsDict(TypedDict):
-        vpc_id: pulumi.Input[_builtins.str]
-        """
-        The Id of the vpc.
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the vpc. If not set, the current region will instead of.
-        """
-elif False:
-    ZoneAttachmentVpcArgsDict: TypeAlias = Mapping[str, Any]
+class ZoneAttachmentVpcArgsDict(TypedDict):
+    vpc_id: pulumi.Input[_builtins.str]
+    """
+    The Id of the vpc.
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the vpc. If not set, the current region will instead of.
+    """
 
 @pulumi.input_type
 class ZoneAttachmentVpcArgs:
@@ -269,18 +255,15 @@ class ZoneAttachmentVpcArgs:
         pulumi.set(self, "region_id", value)
 
 
-if not MYPY:
-    class ZoneUserInfoArgsDict(TypedDict):
-        region_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of the region IDs.
-        """
-        user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user ID belonging to the region is used for cross-account synchronization scenarios.
-        """
-elif False:
-    ZoneUserInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ZoneUserInfoArgsDict(TypedDict):
+    region_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of the region IDs.
+    """
+    user_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user ID belonging to the region is used for cross-account synchronization scenarios.
+    """
 
 @pulumi.input_type
 class ZoneUserInfoArgs:

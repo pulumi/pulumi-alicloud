@@ -12,6 +12,76 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Quotas Template Applications resource. Template Batch Application.
+//
+// For information about Quotas Template Applications and how to use it, see [What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate).
+//
+// > **NOTE:** Available since v1.214.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			account, err := resourcemanager.NewAccount(ctx, "account", &resourcemanager.AccountArgs{
+//				DisplayName: pulumi.Sprintf("%v-%v", name, _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = quotas.NewTemplateApplications(ctx, "default", &quotas.TemplateApplicationsArgs{
+//				EnvLanguage:     pulumi.String("zh"),
+//				NoticeType:      pulumi.Int(0),
+//				QuotaCategory:   pulumi.String("WhiteListLabel"),
+//				DesireValue:     pulumi.Float64(1),
+//				Reason:          pulumi.String("example"),
+//				QuotaActionCode: pulumi.String("quotas.label_multi/A"),
+//				AliyunUids: pulumi.StringArray{
+//					account.ID(),
+//				},
+//				ProductCode: pulumi.String("quotas"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `quotas.TemplateApplications` or removing it from your configuration
+//
+// Terraform cannot destroy resource `quotas.TemplateApplications`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Quotas Template Applications can be imported using the id, e.g.

@@ -5,6 +5,58 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance resource.
+ *
+ * Describe the creation, deletion and query of tair instances.
+ *
+ * For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance and how to use it, see [What is Tair Instance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createtairinstance-redis).
+ *
+ * > **NOTE:** Available since v1.206.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.kvstore.getZones({
+ *     productType: "Tair_rdb",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const vswitchId = defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]);
+ * const zoneId = _default.then(_default => _default.zones?.[0]?.id);
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultTairInstance = new alicloud.redis.TairInstance("default", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     instanceType: "tair_rdb",
+ *     zoneId: zoneId,
+ *     instanceClass: "tair.rdb.2g",
+ *     shardCount: 2,
+ *     vswitchId: vswitchId,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     tairInstanceName: name,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.redis.TairInstance` or removing it from your configuration
+ *
+ * The `alicloud.redis.TairInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance can be imported using the id, e.g.

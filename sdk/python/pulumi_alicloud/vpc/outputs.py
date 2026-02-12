@@ -2159,6 +2159,7 @@ class GetDhcpOptionsSetsSetResult(dict):
         :param _builtins.int associate_vpc_count: The Number of VPCs bound by the DHCP option set.
         :param _builtins.str dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256
                characters in length and cannot start with `http://` or `https://`.
+        :param _builtins.str dhcp_options_set_id: The resource ID in terraform of Dhcp Options Set.
         :param _builtins.str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
                Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
                ECS instances in the VPC network.
@@ -2167,6 +2168,7 @@ class GetDhcpOptionsSetsSetResult(dict):
                instances in the VPC network.
         :param _builtins.str domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
                addresses must be separated with commas (,).
+        :param _builtins.str id: The resource ID in terraform of Dhcp Options Set.
         :param _builtins.str owner_id: The ID of the account to which the DHCP options set belongs.
         :param _builtins.str status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
         """
@@ -2200,6 +2202,9 @@ class GetDhcpOptionsSetsSetResult(dict):
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Dhcp Options Set.
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @_builtins.property
@@ -2234,6 +2239,9 @@ class GetDhcpOptionsSetsSetResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Dhcp Options Set.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

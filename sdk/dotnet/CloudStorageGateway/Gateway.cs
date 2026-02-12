@@ -111,6 +111,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `PaymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+        /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
 
@@ -232,6 +235,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `PaymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
@@ -309,6 +315,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `PaymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 

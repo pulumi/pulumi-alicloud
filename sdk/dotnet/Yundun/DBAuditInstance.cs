@@ -10,6 +10,62 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Yundun
 {
     /// <summary>
+    /// Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
+    /// 
+    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+    /// 
+    /// &gt; **NOTE:** Available since v1.62.0+.
+    /// 
+    /// &gt; **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultDBAuditInstance = new AliCloud.Yundun.DBAuditInstance("default", new()
+    ///     {
+    ///         Description = "tf-example",
+    ///         PlanCode = "alpha.professional",
+    ///         Period = 1,
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.yundun.DBAuditInstance` or removing it from your configuration
+    /// 
+    /// The `alicloud.yundun.DBAuditInstance` resource allows you to manage yundun dbaudit instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration
+    /// will remove it from your state file and management, but will not destroy the `YundunDbauditInstance`.
+    /// You can resume managing the subscription YundunDbauditInstance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Yundun_dbaudit instance can be imported using the id, e.g.

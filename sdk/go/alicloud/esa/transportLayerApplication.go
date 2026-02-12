@@ -12,6 +12,78 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESA Transport Layer Application resource.
+//
+// Transport Layer Acceleration Application.
+//
+// For information about ESA Transport Layer Application and how to use it, see [What is Transport Layer Application](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateTransportLayerApplication).
+//
+// > **NOTE:** Available since v1.260.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/esa"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := esa.GetSites(ctx, &esa.GetSitesArgs{
+//				PlanSubscribeType: pulumi.StringRef("enterpriseplan"),
+//				SiteName:          pulumi.StringRef("gositecdn.cn"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = esa.NewTransportLayerApplication(ctx, "default", &esa.TransportLayerApplicationArgs{
+//				RecordName:              pulumi.String("resource2.gositecdn.cn"),
+//				SiteId:                  pulumi.Int(_default.Sites[0].SiteId),
+//				IpAccessRule:            pulumi.String("off"),
+//				Ipv6:                    pulumi.String("off"),
+//				CrossBorderOptimization: pulumi.String("off"),
+//				Rules: esa.TransportLayerApplicationRuleArray{
+//					&esa.TransportLayerApplicationRuleArgs{
+//						Source:                  pulumi.String("1.2.3.4"),
+//						Comment:                 pulumi.String("transportLayerApplication"),
+//						EdgePort:                pulumi.String("80"),
+//						SourceType:              pulumi.String("ip"),
+//						Protocol:                pulumi.String("TCP"),
+//						SourcePort:              pulumi.String("8080"),
+//						ClientIpPassThroughMode: pulumi.String("off"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `esa.TransportLayerApplication` or removing it from your configuration
+//
+// The `esa.TransportLayerApplication` resource allows you to manage  `status = "active"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Transport Layer Application can be imported using the id, e.g.

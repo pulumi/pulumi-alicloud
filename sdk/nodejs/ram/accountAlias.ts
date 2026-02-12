@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a RAM Account Alias resource.
+ *
+ * For information about RAM Account Alias and how to use it, see [What is Account Alias](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetAccountAlias).
+ *
+ * > **NOTE:** Available since v1.0.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const alias = new alicloud.ram.AccountAlias("alias", {accountAlias: name});
+ * ```
+ *
+ * ### Deleting `alicloud.ram.AccountAlias` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.ram.AccountAlias`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RAM Account Alias can be imported using the id, e.g.

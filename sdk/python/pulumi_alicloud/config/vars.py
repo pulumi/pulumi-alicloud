@@ -63,6 +63,9 @@ class _ExportableConfig(types.ModuleType):
 
     @_builtins.property
     def configuration_source(self) -> Optional[str]:
+        """
+        Use this to mark a terraform configuration file source.
+        """
         return __config__.get('configurationSource')
 
     @_builtins.property

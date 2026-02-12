@@ -12,6 +12,155 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a EAIS Client Instance Attachment resource.
+//
+// Bind an ECS or ECI instance.
+//
+// For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
+//
+// > **NOTE:** Available since v1.246.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eais"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zone := "cn-hangzhou-i"
+//			if param := cfg.Get("zone"); param != "" {
+//				zone = param
+//			}
+//			ecsImage := "ubuntu_20_04_x64_20G_alibase_20230316.vhd"
+//			if param := cfg.Get("ecsImage"); param != "" {
+//				ecsImage = param
+//			}
+//			ecsType := "ecs.g7.large"
+//			if param := cfg.Get("ecsType"); param != "" {
+//				ecsType = param
+//			}
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			category := "ei"
+//			if param := cfg.Get("category"); param != "" {
+//				category = param
+//			}
+//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef("cn-hangzhou-i"),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String("cn-hangzhou-i"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				SecurityGroupName: pulumi.String(name),
+//				Description:       pulumi.String(name),
+//				VpcId:             exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
+//				AvailabilityZone:        pulumi.String("cn-hangzhou-i"),
+//				VswitchId:               exampleSwitch.ID(),
+//				ImageId:                 pulumi.String(exampleGetImages.Images[0].Id),
+//				InstanceType:            pulumi.String(example.InstanceTypes[0].Id),
+//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//				InternetChargeType:      pulumi.String("PayByTraffic"),
+//				InternetMaxBandwidthOut: pulumi.Int(5),
+//				SecurityGroups: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				InstanceName: pulumi.String(name),
+//				UserData:     pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eais, err := eais.NewInstance(ctx, "eais", &eais.InstanceArgs{
+//				InstanceName:    pulumi.String(name),
+//				VswitchId:       exampleSwitch.ID(),
+//				SecurityGroupId: exampleSecurityGroup.ID(),
+//				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),
+//				Category:        pulumi.String("ei"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eais.NewClientInstanceAttachment(ctx, "default", &eais.ClientInstanceAttachmentArgs{
+//				InstanceId:       eais.ID(),
+//				ClientInstanceId: exampleInstance.ID(),
+//				Category:         pulumi.String("ei"),
+//				Status:           pulumi.String("Bound"),
+//				EiInstanceType:   pulumi.String("eais.ei-a6.2xlarge"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `eais.ClientInstanceAttachment` or removing it from your configuration
+//
+// The `eais.ClientInstanceAttachment` resource allows you to manage  `category = "eais"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // EAIS Client Instance Attachment can be imported using the id, e.g.

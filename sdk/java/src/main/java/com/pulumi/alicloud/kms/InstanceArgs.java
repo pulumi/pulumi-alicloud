@@ -135,9 +135,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.paymentType);
     }
 
+    /**
+     * The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     * 
+     * &gt; **NOTE:**   This parameter is required if you create a subscription instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     * 
+     * &gt; **NOTE:**   This parameter is required if you create a subscription instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -199,9 +215,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.renewStatus);
     }
 
+    /**
+     * Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="renewalPeriodUnit")
     private @Nullable Output<String> renewalPeriodUnit;
 
+    /**
+     * @return Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> renewalPeriodUnit() {
         return Optional.ofNullable(this.renewalPeriodUnit);
     }
@@ -520,11 +552,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return paymentType(Output.of(paymentType));
         }
 
+        /**
+         * @param period The subscription duration. Unit: month. The value must be an integral multiple of 12.
+         * 
+         * &gt; **NOTE:**   This parameter is required if you create a subscription instance.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The subscription duration. Unit: month. The value must be an integral multiple of 12.
+         * 
+         * &gt; **NOTE:**   This parameter is required if you create a subscription instance.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
@@ -604,11 +656,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return renewStatus(Output.of(renewStatus));
         }
 
+        /**
+         * @param renewalPeriodUnit Automatic renewal period unit, value:
+         * - M: Month.
+         * - Y: Year.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder renewalPeriodUnit(@Nullable Output<String> renewalPeriodUnit) {
             $.renewalPeriodUnit = renewalPeriodUnit;
             return this;
         }
 
+        /**
+         * @param renewalPeriodUnit Automatic renewal period unit, value:
+         * - M: Month.
+         * - Y: Year.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder renewalPeriodUnit(String renewalPeriodUnit) {
             return renewalPeriodUnit(Output.of(renewalPeriodUnit));
         }

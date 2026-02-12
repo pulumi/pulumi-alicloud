@@ -248,6 +248,12 @@ class TopicSubscription(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a MNS topic subscription resource.
+
+        > **NOTE:** Terraform will auto build a mns topic subscription  while it uses `mns.TopicSubscription` to build a mns topic subscription resource.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_subscription.
+
         ## Example Usage
 
         Basic Usage
@@ -298,6 +304,12 @@ class TopicSubscription(pulumi.CustomResource):
                  args: TopicSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a MNS topic subscription resource.
+
+        > **NOTE:** Terraform will auto build a mns topic subscription  while it uses `mns.TopicSubscription` to build a mns topic subscription resource.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_subscription.
+
         ## Example Usage
 
         Basic Usage

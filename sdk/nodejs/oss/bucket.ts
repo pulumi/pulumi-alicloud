@@ -516,6 +516,9 @@ export class Bucket extends pulumi.CustomResource {
      * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
     declare public readonly acl: pulumi.Output<string>;
+    /**
+     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     */
     declare public readonly bucket: pulumi.Output<string>;
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -687,6 +690,9 @@ export interface BucketState {
      * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
     acl?: pulumi.Input<string>;
+    /**
+     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     */
     bucket?: pulumi.Input<string>;
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -790,6 +796,9 @@ export interface BucketArgs {
      * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
     acl?: pulumi.Input<string>;
+    /**
+     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     */
     bucket?: pulumi.Input<string>;
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.

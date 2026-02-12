@@ -54,6 +54,9 @@ class LoadBalancerArgs:
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
         :param pulumi.Input[_builtins.str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -218,6 +221,11 @@ class LoadBalancerArgs:
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        Terraform will autogenerate a name beginning with `tf-lb`.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -430,6 +438,9 @@ class _LoadBalancerState:
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
         :param pulumi.Input[_builtins.str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -594,6 +605,11 @@ class _LoadBalancerState:
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        Terraform will autogenerate a name beginning with `tf-lb`.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -874,6 +890,9 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
         :param pulumi.Input[_builtins.str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -1079,6 +1098,9 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
         :param pulumi.Input[_builtins.str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -1193,6 +1215,11 @@ class LoadBalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        Terraform will autogenerate a name beginning with `tf-lb`.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @_builtins.property

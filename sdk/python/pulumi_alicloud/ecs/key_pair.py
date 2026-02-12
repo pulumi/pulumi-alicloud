@@ -30,8 +30,11 @@ class KeyPairArgs:
         The set of arguments for constructing a KeyPair resource.
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[_builtins.str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
@@ -79,6 +82,9 @@ class KeyPairArgs:
     @_builtins.property
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
+        """
         return pulumi.get(self, "key_name_prefix")
 
     @key_name_prefix.setter
@@ -121,6 +127,10 @@ class KeyPairArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -144,8 +154,11 @@ class _KeyPairState:
         Input properties used for looking up and filtering KeyPair resources.
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[_builtins.str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -215,6 +228,9 @@ class _KeyPairState:
     @_builtins.property
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
+        """
         return pulumi.get(self, "key_name_prefix")
 
     @key_name_prefix.setter
@@ -257,6 +273,10 @@ class _KeyPairState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -314,8 +334,11 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[_builtins.str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         ...
     @overload
@@ -423,8 +446,11 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[_builtins.str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[_builtins.str] key_name_prefix: The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -471,6 +497,9 @@ class KeyPair(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
+        """
         return pulumi.get(self, "key_name_prefix")
 
     @_builtins.property
@@ -497,5 +526,9 @@ class KeyPair(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
+        """
         return pulumi.get(self, "tags")
 

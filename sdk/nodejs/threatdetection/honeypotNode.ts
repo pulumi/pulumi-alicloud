@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Threat Detection Honeypot Node can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:threatdetection/honeypotNode:HoneypotNode example <id>
+ * $terraform import alicloud_threat_detection_honeypot_node.example <id>
  * ```
  */
 export class HoneypotNode extends pulumi.CustomResource {

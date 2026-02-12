@@ -17,6 +17,89 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
+ * 
+ * &gt; **NOTE:** Available since v1.66.0+. Each PolarDB cluster has a backup policy.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.polardb.PolardbFunctions;
+ * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.polardb.Cluster;
+ * import com.pulumi.alicloud.polardb.ClusterArgs;
+ * import com.pulumi.alicloud.polardb.BackupPolicy;
+ * import com.pulumi.alicloud.polardb.BackupPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .payType("PostPaid")
+ *             .category("Normal")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(default_.classes()[0].zoneId())
+ *             .vswitchName("terraform-example")
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .dbNodeClass(default_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+ *             .payType("PostPaid")
+ *             .vswitchId(defaultSwitch.id())
+ *             .description("terraform-example")
+ *             .build());
+ * 
+ *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()
+ *             .dbClusterId(defaultCluster.id())
+ *             .preferredBackupPeriods(            
+ *                 "Tuesday",
+ *                 "Wednesday")
+ *             .preferredBackupTime("10:00Z-11:00Z")
+ *             .backupRetentionPolicyOnClusterDeletion("NONE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Removing alicloud.polardb.Cluster from your configuration
+ * 
+ * The alicloud.polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * PolarDB backup policy can be imported using the id or cluster id, e.g.

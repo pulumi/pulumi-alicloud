@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * Threat Detection Honeypot Preset can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:threatdetection/honeypotPreset:HoneypotPreset example &lt;id&gt;
+ * $terraform import alicloud_threat_detection_honeypot_preset.example &lt;id&gt;
  * ```
  * 
  */

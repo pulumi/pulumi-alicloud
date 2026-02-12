@@ -204,7 +204,7 @@ class InstanceMember(pulumi.CustomResource):
         Cloud Firewall Instance Member can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example <id>
+        $terraform import alicloud_cloud_firewall_instance_member.example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -254,7 +254,7 @@ class InstanceMember(pulumi.CustomResource):
         Cloud Firewall Instance Member can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example <id>
+        $terraform import alicloud_cloud_firewall_instance_member.example <id>
         ```
 
         :param str resource_name: The name of the resource.

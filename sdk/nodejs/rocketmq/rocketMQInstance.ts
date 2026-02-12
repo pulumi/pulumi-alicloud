@@ -7,6 +7,89 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a RocketMQ Instance resource.
+ *
+ * For information about RocketMQ Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstance).
+ *
+ * > **NOTE:** Available since v1.212.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultGetZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const createVPC = new alicloud.vpc.Network("createVPC", {
+ *     description: "example",
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const createVSwitch = new alicloud.vpc.Switch("createVSwitch", {
+ *     description: "example",
+ *     vpcId: createVPC.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vswitchName: name,
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ * });
+ * const defaultRocketMQInstance = new alicloud.rocketmq.RocketMQInstance("default", {
+ *     productInfo: {
+ *         msgProcessSpec: "rmq.u2.10xlarge",
+ *         sendReceiveRatio: 0.3,
+ *         messageRetentionTime: 70,
+ *     },
+ *     serviceCode: "rmq",
+ *     paymentType: "PayAsYouGo",
+ *     instanceName: name,
+ *     subSeriesCode: "cluster_ha",
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     remark: "example",
+ *     ipWhitelists: [
+ *         "192.168.0.0/16",
+ *         "10.10.0.0/16",
+ *         "172.168.0.0/16",
+ *     ],
+ *     software: {
+ *         maintainTime: "02:00-06:00",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     seriesCode: "ultimate",
+ *     networkInfo: {
+ *         vpcInfo: {
+ *             vpcId: createVPC.id,
+ *             vswitches: [{
+ *                 vswitchId: createVSwitch.id,
+ *             }],
+ *         },
+ *         internetInfo: {
+ *             internetSpec: "enable",
+ *             flowOutType: "payByBandwidth",
+ *             flowOutBandwidth: 30,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.rocketmq.RocketMQInstance` or removing it from your configuration
+ *
+ * The `alicloud.rocketmq.RocketMQInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RocketMQ Instance can be imported using the id, e.g.

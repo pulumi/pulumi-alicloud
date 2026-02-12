@@ -26,7 +26,8 @@ type GetExpressSyncsSync struct {
 	ExpressSyncId string `pulumi:"expressSyncId"`
 	// The name of the Express Sync.
 	ExpressSyncName string `pulumi:"expressSyncName"`
-	Id              string `pulumi:"id"`
+	// The resource ID in terraform of Express Sync. The value is formate as <express_sync_id>.
+	Id string `pulumi:"id"`
 	// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
 	MnsTopic string `pulumi:"mnsTopic"`
 }
@@ -55,7 +56,8 @@ type GetExpressSyncsSyncArgs struct {
 	ExpressSyncId pulumi.StringInput `pulumi:"expressSyncId"`
 	// The name of the Express Sync.
 	ExpressSyncName pulumi.StringInput `pulumi:"expressSyncName"`
-	Id              pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of Express Sync. The value is formate as <express_sync_id>.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
 	MnsTopic pulumi.StringInput `pulumi:"mnsTopic"`
 }
@@ -141,6 +143,7 @@ func (o GetExpressSyncsSyncOutput) ExpressSyncName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.ExpressSyncName }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Express Sync. The value is formate as <express_sync_id>.
 func (o GetExpressSyncsSyncOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.Id }).(pulumi.StringOutput)
 }

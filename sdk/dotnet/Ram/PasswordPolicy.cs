@@ -10,6 +10,52 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// Provides a RAM Password Policy resource.
+    /// 
+    /// Password strength information.
+    /// 
+    /// For information about RAM Password Policy and how to use it, see [What is Password Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetPasswordPolicy).
+    /// 
+    /// &gt; **NOTE:** Available since v1.247.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Ram.PasswordPolicy("default", new()
+    ///     {
+    ///         MinimumPasswordLength = 8,
+    ///         RequireLowercaseCharacters = false,
+    ///         RequireNumbers = false,
+    ///         MaxPasswordAge = 0,
+    ///         PasswordReusePrevention = 1,
+    ///         MaxLoginAttemps = 1,
+    ///         HardExpiry = false,
+    ///         RequireUppercaseCharacters = false,
+    ///         RequireSymbols = false,
+    ///         PasswordNotContainUserName = false,
+    ///         MinimumPasswordDifferentCharacter = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.ram.PasswordPolicy` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.ram.PasswordPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RAM Password Policy can be imported using the id, e.g.

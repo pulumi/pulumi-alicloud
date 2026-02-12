@@ -101,6 +101,11 @@ namespace Pulumi.AliCloud.EventBridge
         [Output("eventSourceName")]
         public Output<string> EventSourceName { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to connect to an external data source
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("linkedExternalSource")]
         public Output<bool?> LinkedExternalSource { get; private set; } = null!;
 
@@ -216,6 +221,11 @@ namespace Pulumi.AliCloud.EventBridge
         [Input("eventSourceName", required: true)]
         public Input<string> EventSourceName { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to connect to an external data source
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("linkedExternalSource")]
         public Input<bool>? LinkedExternalSource { get; set; }
 
@@ -293,6 +303,11 @@ namespace Pulumi.AliCloud.EventBridge
         [Input("eventSourceName")]
         public Input<string>? EventSourceName { get; set; }
 
+        /// <summary>
+        /// Whether to connect to an external data source
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("linkedExternalSource")]
         public Input<bool>? LinkedExternalSource { get; set; }
 

@@ -94,10 +94,16 @@ type WafRule struct {
 	// The phase in which the WAF processes this rule.
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
-	RulesetId pulumi.IntPtrOutput    `pulumi:"rulesetId"`
-	Shared    WafRuleSharedPtrOutput `pulumi:"shared"`
+	RulesetId pulumi.IntPtrOutput `pulumi:"rulesetId"`
+	// Shared configuration attributes used across multiple rules. See `shared` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Shared WafRuleSharedPtrOutput `pulumi:"shared"`
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      pulumi.StringOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The unique identifier of the WAF rule.
 	WafRuleId pulumi.IntOutput `pulumi:"wafRuleId"`
@@ -144,11 +150,17 @@ type wafRuleState struct {
 	// The phase in which the WAF processes this rule.
 	Phase *string `pulumi:"phase"`
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
-	RulesetId *int           `pulumi:"rulesetId"`
-	Shared    *WafRuleShared `pulumi:"shared"`
+	RulesetId *int `pulumi:"rulesetId"`
+	// Shared configuration attributes used across multiple rules. See `shared` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Shared *WafRuleShared `pulumi:"shared"`
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      *string `pulumi:"siteId"`
-	SiteVersion *int    `pulumi:"siteVersion"`
+	SiteId *string `pulumi:"siteId"`
+	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	SiteVersion *int `pulumi:"siteVersion"`
 	// The unique identifier of the WAF rule.
 	WafRuleId *int `pulumi:"wafRuleId"`
 }
@@ -160,9 +172,15 @@ type WafRuleState struct {
 	Phase pulumi.StringPtrInput
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
 	RulesetId pulumi.IntPtrInput
-	Shared    WafRuleSharedPtrInput
+	// Shared configuration attributes used across multiple rules. See `shared` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Shared WafRuleSharedPtrInput
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      pulumi.StringPtrInput
+	SiteId pulumi.StringPtrInput
+	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 	SiteVersion pulumi.IntPtrInput
 	// The unique identifier of the WAF rule.
 	WafRuleId pulumi.IntPtrInput
@@ -178,11 +196,17 @@ type wafRuleArgs struct {
 	// The phase in which the WAF processes this rule.
 	Phase string `pulumi:"phase"`
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
-	RulesetId *int           `pulumi:"rulesetId"`
-	Shared    *WafRuleShared `pulumi:"shared"`
+	RulesetId *int `pulumi:"rulesetId"`
+	// Shared configuration attributes used across multiple rules. See `shared` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Shared *WafRuleShared `pulumi:"shared"`
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      string `pulumi:"siteId"`
-	SiteVersion *int   `pulumi:"siteVersion"`
+	SiteId string `pulumi:"siteId"`
+	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	SiteVersion *int `pulumi:"siteVersion"`
 }
 
 // The set of arguments for constructing a WafRule resource.
@@ -193,9 +217,15 @@ type WafRuleArgs struct {
 	Phase pulumi.StringInput
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
 	RulesetId pulumi.IntPtrInput
-	Shared    WafRuleSharedPtrInput
+	// Shared configuration attributes used across multiple rules. See `shared` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Shared WafRuleSharedPtrInput
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId      pulumi.StringInput
+	SiteId pulumi.StringInput
+	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -301,6 +331,9 @@ func (o WafRuleOutput) RulesetId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.IntPtrOutput { return v.RulesetId }).(pulumi.IntPtrOutput)
 }
 
+// Shared configuration attributes used across multiple rules. See `shared` below.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o WafRuleOutput) Shared() WafRuleSharedPtrOutput {
 	return o.ApplyT(func(v *WafRule) WafRuleSharedPtrOutput { return v.Shared }).(WafRuleSharedPtrOutput)
 }
@@ -310,6 +343,9 @@ func (o WafRuleOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
+// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+//
+// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o WafRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

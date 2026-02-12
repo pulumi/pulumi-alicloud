@@ -51,9 +51,21 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.algorithm);
     }
 
+    /**
+     * A custom alias for the certificate, used to define a user-friendly name.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="aliasName")
     private @Nullable Output<String> aliasName;
 
+    /**
+     * @return A custom alias for the certificate, used to define a user-friendly name.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> aliasName() {
         return Optional.ofNullable(this.aliasName);
     }
@@ -368,11 +380,27 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
             return algorithm(Output.of(algorithm));
         }
 
+        /**
+         * @param aliasName A custom alias for the certificate, used to define a user-friendly name.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliasName(@Nullable Output<String> aliasName) {
             $.aliasName = aliasName;
             return this;
         }
 
+        /**
+         * @param aliasName A custom alias for the certificate, used to define a user-friendly name.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliasName(String aliasName) {
             return aliasName(Output.of(aliasName));
         }

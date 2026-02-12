@@ -5,6 +5,56 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
+ *
+ * > **NOTE:** Available since v1.66.0+. Each PolarDB cluster has a backup policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.polardb.getNodeClasses({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     category: "Normal",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.classes?.[0]?.zoneId),
+ *     vswitchName: "terraform-example",
+ * });
+ * const defaultCluster = new alicloud.polardb.Cluster("default", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     dbNodeClass: _default.then(_default => _default.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
+ *     payType: "PostPaid",
+ *     vswitchId: defaultSwitch.id,
+ *     description: "terraform-example",
+ * });
+ * const defaultBackupPolicy = new alicloud.polardb.BackupPolicy("default", {
+ *     dbClusterId: defaultCluster.id,
+ *     preferredBackupPeriods: [
+ *         "Tuesday",
+ *         "Wednesday",
+ *     ],
+ *     preferredBackupTime: "10:00Z-11:00Z",
+ *     backupRetentionPolicyOnClusterDeletion: "NONE",
+ * });
+ * ```
+ * ### Removing alicloud.polardb.Cluster from your configuration
+ *
+ * The alicloud.polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * PolarDB backup policy can be imported using the id or cluster id, e.g.

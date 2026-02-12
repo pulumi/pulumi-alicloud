@@ -10,6 +10,115 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.RocketMQ
 {
     /// <summary>
+    /// Provides a RocketMQ Instance resource.
+    /// 
+    /// For information about RocketMQ Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.212.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var createVPC = new AliCloud.Vpc.Network("createVPC", new()
+    ///     {
+    ///         Description = "example",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var createVSwitch = new AliCloud.Vpc.Switch("createVSwitch", new()
+    ///     {
+    ///         Description = "example",
+    ///         VpcId = createVPC.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         VswitchName = name,
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultRocketMQInstance = new AliCloud.RocketMQ.RocketMQInstance("default", new()
+    ///     {
+    ///         ProductInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceProductInfoArgs
+    ///         {
+    ///             MsgProcessSpec = "rmq.u2.10xlarge",
+    ///             SendReceiveRatio = 0.3,
+    ///             MessageRetentionTime = 70,
+    ///         },
+    ///         ServiceCode = "rmq",
+    ///         PaymentType = "PayAsYouGo",
+    ///         InstanceName = name,
+    ///         SubSeriesCode = "cluster_ha",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         Remark = "example",
+    ///         IpWhitelists = new[]
+    ///         {
+    ///             "192.168.0.0/16",
+    ///             "10.10.0.0/16",
+    ///             "172.168.0.0/16",
+    ///         },
+    ///         Software = new AliCloud.RocketMQ.Inputs.RocketMQInstanceSoftwareArgs
+    ///         {
+    ///             MaintainTime = "02:00-06:00",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///         SeriesCode = "ultimate",
+    ///         NetworkInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoArgs
+    ///         {
+    ///             VpcInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoVpcInfoArgs
+    ///             {
+    ///                 VpcId = createVPC.Id,
+    ///                 Vswitches = new[]
+    ///                 {
+    ///                     new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs
+    ///                     {
+    ///                         VswitchId = createVSwitch.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InternetInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoInternetInfoArgs
+    ///             {
+    ///                 InternetSpec = "enable",
+    ///                 FlowOutType = "payByBandwidth",
+    ///                 FlowOutBandwidth = 30,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.rocketmq.RocketMQInstance` or removing it from your configuration
+    /// 
+    /// The `alicloud.rocketmq.RocketMQInstance` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RocketMQ Instance can be imported using the id, e.g.

@@ -76,7 +76,7 @@ import (
 // $ pulumi import alicloud:kms/clientKey:ClientKey example <id>
 // ```
 //
-// Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
+// Resource attributes such as `password`, `privateKeyDataFile` are not available for imported resources as this information cannot be read from the KMS API.
 type ClientKey struct {
 	pulumi.CustomResourceState
 

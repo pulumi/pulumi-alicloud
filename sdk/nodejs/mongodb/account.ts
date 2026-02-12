@@ -5,6 +5,64 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Mongodb Account resource.
+ *
+ * For information about Mongodb Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
+ *
+ * > **NOTE:** Available since v1.148.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.mongodb.getZones({});
+ * const index = _default.then(_default => _default.zones).length.apply(length => length - 1);
+ * const zoneId = _default.then(_default => _default.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const defaultInstance = new alicloud.mongodb.Instance("default", {
+ *     engineVersion: "4.2",
+ *     dbInstanceClass: "dds.mongo.mid",
+ *     dbInstanceStorage: 10,
+ *     vswitchId: defaultSwitch.id,
+ *     securityIpLists: [
+ *         "10.168.1.12",
+ *         "100.69.7.112",
+ *     ],
+ *     name: name,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultAccount = new alicloud.mongodb.Account("default", {
+ *     accountName: "root",
+ *     accountPassword: "Example_123",
+ *     instanceId: defaultInstance.id,
+ *     accountDescription: name,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.mongodb.Account` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.mongodb.Account`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Mongodb Account can be imported using the id, e.g.

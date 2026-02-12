@@ -17,6 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a HaVip resource, see [What is HAVIP](https://www.alibabacloud.com/help/zh/vpc/developer-reference/api-createhavip).
+ * 
+ * &gt; **NOTE:** Terraform will auto build havip instance  while it uses `alicloud.vpc.HAVip` to build a havip resource.
+ * 
+ * &gt; **NOTE:** Available since v1.18.0.
+ * 
+ * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.vpc.HaVipv2 from version 1.205.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

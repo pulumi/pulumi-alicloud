@@ -358,9 +358,21 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
     }
+    /**
+     * ID of promotion option.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="promotionOptionNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> promotionOptionNo;
 
+    /**
+     * @return ID of promotion option.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> promotionOptionNo() {
         return Codegen.optional(this.promotionOptionNo);
     }

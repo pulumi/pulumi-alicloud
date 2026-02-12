@@ -7,6 +7,68 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an AliKafka instance resource.
+ *
+ * For information about Kafka instance and how to use it, see [What is alikafka instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-startinstance).
+ *
+ * > **NOTE:** Available since v1.59.0.
+ *
+ * > **NOTE:** Creation or modification may took about 10-40 minutes.
+ *
+ * > **NOTE:** Only the following regions support create alikafka pre paid instance.
+ * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+ *
+ * > **NOTE:** Only the following regions support create alikafka post paid instance.
+ * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const instanceName = config.get("instanceName") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.alikafka.Instance("default", {
+ *     name: `${instanceName}-${defaultInteger.result}`,
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 5,
+ *     ioMax: 20,
+ *     specType: "professional",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroup: defaultSecurityGroup.id,
+ *     config: JSON.stringify({
+ *         "kafka.log.retention.hours": "96",
+ *         "kafka.message.max.bytes": "1048576",
+ *     }),
+ * });
+ * ```
+ *
+ * ### Removing alicloud.alikafka.Instance from your configuration
+ *
+ * The alicloud.alikafka.Instance resource allows you to manage your alikafka instance, but Terraform cannot destroy it if your instance type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the instance. You can resume managing the instance via the alikafka Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * AliKafka instance can be imported using the id, e.g.

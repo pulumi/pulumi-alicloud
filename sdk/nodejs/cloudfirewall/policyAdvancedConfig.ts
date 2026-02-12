@@ -5,12 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Cloud Firewall Policy Advanced Config resource.
+ *
+ * Access Control Advanced Configuration.
+ *
+ * For information about Cloud Firewall Policy Advanced Config and how to use it, see [What is Policy Advanced Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyPolicyAdvancedConfig).
+ *
+ * > **NOTE:** Available since v1.253.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cloudfirewall.PolicyAdvancedConfig("default", {internetSwitch: "off"});
+ * ```
+ *
+ * ### Deleting `alicloud.cloudfirewall.PolicyAdvancedConfig` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.PolicyAdvancedConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Firewall Policy Advanced Config can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig example 
+ * $ terraform import alicloud_cloud_firewall_policy_advanced_config.example 
  * ```
  */
 export class PolicyAdvancedConfig extends pulumi.CustomResource {

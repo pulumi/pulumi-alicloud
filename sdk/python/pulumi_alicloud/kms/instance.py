@@ -57,6 +57,12 @@ class InstanceArgs:
                
                - Subscription: the subscription billing method.
                - PayAsYouGo: the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: month. The value must be an integral multiple of 12.
+               
+               > **NOTE:**   This parameter is required if you create a subscription instance.
+               
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
                
@@ -66,6 +72,11 @@ class InstanceArgs:
                - AutoRenewal: The instance is automatically renewed.
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: Month.
+               - Y: Year.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -235,6 +246,14 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The subscription duration. Unit: month. The value must be an integral multiple of 12.
+
+        > **NOTE:**   This parameter is required if you create a subscription instance.
+
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -286,6 +305,13 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Automatic renewal period unit, value:
+        - M: Month.
+        - Y: Year.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
@@ -384,6 +410,12 @@ class _InstanceState:
                
                - Subscription: the subscription billing method.
                - PayAsYouGo: the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: month. The value must be an integral multiple of 12.
+               
+               > **NOTE:**   This parameter is required if you create a subscription instance.
+               
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
                
@@ -393,6 +425,11 @@ class _InstanceState:
                - AutoRenewal: The instance is automatically renewed.
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: Month.
+               - Y: Year.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
@@ -577,6 +614,14 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The subscription duration. Unit: month. The value must be an integral multiple of 12.
+
+        > **NOTE:**   This parameter is required if you create a subscription instance.
+
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -628,6 +673,13 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Automatic renewal period unit, value:
+        - M: Month.
+        - Y: Year.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
@@ -961,6 +1013,12 @@ class Instance(pulumi.CustomResource):
                
                - Subscription: the subscription billing method.
                - PayAsYouGo: the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: month. The value must be an integral multiple of 12.
+               
+               > **NOTE:**   This parameter is required if you create a subscription instance.
+               
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
                
@@ -970,6 +1028,11 @@ class Instance(pulumi.CustomResource):
                - AutoRenewal: The instance is automatically renewed.
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: Month.
+               - Y: Year.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -1301,6 +1364,12 @@ class Instance(pulumi.CustomResource):
                
                - Subscription: the subscription billing method.
                - PayAsYouGo: the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: month. The value must be an integral multiple of 12.
+               
+               > **NOTE:**   This parameter is required if you create a subscription instance.
+               
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
                
@@ -1310,6 +1379,11 @@ class Instance(pulumi.CustomResource):
                - AutoRenewal: The instance is automatically renewed.
                - ManualRenewal: The instance is manually renewed.
                - NotRenewal: The instance is not renewed.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, value:
+               - M: Month.
+               - Y: Year.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
@@ -1436,6 +1510,14 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The subscription duration. Unit: month. The value must be an integral multiple of 12.
+
+        > **NOTE:**   This parameter is required if you create a subscription instance.
+
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "period")
 
     @_builtins.property
@@ -1471,6 +1553,13 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Automatic renewal period unit, value:
+        - M: Month.
+        - Y: Year.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "renewal_period_unit")
 
     @_builtins.property

@@ -10,6 +10,51 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
+    /// Provides a OSS Bucket Worm resource.
+    /// 
+    /// Bucket Retention Policy.
+    /// 
+    /// For information about OSS Bucket Worm and how to use it, see [What is Bucket Worm](https://www.alibabacloud.com/help/en/oss/developer-reference/initiatebucketworm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.240.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaulthNMfIF = new AliCloud.Oss.Bucket("defaulthNMfIF", new()
+    ///     {
+    ///         StorageClass = "Standard",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Oss.BucketWorm("default", new()
+    ///     {
+    ///         Bucket = defaulthNMfIF.BucketName,
+    ///         RetentionPeriodInDays = 1,
+    ///         Status = "InProgress",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.oss.BucketWorm` or removing it from your configuration
+    /// 
+    /// The `alicloud.oss.BucketWorm` resource allows you to manage  `status = "Locked"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS Bucket Worm can be imported using the id, e.g.

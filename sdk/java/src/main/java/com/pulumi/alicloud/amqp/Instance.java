@@ -17,6 +17,104 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a RabbitMQ (AMQP) Instance resource.
+ * 
+ * The instance of Amqp.
+ * 
+ * For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createinstance).
+ * 
+ * &gt; **NOTE:** Available since v1.128.0.
+ * 
+ * ## Example Usage
+ * 
+ * Create a RabbitMQ (AMQP) enterprise edition Instance.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .instanceName(name)
+ *             .instanceType("enterprise")
+ *             .maxTps("1000")
+ *             .queueCapacity("50")
+ *             .periodCycle("Year")
+ *             .supportEip(false)
+ *             .period(1)
+ *             .autoRenew(true)
+ *             .paymentType("Subscription")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Create a RabbitMQ (AMQP) serverless edition Instance.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .instanceName(name)
+ *             .paymentType("PayAsYouGo")
+ *             .serverlessChargeType("onDemand")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.amqp.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.amqp.Instance` resource allows you to manage  `paymentType = &#34;PayAsYouGo&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Amqp Instance can be imported using the id, e.g.

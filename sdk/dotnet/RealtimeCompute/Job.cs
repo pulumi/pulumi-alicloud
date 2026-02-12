@@ -186,6 +186,11 @@ namespace Pulumi.AliCloud.RealtimeCompute
         [Output("status")]
         public Output<Outputs.JobStatus> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// Job Stop Policy
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("stopStrategy")]
         public Output<string?> StopStrategy { get; private set; } = null!;
 
@@ -285,6 +290,11 @@ namespace Pulumi.AliCloud.RealtimeCompute
         [Input("status")]
         public Input<Inputs.JobStatusArgs>? Status { get; set; }
 
+        /// <summary>
+        /// Job Stop Policy
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("stopStrategy")]
         public Input<string>? StopStrategy { get; set; }
 
@@ -352,6 +362,11 @@ namespace Pulumi.AliCloud.RealtimeCompute
         [Input("status")]
         public Input<Inputs.JobStatusGetArgs>? Status { get; set; }
 
+        /// <summary>
+        /// Job Stop Policy
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("stopStrategy")]
         public Input<string>? StopStrategy { get; set; }
 

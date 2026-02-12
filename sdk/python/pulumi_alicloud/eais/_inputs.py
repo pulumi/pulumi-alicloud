@@ -19,20 +19,15 @@ __all__ = [
     'InstanceEnvironmentVarArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceEnvironmentVarArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Keys for environment variables
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Values of environment variables
-        """
-elif False:
-    InstanceEnvironmentVarArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEnvironmentVarArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Keys for environment variables
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Values of environment variables
+    """
 
 @pulumi.input_type
 class InstanceEnvironmentVarArgs:

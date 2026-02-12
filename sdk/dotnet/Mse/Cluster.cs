@@ -10,6 +10,67 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mse
 {
     /// <summary>
+    /// Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
+    /// 
+    /// &gt; **NOTE:** Available since v1.94.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create resource
+    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
+    ///     {
+    ///         ClusterSpecification = "MSE_SC_1_2_60_c",
+    ///         ClusterType = "Nacos-Ans",
+    ///         ClusterVersion = "NACOS_2_0_0",
+    ///         VersionCode = "NACOS_2_3_2_1",
+    ///         InstanceCount = 3,
+    ///         NetType = "privatenet",
+    ///         PubNetworkFlow = "1",
+    ///         ConnectionType = "slb",
+    ///         ClusterAliasName = "terraform-example",
+    ///         MseVersion = "mse_pro",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.mse.Cluster` or removing it from your configuration
+    /// 
+    /// The `alicloud.mse.Cluster` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// MSE Cluster can be imported using the id, e.g.

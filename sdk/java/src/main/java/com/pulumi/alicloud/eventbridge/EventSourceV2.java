@@ -151,9 +151,21 @@ public class EventSourceV2 extends com.pulumi.resources.CustomResource {
     public Output<String> eventSourceName() {
         return this.eventSourceName;
     }
+    /**
+     * Whether to connect to an external data source
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="linkedExternalSource", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> linkedExternalSource;
 
+    /**
+     * @return Whether to connect to an external data source
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<Boolean>> linkedExternalSource() {
         return Codegen.optional(this.linkedExternalSource);
     }

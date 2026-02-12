@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a MNS queue resource.
+ *
+ * > **NOTE:** Terraform will auto build a mns queue  while it uses `alicloud.mns.Queue` to build a mns queue resource.
+ *
+ * > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_queue.
+ *
  * ## Example Usage
  *
  * Basic Usage

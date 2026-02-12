@@ -127,6 +127,8 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     * 
      * @deprecated
      * Deprecated from 1.161.0+, use dashboardId in query_list
      * 
@@ -136,6 +138,8 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dashboard;
 
     /**
+     * @return The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     * 
      * @deprecated
      * Deprecated from 1.161.0+, use dashboardId in query_list
      * 
@@ -696,6 +700,8 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dashboard The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -709,6 +715,8 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dashboard The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+         * 
          * @return builder
          * 
          * @deprecated

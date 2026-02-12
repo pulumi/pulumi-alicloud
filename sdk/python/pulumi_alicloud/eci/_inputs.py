@@ -85,28 +85,23 @@ __all__ = [
     'VirtualNodeTaintArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ContainerGroupAcrRegistryInfoArgsDict(TypedDict):
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
-        """
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ACR enterprise edition example ID.
-        """
-        instance_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the ACR enterprise edition instance.
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ACR enterprise edition instance belongs to the region.
-        """
-elif False:
-    ContainerGroupAcrRegistryInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupAcrRegistryInfoArgsDict(TypedDict):
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
+    """
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ACR enterprise edition example ID.
+    """
+    instance_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the ACR enterprise edition instance.
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ACR enterprise edition instance belongs to the region.
+    """
 
 @pulumi.input_type
 class ContainerGroupAcrRegistryInfoArgs:
@@ -179,82 +174,79 @@ class ContainerGroupAcrRegistryInfoArgs:
         pulumi.set(self, "region_id", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerArgsDict(TypedDict):
-        image: pulumi.Input[_builtins.str]
-        """
-        The image of the container.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the mounted volume.
-        """
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments passed to the commands.
-        """
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Commands to be executed inside the container when performing health checks using the command line method.
-        """
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of CPU resources allocated to the container. Default value: `0`.
-        """
-        environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgsDict']]]]
-        """
-        The structure of environmentVars. See `environment_vars` below.
-        """
-        gpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number GPUs. Default value: `0`.
-        """
-        image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
-        """
-        lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The commands to be executed in containers when you use the CLI to specify the preStop callback function.
-        """
-        liveness_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgsDict']]]]
-        """
-        The health check of the container. See `liveness_probe` below.
-        """
-        memory: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of memory resources allocated to the container. Default value: `0`.
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgsDict']]]]
-        """
-        The structure of port. See `ports` below.
-        """
-        readiness_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgsDict']]]]
-        """
-        The health check of the container. See `readiness_probe` below.
-        """
-        ready: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the container passed the readiness probe.
-        """
-        restart_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that the container restarted.
-        """
-        security_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgsDict']]]]
-        """
-        The security context of the container. See `security_context` below.
-        """
-        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgsDict']]]]
-        """
-        The structure of volumeMounts. See `volume_mounts` below.
-        """
-        working_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The working directory of the container.
-        """
-elif False:
-    ContainerGroupContainerArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    The image of the container.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the mounted volume.
+    """
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments passed to the commands.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Commands to be executed inside the container when performing health checks using the command line method.
+    """
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of CPU resources allocated to the container. Default value: `0`.
+    """
+    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgsDict']]]]
+    """
+    The structure of environmentVars. See `environment_vars` below.
+    """
+    gpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number GPUs. Default value: `0`.
+    """
+    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
+    """
+    lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+    """
+    liveness_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgsDict']]]]
+    """
+    The health check of the container. See `liveness_probe` below.
+    """
+    memory: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of memory resources allocated to the container. Default value: `0`.
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgsDict']]]]
+    """
+    The structure of port. See `ports` below.
+    """
+    readiness_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgsDict']]]]
+    """
+    The health check of the container. See `readiness_probe` below.
+    """
+    ready: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the container passed the readiness probe.
+    """
+    restart_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that the container restarted.
+    """
+    security_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgsDict']]]]
+    """
+    The security context of the container. See `security_context` below.
+    """
+    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgsDict']]]]
+    """
+    The structure of volumeMounts. See `volume_mounts` below.
+    """
+    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The working directory of the container.
+    """
 
 @pulumi.input_type
 class ContainerGroupContainerArgs:
@@ -549,13 +541,10 @@ class ContainerGroupContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerEnvironmentVarArgsDict(TypedDict):
-        field_reves: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgsDict']]]]
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupContainerEnvironmentVarArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerEnvironmentVarArgsDict(TypedDict):
+    field_reves: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgsDict']]]]
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupContainerEnvironmentVarArgs:
@@ -598,11 +587,8 @@ class ContainerGroupContainerEnvironmentVarArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerEnvironmentVarFieldRefArgsDict(TypedDict):
-        field_path: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupContainerEnvironmentVarFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerEnvironmentVarFieldRefArgsDict(TypedDict):
+    field_path: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupContainerEnvironmentVarFieldRefArgs:
@@ -621,44 +607,41 @@ class ContainerGroupContainerEnvironmentVarFieldRefArgs:
         pulumi.set(self, "field_path", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
-        execs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgsDict']]]]
-        """
-        Health check using command line method. See `exec` below.
-        """
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-        """
-        http_gets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgsDict']]]]
-        """
-        Health check using HTTP request method. See `http_get` below.
+class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
+    execs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgsDict']]]]
+    """
+    Health check using command line method. See `exec` below.
+    """
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+    """
+    http_gets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgsDict']]]]
+    """
+    Health check using HTTP request method. See `http_get` below.
 
-        > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
-        """
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Check the time to start execution, calculated from the completion of container startup.
-        """
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Buffer time for the program to handle operations before closing.
-        """
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-        """
-        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgsDict']]]]
-        """
-        Health check using TCP socket method. See `tcp_socket` below.
-        """
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Check the timeout, the default is 1 second, the minimum is 1 second.
-        """
-elif False:
-    ContainerGroupContainerLivenessProbeArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Check the time to start execution, calculated from the completion of container startup.
+    """
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Buffer time for the program to handle operations before closing.
+    """
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+    """
+    tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgsDict']]]]
+    """
+    Health check using TCP socket method. See `tcp_socket` below.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Check the timeout, the default is 1 second, the minimum is 1 second.
+    """
 
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeArgs:
@@ -799,11 +782,8 @@ class ContainerGroupContainerLivenessProbeArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerLivenessProbeExecArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    ContainerGroupContainerLivenessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerLivenessProbeExecArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeExecArgs:
@@ -822,16 +802,13 @@ class ContainerGroupContainerLivenessProbeExecArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerLivenessProbeHttpGetArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        scheme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-        """
-elif False:
-    ContainerGroupContainerLivenessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerLivenessProbeHttpGetArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+    """
 
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeHttpGetArgs:
@@ -880,11 +857,8 @@ class ContainerGroupContainerLivenessProbeHttpGetArgs:
         pulumi.set(self, "scheme", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerLivenessProbeTcpSocketArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ContainerGroupContainerLivenessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerLivenessProbeTcpSocketArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeTcpSocketArgs:
@@ -903,12 +877,9 @@ class ContainerGroupContainerLivenessProbeTcpSocketArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerPortArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerPortArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupContainerPortArgs:
@@ -939,44 +910,41 @@ class ContainerGroupContainerPortArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
-        execs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgsDict']]]]
-        """
-        Health check using command line method. See `exec` below.
-        """
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-        """
-        http_gets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgsDict']]]]
-        """
-        Health check using HTTP request method. See `http_get` below.
+class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
+    execs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgsDict']]]]
+    """
+    Health check using command line method. See `exec` below.
+    """
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+    """
+    http_gets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgsDict']]]]
+    """
+    Health check using HTTP request method. See `http_get` below.
 
-        > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
-        """
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Check the time to start execution, calculated from the completion of container startup.
-        """
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Buffer time for the program to handle operations before closing.
-        """
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-        """
-        tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgsDict']]]]
-        """
-        Health check using TCP socket method. See `tcp_socket` below.
-        """
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Check the timeout, the default is 1 second, the minimum is 1 second.
-        """
-elif False:
-    ContainerGroupContainerReadinessProbeArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Check the time to start execution, calculated from the completion of container startup.
+    """
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Buffer time for the program to handle operations before closing.
+    """
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+    """
+    tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgsDict']]]]
+    """
+    Health check using TCP socket method. See `tcp_socket` below.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Check the timeout, the default is 1 second, the minimum is 1 second.
+    """
 
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeArgs:
@@ -1117,11 +1085,8 @@ class ContainerGroupContainerReadinessProbeArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerReadinessProbeExecArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    ContainerGroupContainerReadinessProbeExecArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerReadinessProbeExecArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeExecArgs:
@@ -1140,16 +1105,13 @@ class ContainerGroupContainerReadinessProbeExecArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerReadinessProbeHttpGetArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        scheme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-        """
-elif False:
-    ContainerGroupContainerReadinessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerReadinessProbeHttpGetArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+    """
 
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeHttpGetArgs:
@@ -1198,11 +1160,8 @@ class ContainerGroupContainerReadinessProbeHttpGetArgs:
         pulumi.set(self, "scheme", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerReadinessProbeTcpSocketArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ContainerGroupContainerReadinessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerReadinessProbeTcpSocketArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeTcpSocketArgs:
@@ -1221,16 +1180,13 @@ class ContainerGroupContainerReadinessProbeTcpSocketArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerSecurityContextArgsDict(TypedDict):
-        capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgsDict']]]]
-        privileged: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
-        """
-        run_as_user: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ContainerGroupContainerSecurityContextArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerSecurityContextArgsDict(TypedDict):
+    capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgsDict']]]]
+    privileged: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+    """
+    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ContainerGroupContainerSecurityContextArgs:
@@ -1279,11 +1235,8 @@ class ContainerGroupContainerSecurityContextArgs:
         pulumi.set(self, "run_as_user", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerSecurityContextCapabilityArgsDict(TypedDict):
-        adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    ContainerGroupContainerSecurityContextCapabilityArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerSecurityContextCapabilityArgsDict(TypedDict):
+    adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class ContainerGroupContainerSecurityContextCapabilityArgs:
@@ -1302,13 +1255,10 @@ class ContainerGroupContainerSecurityContextCapabilityArgs:
         pulumi.set(self, "adds", value)
 
 
-if not MYPY:
-    class ContainerGroupContainerVolumeMountArgsDict(TypedDict):
-        mount_path: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-elif False:
-    ContainerGroupContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupContainerVolumeMountArgsDict(TypedDict):
+    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
 
 @pulumi.input_type
 class ContainerGroupContainerVolumeMountArgs:
@@ -1351,22 +1301,19 @@ class ContainerGroupContainerVolumeMountArgs:
         pulumi.set(self, "read_only", value)
 
 
-if not MYPY:
-    class ContainerGroupDnsConfigArgsDict(TypedDict):
-        name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of DNS server IP addresses.
-        """
-        options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgsDict']]]]
-        """
-        The structure of options. See `options` below.
-        """
-        searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of DNS lookup domains.
-        """
-elif False:
-    ContainerGroupDnsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupDnsConfigArgsDict(TypedDict):
+    name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of DNS server IP addresses.
+    """
+    options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgsDict']]]]
+    """
+    The structure of options. See `options` below.
+    """
+    searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of DNS lookup domains.
+    """
 
 @pulumi.input_type
 class ContainerGroupDnsConfigArgs:
@@ -1423,12 +1370,9 @@ class ContainerGroupDnsConfigArgs:
         pulumi.set(self, "searches", value)
 
 
-if not MYPY:
-    class ContainerGroupDnsConfigOptionArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupDnsConfigOptionArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupDnsConfigOptionArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupDnsConfigOptionArgs:
@@ -1459,18 +1403,15 @@ class ContainerGroupDnsConfigOptionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ContainerGroupHostAliasArgsDict(TypedDict):
-        hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The information about the host.
-        """
-        ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the host.
-        """
-elif False:
-    ContainerGroupHostAliasArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupHostAliasArgsDict(TypedDict):
+    hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The information about the host.
+    """
+    ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the host.
+    """
 
 @pulumi.input_type
 class ContainerGroupHostAliasArgs:
@@ -1511,22 +1452,19 @@ class ContainerGroupHostAliasArgs:
         pulumi.set(self, "ip", value)
 
 
-if not MYPY:
-    class ContainerGroupImageRegistryCredentialArgsDict(TypedDict):
-        password: pulumi.Input[_builtins.str]
-        """
-        The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
-        """
-        server: pulumi.Input[_builtins.str]
-        """
-        The address of the image repository. It is required when `image_registry_credential` is configured.
-        """
-        user_name: pulumi.Input[_builtins.str]
-        """
-        The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
-        """
-elif False:
-    ContainerGroupImageRegistryCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupImageRegistryCredentialArgsDict(TypedDict):
+    password: pulumi.Input[_builtins.str]
+    """
+    The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
+    """
+    server: pulumi.Input[_builtins.str]
+    """
+    The address of the image repository. It is required when `image_registry_credential` is configured.
+    """
+    user_name: pulumi.Input[_builtins.str]
+    """
+    The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
+    """
 
 @pulumi.input_type
 class ContainerGroupImageRegistryCredentialArgs:
@@ -1580,70 +1518,67 @@ class ContainerGroupImageRegistryCredentialArgs:
         pulumi.set(self, "user_name", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerArgsDict(TypedDict):
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The arguments passed to the commands.
-        """
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The commands run by the init container.
-        """
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of CPU resources allocated to the container. Default value: `0`.
-        """
-        environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgsDict']]]]
-        """
-        The structure of environmentVars. See `environment_vars` below.
-        """
-        gpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number GPUs. Default value: `0`.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image of the container.
-        """
-        image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
-        """
-        memory: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The amount of memory resources allocated to the container. Default value: `0`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the mounted volume.
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgsDict']]]]
-        """
-        The structure of port. See `ports` below.
-        """
-        ready: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the container passed the readiness probe.
-        """
-        restart_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that the container restarted.
-        """
-        security_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgsDict']]]]
-        """
-        The security context of the container. See `security_context` below.
-        """
-        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgsDict']]]]
-        """
-        The structure of volumeMounts. See `volume_mounts` below.
-        """
-        working_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The working directory of the container.
-        """
-elif False:
-    ContainerGroupInitContainerArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The arguments passed to the commands.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The commands run by the init container.
+    """
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of CPU resources allocated to the container. Default value: `0`.
+    """
+    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgsDict']]]]
+    """
+    The structure of environmentVars. See `environment_vars` below.
+    """
+    gpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number GPUs. Default value: `0`.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image of the container.
+    """
+    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
+    """
+    memory: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The amount of memory resources allocated to the container. Default value: `0`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the mounted volume.
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgsDict']]]]
+    """
+    The structure of port. See `ports` below.
+    """
+    ready: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the container passed the readiness probe.
+    """
+    restart_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that the container restarted.
+    """
+    security_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgsDict']]]]
+    """
+    The security context of the container. See `security_context` below.
+    """
+    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgsDict']]]]
+    """
+    The structure of volumeMounts. See `volume_mounts` below.
+    """
+    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The working directory of the container.
+    """
 
 @pulumi.input_type
 class ContainerGroupInitContainerArgs:
@@ -1892,13 +1827,10 @@ class ContainerGroupInitContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerEnvironmentVarArgsDict(TypedDict):
-        field_reves: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict']]]]
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupInitContainerEnvironmentVarArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerEnvironmentVarArgsDict(TypedDict):
+    field_reves: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict']]]]
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerEnvironmentVarArgs:
@@ -1941,11 +1873,8 @@ class ContainerGroupInitContainerEnvironmentVarArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict(TypedDict):
-        field_path: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict(TypedDict):
+    field_path: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerEnvironmentVarFieldRefArgs:
@@ -1964,12 +1893,9 @@ class ContainerGroupInitContainerEnvironmentVarFieldRefArgs:
         pulumi.set(self, "field_path", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerPortArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupInitContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerPortArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerPortArgs:
@@ -2000,12 +1926,9 @@ class ContainerGroupInitContainerPortArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerSecurityContextArgsDict(TypedDict):
-        capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgsDict']]]]
-        run_as_user: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ContainerGroupInitContainerSecurityContextArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerSecurityContextArgsDict(TypedDict):
+    capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgsDict']]]]
+    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerSecurityContextArgs:
@@ -2036,11 +1959,8 @@ class ContainerGroupInitContainerSecurityContextArgs:
         pulumi.set(self, "run_as_user", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerSecurityContextCapabilityArgsDict(TypedDict):
-        adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    ContainerGroupInitContainerSecurityContextCapabilityArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerSecurityContextCapabilityArgsDict(TypedDict):
+    adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerSecurityContextCapabilityArgs:
@@ -2059,13 +1979,10 @@ class ContainerGroupInitContainerSecurityContextCapabilityArgs:
         pulumi.set(self, "adds", value)
 
 
-if not MYPY:
-    class ContainerGroupInitContainerVolumeMountArgsDict(TypedDict):
-        mount_path: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-elif False:
-    ContainerGroupInitContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupInitContainerVolumeMountArgsDict(TypedDict):
+    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerVolumeMountArgs:
@@ -2108,14 +2025,11 @@ class ContainerGroupInitContainerVolumeMountArgs:
         pulumi.set(self, "read_only", value)
 
 
-if not MYPY:
-    class ContainerGroupSecurityContextArgsDict(TypedDict):
-        sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgsDict']]]]
-        """
-        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
-        """
-elif False:
-    ContainerGroupSecurityContextArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupSecurityContextArgsDict(TypedDict):
+    sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgsDict']]]]
+    """
+    Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
+    """
 
 @pulumi.input_type
 class ContainerGroupSecurityContextArgs:
@@ -2140,12 +2054,9 @@ class ContainerGroupSecurityContextArgs:
         pulumi.set(self, "sysctls", value)
 
 
-if not MYPY:
-    class ContainerGroupSecurityContextSysctlArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupSecurityContextSysctlArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupSecurityContextSysctlArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupSecurityContextSysctlArgs:
@@ -2176,55 +2087,52 @@ class ContainerGroupSecurityContextSysctlArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ContainerGroupVolumeArgsDict(TypedDict):
-        config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]
-        """
-        The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
-        > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
-        """
-        disk_volume_disk_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of DiskVolume.
-        """
-        disk_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The system type of DiskVolume.
-        """
-        flex_volume_driver: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the FlexVolume driver.
-        """
-        flex_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the mounted file system. The default value is determined by the script of FlexVolume.
-        """
-        flex_volume_options: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the volume.
-        """
-        nfs_volume_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the NFS volume.
-        """
-        nfs_volume_read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The nfs volume read only. Default value: `false`.
-        """
-        nfs_volume_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The address of the NFS server.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the volume.
-        """
-elif False:
-    ContainerGroupVolumeArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupVolumeArgsDict(TypedDict):
+    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]
+    """
+    The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+    > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
+    """
+    disk_volume_disk_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of DiskVolume.
+    """
+    disk_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The system type of DiskVolume.
+    """
+    flex_volume_driver: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the FlexVolume driver.
+    """
+    flex_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the mounted file system. The default value is determined by the script of FlexVolume.
+    """
+    flex_volume_options: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the volume.
+    """
+    nfs_volume_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to the NFS volume.
+    """
+    nfs_volume_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The nfs volume read only. Default value: `false`.
+    """
+    nfs_volume_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The address of the NFS server.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the volume.
+    """
 
 @pulumi.input_type
 class ContainerGroupVolumeArgs:
@@ -2411,15 +2319,12 @@ class ContainerGroupVolumeArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict(TypedDict):
-        content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content of the configuration file. Maximum size: 32 KB.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict(TypedDict):
+    content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content of the configuration file. Maximum size: 32 KB.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
@@ -2456,22 +2361,19 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class ImageCacheImageRegistryCredentialArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password of the Image Registry.
-        """
-        server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The address of Image Registry without `http://` or `https://`.
-        """
-        user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user name of Image Registry.
-        """
-elif False:
-    ImageCacheImageRegistryCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class ImageCacheImageRegistryCredentialArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password of the Image Registry.
+    """
+    server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The address of Image Registry without `http://` or `https://`.
+    """
+    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user name of Image Registry.
+    """
 
 @pulumi.input_type
 class ImageCacheImageRegistryCredentialArgs:
@@ -2528,13 +2430,10 @@ class ImageCacheImageRegistryCredentialArgs:
         pulumi.set(self, "user_name", value)
 
 
-if not MYPY:
-    class OpenApiImageCacheImageRegistryCredentialArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        server: NotRequired[pulumi.Input[_builtins.str]]
-        user_name: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    OpenApiImageCacheImageRegistryCredentialArgsDict: TypeAlias = Mapping[str, Any]
+class OpenApiImageCacheImageRegistryCredentialArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    server: NotRequired[pulumi.Input[_builtins.str]]
+    user_name: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class OpenApiImageCacheImageRegistryCredentialArgs:
@@ -2577,22 +2476,19 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
         pulumi.set(self, "user_name", value)
 
 
-if not MYPY:
-    class VirtualNodeTaintArgsDict(TypedDict):
-        effect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the taint.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the taint.
-        """
-elif False:
-    VirtualNodeTaintArgsDict: TypeAlias = Mapping[str, Any]
+class VirtualNodeTaintArgsDict(TypedDict):
+    effect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the taint.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the taint.
+    """
 
 @pulumi.input_type
 class VirtualNodeTaintArgs:

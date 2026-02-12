@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Private Zone Record resource.
+ *
+ * > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud.pvtz.ZoneRecord` to build a Private Zone Record resource.
+ *
  * ## Example Usage
  *
  * Basic Usage

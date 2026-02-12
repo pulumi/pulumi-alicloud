@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `kms.Ciphertext` resource.
+//
+// > **NOTE:** Available since v1.63.0.
+//
+// > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+//
 // ## Example Usage
 //
 // # Basic Usage

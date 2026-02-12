@@ -2305,6 +2305,146 @@ class Instance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides  Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstances-redis).
+
+        > **NOTE:** Available since v1.14.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.kvstore.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_get_zones.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("default",
+            db_instance_name=name,
+            vswitch_id=default_switch.id,
+            resource_group_id=default.ids[0],
+            zone_id=default_get_zones.zones[0].id,
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            engine_version="5.0",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        Launching a PrePaid instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-prepaid"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.kvstore.get_zones(instance_charge_type="PrePaid")
+        # PrePaid instance can not deleted and there suggests using an existing vpc and vswitch, like default vpc.
+        default_get_networks = alicloud.vpc.get_networks(is_default=True)
+        default_get_switches = alicloud.vpc.get_switches(zone_id=default_get_zones.zones[0].id,
+            vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.kvstore.Instance("default",
+            db_instance_name=name,
+            vswitch_id=default_get_switches.ids[0],
+            resource_group_id=default.ids[0],
+            zone_id=default_get_zones.zones[0].id,
+            secondary_zone_id=default_get_zones.zones[1].id,
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            engine_version="5.0",
+            payment_type="PrePaid",
+            period="12",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "no",
+                "lazyfree-lazy-eviction": "no",
+                "EvictionPolicy": "volatile-lru",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        Setting Private Connection String
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-with-connection"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.kvstore.get_zones(product_type="OnECS")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_get_zones.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("default",
+            db_instance_name=name,
+            vswitch_id=default_switch.id,
+            resource_group_id=default.ids[0],
+            zone_id=default_get_zones.zones[0].id,
+            secondary_zone_id=default_get_zones.zones[1].id,
+            instance_class="redis.shard.small.ce",
+            instance_type="Redis",
+            engine_version="7.0",
+            maintain_start_time="04:00Z",
+            maintain_end_time="06:00Z",
+            backup_periods=["Wednesday"],
+            backup_time="11:00Z-12:00Z",
+            private_connection_prefix="exampleconnectionprefix",
+            private_connection_port="4011",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+                "EvictionPolicy": "volatile-lru",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        ### Deleting `kvstore.Instance` or removing it from your configuration
+
+        The `kvstore.Instance` resource allows you to manage `payment_type = "Prepaid"` db instance, but Terraform cannot destroy it.
+        From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
+        from your state file and management, but will not destroy the DB Instance.
+        You can resume managing the subscription db instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KVStore instance can be imported using the id, e.g.
@@ -2397,6 +2537,146 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides  Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstances-redis).
+
+        > **NOTE:** Available since v1.14.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.kvstore.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_get_zones.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("default",
+            db_instance_name=name,
+            vswitch_id=default_switch.id,
+            resource_group_id=default.ids[0],
+            zone_id=default_get_zones.zones[0].id,
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            engine_version="5.0",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        Launching a PrePaid instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-prepaid"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.kvstore.get_zones(instance_charge_type="PrePaid")
+        # PrePaid instance can not deleted and there suggests using an existing vpc and vswitch, like default vpc.
+        default_get_networks = alicloud.vpc.get_networks(is_default=True)
+        default_get_switches = alicloud.vpc.get_switches(zone_id=default_get_zones.zones[0].id,
+            vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.kvstore.Instance("default",
+            db_instance_name=name,
+            vswitch_id=default_get_switches.ids[0],
+            resource_group_id=default.ids[0],
+            zone_id=default_get_zones.zones[0].id,
+            secondary_zone_id=default_get_zones.zones[1].id,
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            engine_version="5.0",
+            payment_type="PrePaid",
+            period="12",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "no",
+                "lazyfree-lazy-eviction": "no",
+                "EvictionPolicy": "volatile-lru",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        Setting Private Connection String
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-with-connection"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.kvstore.get_zones(product_type="OnECS")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_get_zones.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("default",
+            db_instance_name=name,
+            vswitch_id=default_switch.id,
+            resource_group_id=default.ids[0],
+            zone_id=default_get_zones.zones[0].id,
+            secondary_zone_id=default_get_zones.zones[1].id,
+            instance_class="redis.shard.small.ce",
+            instance_type="Redis",
+            engine_version="7.0",
+            maintain_start_time="04:00Z",
+            maintain_end_time="06:00Z",
+            backup_periods=["Wednesday"],
+            backup_time="11:00Z-12:00Z",
+            private_connection_prefix="exampleconnectionprefix",
+            private_connection_port="4011",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+                "EvictionPolicy": "volatile-lru",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        ### Deleting `kvstore.Instance` or removing it from your configuration
+
+        The `kvstore.Instance` resource allows you to manage `payment_type = "Prepaid"` db instance, but Terraform cannot destroy it.
+        From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
+        from your state file and management, but will not destroy the DB Instance.
+        You can resume managing the subscription db instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KVStore instance can be imported using the id, e.g.

@@ -90,7 +90,7 @@ import (
 // Cloud Firewall Vpc Firewall can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example <id>
+// $terraform import alicloud_cloud_firewall_vpc_firewall.example <id>
 // ```
 type FirewallVpcFirewall struct {
 	pulumi.CustomResourceState

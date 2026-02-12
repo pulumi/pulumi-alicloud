@@ -12,6 +12,103 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ECS Image Pipeline Execution resource.
+//
+// The mirror template performs the build mirror task.
+//
+// For information about ECS Image Pipeline Execution and how to use it, see [What is Image Pipeline Execution](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-startimagepipelineexecution).
+//
+// > **NOTE:** Available since v1.237.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			pipelineExecution_vpc, err := vpc.NewNetwork(ctx, "pipelineExecution-vpc", &vpc.NetworkArgs{
+//				Description: pulumi.String("example-pipeline"),
+//				EnableIpv6:  pulumi.Bool(true),
+//				VpcName:     pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vs, err := vpc.NewSwitch(ctx, "vs", &vpc.SwitchArgs{
+//				Description: pulumi.String("pipelineExecution-start"),
+//				VpcId:       pipelineExecution_vpc.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				VswitchName: pulumi.String(invokeFormat.Result),
+//				ZoneId:      pulumi.String("cn-hangzhou-i"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pipelineExection_pipeline, err := ecs.NewEcsImagePipeline(ctx, "pipelineExection-pipeline", &ecs.EcsImagePipelineArgs{
+//				BaseImageType:  pulumi.String("IMAGE"),
+//				Description:    pulumi.String("example"),
+//				SystemDiskSize: pulumi.Int(40),
+//				VswitchId:      vs.ID(),
+//				AddAccounts: pulumi.StringArray{
+//					pulumi.String("1284387915995949"),
+//				},
+//				ImageName:               pulumi.String("example-image-pipeline"),
+//				DeleteInstanceOnFailure: pulumi.Bool(true),
+//				InternetMaxBandwidthOut: pulumi.Int(5),
+//				ToRegionIds: pulumi.StringArray{
+//					pulumi.String("cn-beijing"),
+//				},
+//				BaseImage:    pulumi.String("aliyun_3_x64_20G_dengbao_alibase_20240819.vhd"),
+//				BuildContent: pulumi.String("COMPONENT ic-bp122acttbs2sxdyq2ky"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewImagePipelineExecution(ctx, "default", &ecs.ImagePipelineExecutionArgs{
+//				ImagePipelineId: pipelineExection_pipeline.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `ecs.ImagePipelineExecution` or removing it from your configuration
+//
+// Terraform cannot destroy resource `ecs.ImagePipelineExecution`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ECS Image Pipeline Execution can be imported using the id, e.g.

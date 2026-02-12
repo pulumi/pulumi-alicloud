@@ -244,9 +244,25 @@ public class Node extends com.pulumi.resources.CustomResource {
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
     }
+    /**
+     * Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
+    /**
+     * @return Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> effectiveTime() {
         return Codegen.optional(this.effectiveTime);
     }
@@ -330,9 +346,25 @@ public class Node extends com.pulumi.resources.CustomResource {
     public Output<String> nodeType() {
         return this.nodeType;
     }
+    /**
+     * Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderType;
 
+    /**
+     * @return Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> orderType() {
         return Codegen.optional(this.orderType);
     }
@@ -386,9 +418,21 @@ public class Node extends com.pulumi.resources.CustomResource {
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="switchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> switchTime;
 
+    /**
+     * @return The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> switchTime() {
         return Codegen.optional(this.switchTime);
     }

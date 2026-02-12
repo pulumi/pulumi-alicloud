@@ -23,20 +23,15 @@ __all__ = [
     'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class CustomPropertyPropertyValueArgsDict(TypedDict):
-        property_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of an attribute.
-        """
-        property_value_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of an attribute id.
-        """
-elif False:
-    CustomPropertyPropertyValueArgsDict: TypeAlias = Mapping[str, Any]
+class CustomPropertyPropertyValueArgsDict(TypedDict):
+    property_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of an attribute.
+    """
+    property_value_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of an attribute id.
+    """
 
 @pulumi.input_type
 class CustomPropertyPropertyValueArgs:
@@ -77,18 +72,15 @@ class CustomPropertyPropertyValueArgs:
         pulumi.set(self, "property_value_id", value)
 
 
-if not MYPY:
-    class EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict(TypedDict):
-        cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cidrip of authorize access rule.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of authorize access rule.
-        """
-elif False:
-    EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict(TypedDict):
+    cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cidrip of authorize access rule.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of authorize access rule.
+    """
 
 @pulumi.input_type
 class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
@@ -129,38 +121,35 @@ class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict(TypedDict):
-        cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cidrip of security rules.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of security rules.
-        """
-        ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ip protocol of security rules.
-        """
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The policy of security rules.
-        """
-        port_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port range of security rules.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The priority of security rules.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of security rules.
-        """
-elif False:
-    EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict(TypedDict):
+    cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cidrip of security rules.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of security rules.
+    """
+    ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ip protocol of security rules.
+    """
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The policy of security rules.
+    """
+    port_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port range of security rules.
+    """
+    priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The priority of security rules.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of security rules.
+    """
 
 @pulumi.input_type
 class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs:

@@ -57,6 +57,9 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// Whether the quota status is under approval. Valid status:
         /// </summary>
         public readonly int HasPendingQuotaReviewTask;
+        /// <summary>
+        /// The resource ID in terraform of App Group. It is the same as `AppGroupName`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The Instance ID.

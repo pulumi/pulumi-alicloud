@@ -10,6 +10,69 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eais
 {
     /// <summary>
+    /// Provides a EAIS Instance resource.
+    /// 
+    /// Instance resource definition.
+    /// 
+    /// For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.137.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var zoneId = "cn-hangzhou-h";
+    /// 
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = @default.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Eais.Instance("default", new()
+    ///     {
+    ///         InstanceType = "eais.ei-a6.2xlarge",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.eais.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.eais.Instance` resource allows you to manage  `category = "ei"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EAIS Instance can be imported using the id, e.g.

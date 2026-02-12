@@ -424,6 +424,10 @@ class ZoneRecord(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Private Zone Record resource.
+
+        > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `pvtz.ZoneRecord` to build a Private Zone Record resource.
+
         ## Example Usage
 
         Basic Usage
@@ -473,6 +477,10 @@ class ZoneRecord(pulumi.CustomResource):
                  args: ZoneRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Private Zone Record resource.
+
+        > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `pvtz.ZoneRecord` to build a Private Zone Record resource.
+
         ## Example Usage
 
         Basic Usage

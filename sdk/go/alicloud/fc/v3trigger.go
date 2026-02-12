@@ -30,7 +30,6 @@ import (
 // import (
 //
 //	"encoding/json"
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"

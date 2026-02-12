@@ -12,6 +12,72 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Threat Detection Instance resource.
+//
+// Cloud Security Center instance.
+//
+// For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
+//
+// > **NOTE:** Available since v1.199.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := threatdetection.NewInstance(ctx, "default", &threatdetection.InstanceArgs{
+//				ThreatAnalysis:        pulumi.String("10"),
+//				SasSlsStorage:         pulumi.String("10"),
+//				VCore:                 pulumi.String("10"),
+//				SasSc:                 pulumi.Bool(false),
+//				BuyNumber:             pulumi.String("10"),
+//				HoneypotSwitch:        pulumi.String("2"),
+//				PaymentType:           pulumi.String("Subscription"),
+//				SasSdk:                pulumi.String("10"),
+//				SasAntiRansomware:     pulumi.String("10"),
+//				RenewalStatus:         pulumi.String("ManualRenewal"),
+//				Period:                pulumi.Int(1),
+//				VulSwitch:             pulumi.String("1"),
+//				RaspCount:             pulumi.String("1"),
+//				VulCount:              pulumi.String("20"),
+//				VersionCode:           pulumi.String("level3"),
+//				SasCspm:               pulumi.String("1000"),
+//				RenewalPeriodUnit:     pulumi.String("M"),
+//				ContainerImageScanNew: pulumi.String("100"),
+//				Honeypot:              pulumi.String("20"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `threatdetection.Instance` or removing it from your configuration
+//
+// Terraform cannot destroy resource `threatdetection.Instance`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection Instance can be imported using the id, e.g.

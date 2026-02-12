@@ -154,9 +154,17 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
     public Output<String> isp() {
         return this.isp;
     }
+    /**
+     * The resource ID in terraform of VPC Public Ip Address Pool.
+     * 
+     */
     @Export(name="publicIpAddressPoolId", refs={String.class}, tree="[0]")
     private Output<String> publicIpAddressPoolId;
 
+    /**
+     * @return The resource ID in terraform of VPC Public Ip Address Pool.
+     * 
+     */
     public Output<String> publicIpAddressPoolId() {
         return this.publicIpAddressPoolId;
     }

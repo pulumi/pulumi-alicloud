@@ -77,9 +77,17 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+     * 
+     */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
+    /**
+     * @return The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+     * 
+     */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
@@ -324,11 +332,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
             return location(Output.of(location));
         }
 
+        /**
+         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(@Nullable Output<String> paymentType) {
             $.paymentType = paymentType;
             return this;
         }
 
+        /**
+         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
         }

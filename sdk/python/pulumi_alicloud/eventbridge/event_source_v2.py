@@ -38,6 +38,9 @@ class EventSourceV2Args:
         :param pulumi.Input[_builtins.str] event_bus_name: Name of the bus associated with the event source
         :param pulumi.Input[_builtins.str] event_source_name: The code name of event source
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
+        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input['EventSourceV2SourceHttpEventParametersArgs'] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
         :param pulumi.Input['EventSourceV2SourceKafkaParametersArgs'] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
         :param pulumi.Input['EventSourceV2SourceMnsParametersArgs'] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
@@ -109,6 +112,11 @@ class EventSourceV2Args:
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
     def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to connect to an external data source
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "linked_external_source")
 
     @linked_external_source.setter
@@ -232,6 +240,9 @@ class _EventSourceV2State:
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
         :param pulumi.Input[_builtins.str] event_bus_name: Name of the bus associated with the event source
         :param pulumi.Input[_builtins.str] event_source_name: The code name of event source
+        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input['EventSourceV2SourceHttpEventParametersArgs'] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
         :param pulumi.Input['EventSourceV2SourceKafkaParametersArgs'] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
         :param pulumi.Input['EventSourceV2SourceMnsParametersArgs'] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
@@ -305,6 +316,11 @@ class _EventSourceV2State:
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
     def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to connect to an external data source
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "linked_external_source")
 
     @linked_external_source.setter
@@ -487,6 +503,9 @@ class EventSourceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
         :param pulumi.Input[_builtins.str] event_bus_name: Name of the bus associated with the event source
         :param pulumi.Input[_builtins.str] event_source_name: The code name of event source
+        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
         :param pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
         :param pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
@@ -641,6 +660,9 @@ class EventSourceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
         :param pulumi.Input[_builtins.str] event_bus_name: Name of the bus associated with the event source
         :param pulumi.Input[_builtins.str] event_source_name: The code name of event source
+        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']] source_http_event_parameters: The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
         :param pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']] source_kafka_parameters: Kafka event source parameter. See `source_kafka_parameters` below.
         :param pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']] source_mns_parameters: Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
@@ -695,6 +717,11 @@ class EventSourceV2(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
     def linked_external_source(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to connect to an external data source
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "linked_external_source")
 
     @_builtins.property

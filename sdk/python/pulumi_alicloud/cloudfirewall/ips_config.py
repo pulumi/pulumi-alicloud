@@ -315,12 +315,50 @@ class IpsConfig(pulumi.CustomResource):
                  run_mode: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a Cloud Firewall IPS Config resource.
+
+        Support interception mode modification.
+
+        For information about Cloud Firewall IPS Config and how to use it, see [What is IPS Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeDefaultIPSConfig).
+
+        > **NOTE:** Available since v1.249.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.Instance("default", payment_type="PayAsYouGo")
+        default_ips_config = alicloud.cloudfirewall.IpsConfig("default",
+            lang="zh",
+            max_sdl=1000,
+            basic_rules=1,
+            run_mode=1,
+            cti_rules=0,
+            patch_rules=0,
+            rule_class=1,
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+
+        ### Deleting `cloudfirewall.IpsConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.IpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall IPS Config can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/ipsConfig:IpsConfig example 
+        $ terraform import alicloud_cloud_firewall_ips_config.example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -351,12 +389,50 @@ class IpsConfig(pulumi.CustomResource):
                  args: Optional[IpsConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Cloud Firewall IPS Config resource.
+
+        Support interception mode modification.
+
+        For information about Cloud Firewall IPS Config and how to use it, see [What is IPS Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeDefaultIPSConfig).
+
+        > **NOTE:** Available since v1.249.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.Instance("default", payment_type="PayAsYouGo")
+        default_ips_config = alicloud.cloudfirewall.IpsConfig("default",
+            lang="zh",
+            max_sdl=1000,
+            basic_rules=1,
+            run_mode=1,
+            cti_rules=0,
+            patch_rules=0,
+            rule_class=1,
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+
+        ### Deleting `cloudfirewall.IpsConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.IpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall IPS Config can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/ipsConfig:IpsConfig example 
+        $ terraform import alicloud_cloud_firewall_ips_config.example 
         ```
 
         :param str resource_name: The name of the resource.

@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cfg
 {
     /// <summary>
+    /// &gt; **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.171.0`.
+    /// Please use new resource alicloud.cfg.Delivery instead.
+    /// 
+    /// Provides an Alicloud Config Delivery Channel resource. You can receive configuration audit event changes by configuring OSS, MNS and SLS services provided by Alibaba Cloud.
+    /// For information about Alicloud Config Delivery Channel and how to use it, see [What is Delivery Channel](https://www.alibabacloud.com/help/en/doc-detail/307022.html).
+    /// 
+    /// &gt; **NOTE:** Available since v1.99.0.
+    /// 
+    /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+    /// 
+    /// &gt; **NOTE:** Once each type of delivery channel is created, it does not support destroyed by terraform. Only support through the `Status` attribute control enable and disable.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

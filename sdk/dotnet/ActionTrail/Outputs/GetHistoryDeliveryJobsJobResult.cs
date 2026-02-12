@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The time when the task ended.
         /// </summary>
         public readonly string EndTime;
+        /// <summary>
+        /// The resource ID in terraform of History Delivery Job.
+        /// </summary>
         public readonly string HistoryDeliveryJobId;
         /// <summary>
         /// The home region of the trail.

@@ -1121,6 +1121,47 @@ class EipAddress(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a EIP Address resource.
+
+        > **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
+
+        > **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+        Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+
+        For information about EIP Address and how to use it, see [What is Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
+
+        > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ecs.EipAddress("default",
+            description=name,
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
+        ```
+
+        ### Deleting `ecs.EipAddress` or removing it from your configuration
+
+        The `ecs.EipAddress` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EIP Address can be imported using the id, e.g.
@@ -1216,6 +1257,47 @@ class EipAddress(pulumi.CustomResource):
                  args: Optional[EipAddressArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a EIP Address resource.
+
+        > **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
+
+        > **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+        Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+
+        For information about EIP Address and how to use it, see [What is Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
+
+        > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ecs.EipAddress("default",
+            description=name,
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
+        ```
+
+        ### Deleting `ecs.EipAddress` or removing it from your configuration
+
+        The `ecs.EipAddress` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EIP Address can be imported using the id, e.g.

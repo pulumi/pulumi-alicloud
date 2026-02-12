@@ -10,6 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ExpressConnect
 {
     /// <summary>
+    /// Provides a Express Connect Router Express Connect Router resource. Express Connect Router.
+    /// 
+    /// For information about Express Connect Router Express Connect Router and how to use it, see [What is Express Connect Router](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouter).
+    /// 
+    /// &gt; **NOTE:** Available since v1.224.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultM9YxGW = new AliCloud.ExpressConnect.RouterExpressConnectRouter("defaultM9YxGW", new()
+    ///     {
+    ///         AlibabaSideAsn = 65533,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.expressconnect.RouterExpressConnectRouter` or removing it from your configuration
+    /// 
+    /// The `alicloud.expressconnect.RouterExpressConnectRouter` resource allows you to manage  `EcrId = ""`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Router Express Connect Router can be imported using the id, e.g.

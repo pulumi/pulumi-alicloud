@@ -2669,6 +2669,16 @@ class DdrInstance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provide RDS remote disaster recovery instance resources.
+
+        For information about RDS remote disaster recovery instance and how to use it, see [What is ApsaraDB for RDS Remote Disaster Recovery](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createddrinstance).
+
+        > **NOTE:** Available since v1.198.0.
+
+        ## Example Usage
+
+        Because the generation time of the disaster recovery set is uncertain, the query backup set may not have a value, so the following examples may not be executed successfully in one run.
+
         ## Import
 
         RDS ddr instance can be imported using the id, e.g.
@@ -2854,6 +2864,16 @@ class DdrInstance(pulumi.CustomResource):
                  args: DdrInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provide RDS remote disaster recovery instance resources.
+
+        For information about RDS remote disaster recovery instance and how to use it, see [What is ApsaraDB for RDS Remote Disaster Recovery](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createddrinstance).
+
+        > **NOTE:** Available since v1.198.0.
+
+        ## Example Usage
+
+        Because the generation time of the disaster recovery set is uncertain, the query backup set may not have a value, so the following examples may not be executed successfully in one run.
+
         ## Import
 
         RDS ddr instance can be imported using the id, e.g.

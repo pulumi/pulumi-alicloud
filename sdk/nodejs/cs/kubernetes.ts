@@ -389,6 +389,8 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+     *
      * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
      */
     declare public readonly namePrefix: pulumi.Output<string | undefined>;
@@ -440,6 +442,9 @@ export class Kubernetes extends pulumi.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     */
     declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
      * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
@@ -807,6 +812,8 @@ export interface KubernetesState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+     *
      * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
      */
     namePrefix?: pulumi.Input<string>;
@@ -858,6 +865,9 @@ export interface KubernetesState {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     */
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
@@ -1061,6 +1071,8 @@ export interface KubernetesArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+     *
      * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
      */
     namePrefix?: pulumi.Input<string>;
@@ -1108,6 +1120,9 @@ export interface KubernetesArgs {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     */
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.

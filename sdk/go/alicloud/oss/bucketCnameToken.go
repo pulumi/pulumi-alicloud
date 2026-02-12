@@ -12,6 +12,62 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a OSS Bucket Cname Token resource.
+//
+// The token used to verify the ownership of the bucket custom domain name.
+//
+// For information about OSS Bucket Cname Token and how to use it, see [What is Bucket Cname Token](https://www.alibabacloud.com/help/en/oss/developer-reference/createcnametoken).
+//
+// > **NOTE:** Available since v1.233.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
+//				Bucket:       pulumi.String(name),
+//				StorageClass: pulumi.String("Standard"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketCnameToken(ctx, "defaultZaWJfG", &oss.BucketCnameTokenArgs{
+//				Bucket: createBucket.Bucket,
+//				Domain: pulumi.String("terraform-example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `oss.BucketCnameToken` or removing it from your configuration
+//
+// Terraform cannot destroy resource `oss.BucketCnameToken`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // OSS Bucket Cname Token can be imported using the id, e.g.

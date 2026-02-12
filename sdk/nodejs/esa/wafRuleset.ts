@@ -88,6 +88,11 @@ export class WafRuleset extends pulumi.CustomResource {
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     declare public readonly siteId: pulumi.Output<string>;
+    /**
+     * The site version.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * Rule Set Status
@@ -153,6 +158,11 @@ export interface WafRulesetState {
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     siteId?: pulumi.Input<string>;
+    /**
+     * The site version.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     siteVersion?: pulumi.Input<number>;
     /**
      * Rule Set Status
@@ -176,6 +186,11 @@ export interface WafRulesetArgs {
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     siteId: pulumi.Input<string>;
+    /**
+     * The site version.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     siteVersion?: pulumi.Input<number>;
     /**
      * Rule Set Status

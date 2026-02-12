@@ -17,6 +17,152 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Max Compute Quota Schedule resource.
+ * 
+ * For information about Max Compute Quota Schedule and how to use it, see [What is Quota Schedule](https://www.alibabacloud.com/help/en/).
+ * 
+ * &gt; **NOTE:** Available since v1.242.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.maxcompute.QuotaPlan;
+ * import com.pulumi.alicloud.maxcompute.QuotaPlanArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaPlanQuotaArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaPlanQuotaParameterArgs;
+ * import com.pulumi.alicloud.maxcompute.QuotaSchedule;
+ * import com.pulumi.alicloud.maxcompute.QuotaScheduleArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaScheduleScheduleListArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaScheduleScheduleListConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var elasticReservedCu = config.get("elasticReservedCu").orElse("0");
+ *         final var quotaNickName = config.get("quotaNickName").orElse("os_terrform_p");
+ *         var default_ = new QuotaPlan("default", QuotaPlanArgs.builder()
+ *             .quota(QuotaPlanQuotaArgs.builder()
+ *                 .parameter(QuotaPlanQuotaParameterArgs.builder()
+ *                     .elasticReservedCu(50)
+ *                     .build())
+ *                 .subQuotaInfoLists(                
+ *                     QuotaPlanQuotaSubQuotaInfoListArgs.builder()
+ *                         .nickName("sub_quota")
+ *                         .parameter(QuotaPlanQuotaSubQuotaInfoListParameterArgs.builder()
+ *                             .minCu(0)
+ *                             .maxCu(20)
+ *                             .elasticReservedCu(30)
+ *                             .build())
+ *                         .build(),
+ *                     QuotaPlanQuotaSubQuotaInfoListArgs.builder()
+ *                         .nickName("os_terrform")
+ *                         .parameter(QuotaPlanQuotaSubQuotaInfoListParameterArgs.builder()
+ *                             .minCu(50)
+ *                             .maxCu(50)
+ *                             .elasticReservedCu(20)
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .planName("quota_plan1")
+ *             .nickname("os_terrform_p")
+ *             .build());
+ * 
+ *         var default2 = new QuotaPlan("default2", QuotaPlanArgs.builder()
+ *             .quota(QuotaPlanQuotaArgs.builder()
+ *                 .parameter(QuotaPlanQuotaParameterArgs.builder()
+ *                     .elasticReservedCu(50)
+ *                     .build())
+ *                 .subQuotaInfoLists(                
+ *                     QuotaPlanQuotaSubQuotaInfoListArgs.builder()
+ *                         .nickName("sub_quota")
+ *                         .parameter(QuotaPlanQuotaSubQuotaInfoListParameterArgs.builder()
+ *                             .minCu(0)
+ *                             .maxCu(20)
+ *                             .elasticReservedCu(20)
+ *                             .build())
+ *                         .build(),
+ *                     QuotaPlanQuotaSubQuotaInfoListArgs.builder()
+ *                         .nickName("os_terrform")
+ *                         .parameter(QuotaPlanQuotaSubQuotaInfoListParameterArgs.builder()
+ *                             .minCu(50)
+ *                             .maxCu(50)
+ *                             .elasticReservedCu(30)
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .planName("quota_plan2")
+ *             .nickname("os_terrform_p")
+ *             .build());
+ * 
+ *         var default3 = new QuotaPlan("default3", QuotaPlanArgs.builder()
+ *             .quota(QuotaPlanQuotaArgs.builder()
+ *                 .parameter(QuotaPlanQuotaParameterArgs.builder()
+ *                     .elasticReservedCu(50)
+ *                     .build())
+ *                 .subQuotaInfoLists(                
+ *                     QuotaPlanQuotaSubQuotaInfoListArgs.builder()
+ *                         .nickName("sub_quota")
+ *                         .parameter(QuotaPlanQuotaSubQuotaInfoListParameterArgs.builder()
+ *                             .minCu(40)
+ *                             .maxCu(40)
+ *                             .elasticReservedCu(40)
+ *                             .build())
+ *                         .build(),
+ *                     QuotaPlanQuotaSubQuotaInfoListArgs.builder()
+ *                         .nickName("os_terrform")
+ *                         .parameter(QuotaPlanQuotaSubQuotaInfoListParameterArgs.builder()
+ *                             .minCu(10)
+ *                             .maxCu(10)
+ *                             .elasticReservedCu(10)
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .planName("quota_plan3")
+ *             .nickname("os_terrform_p")
+ *             .build());
+ * 
+ *         var defaultQuotaSchedule = new QuotaSchedule("defaultQuotaSchedule", QuotaScheduleArgs.builder()
+ *             .timezone("UTC+8")
+ *             .nickname(quotaNickName)
+ *             .scheduleLists(QuotaScheduleScheduleListArgs.builder()
+ *                 .plan("Default")
+ *                 .condition(QuotaScheduleScheduleListConditionArgs.builder()
+ *                     .at("00:00")
+ *                     .build())
+ *                 .type("daily")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.maxcompute.QuotaSchedule` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.maxcompute.QuotaSchedule`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Max Compute Quota Schedule can be imported using the id, e.g.

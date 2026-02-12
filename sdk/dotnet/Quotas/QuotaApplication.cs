@@ -10,6 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas
 {
     /// <summary>
+    /// Provides a Quotas Quota Application resource. Details of Quota Application.
+    /// 
+    /// For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplication).
+    /// 
+    /// &gt; **NOTE:** Available since v1.117.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Quotas.QuotaApplication("default", new()
+    ///     {
+    ///         QuotaActionCode = "q_desktop-count",
+    ///         ProductCode = "gws",
+    ///         QuotaCategory = "CommonQuota",
+    ///         NoticeType = 3,
+    ///         Dimensions = new[]
+    ///         {
+    ///             new AliCloud.Quotas.Inputs.QuotaApplicationDimensionArgs
+    ///             {
+    ///                 Key = "regionId",
+    ///                 Value = "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         DesireValue = 1001,
+    ///         Reason = "测试",
+    ///         EnvLanguage = "zh",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.quotas.QuotaApplication` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.quotas.QuotaApplication`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Quotas Quota Application can be imported using the id, e.g.

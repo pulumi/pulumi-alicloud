@@ -19,24 +19,19 @@ __all__ = [
     'ClusterNetworkArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ClusterNetworkArgsDict(TypedDict):
-        vpc_id: pulumi.Input[_builtins.str]
-        """
-        VpcId to which the cluster belongs.
-        """
-        vswitches: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Switch to which the cluster belongs.
-        """
-        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Security group to which the cluster belongs.
-        """
-elif False:
-    ClusterNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworkArgsDict(TypedDict):
+    vpc_id: pulumi.Input[_builtins.str]
+    """
+    VpcId to which the cluster belongs.
+    """
+    vswitches: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Switch to which the cluster belongs.
+    """
+    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Security group to which the cluster belongs.
+    """
 
 @pulumi.input_type
 class ClusterNetworkArgs:

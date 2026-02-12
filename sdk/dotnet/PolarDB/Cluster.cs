@@ -10,6 +10,152 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
+    /// Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
+    /// environment in the cloud. An PolarDB cluster can contain multiple user-created
+    /// databases.
+    /// 
+    /// &gt; **NOTE:** Available since v1.66.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Create a PolarDB MySQL cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         Category = "Normal",
+    ///         PayType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+    ///         VswitchName = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("default", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         DbNodeClass = @default.Apply(@default =&gt; @default.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = "terraform-example",
+    ///         DbClusterIpArrays = new[]
+    ///         {
+    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///             {
+    ///                 DbClusterIpArrayName = "default",
+    ///                 SecurityIps = new[]
+    ///                 {
+    ///                     "1.2.3.4",
+    ///                     "1.2.3.5",
+    ///                 },
+    ///             },
+    ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///             {
+    ///                 DbClusterIpArrayName = "default2",
+    ///                 SecurityIps = new[]
+    ///                 {
+    ///                     "1.2.3.6",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
+    /// Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var roles = AliCloud.Ram.GetRoles.Invoke(new()
+    ///     {
+    ///         NameRegex = "AliyunRDSInstanceEncryptionDefaultRole",
+    ///     });
+    /// 
+    ///     var @default = new List&lt;AliCloud.Ram.Role&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         @default.Add(new AliCloud.Ram.Role($"default-{range.Value}", new()
+    ///         {
+    ///             Name = "AliyunRDSInstanceEncryptionDefaultRole",
+    ///             Document = @"    {
+    ///         \""Statement\"": [
+    ///             {
+    ///                \""Action\"": \""sts:AssumeRole\"",
+    ///                 \""Effect\"": \""Allow\"",
+    ///                 \""Principal\"": {
+    ///                     \""Service\"": [
+    ///                         \""rds.aliyuncs.com\""
+    ///                     ]
+    ///                 }
+    ///             }
+    ///         ],
+    ///         \""Version\"": \""1\""
+    ///     }
+    /// ",
+    ///             Description = "RDS使用此角色来访问您在其他云产品中的资源",
+    ///         }));
+    ///     }
+    ///     var defaultPolicyAttachment = new List&lt;AliCloud.ResourceManager.PolicyAttachment&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultPolicyAttachment.Add(new AliCloud.ResourceManager.PolicyAttachment($"default-{range.Value}", new()
+    ///         {
+    ///             PolicyName = "AliyunRDSInstanceEncryptionRolePolicy",
+    ///             PolicyType = "System",
+    ///             PrincipalName = Output.Tuple(roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length, roles, current, @default[0].Name, current).Apply(values =&gt;
+    ///             {
+    ///                 var length = values.Item1;
+    ///                 var roles = values.Item2;
+    ///                 var current = values.Item3;
+    ///                 var name = values.Item4;
+    ///                 var current1 = values.Item5;
+    ///                 return length &gt; 0 ? $"{roles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Name)}@role.{current.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyunservice.com" : $"{name}@role.{current1.Id}.onaliyunservice.com";
+    ///             }),
+    ///             PrincipalType = "ServiceRole",
+    ///             ResourceGroupId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
+    /// ### Removing alicloud.polardb.Cluster from your configuration
+    /// 
+    /// The alicloud.polardb.Cluster resource allows you to manage your polardb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the polardb Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// PolarDB cluster can be imported using the id, e.g.

@@ -10,6 +10,675 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
+    /// Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+    /// 
+    /// For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+    /// 
+    /// &gt; **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
+    /// **NOTE:** Available since v1.155.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create RDS MySQL instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         Name = "terraform-example",
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = "terraform-example",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a RDS MySQL instance with specific parameters
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         Name = "terraform-example",
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = "terraform-example",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         Parameters = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.InstanceParameterArgs
+    ///             {
+    ///                 Name = "delayed_insert_timeout",
+    ///                 Value = "600",
+    ///             },
+    ///             new AliCloud.Rds.Inputs.InstanceParameterArgs
+    ///             {
+    ///                 Name = "max_length_for_sort_data",
+    ///                 Value = "2048",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a High Availability RDS MySQL Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
+    ///         {
+    ///             VpcId = exampleNetwork.Id,
+    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "172.16.%d.0/24",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
+    ///             VswitchName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "terraform_example_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         Name = "terraform-example",
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = "terraform-example",
+    ///         VswitchId = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = exampleSwitch.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneIdSlaveA = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a High Availability RDS MySQL Instance with multi zones
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "HighAvailability",
+    ///         InstanceChargeType = "PostPaid",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
+    ///         {
+    ///             VpcId = exampleNetwork.Id,
+    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "172.16.%d.0/24",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
+    ///             VswitchName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "%s_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     name,
+    ///                     range.Value,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "HighAvailability",
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = exampleSwitch.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneIdSlaveA = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create an Enterprise Edition RDS MySQL Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
+    ///         {
+    ///             VpcId = exampleNetwork.Id,
+    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "172.16.%d.0/24",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
+    ///             VswitchName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "%s_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     name,
+    ///                     range.Value,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "Finance",
+    ///         InstanceType = "mysql.n2.xlarge.25",
+    ///         InstanceStorage = 20,
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = exampleSwitch.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneIdSlaveA = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a Serverless RDS MySQL Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-accdbinstance";
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "Serverless",
+    ///         Category = "serverless_basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "serverless_basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "Serverless",
+    ///         CommodityCode = "rds_serverless_public_cn",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceChargeType = "Serverless",
+    ///         InstanceName = name,
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         VswitchId = exampleSwitch.Id,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         Category = "serverless_basic",
+    ///         ServerlessConfigs = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.InstanceServerlessConfigArgs
+    ///             {
+    ///                 MaxCapacity = 8,
+    ///                 MinCapacity = 0.5,
+    ///                 AutoPause = false,
+    ///                 SwitchForce = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a Serverless RDS PostgreSQL Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-accdbinstance";
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "14.0",
+    ///         InstanceChargeType = "Serverless",
+    ///         Category = "serverless_basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "14.0",
+    ///         Category = "serverless_basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "Serverless",
+    ///         CommodityCode = "rds_serverless_public_cn",
+    ///     });
+    /// 
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "14.0",
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceChargeType = "Serverless",
+    ///         InstanceName = name,
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         Category = "serverless_basic",
+    ///         ServerlessConfigs = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.InstanceServerlessConfigArgs
+    ///             {
+    ///                 MaxCapacity = 12,
+    ///                 MinCapacity = 0.5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a Serverless RDS SQLServer Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-accdbinstance";
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "SQLServer",
+    ///         EngineVersion = "2019_std_sl",
+    ///         InstanceChargeType = "Serverless",
+    ///         Category = "serverless_ha",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         Engine = "SQLServer",
+    ///         EngineVersion = "2019_std_sl",
+    ///         Category = "serverless_ha",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "Serverless",
+    ///         CommodityCode = "rds_serverless_public_cn",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
+    ///     {
+    ///         Engine = "SQLServer",
+    ///         EngineVersion = "2019_std_sl",
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceChargeType = "Serverless",
+    ///         InstanceName = name,
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         ZoneIdSlaveA = example.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///         VswitchId = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = new[]
+    ///             {
+    ///                 exampleSwitch.Id,
+    ///                 exampleSwitch.Id,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         Category = "serverless_ha",
+    ///         ServerlessConfigs = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.InstanceServerlessConfigArgs
+    ///             {
+    ///                 MaxCapacity = 8,
+    ///                 MinCapacity = 2,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.rds.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.rds.Instance` resource allows you to manage `InstanceChargeType = "Prepaid"` db instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
+    /// You can resume managing the subscription db instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS instance can be imported using the id, e.g.

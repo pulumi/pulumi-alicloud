@@ -17,6 +17,84 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Eflo Resource resource.
+ * 
+ * For information about Eflo Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createresource).
+ * 
+ * &gt; **NOTE:** Available since v1.248.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.eflo.Resource;
+ * import com.pulumi.alicloud.eflo.ResourceArgs;
+ * import com.pulumi.alicloud.eflo.inputs.ResourceUserAccessParamArgs;
+ * import com.pulumi.alicloud.eflo.inputs.ResourceMachineTypesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultResource = new Resource("defaultResource", ResourceArgs.builder()
+ *             .userAccessParam(ResourceUserAccessParamArgs.builder()
+ *                 .accessId("your_access_id")
+ *                 .accessKey("your_access_key")
+ *                 .workspaceId("your_workspace_id")
+ *                 .endpoint("your_endpoint")
+ *                 .build())
+ *             .clusterId(String.format("terraform-%s", default_.result()))
+ *             .machineTypes(ResourceMachineTypesArgs.builder()
+ *                 .memoryInfo("32x 64GB DDR4 4800 Memory")
+ *                 .type("Private")
+ *                 .bondNum(5)
+ *                 .nodeCount(1)
+ *                 .cpuInfo("2x Intel Saphhire Rapid 8469C 48C CPU")
+ *                 .networkInfo("1x 200Gbps Dual Port BF3 DPU for VPC 4x 200Gbps Dual Port EIC")
+ *                 .gpuInfo("8x OAM 810 GPU")
+ *                 .diskInfo("2x 480GB SATA SSD 4x 3.84TB NVMe SSD")
+ *                 .networkMode("net")
+ *                 .name("lingjun")
+ *                 .build())
+ *             .clusterName(name)
+ *             .clusterDesc(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.eflo.Resource` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.eflo.Resource`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Eflo Resource can be imported using the id, e.g.

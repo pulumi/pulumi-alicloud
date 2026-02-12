@@ -31,20 +31,15 @@ __all__ = [
     'MonitorConfigIspCityNodeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessStrategyDefaultAddrPoolArgsDict(TypedDict):
-        addr_pool_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the address pool in the primary address pool group.
-        """
-        lba_weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The weight of the address pool in the primary address pool group.
-        """
-elif False:
-    AccessStrategyDefaultAddrPoolArgsDict: TypeAlias = Mapping[str, Any]
+class AccessStrategyDefaultAddrPoolArgsDict(TypedDict):
+    addr_pool_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the address pool in the primary address pool group.
+    """
+    lba_weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The weight of the address pool in the primary address pool group.
+    """
 
 @pulumi.input_type
 class AccessStrategyDefaultAddrPoolArgs:
@@ -84,18 +79,15 @@ class AccessStrategyDefaultAddrPoolArgs:
         pulumi.set(self, "lba_weight", value)
 
 
-if not MYPY:
-    class AccessStrategyFailoverAddrPoolArgsDict(TypedDict):
-        addr_pool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the address pool in the secondary address pool group.
-        """
-        lba_weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The weight of the address pool in the secondary address pool group.
-        """
-elif False:
-    AccessStrategyFailoverAddrPoolArgsDict: TypeAlias = Mapping[str, Any]
+class AccessStrategyFailoverAddrPoolArgsDict(TypedDict):
+    addr_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the address pool in the secondary address pool group.
+    """
+    lba_weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The weight of the address pool in the secondary address pool group.
+    """
 
 @pulumi.input_type
 class AccessStrategyFailoverAddrPoolArgs:
@@ -136,14 +128,11 @@ class AccessStrategyFailoverAddrPoolArgs:
         pulumi.set(self, "lba_weight", value)
 
 
-if not MYPY:
-    class AccessStrategyLineArgsDict(TypedDict):
-        line_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The line code of the source region.
-        """
-elif False:
-    AccessStrategyLineArgsDict: TypeAlias = Mapping[str, Any]
+class AccessStrategyLineArgsDict(TypedDict):
+    line_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The line code of the source region.
+    """
 
 @pulumi.input_type
 class AccessStrategyLineArgs:
@@ -168,32 +157,29 @@ class AccessStrategyLineArgs:
         pulumi.set(self, "line_code", value)
 
 
-if not MYPY:
-    class AddressPoolAddressArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The address that you want to add to the address pool.
-        """
-        attribute_info: pulumi.Input[_builtins.str]
-        """
-        The source region of the address. expressed as a JSON string. The structure is as follows:
-        * `LineCodes`: List of home lineCodes.
-        * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
-        """
-        mode: pulumi.Input[_builtins.str]
-        """
-        The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
-        """
-        lba_weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
-        """
-        remark: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the address.
-        """
-elif False:
-    AddressPoolAddressArgsDict: TypeAlias = Mapping[str, Any]
+class AddressPoolAddressArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The address that you want to add to the address pool.
+    """
+    attribute_info: pulumi.Input[_builtins.str]
+    """
+    The source region of the address. expressed as a JSON string. The structure is as follows:
+    * `LineCodes`: List of home lineCodes.
+    * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+    """
+    mode: pulumi.Input[_builtins.str]
+    """
+    The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+    """
+    lba_weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+    """
+    remark: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the address.
+    """
 
 @pulumi.input_type
 class AddressPoolAddressArgs:
@@ -283,18 +269,15 @@ class AddressPoolAddressArgs:
         pulumi.set(self, "remark", value)
 
 
-if not MYPY:
-    class CustomLineIpSegmentListArgsDict(TypedDict):
-        end_ip: pulumi.Input[_builtins.str]
-        """
-        The end IP address of the CIDR block.
-        """
-        start_ip: pulumi.Input[_builtins.str]
-        """
-        The start IP address of the CIDR block.
-        """
-elif False:
-    CustomLineIpSegmentListArgsDict: TypeAlias = Mapping[str, Any]
+class CustomLineIpSegmentListArgsDict(TypedDict):
+    end_ip: pulumi.Input[_builtins.str]
+    """
+    The end IP address of the CIDR block.
+    """
+    start_ip: pulumi.Input[_builtins.str]
+    """
+    The start IP address of the CIDR block.
+    """
 
 @pulumi.input_type
 class CustomLineIpSegmentListArgs:
@@ -333,32 +316,29 @@ class CustomLineIpSegmentListArgs:
         pulumi.set(self, "start_ip", value)
 
 
-if not MYPY:
-    class GtmInstanceAlertConfigArgsDict(TypedDict):
-        dingtalk_notice: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to configure DingTalk notifications. Valid values: `true`, `false`.
-        """
-        email_notice: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to configure mail notification. Valid values: `true`, `false`.
-        """
-        notice_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alarm Event Type.
-        - `ADDR_ALERT`: Address not available.
-        - `ADDR_RESUME`: Address Recovery available.
-        - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-        - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-        - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-        - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
-        """
-        sms_notice: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to configure SMS notification. Valid values: `true`, `false`.
-        """
-elif False:
-    GtmInstanceAlertConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GtmInstanceAlertConfigArgsDict(TypedDict):
+    dingtalk_notice: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+    """
+    email_notice: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to configure mail notification. Valid values: `true`, `false`.
+    """
+    notice_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alarm Event Type.
+    - `ADDR_ALERT`: Address not available.
+    - `ADDR_RESUME`: Address Recovery available.
+    - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+    - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+    - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+    - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+    """
+    sms_notice: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to configure SMS notification. Valid values: `true`, `false`.
+    """
 
 @pulumi.input_type
 class GtmInstanceAlertConfigArgs:
@@ -443,18 +423,15 @@ class GtmInstanceAlertConfigArgs:
         pulumi.set(self, "sms_notice", value)
 
 
-if not MYPY:
-    class MonitorConfigIspCityNodeArgsDict(TypedDict):
-        city_code: pulumi.Input[_builtins.str]
-        """
-        The code of the city node to monitor.
-        """
-        isp_code: pulumi.Input[_builtins.str]
-        """
-        The code of the Internet provider service (ISP) node to monitor.
-        """
-elif False:
-    MonitorConfigIspCityNodeArgsDict: TypeAlias = Mapping[str, Any]
+class MonitorConfigIspCityNodeArgsDict(TypedDict):
+    city_code: pulumi.Input[_builtins.str]
+    """
+    The code of the city node to monitor.
+    """
+    isp_code: pulumi.Input[_builtins.str]
+    """
+    The code of the Internet provider service (ISP) node to monitor.
+    """
 
 @pulumi.input_type
 class MonitorConfigIspCityNodeArgs:

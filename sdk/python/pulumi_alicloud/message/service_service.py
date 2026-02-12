@@ -57,7 +57,35 @@ class ServiceService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  __props__=None):
         """
-        Create a ServiceService resource with the given unique name, props, and options.
+        Provides a Message Service Service resource.
+
+        MNS Service Open Status.
+
+        For information about Message Service Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+
+        > **NOTE:** Available since v1.252.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.message.ServiceService("default")
+        ```
+
+        ### Creating `message.ServiceService`
+
+        The `message.ServiceService` resource is unique per account; repeated creation attempts to activate only one instance.
+
+        ### Deleting `message.ServiceService` or removing it from your configuration
+
+        Terraform cannot destroy resource `message.ServiceService`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -68,7 +96,35 @@ class ServiceService(pulumi.CustomResource):
                  args: Optional[ServiceServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceService resource with the given unique name, props, and options.
+        Provides a Message Service Service resource.
+
+        MNS Service Open Status.
+
+        For information about Message Service Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+
+        > **NOTE:** Available since v1.252.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.message.ServiceService("default")
+        ```
+
+        ### Creating `message.ServiceService`
+
+        The `message.ServiceService` resource is unique per account; repeated creation attempts to activate only one instance.
+
+        ### Deleting `message.ServiceService` or removing it from your configuration
+
+        Terraform cannot destroy resource `message.ServiceService`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param ServiceServiceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

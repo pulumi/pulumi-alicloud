@@ -1165,6 +1165,116 @@ class OssStockTask(pulumi.CustomResource):
                  video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Aligreen Oss Stock Task resource.
+
+        OSS stock file scanning task.
+
+        For information about Aligreen Oss Stock Task and how to use it, see [What is Oss Stock Task](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateOssStockTask).
+
+        > **NOTE:** Available since v1.228.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_pyh_xov = alicloud.oss.Bucket("defaultPyhXOV",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_jn_w8_na = alicloud.aligreen.Callback("defaultJnW8Na",
+            callback_url="https://www.aliyun.com/",
+            crypt_type=0,
+            callback_name=f"{name}{default['result']}",
+            callback_types=["machineScan"],
+            callback_suggestions=["block"])
+        default_oss_stock_task = alicloud.aligreen.OssStockTask("default",
+            image_opened=True,
+            auto_freeze_type="acl",
+            audio_max_size=200,
+            image_scan_limit=1,
+            video_frame_interval=1,
+            video_scan_limit=1000,
+            audio_scan_limit=1000,
+            video_max_frames=200,
+            video_max_size=500,
+            start_date="2024-08-01 00:00:00 +0800",
+            end_date="2024-12-31 09:06:42 +0800",
+            buckets=pulumi.Output.json_dumps([{
+                "Bucket": default_pyh_xov.bucket,
+                "Selected": True,
+                "Prefixes": [],
+            }]),
+            image_scenes=["porn"],
+            audio_antispam_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            image_live_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_terrorism_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            image_terrorism_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            callback_id=default_jn_w8_na.id,
+            image_ad_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            biz_type="recommend_massmedia_template_01",
+            audio_scenes=json.dumps(["antispam"]),
+            image_porn_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_live_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_porn_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_voice_antispam_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_scenes=json.dumps([
+                "ad",
+                "terrorism",
+                "live",
+                "porn",
+                "antispam",
+            ]),
+            video_ad_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }))
+        ```
+
+        ### Deleting `aligreen.OssStockTask` or removing it from your configuration
+
+        Terraform cannot destroy resource `aligreen.OssStockTask`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Oss Stock Task can be imported using the id, e.g.
@@ -1225,6 +1335,116 @@ class OssStockTask(pulumi.CustomResource):
                  args: Optional[OssStockTaskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Aligreen Oss Stock Task resource.
+
+        OSS stock file scanning task.
+
+        For information about Aligreen Oss Stock Task and how to use it, see [What is Oss Stock Task](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateOssStockTask).
+
+        > **NOTE:** Available since v1.228.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_pyh_xov = alicloud.oss.Bucket("defaultPyhXOV",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_jn_w8_na = alicloud.aligreen.Callback("defaultJnW8Na",
+            callback_url="https://www.aliyun.com/",
+            crypt_type=0,
+            callback_name=f"{name}{default['result']}",
+            callback_types=["machineScan"],
+            callback_suggestions=["block"])
+        default_oss_stock_task = alicloud.aligreen.OssStockTask("default",
+            image_opened=True,
+            auto_freeze_type="acl",
+            audio_max_size=200,
+            image_scan_limit=1,
+            video_frame_interval=1,
+            video_scan_limit=1000,
+            audio_scan_limit=1000,
+            video_max_frames=200,
+            video_max_size=500,
+            start_date="2024-08-01 00:00:00 +0800",
+            end_date="2024-12-31 09:06:42 +0800",
+            buckets=pulumi.Output.json_dumps([{
+                "Bucket": default_pyh_xov.bucket,
+                "Selected": True,
+                "Prefixes": [],
+            }]),
+            image_scenes=["porn"],
+            audio_antispam_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            image_live_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_terrorism_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            image_terrorism_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            callback_id=default_jn_w8_na.id,
+            image_ad_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            biz_type="recommend_massmedia_template_01",
+            audio_scenes=json.dumps(["antispam"]),
+            image_porn_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_live_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_porn_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_voice_antispam_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }),
+            video_scenes=json.dumps([
+                "ad",
+                "terrorism",
+                "live",
+                "porn",
+                "antispam",
+            ]),
+            video_ad_freeze_config=json.dumps({
+                "Type": "suggestion",
+                "Value": "block",
+            }))
+        ```
+
+        ### Deleting `aligreen.OssStockTask` or removing it from your configuration
+
+        Terraform cannot destroy resource `aligreen.OssStockTask`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Oss Stock Task can be imported using the id, e.g.

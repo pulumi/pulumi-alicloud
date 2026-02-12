@@ -5,6 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Lindorm Public Network resource.
+ *
+ * Public network connection of Lindorm instance.
+ *
+ * For information about Lindorm Public Network and how to use it, see [What is Public Network](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/SwitchInstancePublicNetwork).
+ *
+ * > **NOTE:** Available since v1.250.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const zoneId = config.get("zoneId") || "cn-shanghai-f";
+ * const regionId = config.get("regionId") || "cn-shanghai";
+ * const defaultX7MgJO = new alicloud.vpc.Network("defaultX7MgJO", {
+ *     description: name,
+ *     cidrBlock: "10.0.0.0/8",
+ *     vpcName: "amp-example-shanghai",
+ * });
+ * const default45mCzM = new alicloud.vpc.Switch("default45mCzM", {
+ *     description: name,
+ *     vpcId: defaultX7MgJO.id,
+ *     zoneId: zoneId,
+ *     cidrBlock: "10.0.0.0/24",
+ * });
+ * const defaultQpsLKr = new alicloud.lindorm.Instance("defaultQpsLKr", {
+ *     paymentType: "PayAsYouGo",
+ *     tableEngineNodeCount: 2,
+ *     instanceStorage: "80",
+ *     zoneId: zoneId,
+ *     vswitchId: default45mCzM.id,
+ *     diskCategory: "cloud_efficiency",
+ *     tableEngineSpecification: "lindorm.g.xlarge",
+ *     instanceName: "tf-example",
+ *     vpcId: defaultX7MgJO.id,
+ * });
+ * const _default = new alicloud.lindorm.PublicNetwork("default", {
+ *     instanceId: defaultQpsLKr.id,
+ *     enablePublicNetwork: 1,
+ *     engineType: "lindorm",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.lindorm.PublicNetwork` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.lindorm.PublicNetwork`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Lindorm Public Network can be imported using the id, e.g.

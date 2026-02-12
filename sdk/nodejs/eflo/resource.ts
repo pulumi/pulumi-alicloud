@@ -7,6 +7,58 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Eflo Resource resource.
+ *
+ * For information about Eflo Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createresource).
+ *
+ * > **NOTE:** Available since v1.248.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultResource = new alicloud.eflo.Resource("default", {
+ *     userAccessParam: {
+ *         accessId: "your_access_id",
+ *         accessKey: "your_access_key",
+ *         workspaceId: "your_workspace_id",
+ *         endpoint: "your_endpoint",
+ *     },
+ *     clusterId: `terraform-${_default.result}`,
+ *     machineTypes: {
+ *         memoryInfo: "32x 64GB DDR4 4800 Memory",
+ *         type: "Private",
+ *         bondNum: 5,
+ *         nodeCount: 1,
+ *         cpuInfo: "2x Intel Saphhire Rapid 8469C 48C CPU",
+ *         networkInfo: "1x 200Gbps Dual Port BF3 DPU for VPC 4x 200Gbps Dual Port EIC",
+ *         gpuInfo: "8x OAM 810 GPU",
+ *         diskInfo: "2x 480GB SATA SSD 4x 3.84TB NVMe SSD",
+ *         networkMode: "net",
+ *         name: "lingjun",
+ *     },
+ *     clusterName: name,
+ *     clusterDesc: name,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.eflo.Resource` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.eflo.Resource`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Eflo Resource can be imported using the id, e.g.

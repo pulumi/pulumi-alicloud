@@ -10,6 +10,160 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Aligreen
 {
     /// <summary>
+    /// Provides a Aligreen Oss Stock Task resource.
+    /// 
+    /// OSS stock file scanning task.
+    /// 
+    /// For information about Aligreen Oss Stock Task and how to use it, see [What is Oss Stock Task](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateOssStockTask).
+    /// 
+    /// &gt; **NOTE:** Available since v1.228.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultPyhXOV = new AliCloud.Oss.Bucket("defaultPyhXOV", new()
+    ///     {
+    ///         StorageClass = "Standard",
+    ///         BucketName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultJnW8Na = new AliCloud.Aligreen.Callback("defaultJnW8Na", new()
+    ///     {
+    ///         CallbackUrl = "https://www.aliyun.com/",
+    ///         CryptType = 0,
+    ///         CallbackName = $"{name}{@default.Result}",
+    ///         CallbackTypes = new[]
+    ///         {
+    ///             "machineScan",
+    ///         },
+    ///         CallbackSuggestions = new[]
+    ///         {
+    ///             "block",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultOssStockTask = new AliCloud.Aligreen.OssStockTask("default", new()
+    ///     {
+    ///         ImageOpened = true,
+    ///         AutoFreezeType = "acl",
+    ///         AudioMaxSize = 200,
+    ///         ImageScanLimit = 1,
+    ///         VideoFrameInterval = 1,
+    ///         VideoScanLimit = 1000,
+    ///         AudioScanLimit = 1000,
+    ///         VideoMaxFrames = 200,
+    ///         VideoMaxSize = 500,
+    ///         StartDate = "2024-08-01 00:00:00 +0800",
+    ///         EndDate = "2024-12-31 09:06:42 +0800",
+    ///         Buckets = Output.JsonSerialize(Output.Create(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["Bucket"] = defaultPyhXOV.BucketName,
+    ///                 ["Selected"] = true,
+    ///                 ["Prefixes"] = new[]
+    ///                 {
+    ///                 },
+    ///             },
+    ///         })),
+    ///         ImageScenes = new[]
+    ///         {
+    ///             "porn",
+    ///         },
+    ///         AudioAntispamFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         ImageLiveFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         VideoTerrorismFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         ImageTerrorismFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         CallbackId = defaultJnW8Na.Id,
+    ///         ImageAdFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         BizType = "recommend_massmedia_template_01",
+    ///         AudioScenes = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             "antispam",
+    ///         }),
+    ///         ImagePornFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         VideoLiveFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         VideoPornFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         VideoVoiceAntispamFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///         VideoScenes = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             "ad",
+    ///             "terrorism",
+    ///             "live",
+    ///             "porn",
+    ///             "antispam",
+    ///         }),
+    ///         VideoAdFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Type"] = "suggestion",
+    ///             ["Value"] = "block",
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.aligreen.OssStockTask` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.aligreen.OssStockTask`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Aligreen Oss Stock Task can be imported using the id, e.g.

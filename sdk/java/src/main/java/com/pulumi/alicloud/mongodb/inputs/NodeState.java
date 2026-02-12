@@ -128,9 +128,25 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dbInstanceId);
     }
 
+    /**
+     * Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="effectiveTime")
     private @Nullable Output<String> effectiveTime;
 
+    /**
+     * @return Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> effectiveTime() {
         return Optional.ofNullable(this.effectiveTime);
     }
@@ -220,9 +236,25 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.nodeType);
     }
 
+    /**
+     * Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="orderType")
     private @Nullable Output<String> orderType;
 
+    /**
+     * @return Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> orderType() {
         return Optional.ofNullable(this.orderType);
     }
@@ -280,9 +312,21 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="switchTime")
     private @Nullable Output<String> switchTime;
 
+    /**
+     * @return The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> switchTime() {
         return Optional.ofNullable(this.switchTime);
     }
@@ -467,11 +511,31 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
             return dbInstanceId(Output.of(dbInstanceId));
         }
 
+        /**
+         * @param effectiveTime Effective time of configuration change. Value description:
+         * - `Immediately` (default): takes effect Immediately.
+         * - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
             $.effectiveTime = effectiveTime;
             return this;
         }
 
+        /**
+         * @param effectiveTime Effective time of configuration change. Value description:
+         * - `Immediately` (default): takes effect Immediately.
+         * - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTime(String effectiveTime) {
             return effectiveTime(Output.of(effectiveTime));
         }
@@ -591,11 +655,31 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
             return nodeType(Output.of(nodeType));
         }
 
+        /**
+         * @param orderType Order type, value description:
+         * - `UPGRADE`: UPGRADE.
+         * - `DOWNGRADE`: downgrading.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderType(@Nullable Output<String> orderType) {
             $.orderType = orderType;
             return this;
         }
 
+        /**
+         * @param orderType Order type, value description:
+         * - `UPGRADE`: UPGRADE.
+         * - `DOWNGRADE`: downgrading.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderType(String orderType) {
             return orderType(Output.of(orderType));
         }
@@ -671,11 +755,27 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param switchTime The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchTime(@Nullable Output<String> switchTime) {
             $.switchTime = switchTime;
             return this;
         }
 
+        /**
+         * @param switchTime The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchTime(String switchTime) {
             return switchTime(Output.of(switchTime));
         }

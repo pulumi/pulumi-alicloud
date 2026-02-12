@@ -12,6 +12,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
+//
+// For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenbandwidthpackage).
+//
+// > **NOTE:** Available since v1.18.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cen.NewBandwidthPackage(ctx, "example", &cen.BandwidthPackageArgs{
+//				Bandwidth:               pulumi.Int(5),
+//				CenBandwidthPackageName: pulumi.String("tf_example"),
+//				GeographicRegionAId:     pulumi.String("China"),
+//				GeographicRegionBId:     pulumi.String("China"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cen.BandwidthPackage` or removing it from your configuration
+//
+// The `cen.BandwidthPackage` resource allows you to manage `paymentType = "PrePaid"` bandwidth package, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your statefile and management, but will not destroy the Bandwidth Package.
+// You can resume managing the subscription bandwidth package via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // CEN bandwidth package can be imported using the id, e.g.

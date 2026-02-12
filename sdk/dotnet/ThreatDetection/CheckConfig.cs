@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Check Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:threatdetection/checkConfig:CheckConfig example 
+    /// $ terraform import alicloud_threat_detection_check_config.example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/checkConfig:CheckConfig")]
@@ -132,6 +132,11 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Output("systemConfig")]
         public Output<bool?> SystemConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The cloud service providers.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("vendors")]
         public Output<ImmutableArray<string>> Vendors { get; private set; } = null!;
 
@@ -251,6 +256,12 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         [Input("vendors")]
         private InputList<string>? _vendors;
+
+        /// <summary>
+        /// The cloud service providers.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         public InputList<string> Vendors
         {
             get => _vendors ?? (_vendors = new InputList<string>());
@@ -335,6 +346,12 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         [Input("vendors")]
         private InputList<string>? _vendors;
+
+        /// <summary>
+        /// The cloud service providers.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         public InputList<string> Vendors
         {
             get => _vendors ?? (_vendors = new InputList<string>());

@@ -10,6 +10,73 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.91.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ecs.DedicatedHost("default", new()
+    ///     {
+    ///         DedicatedHostType = "ddh.g6",
+    ///         Tags = 
+    ///         {
+    ///             { "Create", "Terraform" },
+    ///             { "For", "DDH" },
+    ///         },
+    ///         Description = "From_Terraform",
+    ///         DedicatedHostName = "dedicated_host_name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create Prepaid DDH
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Ecs.DedicatedHost("example", new()
+    ///     {
+    ///         DedicatedHostType = "ddh.g5",
+    ///         Tags = 
+    ///         {
+    ///             { "Create", "Terraform" },
+    ///             { "For", "DDH" },
+    ///         },
+    ///         Description = "terraform-example",
+    ///         DedicatedHostName = "terraform-example",
+    ///         PaymentType = "PrePaid",
+    ///         ExpiredTime = "1",
+    ///         SaleCycle = "Month",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Deleting alicloud.ecs.DedicatedHost or removing it from your configuration
+    /// 
+    /// The alicloud.ecs.DedicatedHost resource allows you to manage PaymentType = "PrePaid" dedicated host, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration
+    /// will remove it from your state file and management, but will not destroy the Dedicated Host.
+    /// You can resume managing the subscription dedicated host via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ecs dedicated host can be imported using the id, e.g.

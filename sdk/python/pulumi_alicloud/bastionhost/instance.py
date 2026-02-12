@@ -58,6 +58,15 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+               ```
+               # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+               lifecycle {
+               ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+               }
+               ```
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
                - `M`: months.
@@ -238,6 +247,17 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        ```
+        # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+        lifecycle {
+        ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+        }
+        ```
+        """
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
@@ -353,6 +373,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+               ```
+               # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+               lifecycle {
+               ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+               }
+               ```
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
                - `M`: months.
@@ -507,6 +536,17 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        ```
+        # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+        lifecycle {
+        ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+        }
+        ```
+        """
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
@@ -653,6 +693,110 @@ class Instance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE:** Since the version 1.132.0, the resource `yundun.BastionHostInstance` has been renamed to `bastionhost.Instance`.
+
+        Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.bastionhost.Instance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_get_switches.ids[0],
+            security_group_ids=[default_security_group.id])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.bastionhost.Instance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            security_group_ids=[default_security_group.id],
+            vswitch_id=default_get_switches.ids[0],
+            ad_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "domain": "domain",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }],
+            ldap_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "login_name_mapping": "uid",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }])
+        ```
+
+        ### Deleting `bastionhost.Instance` or removing it from your configuration
+
+        The `bastionhost.Instance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the bastionhost instance.
+        You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Yundun_bastionhost instance can be imported using the id, e.g.
@@ -674,6 +818,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+               ```
+               # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+               lifecycle {
+               ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+               }
+               ```
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
                - `M`: months.
@@ -696,6 +849,110 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE:** Since the version 1.132.0, the resource `yundun.BastionHostInstance` has been renamed to `bastionhost.Instance`.
+
+        Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.bastionhost.Instance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_get_switches.ids[0],
+            security_group_ids=[default_security_group.id])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.bastionhost.Instance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            security_group_ids=[default_security_group.id],
+            vswitch_id=default_get_switches.ids[0],
+            ad_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "domain": "domain",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }],
+            ldap_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "login_name_mapping": "uid",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }])
+        ```
+
+        ### Deleting `bastionhost.Instance` or removing it from your configuration
+
+        The `bastionhost.Instance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the bastionhost instance.
+        You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Yundun_bastionhost instance can be imported using the id, e.g.
@@ -824,6 +1081,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+               ```
+               # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+               lifecycle {
+               ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+               }
+               ```
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
                - `M`: months.
@@ -933,6 +1199,17 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        ```
+        # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+        lifecycle {
+        ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+        }
+        ```
+        """
         return pulumi.get(self, "public_white_lists")
 
     @_builtins.property

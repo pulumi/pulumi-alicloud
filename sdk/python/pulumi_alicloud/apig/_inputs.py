@@ -31,16 +31,11 @@ __all__ = [
     'GatewayZoneConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class GatewayLogConfigArgsDict(TypedDict):
-        sls: NotRequired[pulumi.Input['GatewayLogConfigSlsArgsDict']]
-        """
-        Sls See `sls` below.
-        """
-elif False:
-    GatewayLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayLogConfigArgsDict(TypedDict):
+    sls: NotRequired[pulumi.Input['GatewayLogConfigSlsArgsDict']]
+    """
+    Sls See `sls` below.
+    """
 
 @pulumi.input_type
 class GatewayLogConfigArgs:
@@ -65,14 +60,11 @@ class GatewayLogConfigArgs:
         pulumi.set(self, "sls", value)
 
 
-if not MYPY:
-    class GatewayLogConfigSlsArgsDict(TypedDict):
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Log Service
-        """
-elif False:
-    GatewayLogConfigSlsArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayLogConfigSlsArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Log Service
+    """
 
 @pulumi.input_type
 class GatewayLogConfigSlsArgs:
@@ -97,14 +89,11 @@ class GatewayLogConfigSlsArgs:
         pulumi.set(self, "enable", value)
 
 
-if not MYPY:
-    class GatewayNetworkAccessConfigArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network Access Type
-        """
-elif False:
-    GatewayNetworkAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayNetworkAccessConfigArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network Access Type
+    """
 
 @pulumi.input_type
 class GatewayNetworkAccessConfigArgs:
@@ -129,18 +118,15 @@ class GatewayNetworkAccessConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class GatewayVpcArgsDict(TypedDict):
-        vpc_id: pulumi.Input[_builtins.str]
-        """
-        The VPC network ID.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone name.
-        """
-elif False:
-    GatewayVpcArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayVpcArgsDict(TypedDict):
+    vpc_id: pulumi.Input[_builtins.str]
+    """
+    The VPC network ID.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone name.
+    """
 
 @pulumi.input_type
 class GatewayVpcArgs:
@@ -180,18 +166,15 @@ class GatewayVpcArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class GatewayVswitchArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone name.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the virtual switch.
-        """
-elif False:
-    GatewayVswitchArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayVswitchArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone name.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the virtual switch.
+    """
 
 @pulumi.input_type
 class GatewayVswitchArgs:
@@ -232,22 +215,19 @@ class GatewayVswitchArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class GatewayZoneArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone name.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vswitch ID.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone ID.
-        """
-elif False:
-    GatewayZoneArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayZoneArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone name.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vswitch ID.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone ID.
+    """
 
 @pulumi.input_type
 class GatewayZoneArgs:
@@ -304,14 +284,11 @@ class GatewayZoneArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class GatewayZoneConfigArgsDict(TypedDict):
-        select_option: pulumi.Input[_builtins.str]
-        """
-        Availability Zone Options
-        """
-elif False:
-    GatewayZoneConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GatewayZoneConfigArgsDict(TypedDict):
+    select_option: pulumi.Input[_builtins.str]
+    """
+    Availability Zone Options
+    """
 
 @pulumi.input_type
 class GatewayZoneConfigArgs:

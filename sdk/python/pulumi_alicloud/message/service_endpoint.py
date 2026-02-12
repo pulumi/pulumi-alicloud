@@ -108,6 +108,31 @@ class ServiceEndpoint(pulumi.CustomResource):
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Message Service Endpoint resource.
+
+        For information about Message Service Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-enableendpoint).
+
+        > **NOTE:** Available since v1.243.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.message.ServiceEndpoint("default",
+            endpoint_enabled=True,
+            endpoint_type="public")
+        ```
+
+        ### Deleting `message.ServiceEndpoint` or removing it from your configuration
+
+        Terraform cannot destroy resource `message.ServiceEndpoint`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Endpoint can be imported using the id, e.g.
@@ -129,6 +154,31 @@ class ServiceEndpoint(pulumi.CustomResource):
                  args: ServiceEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Message Service Endpoint resource.
+
+        For information about Message Service Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-enableendpoint).
+
+        > **NOTE:** Available since v1.243.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.message.ServiceEndpoint("default",
+            endpoint_enabled=True,
+            endpoint_type="public")
+        ```
+
+        ### Deleting `message.ServiceEndpoint` or removing it from your configuration
+
+        Terraform cannot destroy resource `message.ServiceEndpoint`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Endpoint can be imported using the id, e.g.

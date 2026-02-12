@@ -3536,6 +3536,417 @@ class Instance(pulumi.CustomResource):
                  zone_id_slave_b: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+
+        For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+
+        > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
+        **NOTE:** Available since v1.155.0.
+
+        ## Example Usage
+
+        ### Create RDS MySQL instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.zones[0].id,
+            vswitch_name="terraform-example")
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id])
+        ```
+
+        ### Create a RDS MySQL instance with specific parameters
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.zones[0].id,
+            vswitch_name="terraform-example")
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id],
+            parameters=[
+                {
+                    "name": "delayed_insert_timeout",
+                    "value": "600",
+                },
+                {
+                    "name": "max_length_for_sort_data",
+                    "value": "2048",
+                },
+            ])
+        ```
+        ### Create a High Availability RDS MySQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="terraform_example_%d",
+                    args=[range["value"] + 1]).result))
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=std.join_output(separator=",",
+                input=[__item.id for __item in example_switch]).apply(lambda invoke: invoke.result),
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id],
+            zone_id=example.zones[0].id,
+            zone_id_slave_a=example.zones[1].id)
+        ```
+
+        ### Create a High Availability RDS MySQL Instance with multi zones
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            instance_charge_type="PostPaid",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"],
+                    ]).result))
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=std.join_output(separator=",",
+                input=[__item.id for __item in example_switch]).apply(lambda invoke: invoke.result),
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            zone_id=example.zones[0].id,
+            zone_id_slave_a=example.zones[1].id)
+        ```
+
+        ### Create an Enterprise Edition RDS MySQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            db_instance_storage_type="local_ssd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"],
+                    ]).result))
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            category="Finance",
+            instance_type="mysql.n2.xlarge.25",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=std.join_output(separator=",",
+                input=[__item.id for __item in example_switch]).apply(lambda invoke: invoke.result),
+            monitoring_period=60,
+            db_instance_storage_type="local_ssd",
+            zone_id=example.zones[0].id,
+            zone_id_slave_a=example.zones[1].id)
+        ```
+
+        ### Create a Serverless RDS MySQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-accdbinstance"
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="Serverless",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[1],
+            engine="MySQL",
+            engine_version="8.0",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="Serverless",
+            commodity_code="rds_serverless_public_cn")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.ids[1],
+            vswitch_name=name)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_charge_type="Serverless",
+            instance_name=name,
+            zone_id=example.ids[1],
+            vswitch_id=example_switch.id,
+            db_instance_storage_type="cloud_essd",
+            category="serverless_basic",
+            serverless_configs=[{
+                "max_capacity": 8,
+                "min_capacity": 0.5,
+                "auto_pause": False,
+                "switch_force": False,
+            }])
+        ```
+
+        ### Create a Serverless RDS PostgreSQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-accdbinstance"
+        example = alicloud.rds.get_zones(engine="PostgreSQL",
+            engine_version="14.0",
+            instance_charge_type="Serverless",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[1],
+            engine="PostgreSQL",
+            engine_version="14.0",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="Serverless",
+            commodity_code="rds_serverless_public_cn")
+        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
+            zone_id=example.ids[1])
+        example_instance = alicloud.rds.Instance("example",
+            engine="PostgreSQL",
+            engine_version="14.0",
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_charge_type="Serverless",
+            instance_name=name,
+            zone_id=example.ids[1],
+            vswitch_id=default_get_switches.ids[0],
+            db_instance_storage_type="cloud_essd",
+            category="serverless_basic",
+            serverless_configs=[{
+                "max_capacity": 12,
+                "min_capacity": 0.5,
+            }])
+        ```
+
+        ### Create a Serverless RDS SQLServer Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-accdbinstance"
+        example = alicloud.rds.get_zones(engine="SQLServer",
+            engine_version="2019_std_sl",
+            instance_charge_type="Serverless",
+            category="serverless_ha",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[1],
+            engine="SQLServer",
+            engine_version="2019_std_sl",
+            category="serverless_ha",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="Serverless",
+            commodity_code="rds_serverless_public_cn")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.ids[1],
+            vswitch_name=name)
+        example_instance = alicloud.rds.Instance("example",
+            engine="SQLServer",
+            engine_version="2019_std_sl",
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_charge_type="Serverless",
+            instance_name=name,
+            zone_id=example.ids[1],
+            zone_id_slave_a=example.ids[1],
+            vswitch_id=std.join_output(separator=",",
+                input=[
+                    example_switch.id,
+                    example_switch.id,
+                ]).apply(lambda invoke: invoke.result),
+            db_instance_storage_type="cloud_essd",
+            category="serverless_ha",
+            serverless_configs=[{
+                "max_capacity": 8,
+                "min_capacity": 2,
+            }])
+        ```
+
+        ### Deleting `rds.Instance` or removing it from your configuration
+
+        The `rds.Instance` resource allows you to manage `instance_charge_type = "Prepaid"` db instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
+        You can resume managing the subscription db instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS instance can be imported using the id, e.g.
@@ -3806,6 +4217,417 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+
+        For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+
+        > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
+        **NOTE:** Available since v1.155.0.
+
+        ## Example Usage
+
+        ### Create RDS MySQL instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.zones[0].id,
+            vswitch_name="terraform-example")
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id])
+        ```
+
+        ### Create a RDS MySQL instance with specific parameters
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.zones[0].id,
+            vswitch_name="terraform-example")
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id],
+            parameters=[
+                {
+                    "name": "delayed_insert_timeout",
+                    "value": "600",
+                },
+                {
+                    "name": "max_length_for_sort_data",
+                    "value": "2048",
+                },
+            ])
+        ```
+        ### Create a High Availability RDS MySQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="terraform_example_%d",
+                    args=[range["value"] + 1]).result))
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=std.join_output(separator=",",
+                input=[__item.id for __item in example_switch]).apply(lambda invoke: invoke.result),
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id],
+            zone_id=example.zones[0].id,
+            zone_id_slave_a=example.zones[1].id)
+        ```
+
+        ### Create a High Availability RDS MySQL Instance with multi zones
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            instance_charge_type="PostPaid",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"],
+                    ]).result))
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=std.join_output(separator=",",
+                input=[__item.id for __item in example_switch]).apply(lambda invoke: invoke.result),
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            zone_id=example.zones[0].id,
+            zone_id_slave_a=example.zones[1].id)
+        ```
+
+        ### Create an Enterprise Edition RDS MySQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            db_instance_storage_type="local_ssd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"],
+                    ]).result))
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            category="Finance",
+            instance_type="mysql.n2.xlarge.25",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=std.join_output(separator=",",
+                input=[__item.id for __item in example_switch]).apply(lambda invoke: invoke.result),
+            monitoring_period=60,
+            db_instance_storage_type="local_ssd",
+            zone_id=example.zones[0].id,
+            zone_id_slave_a=example.zones[1].id)
+        ```
+
+        ### Create a Serverless RDS MySQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-accdbinstance"
+        example = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="Serverless",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[1],
+            engine="MySQL",
+            engine_version="8.0",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="Serverless",
+            commodity_code="rds_serverless_public_cn")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.ids[1],
+            vswitch_name=name)
+        example_instance = alicloud.rds.Instance("example",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_charge_type="Serverless",
+            instance_name=name,
+            zone_id=example.ids[1],
+            vswitch_id=example_switch.id,
+            db_instance_storage_type="cloud_essd",
+            category="serverless_basic",
+            serverless_configs=[{
+                "max_capacity": 8,
+                "min_capacity": 0.5,
+                "auto_pause": False,
+                "switch_force": False,
+            }])
+        ```
+
+        ### Create a Serverless RDS PostgreSQL Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-accdbinstance"
+        example = alicloud.rds.get_zones(engine="PostgreSQL",
+            engine_version="14.0",
+            instance_charge_type="Serverless",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[1],
+            engine="PostgreSQL",
+            engine_version="14.0",
+            category="serverless_basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="Serverless",
+            commodity_code="rds_serverless_public_cn")
+        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
+            zone_id=example.ids[1])
+        example_instance = alicloud.rds.Instance("example",
+            engine="PostgreSQL",
+            engine_version="14.0",
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_charge_type="Serverless",
+            instance_name=name,
+            zone_id=example.ids[1],
+            vswitch_id=default_get_switches.ids[0],
+            db_instance_storage_type="cloud_essd",
+            category="serverless_basic",
+            serverless_configs=[{
+                "max_capacity": 12,
+                "min_capacity": 0.5,
+            }])
+        ```
+
+        ### Create a Serverless RDS SQLServer Instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-accdbinstance"
+        example = alicloud.rds.get_zones(engine="SQLServer",
+            engine_version="2019_std_sl",
+            instance_charge_type="Serverless",
+            category="serverless_ha",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[1],
+            engine="SQLServer",
+            engine_version="2019_std_sl",
+            category="serverless_ha",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="Serverless",
+            commodity_code="rds_serverless_public_cn")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example.ids[1],
+            vswitch_name=name)
+        example_instance = alicloud.rds.Instance("example",
+            engine="SQLServer",
+            engine_version="2019_std_sl",
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_charge_type="Serverless",
+            instance_name=name,
+            zone_id=example.ids[1],
+            zone_id_slave_a=example.ids[1],
+            vswitch_id=std.join_output(separator=",",
+                input=[
+                    example_switch.id,
+                    example_switch.id,
+                ]).apply(lambda invoke: invoke.result),
+            db_instance_storage_type="cloud_essd",
+            category="serverless_ha",
+            serverless_configs=[{
+                "max_capacity": 8,
+                "min_capacity": 2,
+            }])
+        ```
+
+        ### Deleting `rds.Instance` or removing it from your configuration
+
+        The `rds.Instance` resource allows you to manage `instance_charge_type = "Prepaid"` db instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
+        You can resume managing the subscription db instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS instance can be imported using the id, e.g.

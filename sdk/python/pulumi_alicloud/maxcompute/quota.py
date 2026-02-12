@@ -253,6 +253,87 @@ class Quota(pulumi.CustomResource):
                  sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
                  __props__=None):
         """
+        Provides a Max Compute Quota resource.
+
+        For information about Max Compute Quota and how to use it, see [What is Quota](https://next.api.alibabacloud.com/document/MaxCompute/2022-01-04/CreateQuota).
+
+        > **NOTE:** Available since v1.247.0.
+
+        > **NOTE:** This resource will be reconstructed in future versions due to breaking changes and should not be used in production. We recommend upgrading to the latest provider version after May 20, 2025 (subject to change). For assistance, please file a support ticket with the MaxCompute product team directly.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraformexample"
+        part_nick_name = config.get("partNickName")
+        if part_nick_name is None:
+            part_nick_name = "TFTest17292"
+        sub_quota_nickname3 = config.get("subQuotaNickname3")
+        if sub_quota_nickname3 is None:
+            sub_quota_nickname3 = "sub398892"
+        sub_quota_nickname1 = config.get("subQuotaNickname1")
+        if sub_quota_nickname1 is None:
+            sub_quota_nickname1 = "sub129792"
+        sub_quota_nickname2 = config.get("subQuotaNickname2")
+        if sub_quota_nickname2 is None:
+            sub_quota_nickname2 = "sub223192"
+        default = alicloud.maxcompute.Quota("default",
+            payment_type="Subscription",
+            part_nick_name=part_nick_name,
+            commodity_data="{\\"CU\\":80,\\"ord_time\\":\\"1:Month\\",\\"autoRenew\\":false} ",
+            commodity_code="odpsplus",
+            sub_quota_info_lists=[
+                {
+                    "parameter": {
+                        "min_cu": 10,
+                        "max_cu": 60,
+                        "enable_priority": False,
+                        "force_reserved_min": False,
+                        "scheduler_type": "Fifo",
+                        "single_job_cu_limit": 10,
+                    },
+                    "nick_name": f"os_{part_nick_name}",
+                    "type": "FUXI_OFFLINE",
+                },
+                {
+                    "parameter": {
+                        "min_cu": 10,
+                        "max_cu": 10,
+                        "scheduler_type": "Fair",
+                        "enable_priority": False,
+                        "force_reserved_min": False,
+                    },
+                    "nick_name": sub_quota_nickname1,
+                    "type": "FUXI_OFFLINE",
+                },
+                {
+                    "nick_name": sub_quota_nickname2,
+                    "type": "FUXI_OFFLINE",
+                    "parameter": {
+                        "min_cu": 60,
+                        "max_cu": 60,
+                        "scheduler_type": "Fair",
+                        "enable_priority": True,
+                        "force_reserved_min": True,
+                    },
+                },
+            ])
+        ```
+
+        ### Deleting `maxcompute.Quota` or removing it from your configuration
+
+        Terraform cannot destroy resource `maxcompute.Quota`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Quota can be imported using the id, e.g.
@@ -288,6 +369,87 @@ class Quota(pulumi.CustomResource):
                  args: QuotaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Max Compute Quota resource.
+
+        For information about Max Compute Quota and how to use it, see [What is Quota](https://next.api.alibabacloud.com/document/MaxCompute/2022-01-04/CreateQuota).
+
+        > **NOTE:** Available since v1.247.0.
+
+        > **NOTE:** This resource will be reconstructed in future versions due to breaking changes and should not be used in production. We recommend upgrading to the latest provider version after May 20, 2025 (subject to change). For assistance, please file a support ticket with the MaxCompute product team directly.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraformexample"
+        part_nick_name = config.get("partNickName")
+        if part_nick_name is None:
+            part_nick_name = "TFTest17292"
+        sub_quota_nickname3 = config.get("subQuotaNickname3")
+        if sub_quota_nickname3 is None:
+            sub_quota_nickname3 = "sub398892"
+        sub_quota_nickname1 = config.get("subQuotaNickname1")
+        if sub_quota_nickname1 is None:
+            sub_quota_nickname1 = "sub129792"
+        sub_quota_nickname2 = config.get("subQuotaNickname2")
+        if sub_quota_nickname2 is None:
+            sub_quota_nickname2 = "sub223192"
+        default = alicloud.maxcompute.Quota("default",
+            payment_type="Subscription",
+            part_nick_name=part_nick_name,
+            commodity_data="{\\"CU\\":80,\\"ord_time\\":\\"1:Month\\",\\"autoRenew\\":false} ",
+            commodity_code="odpsplus",
+            sub_quota_info_lists=[
+                {
+                    "parameter": {
+                        "min_cu": 10,
+                        "max_cu": 60,
+                        "enable_priority": False,
+                        "force_reserved_min": False,
+                        "scheduler_type": "Fifo",
+                        "single_job_cu_limit": 10,
+                    },
+                    "nick_name": f"os_{part_nick_name}",
+                    "type": "FUXI_OFFLINE",
+                },
+                {
+                    "parameter": {
+                        "min_cu": 10,
+                        "max_cu": 10,
+                        "scheduler_type": "Fair",
+                        "enable_priority": False,
+                        "force_reserved_min": False,
+                    },
+                    "nick_name": sub_quota_nickname1,
+                    "type": "FUXI_OFFLINE",
+                },
+                {
+                    "nick_name": sub_quota_nickname2,
+                    "type": "FUXI_OFFLINE",
+                    "parameter": {
+                        "min_cu": 60,
+                        "max_cu": 60,
+                        "scheduler_type": "Fair",
+                        "enable_priority": True,
+                        "force_reserved_min": True,
+                    },
+                },
+            ])
+        ```
+
+        ### Deleting `maxcompute.Quota` or removing it from your configuration
+
+        Terraform cannot destroy resource `maxcompute.Quota`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Quota can be imported using the id, e.g.

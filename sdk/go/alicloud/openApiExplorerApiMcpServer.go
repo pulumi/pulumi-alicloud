@@ -321,7 +321,8 @@ type OpenApiExplorerApiMcpServer struct {
 	// - follow: inherits the account-level configuration.
 	PublicAccess pulumi.StringPtrOutput `pulumi:"publicAccess"`
 	// Enabled system services.
-	SystemTools    pulumi.StringArrayOutput                            `pulumi:"systemTools"`
+	SystemTools pulumi.StringArrayOutput `pulumi:"systemTools"`
+	// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
 	TerraformTools OpenApiExplorerApiMcpServerTerraformToolArrayOutput `pulumi:"terraformTools"`
 	// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
 	VpcWhitelists pulumi.StringArrayOutput `pulumi:"vpcWhitelists"`
@@ -398,7 +399,8 @@ type openApiExplorerApiMcpServerState struct {
 	// - follow: inherits the account-level configuration.
 	PublicAccess *string `pulumi:"publicAccess"`
 	// Enabled system services.
-	SystemTools    []string                                   `pulumi:"systemTools"`
+	SystemTools []string `pulumi:"systemTools"`
+	// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
 	TerraformTools []OpenApiExplorerApiMcpServerTerraformTool `pulumi:"terraformTools"`
 	// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
 	VpcWhitelists []string `pulumi:"vpcWhitelists"`
@@ -443,7 +445,8 @@ type OpenApiExplorerApiMcpServerState struct {
 	// - follow: inherits the account-level configuration.
 	PublicAccess pulumi.StringPtrInput
 	// Enabled system services.
-	SystemTools    pulumi.StringArrayInput
+	SystemTools pulumi.StringArrayInput
+	// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
 	TerraformTools OpenApiExplorerApiMcpServerTerraformToolArrayInput
 	// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
 	VpcWhitelists pulumi.StringArrayInput
@@ -490,7 +493,8 @@ type openApiExplorerApiMcpServerArgs struct {
 	// - follow: inherits the account-level configuration.
 	PublicAccess *string `pulumi:"publicAccess"`
 	// Enabled system services.
-	SystemTools    []string                                   `pulumi:"systemTools"`
+	SystemTools []string `pulumi:"systemTools"`
+	// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
 	TerraformTools []OpenApiExplorerApiMcpServerTerraformTool `pulumi:"terraformTools"`
 	// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
 	VpcWhitelists []string `pulumi:"vpcWhitelists"`
@@ -534,7 +538,8 @@ type OpenApiExplorerApiMcpServerArgs struct {
 	// - follow: inherits the account-level configuration.
 	PublicAccess pulumi.StringPtrInput
 	// Enabled system services.
-	SystemTools    pulumi.StringArrayInput
+	SystemTools pulumi.StringArrayInput
+	// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
 	TerraformTools OpenApiExplorerApiMcpServerTerraformToolArrayInput
 	// When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
 	VpcWhitelists pulumi.StringArrayInput
@@ -713,6 +718,7 @@ func (o OpenApiExplorerApiMcpServerOutput) SystemTools() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *OpenApiExplorerApiMcpServer) pulumi.StringArrayOutput { return v.SystemTools }).(pulumi.StringArrayOutput)
 }
 
+// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
 func (o OpenApiExplorerApiMcpServerOutput) TerraformTools() OpenApiExplorerApiMcpServerTerraformToolArrayOutput {
 	return o.ApplyT(func(v *OpenApiExplorerApiMcpServer) OpenApiExplorerApiMcpServerTerraformToolArrayOutput {
 		return v.TerraformTools

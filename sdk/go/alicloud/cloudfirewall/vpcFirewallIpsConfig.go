@@ -12,6 +12,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Firewall Vpc Firewall Ips Config resource.
+//
+// IP configuration of VPC firewall.
+//
+// For information about Cloud Firewall Vpc Firewall Ips Config and how to use it, see [What is Vpc Firewall Ips Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallDefaultIPSConfig).
+//
+// > **NOTE:** Available since v1.269.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudfirewall.NewVpcFirewallIpsConfig(ctx, "default", &cloudfirewall.VpcFirewallIpsConfigArgs{
+//				EnableAllPatch: pulumi.Int(0),
+//				BasicRules:     pulumi.Int(0),
+//				RunMode:        pulumi.Int(0),
+//				VpcFirewallId:  pulumi.String("vfw-tr-bb81adb2d8184bc290a5"),
+//				RuleClass:      pulumi.String("0"),
+//				Lang:           pulumi.String("cn-shenzhen"),
+//				MemberUid:      pulumi.String("1094685339207557"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudfirewall.VpcFirewallIpsConfig` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudfirewall.VpcFirewallIpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall Ips Config can be imported using the id, e.g.

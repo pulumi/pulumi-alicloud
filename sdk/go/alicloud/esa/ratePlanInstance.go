@@ -69,6 +69,9 @@ import (
 type RatePlanInstance struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to enable auto payment.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
@@ -129,6 +132,9 @@ func GetRatePlanInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RatePlanInstance resources.
 type ratePlanInstanceState struct {
+	// Specifies whether to enable auto payment.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AutoPay *bool `pulumi:"autoPay"`
 	// Auto-renewal:
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -160,6 +166,9 @@ type ratePlanInstanceState struct {
 }
 
 type RatePlanInstanceState struct {
+	// Specifies whether to enable auto payment.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AutoPay pulumi.BoolPtrInput
 	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrInput
@@ -195,6 +204,9 @@ func (RatePlanInstanceState) ElementType() reflect.Type {
 }
 
 type ratePlanInstanceArgs struct {
+	// Specifies whether to enable auto payment.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AutoPay *bool `pulumi:"autoPay"`
 	// Auto-renewal:
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -221,6 +233,9 @@ type ratePlanInstanceArgs struct {
 
 // The set of arguments for constructing a RatePlanInstance resource.
 type RatePlanInstanceArgs struct {
+	// Specifies whether to enable auto payment.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AutoPay pulumi.BoolPtrInput
 	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrInput
@@ -332,6 +347,9 @@ func (o RatePlanInstanceOutput) ToRatePlanInstanceOutputWithContext(ctx context.
 	return o
 }
 
+// Specifies whether to enable auto payment.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o RatePlanInstanceOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }

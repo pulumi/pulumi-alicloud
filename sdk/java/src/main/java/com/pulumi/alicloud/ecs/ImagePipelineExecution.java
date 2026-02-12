@@ -14,6 +14,96 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ECS Image Pipeline Execution resource.
+ * 
+ * The mirror template performs the build mirror task.
+ * 
+ * For information about ECS Image Pipeline Execution and how to use it, see [What is Image Pipeline Execution](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-startimagepipelineexecution).
+ * 
+ * &gt; **NOTE:** Available since v1.237.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ecs.EcsImagePipeline;
+ * import com.pulumi.alicloud.ecs.EcsImagePipelineArgs;
+ * import com.pulumi.alicloud.ecs.ImagePipelineExecution;
+ * import com.pulumi.alicloud.ecs.ImagePipelineExecutionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var pipelineExecution_vpc = new Network("pipelineExecution-vpc", NetworkArgs.builder()
+ *             .description("example-pipeline")
+ *             .enableIpv6(true)
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var vs = new Switch("vs", SwitchArgs.builder()
+ *             .description("pipelineExecution-start")
+ *             .vpcId(pipelineExecution_vpc.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .zoneId("cn-hangzhou-i")
+ *             .build());
+ * 
+ *         var pipelineExection_pipeline = new EcsImagePipeline("pipelineExection-pipeline", EcsImagePipelineArgs.builder()
+ *             .baseImageType("IMAGE")
+ *             .description("example")
+ *             .systemDiskSize(40)
+ *             .vswitchId(vs.id())
+ *             .addAccounts("1284387915995949")
+ *             .imageName("example-image-pipeline")
+ *             .deleteInstanceOnFailure(true)
+ *             .internetMaxBandwidthOut(5)
+ *             .toRegionIds("cn-beijing")
+ *             .baseImage("aliyun_3_x64_20G_dengbao_alibase_20240819.vhd")
+ *             .buildContent("COMPONENT ic-bp122acttbs2sxdyq2ky")
+ *             .build());
+ * 
+ *         var default_ = new ImagePipelineExecution("default", ImagePipelineExecutionArgs.builder()
+ *             .imagePipelineId(pipelineExection_pipeline.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.ecs.ImagePipelineExecution` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.ecs.ImagePipelineExecution`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ECS Image Pipeline Execution can be imported using the id, e.g.

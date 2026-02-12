@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Dms
     /// DMS Enterprise Proxy Access can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess example &lt;id&gt;
+    /// $terraform import alicloud_dms_enterprise_proxy_access.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess")]

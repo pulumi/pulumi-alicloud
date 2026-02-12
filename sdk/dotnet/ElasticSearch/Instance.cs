@@ -198,6 +198,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Output("enablePublic")]
         public Output<bool> EnablePublic { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to force changes
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
@@ -285,6 +290,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Output("masterNodeSpec")]
         public Output<string> MasterNodeSpec { get; private set; } = null!;
 
+        /// <summary>
+        /// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("orderActionType")]
         public Output<string?> OrderActionType { get; private set; } = null!;
 
@@ -378,6 +388,16 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The change policy for Elasticsearch.
+        /// 
+        /// The values are as follows:
+        /// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+        /// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+        /// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("updateStrategy")]
         public Output<string?> UpdateStrategy { get; private set; } = null!;
 
@@ -585,6 +605,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
+        /// <summary>
+        /// Whether to force changes
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
@@ -678,6 +703,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("masterNodeSpec")]
         public Input<string>? MasterNodeSpec { get; set; }
 
+        /// <summary>
+        /// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("orderActionType")]
         public Input<string>? OrderActionType { get; set; }
 
@@ -781,6 +811,16 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The change policy for Elasticsearch.
+        /// 
+        /// The values are as follows:
+        /// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+        /// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+        /// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
 
@@ -964,6 +1004,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
+        /// <summary>
+        /// Whether to force changes
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
@@ -1069,6 +1114,11 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("masterNodeSpec")]
         public Input<string>? MasterNodeSpec { get; set; }
 
+        /// <summary>
+        /// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("orderActionType")]
         public Input<string>? OrderActionType { get; set; }
 
@@ -1196,6 +1246,16 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The change policy for Elasticsearch.
+        /// 
+        /// The values are as follows:
+        /// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+        /// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+        /// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
 

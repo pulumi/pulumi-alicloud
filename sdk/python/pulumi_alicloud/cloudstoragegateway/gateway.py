@@ -39,6 +39,7 @@ class GatewayArgs:
         :param pulumi.Input[_builtins.str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
         :param pulumi.Input[_builtins.str] description: The description of the gateway.
         :param pulumi.Input[_builtins.str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
         :param pulumi.Input[_builtins.int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         :param pulumi.Input[_builtins.str] reason_detail: The detailed reason why you want to delete the gateway.
         :param pulumi.Input[_builtins.str] reason_type: The type of the reason why you want to delete the gateway.
@@ -141,6 +142,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+        """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
@@ -230,6 +234,7 @@ class _GatewayState:
         :param pulumi.Input[_builtins.str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
         :param pulumi.Input[_builtins.int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         :param pulumi.Input[_builtins.str] reason_detail: The detailed reason why you want to delete the gateway.
         :param pulumi.Input[_builtins.str] reason_type: The type of the reason why you want to delete the gateway.
@@ -317,6 +322,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+        """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
@@ -500,6 +508,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
         :param pulumi.Input[_builtins.int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         :param pulumi.Input[_builtins.str] reason_detail: The detailed reason why you want to delete the gateway.
         :param pulumi.Input[_builtins.str] reason_type: The type of the reason why you want to delete the gateway.
@@ -660,6 +669,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[_builtins.str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
         :param pulumi.Input[_builtins.int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         :param pulumi.Input[_builtins.str] reason_detail: The detailed reason why you want to delete the gateway.
         :param pulumi.Input[_builtins.str] reason_type: The type of the reason why you want to delete the gateway.
@@ -723,6 +733,9 @@ class Gateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property

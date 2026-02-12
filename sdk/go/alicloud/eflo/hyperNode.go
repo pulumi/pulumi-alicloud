@@ -81,8 +81,11 @@ type HyperNode struct {
 	// Cluster ID
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// The creation time of the resource
-	CreateTime pulumi.StringOutput          `pulumi:"createTime"`
-	DataDisks  HyperNodeDataDiskArrayOutput `pulumi:"dataDisks"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DataDisks HyperNodeDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The host name prefix of the sub computing node
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// Number of the cluster to which the hyper computing node belongs
@@ -170,8 +173,11 @@ type hyperNodeState struct {
 	// Cluster ID
 	ClusterId *string `pulumi:"clusterId"`
 	// The creation time of the resource
-	CreateTime *string             `pulumi:"createTime"`
-	DataDisks  []HyperNodeDataDisk `pulumi:"dataDisks"`
+	CreateTime *string `pulumi:"createTime"`
+	// List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DataDisks []HyperNodeDataDisk `pulumi:"dataDisks"`
 	// The host name prefix of the sub computing node
 	Hostname *string `pulumi:"hostname"`
 	// Number of the cluster to which the hyper computing node belongs
@@ -221,7 +227,10 @@ type HyperNodeState struct {
 	ClusterId pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
-	DataDisks  HyperNodeDataDiskArrayInput
+	// List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DataDisks HyperNodeDataDiskArrayInput
 	// The host name prefix of the sub computing node
 	Hostname pulumi.StringPtrInput
 	// Number of the cluster to which the hyper computing node belongs
@@ -272,7 +281,10 @@ func (HyperNodeState) ElementType() reflect.Type {
 
 type hyperNodeArgs struct {
 	// Cluster ID
-	ClusterId *string             `pulumi:"clusterId"`
+	ClusterId *string `pulumi:"clusterId"`
+	// List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	DataDisks []HyperNodeDataDisk `pulumi:"dataDisks"`
 	// The host name prefix of the sub computing node
 	Hostname *string `pulumi:"hostname"`
@@ -318,6 +330,9 @@ type hyperNodeArgs struct {
 type HyperNodeArgs struct {
 	// Cluster ID
 	ClusterId pulumi.StringPtrInput
+	// List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	DataDisks HyperNodeDataDiskArrayInput
 	// The host name prefix of the sub computing node
 	Hostname pulumi.StringPtrInput
@@ -456,6 +471,9 @@ func (o HyperNodeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o HyperNodeOutput) DataDisks() HyperNodeDataDiskArrayOutput {
 	return o.ApplyT(func(v *HyperNode) HyperNodeDataDiskArrayOutput { return v.DataDisks }).(HyperNodeDataDiskArrayOutput)
 }

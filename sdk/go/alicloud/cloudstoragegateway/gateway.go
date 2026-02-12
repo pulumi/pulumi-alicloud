@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -117,7 +115,8 @@ type Gateway struct {
 	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName pulumi.StringOutput `pulumi:"gatewayName"`
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-	Location    pulumi.StringOutput    `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
 	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth pulumi.IntOutput `pulumi:"publicNetworkBandwidth"`
@@ -186,7 +185,8 @@ type gatewayState struct {
 	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName *string `pulumi:"gatewayName"`
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-	Location    *string `pulumi:"location"`
+	Location *string `pulumi:"location"`
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
 	PaymentType *string `pulumi:"paymentType"`
 	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth *int `pulumi:"publicNetworkBandwidth"`
@@ -214,7 +214,8 @@ type GatewayState struct {
 	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName pulumi.StringPtrInput
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-	Location    pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
 	PaymentType pulumi.StringPtrInput
 	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth pulumi.IntPtrInput
@@ -246,7 +247,8 @@ type gatewayArgs struct {
 	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName string `pulumi:"gatewayName"`
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-	Location    string  `pulumi:"location"`
+	Location string `pulumi:"location"`
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
 	PaymentType *string `pulumi:"paymentType"`
 	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth *int `pulumi:"publicNetworkBandwidth"`
@@ -273,7 +275,8 @@ type GatewayArgs struct {
 	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName pulumi.StringInput
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-	Location    pulumi.StringInput
+	Location pulumi.StringInput
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
 	PaymentType pulumi.StringPtrInput
 	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth pulumi.IntPtrInput
@@ -398,6 +401,7 @@ func (o GatewayOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
 func (o GatewayOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
 }

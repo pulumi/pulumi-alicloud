@@ -776,7 +776,8 @@ type GetDbClustersCluster struct {
 	Engine string `pulumi:"engine"`
 	// The engine version of the DBCluster.
 	EngineVersion string `pulumi:"engineVersion"`
-	Id            string `pulumi:"id"`
+	// The resource ID in terraform of DBCluster. It formats as <db_instance_id>:<db_cluster_id>.
+	Id string `pulumi:"id"`
 	// The memory resource amount of DBCluster. Depends on `dbClusterClass`.
 	Memory int `pulumi:"memory"`
 	// The configuration change logs of parameters.
@@ -825,7 +826,8 @@ type GetDbClustersClusterArgs struct {
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// The engine version of the DBCluster.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	Id            pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of DBCluster. It formats as <db_instance_id>:<db_cluster_id>.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The memory resource amount of DBCluster. Depends on `dbClusterClass`.
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The configuration change logs of parameters.
@@ -940,6 +942,7 @@ func (o GetDbClustersClusterOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of DBCluster. It formats as <db_instance_id>:<db_cluster_id>.
 func (o GetDbClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1344,7 +1347,8 @@ type GetDbInstancesInstance struct {
 	GmtExpired string `pulumi:"gmtExpired"`
 	// The time when DBInstance is modified.
 	GmtModified string `pulumi:"gmtModified"`
-	Id          string `pulumi:"id"`
+	// The resource ID in terraform of DBInstance.
+	Id string `pulumi:"id"`
 	// The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
 	LockMode string `pulumi:"lockMode"`
 	// The reason why the instance is locked.
@@ -1409,7 +1413,8 @@ type GetDbInstancesInstanceArgs struct {
 	GmtExpired pulumi.StringInput `pulumi:"gmtExpired"`
 	// The time when DBInstance is modified.
 	GmtModified pulumi.StringInput `pulumi:"gmtModified"`
-	Id          pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of DBInstance.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
 	LockMode pulumi.StringInput `pulumi:"lockMode"`
 	// The reason why the instance is locked.
@@ -1555,6 +1560,7 @@ func (o GetDbInstancesInstanceOutput) GmtModified() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancesInstance) string { return v.GmtModified }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of DBInstance.
 func (o GetDbInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }

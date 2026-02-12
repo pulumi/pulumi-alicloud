@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz
 {
     /// <summary>
+    /// Provides a Private Zone resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto Create a Private Zone while it uses `alicloud.pvtz.Zone` to build a Private Zone resource.
+    /// 
+    /// &gt; **NOTE:** Available since v1.13.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

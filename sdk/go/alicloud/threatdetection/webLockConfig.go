@@ -64,7 +64,7 @@ import (
 // Threat Detection Web Lock Config can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example <id>
+// $terraform import alicloud_threat_detection_web_lock_config.example <id>
 // ```
 type WebLockConfig struct {
 	pulumi.CustomResourceState

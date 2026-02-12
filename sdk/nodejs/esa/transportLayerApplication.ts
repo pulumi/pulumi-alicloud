@@ -7,6 +7,54 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ESA Transport Layer Application resource.
+ *
+ * Transport Layer Acceleration Application.
+ *
+ * For information about ESA Transport Layer Application and how to use it, see [What is Transport Layer Application](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateTransportLayerApplication).
+ *
+ * > **NOTE:** Available since v1.260.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.esa.getSites({
+ *     planSubscribeType: "enterpriseplan",
+ *     siteName: "gositecdn.cn",
+ * });
+ * const defaultTransportLayerApplication = new alicloud.esa.TransportLayerApplication("default", {
+ *     recordName: "resource2.gositecdn.cn",
+ *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     ipAccessRule: "off",
+ *     ipv6: "off",
+ *     crossBorderOptimization: "off",
+ *     rules: [{
+ *         source: "1.2.3.4",
+ *         comment: "transportLayerApplication",
+ *         edgePort: "80",
+ *         sourceType: "ip",
+ *         protocol: "TCP",
+ *         sourcePort: "8080",
+ *         clientIpPassThroughMode: "off",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.esa.TransportLayerApplication` or removing it from your configuration
+ *
+ * The `alicloud.esa.TransportLayerApplication` resource allows you to manage  `status = "active"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Transport Layer Application can be imported using the id, e.g.

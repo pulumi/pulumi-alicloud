@@ -72,12 +72,39 @@ class FileUploadLimit(pulumi.CustomResource):
                  limit: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a Threat Detection File Upload Limit resource. User-defined file upload limit.
+
+        For information about Threat Detection File Upload Limit and how to use it, see [What is File Upload Limit](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetFileUploadLimit).
+
+        > **NOTE:** Available since v1.212.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.FileUploadLimit("default", limit=100)
+        ```
+
+        ### Deleting `threatdetection.FileUploadLimit` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.FileUploadLimit`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection File Upload Limit can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example 
+        $ terraform import alicloud_threat_detection_file_upload_limit.example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -91,12 +118,39 @@ class FileUploadLimit(pulumi.CustomResource):
                  args: FileUploadLimitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Threat Detection File Upload Limit resource. User-defined file upload limit.
+
+        For information about Threat Detection File Upload Limit and how to use it, see [What is File Upload Limit](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetFileUploadLimit).
+
+        > **NOTE:** Available since v1.212.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.FileUploadLimit("default", limit=100)
+        ```
+
+        ### Deleting `threatdetection.FileUploadLimit` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.FileUploadLimit`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection File Upload Limit can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example 
+        $ terraform import alicloud_threat_detection_file_upload_limit.example 
         ```
 
         :param str resource_name: The name of the resource.

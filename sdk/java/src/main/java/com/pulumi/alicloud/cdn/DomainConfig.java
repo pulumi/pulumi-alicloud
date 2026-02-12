@@ -97,6 +97,8 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;:&lt;config_id&gt;
  * ```
  * 
+ * **NOTE:** Before provider version 1.132.0, CDN domain config can be imported using the id, e.g.
+ * 
  * ```sh
  * $ pulumi import alicloud:cdn/domainConfig:DomainConfig example &lt;domain_name&gt;:&lt;function_name&gt;
  * ```

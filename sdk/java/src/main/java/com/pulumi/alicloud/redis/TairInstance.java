@@ -19,6 +19,94 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance resource.
+ * 
+ * Describe the creation, deletion and query of tair instances.
+ * 
+ * For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance and how to use it, see [What is Tair Instance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createtairinstance-redis).
+ * 
+ * &gt; **NOTE:** Available since v1.206.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.redis.TairInstance;
+ * import com.pulumi.alicloud.redis.TairInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = KvstoreFunctions.getZones(GetZonesArgs.builder()
+ *             .productType("Tair_rdb")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         final var vswitchId = defaultGetSwitches.ids()[0];
+ * 
+ *         final var zoneId = default_.zones()[0].id();
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultTairInstance = new TairInstance("defaultTairInstance", TairInstanceArgs.builder()
+ *             .paymentType("Subscription")
+ *             .period(1)
+ *             .instanceType("tair_rdb")
+ *             .zoneId(zoneId)
+ *             .instanceClass("tair.rdb.2g")
+ *             .shardCount(2)
+ *             .vswitchId(vswitchId)
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .tairInstanceName(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.redis.TairInstance` or removing it from your configuration
+ * 
+ * The `alicloud.redis.TairInstance` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance can be imported using the id, e.g.

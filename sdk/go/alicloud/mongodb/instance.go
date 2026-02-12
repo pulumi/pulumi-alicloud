@@ -215,7 +215,12 @@ type Instance struct {
 	SnapshotBackupType pulumi.StringOutput `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrOutput `pulumi:"srcDbInstanceId"`
-	SslAction       pulumi.StringPtrOutput `pulumi:"sslAction"`
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+	SslAction pulumi.StringPtrOutput `pulumi:"sslAction"`
 	// Status of the SSL feature.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -389,7 +394,12 @@ type instanceState struct {
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
-	SslAction       *string `pulumi:"sslAction"`
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+	SslAction *string `pulumi:"sslAction"`
 	// Status of the SSL feature.
 	SslStatus *string `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -518,7 +528,12 @@ type InstanceState struct {
 	SnapshotBackupType pulumi.StringPtrInput
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrInput
-	SslAction       pulumi.StringPtrInput
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+	SslAction pulumi.StringPtrInput
 	// Status of the SSL feature.
 	SslStatus pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -643,7 +658,12 @@ type instanceArgs struct {
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// The source instance ID.
 	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
-	SslAction       *string `pulumi:"sslAction"`
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+	SslAction *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -761,7 +781,12 @@ type InstanceArgs struct {
 	SnapshotBackupType pulumi.StringPtrInput
 	// The source instance ID.
 	SrcDbInstanceId pulumi.StringPtrInput
-	SslAction       pulumi.StringPtrInput
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+	SslAction pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -1113,6 +1138,11 @@ func (o InstanceOutput) SrcDbInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SrcDbInstanceId }).(pulumi.StringPtrOutput)
 }
 
+// Actions performed on SSL functions. Valid values:
+// - `Open`: turn on SSL encryption.
+// - `Close`: turn off SSL encryption.
+// - `Update`: update SSL certificate.
+// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 func (o InstanceOutput) SslAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SslAction }).(pulumi.StringPtrOutput)
 }

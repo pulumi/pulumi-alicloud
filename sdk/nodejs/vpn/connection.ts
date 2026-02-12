@@ -7,6 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPN connection resource.
+ *
+ * > **NOTE:** Terraform will auto build vpn connection while it uses `alicloud.vpn.Connection` to build a vpn connection resource.
+ *              The vpn connection depends on VPN and VPN customer gateway.
+ *
+ * For information about VPN connection and how to use it, see [What is vpn connection](https://www.alibabacloud.com/help/en/doc-detail/120390.html).
+ *
+ * > **NOTE:** Available since v1.14.0.
+ *
  * ## Example Usage
  *
  * Basic Usage

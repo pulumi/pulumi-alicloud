@@ -12,6 +12,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a RAM Account Alias resource.
+//
+// For information about RAM Account Alias and how to use it, see [What is Account Alias](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetAccountAlias).
+//
+// > **NOTE:** Available since v1.0.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
+//				AccountAlias: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `ram.AccountAlias` or removing it from your configuration
+//
+// Terraform cannot destroy resource `ram.AccountAlias`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RAM Account Alias can be imported using the id, e.g.

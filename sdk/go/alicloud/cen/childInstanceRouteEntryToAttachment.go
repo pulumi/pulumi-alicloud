@@ -136,7 +136,7 @@ import (
 // Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
+// $terraform import alicloud_cen_child_instance_route_entry_to_attachment.example <cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>
 // ```
 type ChildInstanceRouteEntryToAttachment struct {
 	pulumi.CustomResourceState

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster example <id>
+ * $terraform import alicloud_disk_dedicated_block_storage_cluster.example <id>
  * ```
  */
 export class DedicatedBlockStorageCluster extends pulumi.CustomResource {

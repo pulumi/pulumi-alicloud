@@ -74,7 +74,10 @@ type ValueAddedService struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The payment type of the resource
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// Prepaid cycle. Unit for year
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The region ID of the resource
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Automatic renewal period, in years.
@@ -132,7 +135,10 @@ type valueAddedServiceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// Prepaid cycle. Unit for year
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period *int `pulumi:"period"`
 	// The region ID of the resource
 	RegionId *string `pulumi:"regionId"`
 	// Automatic renewal period, in years.
@@ -158,7 +164,10 @@ type ValueAddedServiceState struct {
 	CreateTime pulumi.StringPtrInput
 	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// Prepaid cycle. Unit for year
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period pulumi.IntPtrInput
 	// The region ID of the resource
 	RegionId pulumi.StringPtrInput
 	// Automatic renewal period, in years.
@@ -186,7 +195,10 @@ func (ValueAddedServiceState) ElementType() reflect.Type {
 type valueAddedServiceArgs struct {
 	// The payment type of the resource
 	PaymentType string `pulumi:"paymentType"`
-	Period      *int   `pulumi:"period"`
+	// Prepaid cycle. Unit for year
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period *int `pulumi:"period"`
 	// Automatic renewal period, in years.
 	//
 	// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -207,7 +219,10 @@ type valueAddedServiceArgs struct {
 type ValueAddedServiceArgs struct {
 	// The payment type of the resource
 	PaymentType pulumi.StringInput
-	Period      pulumi.IntPtrInput
+	// Prepaid cycle. Unit for year
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Period pulumi.IntPtrInput
 	// Automatic renewal period, in years.
 	//
 	// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -321,6 +336,9 @@ func (o ValueAddedServiceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValueAddedService) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// Prepaid cycle. Unit for year
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o ValueAddedServiceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ValueAddedService) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

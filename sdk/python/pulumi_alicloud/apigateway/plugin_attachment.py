@@ -168,6 +168,14 @@ class PluginAttachment(pulumi.CustomResource):
                  stage_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a plugin attachment resource.It is used for attaching a specific plugin to an api.
+
+        For information about Api Gateway Plugin attachment and how to use it, see [Attach Plugin to specified API](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-attachplugin)
+
+        > **NOTE:** Available since v1.219.0.
+
+        > **NOTE:** Terraform will auto build plugin attachment while it uses `apigateway.PluginAttachment` to build.
+
         ## Example Usage
 
         Basic Usage
@@ -251,6 +259,14 @@ class PluginAttachment(pulumi.CustomResource):
                  args: PluginAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a plugin attachment resource.It is used for attaching a specific plugin to an api.
+
+        For information about Api Gateway Plugin attachment and how to use it, see [Attach Plugin to specified API](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-attachplugin)
+
+        > **NOTE:** Available since v1.219.0.
+
+        > **NOTE:** Terraform will auto build plugin attachment while it uses `apigateway.PluginAttachment` to build.
+
         ## Example Usage
 
         Basic Usage

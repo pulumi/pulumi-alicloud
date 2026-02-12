@@ -43,20 +43,15 @@ __all__ = [
     'ResourceShareResourceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AutoGroupingRuleRuleContentArgsDict(TypedDict):
-        target_resource_group_condition: pulumi.Input[_builtins.str]
-        """
-        The condition for the destination resource group.
-        """
-        auto_grouping_scope_condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The condition for the range of resources to be automatically transferred.
-        """
-elif False:
-    AutoGroupingRuleRuleContentArgsDict: TypeAlias = Mapping[str, Any]
+class AutoGroupingRuleRuleContentArgsDict(TypedDict):
+    target_resource_group_condition: pulumi.Input[_builtins.str]
+    """
+    The condition for the destination resource group.
+    """
+    auto_grouping_scope_condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The condition for the range of resources to be automatically transferred.
+    """
 
 @pulumi.input_type
 class AutoGroupingRuleRuleContentArgs:
@@ -96,16 +91,13 @@ class AutoGroupingRuleRuleContentArgs:
         pulumi.set(self, "auto_grouping_scope_condition", value)
 
 
-if not MYPY:
-    class DeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
-        resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array of effective resource types for the delivery channel.
-        - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
-        - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
-        """
-elif False:
-    DeliveryChannelDeliveryChannelFilterArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
+    resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array of effective resource types for the delivery channel.
+    - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+    - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+    """
 
 @pulumi.input_type
 class DeliveryChannelDeliveryChannelFilterArgs:
@@ -134,33 +126,30 @@ class DeliveryChannelDeliveryChannelFilterArgs:
         pulumi.set(self, "resource_types", value)
 
 
-if not MYPY:
-    class DeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable delivery of resource configuration change events. Valid values:
-        - true
-        - false
-        """
-        sls_properties: NotRequired[pulumi.Input['DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]
-        """
-        The Simple Log Service configurations. See `sls_properties` below.
-        """
-        target_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ARN of the delivery destination.
-        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
-        - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
-        """
-        target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the delivery destination.
+class DeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable delivery of resource configuration change events. Valid values:
+    - true
+    - false
+    """
+    sls_properties: NotRequired[pulumi.Input['DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]
+    """
+    The Simple Log Service configurations. See `sls_properties` below.
+    """
+    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ARN of the delivery destination.
+    - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+    - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+    """
+    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the delivery destination.
 
-        Valid values:
-        - SLS
-        """
-elif False:
-    DeliveryChannelResourceChangeDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+    Valid values:
+    - SLS
+    """
 
 @pulumi.input_type
 class DeliveryChannelResourceChangeDeliveryArgs:
@@ -247,11 +236,8 @@ class DeliveryChannelResourceChangeDeliveryArgs:
         pulumi.set(self, "target_type", value)
 
 
-if not MYPY:
-    class DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict(TypedDict):
-        oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict(TypedDict):
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DeliveryChannelResourceChangeDeliverySlsPropertiesArgs:
@@ -270,42 +256,39 @@ class DeliveryChannelResourceChangeDeliverySlsPropertiesArgs:
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
-if not MYPY:
-    class DeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
-        custom_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The custom expression.
-        """
-        delivery_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The delivery time.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
-        - true
-        - false
-        """
-        sls_properties: NotRequired[pulumi.Input['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]
-        """
-        The Simple Log Service configurations. See `sls_properties` below.
-        """
-        target_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alibaba Cloud Resource Name (ARN) of the delivery destination.
-        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
-        - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
-        """
-        target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the delivery destination.
+class DeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
+    custom_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The custom expression.
+    """
+    delivery_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The delivery time.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+    - true
+    - false
+    """
+    sls_properties: NotRequired[pulumi.Input['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]
+    """
+    The Simple Log Service configurations. See `sls_properties` below.
+    """
+    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+    - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+    - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+    """
+    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the delivery destination.
 
-        Valid values:
-        - `OSS` for standard delivery
-        - `OSS` or `SLS` for custom delivery
-        """
-elif False:
-    DeliveryChannelResourceSnapshotDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+    Valid values:
+    - `OSS` for standard delivery
+    - `OSS` or `SLS` for custom delivery
+    """
 
 @pulumi.input_type
 class DeliveryChannelResourceSnapshotDeliveryArgs:
@@ -426,11 +409,8 @@ class DeliveryChannelResourceSnapshotDeliveryArgs:
         pulumi.set(self, "target_type", value)
 
 
-if not MYPY:
-    class DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict(TypedDict):
-        oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict(TypedDict):
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs:
@@ -449,20 +429,17 @@ class DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs:
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
-if not MYPY:
-    class MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
-        account_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The account scopes of the delivery channel.
-        """
-        resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array of effective resource types for the delivery channel.
-        - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
-        - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
-        """
-elif False:
-    MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict: TypeAlias = Mapping[str, Any]
+class MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
+    account_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The account scopes of the delivery channel.
+    """
+    resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array of effective resource types for the delivery channel.
+    - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+    - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+    """
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelDeliveryChannelFilterArgs:
@@ -506,33 +483,30 @@ class MultiAccountDeliveryChannelDeliveryChannelFilterArgs:
         pulumi.set(self, "resource_types", value)
 
 
-if not MYPY:
-    class MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable delivery of resource configuration change events. Valid values:
-        - true
-        - false
-        """
-        sls_properties: NotRequired[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]
-        """
-        The Simple Log Service configurations. See `sls_properties` below.
-        """
-        target_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ARN of the delivery destination.
-        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
-        - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
-        """
-        target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the delivery destination.
+class MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable delivery of resource configuration change events. Valid values:
+    - true
+    - false
+    """
+    sls_properties: NotRequired[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]
+    """
+    The Simple Log Service configurations. See `sls_properties` below.
+    """
+    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ARN of the delivery destination.
+    - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+    - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+    """
+    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the delivery destination.
 
-        Valid values:
-        - SLS
-        """
-elif False:
-    MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+    Valid values:
+    - SLS
+    """
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
@@ -619,11 +593,8 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
         pulumi.set(self, "target_type", value)
 
 
-if not MYPY:
-    class MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict(TypedDict):
-        oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict(TypedDict):
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs:
@@ -642,42 +613,39 @@ class MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs:
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
-if not MYPY:
-    class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
-        custom_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The custom expression.
-        """
-        delivery_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The delivery time.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
-        - true
-        - false
-        """
-        sls_properties: NotRequired[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]
-        """
-        The Simple Log Service configurations. See `sls_properties` below.
-        """
-        target_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alibaba Cloud Resource Name (ARN) of the delivery destination.
-        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
-        - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
-        """
-        target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the delivery destination.
+class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
+    custom_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The custom expression.
+    """
+    delivery_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The delivery time.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+    - true
+    - false
+    """
+    sls_properties: NotRequired[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]
+    """
+    The Simple Log Service configurations. See `sls_properties` below.
+    """
+    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+    - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+    - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+    """
+    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the delivery destination.
 
-        Valid values:
-        - `OSS` for standard delivery
-        - `OSS` or `SLS` for custom delivery
-        """
-elif False:
-    MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+    Valid values:
+    - `OSS` for standard delivery
+    - `OSS` or `SLS` for custom delivery
+    """
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
@@ -798,11 +766,8 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
         pulumi.set(self, "target_type", value)
 
 
-if not MYPY:
-    class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict(TypedDict):
-        oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict(TypedDict):
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs:
@@ -821,18 +786,15 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs:
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
-if not MYPY:
-    class ResourceGroupRegionStatusArgsDict(TypedDict):
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the region.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the resource group.
-        """
-elif False:
-    ResourceGroupRegionStatusArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGroupRegionStatusArgsDict(TypedDict):
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the region.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the resource group.
+    """
 
 @pulumi.input_type
 class ResourceGroupRegionStatusArgs:
@@ -873,28 +835,25 @@ class ResourceGroupRegionStatusArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class ResourceShareResourceArgsDict(TypedDict):
-        resource_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the shared resource.
+class ResourceShareResourceArgsDict(TypedDict):
+    resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the shared resource.
 
-        The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+    The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
 
-        > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Shared resource type.
+    > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Shared resource type.
 
-        The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
+    The value range of N: 1 to 5, that is, a maximum of 5 shared resources are added at a time.
 
-        For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+    For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
 
-        > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
-        """
-elif False:
-    ResourceShareResourceArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
+    """
 
 @pulumi.input_type
 class ResourceShareResourceArgs:

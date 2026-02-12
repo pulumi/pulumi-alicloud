@@ -549,6 +549,44 @@ class QuotaApplication(pulumi.CustomResource):
                  reason: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Quotas Quota Application resource. Details of Quota Application.
+
+        For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplication).
+
+        > **NOTE:** Available since v1.117.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.QuotaApplication("default",
+            quota_action_code="q_desktop-count",
+            product_code="gws",
+            quota_category="CommonQuota",
+            notice_type=3,
+            dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
+            desire_value=1001,
+            reason="测试",
+            env_language="zh")
+        ```
+
+        ### Deleting `quotas.QuotaApplication` or removing it from your configuration
+
+        Terraform cannot destroy resource `quotas.QuotaApplication`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Quotas Quota Application can be imported using the id, e.g.
@@ -585,6 +623,44 @@ class QuotaApplication(pulumi.CustomResource):
                  args: QuotaApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Quotas Quota Application resource. Details of Quota Application.
+
+        For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplication).
+
+        > **NOTE:** Available since v1.117.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.QuotaApplication("default",
+            quota_action_code="q_desktop-count",
+            product_code="gws",
+            quota_category="CommonQuota",
+            notice_type=3,
+            dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
+            desire_value=1001,
+            reason="测试",
+            env_language="zh")
+        ```
+
+        ### Deleting `quotas.QuotaApplication` or removing it from your configuration
+
+        Terraform cannot destroy resource `quotas.QuotaApplication`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Quotas Quota Application can be imported using the id, e.g.

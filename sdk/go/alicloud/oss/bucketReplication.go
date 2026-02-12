@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
@@ -164,7 +162,7 @@ import (
 // Oss Bucket Replication can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:oss/bucketReplication:BucketReplication example
+// $ terraform import alicloud_oss_bucket_replication.example
 // ```
 type BucketReplication struct {
 	pulumi.CustomResourceState

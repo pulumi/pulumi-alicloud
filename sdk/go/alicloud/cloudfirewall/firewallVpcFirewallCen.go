@@ -61,7 +61,7 @@ import (
 // Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen example <id>
+// $terraform import alicloud_cloud_firewall_vpc_firewall_cen.example <id>
 // ```
 type FirewallVpcFirewallCen struct {
 	pulumi.CustomResourceState

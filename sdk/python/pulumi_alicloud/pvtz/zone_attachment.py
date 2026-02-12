@@ -206,6 +206,12 @@ class ZoneAttachment(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides vpcs bound to Alicloud Private Zone resource.
+
+        > **NOTE:** Available since v1.13.0.
+
+        > **NOTE:** Terraform will auto bind vpc to a Private Zone while it uses `pvtz.ZoneAttachment` to build a Private Zone and VPC binding resource.
+
         ## Example Usage
 
         Using `vpc_ids` to attach being in same region several vpc instances to a private zone
@@ -311,6 +317,12 @@ class ZoneAttachment(pulumi.CustomResource):
                  args: ZoneAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides vpcs bound to Alicloud Private Zone resource.
+
+        > **NOTE:** Available since v1.13.0.
+
+        > **NOTE:** Terraform will auto bind vpc to a Private Zone while it uses `pvtz.ZoneAttachment` to build a Private Zone and VPC binding resource.
+
         ## Example Usage
 
         Using `vpc_ids` to attach being in same region several vpc instances to a private zone

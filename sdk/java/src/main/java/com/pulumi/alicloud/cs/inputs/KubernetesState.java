@@ -554,6 +554,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The kubernetes cluster name&#39;s prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to &#34;Terraform-Creation&#34;.
+     * 
      * @deprecated
      * Field &#39;name_prefix&#39; has been deprecated from provider version 1.75.0.
      * 
@@ -563,6 +565,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> namePrefix;
 
     /**
+     * @return The kubernetes cluster name&#39;s prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to &#34;Terraform-Creation&#34;.
+     * 
      * @deprecated
      * Field &#39;name_prefix&#39; has been deprecated from provider version 1.75.0.
      * 
@@ -752,9 +756,17 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     * 
+     */
     @Import(name="retainResources")
     private @Nullable Output<List<String>> retainResources;
 
+    /**
+     * @return Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     * 
+     */
     public Optional<Output<List<String>>> retainResources() {
         return Optional.ofNullable(this.retainResources);
     }
@@ -1863,6 +1875,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param namePrefix The kubernetes cluster name&#39;s prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to &#34;Terraform-Creation&#34;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -1876,6 +1890,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param namePrefix The kubernetes cluster name&#39;s prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to &#34;Terraform-Creation&#34;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -2159,15 +2175,33 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param retainResources Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retainResources(@Nullable Output<List<String>> retainResources) {
             $.retainResources = retainResources;
             return this;
         }
 
+        /**
+         * @param retainResources Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retainResources(List<String> retainResources) {
             return retainResources(Output.of(retainResources));
         }
 
+        /**
+         * @param retainResources Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retainResources(String... retainResources) {
             return retainResources(List.of(retainResources));
         }

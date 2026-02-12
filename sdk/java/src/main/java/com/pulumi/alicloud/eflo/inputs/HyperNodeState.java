@@ -49,9 +49,21 @@ public final class HyperNodeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="dataDisks")
     private @Nullable Output<List<HyperNodeDataDiskArgs>> dataDisks;
 
+    /**
+     * @return List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<List<HyperNodeDataDiskArgs>>> dataDisks() {
         return Optional.ofNullable(this.dataDisks);
     }
@@ -436,15 +448,39 @@ public final class HyperNodeState extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param dataDisks List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataDisks(@Nullable Output<List<HyperNodeDataDiskArgs>> dataDisks) {
             $.dataDisks = dataDisks;
             return this;
         }
 
+        /**
+         * @param dataDisks List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataDisks(List<HyperNodeDataDiskArgs> dataDisks) {
             return dataDisks(Output.of(dataDisks));
         }
 
+        /**
+         * @param dataDisks List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataDisks(HyperNodeDataDiskArgs... dataDisks) {
             return dataDisks(List.of(dataDisks));
         }

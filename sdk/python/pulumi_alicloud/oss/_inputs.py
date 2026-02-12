@@ -119,16 +119,11 @@ __all__ = [
     'BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessPointPublicAccessBlockConfigurationArgsDict(TypedDict):
-        block_public_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Block public access enabled for access point
-        """
-elif False:
-    AccessPointPublicAccessBlockConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AccessPointPublicAccessBlockConfigurationArgsDict(TypedDict):
+    block_public_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Block public access enabled for access point
+    """
 
 @pulumi.input_type
 class AccessPointPublicAccessBlockConfigurationArgs:
@@ -153,14 +148,11 @@ class AccessPointPublicAccessBlockConfigurationArgs:
         pulumi.set(self, "block_public_access", value)
 
 
-if not MYPY:
-    class AccessPointVpcConfigurationArgsDict(TypedDict):
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vpc ID is required only when the value of NetworkOrigin is VPC.
-        """
-elif False:
-    AccessPointVpcConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AccessPointVpcConfigurationArgsDict(TypedDict):
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vpc ID is required only when the value of NetworkOrigin is VPC.
+    """
 
 @pulumi.input_type
 class AccessPointVpcConfigurationArgs:
@@ -185,14 +177,11 @@ class AccessPointVpcConfigurationArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class BucketAccessMonitorArgsDict(TypedDict):
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
-        """
-elif False:
-    BucketAccessMonitorArgsDict: TypeAlias = Mapping[str, Any]
+class BucketAccessMonitorArgsDict(TypedDict):
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+    """
 
 @pulumi.input_type
 class BucketAccessMonitorArgs:
@@ -217,46 +206,43 @@ class BucketAccessMonitorArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class BucketCnameCertificateArgsDict(TypedDict):
-        cert_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate Identifier
-        """
-        certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate public key.
-        """
-        creation_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate creation time
-        """
-        fingerprint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate Fingerprint
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate private key.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cname status
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate Type
-        """
-        valid_end_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate validity period end time
-        """
-        valid_start_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate validity period start time
-        """
-elif False:
-    BucketCnameCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class BucketCnameCertificateArgsDict(TypedDict):
+    cert_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate Identifier
+    """
+    certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate public key.
+    """
+    creation_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate creation time
+    """
+    fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate Fingerprint
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate private key.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cname status
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate Type
+    """
+    valid_end_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate validity period end time
+    """
+    valid_start_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate validity period start time
+    """
 
 @pulumi.input_type
 class BucketCnameCertificateArgs:
@@ -409,30 +395,27 @@ class BucketCnameCertificateArgs:
         pulumi.set(self, "valid_start_date", value)
 
 
-if not MYPY:
-    class BucketCorsCorsRuleArgsDict(TypedDict):
-        allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
-        """
-        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
-        """
-        allowed_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The origins from which cross-origin requests are allowed. .
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
-        """
-        max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
-        """
-elif False:
-    BucketCorsCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BucketCorsCorsRuleArgsDict(TypedDict):
+    allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+    """
+    allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+    """
+    allowed_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The origins from which cross-origin requests are allowed. .
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+    """
+    max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+    """
 
 @pulumi.input_type
 class BucketCorsCorsRuleArgs:
@@ -520,30 +503,27 @@ class BucketCorsCorsRuleArgs:
         pulumi.set(self, "max_age_seconds", value)
 
 
-if not MYPY:
-    class BucketCorsRuleArgsDict(TypedDict):
-        allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
-        """
-        allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies which origins are allowed.
-        """
-        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies which headers are allowed.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies expose header in the response.
-        """
-        max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies time in seconds that browser can cache the response for a preflight request.
-        """
-elif False:
-    BucketCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BucketCorsRuleArgsDict(TypedDict):
+    allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
+    """
+    allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Specifies which origins are allowed.
+    """
+    allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies which headers are allowed.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies expose header in the response.
+    """
+    max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies time in seconds that browser can cache the response for a preflight request.
+    """
 
 @pulumi.input_type
 class BucketCorsRuleArgs:
@@ -630,30 +610,27 @@ class BucketCorsRuleArgs:
         pulumi.set(self, "max_age_seconds", value)
 
 
-if not MYPY:
-    class BucketHttpsConfigCipherSuitArgsDict(TypedDict):
-        custom_cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        This field is used to configure custom encryption algorithm suites for TLS 1.2.
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Configures TLS encryption algorithm suites. Valid values:
-        true: strong encryption algorithm suites or custom encryption algorithm suites.
-        false: all encryption algorithm suites (default).
-        """
-        strong_cipher_suite: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use strong encryption algorithm suites. Valid values:
-        true: uses strong encryption algorithm suites.
-        false: uses custom encryption algorithm suites.
-        """
-        tls13_custom_cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
-        """
-elif False:
-    BucketHttpsConfigCipherSuitArgsDict: TypeAlias = Mapping[str, Any]
+class BucketHttpsConfigCipherSuitArgsDict(TypedDict):
+    custom_cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    This field is used to configure custom encryption algorithm suites for TLS 1.2.
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Configures TLS encryption algorithm suites. Valid values:
+    true: strong encryption algorithm suites or custom encryption algorithm suites.
+    false: all encryption algorithm suites (default).
+    """
+    strong_cipher_suite: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use strong encryption algorithm suites. Valid values:
+    true: uses strong encryption algorithm suites.
+    false: uses custom encryption algorithm suites.
+    """
+    tls13_custom_cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+    """
 
 @pulumi.input_type
 class BucketHttpsConfigCipherSuitArgs:
@@ -734,52 +711,49 @@ class BucketHttpsConfigCipherSuitArgs:
         pulumi.set(self, "tls13_custom_cipher_suites", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies lifecycle rule status.
-        """
-        abort_multipart_uploads: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgsDict']]]]
-        """
-        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
-        """
-        expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgsDict']]]]
-        """
-        Specifies a period in the object's expire. See `expiration` below.
-        """
-        filter: NotRequired[pulumi.Input['BucketLifecycleRuleFilterArgsDict']]
-        """
-        Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+class BucketLifecycleRuleArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Specifies lifecycle rule status.
+    """
+    abort_multipart_uploads: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgsDict']]]]
+    """
+    Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
+    """
+    expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgsDict']]]]
+    """
+    Specifies a period in the object's expire. See `expiration` below.
+    """
+    filter: NotRequired[pulumi.Input['BucketLifecycleRuleFilterArgsDict']]
+    """
+    Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
 
-        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
-        """
-        noncurrent_version_expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]]
-        """
-        Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
-        """
-        noncurrent_version_transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgsDict']]]]
-        """
-        Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prefix in the names of the objects to which the lifecycle rule does not apply.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-        """
-        transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgsDict']]]]
-        """
-        Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
-        """
-elif False:
-    BucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
+    `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
+    """
+    noncurrent_version_expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]]
+    """
+    Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
+    """
+    noncurrent_version_transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgsDict']]]]
+    """
+    Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prefix in the names of the objects to which the lifecycle rule does not apply.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+    """
+    transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgsDict']]]]
+    """
+    Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleArgs:
@@ -951,18 +925,15 @@ class BucketLifecycleRuleArgs:
         pulumi.set(self, "transitions", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleAbortMultipartUploadArgsDict(TypedDict):
-        created_before_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        """
-        days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
-elif False:
-    BucketLifecycleRuleAbortMultipartUploadArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleAbortMultipartUploadArgsDict(TypedDict):
+    created_before_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+    """
+    days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days noncurrent object versions transition.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleAbortMultipartUploadArgs:
@@ -1003,28 +974,25 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
         pulumi.set(self, "days", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleExpirationArgsDict(TypedDict):
-        created_before_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        """
-        date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        """
-        days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
-        expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+class BucketLifecycleRuleExpirationArgsDict(TypedDict):
+    created_before_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+    """
+    date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
+    """
+    days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days noncurrent object versions transition.
+    """
+    expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 
-        `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
-        """
-elif False:
-    BucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
+    `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleExpirationArgs:
@@ -1101,22 +1069,19 @@ class BucketLifecycleRuleExpirationArgs:
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleFilterArgsDict(TypedDict):
-        not_: NotRequired[pulumi.Input['BucketLifecycleRuleFilterNotArgsDict']]
-        """
-        The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-        """
-        object_size_greater_than: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum object size (in bytes) to which the rule applies.
-        """
-        object_size_less_than: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum object size (in bytes) to which the rule applies.
-        """
-elif False:
-    BucketLifecycleRuleFilterArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleFilterArgsDict(TypedDict):
+    not_: NotRequired[pulumi.Input['BucketLifecycleRuleFilterNotArgsDict']]
+    """
+    The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+    """
+    object_size_greater_than: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum object size (in bytes) to which the rule applies.
+    """
+    object_size_less_than: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum object size (in bytes) to which the rule applies.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleFilterArgs:
@@ -1173,18 +1138,15 @@ class BucketLifecycleRuleFilterArgs:
         pulumi.set(self, "object_size_less_than", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleFilterNotArgsDict(TypedDict):
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prefix in the names of the objects to which the lifecycle rule does not apply.
-        """
-        tag: NotRequired[pulumi.Input['BucketLifecycleRuleFilterNotTagArgsDict']]
-        """
-        The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-        """
-elif False:
-    BucketLifecycleRuleFilterNotArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleFilterNotArgsDict(TypedDict):
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prefix in the names of the objects to which the lifecycle rule does not apply.
+    """
+    tag: NotRequired[pulumi.Input['BucketLifecycleRuleFilterNotTagArgsDict']]
+    """
+    The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleFilterNotArgs:
@@ -1225,18 +1187,15 @@ class BucketLifecycleRuleFilterNotArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleFilterNotTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key of the tag that is specified for the objects.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the tag that is specified for the objects.
-        """
-elif False:
-    BucketLifecycleRuleFilterNotTagArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleFilterNotTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the tag that is specified for the objects.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the tag that is specified for the objects.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleFilterNotTagArgs:
@@ -1275,14 +1234,11 @@ class BucketLifecycleRuleFilterNotTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
-        days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
-elif False:
-    BucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
+    days: pulumi.Input[_builtins.int]
+    """
+    Specifies the number of days noncurrent object versions transition.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
@@ -1306,26 +1262,23 @@ class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
         pulumi.set(self, "days", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleNoncurrentVersionTransitionArgsDict(TypedDict):
-        days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
-        storage_class: pulumi.Input[_builtins.str]
-        """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        """
-        is_access_time: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-        """
-        return_to_std_when_visit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-        """
-elif False:
-    BucketLifecycleRuleNoncurrentVersionTransitionArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleNoncurrentVersionTransitionArgsDict(TypedDict):
+    days: pulumi.Input[_builtins.int]
+    """
+    Specifies the number of days noncurrent object versions transition.
+    """
+    storage_class: pulumi.Input[_builtins.str]
+    """
+    The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
+    """
+    is_access_time: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+    """
+    return_to_std_when_visit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
@@ -1396,30 +1349,27 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
         pulumi.set(self, "return_to_std_when_visit", value)
 
 
-if not MYPY:
-    class BucketLifecycleRuleTransitionArgsDict(TypedDict):
-        storage_class: pulumi.Input[_builtins.str]
-        """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        """
-        created_before_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        """
-        days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
-        is_access_time: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-        """
-        return_to_std_when_visit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-        """
-elif False:
-    BucketLifecycleRuleTransitionArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLifecycleRuleTransitionArgsDict(TypedDict):
+    storage_class: pulumi.Input[_builtins.str]
+    """
+    The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
+    """
+    created_before_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+    """
+    days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days noncurrent object versions transition.
+    """
+    is_access_time: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+    """
+    return_to_std_when_visit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+    """
 
 @pulumi.input_type
 class BucketLifecycleRuleTransitionArgs:
@@ -1507,18 +1457,15 @@ class BucketLifecycleRuleTransitionArgs:
         pulumi.set(self, "return_to_std_when_visit", value)
 
 
-if not MYPY:
-    class BucketLoggingArgsDict(TypedDict):
-        target_bucket: pulumi.Input[_builtins.str]
-        """
-        The name of the bucket that will receive the log objects.
-        """
-        target_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        To specify a key prefix for log objects.
-        """
-elif False:
-    BucketLoggingArgsDict: TypeAlias = Mapping[str, Any]
+class BucketLoggingArgsDict(TypedDict):
+    target_bucket: pulumi.Input[_builtins.str]
+    """
+    The name of the bucket that will receive the log objects.
+    """
+    target_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    To specify a key prefix for log objects.
+    """
 
 @pulumi.input_type
 class BucketLoggingArgs:
@@ -1558,30 +1505,27 @@ class BucketLoggingArgs:
         pulumi.set(self, "target_prefix", value)
 
 
-if not MYPY:
-    class BucketOverwriteConfigRuleArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The operation type. Currently, only "forbid" is supported.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule ID
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prefix of the Object name, which is used to filter objects to be processed.
-        """
-        principals: NotRequired[pulumi.Input['BucketOverwriteConfigRulePrincipalsArgsDict']]
-        """
-        A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The suffix of the Object name, which is used to filter objects to be processed.
-        """
-elif False:
-    BucketOverwriteConfigRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BucketOverwriteConfigRuleArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The operation type. Currently, only "forbid" is supported.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule ID
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prefix of the Object name, which is used to filter objects to be processed.
+    """
+    principals: NotRequired[pulumi.Input['BucketOverwriteConfigRulePrincipalsArgsDict']]
+    """
+    A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The suffix of the Object name, which is used to filter objects to be processed.
+    """
 
 @pulumi.input_type
 class BucketOverwriteConfigRuleArgs:
@@ -1670,14 +1614,11 @@ class BucketOverwriteConfigRuleArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class BucketOverwriteConfigRulePrincipalsArgsDict(TypedDict):
-        principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
-        """
-elif False:
-    BucketOverwriteConfigRulePrincipalsArgsDict: TypeAlias = Mapping[str, Any]
+class BucketOverwriteConfigRulePrincipalsArgsDict(TypedDict):
+    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+    """
 
 @pulumi.input_type
 class BucketOverwriteConfigRulePrincipalsArgs:
@@ -1702,18 +1643,15 @@ class BucketOverwriteConfigRulePrincipalsArgs:
         pulumi.set(self, "principals", value)
 
 
-if not MYPY:
-    class BucketRefererConfigArgsDict(TypedDict):
-        referers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of referer.
-        """
-        allow_empty: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Allows referer to be empty. Defaults false.
-        """
-elif False:
-    BucketRefererConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BucketRefererConfigArgsDict(TypedDict):
+    referers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of referer.
+    """
+    allow_empty: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allows referer to be empty. Defaults false.
+    """
 
 @pulumi.input_type
 class BucketRefererConfigArgs:
@@ -1753,24 +1691,21 @@ class BucketRefererConfigArgs:
         pulumi.set(self, "allow_empty", value)
 
 
-if not MYPY:
-    class BucketReplicationDestinationArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        The destination bucket to which the data is replicated.
-        """
-        location: pulumi.Input[_builtins.str]
-        """
-        The region in which the destination bucket is located.
-        """
-        transfer_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+class BucketReplicationDestinationArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    The destination bucket to which the data is replicated.
+    """
+    location: pulumi.Input[_builtins.str]
+    """
+    The region in which the destination bucket is located.
+    """
+    transfer_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
 
-        `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
-        """
-elif False:
-    BucketReplicationDestinationArgsDict: TypeAlias = Mapping[str, Any]
+    `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+    """
 
 @pulumi.input_type
 class BucketReplicationDestinationArgs:
@@ -1829,16 +1764,13 @@ class BucketReplicationDestinationArgs:
         pulumi.set(self, "transfer_type", value)
 
 
-if not MYPY:
-    class BucketReplicationEncryptionConfigurationArgsDict(TypedDict):
-        replica_kms_key_id: pulumi.Input[_builtins.str]
-        """
-        The CMK ID used in SSE-KMS.
+class BucketReplicationEncryptionConfigurationArgsDict(TypedDict):
+    replica_kms_key_id: pulumi.Input[_builtins.str]
+    """
+    The CMK ID used in SSE-KMS.
 
-        `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
-        """
-elif False:
-    BucketReplicationEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+    `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+    """
 
 @pulumi.input_type
 class BucketReplicationEncryptionConfigurationArgs:
@@ -1866,16 +1798,13 @@ class BucketReplicationEncryptionConfigurationArgs:
         pulumi.set(self, "replica_kms_key_id", value)
 
 
-if not MYPY:
-    class BucketReplicationPrefixSetArgsDict(TypedDict):
-        prefixes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of object key name prefix identifying one or more objects to which the rule applies.
+class BucketReplicationPrefixSetArgsDict(TypedDict):
+    prefixes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of object key name prefix identifying one or more objects to which the rule applies.
 
-        `NOTE`: The prefix must be less than or equal to 1024 characters in length.
-        """
-elif False:
-    BucketReplicationPrefixSetArgsDict: TypeAlias = Mapping[str, Any]
+    `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+    """
 
 @pulumi.input_type
 class BucketReplicationPrefixSetArgs:
@@ -1903,18 +1832,15 @@ class BucketReplicationPrefixSetArgs:
         pulumi.set(self, "prefixes", value)
 
 
-if not MYPY:
-    class BucketReplicationProgressArgsDict(TypedDict):
-        historical_object: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
-        """
-        new_object: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
-        """
-elif False:
-    BucketReplicationProgressArgsDict: TypeAlias = Mapping[str, Any]
+class BucketReplicationProgressArgsDict(TypedDict):
+    historical_object: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+    """
+    new_object: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+    """
 
 @pulumi.input_type
 class BucketReplicationProgressArgs:
@@ -1955,18 +1881,15 @@ class BucketReplicationProgressArgs:
         pulumi.set(self, "new_object", value)
 
 
-if not MYPY:
-    class BucketReplicationRtcArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
-        """
-elif False:
-    BucketReplicationRtcArgsDict: TypeAlias = Mapping[str, Any]
+class BucketReplicationRtcArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+    """
 
 @pulumi.input_type
 class BucketReplicationRtcArgs:
@@ -2006,14 +1929,11 @@ class BucketReplicationRtcArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class BucketReplicationSourceSelectionCriteriaArgsDict(TypedDict):
-        sse_kms_encrypted_objects: NotRequired[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict']]
-        """
-        Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
-        """
-elif False:
-    BucketReplicationSourceSelectionCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class BucketReplicationSourceSelectionCriteriaArgsDict(TypedDict):
+    sse_kms_encrypted_objects: NotRequired[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict']]
+    """
+    Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
+    """
 
 @pulumi.input_type
 class BucketReplicationSourceSelectionCriteriaArgs:
@@ -2038,14 +1958,11 @@ class BucketReplicationSourceSelectionCriteriaArgs:
         pulumi.set(self, "sse_kms_encrypted_objects", value)
 
 
-if not MYPY:
-    class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict(TypedDict):
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the data replication task. Can be starting, doing and closing.
-        """
-elif False:
-    BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict(TypedDict):
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the data replication task. Can be starting, doing and closing.
+    """
 
 @pulumi.input_type
 class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
@@ -2070,22 +1987,19 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class BucketResponseHeaderRuleArgsDict(TypedDict):
-        filters: NotRequired[pulumi.Input['BucketResponseHeaderRuleFiltersArgsDict']]
-        """
-        The container that holds the operations that need to be apply rules. See `filters` below.
-        """
-        hide_headers: NotRequired[pulumi.Input['BucketResponseHeaderRuleHideHeadersArgsDict']]
-        """
-        The container that holds the response headers that need to be hidden. See `hide_headers` below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The response header rule name.
-        """
-elif False:
-    BucketResponseHeaderRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BucketResponseHeaderRuleArgsDict(TypedDict):
+    filters: NotRequired[pulumi.Input['BucketResponseHeaderRuleFiltersArgsDict']]
+    """
+    The container that holds the operations that need to be apply rules. See `filters` below.
+    """
+    hide_headers: NotRequired[pulumi.Input['BucketResponseHeaderRuleHideHeadersArgsDict']]
+    """
+    The container that holds the response headers that need to be hidden. See `hide_headers` below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The response header rule name.
+    """
 
 @pulumi.input_type
 class BucketResponseHeaderRuleArgs:
@@ -2142,14 +2056,11 @@ class BucketResponseHeaderRuleArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class BucketResponseHeaderRuleFiltersArgsDict(TypedDict):
-        operations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The operation to which the rule applies.
-        """
-elif False:
-    BucketResponseHeaderRuleFiltersArgsDict: TypeAlias = Mapping[str, Any]
+class BucketResponseHeaderRuleFiltersArgsDict(TypedDict):
+    operations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The operation to which the rule applies.
+    """
 
 @pulumi.input_type
 class BucketResponseHeaderRuleFiltersArgs:
@@ -2174,14 +2085,11 @@ class BucketResponseHeaderRuleFiltersArgs:
         pulumi.set(self, "operations", value)
 
 
-if not MYPY:
-    class BucketResponseHeaderRuleHideHeadersArgsDict(TypedDict):
-        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The response header needs to be hidden.
-        """
-elif False:
-    BucketResponseHeaderRuleHideHeadersArgsDict: TypeAlias = Mapping[str, Any]
+class BucketResponseHeaderRuleHideHeadersArgsDict(TypedDict):
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The response header needs to be hidden.
+    """
 
 @pulumi.input_type
 class BucketResponseHeaderRuleHideHeadersArgs:
@@ -2206,22 +2114,19 @@ class BucketResponseHeaderRuleHideHeadersArgs:
         pulumi.set(self, "headers", value)
 
 
-if not MYPY:
-    class BucketServerSideEncryptionRuleArgsDict(TypedDict):
-        sse_algorithm: pulumi.Input[_builtins.str]
-        """
-        The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
-        """
-        kms_data_encryption: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
-        """
-        kms_master_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
-        """
-elif False:
-    BucketServerSideEncryptionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BucketServerSideEncryptionRuleArgsDict(TypedDict):
+    sse_algorithm: pulumi.Input[_builtins.str]
+    """
+    The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
+    """
+    kms_data_encryption: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+    """
+    kms_master_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+    """
 
 @pulumi.input_type
 class BucketServerSideEncryptionRuleArgs:
@@ -2277,14 +2182,11 @@ class BucketServerSideEncryptionRuleArgs:
         pulumi.set(self, "kms_master_key_id", value)
 
 
-if not MYPY:
-    class BucketTransferAccelerationArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies the accelerate status of a bucket.
-        """
-elif False:
-    BucketTransferAccelerationArgsDict: TypeAlias = Mapping[str, Any]
+class BucketTransferAccelerationArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Specifies the accelerate status of a bucket.
+    """
 
 @pulumi.input_type
 class BucketTransferAccelerationArgs:
@@ -2308,14 +2210,11 @@ class BucketTransferAccelerationArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class BucketVersioningArgsDict(TypedDict):
-        status: pulumi.Input[_builtins.str]
-        """
-        Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-        """
-elif False:
-    BucketVersioningArgsDict: TypeAlias = Mapping[str, Any]
+class BucketVersioningArgsDict(TypedDict):
+    status: pulumi.Input[_builtins.str]
+    """
+    Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+    """
 
 @pulumi.input_type
 class BucketVersioningArgs:
@@ -2339,18 +2238,15 @@ class BucketVersioningArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class BucketWebsiteArgsDict(TypedDict):
-        index_document: pulumi.Input[_builtins.str]
-        """
-        Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-        """
-        error_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An absolute path to the document to return in case of a 4XX error.
-        """
-elif False:
-    BucketWebsiteArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteArgsDict(TypedDict):
+    index_document: pulumi.Input[_builtins.str]
+    """
+    Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
+    """
+    error_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An absolute path to the document to return in case of a 4XX error.
+    """
 
 @pulumi.input_type
 class BucketWebsiteArgs:
@@ -2390,18 +2286,15 @@ class BucketWebsiteArgs:
         pulumi.set(self, "error_document", value)
 
 
-if not MYPY:
-    class BucketWebsiteErrorDocumentArgsDict(TypedDict):
-        http_status: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The HTTP status code when the error page is returned. The default 404.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The error page file. If the Object accessed does not exist, this error page is returned.
-        """
-elif False:
-    BucketWebsiteErrorDocumentArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteErrorDocumentArgsDict(TypedDict):
+    http_status: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The HTTP status code when the error page is returned. The default 404.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The error page file. If the Object accessed does not exist, this error page is returned.
+    """
 
 @pulumi.input_type
 class BucketWebsiteErrorDocumentArgs:
@@ -2442,22 +2335,19 @@ class BucketWebsiteErrorDocumentArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class BucketWebsiteIndexDocumentArgsDict(TypedDict):
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default home page.
-        """
-        support_sub_dir: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
-        """
-elif False:
-    BucketWebsiteIndexDocumentArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteIndexDocumentArgsDict(TypedDict):
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default home page.
+    """
+    support_sub_dir: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+    """
 
 @pulumi.input_type
 class BucketWebsiteIndexDocumentArgs:
@@ -2514,14 +2404,11 @@ class BucketWebsiteIndexDocumentArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesArgsDict(TypedDict):
-        routing_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgsDict']]]]
-        """
-        Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
-        """
-elif False:
-    BucketWebsiteRoutingRulesArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesArgsDict(TypedDict):
+    routing_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgsDict']]]]
+    """
+    Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesArgs:
@@ -2546,26 +2433,23 @@ class BucketWebsiteRoutingRulesArgs:
         pulumi.set(self, "routing_rules", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict']]
-        """
-        Save the criteria that the rule needs to match. See `condition` below.
-        """
-        lua_config: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict']]
-        """
-        The Lua script configuration to be executed. See `lua_config` below.
-        """
-        redirect: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict']]
-        """
-        Specifies the action to perform after this rule is matched. See `redirect` below.
-        """
-        rule_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict']]
+    """
+    Save the criteria that the rule needs to match. See `condition` below.
+    """
+    lua_config: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict']]
+    """
+    The Lua script configuration to be executed. See `lua_config` below.
+    """
+    redirect: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict']]
+    """
+    Specifies the action to perform after this rule is matched. See `redirect` below.
+    """
+    rule_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleArgs:
@@ -2638,26 +2522,23 @@ class BucketWebsiteRoutingRulesRoutingRuleArgs:
         pulumi.set(self, "rule_number", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict(TypedDict):
-        http_error_code_returned_equals: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
-        """
-        include_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict']]]]
-        """
-        This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
-        """
-        key_prefix_equals: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only objects that match this prefix can match this rule.
-        """
-        key_suffix_equals: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only objects that match this suffix can match this rule.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict(TypedDict):
+    http_error_code_returned_equals: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+    """
+    include_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict']]]]
+    """
+    This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
+    """
+    key_prefix_equals: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only objects that match this prefix can match this rule.
+    """
+    key_suffix_equals: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only objects that match this suffix can match this rule.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleConditionArgs:
@@ -2730,23 +2611,20 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionArgs:
         pulumi.set(self, "key_suffix_equals", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict(TypedDict):
-        ends_with: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
-        """
-        equals: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        starts_with: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict(TypedDict):
+    ends_with: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+    """
+    equals: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    starts_with: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs:
@@ -2815,14 +2693,11 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs:
         pulumi.set(self, "starts_with", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict(TypedDict):
-        script: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Lua script name.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict(TypedDict):
+    script: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Lua script name.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs:
@@ -2847,158 +2722,155 @@ class BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs:
         pulumi.set(self, "script", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
-        enable_replace_prefix: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
-        """
-        host_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain name during the jump. The domain name must comply with the domain name specification.
-        """
-        http_redirect_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
-        """
-        mirror_allow_get_image_info: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Image back-to-source allows getting Image information
-        """
-        mirror_allow_head_object: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow HeadObject in image back-to-source
-        """
-        mirror_allow_video_snapshot: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Mirror back-to-source allows support for video frame truncation
-        """
-        mirror_async_status: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The status code of the mirror back-to-source trigger asynchronous pull mode.
-        """
-        mirror_auth: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict']]
-        """
-        Image back Source station authentication information See `mirror_auth` below.
-        """
-        mirror_check_md5: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
-        """
-        mirror_dst_region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirrored back-to-source high-speed Channel vpregion
-        """
-        mirror_dst_slave_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirroring back-to-source high-speed Channel standby station VpcId
-        """
-        mirror_dst_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirror back-to-source high-speed Channel VpcId
-        """
-        mirror_follow_redirect: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
-        """
-        mirror_headers: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict']]
-        """
-        Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
-        """
-        mirror_is_express_tunnel: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether it is a mirror back-to-source high-speed Channel
-        """
-        mirror_multi_alternates: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict']]
-        """
-        Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
-        """
-        mirror_pass_original_slashes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Transparent transmission/to source Station
-        """
-        mirror_pass_query_string: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
-        """
-        mirror_proxy_pass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether mirroring back to source does not save data
-        """
-        mirror_return_headers: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict']]
-        """
-        The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
-        """
-        mirror_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Roles used when mirroring back-to-source
-        """
-        mirror_save_oss_meta: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Mirror back-to-source back-to-source OSS automatically saves user metadata
-        """
-        mirror_sni: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Transparent transmission of SNI
-        """
-        mirror_switch_all_errors: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
-        """
-        mirror_taggings: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict']]
-        """
-        Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
-        """
-        mirror_tunnel_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirror back-to-source leased line back-to-source tunnel ID
-        """
-        mirror_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
-        """
-        mirror_url_probe: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirror back-to-source Master-backup back-to-source switching decision URL
-        """
-        mirror_url_slave: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirror back-to-source primary backup back-to-source backup station URL
-        """
-        mirror_user_last_modified: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the source station LastModifiedTime is used for the image back-to-source save file.
-        """
-        mirror_using_role: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use role for mirroring back to source
-        """
-        pass_query_string: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
-        """
-        redirect_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
-        """
-        replace_key_prefix_with: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
-        """
-        replace_key_with: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
-        """
-        transparent_mirror_response_codes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirror back-to-source transparent source station response code list
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
+    enable_replace_prefix: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+    """
+    host_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain name during the jump. The domain name must comply with the domain name specification.
+    """
+    http_redirect_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+    """
+    mirror_allow_get_image_info: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Image back-to-source allows getting Image information
+    """
+    mirror_allow_head_object: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow HeadObject in image back-to-source
+    """
+    mirror_allow_video_snapshot: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Mirror back-to-source allows support for video frame truncation
+    """
+    mirror_async_status: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The status code of the mirror back-to-source trigger asynchronous pull mode.
+    """
+    mirror_auth: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict']]
+    """
+    Image back Source station authentication information See `mirror_auth` below.
+    """
+    mirror_check_md5: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+    """
+    mirror_dst_region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirrored back-to-source high-speed Channel vpregion
+    """
+    mirror_dst_slave_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirroring back-to-source high-speed Channel standby station VpcId
+    """
+    mirror_dst_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirror back-to-source high-speed Channel VpcId
+    """
+    mirror_follow_redirect: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+    """
+    mirror_headers: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict']]
+    """
+    Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
+    """
+    mirror_is_express_tunnel: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether it is a mirror back-to-source high-speed Channel
+    """
+    mirror_multi_alternates: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict']]
+    """
+    Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
+    """
+    mirror_pass_original_slashes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Transparent transmission/to source Station
+    """
+    mirror_pass_query_string: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+    """
+    mirror_proxy_pass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether mirroring back to source does not save data
+    """
+    mirror_return_headers: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict']]
+    """
+    The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
+    """
+    mirror_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Roles used when mirroring back-to-source
+    """
+    mirror_save_oss_meta: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Mirror back-to-source back-to-source OSS automatically saves user metadata
+    """
+    mirror_sni: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Transparent transmission of SNI
+    """
+    mirror_switch_all_errors: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+    """
+    mirror_taggings: NotRequired[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict']]
+    """
+    Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
+    """
+    mirror_tunnel_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirror back-to-source leased line back-to-source tunnel ID
+    """
+    mirror_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+    """
+    mirror_url_probe: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirror back-to-source Master-backup back-to-source switching decision URL
+    """
+    mirror_url_slave: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirror back-to-source primary backup back-to-source backup station URL
+    """
+    mirror_user_last_modified: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the source station LastModifiedTime is used for the image back-to-source save file.
+    """
+    mirror_using_role: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use role for mirroring back to source
+    """
+    pass_query_string: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+    """
+    redirect_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+    """
+    replace_key_prefix_with: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+    """
+    replace_key_with: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+    """
+    transparent_mirror_response_codes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirror back-to-source transparent source station response code list
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectArgs:
@@ -3599,26 +3471,23 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectArgs:
         pulumi.set(self, "transparent_mirror_response_codes", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict(TypedDict):
-        access_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirror back-to-source source Station back-to-source AK
-        """
-        access_key_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
-        """
-        auth_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication type of mirror return Source
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Signature Region
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict(TypedDict):
+    access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirror back-to-source source Station back-to-source AK
+    """
+    access_key_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+    """
+    auth_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication type of mirror return Source
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Signature Region
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs:
@@ -3691,26 +3560,23 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict(TypedDict):
-        pass_all: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
-        """
-        passes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
-        """
-        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
-        """
-        sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict']]]]
-        """
-        Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict(TypedDict):
+    pass_all: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+    """
+    passes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+    """
+    removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+    """
+    sets: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict']]]]
+    """
+    Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs:
@@ -3783,15 +3649,12 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs:
         pulumi.set(self, "sets", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs:
@@ -3828,14 +3691,11 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict(TypedDict):
-        mirror_multi_alternates: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict']]]]
-        """
-        Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict(TypedDict):
+    mirror_multi_alternates: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict']]]]
+    """
+    Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs:
@@ -3860,26 +3720,23 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs:
         pulumi.set(self, "mirror_multi_alternates", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict(TypedDict):
-        mirror_multi_alternate_dst_region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirroring back-to-source multi-station Region
-        """
-        mirror_multi_alternate_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Image back-to-source multi-source station serial number
-        """
-        mirror_multi_alternate_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirroring back-to-source multi-source site URL
-        """
-        mirror_multi_alternate_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Mirroring back-to-source multi-source VpcId
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict(TypedDict):
+    mirror_multi_alternate_dst_region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirroring back-to-source multi-station Region
+    """
+    mirror_multi_alternate_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Image back-to-source multi-source station serial number
+    """
+    mirror_multi_alternate_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirroring back-to-source multi-source site URL
+    """
+    mirror_multi_alternate_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Mirroring back-to-source multi-source VpcId
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs:
@@ -3952,14 +3809,11 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMul
         pulumi.set(self, "mirror_multi_alternate_vpc_id", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict(TypedDict):
-        return_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict']]]]
-        """
-        The list of response header rules for mirroring back-to-source return. See `return_header` below.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict(TypedDict):
+    return_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict']]]]
+    """
+    The list of response header rules for mirroring back-to-source return. See `return_header` below.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs:
@@ -3984,15 +3838,12 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs:
         pulumi.set(self, "return_headers", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs:
@@ -4029,14 +3880,11 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeade
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict(TypedDict):
-        taggings: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict']]]]
-        """
-        Image back-to-source save label rule list See `taggings` below.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict(TypedDict):
+    taggings: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict']]]]
+    """
+    Image back-to-source save label rule list See `taggings` below.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs:
@@ -4061,15 +3909,12 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs:
         pulumi.set(self, "taggings", value)
 
 
-if not MYPY:
-    class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
-        """
-elif False:
-    BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict: TypeAlias = Mapping[str, Any]
+class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the value of the Header to 1024 bytes at most. \\r\\n. It takes effect only when the RedirectType is set to Mirror.
+    """
 
 @pulumi.input_type
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs:

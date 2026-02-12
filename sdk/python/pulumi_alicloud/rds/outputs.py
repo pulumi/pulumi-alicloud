@@ -681,6 +681,11 @@ class InstanceServerlessConfig(dict):
                - MySQL: 0.5~8
                - SQLServer: 2~8 \\(Supports integers only\\).
                - PostgreSQL: 0.5~12
+        :param _builtins.bool auto_pause: Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+               - true: enables the feature.
+               - false: disables the feature. This is the default value.
+               > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+               > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
         :param _builtins.bool switch_force: Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
@@ -719,6 +724,13 @@ class InstanceServerlessConfig(dict):
     @_builtins.property
     @pulumi.getter(name="autoPause")
     def auto_pause(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+        - true: enables the feature.
+        - false: disables the feature. This is the default value.
+        > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+        > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+        """
         return pulumi.get(self, "auto_pause")
 
     @_builtins.property

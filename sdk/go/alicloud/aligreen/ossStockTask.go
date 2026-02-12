@@ -11,6 +11,226 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Aligreen Oss Stock Task resource.
+//
+// OSS stock file scanning task.
+//
+// For information about Aligreen Oss Stock Task and how to use it, see [What is Oss Stock Task](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateOssStockTask).
+//
+// > **NOTE:** Available since v1.228.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/aligreen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPyhXOV, err := oss.NewBucket(ctx, "defaultPyhXOV", &oss.BucketArgs{
+//				StorageClass: pulumi.String("Standard"),
+//				Bucket:       pulumi.Sprintf("%v-%v", name, _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultJnW8Na, err := aligreen.NewCallback(ctx, "defaultJnW8Na", &aligreen.CallbackArgs{
+//				CallbackUrl:  pulumi.String("https://www.aliyun.com/"),
+//				CryptType:    pulumi.Int(0),
+//				CallbackName: pulumi.Sprintf("%v%v", name, _default.Result),
+//				CallbackTypes: pulumi.StringArray{
+//					pulumi.String("machineScan"),
+//				},
+//				CallbackSuggestions: pulumi.StringArray{
+//					pulumi.String("block"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal([]string{
+//				"antispam",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
+//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json6 := string(tmpJSON6)
+//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json7 := string(tmpJSON7)
+//			tmpJSON8, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json8 := string(tmpJSON8)
+//			tmpJSON9, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json9 := string(tmpJSON9)
+//			tmpJSON10, err := json.Marshal([]string{
+//				"ad",
+//				"terrorism",
+//				"live",
+//				"porn",
+//				"antispam",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json10 := string(tmpJSON10)
+//			tmpJSON11, err := json.Marshal(map[string]interface{}{
+//				"Type":  "suggestion",
+//				"Value": "block",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json11 := string(tmpJSON11)
+//			_, err = aligreen.NewOssStockTask(ctx, "default", &aligreen.OssStockTaskArgs{
+//				ImageOpened:        pulumi.Bool(true),
+//				AutoFreezeType:     pulumi.String("acl"),
+//				AudioMaxSize:       pulumi.Int(200),
+//				ImageScanLimit:     pulumi.Int(1),
+//				VideoFrameInterval: pulumi.Int(1),
+//				VideoScanLimit:     pulumi.Int(1000),
+//				AudioScanLimit:     pulumi.Int(1000),
+//				VideoMaxFrames:     pulumi.Int(200),
+//				VideoMaxSize:       pulumi.Int(500),
+//				StartDate:          pulumi.String("2024-08-01 00:00:00 +0800"),
+//				EndDate:            pulumi.String("2024-12-31 09:06:42 +0800"),
+//				Buckets: defaultPyhXOV.Bucket.ApplyT(func(bucket string) (pulumi.String, error) {
+//					var _zero pulumi.String
+//					tmpJSON12, err := json.Marshal([]map[string]interface{}{
+//						map[string]interface{}{
+//							"Bucket":   bucket,
+//							"Selected": true,
+//							"Prefixes": []interface{}{},
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json12 := string(tmpJSON12)
+//					return pulumi.String(json12), nil
+//				}).(pulumi.StringOutput),
+//				ImageScenes: pulumi.StringArray{
+//					pulumi.String("porn"),
+//				},
+//				AudioAntispamFreezeConfig:      pulumi.String(json0),
+//				ImageLiveFreezeConfig:          pulumi.String(json1),
+//				VideoTerrorismFreezeConfig:     pulumi.String(json2),
+//				ImageTerrorismFreezeConfig:     pulumi.String(json3),
+//				CallbackId:                     defaultJnW8Na.ID(),
+//				ImageAdFreezeConfig:            pulumi.String(json4),
+//				BizType:                        pulumi.String("recommend_massmedia_template_01"),
+//				AudioScenes:                    pulumi.String(json5),
+//				ImagePornFreezeConfig:          pulumi.String(json6),
+//				VideoLiveFreezeConfig:          pulumi.String(json7),
+//				VideoPornFreezeConfig:          pulumi.String(json8),
+//				VideoVoiceAntispamFreezeConfig: pulumi.String(json9),
+//				VideoScenes:                    pulumi.String(json10),
+//				VideoAdFreezeConfig:            pulumi.String(json11),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `aligreen.OssStockTask` or removing it from your configuration
+//
+// Terraform cannot destroy resource `aligreen.OssStockTask`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Aligreen Oss Stock Task can be imported using the id, e.g.

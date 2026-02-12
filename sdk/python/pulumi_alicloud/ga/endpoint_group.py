@@ -696,6 +696,21 @@ class EndpointGroup(pulumi.CustomResource):
                  traffic_percentage: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a Global Accelerator (GA) Endpoint Group resource.
+
+        For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
+
+        > **NOTE:** Available since v1.113.0.
+
+        > **NOTE:** Listeners that use different protocols support different types of Endpoint Groups:
+
+        * For a `TCP` listener, if you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group of the same region has been created.
+        * For a `UDP` listener, you can only create `default` Endpoint Group.
+        * For an `HTTP` or `HTTPS` listener, you can create one `default` Endpoint Group and multiple `virtual` Endpoint Group.
+        * After you create a `virtual` endpoint group for an `HTTP` or `HTTPS` listener, you can create a forwarding rule and associate the forwarding rule with the `virtual` endpoint group. Then, the `HTTP` or `HTTPS` listener forwards requests with different destination domain names or paths to the `default` or `virtual` Endpoint Group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
+
+        > **WARN:** There is a serious bug in the `traffic_percentage` of the `ga.EndpointGroup` before version 1.211.1, while the value of `traffic_percentage` has not been explicitly specified in the Terraform code, Terraform will set `traffic_percentage` to `0`. This behavior will cause your instance traffic to drop to zero. So, please use provider greater than or equal to version `1.211.1`.
+
         ## Example Usage
 
         Basic Usage
@@ -801,6 +816,21 @@ class EndpointGroup(pulumi.CustomResource):
                  args: EndpointGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Global Accelerator (GA) Endpoint Group resource.
+
+        For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createendpointgroup).
+
+        > **NOTE:** Available since v1.113.0.
+
+        > **NOTE:** Listeners that use different protocols support different types of Endpoint Groups:
+
+        * For a `TCP` listener, if you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group of the same region has been created.
+        * For a `UDP` listener, you can only create `default` Endpoint Group.
+        * For an `HTTP` or `HTTPS` listener, you can create one `default` Endpoint Group and multiple `virtual` Endpoint Group.
+        * After you create a `virtual` endpoint group for an `HTTP` or `HTTPS` listener, you can create a forwarding rule and associate the forwarding rule with the `virtual` endpoint group. Then, the `HTTP` or `HTTPS` listener forwards requests with different destination domain names or paths to the `default` or `virtual` Endpoint Group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
+
+        > **WARN:** There is a serious bug in the `traffic_percentage` of the `ga.EndpointGroup` before version 1.211.1, while the value of `traffic_percentage` has not been explicitly specified in the Terraform code, Terraform will set `traffic_percentage` to `0`. This behavior will cause your instance traffic to drop to zero. So, please use provider greater than or equal to version `1.211.1`.
+
         ## Example Usage
 
         Basic Usage

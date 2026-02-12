@@ -30,6 +30,10 @@ public final class GetApisApi {
      * 
      */
     private String groupName;
+    /**
+     * @return The resource ID in terraform of API. It formats as `&lt;group_id&gt;:&lt;api_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The name of the API.
@@ -71,6 +75,10 @@ public final class GetApisApi {
     public String groupName() {
         return this.groupName;
     }
+    /**
+     * @return The resource ID in terraform of API. It formats as `&lt;group_id&gt;:&lt;api_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

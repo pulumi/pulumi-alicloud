@@ -10,6 +10,89 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cddc
 {
     /// <summary>
+    /// Provides a ApsaraDB for MyBase Dedicated Host resource.
+    /// 
+    /// For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhost).
+    /// 
+    /// &gt; **NOTE:** Available since v1.147.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.Cddc.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+    ///     });
+    /// 
+    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("default", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CpuAllocationRatio = 101,
+    ///         MemAllocationRatio = 50,
+    ///         DiskAllocationRatio = 200,
+    ///         AllocationPolicy = "Evenly",
+    ///         HostReplacePolicy = "Manual",
+    ///         DedicatedHostGroupDesc = name,
+    ///     });
+    /// 
+    ///     var defaultGetHostEcsLevelInfos = AliCloud.Cddc.GetHostEcsLevelInfos.Invoke(new()
+    ///     {
+    ///         DbType = "mysql",
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         StorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultDedicatedHost = new AliCloud.Cddc.DedicatedHost("default", new()
+    ///     {
+    ///         HostName = name,
+    ///         DedicatedHostGroupId = defaultDedicatedHostGroup.Id,
+    ///         HostClass = defaultGetHostEcsLevelInfos.Apply(getHostEcsLevelInfosResult =&gt; getHostEcsLevelInfosResult.Infos[0]?.ResClassCode),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         PaymentType = "Subscription",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "CDDC_DEDICATED" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cddc.DedicatedHost` or removing it from your configuration
+    /// 
+    /// The `alicloud.cddc.DedicatedHost` resource allows you to manage `PaymentType = "Subscription"` host instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Host Instance.
+    /// You can resume managing the subscription host instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

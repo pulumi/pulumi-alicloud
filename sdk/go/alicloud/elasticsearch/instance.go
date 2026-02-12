@@ -158,8 +158,11 @@ type Instance struct {
 	// The meaning of the value is as follows:
 	// - true: On.
 	// - false: does not open.
-	EnablePublic pulumi.BoolOutput    `pulumi:"enablePublic"`
-	Force        pulumi.BoolPtrOutput `pulumi:"force"`
+	EnablePublic pulumi.BoolOutput `pulumi:"enablePublic"`
+	// Whether to force changes
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Version type.
 	InstanceCategory pulumi.StringOutput `pulumi:"instanceCategory"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -195,7 +198,10 @@ type Instance struct {
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
-	MasterNodeSpec  pulumi.StringOutput    `pulumi:"masterNodeSpec"`
+	MasterNodeSpec pulumi.StringOutput `pulumi:"masterNodeSpec"`
+	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	OrderActionType pulumi.StringPtrOutput `pulumi:"orderActionType"`
 	// The access password of the instance.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -226,7 +232,15 @@ type Instance struct {
 	// Instance change status
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Collection of tag key-value pairs
-	Tags           pulumi.StringMapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The change policy for Elasticsearch.
+	//
+	// The values are as follows:
+	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	UpdateStrategy pulumi.StringPtrOutput `pulumi:"updateStrategy"`
 	// Instance version
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -363,7 +377,10 @@ type instanceState struct {
 	// - true: On.
 	// - false: does not open.
 	EnablePublic *bool `pulumi:"enablePublic"`
-	Force        *bool `pulumi:"force"`
+	// Whether to force changes
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Force *bool `pulumi:"force"`
 	// Version type.
 	InstanceCategory *string `pulumi:"instanceCategory"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -399,7 +416,10 @@ type instanceState struct {
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
-	MasterNodeSpec  *string `pulumi:"masterNodeSpec"`
+	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
+	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	OrderActionType *string `pulumi:"orderActionType"`
 	// The access password of the instance.
 	Password *string `pulumi:"password"`
@@ -430,8 +450,16 @@ type instanceState struct {
 	// Instance change status
 	Status *string `pulumi:"status"`
 	// Collection of tag key-value pairs
-	Tags           map[string]string `pulumi:"tags"`
-	UpdateStrategy *string           `pulumi:"updateStrategy"`
+	Tags map[string]string `pulumi:"tags"`
+	// The change policy for Elasticsearch.
+	//
+	// The values are as follows:
+	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateStrategy *string `pulumi:"updateStrategy"`
 	// Instance version
 	Version *string `pulumi:"version"`
 	// The ID of VSwitch.
@@ -525,7 +553,10 @@ type InstanceState struct {
 	// - true: On.
 	// - false: does not open.
 	EnablePublic pulumi.BoolPtrInput
-	Force        pulumi.BoolPtrInput
+	// Whether to force changes
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Force pulumi.BoolPtrInput
 	// Version type.
 	InstanceCategory pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -561,7 +592,10 @@ type InstanceState struct {
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
-	MasterNodeSpec  pulumi.StringPtrInput
+	MasterNodeSpec pulumi.StringPtrInput
+	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	OrderActionType pulumi.StringPtrInput
 	// The access password of the instance.
 	Password pulumi.StringPtrInput
@@ -592,7 +626,15 @@ type InstanceState struct {
 	// Instance change status
 	Status pulumi.StringPtrInput
 	// Collection of tag key-value pairs
-	Tags           pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// The change policy for Elasticsearch.
+	//
+	// The values are as follows:
+	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	UpdateStrategy pulumi.StringPtrInput
 	// Instance version
 	Version pulumi.StringPtrInput
@@ -685,7 +727,10 @@ type instanceArgs struct {
 	// - true: On.
 	// - false: does not open.
 	EnablePublic *bool `pulumi:"enablePublic"`
-	Force        *bool `pulumi:"force"`
+	// Whether to force changes
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Force *bool `pulumi:"force"`
 	// Version type.
 	InstanceCategory *string `pulumi:"instanceCategory"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -717,7 +762,10 @@ type instanceArgs struct {
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
-	MasterNodeSpec  *string `pulumi:"masterNodeSpec"`
+	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
+	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	OrderActionType *string `pulumi:"orderActionType"`
 	// The access password of the instance.
 	Password *string `pulumi:"password"`
@@ -740,8 +788,16 @@ type instanceArgs struct {
 	// Configuration information
 	SettingConfig map[string]string `pulumi:"settingConfig"`
 	// Collection of tag key-value pairs
-	Tags           map[string]string `pulumi:"tags"`
-	UpdateStrategy *string           `pulumi:"updateStrategy"`
+	Tags map[string]string `pulumi:"tags"`
+	// The change policy for Elasticsearch.
+	//
+	// The values are as follows:
+	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateStrategy *string `pulumi:"updateStrategy"`
 	// Instance version
 	Version string `pulumi:"version"`
 	// The ID of VSwitch.
@@ -830,7 +886,10 @@ type InstanceArgs struct {
 	// - true: On.
 	// - false: does not open.
 	EnablePublic pulumi.BoolPtrInput
-	Force        pulumi.BoolPtrInput
+	// Whether to force changes
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Force pulumi.BoolPtrInput
 	// Version type.
 	InstanceCategory pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -862,7 +921,10 @@ type InstanceArgs struct {
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	//
 	// Deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.
-	MasterNodeSpec  pulumi.StringPtrInput
+	MasterNodeSpec pulumi.StringPtrInput
+	// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	OrderActionType pulumi.StringPtrInput
 	// The access password of the instance.
 	Password pulumi.StringPtrInput
@@ -885,7 +947,15 @@ type InstanceArgs struct {
 	// Configuration information
 	SettingConfig pulumi.StringMapInput
 	// Collection of tag key-value pairs
-	Tags           pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// The change policy for Elasticsearch.
+	//
+	// The values are as follows:
+	// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+	// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+	// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	UpdateStrategy pulumi.StringPtrInput
 	// Instance version
 	Version pulumi.StringInput
@@ -1120,6 +1190,9 @@ func (o InstanceOutput) EnablePublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnablePublic }).(pulumi.BoolOutput)
 }
 
+// Whether to force changes
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o InstanceOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
@@ -1202,6 +1275,9 @@ func (o InstanceOutput) MasterNodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MasterNodeSpec }).(pulumi.StringOutput)
 }
 
+// The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o InstanceOutput) OrderActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderActionType }).(pulumi.StringPtrOutput)
 }
@@ -1281,6 +1357,14 @@ func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The change policy for Elasticsearch.
+//
+// The values are as follows:
+// - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+// - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+// - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o InstanceOutput) UpdateStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpdateStrategy }).(pulumi.StringPtrOutput)
 }

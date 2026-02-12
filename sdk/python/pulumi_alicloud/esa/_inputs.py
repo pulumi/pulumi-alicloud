@@ -117,28 +117,23 @@ __all__ = [
     'WaitingRoomHostNameAndPathArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Request Header Name.
-        """
-        operation: pulumi.Input[_builtins.str]
-        """
-        Mode of operation. Value range:
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value type. Value range:
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Request header value
-        """
-elif False:
-    HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Request Header Name.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    Mode of operation. Value range:
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value type. Value range:
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Request header value
+    """
 
 @pulumi.input_type
 class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs:
@@ -209,26 +204,23 @@ class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The response header name.
-        """
-        operation: pulumi.Input[_builtins.str]
-        """
-        Operation method. Possible values:
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value type. Value range:
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The response header value.
-        """
-elif False:
-    HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+class HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The response header name.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    Operation method. Possible values:
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value type. Value range:
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The response header value.
+    """
 
 @pulumi.input_type
 class HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs:
@@ -299,26 +291,23 @@ class HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Request Header Name.
-        """
-        operation: pulumi.Input[_builtins.str]
-        """
-        Mode of operation. Value range:
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Value type. Value range:
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Request header value
-        """
-elif False:
-    HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+class HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Request Header Name.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    Mode of operation. Value range:
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Value type. Value range:
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Request header value
+    """
 
 @pulumi.input_type
 class HttpRequestHeaderModificationRuleRequestHeaderModificationArgs:
@@ -389,26 +378,23 @@ class HttpRequestHeaderModificationRuleRequestHeaderModificationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The response header name.
-        """
-        operation: pulumi.Input[_builtins.str]
-        """
-        Operation method. Possible values:
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value type. Value range:
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The response header value.
-        """
-elif False:
-    HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+class HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The response header name.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    Operation method. Possible values:
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value type. Value range:
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The response header value.
+    """
 
 @pulumi.input_type
 class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
@@ -479,14 +465,11 @@ class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class LoadBalancerAdaptiveRoutingArgsDict(TypedDict):
-        failover_across_pools: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to failover across pools.
-        """
-elif False:
-    LoadBalancerAdaptiveRoutingArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerAdaptiveRoutingArgsDict(TypedDict):
+    failover_across_pools: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to failover across pools.
+    """
 
 @pulumi.input_type
 class LoadBalancerAdaptiveRoutingArgs:
@@ -511,61 +494,58 @@ class LoadBalancerAdaptiveRoutingArgs:
         pulumi.set(self, "failover_across_pools", value)
 
 
-if not MYPY:
-    class LoadBalancerMonitorArgsDict(TypedDict):
-        consecutive_down: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive failed health checks before the backend is considered down, for example, 5.
-        """
-        consecutive_up: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive successful probes required to consider the target as up, e.g., 3.
-        """
-        expected_codes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Expected status code, such as 200,202, successful HTTP response.
-        """
-        follow_redirects: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to follow the redirect.
-        """
-        header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP headers to be included in the health check request.
-        """
-        interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The monitoring interval, such as 60 seconds, checks the frequency.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Monitor request methods, such as GET, methods in the HTTP protocol.
-        """
-        monitoring_region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Probe Point Region, default to Global
-        - `Global`: Global.
-        - `ChineseMainland`: Chinese mainland.
-        - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The monitor checks the path, such as/healthcheck, the HTTP request path.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The target port.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout for the health check, in seconds. The value range is 1-10.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
-        """
-elif False:
-    LoadBalancerMonitorArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerMonitorArgsDict(TypedDict):
+    consecutive_down: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive failed health checks before the backend is considered down, for example, 5.
+    """
+    consecutive_up: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive successful probes required to consider the target as up, e.g., 3.
+    """
+    expected_codes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Expected status code, such as 200,202, successful HTTP response.
+    """
+    follow_redirects: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to follow the redirect.
+    """
+    header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP headers to be included in the health check request.
+    """
+    interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The monitoring interval, such as 60 seconds, checks the frequency.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Monitor request methods, such as GET, methods in the HTTP protocol.
+    """
+    monitoring_region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Probe Point Region, default to Global
+    - `Global`: Global.
+    - `ChineseMainland`: Chinese mainland.
+    - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The monitor checks the path, such as/healthcheck, the HTTP request path.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The target port.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout for the health check, in seconds. The value range is 1-10.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+    """
 
 @pulumi.input_type
 class LoadBalancerMonitorArgs:
@@ -772,18 +752,15 @@ class LoadBalancerMonitorArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class LoadBalancerRandomSteeringArgsDict(TypedDict):
-        default_weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
-        """
-        pool_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
-        """
-elif False:
-    LoadBalancerRandomSteeringArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerRandomSteeringArgsDict(TypedDict):
+    default_weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+    """
+    pool_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+    """
 
 @pulumi.input_type
 class LoadBalancerRandomSteeringArgs:
@@ -824,42 +801,39 @@ class LoadBalancerRandomSteeringArgs:
         pulumi.set(self, "pool_weights", value)
 
 
-if not MYPY:
-    class LoadBalancerRuleArgsDict(TypedDict):
-        fixed_response: NotRequired[pulumi.Input['LoadBalancerRuleFixedResponseArgsDict']]
-        """
-        Executes a specified response after matching the rule. See `fixed_response` below.
-        """
-        overrides: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
-        """
-        rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        - Match all incoming requests: value set to true
-        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        """
-        rule_enable: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        - on: open.
-        - off: close.
-        """
-        rule_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule name. When adding global configuration, this parameter does not need to be set.
-        """
-        sequence: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Order of rule execution. The smaller the value, the higher the priority for execution.
-        """
-        terminates: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to terminate the execution of subsequent rules.
-        """
-elif False:
-    LoadBalancerRuleArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerRuleArgsDict(TypedDict):
+    fixed_response: NotRequired[pulumi.Input['LoadBalancerRuleFixedResponseArgsDict']]
+    """
+    Executes a specified response after matching the rule. See `fixed_response` below.
+    """
+    overrides: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+    """
+    rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+    - Match all incoming requests: value set to true
+    - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+    """
+    rule_enable: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+    - on: open.
+    - off: close.
+    """
+    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule name. When adding global configuration, this parameter does not need to be set.
+    """
+    sequence: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Order of rule execution. The smaller the value, the higher the priority for execution.
+    """
+    terminates: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to terminate the execution of subsequent rules.
+    """
 
 @pulumi.input_type
 class LoadBalancerRuleArgs:
@@ -988,26 +962,23 @@ class LoadBalancerRuleArgs:
         pulumi.set(self, "terminates", value)
 
 
-if not MYPY:
-    class LoadBalancerRuleFixedResponseArgsDict(TypedDict):
-        content_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Content-Type field in the HTTP Header.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The location field in the http return.
-        """
-        message_body: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The body value of the response.
-        """
-        status_code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Status Code.
-        """
-elif False:
-    LoadBalancerRuleFixedResponseArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerRuleFixedResponseArgsDict(TypedDict):
+    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Content-Type field in the HTTP Header.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The location field in the http return.
+    """
+    message_body: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The body value of the response.
+    """
+    status_code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Status Code.
+    """
 
 @pulumi.input_type
 class LoadBalancerRuleFixedResponseArgs:
@@ -1080,45 +1051,42 @@ class LoadBalancerRuleFixedResponseArgs:
         pulumi.set(self, "status_code", value)
 
 
-if not MYPY:
-    class OriginPoolOriginArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Origin Address.
-        """
-        auth_conf: NotRequired[pulumi.Input['OriginPoolOriginAuthConfArgsDict']]
-        """
-        The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the source station is enabled:
-        """
-        header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The request header that is sent when returning to the source. Only Host is supported.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Origin Name.
-        """
-        origin_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Origin ID.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Source station type:
-        ip_domain: ip or domain name type origin station;
-        - `OSS`:OSS address source station;
-        - `S3`:AWS S3 Source station.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Weight, 0-100.
-        """
-elif False:
-    OriginPoolOriginArgsDict: TypeAlias = Mapping[str, Any]
+class OriginPoolOriginArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Origin Address.
+    """
+    auth_conf: NotRequired[pulumi.Input['OriginPoolOriginAuthConfArgsDict']]
+    """
+    The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the source station is enabled:
+    """
+    header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The request header that is sent when returning to the source. Only Host is supported.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Origin Name.
+    """
+    origin_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Origin ID.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Source station type:
+    ip_domain: ip or domain name type origin station;
+    - `OSS`:OSS address source station;
+    - `S3`:AWS S3 Source station.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Weight, 0-100.
+    """
 
 @pulumi.input_type
 class OriginPoolOriginArgs:
@@ -1261,30 +1229,27 @@ class OriginPoolOriginArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class OriginPoolOriginAuthConfArgsDict(TypedDict):
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AccessKey to be passed when AuthType is set to private_cross_account or private.
-        """
-        auth_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication type.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Region of the source station to be transmitted when the source station is AWS S3.
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SecretKey to be passed when AuthType is set to private_cross_account or private.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The signature version to be transmitted when the source station is AWS S3.
-        """
-elif False:
-    OriginPoolOriginAuthConfArgsDict: TypeAlias = Mapping[str, Any]
+class OriginPoolOriginAuthConfArgsDict(TypedDict):
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The AccessKey to be passed when AuthType is set to private_cross_account or private.
+    """
+    auth_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication type.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Region of the source station to be transmitted when the source station is AWS S3.
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SecretKey to be passed when AuthType is set to private_cross_account or private.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The signature version to be transmitted when the source station is AWS S3.
+    """
 
 @pulumi.input_type
 class OriginPoolOriginAuthConfArgs:
@@ -1373,30 +1338,27 @@ class OriginPoolOriginAuthConfArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class RecordAuthConfArgsDict(TypedDict):
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
-        """
-        auth_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
-        """
-elif False:
-    RecordAuthConfArgsDict: TypeAlias = Mapping[str, Any]
+class RecordAuthConfArgsDict(TypedDict):
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
+    """
+    auth_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+    """
 
 @pulumi.input_type
 class RecordAuthConfArgs:
@@ -1485,74 +1447,71 @@ class RecordAuthConfArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class RecordDataArgsDict(TypedDict):
-        algorithm: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
-        """
-        certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
-        """
-        fingerprint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
-        """
-        flag: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
-        """
-        key_tag: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
-        """
-        matching_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
-        """
-        selector: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
-        """
-        type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
-        """
-        usage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
-        - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
-        - `CNAME`: the target domain name.
-        - `NS`: the name servers for the domain name.
-        - `MX`: a valid domain name of the target mail server.
-        - `TXT`: a valid text string.
-        - `CAA`: a valid domain name of the certificate authority.
-        - `SRV`: a valid domain name of the target host.
-        - `URI`: a valid URI string.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
-        """
-elif False:
-    RecordDataArgsDict: TypeAlias = Mapping[str, Any]
+class RecordDataArgsDict(TypedDict):
+    algorithm: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
+    """
+    certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
+    """
+    fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
+    """
+    flag: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
+    """
+    key_tag: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
+    """
+    matching_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
+    """
+    priority: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+    """
+    selector: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
+    """
+    type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
+    """
+    usage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+    - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
+    - `CNAME`: the target domain name.
+    - `NS`: the name servers for the domain name.
+    - `MX`: a valid domain name of the target mail server.
+    - `TXT`: a valid text string.
+    - `CAA`: a valid domain name of the certificate authority.
+    - `SRV`: a valid domain name of the target host.
+    - `URI`: a valid URI string.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
+    """
 
 @pulumi.input_type
 class RecordDataArgs:
@@ -1801,25 +1760,22 @@ class RecordDataArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class SiteDeliveryTaskHttpDeliveryArgsDict(TypedDict):
-        compress: NotRequired[pulumi.Input[_builtins.str]]
-        dest_url: NotRequired[pulumi.Input[_builtins.str]]
-        header_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        log_body_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        log_body_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        max_batch_mb: NotRequired[pulumi.Input[_builtins.int]]
-        max_batch_size: NotRequired[pulumi.Input[_builtins.int]]
-        max_retry: NotRequired[pulumi.Input[_builtins.int]]
-        query_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        standard_auth_on: NotRequired[pulumi.Input[_builtins.bool]]
-        standard_auth_param: NotRequired[pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict']]
-        """
-        See `standard_auth_param` below.
-        """
-        transform_timeout: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    SiteDeliveryTaskHttpDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+class SiteDeliveryTaskHttpDeliveryArgsDict(TypedDict):
+    compress: NotRequired[pulumi.Input[_builtins.str]]
+    dest_url: NotRequired[pulumi.Input[_builtins.str]]
+    header_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    log_body_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    log_body_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    max_batch_mb: NotRequired[pulumi.Input[_builtins.int]]
+    max_batch_size: NotRequired[pulumi.Input[_builtins.int]]
+    max_retry: NotRequired[pulumi.Input[_builtins.int]]
+    query_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    standard_auth_on: NotRequired[pulumi.Input[_builtins.bool]]
+    standard_auth_param: NotRequired[pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict']]
+    """
+    See `standard_auth_param` below.
+    """
+    transform_timeout: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class SiteDeliveryTaskHttpDeliveryArgs:
@@ -1976,13 +1932,10 @@ class SiteDeliveryTaskHttpDeliveryArgs:
         pulumi.set(self, "transform_timeout", value)
 
 
-if not MYPY:
-    class SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict(TypedDict):
-        expired_time: NotRequired[pulumi.Input[_builtins.int]]
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        url_path: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict: TypeAlias = Mapping[str, Any]
+class SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict(TypedDict):
+    expired_time: NotRequired[pulumi.Input[_builtins.int]]
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    url_path: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs:
@@ -2025,21 +1978,18 @@ class SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs:
         pulumi.set(self, "url_path", value)
 
 
-if not MYPY:
-    class SiteDeliveryTaskKafkaDeliveryArgsDict(TypedDict):
-        balancer: NotRequired[pulumi.Input[_builtins.str]]
-        brokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        compress: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The compression method. By default, data is not compressed.
-        """
-        machanism_type: NotRequired[pulumi.Input[_builtins.str]]
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        user_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        user_name: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SiteDeliveryTaskKafkaDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+class SiteDeliveryTaskKafkaDeliveryArgsDict(TypedDict):
+    balancer: NotRequired[pulumi.Input[_builtins.str]]
+    brokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    compress: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The compression method. By default, data is not compressed.
+    """
+    machanism_type: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    user_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    user_name: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SiteDeliveryTaskKafkaDeliveryArgs:
@@ -2148,17 +2098,14 @@ class SiteDeliveryTaskKafkaDeliveryArgs:
         pulumi.set(self, "user_name", value)
 
 
-if not MYPY:
-    class SiteDeliveryTaskOssDeliveryArgsDict(TypedDict):
-        aliuid: NotRequired[pulumi.Input[_builtins.str]]
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        prefix_path: NotRequired[pulumi.Input[_builtins.str]]
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region ID of the service.
-        """
-elif False:
-    SiteDeliveryTaskOssDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+class SiteDeliveryTaskOssDeliveryArgsDict(TypedDict):
+    aliuid: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    prefix_path: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region ID of the service.
+    """
 
 @pulumi.input_type
 class SiteDeliveryTaskOssDeliveryArgs:
@@ -2219,25 +2166,22 @@ class SiteDeliveryTaskOssDeliveryArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class SiteDeliveryTaskS3DeliveryArgsDict(TypedDict):
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        bucket_path: NotRequired[pulumi.Input[_builtins.str]]
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        prefix_path: NotRequired[pulumi.Input[_builtins.str]]
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        s3_cmpt: NotRequired[pulumi.Input[_builtins.bool]]
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        server_side_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Server-side encryption
-        """
-        vertify_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication Type
-        """
-elif False:
-    SiteDeliveryTaskS3DeliveryArgsDict: TypeAlias = Mapping[str, Any]
+class SiteDeliveryTaskS3DeliveryArgsDict(TypedDict):
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_path: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    prefix_path: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    s3_cmpt: NotRequired[pulumi.Input[_builtins.bool]]
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    server_side_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Server-side encryption
+    """
+    vertify_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication Type
+    """
 
 @pulumi.input_type
 class SiteDeliveryTaskS3DeliveryArgs:
@@ -2362,13 +2306,10 @@ class SiteDeliveryTaskS3DeliveryArgs:
         pulumi.set(self, "vertify_type", value)
 
 
-if not MYPY:
-    class SiteDeliveryTaskSlsDeliveryArgsDict(TypedDict):
-        sls_log_store: NotRequired[pulumi.Input[_builtins.str]]
-        sls_project: NotRequired[pulumi.Input[_builtins.str]]
-        sls_region: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SiteDeliveryTaskSlsDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+class SiteDeliveryTaskSlsDeliveryArgsDict(TypedDict):
+    sls_log_store: NotRequired[pulumi.Input[_builtins.str]]
+    sls_project: NotRequired[pulumi.Input[_builtins.str]]
+    sls_region: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SiteDeliveryTaskSlsDeliveryArgs:
@@ -2411,49 +2352,46 @@ class SiteDeliveryTaskSlsDeliveryArgs:
         pulumi.set(self, "sls_region", value)
 
 
-if not MYPY:
-    class TransportLayerApplicationRuleArgsDict(TypedDict):
-        client_ip_pass_through_mode: pulumi.Input[_builtins.str]
-        """
-        Client IP pass-through protocol, supporting:
-        """
-        edge_port: pulumi.Input[_builtins.str]
-        """
-        Edge port. Supports:
-        - A single port, such as 80.
-        - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
-        - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+class TransportLayerApplicationRuleArgsDict(TypedDict):
+    client_ip_pass_through_mode: pulumi.Input[_builtins.str]
+    """
+    Client IP pass-through protocol, supporting:
+    """
+    edge_port: pulumi.Input[_builtins.str]
+    """
+    Edge port. Supports:
+    - A single port, such as 80.
+    - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+    - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
 
-        Edge ports within a single rule and between multiple rules must not overlap.
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        Forwarding rule protocol, with values:
-        - `TCP`: TCP protocol.
-        - `UDP`: UDP protocol.
-        """
-        source: pulumi.Input[_builtins.str]
-        """
-        Specific value of the origin, which needs to match the origin type.
-        """
-        source_port: pulumi.Input[_builtins.str]
-        """
-        Source Port
-        """
-        source_type: pulumi.Input[_builtins.str]
-        """
-        Origin type, supporting:
-        """
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comment information for the rule (optional).
-        """
-        rule_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Rule ID
-        """
-elif False:
-    TransportLayerApplicationRuleArgsDict: TypeAlias = Mapping[str, Any]
+    Edge ports within a single rule and between multiple rules must not overlap.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    Forwarding rule protocol, with values:
+    - `TCP`: TCP protocol.
+    - `UDP`: UDP protocol.
+    """
+    source: pulumi.Input[_builtins.str]
+    """
+    Specific value of the origin, which needs to match the origin type.
+    """
+    source_port: pulumi.Input[_builtins.str]
+    """
+    Source Port
+    """
+    source_type: pulumi.Input[_builtins.str]
+    """
+    Origin type, supporting:
+    """
+    comment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comment information for the rule (optional).
+    """
+    rule_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Rule ID
+    """
 
 @pulumi.input_type
 class TransportLayerApplicationRuleArgs:
@@ -2598,89 +2536,86 @@ class TransportLayerApplicationRuleArgs:
         pulumi.set(self, "rule_id", value)
 
 
-if not MYPY:
-    class WafRuleConfigArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The action performed on requests that match the managed rule.
-        """
-        actions: NotRequired[pulumi.Input['WafRuleConfigActionsArgsDict']]
-        """
-        Extended action configurations, including custom responses and bypass settings. See `actions` below.
-        """
-        app_package: NotRequired[pulumi.Input['WafRuleConfigAppPackageArgsDict']]
-        """
-        Security mechanism to prevent apps from being repackaged. See `app_package` below.
-        """
-        app_sdk: NotRequired[pulumi.Input['WafRuleConfigAppSdkArgsDict']]
-        """
-        Mobile app SDK-related configurations. See `app_sdk` below.
-        """
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The match expression used to evaluate incoming requests.
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the custom error page, which can be obtained by calling the ListPages operation.
-        """
-        managed_group_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the managed rule group (deprecated).
-        """
-        managed_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the managed list applied to this rule.
-        """
-        managed_rulesets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigManagedRulesetArgsDict']]]]
-        """
-        The managed rulesets referenced by this rule and their configurations. See `managed_rulesets` below.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The package name of an authorized application.
-        """
-        notes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Additional notes about this rule.
-        """
-        rate_limit: NotRequired[pulumi.Input['WafRuleConfigRateLimitArgsDict']]
-        """
-        Configuration of the rate limiting rule. See `rate_limit` below.
-        """
-        security_level: NotRequired[pulumi.Input['WafRuleConfigSecurityLevelArgsDict']]
-        """
-        The overall security protection level of WAF.
-        Valid values:
-        - off
-        - essentially_off
-        - low
-        - medium
-        - high
-        - under_attack See `security_level` below.
-        """
-        sigchls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Configuration items for token verification mechanisms.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the managed rule: whether it is enabled or disabled.
-        """
-        timer: NotRequired[pulumi.Input['WafRuleConfigTimerArgsDict']]
-        """
-        Configuration for the time schedule when the rule takes effect. See `timer` below.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type category of the WAF rule.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the custom signature field used for validation.
-        """
-elif False:
-    WafRuleConfigArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The action performed on requests that match the managed rule.
+    """
+    actions: NotRequired[pulumi.Input['WafRuleConfigActionsArgsDict']]
+    """
+    Extended action configurations, including custom responses and bypass settings. See `actions` below.
+    """
+    app_package: NotRequired[pulumi.Input['WafRuleConfigAppPackageArgsDict']]
+    """
+    Security mechanism to prevent apps from being repackaged. See `app_package` below.
+    """
+    app_sdk: NotRequired[pulumi.Input['WafRuleConfigAppSdkArgsDict']]
+    """
+    Mobile app SDK-related configurations. See `app_sdk` below.
+    """
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The match expression used to evaluate incoming requests.
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the custom error page, which can be obtained by calling the ListPages operation.
+    """
+    managed_group_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the managed rule group (deprecated).
+    """
+    managed_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the managed list applied to this rule.
+    """
+    managed_rulesets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigManagedRulesetArgsDict']]]]
+    """
+    The managed rulesets referenced by this rule and their configurations. See `managed_rulesets` below.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The package name of an authorized application.
+    """
+    notes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Additional notes about this rule.
+    """
+    rate_limit: NotRequired[pulumi.Input['WafRuleConfigRateLimitArgsDict']]
+    """
+    Configuration of the rate limiting rule. See `rate_limit` below.
+    """
+    security_level: NotRequired[pulumi.Input['WafRuleConfigSecurityLevelArgsDict']]
+    """
+    The overall security protection level of WAF.
+    Valid values:
+    - off
+    - essentially_off
+    - low
+    - medium
+    - high
+    - under_attack See `security_level` below.
+    """
+    sigchls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Configuration items for token verification mechanisms.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the managed rule: whether it is enabled or disabled.
+    """
+    timer: NotRequired[pulumi.Input['WafRuleConfigTimerArgsDict']]
+    """
+    Configuration for the time schedule when the rule takes effect. See `timer` below.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type category of the WAF rule.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the custom signature field used for validation.
+    """
 
 @pulumi.input_type
 class WafRuleConfigArgs:
@@ -2991,15 +2926,12 @@ class WafRuleConfigArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WafRuleConfigActionsArgsDict(TypedDict):
-        bypass: NotRequired[pulumi.Input['WafRuleConfigActionsBypassArgsDict']]
-        """
-        The skip configuration specified by the whitelist rule. See `bypass` below.
-        """
-        response: NotRequired[pulumi.Input['WafRuleConfigActionsResponseArgsDict']]
-elif False:
-    WafRuleConfigActionsArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigActionsArgsDict(TypedDict):
+    bypass: NotRequired[pulumi.Input['WafRuleConfigActionsBypassArgsDict']]
+    """
+    The skip configuration specified by the whitelist rule. See `bypass` below.
+    """
+    response: NotRequired[pulumi.Input['WafRuleConfigActionsResponseArgsDict']]
 
 @pulumi.input_type
 class WafRuleConfigActionsArgs:
@@ -3036,30 +2968,27 @@ class WafRuleConfigActionsArgs:
         pulumi.set(self, "response", value)
 
 
-if not MYPY:
-    class WafRuleConfigActionsBypassArgsDict(TypedDict):
-        custom_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The IDs of custom rules to skip.
-        """
-        regular_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The IDs of specific managed rules to skip.
-        """
-        regular_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The types of managed rules to skip.
-        """
-        skip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scope that is skipped when requests match conditions defined in the whitelist rule.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The rule categories that are skipped when requests match conditions defined in the whitelist rule.
-        """
-elif False:
-    WafRuleConfigActionsBypassArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigActionsBypassArgsDict(TypedDict):
+    custom_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The IDs of custom rules to skip.
+    """
+    regular_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The IDs of specific managed rules to skip.
+    """
+    regular_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The types of managed rules to skip.
+    """
+    skip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scope that is skipped when requests match conditions defined in the whitelist rule.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+    """
 
 @pulumi.input_type
 class WafRuleConfigActionsBypassArgs:
@@ -3148,15 +3077,12 @@ class WafRuleConfigActionsBypassArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class WafRuleConfigActionsResponseArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The internal unique ID of the WAF rule.
-        """
-elif False:
-    WafRuleConfigActionsResponseArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigActionsResponseArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The internal unique ID of the WAF rule.
+    """
 
 @pulumi.input_type
 class WafRuleConfigActionsResponseArgs:
@@ -3193,14 +3119,11 @@ class WafRuleConfigActionsResponseArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class WafRuleConfigAppPackageArgsDict(TypedDict):
-        package_signs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigAppPackagePackageSignArgsDict']]]]
-        """
-        Security mechanism to prevent apps from being repackaged. See `package_signs` below.
-        """
-elif False:
-    WafRuleConfigAppPackageArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigAppPackageArgsDict(TypedDict):
+    package_signs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigAppPackagePackageSignArgsDict']]]]
+    """
+    Security mechanism to prevent apps from being repackaged. See `package_signs` below.
+    """
 
 @pulumi.input_type
 class WafRuleConfigAppPackageArgs:
@@ -3225,15 +3148,12 @@ class WafRuleConfigAppPackageArgs:
         pulumi.set(self, "package_signs", value)
 
 
-if not MYPY:
-    class WafRuleConfigAppPackagePackageSignArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        sign: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The digital signature of a legitimate app package.
-        """
-elif False:
-    WafRuleConfigAppPackagePackageSignArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigAppPackagePackageSignArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    sign: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The digital signature of a legitimate app package.
+    """
 
 @pulumi.input_type
 class WafRuleConfigAppPackagePackageSignArgs:
@@ -3270,22 +3190,19 @@ class WafRuleConfigAppPackagePackageSignArgs:
         pulumi.set(self, "sign", value)
 
 
-if not MYPY:
-    class WafRuleConfigAppSdkArgsDict(TypedDict):
-        custom_sign: NotRequired[pulumi.Input['WafRuleConfigAppSdkCustomSignArgsDict']]
-        """
-        Custom fields used for mobile app signature validation. See `custom_sign` below.
-        """
-        custom_sign_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates whether the custom signature field validation is enabled.
-        """
-        feature_abnormals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Detected abnormal behaviors of the application.
-        """
-elif False:
-    WafRuleConfigAppSdkArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigAppSdkArgsDict(TypedDict):
+    custom_sign: NotRequired[pulumi.Input['WafRuleConfigAppSdkCustomSignArgsDict']]
+    """
+    Custom fields used for mobile app signature validation. See `custom_sign` below.
+    """
+    custom_sign_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates whether the custom signature field validation is enabled.
+    """
+    feature_abnormals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Detected abnormal behaviors of the application.
+    """
 
 @pulumi.input_type
 class WafRuleConfigAppSdkArgs:
@@ -3342,18 +3259,15 @@ class WafRuleConfigAppSdkArgs:
         pulumi.set(self, "feature_abnormals", value)
 
 
-if not MYPY:
-    class WafRuleConfigAppSdkCustomSignArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the custom signature field used for validation.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the custom signature field used for validation.
-        """
-elif False:
-    WafRuleConfigAppSdkCustomSignArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigAppSdkCustomSignArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the custom signature field used for validation.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the custom signature field used for validation.
+    """
 
 @pulumi.input_type
 class WafRuleConfigAppSdkCustomSignArgs:
@@ -3394,31 +3308,28 @@ class WafRuleConfigAppSdkCustomSignArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WafRuleConfigManagedRulesetArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        attack_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The primary attack type targeted by this ruleset.
-        """
-        managed_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigManagedRulesetManagedRuleArgsDict']]]]
-        """
-        The individual managed rules included in this ruleset. See `managed_rules` below.
-        """
-        number_enabled: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of rules currently enabled.
-        """
-        number_total: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of rules in this ruleset.
-        """
-        protection_level: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The protection strength level assigned to this ruleset.
-        """
-elif False:
-    WafRuleConfigManagedRulesetArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigManagedRulesetArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    attack_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The primary attack type targeted by this ruleset.
+    """
+    managed_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigManagedRulesetManagedRuleArgsDict']]]]
+    """
+    The individual managed rules included in this ruleset. See `managed_rules` below.
+    """
+    number_enabled: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of rules currently enabled.
+    """
+    number_total: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of rules in this ruleset.
+    """
+    protection_level: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The protection strength level assigned to this ruleset.
+    """
 
 @pulumi.input_type
 class WafRuleConfigManagedRulesetArgs:
@@ -3519,19 +3430,16 @@ class WafRuleConfigManagedRulesetArgs:
         pulumi.set(self, "protection_level", value)
 
 
-if not MYPY:
-    class WafRuleConfigManagedRulesetManagedRuleArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The internal unique ID of the WAF rule.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the managed rule: whether it is enabled or disabled.
-        """
-elif False:
-    WafRuleConfigManagedRulesetManagedRuleArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigManagedRulesetManagedRuleArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The internal unique ID of the WAF rule.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the managed rule: whether it is enabled or disabled.
+    """
 
 @pulumi.input_type
 class WafRuleConfigManagedRulesetManagedRuleArgs:
@@ -3584,30 +3492,27 @@ class WafRuleConfigManagedRulesetManagedRuleArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitArgsDict(TypedDict):
-        characteristics: NotRequired[pulumi.Input['WafRuleConfigRateLimitCharacteristicsArgsDict']]
-        """
-        The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
-        """
-        interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The statistical interval.
-        """
-        on_hit: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the rule applies to requests that hit the cache.
-        """
-        threshold: NotRequired[pulumi.Input['WafRuleConfigRateLimitThresholdArgsDict']]
-        """
-        Threshold settings for the rate limiting rule. See `threshold` below.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period for creating the stack used in rate limiting.
-        """
-elif False:
-    WafRuleConfigRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitArgsDict(TypedDict):
+    characteristics: NotRequired[pulumi.Input['WafRuleConfigRateLimitCharacteristicsArgsDict']]
+    """
+    The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+    """
+    interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The statistical interval.
+    """
+    on_hit: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the rule applies to requests that hit the cache.
+    """
+    threshold: NotRequired[pulumi.Input['WafRuleConfigRateLimitThresholdArgsDict']]
+    """
+    Threshold settings for the rate limiting rule. See `threshold` below.
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period for creating the stack used in rate limiting.
+    """
 
 @pulumi.input_type
 class WafRuleConfigRateLimitArgs:
@@ -3696,12 +3601,9 @@ class WafRuleConfigRateLimitArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitCharacteristicsArgsDict(TypedDict):
-        criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict']]]]
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleConfigRateLimitCharacteristicsArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitCharacteristicsArgsDict(TypedDict):
+    criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict']]]]
+    logic: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleConfigRateLimitCharacteristicsArgs:
@@ -3732,13 +3634,10 @@ class WafRuleConfigRateLimitCharacteristicsArgs:
         pulumi.set(self, "logic", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict(TypedDict):
-        criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict']]]]
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict(TypedDict):
+    criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict']]]]
+    logic: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleConfigRateLimitCharacteristicsCriteriaArgs:
@@ -3781,13 +3680,10 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict(TypedDict):
-        criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgsDict']]]]
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict(TypedDict):
+    criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgsDict']]]]
+    logic: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs:
@@ -3830,11 +3726,8 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgsDict(TypedDict):
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgsDict(TypedDict):
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs:
@@ -3853,30 +3746,27 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitThresholdArgsDict(TypedDict):
-        distinct_managed_rules: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of distinct managed rules that can be triggered.
-        """
-        managed_rules_blocked: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of times that managed rules can be triggered.
-        """
-        request: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of allowed requests within a time interval.
-        """
-        response_status: NotRequired[pulumi.Input['WafRuleConfigRateLimitThresholdResponseStatusArgsDict']]
-        """
-        Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
-        """
-        traffic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum allowed traffic within a time interval (deprecated).
-        """
-elif False:
-    WafRuleConfigRateLimitThresholdArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitThresholdArgsDict(TypedDict):
+    distinct_managed_rules: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of distinct managed rules that can be triggered.
+    """
+    managed_rules_blocked: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of times that managed rules can be triggered.
+    """
+    request: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of allowed requests within a time interval.
+    """
+    response_status: NotRequired[pulumi.Input['WafRuleConfigRateLimitThresholdResponseStatusArgsDict']]
+    """
+    Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
+    """
+    traffic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum allowed traffic within a time interval (deprecated).
+    """
 
 @pulumi.input_type
 class WafRuleConfigRateLimitThresholdArgs:
@@ -3965,19 +3855,16 @@ class WafRuleConfigRateLimitThresholdArgs:
         pulumi.set(self, "traffic", value)
 
 
-if not MYPY:
-    class WafRuleConfigRateLimitThresholdResponseStatusArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of times the specified status code can be returned.
-        """
-        ratio: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The upper limit of the percentage of occurrences of the specified status code among all responses.
-        """
-elif False:
-    WafRuleConfigRateLimitThresholdResponseStatusArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigRateLimitThresholdResponseStatusArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of times the specified status code can be returned.
+    """
+    ratio: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The upper limit of the percentage of occurrences of the specified status code among all responses.
+    """
 
 @pulumi.input_type
 class WafRuleConfigRateLimitThresholdResponseStatusArgs:
@@ -4030,14 +3917,11 @@ class WafRuleConfigRateLimitThresholdResponseStatusArgs:
         pulumi.set(self, "ratio", value)
 
 
-if not MYPY:
-    class WafRuleConfigSecurityLevelArgsDict(TypedDict):
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the custom signature field used for validation.
-        """
-elif False:
-    WafRuleConfigSecurityLevelArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigSecurityLevelArgsDict(TypedDict):
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the custom signature field used for validation.
+    """
 
 @pulumi.input_type
 class WafRuleConfigSecurityLevelArgs:
@@ -4062,23 +3946,20 @@ class WafRuleConfigSecurityLevelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WafRuleConfigTimerArgsDict(TypedDict):
-        periods: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigTimerPeriodArgsDict']]]]
-        scopes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timing type:
-        """
-        weekly_periods: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodArgsDict']]]]
-        """
-        Weekly recurring time schedules. See `weekly_periods` below.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
-        """
-elif False:
-    WafRuleConfigTimerArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigTimerArgsDict(TypedDict):
+    periods: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigTimerPeriodArgsDict']]]]
+    scopes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timing type:
+    """
+    weekly_periods: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodArgsDict']]]]
+    """
+    Weekly recurring time schedules. See `weekly_periods` below.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+    """
 
 @pulumi.input_type
 class WafRuleConfigTimerArgs:
@@ -4147,18 +4028,15 @@ class WafRuleConfigTimerArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class WafRuleConfigTimerPeriodArgsDict(TypedDict):
-        end: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        End time in HH:mm:ss format
-        """
-        start: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time in HH:mm:ss format
-        """
-elif False:
-    WafRuleConfigTimerPeriodArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigTimerPeriodArgsDict(TypedDict):
+    end: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    End time in HH:mm:ss format
+    """
+    start: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time in HH:mm:ss format
+    """
 
 @pulumi.input_type
 class WafRuleConfigTimerPeriodArgs:
@@ -4199,18 +4077,15 @@ class WafRuleConfigTimerPeriodArgs:
         pulumi.set(self, "start", value)
 
 
-if not MYPY:
-    class WafRuleConfigTimerWeeklyPeriodArgsDict(TypedDict):
-        daily_periods: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodDailyPeriodArgsDict']]]]
-        """
-        Daily effective time periods within a weekly schedule. See `daily_periods` below.
-        """
-        days: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
-        """
-elif False:
-    WafRuleConfigTimerWeeklyPeriodArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigTimerWeeklyPeriodArgsDict(TypedDict):
+    daily_periods: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodDailyPeriodArgsDict']]]]
+    """
+    Daily effective time periods within a weekly schedule. See `daily_periods` below.
+    """
+    days: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+    """
 
 @pulumi.input_type
 class WafRuleConfigTimerWeeklyPeriodArgs:
@@ -4251,18 +4126,15 @@ class WafRuleConfigTimerWeeklyPeriodArgs:
         pulumi.set(self, "days", value)
 
 
-if not MYPY:
-    class WafRuleConfigTimerWeeklyPeriodDailyPeriodArgsDict(TypedDict):
-        end: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        End time in HH:mm:ss format
-        """
-        start: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time in HH:mm:ss format
-        """
-elif False:
-    WafRuleConfigTimerWeeklyPeriodDailyPeriodArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleConfigTimerWeeklyPeriodDailyPeriodArgsDict(TypedDict):
+    end: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    End time in HH:mm:ss format
+    """
+    start: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time in HH:mm:ss format
+    """
 
 @pulumi.input_type
 class WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs:
@@ -4303,42 +4175,39 @@ class WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs:
         pulumi.set(self, "start", value)
 
 
-if not MYPY:
-    class WafRuleSharedArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default action executed under shared configuration.
-        """
-        actions: NotRequired[pulumi.Input['WafRuleSharedActionsArgsDict']]
-        """
-        Extended action configurations under shared settings. See `actions` below.
-        """
-        cross_site_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specify the cross-domain site ID.
-        """
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The match expression used in shared configuration.
-        """
-        match: NotRequired[pulumi.Input['WafRuleSharedMatchArgsDict']]
-        """
-        Configuration of the request matching logic engine. See `match` below.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The integration mode of the Web SDK:
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The display name of the ruleset.
-        """
-        target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target type protected by this rule: web or app.
-        """
-elif False:
-    WafRuleSharedArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default action executed under shared configuration.
+    """
+    actions: NotRequired[pulumi.Input['WafRuleSharedActionsArgsDict']]
+    """
+    Extended action configurations under shared settings. See `actions` below.
+    """
+    cross_site_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specify the cross-domain site ID.
+    """
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The match expression used in shared configuration.
+    """
+    match: NotRequired[pulumi.Input['WafRuleSharedMatchArgsDict']]
+    """
+    Configuration of the request matching logic engine. See `match` below.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The integration mode of the Web SDK:
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The display name of the ruleset.
+    """
+    target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target type protected by this rule: web or app.
+    """
 
 @pulumi.input_type
 class WafRuleSharedArgs:
@@ -4475,11 +4344,8 @@ class WafRuleSharedArgs:
         pulumi.set(self, "target", value)
 
 
-if not MYPY:
-    class WafRuleSharedActionsArgsDict(TypedDict):
-        response: NotRequired[pulumi.Input['WafRuleSharedActionsResponseArgsDict']]
-elif False:
-    WafRuleSharedActionsArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedActionsArgsDict(TypedDict):
+    response: NotRequired[pulumi.Input['WafRuleSharedActionsResponseArgsDict']]
 
 @pulumi.input_type
 class WafRuleSharedActionsArgs:
@@ -4498,15 +4364,12 @@ class WafRuleSharedActionsArgs:
         pulumi.set(self, "response", value)
 
 
-if not MYPY:
-    class WafRuleSharedActionsResponseArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.int]]
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The internal unique ID of the WAF rule.
-        """
-elif False:
-    WafRuleSharedActionsResponseArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedActionsResponseArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The internal unique ID of the WAF rule.
+    """
 
 @pulumi.input_type
 class WafRuleSharedActionsResponseArgs:
@@ -4543,13 +4406,10 @@ class WafRuleSharedActionsResponseArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class WafRuleSharedMatchArgsDict(TypedDict):
-        criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaArgsDict']]]]
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleSharedMatchArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedMatchArgsDict(TypedDict):
+    criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaArgsDict']]]]
+    logic: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleSharedMatchArgs:
@@ -4592,13 +4452,10 @@ class WafRuleSharedMatchArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WafRuleSharedMatchCriteriaArgsDict(TypedDict):
-        criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaArgsDict']]]]
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleSharedMatchCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedMatchCriteriaArgsDict(TypedDict):
+    criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaArgsDict']]]]
+    logic: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleSharedMatchCriteriaArgs:
@@ -4641,13 +4498,10 @@ class WafRuleSharedMatchCriteriaArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WafRuleSharedMatchCriteriaCriteriaArgsDict(TypedDict):
-        criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict']]]]
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleSharedMatchCriteriaCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedMatchCriteriaCriteriaArgsDict(TypedDict):
+    criterias: NotRequired[pulumi.Input[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict']]]]
+    logic: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleSharedMatchCriteriaCriteriaArgs:
@@ -4690,11 +4544,8 @@ class WafRuleSharedMatchCriteriaCriteriaArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict(TypedDict):
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+class WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict(TypedDict):
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class WafRuleSharedMatchCriteriaCriteriaCriteriaArgs:
@@ -4713,22 +4564,19 @@ class WafRuleSharedMatchCriteriaCriteriaCriteriaArgs:
         pulumi.set(self, "match_type", value)
 
 
-if not MYPY:
-    class WaitingRoomHostNameAndPathArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        The domain name.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        The subdomain.
-        """
-elif False:
-    WaitingRoomHostNameAndPathArgsDict: TypeAlias = Mapping[str, Any]
+class WaitingRoomHostNameAndPathArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    The domain name.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    The subdomain.
+    """
 
 @pulumi.input_type
 class WaitingRoomHostNameAndPathArgs:

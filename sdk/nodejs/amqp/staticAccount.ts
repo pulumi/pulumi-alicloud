@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * Amqp Static Account can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:amqp/staticAccount:StaticAccount example <instance_id>:<access_key>
+ * $terraform import alicloud_amqp_static_account.example <instance_id>:<access_key>
  * ```
  */
 export class StaticAccount extends pulumi.CustomResource {

@@ -533,6 +533,8 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         ## Import
 
+        > **NOTE:** Available since v1.224.0.
+
         Security Group Rule can be imported using the id, e.g.
 
         ```sh
@@ -603,6 +605,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         to create a security group and add several rules one-click.
 
         ## Import
+
+        > **NOTE:** Available since v1.224.0.
 
         Security Group Rule can be imported using the id, e.g.
 

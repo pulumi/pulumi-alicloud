@@ -29,6 +29,10 @@ public final class AssumeRole {
      * 
      */
     private @Nullable Integer sessionExpiration;
+    /**
+     * @return The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+     * 
+     */
     private @Nullable String sessionName;
 
     private AssumeRole() {}
@@ -56,6 +60,10 @@ public final class AssumeRole {
     public Optional<Integer> sessionExpiration() {
         return Optional.ofNullable(this.sessionExpiration);
     }
+    /**
+     * @return The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+     * 
+     */
     public Optional<String> sessionName() {
         return Optional.ofNullable(this.sessionName);
     }

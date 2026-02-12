@@ -64,6 +64,9 @@ class NodeGroupArgs:
                This is only applicable when payType is set to PrePaid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] promotion_option_no: ID of promotion option.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] resident_node_number: Number of nodes.
         :param pulumi.Input[_builtins.str] spec_type: Node group spec types include the following:
                - standard: Standard edition.
@@ -262,6 +265,11 @@ class NodeGroupArgs:
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
     def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of promotion option.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
@@ -380,6 +388,9 @@ class _NodeGroupState:
                This is only applicable when payType is set to PrePaid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] promotion_option_no: ID of promotion option.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the node group.
         :param pulumi.Input[_builtins.int] resident_node_number: Number of nodes.
         :param pulumi.Input[_builtins.str] spec_type: Node group spec types include the following:
@@ -612,6 +623,11 @@ class _NodeGroupState:
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
     def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of promotion option.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
@@ -841,6 +857,9 @@ class NodeGroup(pulumi.CustomResource):
                This is only applicable when payType is set to PrePaid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] promotion_option_no: ID of promotion option.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] resident_node_number: Number of nodes.
         :param pulumi.Input[_builtins.str] spec_type: Node group spec types include the following:
                - standard: Standard edition.
@@ -1076,6 +1095,9 @@ class NodeGroup(pulumi.CustomResource):
                This is only applicable when payType is set to PrePaid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] promotion_option_no: ID of promotion option.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the node group.
         :param pulumi.Input[_builtins.int] resident_node_number: Number of nodes.
         :param pulumi.Input[_builtins.str] spec_type: Node group spec types include the following:
@@ -1241,6 +1263,11 @@ class NodeGroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
     def promotion_option_no(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        ID of promotion option.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "promotion_option_no")
 
     @_builtins.property

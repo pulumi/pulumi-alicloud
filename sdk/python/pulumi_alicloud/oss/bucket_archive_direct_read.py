@@ -104,6 +104,38 @@ class BucketArchiveDirectRead(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Provides a OSS Bucket Archive Direct Read resource.
+
+        Real-time access Archive objects in the bucket without the need to restore the Archive objects.
+
+        For information about OSS Bucket Archive Direct Read and how to use it, see [What is Bucket Archive Direct Read](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketArchiveDirectRead).
+
+        > **NOTE:** Available since v1.271.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        create_bucket = alicloud.oss.Bucket("CreateBucket", storage_class="Standard")
+        default = alicloud.oss.BucketArchiveDirectRead("default",
+            bucket=create_bucket.id,
+            enabled=True)
+        ```
+
+        ### Deleting `oss.BucketArchiveDirectRead` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketArchiveDirectRead`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Archive Direct Read can be imported using the id, e.g.
@@ -124,6 +156,38 @@ class BucketArchiveDirectRead(pulumi.CustomResource):
                  args: BucketArchiveDirectReadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a OSS Bucket Archive Direct Read resource.
+
+        Real-time access Archive objects in the bucket without the need to restore the Archive objects.
+
+        For information about OSS Bucket Archive Direct Read and how to use it, see [What is Bucket Archive Direct Read](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketArchiveDirectRead).
+
+        > **NOTE:** Available since v1.271.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        create_bucket = alicloud.oss.Bucket("CreateBucket", storage_class="Standard")
+        default = alicloud.oss.BucketArchiveDirectRead("default",
+            bucket=create_bucket.id,
+            enabled=True)
+        ```
+
+        ### Deleting `oss.BucketArchiveDirectRead` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketArchiveDirectRead`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Archive Direct Read can be imported using the id, e.g.

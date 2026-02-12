@@ -59,24 +59,19 @@ __all__ = [
     'ProjectMemberRoleArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DiAlarmRuleNotificationSettingsArgsDict(TypedDict):
-        inhibition_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Alarm suppression interval, in minutes
-        """
-        notification_channels: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgsDict']]]]
-        """
-        Alarm notification Channel See `notification_channels` below.
-        """
-        notification_receivers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict']]]]
-        """
-        List of alert notification recipients See `notification_receivers` below.
-        """
-elif False:
-    DiAlarmRuleNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class DiAlarmRuleNotificationSettingsArgsDict(TypedDict):
+    inhibition_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Alarm suppression interval, in minutes
+    """
+    notification_channels: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgsDict']]]]
+    """
+    Alarm notification Channel See `notification_channels` below.
+    """
+    notification_receivers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict']]]]
+    """
+    List of alert notification recipients See `notification_receivers` below.
+    """
 
 @pulumi.input_type
 class DiAlarmRuleNotificationSettingsArgs:
@@ -133,23 +128,20 @@ class DiAlarmRuleNotificationSettingsArgs:
         pulumi.set(self, "notification_receivers", value)
 
 
-if not MYPY:
-    class DiAlarmRuleNotificationSettingsNotificationChannelArgsDict(TypedDict):
-        channels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Channel, optional enumeration value:
+class DiAlarmRuleNotificationSettingsNotificationChannelArgsDict(TypedDict):
+    channels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Channel, optional enumeration value:
 
-        Mail (Mail)
+    Mail (Mail)
 
-        Phone (Phone)
+    Phone (Phone)
 
-        Sms (Sms)
+    Sms (Sms)
 
-        Ding (DingTalk)
-        """
-        severity: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DiAlarmRuleNotificationSettingsNotificationChannelArgsDict: TypeAlias = Mapping[str, Any]
+    Ding (DingTalk)
+    """
+    severity: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DiAlarmRuleNotificationSettingsNotificationChannelArgs:
@@ -202,18 +194,15 @@ class DiAlarmRuleNotificationSettingsNotificationChannelArgs:
         pulumi.set(self, "severity", value)
 
 
-if not MYPY:
-    class DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict(TypedDict):
-        receiver_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
-        """
-        receiver_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Receiver Value List
-        """
-elif False:
-    DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict: TypeAlias = Mapping[str, Any]
+class DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict(TypedDict):
+    receiver_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
+    """
+    receiver_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Receiver Value List
+    """
 
 @pulumi.input_type
 class DiAlarmRuleNotificationSettingsNotificationReceiverArgs:
@@ -254,36 +243,33 @@ class DiAlarmRuleNotificationSettingsNotificationReceiverArgs:
         pulumi.set(self, "receiver_values", value)
 
 
-if not MYPY:
-    class DiAlarmRuleTriggerConditionArgsDict(TypedDict):
-        ddl_report_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Alarm calculation time interval, unit minute
-        """
-        severity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Severity, optional enumeration value:
+class DiAlarmRuleTriggerConditionArgsDict(TypedDict):
+    ddl_report_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Alarm calculation time interval, unit minute
+    """
+    severity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Severity, optional enumeration value:
 
-        Warning
+    Warning
 
-        Critical
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Alarm threshold.
+    Critical
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Alarm threshold.
 
-        Task status alarm: no need to fill in the threshold.
+    Task status alarm: no need to fill in the threshold.
 
-        failover alarm: The threshold is the number of failover alarms.
+    failover alarm: The threshold is the number of failover alarms.
 
-        Task Delay Alarm: The threshold is the delay duration, in seconds.
-        """
-elif False:
-    DiAlarmRuleTriggerConditionArgsDict: TypeAlias = Mapping[str, Any]
+    Task Delay Alarm: The threshold is the delay duration, in seconds.
+    """
 
 @pulumi.input_type
 class DiAlarmRuleTriggerConditionArgs:
@@ -376,14 +362,11 @@ class DiAlarmRuleTriggerConditionArgs:
         pulumi.set(self, "threshold", value)
 
 
-if not MYPY:
-    class DiJobDestinationDataSourceSettingArgsDict(TypedDict):
-        data_source_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination data source name
-        """
-elif False:
-    DiJobDestinationDataSourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobDestinationDataSourceSettingArgsDict(TypedDict):
+    data_source_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination data source name
+    """
 
 @pulumi.input_type
 class DiJobDestinationDataSourceSettingArgs:
@@ -408,33 +391,30 @@ class DiJobDestinationDataSourceSettingArgs:
         pulumi.set(self, "data_source_name", value)
 
 
-if not MYPY:
-    class DiJobJobSettingsArgsDict(TypedDict):
-        channel_settings: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Channel-related task settings, in the form of a Json String.
+class DiJobJobSettingsArgsDict(TypedDict):
+    channel_settings: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Channel-related task settings, in the form of a Json String.
 
-        For example,
-        {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
-        """
-        column_data_type_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgsDict']]]]
-        """
-        Column type mapping of the synchronization task See `column_data_type_settings` below.
-        """
-        cycle_schedule_settings: NotRequired[pulumi.Input['DiJobJobSettingsCycleScheduleSettingsArgsDict']]
-        """
-        Periodic scheduling settings See `cycle_schedule_settings` below.
-        """
-        ddl_handling_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgsDict']]]]
-        """
-        List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
-        """
-        runtime_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgsDict']]]]
-        """
-        Run-time setting parameter list See `runtime_settings` below.
-        """
-elif False:
-    DiJobJobSettingsArgsDict: TypeAlias = Mapping[str, Any]
+    For example,
+    {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+    """
+    column_data_type_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgsDict']]]]
+    """
+    Column type mapping of the synchronization task See `column_data_type_settings` below.
+    """
+    cycle_schedule_settings: NotRequired[pulumi.Input['DiJobJobSettingsCycleScheduleSettingsArgsDict']]
+    """
+    Periodic scheduling settings See `cycle_schedule_settings` below.
+    """
+    ddl_handling_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgsDict']]]]
+    """
+    List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
+    """
+    runtime_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgsDict']]]]
+    """
+    Run-time setting parameter list See `runtime_settings` below.
+    """
 
 @pulumi.input_type
 class DiJobJobSettingsArgs:
@@ -529,18 +509,15 @@ class DiJobJobSettingsArgs:
         pulumi.set(self, "runtime_settings", value)
 
 
-if not MYPY:
-    class DiJobJobSettingsColumnDataTypeSettingArgsDict(TypedDict):
-        destination_data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination type of the mapping relationship
-        """
-        source_data_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source type of the mapping type
-        """
-elif False:
-    DiJobJobSettingsColumnDataTypeSettingArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobJobSettingsColumnDataTypeSettingArgsDict(TypedDict):
+    destination_data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination type of the mapping relationship
+    """
+    source_data_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source type of the mapping type
+    """
 
 @pulumi.input_type
 class DiJobJobSettingsColumnDataTypeSettingArgs:
@@ -581,22 +558,19 @@ class DiJobJobSettingsColumnDataTypeSettingArgs:
         pulumi.set(self, "source_data_type", value)
 
 
-if not MYPY:
-    class DiJobJobSettingsCycleScheduleSettingsArgsDict(TypedDict):
-        cycle_migration_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of synchronization that requires periodic scheduling. Value range:
+class DiJobJobSettingsCycleScheduleSettingsArgsDict(TypedDict):
+    cycle_migration_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of synchronization that requires periodic scheduling. Value range:
 
-        Full: Full
+    Full: Full
 
-        OfflineIncremental: offline increment
-        """
-        schedule_parameters: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Scheduling Parameters
-        """
-elif False:
-    DiJobJobSettingsCycleScheduleSettingsArgsDict: TypeAlias = Mapping[str, Any]
+    OfflineIncremental: offline increment
+    """
+    schedule_parameters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Scheduling Parameters
+    """
 
 @pulumi.input_type
 class DiJobJobSettingsCycleScheduleSettingsArgs:
@@ -645,25 +619,22 @@ class DiJobJobSettingsCycleScheduleSettingsArgs:
         pulumi.set(self, "schedule_parameters", value)
 
 
-if not MYPY:
-    class DiJobJobSettingsDdlHandlingSettingArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DDL type, optional enumeration value:
+class DiJobJobSettingsDdlHandlingSettingArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DDL type, optional enumeration value:
 
-        RenameColumn (rename column)
+    RenameColumn (rename column)
 
-        ModifyColumn (rename column)
+    ModifyColumn (rename column)
 
-        CreateTable (Rename Column)
+    CreateTable (Rename Column)
 
-        TruncateTable (empty table)
+    TruncateTable (empty table)
 
-        DropTable (delete table)
-        """
-elif False:
-    DiJobJobSettingsDdlHandlingSettingArgsDict: TypeAlias = Mapping[str, Any]
+    DropTable (delete table)
+    """
 
 @pulumi.input_type
 class DiJobJobSettingsDdlHandlingSettingArgs:
@@ -720,34 +691,31 @@ class DiJobJobSettingsDdlHandlingSettingArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class DiJobJobSettingsRuntimeSettingArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set name, optional ENUM value:
+class DiJobJobSettingsRuntimeSettingArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set name, optional ENUM value:
 
-        runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
+    runtime.offline.speed.limit.mb (valid when runtime.offline.speed.limit.enable = true)
 
-        runtime.offline.speed.limit.enable
+    runtime.offline.speed.limit.enable
 
-        dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
+    dst.offline.connection.max (the maximum number of write connections for offline batch tasks)
 
-        runtime.offline.concurrent (offline batch synchronization task concurrency)
+    runtime.offline.concurrent (offline batch synchronization task concurrency)
 
-        dst.realtime.connection.max (maximum number of write connections for real-time tasks)
+    dst.realtime.connection.max (maximum number of write connections for real-time tasks)
 
-        runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
+    runtime.enable.auto.create.schema (whether to automatically create a schema on the target side)
 
-        src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
+    src.offline.datasource.max.connection (maximum number of source connections for offline batch tasks)
 
-        runtime.realtime.concurrent (real-time task concurrency)
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Runtime setting value
-        """
-elif False:
-    DiJobJobSettingsRuntimeSettingArgsDict: TypeAlias = Mapping[str, Any]
+    runtime.realtime.concurrent (real-time task concurrency)
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Runtime setting value
+    """
 
 @pulumi.input_type
 class DiJobJobSettingsRuntimeSettingArgs:
@@ -820,22 +788,19 @@ class DiJobJobSettingsRuntimeSettingArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DiJobResourceSettingsArgsDict(TypedDict):
-        offline_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgsDict']]
-        """
-        Offline Resource Group configuration See `offline_resource_settings` below.
-        """
-        realtime_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgsDict']]
-        """
-        Real-time Resource Group See `realtime_resource_settings` below.
-        """
-        schedule_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsScheduleResourceSettingsArgsDict']]
-        """
-        Scheduling Resource Groups See `schedule_resource_settings` below.
-        """
-elif False:
-    DiJobResourceSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobResourceSettingsArgsDict(TypedDict):
+    offline_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgsDict']]
+    """
+    Offline Resource Group configuration See `offline_resource_settings` below.
+    """
+    realtime_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgsDict']]
+    """
+    Real-time Resource Group See `realtime_resource_settings` below.
+    """
+    schedule_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsScheduleResourceSettingsArgsDict']]
+    """
+    Scheduling Resource Groups See `schedule_resource_settings` below.
+    """
 
 @pulumi.input_type
 class DiJobResourceSettingsArgs:
@@ -892,18 +857,15 @@ class DiJobResourceSettingsArgs:
         pulumi.set(self, "schedule_resource_settings", value)
 
 
-if not MYPY:
-    class DiJobResourceSettingsOfflineResourceSettingsArgsDict(TypedDict):
-        requested_cu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Scheduling resource group cu
-        """
-        resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Scheduling resource group name
-        """
-elif False:
-    DiJobResourceSettingsOfflineResourceSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobResourceSettingsOfflineResourceSettingsArgsDict(TypedDict):
+    requested_cu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Scheduling resource group cu
+    """
+    resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Scheduling resource group name
+    """
 
 @pulumi.input_type
 class DiJobResourceSettingsOfflineResourceSettingsArgs:
@@ -944,18 +906,15 @@ class DiJobResourceSettingsOfflineResourceSettingsArgs:
         pulumi.set(self, "resource_group_identifier", value)
 
 
-if not MYPY:
-    class DiJobResourceSettingsRealtimeResourceSettingsArgsDict(TypedDict):
-        requested_cu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Scheduling resource group cu
-        """
-        resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Scheduling resource group name
-        """
-elif False:
-    DiJobResourceSettingsRealtimeResourceSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobResourceSettingsRealtimeResourceSettingsArgsDict(TypedDict):
+    requested_cu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Scheduling resource group cu
+    """
+    resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Scheduling resource group name
+    """
 
 @pulumi.input_type
 class DiJobResourceSettingsRealtimeResourceSettingsArgs:
@@ -996,18 +955,15 @@ class DiJobResourceSettingsRealtimeResourceSettingsArgs:
         pulumi.set(self, "resource_group_identifier", value)
 
 
-if not MYPY:
-    class DiJobResourceSettingsScheduleResourceSettingsArgsDict(TypedDict):
-        requested_cu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Scheduling resource group cu
-        """
-        resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Scheduling resource group name
-        """
-elif False:
-    DiJobResourceSettingsScheduleResourceSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobResourceSettingsScheduleResourceSettingsArgsDict(TypedDict):
+    requested_cu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Scheduling resource group cu
+    """
+    resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Scheduling resource group name
+    """
 
 @pulumi.input_type
 class DiJobResourceSettingsScheduleResourceSettingsArgs:
@@ -1048,18 +1004,15 @@ class DiJobResourceSettingsScheduleResourceSettingsArgs:
         pulumi.set(self, "resource_group_identifier", value)
 
 
-if not MYPY:
-    class DiJobSourceDataSourceSettingArgsDict(TypedDict):
-        data_source_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data source name of a single source
-        """
-        data_source_properties: NotRequired[pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict']]
-        """
-        Single Source Data Source Properties See `data_source_properties` below.
-        """
-elif False:
-    DiJobSourceDataSourceSettingArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobSourceDataSourceSettingArgsDict(TypedDict):
+    data_source_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data source name of a single source
+    """
+    data_source_properties: NotRequired[pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict']]
+    """
+    Single Source Data Source Properties See `data_source_properties` below.
+    """
 
 @pulumi.input_type
 class DiJobSourceDataSourceSettingArgs:
@@ -1100,18 +1053,15 @@ class DiJobSourceDataSourceSettingArgs:
         pulumi.set(self, "data_source_properties", value)
 
 
-if not MYPY:
-    class DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict(TypedDict):
-        encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data Source Encoding
-        """
-        timezone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data Source Time Zone
-        """
-elif False:
-    DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict(TypedDict):
+    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data Source Encoding
+    """
+    timezone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data Source Time Zone
+    """
 
 @pulumi.input_type
 class DiJobSourceDataSourceSettingDataSourcePropertiesArgs:
@@ -1152,18 +1102,15 @@ class DiJobSourceDataSourceSettingDataSourcePropertiesArgs:
         pulumi.set(self, "timezone", value)
 
 
-if not MYPY:
-    class DiJobTableMappingArgsDict(TypedDict):
-        source_object_selection_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgsDict']]]]
-        """
-        Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
-        """
-        transformation_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgsDict']]]]
-        """
-        A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
-        """
-elif False:
-    DiJobTableMappingArgsDict: TypeAlias = Mapping[str, Any]
+class DiJobTableMappingArgsDict(TypedDict):
+    source_object_selection_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgsDict']]]]
+    """
+    Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
+    """
+    transformation_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgsDict']]]]
+    """
+    A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
+    """
 
 @pulumi.input_type
 class DiJobTableMappingArgs:
@@ -1204,27 +1151,24 @@ class DiJobTableMappingArgs:
         pulumi.set(self, "transformation_rules", value)
 
 
-if not MYPY:
-    class DiJobTableMappingSourceObjectSelectionRuleArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Expression, such as mysql_table_1
-        """
-        expression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Expression type, value range: Exact/Regex
-        """
-        object_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Object type, optional enumeration value:
+class DiJobTableMappingSourceObjectSelectionRuleArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Expression, such as mysql_table_1
+    """
+    expression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Expression type, value range: Exact/Regex
+    """
+    object_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Object type, optional enumeration value:
 
-        Table (Table)
+    Table (Table)
 
-        Database
-        """
-elif False:
-    DiJobTableMappingSourceObjectSelectionRuleArgsDict: TypeAlias = Mapping[str, Any]
+    Database
+    """
 
 @pulumi.input_type
 class DiJobTableMappingSourceObjectSelectionRuleArgs:
@@ -1301,36 +1245,33 @@ class DiJobTableMappingSourceObjectSelectionRuleArgs:
         pulumi.set(self, "object_type", value)
 
 
-if not MYPY:
-    class DiJobTableMappingTransformationRuleArgsDict(TypedDict):
-        rule_action_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Action type, optional enumeration value:
+class DiJobTableMappingTransformationRuleArgsDict(TypedDict):
+    rule_action_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Action type, optional enumeration value:
 
-        DefinePrimaryKey (defines the primary key)
+    DefinePrimaryKey (defines the primary key)
 
-        Rename
+    Rename
 
-        AddColumn (increase column)
+    AddColumn (increase column)
 
-        HandleDml(DML handling)
+    HandleDml(DML handling)
 
-        DefineIncrementalCondition
-        """
-        rule_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule Name
-        """
-        rule_target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Target type of action, optional enumeration value:
+    DefineIncrementalCondition
+    """
+    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule Name
+    """
+    rule_target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Target type of action, optional enumeration value:
 
-        Table (Table)
+    Table (Table)
 
-        Schema(schema)
-        """
-elif False:
-    DiJobTableMappingTransformationRuleArgsDict: TypeAlias = Mapping[str, Any]
+    Schema(schema)
+    """
 
 @pulumi.input_type
 class DiJobTableMappingTransformationRuleArgs:
@@ -1415,42 +1356,39 @@ class DiJobTableMappingTransformationRuleArgs:
         pulumi.set(self, "rule_target_type", value)
 
 
-if not MYPY:
-    class DiJobTransformationRuleArgsDict(TypedDict):
-        rule_action_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Action type, optional enumeration value:
+class DiJobTransformationRuleArgsDict(TypedDict):
+    rule_action_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Action type, optional enumeration value:
 
-        DefinePrimaryKey (defines the primary key)
+    DefinePrimaryKey (defines the primary key)
 
-        Rename
+    Rename
 
-        AddColumn (increase column)
+    AddColumn (increase column)
 
-        HandleDml(DML handling)
+    HandleDml(DML handling)
 
-        DefineIncrementalCondition
-        """
-        rule_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Regular expression, in json string format.
+    DefineIncrementalCondition
+    """
+    rule_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Regular expression, in json string format.
 
-        Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
-        """
-        rule_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule Name
-        """
-        rule_target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Target type of action, optional enumeration value:
+    Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+    """
+    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule Name
+    """
+    rule_target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Target type of action, optional enumeration value:
 
-        Table (Table)
+    Table (Table)
 
-        Schema(schema)
-        """
-elif False:
-    DiJobTransformationRuleArgsDict: TypeAlias = Mapping[str, Any]
+    Schema(schema)
+    """
 
 @pulumi.input_type
 class DiJobTransformationRuleArgs:
@@ -1555,22 +1493,19 @@ class DiJobTransformationRuleArgs:
         pulumi.set(self, "rule_target_type", value)
 
 
-if not MYPY:
-    class ProjectMemberRoleArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project Role Code.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        project role name
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        project role type
-        """
-elif False:
-    ProjectMemberRoleArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectMemberRoleArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project Role Code.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    project role name
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    project role type
+    """
 
 @pulumi.input_type
 class ProjectMemberRoleArgs:

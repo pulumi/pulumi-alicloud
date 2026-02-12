@@ -21,24 +21,19 @@ __all__ = [
     'AppGroupQuotaArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AppGroupOrderArgsDict(TypedDict):
-        auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Order cycle. The minimum value is not less than 0.
-        """
-        pricing_cycle: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Order cycle unit. Valid values: `Year` and `Month`.
-        """
-elif False:
-    AppGroupOrderArgsDict: TypeAlias = Mapping[str, Any]
+class AppGroupOrderArgsDict(TypedDict):
+    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Order cycle. The minimum value is not less than 0.
+    """
+    pricing_cycle: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Order cycle unit. Valid values: `Year` and `Month`.
+    """
 
 @pulumi.input_type
 class AppGroupOrderArgs:
@@ -95,33 +90,30 @@ class AppGroupOrderArgs:
         pulumi.set(self, "pricing_cycle", value)
 
 
-if not MYPY:
-    class AppGroupQuotaArgsDict(TypedDict):
-        compute_resource: pulumi.Input[_builtins.int]
-        """
-        Computing resources. Unit: LCU.
-        """
-        doc_size: pulumi.Input[_builtins.int]
-        """
-        Storage Size. Unit: GB.
-        """
-        spec: pulumi.Input[_builtins.str]
-        """
-        Specification. Valid values: 
-        * `opensearch.share.junior`: Entry-level.
-        * `opensearch.share.common`: Shared universal.
-        * `opensearch.share.compute`: Shared computing.
-        * `opensearch.share.storage`: Shared storage type.
-        * `opensearch.private.common`: Exclusive universal type.
-        * `opensearch.private.compute`: Exclusive computing type.
-        * `opensearch.private.storage`: Exclusive storage type
-        """
-        qps: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Search request. Unit: times/second.
-        """
-elif False:
-    AppGroupQuotaArgsDict: TypeAlias = Mapping[str, Any]
+class AppGroupQuotaArgsDict(TypedDict):
+    compute_resource: pulumi.Input[_builtins.int]
+    """
+    Computing resources. Unit: LCU.
+    """
+    doc_size: pulumi.Input[_builtins.int]
+    """
+    Storage Size. Unit: GB.
+    """
+    spec: pulumi.Input[_builtins.str]
+    """
+    Specification. Valid values: 
+    * `opensearch.share.junior`: Entry-level.
+    * `opensearch.share.common`: Shared universal.
+    * `opensearch.share.compute`: Shared computing.
+    * `opensearch.share.storage`: Shared storage type.
+    * `opensearch.private.common`: Exclusive universal type.
+    * `opensearch.private.compute`: Exclusive computing type.
+    * `opensearch.private.storage`: Exclusive storage type
+    """
+    qps: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Search request. Unit: times/second.
+    """
 
 @pulumi.input_type
 class AppGroupQuotaArgs:

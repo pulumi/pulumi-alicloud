@@ -98,6 +98,9 @@ class InstanceArgs:
                The meaning of the value is as follows:
                - true: On.
                - false: does not open.
+        :param pulumi.Input[_builtins.bool] force: Whether to force changes
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
@@ -110,6 +113,9 @@ class InstanceArgs:
         :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
+        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] password: The access password of the instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
@@ -121,6 +127,14 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+               
+               The values are as follows:
+               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
         :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
@@ -504,6 +518,11 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to force changes
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -661,6 +680,11 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="orderActionType")
     def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "order_action_type")
 
     @order_action_type.setter
@@ -802,6 +826,16 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The change policy for Elasticsearch.
+
+        The values are as follows:
+        - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+        - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+        - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
@@ -990,6 +1024,9 @@ class _InstanceState:
                The meaning of the value is as follows:
                - true: On.
                - false: does not open.
+        :param pulumi.Input[_builtins.bool] force: Whether to force changes
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
@@ -1004,6 +1041,9 @@ class _InstanceState:
         :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
+        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] password: The access password of the instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
@@ -1019,6 +1059,14 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
         :param pulumi.Input[_builtins.str] status: Instance change status
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+               
+               The values are as follows:
+               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
@@ -1436,6 +1484,11 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to force changes
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -1617,6 +1670,11 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="orderActionType")
     def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "order_action_type")
 
     @order_action_type.setter
@@ -1806,6 +1864,16 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The change policy for Elasticsearch.
+
+        The values are as follows:
+        - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+        - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+        - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
@@ -2066,6 +2134,9 @@ class Instance(pulumi.CustomResource):
                The meaning of the value is as follows:
                - true: On.
                - false: does not open.
+        :param pulumi.Input[_builtins.bool] force: Whether to force changes
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
@@ -2078,6 +2149,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
+        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] password: The access password of the instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
@@ -2089,6 +2163,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+               
+               The values are as follows:
+               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
@@ -2404,6 +2486,9 @@ class Instance(pulumi.CustomResource):
                The meaning of the value is as follows:
                - true: On.
                - false: does not open.
+        :param pulumi.Input[_builtins.bool] force: Whether to force changes
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
@@ -2418,6 +2503,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
+        :param pulumi.Input[_builtins.str] order_action_type: The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] password: The access password of the instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
@@ -2433,6 +2521,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
         :param pulumi.Input[_builtins.str] status: Instance change status
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] update_strategy: The change policy for Elasticsearch.
+               
+               The values are as follows:
+               - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+               - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+               - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
@@ -2673,6 +2769,11 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to force changes
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "force")
 
     @_builtins.property
@@ -2794,6 +2895,11 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="orderActionType")
     def order_action_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "order_action_type")
 
     @_builtins.property
@@ -2919,6 +3025,16 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
     def update_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The change policy for Elasticsearch.
+
+        The values are as follows:
+        - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+        - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+        - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "update_strategy")
 
     @_builtins.property

@@ -25,20 +25,15 @@ __all__ = [
     'WorkspaceModelVersionLabelArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class WorkspaceDatasetLabelArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
-        """
-elif False:
-    WorkspaceDatasetLabelArgsDict: TypeAlias = Mapping[str, Any]
+class WorkspaceDatasetLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
+    """
 
 @pulumi.input_type
 class WorkspaceDatasetLabelArgs:
@@ -79,18 +74,15 @@ class WorkspaceDatasetLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WorkspaceDatasetversionLabelArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the tags
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the tags
-        """
-elif False:
-    WorkspaceDatasetversionLabelArgsDict: TypeAlias = Mapping[str, Any]
+class WorkspaceDatasetversionLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the tags
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the tags
+    """
 
 @pulumi.input_type
 class WorkspaceDatasetversionLabelArgs:
@@ -131,18 +123,15 @@ class WorkspaceDatasetversionLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WorkspaceModelLabelArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        label key
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        label value
-        """
-elif False:
-    WorkspaceModelLabelArgsDict: TypeAlias = Mapping[str, Any]
+class WorkspaceModelLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    label key
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    label value
+    """
 
 @pulumi.input_type
 class WorkspaceModelLabelArgs:
@@ -183,18 +172,15 @@ class WorkspaceModelLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class WorkspaceModelVersionLabelArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        label key.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        label value.
-        """
-elif False:
-    WorkspaceModelVersionLabelArgsDict: TypeAlias = Mapping[str, Any]
+class WorkspaceModelVersionLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    label key.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    label value.
+    """
 
 @pulumi.input_type
 class WorkspaceModelVersionLabelArgs:

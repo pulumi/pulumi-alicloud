@@ -82,7 +82,8 @@ type PublicIpAddressPool struct {
 	// Whether there is a free IP address.
 	IpAddressRemaining pulumi.BoolOutput `pulumi:"ipAddressRemaining"`
 	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
-	Isp                   pulumi.StringOutput `pulumi:"isp"`
+	Isp pulumi.StringOutput `pulumi:"isp"`
+	// The resource ID in terraform of VPC Public Ip Address Pool.
 	PublicIpAddressPoolId pulumi.StringOutput `pulumi:"publicIpAddressPoolId"`
 	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolName"`
@@ -141,7 +142,8 @@ type publicIpAddressPoolState struct {
 	// Whether there is a free IP address.
 	IpAddressRemaining *bool `pulumi:"ipAddressRemaining"`
 	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
-	Isp                   *string `pulumi:"isp"`
+	Isp *string `pulumi:"isp"`
+	// The resource ID in terraform of VPC Public Ip Address Pool.
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName *string `pulumi:"publicIpAddressPoolName"`
@@ -171,7 +173,8 @@ type PublicIpAddressPoolState struct {
 	// Whether there is a free IP address.
 	IpAddressRemaining pulumi.BoolPtrInput
 	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
-	Isp                   pulumi.StringPtrInput
+	Isp pulumi.StringPtrInput
+	// The resource ID in terraform of VPC Public Ip Address Pool.
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName pulumi.StringPtrInput
@@ -346,6 +349,7 @@ func (o PublicIpAddressPoolOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of VPC Public Ip Address Pool.
 func (o PublicIpAddressPoolOutput) PublicIpAddressPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringOutput { return v.PublicIpAddressPoolId }).(pulumi.StringOutput)
 }

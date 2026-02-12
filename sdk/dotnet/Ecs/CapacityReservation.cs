@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ecs
     /// Ecs Capacity Reservation can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/capacityReservation:CapacityReservation example &lt;id&gt;
+    /// $terraform import alicloud_ecs_capacity_reservation.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/capacityReservation:CapacityReservation")]

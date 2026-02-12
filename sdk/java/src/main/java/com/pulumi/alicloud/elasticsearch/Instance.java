@@ -415,9 +415,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enablePublic() {
         return this.enablePublic;
     }
+    /**
+     * Whether to force changes
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
+    /**
+     * @return Whether to force changes
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
@@ -633,9 +645,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> masterNodeSpec() {
         return this.masterNodeSpec;
     }
+    /**
+     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="orderActionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderActionType;
 
+    /**
+     * @return The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> orderActionType() {
         return Codegen.optional(this.orderActionType);
     }
@@ -849,9 +873,31 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The change policy for Elasticsearch.
+     * 
+     * The values are as follows:
+     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="updateStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> updateStrategy;
 
+    /**
+     * @return The change policy for Elasticsearch.
+     * 
+     * The values are as follows:
+     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> updateStrategy() {
         return Codegen.optional(this.updateStrategy);
     }

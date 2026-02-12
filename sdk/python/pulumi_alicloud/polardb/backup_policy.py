@@ -628,6 +628,50 @@ class BackupPolicy(pulumi.CustomResource):
                  preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
+
+        > **NOTE:** Available since v1.66.0+. Each PolarDB cluster has a backup policy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid",
+            category="Normal")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("default",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_backup_policy = alicloud.polardb.BackupPolicy("default",
+            db_cluster_id=default_cluster.id,
+            preferred_backup_periods=[
+                "Tuesday",
+                "Wednesday",
+            ],
+            preferred_backup_time="10:00Z-11:00Z",
+            backup_retention_policy_on_cluster_deletion="NONE")
+        ```
+        ### Removing polardb.Cluster from your configuration
+
+        The polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB backup policy can be imported using the id or cluster id, e.g.
@@ -666,6 +710,50 @@ class BackupPolicy(pulumi.CustomResource):
                  args: BackupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
+
+        > **NOTE:** Available since v1.66.0+. Each PolarDB cluster has a backup policy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid",
+            category="Normal")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("default",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_backup_policy = alicloud.polardb.BackupPolicy("default",
+            db_cluster_id=default_cluster.id,
+            preferred_backup_periods=[
+                "Tuesday",
+                "Wednesday",
+            ],
+            preferred_backup_time="10:00Z-11:00Z",
+            backup_retention_policy_on_cluster_deletion="NONE")
+        ```
+        ### Removing polardb.Cluster from your configuration
+
+        The polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB backup policy can be imported using the id or cluster id, e.g.

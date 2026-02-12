@@ -10,6 +10,135 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess
 {
     /// <summary>
+    /// Provides a ESS instance refresh resource.
+    /// 
+    /// For information about ess instance refresh, see [StartInstanceRefresh](https://www.alibabacloud.com/help/en/auto-scaling/developer-reference/api-startinstancerefresh).
+    /// 
+    /// &gt; **NOTE:** Available since v1.261.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var myName = $"{name}-{defaultInteger.Result}";
+    /// 
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = myName,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var default1 = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         VswitchName = myName,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         SecurityGroupName = myName,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var default1GetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubu",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var default2 = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^aliyun",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+    ///     {
+    ///         MinSize = 0,
+    ///         MaxSize = 10,
+    ///         ScalingGroupName = myName,
+    ///         RemovalPolicies = new[]
+    ///         {
+    ///             "OldestInstance",
+    ///             "NewestInstance",
+    ///         },
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         DesiredCapacity = 1,
+    ///     });
+    /// 
+    ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("default", new()
+    ///     {
+    ///         ScalingGroupId = defaultScalingGroup.Id,
+    ///         ImageId = default1GetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = default1.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         ForceDelete = true,
+    ///         Active = true,
+    ///         Enable = true,
+    ///     });
+    /// 
+    ///     var defaultInstanceRefresh = new AliCloud.Ess.InstanceRefresh("default", new()
+    ///     {
+    ///         ScalingGroupId = defaultScalingConfiguration.ScalingGroupId,
+    ///         DesiredConfigurationImageId = default2.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         MinHealthyPercentage = 90,
+    ///         MaxHealthyPercentage = 150,
+    ///         CheckpointPauseTime = 60,
+    ///         SkipMatching = false,
+    ///         Checkpoints = new[]
+    ///         {
+    ///             new AliCloud.Ess.Inputs.InstanceRefreshCheckpointArgs
+    ///             {
+    ///                 Percentage = 100,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Deleting `alicloud.ess.InstanceRefresh` or removing it from your configuration
+    /// 
+    /// The `alicloud.ess.InstanceRefresh` resource allows you to manage  `status = "RollbackInProgress"`  instance refresh, but Terraform cannot destroy it.
+    /// Deleting will remove it from your state file and management, but will not destroy the Instance Refresh.
+    /// You can resume managing the instance refresh via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESS instance refresh can be imported using the id, e.g.

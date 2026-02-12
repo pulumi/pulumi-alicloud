@@ -85,6 +85,11 @@ namespace Pulumi.AliCloud.Esa
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
+        /// <summary>
+        /// The site version.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
 
@@ -158,6 +163,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
+        /// <summary>
+        /// The site version.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
@@ -199,6 +209,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// The site version.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 

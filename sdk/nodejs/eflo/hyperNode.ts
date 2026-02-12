@@ -88,6 +88,11 @@ export class HyperNode extends pulumi.CustomResource {
      * The creation time of the resource
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly dataDisks: pulumi.Output<outputs.eflo.HyperNodeDataDisk[] | undefined>;
     /**
      * The host name prefix of the sub computing node
@@ -252,6 +257,11 @@ export interface HyperNodeState {
      * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[]>;
     /**
      * The host name prefix of the sub computing node
@@ -343,6 +353,11 @@ export interface HyperNodeArgs {
      * Cluster ID
      */
     clusterId?: pulumi.Input<string>;
+    /**
+     * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[]>;
     /**
      * The host name prefix of the sub computing node

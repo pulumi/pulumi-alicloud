@@ -19,24 +19,19 @@ __all__ = [
     'StudioApplicationInstanceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class StudioApplicationInstanceArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the instance.
-        """
-        node_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the instance.
-        """
-        node_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the instance.
-        """
-elif False:
-    StudioApplicationInstanceArgsDict: TypeAlias = Mapping[str, Any]
+class StudioApplicationInstanceArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The resource ID in terraform of Application.
+    """
+    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the instance.
+    """
+    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the instance.
+    """
 
 @pulumi.input_type
 class StudioApplicationInstanceArgs:
@@ -45,7 +40,7 @@ class StudioApplicationInstanceArgs:
                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] id: The id of the instance.
+        :param pulumi.Input[_builtins.str] id: The resource ID in terraform of Application.
         :param pulumi.Input[_builtins.str] node_name: The name of the instance.
         :param pulumi.Input[_builtins.str] node_type: The type of the instance.
         """
@@ -60,7 +55,7 @@ class StudioApplicationInstanceArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The id of the instance.
+        The resource ID in terraform of Application.
         """
         return pulumi.get(self, "id")
 

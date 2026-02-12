@@ -12,6 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Governance Account resource.
+//
+// Member account created by the Cloud Governance Center account factory.
+//
+// For information about Governance Account and how to use it, see [What is Account](https://next.api.aliyun.com/document/governance/2021-01-20/EnrollAccount).
+//
+// > **NOTE:** Available since v1.228.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/governance"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetBaselines, err := governance.GetBaselines(ctx, &governance.GetBaselinesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetFolders, err := resourcemanager.GetFolders(ctx, &resourcemanager.GetFoldersArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = governance.NewAccount(ctx, "default", &governance.AccountArgs{
+//				AccountNamePrefix: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				FolderId:          pulumi.String(defaultGetFolders.Ids[0]),
+//				BaselineId:        pulumi.String(defaultGetBaselines.Ids[0]),
+//				PayerAccountId:    pulumi.String(_default.Id),
+//				DisplayName:       pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `governance.Account` or removing it from your configuration
+//
+// Terraform cannot destroy resource `governance.Account`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Governance Account can be imported using the id, e.g.

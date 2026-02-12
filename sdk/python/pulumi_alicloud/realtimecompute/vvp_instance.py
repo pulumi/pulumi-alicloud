@@ -447,6 +447,58 @@ class VvpInstance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Realtime Compute Vvp Instance resource.
+
+        For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+
+        > **NOTE:** Available since v1.214.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id = config.get("zoneId")
+        if zone_id is None:
+            zone_id = "cn-hangzhou-i"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=zone_id)
+        default_oss = alicloud.oss.Bucket("defaultOSS", bucket=f"{name}-{default_integer['result']}")
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_vvp_instance = alicloud.realtimecompute.VvpInstance("default",
+            storage={
+                "oss": {
+                    "bucket": default_oss.bucket,
+                },
+            },
+            vvp_instance_name=f"{name}-{default_integer['result']}",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=zone_id,
+            vswitch_ids=[default_get_switches.ids[0]],
+            payment_type="PayAsYouGo")
+        ```
+
+        ### Deleting `realtimecompute.VvpInstance` or removing it from your configuration
+
+        The `realtimecompute.VvpInstance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Realtime Compute Vvp Instance can be imported using the id, e.g.
@@ -476,6 +528,58 @@ class VvpInstance(pulumi.CustomResource):
                  args: VvpInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Realtime Compute Vvp Instance resource.
+
+        For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+
+        > **NOTE:** Available since v1.214.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id = config.get("zoneId")
+        if zone_id is None:
+            zone_id = "cn-hangzhou-i"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=zone_id)
+        default_oss = alicloud.oss.Bucket("defaultOSS", bucket=f"{name}-{default_integer['result']}")
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_vvp_instance = alicloud.realtimecompute.VvpInstance("default",
+            storage={
+                "oss": {
+                    "bucket": default_oss.bucket,
+                },
+            },
+            vvp_instance_name=f"{name}-{default_integer['result']}",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=zone_id,
+            vswitch_ids=[default_get_switches.ids[0]],
+            payment_type="PayAsYouGo")
+        ```
+
+        ### Deleting `realtimecompute.VvpInstance` or removing it from your configuration
+
+        The `realtimecompute.VvpInstance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Realtime Compute Vvp Instance can be imported using the id, e.g.

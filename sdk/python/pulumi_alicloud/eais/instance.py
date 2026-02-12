@@ -442,6 +442,53 @@ class Instance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a EAIS Instance resource.
+
+        Instance resource definition.
+
+        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+
+        > **NOTE:** Available since v1.137.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id = "cn-hangzhou-h"
+        default = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=zone_id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default.id)
+        default_instance = alicloud.eais.Instance("default",
+            instance_type="eais.ei-a6.2xlarge",
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
+            instance_name=name)
+        ```
+
+        ### Deleting `eais.Instance` or removing it from your configuration
+
+        The `eais.Instance` resource allows you to manage  `category = "ei"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EAIS Instance can be imported using the id, e.g.
@@ -471,6 +518,53 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a EAIS Instance resource.
+
+        Instance resource definition.
+
+        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+
+        > **NOTE:** Available since v1.137.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id = "cn-hangzhou-h"
+        default = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=zone_id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default.id)
+        default_instance = alicloud.eais.Instance("default",
+            instance_type="eais.ei-a6.2xlarge",
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
+            instance_name=name)
+        ```
+
+        ### Deleting `eais.Instance` or removing it from your configuration
+
+        The `eais.Instance` resource allows you to manage  `category = "ei"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EAIS Instance can be imported using the id, e.g.

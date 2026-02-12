@@ -106,6 +106,7 @@ class _AccessKeyState:
         """
         Input properties used for looking up and filtering AccessKey resources.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.246.0) The create time of the AccessKey.
+        :param pulumi.Input[_builtins.str] encrypted_secret: (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
         :param pulumi.Input[_builtins.str] key_fingerprint: (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[_builtins.str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         :param pulumi.Input[_builtins.str] secret: (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
@@ -150,6 +151,9 @@ class _AccessKeyState:
     @_builtins.property
     @pulumi.getter(name="encryptedSecret")
     def encrypted_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
+        """
         return pulumi.get(self, "encrypted_secret")
 
     @encrypted_secret.setter
@@ -500,6 +504,7 @@ class AccessKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.246.0) The create time of the AccessKey.
+        :param pulumi.Input[_builtins.str] encrypted_secret: (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
         :param pulumi.Input[_builtins.str] key_fingerprint: (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[_builtins.str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         :param pulumi.Input[_builtins.str] secret: (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
@@ -537,6 +542,9 @@ class AccessKey(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="encryptedSecret")
     def encrypted_secret(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
+        """
         return pulumi.get(self, "encrypted_secret")
 
     @_builtins.property

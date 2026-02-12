@@ -10,6 +10,56 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides a EIP Address resource.
+    /// 
+    /// &gt; **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
+    /// 
+    /// &gt; **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+    /// Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+    /// 
+    /// For information about EIP Address and how to use it, see [What is Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.126.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Ecs.EipAddress("default", new()
+    ///     {
+    ///         Description = name,
+    ///         Isp = "BGP",
+    ///         AddressName = name,
+    ///         Netmode = "public",
+    ///         Bandwidth = "1",
+    ///         SecurityProtectionTypes = new[]
+    ///         {
+    ///             "AntiDDoS_Enhanced",
+    ///         },
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.ecs.EipAddress` or removing it from your configuration
+    /// 
+    /// The `alicloud.ecs.EipAddress` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EIP Address can be imported using the id, e.g.

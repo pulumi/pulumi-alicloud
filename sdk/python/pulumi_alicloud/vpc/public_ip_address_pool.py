@@ -163,6 +163,7 @@ class _PublicIpAddressPoolState:
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.bool] ip_address_remaining: Whether there is a free IP address.
         :param pulumi.Input[_builtins.str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The resource ID in terraform of VPC Public Ip Address Pool.
         :param pulumi.Input[_builtins.str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_protection_types: Security protection level.
@@ -263,6 +264,9 @@ class _PublicIpAddressPoolState:
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource ID in terraform of VPC Public Ip Address Pool.
+        """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
@@ -541,6 +545,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.bool] ip_address_remaining: Whether there is a free IP address.
         :param pulumi.Input[_builtins.str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The resource ID in terraform of VPC Public Ip Address Pool.
         :param pulumi.Input[_builtins.str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_protection_types: Security protection level.
@@ -613,6 +618,9 @@ class PublicIpAddressPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource ID in terraform of VPC Public Ip Address Pool.
+        """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @_builtins.property

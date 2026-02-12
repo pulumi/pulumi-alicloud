@@ -12,6 +12,380 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Container Service for Kubernetes (ACK) Nodepool resource.
+//
+// This resource will help you to manage node pool in Kubernetes Cluster, see [What is kubernetes node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+//
+// > **NOTE:** Available since v1.97.0.
+//
+// > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
+//
+// > **NOTE:** From version 1.109.1, support remove node pool nodes.
+//
+// > **NOTE:** From version 1.111.0, support auto scaling node pool. For more information on how to use auto scaling node pools, see [Use Terraform to create an elastic node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools). With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+//
+// > **NOTE:** ACK adds a new RamRole (AliyunCSManagedAutoScalerRole) for the permission control of the node pool with auto-scaling enabled. If you are using a node pool with auto scaling, please click [AliyunCSManagedAutoScalerRole](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedAutoScalerRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedAutoScalerRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+//
+// > **NOTE:** ACK adds a new RamRole（AliyunCSManagedNlcRole） for the permission control of the management node pool. If you use the management node pool, please click [AliyunCSManagedNlcRole](https://ram.console.aliyun.com/role/authorization?spm=5176.2020520152.0.0.387f16ddEOZxMv&request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedNlcRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedNlcRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+//
+// > **NOTE:** From version 1.123.1, supports the creation of a node pool of spot instance.
+//
+// > **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+//
+// > **NOTE:** From version 1.127.0, support for adding existing nodes to the node pool. In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+//
+// > **NOTE:** From version 1.149.0, support for specifying deploymentSet for node pools.
+//
+// > **NOTE:** From version 1.158.0, Support for specifying the desired size of nodes for the node pool, for more information, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3)
+//
+// > **NOTE:** From version 1.166.0, Support configuring system disk encryption.
+//
+// > **NOTE:** From version 1.177.0+, Support `kmsEncryptionContext`, `rdsInstances`, `systemDiskSnapshotPolicyId` and `cpuPolicy`, add spot strategy `SpotAsPriceGo` and `NoSpot`.
+//
+// > **NOTE:** From version 1.180.0+, Support worker nodes customized kubelet parameters by field `kubeletConfiguration` and `rolloutPolicy`.
+//
+// > **NOTE:** From version 1.185.0+, Field `rolloutPolicy` will be deprecated and please use field `rollingPolicy` instead.
+//
+// For information about Container Service for Kubernetes (ACK) Nodepool and how to use it, see [What is Nodepool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+//
+// > **NOTE:** Available since v1.97.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cloudEfficiency, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(enhanced.Zones[0].ZoneId),
+//				CpuCoreCount:       pulumi.IntRef(4),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//				SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "10.0.0.0/8",
+//				Newbits: 8,
+//				Netnum:  36,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "172.16.0.0/16",
+//				Newbits: 4,
+//				Netnum:  7,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				NamePrefix:  pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				WorkerVswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:      pulumi.Bool(true),
+//				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
+//				ServiceCidr:        pulumi.String(invokeCidrsubnet1.Result),
+//				SlbInternetEnabled: pulumi.Bool(true),
+//				EnableRrsa:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+//				KeyPairName: pulumi.Sprintf("terraform-example-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String(name),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				Labels: cs.NodePoolLabelArray{
+//					&cs.NodePoolLabelArgs{
+//						Key:   pulumi.String("test1"),
+//						Value: pulumi.String("nodepool"),
+//					},
+//					&cs.NodePoolLabelArgs{
+//						Key:   pulumi.String("test2"),
+//						Value: pulumi.String("nodepool"),
+//					},
+//				},
+//				Taints: cs.NodePoolTaintArray{
+//					&cs.NodePoolTaintArgs{
+//						Key:    pulumi.String("tf"),
+//						Effect: pulumi.String("NoSchedule"),
+//						Value:  pulumi.String("example"),
+//					},
+//					&cs.NodePoolTaintArgs{
+//						Key:    pulumi.String("tf2"),
+//						Effect: pulumi.String("NoSchedule"),
+//						Value:  pulumi.String("example2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+//			_, err = cs.NewNodePool(ctx, "desired_size", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("desired_size"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+//			_, err = cs.NewNodePool(ctx, "maintenance", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("maintenance"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("1"),
+//				Management: &cs.NodePoolManagementArgs{
+//					Enable:     pulumi.Bool(true),
+//					AutoRepair: pulumi.Bool(true),
+//					AutoRepairPolicy: &cs.NodePoolManagementAutoRepairPolicyArgs{
+//						RestartNode: pulumi.Bool(true),
+//					},
+//					AutoUpgrade: pulumi.Bool(true),
+//					AutoUpgradePolicy: &cs.NodePoolManagementAutoUpgradePolicyArgs{
+//						AutoUpgradeKubelet: pulumi.Bool(true),
+//					},
+//					AutoVulFix: pulumi.Bool(true),
+//					AutoVulFixPolicy: &cs.NodePoolManagementAutoVulFixPolicyArgs{
+//						VulLevel:    pulumi.String("asap"),
+//						RestartNode: pulumi.Bool(true),
+//					},
+//					MaxUnavailable: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a node pool with spot instance.
+//			_, err = cs.NewNodePool(ctx, "spot_instance", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("spot_instance"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//					pulumi.String(cloudEfficiency.InstanceTypes[1].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("1"),
+//				SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
+//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//						PriceLimit:   pulumi.String("0.70"),
+//					},
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[1].Id),
+//						PriceLimit:   pulumi.String("0.72"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Use Spot instances to create a node pool with auto-scaling enabled
+//			_, err = cs.NewNodePool(ctx, "spot_auto_scaling", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("spot_auto_scaling"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
+//					MinSize: pulumi.Int(1),
+//					MaxSize: pulumi.Int(10),
+//					Type:    pulumi.String("spot"),
+//				},
+//				SpotStrategy: pulumi.String("SpotWithPriceLimit"),
+//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//						PriceLimit:   pulumi.String("0.70"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a `PrePaid` node pool.
+//			_, err = cs.NewNodePool(ctx, "prepaid_node", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("prepaid_node"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory:  pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:      pulumi.Int(40),
+//				KeyName:             defaultKeyPair.KeyPairName,
+//				InstanceChargeType:  pulumi.String("PrePaid"),
+//				Period:              pulumi.Int(1),
+//				PeriodUnit:          pulumi.String("Month"),
+//				AutoRenew:           pulumi.Bool(true),
+//				AutoRenewPeriod:     pulumi.Int(1),
+//				InstallCloudMonitor: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// #Create a node pool with customized kubelet parameters
+//			_, err = cs.NewNodePool(ctx, "customized_kubelet", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("customized_kubelet"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				DesiredSize:        pulumi.String("0"),
+//				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
+//					RegistryPullQps:     pulumi.String("10"),
+//					RegistryBurst:       pulumi.String("5"),
+//					EventRecordQps:      pulumi.String("10"),
+//					EventBurst:          pulumi.String("5"),
+//					SerializeImagePulls: pulumi.String("true"),
+//					EvictionHard: pulumi.StringMap{
+//						"memory.available":  pulumi.String("1024Mi"),
+//						"nodefs.available":  pulumi.String("10%"),
+//						"nodefs.inodesFree": pulumi.String("5%"),
+//						"imagefs.available": pulumi.String("10%"),
+//					},
+//					SystemReserved: pulumi.StringMap{
+//						"cpu":               pulumi.String("1"),
+//						"memory":            pulumi.String("1Gi"),
+//						"ephemeral-storage": pulumi.String("10Gi"),
+//					},
+//					KubeReserved: pulumi.StringMap{
+//						"cpu":    pulumi.String("500m"),
+//						"memory": pulumi.String("1Gi"),
+//					},
+//					ContainerLogMaxSize:  pulumi.String("200Mi"),
+//					ContainerLogMaxFiles: pulumi.String("3"),
+//					MaxPods:              pulumi.String("100"),
+//					ReadOnlyPort:         pulumi.String("0"),
+//					AllowedUnsafeSysctls: pulumi.StringArray{
+//						pulumi.String("net.ipv4.route.min_pmtu"),
+//					},
+//				},
+//				RollingPolicy: &cs.NodePoolRollingPolicyArgs{
+//					MaxParallelism: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ACK Auto Mode NodePool:
+//
+// ACK nodepool with Auto Mode
+// Nodepools enable Auto Mode can only be created in Auto Mode clusters. An Auto Mode cluster automatically creates a Auto Mode node pool when creating cluster, which you can import using terraform import. You can also create a new Auto Mode node pool using the following code.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -148,8 +522,11 @@ type NodePool struct {
 	// The list of RDS instances.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group
-	ResourceGroupId pulumi.StringOutput            `pulumi:"resourceGroupId"`
-	RollingPolicy   NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Rotary configuration. See `rollingPolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -223,7 +600,10 @@ type NodePool struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
-	UpdateNodes   pulumi.BoolPtrOutput `pulumi:"updateNodes"`
+	// Synchronously update node labels and taints.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateNodes pulumi.BoolPtrOutput `pulumi:"updateNodes"`
 	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
 	//
 	// > **NOTE:** This parameter only applies during resource update.
@@ -404,8 +784,11 @@ type nodePoolState struct {
 	// The list of RDS instances.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	RollingPolicy   *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Rotary configuration. See `rollingPolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -479,7 +862,10 @@ type nodePoolState struct {
 	Type *string `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
-	UpdateNodes   *bool `pulumi:"updateNodes"`
+	// Synchronously update node labels and taints.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateNodes *bool `pulumi:"updateNodes"`
 	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
 	//
 	// > **NOTE:** This parameter only applies during resource update.
@@ -618,7 +1004,10 @@ type NodePoolState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	RollingPolicy   NodePoolRollingPolicyPtrInput
+	// Rotary configuration. See `rollingPolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	RollingPolicy NodePoolRollingPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -692,7 +1081,10 @@ type NodePoolState struct {
 	Type pulumi.StringPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
-	UpdateNodes   pulumi.BoolPtrInput
+	// Synchronously update node labels and taints.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateNodes pulumi.BoolPtrInput
 	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
 	//
 	// > **NOTE:** This parameter only applies during resource update.
@@ -832,8 +1224,11 @@ type nodePoolArgs struct {
 	// The list of RDS instances.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	RollingPolicy   *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Rotary configuration. See `rollingPolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -905,7 +1300,10 @@ type nodePoolArgs struct {
 	Type *string `pulumi:"type"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
-	UpdateNodes   *bool `pulumi:"updateNodes"`
+	// Synchronously update node labels and taints.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateNodes *bool `pulumi:"updateNodes"`
 	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
 	//
 	// > **NOTE:** This parameter only applies during resource update.
@@ -1043,7 +1441,10 @@ type NodePoolArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	RollingPolicy   NodePoolRollingPolicyPtrInput
+	// Rotary configuration. See `rollingPolicy` below.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	RollingPolicy NodePoolRollingPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
 	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -1115,7 +1516,10 @@ type NodePoolArgs struct {
 	Type pulumi.StringPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
-	UpdateNodes   pulumi.BoolPtrInput
+	// Synchronously update node labels and taints.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UpdateNodes pulumi.BoolPtrInput
 	// Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgradePolicy` below.
 	//
 	// > **NOTE:** This parameter only applies during resource update.
@@ -1484,6 +1888,9 @@ func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Rotary configuration. See `rollingPolicy` below.
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o NodePoolOutput) RollingPolicy() NodePoolRollingPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRollingPolicyPtrOutput { return v.RollingPolicy }).(NodePoolRollingPolicyPtrOutput)
 }
@@ -1645,6 +2052,9 @@ func (o NodePoolOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.Unschedulable }).(pulumi.BoolPtrOutput)
 }
 
+// Synchronously update node labels and taints.
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o NodePoolOutput) UpdateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.UpdateNodes }).(pulumi.BoolPtrOutput)
 }

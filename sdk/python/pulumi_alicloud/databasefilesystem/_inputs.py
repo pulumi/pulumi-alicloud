@@ -19,16 +19,11 @@ __all__ = [
     'InstanceEcsListArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceEcsListArgsDict(TypedDict):
-        ecs_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the ECS instance.
-        """
-elif False:
-    InstanceEcsListArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEcsListArgsDict(TypedDict):
+    ecs_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the ECS instance.
+    """
 
 @pulumi.input_type
 class InstanceEcsListArgs:

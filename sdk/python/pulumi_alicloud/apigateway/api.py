@@ -548,6 +548,14 @@ class Api(pulumi.CustomResource):
                  system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]]] = None,
                  __props__=None):
         """
+        Provides an api resource.When you create an API, you must enter the basic information about the API, and define the API request information, the API backend service and response information.
+
+        For information about Api Gateway Api and how to use it, see [Create an API](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapi)
+
+        > **NOTE:** Available since v1.22.0.
+
+        > **NOTE:** Terraform will auto build api while it uses `apigateway.Api` to build api.
+
         ## Example Usage
 
         Basic Usage
@@ -629,6 +637,14 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an api resource.When you create an API, you must enter the basic information about the API, and define the API request information, the API backend service and response information.
+
+        For information about Api Gateway Api and how to use it, see [Create an API](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapi)
+
+        > **NOTE:** Available since v1.22.0.
+
+        > **NOTE:** Terraform will auto build api while it uses `apigateway.Api` to build api.
+
         ## Example Usage
 
         Basic Usage

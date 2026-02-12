@@ -17,6 +17,101 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Max Compute Quota resource.
+ * 
+ * For information about Max Compute Quota and how to use it, see [What is Quota](https://next.api.alibabacloud.com/document/MaxCompute/2022-01-04/CreateQuota).
+ * 
+ * &gt; **NOTE:** Available since v1.247.0.
+ * 
+ * &gt; **NOTE:** This resource will be reconstructed in future versions due to breaking changes and should not be used in production. We recommend upgrading to the latest provider version after May 20, 2025 (subject to change). For assistance, please file a support ticket with the MaxCompute product team directly.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.maxcompute.Quota;
+ * import com.pulumi.alicloud.maxcompute.QuotaArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaSubQuotaInfoListArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaSubQuotaInfoListParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraformexample");
+ *         final var partNickName = config.get("partNickName").orElse("TFTest17292");
+ *         final var subQuotaNickname3 = config.get("subQuotaNickname3").orElse("sub398892");
+ *         final var subQuotaNickname1 = config.get("subQuotaNickname1").orElse("sub129792");
+ *         final var subQuotaNickname2 = config.get("subQuotaNickname2").orElse("sub223192");
+ *         var default_ = new Quota("default", QuotaArgs.builder()
+ *             .paymentType("Subscription")
+ *             .partNickName(partNickName)
+ *             .commodityData("{\"CU\":80,\"ord_time\":\"1:Month\",\"autoRenew\":false} ")
+ *             .commodityCode("odpsplus")
+ *             .subQuotaInfoLists(            
+ *                 QuotaSubQuotaInfoListArgs.builder()
+ *                     .parameter(QuotaSubQuotaInfoListParameterArgs.builder()
+ *                         .minCu(10)
+ *                         .maxCu(60)
+ *                         .enablePriority(false)
+ *                         .forceReservedMin(false)
+ *                         .schedulerType("Fifo")
+ *                         .singleJobCuLimit(10)
+ *                         .build())
+ *                     .nickName(String.format("os_%s", partNickName))
+ *                     .type("FUXI_OFFLINE")
+ *                     .build(),
+ *                 QuotaSubQuotaInfoListArgs.builder()
+ *                     .parameter(QuotaSubQuotaInfoListParameterArgs.builder()
+ *                         .minCu(10)
+ *                         .maxCu(10)
+ *                         .schedulerType("Fair")
+ *                         .enablePriority(false)
+ *                         .forceReservedMin(false)
+ *                         .build())
+ *                     .nickName(subQuotaNickname1)
+ *                     .type("FUXI_OFFLINE")
+ *                     .build(),
+ *                 QuotaSubQuotaInfoListArgs.builder()
+ *                     .nickName(subQuotaNickname2)
+ *                     .type("FUXI_OFFLINE")
+ *                     .parameter(QuotaSubQuotaInfoListParameterArgs.builder()
+ *                         .minCu(60)
+ *                         .maxCu(60)
+ *                         .schedulerType("Fair")
+ *                         .enablePriority(true)
+ *                         .forceReservedMin(true)
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.maxcompute.Quota` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.maxcompute.Quota`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Max Compute Quota can be imported using the id, e.g.

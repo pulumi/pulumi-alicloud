@@ -148,9 +148,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return this.planCode;
     }
 
+    /**
+     * The public IP address that you want to add to the whitelist.
+     * 
+     * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * 
+     */
     @Import(name="publicWhiteLists")
     private @Nullable Output<List<String>> publicWhiteLists;
 
+    /**
+     * @return The public IP address that you want to add to the whitelist.
+     * 
+     * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * 
+     */
     public Optional<Output<List<String>>> publicWhiteLists() {
         return Optional.ofNullable(this.publicWhiteLists);
     }
@@ -535,15 +547,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return planCode(Output.of(planCode));
         }
 
+        /**
+         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
+         * 
+         * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicWhiteLists(@Nullable Output<List<String>> publicWhiteLists) {
             $.publicWhiteLists = publicWhiteLists;
             return this;
         }
 
+        /**
+         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
+         * 
+         * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicWhiteLists(List<String> publicWhiteLists) {
             return publicWhiteLists(Output.of(publicWhiteLists));
         }
 
+        /**
+         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
+         * 
+         * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicWhiteLists(String... publicWhiteLists) {
             return publicWhiteLists(List.of(publicWhiteLists));
         }

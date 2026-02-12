@@ -10,12 +10,48 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudFirewall
 {
     /// <summary>
+    /// Provides a Cloud Firewall Policy Advanced Config resource.
+    /// 
+    /// Access Control Advanced Configuration.
+    /// 
+    /// For information about Cloud Firewall Policy Advanced Config and how to use it, see [What is Policy Advanced Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyPolicyAdvancedConfig).
+    /// 
+    /// &gt; **NOTE:** Available since v1.253.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.CloudFirewall.PolicyAdvancedConfig("default", new()
+    ///     {
+    ///         InternetSwitch = "off",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cloudfirewall.PolicyAdvancedConfig` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.cloudfirewall.PolicyAdvancedConfig`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Policy Advanced Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig example 
+    /// $ terraform import alicloud_cloud_firewall_policy_advanced_config.example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig")]

@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * Threat Detection Honeypot Probe can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:threatdetection/honeypotProbe:HoneypotProbe example <id>
+ * $terraform import alicloud_threat_detection_honeypot_probe.example <id>
  * ```
  */
 export class HoneypotProbe extends pulumi.CustomResource {

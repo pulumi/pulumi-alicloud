@@ -107,9 +107,21 @@ public final class DefenseTemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.resourceGroups);
     }
 
+    /**
+     * The ID of the Alibaba Cloud resource group.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="resourceManagerResourceGroupId")
     private @Nullable Output<String> resourceManagerResourceGroupId;
 
+    /**
+     * @return The ID of the Alibaba Cloud resource group.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> resourceManagerResourceGroupId() {
         return Optional.ofNullable(this.resourceManagerResourceGroupId);
     }
@@ -348,11 +360,27 @@ public final class DefenseTemplateState extends com.pulumi.resources.ResourceArg
             return resourceGroups(List.of(resourceGroups));
         }
 
+        /**
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceManagerResourceGroupId(@Nullable Output<String> resourceManagerResourceGroupId) {
             $.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceManagerResourceGroupId(String resourceManagerResourceGroupId) {
             return resourceManagerResourceGroupId(Output.of(resourceManagerResourceGroupId));
         }

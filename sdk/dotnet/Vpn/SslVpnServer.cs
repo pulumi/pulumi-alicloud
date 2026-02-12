@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// Provides a SSL VPN server resource. [Refer to details](https://www.alibabacloud.com/help/doc-detail/64960.htm)
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build ssl vpn server while it uses `alicloud.vpn.SslVpnServer` to build a ssl vpn server resource.
+    /// 
+    /// &gt; **NOTE:** Available since v1.15.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

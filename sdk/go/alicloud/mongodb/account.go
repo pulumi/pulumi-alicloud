@@ -12,6 +12,100 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Mongodb Account resource.
+//
+// For information about Mongodb Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
+//
+// > **NOTE:** Available since v1.148.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := mongodb.GetZones(ctx, &mongodb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			index := len(_default.Zones).ApplyT(func(length int) (float64, error) {
+//				return float64(length.ApplyT(func(__convert float64) (float64, error) {
+//					return __convert - 1, nil
+//				}).(pulumi.Float64Output)), nil
+//			}).(pulumi.Float64Output)
+//			zoneId := _default.Zones[index].Id
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(zoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
+//				EngineVersion:     pulumi.String("4.2"),
+//				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
+//				DbInstanceStorage: pulumi.Int(10),
+//				VswitchId:         defaultSwitch.ID(),
+//				SecurityIpLists: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("100.69.7.112"),
+//				},
+//				Name: pulumi.String(name),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewAccount(ctx, "default", &mongodb.AccountArgs{
+//				AccountName:        pulumi.String("root"),
+//				AccountPassword:    pulumi.String("Example_123"),
+//				InstanceId:         defaultInstance.ID(),
+//				AccountDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `mongodb.Account` or removing it from your configuration
+//
+// Terraform cannot destroy resource `mongodb.Account`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Mongodb Account can be imported using the id, e.g.

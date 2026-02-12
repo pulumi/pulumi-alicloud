@@ -73,12 +73,41 @@ class AiTrafficAnalysisStatus(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Cloud Firewall Ai Traffic Analysis Status resource.
+
+        AI traffic analysis.
+
+        For information about Cloud Firewall Ai Traffic Analysis Status and how to use it, see [What is Ai Traffic Analysis Status](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/UpdateAITrafficAnalysisStatus).
+
+        > **NOTE:** Available since v1.263.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.AiTrafficAnalysisStatus("default", status="Open")
+        ```
+
+        ### Deleting `cloudfirewall.AiTrafficAnalysisStatus` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.AiTrafficAnalysisStatus`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Ai Traffic Analysis Status can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus example 
+        $ terraform import alicloud_cloud_firewall_ai_traffic_analysis_status.example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -92,12 +121,41 @@ class AiTrafficAnalysisStatus(pulumi.CustomResource):
                  args: Optional[AiTrafficAnalysisStatusArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Cloud Firewall Ai Traffic Analysis Status resource.
+
+        AI traffic analysis.
+
+        For information about Cloud Firewall Ai Traffic Analysis Status and how to use it, see [What is Ai Traffic Analysis Status](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/UpdateAITrafficAnalysisStatus).
+
+        > **NOTE:** Available since v1.263.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.AiTrafficAnalysisStatus("default", status="Open")
+        ```
+
+        ### Deleting `cloudfirewall.AiTrafficAnalysisStatus` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.AiTrafficAnalysisStatus`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Ai Traffic Analysis Status can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus example 
+        $ terraform import alicloud_cloud_firewall_ai_traffic_analysis_status.example 
         ```
 
         :param str resource_name: The name of the resource.

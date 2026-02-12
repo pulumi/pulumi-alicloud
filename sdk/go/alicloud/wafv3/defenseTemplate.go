@@ -86,8 +86,11 @@ type DefenseTemplate struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
-	ResourceGroups                 pulumi.StringArrayOutput `pulumi:"resourceGroups"`
-	ResourceManagerResourceGroupId pulumi.StringPtrOutput   `pulumi:"resourceManagerResourceGroupId"`
+	ResourceGroups pulumi.StringArrayOutput `pulumi:"resourceGroups"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	ResourceManagerResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceManagerResourceGroupId"`
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources pulumi.StringArrayOutput `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
@@ -159,8 +162,11 @@ type defenseTemplateState struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
-	ResourceGroups                 []string `pulumi:"resourceGroups"`
-	ResourceManagerResourceGroupId *string  `pulumi:"resourceManagerResourceGroupId"`
+	ResourceGroups []string `pulumi:"resourceGroups"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources []string `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
@@ -185,7 +191,10 @@ type DefenseTemplateState struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringPtrInput
 	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
-	ResourceGroups                 pulumi.StringArrayInput
+	ResourceGroups pulumi.StringArrayInput
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources pulumi.StringArrayInput
@@ -213,8 +222,11 @@ type defenseTemplateArgs struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
-	ResourceGroups                 []string `pulumi:"resourceGroups"`
-	ResourceManagerResourceGroupId *string  `pulumi:"resourceManagerResourceGroupId"`
+	ResourceGroups []string `pulumi:"resourceGroups"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources []string `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
@@ -238,7 +250,10 @@ type DefenseTemplateArgs struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringInput
 	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
-	ResourceGroups                 pulumi.StringArrayInput
+	ResourceGroups pulumi.StringArrayInput
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources pulumi.StringArrayInput
@@ -369,6 +384,9 @@ func (o DefenseTemplateOutput) ResourceGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringArrayOutput { return v.ResourceGroups }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the Alibaba Cloud resource group.
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o DefenseTemplateOutput) ResourceManagerResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringPtrOutput { return v.ResourceManagerResourceGroupId }).(pulumi.StringPtrOutput)
 }

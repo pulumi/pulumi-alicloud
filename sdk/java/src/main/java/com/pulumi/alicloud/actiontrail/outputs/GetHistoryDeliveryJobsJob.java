@@ -23,6 +23,10 @@ public final class GetHistoryDeliveryJobsJob {
      * 
      */
     private String endTime;
+    /**
+     * @return The resource ID in terraform of History Delivery Job.
+     * 
+     */
     private String historyDeliveryJobId;
     /**
      * @return The home region of the trail.
@@ -75,6 +79,10 @@ public final class GetHistoryDeliveryJobsJob {
     public String endTime() {
         return this.endTime;
     }
+    /**
+     * @return The resource ID in terraform of History Delivery Job.
+     * 
+     */
     public String historyDeliveryJobId() {
         return this.historyDeliveryJobId;
     }

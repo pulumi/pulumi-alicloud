@@ -21,24 +21,19 @@ __all__ = [
     'LakeAccountAccountPrivilegePrivilegeObjectArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class LakeAccountAccountPrivilegeArgsDict(TypedDict):
-        privilege_object: NotRequired[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgsDict']]
-        """
-        Object associated to privileges. See `privilege_object` below.
-        """
-        privilege_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of privileges.
-        """
-        privileges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        privilege list.
-        """
-elif False:
-    LakeAccountAccountPrivilegeArgsDict: TypeAlias = Mapping[str, Any]
+class LakeAccountAccountPrivilegeArgsDict(TypedDict):
+    privilege_object: NotRequired[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgsDict']]
+    """
+    Object associated to privileges. See `privilege_object` below.
+    """
+    privilege_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of privileges.
+    """
+    privileges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    privilege list.
+    """
 
 @pulumi.input_type
 class LakeAccountAccountPrivilegeArgs:
@@ -95,22 +90,19 @@ class LakeAccountAccountPrivilegeArgs:
         pulumi.set(self, "privileges", value)
 
 
-if not MYPY:
-    class LakeAccountAccountPrivilegePrivilegeObjectArgsDict(TypedDict):
-        column: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of column.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of database.
-        """
-        table: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of table.
-        """
-elif False:
-    LakeAccountAccountPrivilegePrivilegeObjectArgsDict: TypeAlias = Mapping[str, Any]
+class LakeAccountAccountPrivilegePrivilegeObjectArgsDict(TypedDict):
+    column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of column.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of database.
+    """
+    table: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of table.
+    """
 
 @pulumi.input_type
 class LakeAccountAccountPrivilegePrivilegeObjectArgs:

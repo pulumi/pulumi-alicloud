@@ -34,6 +34,10 @@ class DomainArgs:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
         :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
@@ -99,6 +103,12 @@ class DomainArgs:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The mode in which the domain name is added to WAF. Valid values:
+        share: CNAME record mode. This is the default value.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -145,6 +155,10 @@ class _DomainState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] cname: The CNAME assigned by WAF to the domain name.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
@@ -179,6 +193,12 @@ class _DomainState:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The mode in which the domain name is added to WAF. Valid values:
+        share: CNAME record mode. This is the default value.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -325,6 +345,10 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
@@ -429,6 +453,10 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] cname: The CNAME assigned by WAF to the domain name.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
@@ -458,6 +486,12 @@ class Domain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The mode in which the domain name is added to WAF. Valid values:
+        share: CNAME record mode. This is the default value.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property

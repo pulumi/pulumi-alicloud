@@ -16,6 +16,75 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:**  This resource has been deprecated and using alicloud.wafv3.Instance instead.
+ * 
+ * Provides a WAF Instance resource to create instance in the Web Application Firewall.
+ * 
+ * For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.83.0.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.waf.WafFunctions;
+ * import com.pulumi.alicloud.waf.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.waf.Instance;
+ * import com.pulumi.alicloud.waf.InstanceArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+ *             .build());
+ * 
+ *         for (var i = 0; i < default_.instances().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
+ *                 .bigScreen("0")
+ *                 .exclusiveIpPackage("1")
+ *                 .extBandwidth("50")
+ *                 .extDomainPackage("1")
+ *                 .packageCode("version_3")
+ *                 .prefessionalService("false")
+ *                 .subscriptionType("Subscription")
+ *                 .period(1)
+ *                 .wafLog("false")
+ *                 .logStorage("3")
+ *                 .logTime("180")
+ *                 .resourceGroupId("rs-abc12345")
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.waf.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.waf.Instance` resource allows you to manage `subscriptionType = &#34;Subscription&#34;` WAF instance, but Terraform cannot destroy it before it is expired.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the WAF Instance.
+ * You can resume managing the subscription WAF instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * WAF instance can be imported using the id, e.g.

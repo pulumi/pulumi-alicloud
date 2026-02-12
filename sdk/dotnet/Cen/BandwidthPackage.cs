@@ -10,6 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
+    /// Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
+    /// 
+    /// For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenbandwidthpackage).
+    /// 
+    /// &gt; **NOTE:** Available since v1.18.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Cen.BandwidthPackage("example", new()
+    ///     {
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = "tf_example",
+    ///         GeographicRegionAId = "China",
+    ///         GeographicRegionBId = "China",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cen.BandwidthPackage` or removing it from your configuration
+    /// 
+    /// The `alicloud.cen.BandwidthPackage` resource allows you to manage `PaymentType = "PrePaid"` bandwidth package, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your statefile and management, but will not destroy the Bandwidth Package.
+    /// You can resume managing the subscription bandwidth package via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CEN bandwidth package can be imported using the id, e.g.

@@ -278,7 +278,8 @@ type EdgeKubernetes struct {
 	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
 	LogConfig EdgeKubernetesLogConfigPtrOutput `pulumi:"logConfig"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringOutput    `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
@@ -295,7 +296,8 @@ type EdgeKubernetes struct {
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
 	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime EdgeKubernetesRuntimePtrOutput `pulumi:"runtime"`
@@ -445,7 +447,8 @@ type edgeKubernetesState struct {
 	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
 	LogConfig *EdgeKubernetesLogConfig `pulumi:"logConfig"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId *string `pulumi:"natGatewayId"`
@@ -462,7 +465,8 @@ type edgeKubernetesState struct {
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
 	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
@@ -567,7 +571,8 @@ type EdgeKubernetesState struct {
 	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
 	LogConfig EdgeKubernetesLogConfigPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringPtrInput
@@ -585,6 +590,7 @@ type EdgeKubernetesState struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
 	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime EdgeKubernetesRuntimePtrInput
@@ -687,7 +693,8 @@ type edgeKubernetesArgs struct {
 	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
 	LogConfig *EdgeKubernetesLogConfig `pulumi:"logConfig"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
@@ -702,7 +709,8 @@ type edgeKubernetesArgs struct {
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
 	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
@@ -792,7 +800,8 @@ type EdgeKubernetesArgs struct {
 	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
 	LogConfig EdgeKubernetesLogConfigPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway pulumi.BoolPtrInput
@@ -808,6 +817,7 @@ type EdgeKubernetesArgs struct {
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
 	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime EdgeKubernetesRuntimePtrInput
@@ -1037,6 +1047,7 @@ func (o EdgeKubernetesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 func (o EdgeKubernetesOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -1081,6 +1092,7 @@ func (o EdgeKubernetesOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 func (o EdgeKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }

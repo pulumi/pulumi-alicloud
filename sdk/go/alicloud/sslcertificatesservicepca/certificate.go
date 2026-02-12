@@ -74,7 +74,10 @@ type Certificate struct {
 	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
-	Algorithm pulumi.StringOutput    `pulumi:"algorithm"`
+	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
+	// A custom alias for the certificate, used to define a user-friendly name.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AliasName pulumi.StringPtrOutput `pulumi:"aliasName"`
 	// The type of the CA certificate. Default value: `ROOT`. Valid values:
 	// - `ROOT`: A root CA certificate.
@@ -178,6 +181,9 @@ type certificateState struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm *string `pulumi:"algorithm"`
+	// A custom alias for the certificate, used to define a user-friendly name.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AliasName *string `pulumi:"aliasName"`
 	// The type of the CA certificate. Default value: `ROOT`. Valid values:
 	// - `ROOT`: A root CA certificate.
@@ -228,6 +234,9 @@ type CertificateState struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm pulumi.StringPtrInput
+	// A custom alias for the certificate, used to define a user-friendly name.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AliasName pulumi.StringPtrInput
 	// The type of the CA certificate. Default value: `ROOT`. Valid values:
 	// - `ROOT`: A root CA certificate.
@@ -282,6 +291,9 @@ type certificateArgs struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm *string `pulumi:"algorithm"`
+	// A custom alias for the certificate, used to define a user-friendly name.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AliasName *string `pulumi:"aliasName"`
 	// The type of the CA certificate. Default value: `ROOT`. Valid values:
 	// - `ROOT`: A root CA certificate.
@@ -331,6 +343,9 @@ type CertificateArgs struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	// > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
 	Algorithm pulumi.StringPtrInput
+	// A custom alias for the certificate, used to define a user-friendly name.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	AliasName pulumi.StringPtrInput
 	// The type of the CA certificate. Default value: `ROOT`. Valid values:
 	// - `ROOT`: A root CA certificate.
@@ -468,6 +483,9 @@ func (o CertificateOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// A custom alias for the certificate, used to define a user-friendly name.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o CertificateOutput) AliasName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.AliasName }).(pulumi.StringPtrOutput)
 }

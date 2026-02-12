@@ -21,20 +21,15 @@ __all__ = [
     'BaselineBaselineItemArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccountAccountTagArgsDict(TypedDict):
-        tag_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the tags
-        """
-        tag_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the tags
-        """
-elif False:
-    AccountAccountTagArgsDict: TypeAlias = Mapping[str, Any]
+class AccountAccountTagArgsDict(TypedDict):
+    tag_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the tags
+    """
+    tag_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the tags
+    """
 
 @pulumi.input_type
 class AccountAccountTagArgs:
@@ -75,22 +70,19 @@ class AccountAccountTagArgs:
         pulumi.set(self, "tag_value", value)
 
 
-if not MYPY:
-    class BaselineBaselineItemArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Baseline item configuration. The format is a JSON string.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The baseline item name.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The baseline item version.
-        """
-elif False:
-    BaselineBaselineItemArgsDict: TypeAlias = Mapping[str, Any]
+class BaselineBaselineItemArgsDict(TypedDict):
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Baseline item configuration. The format is a JSON string.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The baseline item name.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The baseline item version.
+    """
 
 @pulumi.input_type
 class BaselineBaselineItemArgs:

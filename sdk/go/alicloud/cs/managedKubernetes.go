@@ -324,7 +324,8 @@ type ManagedKubernetes struct {
 	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringOutput    `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
@@ -347,7 +348,8 @@ type ManagedKubernetes struct {
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
 	// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata ManagedKubernetesRrsaMetadataOutput `pulumi:"rrsaMetadata"`
@@ -499,7 +501,8 @@ type managedKubernetesState struct {
 	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId *string `pulumi:"natGatewayId"`
@@ -522,7 +525,8 @@ type managedKubernetesState struct {
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
 	// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata *ManagedKubernetesRrsaMetadata `pulumi:"rrsaMetadata"`
@@ -645,7 +649,8 @@ type ManagedKubernetesState struct {
 	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringPtrInput
@@ -669,6 +674,7 @@ type ManagedKubernetesState struct {
 	ProxyMode pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
 	// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata ManagedKubernetesRrsaMetadataPtrInput
@@ -789,7 +795,8 @@ type managedKubernetesArgs struct {
 	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
@@ -810,7 +817,8 @@ type managedKubernetesArgs struct {
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
@@ -916,7 +924,8 @@ type ManagedKubernetesArgs struct {
 	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
 	NewNatGateway pulumi.BoolPtrInput
@@ -938,6 +947,7 @@ type ManagedKubernetesArgs struct {
 	ProxyMode pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	// * > **NOTE:** Please take of note before updating the `securityGroupId`:
@@ -1207,6 +1217,7 @@ func (o ManagedKubernetesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
 func (o ManagedKubernetesOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -1260,6 +1271,7 @@ func (o ManagedKubernetesOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 func (o ManagedKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }

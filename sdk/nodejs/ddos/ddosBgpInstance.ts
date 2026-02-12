@@ -5,6 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Anti-DDoS Pro (DdosBgp) Instance resource.
+ *
+ * For information about Anti-DDoS Pro (DdosBgp) Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+ *
+ * > **NOTE:** Available since v1.183.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *     name: name,
+ *     baseBandwidth: 20,
+ *     bandwidth: -1,
+ *     ipCount: 100,
+ *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.ddos.DdosBgpInstance` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.ddos.DdosBgpInstance`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.

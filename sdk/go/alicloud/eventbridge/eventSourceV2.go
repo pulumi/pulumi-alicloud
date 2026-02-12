@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -102,7 +100,10 @@ type EventSourceV2 struct {
 	// Name of the bus associated with the event source
 	EventBusName pulumi.StringOutput `pulumi:"eventBusName"`
 	// The code name of event source
-	EventSourceName      pulumi.StringOutput  `pulumi:"eventSourceName"`
+	EventSourceName pulumi.StringOutput `pulumi:"eventSourceName"`
+	// Whether to connect to an external data source
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	LinkedExternalSource pulumi.BoolPtrOutput `pulumi:"linkedExternalSource"`
 	// The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
 	SourceHttpEventParameters EventSourceV2SourceHttpEventParametersPtrOutput `pulumi:"sourceHttpEventParameters"`
@@ -163,8 +164,11 @@ type eventSourceV2State struct {
 	// Name of the bus associated with the event source
 	EventBusName *string `pulumi:"eventBusName"`
 	// The code name of event source
-	EventSourceName      *string `pulumi:"eventSourceName"`
-	LinkedExternalSource *bool   `pulumi:"linkedExternalSource"`
+	EventSourceName *string `pulumi:"eventSourceName"`
+	// Whether to connect to an external data source
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	LinkedExternalSource *bool `pulumi:"linkedExternalSource"`
 	// The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
 	SourceHttpEventParameters *EventSourceV2SourceHttpEventParameters `pulumi:"sourceHttpEventParameters"`
 	// Kafka event source parameter. See `sourceKafkaParameters` below.
@@ -189,7 +193,10 @@ type EventSourceV2State struct {
 	// Name of the bus associated with the event source
 	EventBusName pulumi.StringPtrInput
 	// The code name of event source
-	EventSourceName      pulumi.StringPtrInput
+	EventSourceName pulumi.StringPtrInput
+	// Whether to connect to an external data source
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	LinkedExternalSource pulumi.BoolPtrInput
 	// The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
 	SourceHttpEventParameters EventSourceV2SourceHttpEventParametersPtrInput
@@ -219,8 +226,11 @@ type eventSourceV2Args struct {
 	// Name of the bus associated with the event source
 	EventBusName string `pulumi:"eventBusName"`
 	// The code name of event source
-	EventSourceName      string `pulumi:"eventSourceName"`
-	LinkedExternalSource *bool  `pulumi:"linkedExternalSource"`
+	EventSourceName string `pulumi:"eventSourceName"`
+	// Whether to connect to an external data source
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	LinkedExternalSource *bool `pulumi:"linkedExternalSource"`
 	// The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
 	SourceHttpEventParameters *EventSourceV2SourceHttpEventParameters `pulumi:"sourceHttpEventParameters"`
 	// Kafka event source parameter. See `sourceKafkaParameters` below.
@@ -246,7 +256,10 @@ type EventSourceV2Args struct {
 	// Name of the bus associated with the event source
 	EventBusName pulumi.StringInput
 	// The code name of event source
-	EventSourceName      pulumi.StringInput
+	EventSourceName pulumi.StringInput
+	// Whether to connect to an external data source
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	LinkedExternalSource pulumi.BoolPtrInput
 	// The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
 	SourceHttpEventParameters EventSourceV2SourceHttpEventParametersPtrInput
@@ -368,6 +381,9 @@ func (o EventSourceV2Output) EventSourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventSourceV2) pulumi.StringOutput { return v.EventSourceName }).(pulumi.StringOutput)
 }
 
+// Whether to connect to an external data source
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o EventSourceV2Output) LinkedExternalSource() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EventSourceV2) pulumi.BoolPtrOutput { return v.LinkedExternalSource }).(pulumi.BoolPtrOutput)
 }

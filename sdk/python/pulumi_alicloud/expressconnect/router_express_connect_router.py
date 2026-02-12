@@ -275,6 +275,35 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides a Express Connect Router Express Connect Router resource. Express Connect Router.
+
+        For information about Express Connect Router Express Connect Router and how to use it, see [What is Express Connect Router](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouter).
+
+        > **NOTE:** Available since v1.224.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_m9_yx_gw = alicloud.expressconnect.RouterExpressConnectRouter("defaultM9YxGW", alibaba_side_asn=65533)
+        ```
+
+        ### Deleting `expressconnect.RouterExpressConnectRouter` or removing it from your configuration
+
+        The `expressconnect.RouterExpressConnectRouter` resource allows you to manage  `ecr_id = ""`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Express Connect Router can be imported using the id, e.g.
@@ -300,6 +329,35 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  args: RouterExpressConnectRouterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Express Connect Router Express Connect Router resource. Express Connect Router.
+
+        For information about Express Connect Router Express Connect Router and how to use it, see [What is Express Connect Router](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouter).
+
+        > **NOTE:** Available since v1.224.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_m9_yx_gw = alicloud.expressconnect.RouterExpressConnectRouter("defaultM9YxGW", alibaba_side_asn=65533)
+        ```
+
+        ### Deleting `expressconnect.RouterExpressConnectRouter` or removing it from your configuration
+
+        The `expressconnect.RouterExpressConnectRouter` resource allows you to manage  `ecr_id = ""`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Express Connect Router can be imported using the id, e.g.

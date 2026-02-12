@@ -34,8 +34,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -138,6 +136,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<protocol>:<frontend_port>
 // ```
+//
+// **NOTE:** Before provider version 1.57.1, Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>

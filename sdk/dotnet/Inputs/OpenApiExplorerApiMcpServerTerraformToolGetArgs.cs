@@ -18,9 +18,15 @@ namespace Pulumi.AliCloud.Inputs
         [Input("async")]
         public Input<bool>? Async { get; set; }
 
+        /// <summary>
+        /// Terraform Tool code. Overview of the HCL Language
+        /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }
 
+        /// <summary>
+        /// Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -33,6 +39,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("destroyPolicy")]
         public Input<string>? DestroyPolicy { get; set; }
 
+        /// <summary>
+        /// The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

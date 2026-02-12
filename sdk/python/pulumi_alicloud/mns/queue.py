@@ -238,6 +238,12 @@ class Queue(pulumi.CustomResource):
                  visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a MNS queue resource.
+
+        > **NOTE:** Terraform will auto build a mns queue  while it uses `mns.Queue` to build a mns queue resource.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_queue.
+
         ## Example Usage
 
         Basic Usage
@@ -281,6 +287,12 @@ class Queue(pulumi.CustomResource):
                  args: Optional[QueueArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a MNS queue resource.
+
+        > **NOTE:** Terraform will auto build a mns queue  while it uses `mns.Queue` to build a mns queue resource.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_queue.
+
         ## Example Usage
 
         Basic Usage

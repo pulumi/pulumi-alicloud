@@ -5,6 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
+ *
+ * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+ *
+ * > **NOTE:** Available since v1.62.0+.
+ *
+ * > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const defaultDBAuditInstance = new alicloud.yundun.DBAuditInstance("default", {
+ *     description: "tf-example",
+ *     planCode: "alpha.professional",
+ *     period: 1,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.yundun.DBAuditInstance` or removing it from your configuration
+ *
+ * The `alicloud.yundun.DBAuditInstance` resource allows you to manage yundun dbaudit instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the `yundunDbauditInstance`.
+ * You can resume managing the subscription yundunDbauditInstance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Yundun_dbaudit instance can be imported using the id, e.g.

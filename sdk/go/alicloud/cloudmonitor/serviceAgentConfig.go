@@ -11,12 +11,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Monitor Service Agent Config resource.
+//
+// Cloud monitoring plug-in global configuration.
+//
+// For information about Cloud Monitor Service Agent Config and how to use it, see [What is Agent Config](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutMonitoringConfig).
+//
+// > **NOTE:** Available since v1.270.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudmonitor"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudmonitor.NewServiceAgentConfig(ctx, "default", &cloudmonitor.ServiceAgentConfigArgs{
+//				EnableInstallAgentNewEcs: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudmonitor.ServiceAgentConfig` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudmonitor.ServiceAgentConfig`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Monitor Service Agent Config can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig example <Alibaba Cloud Account ID>
+// $ terraform import alicloud_cloud_monitor_service_agent_config.example <Alibaba Cloud Account ID>
 // ```
 type ServiceAgentConfig struct {
 	pulumi.CustomResourceState

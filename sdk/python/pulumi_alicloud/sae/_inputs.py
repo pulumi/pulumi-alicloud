@@ -91,24 +91,19 @@ __all__ = [
     'LoadBalancerIntranetIntranetArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ApplicationConfigMapMountDescV2ArgsDict(TypedDict):
-        config_map_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the ConfigMap.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key.
-        """
-        mount_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount path.
-        """
-elif False:
-    ApplicationConfigMapMountDescV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationConfigMapMountDescV2ArgsDict(TypedDict):
+    config_map_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the ConfigMap.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key.
+    """
+    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount path.
+    """
 
 @pulumi.input_type
 class ApplicationConfigMapMountDescV2Args:
@@ -165,18 +160,15 @@ class ApplicationConfigMapMountDescV2Args:
         pulumi.set(self, "mount_path", value)
 
 
-if not MYPY:
-    class ApplicationCustomHostAliasV2ArgsDict(TypedDict):
-        host_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain name or hostname.
-        """
-        ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address.
-        """
-elif False:
-    ApplicationCustomHostAliasV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationCustomHostAliasV2ArgsDict(TypedDict):
+    host_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain name or hostname.
+    """
+    ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address.
+    """
 
 @pulumi.input_type
 class ApplicationCustomHostAliasV2Args:
@@ -217,22 +209,19 @@ class ApplicationCustomHostAliasV2Args:
         pulumi.set(self, "ip", value)
 
 
-if not MYPY:
-    class ApplicationKafkaConfigsArgsDict(TypedDict):
-        kafka_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgsDict']]]]
-        """
-        One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
-        """
-        kafka_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The endpoint of the ApsaraMQ for Kafka API.
-        """
-        kafka_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The  ID of the ApsaraMQ for Kafka instance.
-        """
-elif False:
-    ApplicationKafkaConfigsArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationKafkaConfigsArgsDict(TypedDict):
+    kafka_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgsDict']]]]
+    """
+    One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
+    """
+    kafka_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The endpoint of the ApsaraMQ for Kafka API.
+    """
+    kafka_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The  ID of the ApsaraMQ for Kafka instance.
+    """
 
 @pulumi.input_type
 class ApplicationKafkaConfigsArgs:
@@ -289,22 +278,19 @@ class ApplicationKafkaConfigsArgs:
         pulumi.set(self, "kafka_instance_id", value)
 
 
-if not MYPY:
-    class ApplicationKafkaConfigsKafkaConfigArgsDict(TypedDict):
-        kafka_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The topic of the Kafka.
-        """
-        log_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path in which logs are stored.
-        """
-        log_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the log.
-        """
-elif False:
-    ApplicationKafkaConfigsKafkaConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationKafkaConfigsKafkaConfigArgsDict(TypedDict):
+    kafka_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The topic of the Kafka.
+    """
+    log_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path in which logs are stored.
+    """
+    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the log.
+    """
 
 @pulumi.input_type
 class ApplicationKafkaConfigsKafkaConfigArgs:
@@ -361,38 +347,35 @@ class ApplicationKafkaConfigsKafkaConfigArgs:
         pulumi.set(self, "log_type", value)
 
 
-if not MYPY:
-    class ApplicationLivenessV2ArgsDict(TypedDict):
-        exec_: NotRequired[pulumi.Input['ApplicationLivenessV2ExecArgsDict']]
-        """
-        Execute. See `exec` below.
-        """
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
-        """
-        http_get: NotRequired[pulumi.Input['ApplicationLivenessV2HttpGetArgsDict']]
-        """
-        The liveness check settings of the container. See `http_get` below.
-        """
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The delay of the health check.
-        """
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which the health check is performed.
-        """
-        tcp_socket: NotRequired[pulumi.Input['ApplicationLivenessV2TcpSocketArgsDict']]
-        """
-        The liveness check settings of the container. See `tcp_socket` below.
-        """
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period of the health check.
-        """
-elif False:
-    ApplicationLivenessV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationLivenessV2ArgsDict(TypedDict):
+    exec_: NotRequired[pulumi.Input['ApplicationLivenessV2ExecArgsDict']]
+    """
+    Execute. See `exec` below.
+    """
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+    """
+    http_get: NotRequired[pulumi.Input['ApplicationLivenessV2HttpGetArgsDict']]
+    """
+    The liveness check settings of the container. See `http_get` below.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The delay of the health check.
+    """
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which the health check is performed.
+    """
+    tcp_socket: NotRequired[pulumi.Input['ApplicationLivenessV2TcpSocketArgsDict']]
+    """
+    The liveness check settings of the container. See `tcp_socket` below.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period of the health check.
+    """
 
 @pulumi.input_type
 class ApplicationLivenessV2Args:
@@ -513,14 +496,11 @@ class ApplicationLivenessV2Args:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class ApplicationLivenessV2ExecArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        """
-elif False:
-    ApplicationLivenessV2ExecArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationLivenessV2ExecArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+    """
 
 @pulumi.input_type
 class ApplicationLivenessV2ExecArgs:
@@ -545,15 +525,12 @@ class ApplicationLivenessV2ExecArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class ApplicationLivenessV2HttpGetArgsDict(TypedDict):
-        is_contain_key_word: NotRequired[pulumi.Input[_builtins.bool]]
-        key_word: NotRequired[pulumi.Input[_builtins.str]]
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        scheme: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ApplicationLivenessV2HttpGetArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationLivenessV2HttpGetArgsDict(TypedDict):
+    is_contain_key_word: NotRequired[pulumi.Input[_builtins.bool]]
+    key_word: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    scheme: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ApplicationLivenessV2HttpGetArgs:
@@ -620,11 +597,8 @@ class ApplicationLivenessV2HttpGetArgs:
         pulumi.set(self, "scheme", value)
 
 
-if not MYPY:
-    class ApplicationLivenessV2TcpSocketArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ApplicationLivenessV2TcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationLivenessV2TcpSocketArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ApplicationLivenessV2TcpSocketArgs:
@@ -643,30 +617,27 @@ class ApplicationLivenessV2TcpSocketArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ApplicationNasConfigArgsDict(TypedDict):
-        mount_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain name of the mount target.
-        """
-        mount_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount path of the container.
-        """
-        nas_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the NAS file system.
-        """
-        nas_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The directory in the NAS file system.
-        """
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
-        """
-elif False:
-    ApplicationNasConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationNasConfigArgsDict(TypedDict):
+    mount_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain name of the mount target.
+    """
+    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount path of the container.
+    """
+    nas_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the NAS file system.
+    """
+    nas_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The directory in the NAS file system.
+    """
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+    """
 
 @pulumi.input_type
 class ApplicationNasConfigArgs:
@@ -755,26 +726,23 @@ class ApplicationNasConfigArgs:
         pulumi.set(self, "read_only", value)
 
 
-if not MYPY:
-    class ApplicationOssMountDescsV2ArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the OSS bucket.
-        """
-        bucket_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The directory or object in OSS.
-        """
-        mount_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path of the container in SAE.
-        """
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
-        """
-elif False:
-    ApplicationOssMountDescsV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationOssMountDescsV2ArgsDict(TypedDict):
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the OSS bucket.
+    """
+    bucket_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The directory or object in OSS.
+    """
+    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path of the container in SAE.
+    """
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+    """
 
 @pulumi.input_type
 class ApplicationOssMountDescsV2Args:
@@ -847,14 +815,11 @@ class ApplicationOssMountDescsV2Args:
         pulumi.set(self, "read_only", value)
 
 
-if not MYPY:
-    class ApplicationPostStartV2ArgsDict(TypedDict):
-        exec_: NotRequired[pulumi.Input['ApplicationPostStartV2ExecArgsDict']]
-        """
-        Execute. See `exec` below.
-        """
-elif False:
-    ApplicationPostStartV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationPostStartV2ArgsDict(TypedDict):
+    exec_: NotRequired[pulumi.Input['ApplicationPostStartV2ExecArgsDict']]
+    """
+    Execute. See `exec` below.
+    """
 
 @pulumi.input_type
 class ApplicationPostStartV2Args:
@@ -879,14 +844,11 @@ class ApplicationPostStartV2Args:
         pulumi.set(self, "exec_", value)
 
 
-if not MYPY:
-    class ApplicationPostStartV2ExecArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        """
-elif False:
-    ApplicationPostStartV2ExecArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationPostStartV2ExecArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+    """
 
 @pulumi.input_type
 class ApplicationPostStartV2ExecArgs:
@@ -911,14 +873,11 @@ class ApplicationPostStartV2ExecArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class ApplicationPreStopV2ArgsDict(TypedDict):
-        exec_: NotRequired[pulumi.Input['ApplicationPreStopV2ExecArgsDict']]
-        """
-        Execute. See `exec` below.
-        """
-elif False:
-    ApplicationPreStopV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationPreStopV2ArgsDict(TypedDict):
+    exec_: NotRequired[pulumi.Input['ApplicationPreStopV2ExecArgsDict']]
+    """
+    Execute. See `exec` below.
+    """
 
 @pulumi.input_type
 class ApplicationPreStopV2Args:
@@ -943,14 +902,11 @@ class ApplicationPreStopV2Args:
         pulumi.set(self, "exec_", value)
 
 
-if not MYPY:
-    class ApplicationPreStopV2ExecArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        """
-elif False:
-    ApplicationPreStopV2ExecArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationPreStopV2ExecArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+    """
 
 @pulumi.input_type
 class ApplicationPreStopV2ExecArgs:
@@ -975,26 +931,23 @@ class ApplicationPreStopV2ExecArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class ApplicationPvtzDiscoverySvcArgsDict(TypedDict):
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables the Kubernetes Service-based registration and discovery feature.
-        """
-        namespace_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the namespace.
-        """
-        port_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgsDict']]]]
-        """
-        The port number and protocol. See `port_protocols` below.
-        """
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Service.
-        """
-elif False:
-    ApplicationPvtzDiscoverySvcArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationPvtzDiscoverySvcArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables the Kubernetes Service-based registration and discovery feature.
+    """
+    namespace_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the namespace.
+    """
+    port_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgsDict']]]]
+    """
+    The port number and protocol. See `port_protocols` below.
+    """
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Service.
+    """
 
 @pulumi.input_type
 class ApplicationPvtzDiscoverySvcArgs:
@@ -1067,15 +1020,12 @@ class ApplicationPvtzDiscoverySvcArgs:
         pulumi.set(self, "service_name", value)
 
 
-if not MYPY:
-    class ApplicationPvtzDiscoverySvcPortProtocolArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol. Valid values: `TCP` and `UDP`.
-        """
-elif False:
-    ApplicationPvtzDiscoverySvcPortProtocolArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationPvtzDiscoverySvcPortProtocolArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol. Valid values: `TCP` and `UDP`.
+    """
 
 @pulumi.input_type
 class ApplicationPvtzDiscoverySvcPortProtocolArgs:
@@ -1112,42 +1062,39 @@ class ApplicationPvtzDiscoverySvcPortProtocolArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class ApplicationReadinessV2ArgsDict(TypedDict):
-        exec_: NotRequired[pulumi.Input['ApplicationReadinessV2ExecArgsDict']]
-        """
-        Execute. See `exec` below.
-        """
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
-        """
-        http_get: NotRequired[pulumi.Input['ApplicationReadinessV2HttpGetArgsDict']]
-        """
-        The liveness check settings of the container. See `http_get` below.
-        """
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The delay of the health check.
-        """
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which the health check is performed.
-        """
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
-        """
-        tcp_socket: NotRequired[pulumi.Input['ApplicationReadinessV2TcpSocketArgsDict']]
-        """
-        The liveness check settings of the container. See `tcp_socket` below.
-        """
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period of the health check.
-        """
-elif False:
-    ApplicationReadinessV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationReadinessV2ArgsDict(TypedDict):
+    exec_: NotRequired[pulumi.Input['ApplicationReadinessV2ExecArgsDict']]
+    """
+    Execute. See `exec` below.
+    """
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+    """
+    http_get: NotRequired[pulumi.Input['ApplicationReadinessV2HttpGetArgsDict']]
+    """
+    The liveness check settings of the container. See `http_get` below.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The delay of the health check.
+    """
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which the health check is performed.
+    """
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+    """
+    tcp_socket: NotRequired[pulumi.Input['ApplicationReadinessV2TcpSocketArgsDict']]
+    """
+    The liveness check settings of the container. See `tcp_socket` below.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period of the health check.
+    """
 
 @pulumi.input_type
 class ApplicationReadinessV2Args:
@@ -1284,14 +1231,11 @@ class ApplicationReadinessV2Args:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class ApplicationReadinessV2ExecArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-        """
-elif False:
-    ApplicationReadinessV2ExecArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationReadinessV2ExecArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
+    """
 
 @pulumi.input_type
 class ApplicationReadinessV2ExecArgs:
@@ -1316,15 +1260,12 @@ class ApplicationReadinessV2ExecArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class ApplicationReadinessV2HttpGetArgsDict(TypedDict):
-        is_contain_key_word: NotRequired[pulumi.Input[_builtins.bool]]
-        key_word: NotRequired[pulumi.Input[_builtins.str]]
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        scheme: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ApplicationReadinessV2HttpGetArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationReadinessV2HttpGetArgsDict(TypedDict):
+    is_contain_key_word: NotRequired[pulumi.Input[_builtins.bool]]
+    key_word: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    scheme: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ApplicationReadinessV2HttpGetArgs:
@@ -1391,11 +1332,8 @@ class ApplicationReadinessV2HttpGetArgs:
         pulumi.set(self, "scheme", value)
 
 
-if not MYPY:
-    class ApplicationReadinessV2TcpSocketArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ApplicationReadinessV2TcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationReadinessV2TcpSocketArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ApplicationReadinessV2TcpSocketArgs:
@@ -1414,30 +1352,27 @@ class ApplicationReadinessV2TcpSocketArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ApplicationScalingRuleScalingRuleMetricArgsDict(TypedDict):
-        max_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of instances applied.
-        """
-        metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgsDict']]]]
-        """
-        Indicator rule configuration. See `metrics` below.
-        """
-        min_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum number of instances applied.
-        """
-        scale_down_rules: NotRequired[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict']]
-        """
-        Apply shrink rules. See `scale_down_rules` below.
-        """
-        scale_up_rules: NotRequired[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict']]
-        """
-        Apply expansion rules. See `scale_up_rules` below.
-        """
-elif False:
-    ApplicationScalingRuleScalingRuleMetricArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScalingRuleScalingRuleMetricArgsDict(TypedDict):
+    max_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of instances applied.
+    """
+    metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgsDict']]]]
+    """
+    Indicator rule configuration. See `metrics` below.
+    """
+    min_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum number of instances applied.
+    """
+    scale_down_rules: NotRequired[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict']]
+    """
+    Apply shrink rules. See `scale_down_rules` below.
+    """
+    scale_up_rules: NotRequired[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict']]
+    """
+    Apply expansion rules. See `scale_up_rules` below.
+    """
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricArgs:
@@ -1526,44 +1461,41 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
         pulumi.set(self, "scale_up_rules", value)
 
 
-if not MYPY:
-    class ApplicationScalingRuleScalingRuleMetricMetricArgsDict(TypedDict):
-        metric_target_average_utilization: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        According to different `metric_type`, set the target value of the corresponding monitoring index.
-        """
-        metric_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
-        - CPU: CPU usage.
-        - MEMORY: MEMORY usage.
-        - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
-        - QPS: The average QPS of a single instance within 1 minute of JAVA application.
-        - RT: The average response time of all service interfaces within 1 minute of JAVA application.
-        - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
-        - SLB_RT: The average response time of public network SLB within 15 seconds.
-        - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
-        - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-        **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
-        """
-        slb_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SLB ID.
-        """
-        slb_log_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The log store of the Log Service.
-        """
-        slb_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The project of the Log Service.
-        """
-        vport: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SLB listening port.
-        """
-elif False:
-    ApplicationScalingRuleScalingRuleMetricMetricArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScalingRuleScalingRuleMetricMetricArgsDict(TypedDict):
+    metric_target_average_utilization: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    According to different `metric_type`, set the target value of the corresponding monitoring index.
+    """
+    metric_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
+    - CPU: CPU usage.
+    - MEMORY: MEMORY usage.
+    - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+    - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+    - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+    - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+    - SLB_RT: The average response time of public network SLB within 15 seconds.
+    - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+    - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+    **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+    """
+    slb_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SLB ID.
+    """
+    slb_log_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The log store of the Log Service.
+    """
+    slb_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The project of the Log Service.
+    """
+    vport: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SLB listening port.
+    """
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricMetricArgs:
@@ -1688,22 +1620,19 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
         pulumi.set(self, "vport", value)
 
 
-if not MYPY:
-    class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether shrinkage is prohibited.
-        """
-        stabilization_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-        """
-        step: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-        """
-elif False:
-    ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether shrinkage is prohibited.
+    """
+    stabilization_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+    """
+    step: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+    """
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs:
@@ -1760,22 +1689,19 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs:
         pulumi.set(self, "step", value)
 
 
-if not MYPY:
-    class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict(TypedDict):
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether shrinkage is prohibited.
-        """
-        stabilization_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-        """
-        step: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-        """
-elif False:
-    ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether shrinkage is prohibited.
+    """
+    stabilization_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+    """
+    step: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+    """
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs:
@@ -1832,26 +1758,23 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs:
         pulumi.set(self, "step", value)
 
 
-if not MYPY:
-    class ApplicationScalingRuleScalingRuleTimerArgsDict(TypedDict):
-        begin_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
-        """
-        end_date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
-        """
-        period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The period in which a timed elastic scaling strategy is executed.
-        """
-        schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgsDict']]]]
-        """
-        Resilient Scaling Strategy Trigger Timing. See `schedules` below.
-        """
-elif False:
-    ApplicationScalingRuleScalingRuleTimerArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScalingRuleScalingRuleTimerArgsDict(TypedDict):
+    begin_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+    """
+    end_date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+    """
+    period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The period in which a timed elastic scaling strategy is executed.
+    """
+    schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgsDict']]]]
+    """
+    Resilient Scaling Strategy Trigger Timing. See `schedules` below.
+    """
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleTimerArgs:
@@ -1924,20 +1847,17 @@ class ApplicationScalingRuleScalingRuleTimerArgs:
         pulumi.set(self, "schedules", value)
 
 
-if not MYPY:
-    class ApplicationScalingRuleScalingRuleTimerScheduleArgsDict(TypedDict):
-        at_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Trigger point in time. When supporting format: minutes, for example: `08:00`.
-        """
-        max_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        min_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        target_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
-        """
-elif False:
-    ApplicationScalingRuleScalingRuleTimerScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationScalingRuleScalingRuleTimerScheduleArgsDict(TypedDict):
+    at_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Trigger point in time. When supporting format: minutes, for example: `08:00`.
+    """
+    max_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    min_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    target_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+    """
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
@@ -2002,30 +1922,27 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
         pulumi.set(self, "target_replicas", value)
 
 
-if not MYPY:
-    class ApplicationTomcatConfigV2ArgsDict(TypedDict):
-        context_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path.
-        """
-        max_threads: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of connections in the connection pool.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port.
-        """
-        uri_encoding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URI encoding scheme in the Tomcat container.
-        """
-        use_body_encoding_for_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
-        """
-elif False:
-    ApplicationTomcatConfigV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationTomcatConfigV2ArgsDict(TypedDict):
+    context_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path.
+    """
+    max_threads: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of connections in the connection pool.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port.
+    """
+    uri_encoding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URI encoding scheme in the Tomcat container.
+    """
+    use_body_encoding_for_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
+    """
 
 @pulumi.input_type
 class ApplicationTomcatConfigV2Args:
@@ -2114,18 +2031,15 @@ class ApplicationTomcatConfigV2Args:
         pulumi.set(self, "use_body_encoding_for_uri", value)
 
 
-if not MYPY:
-    class ApplicationUpdateStrategyV2ArgsDict(TypedDict):
-        batch_update: NotRequired[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgsDict']]
-        """
-        The phased release policy. See `batch_update` below.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
-        """
-elif False:
-    ApplicationUpdateStrategyV2ArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationUpdateStrategyV2ArgsDict(TypedDict):
+    batch_update: NotRequired[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgsDict']]
+    """
+    The phased release policy. See `batch_update` below.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
+    """
 
 @pulumi.input_type
 class ApplicationUpdateStrategyV2Args:
@@ -2166,22 +2080,19 @@ class ApplicationUpdateStrategyV2Args:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ApplicationUpdateStrategyV2BatchUpdateArgsDict(TypedDict):
-        batch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of batches in which you want to release the instances.
-        """
-        batch_wait_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The batch wait time.
-        """
-        release_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The processing method for the batches. Valid values: `auto` and `manual`.
-        """
-elif False:
-    ApplicationUpdateStrategyV2BatchUpdateArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationUpdateStrategyV2BatchUpdateArgsDict(TypedDict):
+    batch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of batches in which you want to release the instances.
+    """
+    batch_wait_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The batch wait time.
+    """
+    release_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The processing method for the batches. Valid values: `auto` and `manual`.
+    """
 
 @pulumi.input_type
 class ApplicationUpdateStrategyV2BatchUpdateArgs:
@@ -2238,34 +2149,31 @@ class ApplicationUpdateStrategyV2BatchUpdateArgs:
         pulumi.set(self, "release_type", value)
 
 
-if not MYPY:
-    class GreyTagRouteDubboRuleArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
-        """
-        group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service group.
-        """
-        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgsDict']]]]
-        """
-        A list of conditions items. See `items` below.
-        """
-        method_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The method name
-        """
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service name.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service version.
-        """
-elif False:
-    GreyTagRouteDubboRuleArgsDict: TypeAlias = Mapping[str, Any]
+class GreyTagRouteDubboRuleArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+    """
+    group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service group.
+    """
+    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgsDict']]]]
+    """
+    A list of conditions items. See `items` below.
+    """
+    method_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The method name
+    """
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service name.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service version.
+    """
 
 @pulumi.input_type
 class GreyTagRouteDubboRuleArgs:
@@ -2370,21 +2278,18 @@ class GreyTagRouteDubboRuleArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class GreyTagRouteDubboRuleItemArgsDict(TypedDict):
-        cond: NotRequired[pulumi.Input[_builtins.str]]
-        expr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter value gets the expression.
-        """
-        index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The parameter number.
-        """
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GreyTagRouteDubboRuleItemArgsDict: TypeAlias = Mapping[str, Any]
+class GreyTagRouteDubboRuleItemArgsDict(TypedDict):
+    cond: NotRequired[pulumi.Input[_builtins.str]]
+    expr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameter value gets the expression.
+    """
+    index: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The parameter number.
+    """
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GreyTagRouteDubboRuleItemArgs:
@@ -2461,22 +2366,19 @@ class GreyTagRouteDubboRuleItemArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GreyTagRouteScRuleArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
-        """
-        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgsDict']]]]
-        """
-        A list of conditions items. See `items` below.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path corresponding to the grayscale rule.
-        """
-elif False:
-    GreyTagRouteScRuleArgsDict: TypeAlias = Mapping[str, Any]
+class GreyTagRouteScRuleArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+    """
+    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgsDict']]]]
+    """
+    A list of conditions items. See `items` below.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path corresponding to the grayscale rule.
+    """
 
 @pulumi.input_type
 class GreyTagRouteScRuleArgs:
@@ -2533,21 +2435,18 @@ class GreyTagRouteScRuleArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class GreyTagRouteScRuleItemArgsDict(TypedDict):
-        cond: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The compare types. Valid values: `param`, `cookie`, `header`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GreyTagRouteScRuleItemArgsDict: TypeAlias = Mapping[str, Any]
+class GreyTagRouteScRuleItemArgsDict(TypedDict):
+    cond: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The compare types. Valid values: `param`, `cookie`, `header`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GreyTagRouteScRuleItemArgs:
@@ -2624,22 +2523,19 @@ class GreyTagRouteScRuleItemArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class IngressDefaultRuleArgsDict(TypedDict):
-        app_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Target application ID.
-        """
-        app_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Target application name.
-        """
-        container_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Application backend port.
-        """
-elif False:
-    IngressDefaultRuleArgsDict: TypeAlias = Mapping[str, Any]
+class IngressDefaultRuleArgsDict(TypedDict):
+    app_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Target application ID.
+    """
+    app_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Target application name.
+    """
+    container_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Application backend port.
+    """
 
 @pulumi.input_type
 class IngressDefaultRuleArgs:
@@ -2696,38 +2592,35 @@ class IngressDefaultRuleArgs:
         pulumi.set(self, "container_port", value)
 
 
-if not MYPY:
-    class IngressRuleArgsDict(TypedDict):
-        app_id: pulumi.Input[_builtins.str]
-        """
-        Target application ID.
-        """
-        app_name: pulumi.Input[_builtins.str]
-        """
-        Target application name.
-        """
-        container_port: pulumi.Input[_builtins.int]
-        """
-        Application backend port.
-        """
-        domain: pulumi.Input[_builtins.str]
-        """
-        Application domain name.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        URL path.
-        """
-        backend_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The backend protocol.
-        """
-        rewrite_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rewrite path.
-        """
-elif False:
-    IngressRuleArgsDict: TypeAlias = Mapping[str, Any]
+class IngressRuleArgsDict(TypedDict):
+    app_id: pulumi.Input[_builtins.str]
+    """
+    Target application ID.
+    """
+    app_name: pulumi.Input[_builtins.str]
+    """
+    Target application name.
+    """
+    container_port: pulumi.Input[_builtins.int]
+    """
+    Application backend port.
+    """
+    domain: pulumi.Input[_builtins.str]
+    """
+    Application domain name.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    URL path.
+    """
+    backend_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The backend protocol.
+    """
+    rewrite_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rewrite path.
+    """
 
 @pulumi.input_type
 class IngressRuleArgs:
@@ -2843,26 +2736,23 @@ class IngressRuleArgs:
         pulumi.set(self, "rewrite_path", value)
 
 
-if not MYPY:
-    class LoadBalancerInternetInternetArgsDict(TypedDict):
-        https_cert_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSL certificate. `https_cert_id` is required when HTTPS is selected
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The SLB Port.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        """
-        target_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Container port.
-        """
-elif False:
-    LoadBalancerInternetInternetArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerInternetInternetArgsDict(TypedDict):
+    https_cert_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSL certificate. `https_cert_id` is required when HTTPS is selected
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The SLB Port.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+    """
+    target_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Container port.
+    """
 
 @pulumi.input_type
 class LoadBalancerInternetInternetArgs:
@@ -2935,26 +2825,23 @@ class LoadBalancerInternetInternetArgs:
         pulumi.set(self, "target_port", value)
 
 
-if not MYPY:
-    class LoadBalancerIntranetIntranetArgsDict(TypedDict):
-        https_cert_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSL certificate. `https_cert_id` is required when HTTPS is selected
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The SLB Port.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        """
-        target_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Container port.
-        """
-elif False:
-    LoadBalancerIntranetIntranetArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerIntranetIntranetArgsDict(TypedDict):
+    https_cert_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSL certificate. `https_cert_id` is required when HTTPS is selected
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The SLB Port.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+    """
+    target_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Container port.
+    """
 
 @pulumi.input_type
 class LoadBalancerIntranetIntranetArgs:

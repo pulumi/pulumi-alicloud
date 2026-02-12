@@ -41,6 +41,9 @@ class ProtocolMountTargetArgs:
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: DryRun
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] fset_id: The ID of the Fileset to be mounted.
                
                Limitations:
@@ -139,6 +142,11 @@ class ProtocolMountTargetArgs:
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        DryRun
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -249,6 +257,9 @@ class _ProtocolMountTargetState:
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: DryRun
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] export_id: Protocol Service Mount Target ID
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] fset_id: The ID of the Fileset to be mounted.
@@ -347,6 +358,11 @@ class _ProtocolMountTargetState:
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        DryRun
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -576,6 +592,9 @@ class ProtocolMountTarget(pulumi.CustomResource):
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: DryRun
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] fset_id: The ID of the Fileset to be mounted.
                
@@ -767,6 +786,9 @@ class ProtocolMountTarget(pulumi.CustomResource):
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: DryRun
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] export_id: Protocol Service Mount Target ID
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] fset_id: The ID of the Fileset to be mounted.
@@ -845,6 +867,11 @@ class ProtocolMountTarget(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        DryRun
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "dry_run")
 
     @_builtins.property

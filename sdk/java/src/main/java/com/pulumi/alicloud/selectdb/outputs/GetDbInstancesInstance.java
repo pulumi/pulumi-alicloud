@@ -81,6 +81,10 @@ public final class GetDbInstancesInstance {
      * 
      */
     private String gmtModified;
+    /**
+     * @return The resource ID in terraform of DBInstance.
+     * 
+     */
     private String id;
     /**
      * @return The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
@@ -237,6 +241,10 @@ public final class GetDbInstancesInstance {
     public String gmtModified() {
         return this.gmtModified;
     }
+    /**
+     * @return The resource ID in terraform of DBInstance.
+     * 
+     */
     public String id() {
         return this.id;
     }

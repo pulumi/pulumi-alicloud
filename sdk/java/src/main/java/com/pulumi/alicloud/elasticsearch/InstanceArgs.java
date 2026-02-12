@@ -330,9 +330,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enablePublic);
     }
 
+    /**
+     * Whether to force changes
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
+    /**
+     * @return Whether to force changes
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
@@ -549,9 +561,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.masterNodeSpec);
     }
 
+    /**
+     * The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="orderActionType")
     private @Nullable Output<String> orderActionType;
 
+    /**
+     * @return The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> orderActionType() {
         return Optional.ofNullable(this.orderActionType);
     }
@@ -721,9 +745,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The change policy for Elasticsearch.
+     * 
+     * The values are as follows:
+     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="updateStrategy")
     private @Nullable Output<String> updateStrategy;
 
+    /**
+     * @return The change policy for Elasticsearch.
+     * 
+     * The values are as follows:
+     * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+     * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+     * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
@@ -1375,11 +1421,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return enablePublic(Output.of(enablePublic));
         }
 
+        /**
+         * @param force Whether to force changes
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
+        /**
+         * @param force Whether to force changes
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }
@@ -1688,11 +1750,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return masterNodeSpec(Output.of(masterNodeSpec));
         }
 
+        /**
+         * @param orderActionType The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderActionType(@Nullable Output<String> orderActionType) {
             $.orderActionType = orderActionType;
             return this;
         }
 
+        /**
+         * @param orderActionType The instance changes the operation type. UPGRADE, UPGRADE. DOWNGRADE, DOWNGRADE.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderActionType(String orderActionType) {
             return orderActionType(Output.of(orderActionType));
         }
@@ -1948,11 +2026,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param updateStrategy The change policy for Elasticsearch.
+         * 
+         * The values are as follows:
+         * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+         * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+         * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
             $.updateStrategy = updateStrategy;
             return this;
         }
 
+        /**
+         * @param updateStrategy The change policy for Elasticsearch.
+         * 
+         * The values are as follows:
+         * - blue_green: blue-green change, which can realize seamless switching by running two identical environments (blue environment and green environment) in parallel.
+         * - normal: In-place changes, changes are made directly in the current environment (for example, upgrades, scaling) without additional resources.
+         * - intelligent: intelligent change, the system automatically analyzes the change type and environmental status, and dynamically selects the optimal change method (that is, blue-green change or in-situ change).
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateStrategy(String updateStrategy) {
             return updateStrategy(Output.of(updateStrategy));
         }

@@ -7,6 +7,161 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides  Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstances-redis).
+ *
+ * > **NOTE:** Available since v1.14.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultGetZones = alicloud.kvstore.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.kvstore.Instance("default", {
+ *     dbInstanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *     instanceClass: "redis.master.large.default",
+ *     instanceType: "Redis",
+ *     engineVersion: "5.0",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * ```
+ *
+ * Launching a PrePaid instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example-prepaid";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultGetZones = alicloud.kvstore.getZones({
+ *     instanceChargeType: "PrePaid",
+ * });
+ * // PrePaid instance can not deleted and there suggests using an existing vpc and vswitch, like default vpc.
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     isDefault: true,
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetZones, defaultGetNetworks]).then(([defaultGetZones, defaultGetNetworks]) => alicloud.vpc.getSwitches({
+ *     zoneId: defaultGetZones.zones?.[0]?.id,
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ * }));
+ * const defaultInstance = new alicloud.kvstore.Instance("default", {
+ *     dbInstanceName: name,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *     secondaryZoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
+ *     instanceClass: "redis.master.large.default",
+ *     instanceType: "Redis",
+ *     engineVersion: "5.0",
+ *     paymentType: "PrePaid",
+ *     period: "12",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "no",
+ *         "lazyfree-lazy-eviction": "no",
+ *         EvictionPolicy: "volatile-lru",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * ```
+ *
+ * Setting Private Connection String
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example-with-connection";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultGetZones = alicloud.kvstore.getZones({
+ *     productType: "OnECS",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.kvstore.Instance("default", {
+ *     dbInstanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ *     secondaryZoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
+ *     instanceClass: "redis.shard.small.ce",
+ *     instanceType: "Redis",
+ *     engineVersion: "7.0",
+ *     maintainStartTime: "04:00Z",
+ *     maintainEndTime: "06:00Z",
+ *     backupPeriods: ["Wednesday"],
+ *     backupTime: "11:00Z-12:00Z",
+ *     privateConnectionPrefix: "exampleconnectionprefix",
+ *     privateConnectionPort: "4011",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *         EvictionPolicy: "volatile-lru",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.kvstore.Instance` or removing it from your configuration
+ *
+ * The `alicloud.kvstore.Instance` resource allows you to manage `paymentType = "Prepaid"` db instance, but Terraform cannot destroy it.
+ * From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
+ * from your state file and management, but will not destroy the DB Instance.
+ * You can resume managing the subscription db instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * KVStore instance can be imported using the id, e.g.

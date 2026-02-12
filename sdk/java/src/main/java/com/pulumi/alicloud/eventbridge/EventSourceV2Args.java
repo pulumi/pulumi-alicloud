@@ -70,9 +70,21 @@ public final class EventSourceV2Args extends com.pulumi.resources.ResourceArgs {
         return this.eventSourceName;
     }
 
+    /**
+     * Whether to connect to an external data source
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="linkedExternalSource")
     private @Nullable Output<Boolean> linkedExternalSource;
 
+    /**
+     * @return Whether to connect to an external data source
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Boolean>> linkedExternalSource() {
         return Optional.ofNullable(this.linkedExternalSource);
     }
@@ -295,11 +307,27 @@ public final class EventSourceV2Args extends com.pulumi.resources.ResourceArgs {
             return eventSourceName(Output.of(eventSourceName));
         }
 
+        /**
+         * @param linkedExternalSource Whether to connect to an external data source
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkedExternalSource(@Nullable Output<Boolean> linkedExternalSource) {
             $.linkedExternalSource = linkedExternalSource;
             return this;
         }
 
+        /**
+         * @param linkedExternalSource Whether to connect to an external data source
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkedExternalSource(Boolean linkedExternalSource) {
             return linkedExternalSource(Output.of(linkedExternalSource));
         }

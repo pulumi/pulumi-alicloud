@@ -137,6 +137,9 @@ namespace Pulumi.AliCloud.Ram
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output EncryptedSecret | base64 --decode | keybase pgp decrypt`.
+        /// </summary>
         [Output("encryptedSecret")]
         public Output<string> EncryptedSecret { get; private set; } = null!;
 
@@ -271,6 +274,9 @@ namespace Pulumi.AliCloud.Ram
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output EncryptedSecret | base64 --decode | keybase pgp decrypt`.
+        /// </summary>
         [Input("encryptedSecret")]
         public Input<string>? EncryptedSecret { get; set; }
 

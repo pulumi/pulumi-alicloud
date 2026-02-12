@@ -10,6 +10,69 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
+    /// Provides an Application Load Balancer resource.
+    /// 
+    /// &gt; **NOTE:** Available since v1.123.1.
+    /// 
+    /// &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
+    /// 
+    /// &gt; **NOTE:** The supported specifications vary by region. Currently, not all regions support guaranteed-performance instances.
+    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var slbLoadBalancerName = config.Get("slbLoadBalancerName") ?? "forSlbLoadBalancer";
+    ///     var loadBalancer = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var loadBalancerNetwork = new AliCloud.Vpc.Network("load_balancer", new()
+    ///     {
+    ///         VpcName = slbLoadBalancerName,
+    ///     });
+    /// 
+    ///     var loadBalancerSwitch = new AliCloud.Vpc.Switch("load_balancer", new()
+    ///     {
+    ///         VpcId = loadBalancerNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = loadBalancer.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = slbLoadBalancerName,
+    ///     });
+    /// 
+    ///     var loadBalancerApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("load_balancer", new()
+    ///     {
+    ///         LoadBalancerName = slbLoadBalancerName,
+    ///         AddressType = "intranet",
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         VswitchId = loadBalancerSwitch.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "info", "create for internet" },
+    ///         },
+    ///         InstanceChargeType = "PayBySpec",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.slb.ApplicationLoadBalancer` or removing it from your configuration
+    /// 
+    /// The `alicloud.slb.ApplicationLoadBalancer` resource allows you to manage `PaymentType = "Subscription"` load balancer, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Load Balancer.
+    /// You can resume managing the subscription load balancer via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Load balancer can be imported using the id, e.g.
@@ -65,6 +128,11 @@ namespace Pulumi.AliCloud.Slb
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        /// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        /// Terraform will autogenerate a name beginning with `tf-lb`.
+        /// </summary>
         [Output("loadBalancerName")]
         public Output<string> LoadBalancerName { get; private set; } = null!;
 
@@ -238,6 +306,11 @@ namespace Pulumi.AliCloud.Slb
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        /// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        /// Terraform will autogenerate a name beginning with `tf-lb`.
+        /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
@@ -379,6 +452,11 @@ namespace Pulumi.AliCloud.Slb
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        /// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        /// Terraform will autogenerate a name beginning with `tf-lb`.
+        /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 

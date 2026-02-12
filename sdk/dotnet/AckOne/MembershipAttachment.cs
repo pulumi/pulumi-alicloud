@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.AckOne
     /// 
     /// ## Import
     /// 
-    /// Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.
+    /// Ack One Membership Attachment can be imported using the id, which consists of ClusterId and sub_cluster_id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ackone/membershipAttachment:MembershipAttachment example &lt;cluster_id&gt;:&lt;sub_cluster_id&gt;

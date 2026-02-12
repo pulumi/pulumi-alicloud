@@ -598,6 +598,49 @@ class Instance(pulumi.CustomResource):
                  waf_log: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:**  This resource has been deprecated and using wafv3.Instance instead.
+
+        Provides a WAF Instance resource to create instance in the Web Application Firewall.
+
+        For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+
+        > **NOTE:** Available since v1.83.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.get_instances()
+        default_instance = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
+                    big_screen="0",
+                    exclusive_ip_package="1",
+                    ext_bandwidth="50",
+                    ext_domain_package="1",
+                    package_code="version_3",
+                    prefessional_service="false",
+                    subscription_type="Subscription",
+                    period=1,
+                    waf_log="false",
+                    log_storage="3",
+                    log_time="180",
+                    resource_group_id="rs-abc12345"))
+
+        len(default.instances).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        ```
+
+        ### Deleting `waf.Instance` or removing it from your configuration
+
+        The `waf.Instance` resource allows you to manage `subscription_type = "Subscription"` WAF instance, but Terraform cannot destroy it before it is expired.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the WAF Instance.
+        You can resume managing the subscription WAF instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAF instance can be imported using the id, e.g.
@@ -638,6 +681,49 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:**  This resource has been deprecated and using wafv3.Instance instead.
+
+        Provides a WAF Instance resource to create instance in the Web Application Firewall.
+
+        For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+
+        > **NOTE:** Available since v1.83.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.get_instances()
+        default_instance = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
+                    big_screen="0",
+                    exclusive_ip_package="1",
+                    ext_bandwidth="50",
+                    ext_domain_package="1",
+                    package_code="version_3",
+                    prefessional_service="false",
+                    subscription_type="Subscription",
+                    period=1,
+                    waf_log="false",
+                    log_storage="3",
+                    log_time="180",
+                    resource_group_id="rs-abc12345"))
+
+        len(default.instances).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        ```
+
+        ### Deleting `waf.Instance` or removing it from your configuration
+
+        The `waf.Instance` resource allows you to manage `subscription_type = "Subscription"` WAF instance, but Terraform cannot destroy it before it is expired.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the WAF Instance.
+        You can resume managing the subscription WAF instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAF instance can be imported using the id, e.g.

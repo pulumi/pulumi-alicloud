@@ -21,6 +21,95 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Milvus Instance resource.
+ * 
+ * For information about Milvus Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/milvus/2023-10-12/CreateInstance).
+ * 
+ * &gt; **NOTE:** Available since v1.264.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.MilvusInstance;
+ * import com.pulumi.alicloud.MilvusInstanceArgs;
+ * import com.pulumi.alicloud.inputs.MilvusInstanceVswitchIdArgs;
+ * import com.pulumi.alicloud.inputs.MilvusInstanceComponentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+ *         final var zoneId = config.get("zoneId").orElse("cn-hangzhou-j");
+ *         var defaultILXuit = new Network("defaultILXuit", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .build());
+ * 
+ *         var defaultN80M7S = new Switch("defaultN80M7S", SwitchArgs.builder()
+ *             .vpcId(defaultILXuit.id())
+ *             .zoneId(zoneId)
+ *             .cidrBlock("172.16.1.0/24")
+ *             .vswitchName("milvus-example")
+ *             .build());
+ * 
+ *         var default_ = new MilvusInstance("default", MilvusInstanceArgs.builder()
+ *             .zoneId(zoneId)
+ *             .vswitchIds(MilvusInstanceVswitchIdArgs.builder()
+ *                 .vswId(defaultN80M7S.id())
+ *                 .zoneId(defaultN80M7S.zoneId())
+ *                 .build())
+ *             .dbAdminPassword("Test123456}{@literal @}{@code ")
+ *             .components(MilvusInstanceComponentArgs.builder()
+ *                 .type("standalone")
+ *                 .cuNum(8)
+ *                 .replica(1)
+ *                 .cuType("general")
+ *                 .build())
+ *             .instanceName("镇远测试包年包月")
+ *             .dbVersion("2.4")
+ *             .vpcId(defaultILXuit.id())
+ *             .ha(false)
+ *             .paymentType("Subscription")
+ *             .multiZoneMode("Single")
+ *             .paymentDurationUnit("year")
+ *             .paymentDuration(1)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.MilvusInstance` or removing it from your configuration
+ * 
+ * The `alicloud.MilvusInstance` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Milvus Instance can be imported using the id, e.g.

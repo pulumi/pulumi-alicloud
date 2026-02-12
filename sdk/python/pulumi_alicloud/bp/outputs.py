@@ -45,7 +45,7 @@ class StudioApplicationInstance(dict):
                  node_name: Optional[_builtins.str] = None,
                  node_type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str id: The id of the instance.
+        :param _builtins.str id: The resource ID in terraform of Application.
         :param _builtins.str node_name: The name of the instance.
         :param _builtins.str node_type: The type of the instance.
         """
@@ -60,7 +60,7 @@ class StudioApplicationInstance(dict):
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
         """
-        The id of the instance.
+        The resource ID in terraform of Application.
         """
         return pulumi.get(self, "id")
 

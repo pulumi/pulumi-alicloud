@@ -10,6 +10,59 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
+    /// Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
+    /// 
+    /// For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/product-overview/what-is-analyticdb-for-mysql).
+    /// 
+    /// &gt; **NOTE:** Available since v1.121.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Adb.GetZones.Invoke();
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var vswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
+    /// 
+    ///     var cluster = new AliCloud.Adb.DBCluster("cluster", new()
+    ///     {
+    ///         DbClusterCategory = "MixedStorage",
+    ///         Mode = "flexible",
+    ///         ComputeResource = "8Core32GB",
+    ///         VswitchId = vswitchId,
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Removing alicloud.adb.Cluster from your configuration
+    /// 
+    /// The alicloud.adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is PrePaid(PostPaid type can destroy normally). Removing this resource from your configuration will remove it from your state file and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.

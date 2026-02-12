@@ -7,6 +7,43 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Quotas Quota Application resource. Details of Quota Application.
+ *
+ * For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplication).
+ *
+ * > **NOTE:** Available since v1.117.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.quotas.QuotaApplication("default", {
+ *     quotaActionCode: "q_desktop-count",
+ *     productCode: "gws",
+ *     quotaCategory: "CommonQuota",
+ *     noticeType: 3,
+ *     dimensions: [{
+ *         key: "regionId",
+ *         value: "cn-hangzhou",
+ *     }],
+ *     desireValue: 1001,
+ *     reason: "测试",
+ *     envLanguage: "zh",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.quotas.QuotaApplication` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.quotas.QuotaApplication`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Quotas Quota Application can be imported using the id, e.g.

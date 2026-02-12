@@ -19,16 +19,11 @@ __all__ = [
     'AnycastEipAddressAttachmentPopLocationArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AnycastEipAddressAttachmentPopLocationArgsDict(TypedDict):
-        pop_location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
-        """
-elif False:
-    AnycastEipAddressAttachmentPopLocationArgsDict: TypeAlias = Mapping[str, Any]
+class AnycastEipAddressAttachmentPopLocationArgsDict(TypedDict):
+    pop_location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+    """
 
 @pulumi.input_type
 class AnycastEipAddressAttachmentPopLocationArgs:

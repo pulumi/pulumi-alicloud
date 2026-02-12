@@ -49,24 +49,19 @@ __all__ = [
     'TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict',
 ]
 
-MYPY = False
+class ProjectIpWhiteListArgsDict(TypedDict):
+    ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
 
-if not MYPY:
-    class ProjectIpWhiteListArgsDict(TypedDict):
-        ip_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
+    > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+    """
+    vpc_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
 
-        > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
-        """
-        vpc_ip_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
-
-        > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
-        """
-elif False:
-    ProjectIpWhiteListArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+    """
 
 @pulumi.input_type
 class ProjectIpWhiteListArgs:
@@ -115,59 +110,56 @@ class ProjectIpWhiteListArgs:
         pulumi.set(self, "vpc_ip_list", value)
 
 
-if not MYPY:
-    class ProjectPropertiesArgsDict(TypedDict):
-        allow_full_scan: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow full table scan. Default: `false`.
-        """
-        enable_decimal2: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to turn on Decimal2.0.
-        """
-        enable_dr: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
-        """
-        encryption: NotRequired[pulumi.Input['ProjectPropertiesEncryptionArgsDict']]
-        """
-        Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-        > **NOTE :**:
-        To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
+class ProjectPropertiesArgsDict(TypedDict):
+    allow_full_scan: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow full table scan. Default: `false`.
+    """
+    enable_decimal2: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to turn on Decimal2.0.
+    """
+    enable_dr: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
+    """
+    encryption: NotRequired[pulumi.Input['ProjectPropertiesEncryptionArgsDict']]
+    """
+    Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+    > **NOTE :**:
+    To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 
-        To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
+    To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.
 
-        You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
-        """
-        retention_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
-        The effective policy after adjusting the backup cycle is:
-        Extend the backup cycle: The new backup cycle takes effect on the same day.
-        Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
-        """
-        sql_metering_max: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
-        Unit: scan volume (GB)* complexity.
-        """
-        table_lifecycle: NotRequired[pulumi.Input['ProjectPropertiesTableLifecycleArgsDict']]
-        """
-        Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
-        """
-        timezone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project time zone, example value: Asia/Shanghai
-        """
-        type_system: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data type version. Value:(1/2/hive)
-        1: The original MaxCompute type system.
-        2: New type system introduced by MaxCompute 2.0.
-        hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
-        """
-elif False:
-    ProjectPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+    You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+    """
+    retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
+    The effective policy after adjusting the backup cycle is:
+    Extend the backup cycle: The new backup cycle takes effect on the same day.
+    Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+    """
+    sql_metering_max: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
+    Unit: scan volume (GB)* complexity.
+    """
+    table_lifecycle: NotRequired[pulumi.Input['ProjectPropertiesTableLifecycleArgsDict']]
+    """
+    Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
+    """
+    timezone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project time zone, example value: Asia/Shanghai
+    """
+    type_system: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data type version. Value:(1/2/hive)
+    1: The original MaxCompute type system.
+    2: New type system introduced by MaxCompute 2.0.
+    hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+    """
 
 @pulumi.input_type
 class ProjectPropertiesArgs:
@@ -346,24 +338,21 @@ class ProjectPropertiesArgs:
         pulumi.set(self, "type_system", value)
 
 
-if not MYPY:
-    class ProjectPropertiesEncryptionArgsDict(TypedDict):
-        algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Only enable function is supported. Value: (true)
+class ProjectPropertiesEncryptionArgsDict(TypedDict):
+    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Only enable function is supported. Value: (true)
 
-        > **NOTE:** cannot be turned off after the function is turned on
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
-        """
-elif False:
-    ProjectPropertiesEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** cannot be turned off after the function is turned on
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
+    """
 
 @pulumi.input_type
 class ProjectPropertiesEncryptionArgs:
@@ -424,18 +413,15 @@ class ProjectPropertiesEncryptionArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class ProjectPropertiesTableLifecycleArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project type
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
-        """
-elif False:
-    ProjectPropertiesTableLifecycleArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectPropertiesTableLifecycleArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project type
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
+    """
 
 @pulumi.input_type
 class ProjectPropertiesTableLifecycleArgs:
@@ -476,38 +462,35 @@ class ProjectPropertiesTableLifecycleArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ProjectSecurityPropertiesArgsDict(TypedDict):
-        enable_download_privilege: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
-        """
-        label_security: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
-        """
-        object_creator_has_access_permission: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
-        """
-        object_creator_has_grant_permission: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
-        """
-        project_protection: NotRequired[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgsDict']]
-        """
-        Project protection See `project_protection` below.
-        """
-        using_acl: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-        """
-        using_policy: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-        """
-elif False:
-    ProjectSecurityPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectSecurityPropertiesArgsDict(TypedDict):
+    enable_download_privilege: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
+    """
+    label_security: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
+    """
+    object_creator_has_access_permission: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
+    """
+    object_creator_has_grant_permission: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
+    """
+    project_protection: NotRequired[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgsDict']]
+    """
+    Project protection See `project_protection` below.
+    """
+    using_acl: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+    """
+    using_policy: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+    """
 
 @pulumi.input_type
 class ProjectSecurityPropertiesArgs:
@@ -628,18 +611,15 @@ class ProjectSecurityPropertiesArgs:
         pulumi.set(self, "using_policy", value)
 
 
-if not MYPY:
-    class ProjectSecurityPropertiesProjectProtectionArgsDict(TypedDict):
-        exception_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
-        """
-        protected: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether enabled, value:(true/false)
-        """
-elif False:
-    ProjectSecurityPropertiesProjectProtectionArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectSecurityPropertiesProjectProtectionArgsDict(TypedDict):
+    exception_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
+    """
+    protected: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether enabled, value:(true/false)
+    """
 
 @pulumi.input_type
 class ProjectSecurityPropertiesProjectProtectionArgs:
@@ -680,21 +660,18 @@ class ProjectSecurityPropertiesProjectProtectionArgs:
         pulumi.set(self, "protected", value)
 
 
-if not MYPY:
-    class QuotaPlanQuotaArgsDict(TypedDict):
-        parameter: NotRequired[pulumi.Input['QuotaPlanQuotaParameterArgsDict']]
-        """
-        Level 2 Quota CU configuration See `parameter` below.
-        """
-        sub_quota_info_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgsDict']]]]
-        """
-        Secondary Quota list
+class QuotaPlanQuotaArgsDict(TypedDict):
+    parameter: NotRequired[pulumi.Input['QuotaPlanQuotaParameterArgsDict']]
+    """
+    Level 2 Quota CU configuration See `parameter` below.
+    """
+    sub_quota_info_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgsDict']]]]
+    """
+    Secondary Quota list
 
-        > **NOTE:** need to list all secondary Quota
-        See `sub_quota_info_list` below.
-        """
-elif False:
-    QuotaPlanQuotaArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** need to list all secondary Quota
+    See `sub_quota_info_list` below.
+    """
 
 @pulumi.input_type
 class QuotaPlanQuotaArgs:
@@ -741,24 +718,21 @@ class QuotaPlanQuotaArgs:
         pulumi.set(self, "sub_quota_info_lists", value)
 
 
-if not MYPY:
-    class QuotaPlanQuotaParameterArgsDict(TypedDict):
-        elastic_reserved_cu: pulumi.Input[_builtins.int]
-        """
-        The value of elastic Reserved CUs.
+class QuotaPlanQuotaParameterArgsDict(TypedDict):
+    elastic_reserved_cu: pulumi.Input[_builtins.int]
+    """
+    The value of elastic Reserved CUs.
 
-        > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
-        """
-        max_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The value of maxCU in Reserved CUs.
-        """
-        min_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The value of minCU in Reserved CUs.
-        """
-elif False:
-    QuotaPlanQuotaParameterArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+    """
+    max_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The value of maxCU in Reserved CUs.
+    """
+    min_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The value of minCU in Reserved CUs.
+    """
 
 @pulumi.input_type
 class QuotaPlanQuotaParameterArgs:
@@ -818,18 +792,15 @@ class QuotaPlanQuotaParameterArgs:
         pulumi.set(self, "min_cu", value)
 
 
-if not MYPY:
-    class QuotaPlanQuotaSubQuotaInfoListArgsDict(TypedDict):
-        nick_name: pulumi.Input[_builtins.str]
-        """
-        The nickname of the level-2 quota.
-        """
-        parameter: NotRequired[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgsDict']]
-        """
-        The parameters of level-1 quota.
-        """
-elif False:
-    QuotaPlanQuotaSubQuotaInfoListArgsDict: TypeAlias = Mapping[str, Any]
+class QuotaPlanQuotaSubQuotaInfoListArgsDict(TypedDict):
+    nick_name: pulumi.Input[_builtins.str]
+    """
+    The nickname of the level-2 quota.
+    """
+    parameter: NotRequired[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgsDict']]
+    """
+    The parameters of level-1 quota.
+    """
 
 @pulumi.input_type
 class QuotaPlanQuotaSubQuotaInfoListArgs:
@@ -869,24 +840,21 @@ class QuotaPlanQuotaSubQuotaInfoListArgs:
         pulumi.set(self, "parameter", value)
 
 
-if not MYPY:
-    class QuotaPlanQuotaSubQuotaInfoListParameterArgsDict(TypedDict):
-        elastic_reserved_cu: pulumi.Input[_builtins.int]
-        """
-        The value of elastic Reserved CUs.
+class QuotaPlanQuotaSubQuotaInfoListParameterArgsDict(TypedDict):
+    elastic_reserved_cu: pulumi.Input[_builtins.int]
+    """
+    The value of elastic Reserved CUs.
 
-        > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
-        """
-        max_cu: pulumi.Input[_builtins.int]
-        """
-        The value of maxCU in Reserved CUs.
-        """
-        min_cu: pulumi.Input[_builtins.int]
-        """
-        The value of minCU in Reserved CUs.
-        """
-elif False:
-    QuotaPlanQuotaSubQuotaInfoListParameterArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
+    """
+    max_cu: pulumi.Input[_builtins.int]
+    """
+    The value of maxCU in Reserved CUs.
+    """
+    min_cu: pulumi.Input[_builtins.int]
+    """
+    The value of minCU in Reserved CUs.
+    """
 
 @pulumi.input_type
 class QuotaPlanQuotaSubQuotaInfoListParameterArgs:
@@ -944,24 +912,21 @@ class QuotaPlanQuotaSubQuotaInfoListParameterArgs:
         pulumi.set(self, "min_cu", value)
 
 
-if not MYPY:
-    class QuotaScheduleScheduleListArgsDict(TypedDict):
-        plan: pulumi.Input[_builtins.str]
-        """
-        The name of the quota plan.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the quota plan. Valid values: daily 
+class QuotaScheduleScheduleListArgsDict(TypedDict):
+    plan: pulumi.Input[_builtins.str]
+    """
+    The name of the quota plan.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the quota plan. Valid values: daily 
 
-        > **NOTE:** Currently, only daily is supported.
-        """
-        condition: NotRequired[pulumi.Input['QuotaScheduleScheduleListConditionArgsDict']]
-        """
-        The value of effective condition. See `condition` below.
-        """
-elif False:
-    QuotaScheduleScheduleListArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** Currently, only daily is supported.
+    """
+    condition: NotRequired[pulumi.Input['QuotaScheduleScheduleListConditionArgsDict']]
+    """
+    The value of effective condition. See `condition` below.
+    """
 
 @pulumi.input_type
 class QuotaScheduleScheduleListArgs:
@@ -1020,16 +985,13 @@ class QuotaScheduleScheduleListArgs:
         pulumi.set(self, "condition", value)
 
 
-if not MYPY:
-    class QuotaScheduleScheduleListConditionArgsDict(TypedDict):
-        at: pulumi.Input[_builtins.str]
-        """
-        Effective time. The format is HH:mm, sample value: 00:00
+class QuotaScheduleScheduleListConditionArgsDict(TypedDict):
+    at: pulumi.Input[_builtins.str]
+    """
+    Effective time. The format is HH:mm, sample value: 00:00
 
-        > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
-        """
-elif False:
-    QuotaScheduleScheduleListConditionArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
+    """
 
 @pulumi.input_type
 class QuotaScheduleScheduleListConditionArgs:
@@ -1057,24 +1019,21 @@ class QuotaScheduleScheduleListConditionArgs:
         pulumi.set(self, "at", value)
 
 
-if not MYPY:
-    class QuotaSubQuotaInfoListArgsDict(TypedDict):
-        nick_name: pulumi.Input[_builtins.str]
-        """
-        Secondary Quota nickname.
+class QuotaSubQuotaInfoListArgsDict(TypedDict):
+    nick_name: pulumi.Input[_builtins.str]
+    """
+    Secondary Quota nickname.
 
-        > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
-        """
-        parameter: NotRequired[pulumi.Input['QuotaSubQuotaInfoListParameterArgsDict']]
-        """
-        Parameter See `parameter` below.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The secondary Quota type. The default value is: FUXI_OFFLINE
-        """
-elif False:
-    QuotaSubQuotaInfoListArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+    """
+    parameter: NotRequired[pulumi.Input['QuotaSubQuotaInfoListParameterArgsDict']]
+    """
+    Parameter See `parameter` below.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The secondary Quota type. The default value is: FUXI_OFFLINE
+    """
 
 @pulumi.input_type
 class QuotaSubQuotaInfoListArgs:
@@ -1134,40 +1093,37 @@ class QuotaSubQuotaInfoListArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class QuotaSubQuotaInfoListParameterArgsDict(TypedDict):
-        max_cu: pulumi.Input[_builtins.int]
-        """
-        The value of maxCU in Reserved CUs.
+class QuotaSubQuotaInfoListParameterArgsDict(TypedDict):
+    max_cu: pulumi.Input[_builtins.int]
+    """
+    The value of maxCU in Reserved CUs.
 
-        > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
-        """
-        min_cu: pulumi.Input[_builtins.int]
-        """
-        The value of minCU in Reserved CUs.
+    > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+    """
+    min_cu: pulumi.Input[_builtins.int]
+    """
+    The value of minCU in Reserved CUs.
 
-        > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
-        """
-        enable_priority: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable priority. Valid values: true/false, default: false
-        """
-        force_reserved_min: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Exclusive or not. Valid values: true/false, default: false
-        """
-        scheduler_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Scheduling policy. Valid values: Fifo/Fair, default: Fifo
-        """
-        single_job_cu_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Single job CU upper limit. Valid value: greater than or equal to 1
+    > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+    """
+    enable_priority: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable priority. Valid values: true/false, default: false
+    """
+    force_reserved_min: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Exclusive or not. Valid values: true/false, default: false
+    """
+    scheduler_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+    """
+    single_job_cu_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Single job CU upper limit. Valid value: greater than or equal to 1
 
-        > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
-        """
-elif False:
-    QuotaSubQuotaInfoListParameterArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+    """
 
 @pulumi.input_type
 class QuotaSubQuotaInfoListParameterArgs:
@@ -1282,22 +1238,19 @@ class QuotaSubQuotaInfoListParameterArgs:
         pulumi.set(self, "single_job_cu_limit", value)
 
 
-if not MYPY:
-    class TunnelQuotaTimerQuotaTimerArgsDict(TypedDict):
-        begin_time: pulumi.Input[_builtins.str]
-        """
-        The time-sharing configuration start time. Reference value: 00:00
-        """
-        end_time: pulumi.Input[_builtins.str]
-        """
-        The end time of the timesharing configuration. Reference value: 24:00
-        """
-        tunnel_quota_parameter: NotRequired[pulumi.Input['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict']]
-        """
-        Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
-        """
-elif False:
-    TunnelQuotaTimerQuotaTimerArgsDict: TypeAlias = Mapping[str, Any]
+class TunnelQuotaTimerQuotaTimerArgsDict(TypedDict):
+    begin_time: pulumi.Input[_builtins.str]
+    """
+    The time-sharing configuration start time. Reference value: 00:00
+    """
+    end_time: pulumi.Input[_builtins.str]
+    """
+    The end time of the timesharing configuration. Reference value: 24:00
+    """
+    tunnel_quota_parameter: NotRequired[pulumi.Input['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict']]
+    """
+    Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
+    """
 
 @pulumi.input_type
 class TunnelQuotaTimerQuotaTimerArgs:
@@ -1352,20 +1305,17 @@ class TunnelQuotaTimerQuotaTimerArgs:
         pulumi.set(self, "tunnel_quota_parameter", value)
 
 
-if not MYPY:
-    class TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict(TypedDict):
-        elastic_reserved_slot_num: pulumi.Input[_builtins.int]
-        """
-        The number of elastic reserved concurrency (Slot).
-        """
-        slot_num: pulumi.Input[_builtins.int]
-        """
-        The number of reserved concurrency (Slot).
+class TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict(TypedDict):
+    elastic_reserved_slot_num: pulumi.Input[_builtins.int]
+    """
+    The number of elastic reserved concurrency (Slot).
+    """
+    slot_num: pulumi.Input[_builtins.int]
+    """
+    The number of reserved concurrency (Slot).
 
-        > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
-        """
-elif False:
-    TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** The reserved concurrency (Slot) cannot be modified. The number of concurrency slots must be the same as that of the purchased tunnel quota.
+    """
 
 @pulumi.input_type
 class TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs:

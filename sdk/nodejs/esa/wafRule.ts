@@ -101,11 +101,21 @@ export class WafRule extends pulumi.CustomResource {
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
     declare public readonly rulesetId: pulumi.Output<number | undefined>;
+    /**
+     * Shared configuration attributes used across multiple rules. See `shared` below.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly shared: pulumi.Output<outputs.esa.WafRuleShared | undefined>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     declare public readonly siteId: pulumi.Output<string>;
+    /**
+     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * The unique identifier of the WAF rule.
@@ -169,11 +179,21 @@ export interface WafRuleState {
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
     rulesetId?: pulumi.Input<number>;
+    /**
+     * Shared configuration attributes used across multiple rules. See `shared` below.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     shared?: pulumi.Input<inputs.esa.WafRuleShared>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     siteId?: pulumi.Input<string>;
+    /**
+     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     siteVersion?: pulumi.Input<number>;
     /**
      * The unique identifier of the WAF rule.
@@ -197,10 +217,20 @@ export interface WafRuleArgs {
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
     rulesetId?: pulumi.Input<number>;
+    /**
+     * Shared configuration attributes used across multiple rules. See `shared` below.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     shared?: pulumi.Input<inputs.esa.WafRuleShared>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     siteId: pulumi.Input<string>;
+    /**
+     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     siteVersion?: pulumi.Input<number>;
 }

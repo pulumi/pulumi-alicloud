@@ -367,6 +367,43 @@ class Instance(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Simple Application Server Instance resource.
+
+        For information about Simple Application Server Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/190440.htm).
+
+        > **NOTE:** Available since v1.135.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.simpleapplicationserver.get_images(platform="Linux")
+        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans(platform="Linux")
+        default_instance = alicloud.simpleapplicationserver.Instance("default",
+            payment_type="Subscription",
+            plan_id=default_get_server_plans.plans[0].id,
+            instance_name=name,
+            image_id=default.images[0].id,
+            period=1,
+            data_disk_size=100)
+        ```
+
+        ### Deleting `simpleapplicationserver.Instance` or removing it from your configuration
+
+        The `simpleapplicationserver.Instance` resource allows you to manage `payment_type = "Subscription"` instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the resource Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Simple Application Server Instance can be imported using the id, e.g.
@@ -395,6 +432,43 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Simple Application Server Instance resource.
+
+        For information about Simple Application Server Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/190440.htm).
+
+        > **NOTE:** Available since v1.135.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.simpleapplicationserver.get_images(platform="Linux")
+        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans(platform="Linux")
+        default_instance = alicloud.simpleapplicationserver.Instance("default",
+            payment_type="Subscription",
+            plan_id=default_get_server_plans.plans[0].id,
+            instance_name=name,
+            image_id=default.images[0].id,
+            period=1,
+            data_disk_size=100)
+        ```
+
+        ### Deleting `simpleapplicationserver.Instance` or removing it from your configuration
+
+        The `simpleapplicationserver.Instance` resource allows you to manage `payment_type = "Subscription"` instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the resource Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Simple Application Server Instance can be imported using the id, e.g.

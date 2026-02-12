@@ -135,7 +135,7 @@ import (
 // Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cms/metricRuleBlackList:MetricRuleBlackList example <id>
+// $terraform import alicloud_cms_metric_rule_black_list.example <id>
 // ```
 type MetricRuleBlackList struct {
 	pulumi.CustomResourceState

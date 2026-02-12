@@ -12,6 +12,92 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance resource.
+//
+// Describe the creation, deletion and query of tair instances.
+//
+// For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance and how to use it, see [What is Tair Instance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createtairinstance-redis).
+//
+// > **NOTE:** Available since v1.206.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/redis"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{
+//				ProductType: pulumi.StringRef("Tair_rdb"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vswitchId := defaultGetSwitches.Ids[0]
+//			zoneId := _default.Zones[0].Id
+//			_, err = resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewTairInstance(ctx, "default", &redis.TairInstanceArgs{
+//				PaymentType:      pulumi.String("Subscription"),
+//				Period:           pulumi.Int(1),
+//				InstanceType:     pulumi.String("tair_rdb"),
+//				ZoneId:           pulumi.String(zoneId),
+//				InstanceClass:    pulumi.String("tair.rdb.2g"),
+//				ShardCount:       pulumi.Int(2),
+//				VswitchId:        pulumi.String(vswitchId),
+//				VpcId:            pulumi.String(defaultGetNetworks.Ids[0]),
+//				TairInstanceName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `redis.TairInstance` or removing it from your configuration
+//
+// The `redis.TairInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Tair (Redis OSS-Compatible) And Memcache (KVStore) Tair Instance can be imported using the id, e.g.

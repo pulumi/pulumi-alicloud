@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * Threat Detection Baseline Strategy can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example <id>
+ * $terraform import alicloud_threat_detection_baseline_strategy.example <id>
  * ```
  */
 export class BaselineStrategy extends pulumi.CustomResource {

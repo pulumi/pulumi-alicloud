@@ -500,7 +500,7 @@ class BucketReplication(pulumi.CustomResource):
         Oss Bucket Replication can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oss/bucketReplication:BucketReplication example 
+        $ terraform import alicloud_oss_bucket_replication.example
         ```
 
         :param str resource_name: The name of the resource.
@@ -621,7 +621,7 @@ class BucketReplication(pulumi.CustomResource):
         Oss Bucket Replication can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oss/bucketReplication:BucketReplication example 
+        $ terraform import alicloud_oss_bucket_replication.example
         ```
 
         :param str resource_name: The name of the resource.

@@ -21,24 +21,19 @@ __all__ = [
     'ProvisionedProductParameterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ProvisionedProductOutputArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the output value defined in the template.
-        """
-        output_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the output value defined in the template.
-        """
-        output_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content of the output value defined in the template.
-        """
-elif False:
-    ProvisionedProductOutputArgsDict: TypeAlias = Mapping[str, Any]
+class ProvisionedProductOutputArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the output value defined in the template.
+    """
+    output_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the output value defined in the template.
+    """
+    output_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content of the output value defined in the template.
+    """
 
 @pulumi.input_type
 class ProvisionedProductOutputArgs:
@@ -95,18 +90,15 @@ class ProvisionedProductOutputArgs:
         pulumi.set(self, "output_value", value)
 
 
-if not MYPY:
-    class ProvisionedProductParameterArgsDict(TypedDict):
-        parameter_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter defined in the template.
-        """
-        parameter_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Template parameter value entered by the user.
-        """
-elif False:
-    ProvisionedProductParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ProvisionedProductParameterArgsDict(TypedDict):
+    parameter_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter defined in the template.
+    """
+    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Template parameter value entered by the user.
+    """
 
 @pulumi.input_type
 class ProvisionedProductParameterArgs:

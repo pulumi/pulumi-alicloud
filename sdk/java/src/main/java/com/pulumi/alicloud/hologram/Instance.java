@@ -20,6 +20,88 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Hologres (Hologram) Instance resource.
+ * 
+ * For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+ * 
+ * &gt; **NOTE:** Available since v1.213.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.hologram.Instance;
+ * import com.pulumi.alicloud.hologram.InstanceArgs;
+ * import com.pulumi.alicloud.hologram.inputs.InstanceEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var defaultVSwitch = new Switch("defaultVSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultVpc.id())
+ *             .zoneId("cn-hangzhou-j")
+ *             .cidrBlock("172.16.53.0/24")
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .instanceType("Standard")
+ *             .pricingCycle("Hour")
+ *             .cpu(32)
+ *             .endpoints(            
+ *                 InstanceEndpointArgs.builder()
+ *                     .type("Intranet")
+ *                     .build(),
+ *                 InstanceEndpointArgs.builder()
+ *                     .type("VPCSingleTunnel")
+ *                     .vswitchId(defaultVSwitch.id())
+ *                     .vpcId(defaultVSwitch.vpcId())
+ *                     .build())
+ *             .zoneId(defaultVSwitch.zoneId())
+ *             .instanceName(name)
+ *             .paymentType("PayAsYouGo")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.hologram.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.hologram.Instance` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Hologram Instance can be imported using the id, e.g.

@@ -19,6 +19,87 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a EAIS Instance resource.
+ * 
+ * Instance resource definition.
+ * 
+ * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+ * 
+ * &gt; **NOTE:** Available since v1.137.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.eais.Instance;
+ * import com.pulumi.alicloud.eais.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var zoneId = "cn-hangzhou-h";
+ * 
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(default_.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(default_.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .instanceType("eais.ei-a6.2xlarge")
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.eais.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.eais.Instance` resource allows you to manage  `category = &#34;ei&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * EAIS Instance can be imported using the id, e.g.

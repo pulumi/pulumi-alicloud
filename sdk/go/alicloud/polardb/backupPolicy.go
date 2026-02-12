@@ -12,6 +12,84 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
+//
+// > **NOTE:** Available since v1.66.0+. Each PolarDB cluster has a backup policy.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := polardb.NewCluster(ctx, "default", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				DbNodeClass: pulumi.String(_default.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				PayType:     pulumi.String("PostPaid"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = polardb.NewBackupPolicy(ctx, "default", &polardb.BackupPolicyArgs{
+//				DbClusterId: defaultCluster.ID(),
+//				PreferredBackupPeriods: pulumi.StringArray{
+//					pulumi.String("Tuesday"),
+//					pulumi.String("Wednesday"),
+//				},
+//				PreferredBackupTime:                    pulumi.String("10:00Z-11:00Z"),
+//				BackupRetentionPolicyOnClusterDeletion: pulumi.String("NONE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Removing polardb.Cluster from your configuration
+//
+// The polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // PolarDB backup policy can be imported using the id or cluster id, e.g.

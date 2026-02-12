@@ -18,6 +18,162 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Aligreen Oss Stock Task resource.
+ * 
+ * OSS stock file scanning task.
+ * 
+ * For information about Aligreen Oss Stock Task and how to use it, see [What is Oss Stock Task](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateOssStockTask).
+ * 
+ * &gt; **NOTE:** Available since v1.228.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.aligreen.Callback;
+ * import com.pulumi.alicloud.aligreen.CallbackArgs;
+ * import com.pulumi.alicloud.aligreen.OssStockTask;
+ * import com.pulumi.alicloud.aligreen.OssStockTaskArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultPyhXOV = new Bucket("defaultPyhXOV", BucketArgs.builder()
+ *             .storageClass("Standard")
+ *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *         var defaultJnW8Na = new Callback("defaultJnW8Na", CallbackArgs.builder()
+ *             .callbackUrl("https://www.aliyun.com/")
+ *             .cryptType(0)
+ *             .callbackName(String.format("%s%s", name,default_.result()))
+ *             .callbackTypes("machineScan")
+ *             .callbackSuggestions("block")
+ *             .build());
+ * 
+ *         var defaultOssStockTask = new OssStockTask("defaultOssStockTask", OssStockTaskArgs.builder()
+ *             .imageOpened(true)
+ *             .autoFreezeType("acl")
+ *             .audioMaxSize(200)
+ *             .imageScanLimit(1)
+ *             .videoFrameInterval(1)
+ *             .videoScanLimit(1000)
+ *             .audioScanLimit(1000)
+ *             .videoMaxFrames(200)
+ *             .videoMaxSize(500)
+ *             .startDate("2024-08-01 00:00:00 +0800")
+ *             .endDate("2024-12-31 09:06:42 +0800")
+ *             .buckets(defaultPyhXOV.bucket().applyValue(_bucket -> serializeJson(
+ *                 jsonArray(jsonObject(
+ *                     jsonProperty("Bucket", _bucket),
+ *                     jsonProperty("Selected", true),
+ *                     jsonProperty("Prefixes", jsonArray(
+ *                     ))
+ *                 )))))
+ *             .imageScenes("porn")
+ *             .audioAntispamFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .imageLiveFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .videoTerrorismFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .imageTerrorismFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .callbackId(defaultJnW8Na.id())
+ *             .imageAdFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .bizType("recommend_massmedia_template_01")
+ *             .audioScenes(serializeJson(
+ *                 jsonArray("antispam")))
+ *             .imagePornFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .videoLiveFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .videoPornFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .videoVoiceAntispamFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .videoScenes(serializeJson(
+ *                 jsonArray(
+ *                     "ad", 
+ *                     "terrorism", 
+ *                     "live", 
+ *                     "porn", 
+ *                     "antispam"
+ *                 )))
+ *             .videoAdFreezeConfig(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Type", "suggestion"),
+ *                     jsonProperty("Value", "block")
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.aligreen.OssStockTask` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.aligreen.OssStockTask`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Aligreen Oss Stock Task can be imported using the id, e.g.

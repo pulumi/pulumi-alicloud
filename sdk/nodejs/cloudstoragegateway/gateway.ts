@@ -105,6 +105,9 @@ export class Gateway extends pulumi.CustomResource {
      * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
     declare public readonly location: pulumi.Output<string>;
+    /**
+     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+     */
     declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
@@ -218,6 +221,9 @@ export interface GatewayState {
      * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
     location?: pulumi.Input<string>;
+    /**
+     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+     */
     paymentType?: pulumi.Input<string>;
     /**
      * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
@@ -273,6 +279,9 @@ export interface GatewayArgs {
      * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
     location: pulumi.Input<string>;
+    /**
+     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
+     */
     paymentType?: pulumi.Input<string>;
     /**
      * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.

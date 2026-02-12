@@ -25,49 +25,44 @@ __all__ = [
     'InstanceV2WhiteIpListArgsDict',
 ]
 
-MYPY = False
+class InstanceV2EngineListArgsDict(TypedDict):
+    engine_type: pulumi.Input[_builtins.str]
+    """
+    Engine
 
-if not MYPY:
-    class InstanceV2EngineListArgsDict(TypedDict):
-        engine_type: pulumi.Input[_builtins.str]
-        """
-        Engine
-
-        Enumeration value:
-        - `TABLE`: Wide table engine
-        - `TSDB`: Time series Engine
-        - `LSEARCH`: Search engine
-        - `LTS`: LTS engine
-        - `LVECTOR`: Vector engine
-        - `LCOLUMN`: Column-store engine
-        - `LAI`: AI engine
-        - `FILE`: The underlying file engine
-        - `LMESSAGE`: Message engine
-        - `LROW`: Wide table Engine 3.0
-        - `LSTREAM`: Stream engine
-        """
-        connect_address_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgsDict']]]]
-        """
-        Connect Address List
-        """
-        is_last_version: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether it is the latest version
-        """
-        latest_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Latest Version
-        """
-        node_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgsDict']]]]
-        """
-        Node Group List See `node_group` below.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Engine Version
-        """
-elif False:
-    InstanceV2EngineListArgsDict: TypeAlias = Mapping[str, Any]
+    Enumeration value:
+    - `TABLE`: Wide table engine
+    - `TSDB`: Time series Engine
+    - `LSEARCH`: Search engine
+    - `LTS`: LTS engine
+    - `LVECTOR`: Vector engine
+    - `LCOLUMN`: Column-store engine
+    - `LAI`: AI engine
+    - `FILE`: The underlying file engine
+    - `LMESSAGE`: Message engine
+    - `LROW`: Wide table Engine 3.0
+    - `LSTREAM`: Stream engine
+    """
+    connect_address_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgsDict']]]]
+    """
+    Connect Address List
+    """
+    is_last_version: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether it is the latest version
+    """
+    latest_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Latest Version
+    """
+    node_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgsDict']]]]
+    """
+    Node Group List See `node_group` below.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Engine Version
+    """
 
 @pulumi.input_type
 class InstanceV2EngineListArgs:
@@ -197,22 +192,19 @@ class InstanceV2EngineListArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class InstanceV2EngineListConnectAddressListArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connect Address
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connect Port
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Connect Type:
-        """
-elif False:
-    InstanceV2EngineListConnectAddressListArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceV2EngineListConnectAddressListArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connect Address
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connect Port
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Connect Type:
+    """
 
 @pulumi.input_type
 class InstanceV2EngineListConnectAddressListArgs:
@@ -269,89 +261,86 @@ class InstanceV2EngineListConnectAddressListArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class InstanceV2EngineListNodeGroupArgsDict(TypedDict):
-        node_count: pulumi.Input[_builtins.int]
-        """
-        Number of nodes
-        """
-        node_spec: pulumi.Input[_builtins.str]
-        """
-        Node Specifications
-        - Valid values when selecting cloud storage:
-        - **lindorm.c.2xlarge**, 8 cores 16GB
-        - **lindorm.g.2xlarge**, 8 cores 32GB
-        - **lindorm.c.4xlarge**, 16 cores 32GB
-        - **lindorm.g.4xlarge**, 16 cores 64GB
-        - **lindorm.c.8xlarge**, 32 core 64GB
-        - **lindorm.g.8xlarge**, 32 core 128GB
-        - **lindorm.g.8xlarge**, 8 cores 64GB
-        - **lindorm.r.4xlarge**, 16 cores 128GB
-        - **lindorm.r.8xlarge**, 32 cores 256GB
-        - Valid values when local disk storage is selected:
-        - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
-        - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
-        - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
-        - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
-        - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
-        - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
-        - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
-        - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
-        - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
-        - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
-        - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
-        - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
-        - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
-        - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
-        - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
-        - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
-        - **lindorm.i4.xlarge**, 4 core 32GB(I4)
-        - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
-        - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
-        - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
-        - **lindorm.i2.xlarge**, 4 core 32GB(I2)
-        - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
-        - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
-        - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
-        """
-        resource_group_name: pulumi.Input[_builtins.str]
-        """
-        Resource group name
-        """
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Type
-        """
-        cpu_core_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CPU cores
-        """
-        enable_attach_local_disk: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to mount  local cloud disks
-        """
-        memory_size_gi_b: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Node memory size
-        """
-        node_disk_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Local cloud disk storage capacity
-        """
-        node_disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Disk Type
-        """
-        spec_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Spec Id
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Status
-        """
-elif False:
-    InstanceV2EngineListNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceV2EngineListNodeGroupArgsDict(TypedDict):
+    node_count: pulumi.Input[_builtins.int]
+    """
+    Number of nodes
+    """
+    node_spec: pulumi.Input[_builtins.str]
+    """
+    Node Specifications
+    - Valid values when selecting cloud storage:
+    - **lindorm.c.2xlarge**, 8 cores 16GB
+    - **lindorm.g.2xlarge**, 8 cores 32GB
+    - **lindorm.c.4xlarge**, 16 cores 32GB
+    - **lindorm.g.4xlarge**, 16 cores 64GB
+    - **lindorm.c.8xlarge**, 32 core 64GB
+    - **lindorm.g.8xlarge**, 32 core 128GB
+    - **lindorm.g.8xlarge**, 8 cores 64GB
+    - **lindorm.r.4xlarge**, 16 cores 128GB
+    - **lindorm.r.8xlarge**, 32 cores 256GB
+    - Valid values when local disk storage is selected:
+    - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+    - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+    - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+    - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+    - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+    - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+    - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+    - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+    - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+    - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+    - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+    - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+    - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+    - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+    - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+    - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+    - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+    - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+    - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+    - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+    - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+    - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+    - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+    - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
+    """
+    resource_group_name: pulumi.Input[_builtins.str]
+    """
+    Resource group name
+    """
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Type
+    """
+    cpu_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CPU cores
+    """
+    enable_attach_local_disk: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to mount  local cloud disks
+    """
+    memory_size_gi_b: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Node memory size
+    """
+    node_disk_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Local cloud disk storage capacity
+    """
+    node_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Disk Type
+    """
+    spec_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Spec Id
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Status
+    """
 
 @pulumi.input_type
 class InstanceV2EngineListNodeGroupArgs:
@@ -603,18 +592,15 @@ class InstanceV2EngineListNodeGroupArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class InstanceV2WhiteIpListArgsDict(TypedDict):
-        group_name: pulumi.Input[_builtins.str]
-        """
-        Group Name
-        """
-        ip_list: pulumi.Input[_builtins.str]
-        """
-        Whitelist information
-        """
-elif False:
-    InstanceV2WhiteIpListArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceV2WhiteIpListArgsDict(TypedDict):
+    group_name: pulumi.Input[_builtins.str]
+    """
+    Group Name
+    """
+    ip_list: pulumi.Input[_builtins.str]
+    """
+    Whitelist information
+    """
 
 @pulumi.input_type
 class InstanceV2WhiteIpListArgs:

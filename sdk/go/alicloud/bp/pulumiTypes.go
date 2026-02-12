@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type StudioApplicationInstance struct {
-	// The id of the instance.
+	// The resource ID in terraform of Application.
 	Id *string `pulumi:"id"`
 	// The name of the instance.
 	NodeName *string `pulumi:"nodeName"`
@@ -34,7 +34,7 @@ type StudioApplicationInstanceInput interface {
 }
 
 type StudioApplicationInstanceArgs struct {
-	// The id of the instance.
+	// The resource ID in terraform of Application.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the instance.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
@@ -93,7 +93,7 @@ func (o StudioApplicationInstanceOutput) ToStudioApplicationInstanceOutputWithCo
 	return o
 }
 
-// The id of the instance.
+// The resource ID in terraform of Application.
 func (o StudioApplicationInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StudioApplicationInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

@@ -10,6 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Message
 {
     /// <summary>
+    /// Provides a Message Service Endpoint resource.
+    /// 
+    /// For information about Message Service Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-enableendpoint).
+    /// 
+    /// &gt; **NOTE:** Available since v1.243.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Message.ServiceEndpoint("default", new()
+    ///     {
+    ///         EndpointEnabled = true,
+    ///         EndpointType = "public",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.message.ServiceEndpoint` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.message.ServiceEndpoint`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Message Service Endpoint can be imported using the id, e.g.

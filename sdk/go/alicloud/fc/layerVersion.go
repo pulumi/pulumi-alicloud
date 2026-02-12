@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Function Compute Layer Version resource.
+//
+// For information about FC Layer Version and how to use it, see [What is Layer Version](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createlayerversion).
+//
+// > **NOTE:** Available since v1.180.0.
+//
+// > **NOTE: Setting `skipDestroy` to `true` means that the Alicloud Provider will not destroy any layer version, even when running `terraform destroy`. Layer versions are thus intentional dangling resources that are not managed by Terraform and may incur extra expense in your Alicloud account.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -20,8 +28,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"

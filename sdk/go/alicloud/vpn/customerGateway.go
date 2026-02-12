@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a VPN customer gateway resource.
+//
+// > **NOTE:** Terraform will auto build vpn customer gateway instance  while it uses `vpn.CustomerGateway` to build a vpn customer gateway resource.
+//
+// For information about VPN customer gateway and how to use it, see [What is VPN customer gateway](https://www.alibabacloud.com/help/en/doc-detail/120368.html).
+//
+// > **NOTE:** Available since v1.210.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

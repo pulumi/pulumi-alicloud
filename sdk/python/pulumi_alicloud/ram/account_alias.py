@@ -76,6 +76,33 @@ class AccountAlias(pulumi.CustomResource):
                  account_alias: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a RAM Account Alias resource.
+
+        For information about RAM Account Alias and how to use it, see [What is Account Alias](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetAccountAlias).
+
+        > **NOTE:** Available since v1.0.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
+        ```
+
+        ### Deleting `ram.AccountAlias` or removing it from your configuration
+
+        Terraform cannot destroy resource `ram.AccountAlias`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Account Alias can be imported using the id, e.g.
@@ -96,6 +123,33 @@ class AccountAlias(pulumi.CustomResource):
                  args: AccountAliasArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RAM Account Alias resource.
+
+        For information about RAM Account Alias and how to use it, see [What is Account Alias](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetAccountAlias).
+
+        > **NOTE:** Available since v1.0.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
+        ```
+
+        ### Deleting `ram.AccountAlias` or removing it from your configuration
+
+        Terraform cannot destroy resource `ram.AccountAlias`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Account Alias can be imported using the id, e.g.

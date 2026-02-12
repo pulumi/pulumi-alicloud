@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// Service Catalog Provisioned Product can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example &lt;id&gt;
+    /// $terraform import alicloud_service_catalog_provisioned_product.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct")]

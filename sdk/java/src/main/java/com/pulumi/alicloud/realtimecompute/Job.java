@@ -275,9 +275,21 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<JobStatus> status() {
         return this.status;
     }
+    /**
+     * Job Stop Policy
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="stopStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stopStrategy;
 
+    /**
+     * @return Job Stop Policy
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> stopStrategy() {
         return Codegen.optional(this.stopStrategy);
     }

@@ -69,6 +69,11 @@ namespace Pulumi.AliCloud.Kms
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
+        /// <summary>
+        /// Prepaid cycle. Unit for year
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -162,6 +167,11 @@ namespace Pulumi.AliCloud.Kms
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
+        /// <summary>
+        /// Prepaid cycle. Unit for year
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -211,6 +221,11 @@ namespace Pulumi.AliCloud.Kms
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// Prepaid cycle. Unit for year
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

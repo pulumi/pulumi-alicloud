@@ -12,6 +12,98 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a RabbitMQ (AMQP) Instance resource.
+//
+// The instance of Amqp.
+//
+// For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createinstance).
+//
+// > **NOTE:** Available since v1.128.0.
+//
+// ## Example Usage
+//
+// Create a RabbitMQ (AMQP) enterprise edition Instance.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//				InstanceName:  pulumi.String(name),
+//				InstanceType:  pulumi.String("enterprise"),
+//				MaxTps:        pulumi.String("1000"),
+//				QueueCapacity: pulumi.String("50"),
+//				PeriodCycle:   pulumi.String("Year"),
+//				SupportEip:    pulumi.Bool(false),
+//				Period:        pulumi.Int(1),
+//				AutoRenew:     pulumi.Bool(true),
+//				PaymentType:   pulumi.String("Subscription"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a RabbitMQ (AMQP) serverless edition Instance.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//				InstanceName:         pulumi.String(name),
+//				PaymentType:          pulumi.String("PayAsYouGo"),
+//				ServerlessChargeType: pulumi.String("onDemand"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `amqp.Instance` or removing it from your configuration
+//
+// The `amqp.Instance` resource allows you to manage  `paymentType = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Amqp Instance can be imported using the id, e.g.

@@ -10,6 +10,69 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eflo
 {
     /// <summary>
+    /// Provides a Eflo Resource resource.
+    /// 
+    /// For information about Eflo Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createresource).
+    /// 
+    /// &gt; **NOTE:** Available since v1.248.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultResource = new AliCloud.Eflo.Resource("default", new()
+    ///     {
+    ///         UserAccessParam = new AliCloud.Eflo.Inputs.ResourceUserAccessParamArgs
+    ///         {
+    ///             AccessId = "your_access_id",
+    ///             AccessKey = "your_access_key",
+    ///             WorkspaceId = "your_workspace_id",
+    ///             Endpoint = "your_endpoint",
+    ///         },
+    ///         ClusterId = $"terraform-{@default.Result}",
+    ///         MachineTypes = new AliCloud.Eflo.Inputs.ResourceMachineTypesArgs
+    ///         {
+    ///             MemoryInfo = "32x 64GB DDR4 4800 Memory",
+    ///             Type = "Private",
+    ///             BondNum = 5,
+    ///             NodeCount = 1,
+    ///             CpuInfo = "2x Intel Saphhire Rapid 8469C 48C CPU",
+    ///             NetworkInfo = "1x 200Gbps Dual Port BF3 DPU for VPC 4x 200Gbps Dual Port EIC",
+    ///             GpuInfo = "8x OAM 810 GPU",
+    ///             DiskInfo = "2x 480GB SATA SSD 4x 3.84TB NVMe SSD",
+    ///             NetworkMode = "net",
+    ///             Name = "lingjun",
+    ///         },
+    ///         ClusterName = name,
+    ///         ClusterDesc = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.eflo.Resource` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.eflo.Resource`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eflo Resource can be imported using the id, e.g.

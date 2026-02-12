@@ -16,6 +16,63 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloud Firewall Vpc Firewall Ips Config resource.
+ * 
+ * IP configuration of VPC firewall.
+ * 
+ * For information about Cloud Firewall Vpc Firewall Ips Config and how to use it, see [What is Vpc Firewall Ips Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallDefaultIPSConfig).
+ * 
+ * &gt; **NOTE:** Available since v1.269.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudfirewall.VpcFirewallIpsConfig;
+ * import com.pulumi.alicloud.cloudfirewall.VpcFirewallIpsConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new VpcFirewallIpsConfig("default", VpcFirewallIpsConfigArgs.builder()
+ *             .enableAllPatch(0)
+ *             .basicRules(0)
+ *             .runMode(0)
+ *             .vpcFirewallId("vfw-tr-bb81adb2d8184bc290a5")
+ *             .ruleClass("0")
+ *             .lang("cn-shenzhen")
+ *             .memberUid("1094685339207557")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cloudfirewall.VpcFirewallIpsConfig` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.VpcFirewallIpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Firewall Vpc Firewall Ips Config can be imported using the id, e.g.

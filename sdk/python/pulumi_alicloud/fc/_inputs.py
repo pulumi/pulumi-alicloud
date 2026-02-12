@@ -135,16 +135,11 @@ __all__ = [
     'V3TriggerHttpTriggerArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AliasRoutingConfigArgsDict(TypedDict):
-        additional_version_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]]]
-        """
-        A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
-        """
-elif False:
-    AliasRoutingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AliasRoutingConfigArgsDict(TypedDict):
+    additional_version_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]]]
+    """
+    A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
+    """
 
 @pulumi.input_type
 class AliasRoutingConfigArgs:
@@ -169,22 +164,19 @@ class AliasRoutingConfigArgs:
         pulumi.set(self, "additional_version_weights", value)
 
 
-if not MYPY:
-    class CustomDomainCertConfigArgsDict(TypedDict):
-        cert_name: pulumi.Input[_builtins.str]
-        """
-        The name of the certificate, used to distinguish different certificates.
-        """
-        certificate: pulumi.Input[_builtins.str]
-        """
-        Certificate data of the HTTPS certificates, follow the 'pem' format.
-        """
-        private_key: pulumi.Input[_builtins.str]
-        """
-        Private key of the HTTPS certificates, follow the 'pem' format.
-        """
-elif False:
-    CustomDomainCertConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CustomDomainCertConfigArgsDict(TypedDict):
+    cert_name: pulumi.Input[_builtins.str]
+    """
+    The name of the certificate, used to distinguish different certificates.
+    """
+    certificate: pulumi.Input[_builtins.str]
+    """
+    Certificate data of the HTTPS certificates, follow the 'pem' format.
+    """
+    private_key: pulumi.Input[_builtins.str]
+    """
+    Private key of the HTTPS certificates, follow the 'pem' format.
+    """
 
 @pulumi.input_type
 class CustomDomainCertConfigArgs:
@@ -238,30 +230,27 @@ class CustomDomainCertConfigArgs:
         pulumi.set(self, "private_key", value)
 
 
-if not MYPY:
-    class CustomDomainRouteConfigArgsDict(TypedDict):
-        function_name: pulumi.Input[_builtins.str]
-        """
-        The name of the Function Compute function that requests are routed to.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path that requests are routed from.
-        """
-        service_name: pulumi.Input[_builtins.str]
-        """
-        The name of the Function Compute service that requests are routed to.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-        """
-        qualifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
-        """
-elif False:
-    CustomDomainRouteConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CustomDomainRouteConfigArgsDict(TypedDict):
+    function_name: pulumi.Input[_builtins.str]
+    """
+    The name of the Function Compute function that requests are routed to.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path that requests are routed from.
+    """
+    service_name: pulumi.Input[_builtins.str]
+    """
+    The name of the Function Compute service that requests are routed to.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+    """
+    qualifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+    """
 
 @pulumi.input_type
 class CustomDomainRouteConfigArgs:
@@ -347,18 +336,15 @@ class CustomDomainRouteConfigArgs:
         pulumi.set(self, "qualifier", value)
 
 
-if not MYPY:
-    class FunctionAsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
-        on_failure: NotRequired[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
-        """
-        Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
-        """
-        on_success: NotRequired[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
-        """
-        Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
-        """
-elif False:
-    FunctionAsyncInvokeConfigDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FunctionAsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
+    on_failure: NotRequired[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
+    """
+    Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
+    """
+    on_success: NotRequired[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
+    """
+    Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
+    """
 
 @pulumi.input_type
 class FunctionAsyncInvokeConfigDestinationConfigArgs:
@@ -399,14 +385,11 @@ class FunctionAsyncInvokeConfigDestinationConfigArgs:
         pulumi.set(self, "on_success", value)
 
 
-if not MYPY:
-    class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
-        destination: pulumi.Input[_builtins.str]
-        """
-        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-        """
-elif False:
-    FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict: TypeAlias = Mapping[str, Any]
+class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
+    destination: pulumi.Input[_builtins.str]
+    """
+    Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+    """
 
 @pulumi.input_type
 class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs:
@@ -430,14 +413,11 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs:
         pulumi.set(self, "destination", value)
 
 
-if not MYPY:
-    class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
-        destination: pulumi.Input[_builtins.str]
-        """
-        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-        """
-elif False:
-    FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
+    destination: pulumi.Input[_builtins.str]
+    """
+    Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+    """
 
 @pulumi.input_type
 class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs:
@@ -461,22 +441,19 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs:
         pulumi.set(self, "destination", value)
 
 
-if not MYPY:
-    class FunctionCustomContainerConfigArgsDict(TypedDict):
-        image: pulumi.Input[_builtins.str]
-        """
-        The container image address.
-        """
-        args: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The args field specifies the arguments passed to the command.
-        """
-        command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entry point of the container, which specifies the actual command run by the container.
-        """
-elif False:
-    FunctionCustomContainerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class FunctionCustomContainerConfigArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    The container image address.
+    """
+    args: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The args field specifies the arguments passed to the command.
+    """
+    command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entry point of the container, which specifies the actual command run by the container.
+    """
 
 @pulumi.input_type
 class FunctionCustomContainerConfigArgs:
@@ -532,26 +509,23 @@ class FunctionCustomContainerConfigArgs:
         pulumi.set(self, "command", value)
 
 
-if not MYPY:
-    class ServiceLogConfigArgsDict(TypedDict):
-        logstore: pulumi.Input[_builtins.str]
-        """
-        The log store name of Alicloud Simple Log Service.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The project name of the Alicloud Simple Log Service.
-        """
-        enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable instance level metrics.
-        """
-        enable_request_metrics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable request level metrics.
-        """
-elif False:
-    ServiceLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceLogConfigArgsDict(TypedDict):
+    logstore: pulumi.Input[_builtins.str]
+    """
+    The log store name of Alicloud Simple Log Service.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The project name of the Alicloud Simple Log Service.
+    """
+    enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable instance level metrics.
+    """
+    enable_request_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable request level metrics.
+    """
 
 @pulumi.input_type
 class ServiceLogConfigArgs:
@@ -622,22 +596,19 @@ class ServiceLogConfigArgs:
         pulumi.set(self, "enable_request_metrics", value)
 
 
-if not MYPY:
-    class ServiceNasConfigArgsDict(TypedDict):
-        group_id: pulumi.Input[_builtins.int]
-        """
-        The group id of your NAS file system.
-        """
-        mount_points: pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgsDict']]]
-        """
-        Config the NAS mount points.See `mount_points` below.
-        """
-        user_id: pulumi.Input[_builtins.int]
-        """
-        The user id of your NAS file system.
-        """
-elif False:
-    ServiceNasConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceNasConfigArgsDict(TypedDict):
+    group_id: pulumi.Input[_builtins.int]
+    """
+    The group id of your NAS file system.
+    """
+    mount_points: pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgsDict']]]
+    """
+    Config the NAS mount points.See `mount_points` below.
+    """
+    user_id: pulumi.Input[_builtins.int]
+    """
+    The user id of your NAS file system.
+    """
 
 @pulumi.input_type
 class ServiceNasConfigArgs:
@@ -691,18 +662,15 @@ class ServiceNasConfigArgs:
         pulumi.set(self, "user_id", value)
 
 
-if not MYPY:
-    class ServiceNasConfigMountPointArgsDict(TypedDict):
-        mount_dir: pulumi.Input[_builtins.str]
-        """
-        The local address where to mount your remote NAS directory.
-        """
-        server_addr: pulumi.Input[_builtins.str]
-        """
-        The address of the remote NAS directory.
-        """
-elif False:
-    ServiceNasConfigMountPointArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceNasConfigMountPointArgsDict(TypedDict):
+    mount_dir: pulumi.Input[_builtins.str]
+    """
+    The local address where to mount your remote NAS directory.
+    """
+    server_addr: pulumi.Input[_builtins.str]
+    """
+    The address of the remote NAS directory.
+    """
 
 @pulumi.input_type
 class ServiceNasConfigMountPointArgs:
@@ -741,18 +709,15 @@ class ServiceNasConfigMountPointArgs:
         pulumi.set(self, "server_addr", value)
 
 
-if not MYPY:
-    class ServiceTracingConfigArgsDict(TypedDict):
-        params: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
-        """
-        Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Tracing protocol type. Currently, only Jaeger is supported.
-        """
-elif False:
-    ServiceTracingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceTracingConfigArgsDict(TypedDict):
+    params: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+    """
+    Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Tracing protocol type. Currently, only Jaeger is supported.
+    """
 
 @pulumi.input_type
 class ServiceTracingConfigArgs:
@@ -791,22 +756,19 @@ class ServiceTracingConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ServiceVpcConfigArgsDict(TypedDict):
-        security_group_id: pulumi.Input[_builtins.str]
-        """
-        A security group ID associated with the Function Compute Service.
-        """
-        vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of vswitch IDs associated with the Function Compute Service.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A vpc ID associated with the Function Compute Service.
-        """
-elif False:
-    ServiceVpcConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceVpcConfigArgsDict(TypedDict):
+    security_group_id: pulumi.Input[_builtins.str]
+    """
+    A security group ID associated with the Function Compute Service.
+    """
+    vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of vswitch IDs associated with the Function Compute Service.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A vpc ID associated with the Function Compute Service.
+    """
 
 @pulumi.input_type
 class ServiceVpcConfigArgs:
@@ -861,22 +823,19 @@ class ServiceVpcConfigArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class V2FunctionCodeArgsDict(TypedDict):
-        oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The OSS bucket name of the function code package.
-        """
-        oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The OSS object name of the function code package.
-        """
-        zip_file: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Upload the base64 encoding of the code zip package directly in the request body.
-        """
-elif False:
-    V2FunctionCodeArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionCodeArgsDict(TypedDict):
+    oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The OSS bucket name of the function code package.
+    """
+    oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The OSS object name of the function code package.
+    """
+    zip_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Upload the base64 encoding of the code zip package directly in the request body.
+    """
 
 @pulumi.input_type
 class V2FunctionCodeArgs:
@@ -933,30 +892,27 @@ class V2FunctionCodeArgs:
         pulumi.set(self, "zip_file", value)
 
 
-if not MYPY:
-    class V2FunctionCustomContainerConfigArgsDict(TypedDict):
-        acceleration_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
-        """
-        args: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Container startup parameters.
-        """
-        command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Container start command, equivalent to Docker ENTRYPOINT.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
-        """
-        web_server_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
-        """
-elif False:
-    V2FunctionCustomContainerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionCustomContainerConfigArgsDict(TypedDict):
+    acceleration_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
+    """
+    args: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Container startup parameters.
+    """
+    command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Container start command, equivalent to Docker ENTRYPOINT.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
+    """
+    web_server_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
+    """
 
 @pulumi.input_type
 class V2FunctionCustomContainerConfigArgs:
@@ -1045,22 +1001,19 @@ class V2FunctionCustomContainerConfigArgs:
         pulumi.set(self, "web_server_mode", value)
 
 
-if not MYPY:
-    class V2FunctionCustomDnsArgsDict(TypedDict):
-        dns_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgsDict']]]]
-        """
-        DNS resolver configuration parameter list. See `dns_options` below.
-        """
-        name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of IP addresses of DNS servers.
-        """
-        searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of DNS search domains.
-        """
-elif False:
-    V2FunctionCustomDnsArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionCustomDnsArgsDict(TypedDict):
+    dns_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgsDict']]]]
+    """
+    DNS resolver configuration parameter list. See `dns_options` below.
+    """
+    name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of IP addresses of DNS servers.
+    """
+    searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of DNS search domains.
+    """
 
 @pulumi.input_type
 class V2FunctionCustomDnsArgs:
@@ -1117,18 +1070,15 @@ class V2FunctionCustomDnsArgs:
         pulumi.set(self, "searches", value)
 
 
-if not MYPY:
-    class V2FunctionCustomDnsDnsOptionArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS option name.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS option value.
-        """
-elif False:
-    V2FunctionCustomDnsDnsOptionArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionCustomDnsDnsOptionArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS option name.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS option value.
+    """
 
 @pulumi.input_type
 class V2FunctionCustomDnsDnsOptionArgs:
@@ -1169,34 +1119,31 @@ class V2FunctionCustomDnsDnsOptionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class V2FunctionCustomHealthCheckConfigArgsDict(TypedDict):
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The threshold for the number of health check failures. The system considers the check failed after the health check fails.
-        """
-        http_get_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Container custom health check URL address.
-        """
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Delay from container startup to initiation of health check.
-        """
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Health check cycle.
-        """
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
-        """
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Health check timeout.
-        """
-elif False:
-    V2FunctionCustomHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionCustomHealthCheckConfigArgsDict(TypedDict):
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The threshold for the number of health check failures. The system considers the check failed after the health check fails.
+    """
+    http_get_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Container custom health check URL address.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Delay from container startup to initiation of health check.
+    """
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Health check cycle.
+    """
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Health check timeout.
+    """
 
 @pulumi.input_type
 class V2FunctionCustomHealthCheckConfigArgs:
@@ -1301,18 +1248,15 @@ class V2FunctionCustomHealthCheckConfigArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class V2FunctionCustomRuntimeConfigArgsDict(TypedDict):
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Parameters received by the start entry command.
-        """
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
-        """
-elif False:
-    V2FunctionCustomRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionCustomRuntimeConfigArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Parameters received by the start entry command.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
+    """
 
 @pulumi.input_type
 class V2FunctionCustomRuntimeConfigArgs:
@@ -1353,18 +1297,15 @@ class V2FunctionCustomRuntimeConfigArgs:
         pulumi.set(self, "commands", value)
 
 
-if not MYPY:
-    class V2FunctionInstanceLifecycleConfigArgsDict(TypedDict):
-        pre_freeze: NotRequired[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgsDict']]
-        """
-        PreFreeze function configuration. See `pre_freeze` below.
-        """
-        pre_stop: NotRequired[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgsDict']]
-        """
-        PreStop function configuration. See `pre_stop` below.
-        """
-elif False:
-    V2FunctionInstanceLifecycleConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionInstanceLifecycleConfigArgsDict(TypedDict):
+    pre_freeze: NotRequired[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgsDict']]
+    """
+    PreFreeze function configuration. See `pre_freeze` below.
+    """
+    pre_stop: NotRequired[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgsDict']]
+    """
+    PreStop function configuration. See `pre_stop` below.
+    """
 
 @pulumi.input_type
 class V2FunctionInstanceLifecycleConfigArgs:
@@ -1405,18 +1346,15 @@ class V2FunctionInstanceLifecycleConfigArgs:
         pulumi.set(self, "pre_stop", value)
 
 
-if not MYPY:
-    class V2FunctionInstanceLifecycleConfigPreFreezeArgsDict(TypedDict):
-        handler: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        entry point of function.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        max running time of function.
-        """
-elif False:
-    V2FunctionInstanceLifecycleConfigPreFreezeArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionInstanceLifecycleConfigPreFreezeArgsDict(TypedDict):
+    handler: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    entry point of function.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    max running time of function.
+    """
 
 @pulumi.input_type
 class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
@@ -1457,18 +1395,15 @@ class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class V2FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
-        handler: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        entry point of function.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        max running time of function.
-        """
-elif False:
-    V2FunctionInstanceLifecycleConfigPreStopArgsDict: TypeAlias = Mapping[str, Any]
+class V2FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
+    handler: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    entry point of function.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    max running time of function.
+    """
 
 @pulumi.input_type
 class V2FunctionInstanceLifecycleConfigPreStopArgs:
@@ -1509,18 +1444,15 @@ class V2FunctionInstanceLifecycleConfigPreStopArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class V3AsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
-        on_failure: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
-        """
-        Failed callback target structure See `on_failure` below.
-        """
-        on_success: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
-        """
-        Successful callback target structure See `on_success` below.
-        """
-elif False:
-    V3AsyncInvokeConfigDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3AsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
+    on_failure: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
+    """
+    Failed callback target structure See `on_failure` below.
+    """
+    on_success: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
+    """
+    Successful callback target structure See `on_success` below.
+    """
 
 @pulumi.input_type
 class V3AsyncInvokeConfigDestinationConfigArgs:
@@ -1561,14 +1493,11 @@ class V3AsyncInvokeConfigDestinationConfigArgs:
         pulumi.set(self, "on_success", value)
 
 
-if not MYPY:
-    class V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
-        destination: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Asynchronous call target Resource Descriptor
-        """
-elif False:
-    V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict: TypeAlias = Mapping[str, Any]
+class V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
+    destination: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Asynchronous call target Resource Descriptor
+    """
 
 @pulumi.input_type
 class V3AsyncInvokeConfigDestinationConfigOnFailureArgs:
@@ -1593,14 +1522,11 @@ class V3AsyncInvokeConfigDestinationConfigOnFailureArgs:
         pulumi.set(self, "destination", value)
 
 
-if not MYPY:
-    class V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
-        destination: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Asynchronous call target Resource Descriptor
-        """
-elif False:
-    V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
+class V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
+    destination: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Asynchronous call target Resource Descriptor
+    """
 
 @pulumi.input_type
 class V3AsyncInvokeConfigDestinationConfigOnSuccessArgs:
@@ -1625,18 +1551,15 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccessArgs:
         pulumi.set(self, "destination", value)
 
 
-if not MYPY:
-    class V3CustomDomainAuthConfigArgsDict(TypedDict):
-        auth_info: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication Information
-        """
-        auth_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Authentication type. anonymous, function, or jwt.
-        """
-elif False:
-    V3CustomDomainAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainAuthConfigArgsDict(TypedDict):
+    auth_info: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication Information
+    """
+    auth_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Authentication type. anonymous, function, or jwt.
+    """
 
 @pulumi.input_type
 class V3CustomDomainAuthConfigArgs:
@@ -1677,22 +1600,19 @@ class V3CustomDomainAuthConfigArgs:
         pulumi.set(self, "auth_type", value)
 
 
-if not MYPY:
-    class V3CustomDomainCertConfigArgsDict(TypedDict):
-        cert_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate Name
-        """
-        certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PEM format certificate
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Private Key in PEM format
-        """
-elif False:
-    V3CustomDomainCertConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainCertConfigArgsDict(TypedDict):
+    cert_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate Name
+    """
+    certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PEM format certificate
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Private Key in PEM format
+    """
 
 @pulumi.input_type
 class V3CustomDomainCertConfigArgs:
@@ -1749,34 +1669,31 @@ class V3CustomDomainCertConfigArgs:
         pulumi.set(self, "private_key", value)
 
 
-if not MYPY:
-    class V3CustomDomainCorsConfigArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of allowed request headers, such as Content-Type, Authorization, etc.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
-        """
-        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of response headers that can be exposed to the browser.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
-        """
-elif False:
-    V3CustomDomainCorsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainCorsConfigArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed request headers, such as Content-Type, Authorization, etc.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
+    """
+    allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of response headers that can be exposed to the browser.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
+    """
 
 @pulumi.input_type
 class V3CustomDomainCorsConfigArgs:
@@ -1881,14 +1798,11 @@ class V3CustomDomainCorsConfigArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class V3CustomDomainRouteConfigArgsDict(TypedDict):
-        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgsDict']]]]
-        """
-        Routing Configuration List See `routes` below.
-        """
-elif False:
-    V3CustomDomainRouteConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainRouteConfigArgsDict(TypedDict):
+    routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgsDict']]]]
+    """
+    Routing Configuration List See `routes` below.
+    """
 
 @pulumi.input_type
 class V3CustomDomainRouteConfigArgs:
@@ -1913,30 +1827,27 @@ class V3CustomDomainRouteConfigArgs:
         pulumi.set(self, "routes", value)
 
 
-if not MYPY:
-    class V3CustomDomainRouteConfigRouteArgsDict(TypedDict):
-        function_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Function name
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of supported HTTP methods
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Route matching rule
-        """
-        qualifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version or Alias
-        """
-        rewrite_config: NotRequired[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgsDict']]
-        """
-        Override Configuration See `rewrite_config` below.
-        """
-elif False:
-    V3CustomDomainRouteConfigRouteArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainRouteConfigRouteArgsDict(TypedDict):
+    function_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Function name
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of supported HTTP methods
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Route matching rule
+    """
+    qualifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version or Alias
+    """
+    rewrite_config: NotRequired[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgsDict']]
+    """
+    Override Configuration See `rewrite_config` below.
+    """
 
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteArgs:
@@ -2025,22 +1936,19 @@ class V3CustomDomainRouteConfigRouteArgs:
         pulumi.set(self, "rewrite_config", value)
 
 
-if not MYPY:
-    class V3CustomDomainRouteConfigRouteRewriteConfigArgsDict(TypedDict):
-        equal_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict']]]]
-        """
-        Exact Match Rule List See `equal_rules` below.
-        """
-        regex_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict']]]]
-        """
-        Regular match rule list See `regex_rules` below.
-        """
-        wildcard_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict']]]]
-        """
-        List of wildcard matching rules See `wildcard_rules` below.
-        """
-elif False:
-    V3CustomDomainRouteConfigRouteRewriteConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainRouteConfigRouteRewriteConfigArgsDict(TypedDict):
+    equal_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict']]]]
+    """
+    Exact Match Rule List See `equal_rules` below.
+    """
+    regex_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict']]]]
+    """
+    Regular match rule list See `regex_rules` below.
+    """
+    wildcard_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict']]]]
+    """
+    List of wildcard matching rules See `wildcard_rules` below.
+    """
 
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
@@ -2097,18 +2005,15 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
         pulumi.set(self, "wildcard_rules", value)
 
 
-if not MYPY:
-    class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict(TypedDict):
-        match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Matching Rules
-        """
-        replacement: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Replace Rules
-        """
-elif False:
-    V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict(TypedDict):
+    match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Matching Rules
+    """
+    replacement: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Replace Rules
+    """
 
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
@@ -2149,18 +2054,15 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
         pulumi.set(self, "replacement", value)
 
 
-if not MYPY:
-    class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict(TypedDict):
-        match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Matching Rules
-        """
-        replacement: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Replace Rules
-        """
-elif False:
-    V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict(TypedDict):
+    match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Matching Rules
+    """
+    replacement: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Replace Rules
+    """
 
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
@@ -2201,18 +2103,15 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
         pulumi.set(self, "replacement", value)
 
 
-if not MYPY:
-    class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict(TypedDict):
-        match: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Matching Rules
-        """
-        replacement: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Replace Rules
-        """
-elif False:
-    V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict(TypedDict):
+    match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Matching Rules
+    """
+    replacement: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Replace Rules
+    """
 
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
@@ -2253,22 +2152,19 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
         pulumi.set(self, "replacement", value)
 
 
-if not MYPY:
-    class V3CustomDomainTlsConfigArgsDict(TypedDict):
-        cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of TLS cipher suites
-        """
-        max_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
-        """
-        min_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
-        """
-elif False:
-    V3CustomDomainTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainTlsConfigArgsDict(TypedDict):
+    cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of TLS cipher suites
+    """
+    max_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
+    """
+    min_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
+    """
 
 @pulumi.input_type
 class V3CustomDomainTlsConfigArgs:
@@ -2325,14 +2221,11 @@ class V3CustomDomainTlsConfigArgs:
         pulumi.set(self, "min_version", value)
 
 
-if not MYPY:
-    class V3CustomDomainWafConfigArgsDict(TypedDict):
-        enable_waf: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable WAF protection
-        """
-elif False:
-    V3CustomDomainWafConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3CustomDomainWafConfigArgsDict(TypedDict):
+    enable_waf: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable WAF protection
+    """
 
 @pulumi.input_type
 class V3CustomDomainWafConfigArgs:
@@ -2357,26 +2250,23 @@ class V3CustomDomainWafConfigArgs:
         pulumi.set(self, "enable_waf", value)
 
 
-if not MYPY:
-    class V3FunctionCodeArgsDict(TypedDict):
-        checksum: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CRC-64 value of the function code package.
-        """
-        oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the OSS Bucket that stores the function code ZIP package.
-        """
-        oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the OSS Object that stores the function code ZIP package.
-        """
-        zip_file: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Base 64 encoding of the function code ZIP package.
-        """
-elif False:
-    V3FunctionCodeArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCodeArgsDict(TypedDict):
+    checksum: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CRC-64 value of the function code package.
+    """
+    oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the OSS Bucket that stores the function code ZIP package.
+    """
+    oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the OSS Object that stores the function code ZIP package.
+    """
+    zip_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Base 64 encoding of the function code ZIP package.
+    """
 
 @pulumi.input_type
 class V3FunctionCodeArgs:
@@ -2449,46 +2339,43 @@ class V3FunctionCodeArgs:
         pulumi.set(self, "zip_file", value)
 
 
-if not MYPY:
-    class V3FunctionCustomContainerConfigArgsDict(TypedDict):
-        acceleration_info: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgsDict']]
-        """
-        (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
-        """
-        acceleration_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
-        """
-        acr_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
-        """
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Container startup parameters.
-        """
-        entrypoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Container start command.
-        """
-        health_check_config: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgsDict']]
-        """
-        Function custom health check configuration See `health_check_config` below.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The container Image address.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The listening port of the HTTP Server when the custom container runs.
-        """
-        resolved_image_uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
-        """
-elif False:
-    V3FunctionCustomContainerConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomContainerConfigArgsDict(TypedDict):
+    acceleration_info: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgsDict']]
+    """
+    (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
+    """
+    acceleration_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+    """
+    acr_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Container startup parameters.
+    """
+    entrypoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Container start command.
+    """
+    health_check_config: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgsDict']]
+    """
+    Function custom health check configuration See `health_check_config` below.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The container Image address.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The listening port of the HTTP Server when the custom container runs.
+    """
+    resolved_image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+    """
 
 @pulumi.input_type
 class V3FunctionCustomContainerConfigArgs:
@@ -2653,14 +2540,11 @@ class V3FunctionCustomContainerConfigArgs:
         pulumi.set(self, "resolved_image_uri", value)
 
 
-if not MYPY:
-    class V3FunctionCustomContainerConfigAccelerationInfoArgsDict(TypedDict):
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Image Acceleration Status (Deprecated)
-        """
-elif False:
-    V3FunctionCustomContainerConfigAccelerationInfoArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomContainerConfigAccelerationInfoArgsDict(TypedDict):
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Image Acceleration Status (Deprecated)
+    """
 
 @pulumi.input_type
 class V3FunctionCustomContainerConfigAccelerationInfoArgs:
@@ -2689,16 +2573,13 @@ class V3FunctionCustomContainerConfigAccelerationInfoArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class V3FunctionCustomContainerConfigHealthCheckConfigArgsDict(TypedDict):
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        http_get_url: NotRequired[pulumi.Input[_builtins.str]]
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    V3FunctionCustomContainerConfigHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomContainerConfigHealthCheckConfigArgsDict(TypedDict):
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    http_get_url: NotRequired[pulumi.Input[_builtins.str]]
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class V3FunctionCustomContainerConfigHealthCheckConfigArgs:
@@ -2777,22 +2658,19 @@ class V3FunctionCustomContainerConfigHealthCheckConfigArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class V3FunctionCustomDnsArgsDict(TypedDict):
-        dns_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgsDict']]]]
-        """
-        List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
-        """
-        name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP Address List of DNS servers
-        """
-        searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        DNS search domain list
-        """
-elif False:
-    V3FunctionCustomDnsArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomDnsArgsDict(TypedDict):
+    dns_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgsDict']]]]
+    """
+    List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+    """
+    name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP Address List of DNS servers
+    """
+    searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    DNS search domain list
+    """
 
 @pulumi.input_type
 class V3FunctionCustomDnsArgs:
@@ -2849,18 +2727,15 @@ class V3FunctionCustomDnsArgs:
         pulumi.set(self, "searches", value)
 
 
-if not MYPY:
-    class V3FunctionCustomDnsDnsOptionArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configuration Item Name
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configuration Item Value
-        """
-elif False:
-    V3FunctionCustomDnsDnsOptionArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomDnsDnsOptionArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configuration Item Name
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configuration Item Value
+    """
 
 @pulumi.input_type
 class V3FunctionCustomDnsDnsOptionArgs:
@@ -2901,26 +2776,23 @@ class V3FunctionCustomDnsDnsOptionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class V3FunctionCustomRuntimeConfigArgsDict(TypedDict):
-        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Instance startup parameters.
-        """
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Instance start command.
-        """
-        health_check_config: NotRequired[pulumi.Input['V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict']]
-        """
-        Function custom health check configuration. See `health_check_config` below.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The listening port of the HTTP Server.
-        """
-elif False:
-    V3FunctionCustomRuntimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomRuntimeConfigArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Instance startup parameters.
+    """
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Instance start command.
+    """
+    health_check_config: NotRequired[pulumi.Input['V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict']]
+    """
+    Function custom health check configuration. See `health_check_config` below.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The listening port of the HTTP Server.
+    """
 
 @pulumi.input_type
 class V3FunctionCustomRuntimeConfigArgs:
@@ -2993,16 +2865,13 @@ class V3FunctionCustomRuntimeConfigArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict(TypedDict):
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        http_get_url: NotRequired[pulumi.Input[_builtins.str]]
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict(TypedDict):
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    http_get_url: NotRequired[pulumi.Input[_builtins.str]]
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class V3FunctionCustomRuntimeConfigHealthCheckConfigArgs:
@@ -3081,21 +2950,18 @@ class V3FunctionCustomRuntimeConfigHealthCheckConfigArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class V3FunctionGpuConfigArgsDict(TypedDict):
-        gpu_memory_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        GPU memory specification, unit: MB, multiple of 1024MB
-        """
-        gpu_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        GPU card architecture.
-        - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-        - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-        - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
-        """
-elif False:
-    V3FunctionGpuConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionGpuConfigArgsDict(TypedDict):
+    gpu_memory_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    GPU memory specification, unit: MB, multiple of 1024MB
+    """
+    gpu_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GPU card architecture.
+    - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+    - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+    - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+    """
 
 @pulumi.input_type
 class V3FunctionGpuConfigArgs:
@@ -3142,18 +3008,15 @@ class V3FunctionGpuConfigArgs:
         pulumi.set(self, "gpu_type", value)
 
 
-if not MYPY:
-    class V3FunctionInstanceLifecycleConfigArgsDict(TypedDict):
-        initializer: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgsDict']]
-        """
-        Initializer handler method configuration See `initializer` below.
-        """
-        pre_stop: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgsDict']]
-        """
-        PreStop handler method configuration See `pre_stop` below.
-        """
-elif False:
-    V3FunctionInstanceLifecycleConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionInstanceLifecycleConfigArgsDict(TypedDict):
+    initializer: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgsDict']]
+    """
+    Initializer handler method configuration See `initializer` below.
+    """
+    pre_stop: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgsDict']]
+    """
+    PreStop handler method configuration See `pre_stop` below.
+    """
 
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigArgs:
@@ -3194,19 +3057,16 @@ class V3FunctionInstanceLifecycleConfigArgs:
         pulumi.set(self, "pre_stop", value)
 
 
-if not MYPY:
-    class V3FunctionInstanceLifecycleConfigInitializerArgsDict(TypedDict):
-        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        handler: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Function Handler: the call entry for the function compute system to run your function.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum running time of the function, in seconds.
-        """
-elif False:
-    V3FunctionInstanceLifecycleConfigInitializerArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionInstanceLifecycleConfigInitializerArgsDict(TypedDict):
+    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    handler: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Function Handler: the call entry for the function compute system to run your function.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum running time of the function, in seconds.
+    """
 
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigInitializerArgs:
@@ -3259,18 +3119,15 @@ class V3FunctionInstanceLifecycleConfigInitializerArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class V3FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
-        handler: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Function Handler: the call entry for the function compute system to run your function.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum running time of the function, in seconds.
-        """
-elif False:
-    V3FunctionInstanceLifecycleConfigPreStopArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
+    handler: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Function Handler: the call entry for the function compute system to run your function.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum running time of the function, in seconds.
+    """
 
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigPreStopArgs:
@@ -3311,22 +3168,19 @@ class V3FunctionInstanceLifecycleConfigPreStopArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class V3FunctionInvocationRestrictionArgsDict(TypedDict):
-        disable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether invocation is disabled
-        """
-        last_modified_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Last time the function was Updated
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Disable Reason
-        """
-elif False:
-    V3FunctionInvocationRestrictionArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionInvocationRestrictionArgsDict(TypedDict):
+    disable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether invocation is disabled
+    """
+    last_modified_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Last time the function was Updated
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Disable Reason
+    """
 
 @pulumi.input_type
 class V3FunctionInvocationRestrictionArgs:
@@ -3383,30 +3237,27 @@ class V3FunctionInvocationRestrictionArgs:
         pulumi.set(self, "reason", value)
 
 
-if not MYPY:
-    class V3FunctionLogConfigArgsDict(TypedDict):
-        enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
-        """
-        enable_request_metrics: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
-        """
-        log_begin_rule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Log Line First Matching Rules
-        """
-        logstore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Logstore name of log service.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the log service Project.
-        """
-elif False:
-    V3FunctionLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionLogConfigArgsDict(TypedDict):
+    enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+    """
+    enable_request_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+    """
+    log_begin_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Log Line First Matching Rules
+    """
+    logstore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Logstore name of log service.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the log service Project.
+    """
 
 @pulumi.input_type
 class V3FunctionLogConfigArgs:
@@ -3495,22 +3346,19 @@ class V3FunctionLogConfigArgs:
         pulumi.set(self, "project", value)
 
 
-if not MYPY:
-    class V3FunctionNasConfigArgsDict(TypedDict):
-        group_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Group ID
-        """
-        mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgsDict']]]]
-        """
-        Mount point list See `mount_points` below.
-        """
-        user_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Account ID
-        """
-elif False:
-    V3FunctionNasConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionNasConfigArgsDict(TypedDict):
+    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Group ID
+    """
+    mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgsDict']]]]
+    """
+    Mount point list See `mount_points` below.
+    """
+    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Account ID
+    """
 
 @pulumi.input_type
 class V3FunctionNasConfigArgs:
@@ -3567,19 +3415,16 @@ class V3FunctionNasConfigArgs:
         pulumi.set(self, "user_id", value)
 
 
-if not MYPY:
-    class V3FunctionNasConfigMountPointArgsDict(TypedDict):
-        enable_tls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
-        """
-        mount_dir: NotRequired[pulumi.Input[_builtins.str]]
-        server_addr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        NAS server address
-        """
-elif False:
-    V3FunctionNasConfigMountPointArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionNasConfigMountPointArgsDict(TypedDict):
+    enable_tls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+    """
+    mount_dir: NotRequired[pulumi.Input[_builtins.str]]
+    server_addr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    NAS server address
+    """
 
 @pulumi.input_type
 class V3FunctionNasConfigMountPointArgs:
@@ -3632,14 +3477,11 @@ class V3FunctionNasConfigMountPointArgs:
         pulumi.set(self, "server_addr", value)
 
 
-if not MYPY:
-    class V3FunctionOssMountConfigArgsDict(TypedDict):
-        mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgsDict']]]]
-        """
-        OSS mount point list See `mount_points` below.
-        """
-elif False:
-    V3FunctionOssMountConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionOssMountConfigArgsDict(TypedDict):
+    mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgsDict']]]]
+    """
+    OSS mount point list See `mount_points` below.
+    """
 
 @pulumi.input_type
 class V3FunctionOssMountConfigArgs:
@@ -3664,27 +3506,24 @@ class V3FunctionOssMountConfigArgs:
         pulumi.set(self, "mount_points", value)
 
 
-if not MYPY:
-    class V3FunctionOssMountConfigMountPointArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OSS Bucket name
-        """
-        bucket_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path of the mounted OSS Bucket
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OSS access endpoint
-        """
-        mount_dir: NotRequired[pulumi.Input[_builtins.str]]
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Read-only
-        """
-elif False:
-    V3FunctionOssMountConfigMountPointArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionOssMountConfigMountPointArgsDict(TypedDict):
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OSS Bucket name
+    """
+    bucket_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path of the mounted OSS Bucket
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OSS access endpoint
+    """
+    mount_dir: NotRequired[pulumi.Input[_builtins.str]]
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Read-only
+    """
 
 @pulumi.input_type
 class V3FunctionOssMountConfigMountPointArgs:
@@ -3769,18 +3608,15 @@ class V3FunctionOssMountConfigMountPointArgs:
         pulumi.set(self, "read_only", value)
 
 
-if not MYPY:
-    class V3FunctionTracingConfigArgsDict(TypedDict):
-        params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tracing parameters
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tracing protocol type. Currently, only Jaeger is supported.
-        """
-elif False:
-    V3FunctionTracingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionTracingConfigArgsDict(TypedDict):
+    params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tracing parameters
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tracing protocol type. Currently, only Jaeger is supported.
+    """
 
 @pulumi.input_type
 class V3FunctionTracingConfigArgs:
@@ -3821,22 +3657,19 @@ class V3FunctionTracingConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class V3FunctionVpcConfigArgsDict(TypedDict):
-        security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Security group ID
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC network ID
-        """
-        vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Switch List
-        """
-elif False:
-    V3FunctionVpcConfigArgsDict: TypeAlias = Mapping[str, Any]
+class V3FunctionVpcConfigArgsDict(TypedDict):
+    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Security group ID
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC network ID
+    """
+    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Switch List
+    """
 
 @pulumi.input_type
 class V3FunctionVpcConfigArgs:
@@ -3893,26 +3726,23 @@ class V3FunctionVpcConfigArgs:
         pulumi.set(self, "vswitch_ids", value)
 
 
-if not MYPY:
-    class V3LayerVersionCodeArgsDict(TypedDict):
-        checksum: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
-        """
-        oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the OSS Bucket where the user stores the Layer Code ZIP package
-        """
-        oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the OSS Object where the user stores the Layer Code ZIP package
-        """
-        zip_file: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Base 64 encoding of Layer Code ZIP package
-        """
-elif False:
-    V3LayerVersionCodeArgsDict: TypeAlias = Mapping[str, Any]
+class V3LayerVersionCodeArgsDict(TypedDict):
+    checksum: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+    """
+    oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the OSS Bucket where the user stores the Layer Code ZIP package
+    """
+    oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the OSS Object where the user stores the Layer Code ZIP package
+    """
+    zip_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Base 64 encoding of Layer Code ZIP package
+    """
 
 @pulumi.input_type
 class V3LayerVersionCodeArgs:
@@ -3985,34 +3815,31 @@ class V3LayerVersionCodeArgs:
         pulumi.set(self, "zip_file", value)
 
 
-if not MYPY:
-    class V3ProvisionConfigScheduledActionArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Policy expiration time
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Policy Name
-        """
-        schedule_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timing Configuration
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Policy effective time
-        """
-        target: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of reserved target resources
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time zone.
-        """
-elif False:
-    V3ProvisionConfigScheduledActionArgsDict: TypeAlias = Mapping[str, Any]
+class V3ProvisionConfigScheduledActionArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Policy expiration time
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Policy Name
+    """
+    schedule_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timing Configuration
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Policy effective time
+    """
+    target: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of reserved target resources
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time zone.
+    """
 
 @pulumi.input_type
 class V3ProvisionConfigScheduledActionArgs:
@@ -4117,42 +3944,39 @@ class V3ProvisionConfigScheduledActionArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class V3ProvisionConfigTargetTrackingPolicyArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Policy expiration time
-        """
-        max_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum value of expansion
-        """
-        metric_target: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Tracking value of the indicator
-        """
-        metric_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
-        """
-        min_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum Shrinkage
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Policy Name
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Policy Effective Time
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time zone.
-        """
-elif False:
-    V3ProvisionConfigTargetTrackingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class V3ProvisionConfigTargetTrackingPolicyArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Policy expiration time
+    """
+    max_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum value of expansion
+    """
+    metric_target: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Tracking value of the indicator
+    """
+    metric_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
+    """
+    min_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum Shrinkage
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Policy Name
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Policy Effective Time
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time zone.
+    """
 
 @pulumi.input_type
 class V3ProvisionConfigTargetTrackingPolicyArgs:
@@ -4289,18 +4113,15 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class V3TriggerHttpTriggerArgsDict(TypedDict):
-        url_internet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
-        """
-        url_intranet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
-        """
-elif False:
-    V3TriggerHttpTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class V3TriggerHttpTriggerArgsDict(TypedDict):
+    url_internet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+    """
+    url_intranet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+    """
 
 @pulumi.input_type
 class V3TriggerHttpTriggerArgs:

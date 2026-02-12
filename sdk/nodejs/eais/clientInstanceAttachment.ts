@@ -5,6 +5,92 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a EAIS Client Instance Attachment resource.
+ *
+ * Bind an ECS or ECI instance.
+ *
+ * For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
+ *
+ * > **NOTE:** Available since v1.246.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const zone = config.get("zone") || "cn-hangzhou-i";
+ * const ecsImage = config.get("ecsImage") || "ubuntu_20_04_x64_20G_alibase_20230316.vhd";
+ * const ecsType = config.get("ecsType") || "ecs.g7.large";
+ * const region = config.get("region") || "cn-hangzhou";
+ * const category = config.get("category") || "ei";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const example = alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: "cn-hangzhou-i",
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * });
+ * const exampleGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     owners: "system",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: "cn-hangzhou-i",
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     securityGroupName: name,
+ *     description: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.ecs.Instance("example", {
+ *     availabilityZone: "cn-hangzhou-i",
+ *     vswitchId: exampleSwitch.id,
+ *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
+ *     instanceType: example.then(example => example.instanceTypes?.[0]?.id),
+ *     systemDiskCategory: "cloud_efficiency",
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 5,
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     instanceName: name,
+ *     userData: "echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
+ * });
+ * const eais = new alicloud.eais.Instance("eais", {
+ *     instanceName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     securityGroupId: exampleSecurityGroup.id,
+ *     instanceType: "eais.ei-a6.2xlarge",
+ *     category: "ei",
+ * });
+ * const defaultClientInstanceAttachment = new alicloud.eais.ClientInstanceAttachment("default", {
+ *     instanceId: eais.id,
+ *     clientInstanceId: exampleInstance.id,
+ *     category: "ei",
+ *     status: "Bound",
+ *     eiInstanceType: "eais.ei-a6.2xlarge",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.eais.ClientInstanceAttachment` or removing it from your configuration
+ *
+ * The `alicloud.eais.ClientInstanceAttachment` resource allows you to manage  `category = "eais"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * EAIS Client Instance Attachment can be imported using the id, e.g.

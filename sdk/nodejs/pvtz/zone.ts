@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Private Zone resource.
+ *
+ * > **NOTE:** Terraform will auto Create a Private Zone while it uses `alicloud.pvtz.Zone` to build a Private Zone resource.
+ *
+ * > **NOTE:** Available since v1.13.0.
+ *
  * ## Example Usage
  *
  * Basic Usage

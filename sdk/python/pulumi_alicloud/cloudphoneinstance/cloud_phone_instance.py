@@ -106,6 +106,51 @@ class CloudPhoneInstance(pulumi.CustomResource):
                  android_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Cloud Phone Instance resource.
+
+        cloud phone instance.
+
+        For information about Cloud Phone Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/DescribeAndroidInstances).
+
+        > **NOTE:** Available since v1.243.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultj_z1gi0 = alicloud.cloudphone.Policy("defaultjZ1gi0")
+        default_yh_ml_to = alicloud.cloudphoneinstance.Group("defaultYHMlTO",
+            instance_group_spec="acp.basic.small",
+            policy_group_id=defaultj_z1gi0.id,
+            instance_group_name="AutoCreateGroupName",
+            period=1,
+            number_of_instances=1,
+            charge_type="PostPaid",
+            image_id="imgc-075cllfeuazh03tg9",
+            period_unit="Hour",
+            auto_renew=False,
+            amount=1,
+            auto_pay=False,
+            gpu_acceleration=False)
+        default = alicloud.cloudphoneinstance.CloudPhoneInstance("default",
+            android_instance_group_id=default_yh_ml_to.id,
+            android_instance_name="CreateInstanceName")
+        ```
+
+        ### Deleting `cloudphoneinstance.CloudPhoneInstance` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudphoneinstance.CloudPhoneInstance`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Phone Instance can be imported using the id, e.g.
@@ -126,6 +171,51 @@ class CloudPhoneInstance(pulumi.CustomResource):
                  args: Optional[CloudPhoneInstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Cloud Phone Instance resource.
+
+        cloud phone instance.
+
+        For information about Cloud Phone Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/DescribeAndroidInstances).
+
+        > **NOTE:** Available since v1.243.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultj_z1gi0 = alicloud.cloudphone.Policy("defaultjZ1gi0")
+        default_yh_ml_to = alicloud.cloudphoneinstance.Group("defaultYHMlTO",
+            instance_group_spec="acp.basic.small",
+            policy_group_id=defaultj_z1gi0.id,
+            instance_group_name="AutoCreateGroupName",
+            period=1,
+            number_of_instances=1,
+            charge_type="PostPaid",
+            image_id="imgc-075cllfeuazh03tg9",
+            period_unit="Hour",
+            auto_renew=False,
+            amount=1,
+            auto_pay=False,
+            gpu_acceleration=False)
+        default = alicloud.cloudphoneinstance.CloudPhoneInstance("default",
+            android_instance_group_id=default_yh_ml_to.id,
+            android_instance_name="CreateInstanceName")
+        ```
+
+        ### Deleting `cloudphoneinstance.CloudPhoneInstance` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudphoneinstance.CloudPhoneInstance`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Phone Instance can be imported using the id, e.g.

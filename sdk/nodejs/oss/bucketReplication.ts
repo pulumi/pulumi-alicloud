@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  * Oss Bucket Replication can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:oss/bucketReplication:BucketReplication example 
+ * $ terraform import alicloud_oss_bucket_replication.example
  * ```
  */
 export class BucketReplication extends pulumi.CustomResource {

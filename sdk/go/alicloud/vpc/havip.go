@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a HaVip resource, see [What is HAVIP](https://www.alibabacloud.com/help/zh/vpc/developer-reference/api-createhavip).
+//
+// > **NOTE:** Terraform will auto build havip instance  while it uses `vpc.HAVip` to build a havip resource.
+//
+// > **NOTE:** Available since v1.18.0.
+//
+// > **DEPRECATED:**  This resource has been renamed to vpc.HaVipv2 from version 1.205.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

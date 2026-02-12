@@ -22,6 +22,9 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         public readonly string DhcpOptionsSetDescription;
+        /// <summary>
+        /// The resource ID in terraform of Dhcp Options Set.
+        /// </summary>
         public readonly string DhcpOptionsSetId;
         /// <summary>
         /// The root domain, for example, example.com. After a DHCP options set is associated with a
@@ -40,6 +43,9 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// addresses must be separated with commas (,).
         /// </summary>
         public readonly string DomainNameServers;
+        /// <summary>
+        /// The resource ID in terraform of Dhcp Options Set.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the account to which the DHCP options set belongs.

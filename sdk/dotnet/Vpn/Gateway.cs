@@ -10,6 +10,81 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// Provides a VPN gateway resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build vpn instance  while it uses `alicloud.vpn.Gateway` to build a vpn resource.
+    /// 
+    /// &gt; Currently International-Site account can open `PostPaid` VPN gateway and China-Site account can open `PrePaid` VPN gateway.
+    /// 
+    /// For information about VPN gateway and how to use it, see [What is VPN gateway](https://www.alibabacloud.com/help/en/doc-detail/120365.html).
+    /// 
+    /// &gt; **NOTE:** Available since v1.13.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// [IPsec-VPN connections support the dual-tunnel mode](https://www.alibabacloud.com/help/en/vpn/product-overview/ipsec-vpn-connections-support-the-dual-tunnel-mode)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var spec = config.Get("spec") ?? "20";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var default0 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var default1 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.Vpn.Gateway("default", new()
+    ///     {
+    ///         VpnType = "Normal",
+    ///         VpnGatewayName = name,
+    ///         VswitchId = default0.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         DisasterRecoveryVswitchId = default1.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         AutoPay = true,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         NetworkType = "public",
+    ///         PaymentType = "Subscription",
+    ///         EnableIpsec = true,
+    ///         Bandwidth = spec,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.vpn.Gateway` or removing it from your configuration
+    /// 
+    /// The `alicloud.vpn.Gateway` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// VPN gateway can be imported using the id, e.g.

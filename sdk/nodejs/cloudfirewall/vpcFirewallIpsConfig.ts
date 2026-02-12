@@ -5,6 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Cloud Firewall Vpc Firewall Ips Config resource.
+ *
+ * IP configuration of VPC firewall.
+ *
+ * For information about Cloud Firewall Vpc Firewall Ips Config and how to use it, see [What is Vpc Firewall Ips Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallDefaultIPSConfig).
+ *
+ * > **NOTE:** Available since v1.269.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cloudfirewall.VpcFirewallIpsConfig("default", {
+ *     enableAllPatch: 0,
+ *     basicRules: 0,
+ *     runMode: 0,
+ *     vpcFirewallId: "vfw-tr-bb81adb2d8184bc290a5",
+ *     ruleClass: "0",
+ *     lang: "cn-shenzhen",
+ *     memberUid: "1094685339207557",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.cloudfirewall.VpcFirewallIpsConfig` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.VpcFirewallIpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Firewall Vpc Firewall Ips Config can be imported using the id, e.g.

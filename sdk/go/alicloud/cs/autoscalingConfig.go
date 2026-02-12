@@ -34,6 +34,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"

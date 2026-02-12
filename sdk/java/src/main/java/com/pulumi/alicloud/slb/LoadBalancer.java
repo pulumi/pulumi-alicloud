@@ -224,9 +224,21 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
+    /**
+     * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     * 
+     */
     @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerName;
 
+    /**
+     * @return The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     * 
+     */
     public Output<String> loadBalancerName() {
         return this.loadBalancerName;
     }

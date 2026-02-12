@@ -5,6 +5,92 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
+ *
+ * For information about GPDB Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifybackuppolicy).
+ *
+ * > **NOTE:** Available since v1.211.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.gpdb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *             vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *             cidrBlock: defaultGetNetworks.then(defaultGetNetworks => std.cidrsubnet({
+ *                 input: defaultGetNetworks.vpcs?.[0]?.cidrBlock,
+ *                 newbits: 8,
+ *                 netnum: 8,
+ *             })).then(invoke => invoke.result),
+ *             zoneId: _default.then(_default => _default.ids?.[0]),
+ *             vswitchName: name,
+ *         }));
+ *     }
+ * });
+ * const vswitchId = pulumi.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, std.concat({
+ *     input: [
+ *         vswitch.map(__item => __item.id),
+ *         [""],
+ *     ],
+ * })]).apply(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
+ * const defaultInstance = new alicloud.gpdb.Instance("default", {
+ *     dbInstanceCategory: "HighAvailability",
+ *     dbInstanceClass: "gpdb.group.segsdx1",
+ *     dbInstanceMode: "StorageElastic",
+ *     description: name,
+ *     engine: "gpdb",
+ *     engineVersion: "6.0",
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
+ *     instanceNetworkType: "VPC",
+ *     instanceSpec: "2C16G",
+ *     paymentType: "PayAsYouGo",
+ *     segStorageType: "cloud_essd",
+ *     segNodeNum: 4,
+ *     storageSize: 50,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vswitchId: vswitchId,
+ *     ipWhitelists: [{
+ *         securityIpList: "127.0.0.1",
+ *     }],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "acceptance test",
+ *     },
+ * });
+ * const defaultBackupPolicy = new alicloud.gpdb.BackupPolicy("default", {
+ *     dbInstanceId: defaultInstance.id,
+ *     recoveryPointPeriod: "1",
+ *     enableRecoveryPoint: true,
+ *     preferredBackupPeriod: "Wednesday",
+ *     preferredBackupTime: "15:00Z-16:00Z",
+ *     backupRetentionPeriod: 7,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.gpdb.BackupPolicy` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.gpdb.BackupPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * GPDB Backup Policy can be imported using the id, e.g.

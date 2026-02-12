@@ -213,6 +213,8 @@ class BandwidthLimit(pulumi.CustomResource):
         $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
         ```
 
+        ->**NOTE:** The sequence of the region_id_1 and region_id_2 makes no difference when import. But the in the id of the resource, they are sorted lexicographically.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
@@ -296,6 +298,8 @@ class BandwidthLimit(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
         ```
+
+        ->**NOTE:** The sequence of the region_id_1 and region_id_2 makes no difference when import. But the in the id of the resource, they are sorted lexicographically.
 
         :param str resource_name: The name of the resource.
         :param BandwidthLimitArgs args: The arguments to use to populate this resource's properties.

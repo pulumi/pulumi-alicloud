@@ -46,9 +46,21 @@ public final class ValueAddedServiceState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.paymentType);
     }
 
+    /**
+     * Prepaid cycle. Unit for year
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return Prepaid cycle. Unit for year
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -217,11 +229,27 @@ public final class ValueAddedServiceState extends com.pulumi.resources.ResourceA
             return paymentType(Output.of(paymentType));
         }
 
+        /**
+         * @param period Prepaid cycle. Unit for year
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period Prepaid cycle. Unit for year
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }

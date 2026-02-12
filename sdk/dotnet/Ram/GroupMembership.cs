@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// Provides a RAM Group membership resource.
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated since version `1.267.0`. Replace by `alicloud.ram.UserGroupAttachment`.
+    /// 
+    /// &gt; **WARNING:** When you delete this resource, any other users in the group will also be deleted—even if those users were not added to the group via this Terraform resource. Therefore, it is strongly recommended to use `alicloud.ram.UserGroupAttachment` instead of this resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

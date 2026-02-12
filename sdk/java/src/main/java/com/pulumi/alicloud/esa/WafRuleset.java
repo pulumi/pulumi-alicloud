@@ -139,9 +139,21 @@ public class WafRuleset extends com.pulumi.resources.CustomResource {
     public Output<String> siteId() {
         return this.siteId;
     }
+    /**
+     * The site version.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
+    /**
+     * @return The site version.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<Integer>> siteVersion() {
         return Codegen.optional(this.siteVersion);
     }

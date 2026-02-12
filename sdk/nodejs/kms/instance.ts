@@ -293,6 +293,14 @@ export class Instance extends pulumi.CustomResource {
      * - PayAsYouGo: the pay-as-you-go billing method.
      */
     declare public readonly paymentType: pulumi.Output<string>;
+    /**
+     * The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     *
+     * > **NOTE:**   This parameter is required if you create a subscription instance.
+     *
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * KMS Instance commodity type (software/hardware)
@@ -312,6 +320,13 @@ export class Instance extends pulumi.CustomResource {
      * - NotRenewal: The instance is not renewed.
      */
     declare public readonly renewStatus: pulumi.Output<string>;
+    /**
+     * Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly renewalPeriodUnit: pulumi.Output<string | undefined>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -471,6 +486,14 @@ export interface InstanceState {
      * - PayAsYouGo: the pay-as-you-go billing method.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     *
+     * > **NOTE:**   This parameter is required if you create a subscription instance.
+     *
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     period?: pulumi.Input<number>;
     /**
      * KMS Instance commodity type (software/hardware)
@@ -490,6 +513,13 @@ export interface InstanceState {
      * - NotRenewal: The instance is not renewed.
      */
     renewStatus?: pulumi.Input<string>;
+    /**
+     * Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -562,6 +592,14 @@ export interface InstanceArgs {
      * - PayAsYouGo: the pay-as-you-go billing method.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     *
+     * > **NOTE:**   This parameter is required if you create a subscription instance.
+     *
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     period?: pulumi.Input<number>;
     /**
      * KMS Instance commodity type (software/hardware)
@@ -581,6 +619,13 @@ export interface InstanceArgs {
      * - NotRenewal: The instance is not renewed.
      */
     renewStatus?: pulumi.Input<string>;
+    /**
+     * Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.

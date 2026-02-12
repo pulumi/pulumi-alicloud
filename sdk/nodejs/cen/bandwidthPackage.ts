@@ -5,6 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
+ *
+ * For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenbandwidthpackage).
+ *
+ * > **NOTE:** Available since v1.18.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.cen.BandwidthPackage("example", {
+ *     bandwidth: 5,
+ *     cenBandwidthPackageName: "tf_example",
+ *     geographicRegionAId: "China",
+ *     geographicRegionBId: "China",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.cen.BandwidthPackage` or removing it from your configuration
+ *
+ * The `alicloud.cen.BandwidthPackage` resource allows you to manage `paymentType = "PrePaid"` bandwidth package, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your statefile and management, but will not destroy the Bandwidth Package.
+ * You can resume managing the subscription bandwidth package via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * CEN bandwidth package can be imported using the id, e.g.

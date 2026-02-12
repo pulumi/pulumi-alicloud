@@ -80,9 +80,16 @@ export class EcsKeyPair extends pulumi.CustomResource {
      */
     declare public readonly keyFile: pulumi.Output<string | undefined>;
     /**
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     *
+     * > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     declare public readonly keyName: pulumi.Output<string>;
+    /**
+     * The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     */
     declare public readonly keyNamePrefix: pulumi.Output<string | undefined>;
     /**
      * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -157,9 +164,16 @@ export interface EcsKeyPairState {
      */
     keyFile?: pulumi.Input<string>;
     /**
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     *
+     * > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
+    /**
+     * The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     */
     keyNamePrefix?: pulumi.Input<string>;
     /**
      * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -188,9 +202,16 @@ export interface EcsKeyPairArgs {
      */
     keyFile?: pulumi.Input<string>;
     /**
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     *
+     * > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
+    /**
+     * The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     */
     keyNamePrefix?: pulumi.Input<string>;
     /**
      * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).

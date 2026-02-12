@@ -7,6 +7,47 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Governance Account resource.
+ *
+ * Member account created by the Cloud Governance Center account factory.
+ *
+ * For information about Governance Account and how to use it, see [What is Account](https://next.api.aliyun.com/document/governance/2021-01-20/EnrollAccount).
+ *
+ * > **NOTE:** Available since v1.228.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const _default = alicloud.getAccount({});
+ * const defaultGetBaselines = alicloud.governance.getBaselines({});
+ * const defaultGetFolders = alicloud.resourcemanager.getFolders({});
+ * const defaultAccount = new alicloud.governance.Account("default", {
+ *     accountNamePrefix: `${name}-${defaultInteger.result}`,
+ *     folderId: defaultGetFolders.then(defaultGetFolders => defaultGetFolders.ids?.[0]),
+ *     baselineId: defaultGetBaselines.then(defaultGetBaselines => defaultGetBaselines.ids?.[0]),
+ *     payerAccountId: _default.then(_default => _default.id),
+ *     displayName: `${name}-${defaultInteger.result}`,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.governance.Account` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.governance.Account`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Governance Account can be imported using the id, e.g.

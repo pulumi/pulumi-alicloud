@@ -11,12 +11,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Firewall Ai Traffic Analysis Status resource.
+//
+// AI traffic analysis.
+//
+// For information about Cloud Firewall Ai Traffic Analysis Status and how to use it, see [What is Ai Traffic Analysis Status](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/UpdateAITrafficAnalysisStatus).
+//
+// > **NOTE:** Available since v1.263.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudfirewall.NewAiTrafficAnalysisStatus(ctx, "default", &cloudfirewall.AiTrafficAnalysisStatusArgs{
+//				Status: pulumi.String("Open"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudfirewall.AiTrafficAnalysisStatus` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudfirewall.AiTrafficAnalysisStatus`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Ai Traffic Analysis Status can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus example
+// $ terraform import alicloud_cloud_firewall_ai_traffic_analysis_status.example
 // ```
 type AiTrafficAnalysisStatus struct {
 	pulumi.CustomResourceState

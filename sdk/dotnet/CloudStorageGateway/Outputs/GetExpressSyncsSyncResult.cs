@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// The name of the Express Sync.
         /// </summary>
         public readonly string ExpressSyncName;
+        /// <summary>
+        /// The resource ID in terraform of Express Sync. The value is formate as &lt;express_sync_id&gt;.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.

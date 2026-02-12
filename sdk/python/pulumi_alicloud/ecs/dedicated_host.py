@@ -717,6 +717,55 @@ class DedicatedHost(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
+
+        > **NOTE:** Available since v1.91.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.DedicatedHost("default",
+            dedicated_host_type="ddh.g6",
+            tags={
+                "Create": "Terraform",
+                "For": "DDH",
+            },
+            description="From_Terraform",
+            dedicated_host_name="dedicated_host_name")
+        ```
+
+        Create Prepaid DDH
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.DedicatedHost("example",
+            dedicated_host_type="ddh.g5",
+            tags={
+                "Create": "Terraform",
+                "For": "DDH",
+            },
+            description="terraform-example",
+            dedicated_host_name="terraform-example",
+            payment_type="PrePaid",
+            expired_time="1",
+            sale_cycle="Month")
+        ```
+        ### Deleting ecs.DedicatedHost or removing it from your configuration
+
+        The ecs.DedicatedHost resource allows you to manage payment_type = "PrePaid" dedicated host, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the Dedicated Host.
+        You can resume managing the subscription dedicated host via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ecs dedicated host can be imported using the id, e.g.
@@ -755,6 +804,55 @@ class DedicatedHost(pulumi.CustomResource):
                  args: DedicatedHostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
+
+        > **NOTE:** Available since v1.91.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.DedicatedHost("default",
+            dedicated_host_type="ddh.g6",
+            tags={
+                "Create": "Terraform",
+                "For": "DDH",
+            },
+            description="From_Terraform",
+            dedicated_host_name="dedicated_host_name")
+        ```
+
+        Create Prepaid DDH
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.DedicatedHost("example",
+            dedicated_host_type="ddh.g5",
+            tags={
+                "Create": "Terraform",
+                "For": "DDH",
+            },
+            description="terraform-example",
+            dedicated_host_name="terraform-example",
+            payment_type="PrePaid",
+            expired_time="1",
+            sale_cycle="Month")
+        ```
+        ### Deleting ecs.DedicatedHost or removing it from your configuration
+
+        The ecs.DedicatedHost resource allows you to manage payment_type = "PrePaid" dedicated host, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the Dedicated Host.
+        You can resume managing the subscription dedicated host via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ecs dedicated host can be imported using the id, e.g.

@@ -5638,7 +5638,8 @@ type GetTransitRouterVpcAttachmentsAttachment struct {
 	AutoPublishRouteEnabled bool `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	Id    string `pulumi:"id"`
+	// The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
+	Id string `pulumi:"id"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
 	// The resource type of the Transit Router VPC Attachment.
@@ -5677,7 +5678,8 @@ type GetTransitRouterVpcAttachmentsAttachmentArgs struct {
 	AutoPublishRouteEnabled pulumi.BoolInput `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	Id    pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The resource type of the Transit Router VPC Attachment.
@@ -5761,6 +5763,7 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) CenId() pulumi.StringOut
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.CenId }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }

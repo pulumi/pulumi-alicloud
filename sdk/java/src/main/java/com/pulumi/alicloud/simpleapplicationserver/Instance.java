@@ -17,6 +17,73 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Simple Application Server Instance resource.
+ * 
+ * For information about Simple Application Server Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/190440.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.135.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
+ * import com.pulumi.alicloud.simpleapplicationserver.Instance;
+ * import com.pulumi.alicloud.simpleapplicationserver.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+ *             .platform("Linux")
+ *             .build());
+ * 
+ *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+ *             .platform("Linux")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .paymentType("Subscription")
+ *             .planId(defaultGetServerPlans.plans()[0].id())
+ *             .instanceName(name)
+ *             .imageId(default_.images()[0].id())
+ *             .period(1)
+ *             .dataDiskSize(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.simpleapplicationserver.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.simpleapplicationserver.Instance` resource allows you to manage `paymentType = &#34;Subscription&#34;` instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the resource Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Simple Application Server Instance can be imported using the id, e.g.

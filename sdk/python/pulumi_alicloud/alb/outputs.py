@@ -3421,6 +3421,7 @@ class GetAclsAclAclEntryResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str description: Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
+        :param _builtins.str entry: The resource ID in terraform of Acl.
         :param _builtins.str status: The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
         """
         pulumi.set(__self__, "description", description)
@@ -3438,6 +3439,9 @@ class GetAclsAclAclEntryResult(dict):
     @_builtins.property
     @pulumi.getter
     def entry(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Acl.
+        """
         return pulumi.get(self, "entry")
 
     @_builtins.property

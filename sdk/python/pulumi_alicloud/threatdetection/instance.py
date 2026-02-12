@@ -1573,6 +1573,54 @@ class Instance(pulumi.CustomResource):
                  vul_switch: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Threat Detection Instance resource.
+
+        Cloud Security Center instance.
+
+        For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
+
+        > **NOTE:** Available since v1.199.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.Instance("default",
+            threat_analysis="10",
+            sas_sls_storage="10",
+            v_core="10",
+            sas_sc=False,
+            buy_number="10",
+            honeypot_switch="2",
+            payment_type="Subscription",
+            sas_sdk="10",
+            sas_anti_ransomware="10",
+            renewal_status="ManualRenewal",
+            period=1,
+            vul_switch="1",
+            rasp_count="1",
+            vul_count="20",
+            version_code="level3",
+            sas_cspm="1000",
+            renewal_period_unit="M",
+            container_image_scan_new="100",
+            honeypot="20")
+        ```
+
+        ### Deleting `threatdetection.Instance` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.Instance`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Instance can be imported using the id, e.g.
@@ -1701,6 +1749,54 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Threat Detection Instance resource.
+
+        Cloud Security Center instance.
+
+        For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
+
+        > **NOTE:** Available since v1.199.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.Instance("default",
+            threat_analysis="10",
+            sas_sls_storage="10",
+            v_core="10",
+            sas_sc=False,
+            buy_number="10",
+            honeypot_switch="2",
+            payment_type="Subscription",
+            sas_sdk="10",
+            sas_anti_ransomware="10",
+            renewal_status="ManualRenewal",
+            period=1,
+            vul_switch="1",
+            rasp_count="1",
+            vul_count="20",
+            version_code="level3",
+            sas_cspm="1000",
+            renewal_period_unit="M",
+            container_image_scan_new="100",
+            honeypot="20")
+        ```
+
+        ### Deleting `threatdetection.Instance` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.Instance`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Instance can be imported using the id, e.g.

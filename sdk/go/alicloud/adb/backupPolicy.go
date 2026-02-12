@@ -12,6 +12,83 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-modifybackuppolicy) cluster backup policy resource and used to configure cluster backup policy.
+//
+// > **NOTE:** Available since v1.71.0.
+//
+// > Each DB cluster has a backup policy and it will be set default values when destroying the resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := adb.GetZones(ctx, &adb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vswitchId := defaultGetSwitches.Ids[0]
+//			cluster, err := adb.NewDBCluster(ctx, "cluster", &adb.DBClusterArgs{
+//				DbClusterCategory: pulumi.String("MixedStorage"),
+//				Mode:              pulumi.String("flexible"),
+//				ComputeResource:   pulumi.String("8Core32GB"),
+//				VswitchId:         pulumi.String(vswitchId),
+//				Description:       pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = adb.NewBackupPolicy(ctx, "default", &adb.BackupPolicyArgs{
+//				DbClusterId: cluster.ID(),
+//				PreferredBackupPeriods: pulumi.StringArray{
+//					pulumi.String("Tuesday"),
+//					pulumi.String("Wednesday"),
+//				},
+//				PreferredBackupTime: pulumi.String("10:00Z-11:00Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Removing adb.Cluster from your configuration
+//
+// The adb.BackupPolicy resource allows you to manage your adb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the adb Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ADB backup policy can be imported using the id or cluster id, e.g.

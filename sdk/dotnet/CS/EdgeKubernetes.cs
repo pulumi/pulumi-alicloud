@@ -300,6 +300,9 @@ namespace Pulumi.AliCloud.CS
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The kubernetes cluster name's prefix. It is conflict with `Name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
@@ -351,6 +354,9 @@ namespace Pulumi.AliCloud.CS
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `RetainResources`. There are several aspects to pay attention to when using `RetainResources` to retain resources. After configuring `RetainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        /// </summary>
         [Output("retainResources")]
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
@@ -639,6 +645,9 @@ namespace Pulumi.AliCloud.CS
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The kubernetes cluster name's prefix. It is conflict with `Name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
@@ -702,6 +711,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("retainResources")]
         private InputList<string>? _retainResources;
+
+        /// <summary>
+        /// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `RetainResources`. There are several aspects to pay attention to when using `RetainResources` to retain resources. After configuring `RetainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        /// </summary>
         public InputList<string> RetainResources
         {
             get => _retainResources ?? (_retainResources = new InputList<string>());
@@ -957,6 +970,9 @@ namespace Pulumi.AliCloud.CS
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The kubernetes cluster name's prefix. It is conflict with `Name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
@@ -1026,6 +1042,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("retainResources")]
         private InputList<string>? _retainResources;
+
+        /// <summary>
+        /// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `RetainResources`. There are several aspects to pay attention to when using `RetainResources` to retain resources. After configuring `RetainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        /// </summary>
         public InputList<string> RetainResources
         {
             get => _retainResources ?? (_retainResources = new InputList<string>());

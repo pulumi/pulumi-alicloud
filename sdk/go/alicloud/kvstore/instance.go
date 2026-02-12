@@ -11,6 +11,268 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides  Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstances-redis).
+//
+// > **NOTE:** Available since v1.14.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
+//				DbInstanceName:  pulumi.String(name),
+//				VswitchId:       defaultSwitch.ID(),
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ZoneId:          pulumi.String(defaultGetZones.Zones[0].Id),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				EngineVersion:   pulumi.String("5.0"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Config: pulumi.StringMap{
+//					"appendonly":             pulumi.String("yes"),
+//					"lazyfree-lazy-eviction": pulumi.String("yes"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Launching a PrePaid instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-prepaid"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{
+//				InstanceChargeType: pulumi.StringRef("PrePaid"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// PrePaid instance can not deleted and there suggests using an existing vpc and vswitch, like default vpc.
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				IsDefault: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				ZoneId: pulumi.StringRef(defaultGetZones.Zones[0].Id),
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
+//				DbInstanceName:  pulumi.String(name),
+//				VswitchId:       pulumi.String(defaultGetSwitches.Ids[0]),
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ZoneId:          pulumi.String(defaultGetZones.Zones[0].Id),
+//				SecondaryZoneId: pulumi.String(defaultGetZones.Zones[1].Id),
+//				InstanceClass:   pulumi.String("redis.master.large.default"),
+//				InstanceType:    pulumi.String("Redis"),
+//				EngineVersion:   pulumi.String("5.0"),
+//				PaymentType:     pulumi.String("PrePaid"),
+//				Period:          pulumi.String("12"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Config: pulumi.StringMap{
+//					"appendonly":             pulumi.String("no"),
+//					"lazyfree-lazy-eviction": pulumi.String("no"),
+//					"EvictionPolicy":         pulumi.String("volatile-lru"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Setting Private Connection String
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-with-connection"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{
+//				ProductType: pulumi.StringRef("OnECS"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
+//				DbInstanceName:    pulumi.String(name),
+//				VswitchId:         defaultSwitch.ID(),
+//				ResourceGroupId:   pulumi.String(_default.Ids[0]),
+//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
+//				SecondaryZoneId:   pulumi.String(defaultGetZones.Zones[1].Id),
+//				InstanceClass:     pulumi.String("redis.shard.small.ce"),
+//				InstanceType:      pulumi.String("Redis"),
+//				EngineVersion:     pulumi.String("7.0"),
+//				MaintainStartTime: pulumi.String("04:00Z"),
+//				MaintainEndTime:   pulumi.String("06:00Z"),
+//				BackupPeriods: pulumi.StringArray{
+//					pulumi.String("Wednesday"),
+//				},
+//				BackupTime:              pulumi.String("11:00Z-12:00Z"),
+//				PrivateConnectionPrefix: pulumi.String("exampleconnectionprefix"),
+//				PrivateConnectionPort:   pulumi.String("4011"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Config: pulumi.StringMap{
+//					"appendonly":             pulumi.String("yes"),
+//					"lazyfree-lazy-eviction": pulumi.String("yes"),
+//					"EvictionPolicy":         pulumi.String("volatile-lru"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `kvstore.Instance` or removing it from your configuration
+//
+// The `kvstore.Instance` resource allows you to manage `paymentType = "Prepaid"` db instance, but Terraform cannot destroy it.
+// From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
+// from your state file and management, but will not destroy the DB Instance.
+// You can resume managing the subscription db instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // KVStore instance can be imported using the id, e.g.

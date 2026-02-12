@@ -137,6 +137,38 @@ class AssetSelectionConfig(pulumi.CustomResource):
                  target_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Threat Detection Asset Selection Config resource.
+
+        Asset selection configuration.
+
+        For information about Threat Detection Asset Selection Config and how to use it, see [What is Asset Selection Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAssetSelectionConfig).
+
+        > **NOTE:** Available since v1.245.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.AssetSelectionConfig("default",
+            business_type="agentlesss_vul_white_1",
+            target_type="instance",
+            platform="all")
+        ```
+
+        ### Deleting `threatdetection.AssetSelectionConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.AssetSelectionConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Asset Selection Config can be imported using the id, e.g.
@@ -158,6 +190,38 @@ class AssetSelectionConfig(pulumi.CustomResource):
                  args: AssetSelectionConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Threat Detection Asset Selection Config resource.
+
+        Asset selection configuration.
+
+        For information about Threat Detection Asset Selection Config and how to use it, see [What is Asset Selection Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAssetSelectionConfig).
+
+        > **NOTE:** Available since v1.245.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.AssetSelectionConfig("default",
+            business_type="agentlesss_vul_white_1",
+            target_type="instance",
+            platform="all")
+        ```
+
+        ### Deleting `threatdetection.AssetSelectionConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.AssetSelectionConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Asset Selection Config can be imported using the id, e.g.

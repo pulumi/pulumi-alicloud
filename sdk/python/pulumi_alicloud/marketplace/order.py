@@ -301,6 +301,12 @@ class Order(pulumi.CustomResource):
                  quantity: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a market order resource.
+
+        > **NOTE:** Terraform will auto build a market order  while it uses `marketplace.Order` to build a market order resource.
+
+        > **NOTE:** Available since v1.69.0.
+
         ## Example Usage
 
         Basic Usage
@@ -347,6 +353,12 @@ class Order(pulumi.CustomResource):
                  args: OrderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a market order resource.
+
+        > **NOTE:** Terraform will auto build a market order  while it uses `marketplace.Order` to build a market order resource.
+
+        > **NOTE:** Available since v1.69.0.
+
         ## Example Usage
 
         Basic Usage

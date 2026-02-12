@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a RAM password policy configuration for entire account. Only one resource per account.
+//
+// > **NOTE:** This resource overwrites an existing configuration. During action `terraform destroy` it sets values the same as defaults for this resource (it does not preserve any preexisted configuration).
+//
+// > **NOTE:** Available since v1.46.0.
+//
 // ## Example Usage
 //
 // Empty resource sets defaults values for every property.
@@ -75,12 +81,6 @@ import (
 // ## Import
 //
 // RAM account password policy can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
-// ```
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
 

@@ -20,6 +20,75 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Quotas Template Applications resource. Template Batch Application.
+ * 
+ * For information about Quotas Template Applications and how to use it, see [What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate).
+ * 
+ * &gt; **NOTE:** Available since v1.214.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.resourcemanager.Account;
+ * import com.pulumi.alicloud.resourcemanager.AccountArgs;
+ * import com.pulumi.alicloud.quotas.TemplateApplications;
+ * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var account = new Account("account", AccountArgs.builder()
+ *             .displayName(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
+ *             .envLanguage("zh")
+ *             .noticeType(0)
+ *             .quotaCategory("WhiteListLabel")
+ *             .desireValue(1.0)
+ *             .reason("example")
+ *             .quotaActionCode("quotas.label_multi/A")
+ *             .aliyunUids(account.id())
+ *             .productCode("quotas")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.quotas.TemplateApplications` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.quotas.TemplateApplications`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Quotas Template Applications can be imported using the id, e.g.

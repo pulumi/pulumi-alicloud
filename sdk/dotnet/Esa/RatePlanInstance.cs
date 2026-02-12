@@ -57,6 +57,11 @@ namespace Pulumi.AliCloud.Esa
     [AliCloudResourceType("alicloud:esa/ratePlanInstance:RatePlanInstance")]
     public partial class RatePlanInstance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies whether to enable auto payment.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
@@ -169,6 +174,11 @@ namespace Pulumi.AliCloud.Esa
 
     public sealed class RatePlanInstanceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to enable auto payment.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
@@ -225,6 +235,11 @@ namespace Pulumi.AliCloud.Esa
 
     public sealed class RatePlanInstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to enable auto payment.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 

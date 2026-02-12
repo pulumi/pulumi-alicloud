@@ -12,12 +12,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Quotas Template Service resource.
+//
+// Quota Template Service.
+//
+// For information about Quotas Template Service and how to use it, see [What is Template Service](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-modifyquotatemplateservicestatus).
+//
+// > **NOTE:** Available since v1.230.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := quotas.NewTemplateService(ctx, "default", &quotas.TemplateServiceArgs{
+//				ServiceStatus: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `quotas.TemplateService` or removing it from your configuration
+//
+// Terraform cannot destroy resource `quotas.TemplateService`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Quotas Template Service can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:quotas/templateService:TemplateService example
+// $ terraform import alicloud_quotas_template_service.example
 // ```
 type TemplateService struct {
 	pulumi.CustomResourceState

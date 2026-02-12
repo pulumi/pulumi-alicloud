@@ -96,6 +96,11 @@ namespace Pulumi.AliCloud.Wafv3
         [Output("resourceGroups")]
         public Output<ImmutableArray<string>> ResourceGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the Alibaba Cloud resource group.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("resourceManagerResourceGroupId")]
         public Output<string?> ResourceManagerResourceGroupId { get; private set; } = null!;
 
@@ -207,6 +212,11 @@ namespace Pulumi.AliCloud.Wafv3
             set => _resourceGroups = value;
         }
 
+        /// <summary>
+        /// The ID of the Alibaba Cloud resource group.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 
@@ -292,6 +302,11 @@ namespace Pulumi.AliCloud.Wafv3
             set => _resourceGroups = value;
         }
 
+        /// <summary>
+        /// The ID of the Alibaba Cloud resource group.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 

@@ -219,6 +219,58 @@ class Resource(pulumi.CustomResource):
                  user_access_param: Optional[pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
                  __props__=None):
         """
+        Provides a Eflo Resource resource.
+
+        For information about Eflo Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createresource).
+
+        > **NOTE:** Available since v1.248.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_resource = alicloud.eflo.Resource("default",
+            user_access_param={
+                "access_id": "your_access_id",
+                "access_key": "your_access_key",
+                "workspace_id": "your_workspace_id",
+                "endpoint": "your_endpoint",
+            },
+            cluster_id=f"terraform-{default['result']}",
+            machine_types={
+                "memory_info": "32x 64GB DDR4 4800 Memory",
+                "type": "Private",
+                "bond_num": 5,
+                "node_count": 1,
+                "cpu_info": "2x Intel Saphhire Rapid 8469C 48C CPU",
+                "network_info": "1x 200Gbps Dual Port BF3 DPU for VPC 4x 200Gbps Dual Port EIC",
+                "gpu_info": "8x OAM 810 GPU",
+                "disk_info": "2x 480GB SATA SSD 4x 3.84TB NVMe SSD",
+                "network_mode": "net",
+                "name": "lingjun",
+            },
+            cluster_name=name,
+            cluster_desc=name)
+        ```
+
+        ### Deleting `eflo.Resource` or removing it from your configuration
+
+        Terraform cannot destroy resource `eflo.Resource`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Resource can be imported using the id, e.g.
@@ -242,6 +294,58 @@ class Resource(pulumi.CustomResource):
                  args: ResourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Eflo Resource resource.
+
+        For information about Eflo Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createresource).
+
+        > **NOTE:** Available since v1.248.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_resource = alicloud.eflo.Resource("default",
+            user_access_param={
+                "access_id": "your_access_id",
+                "access_key": "your_access_key",
+                "workspace_id": "your_workspace_id",
+                "endpoint": "your_endpoint",
+            },
+            cluster_id=f"terraform-{default['result']}",
+            machine_types={
+                "memory_info": "32x 64GB DDR4 4800 Memory",
+                "type": "Private",
+                "bond_num": 5,
+                "node_count": 1,
+                "cpu_info": "2x Intel Saphhire Rapid 8469C 48C CPU",
+                "network_info": "1x 200Gbps Dual Port BF3 DPU for VPC 4x 200Gbps Dual Port EIC",
+                "gpu_info": "8x OAM 810 GPU",
+                "disk_info": "2x 480GB SATA SSD 4x 3.84TB NVMe SSD",
+                "network_mode": "net",
+                "name": "lingjun",
+            },
+            cluster_name=name,
+            cluster_desc=name)
+        ```
+
+        ### Deleting `eflo.Resource` or removing it from your configuration
+
+        Terraform cannot destroy resource `eflo.Resource`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Resource can be imported using the id, e.g.

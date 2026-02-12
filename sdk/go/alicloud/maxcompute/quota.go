@@ -12,6 +12,109 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Max Compute Quota resource.
+//
+// For information about Max Compute Quota and how to use it, see [What is Quota](https://next.api.alibabacloud.com/document/MaxCompute/2022-01-04/CreateQuota).
+//
+// > **NOTE:** Available since v1.247.0.
+//
+// > **NOTE:** This resource will be reconstructed in future versions due to breaking changes and should not be used in production. We recommend upgrading to the latest provider version after May 20, 2025 (subject to change). For assistance, please file a support ticket with the MaxCompute product team directly.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraformexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			partNickName := "TFTest17292"
+//			if param := cfg.Get("partNickName"); param != "" {
+//				partNickName = param
+//			}
+//			subQuotaNickname3 := "sub398892"
+//			if param := cfg.Get("subQuotaNickname3"); param != "" {
+//				subQuotaNickname3 = param
+//			}
+//			subQuotaNickname1 := "sub129792"
+//			if param := cfg.Get("subQuotaNickname1"); param != "" {
+//				subQuotaNickname1 = param
+//			}
+//			subQuotaNickname2 := "sub223192"
+//			if param := cfg.Get("subQuotaNickname2"); param != "" {
+//				subQuotaNickname2 = param
+//			}
+//			_, err := maxcompute.NewQuota(ctx, "default", &maxcompute.QuotaArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				PartNickName:  pulumi.String(partNickName),
+//				CommodityData: pulumi.String("{\"CU\":80,\"ord_time\":\"1:Month\",\"autoRenew\":false} "),
+//				CommodityCode: pulumi.String("odpsplus"),
+//				SubQuotaInfoLists: maxcompute.QuotaSubQuotaInfoListArray{
+//					&maxcompute.QuotaSubQuotaInfoListArgs{
+//						Parameter: &maxcompute.QuotaSubQuotaInfoListParameterArgs{
+//							MinCu:            pulumi.Int(10),
+//							MaxCu:            pulumi.Int(60),
+//							EnablePriority:   pulumi.Bool(false),
+//							ForceReservedMin: pulumi.Bool(false),
+//							SchedulerType:    pulumi.String("Fifo"),
+//							SingleJobCuLimit: pulumi.Int(10),
+//						},
+//						NickName: pulumi.Sprintf("os_%v", partNickName),
+//						Type:     pulumi.String("FUXI_OFFLINE"),
+//					},
+//					&maxcompute.QuotaSubQuotaInfoListArgs{
+//						Parameter: &maxcompute.QuotaSubQuotaInfoListParameterArgs{
+//							MinCu:            pulumi.Int(10),
+//							MaxCu:            pulumi.Int(10),
+//							SchedulerType:    pulumi.String("Fair"),
+//							EnablePriority:   pulumi.Bool(false),
+//							ForceReservedMin: pulumi.Bool(false),
+//						},
+//						NickName: pulumi.String(subQuotaNickname1),
+//						Type:     pulumi.String("FUXI_OFFLINE"),
+//					},
+//					&maxcompute.QuotaSubQuotaInfoListArgs{
+//						NickName: pulumi.String(subQuotaNickname2),
+//						Type:     pulumi.String("FUXI_OFFLINE"),
+//						Parameter: &maxcompute.QuotaSubQuotaInfoListParameterArgs{
+//							MinCu:            pulumi.Int(60),
+//							MaxCu:            pulumi.Int(60),
+//							SchedulerType:    pulumi.String("Fair"),
+//							EnablePriority:   pulumi.Bool(true),
+//							ForceReservedMin: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `maxcompute.Quota` or removing it from your configuration
+//
+// Terraform cannot destroy resource `maxcompute.Quota`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Max Compute Quota can be imported using the id, e.g.

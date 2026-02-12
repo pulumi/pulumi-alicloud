@@ -272,6 +272,14 @@ class Group(pulumi.CustomResource):
                  vpc_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Provides an api group resource.To create an API, you must firstly create a group which is a basic attribute of the API.
+
+        For information about Api Gateway Group and how to use it, see [Create An Api Group](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapigroup)
+
+        > **NOTE:** Available since v1.19.0.
+
+        > **NOTE:** Terraform will auto build api group while it uses `apigateway.Group` to build api group.
+
         ## Example Usage
 
         Basic Usage
@@ -320,6 +328,14 @@ class Group(pulumi.CustomResource):
                  args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an api group resource.To create an API, you must firstly create a group which is a basic attribute of the API.
+
+        For information about Api Gateway Group and how to use it, see [Create An Api Group](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapigroup)
+
+        > **NOTE:** Available since v1.19.0.
+
+        > **NOTE:** Terraform will auto build api group while it uses `apigateway.Group` to build api group.
+
         ## Example Usage
 
         Basic Usage

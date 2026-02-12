@@ -1223,6 +1223,8 @@ class Listener(pulumi.CustomResource):
         $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<protocol>:<frontend_port>
         ```
 
+        **NOTE:** Before provider version 1.57.1, Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
+
         ```sh
         $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>
         ```
@@ -1322,6 +1324,8 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<protocol>:<frontend_port>
         ```
+
+        **NOTE:** Before provider version 1.57.1, Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>

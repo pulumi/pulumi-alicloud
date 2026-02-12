@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Message
 {
+    /// <summary>
+    /// Provides a Message Service Service resource.
+    /// 
+    /// MNS Service Open Status.
+    /// 
+    /// For information about Message Service Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.252.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Message.ServiceService("default");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating `alicloud.message.ServiceService`
+    /// 
+    /// The `alicloud.message.ServiceService` resource is unique per account; repeated creation attempts to activate only one instance.
+    /// 
+    /// ### Deleting `alicloud.message.ServiceService` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.message.ServiceService`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// </summary>
     [AliCloudResourceType("alicloud:message/serviceService:ServiceService")]
     public partial class ServiceService : global::Pulumi.CustomResource
     {

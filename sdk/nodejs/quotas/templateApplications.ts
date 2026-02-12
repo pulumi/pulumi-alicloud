@@ -7,6 +7,46 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Quotas Template Applications resource. Template Batch Application.
+ *
+ * For information about Quotas Template Applications and how to use it, see [What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate).
+ *
+ * > **NOTE:** Available since v1.214.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const account = new alicloud.resourcemanager.Account("account", {displayName: `${name}-${_default.result}`});
+ * const defaultTemplateApplications = new alicloud.quotas.TemplateApplications("default", {
+ *     envLanguage: "zh",
+ *     noticeType: 0,
+ *     quotaCategory: "WhiteListLabel",
+ *     desireValue: 1,
+ *     reason: "example",
+ *     quotaActionCode: "quotas.label_multi/A",
+ *     aliyunUids: [account.id],
+ *     productCode: "quotas",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.quotas.TemplateApplications` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.quotas.TemplateApplications`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Quotas Template Applications can be imported using the id, e.g.

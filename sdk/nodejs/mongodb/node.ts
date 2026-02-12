@@ -158,6 +158,13 @@ export class Node extends pulumi.CustomResource {
      * The ID of the sharded cluster instance.
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
+    /**
+     * Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O & M period of the instance.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * Request Source, value description:
@@ -184,6 +191,13 @@ export class Node extends pulumi.CustomResource {
      * Node type, value description:
      */
     declare public readonly nodeType: pulumi.Output<string>;
+    /**
+     * Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly orderType: pulumi.Output<string | undefined>;
     /**
      * The number of read-only nodes in the Shard.
@@ -201,6 +215,11 @@ export class Node extends pulumi.CustomResource {
      * Running status of node in sharded cluster
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly switchTime: pulumi.Output<string | undefined>;
 
     /**
@@ -308,6 +327,13 @@ export interface NodeState {
      * The ID of the sharded cluster instance.
      */
     dbInstanceId?: pulumi.Input<string>;
+    /**
+     * Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O & M period of the instance.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     effectiveTime?: pulumi.Input<string>;
     /**
      * Request Source, value description:
@@ -334,6 +360,13 @@ export interface NodeState {
      * Node type, value description:
      */
     nodeType?: pulumi.Input<string>;
+    /**
+     * Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     orderType?: pulumi.Input<string>;
     /**
      * The number of read-only nodes in the Shard.
@@ -351,6 +384,11 @@ export interface NodeState {
      * Running status of node in sharded cluster
      */
     status?: pulumi.Input<string>;
+    /**
+     * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     switchTime?: pulumi.Input<string>;
 }
 
@@ -397,6 +435,13 @@ export interface NodeArgs {
      * The ID of the sharded cluster instance.
      */
     dbInstanceId: pulumi.Input<string>;
+    /**
+     * Effective time of configuration change. Value description:
+     * - `Immediately` (default): takes effect Immediately.
+     * - `MaintainTime`: takes effect during the O & M period of the instance.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     effectiveTime?: pulumi.Input<string>;
     /**
      * Request Source, value description:
@@ -419,6 +464,13 @@ export interface NodeArgs {
      * Node type, value description:
      */
     nodeType: pulumi.Input<string>;
+    /**
+     * Order type, value description:
+     * - `UPGRADE`: UPGRADE.
+     * - `DOWNGRADE`: downgrading.
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     orderType?: pulumi.Input<string>;
     /**
      * The number of read-only nodes in the Shard.
@@ -432,5 +484,10 @@ export interface NodeArgs {
      * Whether to apply for the direct connection address of the Shard node. Value description:
      */
     shardDirect?: pulumi.Input<boolean>;
+    /**
+     * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     switchTime?: pulumi.Input<string>;
 }

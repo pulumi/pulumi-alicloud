@@ -184,6 +184,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+     */
     declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -205,6 +208,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     */
     declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
      * Nested attribute containing RRSA related data for your cluster.
@@ -419,6 +425,9 @@ export interface ServerlessKubernetesState {
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+     */
     namePrefix?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -440,6 +449,9 @@ export interface ServerlessKubernetesState {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     */
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Nested attribute containing RRSA related data for your cluster.
@@ -570,6 +582,9 @@ export interface ServerlessKubernetesArgs {
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+     */
     namePrefix?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -591,6 +606,9 @@ export interface ServerlessKubernetesArgs {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+     */
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

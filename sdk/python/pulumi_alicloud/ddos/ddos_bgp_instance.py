@@ -431,6 +431,40 @@ class DdosBgpInstance(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Anti-DDoS Pro (DdosBgp) Instance resource.
+
+        For information about Anti-DDoS Pro (DdosBgp) Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+
+        > **NOTE:** Available since v1.183.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        instance = alicloud.ddos.DdosBgpInstance("instance",
+            name=name,
+            base_bandwidth=20,
+            bandwidth=-1,
+            ip_count=100,
+            ip_type="IPv4",
+            normal_bandwidth=100,
+            type="Enterprise")
+        ```
+
+        ### Deleting `ddos.DdosBgpInstance` or removing it from your configuration
+
+        Terraform cannot destroy resource `ddos.DdosBgpInstance`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.
@@ -462,6 +496,40 @@ class DdosBgpInstance(pulumi.CustomResource):
                  args: DdosBgpInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Anti-DDoS Pro (DdosBgp) Instance resource.
+
+        For information about Anti-DDoS Pro (DdosBgp) Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+
+        > **NOTE:** Available since v1.183.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        instance = alicloud.ddos.DdosBgpInstance("instance",
+            name=name,
+            base_bandwidth=20,
+            bandwidth=-1,
+            ip_count=100,
+            ip_type="IPv4",
+            normal_bandwidth=100,
+            type="Enterprise")
+        ```
+
+        ### Deleting `ddos.DdosBgpInstance` or removing it from your configuration
+
+        Terraform cannot destroy resource `ddos.DdosBgpInstance`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.

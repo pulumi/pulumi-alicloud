@@ -137,6 +137,70 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Cloud Firewall Vpc Firewall Acl Engine Mode resource.
+
+        VPC boundary firewall engine mode.
+
+        For information about Cloud Firewall Vpc Firewall Acl Engine Mode and how to use it, see [What is Vpc Firewall Acl Engine Mode](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallAclEngineMode).
+
+        > **NOTE:** Available since v1.269.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        cen = alicloud.cen.Instance("cen",
+            description="yqc-example001",
+            cen_instance_name="yqc-example-CenInstance001")
+        tr = alicloud.cen.TransitRouter("TR", cen_id=cen.id)
+        vpc1 = alicloud.vpc.Network("vpc1",
+            cidr_block="172.16.0.0/12",
+            vpc_name="yqc-vpc-example-001")
+        vpc1vsw1 = alicloud.vpc.Switch("vpc1vsw1",
+            vpc_id=vpc1.id,
+            zone_id="cn-hangzhou-h",
+            cidr_block="172.16.1.0/24")
+        vpc1vsw2 = alicloud.vpc.Switch("vpc1vsw2",
+            vpc_id=vpc1.id,
+            zone_id="cn-hangzhou-i",
+            cidr_block="172.16.2.0/24")
+        tr_vpc1 = alicloud.cen.TransitRouterVpcAttachment("tr-vpc1",
+            vpc_id=vpc1.id,
+            cen_id=cen.id,
+            zone_mappings=[
+                {
+                    "vswitch_id": vpc1vsw1.id,
+                    "zone_id": vpc1vsw1.zone_id,
+                },
+                {
+                    "vswitch_id": vpc1vsw2.id,
+                    "zone_id": vpc1vsw2.zone_id,
+                },
+            ],
+            transit_router_vpc_attachment_name="example",
+            transit_router_attachment_description="111",
+            auto_publish_route_enabled=True,
+            transit_router_id=tr.transit_router_id)
+        default = alicloud.cloudfirewall.VpcFirewallAclEngineMode("default",
+            strict_mode=0,
+            vpc_firewall_id=cen.id,
+            member_uid="1511928242963727")
+        ```
+
+        ### Deleting `cloudfirewall.VpcFirewallAclEngineMode` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.VpcFirewallAclEngineMode`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Vpc Firewall Acl Engine Mode can be imported using the id, e.g.
@@ -158,6 +222,70 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
                  args: VpcFirewallAclEngineModeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Cloud Firewall Vpc Firewall Acl Engine Mode resource.
+
+        VPC boundary firewall engine mode.
+
+        For information about Cloud Firewall Vpc Firewall Acl Engine Mode and how to use it, see [What is Vpc Firewall Acl Engine Mode](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallAclEngineMode).
+
+        > **NOTE:** Available since v1.269.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        cen = alicloud.cen.Instance("cen",
+            description="yqc-example001",
+            cen_instance_name="yqc-example-CenInstance001")
+        tr = alicloud.cen.TransitRouter("TR", cen_id=cen.id)
+        vpc1 = alicloud.vpc.Network("vpc1",
+            cidr_block="172.16.0.0/12",
+            vpc_name="yqc-vpc-example-001")
+        vpc1vsw1 = alicloud.vpc.Switch("vpc1vsw1",
+            vpc_id=vpc1.id,
+            zone_id="cn-hangzhou-h",
+            cidr_block="172.16.1.0/24")
+        vpc1vsw2 = alicloud.vpc.Switch("vpc1vsw2",
+            vpc_id=vpc1.id,
+            zone_id="cn-hangzhou-i",
+            cidr_block="172.16.2.0/24")
+        tr_vpc1 = alicloud.cen.TransitRouterVpcAttachment("tr-vpc1",
+            vpc_id=vpc1.id,
+            cen_id=cen.id,
+            zone_mappings=[
+                {
+                    "vswitch_id": vpc1vsw1.id,
+                    "zone_id": vpc1vsw1.zone_id,
+                },
+                {
+                    "vswitch_id": vpc1vsw2.id,
+                    "zone_id": vpc1vsw2.zone_id,
+                },
+            ],
+            transit_router_vpc_attachment_name="example",
+            transit_router_attachment_description="111",
+            auto_publish_route_enabled=True,
+            transit_router_id=tr.transit_router_id)
+        default = alicloud.cloudfirewall.VpcFirewallAclEngineMode("default",
+            strict_mode=0,
+            vpc_firewall_id=cen.id,
+            member_uid="1511928242963727")
+        ```
+
+        ### Deleting `cloudfirewall.VpcFirewallAclEngineMode` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.VpcFirewallAclEngineMode`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Vpc Firewall Acl Engine Mode can be imported using the id, e.g.

@@ -19,28 +19,23 @@ __all__ = [
     'InstanceBindVpcArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceBindVpcArgsDict(TypedDict):
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        region id
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC ID
-        """
-        vpc_owner_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC owner root user ID
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        vswitch id
-        """
-elif False:
-    InstanceBindVpcArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceBindVpcArgsDict(TypedDict):
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    region id
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC ID
+    """
+    vpc_owner_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC owner root user ID
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    vswitch id
+    """
 
 @pulumi.input_type
 class InstanceBindVpcArgs:

@@ -12,6 +12,92 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a APIG Gateway resource.
+//
+// For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+//
+// > **NOTE:** Available since v1.240.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apig"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apig.NewGateway(ctx, "default", &apig.GatewayArgs{
+//				NetworkAccessConfig: &apig.GatewayNetworkAccessConfigArgs{
+//					Type: pulumi.String("Intranet"),
+//				},
+//				LogConfig: &apig.GatewayLogConfigArgs{
+//					Sls: &apig.GatewayLogConfigSlsArgs{
+//						Enable: pulumi.Bool(false),
+//					},
+//				},
+//				ResourceGroupId: pulumi.String(_default.Ids[1]),
+//				Spec:            pulumi.String("apigw.small.x1"),
+//				Vpc: &apig.GatewayVpcArgs{
+//					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				},
+//				ZoneConfig: &apig.GatewayZoneConfigArgs{
+//					SelectOption: pulumi.String("Auto"),
+//				},
+//				Vswitch: &apig.GatewayVswitchArgs{
+//					VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+//				},
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//				GatewayName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `apig.Gateway` or removing it from your configuration
+//
+// The `apig.Gateway` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // APIG Gateway can be imported using the id, e.g.

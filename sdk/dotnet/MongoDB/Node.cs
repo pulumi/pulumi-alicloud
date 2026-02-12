@@ -171,6 +171,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// Effective time of configuration change. Value description:
+        /// - `Immediately` (default): takes effect Immediately.
+        /// - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
@@ -209,6 +216,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
 
+        /// <summary>
+        /// Order type, value description:
+        /// - `UPGRADE`: UPGRADE.
+        /// - `DOWNGRADE`: downgrading.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
 
@@ -234,6 +248,11 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("switchTime")]
         public Output<string?> SwitchTime { get; private set; } = null!;
 
@@ -332,6 +351,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// Effective time of configuration change. Value description:
+        /// - `Immediately` (default): takes effect Immediately.
+        /// - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
 
@@ -364,6 +390,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("nodeType", required: true)]
         public Input<string> NodeType { get; set; } = null!;
 
+        /// <summary>
+        /// Order type, value description:
+        /// - `UPGRADE`: UPGRADE.
+        /// - `DOWNGRADE`: downgrading.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
@@ -383,6 +416,11 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("shardDirect")]
         public Input<bool>? ShardDirect { get; set; }
 
+        /// <summary>
+        /// The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("switchTime")]
         public Input<string>? SwitchTime { get; set; }
 
@@ -443,6 +481,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
+        /// <summary>
+        /// Effective time of configuration change. Value description:
+        /// - `Immediately` (default): takes effect Immediately.
+        /// - `MaintainTime`: takes effect during the O &amp; M period of the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
 
@@ -481,6 +526,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
+        /// <summary>
+        /// Order type, value description:
+        /// - `UPGRADE`: UPGRADE.
+        /// - `DOWNGRADE`: downgrading.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
@@ -506,6 +558,11 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("switchTime")]
         public Input<string>? SwitchTime { get; set; }
 

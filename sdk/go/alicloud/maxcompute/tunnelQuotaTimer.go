@@ -12,6 +12,81 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Max Compute Tunnel Quota Timer resource.
+//
+// For information about Max Compute Tunnel Quota Timer and how to use it, see [What is Tunnel Quota Timer](https://www.alibabacloud.com/help/en/).
+//
+// > **DEPRECATED:**  This resource has been deprecated from version `1.260.0`.
+//
+// > **NOTE:** Deprecated since v1.260.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := maxcompute.NewTunnelQuotaTimer(ctx, "default", &maxcompute.TunnelQuotaTimerArgs{
+//				QuotaTimers: maxcompute.TunnelQuotaTimerQuotaTimerArray{
+//					&maxcompute.TunnelQuotaTimerQuotaTimerArgs{
+//						BeginTime: pulumi.String("00:00"),
+//						EndTime:   pulumi.String("01:00"),
+//						TunnelQuotaParameter: &maxcompute.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{
+//							SlotNum:                pulumi.Int(50),
+//							ElasticReservedSlotNum: pulumi.Int(50),
+//						},
+//					},
+//					&maxcompute.TunnelQuotaTimerQuotaTimerArgs{
+//						BeginTime: pulumi.String("01:00"),
+//						EndTime:   pulumi.String("02:00"),
+//						TunnelQuotaParameter: &maxcompute.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{
+//							SlotNum:                pulumi.Int(50),
+//							ElasticReservedSlotNum: pulumi.Int(50),
+//						},
+//					},
+//					&maxcompute.TunnelQuotaTimerQuotaTimerArgs{
+//						BeginTime: pulumi.String("02:00"),
+//						EndTime:   pulumi.String("24:00"),
+//						TunnelQuotaParameter: &maxcompute.TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{
+//							SlotNum:                pulumi.Int(50),
+//							ElasticReservedSlotNum: pulumi.Int(50),
+//						},
+//					},
+//				},
+//				Nickname: pulumi.String("ot_terraform_p"),
+//				TimeZone: pulumi.String("Asia/Shanghai"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `maxcompute.TunnelQuotaTimer` or removing it from your configuration
+//
+// Terraform cannot destroy resource `maxcompute.TunnelQuotaTimer`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Max Compute Tunnel Quota Timer can be imported using the id, e.g.

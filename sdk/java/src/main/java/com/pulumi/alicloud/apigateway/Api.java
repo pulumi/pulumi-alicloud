@@ -25,6 +25,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an api resource.When you create an API, you must enter the basic information about the API, and define the API request information, the API backend service and response information.
+ * 
+ * For information about Api Gateway Api and how to use it, see [Create an API](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapi)
+ * 
+ * &gt; **NOTE:** Available since v1.22.0.
+ * 
+ * &gt; **NOTE:** Terraform will auto build api while it uses `alicloud.apigateway.Api` to build api.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

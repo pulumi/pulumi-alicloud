@@ -64,9 +64,21 @@ public final class UserAlarmConfigState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.contactConfigs);
     }
 
+    /**
+     * The language type. Possible values are `zh`, `en`.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
+    /**
+     * @return The language type. Possible values are `zh`, `en`.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -86,9 +98,21 @@ public final class UserAlarmConfigState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.notifyConfigs);
     }
 
+    /**
+     * Whether to Use the default contact.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="useDefaultContact")
     private @Nullable Output<String> useDefaultContact;
 
+    /**
+     * @return Whether to Use the default contact.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> useDefaultContact() {
         return Optional.ofNullable(this.useDefaultContact);
     }
@@ -205,11 +229,27 @@ public final class UserAlarmConfigState extends com.pulumi.resources.ResourceArg
             return contactConfigs(List.of(contactConfigs));
         }
 
+        /**
+         * @param lang The language type. Possible values are `zh`, `en`.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
+        /**
+         * @param lang The language type. Possible values are `zh`, `en`.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
@@ -245,11 +285,27 @@ public final class UserAlarmConfigState extends com.pulumi.resources.ResourceArg
             return notifyConfigs(List.of(notifyConfigs));
         }
 
+        /**
+         * @param useDefaultContact Whether to Use the default contact.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useDefaultContact(@Nullable Output<String> useDefaultContact) {
             $.useDefaultContact = useDefaultContact;
             return this;
         }
 
+        /**
+         * @param useDefaultContact Whether to Use the default contact.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useDefaultContact(String useDefaultContact) {
             return useDefaultContact(Output.of(useDefaultContact));
         }

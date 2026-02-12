@@ -10,6 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
+    /// Provides a OSS Bucket Request Payment resource. Whether to enable pay-by-requester for a bucket.
+    /// 
+    /// For information about OSS Bucket Request Payment and how to use it, see [What is Bucket Request Payment](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketrequestpayment).
+    /// 
+    /// &gt; **NOTE:** Available since v1.222.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var createBucket = new AliCloud.Oss.Bucket("CreateBucket", new()
+    ///     {
+    ///         StorageClass = "Standard",
+    ///         BucketName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultBucketRequestPayment = new AliCloud.Oss.BucketRequestPayment("default", new()
+    ///     {
+    ///         Payer = "Requester",
+    ///         Bucket = createBucket.BucketName,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.oss.BucketRequestPayment` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.oss.BucketRequestPayment`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS Bucket Request Payment can be imported using the id, e.g.

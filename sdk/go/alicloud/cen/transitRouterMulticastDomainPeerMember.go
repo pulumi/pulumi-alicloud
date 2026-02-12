@@ -126,7 +126,7 @@ import (
 // Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
+// $terraform import alicloud_cen_transit_router_multicast_domain_peer_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
 // ```
 type TransitRouterMulticastDomainPeerMember struct {
 	pulumi.CustomResourceState

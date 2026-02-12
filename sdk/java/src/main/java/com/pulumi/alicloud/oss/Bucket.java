@@ -900,9 +900,17 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     public Output<String> acl() {
         return this.acl;
     }
+    /**
+     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     * 
+     */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
+    /**
+     * @return The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     * 
+     */
     public Output<String> bucket() {
         return this.bucket;
     }

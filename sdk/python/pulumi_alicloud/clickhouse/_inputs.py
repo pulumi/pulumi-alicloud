@@ -21,24 +21,19 @@ __all__ = [
     'DbClusterMultiZoneVswitchListArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
-        db_cluster_ip_array_attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field `db_cluster_ip_array_attribute` has been removed from provider.
-        """
-        db_cluster_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whitelist group name.
-        """
-        security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address list under the whitelist group.
-        """
-elif False:
-    DbClusterDbClusterAccessWhiteListArgsDict: TypeAlias = Mapping[str, Any]
+class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
+    db_cluster_ip_array_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field `db_cluster_ip_array_attribute` has been removed from provider.
+    """
+    db_cluster_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whitelist group name.
+    """
+    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address list under the whitelist group.
+    """
 
 @pulumi.input_type
 class DbClusterDbClusterAccessWhiteListArgs:
@@ -95,18 +90,15 @@ class DbClusterDbClusterAccessWhiteListArgs:
         pulumi.set(self, "security_ip_list", value)
 
 
-if not MYPY:
-    class DbClusterMultiZoneVswitchListArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the vswitch.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone ID of the vswitch.
-        """
-elif False:
-    DbClusterMultiZoneVswitchListArgsDict: TypeAlias = Mapping[str, Any]
+class DbClusterMultiZoneVswitchListArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the vswitch.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone ID of the vswitch.
+    """
 
 @pulumi.input_type
 class DbClusterMultiZoneVswitchListArgs:

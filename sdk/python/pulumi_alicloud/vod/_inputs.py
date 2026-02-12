@@ -19,28 +19,23 @@ __all__ = [
     'DomainSourceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DomainSourceArgsDict(TypedDict):
-        source_content: pulumi.Input[_builtins.str]
-        """
-        The address of the origin server. You can specify an IP address or a domain name.
-        """
-        source_port: pulumi.Input[_builtins.str]
-        """
-        The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-        """
-        source_type: pulumi.Input[_builtins.str]
-        """
-        The type of the origin server. Valid values:
-        """
-        source_priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-        """
-elif False:
-    DomainSourceArgsDict: TypeAlias = Mapping[str, Any]
+class DomainSourceArgsDict(TypedDict):
+    source_content: pulumi.Input[_builtins.str]
+    """
+    The address of the origin server. You can specify an IP address or a domain name.
+    """
+    source_port: pulumi.Input[_builtins.str]
+    """
+    The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+    """
+    source_type: pulumi.Input[_builtins.str]
+    """
+    The type of the origin server. Valid values:
+    """
+    source_priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+    """
 
 @pulumi.input_type
 class DomainSourceArgs:

@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Cloud Firewall Instance Member can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example &lt;id&gt;
+    /// $terraform import alicloud_cloud_firewall_instance_member.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/instanceMember:InstanceMember")]

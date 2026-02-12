@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
  *
  * ```sh
- * $ pulumi import alicloud:edas/k8sSlbAttachment:K8sSlbAttachment example <EDAS k8s app id>
+ * $ terraform import alicloud_edas_k8s_slb_attachment.example <EDAS k8s app id>
  * ```
  */
 export class K8sSlbAttachment extends pulumi.CustomResource {

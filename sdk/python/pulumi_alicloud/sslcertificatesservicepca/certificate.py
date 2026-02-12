@@ -54,6 +54,9 @@ class CertificateArgs:
                - `ECC_512`: The signature algorithm is Sha256WithECDSA.
                - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
+        :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
@@ -192,6 +195,11 @@ class CertificateArgs:
     @_builtins.property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A custom alias for the certificate, used to define a user-friendly name.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
@@ -342,6 +350,9 @@ class _CertificateState:
                - `ECC_512`: The signature algorithm is Sha256WithECDSA.
                - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
+        :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
@@ -423,6 +434,11 @@ class _CertificateState:
     @_builtins.property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A custom alias for the certificate, used to define a user-friendly name.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
@@ -697,6 +713,9 @@ class Certificate(pulumi.CustomResource):
                - `ECC_512`: The signature algorithm is Sha256WithECDSA.
                - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
+        :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
@@ -876,6 +895,9 @@ class Certificate(pulumi.CustomResource):
                - `ECC_512`: The signature algorithm is Sha256WithECDSA.
                - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
                > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
+        :param pulumi.Input[_builtins.str] alias_name: A custom alias for the certificate, used to define a user-friendly name.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] certificate_type: The type of the CA certificate. Default value: `ROOT`. Valid values:
                - `ROOT`: A root CA certificate.
                - `SUB_ROOT`: A subordinate CA certificate.
@@ -940,6 +962,11 @@ class Certificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A custom alias for the certificate, used to define a user-friendly name.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "alias_name")
 
     @_builtins.property

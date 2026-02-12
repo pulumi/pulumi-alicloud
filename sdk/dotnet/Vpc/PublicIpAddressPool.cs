@@ -89,6 +89,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource ID in terraform of VPC Public Ip Address Pool.
+        /// </summary>
         [Output("publicIpAddressPoolId")]
         public Output<string> PublicIpAddressPoolId { get; private set; } = null!;
 
@@ -276,6 +279,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
+        /// <summary>
+        /// The resource ID in terraform of VPC Public Ip Address Pool.
+        /// </summary>
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
 

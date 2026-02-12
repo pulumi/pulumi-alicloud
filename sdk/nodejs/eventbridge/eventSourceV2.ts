@@ -101,6 +101,11 @@ export class EventSourceV2 extends pulumi.CustomResource {
      * The code name of event source
      */
     declare public readonly eventSourceName: pulumi.Output<string>;
+    /**
+     * Whether to connect to an external data source
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly linkedExternalSource: pulumi.Output<boolean | undefined>;
     /**
      * The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
@@ -202,6 +207,11 @@ export interface EventSourceV2State {
      * The code name of event source
      */
     eventSourceName?: pulumi.Input<string>;
+    /**
+     * Whether to connect to an external data source
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     linkedExternalSource?: pulumi.Input<boolean>;
     /**
      * The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
@@ -253,6 +263,11 @@ export interface EventSourceV2Args {
      * The code name of event source
      */
     eventSourceName: pulumi.Input<string>;
+    /**
+     * Whether to connect to an external data source
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     linkedExternalSource?: pulumi.Input<boolean>;
     /**
      * The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.

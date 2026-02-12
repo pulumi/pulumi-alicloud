@@ -12,6 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
+//
+// > **NOTE:** Available since v1.94.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create resource
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mse.NewCluster(ctx, "example", &mse.ClusterArgs{
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
+//				ClusterType:          pulumi.String("Nacos-Ans"),
+//				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
+//				VersionCode:          pulumi.String("NACOS_2_3_2_1"),
+//				InstanceCount:        pulumi.Int(3),
+//				NetType:              pulumi.String("privatenet"),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				ConnectionType:       pulumi.String("slb"),
+//				ClusterAliasName:     pulumi.String("terraform-example"),
+//				MseVersion:           pulumi.String("mse_pro"),
+//				VswitchId:            exampleSwitch.ID(),
+//				VpcId:                exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `mse.Cluster` or removing it from your configuration
+//
+// The `mse.Cluster` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // MSE Cluster can be imported using the id, e.g.

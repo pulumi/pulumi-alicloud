@@ -17,6 +17,79 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Cloud DBaudit instance resource (&#34;Yundun_dbaudit&#34; is the short term of this product).
+ * 
+ * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
+ * 
+ * &gt; **NOTE:** Available since v1.62.0+.
+ * 
+ * &gt; **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.yundun.DBAuditInstance;
+ * import com.pulumi.alicloud.yundun.DBAuditInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultDBAuditInstance = new DBAuditInstance("defaultDBAuditInstance", DBAuditInstanceArgs.builder()
+ *             .description("tf-example")
+ *             .planCode("alpha.professional")
+ *             .period(1)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.yundun.DBAuditInstance` or removing it from your configuration
+ * 
+ * The `alicloud.yundun.DBAuditInstance` resource allows you to manage yundun dbaudit instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the `yundunDbauditInstance`.
+ * You can resume managing the subscription yundunDbauditInstance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Yundun_dbaudit instance can be imported using the id, e.g.

@@ -128,6 +128,11 @@ export class V3Function extends pulumi.CustomResource {
         return obj['__pulumiType'] === V3Function.__pulumiType;
     }
 
+    /**
+     * Function code ZIP package. code and customContainerConfig. See `code` below.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly code: pulumi.Output<outputs.fc.V3FunctionCode | undefined>;
     /**
      * The code package size of the function returned by the system, in byte Example : 1024
@@ -409,6 +414,11 @@ export class V3Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering V3Function resources.
  */
 export interface V3FunctionState {
+    /**
+     * Function code ZIP package. code and customContainerConfig. See `code` below.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     code?: pulumi.Input<inputs.fc.V3FunctionCode>;
     /**
      * The code package size of the function returned by the system, in byte Example : 1024
@@ -580,6 +590,11 @@ export interface V3FunctionState {
  * The set of arguments for constructing a V3Function resource.
  */
 export interface V3FunctionArgs {
+    /**
+     * Function code ZIP package. code and customContainerConfig. See `code` below.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     code?: pulumi.Input<inputs.fc.V3FunctionCode>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.

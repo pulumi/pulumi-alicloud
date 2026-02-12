@@ -19,6 +19,57 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Express Connect Router Express Connect Router resource. Express Connect Router.
+ * 
+ * For information about Express Connect Router Express Connect Router and how to use it, see [What is Express Connect Router](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouter).
+ * 
+ * &gt; **NOTE:** Available since v1.224.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+ * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultM9YxGW = new RouterExpressConnectRouter("defaultM9YxGW", RouterExpressConnectRouterArgs.builder()
+ *             .alibabaSideAsn(65533)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.expressconnect.RouterExpressConnectRouter` or removing it from your configuration
+ * 
+ * The `alicloud.expressconnect.RouterExpressConnectRouter` resource allows you to manage  `ecrId = &#34;&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Express Connect Router Express Connect Router can be imported using the id, e.g.

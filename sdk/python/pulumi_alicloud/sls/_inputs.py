@@ -73,100 +73,95 @@ __all__ = [
     'ScheduledSqlScheduledSqlConfigurationArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AlertConfigurationArgsDict(TypedDict):
-        annotations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgsDict']]]]
-        """
-        Template Annotations.
-        """
-        auto_annotation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
-        """
-        condition_configuration: NotRequired[pulumi.Input['AlertConfigurationConditionConfigurationArgsDict']]
-        """
-        Alarm trigger condition. See `condition_configuration` below.
-        """
-        dashboard: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
-        """
-        group_configuration: NotRequired[pulumi.Input['AlertConfigurationGroupConfigurationArgsDict']]
-        """
-        Group evaluation configuration. See `group_configuration` below.
-        """
-        join_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgsDict']]]]
-        """
-        Set operation configuration. See `join_configurations` below.
-        """
-        labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationLabelArgsDict']]]]
-        """
-        Label. See `labels` below.
-        """
-        mute_until: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Second-level timestamp representing the temporary shutdown deadline.
-        """
-        no_data_fire: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether no data triggers an alarm. true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated. false (default): Turn off the no data alarm function.
-        """
-        no_data_severity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Alarm severity when no data triggers an alarm.
-        """
-        policy_configuration: NotRequired[pulumi.Input['AlertConfigurationPolicyConfigurationArgsDict']]
-        """
-        Alert policy configuration. See `policy_configuration` below.
-        """
-        query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationQueryListArgsDict']]]]
-        """
-        Query the statistical list. See `query_list` below.
-        """
-        send_resolved: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
-        """
-        severity_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgsDict']]]]
-        """
-        Trigger condition, set at least one trigger condition. See `severity_configurations` below.
-        """
-        sink_alerthub: NotRequired[pulumi.Input['AlertConfigurationSinkAlerthubArgsDict']]
-        """
-        Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
-        """
-        sink_cms: NotRequired[pulumi.Input['AlertConfigurationSinkCmsArgsDict']]
-        """
-        Configure alerts sent to CloudMonitor. See `sink_cms` below.
-        """
-        sink_event_store: NotRequired[pulumi.Input['AlertConfigurationSinkEventStoreArgsDict']]
-        """
-        Configuration of sending alarms to EventStore. See `sink_event_store` below.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Customize the category of alarm monitoring rules.
-        """
-        template_configuration: NotRequired[pulumi.Input['AlertConfigurationTemplateConfigurationArgsDict']]
-        """
-        Alarm rule template configuration. See `template_configuration` below.
-        """
-        threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Template Type.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Template Version.
-        """
-elif False:
-    AlertConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationArgsDict(TypedDict):
+    annotations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgsDict']]]]
+    """
+    Template Annotations.
+    """
+    auto_annotation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
+    """
+    condition_configuration: NotRequired[pulumi.Input['AlertConfigurationConditionConfigurationArgsDict']]
+    """
+    Alarm trigger condition. See `condition_configuration` below.
+    """
+    dashboard: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+    """
+    group_configuration: NotRequired[pulumi.Input['AlertConfigurationGroupConfigurationArgsDict']]
+    """
+    Group evaluation configuration. See `group_configuration` below.
+    """
+    join_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgsDict']]]]
+    """
+    Set operation configuration. See `join_configurations` below.
+    """
+    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationLabelArgsDict']]]]
+    """
+    Label. See `labels` below.
+    """
+    mute_until: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Second-level timestamp representing the temporary shutdown deadline.
+    """
+    no_data_fire: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether no data triggers an alarm. true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated. false (default): Turn off the no data alarm function.
+    """
+    no_data_severity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Alarm severity when no data triggers an alarm.
+    """
+    policy_configuration: NotRequired[pulumi.Input['AlertConfigurationPolicyConfigurationArgsDict']]
+    """
+    Alert policy configuration. See `policy_configuration` below.
+    """
+    query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationQueryListArgsDict']]]]
+    """
+    Query the statistical list. See `query_list` below.
+    """
+    send_resolved: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
+    """
+    severity_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgsDict']]]]
+    """
+    Trigger condition, set at least one trigger condition. See `severity_configurations` below.
+    """
+    sink_alerthub: NotRequired[pulumi.Input['AlertConfigurationSinkAlerthubArgsDict']]
+    """
+    Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
+    """
+    sink_cms: NotRequired[pulumi.Input['AlertConfigurationSinkCmsArgsDict']]
+    """
+    Configure alerts sent to CloudMonitor. See `sink_cms` below.
+    """
+    sink_event_store: NotRequired[pulumi.Input['AlertConfigurationSinkEventStoreArgsDict']]
+    """
+    Configuration of sending alarms to EventStore. See `sink_event_store` below.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Customize the category of alarm monitoring rules.
+    """
+    template_configuration: NotRequired[pulumi.Input['AlertConfigurationTemplateConfigurationArgsDict']]
+    """
+    Alarm rule template configuration. See `template_configuration` below.
+    """
+    threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Template Type.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Template Version.
+    """
 
 @pulumi.input_type
 class AlertConfigurationArgs:
@@ -527,18 +522,15 @@ class AlertConfigurationArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class AlertConfigurationAnnotationArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field value.
-        """
-elif False:
-    AlertConfigurationAnnotationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationAnnotationArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field value.
+    """
 
 @pulumi.input_type
 class AlertConfigurationAnnotationArgs:
@@ -579,18 +571,15 @@ class AlertConfigurationAnnotationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AlertConfigurationConditionConfigurationArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
-        """
-        count_condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
-        """
-elif False:
-    AlertConfigurationConditionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationConditionConfigurationArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+    """
+    count_condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+    """
 
 @pulumi.input_type
 class AlertConfigurationConditionConfigurationArgs:
@@ -631,15 +620,12 @@ class AlertConfigurationConditionConfigurationArgs:
         pulumi.set(self, "count_condition", value)
 
 
-if not MYPY:
-    class AlertConfigurationGroupConfigurationArgsDict(TypedDict):
-        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The field used for grouping evaluation. When type is set to custom, fields must be set.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AlertConfigurationGroupConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationGroupConfigurationArgsDict(TypedDict):
+    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The field used for grouping evaluation. When type is set to custom, fields must be set.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AlertConfigurationGroupConfigurationArgs:
@@ -676,15 +662,12 @@ class AlertConfigurationGroupConfigurationArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AlertConfigurationJoinConfigurationArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AlertConfigurationJoinConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationJoinConfigurationArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AlertConfigurationJoinConfigurationArgs:
@@ -721,18 +704,15 @@ class AlertConfigurationJoinConfigurationArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AlertConfigurationLabelArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field name.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field value.
-        """
-elif False:
-    AlertConfigurationLabelArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field name.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field value.
+    """
 
 @pulumi.input_type
 class AlertConfigurationLabelArgs:
@@ -773,22 +753,19 @@ class AlertConfigurationLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AlertConfigurationPolicyConfigurationArgsDict(TypedDict):
-        action_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
-        """
-        alert_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
-        """
-        repeat_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Repeat the waiting time. For example, 5m, 1H, etc.
-        """
-elif False:
-    AlertConfigurationPolicyConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationPolicyConfigurationArgsDict(TypedDict):
+    action_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+    """
+    alert_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+    """
+    repeat_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Repeat the waiting time. For example, 5m, 1H, etc.
+    """
 
 @pulumi.input_type
 class AlertConfigurationPolicyConfigurationArgs:
@@ -845,62 +822,59 @@ class AlertConfigurationPolicyConfigurationArgs:
         pulumi.set(self, "repeat_interval", value)
 
 
-if not MYPY:
-    class AlertConfigurationQueryListArgsDict(TypedDict):
-        chart_title: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Chart Name.
-        """
-        dashboard_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Dashboard ID.
-        """
-        end: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        End time. When storeType is set to log or metric, end must be set.
-        """
-        power_sql_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project Name.
-        """
-        query: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Region of the target Project.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Roles used to write alarm data to the event Library.
-        """
-        start: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start time. When storeType is set to log or metric, start must be set.
-        """
-        store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
-        """
-        store_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
-        """
-        time_span_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time Type.
-        """
-        ui: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use of specific scene alarm front end.
-        """
-elif False:
-    AlertConfigurationQueryListArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationQueryListArgsDict(TypedDict):
+    chart_title: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Chart Name.
+    """
+    dashboard_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Dashboard ID.
+    """
+    end: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    End time. When storeType is set to log or metric, end must be set.
+    """
+    power_sql_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project Name.
+    """
+    query: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Region of the target Project.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Roles used to write alarm data to the event Library.
+    """
+    start: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start time. When storeType is set to log or metric, start must be set.
+    """
+    store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+    """
+    store_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+    """
+    time_span_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time Type.
+    """
+    ui: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use of specific scene alarm front end.
+    """
 
 @pulumi.input_type
 class AlertConfigurationQueryListArgs:
@@ -1117,18 +1091,15 @@ class AlertConfigurationQueryListArgs:
         pulumi.set(self, "ui", value)
 
 
-if not MYPY:
-    class AlertConfigurationSeverityConfigurationArgsDict(TypedDict):
-        eval_condition: NotRequired[pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgsDict']]
-        """
-        Trigger condition. See `eval_condition` below.
-        """
-        severity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Alarm severity.
-        """
-elif False:
-    AlertConfigurationSeverityConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationSeverityConfigurationArgsDict(TypedDict):
+    eval_condition: NotRequired[pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgsDict']]
+    """
+    Trigger condition. See `eval_condition` below.
+    """
+    severity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Alarm severity.
+    """
 
 @pulumi.input_type
 class AlertConfigurationSeverityConfigurationArgs:
@@ -1169,18 +1140,15 @@ class AlertConfigurationSeverityConfigurationArgs:
         pulumi.set(self, "severity", value)
 
 
-if not MYPY:
-    class AlertConfigurationSeverityConfigurationEvalConditionArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
-        """
-        count_condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
-        """
-elif False:
-    AlertConfigurationSeverityConfigurationEvalConditionArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationSeverityConfigurationEvalConditionArgsDict(TypedDict):
+    condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+    """
+    count_condition: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+    """
 
 @pulumi.input_type
 class AlertConfigurationSeverityConfigurationEvalConditionArgs:
@@ -1221,14 +1189,11 @@ class AlertConfigurationSeverityConfigurationEvalConditionArgs:
         pulumi.set(self, "count_condition", value)
 
 
-if not MYPY:
-    class AlertConfigurationSinkAlerthubArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Open.
-        """
-elif False:
-    AlertConfigurationSinkAlerthubArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationSinkAlerthubArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Open.
+    """
 
 @pulumi.input_type
 class AlertConfigurationSinkAlerthubArgs:
@@ -1253,14 +1218,11 @@ class AlertConfigurationSinkAlerthubArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AlertConfigurationSinkCmsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Open.
-        """
-elif False:
-    AlertConfigurationSinkCmsArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationSinkCmsArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Open.
+    """
 
 @pulumi.input_type
 class AlertConfigurationSinkCmsArgs:
@@ -1285,30 +1247,27 @@ class AlertConfigurationSinkCmsArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AlertConfigurationSinkEventStoreArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Open.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SLS service endpoint.
-        """
-        event_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Event Library Name.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project Name.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Roles used to write alarm data to the event Library.
-        """
-elif False:
-    AlertConfigurationSinkEventStoreArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationSinkEventStoreArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Open.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SLS service endpoint.
+    """
+    event_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Event Library Name.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project Name.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Roles used to write alarm data to the event Library.
+    """
 
 @pulumi.input_type
 class AlertConfigurationSinkEventStoreArgs:
@@ -1397,31 +1356,28 @@ class AlertConfigurationSinkEventStoreArgs:
         pulumi.set(self, "role_arn", value)
 
 
-if not MYPY:
-    class AlertConfigurationTemplateConfigurationArgsDict(TypedDict):
-        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Template Annotations.
-        """
-        lang: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Template Language.
-        """
-        template_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Template ID.
-        """
-        tokens: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Template Variables.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Template Version.
-        """
-elif False:
-    AlertConfigurationTemplateConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AlertConfigurationTemplateConfigurationArgsDict(TypedDict):
+    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Template Annotations.
+    """
+    lang: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Template Language.
+    """
+    template_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Template ID.
+    """
+    tokens: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Template Variables.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Template Version.
+    """
 
 @pulumi.input_type
 class AlertConfigurationTemplateConfigurationArgs:
@@ -1522,34 +1478,31 @@ class AlertConfigurationTemplateConfigurationArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class AlertScheduleArgsDict(TypedDict):
-        cron_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
-        """
-        delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timed task execution delay (unit: s).
-        """
-        interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fixed interval for scheduling.
-        """
-        run_immdiately: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Dispatch immediately.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
-        """
-elif False:
-    AlertScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class AlertScheduleArgsDict(TypedDict):
+    cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
+    """
+    delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timed task execution delay (unit: s).
+    """
+    interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fixed interval for scheduling.
+    """
+    run_immdiately: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Dispatch immediately.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+    """
 
 @pulumi.input_type
 class AlertScheduleArgs:
@@ -1654,26 +1607,23 @@ class AlertScheduleArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class CollectionPolicyCentralizeConfigArgsDict(TypedDict):
-        dest_logstore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
-        """
-        dest_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination project for centralized forwarding. Its region must match destRegion.
-        """
-        dest_region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination region for centralized forwarding.
-        """
-        dest_ttl: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
-        """
-elif False:
-    CollectionPolicyCentralizeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CollectionPolicyCentralizeConfigArgsDict(TypedDict):
+    dest_logstore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
+    """
+    dest_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination project for centralized forwarding. Its region must match destRegion.
+    """
+    dest_region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination region for centralized forwarding.
+    """
+    dest_ttl: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
+    """
 
 @pulumi.input_type
 class CollectionPolicyCentralizeConfigArgs:
@@ -1746,18 +1696,15 @@ class CollectionPolicyCentralizeConfigArgs:
         pulumi.set(self, "dest_ttl", value)
 
 
-if not MYPY:
-    class CollectionPolicyDataConfigArgsDict(TypedDict):
-        data_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This setting is valid only when the log type is a global log type—for example, when productCode is sls.
-        """
-        data_region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
-        """
-elif False:
-    CollectionPolicyDataConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CollectionPolicyDataConfigArgsDict(TypedDict):
+    data_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This setting is valid only when the log type is a global log type—for example, when productCode is sls.
+    """
+    data_region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
+    """
 
 @pulumi.input_type
 class CollectionPolicyDataConfigArgs:
@@ -1798,28 +1745,25 @@ class CollectionPolicyDataConfigArgs:
         pulumi.set(self, "data_region", value)
 
 
-if not MYPY:
-    class CollectionPolicyPolicyConfigArgsDict(TypedDict):
-        resource_mode: pulumi.Input[_builtins.str]
-        """
-        Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
-        """
-        instance_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
-        """
-        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
-        """
-        resource_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
-        If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
-        Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
-        """
-elif False:
-    CollectionPolicyPolicyConfigArgsDict: TypeAlias = Mapping[str, Any]
+class CollectionPolicyPolicyConfigArgsDict(TypedDict):
+    resource_mode: pulumi.Input[_builtins.str]
+    """
+    Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
+    """
+    instance_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
+    """
+    regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
+    """
+    resource_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+    If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+    Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
+    """
 
 @pulumi.input_type
 class CollectionPolicyPolicyConfigArgs:
@@ -1895,18 +1839,15 @@ class CollectionPolicyPolicyConfigArgs:
         pulumi.set(self, "resource_tags", value)
 
 
-if not MYPY:
-    class CollectionPolicyResourceDirectoryArgsDict(TypedDict):
-        account_group_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Supports the all (select all) mode and custom mode under this Resource Directory.
-        """
-        members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of member accounts when the Resource Directory is configured in custom mode.
-        """
-elif False:
-    CollectionPolicyResourceDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+class CollectionPolicyResourceDirectoryArgsDict(TypedDict):
+    account_group_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Supports the all (select all) mode and custom mode under this Resource Directory.
+    """
+    members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of member accounts when the Resource Directory is configured in custom mode.
+    """
 
 @pulumi.input_type
 class CollectionPolicyResourceDirectoryArgs:
@@ -1947,42 +1888,39 @@ class CollectionPolicyResourceDirectoryArgs:
         pulumi.set(self, "members", value)
 
 
-if not MYPY:
-    class EtlConfigurationArgsDict(TypedDict):
-        from_time: pulumi.Input[_builtins.int]
-        """
-        The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
-        """
-        lang: pulumi.Input[_builtins.str]
-        """
-        The syntax type used for data transformation.
-        """
-        logstore: pulumi.Input[_builtins.str]
-        """
-        The name of the destination Logstore.
-        """
-        role_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of the role authorized to write to the destination Logstore.
-        """
-        script: pulumi.Input[_builtins.str]
-        """
-        Processing script.
-        """
-        sinks: pulumi.Input[Sequence[pulumi.Input['EtlConfigurationSinkArgsDict']]]
-        """
-        List of output destinations for processing results.   See `sink` below.
-        """
-        to_time: pulumi.Input[_builtins.int]
-        """
-        End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
-        """
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Advanced parameter configuration.
-        """
-elif False:
-    EtlConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class EtlConfigurationArgsDict(TypedDict):
+    from_time: pulumi.Input[_builtins.int]
+    """
+    The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
+    """
+    lang: pulumi.Input[_builtins.str]
+    """
+    The syntax type used for data transformation.
+    """
+    logstore: pulumi.Input[_builtins.str]
+    """
+    The name of the destination Logstore.
+    """
+    role_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the role authorized to write to the destination Logstore.
+    """
+    script: pulumi.Input[_builtins.str]
+    """
+    Processing script.
+    """
+    sinks: pulumi.Input[Sequence[pulumi.Input['EtlConfigurationSinkArgsDict']]]
+    """
+    List of output destinations for processing results.   See `sink` below.
+    """
+    to_time: pulumi.Input[_builtins.int]
+    """
+    End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
+    """
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Advanced parameter configuration.
+    """
 
 @pulumi.input_type
 class EtlConfigurationArgs:
@@ -2112,34 +2050,31 @@ class EtlConfigurationArgs:
         pulumi.set(self, "parameters", value)
 
 
-if not MYPY:
-    class EtlConfigurationSinkArgsDict(TypedDict):
-        datasets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Result datasets to write to.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The endpoint of the region where the destination project resides.
-        """
-        logstore: pulumi.Input[_builtins.str]
-        """
-        The name of the destination Logstore.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the output destination.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        Project name.
-        """
-        role_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of the role authorized to write to the destination Logstore.
-        """
-elif False:
-    EtlConfigurationSinkArgsDict: TypeAlias = Mapping[str, Any]
+class EtlConfigurationSinkArgsDict(TypedDict):
+    datasets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Result datasets to write to.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The endpoint of the region where the destination project resides.
+    """
+    logstore: pulumi.Input[_builtins.str]
+    """
+    The name of the destination Logstore.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the output destination.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    Project name.
+    """
+    role_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the role authorized to write to the destination Logstore.
+    """
 
 @pulumi.input_type
 class EtlConfigurationSinkArgs:
@@ -2238,30 +2173,27 @@ class EtlConfigurationSinkArgs:
         pulumi.set(self, "role_arn", value)
 
 
-if not MYPY:
-    class IndexLineArgsDict(TypedDict):
-        case_sensitive: pulumi.Input[_builtins.bool]
-        """
-        Is case sensitive
-        """
-        chn: pulumi.Input[_builtins.bool]
-        """
-        Does it include Chinese
-        """
-        tokens: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Delimiter
-        """
-        exclude_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of excluded fields
-        """
-        include_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Include field list
-        """
-elif False:
-    IndexLineArgsDict: TypeAlias = Mapping[str, Any]
+class IndexLineArgsDict(TypedDict):
+    case_sensitive: pulumi.Input[_builtins.bool]
+    """
+    Is case sensitive
+    """
+    chn: pulumi.Input[_builtins.bool]
+    """
+    Does it include Chinese
+    """
+    tokens: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Delimiter
+    """
+    exclude_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of excluded fields
+    """
+    include_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Include field list
+    """
 
 @pulumi.input_type
 class IndexLineArgs:
@@ -2347,22 +2279,19 @@ class IndexLineArgs:
         pulumi.set(self, "include_keys", value)
 
 
-if not MYPY:
-    class LogtailConfigOutputDetailArgsDict(TypedDict):
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The endpoint of the log project.
-        """
-        logstore_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the output target logstore.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Region
-        """
-elif False:
-    LogtailConfigOutputDetailArgsDict: TypeAlias = Mapping[str, Any]
+class LogtailConfigOutputDetailArgsDict(TypedDict):
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The endpoint of the log project.
+    """
+    logstore_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the output target logstore.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Region
+    """
 
 @pulumi.input_type
 class LogtailConfigOutputDetailArgs:
@@ -2419,18 +2348,15 @@ class LogtailConfigOutputDetailArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class MachineGroupGroupAttributeArgsDict(TypedDict):
-        external_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The identifier of the external management system on which the machine group depends. This parameter is empty by default.
-        """
-        group_topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The log topic of the machine group.
-        """
-elif False:
-    MachineGroupGroupAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class MachineGroupGroupAttributeArgsDict(TypedDict):
+    external_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The identifier of the external management system on which the machine group depends. This parameter is empty by default.
+    """
+    group_topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The log topic of the machine group.
+    """
 
 @pulumi.input_type
 class MachineGroupGroupAttributeArgs:
@@ -2471,30 +2397,27 @@ class MachineGroupGroupAttributeArgs:
         pulumi.set(self, "group_topic", value)
 
 
-if not MYPY:
-    class OssExportSinkConfigurationArgsDict(TypedDict):
-        from_time: pulumi.Input[_builtins.int]
-        """
-        The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
-        """
-        logstore: pulumi.Input[_builtins.str]
-        """
-        The name of the Logstore.
-        """
-        role_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
-        """
-        sink: pulumi.Input['OssExportSinkConfigurationSinkArgsDict']
-        """
-        The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
-        """
-        to_time: pulumi.Input[_builtins.int]
-        """
-        The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
-        """
-elif False:
-    OssExportSinkConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class OssExportSinkConfigurationArgsDict(TypedDict):
+    from_time: pulumi.Input[_builtins.int]
+    """
+    The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+    """
+    logstore: pulumi.Input[_builtins.str]
+    """
+    The name of the Logstore.
+    """
+    role_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+    """
+    sink: pulumi.Input['OssExportSinkConfigurationSinkArgsDict']
+    """
+    The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+    """
+    to_time: pulumi.Input[_builtins.int]
+    """
+    The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+    """
 
 @pulumi.input_type
 class OssExportSinkConfigurationArgs:
@@ -2578,96 +2501,93 @@ class OssExportSinkConfigurationArgs:
         pulumi.set(self, "to_time", value)
 
 
-if not MYPY:
-    class OssExportSinkConfigurationSinkArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        The OSS bucket.
-        """
-        buffer_interval: pulumi.Input[_builtins.str]
-        """
-        The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
-        """
-        buffer_size: pulumi.Input[_builtins.str]
-        """
-        The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
-        """
-        compression_type: pulumi.Input[_builtins.str]
-        """
-        Supports four compression types, such as snappy, gzip, zstd, and none.
-        """
-        content_detail: pulumi.Input[_builtins.str]
-        """
-        The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+class OssExportSinkConfigurationSinkArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    The OSS bucket.
+    """
+    buffer_interval: pulumi.Input[_builtins.str]
+    """
+    The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+    """
+    buffer_size: pulumi.Input[_builtins.str]
+    """
+    The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+    """
+    compression_type: pulumi.Input[_builtins.str]
+    """
+    Supports four compression types, such as snappy, gzip, zstd, and none.
+    """
+    content_detail: pulumi.Input[_builtins.str]
+    """
+    The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
 
-        If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+    If the contentType value is JSON, the parameters of the contentDetail value are as follows:
 
-        If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+    If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
 
-        You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+    You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
 
-        If the contentType value is csv, the parameters of the contentDetail value are as follows:
+    If the contentType value is csv, the parameters of the contentDetail value are as follows:
 
-        The parameter columns is the key of the log in the source logstore.
+    The parameter columns is the key of the log in the source logstore.
 
-        The delimiter parameter, which can be ",","|","", or "\\t".
+    The delimiter parameter, which can be ",","|","", or "\\t".
 
-        The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+    The header parameter determines whether the OSS file retains the header. The optional value is true or false.
 
-        The lineFeed parameter. Optional values are "\\t", "\\n", or "".
+    The lineFeed parameter. Optional values are "\\t", "\\n", or "".
 
-        The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+    The invalid field content parameter is null to specify the delivery content when the field name does not exist.
 
-        The escape character parameter "quote". Optional values are "" "," '", or" ".
+    The escape character parameter "quote". Optional values are "" "," '", or" ".
 
-        Example:{"null": "-", "header": false, "lineFeed": "\\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+    Example:{"null": "-", "header": false, "lineFeed": "\\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
 
-        When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+    When the contentType value is parquet, the parameters of the contentDetail value are as follows:
 
-        The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+    The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
 
-        When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+    When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
 
-        The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
-        """
-        content_type: pulumi.Input[_builtins.str]
-        """
-        The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
-        """
-        role_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
-        """
-        time_zone: pulumi.Input[_builtins.str]
-        """
-        The time zone. Example value: +0800
-        """
-        delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
-        """
-        path_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
-        """
-        path_format_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The partition format type. only support time
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The prefix of the OSS object.
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The suffix of the OSS object.
-        """
-elif False:
-    OssExportSinkConfigurationSinkArgsDict: TypeAlias = Mapping[str, Any]
+    The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+    """
+    content_type: pulumi.Input[_builtins.str]
+    """
+    The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+    """
+    role_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+    """
+    time_zone: pulumi.Input[_builtins.str]
+    """
+    The time zone. Example value: +0800
+    """
+    delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+    """
+    path_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+    """
+    path_format_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The partition format type. only support time
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The prefix of the OSS object.
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The suffix of the OSS object.
+    """
 
 @pulumi.input_type
 class OssExportSinkConfigurationSinkArgs:
@@ -2951,39 +2871,36 @@ class OssExportSinkConfigurationSinkArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class ScheduledSqlScheduleArgsDict(TypedDict):
-        cron_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
-        """
-        delay: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Delay duration.
-        """
-        interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time interval, such as 5m or 1h.
-        """
-        run_immediately: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to run the OSS import job immediately after it is created.
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time zone.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
-        FixedRate: Checks query and analysis results at fixed intervals.
-        Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
-        Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
-        Daily: Checks query and analysis results once at a fixed time each day.
-        Hourly: Checks query and analysis results once every hour.
-        """
-elif False:
-    ScheduledSqlScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class ScheduledSqlScheduleArgsDict(TypedDict):
+    cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
+    """
+    delay: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Delay duration.
+    """
+    interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time interval, such as 5m or 1h.
+    """
+    run_immediately: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to run the OSS import job immediately after it is created.
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time zone.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+    FixedRate: Checks query and analysis results at fixed intervals.
+    Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+    Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+    Daily: Checks query and analysis results once at a fixed time each day.
+    Hourly: Checks query and analysis results once every hour.
+    """
 
 @pulumi.input_type
 class ScheduledSqlScheduleArgs:
@@ -3098,78 +3015,75 @@ class ScheduledSqlScheduleArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ScheduledSqlScheduledSqlConfigurationArgsDict(TypedDict):
-        data_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Write mode.
-        """
-        dest_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination endpoint.
-        """
-        dest_logstore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination Logstore.
-        """
-        dest_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination project.
-        """
-        dest_role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination write role ARN.
-        """
-        from_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The start time of the schedule.
-        """
-        from_time_expr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SQL time window - start.
-        """
-        max_retries: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of retries.
-        """
-        max_run_time_in_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        SQL timeout.
-        """
-        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Parameter configuration.
-        """
-        resource_pool: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource pool.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Source read role ARN.
-        """
-        script: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SQL statement.
-        """
-        source_logstore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source Logstore.
-        """
-        sql_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SQL type.
-        """
-        to_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Scheduled end time.
-        """
-        to_time_expr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        End of the SQL time window.
-        """
-elif False:
-    ScheduledSqlScheduledSqlConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class ScheduledSqlScheduledSqlConfigurationArgsDict(TypedDict):
+    data_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Write mode.
+    """
+    dest_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination endpoint.
+    """
+    dest_logstore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination Logstore.
+    """
+    dest_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination project.
+    """
+    dest_role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination write role ARN.
+    """
+    from_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The start time of the schedule.
+    """
+    from_time_expr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SQL time window - start.
+    """
+    max_retries: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of retries.
+    """
+    max_run_time_in_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    SQL timeout.
+    """
+    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Parameter configuration.
+    """
+    resource_pool: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource pool.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Source read role ARN.
+    """
+    script: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SQL statement.
+    """
+    source_logstore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source Logstore.
+    """
+    sql_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SQL type.
+    """
+    to_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Scheduled end time.
+    """
+    to_time_expr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    End of the SQL time window.
+    """
 
 @pulumi.input_type
 class ScheduledSqlScheduledSqlConfigurationArgs:

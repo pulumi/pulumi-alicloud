@@ -99,6 +99,11 @@ namespace Pulumi.AliCloud.Esa
         [Output("rulesetId")]
         public Output<int?> RulesetId { get; private set; } = null!;
 
+        /// <summary>
+        /// Shared configuration attributes used across multiple rules. See `Shared` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("shared")]
         public Output<Outputs.WafRuleShared?> Shared { get; private set; } = null!;
 
@@ -108,6 +113,11 @@ namespace Pulumi.AliCloud.Esa
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
+        /// <summary>
+        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
 
@@ -181,6 +191,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("rulesetId")]
         public Input<int>? RulesetId { get; set; }
 
+        /// <summary>
+        /// Shared configuration attributes used across multiple rules. See `Shared` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("shared")]
         public Input<Inputs.WafRuleSharedArgs>? Shared { get; set; }
 
@@ -190,6 +205,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
+        /// <summary>
+        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
@@ -219,6 +239,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("rulesetId")]
         public Input<int>? RulesetId { get; set; }
 
+        /// <summary>
+        /// Shared configuration attributes used across multiple rules. See `Shared` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("shared")]
         public Input<Inputs.WafRuleSharedGetArgs>? Shared { get; set; }
 
@@ -228,6 +253,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 

@@ -64,9 +64,21 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rulesetId);
     }
 
+    /**
+     * Shared configuration attributes used across multiple rules. See `shared` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="shared")
     private @Nullable Output<WafRuleSharedArgs> shared;
 
+    /**
+     * @return Shared configuration attributes used across multiple rules. See `shared` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<WafRuleSharedArgs>> shared() {
         return Optional.ofNullable(this.shared);
     }
@@ -86,9 +98,21 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
         return this.siteId;
     }
 
+    /**
+     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
+    /**
+     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Integer>> siteVersion() {
         return Optional.ofNullable(this.siteVersion);
     }
@@ -185,11 +209,27 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
             return rulesetId(Output.of(rulesetId));
         }
 
+        /**
+         * @param shared Shared configuration attributes used across multiple rules. See `shared` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shared(@Nullable Output<WafRuleSharedArgs> shared) {
             $.shared = shared;
             return this;
         }
 
+        /**
+         * @param shared Shared configuration attributes used across multiple rules. See `shared` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shared(WafRuleSharedArgs shared) {
             return shared(Output.of(shared));
         }
@@ -215,11 +255,27 @@ public final class WafRuleArgs extends com.pulumi.resources.ResourceArgs {
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param siteVersion The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteVersion(@Nullable Output<Integer> siteVersion) {
             $.siteVersion = siteVersion;
             return this;
         }
 
+        /**
+         * @param siteVersion The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteVersion(Integer siteVersion) {
             return siteVersion(Output.of(siteVersion));
         }

@@ -29,24 +29,19 @@ __all__ = [
     'FileSystemSmbAclArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessPointPosixUserArgsDict(TypedDict):
-        posix_group_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the Posix user group.
-        """
-        posix_secondary_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        The ID of the second user group.
-        """
-        posix_user_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Posix user ID.
-        """
-elif False:
-    AccessPointPosixUserArgsDict: TypeAlias = Mapping[str, Any]
+class AccessPointPosixUserArgsDict(TypedDict):
+    posix_group_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the Posix user group.
+    """
+    posix_secondary_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    The ID of the second user group.
+    """
+    posix_user_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Posix user ID.
+    """
 
 @pulumi.input_type
 class AccessPointPosixUserArgs:
@@ -103,22 +98,19 @@ class AccessPointPosixUserArgs:
         pulumi.set(self, "posix_user_id", value)
 
 
-if not MYPY:
-    class AccessPointRootPathPermissionArgsDict(TypedDict):
-        owner_group_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the primary user group.
-        """
-        owner_user_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The owner user ID.
-        """
-        permission: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Portable Operating System Interface for UNIX (POSIX) permission.
-        """
-elif False:
-    AccessPointRootPathPermissionArgsDict: TypeAlias = Mapping[str, Any]
+class AccessPointRootPathPermissionArgsDict(TypedDict):
+    owner_group_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the primary user group.
+    """
+    owner_user_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The owner user ID.
+    """
+    permission: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Portable Operating System Interface for UNIX (POSIX) permission.
+    """
 
 @pulumi.input_type
 class AccessPointRootPathPermissionArgs:
@@ -175,14 +167,11 @@ class AccessPointRootPathPermissionArgs:
         pulumi.set(self, "permission", value)
 
 
-if not MYPY:
-    class FileSystemNfsAclArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the NFS ACL function is enabled.
-        """
-elif False:
-    FileSystemNfsAclArgsDict: TypeAlias = Mapping[str, Any]
+class FileSystemNfsAclArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the NFS ACL function is enabled.
+    """
 
 @pulumi.input_type
 class FileSystemNfsAclArgs:
@@ -207,18 +196,15 @@ class FileSystemNfsAclArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class FileSystemOptionsArgsDict(TypedDict):
-        enable_oplock: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the OpLock function. Value:
-        - true: On.
-        - false: does not turn on.
+class FileSystemOptionsArgsDict(TypedDict):
+    enable_oplock: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable the OpLock function. Value:
+    - true: On.
+    - false: does not turn on.
 
-        > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
-        """
-elif False:
-    FileSystemOptionsArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+    """
 
 @pulumi.input_type
 class FileSystemOptionsArgs:
@@ -251,30 +237,27 @@ class FileSystemOptionsArgs:
         pulumi.set(self, "enable_oplock", value)
 
 
-if not MYPY:
-    class FileSystemRecycleBinArgsDict(TypedDict):
-        enable_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Recycle Bin open time
-        """
-        reserved_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention time of files in the Recycle Bin. Unit: days.
-        """
-        secondary_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Amount of low-frequency data stored in the recycle bin. Unit: Byte.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of files stored in the Recycle Bin. Unit: Byte.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Recycle Bin Status
-        """
-elif False:
-    FileSystemRecycleBinArgsDict: TypeAlias = Mapping[str, Any]
+class FileSystemRecycleBinArgsDict(TypedDict):
+    enable_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Recycle Bin open time
+    """
+    reserved_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Retention time of files in the Recycle Bin. Unit: days.
+    """
+    secondary_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Amount of low-frequency data stored in the recycle bin. Unit: Byte.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of files stored in the Recycle Bin. Unit: Byte.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Recycle Bin Status
+    """
 
 @pulumi.input_type
 class FileSystemRecycleBinArgs:
@@ -363,52 +346,49 @@ class FileSystemRecycleBinArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class FileSystemSmbAclArgsDict(TypedDict):
-        enable_anonymous_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow anonymous access.
-        - true: Allow anonymous access.
-        - false (default): Anonymous access is not allowed.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether SMB ACL is enabled
-        """
-        encrypt_data: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether transmission encryption is enabled.
-        - true: Enables encryption in transit.
-        - false (default): Transport encryption is not enabled.
-        """
-        home_dir_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user directory home path for each user. The file path format is as follows:
-        - A forward slash (/) or backslash (\\) as a separator.
-        - Each paragraph cannot contain ":|? *.
-        - The length of each segment ranges from 0 to 255.
-        - The total length range is 0~32767.
+class FileSystemSmbAclArgsDict(TypedDict):
+    enable_anonymous_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow anonymous access.
+    - true: Allow anonymous access.
+    - false (default): Anonymous access is not allowed.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether SMB ACL is enabled
+    """
+    encrypt_data: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether transmission encryption is enabled.
+    - true: Enables encryption in transit.
+    - false (default): Transport encryption is not enabled.
+    """
+    home_dir_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user directory home path for each user. The file path format is as follows:
+    - A forward slash (/) or backslash (\\) as a separator.
+    - Each paragraph cannot contain ":|? *.
+    - The length of each segment ranges from 0 to 255.
+    - The total length range is 0~32767.
 
-        For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
+    For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 
-        > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
-        """
-        reject_unencrypted_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to reject non-encrypted clients.
-        - true: Deny non-encrypted clients.
-        - false (default): Non-encrypted clients are not rejected.
-        """
-        super_admin_sid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Super User. The ID rules are as follows:
-        - Must start with S and no other letters can appear after the S at the beginning.
-        - At least three dashes (-) apart.
+    > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+    """
+    reject_unencrypted_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to reject non-encrypted clients.
+    - true: Deny non-encrypted clients.
+    - false (default): Non-encrypted clients are not rejected.
+    """
+    super_admin_sid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Super User. The ID rules are as follows:
+    - Must start with S and no other letters can appear after the S at the beginning.
+    - At least three dashes (-) apart.
 
-        Such as S-1-5-22 or S-1-5-22-23.
-        """
-elif False:
-    FileSystemSmbAclArgsDict: TypeAlias = Mapping[str, Any]
+    Such as S-1-5-22 or S-1-5-22-23.
+    """
 
 @pulumi.input_type
 class FileSystemSmbAclArgs:

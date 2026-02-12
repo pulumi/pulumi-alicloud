@@ -10,6 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
+    /// Provides a OSS Bucket Access Monitor resource. Enables or disables access tracking for a bucket.
+    /// 
+    /// For information about OSS Bucket Access Monitor and how to use it, see [What is Bucket Access Monitor](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketaccessmonitor).
+    /// 
+    /// &gt; **NOTE:** Available since v1.224.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var createBucket = new AliCloud.Oss.Bucket("CreateBucket", new()
+    ///     {
+    ///         StorageClass = "Standard",
+    ///         BucketName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultBucketAccessMonitor = new AliCloud.Oss.BucketAccessMonitor("default", new()
+    ///     {
+    ///         Status = "Enabled",
+    ///         Bucket = createBucket.BucketName,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.oss.BucketAccessMonitor` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.oss.BucketAccessMonitor`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS Bucket Access Monitor can be imported using the id, e.g.

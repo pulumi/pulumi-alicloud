@@ -656,6 +656,48 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a EIP Bandwidth Plan (CBWP) Common Bandwidth Package resource.
+
+        > **NOTE:** Terraform will auto build common bandwidth package instance while it uses `vpc.CommonBandwithPackage` to build a common bandwidth package resource.
+
+        For additional details, see the documentation[https://help.aliyun.com/zh/internet-shared-bandwidth/user-guide/internet-shared-bandwidth-overview?spm=a2c4g.11186623.help-menu-55092.d_1_0.492c69ffKLbVqS].
+
+        For information about EIP Bandwidth Plan (CBWP) Common Bandwidth Package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/en/eip-bandwidth-plan).
+
+        > **NOTE:** Available since v1.23.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
+            bandwidth_package_name=name,
+            description=name,
+            isp="BGP",
+            bandwidth="1000",
+            ratio=100,
+            internet_charge_type="PayByBandwidth",
+            resource_group_id=default.ids[0],
+            security_protection_types=["AntiDDoS_Enhanced"])
+        ```
+
+        ### Deleting `vpc.CommonBandwithPackage` or removing it from your configuration
+
+        The `vpc.CommonBandwithPackage` resource allows you to manage  `internet_charge_type = "PayBy95"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.
@@ -716,6 +758,48 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  args: CommonBandwithPackageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a EIP Bandwidth Plan (CBWP) Common Bandwidth Package resource.
+
+        > **NOTE:** Terraform will auto build common bandwidth package instance while it uses `vpc.CommonBandwithPackage` to build a common bandwidth package resource.
+
+        For additional details, see the documentation[https://help.aliyun.com/zh/internet-shared-bandwidth/user-guide/internet-shared-bandwidth-overview?spm=a2c4g.11186623.help-menu-55092.d_1_0.492c69ffKLbVqS].
+
+        For information about EIP Bandwidth Plan (CBWP) Common Bandwidth Package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/en/eip-bandwidth-plan).
+
+        > **NOTE:** Available since v1.23.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
+            bandwidth_package_name=name,
+            description=name,
+            isp="BGP",
+            bandwidth="1000",
+            ratio=100,
+            internet_charge_type="PayByBandwidth",
+            resource_group_id=default.ids[0],
+            security_protection_types=["AntiDDoS_Enhanced"])
+        ```
+
+        ### Deleting `vpc.CommonBandwithPackage` or removing it from your configuration
+
+        The `vpc.CommonBandwithPackage` resource allows you to manage  `internet_charge_type = "PayBy95"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.

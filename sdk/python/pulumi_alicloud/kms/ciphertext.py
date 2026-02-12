@@ -153,6 +153,12 @@ class Ciphertext(pulumi.CustomResource):
                  plaintext: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Encrypt a given plaintext with KMS. The produced ciphertext stays stable across applies. If the plaintext should be re-encrypted on each apply use the `kms.Ciphertext` data source.
+
+        > **NOTE:** Available since v1.63.0.
+
+        > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+
         ## Example Usage
 
         ```python
@@ -183,6 +189,12 @@ class Ciphertext(pulumi.CustomResource):
                  args: CiphertextArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Encrypt a given plaintext with KMS. The produced ciphertext stays stable across applies. If the plaintext should be re-encrypted on each apply use the `kms.Ciphertext` data source.
+
+        > **NOTE:** Available since v1.63.0.
+
+        > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+
         ## Example Usage
 
         ```python

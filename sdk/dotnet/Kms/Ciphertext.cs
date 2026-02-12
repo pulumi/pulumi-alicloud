@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Kms
 {
     /// <summary>
+    /// Encrypt a given plaintext with KMS. The produced ciphertext stays stable across applies. If the plaintext should be re-encrypted on each apply use the `alicloud.kms.Ciphertext` data source.
+    /// 
+    /// &gt; **NOTE:** Available since v1.63.0.
+    /// 
+    /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

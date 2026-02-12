@@ -15,6 +15,98 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Mongodb Audit Policy resource.
+ * 
+ * For information about Mongodb Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
+ * 
+ * &gt; **NOTE:** Available since v1.148.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+ * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.mongodb.Instance;
+ * import com.pulumi.alicloud.mongodb.InstanceArgs;
+ * import com.pulumi.alicloud.mongodb.AuditPolicy;
+ * import com.pulumi.alicloud.mongodb.AuditPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var index = default_.zones().length().applyValue(_length -> _length - 1);
+ * 
+ *         final var zoneId = default_.zones()[index].id();
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.17.3.0/24")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("172.17.3.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .engineVersion("4.2")
+ *             .dbInstanceClass("dds.mongo.mid")
+ *             .dbInstanceStorage(10)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityIpLists(            
+ *                 "10.168.1.12",
+ *                 "100.69.7.112")
+ *             .name(name)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *         var defaultAuditPolicy = new AuditPolicy("defaultAuditPolicy", AuditPolicyArgs.builder()
+ *             .dbInstanceId(defaultInstance.id())
+ *             .auditStatus("disabled")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.mongodb.AuditPolicy` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.mongodb.AuditPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Mongodb Audit Policy can be imported using the id, e.g.

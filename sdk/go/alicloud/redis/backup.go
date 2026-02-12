@@ -29,6 +29,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/redis"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"

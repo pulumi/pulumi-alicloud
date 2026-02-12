@@ -5,6 +5,40 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a OSS Bucket Cname Token resource.
+ *
+ * The token used to verify the ownership of the bucket custom domain name.
+ *
+ * For information about OSS Bucket Cname Token and how to use it, see [What is Bucket Cname Token](https://www.alibabacloud.com/help/en/oss/developer-reference/createcnametoken).
+ *
+ * > **NOTE:** Available since v1.233.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const createBucket = new alicloud.oss.Bucket("CreateBucket", {
+ *     bucket: name,
+ *     storageClass: "Standard",
+ * });
+ * const defaultZaWJfG = new alicloud.oss.BucketCnameToken("defaultZaWJfG", {
+ *     bucket: createBucket.bucket,
+ *     domain: "terraform-example.com",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.oss.BucketCnameToken` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.oss.BucketCnameToken`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * OSS Bucket Cname Token can be imported using the id, e.g.

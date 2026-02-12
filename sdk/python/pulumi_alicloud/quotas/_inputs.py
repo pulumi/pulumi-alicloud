@@ -39,14 +39,9 @@ __all__ = [
     'GetQuotasDimensionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ApplicationInfoDimensionArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ApplicationInfoDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationInfoDimensionArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ApplicationInfoDimensionArgs:
@@ -77,18 +72,15 @@ class ApplicationInfoDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class QuotaAlarmQuotaDimensionArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Key of quota_dimensions.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Value of quota_dimensions.
-        """
-elif False:
-    QuotaAlarmQuotaDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class QuotaAlarmQuotaDimensionArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Key of quota_dimensions.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Value of quota_dimensions.
+    """
 
 @pulumi.input_type
 class QuotaAlarmQuotaDimensionArgs:
@@ -129,18 +121,15 @@ class QuotaAlarmQuotaDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class QuotaApplicationDimensionArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
-        """
-elif False:
-    QuotaApplicationDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class QuotaApplicationDimensionArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+    """
 
 @pulumi.input_type
 class QuotaApplicationDimensionArgs:
@@ -181,18 +170,15 @@ class QuotaApplicationDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class TemplateApplicationsDimensionArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Quota dimension Key.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Quota dimension Value.
-        """
-elif False:
-    TemplateApplicationsDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class TemplateApplicationsDimensionArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Quota dimension Key.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Quota dimension Value.
+    """
 
 @pulumi.input_type
 class TemplateApplicationsDimensionArgs:
@@ -233,75 +219,72 @@ class TemplateApplicationsDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class TemplateApplicationsQuotaApplicationDetailArgsDict(TypedDict):
-        aliyun_uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Alibaba Cloud account (primary account).
-        """
-        application_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the quota promotion request.
-        """
-        approve_value: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The approved quota value of the quota increase request.
-        """
-        audit_reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Approval comments on quota increase applications.
-        """
-        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Quota dimension. See `dimensions` below.
-        """
-        env_language: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The language of the quota application result notification. Value:
-        - zh (default): Chinese.
-        - en: English.
-        """
-        notice_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether to send notification of quota application result. Value:
-        - 0 (default): No.
-        - 3: Yes.
-        """
-        period: NotRequired[pulumi.Input['TemplateApplicationsQuotaApplicationDetailPeriodArgsDict']]
-        """
-        Quota calculation period.
-        """
-        quota_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Quota ARN.
-        """
-        quota_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The quota description.
-        """
-        quota_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The quota name.
-        """
-        quota_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Quota unit.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reason for quota application.
-        > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The approval status of the quota promotion application. Value:
-        - Disagree: reject.
-        - Approve: approved.
-        - Process: under review.
-        - Cancel: Closed.
-        """
-elif False:
-    TemplateApplicationsQuotaApplicationDetailArgsDict: TypeAlias = Mapping[str, Any]
+class TemplateApplicationsQuotaApplicationDetailArgsDict(TypedDict):
+    aliyun_uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Alibaba Cloud account (primary account).
+    """
+    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the quota promotion request.
+    """
+    approve_value: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The approved quota value of the quota increase request.
+    """
+    audit_reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Approval comments on quota increase applications.
+    """
+    dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Quota dimension. See `dimensions` below.
+    """
+    env_language: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The language of the quota application result notification. Value:
+    - zh (default): Chinese.
+    - en: English.
+    """
+    notice_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether to send notification of quota application result. Value:
+    - 0 (default): No.
+    - 3: Yes.
+    """
+    period: NotRequired[pulumi.Input['TemplateApplicationsQuotaApplicationDetailPeriodArgsDict']]
+    """
+    Quota calculation period.
+    """
+    quota_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Quota ARN.
+    """
+    quota_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The quota description.
+    """
+    quota_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The quota name.
+    """
+    quota_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Quota unit.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reason for quota application.
+    > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The approval status of the quota promotion application. Value:
+    - Disagree: reject.
+    - Approve: approved.
+    - Process: under review.
+    - Cancel: Closed.
+    """
 
 @pulumi.input_type
 class TemplateApplicationsQuotaApplicationDetailArgs:
@@ -552,18 +535,15 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class TemplateApplicationsQuotaApplicationDetailPeriodArgsDict(TypedDict):
-        period_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Quota calculation cycle unit.
-        """
-        period_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The quota calculation period value.
-        """
-elif False:
-    TemplateApplicationsQuotaApplicationDetailPeriodArgsDict: TypeAlias = Mapping[str, Any]
+class TemplateApplicationsQuotaApplicationDetailPeriodArgsDict(TypedDict):
+    period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Quota calculation cycle unit.
+    """
+    period_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The quota calculation period value.
+    """
 
 @pulumi.input_type
 class TemplateApplicationsQuotaApplicationDetailPeriodArgs:
@@ -604,18 +584,15 @@ class TemplateApplicationsQuotaApplicationDetailPeriodArgs:
         pulumi.set(self, "period_value", value)
 
 
-if not MYPY:
-    class TemplateQuotaDimensionArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Key of quota_dimensions.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Value of quota_dimensions.
-        """
-elif False:
-    TemplateQuotaDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class TemplateQuotaDimensionArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Key of quota_dimensions.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Value of quota_dimensions.
+    """
 
 @pulumi.input_type
 class TemplateQuotaDimensionArgs:
@@ -656,12 +633,9 @@ class TemplateQuotaDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetApplicationInfosDimensionArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        value: NotRequired[_builtins.str]
-elif False:
-    GetApplicationInfosDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class GetApplicationInfosDimensionArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    value: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetApplicationInfosDimensionArgs:
@@ -692,12 +666,9 @@ class GetApplicationInfosDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetQuotaAlarmsQuotaDimensionArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        value: NotRequired[_builtins.str]
-elif False:
-    GetQuotaAlarmsQuotaDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class GetQuotaAlarmsQuotaDimensionArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    value: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetQuotaAlarmsQuotaDimensionArgs:
@@ -728,12 +699,9 @@ class GetQuotaAlarmsQuotaDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetQuotaApplicationsDimensionArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        value: NotRequired[_builtins.str]
-elif False:
-    GetQuotaApplicationsDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class GetQuotaApplicationsDimensionArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    value: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetQuotaApplicationsDimensionArgs:
@@ -764,18 +732,15 @@ class GetQuotaApplicationsDimensionArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetQuotasDimensionArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        """
-        The key of dimensions.
-        """
-        value: NotRequired[_builtins.str]
-        """
-        The value of dimensions.
-        """
-elif False:
-    GetQuotasDimensionArgsDict: TypeAlias = Mapping[str, Any]
+class GetQuotasDimensionArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    """
+    The key of dimensions.
+    """
+    value: NotRequired[_builtins.str]
+    """
+    The value of dimensions.
+    """
 
 @pulumi.input_type
 class GetQuotasDimensionArgs:

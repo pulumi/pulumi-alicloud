@@ -23,20 +23,15 @@ __all__ = [
     'GetNestServiceInstancesFilterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class NestServiceInstanceCommodityArgsDict(TypedDict):
-        pay_period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Length of purchase.
-        """
-        pay_period_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration unit. Valid values: `Year`, `Month`, `Day`.
-        """
-elif False:
-    NestServiceInstanceCommodityArgsDict: TypeAlias = Mapping[str, Any]
+class NestServiceInstanceCommodityArgsDict(TypedDict):
+    pay_period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Length of purchase.
+    """
+    pay_period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration unit. Valid values: `Year`, `Month`, `Day`.
+    """
 
 @pulumi.input_type
 class NestServiceInstanceCommodityArgs:
@@ -77,26 +72,23 @@ class NestServiceInstanceCommodityArgs:
         pulumi.set(self, "pay_period_unit", value)
 
 
-if not MYPY:
-    class NestServiceInstanceOperationMetadataArgsDict(TypedDict):
-        operated_service_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the imported service instance.
-        """
-        operation_end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The end time of O&M.
-        """
-        operation_start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The start time of O&M.
-        """
-        resources: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The list of imported resources.
-        """
-elif False:
-    NestServiceInstanceOperationMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class NestServiceInstanceOperationMetadataArgsDict(TypedDict):
+    operated_service_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the imported service instance.
+    """
+    operation_end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The end time of O&M.
+    """
+    operation_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The start time of O&M.
+    """
+    resources: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The list of imported resources.
+    """
 
 @pulumi.input_type
 class NestServiceInstanceOperationMetadataArgs:
@@ -169,18 +161,15 @@ class NestServiceInstanceOperationMetadataArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class GetNestServiceInstancesFilterArgsDict(TypedDict):
-        name: NotRequired[_builtins.str]
-        """
-        The name of the service.
-        """
-        values: NotRequired[Sequence[_builtins.str]]
-        """
-        Set of values that are accepted for the given field.
-        """
-elif False:
-    GetNestServiceInstancesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNestServiceInstancesFilterArgsDict(TypedDict):
+    name: NotRequired[_builtins.str]
+    """
+    The name of the service.
+    """
+    values: NotRequired[Sequence[_builtins.str]]
+    """
+    Set of values that are accepted for the given field.
+    """
 
 @pulumi.input_type
 class GetNestServiceInstancesFilterArgs:

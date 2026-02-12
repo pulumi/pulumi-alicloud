@@ -10,6 +10,245 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cddc
 {
     /// <summary>
+    /// Provides a CDDC Dedicated Propre Host resource. MyBase proprietary cluster host resources, you need to add a whitelist to purchase a proprietary version of the cluster.
+    /// 
+    /// For information about CDDC Dedicated Propre Host and how to use it, see [What is Dedicated Propre Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/api-cddc-2020-03-20-creatededicatedhostgroup).
+    /// 
+    /// &gt; **NOTE:** Available since v1.210.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         InstanceTypeFamily = "ecs.g6e",
+    ///         NetworkType = "Vpc",
+    ///     });
+    /// 
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^aliyun_3_x64_20G_scc*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var essd = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///         SystemDiskCategory = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = "cn-hangzhou-i",
+    ///     });
+    /// 
+    ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+    ///     {
+    ///         NameRegex = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new List&lt;AliCloud.Ecs.SecurityGroup&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultSecurityGroup.Add(new AliCloud.Ecs.SecurityGroup($"default-{range.Value}", new()
+    ///         {
+    ///             VpcId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.VpcId),
+    ///             Name = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///         }));
+    ///     }
+    ///     var defaultGetEcsDeploymentSets = AliCloud.Ecs.GetEcsDeploymentSets.Invoke(new()
+    ///     {
+    ///         NameRegex = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///     });
+    /// 
+    ///     var defaultEcsDeploymentSet = new List&lt;AliCloud.Ecs.EcsDeploymentSet&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetEcsDeploymentSets.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultEcsDeploymentSet.Add(new AliCloud.Ecs.EcsDeploymentSet($"default-{range.Value}", new()
+    ///         {
+    ///             Strategy = "Availability",
+    ///             Domain = "Default",
+    ///             Granularity = "Host",
+    ///             DeploymentSetName = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///             Description = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///         }));
+    ///     }
+    ///     var defaultGetKeyPairs = AliCloud.Ecs.GetKeyPairs.Invoke(new()
+    ///     {
+    ///         NameRegex = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new List&lt;AliCloud.Ecs.KeyPair&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetKeyPairs.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultKeyPair.Add(new AliCloud.Ecs.KeyPair($"default-{range.Value}", new()
+    ///         {
+    ///             KeyPairName = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///         }));
+    ///     }
+    ///     var defaultGetDedicatedHostGroups = AliCloud.Cddc.GetDedicatedHostGroups.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         NameRegex = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///     });
+    /// 
+    ///     var defaultDedicatedHostGroup = new List&lt;AliCloud.Cddc.DedicatedHostGroup&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetDedicatedHostGroups.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultDedicatedHostGroup.Add(new AliCloud.Cddc.DedicatedHostGroup($"default-{range.Value}", new()
+    ///         {
+    ///             Engine = "MySQL",
+    ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///             CpuAllocationRatio = 101,
+    ///             MemAllocationRatio = 50,
+    ///             DiskAllocationRatio = 200,
+    ///             AllocationPolicy = "Evenly",
+    ///             HostReplacePolicy = "Manual",
+    ///             DedicatedHostGroupDesc = "tf-exampleacc-cddc-dedicated_propre_host",
+    ///             OpenPermission = true,
+    ///         }));
+    ///     }
+    ///     var alicloudSecurityGroupId = Output.Tuple(defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids).Length, defaultGetSecurityGroups, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             defaultSecurityGroup.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var defaultGetSecurityGroups = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? defaultGetSecurityGroups.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Ids[0]) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var alicloudEcsDeploymentSetId = Output.Tuple(defaultGetEcsDeploymentSets.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Ids).Length, defaultGetEcsDeploymentSets, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             defaultEcsDeploymentSet.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var defaultGetEcsDeploymentSets = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? defaultGetEcsDeploymentSets.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Sets[0]?.DeploymentSetId) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var alicloudKeyPairId = Output.Tuple(defaultGetKeyPairs.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Ids).Length, defaultGetKeyPairs, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             defaultKeyPair.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var defaultGetKeyPairs = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? defaultGetKeyPairs.Apply(getKeyPairsResult =&gt; getKeyPairsResult.Ids[0]) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var dedicatedHostGroupId = Output.Tuple(defaultGetDedicatedHostGroups.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Ids).Length, defaultGetDedicatedHostGroups, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             defaultDedicatedHostGroup.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var defaultGetDedicatedHostGroups = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? defaultGetDedicatedHostGroups.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Ids[0]) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var defaultDedicatedPropreHost = new AliCloud.Cddc.DedicatedPropreHost("default", new()
+    ///     {
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         EcsInstanceName = "exampleTf",
+    ///         EcsDeploymentSetId = alicloudEcsDeploymentSetId,
+    ///         AutoRenew = "false",
+    ///         SecurityGroupId = alicloudSecurityGroupId,
+    ///         DedicatedHostGroupId = dedicatedHostGroupId,
+    ///         EcsHostName = "exampleTf",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         EcsUniqueSuffix = "false",
+    ///         PasswordInherit = "false",
+    ///         Engine = "mysql",
+    ///         Period = "1",
+    ///         OsPassword = "YourPassword123!",
+    ///         EcsZoneId = "cn-hangzhou-i",
+    ///         EcsClassLists = new[]
+    ///         {
+    ///             new AliCloud.Cddc.Inputs.DedicatedPropreHostEcsClassListArgs
+    ///             {
+    ///                 DiskType = "cloud_essd",
+    ///                 SysDiskType = "cloud_essd",
+    ///                 DiskCount = 1,
+    ///                 SystemDiskPerformanceLevel = "PL1",
+    ///                 DataDiskPerformanceLevel = "PL1",
+    ///                 DiskCapacity = 40,
+    ///                 InstanceType = "ecs.c6a.large",
+    ///                 SysDiskCapacity = 40,
+    ///             },
+    ///         },
+    ///         PaymentType = "Subscription",
+    ///         ImageId = "m-bp1d13fxs1ymbvw1dk5g",
+    ///         PeriodType = "Monthly",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cddc.DedicatedPropreHost` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.cddc.DedicatedPropreHost`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CDDC Dedicated Propre Host can be imported using the id, e.g.

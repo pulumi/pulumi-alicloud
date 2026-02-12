@@ -128,6 +128,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
 // ```
+//
+// ->**NOTE:** The sequence of the regionId1 and regionId2 makes no difference when import. But the in the id of the resource, they are sorted lexicographically.
 type BandwidthLimit struct {
 	pulumi.CustomResourceState
 

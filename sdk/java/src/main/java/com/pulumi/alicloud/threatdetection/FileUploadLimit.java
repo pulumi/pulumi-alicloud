@@ -14,12 +14,61 @@ import java.lang.Integer;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Threat Detection File Upload Limit resource. User-defined file upload limit.
+ * 
+ * For information about Threat Detection File Upload Limit and how to use it, see [What is File Upload Limit](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetFileUploadLimit).
+ * 
+ * &gt; **NOTE:** Available since v1.212.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.FileUploadLimit;
+ * import com.pulumi.alicloud.threatdetection.FileUploadLimitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new FileUploadLimit("default", FileUploadLimitArgs.builder()
+ *             .limit(100)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.threatdetection.FileUploadLimit` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.threatdetection.FileUploadLimit`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Threat Detection File Upload Limit can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example 
+ * $ terraform import alicloud_threat_detection_file_upload_limit.example 
  * ```
  * 
  */

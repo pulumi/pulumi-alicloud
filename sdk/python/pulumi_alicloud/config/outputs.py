@@ -100,6 +100,7 @@ class AssumeRole(dict):
         :param _builtins.str role_arn: The ARN of a RAM role to assume prior to making API calls.
         :param _builtins.str policy: The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
         :param _builtins.int session_expiration: The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+        :param _builtins.str session_name: The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
         """
         pulumi.set(__self__, "role_arn", role_arn)
         if external_id is not None:
@@ -143,6 +144,9 @@ class AssumeRole(dict):
     @_builtins.property
     @pulumi.getter(name="sessionName")
     def session_name(self) -> Optional[_builtins.str]:
+        """
+        The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+        """
         return pulumi.get(self, "session_name")
 
 

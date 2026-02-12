@@ -344,7 +344,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         DMS Enterprise Proxy Access can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess example <id>
+        $terraform import alicloud_dms_enterprise_proxy_access.example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -391,7 +391,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         DMS Enterprise Proxy Access can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess example <id>
+        $terraform import alicloud_dms_enterprise_proxy_access.example <id>
         ```
 
         :param str resource_name: The name of the resource.

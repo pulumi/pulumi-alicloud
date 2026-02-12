@@ -90,9 +90,27 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="createdType")
     private @Nullable Output<String> createdType;
 
+    /**
+     * @return The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> createdType() {
         return Optional.ofNullable(this.createdType);
     }
@@ -112,9 +130,21 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.domains);
     }
 
+    /**
+     * The certificate private key.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
+    /**
+     * @return The certificate private key.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
@@ -323,11 +353,33 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param createdType The certificate type.
+         * - cas (Certificate Center Certificate)
+         * - upload (custom upload certificate)
+         * - free( Free certificate).
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdType(@Nullable Output<String> createdType) {
             $.createdType = createdType;
             return this;
         }
 
+        /**
+         * @param createdType The certificate type.
+         * - cas (Certificate Center Certificate)
+         * - upload (custom upload certificate)
+         * - free( Free certificate).
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdType(String createdType) {
             return createdType(Output.of(createdType));
         }
@@ -353,11 +405,27 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return domains(Output.of(domains));
         }
 
+        /**
+         * @param privateKey The certificate private key.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateKey(@Nullable Output<String> privateKey) {
             $.privateKey = privateKey;
             return this;
         }
 
+        /**
+         * @param privateKey The certificate private key.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateKey(String privateKey) {
             return privateKey(Output.of(privateKey));
         }

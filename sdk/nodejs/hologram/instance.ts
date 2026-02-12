@@ -7,6 +7,60 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Hologres (Hologram) Instance resource.
+ *
+ * For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+ *
+ * > **NOTE:** Available since v1.213.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const defaultVSwitch = new alicloud.vpc.Switch("defaultVSwitch", {
+ *     vpcId: defaultVpc.id,
+ *     zoneId: "cn-hangzhou-j",
+ *     cidrBlock: "172.16.53.0/24",
+ *     vswitchName: name,
+ * });
+ * const _default = new alicloud.hologram.Instance("default", {
+ *     instanceType: "Standard",
+ *     pricingCycle: "Hour",
+ *     cpu: 32,
+ *     endpoints: [
+ *         {
+ *             type: "Intranet",
+ *         },
+ *         {
+ *             type: "VPCSingleTunnel",
+ *             vswitchId: defaultVSwitch.id,
+ *             vpcId: defaultVSwitch.vpcId,
+ *         },
+ *     ],
+ *     zoneId: defaultVSwitch.zoneId,
+ *     instanceName: name,
+ *     paymentType: "PayAsYouGo",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.hologram.Instance` or removing it from your configuration
+ *
+ * The `alicloud.hologram.Instance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Hologram Instance can be imported using the id, e.g.

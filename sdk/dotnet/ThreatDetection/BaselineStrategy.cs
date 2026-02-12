@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Baseline Strategy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:threatdetection/baselineStrategy:BaselineStrategy example &lt;id&gt;
+    /// $terraform import alicloud_threat_detection_baseline_strategy.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/baselineStrategy:BaselineStrategy")]

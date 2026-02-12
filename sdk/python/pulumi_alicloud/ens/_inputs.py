@@ -23,36 +23,31 @@ __all__ = [
     'LoadBalancerBackendServerArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceDataDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data disk type. Optional values:
-        - cloud_efficiency: Ultra cloud disk
-        - cloud_ssd: Full Flash cloud disk
-        - local_hdd: local hdd disk
-        - local_ssd: local disk ssd.
-        """
-        disk_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Disk ID.
-        """
-        encrypt_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the KMS key used by the cloud disk.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Data disk size, unit: GB.
-        """
-elif False:
-    InstanceDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDataDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data disk type. Optional values:
+    - cloud_efficiency: Ultra cloud disk
+    - cloud_ssd: Full Flash cloud disk
+    - local_hdd: local hdd disk
+    - local_ssd: local disk ssd.
+    """
+    disk_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Disk ID.
+    """
+    encrypt_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the KMS key used by the cloud disk.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Data disk size, unit: GB.
+    """
 
 @pulumi.input_type
 class InstanceDataDiskArgs:
@@ -149,22 +144,19 @@ class InstanceDataDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class InstanceSystemDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        System disk type. Value
-        - cloud_efficiency: Ultra cloud disk
-        - cloud_ssd: Full Flash cloud disk
-        - local_hdd: local hdd disk
-        - local_ssd: local disk ssd.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        System disk size, unit: GB.
-        """
-elif False:
-    InstanceSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    System disk type. Value
+    - cloud_efficiency: Ultra cloud disk
+    - cloud_ssd: Full Flash cloud disk
+    - local_hdd: local hdd disk
+    - local_ssd: local disk ssd.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    System disk size, unit: GB.
+    """
 
 @pulumi.input_type
 class InstanceSystemDiskArgs:
@@ -213,30 +205,27 @@ class InstanceSystemDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class LoadBalancerBackendServerArgsDict(TypedDict):
-        server_id: pulumi.Input[_builtins.str]
-        """
-        Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
-        """
-        ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP address of the backend server  Example value: 192.168.0.5.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Port used by the backend server.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Backend server type  Example value: ens.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Weight of the backend server  Example value: 100.
-        """
-elif False:
-    LoadBalancerBackendServerArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerBackendServerArgsDict(TypedDict):
+    server_id: pulumi.Input[_builtins.str]
+    """
+    Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+    """
+    ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP address of the backend server  Example value: 192.168.0.5.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Port used by the backend server.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Backend server type  Example value: ens.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Weight of the backend server  Example value: 100.
+    """
 
 @pulumi.input_type
 class LoadBalancerBackendServerArgs:

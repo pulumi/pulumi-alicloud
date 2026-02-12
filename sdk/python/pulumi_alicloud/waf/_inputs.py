@@ -19,14 +19,9 @@ __all__ = [
     'DomainLogHeaderArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DomainLogHeaderArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    DomainLogHeaderArgsDict: TypeAlias = Mapping[str, Any]
+class DomainLogHeaderArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class DomainLogHeaderArgs:

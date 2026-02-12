@@ -139,6 +139,126 @@ class QuotaSchedule(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Max Compute Quota Schedule resource.
+
+        For information about Max Compute Quota Schedule and how to use it, see [What is Quota Schedule](https://www.alibabacloud.com/help/en/).
+
+        > **NOTE:** Available since v1.242.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        elastic_reserved_cu = config.get("elasticReservedCu")
+        if elastic_reserved_cu is None:
+            elastic_reserved_cu = "0"
+        quota_nick_name = config.get("quotaNickName")
+        if quota_nick_name is None:
+            quota_nick_name = "os_terrform_p"
+        default = alicloud.maxcompute.QuotaPlan("default",
+            quota={
+                "parameter": {
+                    "elastic_reserved_cu": 50,
+                },
+                "sub_quota_info_lists": [
+                    {
+                        "nick_name": "sub_quota",
+                        "parameter": {
+                            "min_cu": 0,
+                            "max_cu": 20,
+                            "elastic_reserved_cu": 30,
+                        },
+                    },
+                    {
+                        "nick_name": "os_terrform",
+                        "parameter": {
+                            "min_cu": 50,
+                            "max_cu": 50,
+                            "elastic_reserved_cu": 20,
+                        },
+                    },
+                ],
+            },
+            plan_name="quota_plan1",
+            nickname="os_terrform_p")
+        default2 = alicloud.maxcompute.QuotaPlan("default2",
+            quota={
+                "parameter": {
+                    "elastic_reserved_cu": 50,
+                },
+                "sub_quota_info_lists": [
+                    {
+                        "nick_name": "sub_quota",
+                        "parameter": {
+                            "min_cu": 0,
+                            "max_cu": 20,
+                            "elastic_reserved_cu": 20,
+                        },
+                    },
+                    {
+                        "nick_name": "os_terrform",
+                        "parameter": {
+                            "min_cu": 50,
+                            "max_cu": 50,
+                            "elastic_reserved_cu": 30,
+                        },
+                    },
+                ],
+            },
+            plan_name="quota_plan2",
+            nickname="os_terrform_p")
+        default3 = alicloud.maxcompute.QuotaPlan("default3",
+            quota={
+                "parameter": {
+                    "elastic_reserved_cu": 50,
+                },
+                "sub_quota_info_lists": [
+                    {
+                        "nick_name": "sub_quota",
+                        "parameter": {
+                            "min_cu": 40,
+                            "max_cu": 40,
+                            "elastic_reserved_cu": 40,
+                        },
+                    },
+                    {
+                        "nick_name": "os_terrform",
+                        "parameter": {
+                            "min_cu": 10,
+                            "max_cu": 10,
+                            "elastic_reserved_cu": 10,
+                        },
+                    },
+                ],
+            },
+            plan_name="quota_plan3",
+            nickname="os_terrform_p")
+        default_quota_schedule = alicloud.maxcompute.QuotaSchedule("default",
+            timezone="UTC+8",
+            nickname=quota_nick_name,
+            schedule_lists=[{
+                "plan": "Default",
+                "condition": {
+                    "at": "00:00",
+                },
+                "type": "daily",
+            }])
+        ```
+
+        ### Deleting `maxcompute.QuotaSchedule` or removing it from your configuration
+
+        Terraform cannot destroy resource `maxcompute.QuotaSchedule`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Quota Schedule can be imported using the id, e.g.
@@ -160,6 +280,126 @@ class QuotaSchedule(pulumi.CustomResource):
                  args: QuotaScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Max Compute Quota Schedule resource.
+
+        For information about Max Compute Quota Schedule and how to use it, see [What is Quota Schedule](https://www.alibabacloud.com/help/en/).
+
+        > **NOTE:** Available since v1.242.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        elastic_reserved_cu = config.get("elasticReservedCu")
+        if elastic_reserved_cu is None:
+            elastic_reserved_cu = "0"
+        quota_nick_name = config.get("quotaNickName")
+        if quota_nick_name is None:
+            quota_nick_name = "os_terrform_p"
+        default = alicloud.maxcompute.QuotaPlan("default",
+            quota={
+                "parameter": {
+                    "elastic_reserved_cu": 50,
+                },
+                "sub_quota_info_lists": [
+                    {
+                        "nick_name": "sub_quota",
+                        "parameter": {
+                            "min_cu": 0,
+                            "max_cu": 20,
+                            "elastic_reserved_cu": 30,
+                        },
+                    },
+                    {
+                        "nick_name": "os_terrform",
+                        "parameter": {
+                            "min_cu": 50,
+                            "max_cu": 50,
+                            "elastic_reserved_cu": 20,
+                        },
+                    },
+                ],
+            },
+            plan_name="quota_plan1",
+            nickname="os_terrform_p")
+        default2 = alicloud.maxcompute.QuotaPlan("default2",
+            quota={
+                "parameter": {
+                    "elastic_reserved_cu": 50,
+                },
+                "sub_quota_info_lists": [
+                    {
+                        "nick_name": "sub_quota",
+                        "parameter": {
+                            "min_cu": 0,
+                            "max_cu": 20,
+                            "elastic_reserved_cu": 20,
+                        },
+                    },
+                    {
+                        "nick_name": "os_terrform",
+                        "parameter": {
+                            "min_cu": 50,
+                            "max_cu": 50,
+                            "elastic_reserved_cu": 30,
+                        },
+                    },
+                ],
+            },
+            plan_name="quota_plan2",
+            nickname="os_terrform_p")
+        default3 = alicloud.maxcompute.QuotaPlan("default3",
+            quota={
+                "parameter": {
+                    "elastic_reserved_cu": 50,
+                },
+                "sub_quota_info_lists": [
+                    {
+                        "nick_name": "sub_quota",
+                        "parameter": {
+                            "min_cu": 40,
+                            "max_cu": 40,
+                            "elastic_reserved_cu": 40,
+                        },
+                    },
+                    {
+                        "nick_name": "os_terrform",
+                        "parameter": {
+                            "min_cu": 10,
+                            "max_cu": 10,
+                            "elastic_reserved_cu": 10,
+                        },
+                    },
+                ],
+            },
+            plan_name="quota_plan3",
+            nickname="os_terrform_p")
+        default_quota_schedule = alicloud.maxcompute.QuotaSchedule("default",
+            timezone="UTC+8",
+            nickname=quota_nick_name,
+            schedule_lists=[{
+                "plan": "Default",
+                "condition": {
+                    "at": "00:00",
+                },
+                "type": "daily",
+            }])
+        ```
+
+        ### Deleting `maxcompute.QuotaSchedule` or removing it from your configuration
+
+        Terraform cannot destroy resource `maxcompute.QuotaSchedule`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Quota Schedule can be imported using the id, e.g.

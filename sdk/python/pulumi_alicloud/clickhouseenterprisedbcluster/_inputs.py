@@ -25,28 +25,23 @@ __all__ = [
     'ClickHouseEnterpriseDbClusterMultiZoneArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccountDmlAuthSettingArgsDict(TypedDict):
-        ddl_authority: pulumi.Input[_builtins.bool]
-        """
-        Whether to grant the DDL permission to the database account. Value description:
-        """
-        dml_authority: pulumi.Input[_builtins.int]
-        """
-        Whether to grant the DML permission to the database account. The values are as follows:
-        """
-        allow_databases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of databases that require authorization. If there are more than one, separate them with commas (,).
-        """
-        allow_dictionaries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
-        """
-elif False:
-    AccountDmlAuthSettingArgsDict: TypeAlias = Mapping[str, Any]
+class AccountDmlAuthSettingArgsDict(TypedDict):
+    ddl_authority: pulumi.Input[_builtins.bool]
+    """
+    Whether to grant the DDL permission to the database account. Value description:
+    """
+    dml_authority: pulumi.Input[_builtins.int]
+    """
+    Whether to grant the DML permission to the database account. The values are as follows:
+    """
+    allow_databases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of databases that require authorization. If there are more than one, separate them with commas (,).
+    """
+    allow_dictionaries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
+    """
 
 @pulumi.input_type
 class AccountDmlAuthSettingArgs:
@@ -117,50 +112,47 @@ class AccountDmlAuthSettingArgs:
         pulumi.set(self, "allow_dictionaries", value)
 
 
-if not MYPY:
-    class ClickHouseEnterpriseDbClusterEndpointArgsDict(TypedDict):
-        computing_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The computing group ID.
-        """
-        connection_string: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance connection string.
-        """
-        endpoint_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The endpoint name.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address.
-        """
-        net_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type of the connection string.
-        """
-        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgsDict']]]]
-        """
-        A list of port details.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance status.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VPC ID.
-        """
-        vpc_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VPC instance ID.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        vSwitch ID.
-        """
-elif False:
-    ClickHouseEnterpriseDbClusterEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ClickHouseEnterpriseDbClusterEndpointArgsDict(TypedDict):
+    computing_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The computing group ID.
+    """
+    connection_string: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance connection string.
+    """
+    endpoint_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The endpoint name.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address.
+    """
+    net_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type of the connection string.
+    """
+    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgsDict']]]]
+    """
+    A list of port details.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance status.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VPC ID.
+    """
+    vpc_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VPC instance ID.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    vSwitch ID.
+    """
 
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterEndpointArgs:
@@ -329,18 +321,15 @@ class ClickHouseEnterpriseDbClusterEndpointArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class ClickHouseEnterpriseDbClusterEndpointPortArgsDict(TypedDict):
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The access port.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type.
-        """
-elif False:
-    ClickHouseEnterpriseDbClusterEndpointPortArgsDict: TypeAlias = Mapping[str, Any]
+class ClickHouseEnterpriseDbClusterEndpointPortArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The access port.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type.
+    """
 
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterEndpointPortArgs:
@@ -381,18 +370,15 @@ class ClickHouseEnterpriseDbClusterEndpointPortArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class ClickHouseEnterpriseDbClusterMultiZoneArgsDict(TypedDict):
-        vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of vSwitch IDs.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    ClickHouseEnterpriseDbClusterMultiZoneArgsDict: TypeAlias = Mapping[str, Any]
+class ClickHouseEnterpriseDbClusterMultiZoneArgsDict(TypedDict):
+    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of vSwitch IDs.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterMultiZoneArgs:

@@ -10,6 +10,82 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ens
 {
     /// <summary>
+    /// Provides a Ens Instance resource.
+    /// 
+    /// For information about ENS Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/Ens/2017-11-10/RunInstances).
+    /// 
+    /// &gt; **NOTE:** Available since v1.216.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Ens.Instance("default", new()
+    ///     {
+    ///         Period = 1,
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.Ens.Inputs.InstanceDataDiskArgs
+    ///             {
+    ///                 Size = 20,
+    ///                 Category = "cloud_efficiency",
+    ///             },
+    ///             new AliCloud.Ens.Inputs.InstanceDataDiskArgs
+    ///             {
+    ///                 Size = 30,
+    ///                 Category = "cloud_efficiency",
+    ///             },
+    ///             new AliCloud.Ens.Inputs.InstanceDataDiskArgs
+    ///             {
+    ///                 Size = 40,
+    ///                 Category = "cloud_efficiency",
+    ///             },
+    ///         },
+    ///         PublicIpIdentification = true,
+    ///         PeriodUnit = "Month",
+    ///         SchedulingStrategy = "Concentrate",
+    ///         ScheduleAreaLevel = "Region",
+    ///         ImageId = "centos_6_08_64_20G_alibase_20171208",
+    ///         Carrier = "cmcc",
+    ///         InstanceType = "ens.sn1.tiny",
+    ///         HostName = "exampleHost80",
+    ///         Password = "Example123456@@",
+    ///         NetDistrictCode = "100102",
+    ///         InternetChargeType = "95BandwidthByMonth",
+    ///         InstanceName = name,
+    ///         InternetMaxBandwidthOut = 100,
+    ///         EnsRegionId = "cn-wuxi-telecom_unicom_cmcc-2",
+    ///         SystemDisk = new AliCloud.Ens.Inputs.InstanceSystemDiskArgs
+    ///         {
+    ///             Size = 20,
+    ///         },
+    ///         SchedulingPriceStrategy = "PriceHighPriority",
+    ///         UserData = "IyEvYmluL3NoCmVjaG8gIkhlbGxvIFdvcmxkLiAgVGhlIHRpbWUgaXMgbm93ICQoZGF0ZSAtUikhIiB8IHRlZSAvcm9vdC9vdXRwdXQudHh0",
+    ///         InstanceChargeStrategy = "user",
+    ///         PaymentType = "Subscription",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.ens.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.ens.Instance` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ens Instance can be imported using the id, e.g.

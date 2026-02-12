@@ -11,6 +11,154 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Eflo Node resource.
+//
+// Large computing node.
+//
+// For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+//
+// > **NOTE:** Available since v1.246.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eflo.NewNode(ctx, "default", &eflo.NodeArgs{
+//				Period:        pulumi.Int(36),
+//				DiscountLevel: pulumi.String("36"),
+//				BillingCycle:  pulumi.String("1month"),
+//				Classify:      pulumi.String("gpuserver"),
+//				Zone:          pulumi.String("cn-hangzhou-b"),
+//				ProductForm:   pulumi.String("instance"),
+//				PaymentRatio:  pulumi.String("0"),
+//				HpnZone:       pulumi.String("B1"),
+//				ServerArch:    pulumi.String("bmserver"),
+//				MachineType:   pulumi.String("efg1.nvga1n"),
+//				StageNum:      pulumi.String("36"),
+//				RenewalStatus: pulumi.String("AutoRenewal"),
+//				RenewPeriod:   pulumi.Int(36),
+//				Status:        pulumi.String("Unused"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// Creating a PayAsYouGo eflo node
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eflo.NewNode(ctx, "payasyougo", &eflo.NodeArgs{
+//				MachineType:   pulumi.String("efg1.nvga8n"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				HpnZone:       pulumi.String("A1"),
+//				ProductForm:   pulumi.String("instance"),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				Zone:          pulumi.String("cn-wulanchabu-a"),
+//				Tags: pulumi.StringMap{
+//					"From": pulumi.String("Terraform"),
+//				},
+//				ClusterId:     pulumi.String("i11922307xxxxxxx"),
+//				NodeGroupId:   pulumi.String("i1254705xxxxxxxx"),
+//				Hostname:      pulumi.String("terraform-example"),
+//				LoginPassword: pulumi.String("xxxxxxxx"),
+//				DataDisks: eflo.NodeDataDiskArray{
+//					&eflo.NodeDataDiskArgs{
+//						Size:             pulumi.Int(120),
+//						Category:         pulumi.String("cloud_essd"),
+//						PerformanceLevel: pulumi.String("PL0"),
+//					},
+//					&eflo.NodeDataDiskArgs{
+//						Size:             pulumi.Int(120),
+//						Category:         pulumi.String("cloud_essd"),
+//						PerformanceLevel: pulumi.String("PL1"),
+//					},
+//				},
+//				IpAllocationPolicies: eflo.NodeIpAllocationPolicyArray{
+//					&eflo.NodeIpAllocationPolicyArgs{
+//						MachineTypePolicies: eflo.NodeIpAllocationPolicyMachineTypePolicyArray{
+//							&eflo.NodeIpAllocationPolicyMachineTypePolicyArgs{
+//								MachineType: pulumi.String("efg1.nvga8n"),
+//								Bonds: eflo.NodeIpAllocationPolicyMachineTypePolicyBondArray{
+//									&eflo.NodeIpAllocationPolicyMachineTypePolicyBondArgs{
+//										Subnet: pulumi.String("subnet-x1xxx"),
+//										Name:   pulumi.String("example01"),
+//									},
+//									&eflo.NodeIpAllocationPolicyMachineTypePolicyBondArgs{
+//										Subnet: pulumi.String("subnet-xxxx"),
+//										Name:   pulumi.String("example02"),
+//									},
+//									&eflo.NodeIpAllocationPolicyMachineTypePolicyBondArgs{
+//										Subnet: pulumi.String("subnet-xxxx"),
+//										Name:   pulumi.String("example03"),
+//									},
+//									&eflo.NodeIpAllocationPolicyMachineTypePolicyBondArgs{
+//										Subnet: pulumi.String("subnet-xxxx"),
+//										Name:   pulumi.String("example04"),
+//									},
+//									&eflo.NodeIpAllocationPolicyMachineTypePolicyBondArgs{
+//										Subnet: pulumi.String("subnet-xxxx"),
+//										Name:   pulumi.String("example05"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `eflo.Node` or removing it from your configuration
+//
+// The `eflo.Node` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Eflo Node can be imported using the id, e.g.

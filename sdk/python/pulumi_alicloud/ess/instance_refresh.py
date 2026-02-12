@@ -481,6 +481,86 @@ class InstanceRefresh(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a ESS instance refresh resource.
+
+        For information about ess instance refresh, see [StartInstanceRefresh](https://www.alibabacloud.com/help/en/auto-scaling/developer-reference/api-startinstancerefresh).
+
+        > **NOTE:** Available since v1.261.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=my_name,
+            cidr_block="172.16.0.0/16")
+        default1 = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=my_name)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name=my_name,
+            vpc_id=default_network.id)
+        default1_get_images = alicloud.ecs.get_images(name_regex="^ubu",
+            most_recent=True,
+            owners="system")
+        default2 = alicloud.ecs.get_images(name_regex="^aliyun",
+            most_recent=True,
+            owners="system")
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
+            min_size=0,
+            max_size=10,
+            scaling_group_name=my_name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id],
+            desired_capacity=1)
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("default",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default1_get_images.images[0].id,
+            instance_type=default1.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            enable=True)
+        default_instance_refresh = alicloud.ess.InstanceRefresh("default",
+            scaling_group_id=default_scaling_configuration.scaling_group_id,
+            desired_configuration_image_id=default2.images[0].id,
+            min_healthy_percentage=90,
+            max_healthy_percentage=150,
+            checkpoint_pause_time=60,
+            skip_matching=False,
+            checkpoints=[{
+                "percentage": 100,
+            }])
+        ```
+        ### Deleting `ess.InstanceRefresh` or removing it from your configuration
+
+        The `ess.InstanceRefresh` resource allows you to manage  `status = "RollbackInProgress"`  instance refresh, but Terraform cannot destroy it.
+        Deleting will remove it from your state file and management, but will not destroy the Instance Refresh.
+        You can resume managing the instance refresh via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESS instance refresh can be imported using the id, e.g.
@@ -522,6 +602,86 @@ class InstanceRefresh(pulumi.CustomResource):
                  args: InstanceRefreshArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ESS instance refresh resource.
+
+        For information about ess instance refresh, see [StartInstanceRefresh](https://www.alibabacloud.com/help/en/auto-scaling/developer-reference/api-startinstancerefresh).
+
+        > **NOTE:** Available since v1.261.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=my_name,
+            cidr_block="172.16.0.0/16")
+        default1 = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=my_name)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name=my_name,
+            vpc_id=default_network.id)
+        default1_get_images = alicloud.ecs.get_images(name_regex="^ubu",
+            most_recent=True,
+            owners="system")
+        default2 = alicloud.ecs.get_images(name_regex="^aliyun",
+            most_recent=True,
+            owners="system")
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
+            min_size=0,
+            max_size=10,
+            scaling_group_name=my_name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id],
+            desired_capacity=1)
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("default",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default1_get_images.images[0].id,
+            instance_type=default1.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            enable=True)
+        default_instance_refresh = alicloud.ess.InstanceRefresh("default",
+            scaling_group_id=default_scaling_configuration.scaling_group_id,
+            desired_configuration_image_id=default2.images[0].id,
+            min_healthy_percentage=90,
+            max_healthy_percentage=150,
+            checkpoint_pause_time=60,
+            skip_matching=False,
+            checkpoints=[{
+                "percentage": 100,
+            }])
+        ```
+        ### Deleting `ess.InstanceRefresh` or removing it from your configuration
+
+        The `ess.InstanceRefresh` resource allows you to manage  `status = "RollbackInProgress"`  instance refresh, but Terraform cannot destroy it.
+        Deleting will remove it from your state file and management, but will not destroy the Instance Refresh.
+        You can resume managing the instance refresh via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESS instance refresh can be imported using the id, e.g.

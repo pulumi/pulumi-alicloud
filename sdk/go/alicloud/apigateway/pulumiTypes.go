@@ -2313,7 +2313,8 @@ type GetApisApi struct {
 	GroupId string `pulumi:"groupId"`
 	// The name of the API group.
 	GroupName string `pulumi:"groupName"`
-	Id        string `pulumi:"id"`
+	// The resource ID in terraform of API. It formats as `<group_id>:<api_id>`.
+	Id string `pulumi:"id"`
 	// The name of the API.
 	Name string `pulumi:"name"`
 	// The region ID of the API.
@@ -2340,7 +2341,8 @@ type GetApisApiArgs struct {
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 	// The name of the API group.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	Id        pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of API. It formats as `<group_id>:<api_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the API.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The region ID of the API.
@@ -2418,6 +2420,7 @@ func (o GetApisApiOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of API. It formats as `<group_id>:<api_id>`.
 func (o GetApisApiOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2605,7 +2608,8 @@ type GetBackendsBackend struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the Backend.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// The resource ID in terraform of Backend.
+	Id string `pulumi:"id"`
 	// The modified time of the Backend.
 	ModifiedTime string `pulumi:"modifiedTime"`
 }
@@ -2632,7 +2636,8 @@ type GetBackendsBackendArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the Backend.
 	Description pulumi.StringInput `pulumi:"description"`
-	Id          pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of Backend.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The modified time of the Backend.
 	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
 }
@@ -2713,6 +2718,7 @@ func (o GetBackendsBackendOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendsBackend) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Backend.
 func (o GetBackendsBackendOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendsBackend) string { return v.Id }).(pulumi.StringOutput)
 }

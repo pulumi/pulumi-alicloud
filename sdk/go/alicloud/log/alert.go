@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -126,8 +124,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -285,8 +281,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -389,6 +383,8 @@ type Alert struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition pulumi.StringPtrOutput `pulumi:"condition"`
+	// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrOutput `pulumi:"dashboard"`
 	// Group configuration for new alert.
@@ -498,6 +494,8 @@ type alertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition *string `pulumi:"condition"`
+	// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard *string `pulumi:"dashboard"`
 	// Group configuration for new alert.
@@ -569,6 +567,8 @@ type AlertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition pulumi.StringPtrInput
+	// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrInput
 	// Group configuration for new alert.
@@ -644,6 +644,8 @@ type alertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition *string `pulumi:"condition"`
+	// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard *string `pulumi:"dashboard"`
 	// Group configuration for new alert.
@@ -716,6 +718,8 @@ type AlertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition pulumi.StringPtrInput
+	// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+	//
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrInput
 	// Group configuration for new alert.
@@ -891,6 +895,8 @@ func (o AlertOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
+// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+//
 // Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 func (o AlertOutput) Dashboard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Dashboard }).(pulumi.StringPtrOutput)

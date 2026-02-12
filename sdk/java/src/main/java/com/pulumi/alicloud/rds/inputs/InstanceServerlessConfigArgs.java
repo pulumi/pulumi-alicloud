@@ -17,9 +17,25 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
 
     public static final InstanceServerlessConfigArgs Empty = new InstanceServerlessConfigArgs();
 
+    /**
+     * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+     * - true: enables the feature.
+     * - false: disables the feature. This is the default value.
+     * &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+     * &gt; - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+     * 
+     */
     @Import(name="autoPause")
     private @Nullable Output<Boolean> autoPause;
 
+    /**
+     * @return Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+     * - true: enables the feature.
+     * - false: disables the feature. This is the default value.
+     * &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+     * &gt; - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+     * 
+     */
     public Optional<Output<Boolean>> autoPause() {
         return Optional.ofNullable(this.autoPause);
     }
@@ -116,11 +132,31 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
             $ = new InstanceServerlessConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoPause Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         * &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+         * &gt; - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoPause(@Nullable Output<Boolean> autoPause) {
             $.autoPause = autoPause;
             return this;
         }
 
+        /**
+         * @param autoPause Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         * &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+         * &gt; - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoPause(Boolean autoPause) {
             return autoPause(Output.of(autoPause));
         }
