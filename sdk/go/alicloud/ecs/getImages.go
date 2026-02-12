@@ -28,14 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			imagesDs, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			example, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				Owners:    pulumi.StringRef("system"),
 //				NameRegex: pulumi.StringRef("^centos_6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstImageId", imagesDs.Images[0].Id)
+//			ctx.Export("imageId", example.Images[0].Id)
 //			return nil
 //		})
 //	}
@@ -54,10 +54,10 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
 	// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-	// * `CreateEcs`: instance creation.
-	// * `ChangeOS`: replacement of the system disk or operating system.
+	// - `CreateEcs`: instance creation.
+	// - `ChangeOS`: replacement of the system disk or operating system.
 	ActionType *string `pulumi:"actionType"`
-	// The image architecture. Valid values: `i386` and `x8664`.
+	// The image architecture. Valid values: `i386`, `x8664`, `arm64`.
 	Architecture *string `pulumi:"architecture"`
 	// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -82,8 +82,6 @@ type GetImagesArgs struct {
 	// The operating system type of the image. Valid values: `windows` and `linux`.
 	OsType *string `pulumi:"osType"`
 	// File name where to save data source results (after running `pulumi preview`).
-	//
-	// > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
 	Owners *string `pulumi:"owners"`
@@ -92,12 +90,12 @@ type GetImagesArgs struct {
 	// The ID of the snapshot used to create the custom image.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-	// * `Creating`: The image is being created.
-	// * `Waiting`: The image is waiting to be processed.
-	// * `Available`: The image is available.
-	// * `UnAvailable`: The image is unavailable.
-	// * `CreateFailed`: The image failed to be created.
-	// * `Deprecated`: The image is discontinued.
+	// - `Creating`: The image is being created.
+	// - `Waiting`: The image is waiting to be processed.
+	// - `Available`: The image is available.
+	// - `UnAvailable`: The image is unavailable.
+	// - `CreateFailed`: The image failed to be created.
+	// - `Deprecated`: The image is discontinued.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -108,7 +106,7 @@ type GetImagesArgs struct {
 // A collection of values returned by getImages.
 type GetImagesResult struct {
 	ActionType *string `pulumi:"actionType"`
-	// Platform type of the image system: i386 or x86_64.
+	// The platform type of the image system: i386 or x86_64.
 	Architecture *string `pulumi:"architecture"`
 	DryRun       *bool   `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
@@ -119,7 +117,7 @@ type GetImagesResult struct {
 	ImageId      *string  `pulumi:"imageId"`
 	ImageName    *string  `pulumi:"imageName"`
 	ImageOwnerId *string  `pulumi:"imageOwnerId"`
-	// A list of images. Each element contains the following attributes:
+	// A `diskDeviceMappings` block as defined below. A list of images.
 	Images               []GetImagesImage `pulumi:"images"`
 	InstanceType         *string          `pulumi:"instanceType"`
 	IsSupportCloudInit   *bool            `pulumi:"isSupportCloudInit"`
@@ -130,9 +128,9 @@ type GetImagesResult struct {
 	OutputFile           *string          `pulumi:"outputFile"`
 	Owners               *string          `pulumi:"owners"`
 	ResourceGroupId      *string          `pulumi:"resourceGroupId"`
-	// Snapshot ID.
+	// The snapshot ID.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+	// The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
 	Status *string           `pulumi:"status"`
 	Tags   map[string]string `pulumi:"tags"`
 	Usage  *string           `pulumi:"usage"`
@@ -150,10 +148,10 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
 	// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-	// * `CreateEcs`: instance creation.
-	// * `ChangeOS`: replacement of the system disk or operating system.
+	// - `CreateEcs`: instance creation.
+	// - `ChangeOS`: replacement of the system disk or operating system.
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	// The image architecture. Valid values: `i386` and `x8664`.
+	// The image architecture. Valid values: `i386`, `x8664`, `arm64`.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
 	// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
@@ -178,8 +176,6 @@ type GetImagesOutputArgs struct {
 	// The operating system type of the image. Valid values: `windows` and `linux`.
 	OsType pulumi.StringPtrInput `pulumi:"osType"`
 	// File name where to save data source results (after running `pulumi preview`).
-	//
-	// > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
 	Owners pulumi.StringPtrInput `pulumi:"owners"`
@@ -188,12 +184,12 @@ type GetImagesOutputArgs struct {
 	// The ID of the snapshot used to create the custom image.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-	// * `Creating`: The image is being created.
-	// * `Waiting`: The image is waiting to be processed.
-	// * `Available`: The image is available.
-	// * `UnAvailable`: The image is unavailable.
-	// * `CreateFailed`: The image failed to be created.
-	// * `Deprecated`: The image is discontinued.
+	// - `Creating`: The image is being created.
+	// - `Waiting`: The image is waiting to be processed.
+	// - `Available`: The image is available.
+	// - `UnAvailable`: The image is unavailable.
+	// - `CreateFailed`: The image failed to be created.
+	// - `Deprecated`: The image is discontinued.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -224,7 +220,7 @@ func (o GetImagesResultOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
-// Platform type of the image system: i386 or x86_64.
+// The platform type of the image system: i386 or x86_64.
 func (o GetImagesResultOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
@@ -259,7 +255,7 @@ func (o GetImagesResultOutput) ImageOwnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageOwnerId }).(pulumi.StringPtrOutput)
 }
 
-// A list of images. Each element contains the following attributes:
+// A `diskDeviceMappings` block as defined below. A list of images.
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
 }
@@ -300,12 +296,12 @@ func (o GetImagesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Snapshot ID.
+// The snapshot ID.
 func (o GetImagesResultOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+// The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
 func (o GetImagesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

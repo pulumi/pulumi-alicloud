@@ -12,9 +12,11 @@ namespace Pulumi.AliCloud.Ecs
     /// <summary>
     /// Provides a ECS Auto Snapshot Policy Attachment resource.
     /// 
+    /// Automatic snapshot policy Mount relationship.
+    /// 
     /// For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.122.0+.
+    /// &gt; **NOTE:** Available since v1.122.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,55 +30,41 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleKey = new AliCloud.Kms.Key("example", new()
+    ///     var defaultAutoSnapshotPolicy = new AliCloud.Ecs.AutoSnapshotPolicy("default", new()
     ///     {
-    ///         Description = "terraform-example",
-    ///         PendingWindowInDays = 7,
-    ///         Status = "Enabled",
-    ///     });
-    /// 
-    ///     var exampleAutoSnapshotPolicy = new AliCloud.Ecs.AutoSnapshotPolicy("example", new()
-    ///     {
-    ///         Name = "terraform-example",
+    ///         AutoSnapshotPolicyName = name,
     ///         RepeatWeekdays = new[]
     ///         {
     ///             "1",
     ///             "2",
     ///             "3",
     ///         },
-    ///         RetentionDays = -1,
+    ///         RetentionDays = 1,
     ///         TimePoints = new[]
     ///         {
     ///             "1",
-    ///             "22",
-    ///             "23",
+    ///             "2",
+    ///             "3",
     ///         },
     ///     });
     /// 
-    ///     var exampleEcsDisk = new AliCloud.Ecs.EcsDisk("example", new()
+    ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
     ///     {
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         DiskName = "terraform-example",
-    ///         Description = "Hello ecs disk.",
-    ///         Category = "cloud_efficiency",
-    ///         Size = 30,
-    ///         Encrypted = true,
-    ///         KmsKeyId = exampleKey.Id,
-    ///         Tags = 
-    ///         {
-    ///             { "Name", "terraform-example" },
-    ///         },
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         Size = 500,
     ///     });
     /// 
-    ///     var exampleEcsAutoSnapshotPolicyAttachment = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("example", new()
+    ///     var defaultEcsAutoSnapshotPolicyAttachment = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("default", new()
     ///     {
-    ///         AutoSnapshotPolicyId = exampleAutoSnapshotPolicy.Id,
-    ///         DiskId = exampleEcsDisk.Id,
+    ///         AutoSnapshotPolicyId = defaultAutoSnapshotPolicy.Id,
+    ///         DiskId = defaultEcsDisk.Id,
     ///     });
     /// 
     /// });
@@ -89,23 +77,29 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+    /// $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example &lt;auto_snapshot_policy_id&gt;:&lt;disk_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment")]
     public partial class EcsAutoSnapshotPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The auto snapshot policy id.
+        /// The ID of the automatic snapshot policy that is applied to the cloud disk.
         /// </summary>
         [Output("autoSnapshotPolicyId")]
         public Output<string> AutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The disk id.
+        /// The ID of the disk.
         /// </summary>
         [Output("diskId")]
         public Output<string> DiskId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
 
         /// <summary>
@@ -154,13 +148,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsAutoSnapshotPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto snapshot policy id.
+        /// The ID of the automatic snapshot policy that is applied to the cloud disk.
         /// </summary>
         [Input("autoSnapshotPolicyId", required: true)]
         public Input<string> AutoSnapshotPolicyId { get; set; } = null!;
 
         /// <summary>
-        /// The disk id.
+        /// The ID of the disk.
         /// </summary>
         [Input("diskId", required: true)]
         public Input<string> DiskId { get; set; } = null!;
@@ -174,16 +168,22 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsAutoSnapshotPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto snapshot policy id.
+        /// The ID of the automatic snapshot policy that is applied to the cloud disk.
         /// </summary>
         [Input("autoSnapshotPolicyId")]
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The disk id.
+        /// The ID of the disk.
         /// </summary>
         [Input("diskId")]
         public Input<string>? DiskId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         public EcsAutoSnapshotPolicyAttachmentState()
         {

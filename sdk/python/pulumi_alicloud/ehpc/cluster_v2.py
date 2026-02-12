@@ -583,26 +583,23 @@ class ClusterV2(pulumi.CustomResource):
             access_group_name=example_access_group.access_group_name,
             file_system_type=example_file_system.file_system_type,
             source_cidr_ip="10.0.0.0/24")
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            vpc_id=example.id,
-            security_group_type="normal")
+        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("example", key_pair_name=name)
         example_mount_target = alicloud.nas.MountTarget("example",
             vpc_id=example.id,
             network_type="Vpc",
             access_group_name=example_access_group.access_group_name,
             vswitch_id=example_switch.id,
             file_system_id=example_file_system.id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            vpc_id=example.id,
+            security_group_type="normal")
         default = alicloud.ehpc.ClusterV2("default",
             cluster_credentials={
-                "password": "aliHPC123",
+                "key_pair_name": example_ecs_key_pair.id,
             },
-            cluster_vpc_id=example.id,
-            cluster_category="Standard",
             cluster_mode="Integrated",
-            security_group_id=example_security_group.id,
-            cluster_name="minimal-example-cluster",
+            cluster_vpc_id=example.id,
             deletion_protection=True,
-            client_version="2.0.47",
             shared_storages=[
                 {
                     "mount_directory": "/home",
@@ -613,25 +610,29 @@ class ClusterV2(pulumi.CustomResource):
                     "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
                 },
                 {
-                    "mount_directory": "/opt",
                     "nas_directory": "/",
                     "mount_target_domain": example_mount_target.mount_target_domain,
                     "protocol_type": "NFS",
                     "file_system_id": example_file_system.id,
                     "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
+                    "mount_directory": "/opt",
                 },
                 {
+                    "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
                     "mount_directory": "/ehpcdata",
                     "nas_directory": "/",
                     "mount_target_domain": example_mount_target.mount_target_domain,
                     "protocol_type": "NFS",
                     "file_system_id": example_file_system.id,
-                    "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
                 },
             ],
             cluster_vswitch_id=example_switch.id,
+            cluster_category="Standard",
+            security_group_id=example_security_group.id,
+            cluster_name=name,
             manager={
                 "manager_node": {
+                    "spot_strategy": "NoSpot",
                     "system_disk": {
                         "category": "cloud_essd",
                         "size": 40,
@@ -640,9 +641,7 @@ class ClusterV2(pulumi.CustomResource):
                     "enable_ht": True,
                     "instance_charge_type": "PostPaid",
                     "image_id": "centos_7_6_x64_20G_alibase_20211130.vhd",
-                    "spot_price_limit": 0,
                     "instance_type": "ecs.c6.xlarge",
-                    "spot_strategy": "NoSpot",
                 },
                 "scheduler": {
                     "type": "SLURM",
@@ -754,26 +753,23 @@ class ClusterV2(pulumi.CustomResource):
             access_group_name=example_access_group.access_group_name,
             file_system_type=example_file_system.file_system_type,
             source_cidr_ip="10.0.0.0/24")
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            vpc_id=example.id,
-            security_group_type="normal")
+        example_ecs_key_pair = alicloud.ecs.EcsKeyPair("example", key_pair_name=name)
         example_mount_target = alicloud.nas.MountTarget("example",
             vpc_id=example.id,
             network_type="Vpc",
             access_group_name=example_access_group.access_group_name,
             vswitch_id=example_switch.id,
             file_system_id=example_file_system.id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            vpc_id=example.id,
+            security_group_type="normal")
         default = alicloud.ehpc.ClusterV2("default",
             cluster_credentials={
-                "password": "aliHPC123",
+                "key_pair_name": example_ecs_key_pair.id,
             },
-            cluster_vpc_id=example.id,
-            cluster_category="Standard",
             cluster_mode="Integrated",
-            security_group_id=example_security_group.id,
-            cluster_name="minimal-example-cluster",
+            cluster_vpc_id=example.id,
             deletion_protection=True,
-            client_version="2.0.47",
             shared_storages=[
                 {
                     "mount_directory": "/home",
@@ -784,25 +780,29 @@ class ClusterV2(pulumi.CustomResource):
                     "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
                 },
                 {
-                    "mount_directory": "/opt",
                     "nas_directory": "/",
                     "mount_target_domain": example_mount_target.mount_target_domain,
                     "protocol_type": "NFS",
                     "file_system_id": example_file_system.id,
                     "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
+                    "mount_directory": "/opt",
                 },
                 {
+                    "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
                     "mount_directory": "/ehpcdata",
                     "nas_directory": "/",
                     "mount_target_domain": example_mount_target.mount_target_domain,
                     "protocol_type": "NFS",
                     "file_system_id": example_file_system.id,
-                    "mount_options": "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
                 },
             ],
             cluster_vswitch_id=example_switch.id,
+            cluster_category="Standard",
+            security_group_id=example_security_group.id,
+            cluster_name=name,
             manager={
                 "manager_node": {
+                    "spot_strategy": "NoSpot",
                     "system_disk": {
                         "category": "cloud_essd",
                         "size": 40,
@@ -811,9 +811,7 @@ class ClusterV2(pulumi.CustomResource):
                     "enable_ht": True,
                     "instance_charge_type": "PostPaid",
                     "image_id": "centos_7_6_x64_20G_alibase_20211130.vhd",
-                    "spot_price_limit": 0,
                     "instance_type": "ecs.c6.xlarge",
-                    "spot_strategy": "NoSpot",
                 },
                 "scheduler": {
                     "type": "SLURM",

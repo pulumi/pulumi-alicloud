@@ -16,14 +16,14 @@ public final class CollectionPolicyDataConfigArgs extends com.pulumi.resources.R
     public static final CollectionPolicyDataConfigArgs Empty = new CollectionPolicyDataConfigArgs();
 
     /**
-     * Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+     * This setting is valid only when the log type is a global log type—for example, when productCode is sls.
      * 
      */
     @Import(name="dataProject")
     private @Nullable Output<String> dataProject;
 
     /**
-     * @return Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+     * @return This setting is valid only when the log type is a global log type—for example, when productCode is sls.
      * 
      */
     public Optional<Output<String>> dataProject() {
@@ -31,14 +31,14 @@ public final class CollectionPolicyDataConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+     * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
      * 
      */
     @Import(name="dataRegion")
     private @Nullable Output<String> dataRegion;
 
     /**
-     * @return If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+     * @return This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
      * 
      */
     public Optional<Output<String>> dataRegion() {
@@ -71,7 +71,7 @@ public final class CollectionPolicyDataConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dataProject Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+         * @param dataProject This setting is valid only when the log type is a global log type—for example, when productCode is sls.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class CollectionPolicyDataConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dataProject Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+         * @param dataProject This setting is valid only when the log type is a global log type—for example, when productCode is sls.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class CollectionPolicyDataConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dataRegion If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+         * @param dataRegion This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class CollectionPolicyDataConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dataRegion If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+         * @param dataRegion This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
          * 
          * @return builder
          * 

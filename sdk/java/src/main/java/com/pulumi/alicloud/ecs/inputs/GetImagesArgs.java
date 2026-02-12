@@ -19,8 +19,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
+     * - `CreateEcs`: instance creation.
+     * - `ChangeOS`: replacement of the system disk or operating system.
      * 
      */
     @Import(name="actionType")
@@ -28,8 +28,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
+     * - `CreateEcs`: instance creation.
+     * - `ChangeOS`: replacement of the system disk or operating system.
      * 
      */
     public Optional<Output<String>> actionType() {
@@ -37,14 +37,14 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The image architecture. Valid values: `i386` and `x8664`.
+     * The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The image architecture. Valid values: `i386` and `x8664`.
+     * @return The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -219,16 +219,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
-     * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
-     * 
      */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
     /**
      * @return File name where to save data source results (after running `pulumi preview`).
-     * 
-     * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
      * 
      */
     public Optional<Output<String>> outputFile() {
@@ -282,12 +278,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * - `Creating`: The image is being created.
+     * - `Waiting`: The image is waiting to be processed.
+     * - `Available`: The image is available.
+     * - `UnAvailable`: The image is unavailable.
+     * - `CreateFailed`: The image failed to be created.
+     * - `Deprecated`: The image is discontinued.
      * 
      */
     @Import(name="status")
@@ -295,12 +291,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * - `Creating`: The image is being created.
+     * - `Waiting`: The image is waiting to be processed.
+     * - `Available`: The image is available.
+     * - `UnAvailable`: The image is unavailable.
+     * - `CreateFailed`: The image failed to be created.
+     * - `Deprecated`: The image is discontinued.
      * 
      */
     public Optional<Output<String>> status() {
@@ -382,8 +378,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param actionType The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-         * * `CreateEcs`: instance creation.
-         * * `ChangeOS`: replacement of the system disk or operating system.
+         * - `CreateEcs`: instance creation.
+         * - `ChangeOS`: replacement of the system disk or operating system.
          * 
          * @return builder
          * 
@@ -395,8 +391,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param actionType The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-         * * `CreateEcs`: instance creation.
-         * * `ChangeOS`: replacement of the system disk or operating system.
+         * - `CreateEcs`: instance creation.
+         * - `ChangeOS`: replacement of the system disk or operating system.
          * 
          * @return builder
          * 
@@ -406,7 +402,7 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param architecture The image architecture. Valid values: `i386` and `x8664`.
+         * @param architecture The image architecture. Valid values: `i386`, `x8664`, `arm64`.
          * 
          * @return builder
          * 
@@ -417,7 +413,7 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param architecture The image architecture. Valid values: `i386` and `x8664`.
+         * @param architecture The image architecture. Valid values: `i386`, `x8664`, `arm64`.
          * 
          * @return builder
          * 
@@ -660,8 +656,6 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
-         * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
-         * 
          * @return builder
          * 
          */
@@ -672,8 +666,6 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
-         * 
-         * &gt; **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
          * 
          * @return builder
          * 
@@ -747,12 +739,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-         * * `Creating`: The image is being created.
-         * * `Waiting`: The image is waiting to be processed.
-         * * `Available`: The image is available.
-         * * `UnAvailable`: The image is unavailable.
-         * * `CreateFailed`: The image failed to be created.
-         * * `Deprecated`: The image is discontinued.
+         * - `Creating`: The image is being created.
+         * - `Waiting`: The image is waiting to be processed.
+         * - `Available`: The image is available.
+         * - `UnAvailable`: The image is unavailable.
+         * - `CreateFailed`: The image failed to be created.
+         * - `Deprecated`: The image is discontinued.
          * 
          * @return builder
          * 
@@ -764,12 +756,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-         * * `Creating`: The image is being created.
-         * * `Waiting`: The image is waiting to be processed.
-         * * `Available`: The image is available.
-         * * `UnAvailable`: The image is unavailable.
-         * * `CreateFailed`: The image failed to be created.
-         * * `Deprecated`: The image is discontinued.
+         * - `Creating`: The image is being created.
+         * - `Waiting`: The image is waiting to be processed.
+         * - `Available`: The image is available.
+         * - `UnAvailable`: The image is unavailable.
+         * - `CreateFailed`: The image failed to be created.
+         * - `Deprecated`: The image is discontinued.
          * 
          * @return builder
          * 

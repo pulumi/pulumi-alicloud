@@ -111,98 +111,106 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sls/etl:Etl")
 public class Etl extends com.pulumi.resources.CustomResource {
     /**
-     * The ETL configuration. See `configuration` below.
+     * Detailed configuration of the data processing task.   See `configuration` below.
      * 
      */
     @Export(name="configuration", refs={EtlConfiguration.class}, tree="[0]")
     private Output<EtlConfiguration> configuration;
 
     /**
-     * @return The ETL configuration. See `configuration` below.
+     * @return Detailed configuration of the data processing task.   See `configuration` below.
      * 
      */
     public Output<EtlConfiguration> configuration() {
         return this.configuration;
     }
     /**
-     * The time when the data transformation job was created.
+     * The time when the task was created.
      * 
      */
     @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
-     * @return The time when the data transformation job was created.
+     * @return The time when the task was created.
      * 
      */
     public Output<Integer> createTime() {
         return this.createTime;
     }
     /**
-     * Data Processing Task Description.
+     * Description of the data processing task.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Data Processing Task Description.
+     * @return Description of the data processing task.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Data processing task display name.
+     * The display name of the data processing task.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
-     * @return Data processing task display name.
+     * @return The display name of the data processing task.
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * Unique identification of data processing task.
+     * The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      * 
      */
     @Export(name="jobName", refs={String.class}, tree="[0]")
     private Output<String> jobName;
 
     /**
-     * @return Unique identification of data processing task.
+     * @return The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      * 
      */
     public Output<String> jobName() {
         return this.jobName;
     }
     /**
-     * Project Name.
+     * Project name.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Project Name.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The status of the data transformation job.
+     * Task status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the data transformation job.
+     * @return Task status.
      * 
      */
     public Output<String> status() {

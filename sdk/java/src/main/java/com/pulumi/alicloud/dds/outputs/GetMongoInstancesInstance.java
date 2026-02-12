@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dds.outputs;
 
 import com.pulumi.alicloud.dds.outputs.GetMongoInstancesInstanceMongo;
+import com.pulumi.alicloud.dds.outputs.GetMongoInstancesInstanceRestoreRange;
 import com.pulumi.alicloud.dds.outputs.GetMongoInstancesInstanceShard;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -30,6 +31,7 @@ public final class GetMongoInstancesInstance {
     private String networkType;
     private String regionId;
     private String replication;
+    private List<GetMongoInstancesInstanceRestoreRange> restoreRanges;
     private List<GetMongoInstancesInstanceShard> shards;
     private String status;
     private Integer storage;
@@ -81,6 +83,9 @@ public final class GetMongoInstancesInstance {
     public String replication() {
         return this.replication;
     }
+    public List<GetMongoInstancesInstanceRestoreRange> restoreRanges() {
+        return this.restoreRanges;
+    }
     public List<GetMongoInstancesInstanceShard> shards() {
         return this.shards;
     }
@@ -118,6 +123,7 @@ public final class GetMongoInstancesInstance {
         private String networkType;
         private String regionId;
         private String replication;
+        private List<GetMongoInstancesInstanceRestoreRange> restoreRanges;
         private List<GetMongoInstancesInstanceShard> shards;
         private String status;
         private Integer storage;
@@ -140,6 +146,7 @@ public final class GetMongoInstancesInstance {
     	      this.networkType = defaults.networkType;
     	      this.regionId = defaults.regionId;
     	      this.replication = defaults.replication;
+    	      this.restoreRanges = defaults.restoreRanges;
     	      this.shards = defaults.shards;
     	      this.status = defaults.status;
     	      this.storage = defaults.storage;
@@ -270,6 +277,17 @@ public final class GetMongoInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder restoreRanges(List<GetMongoInstancesInstanceRestoreRange> restoreRanges) {
+            if (restoreRanges == null) {
+              throw new MissingRequiredPropertyException("GetMongoInstancesInstance", "restoreRanges");
+            }
+            this.restoreRanges = restoreRanges;
+            return this;
+        }
+        public Builder restoreRanges(GetMongoInstancesInstanceRestoreRange... restoreRanges) {
+            return restoreRanges(List.of(restoreRanges));
+        }
+        @CustomType.Setter
         public Builder shards(List<GetMongoInstancesInstanceShard> shards) {
             if (shards == null) {
               throw new MissingRequiredPropertyException("GetMongoInstancesInstance", "shards");
@@ -321,6 +339,7 @@ public final class GetMongoInstancesInstance {
             _resultValue.networkType = networkType;
             _resultValue.regionId = regionId;
             _resultValue.replication = replication;
+            _resultValue.restoreRanges = restoreRanges;
             _resultValue.shards = shards;
             _resultValue.status = status;
             _resultValue.storage = storage;

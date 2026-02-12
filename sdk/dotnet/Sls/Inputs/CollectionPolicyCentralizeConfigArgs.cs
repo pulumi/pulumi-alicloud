@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class CollectionPolicyCentralizeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+        /// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
         /// </summary>
         [Input("destLogstore")]
         public Input<string>? DestLogstore { get; set; }
 
         /// <summary>
-        /// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+        /// Destination project for centralized forwarding. Its region must match destRegion.
         /// </summary>
         [Input("destProject")]
         public Input<string>? DestProject { get; set; }
 
         /// <summary>
-        /// Centralized transfer destination area.
+        /// Destination region for centralized forwarding.
         /// </summary>
         [Input("destRegion")]
         public Input<string>? DestRegion { get; set; }
 
         /// <summary>
-        /// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        /// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
         /// </summary>
         [Input("destTtl")]
         public Input<int>? DestTtl { get; set; }

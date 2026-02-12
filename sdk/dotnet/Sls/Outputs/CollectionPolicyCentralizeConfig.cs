@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class CollectionPolicyCentralizeConfig
     {
         /// <summary>
-        /// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+        /// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
         /// </summary>
         public readonly string? DestLogstore;
         /// <summary>
-        /// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+        /// Destination project for centralized forwarding. Its region must match destRegion.
         /// </summary>
         public readonly string? DestProject;
         /// <summary>
-        /// Centralized transfer destination area.
+        /// Destination region for centralized forwarding.
         /// </summary>
         public readonly string? DestRegion;
         /// <summary>
-        /// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        /// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
         /// </summary>
         public readonly int? DestTtl;
 

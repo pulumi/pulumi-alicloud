@@ -66,11 +66,20 @@ export class TenantRoleUserAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Account UID
+     *
+     * 1. If the user is a primary account, the AccountId format is UID.
+     * Example: 200231703336555555
+     *
+     * 2. If the user is a RAM user, the AccountId format is p4_UID.
+     * Example: p4200531704446555555
+     *
+     * 3. If the user is a RAM role, the AccountId format is v4_UID.
+     * Example: v4_300007628597555555
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      */
     declare public readonly tenantRole: pulumi.Output<string>;
 
@@ -104,11 +113,20 @@ export class TenantRoleUserAttachment extends pulumi.CustomResource {
  */
 export interface TenantRoleUserAttachmentState {
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Account UID
+     *
+     * 1. If the user is a primary account, the AccountId format is UID.
+     * Example: 200231703336555555
+     *
+     * 2. If the user is a RAM user, the AccountId format is p4_UID.
+     * Example: p4200531704446555555
+     *
+     * 3. If the user is a RAM role, the AccountId format is v4_UID.
+     * Example: v4_300007628597555555
      */
     accountId?: pulumi.Input<string>;
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      */
     tenantRole?: pulumi.Input<string>;
 }
@@ -118,11 +136,20 @@ export interface TenantRoleUserAttachmentState {
  */
 export interface TenantRoleUserAttachmentArgs {
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Account UID
+     *
+     * 1. If the user is a primary account, the AccountId format is UID.
+     * Example: 200231703336555555
+     *
+     * 2. If the user is a RAM user, the AccountId format is p4_UID.
+     * Example: p4200531704446555555
+     *
+     * 3. If the user is a RAM role, the AccountId format is v4_UID.
+     * Example: v4_300007628597555555
      */
     accountId?: pulumi.Input<string>;
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      */
     tenantRole?: pulumi.Input<string>;
 }

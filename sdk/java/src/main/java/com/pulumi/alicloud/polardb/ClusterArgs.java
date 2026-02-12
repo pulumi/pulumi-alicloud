@@ -182,8 +182,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     @Import(name="dbNodeClass", required=true)
@@ -192,8 +192,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     public Output<String> dbNodeClass() {
@@ -233,14 +233,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
      * 
      */
     @Import(name="dbNodeNum")
     private @Nullable Output<Integer> dbNodeNum;
 
     /**
-     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * @return The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
      * 
      */
     public Optional<Output<Integer>> dbNodeNum() {
@@ -388,6 +390,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> gdnId() {
         return Optional.ofNullable(this.gdnId);
+    }
+
+    /**
+     * The list of global security ip group ids.
+     * 
+     */
+    @Import(name="globalSecurityGroupLists")
+    private @Nullable Output<List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of global security ip group ids.
+     * 
+     */
+    public Optional<Output<List<String>>> globalSecurityGroupLists() {
+        return Optional.ofNullable(this.globalSecurityGroupLists);
     }
 
     /**
@@ -1203,6 +1220,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptionKey = $.encryptionKey;
         this.fromTimeService = $.fromTimeService;
         this.gdnId = $.gdnId;
+        this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hotReplicaMode = $.hotReplicaMode;
         this.hotStandbyCluster = $.hotStandbyCluster;
         this.imciSwitch = $.imciSwitch;
@@ -1503,8 +1521,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dbNodeClass The dbNodeClass of cluster node.
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
          * 
          * @return builder
          * 
@@ -1517,8 +1535,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dbNodeClass The dbNodeClass of cluster node.
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+         * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+         * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
          * 
          * @return builder
          * 
@@ -1572,7 +1590,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+         * @param dbNodeNum The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+         * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
          * 
          * @return builder
          * 
@@ -1583,7 +1602,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+         * @param dbNodeNum The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+         * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
          * 
          * @return builder
          * 
@@ -1787,6 +1807,37 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gdnId(String gdnId) {
             return gdnId(Output.of(gdnId));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of global security ip group ids.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(@Nullable Output<List<String>> globalSecurityGroupLists) {
+            $.globalSecurityGroupLists = globalSecurityGroupLists;
+            return this;
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of global security ip group ids.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(List<String> globalSecurityGroupLists) {
+            return globalSecurityGroupLists(Output.of(globalSecurityGroupLists));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of global security ip group ids.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(String... globalSecurityGroupLists) {
+            return globalSecurityGroupLists(List.of(globalSecurityGroupLists));
         }
 
         /**

@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -36,7 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.apigateway.VpcAccess;
@@ -54,52 +54,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("Instance")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.zones()[0].id())
- *             .cpuCoreCount(1)
- *             .memorySize(2)
- *             .build());
- * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
- *             .vpcName("terraform-example")
- *             .cidrBlock("10.4.0.0/16")
- *             .build());
- * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .vswitchName("terraform-example")
- *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.zones()[0].id())
- *             .build());
- * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
- *             .name("terraform-example")
- *             .description("New security group")
- *             .vpcId(exampleNetwork.id())
- *             .build());
- * 
- *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu_18.*64")
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .mostRecent(true)
  *             .owners("system")
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
- *             .availabilityZone(example.zones()[0].id())
- *             .instanceName("terraform-example")
- *             .imageId(exampleGetImages.images()[0].id())
- *             .instanceType(exampleGetInstanceTypes.instanceTypes()[0].id())
- *             .securityGroups(exampleSecurityGroup.id())
- *             .vswitchId(exampleSwitch.id())
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .systemDiskCategory("cloud_efficiency")
  *             .build());
  * 
- *         var exampleVpcAccess = new VpcAccess("exampleVpcAccess", VpcAccessArgs.builder()
- *             .name("terraform-example")
- *             .vpcId(exampleNetwork.id())
- *             .instanceId(exampleInstance.id())
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut(10)
+ *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *         var defaultVpcAccess = new VpcAccess("defaultVpcAccess", VpcAccessArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .instanceId(defaultInstance.id())
  *             .port(8080)
  *             .build());
  * 
@@ -112,66 +120,66 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Api gateway app can be imported using the id, e.g.
+ * Api Gateway Vpc Access can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example &#34;APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080&#34;
+ * $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example &lt;name&gt;:&lt;vpc_id&gt;:&lt;instance_id&gt;:&lt;port&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:apigateway/vpcAccess:VpcAccess")
 public class VpcAccess extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the instance in VPC (ECS/Server Load Balance).
+     * The ID of an ECS or SLB instance in the VPC.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return ID of the instance in VPC (ECS/Server Load Balance).
+     * @return The ID of an ECS or SLB instance in the VPC.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The name of the vpc authorization.
+     * The name of the authorization. The name must be unique.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the vpc authorization.
+     * @return The name of the authorization. The name must be unique.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * ID of the port corresponding to the instance.
+     * The port number that corresponds to the instance.
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
-     * @return ID of the port corresponding to the instance.
+     * @return The port number that corresponds to the instance.
      * 
      */
     public Output<Integer> port() {
         return this.port;
     }
     /**
-     * The vpc id of the vpc authorization.
+     * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The vpc id of the vpc authorization.
+     * @return The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      * 
      */
     public Output<String> vpcId() {

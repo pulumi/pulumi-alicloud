@@ -1950,6 +1950,378 @@ func (o NatFirewallNatRouteEntryListArrayOutput) Index(i pulumi.IntInput) NatFir
 	}).(NatFirewallNatRouteEntryListOutput)
 }
 
+type UserAlarmConfigAlarmConfig struct {
+	// The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+	AlarmHour *string `pulumi:"alarmHour"`
+	// The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+	AlarmNotify *string `pulumi:"alarmNotify"`
+	// The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+	AlarmPeriod *string `pulumi:"alarmPeriod"`
+	// The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+	AlarmType *string `pulumi:"alarmType"`
+	// The alarm notification message.
+	AlarmValue *string `pulumi:"alarmValue"`
+	// The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+	AlarmWeekDay *string `pulumi:"alarmWeekDay"`
+}
+
+// UserAlarmConfigAlarmConfigInput is an input type that accepts UserAlarmConfigAlarmConfigArgs and UserAlarmConfigAlarmConfigOutput values.
+// You can construct a concrete instance of `UserAlarmConfigAlarmConfigInput` via:
+//
+//	UserAlarmConfigAlarmConfigArgs{...}
+type UserAlarmConfigAlarmConfigInput interface {
+	pulumi.Input
+
+	ToUserAlarmConfigAlarmConfigOutput() UserAlarmConfigAlarmConfigOutput
+	ToUserAlarmConfigAlarmConfigOutputWithContext(context.Context) UserAlarmConfigAlarmConfigOutput
+}
+
+type UserAlarmConfigAlarmConfigArgs struct {
+	// The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+	AlarmHour pulumi.StringPtrInput `pulumi:"alarmHour"`
+	// The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+	AlarmNotify pulumi.StringPtrInput `pulumi:"alarmNotify"`
+	// The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+	AlarmPeriod pulumi.StringPtrInput `pulumi:"alarmPeriod"`
+	// The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+	AlarmType pulumi.StringPtrInput `pulumi:"alarmType"`
+	// The alarm notification message.
+	AlarmValue pulumi.StringPtrInput `pulumi:"alarmValue"`
+	// The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+	AlarmWeekDay pulumi.StringPtrInput `pulumi:"alarmWeekDay"`
+}
+
+func (UserAlarmConfigAlarmConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAlarmConfigAlarmConfig)(nil)).Elem()
+}
+
+func (i UserAlarmConfigAlarmConfigArgs) ToUserAlarmConfigAlarmConfigOutput() UserAlarmConfigAlarmConfigOutput {
+	return i.ToUserAlarmConfigAlarmConfigOutputWithContext(context.Background())
+}
+
+func (i UserAlarmConfigAlarmConfigArgs) ToUserAlarmConfigAlarmConfigOutputWithContext(ctx context.Context) UserAlarmConfigAlarmConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAlarmConfigAlarmConfigOutput)
+}
+
+// UserAlarmConfigAlarmConfigArrayInput is an input type that accepts UserAlarmConfigAlarmConfigArray and UserAlarmConfigAlarmConfigArrayOutput values.
+// You can construct a concrete instance of `UserAlarmConfigAlarmConfigArrayInput` via:
+//
+//	UserAlarmConfigAlarmConfigArray{ UserAlarmConfigAlarmConfigArgs{...} }
+type UserAlarmConfigAlarmConfigArrayInput interface {
+	pulumi.Input
+
+	ToUserAlarmConfigAlarmConfigArrayOutput() UserAlarmConfigAlarmConfigArrayOutput
+	ToUserAlarmConfigAlarmConfigArrayOutputWithContext(context.Context) UserAlarmConfigAlarmConfigArrayOutput
+}
+
+type UserAlarmConfigAlarmConfigArray []UserAlarmConfigAlarmConfigInput
+
+func (UserAlarmConfigAlarmConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAlarmConfigAlarmConfig)(nil)).Elem()
+}
+
+func (i UserAlarmConfigAlarmConfigArray) ToUserAlarmConfigAlarmConfigArrayOutput() UserAlarmConfigAlarmConfigArrayOutput {
+	return i.ToUserAlarmConfigAlarmConfigArrayOutputWithContext(context.Background())
+}
+
+func (i UserAlarmConfigAlarmConfigArray) ToUserAlarmConfigAlarmConfigArrayOutputWithContext(ctx context.Context) UserAlarmConfigAlarmConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAlarmConfigAlarmConfigArrayOutput)
+}
+
+type UserAlarmConfigAlarmConfigOutput struct{ *pulumi.OutputState }
+
+func (UserAlarmConfigAlarmConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAlarmConfigAlarmConfig)(nil)).Elem()
+}
+
+func (o UserAlarmConfigAlarmConfigOutput) ToUserAlarmConfigAlarmConfigOutput() UserAlarmConfigAlarmConfigOutput {
+	return o
+}
+
+func (o UserAlarmConfigAlarmConfigOutput) ToUserAlarmConfigAlarmConfigOutputWithContext(ctx context.Context) UserAlarmConfigAlarmConfigOutput {
+	return o
+}
+
+// The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+func (o UserAlarmConfigAlarmConfigOutput) AlarmHour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigAlarmConfig) *string { return v.AlarmHour }).(pulumi.StringPtrOutput)
+}
+
+// The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+func (o UserAlarmConfigAlarmConfigOutput) AlarmNotify() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigAlarmConfig) *string { return v.AlarmNotify }).(pulumi.StringPtrOutput)
+}
+
+// The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+func (o UserAlarmConfigAlarmConfigOutput) AlarmPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigAlarmConfig) *string { return v.AlarmPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+func (o UserAlarmConfigAlarmConfigOutput) AlarmType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigAlarmConfig) *string { return v.AlarmType }).(pulumi.StringPtrOutput)
+}
+
+// The alarm notification message.
+func (o UserAlarmConfigAlarmConfigOutput) AlarmValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigAlarmConfig) *string { return v.AlarmValue }).(pulumi.StringPtrOutput)
+}
+
+// The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+func (o UserAlarmConfigAlarmConfigOutput) AlarmWeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigAlarmConfig) *string { return v.AlarmWeekDay }).(pulumi.StringPtrOutput)
+}
+
+type UserAlarmConfigAlarmConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (UserAlarmConfigAlarmConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAlarmConfigAlarmConfig)(nil)).Elem()
+}
+
+func (o UserAlarmConfigAlarmConfigArrayOutput) ToUserAlarmConfigAlarmConfigArrayOutput() UserAlarmConfigAlarmConfigArrayOutput {
+	return o
+}
+
+func (o UserAlarmConfigAlarmConfigArrayOutput) ToUserAlarmConfigAlarmConfigArrayOutputWithContext(ctx context.Context) UserAlarmConfigAlarmConfigArrayOutput {
+	return o
+}
+
+func (o UserAlarmConfigAlarmConfigArrayOutput) Index(i pulumi.IntInput) UserAlarmConfigAlarmConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAlarmConfigAlarmConfig {
+		return vs[0].([]UserAlarmConfigAlarmConfig)[vs[1].(int)]
+	}).(UserAlarmConfigAlarmConfigOutput)
+}
+
+type UserAlarmConfigContactConfig struct {
+	// The email address of the contact.
+	Email *string `pulumi:"email"`
+	// The mobile phone number of the contact.
+	MobilePhone *string `pulumi:"mobilePhone"`
+	// The name of the contact.
+	Name *string `pulumi:"name"`
+	// The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+	Status *string `pulumi:"status"`
+}
+
+// UserAlarmConfigContactConfigInput is an input type that accepts UserAlarmConfigContactConfigArgs and UserAlarmConfigContactConfigOutput values.
+// You can construct a concrete instance of `UserAlarmConfigContactConfigInput` via:
+//
+//	UserAlarmConfigContactConfigArgs{...}
+type UserAlarmConfigContactConfigInput interface {
+	pulumi.Input
+
+	ToUserAlarmConfigContactConfigOutput() UserAlarmConfigContactConfigOutput
+	ToUserAlarmConfigContactConfigOutputWithContext(context.Context) UserAlarmConfigContactConfigOutput
+}
+
+type UserAlarmConfigContactConfigArgs struct {
+	// The email address of the contact.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The mobile phone number of the contact.
+	MobilePhone pulumi.StringPtrInput `pulumi:"mobilePhone"`
+	// The name of the contact.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (UserAlarmConfigContactConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAlarmConfigContactConfig)(nil)).Elem()
+}
+
+func (i UserAlarmConfigContactConfigArgs) ToUserAlarmConfigContactConfigOutput() UserAlarmConfigContactConfigOutput {
+	return i.ToUserAlarmConfigContactConfigOutputWithContext(context.Background())
+}
+
+func (i UserAlarmConfigContactConfigArgs) ToUserAlarmConfigContactConfigOutputWithContext(ctx context.Context) UserAlarmConfigContactConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAlarmConfigContactConfigOutput)
+}
+
+// UserAlarmConfigContactConfigArrayInput is an input type that accepts UserAlarmConfigContactConfigArray and UserAlarmConfigContactConfigArrayOutput values.
+// You can construct a concrete instance of `UserAlarmConfigContactConfigArrayInput` via:
+//
+//	UserAlarmConfigContactConfigArray{ UserAlarmConfigContactConfigArgs{...} }
+type UserAlarmConfigContactConfigArrayInput interface {
+	pulumi.Input
+
+	ToUserAlarmConfigContactConfigArrayOutput() UserAlarmConfigContactConfigArrayOutput
+	ToUserAlarmConfigContactConfigArrayOutputWithContext(context.Context) UserAlarmConfigContactConfigArrayOutput
+}
+
+type UserAlarmConfigContactConfigArray []UserAlarmConfigContactConfigInput
+
+func (UserAlarmConfigContactConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAlarmConfigContactConfig)(nil)).Elem()
+}
+
+func (i UserAlarmConfigContactConfigArray) ToUserAlarmConfigContactConfigArrayOutput() UserAlarmConfigContactConfigArrayOutput {
+	return i.ToUserAlarmConfigContactConfigArrayOutputWithContext(context.Background())
+}
+
+func (i UserAlarmConfigContactConfigArray) ToUserAlarmConfigContactConfigArrayOutputWithContext(ctx context.Context) UserAlarmConfigContactConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAlarmConfigContactConfigArrayOutput)
+}
+
+type UserAlarmConfigContactConfigOutput struct{ *pulumi.OutputState }
+
+func (UserAlarmConfigContactConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAlarmConfigContactConfig)(nil)).Elem()
+}
+
+func (o UserAlarmConfigContactConfigOutput) ToUserAlarmConfigContactConfigOutput() UserAlarmConfigContactConfigOutput {
+	return o
+}
+
+func (o UserAlarmConfigContactConfigOutput) ToUserAlarmConfigContactConfigOutputWithContext(ctx context.Context) UserAlarmConfigContactConfigOutput {
+	return o
+}
+
+// The email address of the contact.
+func (o UserAlarmConfigContactConfigOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigContactConfig) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The mobile phone number of the contact.
+func (o UserAlarmConfigContactConfigOutput) MobilePhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigContactConfig) *string { return v.MobilePhone }).(pulumi.StringPtrOutput)
+}
+
+// The name of the contact.
+func (o UserAlarmConfigContactConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigContactConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+func (o UserAlarmConfigContactConfigOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigContactConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type UserAlarmConfigContactConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (UserAlarmConfigContactConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAlarmConfigContactConfig)(nil)).Elem()
+}
+
+func (o UserAlarmConfigContactConfigArrayOutput) ToUserAlarmConfigContactConfigArrayOutput() UserAlarmConfigContactConfigArrayOutput {
+	return o
+}
+
+func (o UserAlarmConfigContactConfigArrayOutput) ToUserAlarmConfigContactConfigArrayOutputWithContext(ctx context.Context) UserAlarmConfigContactConfigArrayOutput {
+	return o
+}
+
+func (o UserAlarmConfigContactConfigArrayOutput) Index(i pulumi.IntInput) UserAlarmConfigContactConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAlarmConfigContactConfig {
+		return vs[0].([]UserAlarmConfigContactConfig)[vs[1].(int)]
+	}).(UserAlarmConfigContactConfigOutput)
+}
+
+type UserAlarmConfigNotifyConfig struct {
+	// The notification type. Possible values are `sms`, `mail`.
+	NotifyType *string `pulumi:"notifyType"`
+	// The notification value. Depending on the value of `notifyType`, it can be a mobile phone number or an email address.
+	NotifyValue *string `pulumi:"notifyValue"`
+}
+
+// UserAlarmConfigNotifyConfigInput is an input type that accepts UserAlarmConfigNotifyConfigArgs and UserAlarmConfigNotifyConfigOutput values.
+// You can construct a concrete instance of `UserAlarmConfigNotifyConfigInput` via:
+//
+//	UserAlarmConfigNotifyConfigArgs{...}
+type UserAlarmConfigNotifyConfigInput interface {
+	pulumi.Input
+
+	ToUserAlarmConfigNotifyConfigOutput() UserAlarmConfigNotifyConfigOutput
+	ToUserAlarmConfigNotifyConfigOutputWithContext(context.Context) UserAlarmConfigNotifyConfigOutput
+}
+
+type UserAlarmConfigNotifyConfigArgs struct {
+	// The notification type. Possible values are `sms`, `mail`.
+	NotifyType pulumi.StringPtrInput `pulumi:"notifyType"`
+	// The notification value. Depending on the value of `notifyType`, it can be a mobile phone number or an email address.
+	NotifyValue pulumi.StringPtrInput `pulumi:"notifyValue"`
+}
+
+func (UserAlarmConfigNotifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAlarmConfigNotifyConfig)(nil)).Elem()
+}
+
+func (i UserAlarmConfigNotifyConfigArgs) ToUserAlarmConfigNotifyConfigOutput() UserAlarmConfigNotifyConfigOutput {
+	return i.ToUserAlarmConfigNotifyConfigOutputWithContext(context.Background())
+}
+
+func (i UserAlarmConfigNotifyConfigArgs) ToUserAlarmConfigNotifyConfigOutputWithContext(ctx context.Context) UserAlarmConfigNotifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAlarmConfigNotifyConfigOutput)
+}
+
+// UserAlarmConfigNotifyConfigArrayInput is an input type that accepts UserAlarmConfigNotifyConfigArray and UserAlarmConfigNotifyConfigArrayOutput values.
+// You can construct a concrete instance of `UserAlarmConfigNotifyConfigArrayInput` via:
+//
+//	UserAlarmConfigNotifyConfigArray{ UserAlarmConfigNotifyConfigArgs{...} }
+type UserAlarmConfigNotifyConfigArrayInput interface {
+	pulumi.Input
+
+	ToUserAlarmConfigNotifyConfigArrayOutput() UserAlarmConfigNotifyConfigArrayOutput
+	ToUserAlarmConfigNotifyConfigArrayOutputWithContext(context.Context) UserAlarmConfigNotifyConfigArrayOutput
+}
+
+type UserAlarmConfigNotifyConfigArray []UserAlarmConfigNotifyConfigInput
+
+func (UserAlarmConfigNotifyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAlarmConfigNotifyConfig)(nil)).Elem()
+}
+
+func (i UserAlarmConfigNotifyConfigArray) ToUserAlarmConfigNotifyConfigArrayOutput() UserAlarmConfigNotifyConfigArrayOutput {
+	return i.ToUserAlarmConfigNotifyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i UserAlarmConfigNotifyConfigArray) ToUserAlarmConfigNotifyConfigArrayOutputWithContext(ctx context.Context) UserAlarmConfigNotifyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAlarmConfigNotifyConfigArrayOutput)
+}
+
+type UserAlarmConfigNotifyConfigOutput struct{ *pulumi.OutputState }
+
+func (UserAlarmConfigNotifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAlarmConfigNotifyConfig)(nil)).Elem()
+}
+
+func (o UserAlarmConfigNotifyConfigOutput) ToUserAlarmConfigNotifyConfigOutput() UserAlarmConfigNotifyConfigOutput {
+	return o
+}
+
+func (o UserAlarmConfigNotifyConfigOutput) ToUserAlarmConfigNotifyConfigOutputWithContext(ctx context.Context) UserAlarmConfigNotifyConfigOutput {
+	return o
+}
+
+// The notification type. Possible values are `sms`, `mail`.
+func (o UserAlarmConfigNotifyConfigOutput) NotifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigNotifyConfig) *string { return v.NotifyType }).(pulumi.StringPtrOutput)
+}
+
+// The notification value. Depending on the value of `notifyType`, it can be a mobile phone number or an email address.
+func (o UserAlarmConfigNotifyConfigOutput) NotifyValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAlarmConfigNotifyConfig) *string { return v.NotifyValue }).(pulumi.StringPtrOutput)
+}
+
+type UserAlarmConfigNotifyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (UserAlarmConfigNotifyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAlarmConfigNotifyConfig)(nil)).Elem()
+}
+
+func (o UserAlarmConfigNotifyConfigArrayOutput) ToUserAlarmConfigNotifyConfigArrayOutput() UserAlarmConfigNotifyConfigArrayOutput {
+	return o
+}
+
+func (o UserAlarmConfigNotifyConfigArrayOutput) ToUserAlarmConfigNotifyConfigArrayOutputWithContext(ctx context.Context) UserAlarmConfigNotifyConfigArrayOutput {
+	return o
+}
+
+func (o UserAlarmConfigNotifyConfigArrayOutput) Index(i pulumi.IntInput) UserAlarmConfigNotifyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAlarmConfigNotifyConfig {
+		return vs[0].([]UserAlarmConfigNotifyConfig)[vs[1].(int)]
+	}).(UserAlarmConfigNotifyConfigOutput)
+}
+
 type GetAddressBooksBook struct {
 	// The addresses in the Address Book.
 	AddressLists []string `pulumi:"addressLists"`
@@ -5473,6 +5845,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatFirewallNatRouteEntryListInput)(nil)).Elem(), NatFirewallNatRouteEntryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatFirewallNatRouteEntryListArrayInput)(nil)).Elem(), NatFirewallNatRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigAlarmConfigInput)(nil)).Elem(), UserAlarmConfigAlarmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigAlarmConfigArrayInput)(nil)).Elem(), UserAlarmConfigAlarmConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigContactConfigInput)(nil)).Elem(), UserAlarmConfigContactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigContactConfigArrayInput)(nil)).Elem(), UserAlarmConfigContactConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigNotifyConfigInput)(nil)).Elem(), UserAlarmConfigNotifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigNotifyConfigArrayInput)(nil)).Elem(), UserAlarmConfigNotifyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookArrayInput)(nil)).Elem(), GetAddressBooksBookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagInput)(nil)).Elem(), GetAddressBooksBookEcsTagArgs{})
@@ -5542,6 +5920,12 @@ func init() {
 	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput{})
 	pulumi.RegisterOutputType(NatFirewallNatRouteEntryListOutput{})
 	pulumi.RegisterOutputType(NatFirewallNatRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(UserAlarmConfigAlarmConfigOutput{})
+	pulumi.RegisterOutputType(UserAlarmConfigAlarmConfigArrayOutput{})
+	pulumi.RegisterOutputType(UserAlarmConfigContactConfigOutput{})
+	pulumi.RegisterOutputType(UserAlarmConfigContactConfigArrayOutput{})
+	pulumi.RegisterOutputType(UserAlarmConfigNotifyConfigOutput{})
+	pulumi.RegisterOutputType(UserAlarmConfigNotifyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagOutput{})

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? RuntimeVersion;
         /// <summary>
-        /// Whether to use replacement disk upgrade
+        /// Whether to use replacement disk upgrade. Valid values:
         /// </summary>
         public readonly bool? UseReplace;
 

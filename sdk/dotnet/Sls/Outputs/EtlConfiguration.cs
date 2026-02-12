@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class EtlConfiguration
     {
         /// <summary>
-        /// The beginning of the time range for transformation.
+        /// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
         /// </summary>
         public readonly int FromTime;
         /// <summary>
-        /// Data processing syntax type.
+        /// The syntax type used for data transformation.
         /// </summary>
         public readonly string Lang;
         /// <summary>
-        /// Destination Logstore Name.
+        /// The name of the destination Logstore.
         /// </summary>
         public readonly string Logstore;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
-        /// The ARN role that authorizes writing to the target Logstore.
+        /// The ARN of the role authorized to write to the destination Logstore.
         /// </summary>
         public readonly string RoleArn;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly string Script;
         /// <summary>
-        /// Processing result output target list See `Sink` below.
+        /// List of output destinations for processing results.   See `Sink` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EtlConfigurationSink> Sinks;
         /// <summary>
-        /// The end of the time range for transformation.
+        /// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
         /// </summary>
         public readonly int ToTime;
 

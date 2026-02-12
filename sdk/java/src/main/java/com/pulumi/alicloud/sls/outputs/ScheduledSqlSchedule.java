@@ -14,74 +14,84 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ScheduledSqlSchedule {
     /**
-     * @return Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+     * @return Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
      * 
      */
     private @Nullable String cronExpression;
     /**
-     * @return Delay time.
+     * @return Delay duration.
      * 
      */
     private @Nullable Integer delay;
     /**
-     * @return Time interval, such as 5m, 1H.
+     * @return Time interval, such as 5m or 1h.
      * 
      */
     private @Nullable String interval;
     /**
-     * @return Whether to execute the OSS import task immediately after it is created.
+     * @return Specifies whether to run the OSS import job immediately after it is created.
      * 
      */
     private @Nullable Boolean runImmediately;
     /**
-     * @return Time Zone.
+     * @return Time zone.
      * 
      */
     private @Nullable String timeZone;
     /**
-     * @return Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+     * @return The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+     * FixedRate: Checks query and analysis results at fixed intervals.
+     * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+     * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+     * Daily: Checks query and analysis results once at a fixed time each day.
+     * Hourly: Checks query and analysis results once every hour.
      * 
      */
     private @Nullable String type;
 
     private ScheduledSqlSchedule() {}
     /**
-     * @return Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+     * @return Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
      * 
      */
     public Optional<String> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
     }
     /**
-     * @return Delay time.
+     * @return Delay duration.
      * 
      */
     public Optional<Integer> delay() {
         return Optional.ofNullable(this.delay);
     }
     /**
-     * @return Time interval, such as 5m, 1H.
+     * @return Time interval, such as 5m or 1h.
      * 
      */
     public Optional<String> interval() {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return Whether to execute the OSS import task immediately after it is created.
+     * @return Specifies whether to run the OSS import job immediately after it is created.
      * 
      */
     public Optional<Boolean> runImmediately() {
         return Optional.ofNullable(this.runImmediately);
     }
     /**
-     * @return Time Zone.
+     * @return Time zone.
      * 
      */
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
     /**
-     * @return Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+     * @return The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+     * FixedRate: Checks query and analysis results at fixed intervals.
+     * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+     * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+     * Daily: Checks query and analysis results once at a fixed time each day.
+     * Hourly: Checks query and analysis results once every hour.
      * 
      */
     public Optional<String> type() {

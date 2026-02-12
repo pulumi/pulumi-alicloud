@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 public final class GetImagesResult {
     private @Nullable String actionType;
     /**
-     * @return Platform type of the image system: i386 or x86_64.
+     * @return The platform type of the image system: i386 or x86_64.
      * 
      */
     private @Nullable String architecture;
@@ -38,7 +38,7 @@ public final class GetImagesResult {
     private @Nullable String imageName;
     private @Nullable String imageOwnerId;
     /**
-     * @return A list of images. Each element contains the following attributes:
+     * @return A `diskDeviceMappings` block as defined below. A list of images.
      * 
      */
     private List<GetImagesImage> images;
@@ -52,12 +52,12 @@ public final class GetImagesResult {
     private @Nullable String owners;
     private @Nullable String resourceGroupId;
     /**
-     * @return Snapshot ID.
+     * @return The snapshot ID.
      * 
      */
     private @Nullable String snapshotId;
     /**
-     * @return Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+     * @return The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
      * 
      */
     private @Nullable String status;
@@ -69,7 +69,7 @@ public final class GetImagesResult {
         return Optional.ofNullable(this.actionType);
     }
     /**
-     * @return Platform type of the image system: i386 or x86_64.
+     * @return The platform type of the image system: i386 or x86_64.
      * 
      */
     public Optional<String> architecture() {
@@ -105,7 +105,7 @@ public final class GetImagesResult {
         return Optional.ofNullable(this.imageOwnerId);
     }
     /**
-     * @return A list of images. Each element contains the following attributes:
+     * @return A `diskDeviceMappings` block as defined below. A list of images.
      * 
      */
     public List<GetImagesImage> images() {
@@ -139,14 +139,14 @@ public final class GetImagesResult {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return Snapshot ID.
+     * @return The snapshot ID.
      * 
      */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
     /**
-     * @return Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+     * @return The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
      * 
      */
     public Optional<String> status() {

@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const imagesDs = alicloud.ecs.getImages({
+ * const example = alicloud.ecs.getImages({
  *     owners: "system",
  *     nameRegex: "^centos_6",
  * });
- * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
+ * export const imageId = example.then(example => example.images?.[0]?.id);
  * ```
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
@@ -56,12 +56,12 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
 export interface GetImagesArgs {
     /**
      * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
+     * - `CreateEcs`: instance creation.
+     * - `ChangeOS`: replacement of the system disk or operating system.
      */
     actionType?: string;
     /**
-     * The image architecture. Valid values: `i386` and `x8664`.
+     * The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      */
     architecture?: string;
     /**
@@ -110,8 +110,6 @@ export interface GetImagesArgs {
     osType?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
-     *
-     * > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
      */
     outputFile?: string;
     /**
@@ -128,12 +126,12 @@ export interface GetImagesArgs {
     snapshotId?: string;
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * - `Creating`: The image is being created.
+     * - `Waiting`: The image is waiting to be processed.
+     * - `Available`: The image is available.
+     * - `UnAvailable`: The image is unavailable.
+     * - `CreateFailed`: The image failed to be created.
+     * - `Deprecated`: The image is discontinued.
      */
     status?: string;
     /**
@@ -152,7 +150,7 @@ export interface GetImagesArgs {
 export interface GetImagesResult {
     readonly actionType?: string;
     /**
-     * Platform type of the image system: i386 or x86_64.
+     * The platform type of the image system: i386 or x86_64.
      */
     readonly architecture?: string;
     readonly dryRun?: boolean;
@@ -169,7 +167,7 @@ export interface GetImagesResult {
     readonly imageName?: string;
     readonly imageOwnerId?: string;
     /**
-     * A list of images. Each element contains the following attributes:
+     * A `diskDeviceMappings` block as defined below. A list of images.
      */
     readonly images: outputs.ecs.GetImagesImage[];
     readonly instanceType?: string;
@@ -182,11 +180,11 @@ export interface GetImagesResult {
     readonly owners?: string;
     readonly resourceGroupId?: string;
     /**
-     * Snapshot ID.
+     * The snapshot ID.
      */
     readonly snapshotId?: string;
     /**
-     * Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+     * The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
      */
     readonly status?: string;
     readonly tags?: {[key: string]: string};
@@ -202,11 +200,11 @@ export interface GetImagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const imagesDs = alicloud.ecs.getImages({
+ * const example = alicloud.ecs.getImages({
  *     owners: "system",
  *     nameRegex: "^centos_6",
  * });
- * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
+ * export const imageId = example.then(example => example.images?.[0]?.id);
  * ```
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImagesResult> {
@@ -242,12 +240,12 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
 export interface GetImagesOutputArgs {
     /**
      * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
+     * - `CreateEcs`: instance creation.
+     * - `ChangeOS`: replacement of the system disk or operating system.
      */
     actionType?: pulumi.Input<string>;
     /**
-     * The image architecture. Valid values: `i386` and `x8664`.
+     * The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      */
     architecture?: pulumi.Input<string>;
     /**
@@ -296,8 +294,6 @@ export interface GetImagesOutputArgs {
     osType?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
-     *
-     * > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
      */
     outputFile?: pulumi.Input<string>;
     /**
@@ -314,12 +310,12 @@ export interface GetImagesOutputArgs {
     snapshotId?: pulumi.Input<string>;
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * - `Creating`: The image is being created.
+     * - `Waiting`: The image is waiting to be processed.
+     * - `Available`: The image is available.
+     * - `UnAvailable`: The image is unavailable.
+     * - `CreateFailed`: The image failed to be created.
+     * - `Deprecated`: The image is discontinued.
      */
     status?: pulumi.Input<string>;
     /**

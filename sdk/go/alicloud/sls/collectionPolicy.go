@@ -12,17 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a SLS Collection Policy resource.
+// Provides a Log Service (SLS) Collection Policy resource.
 //
 // Orchestration policies for cloud product log collection.
 //
-// For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
+// For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
 //
 // > **NOTE:** Available since v1.232.0.
 //
 // ## Example Usage
 //
-// Enable real-time log query for all of OSS buckets.
+// # Basic Usage
 //
 // ```go
 // package main
@@ -306,31 +306,34 @@ import (
 //
 // ## Import
 //
-// SLS Collection Policy can be imported using the id, e.g.
+// Log Service (SLS) Collection Policy can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <id>
+// $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <policy_name>
 // ```
 type CollectionPolicy struct {
 	pulumi.CustomResourceState
 
-	// Centralized transfer configuration. See `centralizeConfig` below.
+	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig CollectionPolicyCentralizeConfigOutput `pulumi:"centralizeConfig"`
-	// Whether to enable centralized Conversion. The default value is false.
+	// Specifies whether to enable centralized forwarding. Default value: false.
 	CentralizeEnabled pulumi.BoolPtrOutput `pulumi:"centralizeEnabled"`
-	// Log type encoding.
+	// Log type code.
 	DataCode pulumi.StringOutput `pulumi:"dataCode"`
-	// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
 	DataConfig CollectionPolicyDataConfigOutput `pulumi:"dataConfig"`
-	// Whether to open.
+	// Whether enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Collection rule configuration. See `policyConfig` below.
 	PolicyConfig CollectionPolicyPolicyConfigOutput `pulumi:"policyConfig"`
-	// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+	// The naming rules are as follows:
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It must start with a letter.
+	// - Its length must be between 3 and 63 characters.
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
 	// Product code.
 	ProductCode pulumi.StringOutput `pulumi:"productCode"`
-	// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
 	ResourceDirectory CollectionPolicyResourceDirectoryOutput `pulumi:"resourceDirectory"`
 }
 
@@ -379,44 +382,50 @@ func GetCollectionPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CollectionPolicy resources.
 type collectionPolicyState struct {
-	// Centralized transfer configuration. See `centralizeConfig` below.
+	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig *CollectionPolicyCentralizeConfig `pulumi:"centralizeConfig"`
-	// Whether to enable centralized Conversion. The default value is false.
+	// Specifies whether to enable centralized forwarding. Default value: false.
 	CentralizeEnabled *bool `pulumi:"centralizeEnabled"`
-	// Log type encoding.
+	// Log type code.
 	DataCode *string `pulumi:"dataCode"`
-	// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
 	DataConfig *CollectionPolicyDataConfig `pulumi:"dataConfig"`
-	// Whether to open.
+	// Whether enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Collection rule configuration. See `policyConfig` below.
 	PolicyConfig *CollectionPolicyPolicyConfig `pulumi:"policyConfig"`
-	// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+	// The naming rules are as follows:
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It must start with a letter.
+	// - Its length must be between 3 and 63 characters.
 	PolicyName *string `pulumi:"policyName"`
 	// Product code.
 	ProductCode *string `pulumi:"productCode"`
-	// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
 	ResourceDirectory *CollectionPolicyResourceDirectory `pulumi:"resourceDirectory"`
 }
 
 type CollectionPolicyState struct {
-	// Centralized transfer configuration. See `centralizeConfig` below.
+	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig CollectionPolicyCentralizeConfigPtrInput
-	// Whether to enable centralized Conversion. The default value is false.
+	// Specifies whether to enable centralized forwarding. Default value: false.
 	CentralizeEnabled pulumi.BoolPtrInput
-	// Log type encoding.
+	// Log type code.
 	DataCode pulumi.StringPtrInput
-	// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
 	DataConfig CollectionPolicyDataConfigPtrInput
-	// Whether to open.
+	// Whether enabled.
 	Enabled pulumi.BoolPtrInput
 	// Collection rule configuration. See `policyConfig` below.
 	PolicyConfig CollectionPolicyPolicyConfigPtrInput
-	// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+	// The naming rules are as follows:
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It must start with a letter.
+	// - Its length must be between 3 and 63 characters.
 	PolicyName pulumi.StringPtrInput
 	// Product code.
 	ProductCode pulumi.StringPtrInput
-	// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
 	ResourceDirectory CollectionPolicyResourceDirectoryPtrInput
 }
 
@@ -425,45 +434,51 @@ func (CollectionPolicyState) ElementType() reflect.Type {
 }
 
 type collectionPolicyArgs struct {
-	// Centralized transfer configuration. See `centralizeConfig` below.
+	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig *CollectionPolicyCentralizeConfig `pulumi:"centralizeConfig"`
-	// Whether to enable centralized Conversion. The default value is false.
+	// Specifies whether to enable centralized forwarding. Default value: false.
 	CentralizeEnabled *bool `pulumi:"centralizeEnabled"`
-	// Log type encoding.
+	// Log type code.
 	DataCode string `pulumi:"dataCode"`
-	// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
 	DataConfig *CollectionPolicyDataConfig `pulumi:"dataConfig"`
-	// Whether to open.
+	// Whether enabled.
 	Enabled bool `pulumi:"enabled"`
 	// Collection rule configuration. See `policyConfig` below.
 	PolicyConfig CollectionPolicyPolicyConfig `pulumi:"policyConfig"`
-	// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+	// The naming rules are as follows:
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It must start with a letter.
+	// - Its length must be between 3 and 63 characters.
 	PolicyName string `pulumi:"policyName"`
 	// Product code.
 	ProductCode string `pulumi:"productCode"`
-	// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
 	ResourceDirectory *CollectionPolicyResourceDirectory `pulumi:"resourceDirectory"`
 }
 
 // The set of arguments for constructing a CollectionPolicy resource.
 type CollectionPolicyArgs struct {
-	// Centralized transfer configuration. See `centralizeConfig` below.
+	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig CollectionPolicyCentralizeConfigPtrInput
-	// Whether to enable centralized Conversion. The default value is false.
+	// Specifies whether to enable centralized forwarding. Default value: false.
 	CentralizeEnabled pulumi.BoolPtrInput
-	// Log type encoding.
+	// Log type code.
 	DataCode pulumi.StringInput
-	// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
 	DataConfig CollectionPolicyDataConfigPtrInput
-	// Whether to open.
+	// Whether enabled.
 	Enabled pulumi.BoolInput
 	// Collection rule configuration. See `policyConfig` below.
 	PolicyConfig CollectionPolicyPolicyConfigInput
-	// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+	// The naming rules are as follows:
+	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It must start with a letter.
+	// - Its length must be between 3 and 63 characters.
 	PolicyName pulumi.StringInput
 	// Product code.
 	ProductCode pulumi.StringInput
-	// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+	// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
 	ResourceDirectory CollectionPolicyResourceDirectoryPtrInput
 }
 
@@ -554,27 +569,27 @@ func (o CollectionPolicyOutput) ToCollectionPolicyOutputWithContext(ctx context.
 	return o
 }
 
-// Centralized transfer configuration. See `centralizeConfig` below.
+// Centralized forwarding configuration. See `centralizeConfig` below.
 func (o CollectionPolicyOutput) CentralizeConfig() CollectionPolicyCentralizeConfigOutput {
 	return o.ApplyT(func(v *CollectionPolicy) CollectionPolicyCentralizeConfigOutput { return v.CentralizeConfig }).(CollectionPolicyCentralizeConfigOutput)
 }
 
-// Whether to enable centralized Conversion. The default value is false.
+// Specifies whether to enable centralized forwarding. Default value: false.
 func (o CollectionPolicyOutput) CentralizeEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicy) pulumi.BoolPtrOutput { return v.CentralizeEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Log type encoding.
+// Log type code.
 func (o CollectionPolicyOutput) DataCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectionPolicy) pulumi.StringOutput { return v.DataCode }).(pulumi.StringOutput)
 }
 
-// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
 func (o CollectionPolicyOutput) DataConfig() CollectionPolicyDataConfigOutput {
 	return o.ApplyT(func(v *CollectionPolicy) CollectionPolicyDataConfigOutput { return v.DataConfig }).(CollectionPolicyDataConfigOutput)
 }
 
-// Whether to open.
+// Whether enabled.
 func (o CollectionPolicyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CollectionPolicy) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -584,7 +599,10 @@ func (o CollectionPolicyOutput) PolicyConfig() CollectionPolicyPolicyConfigOutpu
 	return o.ApplyT(func(v *CollectionPolicy) CollectionPolicyPolicyConfigOutput { return v.PolicyConfig }).(CollectionPolicyPolicyConfigOutput)
 }
 
-// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+// The naming rules are as follows:
+// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+// - It must start with a letter.
+// - Its length must be between 3 and 63 characters.
 func (o CollectionPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectionPolicy) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
@@ -594,7 +612,7 @@ func (o CollectionPolicyOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *CollectionPolicy) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
 }
 
-// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
 func (o CollectionPolicyOutput) ResourceDirectory() CollectionPolicyResourceDirectoryOutput {
 	return o.ApplyT(func(v *CollectionPolicy) CollectionPolicyResourceDirectoryOutput { return v.ResourceDirectory }).(CollectionPolicyResourceDirectoryOutput)
 }

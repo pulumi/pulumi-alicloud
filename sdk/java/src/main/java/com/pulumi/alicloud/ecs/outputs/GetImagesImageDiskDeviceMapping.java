@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetImagesImageDiskDeviceMapping {
     /**
-     * @return Device information of the created disk: such as /dev/xvdb.
+     * @return The device information of the created disk: such as /dev/xvdb.
      * 
      */
     private String device;
     /**
-     * @return Size of the created disk.
+     * @return The size of the created disk.
      * 
      */
     private String size;
@@ -28,14 +28,14 @@ public final class GetImagesImageDiskDeviceMapping {
 
     private GetImagesImageDiskDeviceMapping() {}
     /**
-     * @return Device information of the created disk: such as /dev/xvdb.
+     * @return The device information of the created disk: such as /dev/xvdb.
      * 
      */
     public String device() {
         return this.device;
     }
     /**
-     * @return Size of the created disk.
+     * @return The size of the created disk.
      * 
      */
     public String size() {

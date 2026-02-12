@@ -28,6 +28,9 @@ __all__ = [
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableList',
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList',
     'NatFirewallNatRouteEntryList',
+    'UserAlarmConfigAlarmConfig',
+    'UserAlarmConfigContactConfig',
+    'UserAlarmConfigNotifyConfig',
     'GetAddressBooksBookResult',
     'GetAddressBooksBookEcsTagResult',
     'GetControlPoliciesPolicyResult',
@@ -1010,6 +1013,234 @@ class NatFirewallNatRouteEntryList(dict):
         The route table where the default route of the NAT gateway is located.
         """
         return pulumi.get(self, "route_table_id")
+
+
+@pulumi.output_type
+class UserAlarmConfigAlarmConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alarmHour":
+            suggest = "alarm_hour"
+        elif key == "alarmNotify":
+            suggest = "alarm_notify"
+        elif key == "alarmPeriod":
+            suggest = "alarm_period"
+        elif key == "alarmType":
+            suggest = "alarm_type"
+        elif key == "alarmValue":
+            suggest = "alarm_value"
+        elif key == "alarmWeekDay":
+            suggest = "alarm_week_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAlarmConfigAlarmConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAlarmConfigAlarmConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAlarmConfigAlarmConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alarm_hour: Optional[_builtins.str] = None,
+                 alarm_notify: Optional[_builtins.str] = None,
+                 alarm_period: Optional[_builtins.str] = None,
+                 alarm_type: Optional[_builtins.str] = None,
+                 alarm_value: Optional[_builtins.str] = None,
+                 alarm_week_day: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alarm_hour: The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+        :param _builtins.str alarm_notify: The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+        :param _builtins.str alarm_period: The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+        :param _builtins.str alarm_type: The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+        :param _builtins.str alarm_value: The alarm notification message.
+        :param _builtins.str alarm_week_day: The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+        """
+        if alarm_hour is not None:
+            pulumi.set(__self__, "alarm_hour", alarm_hour)
+        if alarm_notify is not None:
+            pulumi.set(__self__, "alarm_notify", alarm_notify)
+        if alarm_period is not None:
+            pulumi.set(__self__, "alarm_period", alarm_period)
+        if alarm_type is not None:
+            pulumi.set(__self__, "alarm_type", alarm_type)
+        if alarm_value is not None:
+            pulumi.set(__self__, "alarm_value", alarm_value)
+        if alarm_week_day is not None:
+            pulumi.set(__self__, "alarm_week_day", alarm_week_day)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmHour")
+    def alarm_hour(self) -> Optional[_builtins.str]:
+        """
+        The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+        """
+        return pulumi.get(self, "alarm_hour")
+
+    @_builtins.property
+    @pulumi.getter(name="alarmNotify")
+    def alarm_notify(self) -> Optional[_builtins.str]:
+        """
+        The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+        """
+        return pulumi.get(self, "alarm_notify")
+
+    @_builtins.property
+    @pulumi.getter(name="alarmPeriod")
+    def alarm_period(self) -> Optional[_builtins.str]:
+        """
+        The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+        """
+        return pulumi.get(self, "alarm_period")
+
+    @_builtins.property
+    @pulumi.getter(name="alarmType")
+    def alarm_type(self) -> Optional[_builtins.str]:
+        """
+        The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+        """
+        return pulumi.get(self, "alarm_type")
+
+    @_builtins.property
+    @pulumi.getter(name="alarmValue")
+    def alarm_value(self) -> Optional[_builtins.str]:
+        """
+        The alarm notification message.
+        """
+        return pulumi.get(self, "alarm_value")
+
+    @_builtins.property
+    @pulumi.getter(name="alarmWeekDay")
+    def alarm_week_day(self) -> Optional[_builtins.str]:
+        """
+        The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+        """
+        return pulumi.get(self, "alarm_week_day")
+
+
+@pulumi.output_type
+class UserAlarmConfigContactConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mobilePhone":
+            suggest = "mobile_phone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAlarmConfigContactConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAlarmConfigContactConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAlarmConfigContactConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: Optional[_builtins.str] = None,
+                 mobile_phone: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str email: The email address of the contact.
+        :param _builtins.str mobile_phone: The mobile phone number of the contact.
+        :param _builtins.str name: The name of the contact.
+        :param _builtins.str status: The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if mobile_phone is not None:
+            pulumi.set(__self__, "mobile_phone", mobile_phone)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> Optional[_builtins.str]:
+        """
+        The email address of the contact.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter(name="mobilePhone")
+    def mobile_phone(self) -> Optional[_builtins.str]:
+        """
+        The mobile phone number of the contact.
+        """
+        return pulumi.get(self, "mobile_phone")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the contact.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class UserAlarmConfigNotifyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notifyType":
+            suggest = "notify_type"
+        elif key == "notifyValue":
+            suggest = "notify_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAlarmConfigNotifyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAlarmConfigNotifyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAlarmConfigNotifyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notify_type: Optional[_builtins.str] = None,
+                 notify_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str notify_type: The notification type. Possible values are `sms`, `mail`.
+        :param _builtins.str notify_value: The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
+        """
+        if notify_type is not None:
+            pulumi.set(__self__, "notify_type", notify_type)
+        if notify_value is not None:
+            pulumi.set(__self__, "notify_value", notify_value)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyType")
+    def notify_type(self) -> Optional[_builtins.str]:
+        """
+        The notification type. Possible values are `sms`, `mail`.
+        """
+        return pulumi.get(self, "notify_type")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyValue")
+    def notify_value(self) -> Optional[_builtins.str]:
+        """
+        The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
+        """
+        return pulumi.get(self, "notify_value")
 
 
 @pulumi.output_type

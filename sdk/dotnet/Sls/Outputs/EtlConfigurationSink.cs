@@ -14,27 +14,27 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class EtlConfigurationSink
     {
         /// <summary>
-        /// Write Result Set.
+        /// Result datasets to write to.
         /// </summary>
         public readonly ImmutableArray<string> Datasets;
         /// <summary>
-        /// The endpoint of the region where the target Project is located.
+        /// The endpoint of the region where the destination project resides.
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// Destination Logstore Name.
+        /// The name of the destination Logstore.
         /// </summary>
         public readonly string Logstore;
         /// <summary>
-        /// Output Destination Name.
+        /// The name of the output destination.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Project Name.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The ARN role that authorizes writing to the target Logstore.
+        /// The ARN of the role authorized to write to the destination Logstore.
         /// </summary>
         public readonly string RoleArn;
 

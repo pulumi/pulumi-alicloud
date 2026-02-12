@@ -8,6 +8,7 @@ import com.pulumi.alicloud.mongodb.InstanceArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceState;
 import com.pulumi.alicloud.mongodb.outputs.InstanceParameter;
 import com.pulumi.alicloud.mongodb.outputs.InstanceReplicaSet;
+import com.pulumi.alicloud.mongodb.outputs.InstanceZoneInfo;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -26,9 +27,6 @@ import javax.annotation.Nullable;
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  * 
  * &gt; **NOTE:** Available since v1.37.0.
- * 
- * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB instance.
- * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
  * 
  * &gt; **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
  * 
@@ -139,7 +137,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
@@ -147,11 +144,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    public Output<Integer> autoRenewDuration() {
+        return this.autoRenewDuration;
     }
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -368,6 +380,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    @Export(name="forceEncryption", refs={String.class}, tree="[0]")
+    private Output<String> forceEncryption;
+
+    /**
+     * @return Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    public Output<String> forceEncryption() {
+        return this.forceEncryption;
+    }
+    /**
      * The list of Global Security Group Ids.
      * 
      */
@@ -408,6 +434,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
+    }
+    /**
+     * (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    @Export(name="keyIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> keyIds;
+
+    /**
+     * @return (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    public Output<List<String>> keyIds() {
+        return this.keyIds;
     }
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
@@ -453,6 +493,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
@@ -460,6 +501,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     public Output<String> maintainEndTime() {
@@ -494,14 +536,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The network type of the instance. Valid values:`Classic`, `VPC`.
+     * The network type of the instance. Valid values: `VPC`.
+     * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
+     * @return The network type of the instance. Valid values: `VPC`.
+     * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
     public Output<String> networkType() {
@@ -511,7 +555,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
@@ -521,7 +565,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     public Output<Optional<String>> orderType() {
@@ -640,6 +684,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    @Export(name="restoreTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> restoreTime;
+
+    /**
+     * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    public Output<Optional<String>> restoreTime() {
+        return Codegen.optional(this.restoreTime);
+    }
+    /**
      * Instance data backup retention days. Available since v1.42.0.
      * 
      */
@@ -728,22 +788,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.snapshotBackupType;
     }
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      * 
      */
+    @Export(name="srcDbInstanceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> srcDbInstanceId;
+
+    /**
+     * @return The source instance ID.
+     * 
+     */
+    public Output<Optional<String>> srcDbInstanceId() {
+        return Codegen.optional(this.srcDbInstanceId);
+    }
     @Export(name="sslAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslAction;
 
-    /**
-     * @return Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
-     * 
-     */
     public Output<Optional<String>> sslAction() {
         return Codegen.optional(this.sslAction);
     }
@@ -862,6 +922,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> zoneId() {
         return this.zoneId;
+    }
+    /**
+     * (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    @Export(name="zoneInfos", refs={List.class,InstanceZoneInfo.class}, tree="[0,1]")
+    private Output<List<InstanceZoneInfo>> zoneInfos;
+
+    /**
+     * @return (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    public Output<List<InstanceZoneInfo>> zoneInfos() {
+        return this.zoneInfos;
     }
 
     /**

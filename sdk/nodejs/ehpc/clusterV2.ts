@@ -60,10 +60,7 @@ import * as utilities from "../utilities";
  *     fileSystemType: exampleFileSystem.fileSystemType,
  *     sourceCidrIp: "10.0.0.0/24",
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
- *     vpcId: example.id,
- *     securityGroupType: "normal",
- * });
+ * const exampleEcsKeyPair = new alicloud.ecs.EcsKeyPair("example", {keyPairName: name});
  * const exampleMountTarget = new alicloud.nas.MountTarget("example", {
  *     vpcId: example.id,
  *     networkType: "Vpc",
@@ -71,17 +68,17 @@ import * as utilities from "../utilities";
  *     vswitchId: exampleSwitch.id,
  *     fileSystemId: exampleFileSystem.id,
  * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     vpcId: example.id,
+ *     securityGroupType: "normal",
+ * });
  * const _default = new alicloud.ehpc.ClusterV2("default", {
  *     clusterCredentials: {
- *         password: "aliHPC123",
+ *         keyPairName: exampleEcsKeyPair.id,
  *     },
- *     clusterVpcId: example.id,
- *     clusterCategory: "Standard",
  *     clusterMode: "Integrated",
- *     securityGroupId: exampleSecurityGroup.id,
- *     clusterName: "minimal-example-cluster",
+ *     clusterVpcId: example.id,
  *     deletionProtection: true,
- *     clientVersion: "2.0.47",
  *     sharedStorages: [
  *         {
  *             mountDirectory: "/home",
@@ -92,25 +89,29 @@ import * as utilities from "../utilities";
  *             mountOptions: "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
  *         },
  *         {
- *             mountDirectory: "/opt",
  *             nasDirectory: "/",
  *             mountTargetDomain: exampleMountTarget.mountTargetDomain,
  *             protocolType: "NFS",
  *             fileSystemId: exampleFileSystem.id,
  *             mountOptions: "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
+ *             mountDirectory: "/opt",
  *         },
  *         {
+ *             mountOptions: "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
  *             mountDirectory: "/ehpcdata",
  *             nasDirectory: "/",
  *             mountTargetDomain: exampleMountTarget.mountTargetDomain,
  *             protocolType: "NFS",
  *             fileSystemId: exampleFileSystem.id,
- *             mountOptions: "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
  *         },
  *     ],
  *     clusterVswitchId: exampleSwitch.id,
+ *     clusterCategory: "Standard",
+ *     securityGroupId: exampleSecurityGroup.id,
+ *     clusterName: name,
  *     manager: {
  *         managerNode: {
+ *             spotStrategy: "NoSpot",
  *             systemDisk: {
  *                 category: "cloud_essd",
  *                 size: 40,
@@ -119,9 +120,7 @@ import * as utilities from "../utilities";
  *             enableHt: true,
  *             instanceChargeType: "PostPaid",
  *             imageId: "centos_7_6_x64_20G_alibase_20211130.vhd",
- *             spotPriceLimit: 0,
  *             instanceType: "ecs.c6.xlarge",
- *             spotStrategy: "NoSpot",
  *         },
  *         scheduler: {
  *             type: "SLURM",

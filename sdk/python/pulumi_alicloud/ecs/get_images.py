@@ -107,7 +107,7 @@ class GetImagesResult:
     @pulumi.getter
     def architecture(self) -> Optional[_builtins.str]:
         """
-        Platform type of the image system: i386 or x86_64.
+        The platform type of the image system: i386 or x86_64.
         """
         return pulumi.get(self, "architecture")
 
@@ -156,7 +156,7 @@ class GetImagesResult:
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
         """
-        A list of images. Each element contains the following attributes:
+        A `disk_device_mappings` block as defined below. A list of images.
         """
         return pulumi.get(self, "images")
 
@@ -209,7 +209,7 @@ class GetImagesResult:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[_builtins.str]:
         """
-        Snapshot ID.
+        The snapshot ID.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -217,7 +217,7 @@ class GetImagesResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+        The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
         """
         return pulumi.get(self, "status")
 
@@ -294,16 +294,16 @@ def get_images(action_type: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    images_ds = alicloud.ecs.get_images(owners="system",
+    example = alicloud.ecs.get_images(owners="system",
         name_regex="^centos_6")
-    pulumi.export("firstImageId", images_ds.images[0].id)
+    pulumi.export("imageId", example.images[0].id)
     ```
 
 
     :param _builtins.str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-           * `CreateEcs`: instance creation.
-           * `ChangeOS`: replacement of the system disk or operating system.
-    :param _builtins.str architecture: The image architecture. Valid values: `i386` and `x86_64`.
+           - `CreateEcs`: instance creation.
+           - `ChangeOS`: replacement of the system disk or operating system.
+    :param _builtins.str architecture: The image architecture. Valid values: `i386`, `x86_64`, `arm64`.
     :param _builtins.bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
     :param _builtins.str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
     :param _builtins.str image_id: The ID of the image.
@@ -316,18 +316,16 @@ def get_images(action_type: Optional[_builtins.str] = None,
     :param _builtins.str name_regex: A regex string to filter resulting images by name.
     :param _builtins.str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-           
-           > **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
     :param _builtins.str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param _builtins.str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param _builtins.str snapshot_id: The ID of the snapshot used to create the custom image.
     :param _builtins.str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-           * `Creating`: The image is being created.
-           * `Waiting`: The image is waiting to be processed.
-           * `Available`: The image is available.
-           * `UnAvailable`: The image is unavailable.
-           * `CreateFailed`: The image failed to be created.
-           * `Deprecated`: The image is discontinued.
+           - `Creating`: The image is being created.
+           - `Waiting`: The image is waiting to be processed.
+           - `Available`: The image is available.
+           - `UnAvailable`: The image is unavailable.
+           - `CreateFailed`: The image failed to be created.
+           - `Deprecated`: The image is discontinued.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """
@@ -410,16 +408,16 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    images_ds = alicloud.ecs.get_images(owners="system",
+    example = alicloud.ecs.get_images(owners="system",
         name_regex="^centos_6")
-    pulumi.export("firstImageId", images_ds.images[0].id)
+    pulumi.export("imageId", example.images[0].id)
     ```
 
 
     :param _builtins.str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-           * `CreateEcs`: instance creation.
-           * `ChangeOS`: replacement of the system disk or operating system.
-    :param _builtins.str architecture: The image architecture. Valid values: `i386` and `x86_64`.
+           - `CreateEcs`: instance creation.
+           - `ChangeOS`: replacement of the system disk or operating system.
+    :param _builtins.str architecture: The image architecture. Valid values: `i386`, `x86_64`, `arm64`.
     :param _builtins.bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
     :param _builtins.str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
     :param _builtins.str image_id: The ID of the image.
@@ -432,18 +430,16 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[_builtins.str]
     :param _builtins.str name_regex: A regex string to filter resulting images by name.
     :param _builtins.str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-           
-           > **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
     :param _builtins.str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param _builtins.str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param _builtins.str snapshot_id: The ID of the snapshot used to create the custom image.
     :param _builtins.str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-           * `Creating`: The image is being created.
-           * `Waiting`: The image is waiting to be processed.
-           * `Available`: The image is available.
-           * `UnAvailable`: The image is unavailable.
-           * `CreateFailed`: The image failed to be created.
-           * `Deprecated`: The image is discontinued.
+           - `Creating`: The image is being created.
+           - `Waiting`: The image is waiting to be processed.
+           - `Available`: The image is available.
+           - `UnAvailable`: The image is unavailable.
+           - `CreateFailed`: The image failed to be created.
+           - `Deprecated`: The image is discontinued.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """

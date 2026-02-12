@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     var example = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
         ///         Owners = "system",
         ///         NameRegex = "^centos_6",
@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         ["imageId"] = example.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     var example = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
         ///         Owners = "system",
         ///         NameRegex = "^centos_6",
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         ["imageId"] = example.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     var example = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
         ///         Owners = "system",
         ///         NameRegex = "^centos_6",
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstImageId"] = imagesDs.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         ["imageId"] = example.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -107,14 +107,14 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-        /// * `CreateEcs`: instance creation.
-        /// * `ChangeOS`: replacement of the system disk or operating system.
+        /// - `CreateEcs`: instance creation.
+        /// - `ChangeOS`: replacement of the system disk or operating system.
         /// </summary>
         [Input("actionType")]
         public string? ActionType { get; set; }
 
         /// <summary>
-        /// The image architecture. Valid values: `I386` and `X8664`.
+        /// The image architecture. Valid values: `I386`, `X8664`, `Arm64`.
         /// </summary>
         [Input("architecture")]
         public string? Architecture { get; set; }
@@ -187,8 +187,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
-        /// 
-        /// &gt; **NOTE:** At least one of the `NameRegex`, `MostRecent` and `Owners` must be set.
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -213,12 +211,12 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        /// * `Creating`: The image is being created.
-        /// * `Waiting`: The image is waiting to be processed.
-        /// * `Available`: The image is available.
-        /// * `UnAvailable`: The image is unavailable.
-        /// * `CreateFailed`: The image failed to be created.
-        /// * `Deprecated`: The image is discontinued.
+        /// - `Creating`: The image is being created.
+        /// - `Waiting`: The image is waiting to be processed.
+        /// - `Available`: The image is available.
+        /// - `UnAvailable`: The image is unavailable.
+        /// - `CreateFailed`: The image failed to be created.
+        /// - `Deprecated`: The image is discontinued.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -251,14 +249,14 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-        /// * `CreateEcs`: instance creation.
-        /// * `ChangeOS`: replacement of the system disk or operating system.
+        /// - `CreateEcs`: instance creation.
+        /// - `ChangeOS`: replacement of the system disk or operating system.
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
 
         /// <summary>
-        /// The image architecture. Valid values: `I386` and `X8664`.
+        /// The image architecture. Valid values: `I386`, `X8664`, `Arm64`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -331,8 +329,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
-        /// 
-        /// &gt; **NOTE:** At least one of the `NameRegex`, `MostRecent` and `Owners` must be set.
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -357,12 +353,12 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        /// * `Creating`: The image is being created.
-        /// * `Waiting`: The image is waiting to be processed.
-        /// * `Available`: The image is available.
-        /// * `UnAvailable`: The image is unavailable.
-        /// * `CreateFailed`: The image failed to be created.
-        /// * `Deprecated`: The image is discontinued.
+        /// - `Creating`: The image is being created.
+        /// - `Waiting`: The image is waiting to be processed.
+        /// - `Available`: The image is available.
+        /// - `UnAvailable`: The image is unavailable.
+        /// - `CreateFailed`: The image failed to be created.
+        /// - `Deprecated`: The image is discontinued.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -397,7 +393,7 @@ namespace Pulumi.AliCloud.Ecs
     {
         public readonly string? ActionType;
         /// <summary>
-        /// Platform type of the image system: i386 or x86_64.
+        /// The platform type of the image system: i386 or x86_64.
         /// </summary>
         public readonly string? Architecture;
         public readonly bool? DryRun;
@@ -414,7 +410,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? ImageName;
         public readonly string? ImageOwnerId;
         /// <summary>
-        /// A list of images. Each element contains the following attributes:
+        /// A `DiskDeviceMappings` block as defined below. A list of images.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly string? InstanceType;
@@ -427,11 +423,11 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? Owners;
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// Snapshot ID.
+        /// The snapshot ID.
         /// </summary>
         public readonly string? SnapshotId;
         /// <summary>
-        /// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+        /// The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
         /// </summary>
         public readonly string? Status;
         public readonly ImmutableDictionary<string, string>? Tags;

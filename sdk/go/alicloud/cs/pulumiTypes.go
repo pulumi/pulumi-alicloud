@@ -8028,7 +8028,7 @@ type NodePoolUpgradePolicy struct {
 	Runtime *string `pulumi:"runtime"`
 	// Node Runtime Version
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
-	// Whether to use replacement disk upgrade
+	// Whether to use replacement disk upgrade. Valid values:
 	UseReplace *bool `pulumi:"useReplace"`
 }
 
@@ -8052,7 +8052,7 @@ type NodePoolUpgradePolicyArgs struct {
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
 	// Node Runtime Version
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
-	// Whether to use replacement disk upgrade
+	// Whether to use replacement disk upgrade. Valid values:
 	UseReplace pulumi.BoolPtrInput `pulumi:"useReplace"`
 }
 
@@ -8153,7 +8153,7 @@ func (o NodePoolUpgradePolicyOutput) RuntimeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradePolicy) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
 }
 
-// Whether to use replacement disk upgrade
+// Whether to use replacement disk upgrade. Valid values:
 func (o NodePoolUpgradePolicyOutput) UseReplace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradePolicy) *bool { return v.UseReplace }).(pulumi.BoolPtrOutput)
 }
@@ -8222,7 +8222,7 @@ func (o NodePoolUpgradePolicyPtrOutput) RuntimeVersion() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to use replacement disk upgrade
+// Whether to use replacement disk upgrade. Valid values:
 func (o NodePoolUpgradePolicyPtrOutput) UseReplace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolUpgradePolicy) *bool {
 		if v == nil {

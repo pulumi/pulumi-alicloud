@@ -95,9 +95,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				VpcId:             example.ID(),
-//				SecurityGroupType: pulumi.String("normal"),
+//			exampleEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "example", &ecs.EcsKeyPairArgs{
+//				KeyPairName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -112,17 +111,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				VpcId:             example.ID(),
+//				SecurityGroupType: pulumi.String("normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ehpc.NewClusterV2(ctx, "default", &ehpc.ClusterV2Args{
 //				ClusterCredentials: &ehpc.ClusterV2ClusterCredentialsArgs{
-//					Password: pulumi.String("aliHPC123"),
+//					KeyPairName: exampleEcsKeyPair.ID(),
 //				},
-//				ClusterVpcId:       example.ID(),
-//				ClusterCategory:    pulumi.String("Standard"),
 //				ClusterMode:        pulumi.String("Integrated"),
-//				SecurityGroupId:    exampleSecurityGroup.ID(),
-//				ClusterName:        pulumi.String("minimal-example-cluster"),
+//				ClusterVpcId:       example.ID(),
 //				DeletionProtection: pulumi.Bool(true),
-//				ClientVersion:      pulumi.String("2.0.47"),
 //				SharedStorages: ehpc.ClusterV2SharedStorageArray{
 //					&ehpc.ClusterV2SharedStorageArgs{
 //						MountDirectory:    pulumi.String("/home"),
@@ -133,25 +135,29 @@ import (
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
-//						MountDirectory:    pulumi.String("/opt"),
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: exampleMountTarget.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
 //						FileSystemId:      exampleFileSystem.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
+//						MountDirectory:    pulumi.String("/opt"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
+//						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //						MountDirectory:    pulumi.String("/ehpcdata"),
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: exampleMountTarget.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
 //						FileSystemId:      exampleFileSystem.ID(),
-//						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //				},
 //				ClusterVswitchId: exampleSwitch.ID(),
+//				ClusterCategory:  pulumi.String("Standard"),
+//				SecurityGroupId:  exampleSecurityGroup.ID(),
+//				ClusterName:      pulumi.String(name),
 //				Manager: &ehpc.ClusterV2ManagerArgs{
 //					ManagerNode: &ehpc.ClusterV2ManagerManagerNodeArgs{
+//						SpotStrategy: pulumi.String("NoSpot"),
 //						SystemDisk: &ehpc.ClusterV2ManagerManagerNodeSystemDiskArgs{
 //							Category: pulumi.String("cloud_essd"),
 //							Size:     pulumi.Int(40),
@@ -160,9 +166,7 @@ import (
 //						EnableHt:           pulumi.Bool(true),
 //						InstanceChargeType: pulumi.String("PostPaid"),
 //						ImageId:            pulumi.String("centos_7_6_x64_20G_alibase_20211130.vhd"),
-//						SpotPriceLimit:     pulumi.Float64(0),
 //						InstanceType:       pulumi.String("ecs.c6.xlarge"),
-//						SpotStrategy:       pulumi.String("NoSpot"),
 //					},
 //					Scheduler: &ehpc.ClusterV2ManagerSchedulerArgs{
 //						Type:    pulumi.String("SLURM"),

@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'GetMongoInstancesInstanceResult',
     'GetMongoInstancesInstanceMongoResult',
+    'GetMongoInstancesInstanceRestoreRangeResult',
     'GetMongoInstancesInstanceShardResult',
 ]
 
@@ -39,6 +40,7 @@ class GetMongoInstancesInstanceResult(dict):
                  network_type: _builtins.str,
                  region_id: _builtins.str,
                  replication: _builtins.str,
+                 restore_ranges: Sequence['outputs.GetMongoInstancesInstanceRestoreRangeResult'],
                  shards: Sequence['outputs.GetMongoInstancesInstanceShardResult'],
                  status: _builtins.str,
                  storage: _builtins.int,
@@ -58,6 +60,7 @@ class GetMongoInstancesInstanceResult(dict):
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "restore_ranges", restore_ranges)
         pulumi.set(__self__, "shards", shards)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "storage", storage)
@@ -139,6 +142,11 @@ class GetMongoInstancesInstanceResult(dict):
         return pulumi.get(self, "replication")
 
     @_builtins.property
+    @pulumi.getter(name="restoreRanges")
+    def restore_ranges(self) -> Sequence['outputs.GetMongoInstancesInstanceRestoreRangeResult']:
+        return pulumi.get(self, "restore_ranges")
+
+    @_builtins.property
     @pulumi.getter
     def shards(self) -> Sequence['outputs.GetMongoInstancesInstanceShardResult']:
         return pulumi.get(self, "shards")
@@ -183,6 +191,32 @@ class GetMongoInstancesInstanceMongoResult(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> _builtins.str:
         return pulumi.get(self, "node_id")
+
+
+@pulumi.output_type
+class GetMongoInstancesInstanceRestoreRangeResult(dict):
+    def __init__(__self__, *,
+                 restore_begin_time: _builtins.str,
+                 restore_end_time: _builtins.str,
+                 restore_type: _builtins.str):
+        pulumi.set(__self__, "restore_begin_time", restore_begin_time)
+        pulumi.set(__self__, "restore_end_time", restore_end_time)
+        pulumi.set(__self__, "restore_type", restore_type)
+
+    @_builtins.property
+    @pulumi.getter(name="restoreBeginTime")
+    def restore_begin_time(self) -> _builtins.str:
+        return pulumi.get(self, "restore_begin_time")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreEndTime")
+    def restore_end_time(self) -> _builtins.str:
+        return pulumi.get(self, "restore_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreType")
+    def restore_type(self) -> _builtins.str:
+        return pulumi.get(self, "restore_type")
 
 
 @pulumi.output_type

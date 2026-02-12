@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetImagesImageDiskDeviceMappingResult
     {
         /// <summary>
-        /// Device information of the created disk: such as /dev/xvdb.
+        /// The device information of the created disk: such as /dev/xvdb.
         /// </summary>
         public readonly string Device;
         /// <summary>
-        /// Size of the created disk.
+        /// The size of the created disk.
         /// </summary>
         public readonly string Size;
         /// <summary>

@@ -2610,6 +2610,276 @@ func (o BucketLoggingTypePtrOutput) TargetPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketOverwriteConfigRule struct {
+	// The operation type. Currently, only "forbid" is supported.
+	Action *string `pulumi:"action"`
+	// Rule ID
+	Id *string `pulumi:"id"`
+	// The prefix of the Object name, which is used to filter objects to be processed.
+	Prefix *string `pulumi:"prefix"`
+	// A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+	Principals *BucketOverwriteConfigRulePrincipals `pulumi:"principals"`
+	// The suffix of the Object name, which is used to filter objects to be processed.
+	Suffix *string `pulumi:"suffix"`
+}
+
+// BucketOverwriteConfigRuleInput is an input type that accepts BucketOverwriteConfigRuleArgs and BucketOverwriteConfigRuleOutput values.
+// You can construct a concrete instance of `BucketOverwriteConfigRuleInput` via:
+//
+//	BucketOverwriteConfigRuleArgs{...}
+type BucketOverwriteConfigRuleInput interface {
+	pulumi.Input
+
+	ToBucketOverwriteConfigRuleOutput() BucketOverwriteConfigRuleOutput
+	ToBucketOverwriteConfigRuleOutputWithContext(context.Context) BucketOverwriteConfigRuleOutput
+}
+
+type BucketOverwriteConfigRuleArgs struct {
+	// The operation type. Currently, only "forbid" is supported.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Rule ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The prefix of the Object name, which is used to filter objects to be processed.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+	Principals BucketOverwriteConfigRulePrincipalsPtrInput `pulumi:"principals"`
+	// The suffix of the Object name, which is used to filter objects to be processed.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (BucketOverwriteConfigRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOverwriteConfigRule)(nil)).Elem()
+}
+
+func (i BucketOverwriteConfigRuleArgs) ToBucketOverwriteConfigRuleOutput() BucketOverwriteConfigRuleOutput {
+	return i.ToBucketOverwriteConfigRuleOutputWithContext(context.Background())
+}
+
+func (i BucketOverwriteConfigRuleArgs) ToBucketOverwriteConfigRuleOutputWithContext(ctx context.Context) BucketOverwriteConfigRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOverwriteConfigRuleOutput)
+}
+
+// BucketOverwriteConfigRuleArrayInput is an input type that accepts BucketOverwriteConfigRuleArray and BucketOverwriteConfigRuleArrayOutput values.
+// You can construct a concrete instance of `BucketOverwriteConfigRuleArrayInput` via:
+//
+//	BucketOverwriteConfigRuleArray{ BucketOverwriteConfigRuleArgs{...} }
+type BucketOverwriteConfigRuleArrayInput interface {
+	pulumi.Input
+
+	ToBucketOverwriteConfigRuleArrayOutput() BucketOverwriteConfigRuleArrayOutput
+	ToBucketOverwriteConfigRuleArrayOutputWithContext(context.Context) BucketOverwriteConfigRuleArrayOutput
+}
+
+type BucketOverwriteConfigRuleArray []BucketOverwriteConfigRuleInput
+
+func (BucketOverwriteConfigRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketOverwriteConfigRule)(nil)).Elem()
+}
+
+func (i BucketOverwriteConfigRuleArray) ToBucketOverwriteConfigRuleArrayOutput() BucketOverwriteConfigRuleArrayOutput {
+	return i.ToBucketOverwriteConfigRuleArrayOutputWithContext(context.Background())
+}
+
+func (i BucketOverwriteConfigRuleArray) ToBucketOverwriteConfigRuleArrayOutputWithContext(ctx context.Context) BucketOverwriteConfigRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOverwriteConfigRuleArrayOutput)
+}
+
+type BucketOverwriteConfigRuleOutput struct{ *pulumi.OutputState }
+
+func (BucketOverwriteConfigRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOverwriteConfigRule)(nil)).Elem()
+}
+
+func (o BucketOverwriteConfigRuleOutput) ToBucketOverwriteConfigRuleOutput() BucketOverwriteConfigRuleOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRuleOutput) ToBucketOverwriteConfigRuleOutputWithContext(ctx context.Context) BucketOverwriteConfigRuleOutput {
+	return o
+}
+
+// The operation type. Currently, only "forbid" is supported.
+func (o BucketOverwriteConfigRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketOverwriteConfigRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID
+func (o BucketOverwriteConfigRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketOverwriteConfigRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The prefix of the Object name, which is used to filter objects to be processed.
+func (o BucketOverwriteConfigRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketOverwriteConfigRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+func (o BucketOverwriteConfigRuleOutput) Principals() BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return o.ApplyT(func(v BucketOverwriteConfigRule) *BucketOverwriteConfigRulePrincipals { return v.Principals }).(BucketOverwriteConfigRulePrincipalsPtrOutput)
+}
+
+// The suffix of the Object name, which is used to filter objects to be processed.
+func (o BucketOverwriteConfigRuleOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketOverwriteConfigRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type BucketOverwriteConfigRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketOverwriteConfigRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketOverwriteConfigRule)(nil)).Elem()
+}
+
+func (o BucketOverwriteConfigRuleArrayOutput) ToBucketOverwriteConfigRuleArrayOutput() BucketOverwriteConfigRuleArrayOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRuleArrayOutput) ToBucketOverwriteConfigRuleArrayOutputWithContext(ctx context.Context) BucketOverwriteConfigRuleArrayOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRuleArrayOutput) Index(i pulumi.IntInput) BucketOverwriteConfigRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketOverwriteConfigRule {
+		return vs[0].([]BucketOverwriteConfigRule)[vs[1].(int)]
+	}).(BucketOverwriteConfigRuleOutput)
+}
+
+type BucketOverwriteConfigRulePrincipals struct {
+	// Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+	Principals []string `pulumi:"principals"`
+}
+
+// BucketOverwriteConfigRulePrincipalsInput is an input type that accepts BucketOverwriteConfigRulePrincipalsArgs and BucketOverwriteConfigRulePrincipalsOutput values.
+// You can construct a concrete instance of `BucketOverwriteConfigRulePrincipalsInput` via:
+//
+//	BucketOverwriteConfigRulePrincipalsArgs{...}
+type BucketOverwriteConfigRulePrincipalsInput interface {
+	pulumi.Input
+
+	ToBucketOverwriteConfigRulePrincipalsOutput() BucketOverwriteConfigRulePrincipalsOutput
+	ToBucketOverwriteConfigRulePrincipalsOutputWithContext(context.Context) BucketOverwriteConfigRulePrincipalsOutput
+}
+
+type BucketOverwriteConfigRulePrincipalsArgs struct {
+	// Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+}
+
+func (BucketOverwriteConfigRulePrincipalsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOverwriteConfigRulePrincipals)(nil)).Elem()
+}
+
+func (i BucketOverwriteConfigRulePrincipalsArgs) ToBucketOverwriteConfigRulePrincipalsOutput() BucketOverwriteConfigRulePrincipalsOutput {
+	return i.ToBucketOverwriteConfigRulePrincipalsOutputWithContext(context.Background())
+}
+
+func (i BucketOverwriteConfigRulePrincipalsArgs) ToBucketOverwriteConfigRulePrincipalsOutputWithContext(ctx context.Context) BucketOverwriteConfigRulePrincipalsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOverwriteConfigRulePrincipalsOutput)
+}
+
+func (i BucketOverwriteConfigRulePrincipalsArgs) ToBucketOverwriteConfigRulePrincipalsPtrOutput() BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return i.ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(context.Background())
+}
+
+func (i BucketOverwriteConfigRulePrincipalsArgs) ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(ctx context.Context) BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOverwriteConfigRulePrincipalsOutput).ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(ctx)
+}
+
+// BucketOverwriteConfigRulePrincipalsPtrInput is an input type that accepts BucketOverwriteConfigRulePrincipalsArgs, BucketOverwriteConfigRulePrincipalsPtr and BucketOverwriteConfigRulePrincipalsPtrOutput values.
+// You can construct a concrete instance of `BucketOverwriteConfigRulePrincipalsPtrInput` via:
+//
+//	        BucketOverwriteConfigRulePrincipalsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketOverwriteConfigRulePrincipalsPtrInput interface {
+	pulumi.Input
+
+	ToBucketOverwriteConfigRulePrincipalsPtrOutput() BucketOverwriteConfigRulePrincipalsPtrOutput
+	ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(context.Context) BucketOverwriteConfigRulePrincipalsPtrOutput
+}
+
+type bucketOverwriteConfigRulePrincipalsPtrType BucketOverwriteConfigRulePrincipalsArgs
+
+func BucketOverwriteConfigRulePrincipalsPtr(v *BucketOverwriteConfigRulePrincipalsArgs) BucketOverwriteConfigRulePrincipalsPtrInput {
+	return (*bucketOverwriteConfigRulePrincipalsPtrType)(v)
+}
+
+func (*bucketOverwriteConfigRulePrincipalsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketOverwriteConfigRulePrincipals)(nil)).Elem()
+}
+
+func (i *bucketOverwriteConfigRulePrincipalsPtrType) ToBucketOverwriteConfigRulePrincipalsPtrOutput() BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return i.ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketOverwriteConfigRulePrincipalsPtrType) ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(ctx context.Context) BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOverwriteConfigRulePrincipalsPtrOutput)
+}
+
+type BucketOverwriteConfigRulePrincipalsOutput struct{ *pulumi.OutputState }
+
+func (BucketOverwriteConfigRulePrincipalsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOverwriteConfigRulePrincipals)(nil)).Elem()
+}
+
+func (o BucketOverwriteConfigRulePrincipalsOutput) ToBucketOverwriteConfigRulePrincipalsOutput() BucketOverwriteConfigRulePrincipalsOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRulePrincipalsOutput) ToBucketOverwriteConfigRulePrincipalsOutputWithContext(ctx context.Context) BucketOverwriteConfigRulePrincipalsOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRulePrincipalsOutput) ToBucketOverwriteConfigRulePrincipalsPtrOutput() BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return o.ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(context.Background())
+}
+
+func (o BucketOverwriteConfigRulePrincipalsOutput) ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(ctx context.Context) BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketOverwriteConfigRulePrincipals) *BucketOverwriteConfigRulePrincipals {
+		return &v
+	}).(BucketOverwriteConfigRulePrincipalsPtrOutput)
+}
+
+// Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+func (o BucketOverwriteConfigRulePrincipalsOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketOverwriteConfigRulePrincipals) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+type BucketOverwriteConfigRulePrincipalsPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketOverwriteConfigRulePrincipalsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketOverwriteConfigRulePrincipals)(nil)).Elem()
+}
+
+func (o BucketOverwriteConfigRulePrincipalsPtrOutput) ToBucketOverwriteConfigRulePrincipalsPtrOutput() BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRulePrincipalsPtrOutput) ToBucketOverwriteConfigRulePrincipalsPtrOutputWithContext(ctx context.Context) BucketOverwriteConfigRulePrincipalsPtrOutput {
+	return o
+}
+
+func (o BucketOverwriteConfigRulePrincipalsPtrOutput) Elem() BucketOverwriteConfigRulePrincipalsOutput {
+	return o.ApplyT(func(v *BucketOverwriteConfigRulePrincipals) BucketOverwriteConfigRulePrincipals {
+		if v != nil {
+			return *v
+		}
+		var ret BucketOverwriteConfigRulePrincipals
+		return ret
+	}).(BucketOverwriteConfigRulePrincipalsOutput)
+}
+
+// Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+func (o BucketOverwriteConfigRulePrincipalsPtrOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketOverwriteConfigRulePrincipals) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Principals
+	}).(pulumi.StringArrayOutput)
+}
+
 type BucketRefererConfig struct {
 	// Allows referer to be empty. Defaults false.
 	AllowEmpty *bool `pulumi:"allowEmpty"`
@@ -3825,6 +4095,395 @@ func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
+}
+
+type BucketResponseHeaderRule struct {
+	// The container that holds the operations that need to be apply rules. See `filters` below.
+	Filters *BucketResponseHeaderRuleFilters `pulumi:"filters"`
+	// The container that holds the response headers that need to be hidden. See `hideHeaders` below.
+	HideHeaders *BucketResponseHeaderRuleHideHeaders `pulumi:"hideHeaders"`
+	// The response header rule name.
+	Name *string `pulumi:"name"`
+}
+
+// BucketResponseHeaderRuleInput is an input type that accepts BucketResponseHeaderRuleArgs and BucketResponseHeaderRuleOutput values.
+// You can construct a concrete instance of `BucketResponseHeaderRuleInput` via:
+//
+//	BucketResponseHeaderRuleArgs{...}
+type BucketResponseHeaderRuleInput interface {
+	pulumi.Input
+
+	ToBucketResponseHeaderRuleOutput() BucketResponseHeaderRuleOutput
+	ToBucketResponseHeaderRuleOutputWithContext(context.Context) BucketResponseHeaderRuleOutput
+}
+
+type BucketResponseHeaderRuleArgs struct {
+	// The container that holds the operations that need to be apply rules. See `filters` below.
+	Filters BucketResponseHeaderRuleFiltersPtrInput `pulumi:"filters"`
+	// The container that holds the response headers that need to be hidden. See `hideHeaders` below.
+	HideHeaders BucketResponseHeaderRuleHideHeadersPtrInput `pulumi:"hideHeaders"`
+	// The response header rule name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (BucketResponseHeaderRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketResponseHeaderRule)(nil)).Elem()
+}
+
+func (i BucketResponseHeaderRuleArgs) ToBucketResponseHeaderRuleOutput() BucketResponseHeaderRuleOutput {
+	return i.ToBucketResponseHeaderRuleOutputWithContext(context.Background())
+}
+
+func (i BucketResponseHeaderRuleArgs) ToBucketResponseHeaderRuleOutputWithContext(ctx context.Context) BucketResponseHeaderRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleOutput)
+}
+
+// BucketResponseHeaderRuleArrayInput is an input type that accepts BucketResponseHeaderRuleArray and BucketResponseHeaderRuleArrayOutput values.
+// You can construct a concrete instance of `BucketResponseHeaderRuleArrayInput` via:
+//
+//	BucketResponseHeaderRuleArray{ BucketResponseHeaderRuleArgs{...} }
+type BucketResponseHeaderRuleArrayInput interface {
+	pulumi.Input
+
+	ToBucketResponseHeaderRuleArrayOutput() BucketResponseHeaderRuleArrayOutput
+	ToBucketResponseHeaderRuleArrayOutputWithContext(context.Context) BucketResponseHeaderRuleArrayOutput
+}
+
+type BucketResponseHeaderRuleArray []BucketResponseHeaderRuleInput
+
+func (BucketResponseHeaderRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketResponseHeaderRule)(nil)).Elem()
+}
+
+func (i BucketResponseHeaderRuleArray) ToBucketResponseHeaderRuleArrayOutput() BucketResponseHeaderRuleArrayOutput {
+	return i.ToBucketResponseHeaderRuleArrayOutputWithContext(context.Background())
+}
+
+func (i BucketResponseHeaderRuleArray) ToBucketResponseHeaderRuleArrayOutputWithContext(ctx context.Context) BucketResponseHeaderRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleArrayOutput)
+}
+
+type BucketResponseHeaderRuleOutput struct{ *pulumi.OutputState }
+
+func (BucketResponseHeaderRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketResponseHeaderRule)(nil)).Elem()
+}
+
+func (o BucketResponseHeaderRuleOutput) ToBucketResponseHeaderRuleOutput() BucketResponseHeaderRuleOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleOutput) ToBucketResponseHeaderRuleOutputWithContext(ctx context.Context) BucketResponseHeaderRuleOutput {
+	return o
+}
+
+// The container that holds the operations that need to be apply rules. See `filters` below.
+func (o BucketResponseHeaderRuleOutput) Filters() BucketResponseHeaderRuleFiltersPtrOutput {
+	return o.ApplyT(func(v BucketResponseHeaderRule) *BucketResponseHeaderRuleFilters { return v.Filters }).(BucketResponseHeaderRuleFiltersPtrOutput)
+}
+
+// The container that holds the response headers that need to be hidden. See `hideHeaders` below.
+func (o BucketResponseHeaderRuleOutput) HideHeaders() BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return o.ApplyT(func(v BucketResponseHeaderRule) *BucketResponseHeaderRuleHideHeaders { return v.HideHeaders }).(BucketResponseHeaderRuleHideHeadersPtrOutput)
+}
+
+// The response header rule name.
+func (o BucketResponseHeaderRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketResponseHeaderRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type BucketResponseHeaderRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketResponseHeaderRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketResponseHeaderRule)(nil)).Elem()
+}
+
+func (o BucketResponseHeaderRuleArrayOutput) ToBucketResponseHeaderRuleArrayOutput() BucketResponseHeaderRuleArrayOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleArrayOutput) ToBucketResponseHeaderRuleArrayOutputWithContext(ctx context.Context) BucketResponseHeaderRuleArrayOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleArrayOutput) Index(i pulumi.IntInput) BucketResponseHeaderRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketResponseHeaderRule {
+		return vs[0].([]BucketResponseHeaderRule)[vs[1].(int)]
+	}).(BucketResponseHeaderRuleOutput)
+}
+
+type BucketResponseHeaderRuleFilters struct {
+	// The operation to which the rule applies.
+	Operations []string `pulumi:"operations"`
+}
+
+// BucketResponseHeaderRuleFiltersInput is an input type that accepts BucketResponseHeaderRuleFiltersArgs and BucketResponseHeaderRuleFiltersOutput values.
+// You can construct a concrete instance of `BucketResponseHeaderRuleFiltersInput` via:
+//
+//	BucketResponseHeaderRuleFiltersArgs{...}
+type BucketResponseHeaderRuleFiltersInput interface {
+	pulumi.Input
+
+	ToBucketResponseHeaderRuleFiltersOutput() BucketResponseHeaderRuleFiltersOutput
+	ToBucketResponseHeaderRuleFiltersOutputWithContext(context.Context) BucketResponseHeaderRuleFiltersOutput
+}
+
+type BucketResponseHeaderRuleFiltersArgs struct {
+	// The operation to which the rule applies.
+	Operations pulumi.StringArrayInput `pulumi:"operations"`
+}
+
+func (BucketResponseHeaderRuleFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketResponseHeaderRuleFilters)(nil)).Elem()
+}
+
+func (i BucketResponseHeaderRuleFiltersArgs) ToBucketResponseHeaderRuleFiltersOutput() BucketResponseHeaderRuleFiltersOutput {
+	return i.ToBucketResponseHeaderRuleFiltersOutputWithContext(context.Background())
+}
+
+func (i BucketResponseHeaderRuleFiltersArgs) ToBucketResponseHeaderRuleFiltersOutputWithContext(ctx context.Context) BucketResponseHeaderRuleFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleFiltersOutput)
+}
+
+func (i BucketResponseHeaderRuleFiltersArgs) ToBucketResponseHeaderRuleFiltersPtrOutput() BucketResponseHeaderRuleFiltersPtrOutput {
+	return i.ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i BucketResponseHeaderRuleFiltersArgs) ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleFiltersOutput).ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(ctx)
+}
+
+// BucketResponseHeaderRuleFiltersPtrInput is an input type that accepts BucketResponseHeaderRuleFiltersArgs, BucketResponseHeaderRuleFiltersPtr and BucketResponseHeaderRuleFiltersPtrOutput values.
+// You can construct a concrete instance of `BucketResponseHeaderRuleFiltersPtrInput` via:
+//
+//	        BucketResponseHeaderRuleFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketResponseHeaderRuleFiltersPtrInput interface {
+	pulumi.Input
+
+	ToBucketResponseHeaderRuleFiltersPtrOutput() BucketResponseHeaderRuleFiltersPtrOutput
+	ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(context.Context) BucketResponseHeaderRuleFiltersPtrOutput
+}
+
+type bucketResponseHeaderRuleFiltersPtrType BucketResponseHeaderRuleFiltersArgs
+
+func BucketResponseHeaderRuleFiltersPtr(v *BucketResponseHeaderRuleFiltersArgs) BucketResponseHeaderRuleFiltersPtrInput {
+	return (*bucketResponseHeaderRuleFiltersPtrType)(v)
+}
+
+func (*bucketResponseHeaderRuleFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketResponseHeaderRuleFilters)(nil)).Elem()
+}
+
+func (i *bucketResponseHeaderRuleFiltersPtrType) ToBucketResponseHeaderRuleFiltersPtrOutput() BucketResponseHeaderRuleFiltersPtrOutput {
+	return i.ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketResponseHeaderRuleFiltersPtrType) ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleFiltersPtrOutput)
+}
+
+type BucketResponseHeaderRuleFiltersOutput struct{ *pulumi.OutputState }
+
+func (BucketResponseHeaderRuleFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketResponseHeaderRuleFilters)(nil)).Elem()
+}
+
+func (o BucketResponseHeaderRuleFiltersOutput) ToBucketResponseHeaderRuleFiltersOutput() BucketResponseHeaderRuleFiltersOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleFiltersOutput) ToBucketResponseHeaderRuleFiltersOutputWithContext(ctx context.Context) BucketResponseHeaderRuleFiltersOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleFiltersOutput) ToBucketResponseHeaderRuleFiltersPtrOutput() BucketResponseHeaderRuleFiltersPtrOutput {
+	return o.ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o BucketResponseHeaderRuleFiltersOutput) ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketResponseHeaderRuleFilters) *BucketResponseHeaderRuleFilters {
+		return &v
+	}).(BucketResponseHeaderRuleFiltersPtrOutput)
+}
+
+// The operation to which the rule applies.
+func (o BucketResponseHeaderRuleFiltersOutput) Operations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketResponseHeaderRuleFilters) []string { return v.Operations }).(pulumi.StringArrayOutput)
+}
+
+type BucketResponseHeaderRuleFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketResponseHeaderRuleFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketResponseHeaderRuleFilters)(nil)).Elem()
+}
+
+func (o BucketResponseHeaderRuleFiltersPtrOutput) ToBucketResponseHeaderRuleFiltersPtrOutput() BucketResponseHeaderRuleFiltersPtrOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleFiltersPtrOutput) ToBucketResponseHeaderRuleFiltersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleFiltersPtrOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleFiltersPtrOutput) Elem() BucketResponseHeaderRuleFiltersOutput {
+	return o.ApplyT(func(v *BucketResponseHeaderRuleFilters) BucketResponseHeaderRuleFilters {
+		if v != nil {
+			return *v
+		}
+		var ret BucketResponseHeaderRuleFilters
+		return ret
+	}).(BucketResponseHeaderRuleFiltersOutput)
+}
+
+// The operation to which the rule applies.
+func (o BucketResponseHeaderRuleFiltersPtrOutput) Operations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketResponseHeaderRuleFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(pulumi.StringArrayOutput)
+}
+
+type BucketResponseHeaderRuleHideHeaders struct {
+	// The response header needs to be hidden.
+	Headers []string `pulumi:"headers"`
+}
+
+// BucketResponseHeaderRuleHideHeadersInput is an input type that accepts BucketResponseHeaderRuleHideHeadersArgs and BucketResponseHeaderRuleHideHeadersOutput values.
+// You can construct a concrete instance of `BucketResponseHeaderRuleHideHeadersInput` via:
+//
+//	BucketResponseHeaderRuleHideHeadersArgs{...}
+type BucketResponseHeaderRuleHideHeadersInput interface {
+	pulumi.Input
+
+	ToBucketResponseHeaderRuleHideHeadersOutput() BucketResponseHeaderRuleHideHeadersOutput
+	ToBucketResponseHeaderRuleHideHeadersOutputWithContext(context.Context) BucketResponseHeaderRuleHideHeadersOutput
+}
+
+type BucketResponseHeaderRuleHideHeadersArgs struct {
+	// The response header needs to be hidden.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+}
+
+func (BucketResponseHeaderRuleHideHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketResponseHeaderRuleHideHeaders)(nil)).Elem()
+}
+
+func (i BucketResponseHeaderRuleHideHeadersArgs) ToBucketResponseHeaderRuleHideHeadersOutput() BucketResponseHeaderRuleHideHeadersOutput {
+	return i.ToBucketResponseHeaderRuleHideHeadersOutputWithContext(context.Background())
+}
+
+func (i BucketResponseHeaderRuleHideHeadersArgs) ToBucketResponseHeaderRuleHideHeadersOutputWithContext(ctx context.Context) BucketResponseHeaderRuleHideHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleHideHeadersOutput)
+}
+
+func (i BucketResponseHeaderRuleHideHeadersArgs) ToBucketResponseHeaderRuleHideHeadersPtrOutput() BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return i.ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i BucketResponseHeaderRuleHideHeadersArgs) ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleHideHeadersOutput).ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(ctx)
+}
+
+// BucketResponseHeaderRuleHideHeadersPtrInput is an input type that accepts BucketResponseHeaderRuleHideHeadersArgs, BucketResponseHeaderRuleHideHeadersPtr and BucketResponseHeaderRuleHideHeadersPtrOutput values.
+// You can construct a concrete instance of `BucketResponseHeaderRuleHideHeadersPtrInput` via:
+//
+//	        BucketResponseHeaderRuleHideHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketResponseHeaderRuleHideHeadersPtrInput interface {
+	pulumi.Input
+
+	ToBucketResponseHeaderRuleHideHeadersPtrOutput() BucketResponseHeaderRuleHideHeadersPtrOutput
+	ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(context.Context) BucketResponseHeaderRuleHideHeadersPtrOutput
+}
+
+type bucketResponseHeaderRuleHideHeadersPtrType BucketResponseHeaderRuleHideHeadersArgs
+
+func BucketResponseHeaderRuleHideHeadersPtr(v *BucketResponseHeaderRuleHideHeadersArgs) BucketResponseHeaderRuleHideHeadersPtrInput {
+	return (*bucketResponseHeaderRuleHideHeadersPtrType)(v)
+}
+
+func (*bucketResponseHeaderRuleHideHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketResponseHeaderRuleHideHeaders)(nil)).Elem()
+}
+
+func (i *bucketResponseHeaderRuleHideHeadersPtrType) ToBucketResponseHeaderRuleHideHeadersPtrOutput() BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return i.ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketResponseHeaderRuleHideHeadersPtrType) ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketResponseHeaderRuleHideHeadersPtrOutput)
+}
+
+type BucketResponseHeaderRuleHideHeadersOutput struct{ *pulumi.OutputState }
+
+func (BucketResponseHeaderRuleHideHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketResponseHeaderRuleHideHeaders)(nil)).Elem()
+}
+
+func (o BucketResponseHeaderRuleHideHeadersOutput) ToBucketResponseHeaderRuleHideHeadersOutput() BucketResponseHeaderRuleHideHeadersOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleHideHeadersOutput) ToBucketResponseHeaderRuleHideHeadersOutputWithContext(ctx context.Context) BucketResponseHeaderRuleHideHeadersOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleHideHeadersOutput) ToBucketResponseHeaderRuleHideHeadersPtrOutput() BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return o.ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o BucketResponseHeaderRuleHideHeadersOutput) ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketResponseHeaderRuleHideHeaders) *BucketResponseHeaderRuleHideHeaders {
+		return &v
+	}).(BucketResponseHeaderRuleHideHeadersPtrOutput)
+}
+
+// The response header needs to be hidden.
+func (o BucketResponseHeaderRuleHideHeadersOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketResponseHeaderRuleHideHeaders) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+type BucketResponseHeaderRuleHideHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketResponseHeaderRuleHideHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketResponseHeaderRuleHideHeaders)(nil)).Elem()
+}
+
+func (o BucketResponseHeaderRuleHideHeadersPtrOutput) ToBucketResponseHeaderRuleHideHeadersPtrOutput() BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleHideHeadersPtrOutput) ToBucketResponseHeaderRuleHideHeadersPtrOutputWithContext(ctx context.Context) BucketResponseHeaderRuleHideHeadersPtrOutput {
+	return o
+}
+
+func (o BucketResponseHeaderRuleHideHeadersPtrOutput) Elem() BucketResponseHeaderRuleHideHeadersOutput {
+	return o.ApplyT(func(v *BucketResponseHeaderRuleHideHeaders) BucketResponseHeaderRuleHideHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret BucketResponseHeaderRuleHideHeaders
+		return ret
+	}).(BucketResponseHeaderRuleHideHeadersOutput)
+}
+
+// The response header needs to be hidden.
+func (o BucketResponseHeaderRuleHideHeadersPtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketResponseHeaderRuleHideHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringArrayOutput)
 }
 
 type BucketServerSideEncryptionRule struct {
@@ -9483,6 +10142,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleTransitionArrayInput)(nil)).Elem(), BucketLifecycleRuleTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingTypeInput)(nil)).Elem(), BucketLoggingTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingTypePtrInput)(nil)).Elem(), BucketLoggingTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRuleInput)(nil)).Elem(), BucketOverwriteConfigRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRuleArrayInput)(nil)).Elem(), BucketOverwriteConfigRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRulePrincipalsInput)(nil)).Elem(), BucketOverwriteConfigRulePrincipalsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRulePrincipalsPtrInput)(nil)).Elem(), BucketOverwriteConfigRulePrincipalsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigInput)(nil)).Elem(), BucketRefererConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigPtrInput)(nil)).Elem(), BucketRefererConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationDestinationInput)(nil)).Elem(), BucketReplicationDestinationArgs{})
@@ -9499,6 +10162,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaPtrInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketResponseHeaderRuleInput)(nil)).Elem(), BucketResponseHeaderRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketResponseHeaderRuleArrayInput)(nil)).Elem(), BucketResponseHeaderRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketResponseHeaderRuleFiltersInput)(nil)).Elem(), BucketResponseHeaderRuleFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketResponseHeaderRuleFiltersPtrInput)(nil)).Elem(), BucketResponseHeaderRuleFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketResponseHeaderRuleHideHeadersInput)(nil)).Elem(), BucketResponseHeaderRuleHideHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketResponseHeaderRuleHideHeadersPtrInput)(nil)).Elem(), BucketResponseHeaderRuleHideHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRuleInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRulePtrInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationTypeInput)(nil)).Elem(), BucketTransferAccelerationTypeArgs{})
@@ -9599,6 +10268,10 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleRuleTransitionArrayOutput{})
 	pulumi.RegisterOutputType(BucketLoggingTypeOutput{})
 	pulumi.RegisterOutputType(BucketLoggingTypePtrOutput{})
+	pulumi.RegisterOutputType(BucketOverwriteConfigRuleOutput{})
+	pulumi.RegisterOutputType(BucketOverwriteConfigRuleArrayOutput{})
+	pulumi.RegisterOutputType(BucketOverwriteConfigRulePrincipalsOutput{})
+	pulumi.RegisterOutputType(BucketOverwriteConfigRulePrincipalsPtrOutput{})
 	pulumi.RegisterOutputType(BucketRefererConfigOutput{})
 	pulumi.RegisterOutputType(BucketRefererConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketReplicationDestinationOutput{})
@@ -9615,6 +10288,12 @@ func init() {
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput{})
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(BucketResponseHeaderRuleOutput{})
+	pulumi.RegisterOutputType(BucketResponseHeaderRuleArrayOutput{})
+	pulumi.RegisterOutputType(BucketResponseHeaderRuleFiltersOutput{})
+	pulumi.RegisterOutputType(BucketResponseHeaderRuleFiltersPtrOutput{})
+	pulumi.RegisterOutputType(BucketResponseHeaderRuleHideHeadersOutput{})
+	pulumi.RegisterOutputType(BucketResponseHeaderRuleHideHeadersPtrOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRuleOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRulePtrOutput{})
 	pulumi.RegisterOutputType(BucketTransferAccelerationTypeOutput{})

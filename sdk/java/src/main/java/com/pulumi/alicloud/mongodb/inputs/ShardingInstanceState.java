@@ -7,6 +7,7 @@ import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceConfigServerListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceParameterArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceZoneInfoArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -51,6 +52,23 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    @Import(name="autoRenewDuration")
+    private @Nullable Output<Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewDuration() {
+        return Optional.ofNullable(this.autoRenewDuration);
     }
 
     /**
@@ -251,6 +269,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    @Import(name="forceEncryption")
+    private @Nullable Output<String> forceEncryption;
+
+    /**
+     * @return Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    public Optional<Output<String>> forceEncryption() {
+        return Optional.ofNullable(this.forceEncryption);
+    }
+
+    /**
      * The list of Global Security Group Ids.
      * 
      */
@@ -293,6 +326,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
+    }
+
+    /**
+     * (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    @Import(name="keyIds")
+    private @Nullable Output<List<String>> keyIds;
+
+    /**
+     * @return (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    public Optional<Output<List<String>>> keyIds() {
+        return Optional.ofNullable(this.keyIds);
     }
 
     /**
@@ -512,6 +560,23 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    @Import(name="restoreTime")
+    private @Nullable Output<String> restoreTime;
+
+    /**
+     * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    public Optional<Output<String>> restoreTime() {
+        return Optional.ofNullable(this.restoreTime);
+    }
+
+    /**
      * (Available since v1.42.0) Instance data backup retention days.
      * 
      */
@@ -621,22 +686,23 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      * 
      */
+    @Import(name="srcDbInstanceId")
+    private @Nullable Output<String> srcDbInstanceId;
+
+    /**
+     * @return The source instance ID.
+     * 
+     */
+    public Optional<Output<String>> srcDbInstanceId() {
+        return Optional.ofNullable(this.srcDbInstanceId);
+    }
+
     @Import(name="sslAction")
     private @Nullable Output<String> sslAction;
 
-    /**
-     * @return Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
-     * 
-     */
     public Optional<Output<String>> sslAction() {
         return Optional.ofNullable(this.sslAction);
     }
@@ -763,11 +829,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.zoneId);
     }
 
+    /**
+     * (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    @Import(name="zoneInfos")
+    private @Nullable Output<List<ShardingInstanceZoneInfoArgs>> zoneInfos;
+
+    /**
+     * @return (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    public Optional<Output<List<ShardingInstanceZoneInfoArgs>>> zoneInfos() {
+        return Optional.ofNullable(this.zoneInfos);
+    }
+
     private ShardingInstanceState() {}
 
     private ShardingInstanceState(ShardingInstanceState $) {
         this.accountPassword = $.accountPassword;
         this.autoRenew = $.autoRenew;
+        this.autoRenewDuration = $.autoRenewDuration;
         this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
         this.backupRetentionPeriod = $.backupRetentionPeriod;
@@ -781,9 +863,11 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.encryptionKey = $.encryptionKey;
         this.encryptorName = $.encryptorName;
         this.engineVersion = $.engineVersion;
+        this.forceEncryption = $.forceEncryption;
         this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
+        this.keyIds = $.keyIds;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.logBackupRetentionPeriod = $.logBackupRetentionPeriod;
@@ -798,6 +882,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.protocolType = $.protocolType;
         this.provisionedIops = $.provisionedIops;
         this.resourceGroupId = $.resourceGroupId;
+        this.restoreTime = $.restoreTime;
         this.retentionPeriod = $.retentionPeriod;
         this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
@@ -805,6 +890,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.securityIpLists = $.securityIpLists;
         this.shardLists = $.shardLists;
         this.snapshotBackupType = $.snapshotBackupType;
+        this.srcDbInstanceId = $.srcDbInstanceId;
         this.sslAction = $.sslAction;
         this.sslStatus = $.sslStatus;
         this.storageEngine = $.storageEngine;
@@ -814,6 +900,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
+        this.zoneInfos = $.zoneInfos;
     }
 
     public static Builder builder() {
@@ -874,6 +961,29 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(@Nullable Output<Integer> autoRenewDuration) {
+            $.autoRenewDuration = autoRenewDuration;
+            return this;
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(Integer autoRenewDuration) {
+            return autoRenewDuration(Output.of(autoRenewDuration));
         }
 
         /**
@@ -1172,6 +1282,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param forceEncryption Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(@Nullable Output<String> forceEncryption) {
+            $.forceEncryption = forceEncryption;
+            return this;
+        }
+
+        /**
+         * @param forceEncryption Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(String forceEncryption) {
+            return forceEncryption(Output.of(forceEncryption));
+        }
+
+        /**
          * @param globalSecurityGroupLists The list of Global Security Group Ids.
          * 
          * @return builder
@@ -1242,6 +1373,37 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
+        }
+
+        /**
+         * @param keyIds (Available since v1.271.0) A list of instance keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyIds(@Nullable Output<List<String>> keyIds) {
+            $.keyIds = keyIds;
+            return this;
+        }
+
+        /**
+         * @param keyIds (Available since v1.271.0) A list of instance keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyIds(List<String> keyIds) {
+            return keyIds(Output.of(keyIds));
+        }
+
+        /**
+         * @param keyIds (Available since v1.271.0) A list of instance keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyIds(String... keyIds) {
+            return keyIds(List.of(keyIds));
         }
 
         /**
@@ -1565,6 +1727,29 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreTime(@Nullable Output<String> restoreTime) {
+            $.restoreTime = restoreTime;
+            return this;
+        }
+
+        /**
+         * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreTime(String restoreTime) {
+            return restoreTime(Output.of(restoreTime));
+        }
+
+        /**
          * @param retentionPeriod (Available since v1.42.0) Instance data backup retention days.
          * 
          * @return builder
@@ -1736,28 +1921,31 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslAction Actions performed on SSL functions. Valid values:
-         * - `Open`: turn on SSL encryption.
-         * - `Close`: turn off SSL encryption.
-         * - `Update`: update SSL certificate.
+         * @param srcDbInstanceId The source instance ID.
          * 
          * @return builder
          * 
          */
+        public Builder srcDbInstanceId(@Nullable Output<String> srcDbInstanceId) {
+            $.srcDbInstanceId = srcDbInstanceId;
+            return this;
+        }
+
+        /**
+         * @param srcDbInstanceId The source instance ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceId(String srcDbInstanceId) {
+            return srcDbInstanceId(Output.of(srcDbInstanceId));
+        }
+
         public Builder sslAction(@Nullable Output<String> sslAction) {
             $.sslAction = sslAction;
             return this;
         }
 
-        /**
-         * @param sslAction Actions performed on SSL functions. Valid values:
-         * - `Open`: turn on SSL encryption.
-         * - `Close`: turn off SSL encryption.
-         * - `Update`: update SSL certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslAction(String sslAction) {
             return sslAction(Output.of(sslAction));
         }
@@ -1930,6 +2118,37 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
+        }
+
+        /**
+         * @param zoneInfos (Available since v1.271.0) The information of nodes in the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneInfos(@Nullable Output<List<ShardingInstanceZoneInfoArgs>> zoneInfos) {
+            $.zoneInfos = zoneInfos;
+            return this;
+        }
+
+        /**
+         * @param zoneInfos (Available since v1.271.0) The information of nodes in the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneInfos(List<ShardingInstanceZoneInfoArgs> zoneInfos) {
+            return zoneInfos(Output.of(zoneInfos));
+        }
+
+        /**
+         * @param zoneInfos (Available since v1.271.0) The information of nodes in the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneInfos(ShardingInstanceZoneInfoArgs... zoneInfos) {
+            return zoneInfos(List.of(zoneInfos));
         }
 
         public ShardingInstanceState build() {

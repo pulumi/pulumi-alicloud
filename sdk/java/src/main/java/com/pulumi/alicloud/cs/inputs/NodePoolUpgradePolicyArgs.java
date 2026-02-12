@@ -77,14 +77,14 @@ public final class NodePoolUpgradePolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to use replacement disk upgrade
+     * Whether to use replacement disk upgrade. Valid values:
      * 
      */
     @Import(name="useReplace")
     private @Nullable Output<Boolean> useReplace;
 
     /**
-     * @return Whether to use replacement disk upgrade
+     * @return Whether to use replacement disk upgrade. Valid values:
      * 
      */
     public Optional<Output<Boolean>> useReplace() {
@@ -204,7 +204,7 @@ public final class NodePoolUpgradePolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param useReplace Whether to use replacement disk upgrade
+         * @param useReplace Whether to use replacement disk upgrade. Valid values:
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class NodePoolUpgradePolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param useReplace Whether to use replacement disk upgrade
+         * @param useReplace Whether to use replacement disk upgrade. Valid values:
          * 
          * @return builder
          * 

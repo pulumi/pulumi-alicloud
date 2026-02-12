@@ -17,27 +17,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetImagesImage {
     /**
-     * @return The image architecture. Valid values: `i386` and `x8664`.
+     * @return The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      * 
      */
     private String architecture;
     /**
-     * @return Time of creation.
+     * @return The creation time.
      * 
      */
     private String creationTime;
     /**
-     * @return Description of the image.
+     * @return The description of the image.
      * 
      */
     private String description;
     /**
-     * @return Description of the system with disks and snapshots under the image.
+     * @return A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
      * 
      */
     private List<GetImagesImageDiskDeviceMapping> diskDeviceMappings;
     /**
-     * @return ID of the image.
+     * @return The ID of the image.
      * 
      */
     private String id;
@@ -47,7 +47,7 @@ public final class GetImagesImage {
      */
     private String imageId;
     /**
-     * @return Alias of the image owner.
+     * @return The alias of the image owner.
      * 
      */
     private String imageOwnerAlias;
@@ -70,12 +70,12 @@ public final class GetImagesImage {
     private Boolean isSupportIoOptimized;
     private String name;
     /**
-     * @return Display Chinese name of the OS.
+     * @return The display Chinese name of the OS.
      * 
      */
     private String osName;
     /**
-     * @return Display English name of the OS.
+     * @return The english name of the OS.
      * 
      */
     private String osNameEn;
@@ -86,7 +86,7 @@ public final class GetImagesImage {
     private String osType;
     private String platform;
     /**
-     * @return Product code of the image on the image market.
+     * @return The product code of the image on the image market.
      * 
      */
     private String productCode;
@@ -96,19 +96,19 @@ public final class GetImagesImage {
      */
     private String progress;
     /**
-     * @return Size of the created disk.
+     * @return The size of the created disk.
      * 
      */
     private Integer size;
     private String state;
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * - `Creating`: The image is being created.
+     * - `Waiting`: The image is waiting to be processed.
+     * - `Available`: The image is available.
+     * - `UnAvailable`: The image is unavailable.
+     * - `CreateFailed`: The image failed to be created.
+     * - `Deprecated`: The image is discontinued.
      * 
      */
     private String status;
@@ -125,35 +125,35 @@ public final class GetImagesImage {
 
     private GetImagesImage() {}
     /**
-     * @return The image architecture. Valid values: `i386` and `x8664`.
+     * @return The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      * 
      */
     public String architecture() {
         return this.architecture;
     }
     /**
-     * @return Time of creation.
+     * @return The creation time.
      * 
      */
     public String creationTime() {
         return this.creationTime;
     }
     /**
-     * @return Description of the image.
+     * @return The description of the image.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Description of the system with disks and snapshots under the image.
+     * @return A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
      * 
      */
     public List<GetImagesImageDiskDeviceMapping> diskDeviceMappings() {
         return this.diskDeviceMappings;
     }
     /**
-     * @return ID of the image.
+     * @return The ID of the image.
      * 
      */
     public String id() {
@@ -167,7 +167,7 @@ public final class GetImagesImage {
         return this.imageId;
     }
     /**
-     * @return Alias of the image owner.
+     * @return The alias of the image owner.
      * 
      */
     public String imageOwnerAlias() {
@@ -204,14 +204,14 @@ public final class GetImagesImage {
         return this.name;
     }
     /**
-     * @return Display Chinese name of the OS.
+     * @return The display Chinese name of the OS.
      * 
      */
     public String osName() {
         return this.osName;
     }
     /**
-     * @return Display English name of the OS.
+     * @return The english name of the OS.
      * 
      */
     public String osNameEn() {
@@ -228,7 +228,7 @@ public final class GetImagesImage {
         return this.platform;
     }
     /**
-     * @return Product code of the image on the image market.
+     * @return The product code of the image on the image market.
      * 
      */
     public String productCode() {
@@ -242,7 +242,7 @@ public final class GetImagesImage {
         return this.progress;
     }
     /**
-     * @return Size of the created disk.
+     * @return The size of the created disk.
      * 
      */
     public Integer size() {
@@ -253,12 +253,12 @@ public final class GetImagesImage {
     }
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
+     * - `Creating`: The image is being created.
+     * - `Waiting`: The image is waiting to be processed.
+     * - `Available`: The image is available.
+     * - `UnAvailable`: The image is unavailable.
+     * - `CreateFailed`: The image failed to be created.
+     * - `Deprecated`: The image is discontinued.
      * 
      */
     public String status() {

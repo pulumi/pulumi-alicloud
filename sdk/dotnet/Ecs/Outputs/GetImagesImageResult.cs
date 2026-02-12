@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetImagesImageResult
     {
         /// <summary>
-        /// The image architecture. Valid values: `I386` and `X8664`.
+        /// The image architecture. Valid values: `I386`, `X8664`, `Arm64`.
         /// </summary>
         public readonly string Architecture;
         /// <summary>
-        /// Time of creation.
+        /// The creation time.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// Description of the image.
+        /// The description of the image.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Description of the system with disks and snapshots under the image.
+        /// A `DiskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageDiskDeviceMappingResult> DiskDeviceMappings;
         /// <summary>
-        /// ID of the image.
+        /// The ID of the image.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// Alias of the image owner.
+        /// The alias of the image owner.
         /// </summary>
         public readonly string ImageOwnerAlias;
         /// <summary>
@@ -57,11 +57,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly bool IsSupportIoOptimized;
         public readonly string Name;
         /// <summary>
-        /// Display Chinese name of the OS.
+        /// The display Chinese name of the OS.
         /// </summary>
         public readonly string OsName;
         /// <summary>
-        /// Display English name of the OS.
+        /// The english name of the OS.
         /// </summary>
         public readonly string OsNameEn;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string OsType;
         public readonly string Platform;
         /// <summary>
-        /// Product code of the image on the image market.
+        /// The product code of the image on the image market.
         /// </summary>
         public readonly string ProductCode;
         /// <summary>
@@ -78,18 +78,18 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Progress;
         /// <summary>
-        /// Size of the created disk.
+        /// The size of the created disk.
         /// </summary>
         public readonly int Size;
         public readonly string State;
         /// <summary>
         /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        /// * `Creating`: The image is being created.
-        /// * `Waiting`: The image is waiting to be processed.
-        /// * `Available`: The image is available.
-        /// * `UnAvailable`: The image is unavailable.
-        /// * `CreateFailed`: The image failed to be created.
-        /// * `Deprecated`: The image is discontinued.
+        /// - `Creating`: The image is being created.
+        /// - `Waiting`: The image is waiting to be processed.
+        /// - `Available`: The image is available.
+        /// - `UnAvailable`: The image is unavailable.
+        /// - `CreateFailed`: The image failed to be created.
+        /// - `Deprecated`: The image is discontinued.
         /// </summary>
         public readonly string Status;
         /// <summary>

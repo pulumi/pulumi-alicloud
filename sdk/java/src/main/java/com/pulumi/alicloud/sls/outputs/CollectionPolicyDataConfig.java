@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CollectionPolicyDataConfig {
     /**
-     * @return Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+     * @return This setting is valid only when the log type is a global log type—for example, when productCode is sls.
      * 
      */
     private @Nullable String dataProject;
     /**
-     * @return If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+     * @return This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
      * 
      */
     private @Nullable String dataRegion;
 
     private CollectionPolicyDataConfig() {}
     /**
-     * @return Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+     * @return This setting is valid only when the log type is a global log type—for example, when productCode is sls.
      * 
      */
     public Optional<String> dataProject() {
         return Optional.ofNullable(this.dataProject);
     }
     /**
-     * @return If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+     * @return This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
      * 
      */
     public Optional<String> dataRegion() {

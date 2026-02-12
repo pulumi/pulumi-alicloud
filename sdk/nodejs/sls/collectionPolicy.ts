@@ -7,17 +7,17 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a SLS Collection Policy resource.
+ * Provides a Log Service (SLS) Collection Policy resource.
  *
  * Orchestration policies for cloud product log collection.
  *
- * For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
+ * For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
  *
  * > **NOTE:** Available since v1.232.0.
  *
  * ## Example Usage
  *
- * Enable real-time log query for all of OSS buckets.
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -183,10 +183,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * SLS Collection Policy can be imported using the id, e.g.
+ * Log Service (SLS) Collection Policy can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <id>
+ * $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <policy_name>
  * ```
  */
 export class CollectionPolicy extends pulumi.CustomResource {
@@ -218,23 +218,23 @@ export class CollectionPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Centralized transfer configuration. See `centralizeConfig` below.
+     * Centralized forwarding configuration. See `centralizeConfig` below.
      */
     declare public readonly centralizeConfig: pulumi.Output<outputs.sls.CollectionPolicyCentralizeConfig>;
     /**
-     * Whether to enable centralized Conversion. The default value is false.
+     * Specifies whether to enable centralized forwarding. Default value: false.
      */
     declare public readonly centralizeEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * Log type encoding.
+     * Log type code.
      */
     declare public readonly dataCode: pulumi.Output<string>;
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      */
     declare public readonly dataConfig: pulumi.Output<outputs.sls.CollectionPolicyDataConfig>;
     /**
-     * Whether to open.
+     * Whether enabled.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
@@ -242,7 +242,10 @@ export class CollectionPolicy extends pulumi.CustomResource {
      */
     declare public readonly policyConfig: pulumi.Output<outputs.sls.CollectionPolicyPolicyConfig>;
     /**
-     * The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      */
     declare public readonly policyName: pulumi.Output<string>;
     /**
@@ -250,7 +253,7 @@ export class CollectionPolicy extends pulumi.CustomResource {
      */
     declare public readonly productCode: pulumi.Output<string>;
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      */
     declare public readonly resourceDirectory: pulumi.Output<outputs.sls.CollectionPolicyResourceDirectory>;
 
@@ -313,23 +316,23 @@ export class CollectionPolicy extends pulumi.CustomResource {
  */
 export interface CollectionPolicyState {
     /**
-     * Centralized transfer configuration. See `centralizeConfig` below.
+     * Centralized forwarding configuration. See `centralizeConfig` below.
      */
     centralizeConfig?: pulumi.Input<inputs.sls.CollectionPolicyCentralizeConfig>;
     /**
-     * Whether to enable centralized Conversion. The default value is false.
+     * Specifies whether to enable centralized forwarding. Default value: false.
      */
     centralizeEnabled?: pulumi.Input<boolean>;
     /**
-     * Log type encoding.
+     * Log type code.
      */
     dataCode?: pulumi.Input<string>;
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      */
     dataConfig?: pulumi.Input<inputs.sls.CollectionPolicyDataConfig>;
     /**
-     * Whether to open.
+     * Whether enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -337,7 +340,10 @@ export interface CollectionPolicyState {
      */
     policyConfig?: pulumi.Input<inputs.sls.CollectionPolicyPolicyConfig>;
     /**
-     * The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      */
     policyName?: pulumi.Input<string>;
     /**
@@ -345,7 +351,7 @@ export interface CollectionPolicyState {
      */
     productCode?: pulumi.Input<string>;
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      */
     resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory>;
 }
@@ -355,23 +361,23 @@ export interface CollectionPolicyState {
  */
 export interface CollectionPolicyArgs {
     /**
-     * Centralized transfer configuration. See `centralizeConfig` below.
+     * Centralized forwarding configuration. See `centralizeConfig` below.
      */
     centralizeConfig?: pulumi.Input<inputs.sls.CollectionPolicyCentralizeConfig>;
     /**
-     * Whether to enable centralized Conversion. The default value is false.
+     * Specifies whether to enable centralized forwarding. Default value: false.
      */
     centralizeEnabled?: pulumi.Input<boolean>;
     /**
-     * Log type encoding.
+     * Log type code.
      */
     dataCode: pulumi.Input<string>;
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      */
     dataConfig?: pulumi.Input<inputs.sls.CollectionPolicyDataConfig>;
     /**
-     * Whether to open.
+     * Whether enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
@@ -379,7 +385,10 @@ export interface CollectionPolicyArgs {
      */
     policyConfig: pulumi.Input<inputs.sls.CollectionPolicyPolicyConfig>;
     /**
-     * The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      */
     policyName: pulumi.Input<string>;
     /**
@@ -387,7 +396,7 @@ export interface CollectionPolicyArgs {
      */
     productCode: pulumi.Input<string>;
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      */
     resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory>;
 }

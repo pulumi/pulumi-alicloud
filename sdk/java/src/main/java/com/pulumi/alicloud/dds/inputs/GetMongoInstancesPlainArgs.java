@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.dds.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,13 @@ public final class GetMongoInstancesPlainArgs extends com.pulumi.resources.Invok
 
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+
+    @Import(name="enableDetails")
+    private @Nullable Boolean enableDetails;
+
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
 
     @Import(name="ids")
@@ -58,6 +66,13 @@ public final class GetMongoInstancesPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.outputFile);
     }
 
+    @Import(name="status")
+    private @Nullable String status;
+
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
@@ -69,11 +84,13 @@ public final class GetMongoInstancesPlainArgs extends com.pulumi.resources.Invok
 
     private GetMongoInstancesPlainArgs(GetMongoInstancesPlainArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
         this.instanceClass = $.instanceClass;
         this.instanceType = $.instanceType;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.status = $.status;
         this.tags = $.tags;
     }
 
@@ -97,6 +114,11 @@ public final class GetMongoInstancesPlainArgs extends com.pulumi.resources.Invok
 
         public Builder availabilityZone(@Nullable String availabilityZone) {
             $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+            $.enableDetails = enableDetails;
             return this;
         }
 
@@ -126,6 +148,11 @@ public final class GetMongoInstancesPlainArgs extends com.pulumi.resources.Invok
 
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
+            return this;
+        }
+
+        public Builder status(@Nullable String status) {
+            $.status = status;
             return this;
         }
 

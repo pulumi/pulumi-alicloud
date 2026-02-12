@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  * Cloud Firewall Vpc Cen Tr Firewall can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <id>
+ * $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <firewall_id>
  * ```
  */
 export class VpcCenTrFirewall extends pulumi.CustomResource {
@@ -144,23 +144,35 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the CEN instance.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      */
     declare public readonly cenId: pulumi.Output<string>;
     /**
-     * Firewall description.
+     * The description of the firewall.
      */
     declare public readonly firewallDescription: pulumi.Output<string | undefined>;
     /**
-     * The name of Cloud Firewall.
+     * The ID of the firewall ENI.
+     */
+    declare public /*out*/ readonly firewallEniId: pulumi.Output<string>;
+    /**
+     * The ID of the VPC where the firewall ENI resides.
+     */
+    declare public /*out*/ readonly firewallEniVpcId: pulumi.Output<string>;
+    /**
+     * The name of the Cloud Firewall.
      */
     declare public readonly firewallName: pulumi.Output<string>;
     /**
-     * Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+     * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      */
     declare public readonly firewallSubnetCidr: pulumi.Output<string>;
     /**
-     * Required in automatic mode,  th CIDR of firewall VPC.
+     * The ID of the firewall VPC connection.
+     */
+    declare public /*out*/ readonly firewallVpcAttachmentId: pulumi.Output<string>;
+    /**
+     * The CIDR block of the firewall VPC in automatic mode.
      */
     declare public readonly firewallVpcCidr: pulumi.Output<string>;
     /**
@@ -168,31 +180,35 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
      */
     declare public readonly regionNo: pulumi.Output<string>;
     /**
-     * The routing pattern. Value: managed: indicates automatic mode
+     * The routing mode. Valid values:
      */
     declare public readonly routeMode: pulumi.Output<string>;
     /**
-     * Firewall status. Value:
+     * The status of the firewall.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+     * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      */
     declare public readonly trAttachmentMasterCidr: pulumi.Output<string>;
     /**
-     * The primary zone of the switch.
+     * The primary zone of the vSwitch.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly trAttachmentMasterZone: pulumi.Output<string | undefined>;
     /**
-     * Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      */
     declare public readonly trAttachmentSlaveCidr: pulumi.Output<string>;
     /**
-     * Switch standby area.
+     * The secondary zone of the vSwitch.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly trAttachmentSlaveZone: pulumi.Output<string | undefined>;
     /**
-     * The ID of the transit router instance.
+     * The ID of the Transit Router instance.
      */
     declare public readonly transitRouterId: pulumi.Output<string>;
 
@@ -211,8 +227,11 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
             const state = argsOrState as VpcCenTrFirewallState | undefined;
             resourceInputs["cenId"] = state?.cenId;
             resourceInputs["firewallDescription"] = state?.firewallDescription;
+            resourceInputs["firewallEniId"] = state?.firewallEniId;
+            resourceInputs["firewallEniVpcId"] = state?.firewallEniVpcId;
             resourceInputs["firewallName"] = state?.firewallName;
             resourceInputs["firewallSubnetCidr"] = state?.firewallSubnetCidr;
+            resourceInputs["firewallVpcAttachmentId"] = state?.firewallVpcAttachmentId;
             resourceInputs["firewallVpcCidr"] = state?.firewallVpcCidr;
             resourceInputs["regionNo"] = state?.regionNo;
             resourceInputs["routeMode"] = state?.routeMode;
@@ -263,6 +282,9 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
             resourceInputs["trAttachmentSlaveCidr"] = args?.trAttachmentSlaveCidr;
             resourceInputs["trAttachmentSlaveZone"] = args?.trAttachmentSlaveZone;
             resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["firewallEniId"] = undefined /*out*/;
+            resourceInputs["firewallEniVpcId"] = undefined /*out*/;
+            resourceInputs["firewallVpcAttachmentId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -275,23 +297,35 @@ export class VpcCenTrFirewall extends pulumi.CustomResource {
  */
 export interface VpcCenTrFirewallState {
     /**
-     * The ID of the CEN instance.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      */
     cenId?: pulumi.Input<string>;
     /**
-     * Firewall description.
+     * The description of the firewall.
      */
     firewallDescription?: pulumi.Input<string>;
     /**
-     * The name of Cloud Firewall.
+     * The ID of the firewall ENI.
+     */
+    firewallEniId?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC where the firewall ENI resides.
+     */
+    firewallEniVpcId?: pulumi.Input<string>;
+    /**
+     * The name of the Cloud Firewall.
      */
     firewallName?: pulumi.Input<string>;
     /**
-     * Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+     * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      */
     firewallSubnetCidr?: pulumi.Input<string>;
     /**
-     * Required in automatic mode,  th CIDR of firewall VPC.
+     * The ID of the firewall VPC connection.
+     */
+    firewallVpcAttachmentId?: pulumi.Input<string>;
+    /**
+     * The CIDR block of the firewall VPC in automatic mode.
      */
     firewallVpcCidr?: pulumi.Input<string>;
     /**
@@ -299,31 +333,35 @@ export interface VpcCenTrFirewallState {
      */
     regionNo?: pulumi.Input<string>;
     /**
-     * The routing pattern. Value: managed: indicates automatic mode
+     * The routing mode. Valid values:
      */
     routeMode?: pulumi.Input<string>;
     /**
-     * Firewall status. Value:
+     * The status of the firewall.
      */
     status?: pulumi.Input<string>;
     /**
-     * Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+     * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      */
     trAttachmentMasterCidr?: pulumi.Input<string>;
     /**
-     * The primary zone of the switch.
+     * The primary zone of the vSwitch.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     trAttachmentMasterZone?: pulumi.Input<string>;
     /**
-     * Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      */
     trAttachmentSlaveCidr?: pulumi.Input<string>;
     /**
-     * Switch standby area.
+     * The secondary zone of the vSwitch.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     trAttachmentSlaveZone?: pulumi.Input<string>;
     /**
-     * The ID of the transit router instance.
+     * The ID of the Transit Router instance.
      */
     transitRouterId?: pulumi.Input<string>;
 }
@@ -333,23 +371,23 @@ export interface VpcCenTrFirewallState {
  */
 export interface VpcCenTrFirewallArgs {
     /**
-     * The ID of the CEN instance.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      */
     cenId: pulumi.Input<string>;
     /**
-     * Firewall description.
+     * The description of the firewall.
      */
     firewallDescription?: pulumi.Input<string>;
     /**
-     * The name of Cloud Firewall.
+     * The name of the Cloud Firewall.
      */
     firewallName: pulumi.Input<string>;
     /**
-     * Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+     * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      */
     firewallSubnetCidr: pulumi.Input<string>;
     /**
-     * Required in automatic mode,  th CIDR of firewall VPC.
+     * The CIDR block of the firewall VPC in automatic mode.
      */
     firewallVpcCidr: pulumi.Input<string>;
     /**
@@ -357,27 +395,31 @@ export interface VpcCenTrFirewallArgs {
      */
     regionNo: pulumi.Input<string>;
     /**
-     * The routing pattern. Value: managed: indicates automatic mode
+     * The routing mode. Valid values:
      */
     routeMode: pulumi.Input<string>;
     /**
-     * Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+     * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      */
     trAttachmentMasterCidr: pulumi.Input<string>;
     /**
-     * The primary zone of the switch.
+     * The primary zone of the vSwitch.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     trAttachmentMasterZone?: pulumi.Input<string>;
     /**
-     * Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      */
     trAttachmentSlaveCidr: pulumi.Input<string>;
     /**
-     * Switch standby area.
+     * The secondary zone of the vSwitch.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     trAttachmentSlaveZone?: pulumi.Input<string>;
     /**
-     * The ID of the transit router instance.
+     * The ID of the Transit Router instance.
      */
     transitRouterId: pulumi.Input<string>;
 }

@@ -14,25 +14,26 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetMongoInstancesInstance struct {
-	AvailabilityZone string                           `pulumi:"availabilityZone"`
-	ChargeType       string                           `pulumi:"chargeType"`
-	CreationTime     string                           `pulumi:"creationTime"`
-	Engine           string                           `pulumi:"engine"`
-	EngineVersion    string                           `pulumi:"engineVersion"`
-	ExpirationTime   string                           `pulumi:"expirationTime"`
-	Id               string                           `pulumi:"id"`
-	InstanceClass    string                           `pulumi:"instanceClass"`
-	InstanceType     string                           `pulumi:"instanceType"`
-	LockMode         string                           `pulumi:"lockMode"`
-	Mongos           []GetMongoInstancesInstanceMongo `pulumi:"mongos"`
-	Name             string                           `pulumi:"name"`
-	NetworkType      string                           `pulumi:"networkType"`
-	RegionId         string                           `pulumi:"regionId"`
-	Replication      string                           `pulumi:"replication"`
-	Shards           []GetMongoInstancesInstanceShard `pulumi:"shards"`
-	Status           string                           `pulumi:"status"`
-	Storage          int                              `pulumi:"storage"`
-	Tags             map[string]string                `pulumi:"tags"`
+	AvailabilityZone string                                  `pulumi:"availabilityZone"`
+	ChargeType       string                                  `pulumi:"chargeType"`
+	CreationTime     string                                  `pulumi:"creationTime"`
+	Engine           string                                  `pulumi:"engine"`
+	EngineVersion    string                                  `pulumi:"engineVersion"`
+	ExpirationTime   string                                  `pulumi:"expirationTime"`
+	Id               string                                  `pulumi:"id"`
+	InstanceClass    string                                  `pulumi:"instanceClass"`
+	InstanceType     string                                  `pulumi:"instanceType"`
+	LockMode         string                                  `pulumi:"lockMode"`
+	Mongos           []GetMongoInstancesInstanceMongo        `pulumi:"mongos"`
+	Name             string                                  `pulumi:"name"`
+	NetworkType      string                                  `pulumi:"networkType"`
+	RegionId         string                                  `pulumi:"regionId"`
+	Replication      string                                  `pulumi:"replication"`
+	RestoreRanges    []GetMongoInstancesInstanceRestoreRange `pulumi:"restoreRanges"`
+	Shards           []GetMongoInstancesInstanceShard        `pulumi:"shards"`
+	Status           string                                  `pulumi:"status"`
+	Storage          int                                     `pulumi:"storage"`
+	Tags             map[string]string                       `pulumi:"tags"`
 }
 
 // GetMongoInstancesInstanceInput is an input type that accepts GetMongoInstancesInstanceArgs and GetMongoInstancesInstanceOutput values.
@@ -47,25 +48,26 @@ type GetMongoInstancesInstanceInput interface {
 }
 
 type GetMongoInstancesInstanceArgs struct {
-	AvailabilityZone pulumi.StringInput                       `pulumi:"availabilityZone"`
-	ChargeType       pulumi.StringInput                       `pulumi:"chargeType"`
-	CreationTime     pulumi.StringInput                       `pulumi:"creationTime"`
-	Engine           pulumi.StringInput                       `pulumi:"engine"`
-	EngineVersion    pulumi.StringInput                       `pulumi:"engineVersion"`
-	ExpirationTime   pulumi.StringInput                       `pulumi:"expirationTime"`
-	Id               pulumi.StringInput                       `pulumi:"id"`
-	InstanceClass    pulumi.StringInput                       `pulumi:"instanceClass"`
-	InstanceType     pulumi.StringInput                       `pulumi:"instanceType"`
-	LockMode         pulumi.StringInput                       `pulumi:"lockMode"`
-	Mongos           GetMongoInstancesInstanceMongoArrayInput `pulumi:"mongos"`
-	Name             pulumi.StringInput                       `pulumi:"name"`
-	NetworkType      pulumi.StringInput                       `pulumi:"networkType"`
-	RegionId         pulumi.StringInput                       `pulumi:"regionId"`
-	Replication      pulumi.StringInput                       `pulumi:"replication"`
-	Shards           GetMongoInstancesInstanceShardArrayInput `pulumi:"shards"`
-	Status           pulumi.StringInput                       `pulumi:"status"`
-	Storage          pulumi.IntInput                          `pulumi:"storage"`
-	Tags             pulumi.StringMapInput                    `pulumi:"tags"`
+	AvailabilityZone pulumi.StringInput                              `pulumi:"availabilityZone"`
+	ChargeType       pulumi.StringInput                              `pulumi:"chargeType"`
+	CreationTime     pulumi.StringInput                              `pulumi:"creationTime"`
+	Engine           pulumi.StringInput                              `pulumi:"engine"`
+	EngineVersion    pulumi.StringInput                              `pulumi:"engineVersion"`
+	ExpirationTime   pulumi.StringInput                              `pulumi:"expirationTime"`
+	Id               pulumi.StringInput                              `pulumi:"id"`
+	InstanceClass    pulumi.StringInput                              `pulumi:"instanceClass"`
+	InstanceType     pulumi.StringInput                              `pulumi:"instanceType"`
+	LockMode         pulumi.StringInput                              `pulumi:"lockMode"`
+	Mongos           GetMongoInstancesInstanceMongoArrayInput        `pulumi:"mongos"`
+	Name             pulumi.StringInput                              `pulumi:"name"`
+	NetworkType      pulumi.StringInput                              `pulumi:"networkType"`
+	RegionId         pulumi.StringInput                              `pulumi:"regionId"`
+	Replication      pulumi.StringInput                              `pulumi:"replication"`
+	RestoreRanges    GetMongoInstancesInstanceRestoreRangeArrayInput `pulumi:"restoreRanges"`
+	Shards           GetMongoInstancesInstanceShardArrayInput        `pulumi:"shards"`
+	Status           pulumi.StringInput                              `pulumi:"status"`
+	Storage          pulumi.IntInput                                 `pulumi:"storage"`
+	Tags             pulumi.StringMapInput                           `pulumi:"tags"`
 }
 
 func (GetMongoInstancesInstanceArgs) ElementType() reflect.Type {
@@ -177,6 +179,10 @@ func (o GetMongoInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 
 func (o GetMongoInstancesInstanceOutput) Replication() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
+}
+
+func (o GetMongoInstancesInstanceOutput) RestoreRanges() GetMongoInstancesInstanceRestoreRangeArrayOutput {
+	return o.ApplyT(func(v GetMongoInstancesInstance) []GetMongoInstancesInstanceRestoreRange { return v.RestoreRanges }).(GetMongoInstancesInstanceRestoreRangeArrayOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Shards() GetMongoInstancesInstanceShardArrayOutput {
@@ -321,6 +327,112 @@ func (o GetMongoInstancesInstanceMongoArrayOutput) Index(i pulumi.IntInput) GetM
 	}).(GetMongoInstancesInstanceMongoOutput)
 }
 
+type GetMongoInstancesInstanceRestoreRange struct {
+	RestoreBeginTime string `pulumi:"restoreBeginTime"`
+	RestoreEndTime   string `pulumi:"restoreEndTime"`
+	RestoreType      string `pulumi:"restoreType"`
+}
+
+// GetMongoInstancesInstanceRestoreRangeInput is an input type that accepts GetMongoInstancesInstanceRestoreRangeArgs and GetMongoInstancesInstanceRestoreRangeOutput values.
+// You can construct a concrete instance of `GetMongoInstancesInstanceRestoreRangeInput` via:
+//
+//	GetMongoInstancesInstanceRestoreRangeArgs{...}
+type GetMongoInstancesInstanceRestoreRangeInput interface {
+	pulumi.Input
+
+	ToGetMongoInstancesInstanceRestoreRangeOutput() GetMongoInstancesInstanceRestoreRangeOutput
+	ToGetMongoInstancesInstanceRestoreRangeOutputWithContext(context.Context) GetMongoInstancesInstanceRestoreRangeOutput
+}
+
+type GetMongoInstancesInstanceRestoreRangeArgs struct {
+	RestoreBeginTime pulumi.StringInput `pulumi:"restoreBeginTime"`
+	RestoreEndTime   pulumi.StringInput `pulumi:"restoreEndTime"`
+	RestoreType      pulumi.StringInput `pulumi:"restoreType"`
+}
+
+func (GetMongoInstancesInstanceRestoreRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMongoInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (i GetMongoInstancesInstanceRestoreRangeArgs) ToGetMongoInstancesInstanceRestoreRangeOutput() GetMongoInstancesInstanceRestoreRangeOutput {
+	return i.ToGetMongoInstancesInstanceRestoreRangeOutputWithContext(context.Background())
+}
+
+func (i GetMongoInstancesInstanceRestoreRangeArgs) ToGetMongoInstancesInstanceRestoreRangeOutputWithContext(ctx context.Context) GetMongoInstancesInstanceRestoreRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceRestoreRangeOutput)
+}
+
+// GetMongoInstancesInstanceRestoreRangeArrayInput is an input type that accepts GetMongoInstancesInstanceRestoreRangeArray and GetMongoInstancesInstanceRestoreRangeArrayOutput values.
+// You can construct a concrete instance of `GetMongoInstancesInstanceRestoreRangeArrayInput` via:
+//
+//	GetMongoInstancesInstanceRestoreRangeArray{ GetMongoInstancesInstanceRestoreRangeArgs{...} }
+type GetMongoInstancesInstanceRestoreRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetMongoInstancesInstanceRestoreRangeArrayOutput() GetMongoInstancesInstanceRestoreRangeArrayOutput
+	ToGetMongoInstancesInstanceRestoreRangeArrayOutputWithContext(context.Context) GetMongoInstancesInstanceRestoreRangeArrayOutput
+}
+
+type GetMongoInstancesInstanceRestoreRangeArray []GetMongoInstancesInstanceRestoreRangeInput
+
+func (GetMongoInstancesInstanceRestoreRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMongoInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (i GetMongoInstancesInstanceRestoreRangeArray) ToGetMongoInstancesInstanceRestoreRangeArrayOutput() GetMongoInstancesInstanceRestoreRangeArrayOutput {
+	return i.ToGetMongoInstancesInstanceRestoreRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetMongoInstancesInstanceRestoreRangeArray) ToGetMongoInstancesInstanceRestoreRangeArrayOutputWithContext(ctx context.Context) GetMongoInstancesInstanceRestoreRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceRestoreRangeArrayOutput)
+}
+
+type GetMongoInstancesInstanceRestoreRangeOutput struct{ *pulumi.OutputState }
+
+func (GetMongoInstancesInstanceRestoreRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMongoInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeOutput) ToGetMongoInstancesInstanceRestoreRangeOutput() GetMongoInstancesInstanceRestoreRangeOutput {
+	return o
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeOutput) ToGetMongoInstancesInstanceRestoreRangeOutputWithContext(ctx context.Context) GetMongoInstancesInstanceRestoreRangeOutput {
+	return o
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeOutput) RestoreBeginTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMongoInstancesInstanceRestoreRange) string { return v.RestoreBeginTime }).(pulumi.StringOutput)
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeOutput) RestoreEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMongoInstancesInstanceRestoreRange) string { return v.RestoreEndTime }).(pulumi.StringOutput)
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeOutput) RestoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMongoInstancesInstanceRestoreRange) string { return v.RestoreType }).(pulumi.StringOutput)
+}
+
+type GetMongoInstancesInstanceRestoreRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMongoInstancesInstanceRestoreRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMongoInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeArrayOutput) ToGetMongoInstancesInstanceRestoreRangeArrayOutput() GetMongoInstancesInstanceRestoreRangeArrayOutput {
+	return o
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeArrayOutput) ToGetMongoInstancesInstanceRestoreRangeArrayOutputWithContext(ctx context.Context) GetMongoInstancesInstanceRestoreRangeArrayOutput {
+	return o
+}
+
+func (o GetMongoInstancesInstanceRestoreRangeArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceRestoreRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMongoInstancesInstanceRestoreRange {
+		return vs[0].([]GetMongoInstancesInstanceRestoreRange)[vs[1].(int)]
+	}).(GetMongoInstancesInstanceRestoreRangeOutput)
+}
+
 type GetMongoInstancesInstanceShard struct {
 	Class       string `pulumi:"class"`
 	Description string `pulumi:"description"`
@@ -438,12 +550,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceArrayInput)(nil)).Elem(), GetMongoInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceMongoInput)(nil)).Elem(), GetMongoInstancesInstanceMongoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceMongoArrayInput)(nil)).Elem(), GetMongoInstancesInstanceMongoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceRestoreRangeInput)(nil)).Elem(), GetMongoInstancesInstanceRestoreRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceRestoreRangeArrayInput)(nil)).Elem(), GetMongoInstancesInstanceRestoreRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceShardInput)(nil)).Elem(), GetMongoInstancesInstanceShardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceShardArrayInput)(nil)).Elem(), GetMongoInstancesInstanceShardArray{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceMongoOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceMongoArrayOutput{})
+	pulumi.RegisterOutputType(GetMongoInstancesInstanceRestoreRangeOutput{})
+	pulumi.RegisterOutputType(GetMongoInstancesInstanceRestoreRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceShardOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceShardArrayOutput{})
 }

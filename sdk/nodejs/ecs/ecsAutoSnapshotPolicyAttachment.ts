@@ -7,9 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECS Auto Snapshot Policy Attachment resource.
  *
+ * Automatic snapshot policy Mount relationship.
+ *
  * For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
  *
- * > **NOTE:** Available in v1.122.0+.
+ * > **NOTE:** Available since v1.122.0.
  *
  * ## Example Usage
  *
@@ -19,43 +21,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.getZones({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleKey = new alicloud.kms.Key("example", {
- *     description: "terraform-example",
- *     pendingWindowInDays: 7,
- *     status: "Enabled",
- * });
- * const exampleAutoSnapshotPolicy = new alicloud.ecs.AutoSnapshotPolicy("example", {
- *     name: "terraform-example",
+ * const defaultAutoSnapshotPolicy = new alicloud.ecs.AutoSnapshotPolicy("default", {
+ *     autoSnapshotPolicyName: name,
  *     repeatWeekdays: [
  *         "1",
  *         "2",
  *         "3",
  *     ],
- *     retentionDays: -1,
+ *     retentionDays: 1,
  *     timePoints: [
  *         "1",
- *         "22",
- *         "23",
+ *         "2",
+ *         "3",
  *     ],
  * });
- * const exampleEcsDisk = new alicloud.ecs.EcsDisk("example", {
- *     zoneId: example.then(example => example.zones?.[0]?.id),
- *     diskName: "terraform-example",
- *     description: "Hello ecs disk.",
- *     category: "cloud_efficiency",
- *     size: 30,
- *     encrypted: true,
- *     kmsKeyId: exampleKey.id,
- *     tags: {
- *         Name: "terraform-example",
- *     },
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     size: 500,
  * });
- * const exampleEcsAutoSnapshotPolicyAttachment = new alicloud.ecs.EcsAutoSnapshotPolicyAttachment("example", {
- *     autoSnapshotPolicyId: exampleAutoSnapshotPolicy.id,
- *     diskId: exampleEcsDisk.id,
+ * const defaultEcsAutoSnapshotPolicyAttachment = new alicloud.ecs.EcsAutoSnapshotPolicyAttachment("default", {
+ *     autoSnapshotPolicyId: defaultAutoSnapshotPolicy.id,
+ *     diskId: defaultEcsDisk.id,
  * });
  * ```
  *
@@ -66,7 +57,7 @@ import * as utilities from "../utilities";
  * ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+ * $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>
  * ```
  */
 export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
@@ -98,13 +89,17 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The auto snapshot policy id.
+     * The ID of the automatic snapshot policy that is applied to the cloud disk.
      */
     declare public readonly autoSnapshotPolicyId: pulumi.Output<string>;
     /**
-     * The disk id.
+     * The ID of the disk.
      */
     declare public readonly diskId: pulumi.Output<string>;
+    /**
+     * (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
 
     /**
      * Create a EcsAutoSnapshotPolicyAttachment resource with the given unique name, arguments, and options.
@@ -121,6 +116,7 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
             const state = argsOrState as EcsAutoSnapshotPolicyAttachmentState | undefined;
             resourceInputs["autoSnapshotPolicyId"] = state?.autoSnapshotPolicyId;
             resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["regionId"] = state?.regionId;
         } else {
             const args = argsOrState as EcsAutoSnapshotPolicyAttachmentArgs | undefined;
             if (args?.autoSnapshotPolicyId === undefined && !opts.urn) {
@@ -131,6 +127,7 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
             }
             resourceInputs["autoSnapshotPolicyId"] = args?.autoSnapshotPolicyId;
             resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsAutoSnapshotPolicyAttachment.__pulumiType, name, resourceInputs, opts);
@@ -142,13 +139,17 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
  */
 export interface EcsAutoSnapshotPolicyAttachmentState {
     /**
-     * The auto snapshot policy id.
+     * The ID of the automatic snapshot policy that is applied to the cloud disk.
      */
     autoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * The disk id.
+     * The ID of the disk.
      */
     diskId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+     */
+    regionId?: pulumi.Input<string>;
 }
 
 /**
@@ -156,11 +157,11 @@ export interface EcsAutoSnapshotPolicyAttachmentState {
  */
 export interface EcsAutoSnapshotPolicyAttachmentArgs {
     /**
-     * The auto snapshot policy id.
+     * The ID of the automatic snapshot policy that is applied to the cloud disk.
      */
     autoSnapshotPolicyId: pulumi.Input<string>;
     /**
-     * The disk id.
+     * The ID of the disk.
      */
     diskId: pulumi.Input<string>;
 }

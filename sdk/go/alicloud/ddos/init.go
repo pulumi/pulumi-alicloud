@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BgpIp{}
 	case "alicloud:ddos/bgpPolicy:BgpPolicy":
 		r = &BgpPolicy{}
+	case "alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule":
+		r = &CooDomainPreciseAccessRule{}
+	case "alicloud:ddos/cooWebCcRule:CooWebCcRule":
+		r = &CooWebCcRule{}
 	case "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
 		r = &DdosBgpInstance{}
 	case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
@@ -70,6 +74,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ddos/bgpPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ddos/cooDomainPreciseAccessRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ddos/cooWebCcRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

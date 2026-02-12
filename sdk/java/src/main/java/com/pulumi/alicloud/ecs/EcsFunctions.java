@@ -9829,12 +9829,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }
@@ -9872,12 +9872,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }
@@ -9915,12 +9915,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }
@@ -9958,12 +9958,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }
@@ -10001,12 +10001,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }
@@ -10044,12 +10044,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }
@@ -10087,12 +10087,12 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
+     *         final var example = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .owners("system")
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.images()[0].id());
+     *         ctx.export("imageId", example.images()[0].id());
      *     }
      * }
      * }

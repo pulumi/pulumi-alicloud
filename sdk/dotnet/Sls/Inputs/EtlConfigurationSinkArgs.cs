@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<string>? _datasets;
 
         /// <summary>
-        /// Write Result Set.
+        /// Result datasets to write to.
         /// </summary>
         public InputList<string> Datasets
         {
@@ -25,31 +25,31 @@ namespace Pulumi.AliCloud.Sls.Inputs
         }
 
         /// <summary>
-        /// The endpoint of the region where the target Project is located.
+        /// The endpoint of the region where the destination project resides.
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// Destination Logstore Name.
+        /// The name of the destination Logstore.
         /// </summary>
         [Input("logstore", required: true)]
         public Input<string> Logstore { get; set; } = null!;
 
         /// <summary>
-        /// Output Destination Name.
+        /// The name of the output destination.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Project Name.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The ARN role that authorizes writing to the target Logstore.
+        /// The ARN of the role authorized to write to the destination Logstore.
         /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;

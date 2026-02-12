@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sls
 {
     /// <summary>
-    /// Provides a SLS Collection Policy resource.
+    /// Provides a Log Service (SLS) Collection Policy resource.
     /// 
     /// Orchestration policies for cloud product log collection.
     /// 
-    /// For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
+    /// For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
     /// 
     /// &gt; **NOTE:** Available since v1.232.0.
     /// 
     /// ## Example Usage
     /// 
-    /// Enable real-time log query for all of OSS buckets.
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -256,41 +256,41 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// ## Import
     /// 
-    /// SLS Collection Policy can be imported using the id, e.g.
+    /// Log Service (SLS) Collection Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example &lt;id&gt;
+    /// $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example &lt;policy_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sls/collectionPolicy:CollectionPolicy")]
     public partial class CollectionPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Centralized transfer configuration. See `CentralizeConfig` below.
+        /// Centralized forwarding configuration. See `CentralizeConfig` below.
         /// </summary>
         [Output("centralizeConfig")]
         public Output<Outputs.CollectionPolicyCentralizeConfig> CentralizeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable centralized Conversion. The default value is false.
+        /// Specifies whether to enable centralized forwarding. Default value: false.
         /// </summary>
         [Output("centralizeEnabled")]
         public Output<bool?> CentralizeEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Log type encoding.
+        /// Log type code.
         /// </summary>
         [Output("dataCode")]
         public Output<string> DataCode { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `DataConfig` below.
+        /// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `DataConfig` below.
         /// </summary>
         [Output("dataConfig")]
         public Output<Outputs.CollectionPolicyDataConfig> DataConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to open.
+        /// Whether enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -302,7 +302,10 @@ namespace Pulumi.AliCloud.Sls
         public Output<Outputs.CollectionPolicyPolicyConfig> PolicyConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        /// The naming rules are as follows:
+        /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - It must start with a letter.
+        /// - Its length must be between 3 and 63 characters.
         /// </summary>
         [Output("policyName")]
         public Output<string> PolicyName { get; private set; } = null!;
@@ -314,7 +317,7 @@ namespace Pulumi.AliCloud.Sls
         public Output<string> ProductCode { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `ResourceDirectory` below.
+        /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `ResourceDirectory` below.
         /// </summary>
         [Output("resourceDirectory")]
         public Output<Outputs.CollectionPolicyResourceDirectory> ResourceDirectory { get; private set; } = null!;
@@ -366,31 +369,31 @@ namespace Pulumi.AliCloud.Sls
     public sealed class CollectionPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Centralized transfer configuration. See `CentralizeConfig` below.
+        /// Centralized forwarding configuration. See `CentralizeConfig` below.
         /// </summary>
         [Input("centralizeConfig")]
         public Input<Inputs.CollectionPolicyCentralizeConfigArgs>? CentralizeConfig { get; set; }
 
         /// <summary>
-        /// Whether to enable centralized Conversion. The default value is false.
+        /// Specifies whether to enable centralized forwarding. Default value: false.
         /// </summary>
         [Input("centralizeEnabled")]
         public Input<bool>? CentralizeEnabled { get; set; }
 
         /// <summary>
-        /// Log type encoding.
+        /// Log type code.
         /// </summary>
         [Input("dataCode", required: true)]
         public Input<string> DataCode { get; set; } = null!;
 
         /// <summary>
-        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `DataConfig` below.
+        /// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `DataConfig` below.
         /// </summary>
         [Input("dataConfig")]
         public Input<Inputs.CollectionPolicyDataConfigArgs>? DataConfig { get; set; }
 
         /// <summary>
-        /// Whether to open.
+        /// Whether enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -402,7 +405,10 @@ namespace Pulumi.AliCloud.Sls
         public Input<Inputs.CollectionPolicyPolicyConfigArgs> PolicyConfig { get; set; } = null!;
 
         /// <summary>
-        /// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        /// The naming rules are as follows:
+        /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - It must start with a letter.
+        /// - Its length must be between 3 and 63 characters.
         /// </summary>
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
@@ -414,7 +420,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string> ProductCode { get; set; } = null!;
 
         /// <summary>
-        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `ResourceDirectory` below.
+        /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `ResourceDirectory` below.
         /// </summary>
         [Input("resourceDirectory")]
         public Input<Inputs.CollectionPolicyResourceDirectoryArgs>? ResourceDirectory { get; set; }
@@ -428,31 +434,31 @@ namespace Pulumi.AliCloud.Sls
     public sealed class CollectionPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Centralized transfer configuration. See `CentralizeConfig` below.
+        /// Centralized forwarding configuration. See `CentralizeConfig` below.
         /// </summary>
         [Input("centralizeConfig")]
         public Input<Inputs.CollectionPolicyCentralizeConfigGetArgs>? CentralizeConfig { get; set; }
 
         /// <summary>
-        /// Whether to enable centralized Conversion. The default value is false.
+        /// Specifies whether to enable centralized forwarding. Default value: false.
         /// </summary>
         [Input("centralizeEnabled")]
         public Input<bool>? CentralizeEnabled { get; set; }
 
         /// <summary>
-        /// Log type encoding.
+        /// Log type code.
         /// </summary>
         [Input("dataCode")]
         public Input<string>? DataCode { get; set; }
 
         /// <summary>
-        /// The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `DataConfig` below.
+        /// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `DataConfig` below.
         /// </summary>
         [Input("dataConfig")]
         public Input<Inputs.CollectionPolicyDataConfigGetArgs>? DataConfig { get; set; }
 
         /// <summary>
-        /// Whether to open.
+        /// Whether enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -464,7 +470,10 @@ namespace Pulumi.AliCloud.Sls
         public Input<Inputs.CollectionPolicyPolicyConfigGetArgs>? PolicyConfig { get; set; }
 
         /// <summary>
-        /// The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        /// The naming rules are as follows:
+        /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - It must start with a letter.
+        /// - Its length must be between 3 and 63 characters.
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
@@ -476,7 +485,7 @@ namespace Pulumi.AliCloud.Sls
         public Input<string>? ProductCode { get; set; }
 
         /// <summary>
-        /// For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `ResourceDirectory` below.
+        /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `ResourceDirectory` below.
         /// </summary>
         [Input("resourceDirectory")]
         public Input<Inputs.CollectionPolicyResourceDirectoryGetArgs>? ResourceDirectory { get; set; }

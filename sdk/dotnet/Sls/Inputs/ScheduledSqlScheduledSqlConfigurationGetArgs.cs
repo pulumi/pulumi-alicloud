@@ -13,49 +13,49 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class ScheduledSqlScheduledSqlConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Write Mode.
+        /// Write mode.
         /// </summary>
         [Input("dataFormat")]
         public Input<string>? DataFormat { get; set; }
 
         /// <summary>
-        /// Target Endpoint.
+        /// The destination endpoint.
         /// </summary>
         [Input("destEndpoint")]
         public Input<string>? DestEndpoint { get; set; }
 
         /// <summary>
-        /// Target Logstore.
+        /// The destination Logstore.
         /// </summary>
         [Input("destLogstore")]
         public Input<string>? DestLogstore { get; set; }
 
         /// <summary>
-        /// Target Project.
+        /// The destination project.
         /// </summary>
         [Input("destProject")]
         public Input<string>? DestProject { get; set; }
 
         /// <summary>
-        /// Write target role ARN.
+        /// Destination write role ARN.
         /// </summary>
         [Input("destRoleArn")]
         public Input<string>? DestRoleArn { get; set; }
 
         /// <summary>
-        /// Schedule Start Time.
+        /// The start time of the schedule.
         /// </summary>
         [Input("fromTime")]
         public Input<int>? FromTime { get; set; }
 
         /// <summary>
-        /// SQL time window-start.
+        /// SQL time window - start.
         /// </summary>
         [Input("fromTimeExpr")]
         public Input<string>? FromTimeExpr { get; set; }
 
         /// <summary>
-        /// Maximum retries.
+        /// Maximum number of retries.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -79,13 +79,13 @@ namespace Pulumi.AliCloud.Sls.Inputs
         }
 
         /// <summary>
-        /// Resource Pool.
+        /// Resource pool.
         /// </summary>
         [Input("resourcePool")]
         public Input<string>? ResourcePool { get; set; }
 
         /// <summary>
-        /// Read role ARN.
+        /// Source read role ARN.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<string>? Script { get; set; }
 
         /// <summary>
-        /// Source Logstore.
+        /// The source Logstore.
         /// </summary>
         [Input("sourceLogstore")]
         public Input<string>? SourceLogstore { get; set; }
@@ -109,13 +109,13 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<string>? SqlType { get; set; }
 
         /// <summary>
-        /// Time at end of schedule.
+        /// Scheduled end time.
         /// </summary>
         [Input("toTime")]
         public Input<int>? ToTime { get; set; }
 
         /// <summary>
-        /// SQL time window-end.
+        /// End of the SQL time window.
         /// </summary>
         [Input("toTimeExpr")]
         public Input<string>? ToTimeExpr { get; set; }

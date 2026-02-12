@@ -16,14 +16,32 @@ public final class TenantRoleUserAttachmentState extends com.pulumi.resources.Re
     public static final TenantRoleUserAttachmentState Empty = new TenantRoleUserAttachmentState();
 
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Account UID
+     * 
+     * 1. If the user is a primary account, the AccountId format is UID.
+     * Example: 200231703336555555
+     * 
+     * 2. If the user is a RAM user, the AccountId format is p4_UID.
+     * Example: p4200531704446555555
+     * 
+     * 3. If the user is a RAM role, the AccountId format is v4_UID.
+     * Example: v4_300007628597555555
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return This property does not have a description in the spec, please add it before generating code.
+     * @return Account UID
+     * 
+     * 1. If the user is a primary account, the AccountId format is UID.
+     * Example: 200231703336555555
+     * 
+     * 2. If the user is a RAM user, the AccountId format is p4_UID.
+     * Example: p4200531704446555555
+     * 
+     * 3. If the user is a RAM role, the AccountId format is v4_UID.
+     * Example: v4_300007628597555555
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +49,14 @@ public final class TenantRoleUserAttachmentState extends com.pulumi.resources.Re
     }
 
     /**
-     * This property does not have a description in the spec, please add it before generating code.
+     * Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      * 
      */
     @Import(name="tenantRole")
     private @Nullable Output<String> tenantRole;
 
     /**
-     * @return This property does not have a description in the spec, please add it before generating code.
+     * @return Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      * 
      */
     public Optional<Output<String>> tenantRole() {
@@ -71,7 +89,16 @@ public final class TenantRoleUserAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId This property does not have a description in the spec, please add it before generating code.
+         * @param accountId Account UID
+         * 
+         * 1. If the user is a primary account, the AccountId format is UID.
+         * Example: 200231703336555555
+         * 
+         * 2. If the user is a RAM user, the AccountId format is p4_UID.
+         * Example: p4200531704446555555
+         * 
+         * 3. If the user is a RAM role, the AccountId format is v4_UID.
+         * Example: v4_300007628597555555
          * 
          * @return builder
          * 
@@ -82,7 +109,16 @@ public final class TenantRoleUserAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId This property does not have a description in the spec, please add it before generating code.
+         * @param accountId Account UID
+         * 
+         * 1. If the user is a primary account, the AccountId format is UID.
+         * Example: 200231703336555555
+         * 
+         * 2. If the user is a RAM user, the AccountId format is p4_UID.
+         * Example: p4200531704446555555
+         * 
+         * 3. If the user is a RAM role, the AccountId format is v4_UID.
+         * Example: v4_300007628597555555
          * 
          * @return builder
          * 
@@ -92,7 +128,7 @@ public final class TenantRoleUserAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tenantRole This property does not have a description in the spec, please add it before generating code.
+         * @param tenantRole Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
          * 
          * @return builder
          * 
@@ -103,7 +139,7 @@ public final class TenantRoleUserAttachmentState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tenantRole This property does not have a description in the spec, please add it before generating code.
+         * @param tenantRole Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
          * 
          * @return builder
          * 

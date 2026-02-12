@@ -10,6 +10,8 @@ from .basic_defense_threshold import *
 from .basic_threshold import *
 from .bgp_ip import *
 from .bgp_policy import *
+from .coo_domain_precise_access_rule import *
+from .coo_web_cc_rule import *
 from .ddos_bgp_instance import *
 from .ddos_coo_instance import *
 from .domain_resource import *

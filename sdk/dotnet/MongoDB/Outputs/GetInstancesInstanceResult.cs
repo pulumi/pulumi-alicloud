@@ -14,75 +14,79 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
-        /// Instance availability zone.
+        /// The zone ID.
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+        /// The billing method of the instance.
         /// </summary>
         public readonly string ChargeType;
         /// <summary>
-        /// Creation time of the instance in RFC3339 format.
+        /// The time when the instance was created.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// Database engine type. Supported option is `MongoDB`.
+        /// The database engine.
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// Database engine version.
+        /// The database engine version.
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>
-        /// Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+        /// The time when the instance expires.
         /// </summary>
         public readonly string ExpirationTime;
         /// <summary>
-        /// The ID of the MongoDB instance.
+        /// The instance ID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Sizing of the instance to be queried.
+        /// The instance type.
         /// </summary>
         public readonly string InstanceClass;
         /// <summary>
-        /// Type of the instance to be queried. If it is set to `Sharding`, the sharded cluster instances are listed. If it is set to `Replicate`, replica set instances are listed. Default value `Replicate`.
+        /// The instance architecture. Default value: `Replicate`. Valid values: `Replicate`, `Sharding`.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// Lock status of the instance.
+        /// The lock status of the instance.
         /// </summary>
         public readonly string LockMode;
         /// <summary>
-        /// Array composed of Mongos.
+        /// The mongo nodes of the instance. **Note:** `Mongos` takes effect only if `InstanceType` is set to `Sharding`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceMongoResult> Mongos;
         /// <summary>
-        /// The name of the MongoDB instance.
+        /// The name of the instance.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Classic network or VPC.
+        /// The network type of the instance.
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
-        /// Region ID the instance belongs to.
+        /// The region ID of the instance.
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+        /// The number of nodes in the instance.
         /// </summary>
         public readonly string Replication;
         /// <summary>
-        /// Array composed of shards.
+        /// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `RestoreRanges` takes effect only if `EnableDetails` is set to `True`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceRestoreRangeResult> RestoreRanges;
+        /// <summary>
+        /// The information of the shard node. **Note:** `Shards` takes effect only if `InstanceType` is set to `Sharding`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceShardResult> Shards;
         /// <summary>
-        /// Status of the instance.
+        /// The instance status.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Shard disk.
+        /// The storage space of the shard node.
         /// </summary>
         public readonly int Storage;
         /// <summary>
@@ -122,6 +126,8 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
 
             string replication,
 
+            ImmutableArray<Outputs.GetInstancesInstanceRestoreRangeResult> restoreRanges,
+
             ImmutableArray<Outputs.GetInstancesInstanceShardResult> shards,
 
             string status,
@@ -145,6 +151,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
             NetworkType = networkType;
             RegionId = regionId;
             Replication = replication;
+            RestoreRanges = restoreRanges;
             Shards = shards;
             Status = status;
             Storage = storage;

@@ -29,6 +29,18 @@ __all__ = [
     'BgpPolicyContentSourceBlockListArgsDict',
     'BgpPolicyContentSourceLimitArgs',
     'BgpPolicyContentSourceLimitArgsDict',
+    'CooDomainPreciseAccessRuleConditionArgs',
+    'CooDomainPreciseAccessRuleConditionArgsDict',
+    'CooWebCcRuleRuleDetailArgs',
+    'CooWebCcRuleRuleDetailArgsDict',
+    'CooWebCcRuleRuleDetailConditionArgs',
+    'CooWebCcRuleRuleDetailConditionArgsDict',
+    'CooWebCcRuleRuleDetailRateLimitArgs',
+    'CooWebCcRuleRuleDetailRateLimitArgsDict',
+    'CooWebCcRuleRuleDetailStatisticsArgs',
+    'CooWebCcRuleRuleDetailStatisticsArgsDict',
+    'CooWebCcRuleRuleDetailStatusCodeArgs',
+    'CooWebCcRuleRuleDetailStatusCodeArgsDict',
     'DomainResourceProxyTypeArgs',
     'DomainResourceProxyTypeArgsDict',
     'PortConfigArgs',
@@ -1151,6 +1163,586 @@ class BgpPolicyContentSourceLimitArgs:
     @syn_pps.setter
     def syn_pps(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "syn_pps", value)
+
+
+if not MYPY:
+    class CooDomainPreciseAccessRuleConditionArgsDict(TypedDict):
+        content: pulumi.Input[_builtins.str]
+        """
+        Matching content.
+        """
+        field: pulumi.Input[_builtins.str]
+        """
+        Matching field.
+        """
+        match_method: pulumi.Input[_builtins.str]
+        """
+        Matching method.
+        """
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Custom HTTP header field name.
+
+        > **NOTE:**  Valid only when `Field` is `header`.
+        """
+elif False:
+    CooDomainPreciseAccessRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CooDomainPreciseAccessRuleConditionArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[_builtins.str],
+                 field: pulumi.Input[_builtins.str],
+                 match_method: pulumi.Input[_builtins.str],
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] content: Matching content.
+        :param pulumi.Input[_builtins.str] field: Matching field.
+        :param pulumi.Input[_builtins.str] match_method: Matching method.
+        :param pulumi.Input[_builtins.str] header_name: Custom HTTP header field name.
+               
+               > **NOTE:**  Valid only when `Field` is `header`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "match_method", match_method)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[_builtins.str]:
+        """
+        Matching content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "content", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Matching field.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchMethod")
+    def match_method(self) -> pulumi.Input[_builtins.str]:
+        """
+        Matching method.
+        """
+        return pulumi.get(self, "match_method")
+
+    @match_method.setter
+    def match_method(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "match_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom HTTP header field name.
+
+        > **NOTE:**  Valid only when `Field` is `header`.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+
+if not MYPY:
+    class CooWebCcRuleRuleDetailArgsDict(TypedDict):
+        action: pulumi.Input[_builtins.str]
+        """
+        The action to take when a match occurs. Valid values:
+        """
+        conditions: pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgsDict']]]
+        """
+        List of matching conditions.   See `condition` below.
+        """
+        rate_limit: pulumi.Input['CooWebCcRuleRuleDetailRateLimitArgsDict']
+        """
+        Rate limiting statistics. See `rate_limit` below.
+        """
+        statistics: NotRequired[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgsDict']]
+        """
+        Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+        """
+        status_code: NotRequired[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgsDict']]
+        """
+        The HTTP status code. See `status_code` below.
+        """
+elif False:
+    CooWebCcRuleRuleDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CooWebCcRuleRuleDetailArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[_builtins.str],
+                 conditions: pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgs']]],
+                 rate_limit: pulumi.Input['CooWebCcRuleRuleDetailRateLimitArgs'],
+                 statistics: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs']] = None,
+                 status_code: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: The action to take when a match occurs. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgs']]] conditions: List of matching conditions.   See `condition` below.
+        :param pulumi.Input['CooWebCcRuleRuleDetailRateLimitArgs'] rate_limit: Rate limiting statistics. See `rate_limit` below.
+        :param pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs'] statistics: Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+        :param pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs'] status_code: The HTTP status code. See `status_code` below.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "rate_limit", rate_limit)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[_builtins.str]:
+        """
+        The action to take when a match occurs. Valid values:
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgs']]]:
+        """
+        List of matching conditions.   See `condition` below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgs']]]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimit")
+    def rate_limit(self) -> pulumi.Input['CooWebCcRuleRuleDetailRateLimitArgs']:
+        """
+        Rate limiting statistics. See `rate_limit` below.
+        """
+        return pulumi.get(self, "rate_limit")
+
+    @rate_limit.setter
+    def rate_limit(self, value: pulumi.Input['CooWebCcRuleRuleDetailRateLimitArgs']):
+        pulumi.set(self, "rate_limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs']]:
+        """
+        Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs']]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs']]:
+        """
+        The HTTP status code. See `status_code` below.
+        """
+        return pulumi.get(self, "status_code")
+
+    @status_code.setter
+    def status_code(self, value: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs']]):
+        pulumi.set(self, "status_code", value)
+
+
+if not MYPY:
+    class CooWebCcRuleRuleDetailConditionArgsDict(TypedDict):
+        content: pulumi.Input[_builtins.str]
+        """
+        Matching content.
+        """
+        field: pulumi.Input[_builtins.str]
+        """
+        The statistic source. Valid values:
+        """
+        match_method: pulumi.Input[_builtins.str]
+        """
+        Matching method.
+        """
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Set this parameter only when the statistic source is `header`.
+        """
+elif False:
+    CooWebCcRuleRuleDetailConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CooWebCcRuleRuleDetailConditionArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[_builtins.str],
+                 field: pulumi.Input[_builtins.str],
+                 match_method: pulumi.Input[_builtins.str],
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] content: Matching content.
+        :param pulumi.Input[_builtins.str] field: The statistic source. Valid values:
+        :param pulumi.Input[_builtins.str] match_method: Matching method.
+        :param pulumi.Input[_builtins.str] header_name: Set this parameter only when the statistic source is `header`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "match_method", match_method)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[_builtins.str]:
+        """
+        Matching content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "content", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        The statistic source. Valid values:
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchMethod")
+    def match_method(self) -> pulumi.Input[_builtins.str]:
+        """
+        Matching method.
+        """
+        return pulumi.get(self, "match_method")
+
+    @match_method.setter
+    def match_method(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "match_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Set this parameter only when the statistic source is `header`.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+
+if not MYPY:
+    class CooWebCcRuleRuleDetailRateLimitArgsDict(TypedDict):
+        interval: pulumi.Input[_builtins.int]
+        """
+        Statistical interval. Unit: seconds.
+        """
+        target: pulumi.Input[_builtins.str]
+        """
+        Statistic source. Valid values:
+        """
+        threshold: pulumi.Input[_builtins.int]
+        """
+        The trigger threshold.
+        """
+        ttl: pulumi.Input[_builtins.int]
+        """
+        Block duration. Unit: seconds.
+        """
+        sub_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Header field name (required only when the statistic source is `header`).
+        """
+elif False:
+    CooWebCcRuleRuleDetailRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CooWebCcRuleRuleDetailRateLimitArgs:
+    def __init__(__self__, *,
+                 interval: pulumi.Input[_builtins.int],
+                 target: pulumi.Input[_builtins.str],
+                 threshold: pulumi.Input[_builtins.int],
+                 ttl: pulumi.Input[_builtins.int],
+                 sub_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] interval: Statistical interval. Unit: seconds.
+        :param pulumi.Input[_builtins.str] target: Statistic source. Valid values:
+        :param pulumi.Input[_builtins.int] threshold: The trigger threshold.
+        :param pulumi.Input[_builtins.int] ttl: Block duration. Unit: seconds.
+        :param pulumi.Input[_builtins.str] sub_key: Header field name (required only when the statistic source is `header`).
+        """
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "ttl", ttl)
+        if sub_key is not None:
+            pulumi.set(__self__, "sub_key", sub_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[_builtins.int]:
+        """
+        Statistical interval. Unit: seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[_builtins.str]:
+        """
+        Statistic source. Valid values:
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[_builtins.int]:
+        """
+        The trigger threshold.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Input[_builtins.int]:
+        """
+        Block duration. Unit: seconds.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Header field name (required only when the statistic source is `header`).
+        """
+        return pulumi.get(self, "sub_key")
+
+    @sub_key.setter
+    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_key", value)
+
+
+if not MYPY:
+    class CooWebCcRuleRuleDetailStatisticsArgsDict(TypedDict):
+        field: pulumi.Input[_builtins.str]
+        """
+        The statistic source. Valid values:
+        """
+        mode: pulumi.Input[_builtins.str]
+        """
+        The deduplication mode. Valid values:
+        """
+        header_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Set this parameter only when the statistic source is `header`.
+        """
+elif False:
+    CooWebCcRuleRuleDetailStatisticsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CooWebCcRuleRuleDetailStatisticsArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[_builtins.str],
+                 mode: pulumi.Input[_builtins.str],
+                 header_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: The statistic source. Valid values:
+        :param pulumi.Input[_builtins.str] mode: The deduplication mode. Valid values:
+        :param pulumi.Input[_builtins.str] header_name: Set this parameter only when the statistic source is `header`.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "mode", mode)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        The statistic source. Valid values:
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        The deduplication mode. Valid values:
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Set this parameter only when the statistic source is `header`.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header_name", value)
+
+
+if not MYPY:
+    class CooWebCcRuleRuleDetailStatusCodeArgsDict(TypedDict):
+        code: pulumi.Input[_builtins.int]
+        """
+        Status code. The value range is `100` to `599`:
+        """
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether the rule is enabled. Valid values:
+        """
+        use_ratio: pulumi.Input[_builtins.bool]
+        """
+        Whether to use a ratio:
+        """
+        count_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+        """
+        ratio_threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+        """
+elif False:
+    CooWebCcRuleRuleDetailStatusCodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CooWebCcRuleRuleDetailStatusCodeArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[_builtins.int],
+                 enabled: pulumi.Input[_builtins.bool],
+                 use_ratio: pulumi.Input[_builtins.bool],
+                 count_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 ratio_threshold: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: Status code. The value range is `100` to `599`:
+        :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled. Valid values:
+        :param pulumi.Input[_builtins.bool] use_ratio: Whether to use a ratio:
+        :param pulumi.Input[_builtins.int] count_threshold: When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+        :param pulumi.Input[_builtins.int] ratio_threshold: When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "use_ratio", use_ratio)
+        if count_threshold is not None:
+            pulumi.set(__self__, "count_threshold", count_threshold)
+        if ratio_threshold is not None:
+            pulumi.set(__self__, "ratio_threshold", ratio_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[_builtins.int]:
+        """
+        Status code. The value range is `100` to `599`:
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the rule is enabled. Valid values:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useRatio")
+    def use_ratio(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether to use a ratio:
+        """
+        return pulumi.get(self, "use_ratio")
+
+    @use_ratio.setter
+    def use_ratio(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "use_ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="countThreshold")
+    def count_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+        """
+        return pulumi.get(self, "count_threshold")
+
+    @count_threshold.setter
+    def count_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "count_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ratioThreshold")
+    def ratio_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+        """
+        return pulumi.get(self, "ratio_threshold")
+
+    @ratio_threshold.setter
+    def ratio_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ratio_threshold", value)
 
 
 if not MYPY:

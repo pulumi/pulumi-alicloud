@@ -5508,7 +5508,7 @@ if not MYPY:
         """
         use_replace: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to use replacement disk upgrade
+        Whether to use replacement disk upgrade. Valid values:
         """
 elif False:
     NodePoolUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -5526,7 +5526,7 @@ class NodePoolUpgradePolicyArgs:
         :param pulumi.Input[_builtins.str] kubernetes_version: Node Kubernetes version
         :param pulumi.Input[_builtins.str] runtime: Node runtime type
         :param pulumi.Input[_builtins.str] runtime_version: Node Runtime Version
-        :param pulumi.Input[_builtins.bool] use_replace: Whether to use replacement disk upgrade
+        :param pulumi.Input[_builtins.bool] use_replace: Whether to use replacement disk upgrade. Valid values:
         """
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
@@ -5591,7 +5591,7 @@ class NodePoolUpgradePolicyArgs:
     @pulumi.getter(name="useReplace")
     def use_replace(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to use replacement disk upgrade
+        Whether to use replacement disk upgrade. Valid values:
         """
         return pulumi.get(self, "use_replace")
 

@@ -16,14 +16,14 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
     public static final EtlConfigurationSinkArgs Empty = new EtlConfigurationSinkArgs();
 
     /**
-     * Write Result Set.
+     * Result datasets to write to.
      * 
      */
     @Import(name="datasets", required=true)
     private Output<List<String>> datasets;
 
     /**
-     * @return Write Result Set.
+     * @return Result datasets to write to.
      * 
      */
     public Output<List<String>> datasets() {
@@ -31,14 +31,14 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The endpoint of the region where the target Project is located.
+     * The endpoint of the region where the destination project resides.
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return The endpoint of the region where the target Project is located.
+     * @return The endpoint of the region where the destination project resides.
      * 
      */
     public Output<String> endpoint() {
@@ -46,14 +46,14 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Destination Logstore Name.
+     * The name of the destination Logstore.
      * 
      */
     @Import(name="logstore", required=true)
     private Output<String> logstore;
 
     /**
-     * @return Destination Logstore Name.
+     * @return The name of the destination Logstore.
      * 
      */
     public Output<String> logstore() {
@@ -61,14 +61,14 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Output Destination Name.
+     * The name of the output destination.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Output Destination Name.
+     * @return The name of the output destination.
      * 
      */
     public Output<String> name() {
@@ -76,14 +76,14 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Project Name.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Project Name.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -91,14 +91,14 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ARN role that authorizes writing to the target Logstore.
+     * The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
     /**
-     * @return The ARN role that authorizes writing to the target Logstore.
+     * @return The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     public Output<String> roleArn() {
@@ -135,7 +135,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datasets Write Result Set.
+         * @param datasets Result datasets to write to.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datasets Write Result Set.
+         * @param datasets Result datasets to write to.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param datasets Write Result Set.
+         * @param datasets Result datasets to write to.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpoint The endpoint of the region where the target Project is located.
+         * @param endpoint The endpoint of the region where the destination project resides.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpoint The endpoint of the region where the target Project is located.
+         * @param endpoint The endpoint of the region where the destination project resides.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param logstore Destination Logstore Name.
+         * @param logstore The name of the destination Logstore.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param logstore Destination Logstore Name.
+         * @param logstore The name of the destination Logstore.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Output Destination Name.
+         * @param name The name of the output destination.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Output Destination Name.
+         * @param name The name of the output destination.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project Project Name.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project Project Name.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param roleArn The ARN role that authorizes writing to the target Logstore.
+         * @param roleArn The ARN of the role authorized to write to the destination Logstore.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class EtlConfigurationSinkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param roleArn The ARN role that authorizes writing to the target Logstore.
+         * @param roleArn The ARN of the role authorized to write to the destination Logstore.
          * 
          * @return builder
          * 

@@ -22,7 +22,8 @@ public final class InstanceReplicaSet {
      */
     private @Nullable String connectionPort;
     /**
-     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
+     * @return The network type of the instance. Valid values: `VPC`.
+     * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
     private @Nullable String networkType;
@@ -68,7 +69,8 @@ public final class InstanceReplicaSet {
         return Optional.ofNullable(this.connectionPort);
     }
     /**
-     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
+     * @return The network type of the instance. Valid values: `VPC`.
+     * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
     public Optional<String> networkType() {

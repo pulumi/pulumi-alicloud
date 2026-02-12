@@ -94,43 +94,47 @@ namespace Pulumi.AliCloud.Sls
     public partial class Etl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ETL configuration. See `Configuration` below.
+        /// Detailed configuration of the data processing task.   See `Configuration` below.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.EtlConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the data transformation job was created.
+        /// The time when the task was created.
         /// </summary>
         [Output("createTime")]
         public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Data Processing Task Description.
+        /// Description of the data processing task.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Data processing task display name.
+        /// The display name of the data processing task.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identification of data processing task.
+        /// The job name. Naming rules are as follows:
+        /// - Job names must be unique within the same project.
+        /// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - Must start and end with a lowercase letter or digit.
+        /// - Must be 2 to 64 characters in length.
         /// </summary>
         [Output("jobName")]
         public Output<string> JobName { get; private set; } = null!;
 
         /// <summary>
-        /// Project Name.
+        /// Project name.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the data transformation job.
+        /// Task status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -182,31 +186,35 @@ namespace Pulumi.AliCloud.Sls
     public sealed class EtlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ETL configuration. See `Configuration` below.
+        /// Detailed configuration of the data processing task.   See `Configuration` below.
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.EtlConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
-        /// Data Processing Task Description.
+        /// Description of the data processing task.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Data processing task display name.
+        /// The display name of the data processing task.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Unique identification of data processing task.
+        /// The job name. Naming rules are as follows:
+        /// - Job names must be unique within the same project.
+        /// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - Must start and end with a lowercase letter or digit.
+        /// - Must be 2 to 64 characters in length.
         /// </summary>
         [Input("jobName", required: true)]
         public Input<string> JobName { get; set; } = null!;
 
         /// <summary>
-        /// Project Name.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -220,43 +228,47 @@ namespace Pulumi.AliCloud.Sls
     public sealed class EtlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ETL configuration. See `Configuration` below.
+        /// Detailed configuration of the data processing task.   See `Configuration` below.
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.EtlConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// The time when the data transformation job was created.
+        /// The time when the task was created.
         /// </summary>
         [Input("createTime")]
         public Input<int>? CreateTime { get; set; }
 
         /// <summary>
-        /// Data Processing Task Description.
+        /// Description of the data processing task.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Data processing task display name.
+        /// The display name of the data processing task.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Unique identification of data processing task.
+        /// The job name. Naming rules are as follows:
+        /// - Job names must be unique within the same project.
+        /// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - Must start and end with a lowercase letter or digit.
+        /// - Must be 2 to 64 characters in length.
         /// </summary>
         [Input("jobName")]
         public Input<string>? JobName { get; set; }
 
         /// <summary>
-        /// Project Name.
+        /// Project name.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The status of the data transformation job.
+        /// Task status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

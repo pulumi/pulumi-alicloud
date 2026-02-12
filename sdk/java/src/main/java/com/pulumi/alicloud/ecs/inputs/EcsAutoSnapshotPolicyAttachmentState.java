@@ -16,14 +16,14 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
     public static final EcsAutoSnapshotPolicyAttachmentState Empty = new EcsAutoSnapshotPolicyAttachmentState();
 
     /**
-     * The auto snapshot policy id.
+     * The ID of the automatic snapshot policy that is applied to the cloud disk.
      * 
      */
     @Import(name="autoSnapshotPolicyId")
     private @Nullable Output<String> autoSnapshotPolicyId;
 
     /**
-     * @return The auto snapshot policy id.
+     * @return The ID of the automatic snapshot policy that is applied to the cloud disk.
      * 
      */
     public Optional<Output<String>> autoSnapshotPolicyId() {
@@ -31,18 +31,33 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
     }
 
     /**
-     * The disk id.
+     * The ID of the disk.
      * 
      */
     @Import(name="diskId")
     private @Nullable Output<String> diskId;
 
     /**
-     * @return The disk id.
+     * @return The ID of the disk.
      * 
      */
     public Optional<Output<String>> diskId() {
         return Optional.ofNullable(this.diskId);
+    }
+
+    /**
+     * (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     private EcsAutoSnapshotPolicyAttachmentState() {}
@@ -50,6 +65,7 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
     private EcsAutoSnapshotPolicyAttachmentState(EcsAutoSnapshotPolicyAttachmentState $) {
         this.autoSnapshotPolicyId = $.autoSnapshotPolicyId;
         this.diskId = $.diskId;
+        this.regionId = $.regionId;
     }
 
     public static Builder builder() {
@@ -71,7 +87,7 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param autoSnapshotPolicyId The auto snapshot policy id.
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy that is applied to the cloud disk.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param autoSnapshotPolicyId The auto snapshot policy id.
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy that is applied to the cloud disk.
          * 
          * @return builder
          * 
@@ -92,7 +108,7 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param diskId The disk id.
+         * @param diskId The ID of the disk.
          * 
          * @return builder
          * 
@@ -103,13 +119,34 @@ public final class EcsAutoSnapshotPolicyAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param diskId The disk id.
+         * @param diskId The ID of the disk.
          * 
          * @return builder
          * 
          */
         public Builder diskId(String diskId) {
             return diskId(Output.of(diskId));
+        }
+
+        /**
+         * @param regionId (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         public EcsAutoSnapshotPolicyAttachmentState build() {

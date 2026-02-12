@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class CollectionPolicyDataConfig
     {
         /// <summary>
-        /// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+        /// This setting is valid only when the log type is a global log type—for example, when productCode is sls.
         /// </summary>
         public readonly string? DataProject;
         /// <summary>
-        /// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+        /// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
         /// </summary>
         public readonly string? DataRegion;
 

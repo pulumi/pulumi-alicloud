@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.alicloud.mongodb.outputs.GetInstancesInstanceMongo;
+import com.pulumi.alicloud.mongodb.outputs.GetInstancesInstanceRestoreRange;
 import com.pulumi.alicloud.mongodb.outputs.GetInstancesInstanceShard;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,92 +17,97 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstance {
     /**
-     * @return Instance availability zone.
+     * @return The zone ID.
      * 
      */
     private String availabilityZone;
     /**
-     * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+     * @return The billing method of the instance.
      * 
      */
     private String chargeType;
     /**
-     * @return Creation time of the instance in RFC3339 format.
+     * @return The time when the instance was created.
      * 
      */
     private String creationTime;
     /**
-     * @return Database engine type. Supported option is `MongoDB`.
+     * @return The database engine.
      * 
      */
     private String engine;
     /**
-     * @return Database engine version.
+     * @return The database engine version.
      * 
      */
     private String engineVersion;
     /**
-     * @return Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+     * @return The time when the instance expires.
      * 
      */
     private String expirationTime;
     /**
-     * @return The ID of the MongoDB instance.
+     * @return The instance ID.
      * 
      */
     private String id;
     /**
-     * @return Sizing of the instance to be queried.
+     * @return The instance type.
      * 
      */
     private String instanceClass;
     /**
-     * @return Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+     * @return The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
      * 
      */
     private String instanceType;
     /**
-     * @return Lock status of the instance.
+     * @return The lock status of the instance.
      * 
      */
     private String lockMode;
     /**
-     * @return Array composed of Mongos.
+     * @return The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
      * 
      */
     private List<GetInstancesInstanceMongo> mongos;
     /**
-     * @return The name of the MongoDB instance.
+     * @return The name of the instance.
      * 
      */
     private String name;
     /**
-     * @return Classic network or VPC.
+     * @return The network type of the instance.
      * 
      */
     private String networkType;
     /**
-     * @return Region ID the instance belongs to.
+     * @return The region ID of the instance.
      * 
      */
     private String regionId;
     /**
-     * @return Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+     * @return The number of nodes in the instance.
      * 
      */
     private String replication;
     /**
-     * @return Array composed of shards.
+     * @return (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
+    private List<GetInstancesInstanceRestoreRange> restoreRanges;
+    /**
+     * @return The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
      * 
      */
     private List<GetInstancesInstanceShard> shards;
     /**
-     * @return Status of the instance.
+     * @return The instance status.
      * 
      */
     private String status;
     /**
-     * @return Shard disk.
+     * @return The storage space of the shard node.
      * 
      */
     private Integer storage;
@@ -113,126 +119,133 @@ public final class GetInstancesInstance {
 
     private GetInstancesInstance() {}
     /**
-     * @return Instance availability zone.
+     * @return The zone ID.
      * 
      */
     public String availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+     * @return The billing method of the instance.
      * 
      */
     public String chargeType() {
         return this.chargeType;
     }
     /**
-     * @return Creation time of the instance in RFC3339 format.
+     * @return The time when the instance was created.
      * 
      */
     public String creationTime() {
         return this.creationTime;
     }
     /**
-     * @return Database engine type. Supported option is `MongoDB`.
+     * @return The database engine.
      * 
      */
     public String engine() {
         return this.engine;
     }
     /**
-     * @return Database engine version.
+     * @return The database engine version.
      * 
      */
     public String engineVersion() {
         return this.engineVersion;
     }
     /**
-     * @return Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+     * @return The time when the instance expires.
      * 
      */
     public String expirationTime() {
         return this.expirationTime;
     }
     /**
-     * @return The ID of the MongoDB instance.
+     * @return The instance ID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Sizing of the instance to be queried.
+     * @return The instance type.
      * 
      */
     public String instanceClass() {
         return this.instanceClass;
     }
     /**
-     * @return Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+     * @return The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
      * 
      */
     public String instanceType() {
         return this.instanceType;
     }
     /**
-     * @return Lock status of the instance.
+     * @return The lock status of the instance.
      * 
      */
     public String lockMode() {
         return this.lockMode;
     }
     /**
-     * @return Array composed of Mongos.
+     * @return The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
      * 
      */
     public List<GetInstancesInstanceMongo> mongos() {
         return this.mongos;
     }
     /**
-     * @return The name of the MongoDB instance.
+     * @return The name of the instance.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Classic network or VPC.
+     * @return The network type of the instance.
      * 
      */
     public String networkType() {
         return this.networkType;
     }
     /**
-     * @return Region ID the instance belongs to.
+     * @return The region ID of the instance.
      * 
      */
     public String regionId() {
         return this.regionId;
     }
     /**
-     * @return Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+     * @return The number of nodes in the instance.
      * 
      */
     public String replication() {
         return this.replication;
     }
     /**
-     * @return Array composed of shards.
+     * @return (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
+    public List<GetInstancesInstanceRestoreRange> restoreRanges() {
+        return this.restoreRanges;
+    }
+    /**
+     * @return The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
      * 
      */
     public List<GetInstancesInstanceShard> shards() {
         return this.shards;
     }
     /**
-     * @return Status of the instance.
+     * @return The instance status.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return Shard disk.
+     * @return The storage space of the shard node.
      * 
      */
     public Integer storage() {
@@ -270,6 +283,7 @@ public final class GetInstancesInstance {
         private String networkType;
         private String regionId;
         private String replication;
+        private List<GetInstancesInstanceRestoreRange> restoreRanges;
         private List<GetInstancesInstanceShard> shards;
         private String status;
         private Integer storage;
@@ -292,6 +306,7 @@ public final class GetInstancesInstance {
     	      this.networkType = defaults.networkType;
     	      this.regionId = defaults.regionId;
     	      this.replication = defaults.replication;
+    	      this.restoreRanges = defaults.restoreRanges;
     	      this.shards = defaults.shards;
     	      this.status = defaults.status;
     	      this.storage = defaults.storage;
@@ -422,6 +437,17 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder restoreRanges(List<GetInstancesInstanceRestoreRange> restoreRanges) {
+            if (restoreRanges == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "restoreRanges");
+            }
+            this.restoreRanges = restoreRanges;
+            return this;
+        }
+        public Builder restoreRanges(GetInstancesInstanceRestoreRange... restoreRanges) {
+            return restoreRanges(List.of(restoreRanges));
+        }
+        @CustomType.Setter
         public Builder shards(List<GetInstancesInstanceShard> shards) {
             if (shards == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "shards");
@@ -473,6 +499,7 @@ public final class GetInstancesInstance {
             _resultValue.networkType = networkType;
             _resultValue.regionId = regionId;
             _resultValue.replication = replication;
+            _resultValue.restoreRanges = restoreRanges;
             _resultValue.shards = shards;
             _resultValue.status = status;
             _resultValue.storage = storage;

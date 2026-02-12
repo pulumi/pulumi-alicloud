@@ -16,9 +16,11 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECS Auto Snapshot Policy Attachment resource.
  * 
+ * Automatic snapshot policy Mount relationship.
+ * 
  * For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
  * 
- * &gt; **NOTE:** Available in v1.122.0+.
+ * &gt; **NOTE:** Available since v1.122.0.
  * 
  * ## Example Usage
  * 
@@ -33,8 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.kms.Key;
- * import com.pulumi.alicloud.kms.KeyArgs;
  * import com.pulumi.alicloud.ecs.AutoSnapshotPolicy;
  * import com.pulumi.alicloud.ecs.AutoSnapshotPolicyArgs;
  * import com.pulumi.alicloud.ecs.EcsDisk;
@@ -54,43 +54,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
- *             .description("terraform-example")
- *             .pendingWindowInDays(7)
- *             .status("Enabled")
- *             .build());
- * 
- *         var exampleAutoSnapshotPolicy = new AutoSnapshotPolicy("exampleAutoSnapshotPolicy", AutoSnapshotPolicyArgs.builder()
- *             .name("terraform-example")
+ *         var defaultAutoSnapshotPolicy = new AutoSnapshotPolicy("defaultAutoSnapshotPolicy", AutoSnapshotPolicyArgs.builder()
+ *             .autoSnapshotPolicyName(name)
  *             .repeatWeekdays(            
  *                 "1",
  *                 "2",
  *                 "3")
- *             .retentionDays(-1)
+ *             .retentionDays(1)
  *             .timePoints(            
  *                 "1",
- *                 "22",
- *                 "23")
+ *                 "2",
+ *                 "3")
  *             .build());
  * 
- *         var exampleEcsDisk = new EcsDisk("exampleEcsDisk", EcsDiskArgs.builder()
- *             .zoneId(example.zones()[0].id())
- *             .diskName("terraform-example")
- *             .description("Hello ecs disk.")
- *             .category("cloud_efficiency")
- *             .size(30)
- *             .encrypted(true)
- *             .kmsKeyId(exampleKey.id())
- *             .tags(Map.of("Name", "terraform-example"))
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+ *             .zoneId(default_.zones()[0].id())
+ *             .size(500)
  *             .build());
  * 
- *         var exampleEcsAutoSnapshotPolicyAttachment = new EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment", EcsAutoSnapshotPolicyAttachmentArgs.builder()
- *             .autoSnapshotPolicyId(exampleAutoSnapshotPolicy.id())
- *             .diskId(exampleEcsDisk.id())
+ *         var defaultEcsAutoSnapshotPolicyAttachment = new EcsAutoSnapshotPolicyAttachment("defaultEcsAutoSnapshotPolicyAttachment", EcsAutoSnapshotPolicyAttachmentArgs.builder()
+ *             .autoSnapshotPolicyId(defaultAutoSnapshotPolicy.id())
+ *             .diskId(defaultEcsDisk.id())
  *             .build());
  * 
  *     }
@@ -105,39 +95,53 @@ import javax.annotation.Nullable;
  * ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+ * $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example &lt;auto_snapshot_policy_id&gt;:&lt;disk_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment")
 public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The auto snapshot policy id.
+     * The ID of the automatic snapshot policy that is applied to the cloud disk.
      * 
      */
     @Export(name="autoSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output<String> autoSnapshotPolicyId;
 
     /**
-     * @return The auto snapshot policy id.
+     * @return The ID of the automatic snapshot policy that is applied to the cloud disk.
      * 
      */
     public Output<String> autoSnapshotPolicyId() {
         return this.autoSnapshotPolicyId;
     }
     /**
-     * The disk id.
+     * The ID of the disk.
      * 
      */
     @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
-     * @return The disk id.
+     * @return The ID of the disk.
      * 
      */
     public Output<String> diskId() {
         return this.diskId;
+    }
+    /**
+     * (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
 
     /**

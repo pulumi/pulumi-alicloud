@@ -16,9 +16,6 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// &gt; **NOTE:** Available since v1.37.0.
     /// 
-    /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB instance.
-    /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
-    /// 
     /// &gt; **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
     /// 
     /// ## Example Usage
@@ -103,10 +100,16 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
+        /// </summary>
+        [Output("autoRenewDuration")]
+        public Output<int> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
         /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -201,6 +204,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+        /// </summary>
+        [Output("forceEncryption")]
+        public Output<string> ForceEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// The list of Global Security Group Ids.
         /// </summary>
         [Output("globalSecurityGroupLists")]
@@ -217,6 +226,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.271.0) A list of instance keys.
+        /// </summary>
+        [Output("keyIds")]
+        public Output<ImmutableArray<string>> KeyIds { get; private set; } = null!;
 
         /// <summary>
         /// An KMS encrypts password used to a instance. If the `AccountPassword` is filled in, this field will be ignored.
@@ -238,6 +253,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Output("maintainEndTime")]
         public Output<string> MaintainEndTime { get; private set; } = null!;
@@ -255,7 +271,8 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic`, `VPC`.
+        /// The network type of the instance. Valid values: `VPC`.
+        /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
@@ -264,7 +281,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
-        /// **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
+        /// &gt; **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
@@ -318,6 +335,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
+        /// </summary>
+        [Output("restoreTime")]
+        public Output<string?> RestoreTime { get; private set; } = null!;
+
+        /// <summary>
         /// Instance data backup retention days. Available since v1.42.0.
         /// </summary>
         [Output("retentionPeriod")]
@@ -356,11 +380,11 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> SnapshotBackupType { get; private set; } = null!;
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values:
-        /// - `Open`: turn on SSL encryption.
-        /// - `Close`: turn off SSL encryption.
-        /// - `Update`: update SSL certificate.
+        /// The source instance ID.
         /// </summary>
+        [Output("srcDbInstanceId")]
+        public Output<string?> SrcDbInstanceId { get; private set; } = null!;
+
         [Output("sslAction")]
         public Output<string?> SslAction { get; private set; } = null!;
 
@@ -413,6 +437,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.271.0) The information of nodes in the zone.
+        /// </summary>
+        [Output("zoneInfos")]
+        public Output<ImmutableArray<Outputs.InstanceZoneInfo>> ZoneInfos { get; private set; } = null!;
 
 
         /// <summary>
@@ -482,10 +512,16 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
         /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -585,6 +621,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+        /// </summary>
+        [Input("forceEncryption")]
+        public Input<string>? ForceEncryption { get; set; }
+
         [Input("globalSecurityGroupLists")]
         private InputList<string>? _globalSecurityGroupLists;
 
@@ -635,6 +677,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
@@ -652,7 +695,8 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic`, `VPC`.
+        /// The network type of the instance. Valid values: `VPC`.
+        /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -661,7 +705,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
-        /// **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
+        /// &gt; **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -709,6 +753,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
+        /// </summary>
+        [Input("restoreTime")]
+        public Input<string>? RestoreTime { get; set; }
+
+        /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         /// </summary>
         [Input("roleArn")]
@@ -747,11 +798,11 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values:
-        /// - `Open`: turn on SSL encryption.
-        /// - `Close`: turn off SSL encryption.
-        /// - `Update`: update SSL certificate.
+        /// The source instance ID.
         /// </summary>
+        [Input("srcDbInstanceId")]
+        public Input<string>? SrcDbInstanceId { get; set; }
+
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
@@ -831,10 +882,16 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Auto renew for prepaid. Default value: `False`. Valid values: `True`, `False`.
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
         /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -934,6 +991,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
 
+        /// <summary>
+        /// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+        /// </summary>
+        [Input("forceEncryption")]
+        public Input<string>? ForceEncryption { get; set; }
+
         [Input("globalSecurityGroupLists")]
         private InputList<string>? _globalSecurityGroupLists;
 
@@ -957,6 +1020,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        [Input("keyIds")]
+        private InputList<string>? _keyIds;
+
+        /// <summary>
+        /// (Available since v1.271.0) A list of instance keys.
+        /// </summary>
+        public InputList<string> KeyIds
+        {
+            get => _keyIds ?? (_keyIds = new InputList<string>());
+            set => _keyIds = value;
+        }
 
         /// <summary>
         /// An KMS encrypts password used to a instance. If the `AccountPassword` is filled in, this field will be ignored.
@@ -984,6 +1059,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("maintainEndTime")]
         public Input<string>? MaintainEndTime { get; set; }
@@ -1001,7 +1077,8 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic`, `VPC`.
+        /// The network type of the instance. Valid values: `VPC`.
+        /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -1010,7 +1087,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
-        /// **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
+        /// &gt; **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -1076,6 +1153,13 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
+        /// </summary>
+        [Input("restoreTime")]
+        public Input<string>? RestoreTime { get; set; }
+
+        /// <summary>
         /// Instance data backup retention days. Available since v1.42.0.
         /// </summary>
         [Input("retentionPeriod")]
@@ -1120,11 +1204,11 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values:
-        /// - `Open`: turn on SSL encryption.
-        /// - `Close`: turn off SSL encryption.
-        /// - `Update`: update SSL certificate.
+        /// The source instance ID.
         /// </summary>
+        [Input("srcDbInstanceId")]
+        public Input<string>? SrcDbInstanceId { get; set; }
+
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
@@ -1183,6 +1267,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        [Input("zoneInfos")]
+        private InputList<Inputs.InstanceZoneInfoGetArgs>? _zoneInfos;
+
+        /// <summary>
+        /// (Available since v1.271.0) The information of nodes in the zone.
+        /// </summary>
+        public InputList<Inputs.InstanceZoneInfoGetArgs> ZoneInfos
+        {
+            get => _zoneInfos ?? (_zoneInfos = new InputList<Inputs.InstanceZoneInfoGetArgs>());
+            set => _zoneInfos = value;
+        }
 
         public InstanceState()
         {

@@ -23,6 +23,12 @@ __all__ = [
     'BgpPolicyContentPortRuleList',
     'BgpPolicyContentSourceBlockList',
     'BgpPolicyContentSourceLimit',
+    'CooDomainPreciseAccessRuleCondition',
+    'CooWebCcRuleRuleDetail',
+    'CooWebCcRuleRuleDetailCondition',
+    'CooWebCcRuleRuleDetailRateLimit',
+    'CooWebCcRuleRuleDetailStatistics',
+    'CooWebCcRuleRuleDetailStatusCode',
     'DomainResourceProxyType',
     'PortConfig',
     'SchedulerRuleRule',
@@ -853,6 +859,458 @@ class BgpPolicyContentSourceLimit(dict):
         SynPps range 1~100000.
         """
         return pulumi.get(self, "syn_pps")
+
+
+@pulumi.output_type
+class CooDomainPreciseAccessRuleCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchMethod":
+            suggest = "match_method"
+        elif key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CooDomainPreciseAccessRuleCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CooDomainPreciseAccessRuleCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CooDomainPreciseAccessRuleCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 field: _builtins.str,
+                 match_method: _builtins.str,
+                 header_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str content: Matching content.
+        :param _builtins.str field: Matching field.
+        :param _builtins.str match_method: Matching method.
+        :param _builtins.str header_name: Custom HTTP header field name.
+               
+               > **NOTE:**  Valid only when `Field` is `header`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "match_method", match_method)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        Matching content.
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        Matching field.
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter(name="matchMethod")
+    def match_method(self) -> _builtins.str:
+        """
+        Matching method.
+        """
+        return pulumi.get(self, "match_method")
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        Custom HTTP header field name.
+
+        > **NOTE:**  Valid only when `Field` is `header`.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class CooWebCcRuleRuleDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rateLimit":
+            suggest = "rate_limit"
+        elif key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CooWebCcRuleRuleDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CooWebCcRuleRuleDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CooWebCcRuleRuleDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 conditions: Sequence['outputs.CooWebCcRuleRuleDetailCondition'],
+                 rate_limit: 'outputs.CooWebCcRuleRuleDetailRateLimit',
+                 statistics: Optional['outputs.CooWebCcRuleRuleDetailStatistics'] = None,
+                 status_code: Optional['outputs.CooWebCcRuleRuleDetailStatusCode'] = None):
+        """
+        :param _builtins.str action: The action to take when a match occurs. Valid values:
+        :param Sequence['CooWebCcRuleRuleDetailConditionArgs'] conditions: List of matching conditions.   See `condition` below.
+        :param 'CooWebCcRuleRuleDetailRateLimitArgs' rate_limit: Rate limiting statistics. See `rate_limit` below.
+        :param 'CooWebCcRuleRuleDetailStatisticsArgs' statistics: Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+        :param 'CooWebCcRuleRuleDetailStatusCodeArgs' status_code: The HTTP status code. See `status_code` below.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "rate_limit", rate_limit)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action to take when a match occurs. Valid values:
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.CooWebCcRuleRuleDetailCondition']:
+        """
+        List of matching conditions.   See `condition` below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimit")
+    def rate_limit(self) -> 'outputs.CooWebCcRuleRuleDetailRateLimit':
+        """
+        Rate limiting statistics. See `rate_limit` below.
+        """
+        return pulumi.get(self, "rate_limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Optional['outputs.CooWebCcRuleRuleDetailStatistics']:
+        """
+        Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+        """
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional['outputs.CooWebCcRuleRuleDetailStatusCode']:
+        """
+        The HTTP status code. See `status_code` below.
+        """
+        return pulumi.get(self, "status_code")
+
+
+@pulumi.output_type
+class CooWebCcRuleRuleDetailCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchMethod":
+            suggest = "match_method"
+        elif key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CooWebCcRuleRuleDetailCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CooWebCcRuleRuleDetailCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CooWebCcRuleRuleDetailCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 field: _builtins.str,
+                 match_method: _builtins.str,
+                 header_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str content: Matching content.
+        :param _builtins.str field: The statistic source. Valid values:
+        :param _builtins.str match_method: Matching method.
+        :param _builtins.str header_name: Set this parameter only when the statistic source is `header`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "match_method", match_method)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        Matching content.
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        The statistic source. Valid values:
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter(name="matchMethod")
+    def match_method(self) -> _builtins.str:
+        """
+        Matching method.
+        """
+        return pulumi.get(self, "match_method")
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        Set this parameter only when the statistic source is `header`.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class CooWebCcRuleRuleDetailRateLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subKey":
+            suggest = "sub_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CooWebCcRuleRuleDetailRateLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CooWebCcRuleRuleDetailRateLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CooWebCcRuleRuleDetailRateLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interval: _builtins.int,
+                 target: _builtins.str,
+                 threshold: _builtins.int,
+                 ttl: _builtins.int,
+                 sub_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int interval: Statistical interval. Unit: seconds.
+        :param _builtins.str target: Statistic source. Valid values:
+        :param _builtins.int threshold: The trigger threshold.
+        :param _builtins.int ttl: Block duration. Unit: seconds.
+        :param _builtins.str sub_key: Header field name (required only when the statistic source is `header`).
+        """
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "ttl", ttl)
+        if sub_key is not None:
+            pulumi.set(__self__, "sub_key", sub_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.int:
+        """
+        Statistical interval. Unit: seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> _builtins.str:
+        """
+        Statistic source. Valid values:
+        """
+        return pulumi.get(self, "target")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> _builtins.int:
+        """
+        The trigger threshold.
+        """
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> _builtins.int:
+        """
+        Block duration. Unit: seconds.
+        """
+        return pulumi.get(self, "ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> Optional[_builtins.str]:
+        """
+        Header field name (required only when the statistic source is `header`).
+        """
+        return pulumi.get(self, "sub_key")
+
+
+@pulumi.output_type
+class CooWebCcRuleRuleDetailStatistics(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CooWebCcRuleRuleDetailStatistics. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CooWebCcRuleRuleDetailStatistics.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CooWebCcRuleRuleDetailStatistics.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field: _builtins.str,
+                 mode: _builtins.str,
+                 header_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field: The statistic source. Valid values:
+        :param _builtins.str mode: The deduplication mode. Valid values:
+        :param _builtins.str header_name: Set this parameter only when the statistic source is `header`.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "mode", mode)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> _builtins.str:
+        """
+        The statistic source. Valid values:
+        """
+        return pulumi.get(self, "field")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The deduplication mode. Valid values:
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> Optional[_builtins.str]:
+        """
+        Set this parameter only when the statistic source is `header`.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class CooWebCcRuleRuleDetailStatusCode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useRatio":
+            suggest = "use_ratio"
+        elif key == "countThreshold":
+            suggest = "count_threshold"
+        elif key == "ratioThreshold":
+            suggest = "ratio_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CooWebCcRuleRuleDetailStatusCode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CooWebCcRuleRuleDetailStatusCode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CooWebCcRuleRuleDetailStatusCode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 enabled: _builtins.bool,
+                 use_ratio: _builtins.bool,
+                 count_threshold: Optional[_builtins.int] = None,
+                 ratio_threshold: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int code: Status code. The value range is `100` to `599`:
+        :param _builtins.bool enabled: Whether the rule is enabled. Valid values:
+        :param _builtins.bool use_ratio: Whether to use a ratio:
+        :param _builtins.int count_threshold: When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+        :param _builtins.int ratio_threshold: When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "use_ratio", use_ratio)
+        if count_threshold is not None:
+            pulumi.set(__self__, "count_threshold", count_threshold)
+        if ratio_threshold is not None:
+            pulumi.set(__self__, "ratio_threshold", ratio_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        Status code. The value range is `100` to `599`:
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the rule is enabled. Valid values:
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="useRatio")
+    def use_ratio(self) -> _builtins.bool:
+        """
+        Whether to use a ratio:
+        """
+        return pulumi.get(self, "use_ratio")
+
+    @_builtins.property
+    @pulumi.getter(name="countThreshold")
+    def count_threshold(self) -> Optional[_builtins.int]:
+        """
+        When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+        """
+        return pulumi.get(self, "count_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="ratioThreshold")
+    def ratio_threshold(self) -> Optional[_builtins.int]:
+        """
+        When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+        """
+        return pulumi.get(self, "ratio_threshold")
 
 
 @pulumi.output_type

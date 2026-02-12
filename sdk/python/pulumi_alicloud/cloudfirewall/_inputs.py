@@ -39,6 +39,12 @@ __all__ = [
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgsDict',
     'NatFirewallNatRouteEntryListArgs',
     'NatFirewallNatRouteEntryListArgsDict',
+    'UserAlarmConfigAlarmConfigArgs',
+    'UserAlarmConfigAlarmConfigArgsDict',
+    'UserAlarmConfigContactConfigArgs',
+    'UserAlarmConfigContactConfigArgsDict',
+    'UserAlarmConfigNotifyConfigArgs',
+    'UserAlarmConfigNotifyConfigArgsDict',
 ]
 
 MYPY = False
@@ -1186,5 +1192,281 @@ class NatFirewallNatRouteEntryListArgs:
     @route_table_id.setter
     def route_table_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "route_table_id", value)
+
+
+if not MYPY:
+    class UserAlarmConfigAlarmConfigArgsDict(TypedDict):
+        alarm_hour: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+        """
+        alarm_notify: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+        """
+        alarm_period: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+        """
+        alarm_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+        """
+        alarm_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The alarm notification message.
+        """
+        alarm_week_day: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+        """
+elif False:
+    UserAlarmConfigAlarmConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserAlarmConfigAlarmConfigArgs:
+    def __init__(__self__, *,
+                 alarm_hour: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_notify: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_period: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_week_day: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] alarm_hour: The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+        :param pulumi.Input[_builtins.str] alarm_notify: The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+        :param pulumi.Input[_builtins.str] alarm_period: The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+        :param pulumi.Input[_builtins.str] alarm_type: The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+        :param pulumi.Input[_builtins.str] alarm_value: The alarm notification message.
+        :param pulumi.Input[_builtins.str] alarm_week_day: The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+        """
+        if alarm_hour is not None:
+            pulumi.set(__self__, "alarm_hour", alarm_hour)
+        if alarm_notify is not None:
+            pulumi.set(__self__, "alarm_notify", alarm_notify)
+        if alarm_period is not None:
+            pulumi.set(__self__, "alarm_period", alarm_period)
+        if alarm_type is not None:
+            pulumi.set(__self__, "alarm_type", alarm_type)
+        if alarm_value is not None:
+            pulumi.set(__self__, "alarm_value", alarm_value)
+        if alarm_week_day is not None:
+            pulumi.set(__self__, "alarm_week_day", alarm_week_day)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmHour")
+    def alarm_hour(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+        """
+        return pulumi.get(self, "alarm_hour")
+
+    @alarm_hour.setter
+    def alarm_hour(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alarm_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmNotify")
+    def alarm_notify(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+        """
+        return pulumi.get(self, "alarm_notify")
+
+    @alarm_notify.setter
+    def alarm_notify(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alarm_notify", value)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmPeriod")
+    def alarm_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+        """
+        return pulumi.get(self, "alarm_period")
+
+    @alarm_period.setter
+    def alarm_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alarm_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmType")
+    def alarm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+        """
+        return pulumi.get(self, "alarm_type")
+
+    @alarm_type.setter
+    def alarm_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alarm_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmValue")
+    def alarm_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The alarm notification message.
+        """
+        return pulumi.get(self, "alarm_value")
+
+    @alarm_value.setter
+    def alarm_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alarm_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="alarmWeekDay")
+    def alarm_week_day(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+        """
+        return pulumi.get(self, "alarm_week_day")
+
+    @alarm_week_day.setter
+    def alarm_week_day(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alarm_week_day", value)
+
+
+if not MYPY:
+    class UserAlarmConfigContactConfigArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The email address of the contact.
+        """
+        mobile_phone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The mobile phone number of the contact.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the contact.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+        """
+elif False:
+    UserAlarmConfigContactConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserAlarmConfigContactConfigArgs:
+    def __init__(__self__, *,
+                 email: Optional[pulumi.Input[_builtins.str]] = None,
+                 mobile_phone: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] email: The email address of the contact.
+        :param pulumi.Input[_builtins.str] mobile_phone: The mobile phone number of the contact.
+        :param pulumi.Input[_builtins.str] name: The name of the contact.
+        :param pulumi.Input[_builtins.str] status: The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if mobile_phone is not None:
+            pulumi.set(__self__, "mobile_phone", mobile_phone)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The email address of the contact.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mobilePhone")
+    def mobile_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The mobile phone number of the contact.
+        """
+        return pulumi.get(self, "mobile_phone")
+
+    @mobile_phone.setter
+    def mobile_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mobile_phone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the contact.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class UserAlarmConfigNotifyConfigArgsDict(TypedDict):
+        notify_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The notification type. Possible values are `sms`, `mail`.
+        """
+        notify_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
+        """
+elif False:
+    UserAlarmConfigNotifyConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserAlarmConfigNotifyConfigArgs:
+    def __init__(__self__, *,
+                 notify_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 notify_value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] notify_type: The notification type. Possible values are `sms`, `mail`.
+        :param pulumi.Input[_builtins.str] notify_value: The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
+        """
+        if notify_type is not None:
+            pulumi.set(__self__, "notify_type", notify_type)
+        if notify_value is not None:
+            pulumi.set(__self__, "notify_value", notify_value)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyType")
+    def notify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The notification type. Possible values are `sms`, `mail`.
+        """
+        return pulumi.get(self, "notify_type")
+
+    @notify_type.setter
+    def notify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "notify_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyValue")
+    def notify_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
+        """
+        return pulumi.get(self, "notify_value")
+
+    @notify_value.setter
+    def notify_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "notify_value", value)
 
 

@@ -2764,13 +2764,13 @@ func (o AlertSchedulePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type CollectionPolicyCentralizeConfig struct {
-	// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+	// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
 	DestLogstore *string `pulumi:"destLogstore"`
-	// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+	// Destination project for centralized forwarding. Its region must match destRegion.
 	DestProject *string `pulumi:"destProject"`
-	// Centralized transfer destination area.
+	// Destination region for centralized forwarding.
 	DestRegion *string `pulumi:"destRegion"`
-	// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+	// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
 	DestTtl *int `pulumi:"destTtl"`
 }
 
@@ -2786,13 +2786,13 @@ type CollectionPolicyCentralizeConfigInput interface {
 }
 
 type CollectionPolicyCentralizeConfigArgs struct {
-	// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+	// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
 	DestLogstore pulumi.StringPtrInput `pulumi:"destLogstore"`
-	// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+	// Destination project for centralized forwarding. Its region must match destRegion.
 	DestProject pulumi.StringPtrInput `pulumi:"destProject"`
-	// Centralized transfer destination area.
+	// Destination region for centralized forwarding.
 	DestRegion pulumi.StringPtrInput `pulumi:"destRegion"`
-	// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+	// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
 	DestTtl pulumi.IntPtrInput `pulumi:"destTtl"`
 }
 
@@ -2873,22 +2873,22 @@ func (o CollectionPolicyCentralizeConfigOutput) ToCollectionPolicyCentralizeConf
 	}).(CollectionPolicyCentralizeConfigPtrOutput)
 }
 
-// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
 func (o CollectionPolicyCentralizeConfigOutput) DestLogstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *string { return v.DestLogstore }).(pulumi.StringPtrOutput)
 }
 
-// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+// Destination project for centralized forwarding. Its region must match destRegion.
 func (o CollectionPolicyCentralizeConfigOutput) DestProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *string { return v.DestProject }).(pulumi.StringPtrOutput)
 }
 
-// Centralized transfer destination area.
+// Destination region for centralized forwarding.
 func (o CollectionPolicyCentralizeConfigOutput) DestRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *string { return v.DestRegion }).(pulumi.StringPtrOutput)
 }
 
-// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
 func (o CollectionPolicyCentralizeConfigOutput) DestTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *int { return v.DestTtl }).(pulumi.IntPtrOutput)
 }
@@ -2917,7 +2917,7 @@ func (o CollectionPolicyCentralizeConfigPtrOutput) Elem() CollectionPolicyCentra
 	}).(CollectionPolicyCentralizeConfigOutput)
 }
 
-// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+// Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
 func (o CollectionPolicyCentralizeConfigPtrOutput) DestLogstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *string {
 		if v == nil {
@@ -2927,7 +2927,7 @@ func (o CollectionPolicyCentralizeConfigPtrOutput) DestLogstore() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+// Destination project for centralized forwarding. Its region must match destRegion.
 func (o CollectionPolicyCentralizeConfigPtrOutput) DestProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *string {
 		if v == nil {
@@ -2937,7 +2937,7 @@ func (o CollectionPolicyCentralizeConfigPtrOutput) DestProject() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Centralized transfer destination area.
+// Destination region for centralized forwarding.
 func (o CollectionPolicyCentralizeConfigPtrOutput) DestRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *string {
 		if v == nil {
@@ -2947,7 +2947,7 @@ func (o CollectionPolicyCentralizeConfigPtrOutput) DestRegion() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+// Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
 func (o CollectionPolicyCentralizeConfigPtrOutput) DestTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *int {
 		if v == nil {
@@ -2958,9 +2958,9 @@ func (o CollectionPolicyCentralizeConfigPtrOutput) DestTtl() pulumi.IntPtrOutput
 }
 
 type CollectionPolicyDataConfig struct {
-	// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+	// This setting is valid only when the log type is a global log type—for example, when productCode is sls.
 	DataProject *string `pulumi:"dataProject"`
-	// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
 	DataRegion *string `pulumi:"dataRegion"`
 }
 
@@ -2976,9 +2976,9 @@ type CollectionPolicyDataConfigInput interface {
 }
 
 type CollectionPolicyDataConfigArgs struct {
-	// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+	// This setting is valid only when the log type is a global log type—for example, when productCode is sls.
 	DataProject pulumi.StringPtrInput `pulumi:"dataProject"`
-	// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+	// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
 	DataRegion pulumi.StringPtrInput `pulumi:"dataRegion"`
 }
 
@@ -3059,12 +3059,12 @@ func (o CollectionPolicyDataConfigOutput) ToCollectionPolicyDataConfigPtrOutputW
 	}).(CollectionPolicyDataConfigPtrOutput)
 }
 
-// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+// This setting is valid only when the log type is a global log type—for example, when productCode is sls.
 func (o CollectionPolicyDataConfigOutput) DataProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyDataConfig) *string { return v.DataProject }).(pulumi.StringPtrOutput)
 }
 
-// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
 func (o CollectionPolicyDataConfigOutput) DataRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyDataConfig) *string { return v.DataRegion }).(pulumi.StringPtrOutput)
 }
@@ -3093,7 +3093,7 @@ func (o CollectionPolicyDataConfigPtrOutput) Elem() CollectionPolicyDataConfigOu
 	}).(CollectionPolicyDataConfigOutput)
 }
 
-// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+// This setting is valid only when the log type is a global log type—for example, when productCode is sls.
 func (o CollectionPolicyDataConfigPtrOutput) DataProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyDataConfig) *string {
 		if v == nil {
@@ -3103,7 +3103,7 @@ func (o CollectionPolicyDataConfigPtrOutput) DataProject() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
 func (o CollectionPolicyDataConfigPtrOutput) DataRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyDataConfig) *string {
 		if v == nil {
@@ -3114,17 +3114,15 @@ func (o CollectionPolicyDataConfigPtrOutput) DataRegion() pulumi.StringPtrOutput
 }
 
 type CollectionPolicyPolicyConfig struct {
-	// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+	// The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
 	InstanceIds []string `pulumi:"instanceIds"`
-	// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+	// The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
 	Regions []string `pulumi:"regions"`
-	// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+	// Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
 	ResourceMode string `pulumi:"resourceMode"`
-	// Resource label, valid if and only if resourceMode is attributeMode.
-	//
-	// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-	//
-	// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+	// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\
+	// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+	// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 }
 
@@ -3140,17 +3138,15 @@ type CollectionPolicyPolicyConfigInput interface {
 }
 
 type CollectionPolicyPolicyConfigArgs struct {
-	// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+	// The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
-	// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+	// The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
-	// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+	// Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
 	ResourceMode pulumi.StringInput `pulumi:"resourceMode"`
-	// Resource label, valid if and only if resourceMode is attributeMode.
-	//
-	// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-	//
-	// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+	// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\
+	// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+	// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
 	ResourceTags pulumi.StringMapInput `pulumi:"resourceTags"`
 }
 
@@ -3231,26 +3227,24 @@ func (o CollectionPolicyPolicyConfigOutput) ToCollectionPolicyPolicyConfigPtrOut
 	}).(CollectionPolicyPolicyConfigPtrOutput)
 }
 
-// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+// The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
 func (o CollectionPolicyPolicyConfigOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CollectionPolicyPolicyConfig) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+// The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
 func (o CollectionPolicyPolicyConfigOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CollectionPolicyPolicyConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
-// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+// Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
 func (o CollectionPolicyPolicyConfigOutput) ResourceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v CollectionPolicyPolicyConfig) string { return v.ResourceMode }).(pulumi.StringOutput)
 }
 
-// Resource label, valid if and only if resourceMode is attributeMode.
-//
-// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-//
-// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\
+// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
 func (o CollectionPolicyPolicyConfigOutput) ResourceTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CollectionPolicyPolicyConfig) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
@@ -3279,7 +3273,7 @@ func (o CollectionPolicyPolicyConfigPtrOutput) Elem() CollectionPolicyPolicyConf
 	}).(CollectionPolicyPolicyConfigOutput)
 }
 
-// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+// The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
 func (o CollectionPolicyPolicyConfigPtrOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) []string {
 		if v == nil {
@@ -3289,7 +3283,7 @@ func (o CollectionPolicyPolicyConfigPtrOutput) InstanceIds() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+// The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
 func (o CollectionPolicyPolicyConfigPtrOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) []string {
 		if v == nil {
@@ -3299,7 +3293,7 @@ func (o CollectionPolicyPolicyConfigPtrOutput) Regions() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+// Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
 func (o CollectionPolicyPolicyConfigPtrOutput) ResourceMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) *string {
 		if v == nil {
@@ -3309,11 +3303,9 @@ func (o CollectionPolicyPolicyConfigPtrOutput) ResourceMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource label, valid if and only if resourceMode is attributeMode.
-//
-// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-//
-// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\
+// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
 func (o CollectionPolicyPolicyConfigPtrOutput) ResourceTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) map[string]string {
 		if v == nil {
@@ -3324,9 +3316,9 @@ func (o CollectionPolicyPolicyConfigPtrOutput) ResourceTags() pulumi.StringMapOu
 }
 
 type CollectionPolicyResourceDirectory struct {
-	// Support all mode all and custom mode custom under this resource directory
+	// Supports the all (select all) mode and custom mode under this Resource Directory.
 	AccountGroupType *string `pulumi:"accountGroupType"`
-	// When the resource directory is configured in the custom mode, the corresponding member account list
+	// The list of member accounts when the Resource Directory is configured in custom mode.
 	Members []string `pulumi:"members"`
 }
 
@@ -3342,9 +3334,9 @@ type CollectionPolicyResourceDirectoryInput interface {
 }
 
 type CollectionPolicyResourceDirectoryArgs struct {
-	// Support all mode all and custom mode custom under this resource directory
+	// Supports the all (select all) mode and custom mode under this Resource Directory.
 	AccountGroupType pulumi.StringPtrInput `pulumi:"accountGroupType"`
-	// When the resource directory is configured in the custom mode, the corresponding member account list
+	// The list of member accounts when the Resource Directory is configured in custom mode.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 }
 
@@ -3425,12 +3417,12 @@ func (o CollectionPolicyResourceDirectoryOutput) ToCollectionPolicyResourceDirec
 	}).(CollectionPolicyResourceDirectoryPtrOutput)
 }
 
-// Support all mode all and custom mode custom under this resource directory
+// Supports the all (select all) mode and custom mode under this Resource Directory.
 func (o CollectionPolicyResourceDirectoryOutput) AccountGroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CollectionPolicyResourceDirectory) *string { return v.AccountGroupType }).(pulumi.StringPtrOutput)
 }
 
-// When the resource directory is configured in the custom mode, the corresponding member account list
+// The list of member accounts when the Resource Directory is configured in custom mode.
 func (o CollectionPolicyResourceDirectoryOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CollectionPolicyResourceDirectory) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -3459,7 +3451,7 @@ func (o CollectionPolicyResourceDirectoryPtrOutput) Elem() CollectionPolicyResou
 	}).(CollectionPolicyResourceDirectoryOutput)
 }
 
-// Support all mode all and custom mode custom under this resource directory
+// Supports the all (select all) mode and custom mode under this Resource Directory.
 func (o CollectionPolicyResourceDirectoryPtrOutput) AccountGroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CollectionPolicyResourceDirectory) *string {
 		if v == nil {
@@ -3469,7 +3461,7 @@ func (o CollectionPolicyResourceDirectoryPtrOutput) AccountGroupType() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// When the resource directory is configured in the custom mode, the corresponding member account list
+// The list of member accounts when the Resource Directory is configured in custom mode.
 func (o CollectionPolicyResourceDirectoryPtrOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CollectionPolicyResourceDirectory) []string {
 		if v == nil {
@@ -3480,21 +3472,21 @@ func (o CollectionPolicyResourceDirectoryPtrOutput) Members() pulumi.StringArray
 }
 
 type EtlConfiguration struct {
-	// The beginning of the time range for transformation.
+	// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
 	FromTime int `pulumi:"fromTime"`
-	// Data processing syntax type.
+	// The syntax type used for data transformation.
 	Lang string `pulumi:"lang"`
-	// Destination Logstore Name.
+	// The name of the destination Logstore.
 	Logstore string `pulumi:"logstore"`
 	// Advanced parameter configuration.
 	Parameters map[string]string `pulumi:"parameters"`
-	// The ARN role that authorizes writing to the target Logstore.
+	// The ARN of the role authorized to write to the destination Logstore.
 	RoleArn string `pulumi:"roleArn"`
 	// Processing script.
 	Script string `pulumi:"script"`
-	// Processing result output target list See `sink` below.
+	// List of output destinations for processing results.   See `sink` below.
 	Sinks []EtlConfigurationSink `pulumi:"sinks"`
-	// The end of the time range for transformation.
+	// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
 	ToTime int `pulumi:"toTime"`
 }
 
@@ -3510,21 +3502,21 @@ type EtlConfigurationInput interface {
 }
 
 type EtlConfigurationArgs struct {
-	// The beginning of the time range for transformation.
+	// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
 	FromTime pulumi.IntInput `pulumi:"fromTime"`
-	// Data processing syntax type.
+	// The syntax type used for data transformation.
 	Lang pulumi.StringInput `pulumi:"lang"`
-	// Destination Logstore Name.
+	// The name of the destination Logstore.
 	Logstore pulumi.StringInput `pulumi:"logstore"`
 	// Advanced parameter configuration.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// The ARN role that authorizes writing to the target Logstore.
+	// The ARN of the role authorized to write to the destination Logstore.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// Processing script.
 	Script pulumi.StringInput `pulumi:"script"`
-	// Processing result output target list See `sink` below.
+	// List of output destinations for processing results.   See `sink` below.
 	Sinks EtlConfigurationSinkArrayInput `pulumi:"sinks"`
-	// The end of the time range for transformation.
+	// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
 	ToTime pulumi.IntInput `pulumi:"toTime"`
 }
 
@@ -3605,17 +3597,17 @@ func (o EtlConfigurationOutput) ToEtlConfigurationPtrOutputWithContext(ctx conte
 	}).(EtlConfigurationPtrOutput)
 }
 
-// The beginning of the time range for transformation.
+// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
 func (o EtlConfigurationOutput) FromTime() pulumi.IntOutput {
 	return o.ApplyT(func(v EtlConfiguration) int { return v.FromTime }).(pulumi.IntOutput)
 }
 
-// Data processing syntax type.
+// The syntax type used for data transformation.
 func (o EtlConfigurationOutput) Lang() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfiguration) string { return v.Lang }).(pulumi.StringOutput)
 }
 
-// Destination Logstore Name.
+// The name of the destination Logstore.
 func (o EtlConfigurationOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfiguration) string { return v.Logstore }).(pulumi.StringOutput)
 }
@@ -3625,7 +3617,7 @@ func (o EtlConfigurationOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EtlConfiguration) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// The ARN role that authorizes writing to the target Logstore.
+// The ARN of the role authorized to write to the destination Logstore.
 func (o EtlConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -3635,12 +3627,12 @@ func (o EtlConfigurationOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfiguration) string { return v.Script }).(pulumi.StringOutput)
 }
 
-// Processing result output target list See `sink` below.
+// List of output destinations for processing results.   See `sink` below.
 func (o EtlConfigurationOutput) Sinks() EtlConfigurationSinkArrayOutput {
 	return o.ApplyT(func(v EtlConfiguration) []EtlConfigurationSink { return v.Sinks }).(EtlConfigurationSinkArrayOutput)
 }
 
-// The end of the time range for transformation.
+// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
 func (o EtlConfigurationOutput) ToTime() pulumi.IntOutput {
 	return o.ApplyT(func(v EtlConfiguration) int { return v.ToTime }).(pulumi.IntOutput)
 }
@@ -3669,7 +3661,7 @@ func (o EtlConfigurationPtrOutput) Elem() EtlConfigurationOutput {
 	}).(EtlConfigurationOutput)
 }
 
-// The beginning of the time range for transformation.
+// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
 func (o EtlConfigurationPtrOutput) FromTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EtlConfiguration) *int {
 		if v == nil {
@@ -3679,7 +3671,7 @@ func (o EtlConfigurationPtrOutput) FromTime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Data processing syntax type.
+// The syntax type used for data transformation.
 func (o EtlConfigurationPtrOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EtlConfiguration) *string {
 		if v == nil {
@@ -3689,7 +3681,7 @@ func (o EtlConfigurationPtrOutput) Lang() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Destination Logstore Name.
+// The name of the destination Logstore.
 func (o EtlConfigurationPtrOutput) Logstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EtlConfiguration) *string {
 		if v == nil {
@@ -3709,7 +3701,7 @@ func (o EtlConfigurationPtrOutput) Parameters() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The ARN role that authorizes writing to the target Logstore.
+// The ARN of the role authorized to write to the destination Logstore.
 func (o EtlConfigurationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EtlConfiguration) *string {
 		if v == nil {
@@ -3729,7 +3721,7 @@ func (o EtlConfigurationPtrOutput) Script() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Processing result output target list See `sink` below.
+// List of output destinations for processing results.   See `sink` below.
 func (o EtlConfigurationPtrOutput) Sinks() EtlConfigurationSinkArrayOutput {
 	return o.ApplyT(func(v *EtlConfiguration) []EtlConfigurationSink {
 		if v == nil {
@@ -3739,7 +3731,7 @@ func (o EtlConfigurationPtrOutput) Sinks() EtlConfigurationSinkArrayOutput {
 	}).(EtlConfigurationSinkArrayOutput)
 }
 
-// The end of the time range for transformation.
+// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
 func (o EtlConfigurationPtrOutput) ToTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EtlConfiguration) *int {
 		if v == nil {
@@ -3750,17 +3742,17 @@ func (o EtlConfigurationPtrOutput) ToTime() pulumi.IntPtrOutput {
 }
 
 type EtlConfigurationSink struct {
-	// Write Result Set.
+	// Result datasets to write to.
 	Datasets []string `pulumi:"datasets"`
-	// The endpoint of the region where the target Project is located.
+	// The endpoint of the region where the destination project resides.
 	Endpoint string `pulumi:"endpoint"`
-	// Destination Logstore Name.
+	// The name of the destination Logstore.
 	Logstore string `pulumi:"logstore"`
-	// Output Destination Name.
+	// The name of the output destination.
 	Name string `pulumi:"name"`
-	// Project Name.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The ARN role that authorizes writing to the target Logstore.
+	// The ARN of the role authorized to write to the destination Logstore.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -3776,17 +3768,17 @@ type EtlConfigurationSinkInput interface {
 }
 
 type EtlConfigurationSinkArgs struct {
-	// Write Result Set.
+	// Result datasets to write to.
 	Datasets pulumi.StringArrayInput `pulumi:"datasets"`
-	// The endpoint of the region where the target Project is located.
+	// The endpoint of the region where the destination project resides.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// Destination Logstore Name.
+	// The name of the destination Logstore.
 	Logstore pulumi.StringInput `pulumi:"logstore"`
-	// Output Destination Name.
+	// The name of the output destination.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Project Name.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The ARN role that authorizes writing to the target Logstore.
+	// The ARN of the role authorized to write to the destination Logstore.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -3841,32 +3833,32 @@ func (o EtlConfigurationSinkOutput) ToEtlConfigurationSinkOutputWithContext(ctx 
 	return o
 }
 
-// Write Result Set.
+// Result datasets to write to.
 func (o EtlConfigurationSinkOutput) Datasets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EtlConfigurationSink) []string { return v.Datasets }).(pulumi.StringArrayOutput)
 }
 
-// The endpoint of the region where the target Project is located.
+// The endpoint of the region where the destination project resides.
 func (o EtlConfigurationSinkOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Destination Logstore Name.
+// The name of the destination Logstore.
 func (o EtlConfigurationSinkOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Logstore }).(pulumi.StringOutput)
 }
 
-// Output Destination Name.
+// The name of the output destination.
 func (o EtlConfigurationSinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Project Name.
+// Project name.
 func (o EtlConfigurationSinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfigurationSink) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The ARN role that authorizes writing to the target Logstore.
+// The ARN of the role authorized to write to the destination Logstore.
 func (o EtlConfigurationSinkOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlConfigurationSink) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -5153,17 +5145,22 @@ func (o OssExportSinkConfigurationSinkPtrOutput) TimeZone() pulumi.StringPtrOutp
 }
 
 type ScheduledSqlSchedule struct {
-	// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+	// Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
 	CronExpression *string `pulumi:"cronExpression"`
-	// Delay time.
+	// Delay duration.
 	Delay *int `pulumi:"delay"`
-	// Time interval, such as 5m, 1H.
+	// Time interval, such as 5m or 1h.
 	Interval *string `pulumi:"interval"`
-	// Whether to execute the OSS import task immediately after it is created.
+	// Specifies whether to run the OSS import job immediately after it is created.
 	RunImmediately *bool `pulumi:"runImmediately"`
-	// Time Zone.
+	// Time zone.
 	TimeZone *string `pulumi:"timeZone"`
-	// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+	// The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+	// FixedRate: Checks query and analysis results at fixed intervals.
+	// Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+	// Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+	// Daily: Checks query and analysis results once at a fixed time each day.
+	// Hourly: Checks query and analysis results once every hour.
 	Type *string `pulumi:"type"`
 }
 
@@ -5179,17 +5176,22 @@ type ScheduledSqlScheduleInput interface {
 }
 
 type ScheduledSqlScheduleArgs struct {
-	// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+	// Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
-	// Delay time.
+	// Delay duration.
 	Delay pulumi.IntPtrInput `pulumi:"delay"`
-	// Time interval, such as 5m, 1H.
+	// Time interval, such as 5m or 1h.
 	Interval pulumi.StringPtrInput `pulumi:"interval"`
-	// Whether to execute the OSS import task immediately after it is created.
+	// Specifies whether to run the OSS import job immediately after it is created.
 	RunImmediately pulumi.BoolPtrInput `pulumi:"runImmediately"`
-	// Time Zone.
+	// Time zone.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-	// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+	// The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+	// FixedRate: Checks query and analysis results at fixed intervals.
+	// Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+	// Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+	// Daily: Checks query and analysis results once at a fixed time each day.
+	// Hourly: Checks query and analysis results once every hour.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -5270,32 +5272,37 @@ func (o ScheduledSqlScheduleOutput) ToScheduledSqlSchedulePtrOutputWithContext(c
 	}).(ScheduledSqlSchedulePtrOutput)
 }
 
-// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+// Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
 func (o ScheduledSqlScheduleOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
 }
 
-// Delay time.
+// Delay duration.
 func (o ScheduledSqlScheduleOutput) Delay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlSchedule) *int { return v.Delay }).(pulumi.IntPtrOutput)
 }
 
-// Time interval, such as 5m, 1H.
+// Time interval, such as 5m or 1h.
 func (o ScheduledSqlScheduleOutput) Interval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.Interval }).(pulumi.StringPtrOutput)
 }
 
-// Whether to execute the OSS import task immediately after it is created.
+// Specifies whether to run the OSS import job immediately after it is created.
 func (o ScheduledSqlScheduleOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlSchedule) *bool { return v.RunImmediately }).(pulumi.BoolPtrOutput)
 }
 
-// Time Zone.
+// Time zone.
 func (o ScheduledSqlScheduleOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+// The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+// FixedRate: Checks query and analysis results at fixed intervals.
+// Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+// Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+// Daily: Checks query and analysis results once at a fixed time each day.
+// Hourly: Checks query and analysis results once every hour.
 func (o ScheduledSqlScheduleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5324,7 +5331,7 @@ func (o ScheduledSqlSchedulePtrOutput) Elem() ScheduledSqlScheduleOutput {
 	}).(ScheduledSqlScheduleOutput)
 }
 
-// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+// Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
 func (o ScheduledSqlSchedulePtrOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
 		if v == nil {
@@ -5334,7 +5341,7 @@ func (o ScheduledSqlSchedulePtrOutput) CronExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Delay time.
+// Delay duration.
 func (o ScheduledSqlSchedulePtrOutput) Delay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlSchedule) *int {
 		if v == nil {
@@ -5344,7 +5351,7 @@ func (o ScheduledSqlSchedulePtrOutput) Delay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Time interval, such as 5m, 1H.
+// Time interval, such as 5m or 1h.
 func (o ScheduledSqlSchedulePtrOutput) Interval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
 		if v == nil {
@@ -5354,7 +5361,7 @@ func (o ScheduledSqlSchedulePtrOutput) Interval() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to execute the OSS import task immediately after it is created.
+// Specifies whether to run the OSS import job immediately after it is created.
 func (o ScheduledSqlSchedulePtrOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlSchedule) *bool {
 		if v == nil {
@@ -5364,7 +5371,7 @@ func (o ScheduledSqlSchedulePtrOutput) RunImmediately() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Time Zone.
+// Time zone.
 func (o ScheduledSqlSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
 		if v == nil {
@@ -5374,7 +5381,12 @@ func (o ScheduledSqlSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+// The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+// FixedRate: Checks query and analysis results at fixed intervals.
+// Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+// Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+// Daily: Checks query and analysis results once at a fixed time each day.
+// Hourly: Checks query and analysis results once every hour.
 func (o ScheduledSqlSchedulePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
 		if v == nil {
@@ -5385,39 +5397,39 @@ func (o ScheduledSqlSchedulePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ScheduledSqlScheduledSqlConfiguration struct {
-	// Write Mode.
+	// Write mode.
 	DataFormat *string `pulumi:"dataFormat"`
-	// Target Endpoint.
+	// The destination endpoint.
 	DestEndpoint *string `pulumi:"destEndpoint"`
-	// Target Logstore.
+	// The destination Logstore.
 	DestLogstore *string `pulumi:"destLogstore"`
-	// Target Project.
+	// The destination project.
 	DestProject *string `pulumi:"destProject"`
-	// Write target role ARN.
+	// Destination write role ARN.
 	DestRoleArn *string `pulumi:"destRoleArn"`
-	// Schedule Start Time.
+	// The start time of the schedule.
 	FromTime *int `pulumi:"fromTime"`
-	// SQL time window-start.
+	// SQL time window - start.
 	FromTimeExpr *string `pulumi:"fromTimeExpr"`
-	// Maximum retries.
+	// Maximum number of retries.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// SQL timeout.
 	MaxRunTimeInSeconds *int `pulumi:"maxRunTimeInSeconds"`
 	// Parameter configuration.
 	Parameters map[string]string `pulumi:"parameters"`
-	// Resource Pool.
+	// Resource pool.
 	ResourcePool *string `pulumi:"resourcePool"`
-	// Read role ARN.
+	// Source read role ARN.
 	RoleArn *string `pulumi:"roleArn"`
 	// SQL statement.
 	Script *string `pulumi:"script"`
-	// Source Logstore.
+	// The source Logstore.
 	SourceLogstore *string `pulumi:"sourceLogstore"`
 	// SQL type.
 	SqlType *string `pulumi:"sqlType"`
-	// Time at end of schedule.
+	// Scheduled end time.
 	ToTime *int `pulumi:"toTime"`
-	// SQL time window-end.
+	// End of the SQL time window.
 	ToTimeExpr *string `pulumi:"toTimeExpr"`
 }
 
@@ -5433,39 +5445,39 @@ type ScheduledSqlScheduledSqlConfigurationInput interface {
 }
 
 type ScheduledSqlScheduledSqlConfigurationArgs struct {
-	// Write Mode.
+	// Write mode.
 	DataFormat pulumi.StringPtrInput `pulumi:"dataFormat"`
-	// Target Endpoint.
+	// The destination endpoint.
 	DestEndpoint pulumi.StringPtrInput `pulumi:"destEndpoint"`
-	// Target Logstore.
+	// The destination Logstore.
 	DestLogstore pulumi.StringPtrInput `pulumi:"destLogstore"`
-	// Target Project.
+	// The destination project.
 	DestProject pulumi.StringPtrInput `pulumi:"destProject"`
-	// Write target role ARN.
+	// Destination write role ARN.
 	DestRoleArn pulumi.StringPtrInput `pulumi:"destRoleArn"`
-	// Schedule Start Time.
+	// The start time of the schedule.
 	FromTime pulumi.IntPtrInput `pulumi:"fromTime"`
-	// SQL time window-start.
+	// SQL time window - start.
 	FromTimeExpr pulumi.StringPtrInput `pulumi:"fromTimeExpr"`
-	// Maximum retries.
+	// Maximum number of retries.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// SQL timeout.
 	MaxRunTimeInSeconds pulumi.IntPtrInput `pulumi:"maxRunTimeInSeconds"`
 	// Parameter configuration.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Resource Pool.
+	// Resource pool.
 	ResourcePool pulumi.StringPtrInput `pulumi:"resourcePool"`
-	// Read role ARN.
+	// Source read role ARN.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// SQL statement.
 	Script pulumi.StringPtrInput `pulumi:"script"`
-	// Source Logstore.
+	// The source Logstore.
 	SourceLogstore pulumi.StringPtrInput `pulumi:"sourceLogstore"`
 	// SQL type.
 	SqlType pulumi.StringPtrInput `pulumi:"sqlType"`
-	// Time at end of schedule.
+	// Scheduled end time.
 	ToTime pulumi.IntPtrInput `pulumi:"toTime"`
-	// SQL time window-end.
+	// End of the SQL time window.
 	ToTimeExpr pulumi.StringPtrInput `pulumi:"toTimeExpr"`
 }
 
@@ -5546,42 +5558,42 @@ func (o ScheduledSqlScheduledSqlConfigurationOutput) ToScheduledSqlScheduledSqlC
 	}).(ScheduledSqlScheduledSqlConfigurationPtrOutput)
 }
 
-// Write Mode.
+// Write mode.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DataFormat }).(pulumi.StringPtrOutput)
 }
 
-// Target Endpoint.
+// The destination endpoint.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) DestEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Target Logstore.
+// The destination Logstore.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) DestLogstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestLogstore }).(pulumi.StringPtrOutput)
 }
 
-// Target Project.
+// The destination project.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) DestProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestProject }).(pulumi.StringPtrOutput)
 }
 
-// Write target role ARN.
+// Destination write role ARN.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) DestRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestRoleArn }).(pulumi.StringPtrOutput)
 }
 
-// Schedule Start Time.
+// The start time of the schedule.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) FromTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.FromTime }).(pulumi.IntPtrOutput)
 }
 
-// SQL time window-start.
+// SQL time window - start.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) FromTimeExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.FromTimeExpr }).(pulumi.StringPtrOutput)
 }
 
-// Maximum retries.
+// Maximum number of retries.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -5596,12 +5608,12 @@ func (o ScheduledSqlScheduledSqlConfigurationOutput) Parameters() pulumi.StringM
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// Resource Pool.
+// Resource pool.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) ResourcePool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.ResourcePool }).(pulumi.StringPtrOutput)
 }
 
-// Read role ARN.
+// Source read role ARN.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
@@ -5611,7 +5623,7 @@ func (o ScheduledSqlScheduledSqlConfigurationOutput) Script() pulumi.StringPtrOu
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
 
-// Source Logstore.
+// The source Logstore.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) SourceLogstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.SourceLogstore }).(pulumi.StringPtrOutput)
 }
@@ -5621,12 +5633,12 @@ func (o ScheduledSqlScheduledSqlConfigurationOutput) SqlType() pulumi.StringPtrO
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.SqlType }).(pulumi.StringPtrOutput)
 }
 
-// Time at end of schedule.
+// Scheduled end time.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) ToTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.ToTime }).(pulumi.IntPtrOutput)
 }
 
-// SQL time window-end.
+// End of the SQL time window.
 func (o ScheduledSqlScheduledSqlConfigurationOutput) ToTimeExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.ToTimeExpr }).(pulumi.StringPtrOutput)
 }
@@ -5655,7 +5667,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Elem() ScheduledSqlSched
 	}).(ScheduledSqlScheduledSqlConfigurationOutput)
 }
 
-// Write Mode.
+// Write mode.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5665,7 +5677,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DataFormat() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Target Endpoint.
+// The destination endpoint.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5675,7 +5687,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestEndpoint() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Target Logstore.
+// The destination Logstore.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestLogstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5685,7 +5697,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestLogstore() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Target Project.
+// The destination project.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5695,7 +5707,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestProject() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Write target role ARN.
+// Destination write role ARN.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5705,7 +5717,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestRoleArn() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Schedule Start Time.
+// The start time of the schedule.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) FromTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
 		if v == nil {
@@ -5715,7 +5727,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) FromTime() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// SQL time window-start.
+// SQL time window - start.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) FromTimeExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5725,7 +5737,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) FromTimeExpr() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum retries.
+// Maximum number of retries.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
 		if v == nil {
@@ -5755,7 +5767,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Parameters() pulumi.Stri
 	}).(pulumi.StringMapOutput)
 }
 
-// Resource Pool.
+// Resource pool.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ResourcePool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5765,7 +5777,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ResourcePool() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Read role ARN.
+// Source read role ARN.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5785,7 +5797,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Script() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Source Logstore.
+// The source Logstore.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) SourceLogstore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {
@@ -5805,7 +5817,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) SqlType() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time at end of schedule.
+// Scheduled end time.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
 		if v == nil {
@@ -5815,7 +5827,7 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToTime() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// SQL time window-end.
+// End of the SQL time window.
 func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToTimeExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
 		if v == nil {

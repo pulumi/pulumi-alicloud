@@ -28,11 +28,15 @@ class EtlArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Etl resource.
-        :param pulumi.Input['EtlConfigurationArgs'] configuration: The ETL configuration. See `configuration` below.
-        :param pulumi.Input[_builtins.str] display_name: Data processing task display name.
-        :param pulumi.Input[_builtins.str] job_name: Unique identification of data processing task.
-        :param pulumi.Input[_builtins.str] project: Project Name.
-        :param pulumi.Input[_builtins.str] description: Data Processing Task Description.
+        :param pulumi.Input['EtlConfigurationArgs'] configuration: Detailed configuration of the data processing task.   See `configuration` below.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.
+        :param pulumi.Input[_builtins.str] job_name: The job name. Naming rules are as follows:
+               - Job names must be unique within the same project.
+               - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+               - Must start and end with a lowercase letter or digit.
+               - Must be 2 to 64 characters in length.
+        :param pulumi.Input[_builtins.str] project: Project name.
+        :param pulumi.Input[_builtins.str] description: Description of the data processing task.
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "display_name", display_name)
@@ -45,7 +49,7 @@ class EtlArgs:
     @pulumi.getter
     def configuration(self) -> pulumi.Input['EtlConfigurationArgs']:
         """
-        The ETL configuration. See `configuration` below.
+        Detailed configuration of the data processing task.   See `configuration` below.
         """
         return pulumi.get(self, "configuration")
 
@@ -57,7 +61,7 @@ class EtlArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Data processing task display name.
+        The display name of the data processing task.
         """
         return pulumi.get(self, "display_name")
 
@@ -69,7 +73,11 @@ class EtlArgs:
     @pulumi.getter(name="jobName")
     def job_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Unique identification of data processing task.
+        The job name. Naming rules are as follows:
+        - Job names must be unique within the same project.
+        - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+        - Must start and end with a lowercase letter or digit.
+        - Must be 2 to 64 characters in length.
         """
         return pulumi.get(self, "job_name")
 
@@ -81,7 +89,7 @@ class EtlArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        Project Name.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -93,7 +101,7 @@ class EtlArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data Processing Task Description.
+        Description of the data processing task.
         """
         return pulumi.get(self, "description")
 
@@ -114,13 +122,17 @@ class _EtlState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Etl resources.
-        :param pulumi.Input['EtlConfigurationArgs'] configuration: The ETL configuration. See `configuration` below.
-        :param pulumi.Input[_builtins.int] create_time: The time when the data transformation job was created.
-        :param pulumi.Input[_builtins.str] description: Data Processing Task Description.
-        :param pulumi.Input[_builtins.str] display_name: Data processing task display name.
-        :param pulumi.Input[_builtins.str] job_name: Unique identification of data processing task.
-        :param pulumi.Input[_builtins.str] project: Project Name.
-        :param pulumi.Input[_builtins.str] status: The status of the data transformation job.
+        :param pulumi.Input['EtlConfigurationArgs'] configuration: Detailed configuration of the data processing task.   See `configuration` below.
+        :param pulumi.Input[_builtins.int] create_time: The time when the task was created.
+        :param pulumi.Input[_builtins.str] description: Description of the data processing task.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.
+        :param pulumi.Input[_builtins.str] job_name: The job name. Naming rules are as follows:
+               - Job names must be unique within the same project.
+               - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+               - Must start and end with a lowercase letter or digit.
+               - Must be 2 to 64 characters in length.
+        :param pulumi.Input[_builtins.str] project: Project name.
+        :param pulumi.Input[_builtins.str] status: Task status.
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -141,7 +153,7 @@ class _EtlState:
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['EtlConfigurationArgs']]:
         """
-        The ETL configuration. See `configuration` below.
+        Detailed configuration of the data processing task.   See `configuration` below.
         """
         return pulumi.get(self, "configuration")
 
@@ -153,7 +165,7 @@ class _EtlState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The time when the data transformation job was created.
+        The time when the task was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -165,7 +177,7 @@ class _EtlState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data Processing Task Description.
+        Description of the data processing task.
         """
         return pulumi.get(self, "description")
 
@@ -177,7 +189,7 @@ class _EtlState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data processing task display name.
+        The display name of the data processing task.
         """
         return pulumi.get(self, "display_name")
 
@@ -189,7 +201,11 @@ class _EtlState:
     @pulumi.getter(name="jobName")
     def job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Unique identification of data processing task.
+        The job name. Naming rules are as follows:
+        - Job names must be unique within the same project.
+        - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+        - Must start and end with a lowercase letter or digit.
+        - Must be 2 to 64 characters in length.
         """
         return pulumi.get(self, "job_name")
 
@@ -201,7 +217,7 @@ class _EtlState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Project Name.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -213,7 +229,7 @@ class _EtlState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the data transformation job.
+        Task status.
         """
         return pulumi.get(self, "status")
 
@@ -297,11 +313,15 @@ class Etl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: The ETL configuration. See `configuration` below.
-        :param pulumi.Input[_builtins.str] description: Data Processing Task Description.
-        :param pulumi.Input[_builtins.str] display_name: Data processing task display name.
-        :param pulumi.Input[_builtins.str] job_name: Unique identification of data processing task.
-        :param pulumi.Input[_builtins.str] project: Project Name.
+        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
+        :param pulumi.Input[_builtins.str] description: Description of the data processing task.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.
+        :param pulumi.Input[_builtins.str] job_name: The job name. Naming rules are as follows:
+               - Job names must be unique within the same project.
+               - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+               - Must start and end with a lowercase letter or digit.
+               - Must be 2 to 64 characters in length.
+        :param pulumi.Input[_builtins.str] project: Project name.
         """
         ...
     @overload
@@ -438,13 +458,17 @@ class Etl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: The ETL configuration. See `configuration` below.
-        :param pulumi.Input[_builtins.int] create_time: The time when the data transformation job was created.
-        :param pulumi.Input[_builtins.str] description: Data Processing Task Description.
-        :param pulumi.Input[_builtins.str] display_name: Data processing task display name.
-        :param pulumi.Input[_builtins.str] job_name: Unique identification of data processing task.
-        :param pulumi.Input[_builtins.str] project: Project Name.
-        :param pulumi.Input[_builtins.str] status: The status of the data transformation job.
+        :param pulumi.Input[Union['EtlConfigurationArgs', 'EtlConfigurationArgsDict']] configuration: Detailed configuration of the data processing task.   See `configuration` below.
+        :param pulumi.Input[_builtins.int] create_time: The time when the task was created.
+        :param pulumi.Input[_builtins.str] description: Description of the data processing task.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the data processing task.
+        :param pulumi.Input[_builtins.str] job_name: The job name. Naming rules are as follows:
+               - Job names must be unique within the same project.
+               - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+               - Must start and end with a lowercase letter or digit.
+               - Must be 2 to 64 characters in length.
+        :param pulumi.Input[_builtins.str] project: Project name.
+        :param pulumi.Input[_builtins.str] status: Task status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -463,7 +487,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.EtlConfiguration']:
         """
-        The ETL configuration. See `configuration` below.
+        Detailed configuration of the data processing task.   See `configuration` below.
         """
         return pulumi.get(self, "configuration")
 
@@ -471,7 +495,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:
         """
-        The time when the data transformation job was created.
+        The time when the task was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -479,7 +503,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Data Processing Task Description.
+        Description of the data processing task.
         """
         return pulumi.get(self, "description")
 
@@ -487,7 +511,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Data processing task display name.
+        The display name of the data processing task.
         """
         return pulumi.get(self, "display_name")
 
@@ -495,7 +519,11 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="jobName")
     def job_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique identification of data processing task.
+        The job name. Naming rules are as follows:
+        - Job names must be unique within the same project.
+        - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+        - Must start and end with a lowercase letter or digit.
+        - Must be 2 to 64 characters in length.
         """
         return pulumi.get(self, "job_name")
 
@@ -503,7 +531,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        Project Name.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -511,7 +539,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the data transformation job.
+        Task status.
         """
         return pulumi.get(self, "status")
 

@@ -14,23 +14,21 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class CollectionPolicyPolicyConfig
     {
         /// <summary>
-        /// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+        /// The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
         /// </summary>
         public readonly ImmutableArray<string> InstanceIds;
         /// <summary>
-        /// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+        /// The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
         /// </summary>
         public readonly ImmutableArray<string> Regions;
         /// <summary>
-        /// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+        /// Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
         /// </summary>
         public readonly string ResourceMode;
         /// <summary>
-        /// Resource label, valid if and only if resourceMode is attributeMode.
-        /// 
-        /// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-        /// 
-        /// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+        /// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+        /// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+        /// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceTags;
 

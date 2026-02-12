@@ -1529,6 +1529,20 @@
             "alicloud_cloud_firewall_threat_intelligence_switch": {
                 "current": "alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch"
             },
+            "alicloud_cloud_firewall_user_alarm_config": {
+                "current": "alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig",
+                "fields": {
+                    "alarm_config": {
+                        "maxItemsOne": false
+                    },
+                    "contact_config": {
+                        "maxItemsOne": false
+                    },
+                    "notify_config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_cloud_firewall_vpc_cen_tr_firewall": {
                 "current": "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall"
             },
@@ -3411,6 +3425,14 @@
             "alicloud_ddosbgp_ip": {
                 "current": "alicloud:ddos/bgpIp:BgpIp"
             },
+            "alicloud_ddoscoo_domain_precise_access_rule": {
+                "current": "alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule",
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_ddoscoo_domain_resource": {
                 "current": "alicloud:ddos/domainResource:DomainResource",
                 "fields": {
@@ -3460,6 +3482,30 @@
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_ddoscoo_web_cc_rule": {
+                "current": "alicloud:ddos/cooWebCcRule:CooWebCcRule",
+                "fields": {
+                    "rule_detail": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "condition": {
+                                    "maxItemsOne": false
+                                },
+                                "rate_limit": {
+                                    "maxItemsOne": true
+                                },
+                                "statistics": {
+                                    "maxItemsOne": true
+                                },
+                                "status_code": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -7516,6 +7562,9 @@
                     "global_security_group_list": {
                         "maxItemsOne": false
                     },
+                    "key_ids": {
+                        "maxItemsOne": false
+                    },
                     "parameters": {
                         "maxItemsOne": false
                     },
@@ -7523,6 +7572,9 @@
                         "maxItemsOne": false
                     },
                     "security_ip_list": {
+                        "maxItemsOne": false
+                    },
+                    "zone_infos": {
                         "maxItemsOne": false
                     }
                 }
@@ -7564,6 +7616,9 @@
                     "global_security_group_list": {
                         "maxItemsOne": false
                     },
+                    "key_ids": {
+                        "maxItemsOne": false
+                    },
                     "mongo_list": {
                         "maxItemsOne": false
                     },
@@ -7574,6 +7629,9 @@
                         "maxItemsOne": false
                     },
                     "shard_list": {
+                        "maxItemsOne": false
+                    },
+                    "zone_infos": {
                         "maxItemsOne": false
                     }
                 }
@@ -8104,6 +8162,9 @@
             "alicloud_oss_bucket_acl": {
                 "current": "alicloud:oss/bucketAcl:BucketAcl"
             },
+            "alicloud_oss_bucket_archive_direct_read": {
+                "current": "alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead"
+            },
             "alicloud_oss_bucket_cname": {
                 "current": "alicloud:oss/bucketCname:BucketCname",
                 "fields": {
@@ -8172,6 +8233,28 @@
             "alicloud_oss_bucket_object": {
                 "current": "alicloud:oss/bucketObject:BucketObject"
             },
+            "alicloud_oss_bucket_overwrite_config": {
+                "current": "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig",
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "principals": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "principal": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_oss_bucket_policy": {
                 "current": "alicloud:oss/bucketPolicy:BucketPolicy"
             },
@@ -8228,6 +8311,38 @@
             },
             "alicloud_oss_bucket_request_payment": {
                 "current": "alicloud:oss/bucketRequestPayment:BucketRequestPayment"
+            },
+            "alicloud_oss_bucket_response_header": {
+                "current": "alicloud:oss/bucketResponseHeader:BucketResponseHeader",
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "filters": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "operation": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "hide_headers": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "header": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_oss_bucket_server_side_encryption": {
                 "current": "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption"
@@ -8536,6 +8651,9 @@
                         }
                     },
                     "db_revision_version_list": {
+                        "maxItemsOne": false
+                    },
+                    "global_security_group_list": {
                         "maxItemsOne": false
                     },
                     "parameters": {
@@ -19852,6 +19970,9 @@
                                 "mongos": {
                                     "maxItemsOne": false
                                 },
+                                "restore_ranges": {
+                                    "maxItemsOne": false
+                                },
                                 "shards": {
                                     "maxItemsOne": false
                                 }
@@ -19890,6 +20011,9 @@
                         "elem": {
                             "fields": {
                                 "mongos": {
+                                    "maxItemsOne": false
+                                },
+                                "restore_ranges": {
                                     "maxItemsOne": false
                                 },
                                 "shards": {

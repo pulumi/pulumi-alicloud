@@ -26,103 +26,115 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("Instance"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(example.Zones[0].Id),
-//				CpuCoreCount:     pulumi.IntRef(1),
-//				MemorySize:       pulumi.Float64Ref(2),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String("terraform-example"),
-//				Description: pulumi.String("New security group"),
-//				VpcId:       exampleNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
-//				Owners:    pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(example.Zones[0].Id),
-//				InstanceName:     pulumi.String("terraform-example"),
-//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
-//				},
-//				VswitchId: exampleSwitch.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apigateway.NewVpcAccess(ctx, "example", &apigateway.VpcAccessArgs{
-//				Name:       pulumi.String("terraform-example"),
-//				VpcId:      exampleNetwork.ID(),
-//				InstanceId: exampleInstance.ID(),
-//				Port:       pulumi.Int(8080),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+// ImageId: pulumi.StringRef(defaultGetImages.Images[0].Id),
+// SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// InstanceName: pulumi.String(name),
+// Description: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = apigateway.NewVpcAccess(ctx, "default", &apigateway.VpcAccessArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// InstanceId: defaultInstance.ID(),
+// Port: pulumi.Int(8080),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //
-// Api gateway app can be imported using the id, e.g.
+// Api Gateway Vpc Access can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+// $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>
 // ```
 type VpcAccess struct {
 	pulumi.CustomResourceState
 
-	// ID of the instance in VPC (ECS/Server Load Balance).
+	// The ID of an ECS or SLB instance in the VPC.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The name of the vpc authorization.
+	// The name of the authorization. The name must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// ID of the port corresponding to the instance.
+	// The port number that corresponds to the instance.
 	Port pulumi.IntOutput `pulumi:"port"`
-	// The vpc id of the vpc authorization.
+	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -165,24 +177,24 @@ func GetVpcAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcAccess resources.
 type vpcAccessState struct {
-	// ID of the instance in VPC (ECS/Server Load Balance).
+	// The ID of an ECS or SLB instance in the VPC.
 	InstanceId *string `pulumi:"instanceId"`
-	// The name of the vpc authorization.
+	// The name of the authorization. The name must be unique.
 	Name *string `pulumi:"name"`
-	// ID of the port corresponding to the instance.
+	// The port number that corresponds to the instance.
 	Port *int `pulumi:"port"`
-	// The vpc id of the vpc authorization.
+	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type VpcAccessState struct {
-	// ID of the instance in VPC (ECS/Server Load Balance).
+	// The ID of an ECS or SLB instance in the VPC.
 	InstanceId pulumi.StringPtrInput
-	// The name of the vpc authorization.
+	// The name of the authorization. The name must be unique.
 	Name pulumi.StringPtrInput
-	// ID of the port corresponding to the instance.
+	// The port number that corresponds to the instance.
 	Port pulumi.IntPtrInput
-	// The vpc id of the vpc authorization.
+	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -191,25 +203,25 @@ func (VpcAccessState) ElementType() reflect.Type {
 }
 
 type vpcAccessArgs struct {
-	// ID of the instance in VPC (ECS/Server Load Balance).
+	// The ID of an ECS or SLB instance in the VPC.
 	InstanceId string `pulumi:"instanceId"`
-	// The name of the vpc authorization.
+	// The name of the authorization. The name must be unique.
 	Name *string `pulumi:"name"`
-	// ID of the port corresponding to the instance.
+	// The port number that corresponds to the instance.
 	Port int `pulumi:"port"`
-	// The vpc id of the vpc authorization.
+	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a VpcAccess resource.
 type VpcAccessArgs struct {
-	// ID of the instance in VPC (ECS/Server Load Balance).
+	// The ID of an ECS or SLB instance in the VPC.
 	InstanceId pulumi.StringInput
-	// The name of the vpc authorization.
+	// The name of the authorization. The name must be unique.
 	Name pulumi.StringPtrInput
-	// ID of the port corresponding to the instance.
+	// The port number that corresponds to the instance.
 	Port pulumi.IntInput
-	// The vpc id of the vpc authorization.
+	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringInput
 }
 
@@ -300,22 +312,22 @@ func (o VpcAccessOutput) ToVpcAccessOutputWithContext(ctx context.Context) VpcAc
 	return o
 }
 
-// ID of the instance in VPC (ECS/Server Load Balance).
+// The ID of an ECS or SLB instance in the VPC.
 func (o VpcAccessOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The name of the vpc authorization.
+// The name of the authorization. The name must be unique.
 func (o VpcAccessOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// ID of the port corresponding to the instance.
+// The port number that corresponds to the instance.
 func (o VpcAccessOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcAccess) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
-// The vpc id of the vpc authorization.
+// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 func (o VpcAccessOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -24,17 +24,20 @@ func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ..
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesArgs struct {
 	AvailabilityZone *string           `pulumi:"availabilityZone"`
+	EnableDetails    *bool             `pulumi:"enableDetails"`
 	Ids              []string          `pulumi:"ids"`
 	InstanceClass    *string           `pulumi:"instanceClass"`
 	InstanceType     *string           `pulumi:"instanceType"`
 	NameRegex        *string           `pulumi:"nameRegex"`
 	OutputFile       *string           `pulumi:"outputFile"`
+	Status           *string           `pulumi:"status"`
 	Tags             map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getMongoInstances.
 type GetMongoInstancesResult struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                      `pulumi:"id"`
 	Ids           []string                    `pulumi:"ids"`
@@ -44,6 +47,7 @@ type GetMongoInstancesResult struct {
 	NameRegex     *string                     `pulumi:"nameRegex"`
 	Names         []string                    `pulumi:"names"`
 	OutputFile    *string                     `pulumi:"outputFile"`
+	Status        *string                     `pulumi:"status"`
 	Tags          map[string]string           `pulumi:"tags"`
 }
 
@@ -59,11 +63,13 @@ func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputAr
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesOutputArgs struct {
 	AvailabilityZone pulumi.StringPtrInput   `pulumi:"availabilityZone"`
+	EnableDetails    pulumi.BoolPtrInput     `pulumi:"enableDetails"`
 	Ids              pulumi.StringArrayInput `pulumi:"ids"`
 	InstanceClass    pulumi.StringPtrInput   `pulumi:"instanceClass"`
 	InstanceType     pulumi.StringPtrInput   `pulumi:"instanceType"`
 	NameRegex        pulumi.StringPtrInput   `pulumi:"nameRegex"`
 	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Status           pulumi.StringPtrInput   `pulumi:"status"`
 	Tags             pulumi.StringMapInput   `pulumi:"tags"`
 }
 
@@ -88,6 +94,10 @@ func (o GetMongoInstancesResultOutput) ToGetMongoInstancesResultOutputWithContex
 
 func (o GetMongoInstancesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMongoInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -121,6 +131,10 @@ func (o GetMongoInstancesResultOutput) Names() pulumi.StringArrayOutput {
 
 func (o GetMongoInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMongoInstancesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func (o GetMongoInstancesResultOutput) Tags() pulumi.StringMapOutput {

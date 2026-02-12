@@ -20,17 +20,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a SLS Collection Policy resource.
+ * Provides a Log Service (SLS) Collection Policy resource.
  * 
  * Orchestration policies for cloud product log collection.
  * 
- * For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
+ * For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
  * 
  * &gt; **NOTE:** Available since v1.232.0.
  * 
  * ## Example Usage
  * 
- * Enable real-time log query for all of OSS buckets.
+ * Basic Usage
  * 
  * <pre>
  * {@code
@@ -263,80 +263,80 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SLS Collection Policy can be imported using the id, e.g.
+ * Log Service (SLS) Collection Policy can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example &lt;id&gt;
+ * $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example &lt;policy_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:sls/collectionPolicy:CollectionPolicy")
 public class CollectionPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Centralized transfer configuration. See `centralizeConfig` below.
+     * Centralized forwarding configuration. See `centralizeConfig` below.
      * 
      */
     @Export(name="centralizeConfig", refs={CollectionPolicyCentralizeConfig.class}, tree="[0]")
     private Output<CollectionPolicyCentralizeConfig> centralizeConfig;
 
     /**
-     * @return Centralized transfer configuration. See `centralizeConfig` below.
+     * @return Centralized forwarding configuration. See `centralizeConfig` below.
      * 
      */
     public Output<CollectionPolicyCentralizeConfig> centralizeConfig() {
         return this.centralizeConfig;
     }
     /**
-     * Whether to enable centralized Conversion. The default value is false.
+     * Specifies whether to enable centralized forwarding. Default value: false.
      * 
      */
     @Export(name="centralizeEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> centralizeEnabled;
 
     /**
-     * @return Whether to enable centralized Conversion. The default value is false.
+     * @return Specifies whether to enable centralized forwarding. Default value: false.
      * 
      */
     public Output<Optional<Boolean>> centralizeEnabled() {
         return Codegen.optional(this.centralizeEnabled);
     }
     /**
-     * Log type encoding.
+     * Log type code.
      * 
      */
     @Export(name="dataCode", refs={String.class}, tree="[0]")
     private Output<String> dataCode;
 
     /**
-     * @return Log type encoding.
+     * @return Log type code.
      * 
      */
     public Output<String> dataCode() {
         return this.dataCode;
     }
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      * 
      */
     @Export(name="dataConfig", refs={CollectionPolicyDataConfig.class}, tree="[0]")
     private Output<CollectionPolicyDataConfig> dataConfig;
 
     /**
-     * @return The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * @return This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      * 
      */
     public Output<CollectionPolicyDataConfig> dataConfig() {
         return this.dataConfig;
     }
     /**
-     * Whether to open.
+     * Whether enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether to open.
+     * @return Whether enabled.
      * 
      */
     public Output<Boolean> enabled() {
@@ -357,14 +357,20 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
         return this.policyConfig;
     }
     /**
-     * The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
-     * @return The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * @return The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      * 
      */
     public Output<String> policyName() {
@@ -385,14 +391,14 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
         return this.productCode;
     }
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     @Export(name="resourceDirectory", refs={CollectionPolicyResourceDirectory.class}, tree="[0]")
     private Output<CollectionPolicyResourceDirectory> resourceDirectory;
 
     /**
-     * @return For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * @return Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     public Output<CollectionPolicyResourceDirectory> resourceDirectory() {

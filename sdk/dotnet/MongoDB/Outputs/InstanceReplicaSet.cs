@@ -22,7 +22,8 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? ConnectionPort;
         /// <summary>
-        /// The network type of the instance. Valid values:`Classic`, `VPC`.
+        /// The network type of the instance. Valid values: `VPC`.
+        /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         public readonly string? NetworkType;
         /// <summary>

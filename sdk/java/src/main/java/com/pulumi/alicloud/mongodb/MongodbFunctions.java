@@ -489,10 +489,13 @@ public final class MongodbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:mongodb/getAuditPolicies:getAuditPolicies", TypeShape.of(GetAuditPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -502,6 +505,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -516,13 +527,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -533,10 +572,13 @@ public final class MongodbFunctions {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -546,6 +588,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -560,13 +610,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -577,10 +655,13 @@ public final class MongodbFunctions {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -590,6 +671,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -604,13 +693,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -621,10 +738,13 @@ public final class MongodbFunctions {
         return getInstances(args, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -634,6 +754,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -648,13 +776,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -665,10 +821,13 @@ public final class MongodbFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -678,6 +837,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -692,13 +859,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -709,10 +904,13 @@ public final class MongodbFunctions {
         return Deployment.getInstance().invoke("alicloud:mongodb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -722,6 +920,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -736,13 +942,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -753,10 +987,13 @@ public final class MongodbFunctions {
         return Deployment.getInstance().invoke("alicloud:mongodb/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-     * Filters support regular expression for the instance name, engine or instance type.
+     * This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.13.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -766,6 +1003,14 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+     * import com.pulumi.alicloud.mongodb.Instance;
+     * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -780,13 +1025,41 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("dds-.+\\d+")
-     *             .instanceType("replicate")
-     *             .instanceClass("dds.mongo.mid")
-     *             .availabilityZone("eu-central-1a")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("default-NODELETING")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .engineVersion("4.4")
+     *             .dbInstanceClass("mdb.shard.2x.xlarge.d")
+     *             .dbInstanceStorage(20)
+     *             .vswitchId(defaultGetSwitches.ids()[0])
+     *             .name(name)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Instance")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = MongodbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }

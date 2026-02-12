@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class EtlConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The beginning of the time range for transformation.
+        /// The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
         /// </summary>
         [Input("fromTime", required: true)]
         public Input<int> FromTime { get; set; } = null!;
 
         /// <summary>
-        /// Data processing syntax type.
+        /// The syntax type used for data transformation.
         /// </summary>
         [Input("lang", required: true)]
         public Input<string> Lang { get; set; } = null!;
 
         /// <summary>
-        /// Destination Logstore Name.
+        /// The name of the destination Logstore.
         /// </summary>
         [Input("logstore", required: true)]
         public Input<string> Logstore { get; set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         }
 
         /// <summary>
-        /// The ARN role that authorizes writing to the target Logstore.
+        /// The ARN of the role authorized to write to the destination Logstore.
         /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<Inputs.EtlConfigurationSinkArgs>? _sinks;
 
         /// <summary>
-        /// Processing result output target list See `Sink` below.
+        /// List of output destinations for processing results.   See `Sink` below.
         /// </summary>
         public InputList<Inputs.EtlConfigurationSinkArgs> Sinks
         {
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         }
 
         /// <summary>
-        /// The end of the time range for transformation.
+        /// End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
         /// </summary>
         [Input("toTime", required: true)]
         public Input<int> ToTime { get; set; } = null!;

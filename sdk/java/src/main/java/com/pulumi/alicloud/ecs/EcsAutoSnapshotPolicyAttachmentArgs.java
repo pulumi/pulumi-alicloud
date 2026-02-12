@@ -15,14 +15,14 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
     public static final EcsAutoSnapshotPolicyAttachmentArgs Empty = new EcsAutoSnapshotPolicyAttachmentArgs();
 
     /**
-     * The auto snapshot policy id.
+     * The ID of the automatic snapshot policy that is applied to the cloud disk.
      * 
      */
     @Import(name="autoSnapshotPolicyId", required=true)
     private Output<String> autoSnapshotPolicyId;
 
     /**
-     * @return The auto snapshot policy id.
+     * @return The ID of the automatic snapshot policy that is applied to the cloud disk.
      * 
      */
     public Output<String> autoSnapshotPolicyId() {
@@ -30,14 +30,14 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
     }
 
     /**
-     * The disk id.
+     * The ID of the disk.
      * 
      */
     @Import(name="diskId", required=true)
     private Output<String> diskId;
 
     /**
-     * @return The disk id.
+     * @return The ID of the disk.
      * 
      */
     public Output<String> diskId() {
@@ -70,7 +70,7 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param autoSnapshotPolicyId The auto snapshot policy id.
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy that is applied to the cloud disk.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param autoSnapshotPolicyId The auto snapshot policy id.
+         * @param autoSnapshotPolicyId The ID of the automatic snapshot policy that is applied to the cloud disk.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param diskId The disk id.
+         * @param diskId The ID of the disk.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class EcsAutoSnapshotPolicyAttachmentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param diskId The disk id.
+         * @param diskId The ID of the disk.
          * 
          * @return builder
          * 

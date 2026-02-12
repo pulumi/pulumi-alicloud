@@ -51,10 +51,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.nas.AccessRule;
  * import com.pulumi.alicloud.nas.AccessRuleArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroup;
- * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsKeyPair;
+ * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.nas.MountTarget;
  * import com.pulumi.alicloud.nas.MountTargetArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ehpc.ClusterV2;
  * import com.pulumi.alicloud.ehpc.ClusterV2Args;
  * import com.pulumi.alicloud.ehpc.inputs.ClusterV2ClusterCredentialsArgs;
@@ -120,9 +122,8 @@ import javax.annotation.Nullable;
  *             .sourceCidrIp("10.0.0.0/24")
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
- *             .vpcId(example.id())
- *             .securityGroupType("normal")
+ *         var exampleEcsKeyPair = new EcsKeyPair("exampleEcsKeyPair", EcsKeyPairArgs.builder()
+ *             .keyPairName(name)
  *             .build());
  * 
  *         var exampleMountTarget = new MountTarget("exampleMountTarget", MountTargetArgs.builder()
@@ -133,17 +134,18 @@ import javax.annotation.Nullable;
  *             .fileSystemId(exampleFileSystem.id())
  *             .build());
  * 
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(example.id())
+ *             .securityGroupType("normal")
+ *             .build());
+ * 
  *         var default_ = new ClusterV2("default", ClusterV2Args.builder()
  *             .clusterCredentials(ClusterV2ClusterCredentialsArgs.builder()
- *                 .password("aliHPC123")
+ *                 .keyPairName(exampleEcsKeyPair.id())
  *                 .build())
- *             .clusterVpcId(example.id())
- *             .clusterCategory("Standard")
  *             .clusterMode("Integrated")
- *             .securityGroupId(exampleSecurityGroup.id())
- *             .clusterName("minimal-example-cluster")
+ *             .clusterVpcId(example.id())
  *             .deletionProtection(true)
- *             .clientVersion("2.0.47")
  *             .sharedStorages(            
  *                 ClusterV2SharedStorageArgs.builder()
  *                     .mountDirectory("/home")
@@ -154,24 +156,28 @@ import javax.annotation.Nullable;
  *                     .mountOptions("-t nfs -o vers=3,nolock,proto=tcp,noresvport")
  *                     .build(),
  *                 ClusterV2SharedStorageArgs.builder()
- *                     .mountDirectory("/opt")
  *                     .nasDirectory("/")
  *                     .mountTargetDomain(exampleMountTarget.mountTargetDomain())
  *                     .protocolType("NFS")
  *                     .fileSystemId(exampleFileSystem.id())
  *                     .mountOptions("-t nfs -o vers=3,nolock,proto=tcp,noresvport")
+ *                     .mountDirectory("/opt")
  *                     .build(),
  *                 ClusterV2SharedStorageArgs.builder()
+ *                     .mountOptions("-t nfs -o vers=3,nolock,proto=tcp,noresvport")
  *                     .mountDirectory("/ehpcdata")
  *                     .nasDirectory("/")
  *                     .mountTargetDomain(exampleMountTarget.mountTargetDomain())
  *                     .protocolType("NFS")
  *                     .fileSystemId(exampleFileSystem.id())
- *                     .mountOptions("-t nfs -o vers=3,nolock,proto=tcp,noresvport")
  *                     .build())
  *             .clusterVswitchId(exampleSwitch.id())
+ *             .clusterCategory("Standard")
+ *             .securityGroupId(exampleSecurityGroup.id())
+ *             .clusterName(name)
  *             .manager(ClusterV2ManagerArgs.builder()
  *                 .managerNode(ClusterV2ManagerManagerNodeArgs.builder()
+ *                     .spotStrategy("NoSpot")
  *                     .systemDisk(ClusterV2ManagerManagerNodeSystemDiskArgs.builder()
  *                         .category("cloud_essd")
  *                         .size(40)
@@ -180,9 +186,7 @@ import javax.annotation.Nullable;
  *                     .enableHt(true)
  *                     .instanceChargeType("PostPaid")
  *                     .imageId("centos_7_6_x64_20G_alibase_20211130.vhd")
- *                     .spotPriceLimit(0.0)
  *                     .instanceType("ecs.c6.xlarge")
- *                     .spotStrategy("NoSpot")
  *                     .build())
  *                 .scheduler(ClusterV2ManagerSchedulerArgs.builder()
  *                     .type("SLURM")

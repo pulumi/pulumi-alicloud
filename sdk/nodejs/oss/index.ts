@@ -30,6 +30,11 @@ export type BucketAcl = import("./bucketAcl").BucketAcl;
 export const BucketAcl: typeof import("./bucketAcl").BucketAcl = null as any;
 utilities.lazyLoad(exports, ["BucketAcl"], () => require("./bucketAcl"));
 
+export { BucketArchiveDirectReadArgs, BucketArchiveDirectReadState } from "./bucketArchiveDirectRead";
+export type BucketArchiveDirectRead = import("./bucketArchiveDirectRead").BucketArchiveDirectRead;
+export const BucketArchiveDirectRead: typeof import("./bucketArchiveDirectRead").BucketArchiveDirectRead = null as any;
+utilities.lazyLoad(exports, ["BucketArchiveDirectRead"], () => require("./bucketArchiveDirectRead"));
+
 export { BucketCnameArgs, BucketCnameState } from "./bucketCname";
 export type BucketCname = import("./bucketCname").BucketCname;
 export const BucketCname: typeof import("./bucketCname").BucketCname = null as any;
@@ -70,6 +75,11 @@ export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
 utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
 
+export { BucketOverwriteConfigArgs, BucketOverwriteConfigState } from "./bucketOverwriteConfig";
+export type BucketOverwriteConfig = import("./bucketOverwriteConfig").BucketOverwriteConfig;
+export const BucketOverwriteConfig: typeof import("./bucketOverwriteConfig").BucketOverwriteConfig = null as any;
+utilities.lazyLoad(exports, ["BucketOverwriteConfig"], () => require("./bucketOverwriteConfig"));
+
 export { BucketPolicyArgs, BucketPolicyState } from "./bucketPolicy";
 export type BucketPolicy = import("./bucketPolicy").BucketPolicy;
 export const BucketPolicy: typeof import("./bucketPolicy").BucketPolicy = null as any;
@@ -94,6 +104,11 @@ export { BucketRequestPaymentArgs, BucketRequestPaymentState } from "./bucketReq
 export type BucketRequestPayment = import("./bucketRequestPayment").BucketRequestPayment;
 export const BucketRequestPayment: typeof import("./bucketRequestPayment").BucketRequestPayment = null as any;
 utilities.lazyLoad(exports, ["BucketRequestPayment"], () => require("./bucketRequestPayment"));
+
+export { BucketResponseHeaderArgs, BucketResponseHeaderState } from "./bucketResponseHeader";
+export type BucketResponseHeader = import("./bucketResponseHeader").BucketResponseHeader;
+export const BucketResponseHeader: typeof import("./bucketResponseHeader").BucketResponseHeader = null as any;
+utilities.lazyLoad(exports, ["BucketResponseHeader"], () => require("./bucketResponseHeader"));
 
 export { BucketServerSideEncryptionArgs, BucketServerSideEncryptionState } from "./bucketServerSideEncryption";
 export type BucketServerSideEncryption = import("./bucketServerSideEncryption").BucketServerSideEncryption;
@@ -175,6 +190,8 @@ const _module = {
                 return new BucketAccessMonitor(name, <any>undefined, { urn })
             case "alicloud:oss/bucketAcl:BucketAcl":
                 return new BucketAcl(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead":
+                return new BucketArchiveDirectRead(name, <any>undefined, { urn })
             case "alicloud:oss/bucketCname:BucketCname":
                 return new BucketCname(name, <any>undefined, { urn })
             case "alicloud:oss/bucketCnameToken:BucketCnameToken":
@@ -191,6 +208,8 @@ const _module = {
                 return new BucketMetaQuery(name, <any>undefined, { urn })
             case "alicloud:oss/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig":
+                return new BucketOverwriteConfig(name, <any>undefined, { urn })
             case "alicloud:oss/bucketPolicy:BucketPolicy":
                 return new BucketPolicy(name, <any>undefined, { urn })
             case "alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock":
@@ -201,6 +220,8 @@ const _module = {
                 return new BucketReplication(name, <any>undefined, { urn })
             case "alicloud:oss/bucketRequestPayment:BucketRequestPayment":
                 return new BucketRequestPayment(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketResponseHeader:BucketResponseHeader":
+                return new BucketResponseHeader(name, <any>undefined, { urn })
             case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
                 return new BucketServerSideEncryption(name, <any>undefined, { urn })
             case "alicloud:oss/bucketStyle:BucketStyle":
@@ -225,6 +246,7 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/accountPublicAccessBlock"
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAccessMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAcl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketArchiveDirectRead", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCname", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCnameToken", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCors", _module)
@@ -233,11 +255,13 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _modu
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketLogging", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketMetaQuery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketOverwriteConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPublicAccessBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReferer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketRequestPayment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketResponseHeader", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketServerSideEncryption", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketStyle", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketTransferAcceleration", _module)

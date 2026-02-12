@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sls
 {
     /// <summary>
-    /// Provides a SLS Scheduled SQL resource. Scheduled SQL task.
+    /// Provides a Log Service (SLS) Scheduled Sql resource.
     /// 
-    /// For information about SLS Scheduled SQL and how to use it, see [What is Scheduled SQL](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
+    /// Scheduled SQL task.
+    /// 
+    /// For information about Log Service (SLS) Scheduled Sql and how to use it, see [What is Scheduled Sql](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
     /// 
     /// &gt; **NOTE:** Available since v1.224.0.
     /// 
@@ -93,7 +95,7 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// ## Import
     /// 
-    /// SLS Scheduled SQL can be imported using the id, e.g.
+    /// Log Service (SLS) Scheduled Sql can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:sls/scheduledSql:ScheduledSql example &lt;project&gt;:&lt;scheduled_sql_name&gt;
@@ -103,40 +105,50 @@ namespace Pulumi.AliCloud.Sls
     public partial class ScheduledSql : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Task Description.
+        /// Job description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Task Display Name.
+        /// Task display name.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Log project.
+        /// A short description of struct.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `Schedule` below.
+        /// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `Schedule` below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.ScheduledSqlSchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Task Configuration. See `ScheduledSqlConfiguration` below.
+        /// Task configuration. See `ScheduledSqlConfiguration` below.
         /// </summary>
         [Output("scheduledSqlConfiguration")]
         public Output<Outputs.ScheduledSqlScheduledSqlConfiguration> ScheduledSqlConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Timed SQL name.
+        /// The job name. The naming rules are as follows:
+        /// - Job names must be unique within the same project.
+        /// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - The name must start and end with a lowercase letter or digit.
+        /// - The length must be between 2 and 64 characters.
         /// </summary>
         [Output("scheduledSqlName")]
         public Output<string> ScheduledSqlName { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the scheduled SQL job.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -185,40 +197,50 @@ namespace Pulumi.AliCloud.Sls
     public sealed class ScheduledSqlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Task Description.
+        /// Job description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Task Display Name.
+        /// Task display name.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Log project.
+        /// A short description of struct.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `Schedule` below.
+        /// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `Schedule` below.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.ScheduledSqlScheduleArgs> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Task Configuration. See `ScheduledSqlConfiguration` below.
+        /// Task configuration. See `ScheduledSqlConfiguration` below.
         /// </summary>
         [Input("scheduledSqlConfiguration", required: true)]
         public Input<Inputs.ScheduledSqlScheduledSqlConfigurationArgs> ScheduledSqlConfiguration { get; set; } = null!;
 
         /// <summary>
-        /// Timed SQL name.
+        /// The job name. The naming rules are as follows:
+        /// - Job names must be unique within the same project.
+        /// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - The name must start and end with a lowercase letter or digit.
+        /// - The length must be between 2 and 64 characters.
         /// </summary>
         [Input("scheduledSqlName", required: true)]
         public Input<string> ScheduledSqlName { get; set; } = null!;
+
+        /// <summary>
+        /// The status of the scheduled SQL job.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public ScheduledSqlArgs()
         {
@@ -229,40 +251,50 @@ namespace Pulumi.AliCloud.Sls
     public sealed class ScheduledSqlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Task Description.
+        /// Job description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Task Display Name.
+        /// Task display name.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Log project.
+        /// A short description of struct.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `Schedule` below.
+        /// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `Schedule` below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ScheduledSqlScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Task Configuration. See `ScheduledSqlConfiguration` below.
+        /// Task configuration. See `ScheduledSqlConfiguration` below.
         /// </summary>
         [Input("scheduledSqlConfiguration")]
         public Input<Inputs.ScheduledSqlScheduledSqlConfigurationGetArgs>? ScheduledSqlConfiguration { get; set; }
 
         /// <summary>
-        /// Timed SQL name.
+        /// The job name. The naming rules are as follows:
+        /// - Job names must be unique within the same project.
+        /// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        /// - The name must start and end with a lowercase letter or digit.
+        /// - The length must be between 2 and 64 characters.
         /// </summary>
         [Input("scheduledSqlName")]
         public Input<string>? ScheduledSqlName { get; set; }
+
+        /// <summary>
+        /// The status of the scheduled SQL job.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public ScheduledSqlState()
         {
