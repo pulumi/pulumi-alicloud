@@ -13838,19 +13838,19 @@ func (o GetHpcClustersClusterArrayOutput) Index(i pulumi.IntInput) GetHpcCluster
 }
 
 type GetImagesImage struct {
-	// The image architecture. Valid values: `i386` and `x8664`.
+	// The image architecture. Valid values: `i386`, `x8664`, `arm64`.
 	Architecture string `pulumi:"architecture"`
-	// Time of creation.
+	// The creation time.
 	CreationTime string `pulumi:"creationTime"`
-	// Description of the image.
+	// The description of the image.
 	Description string `pulumi:"description"`
-	// Description of the system with disks and snapshots under the image.
+	// A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []GetImagesImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
-	// ID of the image.
+	// The ID of the image.
 	Id string `pulumi:"id"`
 	// The ID of the image.
 	ImageId string `pulumi:"imageId"`
-	// Alias of the image owner.
+	// The alias of the image owner.
 	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
 	// Version of the image.
 	ImageVersion string `pulumi:"imageVersion"`
@@ -13861,27 +13861,27 @@ type GetImagesImage struct {
 	// Specifies whether the image can be used on I/O optimized instances.
 	IsSupportIoOptimized bool   `pulumi:"isSupportIoOptimized"`
 	Name                 string `pulumi:"name"`
-	// Display Chinese name of the OS.
+	// The display Chinese name of the OS.
 	OsName string `pulumi:"osName"`
-	// Display English name of the OS.
+	// The english name of the OS.
 	OsNameEn string `pulumi:"osNameEn"`
 	// The operating system type of the image. Valid values: `windows` and `linux`.
 	OsType   string `pulumi:"osType"`
 	Platform string `pulumi:"platform"`
-	// Product code of the image on the image market.
+	// The product code of the image on the image market.
 	ProductCode string `pulumi:"productCode"`
 	// Progress of image creation, presented in percentages.
 	Progress string `pulumi:"progress"`
-	// Size of the created disk.
+	// The size of the created disk.
 	Size  int    `pulumi:"size"`
 	State string `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-	// * `Creating`: The image is being created.
-	// * `Waiting`: The image is waiting to be processed.
-	// * `Available`: The image is available.
-	// * `UnAvailable`: The image is unavailable.
-	// * `CreateFailed`: The image failed to be created.
-	// * `Deprecated`: The image is discontinued.
+	// - `Creating`: The image is being created.
+	// - `Waiting`: The image is waiting to be processed.
+	// - `Available`: The image is available.
+	// - `UnAvailable`: The image is unavailable.
+	// - `CreateFailed`: The image failed to be created.
+	// - `Deprecated`: The image is discontinued.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -13901,19 +13901,19 @@ type GetImagesImageInput interface {
 }
 
 type GetImagesImageArgs struct {
-	// The image architecture. Valid values: `i386` and `x8664`.
+	// The image architecture. Valid values: `i386`, `x8664`, `arm64`.
 	Architecture pulumi.StringInput `pulumi:"architecture"`
-	// Time of creation.
+	// The creation time.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// Description of the image.
+	// The description of the image.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Description of the system with disks and snapshots under the image.
+	// A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings GetImagesImageDiskDeviceMappingArrayInput `pulumi:"diskDeviceMappings"`
-	// ID of the image.
+	// The ID of the image.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the image.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// Alias of the image owner.
+	// The alias of the image owner.
 	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
 	// Version of the image.
 	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
@@ -13924,27 +13924,27 @@ type GetImagesImageArgs struct {
 	// Specifies whether the image can be used on I/O optimized instances.
 	IsSupportIoOptimized pulumi.BoolInput   `pulumi:"isSupportIoOptimized"`
 	Name                 pulumi.StringInput `pulumi:"name"`
-	// Display Chinese name of the OS.
+	// The display Chinese name of the OS.
 	OsName pulumi.StringInput `pulumi:"osName"`
-	// Display English name of the OS.
+	// The english name of the OS.
 	OsNameEn pulumi.StringInput `pulumi:"osNameEn"`
 	// The operating system type of the image. Valid values: `windows` and `linux`.
 	OsType   pulumi.StringInput `pulumi:"osType"`
 	Platform pulumi.StringInput `pulumi:"platform"`
-	// Product code of the image on the image market.
+	// The product code of the image on the image market.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// Progress of image creation, presented in percentages.
 	Progress pulumi.StringInput `pulumi:"progress"`
-	// Size of the created disk.
+	// The size of the created disk.
 	Size  pulumi.IntInput    `pulumi:"size"`
 	State pulumi.StringInput `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-	// * `Creating`: The image is being created.
-	// * `Waiting`: The image is waiting to be processed.
-	// * `Available`: The image is available.
-	// * `UnAvailable`: The image is unavailable.
-	// * `CreateFailed`: The image failed to be created.
-	// * `Deprecated`: The image is discontinued.
+	// - `Creating`: The image is being created.
+	// - `Waiting`: The image is waiting to be processed.
+	// - `Available`: The image is available.
+	// - `UnAvailable`: The image is unavailable.
+	// - `CreateFailed`: The image failed to be created.
+	// - `Deprecated`: The image is discontinued.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -14003,27 +14003,27 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The image architecture. Valid values: `i386` and `x8664`.
+// The image architecture. Valid values: `i386`, `x8664`, `arm64`.
 func (o GetImagesImageOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
-// Time of creation.
+// The creation time.
 func (o GetImagesImageOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// Description of the image.
+// The description of the image.
 func (o GetImagesImageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Description of the system with disks and snapshots under the image.
+// A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
 func (o GetImagesImageOutput) DiskDeviceMappings() GetImagesImageDiskDeviceMappingArrayOutput {
 	return o.ApplyT(func(v GetImagesImage) []GetImagesImageDiskDeviceMapping { return v.DiskDeviceMappings }).(GetImagesImageDiskDeviceMappingArrayOutput)
 }
 
-// ID of the image.
+// The ID of the image.
 func (o GetImagesImageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -14033,7 +14033,7 @@ func (o GetImagesImageOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// Alias of the image owner.
+// The alias of the image owner.
 func (o GetImagesImageOutput) ImageOwnerAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
 }
@@ -14065,12 +14065,12 @@ func (o GetImagesImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Display Chinese name of the OS.
+// The display Chinese name of the OS.
 func (o GetImagesImageOutput) OsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.OsName }).(pulumi.StringOutput)
 }
 
-// Display English name of the OS.
+// The english name of the OS.
 func (o GetImagesImageOutput) OsNameEn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.OsNameEn }).(pulumi.StringOutput)
 }
@@ -14084,7 +14084,7 @@ func (o GetImagesImageOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Platform }).(pulumi.StringOutput)
 }
 
-// Product code of the image on the image market.
+// The product code of the image on the image market.
 func (o GetImagesImageOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ProductCode }).(pulumi.StringOutput)
 }
@@ -14094,7 +14094,7 @@ func (o GetImagesImageOutput) Progress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Progress }).(pulumi.StringOutput)
 }
 
-// Size of the created disk.
+// The size of the created disk.
 func (o GetImagesImageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -14104,12 +14104,12 @@ func (o GetImagesImageOutput) State() pulumi.StringOutput {
 }
 
 // The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-// * `Creating`: The image is being created.
-// * `Waiting`: The image is waiting to be processed.
-// * `Available`: The image is available.
-// * `UnAvailable`: The image is unavailable.
-// * `CreateFailed`: The image failed to be created.
-// * `Deprecated`: The image is discontinued.
+// - `Creating`: The image is being created.
+// - `Waiting`: The image is waiting to be processed.
+// - `Available`: The image is available.
+// - `UnAvailable`: The image is unavailable.
+// - `CreateFailed`: The image failed to be created.
+// - `Deprecated`: The image is discontinued.
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -14145,9 +14145,9 @@ func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput
 }
 
 type GetImagesImageDiskDeviceMapping struct {
-	// Device information of the created disk: such as /dev/xvdb.
+	// The device information of the created disk: such as /dev/xvdb.
 	Device string `pulumi:"device"`
-	// Size of the created disk.
+	// The size of the created disk.
 	Size string `pulumi:"size"`
 	// The ID of the snapshot used to create the custom image.
 	SnapshotId string `pulumi:"snapshotId"`
@@ -14165,9 +14165,9 @@ type GetImagesImageDiskDeviceMappingInput interface {
 }
 
 type GetImagesImageDiskDeviceMappingArgs struct {
-	// Device information of the created disk: such as /dev/xvdb.
+	// The device information of the created disk: such as /dev/xvdb.
 	Device pulumi.StringInput `pulumi:"device"`
-	// Size of the created disk.
+	// The size of the created disk.
 	Size pulumi.StringInput `pulumi:"size"`
 	// The ID of the snapshot used to create the custom image.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
@@ -14224,12 +14224,12 @@ func (o GetImagesImageDiskDeviceMappingOutput) ToGetImagesImageDiskDeviceMapping
 	return o
 }
 
-// Device information of the created disk: such as /dev/xvdb.
+// The device information of the created disk: such as /dev/xvdb.
 func (o GetImagesImageDiskDeviceMappingOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImageDiskDeviceMapping) string { return v.Device }).(pulumi.StringOutput)
 }
 
-// Size of the created disk.
+// The size of the created disk.
 func (o GetImagesImageDiskDeviceMappingOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImageDiskDeviceMapping) string { return v.Size }).(pulumi.StringOutput)
 }

@@ -12,74 +12,74 @@ import java.util.Objects;
 @CustomType
 public final class EtlConfigurationSink {
     /**
-     * @return Write Result Set.
+     * @return Result datasets to write to.
      * 
      */
     private List<String> datasets;
     /**
-     * @return The endpoint of the region where the target Project is located.
+     * @return The endpoint of the region where the destination project resides.
      * 
      */
     private String endpoint;
     /**
-     * @return Destination Logstore Name.
+     * @return The name of the destination Logstore.
      * 
      */
     private String logstore;
     /**
-     * @return Output Destination Name.
+     * @return The name of the output destination.
      * 
      */
     private String name;
     /**
-     * @return Project Name.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The ARN role that authorizes writing to the target Logstore.
+     * @return The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     private String roleArn;
 
     private EtlConfigurationSink() {}
     /**
-     * @return Write Result Set.
+     * @return Result datasets to write to.
      * 
      */
     public List<String> datasets() {
         return this.datasets;
     }
     /**
-     * @return The endpoint of the region where the target Project is located.
+     * @return The endpoint of the region where the destination project resides.
      * 
      */
     public String endpoint() {
         return this.endpoint;
     }
     /**
-     * @return Destination Logstore Name.
+     * @return The name of the destination Logstore.
      * 
      */
     public String logstore() {
         return this.logstore;
     }
     /**
-     * @return Output Destination Name.
+     * @return The name of the output destination.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Project Name.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The ARN role that authorizes writing to the target Logstore.
+     * @return The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     public String roleArn() {

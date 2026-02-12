@@ -78,10 +78,9 @@ namespace Pulumi.AliCloud.Ehpc
     ///         SourceCidrIp = "10.0.0.0/24",
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     var exampleEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("example", new()
     ///     {
-    ///         VpcId = example.Id,
-    ///         SecurityGroupType = "normal",
+    ///         KeyPairName = name,
     ///     });
     /// 
     ///     var exampleMountTarget = new AliCloud.Nas.MountTarget("example", new()
@@ -93,19 +92,21 @@ namespace Pulumi.AliCloud.Ehpc
     ///         FileSystemId = exampleFileSystem.Id,
     ///     });
     /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         VpcId = example.Id,
+    ///         SecurityGroupType = "normal",
+    ///     });
+    /// 
     ///     var @default = new AliCloud.Ehpc.ClusterV2("default", new()
     ///     {
     ///         ClusterCredentials = new AliCloud.Ehpc.Inputs.ClusterV2ClusterCredentialsArgs
     ///         {
-    ///             Password = "aliHPC123",
+    ///             KeyPairName = exampleEcsKeyPair.Id,
     ///         },
-    ///         ClusterVpcId = example.Id,
-    ///         ClusterCategory = "Standard",
     ///         ClusterMode = "Integrated",
-    ///         SecurityGroupId = exampleSecurityGroup.Id,
-    ///         ClusterName = "minimal-example-cluster",
+    ///         ClusterVpcId = example.Id,
     ///         DeletionProtection = true,
-    ///         ClientVersion = "2.0.47",
     ///         SharedStorages = new[]
     ///         {
     ///             new AliCloud.Ehpc.Inputs.ClusterV2SharedStorageArgs
@@ -119,28 +120,32 @@ namespace Pulumi.AliCloud.Ehpc
     ///             },
     ///             new AliCloud.Ehpc.Inputs.ClusterV2SharedStorageArgs
     ///             {
-    ///                 MountDirectory = "/opt",
     ///                 NasDirectory = "/",
     ///                 MountTargetDomain = exampleMountTarget.MountTargetDomain,
     ///                 ProtocolType = "NFS",
     ///                 FileSystemId = exampleFileSystem.Id,
     ///                 MountOptions = "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
+    ///                 MountDirectory = "/opt",
     ///             },
     ///             new AliCloud.Ehpc.Inputs.ClusterV2SharedStorageArgs
     ///             {
+    ///                 MountOptions = "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
     ///                 MountDirectory = "/ehpcdata",
     ///                 NasDirectory = "/",
     ///                 MountTargetDomain = exampleMountTarget.MountTargetDomain,
     ///                 ProtocolType = "NFS",
     ///                 FileSystemId = exampleFileSystem.Id,
-    ///                 MountOptions = "-t nfs -o vers=3,nolock,proto=tcp,noresvport",
     ///             },
     ///         },
     ///         ClusterVswitchId = exampleSwitch.Id,
+    ///         ClusterCategory = "Standard",
+    ///         SecurityGroupId = exampleSecurityGroup.Id,
+    ///         ClusterName = name,
     ///         Manager = new AliCloud.Ehpc.Inputs.ClusterV2ManagerArgs
     ///         {
     ///             ManagerNode = new AliCloud.Ehpc.Inputs.ClusterV2ManagerManagerNodeArgs
     ///             {
+    ///                 SpotStrategy = "NoSpot",
     ///                 SystemDisk = new AliCloud.Ehpc.Inputs.ClusterV2ManagerManagerNodeSystemDiskArgs
     ///                 {
     ///                     Category = "cloud_essd",
@@ -150,9 +155,7 @@ namespace Pulumi.AliCloud.Ehpc
     ///                 EnableHt = true,
     ///                 InstanceChargeType = "PostPaid",
     ///                 ImageId = "centos_7_6_x64_20G_alibase_20211130.vhd",
-    ///                 SpotPriceLimit = 0,
     ///                 InstanceType = "ecs.c6.xlarge",
-    ///                 SpotStrategy = "NoSpot",
     ///             },
     ///             Scheduler = new AliCloud.Ehpc.Inputs.ClusterV2ManagerSchedulerArgs
     ///             {

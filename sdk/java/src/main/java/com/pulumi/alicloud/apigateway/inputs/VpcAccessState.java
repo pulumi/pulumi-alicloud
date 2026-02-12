@@ -17,14 +17,14 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
     public static final VpcAccessState Empty = new VpcAccessState();
 
     /**
-     * ID of the instance in VPC (ECS/Server Load Balance).
+     * The ID of an ECS or SLB instance in the VPC.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return ID of the instance in VPC (ECS/Server Load Balance).
+     * @return The ID of an ECS or SLB instance in the VPC.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -32,14 +32,14 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the vpc authorization.
+     * The name of the authorization. The name must be unique.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the vpc authorization.
+     * @return The name of the authorization. The name must be unique.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the port corresponding to the instance.
+     * The port number that corresponds to the instance.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return ID of the port corresponding to the instance.
+     * @return The port number that corresponds to the instance.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -62,14 +62,14 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vpc id of the vpc authorization.
+     * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The vpc id of the vpc authorization.
+     * @return The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -104,7 +104,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId ID of the instance in VPC (ECS/Server Load Balance).
+         * @param instanceId The ID of an ECS or SLB instance in the VPC.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId ID of the instance in VPC (ECS/Server Load Balance).
+         * @param instanceId The ID of an ECS or SLB instance in the VPC.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the vpc authorization.
+         * @param name The name of the authorization. The name must be unique.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the vpc authorization.
+         * @param name The name of the authorization. The name must be unique.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port ID of the port corresponding to the instance.
+         * @param port The port number that corresponds to the instance.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port ID of the port corresponding to the instance.
+         * @param port The port number that corresponds to the instance.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc id of the vpc authorization.
+         * @param vpcId The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc id of the vpc authorization.
+         * @param vpcId The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
          * 
          * @return builder
          * 

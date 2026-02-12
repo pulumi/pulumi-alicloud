@@ -25,6 +25,16 @@ export type BgpPolicy = import("./bgpPolicy").BgpPolicy;
 export const BgpPolicy: typeof import("./bgpPolicy").BgpPolicy = null as any;
 utilities.lazyLoad(exports, ["BgpPolicy"], () => require("./bgpPolicy"));
 
+export { CooDomainPreciseAccessRuleArgs, CooDomainPreciseAccessRuleState } from "./cooDomainPreciseAccessRule";
+export type CooDomainPreciseAccessRule = import("./cooDomainPreciseAccessRule").CooDomainPreciseAccessRule;
+export const CooDomainPreciseAccessRule: typeof import("./cooDomainPreciseAccessRule").CooDomainPreciseAccessRule = null as any;
+utilities.lazyLoad(exports, ["CooDomainPreciseAccessRule"], () => require("./cooDomainPreciseAccessRule"));
+
+export { CooWebCcRuleArgs, CooWebCcRuleState } from "./cooWebCcRule";
+export type CooWebCcRule = import("./cooWebCcRule").CooWebCcRule;
+export const CooWebCcRule: typeof import("./cooWebCcRule").CooWebCcRule = null as any;
+utilities.lazyLoad(exports, ["CooWebCcRule"], () => require("./cooWebCcRule"));
+
 export { DdosBgpInstanceArgs, DdosBgpInstanceState } from "./ddosBgpInstance";
 export type DdosBgpInstance = import("./ddosBgpInstance").DdosBgpInstance;
 export const DdosBgpInstance: typeof import("./ddosBgpInstance").DdosBgpInstance = null as any;
@@ -88,6 +98,10 @@ const _module = {
                 return new BgpIp(name, <any>undefined, { urn })
             case "alicloud:ddos/bgpPolicy:BgpPolicy":
                 return new BgpPolicy(name, <any>undefined, { urn })
+            case "alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule":
+                return new CooDomainPreciseAccessRule(name, <any>undefined, { urn })
+            case "alicloud:ddos/cooWebCcRule:CooWebCcRule":
+                return new CooWebCcRule(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
                 return new DdosBgpInstance(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
@@ -107,6 +121,8 @@ pulumi.runtime.registerResourceModule("alicloud", "ddos/basicDefenseThreshold", 
 pulumi.runtime.registerResourceModule("alicloud", "ddos/basicThreshold", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/bgpIp", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/bgpPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ddos/cooDomainPreciseAccessRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ddos/cooWebCcRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosBgpInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosCooInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/domainResource", _module)

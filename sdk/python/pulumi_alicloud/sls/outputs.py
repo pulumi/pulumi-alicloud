@@ -1246,10 +1246,10 @@ class CollectionPolicyCentralizeConfig(dict):
                  dest_region: Optional[_builtins.str] = None,
                  dest_ttl: Optional[_builtins.int] = None):
         """
-        :param _builtins.str dest_logstore: When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
-        :param _builtins.str dest_project: The geographical attributes of the centralized transfer project should be consistent with the destRegion.
-        :param _builtins.str dest_region: Centralized transfer destination area.
-        :param _builtins.int dest_ttl: The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        :param _builtins.str dest_logstore: Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
+        :param _builtins.str dest_project: Destination project for centralized forwarding. Its region must match destRegion.
+        :param _builtins.str dest_region: Destination region for centralized forwarding.
+        :param _builtins.int dest_ttl: Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
         """
         if dest_logstore is not None:
             pulumi.set(__self__, "dest_logstore", dest_logstore)
@@ -1264,7 +1264,7 @@ class CollectionPolicyCentralizeConfig(dict):
     @pulumi.getter(name="destLogstore")
     def dest_logstore(self) -> Optional[_builtins.str]:
         """
-        When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+        Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
         """
         return pulumi.get(self, "dest_logstore")
 
@@ -1272,7 +1272,7 @@ class CollectionPolicyCentralizeConfig(dict):
     @pulumi.getter(name="destProject")
     def dest_project(self) -> Optional[_builtins.str]:
         """
-        The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+        Destination project for centralized forwarding. Its region must match destRegion.
         """
         return pulumi.get(self, "dest_project")
 
@@ -1280,7 +1280,7 @@ class CollectionPolicyCentralizeConfig(dict):
     @pulumi.getter(name="destRegion")
     def dest_region(self) -> Optional[_builtins.str]:
         """
-        Centralized transfer destination area.
+        Destination region for centralized forwarding.
         """
         return pulumi.get(self, "dest_region")
 
@@ -1288,7 +1288,7 @@ class CollectionPolicyCentralizeConfig(dict):
     @pulumi.getter(name="destTtl")
     def dest_ttl(self) -> Optional[_builtins.int]:
         """
-        The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
         """
         return pulumi.get(self, "dest_ttl")
 
@@ -1318,8 +1318,8 @@ class CollectionPolicyDataConfig(dict):
                  data_project: Optional[_builtins.str] = None,
                  data_region: Optional[_builtins.str] = None):
         """
-        :param _builtins.str data_project: Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
-        :param _builtins.str data_region: If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+        :param _builtins.str data_project: This setting is valid only when the log type is a global log type—for example, when productCode is sls.
+        :param _builtins.str data_region: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
         """
         if data_project is not None:
             pulumi.set(__self__, "data_project", data_project)
@@ -1330,7 +1330,7 @@ class CollectionPolicyDataConfig(dict):
     @pulumi.getter(name="dataProject")
     def data_project(self) -> Optional[_builtins.str]:
         """
-        Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+        This setting is valid only when the log type is a global log type—for example, when productCode is sls.
         """
         return pulumi.get(self, "data_project")
 
@@ -1338,7 +1338,7 @@ class CollectionPolicyDataConfig(dict):
     @pulumi.getter(name="dataRegion")
     def data_region(self) -> Optional[_builtins.str]:
         """
-        If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+        This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
         """
         return pulumi.get(self, "data_region")
 
@@ -1372,14 +1372,12 @@ class CollectionPolicyPolicyConfig(dict):
                  regions: Optional[Sequence[_builtins.str]] = None,
                  resource_tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str resource_mode: Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
-        :param Sequence[_builtins.str] instance_ids: A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
-        :param Sequence[_builtins.str] regions: The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
-        :param Mapping[str, _builtins.str] resource_tags: Resource label, valid if and only if resourceMode is attributeMode.
-               
-               If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-               
-               The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+        :param _builtins.str resource_mode: Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
+        :param Sequence[_builtins.str] instance_ids: The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
+        :param Sequence[_builtins.str] regions: The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
+        :param Mapping[str, _builtins.str] resource_tags: Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+               If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+               Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
         """
         pulumi.set(__self__, "resource_mode", resource_mode)
         if instance_ids is not None:
@@ -1393,7 +1391,7 @@ class CollectionPolicyPolicyConfig(dict):
     @pulumi.getter(name="resourceMode")
     def resource_mode(self) -> _builtins.str:
         """
-        Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+        Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
         """
         return pulumi.get(self, "resource_mode")
 
@@ -1401,7 +1399,7 @@ class CollectionPolicyPolicyConfig(dict):
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+        The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
         """
         return pulumi.get(self, "instance_ids")
 
@@ -1409,7 +1407,7 @@ class CollectionPolicyPolicyConfig(dict):
     @pulumi.getter
     def regions(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+        The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
         """
         return pulumi.get(self, "regions")
 
@@ -1417,11 +1415,9 @@ class CollectionPolicyPolicyConfig(dict):
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        Resource label, valid if and only if resourceMode is attributeMode.
-
-        If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-
-        The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+        Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+        If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+        Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
         """
         return pulumi.get(self, "resource_tags")
 
@@ -1449,8 +1445,8 @@ class CollectionPolicyResourceDirectory(dict):
                  account_group_type: Optional[_builtins.str] = None,
                  members: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str account_group_type: Support all mode all and custom mode custom under this resource directory
-        :param Sequence[_builtins.str] members: When the resource directory is configured in the custom mode, the corresponding member account list
+        :param _builtins.str account_group_type: Supports the all (select all) mode and custom mode under this Resource Directory.
+        :param Sequence[_builtins.str] members: The list of member accounts when the Resource Directory is configured in custom mode.
         """
         if account_group_type is not None:
             pulumi.set(__self__, "account_group_type", account_group_type)
@@ -1461,7 +1457,7 @@ class CollectionPolicyResourceDirectory(dict):
     @pulumi.getter(name="accountGroupType")
     def account_group_type(self) -> Optional[_builtins.str]:
         """
-        Support all mode all and custom mode custom under this resource directory
+        Supports the all (select all) mode and custom mode under this Resource Directory.
         """
         return pulumi.get(self, "account_group_type")
 
@@ -1469,7 +1465,7 @@ class CollectionPolicyResourceDirectory(dict):
     @pulumi.getter
     def members(self) -> Optional[Sequence[_builtins.str]]:
         """
-        When the resource directory is configured in the custom mode, the corresponding member account list
+        The list of member accounts when the Resource Directory is configured in custom mode.
         """
         return pulumi.get(self, "members")
 
@@ -1507,13 +1503,13 @@ class EtlConfiguration(dict):
                  to_time: _builtins.int,
                  parameters: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.int from_time: The beginning of the time range for transformation.
-        :param _builtins.str lang: Data processing syntax type.
-        :param _builtins.str logstore: Destination Logstore Name.
-        :param _builtins.str role_arn: The ARN role that authorizes writing to the target Logstore.
+        :param _builtins.int from_time: The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
+        :param _builtins.str lang: The syntax type used for data transformation.
+        :param _builtins.str logstore: The name of the destination Logstore.
+        :param _builtins.str role_arn: The ARN of the role authorized to write to the destination Logstore.
         :param _builtins.str script: Processing script.
-        :param Sequence['EtlConfigurationSinkArgs'] sinks: Processing result output target list See `sink` below.
-        :param _builtins.int to_time: The end of the time range for transformation.
+        :param Sequence['EtlConfigurationSinkArgs'] sinks: List of output destinations for processing results.   See `sink` below.
+        :param _builtins.int to_time: End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
         :param Mapping[str, _builtins.str] parameters: Advanced parameter configuration.
         """
         pulumi.set(__self__, "from_time", from_time)
@@ -1530,7 +1526,7 @@ class EtlConfiguration(dict):
     @pulumi.getter(name="fromTime")
     def from_time(self) -> _builtins.int:
         """
-        The beginning of the time range for transformation.
+        The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
         """
         return pulumi.get(self, "from_time")
 
@@ -1538,7 +1534,7 @@ class EtlConfiguration(dict):
     @pulumi.getter
     def lang(self) -> _builtins.str:
         """
-        Data processing syntax type.
+        The syntax type used for data transformation.
         """
         return pulumi.get(self, "lang")
 
@@ -1546,7 +1542,7 @@ class EtlConfiguration(dict):
     @pulumi.getter
     def logstore(self) -> _builtins.str:
         """
-        Destination Logstore Name.
+        The name of the destination Logstore.
         """
         return pulumi.get(self, "logstore")
 
@@ -1554,7 +1550,7 @@ class EtlConfiguration(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> _builtins.str:
         """
-        The ARN role that authorizes writing to the target Logstore.
+        The ARN of the role authorized to write to the destination Logstore.
         """
         return pulumi.get(self, "role_arn")
 
@@ -1570,7 +1566,7 @@ class EtlConfiguration(dict):
     @pulumi.getter
     def sinks(self) -> Sequence['outputs.EtlConfigurationSink']:
         """
-        Processing result output target list See `sink` below.
+        List of output destinations for processing results.   See `sink` below.
         """
         return pulumi.get(self, "sinks")
 
@@ -1578,7 +1574,7 @@ class EtlConfiguration(dict):
     @pulumi.getter(name="toTime")
     def to_time(self) -> _builtins.int:
         """
-        The end of the time range for transformation.
+        End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
         """
         return pulumi.get(self, "to_time")
 
@@ -1618,12 +1614,12 @@ class EtlConfigurationSink(dict):
                  project: _builtins.str,
                  role_arn: _builtins.str):
         """
-        :param Sequence[_builtins.str] datasets: Write Result Set.
-        :param _builtins.str endpoint: The endpoint of the region where the target Project is located.
-        :param _builtins.str logstore: Destination Logstore Name.
-        :param _builtins.str name: Output Destination Name.
-        :param _builtins.str project: Project Name.
-        :param _builtins.str role_arn: The ARN role that authorizes writing to the target Logstore.
+        :param Sequence[_builtins.str] datasets: Result datasets to write to.
+        :param _builtins.str endpoint: The endpoint of the region where the destination project resides.
+        :param _builtins.str logstore: The name of the destination Logstore.
+        :param _builtins.str name: The name of the output destination.
+        :param _builtins.str project: Project name.
+        :param _builtins.str role_arn: The ARN of the role authorized to write to the destination Logstore.
         """
         pulumi.set(__self__, "datasets", datasets)
         pulumi.set(__self__, "endpoint", endpoint)
@@ -1636,7 +1632,7 @@ class EtlConfigurationSink(dict):
     @pulumi.getter
     def datasets(self) -> Sequence[_builtins.str]:
         """
-        Write Result Set.
+        Result datasets to write to.
         """
         return pulumi.get(self, "datasets")
 
@@ -1644,7 +1640,7 @@ class EtlConfigurationSink(dict):
     @pulumi.getter
     def endpoint(self) -> _builtins.str:
         """
-        The endpoint of the region where the target Project is located.
+        The endpoint of the region where the destination project resides.
         """
         return pulumi.get(self, "endpoint")
 
@@ -1652,7 +1648,7 @@ class EtlConfigurationSink(dict):
     @pulumi.getter
     def logstore(self) -> _builtins.str:
         """
-        Destination Logstore Name.
+        The name of the destination Logstore.
         """
         return pulumi.get(self, "logstore")
 
@@ -1660,7 +1656,7 @@ class EtlConfigurationSink(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Output Destination Name.
+        The name of the output destination.
         """
         return pulumi.get(self, "name")
 
@@ -1668,7 +1664,7 @@ class EtlConfigurationSink(dict):
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        Project Name.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -1676,7 +1672,7 @@ class EtlConfigurationSink(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> _builtins.str:
         """
-        The ARN role that authorizes writing to the target Logstore.
+        The ARN of the role authorized to write to the destination Logstore.
         """
         return pulumi.get(self, "role_arn")
 
@@ -2251,12 +2247,17 @@ class ScheduledSqlSchedule(dict):
                  time_zone: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cron_expression: Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
-        :param _builtins.int delay: Delay time.
-        :param _builtins.str interval: Time interval, such as 5m, 1H.
-        :param _builtins.bool run_immediately: Whether to execute the OSS import task immediately after it is created.
-        :param _builtins.str time_zone: Time Zone.
-        :param _builtins.str type: Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+        :param _builtins.str cron_expression: Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
+        :param _builtins.int delay: Delay duration.
+        :param _builtins.str interval: Time interval, such as 5m or 1h.
+        :param _builtins.bool run_immediately: Specifies whether to run the OSS import job immediately after it is created.
+        :param _builtins.str time_zone: Time zone.
+        :param _builtins.str type: The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+               FixedRate: Checks query and analysis results at fixed intervals.
+               Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+               Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+               Daily: Checks query and analysis results once at a fixed time each day.
+               Hourly: Checks query and analysis results once every hour.
         """
         if cron_expression is not None:
             pulumi.set(__self__, "cron_expression", cron_expression)
@@ -2275,7 +2276,7 @@ class ScheduledSqlSchedule(dict):
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> Optional[_builtins.str]:
         """
-        Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+        Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
         """
         return pulumi.get(self, "cron_expression")
 
@@ -2283,7 +2284,7 @@ class ScheduledSqlSchedule(dict):
     @pulumi.getter
     def delay(self) -> Optional[_builtins.int]:
         """
-        Delay time.
+        Delay duration.
         """
         return pulumi.get(self, "delay")
 
@@ -2291,7 +2292,7 @@ class ScheduledSqlSchedule(dict):
     @pulumi.getter
     def interval(self) -> Optional[_builtins.str]:
         """
-        Time interval, such as 5m, 1H.
+        Time interval, such as 5m or 1h.
         """
         return pulumi.get(self, "interval")
 
@@ -2299,7 +2300,7 @@ class ScheduledSqlSchedule(dict):
     @pulumi.getter(name="runImmediately")
     def run_immediately(self) -> Optional[_builtins.bool]:
         """
-        Whether to execute the OSS import task immediately after it is created.
+        Specifies whether to run the OSS import job immediately after it is created.
         """
         return pulumi.get(self, "run_immediately")
 
@@ -2307,7 +2308,7 @@ class ScheduledSqlSchedule(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[_builtins.str]:
         """
-        Time Zone.
+        Time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -2315,7 +2316,12 @@ class ScheduledSqlSchedule(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+        The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+        FixedRate: Checks query and analysis results at fixed intervals.
+        Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+        Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+        Daily: Checks query and analysis results once at a fixed time each day.
+        Hourly: Checks query and analysis results once every hour.
         """
         return pulumi.get(self, "type")
 
@@ -2386,23 +2392,23 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
                  to_time: Optional[_builtins.int] = None,
                  to_time_expr: Optional[_builtins.str] = None):
         """
-        :param _builtins.str data_format: Write Mode.
-        :param _builtins.str dest_endpoint: Target Endpoint.
-        :param _builtins.str dest_logstore: Target Logstore.
-        :param _builtins.str dest_project: Target Project.
-        :param _builtins.str dest_role_arn: Write target role ARN.
-        :param _builtins.int from_time: Schedule Start Time.
-        :param _builtins.str from_time_expr: SQL time window-start.
-        :param _builtins.int max_retries: Maximum retries.
+        :param _builtins.str data_format: Write mode.
+        :param _builtins.str dest_endpoint: The destination endpoint.
+        :param _builtins.str dest_logstore: The destination Logstore.
+        :param _builtins.str dest_project: The destination project.
+        :param _builtins.str dest_role_arn: Destination write role ARN.
+        :param _builtins.int from_time: The start time of the schedule.
+        :param _builtins.str from_time_expr: SQL time window - start.
+        :param _builtins.int max_retries: Maximum number of retries.
         :param _builtins.int max_run_time_in_seconds: SQL timeout.
         :param Mapping[str, _builtins.str] parameters: Parameter configuration.
-        :param _builtins.str resource_pool: Resource Pool.
-        :param _builtins.str role_arn: Read role ARN.
+        :param _builtins.str resource_pool: Resource pool.
+        :param _builtins.str role_arn: Source read role ARN.
         :param _builtins.str script: SQL statement.
-        :param _builtins.str source_logstore: Source Logstore.
+        :param _builtins.str source_logstore: The source Logstore.
         :param _builtins.str sql_type: SQL type.
-        :param _builtins.int to_time: Time at end of schedule.
-        :param _builtins.str to_time_expr: SQL time window-end.
+        :param _builtins.int to_time: Scheduled end time.
+        :param _builtins.str to_time_expr: End of the SQL time window.
         """
         if data_format is not None:
             pulumi.set(__self__, "data_format", data_format)
@@ -2443,7 +2449,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> Optional[_builtins.str]:
         """
-        Write Mode.
+        Write mode.
         """
         return pulumi.get(self, "data_format")
 
@@ -2451,7 +2457,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="destEndpoint")
     def dest_endpoint(self) -> Optional[_builtins.str]:
         """
-        Target Endpoint.
+        The destination endpoint.
         """
         return pulumi.get(self, "dest_endpoint")
 
@@ -2459,7 +2465,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="destLogstore")
     def dest_logstore(self) -> Optional[_builtins.str]:
         """
-        Target Logstore.
+        The destination Logstore.
         """
         return pulumi.get(self, "dest_logstore")
 
@@ -2467,7 +2473,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="destProject")
     def dest_project(self) -> Optional[_builtins.str]:
         """
-        Target Project.
+        The destination project.
         """
         return pulumi.get(self, "dest_project")
 
@@ -2475,7 +2481,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="destRoleArn")
     def dest_role_arn(self) -> Optional[_builtins.str]:
         """
-        Write target role ARN.
+        Destination write role ARN.
         """
         return pulumi.get(self, "dest_role_arn")
 
@@ -2483,7 +2489,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="fromTime")
     def from_time(self) -> Optional[_builtins.int]:
         """
-        Schedule Start Time.
+        The start time of the schedule.
         """
         return pulumi.get(self, "from_time")
 
@@ -2491,7 +2497,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="fromTimeExpr")
     def from_time_expr(self) -> Optional[_builtins.str]:
         """
-        SQL time window-start.
+        SQL time window - start.
         """
         return pulumi.get(self, "from_time_expr")
 
@@ -2499,7 +2505,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[_builtins.int]:
         """
-        Maximum retries.
+        Maximum number of retries.
         """
         return pulumi.get(self, "max_retries")
 
@@ -2523,7 +2529,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="resourcePool")
     def resource_pool(self) -> Optional[_builtins.str]:
         """
-        Resource Pool.
+        Resource pool.
         """
         return pulumi.get(self, "resource_pool")
 
@@ -2531,7 +2537,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[_builtins.str]:
         """
-        Read role ARN.
+        Source read role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -2547,7 +2553,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="sourceLogstore")
     def source_logstore(self) -> Optional[_builtins.str]:
         """
-        Source Logstore.
+        The source Logstore.
         """
         return pulumi.get(self, "source_logstore")
 
@@ -2563,7 +2569,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="toTime")
     def to_time(self) -> Optional[_builtins.int]:
         """
-        Time at end of schedule.
+        Scheduled end time.
         """
         return pulumi.get(self, "to_time")
 
@@ -2571,7 +2577,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
     @pulumi.getter(name="toTimeExpr")
     def to_time_expr(self) -> Optional[_builtins.str]:
         """
-        SQL time window-end.
+        End of the SQL time window.
         """
         return pulumi.get(self, "to_time_expr")
 

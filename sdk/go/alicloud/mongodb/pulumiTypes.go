@@ -124,7 +124,8 @@ type InstanceReplicaSet struct {
 	ConnectionDomain *string `pulumi:"connectionDomain"`
 	// The connection port of the node.
 	ConnectionPort *string `pulumi:"connectionPort"`
-	// The network type of the instance. Valid values:`Classic`, `VPC`.
+	// The network type of the instance. Valid values: `VPC`.
+	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType *string `pulumi:"networkType"`
 	// The role of the node.
 	ReplicaSetRole *string `pulumi:"replicaSetRole"`
@@ -154,7 +155,8 @@ type InstanceReplicaSetArgs struct {
 	ConnectionDomain pulumi.StringPtrInput `pulumi:"connectionDomain"`
 	// The connection port of the node.
 	ConnectionPort pulumi.StringPtrInput `pulumi:"connectionPort"`
-	// The network type of the instance. Valid values:`Classic`, `VPC`.
+	// The network type of the instance. Valid values: `VPC`.
+	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// The role of the node.
 	ReplicaSetRole pulumi.StringPtrInput `pulumi:"replicaSetRole"`
@@ -229,7 +231,8 @@ func (o InstanceReplicaSetOutput) ConnectionPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ConnectionPort }).(pulumi.StringPtrOutput)
 }
 
-// The network type of the instance. Valid values:`Classic`, `VPC`.
+// The network type of the instance. Valid values: `VPC`.
+// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 func (o InstanceReplicaSetOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
@@ -277,6 +280,145 @@ func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceReplicaSet {
 		return vs[0].([]InstanceReplicaSet)[vs[1].(int)]
 	}).(InstanceReplicaSetOutput)
+}
+
+type InstanceZoneInfo struct {
+	// The ID of the node.
+	InsName *string `pulumi:"insName"`
+	// The type of the node.
+	NodeType *string `pulumi:"nodeType"`
+	// The id of the role.
+	RoleId *string `pulumi:"roleId"`
+	// The role of the node.
+	RoleType *string `pulumi:"roleType"`
+	// The Zone to launch the DB instance. it supports multiple zone.
+	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// InstanceZoneInfoInput is an input type that accepts InstanceZoneInfoArgs and InstanceZoneInfoOutput values.
+// You can construct a concrete instance of `InstanceZoneInfoInput` via:
+//
+//	InstanceZoneInfoArgs{...}
+type InstanceZoneInfoInput interface {
+	pulumi.Input
+
+	ToInstanceZoneInfoOutput() InstanceZoneInfoOutput
+	ToInstanceZoneInfoOutputWithContext(context.Context) InstanceZoneInfoOutput
+}
+
+type InstanceZoneInfoArgs struct {
+	// The ID of the node.
+	InsName pulumi.StringPtrInput `pulumi:"insName"`
+	// The type of the node.
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	// The id of the role.
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+	// The role of the node.
+	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+	// The Zone to launch the DB instance. it supports multiple zone.
+	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (InstanceZoneInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceZoneInfo)(nil)).Elem()
+}
+
+func (i InstanceZoneInfoArgs) ToInstanceZoneInfoOutput() InstanceZoneInfoOutput {
+	return i.ToInstanceZoneInfoOutputWithContext(context.Background())
+}
+
+func (i InstanceZoneInfoArgs) ToInstanceZoneInfoOutputWithContext(ctx context.Context) InstanceZoneInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceZoneInfoOutput)
+}
+
+// InstanceZoneInfoArrayInput is an input type that accepts InstanceZoneInfoArray and InstanceZoneInfoArrayOutput values.
+// You can construct a concrete instance of `InstanceZoneInfoArrayInput` via:
+//
+//	InstanceZoneInfoArray{ InstanceZoneInfoArgs{...} }
+type InstanceZoneInfoArrayInput interface {
+	pulumi.Input
+
+	ToInstanceZoneInfoArrayOutput() InstanceZoneInfoArrayOutput
+	ToInstanceZoneInfoArrayOutputWithContext(context.Context) InstanceZoneInfoArrayOutput
+}
+
+type InstanceZoneInfoArray []InstanceZoneInfoInput
+
+func (InstanceZoneInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceZoneInfo)(nil)).Elem()
+}
+
+func (i InstanceZoneInfoArray) ToInstanceZoneInfoArrayOutput() InstanceZoneInfoArrayOutput {
+	return i.ToInstanceZoneInfoArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceZoneInfoArray) ToInstanceZoneInfoArrayOutputWithContext(ctx context.Context) InstanceZoneInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceZoneInfoArrayOutput)
+}
+
+type InstanceZoneInfoOutput struct{ *pulumi.OutputState }
+
+func (InstanceZoneInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceZoneInfo)(nil)).Elem()
+}
+
+func (o InstanceZoneInfoOutput) ToInstanceZoneInfoOutput() InstanceZoneInfoOutput {
+	return o
+}
+
+func (o InstanceZoneInfoOutput) ToInstanceZoneInfoOutputWithContext(ctx context.Context) InstanceZoneInfoOutput {
+	return o
+}
+
+// The ID of the node.
+func (o InstanceZoneInfoOutput) InsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZoneInfo) *string { return v.InsName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the node.
+func (o InstanceZoneInfoOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZoneInfo) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// The id of the role.
+func (o InstanceZoneInfoOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZoneInfo) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+// The role of the node.
+func (o InstanceZoneInfoOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZoneInfo) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the DB instance. it supports multiple zone.
+// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+func (o InstanceZoneInfoOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceZoneInfo) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceZoneInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceZoneInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceZoneInfo)(nil)).Elem()
+}
+
+func (o InstanceZoneInfoArrayOutput) ToInstanceZoneInfoArrayOutput() InstanceZoneInfoArrayOutput {
+	return o
+}
+
+func (o InstanceZoneInfoArrayOutput) ToInstanceZoneInfoArrayOutputWithContext(ctx context.Context) InstanceZoneInfoArrayOutput {
+	return o
+}
+
+func (o InstanceZoneInfoArrayOutput) Index(i pulumi.IntInput) InstanceZoneInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceZoneInfo {
+		return vs[0].([]InstanceZoneInfo)[vs[1].(int)]
+	}).(InstanceZoneInfoOutput)
 }
 
 type PublicNetworkAddressReplicaSet struct {
@@ -1056,6 +1198,142 @@ func (o ShardingInstanceShardListArrayOutput) Index(i pulumi.IntInput) ShardingI
 	}).(ShardingInstanceShardListOutput)
 }
 
+type ShardingInstanceZoneInfo struct {
+	// The ID of the node.
+	InsName *string `pulumi:"insName"`
+	// The type of the node.
+	NodeType *string `pulumi:"nodeType"`
+	// The role ID.
+	RoleId *string `pulumi:"roleId"`
+	// The role of the node.
+	RoleType *string `pulumi:"roleType"`
+	// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// ShardingInstanceZoneInfoInput is an input type that accepts ShardingInstanceZoneInfoArgs and ShardingInstanceZoneInfoOutput values.
+// You can construct a concrete instance of `ShardingInstanceZoneInfoInput` via:
+//
+//	ShardingInstanceZoneInfoArgs{...}
+type ShardingInstanceZoneInfoInput interface {
+	pulumi.Input
+
+	ToShardingInstanceZoneInfoOutput() ShardingInstanceZoneInfoOutput
+	ToShardingInstanceZoneInfoOutputWithContext(context.Context) ShardingInstanceZoneInfoOutput
+}
+
+type ShardingInstanceZoneInfoArgs struct {
+	// The ID of the node.
+	InsName pulumi.StringPtrInput `pulumi:"insName"`
+	// The type of the node.
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	// The role ID.
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+	// The role of the node.
+	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+	// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (ShardingInstanceZoneInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceZoneInfo)(nil)).Elem()
+}
+
+func (i ShardingInstanceZoneInfoArgs) ToShardingInstanceZoneInfoOutput() ShardingInstanceZoneInfoOutput {
+	return i.ToShardingInstanceZoneInfoOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceZoneInfoArgs) ToShardingInstanceZoneInfoOutputWithContext(ctx context.Context) ShardingInstanceZoneInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceZoneInfoOutput)
+}
+
+// ShardingInstanceZoneInfoArrayInput is an input type that accepts ShardingInstanceZoneInfoArray and ShardingInstanceZoneInfoArrayOutput values.
+// You can construct a concrete instance of `ShardingInstanceZoneInfoArrayInput` via:
+//
+//	ShardingInstanceZoneInfoArray{ ShardingInstanceZoneInfoArgs{...} }
+type ShardingInstanceZoneInfoArrayInput interface {
+	pulumi.Input
+
+	ToShardingInstanceZoneInfoArrayOutput() ShardingInstanceZoneInfoArrayOutput
+	ToShardingInstanceZoneInfoArrayOutputWithContext(context.Context) ShardingInstanceZoneInfoArrayOutput
+}
+
+type ShardingInstanceZoneInfoArray []ShardingInstanceZoneInfoInput
+
+func (ShardingInstanceZoneInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceZoneInfo)(nil)).Elem()
+}
+
+func (i ShardingInstanceZoneInfoArray) ToShardingInstanceZoneInfoArrayOutput() ShardingInstanceZoneInfoArrayOutput {
+	return i.ToShardingInstanceZoneInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ShardingInstanceZoneInfoArray) ToShardingInstanceZoneInfoArrayOutputWithContext(ctx context.Context) ShardingInstanceZoneInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceZoneInfoArrayOutput)
+}
+
+type ShardingInstanceZoneInfoOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceZoneInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingInstanceZoneInfo)(nil)).Elem()
+}
+
+func (o ShardingInstanceZoneInfoOutput) ToShardingInstanceZoneInfoOutput() ShardingInstanceZoneInfoOutput {
+	return o
+}
+
+func (o ShardingInstanceZoneInfoOutput) ToShardingInstanceZoneInfoOutputWithContext(ctx context.Context) ShardingInstanceZoneInfoOutput {
+	return o
+}
+
+// The ID of the node.
+func (o ShardingInstanceZoneInfoOutput) InsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceZoneInfo) *string { return v.InsName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the node.
+func (o ShardingInstanceZoneInfoOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceZoneInfo) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// The role ID.
+func (o ShardingInstanceZoneInfoOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceZoneInfo) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+// The role of the node.
+func (o ShardingInstanceZoneInfoOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceZoneInfo) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+func (o ShardingInstanceZoneInfoOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceZoneInfo) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type ShardingInstanceZoneInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ShardingInstanceZoneInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingInstanceZoneInfo)(nil)).Elem()
+}
+
+func (o ShardingInstanceZoneInfoArrayOutput) ToShardingInstanceZoneInfoArrayOutput() ShardingInstanceZoneInfoArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceZoneInfoArrayOutput) ToShardingInstanceZoneInfoArrayOutputWithContext(ctx context.Context) ShardingInstanceZoneInfoArrayOutput {
+	return o
+}
+
+func (o ShardingInstanceZoneInfoArrayOutput) Index(i pulumi.IntInput) ShardingInstanceZoneInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceZoneInfo {
+		return vs[0].([]ShardingInstanceZoneInfo)[vs[1].(int)]
+	}).(ShardingInstanceZoneInfoOutput)
+}
+
 type ShardingNetworkPrivateAddressNetworkAddress struct {
 	// The remaining duration of the classic network endpoint.
 	ExpiredTime *string `pulumi:"expiredTime"`
@@ -1670,41 +1948,43 @@ func (o GetAuditPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAuditPoli
 }
 
 type GetInstancesInstance struct {
-	// Instance availability zone.
+	// The zone ID.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+	// The billing method of the instance.
 	ChargeType string `pulumi:"chargeType"`
-	// Creation time of the instance in RFC3339 format.
+	// The time when the instance was created.
 	CreationTime string `pulumi:"creationTime"`
-	// Database engine type. Supported option is `MongoDB`.
+	// The database engine.
 	Engine string `pulumi:"engine"`
-	// Database engine version.
+	// The database engine version.
 	EngineVersion string `pulumi:"engineVersion"`
-	// Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+	// The time when the instance expires.
 	ExpirationTime string `pulumi:"expirationTime"`
-	// The ID of the MongoDB instance.
+	// The instance ID.
 	Id string `pulumi:"id"`
-	// Sizing of the instance to be queried.
+	// The instance type.
 	InstanceClass string `pulumi:"instanceClass"`
-	// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+	// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
 	InstanceType string `pulumi:"instanceType"`
-	// Lock status of the instance.
+	// The lock status of the instance.
 	LockMode string `pulumi:"lockMode"`
-	// Array composed of Mongos.
+	// The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
 	Mongos []GetInstancesInstanceMongo `pulumi:"mongos"`
-	// The name of the MongoDB instance.
+	// The name of the instance.
 	Name string `pulumi:"name"`
-	// Classic network or VPC.
+	// The network type of the instance.
 	NetworkType string `pulumi:"networkType"`
-	// Region ID the instance belongs to.
+	// The region ID of the instance.
 	RegionId string `pulumi:"regionId"`
-	// Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+	// The number of nodes in the instance.
 	Replication string `pulumi:"replication"`
-	// Array composed of shards.
+	// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+	RestoreRanges []GetInstancesInstanceRestoreRange `pulumi:"restoreRanges"`
+	// The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
 	Shards []GetInstancesInstanceShard `pulumi:"shards"`
-	// Status of the instance.
+	// The instance status.
 	Status string `pulumi:"status"`
-	// Shard disk.
+	// The storage space of the shard node.
 	Storage int `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -1722,41 +2002,43 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// Instance availability zone.
+	// The zone ID.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+	// The billing method of the instance.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
-	// Creation time of the instance in RFC3339 format.
+	// The time when the instance was created.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// Database engine type. Supported option is `MongoDB`.
+	// The database engine.
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// Database engine version.
+	// The database engine version.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	// Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+	// The time when the instance expires.
 	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
-	// The ID of the MongoDB instance.
+	// The instance ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Sizing of the instance to be queried.
+	// The instance type.
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+	// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// Lock status of the instance.
+	// The lock status of the instance.
 	LockMode pulumi.StringInput `pulumi:"lockMode"`
-	// Array composed of Mongos.
+	// The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
 	Mongos GetInstancesInstanceMongoArrayInput `pulumi:"mongos"`
-	// The name of the MongoDB instance.
+	// The name of the instance.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Classic network or VPC.
+	// The network type of the instance.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
-	// Region ID the instance belongs to.
+	// The region ID of the instance.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+	// The number of nodes in the instance.
 	Replication pulumi.StringInput `pulumi:"replication"`
-	// Array composed of shards.
+	// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+	RestoreRanges GetInstancesInstanceRestoreRangeArrayInput `pulumi:"restoreRanges"`
+	// The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
 	Shards GetInstancesInstanceShardArrayInput `pulumi:"shards"`
-	// Status of the instance.
+	// The instance status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Shard disk.
+	// The storage space of the shard node.
 	Storage pulumi.IntInput `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -1813,92 +2095,97 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// Instance availability zone.
+// The zone ID.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+// The billing method of the instance.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
-// Creation time of the instance in RFC3339 format.
+// The time when the instance was created.
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// Database engine type. Supported option is `MongoDB`.
+// The database engine.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Database engine version.
+// The database engine version.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+// The time when the instance expires.
 func (o GetInstancesInstanceOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
-// The ID of the MongoDB instance.
+// The instance ID.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Sizing of the instance to be queried.
+// The instance type.
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
-// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// Lock status of the instance.
+// The lock status of the instance.
 func (o GetInstancesInstanceOutput) LockMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
-// Array composed of Mongos.
+// The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
 func (o GetInstancesInstanceOutput) Mongos() GetInstancesInstanceMongoArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceMongo { return v.Mongos }).(GetInstancesInstanceMongoArrayOutput)
 }
 
-// The name of the MongoDB instance.
+// The name of the instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Classic network or VPC.
+// The network type of the instance.
 func (o GetInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// Region ID the instance belongs to.
+// The region ID of the instance.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+// The number of nodes in the instance.
 func (o GetInstancesInstanceOutput) Replication() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
 }
 
-// Array composed of shards.
+// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+func (o GetInstancesInstanceOutput) RestoreRanges() GetInstancesInstanceRestoreRangeArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceRestoreRange { return v.RestoreRanges }).(GetInstancesInstanceRestoreRangeArrayOutput)
+}
+
+// The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
 func (o GetInstancesInstanceOutput) Shards() GetInstancesInstanceShardArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceShard { return v.Shards }).(GetInstancesInstanceShardArrayOutput)
 }
 
-// Status of the instance.
+// The instance status.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Shard disk.
+// The storage space of the shard node.
 func (o GetInstancesInstanceOutput) Storage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
 }
@@ -1929,11 +2216,11 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceMongo struct {
-	// Shard instance specification.
+	// The instance type of the shard node.
 	Class string `pulumi:"class"`
-	// Shard instance description.
+	// The description of the shard node.
 	Description string `pulumi:"description"`
-	// Shard instance ID.
+	// The ID of the shard node.
 	NodeId string `pulumi:"nodeId"`
 }
 
@@ -1949,11 +2236,11 @@ type GetInstancesInstanceMongoInput interface {
 }
 
 type GetInstancesInstanceMongoArgs struct {
-	// Shard instance specification.
+	// The instance type of the shard node.
 	Class pulumi.StringInput `pulumi:"class"`
-	// Shard instance description.
+	// The description of the shard node.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Shard instance ID.
+	// The ID of the shard node.
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
 }
 
@@ -2008,17 +2295,17 @@ func (o GetInstancesInstanceMongoOutput) ToGetInstancesInstanceMongoOutputWithCo
 	return o
 }
 
-// Shard instance specification.
+// The instance type of the shard node.
 func (o GetInstancesInstanceMongoOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceMongo) string { return v.Class }).(pulumi.StringOutput)
 }
 
-// Shard instance description.
+// The description of the shard node.
 func (o GetInstancesInstanceMongoOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceMongo) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Shard instance ID.
+// The ID of the shard node.
 func (o GetInstancesInstanceMongoOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceMongo) string { return v.NodeId }).(pulumi.StringOutput)
 }
@@ -2043,14 +2330,129 @@ func (o GetInstancesInstanceMongoArrayOutput) Index(i pulumi.IntInput) GetInstan
 	}).(GetInstancesInstanceMongoOutput)
 }
 
+type GetInstancesInstanceRestoreRange struct {
+	// The beginning of the recoverable time range.
+	RestoreBeginTime string `pulumi:"restoreBeginTime"`
+	// The end of the recoverable time range.
+	RestoreEndTime string `pulumi:"restoreEndTime"`
+	// The restoration method.
+	RestoreType string `pulumi:"restoreType"`
+}
+
+// GetInstancesInstanceRestoreRangeInput is an input type that accepts GetInstancesInstanceRestoreRangeArgs and GetInstancesInstanceRestoreRangeOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceRestoreRangeInput` via:
+//
+//	GetInstancesInstanceRestoreRangeArgs{...}
+type GetInstancesInstanceRestoreRangeInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceRestoreRangeOutput() GetInstancesInstanceRestoreRangeOutput
+	ToGetInstancesInstanceRestoreRangeOutputWithContext(context.Context) GetInstancesInstanceRestoreRangeOutput
+}
+
+type GetInstancesInstanceRestoreRangeArgs struct {
+	// The beginning of the recoverable time range.
+	RestoreBeginTime pulumi.StringInput `pulumi:"restoreBeginTime"`
+	// The end of the recoverable time range.
+	RestoreEndTime pulumi.StringInput `pulumi:"restoreEndTime"`
+	// The restoration method.
+	RestoreType pulumi.StringInput `pulumi:"restoreType"`
+}
+
+func (GetInstancesInstanceRestoreRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceRestoreRangeArgs) ToGetInstancesInstanceRestoreRangeOutput() GetInstancesInstanceRestoreRangeOutput {
+	return i.ToGetInstancesInstanceRestoreRangeOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceRestoreRangeArgs) ToGetInstancesInstanceRestoreRangeOutputWithContext(ctx context.Context) GetInstancesInstanceRestoreRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceRestoreRangeOutput)
+}
+
+// GetInstancesInstanceRestoreRangeArrayInput is an input type that accepts GetInstancesInstanceRestoreRangeArray and GetInstancesInstanceRestoreRangeArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceRestoreRangeArrayInput` via:
+//
+//	GetInstancesInstanceRestoreRangeArray{ GetInstancesInstanceRestoreRangeArgs{...} }
+type GetInstancesInstanceRestoreRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceRestoreRangeArrayOutput() GetInstancesInstanceRestoreRangeArrayOutput
+	ToGetInstancesInstanceRestoreRangeArrayOutputWithContext(context.Context) GetInstancesInstanceRestoreRangeArrayOutput
+}
+
+type GetInstancesInstanceRestoreRangeArray []GetInstancesInstanceRestoreRangeInput
+
+func (GetInstancesInstanceRestoreRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceRestoreRangeArray) ToGetInstancesInstanceRestoreRangeArrayOutput() GetInstancesInstanceRestoreRangeArrayOutput {
+	return i.ToGetInstancesInstanceRestoreRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceRestoreRangeArray) ToGetInstancesInstanceRestoreRangeArrayOutputWithContext(ctx context.Context) GetInstancesInstanceRestoreRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceRestoreRangeArrayOutput)
+}
+
+type GetInstancesInstanceRestoreRangeOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceRestoreRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceRestoreRangeOutput) ToGetInstancesInstanceRestoreRangeOutput() GetInstancesInstanceRestoreRangeOutput {
+	return o
+}
+
+func (o GetInstancesInstanceRestoreRangeOutput) ToGetInstancesInstanceRestoreRangeOutputWithContext(ctx context.Context) GetInstancesInstanceRestoreRangeOutput {
+	return o
+}
+
+// The beginning of the recoverable time range.
+func (o GetInstancesInstanceRestoreRangeOutput) RestoreBeginTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceRestoreRange) string { return v.RestoreBeginTime }).(pulumi.StringOutput)
+}
+
+// The end of the recoverable time range.
+func (o GetInstancesInstanceRestoreRangeOutput) RestoreEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceRestoreRange) string { return v.RestoreEndTime }).(pulumi.StringOutput)
+}
+
+// The restoration method.
+func (o GetInstancesInstanceRestoreRangeOutput) RestoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceRestoreRange) string { return v.RestoreType }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceRestoreRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceRestoreRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceRestoreRange)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceRestoreRangeArrayOutput) ToGetInstancesInstanceRestoreRangeArrayOutput() GetInstancesInstanceRestoreRangeArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceRestoreRangeArrayOutput) ToGetInstancesInstanceRestoreRangeArrayOutputWithContext(ctx context.Context) GetInstancesInstanceRestoreRangeArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceRestoreRangeArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceRestoreRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceRestoreRange {
+		return vs[0].([]GetInstancesInstanceRestoreRange)[vs[1].(int)]
+	}).(GetInstancesInstanceRestoreRangeOutput)
+}
+
 type GetInstancesInstanceShard struct {
-	// Shard instance specification.
+	// The instance type of the shard node.
 	Class string `pulumi:"class"`
-	// Shard instance description.
+	// The description of the shard node.
 	Description string `pulumi:"description"`
-	// Shard instance ID.
+	// The ID of the shard node.
 	NodeId string `pulumi:"nodeId"`
-	// Shard disk.
+	// The storage space of the shard node.
 	Storage int `pulumi:"storage"`
 }
 
@@ -2066,13 +2468,13 @@ type GetInstancesInstanceShardInput interface {
 }
 
 type GetInstancesInstanceShardArgs struct {
-	// Shard instance specification.
+	// The instance type of the shard node.
 	Class pulumi.StringInput `pulumi:"class"`
-	// Shard instance description.
+	// The description of the shard node.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Shard instance ID.
+	// The ID of the shard node.
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	// Shard disk.
+	// The storage space of the shard node.
 	Storage pulumi.IntInput `pulumi:"storage"`
 }
 
@@ -2127,22 +2529,22 @@ func (o GetInstancesInstanceShardOutput) ToGetInstancesInstanceShardOutputWithCo
 	return o
 }
 
-// Shard instance specification.
+// The instance type of the shard node.
 func (o GetInstancesInstanceShardOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceShard) string { return v.Class }).(pulumi.StringOutput)
 }
 
-// Shard instance description.
+// The description of the shard node.
 func (o GetInstancesInstanceShardOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceShard) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Shard instance ID.
+// The ID of the shard node.
 func (o GetInstancesInstanceShardOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceShard) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-// Shard disk.
+// The storage space of the shard node.
 func (o GetInstancesInstanceShardOutput) Storage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceShard) int { return v.Storage }).(pulumi.IntOutput)
 }
@@ -3109,6 +3511,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetInput)(nil)).Elem(), InstanceReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetArrayInput)(nil)).Elem(), InstanceReplicaSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneInfoInput)(nil)).Elem(), InstanceZoneInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneInfoArrayInput)(nil)).Elem(), InstanceZoneInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicNetworkAddressReplicaSetInput)(nil)).Elem(), PublicNetworkAddressReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicNetworkAddressReplicaSetArrayInput)(nil)).Elem(), PublicNetworkAddressReplicaSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceSecurityIpGroupInput)(nil)).Elem(), ServerlessInstanceSecurityIpGroupArgs{})
@@ -3121,6 +3525,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceParameterArrayInput)(nil)).Elem(), ShardingInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListInput)(nil)).Elem(), ShardingInstanceShardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListArrayInput)(nil)).Elem(), ShardingInstanceShardListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceZoneInfoInput)(nil)).Elem(), ShardingInstanceZoneInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceZoneInfoArrayInput)(nil)).Elem(), ShardingInstanceZoneInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPrivateAddressNetworkAddressInput)(nil)).Elem(), ShardingNetworkPrivateAddressNetworkAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPrivateAddressNetworkAddressArrayInput)(nil)).Elem(), ShardingNetworkPrivateAddressNetworkAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressNetworkAddressInput)(nil)).Elem(), ShardingNetworkPublicAddressNetworkAddressArgs{})
@@ -3133,6 +3539,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoInput)(nil)).Elem(), GetInstancesInstanceMongoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoArrayInput)(nil)).Elem(), GetInstancesInstanceMongoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceRestoreRangeInput)(nil)).Elem(), GetInstancesInstanceRestoreRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceRestoreRangeArrayInput)(nil)).Elem(), GetInstancesInstanceRestoreRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceShardInput)(nil)).Elem(), GetInstancesInstanceShardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceShardArrayInput)(nil)).Elem(), GetInstancesInstanceShardArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceInput)(nil)).Elem(), GetServerlessInstancesInstanceArgs{})
@@ -3149,6 +3557,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
+	pulumi.RegisterOutputType(InstanceZoneInfoOutput{})
+	pulumi.RegisterOutputType(InstanceZoneInfoArrayOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAddressReplicaSetOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAddressReplicaSetArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessInstanceSecurityIpGroupOutput{})
@@ -3161,6 +3571,8 @@ func init() {
 	pulumi.RegisterOutputType(ShardingInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListArrayOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceZoneInfoOutput{})
+	pulumi.RegisterOutputType(ShardingInstanceZoneInfoArrayOutput{})
 	pulumi.RegisterOutputType(ShardingNetworkPrivateAddressNetworkAddressOutput{})
 	pulumi.RegisterOutputType(ShardingNetworkPrivateAddressNetworkAddressArrayOutput{})
 	pulumi.RegisterOutputType(ShardingNetworkPublicAddressNetworkAddressOutput{})
@@ -3173,6 +3585,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceMongoOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceMongoArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceRestoreRangeOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceRestoreRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceShardOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceShardArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceOutput{})

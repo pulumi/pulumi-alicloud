@@ -11,11 +11,13 @@ export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dds/getMongoInstances:getMongoInstances", {
         "availabilityZone": args.availabilityZone,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "instanceClass": args.instanceClass,
         "instanceType": args.instanceType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "status": args.status,
         "tags": args.tags,
     }, opts);
 }
@@ -25,11 +27,13 @@ export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.In
  */
 export interface GetMongoInstancesArgs {
     availabilityZone?: string;
+    enableDetails?: boolean;
     ids?: string[];
     instanceClass?: string;
     instanceType?: string;
     nameRegex?: string;
     outputFile?: string;
+    status?: string;
     tags?: {[key: string]: string};
 }
 
@@ -38,6 +42,7 @@ export interface GetMongoInstancesArgs {
  */
 export interface GetMongoInstancesResult {
     readonly availabilityZone?: string;
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -49,6 +54,7 @@ export interface GetMongoInstancesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+    readonly status?: string;
     readonly tags?: {[key: string]: string};
 }
 export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMongoInstancesResult> {
@@ -56,11 +62,13 @@ export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dds/getMongoInstances:getMongoInstances", {
         "availabilityZone": args.availabilityZone,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "instanceClass": args.instanceClass,
         "instanceType": args.instanceType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "status": args.status,
         "tags": args.tags,
     }, opts);
 }
@@ -70,10 +78,12 @@ export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts
  */
 export interface GetMongoInstancesOutputArgs {
     availabilityZone?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     instanceClass?: pulumi.Input<string>;
     instanceType?: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

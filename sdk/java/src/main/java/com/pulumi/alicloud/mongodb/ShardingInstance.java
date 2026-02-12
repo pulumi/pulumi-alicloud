@@ -10,6 +10,7 @@ import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceConfigServerList;
 import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceMongoList;
 import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceParameter;
 import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceShardList;
+import com.pulumi.alicloud.mongodb.outputs.ShardingInstanceZoneInfo;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -126,7 +127,7 @@ import javax.annotation.Nullable;
  * MongoDB Sharding Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+ * $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example &lt;id&gt;
  * ```
  * 
  */
@@ -159,6 +160,22 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    public Output<Integer> autoRenewDuration() {
+        return this.autoRenewDuration;
     }
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -345,6 +362,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    @Export(name="forceEncryption", refs={String.class}, tree="[0]")
+    private Output<String> forceEncryption;
+
+    /**
+     * @return Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    public Output<String> forceEncryption() {
+        return this.forceEncryption;
+    }
+    /**
      * The list of Global Security Group Ids.
      * 
      */
@@ -385,6 +416,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
+    }
+    /**
+     * (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    @Export(name="keyIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> keyIds;
+
+    /**
+     * @return (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    public Output<List<String>> keyIds() {
+        return this.keyIds;
     }
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
@@ -589,6 +634,22 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    @Export(name="restoreTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> restoreTime;
+
+    /**
+     * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    public Output<Optional<String>> restoreTime() {
+        return Codegen.optional(this.restoreTime);
+    }
+    /**
      * (Available since v1.42.0) Instance data backup retention days.
      * 
      */
@@ -691,22 +752,22 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.snapshotBackupType;
     }
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      * 
      */
+    @Export(name="srcDbInstanceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> srcDbInstanceId;
+
+    /**
+     * @return The source instance ID.
+     * 
+     */
+    public Output<Optional<String>> srcDbInstanceId() {
+        return Codegen.optional(this.srcDbInstanceId);
+    }
     @Export(name="sslAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslAction;
 
-    /**
-     * @return Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
-     * 
-     */
     public Output<Optional<String>> sslAction() {
         return Codegen.optional(this.sslAction);
     }
@@ -823,6 +884,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> zoneId() {
         return this.zoneId;
+    }
+    /**
+     * (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    @Export(name="zoneInfos", refs={List.class,ShardingInstanceZoneInfo.class}, tree="[0,1]")
+    private Output<List<ShardingInstanceZoneInfo>> zoneInfos;
+
+    /**
+     * @return (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    public Output<List<ShardingInstanceZoneInfo>> zoneInfos() {
+        return this.zoneInfos;
     }
 
     /**

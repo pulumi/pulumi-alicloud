@@ -18,14 +18,14 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
     public static final EtlArgs Empty = new EtlArgs();
 
     /**
-     * The ETL configuration. See `configuration` below.
+     * Detailed configuration of the data processing task.   See `configuration` below.
      * 
      */
     @Import(name="configuration", required=true)
     private Output<EtlConfigurationArgs> configuration;
 
     /**
-     * @return The ETL configuration. See `configuration` below.
+     * @return Detailed configuration of the data processing task.   See `configuration` below.
      * 
      */
     public Output<EtlConfigurationArgs> configuration() {
@@ -33,14 +33,14 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data Processing Task Description.
+     * Description of the data processing task.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Data Processing Task Description.
+     * @return Description of the data processing task.
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,14 +48,14 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data processing task display name.
+     * The display name of the data processing task.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return Data processing task display name.
+     * @return The display name of the data processing task.
      * 
      */
     public Output<String> displayName() {
@@ -63,14 +63,22 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identification of data processing task.
+     * The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      * 
      */
     @Import(name="jobName", required=true)
     private Output<String> jobName;
 
     /**
-     * @return Unique identification of data processing task.
+     * @return The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      * 
      */
     public Output<String> jobName() {
@@ -78,14 +86,14 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project Name.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Project Name.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -121,7 +129,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration The ETL configuration. See `configuration` below.
+         * @param configuration Detailed configuration of the data processing task.   See `configuration` below.
          * 
          * @return builder
          * 
@@ -132,7 +140,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration The ETL configuration. See `configuration` below.
+         * @param configuration Detailed configuration of the data processing task.   See `configuration` below.
          * 
          * @return builder
          * 
@@ -142,7 +150,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Data Processing Task Description.
+         * @param description Description of the data processing task.
          * 
          * @return builder
          * 
@@ -153,7 +161,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Data Processing Task Description.
+         * @param description Description of the data processing task.
          * 
          * @return builder
          * 
@@ -163,7 +171,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Data processing task display name.
+         * @param displayName The display name of the data processing task.
          * 
          * @return builder
          * 
@@ -174,7 +182,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Data processing task display name.
+         * @param displayName The display name of the data processing task.
          * 
          * @return builder
          * 
@@ -184,7 +192,11 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobName Unique identification of data processing task.
+         * @param jobName The job name. Naming rules are as follows:
+         * - Job names must be unique within the same project.
+         * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+         * - Must start and end with a lowercase letter or digit.
+         * - Must be 2 to 64 characters in length.
          * 
          * @return builder
          * 
@@ -195,7 +207,11 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobName Unique identification of data processing task.
+         * @param jobName The job name. Naming rules are as follows:
+         * - Job names must be unique within the same project.
+         * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+         * - Must start and end with a lowercase letter or digit.
+         * - Must be 2 to 64 characters in length.
          * 
          * @return builder
          * 
@@ -205,7 +221,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Project Name.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -216,7 +232,7 @@ public final class EtlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Project Name.
+         * @param project Project name.
          * 
          * @return builder
          * 

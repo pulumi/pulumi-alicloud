@@ -55,6 +55,23 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    @Import(name="autoRenewDuration")
+    private @Nullable Output<Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewDuration() {
+        return Optional.ofNullable(this.autoRenewDuration);
+    }
+
+    /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      * 
      */
@@ -249,6 +266,21 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<String> engineVersion() {
         return this.engineVersion;
+    }
+
+    /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    @Import(name="forceEncryption")
+    private @Nullable Output<String> forceEncryption;
+
+    /**
+     * @return Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    public Optional<Output<String>> forceEncryption() {
+        return Optional.ofNullable(this.forceEncryption);
     }
 
     /**
@@ -513,6 +545,23 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    @Import(name="restoreTime")
+    private @Nullable Output<String> restoreTime;
+
+    /**
+     * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    public Optional<Output<String>> restoreTime() {
+        return Optional.ofNullable(this.restoreTime);
+    }
+
+    /**
      * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
      * 
      */
@@ -607,22 +656,23 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      * 
      */
+    @Import(name="srcDbInstanceId")
+    private @Nullable Output<String> srcDbInstanceId;
+
+    /**
+     * @return The source instance ID.
+     * 
+     */
+    public Optional<Output<String>> srcDbInstanceId() {
+        return Optional.ofNullable(this.srcDbInstanceId);
+    }
+
     @Import(name="sslAction")
     private @Nullable Output<String> sslAction;
 
-    /**
-     * @return Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
-     * 
-     */
     public Optional<Output<String>> sslAction() {
         return Optional.ofNullable(this.sslAction);
     }
@@ -739,6 +789,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     private ShardingInstanceArgs(ShardingInstanceArgs $) {
         this.accountPassword = $.accountPassword;
         this.autoRenew = $.autoRenew;
+        this.autoRenewDuration = $.autoRenewDuration;
         this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
         this.backupRetentionPeriod = $.backupRetentionPeriod;
@@ -752,6 +803,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         this.encryptionKey = $.encryptionKey;
         this.encryptorName = $.encryptorName;
         this.engineVersion = $.engineVersion;
+        this.forceEncryption = $.forceEncryption;
         this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
@@ -769,12 +821,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         this.protocolType = $.protocolType;
         this.provisionedIops = $.provisionedIops;
         this.resourceGroupId = $.resourceGroupId;
+        this.restoreTime = $.restoreTime;
         this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
         this.shardLists = $.shardLists;
         this.snapshotBackupType = $.snapshotBackupType;
+        this.srcDbInstanceId = $.srcDbInstanceId;
         this.sslAction = $.sslAction;
         this.storageEngine = $.storageEngine;
         this.storageType = $.storageType;
@@ -843,6 +897,29 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(@Nullable Output<Integer> autoRenewDuration) {
+            $.autoRenewDuration = autoRenewDuration;
+            return this;
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(Integer autoRenewDuration) {
+            return autoRenewDuration(Output.of(autoRenewDuration));
         }
 
         /**
@@ -1138,6 +1215,27 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder engineVersion(String engineVersion) {
             return engineVersion(Output.of(engineVersion));
+        }
+
+        /**
+         * @param forceEncryption Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(@Nullable Output<String> forceEncryption) {
+            $.forceEncryption = forceEncryption;
+            return this;
+        }
+
+        /**
+         * @param forceEncryption Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(String forceEncryption) {
+            return forceEncryption(Output.of(forceEncryption));
         }
 
         /**
@@ -1534,6 +1632,29 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreTime(@Nullable Output<String> restoreTime) {
+            $.restoreTime = restoreTime;
+            return this;
+        }
+
+        /**
+         * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreTime(String restoreTime) {
+            return restoreTime(Output.of(restoreTime));
+        }
+
+        /**
          * @param roleArn The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
          * 
          * @return builder
@@ -1684,28 +1805,31 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sslAction Actions performed on SSL functions. Valid values:
-         * - `Open`: turn on SSL encryption.
-         * - `Close`: turn off SSL encryption.
-         * - `Update`: update SSL certificate.
+         * @param srcDbInstanceId The source instance ID.
          * 
          * @return builder
          * 
          */
+        public Builder srcDbInstanceId(@Nullable Output<String> srcDbInstanceId) {
+            $.srcDbInstanceId = srcDbInstanceId;
+            return this;
+        }
+
+        /**
+         * @param srcDbInstanceId The source instance ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceId(String srcDbInstanceId) {
+            return srcDbInstanceId(Output.of(srcDbInstanceId));
+        }
+
         public Builder sslAction(@Nullable Output<String> sslAction) {
             $.sslAction = sslAction;
             return this;
         }
 
-        /**
-         * @param sslAction Actions performed on SSL functions. Valid values:
-         * - `Open`: turn on SSL encryption.
-         * - `Close`: turn off SSL encryption.
-         * - `Update`: update SSL certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslAction(String sslAction) {
             return sslAction(Output.of(sslAction));
         }

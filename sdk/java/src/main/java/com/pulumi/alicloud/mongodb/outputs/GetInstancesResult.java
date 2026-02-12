@@ -6,6 +6,7 @@ package com.pulumi.alicloud.mongodb.outputs;
 import com.pulumi.alicloud.mongodb.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -16,51 +17,60 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstancesResult {
     /**
-     * @return Instance availability zone.
+     * @return The zone ID of the instance.
      * 
      */
     private @Nullable String availabilityZone;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return The ids list of MongoDB instances
-     * 
-     */
     private List<String> ids;
     /**
-     * @return Sizing of the MongoDB instance.
+     * @return The instance type.
      * 
      */
     private @Nullable String instanceClass;
     /**
-     * @return Instance type. Optional values `sharding` or `replicate`.
+     * @return The instance architecture.
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return A list of MongoDB instances. Its every element contains the following attributes:
+     * @return A list of Instances. Each element contains the following attributes:
      * 
      */
     private List<GetInstancesInstance> instances;
     private @Nullable String nameRegex;
     /**
-     * @return The names list of MongoDB instances
+     * @return (Available since v1.42.0) A list of Instance names.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The instance status.
+     * 
+     */
+    private @Nullable String status;
+    /**
+     * @return (Available since v1.66.0) The details of the resource tags.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetInstancesResult() {}
     /**
-     * @return Instance availability zone.
+     * @return The zone ID of the instance.
      * 
      */
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -69,29 +79,25 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The ids list of MongoDB instances
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
     /**
-     * @return Sizing of the MongoDB instance.
+     * @return The instance type.
      * 
      */
     public Optional<String> instanceClass() {
         return Optional.ofNullable(this.instanceClass);
     }
     /**
-     * @return Instance type. Optional values `sharding` or `replicate`.
+     * @return The instance architecture.
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return A list of MongoDB instances. Its every element contains the following attributes:
+     * @return A list of Instances. Each element contains the following attributes:
      * 
      */
     public List<GetInstancesInstance> instances() {
@@ -101,7 +107,7 @@ public final class GetInstancesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return The names list of MongoDB instances
+     * @return (Available since v1.42.0) A list of Instance names.
      * 
      */
     public List<String> names() {
@@ -110,6 +116,17 @@ public final class GetInstancesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The instance status.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return (Available since v1.66.0) The details of the resource tags.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
@@ -124,6 +141,7 @@ public final class GetInstancesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
+        private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
         private @Nullable String instanceClass;
@@ -132,11 +150,13 @@ public final class GetInstancesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable String status;
         private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
+    	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.instanceClass = defaults.instanceClass;
@@ -145,6 +165,7 @@ public final class GetInstancesResult {
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.status = defaults.status;
     	      this.tags = defaults.tags;
         }
 
@@ -152,6 +173,12 @@ public final class GetInstancesResult {
         public Builder availabilityZone(@Nullable String availabilityZone) {
 
             this.availabilityZone = availabilityZone;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+
+            this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
@@ -220,6 +247,12 @@ public final class GetInstancesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
@@ -228,6 +261,7 @@ public final class GetInstancesResult {
         public GetInstancesResult build() {
             final var _resultValue = new GetInstancesResult();
             _resultValue.availabilityZone = availabilityZone;
+            _resultValue.enableDetails = enableDetails;
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.instanceClass = instanceClass;
@@ -236,6 +270,7 @@ public final class GetInstancesResult {
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
             _resultValue.tags = tags;
             return _resultValue;
         }

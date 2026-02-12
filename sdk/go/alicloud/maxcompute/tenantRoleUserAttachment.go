@@ -64,9 +64,18 @@ import (
 type TenantRoleUserAttachment struct {
 	pulumi.CustomResourceState
 
-	// This property does not have a description in the spec, please add it before generating code.
+	// Account UID
+	//
+	// 1. If the user is a primary account, the AccountId format is UID.
+	// Example: 200231703336555555
+	//
+	// 2. If the user is a RAM user, the AccountId format is p4_UID.
+	// Example: p4200531704446555555
+	//
+	// 3. If the user is a RAM role, the AccountId format is v4_UID.
+	// Example: v4_300007628597555555
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// This property does not have a description in the spec, please add it before generating code.
+	// Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
 	TenantRole pulumi.StringOutput `pulumi:"tenantRole"`
 }
 
@@ -100,16 +109,34 @@ func GetTenantRoleUserAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TenantRoleUserAttachment resources.
 type tenantRoleUserAttachmentState struct {
-	// This property does not have a description in the spec, please add it before generating code.
+	// Account UID
+	//
+	// 1. If the user is a primary account, the AccountId format is UID.
+	// Example: 200231703336555555
+	//
+	// 2. If the user is a RAM user, the AccountId format is p4_UID.
+	// Example: p4200531704446555555
+	//
+	// 3. If the user is a RAM role, the AccountId format is v4_UID.
+	// Example: v4_300007628597555555
 	AccountId *string `pulumi:"accountId"`
-	// This property does not have a description in the spec, please add it before generating code.
+	// Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
 	TenantRole *string `pulumi:"tenantRole"`
 }
 
 type TenantRoleUserAttachmentState struct {
-	// This property does not have a description in the spec, please add it before generating code.
+	// Account UID
+	//
+	// 1. If the user is a primary account, the AccountId format is UID.
+	// Example: 200231703336555555
+	//
+	// 2. If the user is a RAM user, the AccountId format is p4_UID.
+	// Example: p4200531704446555555
+	//
+	// 3. If the user is a RAM role, the AccountId format is v4_UID.
+	// Example: v4_300007628597555555
 	AccountId pulumi.StringPtrInput
-	// This property does not have a description in the spec, please add it before generating code.
+	// Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
 	TenantRole pulumi.StringPtrInput
 }
 
@@ -118,17 +145,35 @@ func (TenantRoleUserAttachmentState) ElementType() reflect.Type {
 }
 
 type tenantRoleUserAttachmentArgs struct {
-	// This property does not have a description in the spec, please add it before generating code.
+	// Account UID
+	//
+	// 1. If the user is a primary account, the AccountId format is UID.
+	// Example: 200231703336555555
+	//
+	// 2. If the user is a RAM user, the AccountId format is p4_UID.
+	// Example: p4200531704446555555
+	//
+	// 3. If the user is a RAM role, the AccountId format is v4_UID.
+	// Example: v4_300007628597555555
 	AccountId *string `pulumi:"accountId"`
-	// This property does not have a description in the spec, please add it before generating code.
+	// Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
 	TenantRole *string `pulumi:"tenantRole"`
 }
 
 // The set of arguments for constructing a TenantRoleUserAttachment resource.
 type TenantRoleUserAttachmentArgs struct {
-	// This property does not have a description in the spec, please add it before generating code.
+	// Account UID
+	//
+	// 1. If the user is a primary account, the AccountId format is UID.
+	// Example: 200231703336555555
+	//
+	// 2. If the user is a RAM user, the AccountId format is p4_UID.
+	// Example: p4200531704446555555
+	//
+	// 3. If the user is a RAM role, the AccountId format is v4_UID.
+	// Example: v4_300007628597555555
 	AccountId pulumi.StringPtrInput
-	// This property does not have a description in the spec, please add it before generating code.
+	// Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
 	TenantRole pulumi.StringPtrInput
 }
 
@@ -219,12 +264,21 @@ func (o TenantRoleUserAttachmentOutput) ToTenantRoleUserAttachmentOutputWithCont
 	return o
 }
 
-// This property does not have a description in the spec, please add it before generating code.
+// Account UID
+//
+// 1. If the user is a primary account, the AccountId format is UID.
+// Example: 200231703336555555
+//
+// 2. If the user is a RAM user, the AccountId format is p4_UID.
+// Example: p4200531704446555555
+//
+// 3. If the user is a RAM role, the AccountId format is v4_UID.
+// Example: v4_300007628597555555
 func (o TenantRoleUserAttachmentOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantRoleUserAttachment) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// This property does not have a description in the spec, please add it before generating code.
+// Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
 func (o TenantRoleUserAttachmentOutput) TenantRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantRoleUserAttachment) pulumi.StringOutput { return v.TenantRole }).(pulumi.StringOutput)
 }

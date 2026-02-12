@@ -112,7 +112,7 @@ import (
 // MongoDB Sharding Instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+// $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example <id>
 // ```
 type ShardingInstance struct {
 	pulumi.CustomResourceState
@@ -121,6 +121,9 @@ type ShardingInstance struct {
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+	AutoRenewDuration pulumi.IntOutput `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
 	BackupInterval pulumi.StringOutput `pulumi:"backupInterval"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -148,12 +151,16 @@ type ShardingInstance struct {
 	EncryptorName pulumi.StringOutput `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+	ForceEncryption pulumi.StringOutput `pulumi:"forceEncryption"`
 	// The list of Global Security Group Ids.
 	GlobalSecurityGroupLists pulumi.StringArrayOutput `pulumi:"globalSecurityGroupLists"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrOutput `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	// (Available since v1.271.0) A list of instance keys.
+	KeyIds pulumi.StringArrayOutput `pulumi:"keyIds"`
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -185,6 +192,9 @@ type ShardingInstance struct {
 	ProvisionedIops pulumi.IntPtrOutput `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// (Available since v1.42.0) Instance data backup retention days.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -201,11 +211,9 @@ type ShardingInstance struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType pulumi.StringOutput `pulumi:"snapshotBackupType"`
-	// Actions performed on SSL functions. Valid values:
-	// - `Open`: turn on SSL encryption.
-	// - `Close`: turn off SSL encryption.
-	// - `Update`: update SSL certificate.
-	SslAction pulumi.StringPtrOutput `pulumi:"sslAction"`
+	// The source instance ID.
+	SrcDbInstanceId pulumi.StringPtrOutput `pulumi:"srcDbInstanceId"`
+	SslAction       pulumi.StringPtrOutput `pulumi:"sslAction"`
 	// (Available since v1.259.0) The status of the SSL feature.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -223,6 +231,8 @@ type ShardingInstance struct {
 	// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// (Available since v1.271.0) The information of nodes in the zone.
+	ZoneInfos ShardingInstanceZoneInfoArrayOutput `pulumi:"zoneInfos"`
 }
 
 // NewShardingInstance registers a new resource with the given unique name, arguments, and options.
@@ -275,6 +285,9 @@ type shardingInstanceState struct {
 	AccountPassword *string `pulumi:"accountPassword"`
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
 	BackupInterval *string `pulumi:"backupInterval"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -302,12 +315,16 @@ type shardingInstanceState struct {
 	EncryptorName *string `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+	ForceEncryption *string `pulumi:"forceEncryption"`
 	// The list of Global Security Group Ids.
 	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// (Available since v1.271.0) A list of instance keys.
+	KeyIds []string `pulumi:"keyIds"`
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -339,6 +356,9 @@ type shardingInstanceState struct {
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+	RestoreTime *string `pulumi:"restoreTime"`
 	// (Available since v1.42.0) Instance data backup retention days.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -355,11 +375,9 @@ type shardingInstanceState struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
-	// Actions performed on SSL functions. Valid values:
-	// - `Open`: turn on SSL encryption.
-	// - `Close`: turn off SSL encryption.
-	// - `Update`: update SSL certificate.
-	SslAction *string `pulumi:"sslAction"`
+	// The source instance ID.
+	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
+	SslAction       *string `pulumi:"sslAction"`
 	// (Available since v1.259.0) The status of the SSL feature.
 	SslStatus *string `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -377,6 +395,8 @@ type shardingInstanceState struct {
 	// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
 	ZoneId *string `pulumi:"zoneId"`
+	// (Available since v1.271.0) The information of nodes in the zone.
+	ZoneInfos []ShardingInstanceZoneInfo `pulumi:"zoneInfos"`
 }
 
 type ShardingInstanceState struct {
@@ -384,6 +404,9 @@ type ShardingInstanceState struct {
 	AccountPassword pulumi.StringPtrInput
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+	AutoRenewDuration pulumi.IntPtrInput
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
 	BackupInterval pulumi.StringPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -411,12 +434,16 @@ type ShardingInstanceState struct {
 	EncryptorName pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringPtrInput
+	// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+	ForceEncryption pulumi.StringPtrInput
 	// The list of Global Security Group Ids.
 	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringPtrInput
+	// (Available since v1.271.0) A list of instance keys.
+	KeyIds pulumi.StringArrayInput
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -448,6 +475,9 @@ type ShardingInstanceState struct {
 	ProvisionedIops pulumi.IntPtrInput
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+	RestoreTime pulumi.StringPtrInput
 	// (Available since v1.42.0) Instance data backup retention days.
 	RetentionPeriod pulumi.IntPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -464,11 +494,9 @@ type ShardingInstanceState struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
-	// Actions performed on SSL functions. Valid values:
-	// - `Open`: turn on SSL encryption.
-	// - `Close`: turn off SSL encryption.
-	// - `Update`: update SSL certificate.
-	SslAction pulumi.StringPtrInput
+	// The source instance ID.
+	SrcDbInstanceId pulumi.StringPtrInput
+	SslAction       pulumi.StringPtrInput
 	// (Available since v1.259.0) The status of the SSL feature.
 	SslStatus pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -486,6 +514,8 @@ type ShardingInstanceState struct {
 	// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
 	ZoneId pulumi.StringPtrInput
+	// (Available since v1.271.0) The information of nodes in the zone.
+	ZoneInfos ShardingInstanceZoneInfoArrayInput
 }
 
 func (ShardingInstanceState) ElementType() reflect.Type {
@@ -497,6 +527,9 @@ type shardingInstanceArgs struct {
 	AccountPassword *string `pulumi:"accountPassword"`
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
 	BackupInterval *string `pulumi:"backupInterval"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -524,6 +557,8 @@ type shardingInstanceArgs struct {
 	EncryptorName *string `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion string `pulumi:"engineVersion"`
+	// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+	ForceEncryption *string `pulumi:"forceEncryption"`
 	// The list of Global Security Group Ids.
 	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
@@ -561,6 +596,9 @@ type shardingInstanceArgs struct {
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+	RestoreTime *string `pulumi:"restoreTime"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn *string `pulumi:"roleArn"`
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
@@ -575,11 +613,9 @@ type shardingInstanceArgs struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
-	// Actions performed on SSL functions. Valid values:
-	// - `Open`: turn on SSL encryption.
-	// - `Close`: turn off SSL encryption.
-	// - `Update`: update SSL certificate.
-	SslAction *string `pulumi:"sslAction"`
+	// The source instance ID.
+	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
+	SslAction       *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -603,6 +639,9 @@ type ShardingInstanceArgs struct {
 	AccountPassword pulumi.StringPtrInput
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+	AutoRenewDuration pulumi.IntPtrInput
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
 	BackupInterval pulumi.StringPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -630,6 +669,8 @@ type ShardingInstanceArgs struct {
 	EncryptorName pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringInput
+	// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+	ForceEncryption pulumi.StringPtrInput
 	// The list of Global Security Group Ids.
 	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
@@ -667,6 +708,9 @@ type ShardingInstanceArgs struct {
 	ProvisionedIops pulumi.IntPtrInput
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+	RestoreTime pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
 	RoleArn pulumi.StringPtrInput
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
@@ -681,11 +725,9 @@ type ShardingInstanceArgs struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
-	// Actions performed on SSL functions. Valid values:
-	// - `Open`: turn on SSL encryption.
-	// - `Close`: turn off SSL encryption.
-	// - `Update`: update SSL certificate.
-	SslAction pulumi.StringPtrInput
+	// The source instance ID.
+	SrcDbInstanceId pulumi.StringPtrInput
+	SslAction       pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -800,6 +842,12 @@ func (o ShardingInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
+// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+func (o ShardingInstanceOutput) AutoRenewDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.AutoRenewDuration }).(pulumi.IntOutput)
+}
+
 // The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
 func (o ShardingInstanceOutput) BackupInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.BackupInterval }).(pulumi.StringOutput)
@@ -866,6 +914,11 @@ func (o ShardingInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+func (o ShardingInstanceOutput) ForceEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ForceEncryption }).(pulumi.StringOutput)
+}
+
 // The list of Global Security Group Ids.
 func (o ShardingInstanceOutput) GlobalSecurityGroupLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.GlobalSecurityGroupLists }).(pulumi.StringArrayOutput)
@@ -879,6 +932,11 @@ func (o ShardingInstanceOutput) HiddenZoneId() pulumi.StringPtrOutput {
 // The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 func (o ShardingInstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// (Available since v1.271.0) A list of instance keys.
+func (o ShardingInstanceOutput) KeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.KeyIds }).(pulumi.StringArrayOutput)
 }
 
 // An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
@@ -954,6 +1012,12 @@ func (o ShardingInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+func (o ShardingInstanceOutput) RestoreTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.RestoreTime }).(pulumi.StringPtrOutput)
+}
+
 // (Available since v1.42.0) Instance data backup retention days.
 func (o ShardingInstanceOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
@@ -991,10 +1055,11 @@ func (o ShardingInstanceOutput) SnapshotBackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.SnapshotBackupType }).(pulumi.StringOutput)
 }
 
-// Actions performed on SSL functions. Valid values:
-// - `Open`: turn on SSL encryption.
-// - `Close`: turn off SSL encryption.
-// - `Update`: update SSL certificate.
+// The source instance ID.
+func (o ShardingInstanceOutput) SrcDbInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.SrcDbInstanceId }).(pulumi.StringPtrOutput)
+}
+
 func (o ShardingInstanceOutput) SslAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.SslAction }).(pulumi.StringPtrOutput)
 }
@@ -1038,6 +1103,11 @@ func (o ShardingInstanceOutput) VswitchId() pulumi.StringOutput {
 // If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
 func (o ShardingInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.271.0) The information of nodes in the zone.
+func (o ShardingInstanceOutput) ZoneInfos() ShardingInstanceZoneInfoArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceZoneInfoArrayOutput { return v.ZoneInfos }).(ShardingInstanceZoneInfoArrayOutput)
 }
 
 type ShardingInstanceArrayOutput struct{ *pulumi.OutputState }

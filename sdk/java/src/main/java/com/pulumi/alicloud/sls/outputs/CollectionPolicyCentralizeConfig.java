@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CollectionPolicyCentralizeConfig {
     /**
-     * @return When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+     * @return Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
      * 
      */
     private @Nullable String destLogstore;
     /**
-     * @return The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+     * @return Destination project for centralized forwarding. Its region must match destRegion.
      * 
      */
     private @Nullable String destProject;
     /**
-     * @return Centralized transfer destination area.
+     * @return Destination region for centralized forwarding.
      * 
      */
     private @Nullable String destRegion;
     /**
-     * @return The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+     * @return Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
      * 
      */
     private @Nullable Integer destTtl;
 
     private CollectionPolicyCentralizeConfig() {}
     /**
-     * @return When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+     * @return Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
      * 
      */
     public Optional<String> destLogstore() {
         return Optional.ofNullable(this.destLogstore);
     }
     /**
-     * @return The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+     * @return Destination project for centralized forwarding. Its region must match destRegion.
      * 
      */
     public Optional<String> destProject() {
         return Optional.ofNullable(this.destProject);
     }
     /**
-     * @return Centralized transfer destination area.
+     * @return Destination region for centralized forwarding.
      * 
      */
     public Optional<String> destRegion() {
         return Optional.ofNullable(this.destRegion);
     }
     /**
-     * @return The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+     * @return Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
      * 
      */
     public Optional<Integer> destTtl() {

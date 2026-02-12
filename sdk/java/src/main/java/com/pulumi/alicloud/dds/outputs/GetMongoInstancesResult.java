@@ -6,6 +6,7 @@ package com.pulumi.alicloud.dds.outputs;
 import com.pulumi.alicloud.dds.outputs.GetMongoInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMongoInstancesResult {
     private @Nullable String availabilityZone;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -28,11 +30,15 @@ public final class GetMongoInstancesResult {
     private @Nullable String nameRegex;
     private List<String> names;
     private @Nullable String outputFile;
+    private @Nullable String status;
     private @Nullable Map<String,String> tags;
 
     private GetMongoInstancesResult() {}
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -62,6 +68,9 @@ public final class GetMongoInstancesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
@@ -76,6 +85,7 @@ public final class GetMongoInstancesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
+        private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
         private @Nullable String instanceClass;
@@ -84,11 +94,13 @@ public final class GetMongoInstancesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable String status;
         private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetMongoInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
+    	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.instanceClass = defaults.instanceClass;
@@ -97,6 +109,7 @@ public final class GetMongoInstancesResult {
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.status = defaults.status;
     	      this.tags = defaults.tags;
         }
 
@@ -104,6 +117,12 @@ public final class GetMongoInstancesResult {
         public Builder availabilityZone(@Nullable String availabilityZone) {
 
             this.availabilityZone = availabilityZone;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+
+            this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +191,12 @@ public final class GetMongoInstancesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
@@ -180,6 +205,7 @@ public final class GetMongoInstancesResult {
         public GetMongoInstancesResult build() {
             final var _resultValue = new GetMongoInstancesResult();
             _resultValue.availabilityZone = availabilityZone;
+            _resultValue.enableDetails = enableDetails;
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.instanceClass = instanceClass;
@@ -188,6 +214,7 @@ public final class GetMongoInstancesResult {
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
             _resultValue.tags = tags;
             return _resultValue;
         }

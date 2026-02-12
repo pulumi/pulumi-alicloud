@@ -11,6 +11,7 @@ from .account_public_access_block import *
 from .bucket import *
 from .bucket_access_monitor import *
 from .bucket_acl import *
+from .bucket_archive_direct_read import *
 from .bucket_cname import *
 from .bucket_cname_token import *
 from .bucket_cors import *
@@ -19,11 +20,13 @@ from .bucket_https_config import *
 from .bucket_logging import *
 from .bucket_meta_query import *
 from .bucket_object import *
+from .bucket_overwrite_config import *
 from .bucket_policy import *
 from .bucket_public_access_block import *
 from .bucket_referer import *
 from .bucket_replication import *
 from .bucket_request_payment import *
+from .bucket_response_header import *
 from .bucket_server_side_encryption import *
 from .bucket_style import *
 from .bucket_transfer_acceleration import *

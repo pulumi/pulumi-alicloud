@@ -17,14 +17,14 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
     public static final CollectionPolicyResourceDirectoryArgs Empty = new CollectionPolicyResourceDirectoryArgs();
 
     /**
-     * Support all mode all and custom mode custom under this resource directory
+     * Supports the all (select all) mode and custom mode under this Resource Directory.
      * 
      */
     @Import(name="accountGroupType")
     private @Nullable Output<String> accountGroupType;
 
     /**
-     * @return Support all mode all and custom mode custom under this resource directory
+     * @return Supports the all (select all) mode and custom mode under this Resource Directory.
      * 
      */
     public Optional<Output<String>> accountGroupType() {
@@ -32,14 +32,14 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
     }
 
     /**
-     * When the resource directory is configured in the custom mode, the corresponding member account list
+     * The list of member accounts when the Resource Directory is configured in custom mode.
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
     /**
-     * @return When the resource directory is configured in the custom mode, the corresponding member account list
+     * @return The list of member accounts when the Resource Directory is configured in custom mode.
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -72,7 +72,7 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountGroupType Support all mode all and custom mode custom under this resource directory
+         * @param accountGroupType Supports the all (select all) mode and custom mode under this Resource Directory.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountGroupType Support all mode all and custom mode custom under this resource directory
+         * @param accountGroupType Supports the all (select all) mode and custom mode under this Resource Directory.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
         }
 
         /**
-         * @param members When the resource directory is configured in the custom mode, the corresponding member account list
+         * @param members The list of member accounts when the Resource Directory is configured in custom mode.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
         }
 
         /**
-         * @param members When the resource directory is configured in the custom mode, the corresponding member account list
+         * @param members The list of member accounts when the Resource Directory is configured in custom mode.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class CollectionPolicyResourceDirectoryArgs extends com.pulumi.reso
         }
 
         /**
-         * @param members When the resource directory is configured in the custom mode, the corresponding member account list
+         * @param members The list of member accounts when the Resource Directory is configured in custom mode.
          * 
          * @return builder
          * 

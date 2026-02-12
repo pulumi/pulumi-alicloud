@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
-        /// Whether to use replacement disk upgrade
+        /// Whether to use replacement disk upgrade. Valid values:
         /// </summary>
         [Input("useReplace")]
         public Input<bool>? UseReplace { get; set; }

@@ -135,6 +135,11 @@ export type ThreatIntelligenceSwitch = import("./threatIntelligenceSwitch").Thre
 export const ThreatIntelligenceSwitch: typeof import("./threatIntelligenceSwitch").ThreatIntelligenceSwitch = null as any;
 utilities.lazyLoad(exports, ["ThreatIntelligenceSwitch"], () => require("./threatIntelligenceSwitch"));
 
+export { UserAlarmConfigArgs, UserAlarmConfigState } from "./userAlarmConfig";
+export type UserAlarmConfig = import("./userAlarmConfig").UserAlarmConfig;
+export const UserAlarmConfig: typeof import("./userAlarmConfig").UserAlarmConfig = null as any;
+utilities.lazyLoad(exports, ["UserAlarmConfig"], () => require("./userAlarmConfig"));
+
 export { VpcCenTrFirewallArgs, VpcCenTrFirewallState } from "./vpcCenTrFirewall";
 export type VpcCenTrFirewall = import("./vpcCenTrFirewall").VpcCenTrFirewall;
 export const VpcCenTrFirewall: typeof import("./vpcCenTrFirewall").VpcCenTrFirewall = null as any;
@@ -187,6 +192,8 @@ const _module = {
                 return new PrivateDns(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch":
                 return new ThreatIntelligenceSwitch(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig":
+                return new UserAlarmConfig(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall":
                 return new VpcCenTrFirewall(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode":
@@ -214,6 +221,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallCont
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/policyAdvancedConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/privateDns", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/threatIntelligenceSwitch", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/userAlarmConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcCenTrFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcFirewallAclEngineMode", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcFirewallIpsConfig", _module)

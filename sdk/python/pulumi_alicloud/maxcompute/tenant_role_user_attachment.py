@@ -23,8 +23,17 @@ class TenantRoleUserAttachmentArgs:
                  tenant_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantRoleUserAttachment resource.
-        :param pulumi.Input[_builtins.str] account_id: This property does not have a description in the spec, please add it before generating code.
-        :param pulumi.Input[_builtins.str] tenant_role: This property does not have a description in the spec, please add it before generating code.
+        :param pulumi.Input[_builtins.str] account_id: Account UID
+               
+               1. If the user is a primary account, the AccountId format is UID.
+               Example: 200231703336555555
+               
+               2. If the user is a RAM user, the AccountId format is p4_UID.
+               Example: p4_200531704446555555
+               
+               3. If the user is a RAM role, the AccountId format is v4_UID.
+               Example: v4_300007628597555555
+        :param pulumi.Input[_builtins.str] tenant_role: Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -35,7 +44,16 @@ class TenantRoleUserAttachmentArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This property does not have a description in the spec, please add it before generating code.
+        Account UID
+
+        1. If the user is a primary account, the AccountId format is UID.
+        Example: 200231703336555555
+
+        2. If the user is a RAM user, the AccountId format is p4_UID.
+        Example: p4_200531704446555555
+
+        3. If the user is a RAM role, the AccountId format is v4_UID.
+        Example: v4_300007628597555555
         """
         return pulumi.get(self, "account_id")
 
@@ -47,7 +65,7 @@ class TenantRoleUserAttachmentArgs:
     @pulumi.getter(name="tenantRole")
     def tenant_role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This property does not have a description in the spec, please add it before generating code.
+        Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         return pulumi.get(self, "tenant_role")
 
@@ -63,8 +81,17 @@ class _TenantRoleUserAttachmentState:
                  tenant_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantRoleUserAttachment resources.
-        :param pulumi.Input[_builtins.str] account_id: This property does not have a description in the spec, please add it before generating code.
-        :param pulumi.Input[_builtins.str] tenant_role: This property does not have a description in the spec, please add it before generating code.
+        :param pulumi.Input[_builtins.str] account_id: Account UID
+               
+               1. If the user is a primary account, the AccountId format is UID.
+               Example: 200231703336555555
+               
+               2. If the user is a RAM user, the AccountId format is p4_UID.
+               Example: p4_200531704446555555
+               
+               3. If the user is a RAM role, the AccountId format is v4_UID.
+               Example: v4_300007628597555555
+        :param pulumi.Input[_builtins.str] tenant_role: Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -75,7 +102,16 @@ class _TenantRoleUserAttachmentState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This property does not have a description in the spec, please add it before generating code.
+        Account UID
+
+        1. If the user is a primary account, the AccountId format is UID.
+        Example: 200231703336555555
+
+        2. If the user is a RAM user, the AccountId format is p4_UID.
+        Example: p4_200531704446555555
+
+        3. If the user is a RAM role, the AccountId format is v4_UID.
+        Example: v4_300007628597555555
         """
         return pulumi.get(self, "account_id")
 
@@ -87,7 +123,7 @@ class _TenantRoleUserAttachmentState:
     @pulumi.getter(name="tenantRole")
     def tenant_role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This property does not have a description in the spec, please add it before generating code.
+        Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         return pulumi.get(self, "tenant_role")
 
@@ -141,8 +177,17 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: This property does not have a description in the spec, please add it before generating code.
-        :param pulumi.Input[_builtins.str] tenant_role: This property does not have a description in the spec, please add it before generating code.
+        :param pulumi.Input[_builtins.str] account_id: Account UID
+               
+               1. If the user is a primary account, the AccountId format is UID.
+               Example: 200231703336555555
+               
+               2. If the user is a RAM user, the AccountId format is p4_UID.
+               Example: p4_200531704446555555
+               
+               3. If the user is a RAM role, the AccountId format is v4_UID.
+               Example: v4_300007628597555555
+        :param pulumi.Input[_builtins.str] tenant_role: Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         ...
     @overload
@@ -231,8 +276,17 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: This property does not have a description in the spec, please add it before generating code.
-        :param pulumi.Input[_builtins.str] tenant_role: This property does not have a description in the spec, please add it before generating code.
+        :param pulumi.Input[_builtins.str] account_id: Account UID
+               
+               1. If the user is a primary account, the AccountId format is UID.
+               Example: 200231703336555555
+               
+               2. If the user is a RAM user, the AccountId format is p4_UID.
+               Example: p4_200531704446555555
+               
+               3. If the user is a RAM role, the AccountId format is v4_UID.
+               Example: v4_300007628597555555
+        :param pulumi.Input[_builtins.str] tenant_role: Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,7 +300,16 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        This property does not have a description in the spec, please add it before generating code.
+        Account UID
+
+        1. If the user is a primary account, the AccountId format is UID.
+        Example: 200231703336555555
+
+        2. If the user is a RAM user, the AccountId format is p4_UID.
+        Example: p4_200531704446555555
+
+        3. If the user is a RAM role, the AccountId format is v4_UID.
+        Example: v4_300007628597555555
         """
         return pulumi.get(self, "account_id")
 
@@ -254,7 +317,7 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
     @pulumi.getter(name="tenantRole")
     def tenant_role(self) -> pulumi.Output[_builtins.str]:
         """
-        This property does not have a description in the spec, please add it before generating code.
+        Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         return pulumi.get(self, "tenant_role")
 

@@ -2011,6 +2011,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/userAlarmConfig",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig": "UserAlarmConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/vpcCenTrFirewall",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -2895,6 +2903,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ddos",
   "classes": {
    "alicloud:ddos/bgpPolicy:BgpPolicy": "BgpPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ddos/cooDomainPreciseAccessRule",
+  "fqn": "pulumi_alicloud.ddos",
+  "classes": {
+   "alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule": "CooDomainPreciseAccessRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ddos/cooWebCcRule",
+  "fqn": "pulumi_alicloud.ddos",
+  "classes": {
+   "alicloud:ddos/cooWebCcRule:CooWebCcRule": "CooWebCcRule"
   }
  },
  {
@@ -6715,6 +6739,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketArchiveDirectRead",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead": "BucketArchiveDirectRead"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketCname",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -6779,6 +6811,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketOverwriteConfig",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig": "BucketOverwriteConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketPolicy",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -6815,6 +6855,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketRequestPayment:BucketRequestPayment": "BucketRequestPayment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketResponseHeader",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketResponseHeader:BucketResponseHeader": "BucketResponseHeader"
   }
  },
  {

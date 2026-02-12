@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EtlConfiguration {
     /**
-     * @return The beginning of the time range for transformation.
+     * @return The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
      * 
      */
     private Integer fromTime;
     /**
-     * @return Data processing syntax type.
+     * @return The syntax type used for data transformation.
      * 
      */
     private String lang;
     /**
-     * @return Destination Logstore Name.
+     * @return The name of the destination Logstore.
      * 
      */
     private String logstore;
@@ -36,7 +36,7 @@ public final class EtlConfiguration {
      */
     private @Nullable Map<String,String> parameters;
     /**
-     * @return The ARN role that authorizes writing to the target Logstore.
+     * @return The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     private String roleArn;
@@ -46,33 +46,33 @@ public final class EtlConfiguration {
      */
     private String script;
     /**
-     * @return Processing result output target list See `sink` below.
+     * @return List of output destinations for processing results.   See `sink` below.
      * 
      */
     private List<EtlConfigurationSink> sinks;
     /**
-     * @return The end of the time range for transformation.
+     * @return End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
      * 
      */
     private Integer toTime;
 
     private EtlConfiguration() {}
     /**
-     * @return The beginning of the time range for transformation.
+     * @return The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
      * 
      */
     public Integer fromTime() {
         return this.fromTime;
     }
     /**
-     * @return Data processing syntax type.
+     * @return The syntax type used for data transformation.
      * 
      */
     public String lang() {
         return this.lang;
     }
     /**
-     * @return Destination Logstore Name.
+     * @return The name of the destination Logstore.
      * 
      */
     public String logstore() {
@@ -86,7 +86,7 @@ public final class EtlConfiguration {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
-     * @return The ARN role that authorizes writing to the target Logstore.
+     * @return The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     public String roleArn() {
@@ -100,14 +100,14 @@ public final class EtlConfiguration {
         return this.script;
     }
     /**
-     * @return Processing result output target list See `sink` below.
+     * @return List of output destinations for processing results.   See `sink` below.
      * 
      */
     public List<EtlConfigurationSink> sinks() {
         return this.sinks;
     }
     /**
-     * @return The end of the time range for transformation.
+     * @return End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
      * 
      */
     public Integer toTime() {

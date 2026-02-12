@@ -10982,6 +10982,63 @@ export namespace cloudfirewall {
         routeTableId: string;
     }
 
+    export interface UserAlarmConfigAlarmConfig {
+        /**
+         * The time of the day when the alarm is triggered. The range is `0 ~ 24`.
+         */
+        alarmHour: string;
+        /**
+         * The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
+         */
+        alarmNotify: string;
+        /**
+         * The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
+         */
+        alarmPeriod: string;
+        /**
+         * The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
+         */
+        alarmType: string;
+        /**
+         * The alarm notification message.
+         */
+        alarmValue: string;
+        /**
+         * The day of the week when the alarm is triggered. The range is `1 ~ 7`.
+         */
+        alarmWeekDay: string;
+    }
+
+    export interface UserAlarmConfigContactConfig {
+        /**
+         * The email address of the contact.
+         */
+        email: string;
+        /**
+         * The mobile phone number of the contact.
+         */
+        mobilePhone: string;
+        /**
+         * The name of the contact.
+         */
+        name: string;
+        /**
+         * The status of the contact configuration. Possible values are: `0` disable, `1` enable.
+         */
+        status: string;
+    }
+
+    export interface UserAlarmConfigNotifyConfig {
+        /**
+         * The notification type. Possible values are `sms`, `mail`.
+         */
+        notifyType: string;
+        /**
+         * The notification value. Depending on the value of `notifyType`, it can be a mobile phone number or an email address.
+         */
+        notifyValue: string;
+    }
+
 }
 
 export namespace cloudmonitor {
@@ -18515,7 +18572,7 @@ export namespace cs {
          */
         runtimeVersion?: string;
         /**
-         * Whether to use replacement disk upgrade
+         * Whether to use replacement disk upgrade. Valid values:
          */
         useReplace?: boolean;
     }
@@ -20889,6 +20946,130 @@ export namespace ddos {
         synPps?: number;
     }
 
+    export interface CooDomainPreciseAccessRuleCondition {
+        /**
+         * Matching content.
+         */
+        content: string;
+        /**
+         * Matching field.
+         */
+        field: string;
+        /**
+         * Custom HTTP header field name.
+         *
+         * > **NOTE:**  Valid only when `Field` is `header`.
+         */
+        headerName?: string;
+        /**
+         * Matching method.
+         */
+        matchMethod: string;
+    }
+
+    export interface CooWebCcRuleRuleDetail {
+        /**
+         * The action to take when a match occurs. Valid values:
+         */
+        action: string;
+        /**
+         * List of matching conditions.   See `condition` below.
+         */
+        conditions: outputs.ddos.CooWebCcRuleRuleDetailCondition[];
+        /**
+         * Rate limiting statistics. See `rateLimit` below.
+         */
+        rateLimit: outputs.ddos.CooWebCcRuleRuleDetailRateLimit;
+        /**
+         * Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+         */
+        statistics?: outputs.ddos.CooWebCcRuleRuleDetailStatistics;
+        /**
+         * The HTTP status code. See `statusCode` below.
+         */
+        statusCode?: outputs.ddos.CooWebCcRuleRuleDetailStatusCode;
+    }
+
+    export interface CooWebCcRuleRuleDetailCondition {
+        /**
+         * Matching content.
+         */
+        content: string;
+        /**
+         * The statistic source. Valid values:
+         */
+        field: string;
+        /**
+         * Set this parameter only when the statistic source is `header`.
+         */
+        headerName?: string;
+        /**
+         * Matching method.
+         */
+        matchMethod: string;
+    }
+
+    export interface CooWebCcRuleRuleDetailRateLimit {
+        /**
+         * Statistical interval. Unit: seconds.
+         */
+        interval: number;
+        /**
+         * Header field name (required only when the statistic source is `header`).
+         */
+        subKey?: string;
+        /**
+         * Statistic source. Valid values:
+         */
+        target: string;
+        /**
+         * The trigger threshold.
+         */
+        threshold: number;
+        /**
+         * Block duration. Unit: seconds.
+         */
+        ttl: number;
+    }
+
+    export interface CooWebCcRuleRuleDetailStatistics {
+        /**
+         * The statistic source. Valid values:
+         */
+        field: string;
+        /**
+         * Set this parameter only when the statistic source is `header`.
+         */
+        headerName?: string;
+        /**
+         * The deduplication mode. Valid values:
+         */
+        mode: string;
+    }
+
+    export interface CooWebCcRuleRuleDetailStatusCode {
+        /**
+         * Status code. The value range is `100` to `599`:
+         */
+        code: number;
+        /**
+         * When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+         */
+        countThreshold?: number;
+        /**
+         * Whether the rule is enabled. Valid values:
+         */
+        enabled: boolean;
+        /**
+         * When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+         */
+        ratioThreshold?: number;
+        /**
+         * Whether to use a ratio:
+         */
+        useRatio: boolean;
+    }
+
     export interface DomainResourceProxyType {
         /**
          * The port numbers.
@@ -21201,6 +21382,7 @@ export namespace dds {
         networkType: string;
         regionId: string;
         replication: string;
+        restoreRanges: outputs.dds.GetMongoInstancesInstanceRestoreRange[];
         shards: outputs.dds.GetMongoInstancesInstanceShard[];
         status: string;
         storage: number;
@@ -21211,6 +21393,12 @@ export namespace dds {
         class: string;
         description: string;
         nodeId: string;
+    }
+
+    export interface GetMongoInstancesInstanceRestoreRange {
+        restoreBeginTime: string;
+        restoreEndTime: string;
+        restoreType: string;
     }
 
     export interface GetMongoInstancesInstanceShard {
@@ -27590,23 +27778,23 @@ export namespace ecs {
 
     export interface GetImagesImage {
         /**
-         * The image architecture. Valid values: `i386` and `x8664`.
+         * The image architecture. Valid values: `i386`, `x8664`, `arm64`.
          */
         architecture: string;
         /**
-         * Time of creation.
+         * The creation time.
          */
         creationTime: string;
         /**
-         * Description of the image.
+         * The description of the image.
          */
         description: string;
         /**
-         * Description of the system with disks and snapshots under the image.
+         * A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
          */
         diskDeviceMappings: outputs.ecs.GetImagesImageDiskDeviceMapping[];
         /**
-         * ID of the image.
+         * The ID of the image.
          */
         id: string;
         /**
@@ -27614,7 +27802,7 @@ export namespace ecs {
          */
         imageId: string;
         /**
-         * Alias of the image owner.
+         * The alias of the image owner.
          */
         imageOwnerAlias: string;
         /**
@@ -27633,11 +27821,11 @@ export namespace ecs {
         isSupportIoOptimized: boolean;
         name: string;
         /**
-         * Display Chinese name of the OS.
+         * The display Chinese name of the OS.
          */
         osName: string;
         /**
-         * Display English name of the OS.
+         * The english name of the OS.
          */
         osNameEn: string;
         /**
@@ -27646,7 +27834,7 @@ export namespace ecs {
         osType: string;
         platform: string;
         /**
-         * Product code of the image on the image market.
+         * The product code of the image on the image market.
          */
         productCode: string;
         /**
@@ -27654,18 +27842,18 @@ export namespace ecs {
          */
         progress: string;
         /**
-         * Size of the created disk.
+         * The size of the created disk.
          */
         size: number;
         state: string;
         /**
          * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-         * * `Creating`: The image is being created.
-         * * `Waiting`: The image is waiting to be processed.
-         * * `Available`: The image is available.
-         * * `UnAvailable`: The image is unavailable.
-         * * `CreateFailed`: The image failed to be created.
-         * * `Deprecated`: The image is discontinued.
+         * - `Creating`: The image is being created.
+         * - `Waiting`: The image is waiting to be processed.
+         * - `Available`: The image is available.
+         * - `UnAvailable`: The image is unavailable.
+         * - `CreateFailed`: The image failed to be created.
+         * - `Deprecated`: The image is discontinued.
          */
         status: string;
         /**
@@ -27680,11 +27868,11 @@ export namespace ecs {
 
     export interface GetImagesImageDiskDeviceMapping {
         /**
-         * Device information of the created disk: such as /dev/xvdb.
+         * The device information of the created disk: such as /dev/xvdb.
          */
         device: string;
         /**
-         * Size of the created disk.
+         * The size of the created disk.
          */
         size: string;
         /**
@@ -45005,75 +45193,79 @@ export namespace mongodb {
 
     export interface GetInstancesInstance {
         /**
-         * Instance availability zone.
+         * The zone ID.
          */
         availabilityZone: string;
         /**
-         * Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+         * The billing method of the instance.
          */
         chargeType: string;
         /**
-         * Creation time of the instance in RFC3339 format.
+         * The time when the instance was created.
          */
         creationTime: string;
         /**
-         * Database engine type. Supported option is `MongoDB`.
+         * The database engine.
          */
         engine: string;
         /**
-         * Database engine version.
+         * The database engine version.
          */
         engineVersion: string;
         /**
-         * Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+         * The time when the instance expires.
          */
         expirationTime: string;
         /**
-         * The ID of the MongoDB instance.
+         * The instance ID.
          */
         id: string;
         /**
-         * Sizing of the instance to be queried.
+         * The instance type.
          */
         instanceClass: string;
         /**
-         * Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+         * The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
          */
         instanceType: string;
         /**
-         * Lock status of the instance.
+         * The lock status of the instance.
          */
         lockMode: string;
         /**
-         * Array composed of Mongos.
+         * The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
          */
         mongos: outputs.mongodb.GetInstancesInstanceMongo[];
         /**
-         * The name of the MongoDB instance.
+         * The name of the instance.
          */
         name: string;
         /**
-         * Classic network or VPC.
+         * The network type of the instance.
          */
         networkType: string;
         /**
-         * Region ID the instance belongs to.
+         * The region ID of the instance.
          */
         regionId: string;
         /**
-         * Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+         * The number of nodes in the instance.
          */
         replication: string;
         /**
-         * Array composed of shards.
+         * (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+         */
+        restoreRanges: outputs.mongodb.GetInstancesInstanceRestoreRange[];
+        /**
+         * The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
          */
         shards: outputs.mongodb.GetInstancesInstanceShard[];
         /**
-         * Status of the instance.
+         * The instance status.
          */
         status: string;
         /**
-         * Shard disk.
+         * The storage space of the shard node.
          */
         storage: number;
         /**
@@ -45084,34 +45276,49 @@ export namespace mongodb {
 
     export interface GetInstancesInstanceMongo {
         /**
-         * Shard instance specification.
+         * The instance type of the shard node.
          */
         class: string;
         /**
-         * Shard instance description.
+         * The description of the shard node.
          */
         description: string;
         /**
-         * Shard instance ID.
+         * The ID of the shard node.
          */
         nodeId: string;
     }
 
+    export interface GetInstancesInstanceRestoreRange {
+        /**
+         * The beginning of the recoverable time range.
+         */
+        restoreBeginTime: string;
+        /**
+         * The end of the recoverable time range.
+         */
+        restoreEndTime: string;
+        /**
+         * The restoration method.
+         */
+        restoreType: string;
+    }
+
     export interface GetInstancesInstanceShard {
         /**
-         * Shard instance specification.
+         * The instance type of the shard node.
          */
         class: string;
         /**
-         * Shard instance description.
+         * The description of the shard node.
          */
         description: string;
         /**
-         * Shard instance ID.
+         * The ID of the shard node.
          */
         nodeId: string;
         /**
-         * Shard disk.
+         * The storage space of the shard node.
          */
         storage: number;
     }
@@ -45372,7 +45579,8 @@ export namespace mongodb {
          */
         connectionPort: string;
         /**
-         * The network type of the instance. Valid values:`Classic`, `VPC`.
+         * The network type of the instance. Valid values: `VPC`.
+         * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
          */
         networkType: string;
         /**
@@ -45395,6 +45603,31 @@ export namespace mongodb {
          * The virtual switch ID to launch DB instances in one VPC.
          */
         vswitchId: string;
+    }
+
+    export interface InstanceZoneInfo {
+        /**
+         * The ID of the node.
+         */
+        insName: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The id of the role.
+         */
+        roleId: string;
+        /**
+         * The role of the node.
+         */
+        roleType: string;
+        /**
+         * The Zone to launch the DB instance. it supports multiple zone.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+         * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
+         */
+        zoneId: string;
     }
 
     export interface PublicNetworkAddressReplicaSet {
@@ -45523,6 +45756,30 @@ export namespace mongodb {
          * The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
          */
         readonlyReplicas: number;
+    }
+
+    export interface ShardingInstanceZoneInfo {
+        /**
+         * The ID of the node.
+         */
+        insName: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The role ID.
+         */
+        roleId: string;
+        /**
+         * The role of the node.
+         */
+        roleType: string;
+        /**
+         * The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+         * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
+         */
+        zoneId: string;
     }
 
     export interface ShardingNetworkPrivateAddressNetworkAddress {
@@ -48068,6 +48325,36 @@ export namespace oss {
         targetPrefix?: string;
     }
 
+    export interface BucketOverwriteConfigRule {
+        /**
+         * The operation type. Currently, only "forbid" is supported.
+         */
+        action?: string;
+        /**
+         * Rule ID
+         */
+        id?: string;
+        /**
+         * The prefix of the Object name, which is used to filter objects to be processed.
+         */
+        prefix?: string;
+        /**
+         * A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+         */
+        principals?: outputs.oss.BucketOverwriteConfigRulePrincipals;
+        /**
+         * The suffix of the Object name, which is used to filter objects to be processed.
+         */
+        suffix?: string;
+    }
+
+    export interface BucketOverwriteConfigRulePrincipals {
+        /**
+         * Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+         */
+        principals?: string[];
+    }
+
     export interface BucketRefererConfig {
         /**
          * Allows referer to be empty. Defaults false.
@@ -48148,6 +48435,35 @@ export namespace oss {
          * The status of the data replication task. Can be starting, doing and closing.
          */
         status?: string;
+    }
+
+    export interface BucketResponseHeaderRule {
+        /**
+         * The container that holds the operations that need to be apply rules. See `filters` below.
+         */
+        filters?: outputs.oss.BucketResponseHeaderRuleFilters;
+        /**
+         * The container that holds the response headers that need to be hidden. See `hideHeaders` below.
+         */
+        hideHeaders?: outputs.oss.BucketResponseHeaderRuleHideHeaders;
+        /**
+         * The response header rule name.
+         */
+        name?: string;
+    }
+
+    export interface BucketResponseHeaderRuleFilters {
+        /**
+         * The operation to which the rule applies.
+         */
+        operations?: string[];
+    }
+
+    export interface BucketResponseHeaderRuleHideHeaders {
+        /**
+         * The response header needs to be hidden.
+         */
+        headers?: string[];
     }
 
     export interface BucketServerSideEncryptionRule {
@@ -59193,79 +59509,77 @@ export namespace sls {
 
     export interface CollectionPolicyCentralizeConfig {
         /**
-         * When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+         * Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
          */
         destLogstore?: string;
         /**
-         * The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+         * Destination project for centralized forwarding. Its region must match destRegion.
          */
         destProject?: string;
         /**
-         * Centralized transfer destination area.
+         * Destination region for centralized forwarding.
          */
         destRegion?: string;
         /**
-         * The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+         * Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
          */
         destTtl?: number;
     }
 
     export interface CollectionPolicyDataConfig {
         /**
-         * Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+         * This setting is valid only when the log type is a global log type—for example, when productCode is sls.
          */
         dataProject: string;
         /**
-         * If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+         * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
          */
         dataRegion?: string;
     }
 
     export interface CollectionPolicyPolicyConfig {
         /**
-         * A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+         * The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
          */
         instanceIds?: string[];
         /**
-         * The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+         * The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
          */
         regions?: string[];
         /**
-         * Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+         * Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
          */
         resourceMode: string;
         /**
-         * Resource label, valid if and only if resourceMode is attributeMode.
-         *
-         * If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
-         *
-         * The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+         * Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+         * If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
+         * Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
          */
         resourceTags?: {[key: string]: string};
     }
 
     export interface CollectionPolicyResourceDirectory {
         /**
-         * Support all mode all and custom mode custom under this resource directory
+         * Supports the all (select all) mode and custom mode under this Resource Directory.
          */
         accountGroupType?: string;
         /**
-         * When the resource directory is configured in the custom mode, the corresponding member account list
+         * The list of member accounts when the Resource Directory is configured in custom mode.
          */
         members?: string[];
     }
 
     export interface EtlConfiguration {
         /**
-         * The beginning of the time range for transformation.
+         * The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
          */
         fromTime: number;
         /**
-         * Data processing syntax type.
+         * The syntax type used for data transformation.
          */
         lang: string;
         /**
-         * Destination Logstore Name.
+         * The name of the destination Logstore.
          */
         logstore: string;
         /**
@@ -59273,7 +59587,7 @@ export namespace sls {
          */
         parameters?: {[key: string]: string};
         /**
-         * The ARN role that authorizes writing to the target Logstore.
+         * The ARN of the role authorized to write to the destination Logstore.
          */
         roleArn: string;
         /**
@@ -59281,38 +59595,38 @@ export namespace sls {
          */
         script: string;
         /**
-         * Processing result output target list See `sink` below.
+         * List of output destinations for processing results.   See `sink` below.
          */
         sinks: outputs.sls.EtlConfigurationSink[];
         /**
-         * The end of the time range for transformation.
+         * End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
          */
         toTime: number;
     }
 
     export interface EtlConfigurationSink {
         /**
-         * Write Result Set.
+         * Result datasets to write to.
          */
         datasets: string[];
         /**
-         * The endpoint of the region where the target Project is located.
+         * The endpoint of the region where the destination project resides.
          */
         endpoint: string;
         /**
-         * Destination Logstore Name.
+         * The name of the destination Logstore.
          */
         logstore: string;
         /**
-         * Output Destination Name.
+         * The name of the output destination.
          */
         name: string;
         /**
-         * Project Name.
+         * Project name.
          */
         project: string;
         /**
-         * The ARN role that authorizes writing to the target Logstore.
+         * The ARN of the role authorized to write to the destination Logstore.
          */
         roleArn: string;
     }
@@ -60013,62 +60327,67 @@ export namespace sls {
 
     export interface ScheduledSqlSchedule {
         /**
-         * Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+         * Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
          */
         cronExpression?: string;
         /**
-         * Delay time.
+         * Delay duration.
          */
         delay?: number;
         /**
-         * Time interval, such as 5m, 1H.
+         * Time interval, such as 5m or 1h.
          */
         interval?: string;
         /**
-         * Whether to execute the OSS import task immediately after it is created.
+         * Specifies whether to run the OSS import job immediately after it is created.
          */
         runImmediately?: boolean;
         /**
-         * Time Zone.
+         * Time zone.
          */
         timeZone?: string;
         /**
-         * Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+         * The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+         * FixedRate: Checks query and analysis results at fixed intervals.
+         * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+         * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+         * Daily: Checks query and analysis results once at a fixed time each day.
+         * Hourly: Checks query and analysis results once every hour.
          */
         type?: string;
     }
 
     export interface ScheduledSqlScheduledSqlConfiguration {
         /**
-         * Write Mode.
+         * Write mode.
          */
         dataFormat?: string;
         /**
-         * Target Endpoint.
+         * The destination endpoint.
          */
         destEndpoint?: string;
         /**
-         * Target Logstore.
+         * The destination Logstore.
          */
         destLogstore?: string;
         /**
-         * Target Project.
+         * The destination project.
          */
         destProject?: string;
         /**
-         * Write target role ARN.
+         * Destination write role ARN.
          */
         destRoleArn?: string;
         /**
-         * Schedule Start Time.
+         * The start time of the schedule.
          */
         fromTime?: number;
         /**
-         * SQL time window-start.
+         * SQL time window - start.
          */
         fromTimeExpr?: string;
         /**
-         * Maximum retries.
+         * Maximum number of retries.
          */
         maxRetries?: number;
         /**
@@ -60080,11 +60399,11 @@ export namespace sls {
          */
         parameters?: {[key: string]: string};
         /**
-         * Resource Pool.
+         * Resource pool.
          */
         resourcePool?: string;
         /**
-         * Read role ARN.
+         * Source read role ARN.
          */
         roleArn?: string;
         /**
@@ -60092,7 +60411,7 @@ export namespace sls {
          */
         script?: string;
         /**
-         * Source Logstore.
+         * The source Logstore.
          */
         sourceLogstore?: string;
         /**
@@ -60100,11 +60419,11 @@ export namespace sls {
          */
         sqlType?: string;
         /**
-         * Time at end of schedule.
+         * Scheduled end time.
          */
         toTime?: number;
         /**
-         * SQL time window-end.
+         * End of the SQL time window.
          */
         toTimeExpr?: string;
     }

@@ -27,10 +27,13 @@ class GetMongoInstancesResult:
     """
     A collection of values returned by getMongoInstances.
     """
-    def __init__(__self__, availability_zone=None, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
+    def __init__(__self__, availability_zone=None, enable_details=None, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -55,6 +58,9 @@ class GetMongoInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -63,6 +69,11 @@ class GetMongoInstancesResult:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_details")
 
     @_builtins.property
     @pulumi.getter
@@ -109,6 +120,11 @@ class GetMongoInstancesResult:
 
     @_builtins.property
     @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "tags")
 
@@ -120,6 +136,7 @@ class AwaitableGetMongoInstancesResult(GetMongoInstancesResult):
             yield self
         return GetMongoInstancesResult(
             availability_zone=self.availability_zone,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             instance_class=self.instance_class,
@@ -128,15 +145,18 @@ class AwaitableGetMongoInstancesResult(GetMongoInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            status=self.status,
             tags=self.tags)
 
 
 def get_mongo_instances(availability_zone: Optional[_builtins.str] = None,
+                        enable_details: Optional[_builtins.bool] = None,
                         ids: Optional[Sequence[_builtins.str]] = None,
                         instance_class: Optional[_builtins.str] = None,
                         instance_type: Optional[_builtins.str] = None,
                         name_regex: Optional[_builtins.str] = None,
                         output_file: Optional[_builtins.str] = None,
+                        status: Optional[_builtins.str] = None,
                         tags: Optional[Mapping[str, _builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMongoInstancesResult:
     """
@@ -144,17 +164,20 @@ def get_mongo_instances(availability_zone: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['instanceClass'] = instance_class
     __args__['instanceType'] = instance_type
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:dds/getMongoInstances:getMongoInstances', __args__, opts=opts, typ=GetMongoInstancesResult).value
 
     return AwaitableGetMongoInstancesResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         instance_class=pulumi.get(__ret__, 'instance_class'),
@@ -163,13 +186,16 @@ def get_mongo_instances(availability_zone: Optional[_builtins.str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_mongo_instances_output(availability_zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                               enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                                instance_class: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                               status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMongoInstancesResult]:
     """
@@ -177,16 +203,19 @@ def get_mongo_instances_output(availability_zone: Optional[pulumi.Input[Optional
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['instanceClass'] = instance_class
     __args__['instanceType'] = instance_type
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dds/getMongoInstances:getMongoInstances', __args__, opts=opts, typ=GetMongoInstancesResult)
     return __ret__.apply(lambda __response__: GetMongoInstancesResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         instance_class=pulumi.get(__response__, 'instance_class'),
@@ -195,4 +224,5 @@ def get_mongo_instances_output(availability_zone: Optional[pulumi.Input[Optional
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),
         output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
         tags=pulumi.get(__response__, 'tags')))

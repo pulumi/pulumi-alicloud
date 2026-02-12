@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CollectionPolicyResourceDirectory {
     /**
-     * @return Support all mode all and custom mode custom under this resource directory
+     * @return Supports the all (select all) mode and custom mode under this Resource Directory.
      * 
      */
     private @Nullable String accountGroupType;
     /**
-     * @return When the resource directory is configured in the custom mode, the corresponding member account list
+     * @return The list of member accounts when the Resource Directory is configured in custom mode.
      * 
      */
     private @Nullable List<String> members;
 
     private CollectionPolicyResourceDirectory() {}
     /**
-     * @return Support all mode all and custom mode custom under this resource directory
+     * @return Supports the all (select all) mode and custom mode under this Resource Directory.
      * 
      */
     public Optional<String> accountGroupType() {
         return Optional.ofNullable(this.accountGroupType);
     }
     /**
-     * @return When the resource directory is configured in the custom mode, the corresponding member account list
+     * @return The list of member accounts when the Resource Directory is configured in custom mode.
      * 
      */
     public List<String> members() {

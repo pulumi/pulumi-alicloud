@@ -12,50 +12,50 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstanceShard {
     /**
-     * @return Shard instance specification.
+     * @return The instance type of the shard node.
      * 
      */
     private String class_;
     /**
-     * @return Shard instance description.
+     * @return The description of the shard node.
      * 
      */
     private String description;
     /**
-     * @return Shard instance ID.
+     * @return The ID of the shard node.
      * 
      */
     private String nodeId;
     /**
-     * @return Shard disk.
+     * @return The storage space of the shard node.
      * 
      */
     private Integer storage;
 
     private GetInstancesInstanceShard() {}
     /**
-     * @return Shard instance specification.
+     * @return The instance type of the shard node.
      * 
      */
     public String class_() {
         return this.class_;
     }
     /**
-     * @return Shard instance description.
+     * @return The description of the shard node.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Shard instance ID.
+     * @return The ID of the shard node.
      * 
      */
     public String nodeId() {
         return this.nodeId;
     }
     /**
-     * @return Shard disk.
+     * @return The storage space of the shard node.
      * 
      */
     public Integer storage() {

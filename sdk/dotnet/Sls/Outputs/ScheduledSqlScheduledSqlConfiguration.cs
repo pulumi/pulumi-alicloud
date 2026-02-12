@@ -14,35 +14,35 @@ namespace Pulumi.AliCloud.Sls.Outputs
     public sealed class ScheduledSqlScheduledSqlConfiguration
     {
         /// <summary>
-        /// Write Mode.
+        /// Write mode.
         /// </summary>
         public readonly string? DataFormat;
         /// <summary>
-        /// Target Endpoint.
+        /// The destination endpoint.
         /// </summary>
         public readonly string? DestEndpoint;
         /// <summary>
-        /// Target Logstore.
+        /// The destination Logstore.
         /// </summary>
         public readonly string? DestLogstore;
         /// <summary>
-        /// Target Project.
+        /// The destination project.
         /// </summary>
         public readonly string? DestProject;
         /// <summary>
-        /// Write target role ARN.
+        /// Destination write role ARN.
         /// </summary>
         public readonly string? DestRoleArn;
         /// <summary>
-        /// Schedule Start Time.
+        /// The start time of the schedule.
         /// </summary>
         public readonly int? FromTime;
         /// <summary>
-        /// SQL time window-start.
+        /// SQL time window - start.
         /// </summary>
         public readonly string? FromTimeExpr;
         /// <summary>
-        /// Maximum retries.
+        /// Maximum number of retries.
         /// </summary>
         public readonly int? MaxRetries;
         /// <summary>
@@ -54,11 +54,11 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
-        /// Resource Pool.
+        /// Resource pool.
         /// </summary>
         public readonly string? ResourcePool;
         /// <summary>
-        /// Read role ARN.
+        /// Source read role ARN.
         /// </summary>
         public readonly string? RoleArn;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly string? Script;
         /// <summary>
-        /// Source Logstore.
+        /// The source Logstore.
         /// </summary>
         public readonly string? SourceLogstore;
         /// <summary>
@@ -74,11 +74,11 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// </summary>
         public readonly string? SqlType;
         /// <summary>
-        /// Time at end of schedule.
+        /// Scheduled end time.
         /// </summary>
         public readonly int? ToTime;
         /// <summary>
-        /// SQL time window-end.
+        /// End of the SQL time window.
         /// </summary>
         public readonly string? ToTimeExpr;
 

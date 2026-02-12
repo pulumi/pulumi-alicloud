@@ -33,6 +33,8 @@ __all__ = [
     'BucketLifecycleRuleNoncurrentVersionTransition',
     'BucketLifecycleRuleTransition',
     'BucketLogging',
+    'BucketOverwriteConfigRule',
+    'BucketOverwriteConfigRulePrincipals',
     'BucketRefererConfig',
     'BucketReplicationDestination',
     'BucketReplicationEncryptionConfiguration',
@@ -41,6 +43,9 @@ __all__ = [
     'BucketReplicationRtc',
     'BucketReplicationSourceSelectionCriteria',
     'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects',
+    'BucketResponseHeaderRule',
+    'BucketResponseHeaderRuleFilters',
+    'BucketResponseHeaderRuleHideHeaders',
     'BucketServerSideEncryptionRule',
     'BucketTransferAcceleration',
     'BucketVersioning',
@@ -1207,6 +1212,92 @@ class BucketLogging(dict):
 
 
 @pulumi.output_type
+class BucketOverwriteConfigRule(dict):
+    def __init__(__self__, *,
+                 action: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 principals: Optional['outputs.BucketOverwriteConfigRulePrincipals'] = None,
+                 suffix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str action: The operation type. Currently, only "forbid" is supported.
+        :param _builtins.str id: Rule ID
+        :param _builtins.str prefix: The prefix of the Object name, which is used to filter objects to be processed.
+        :param 'BucketOverwriteConfigRulePrincipalsArgs' principals: A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+        :param _builtins.str suffix: The suffix of the Object name, which is used to filter objects to be processed.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The operation type. Currently, only "forbid" is supported.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        """
+        The prefix of the Object name, which is used to filter objects to be processed.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> Optional['outputs.BucketOverwriteConfigRulePrincipals']:
+        """
+        A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
+        """
+        return pulumi.get(self, "principals")
+
+    @_builtins.property
+    @pulumi.getter
+    def suffix(self) -> Optional[_builtins.str]:
+        """
+        The suffix of the Object name, which is used to filter objects to be processed.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class BucketOverwriteConfigRulePrincipals(dict):
+    def __init__(__self__, *,
+                 principals: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] principals: Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+        """
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
+        """
+        return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
 class BucketRefererConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1509,6 +1600,104 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects(dict):
         The status of the data replication task. Can be starting, doing and closing.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class BucketResponseHeaderRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hideHeaders":
+            suggest = "hide_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketResponseHeaderRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketResponseHeaderRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketResponseHeaderRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filters: Optional['outputs.BucketResponseHeaderRuleFilters'] = None,
+                 hide_headers: Optional['outputs.BucketResponseHeaderRuleHideHeaders'] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param 'BucketResponseHeaderRuleFiltersArgs' filters: The container that holds the operations that need to be apply rules. See `filters` below.
+        :param 'BucketResponseHeaderRuleHideHeadersArgs' hide_headers: The container that holds the response headers that need to be hidden. See `hide_headers` below.
+        :param _builtins.str name: The response header rule name.
+        """
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if hide_headers is not None:
+            pulumi.set(__self__, "hide_headers", hide_headers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional['outputs.BucketResponseHeaderRuleFilters']:
+        """
+        The container that holds the operations that need to be apply rules. See `filters` below.
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter(name="hideHeaders")
+    def hide_headers(self) -> Optional['outputs.BucketResponseHeaderRuleHideHeaders']:
+        """
+        The container that holds the response headers that need to be hidden. See `hide_headers` below.
+        """
+        return pulumi.get(self, "hide_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The response header rule name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BucketResponseHeaderRuleFilters(dict):
+    def __init__(__self__, *,
+                 operations: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] operations: The operation to which the rule applies.
+        """
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+
+    @_builtins.property
+    @pulumi.getter
+    def operations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The operation to which the rule applies.
+        """
+        return pulumi.get(self, "operations")
+
+
+@pulumi.output_type
+class BucketResponseHeaderRuleHideHeaders(dict):
+    def __init__(__self__, *,
+                 headers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] headers: The response header needs to be hidden.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The response header needs to be hidden.
+        """
+        return pulumi.get(self, "headers")
 
 
 @pulumi.output_type

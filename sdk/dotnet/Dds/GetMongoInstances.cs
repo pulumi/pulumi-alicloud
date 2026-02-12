@@ -27,6 +27,9 @@ namespace Pulumi.AliCloud.Dds
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
         public List<string> Ids
@@ -47,6 +50,9 @@ namespace Pulumi.AliCloud.Dds
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("status")]
+        public string? Status { get; set; }
+
         [Input("tags")]
         private Dictionary<string, string>? _tags;
         public Dictionary<string, string> Tags
@@ -65,6 +71,9 @@ namespace Pulumi.AliCloud.Dds
     {
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
@@ -86,6 +95,9 @@ namespace Pulumi.AliCloud.Dds
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
         public InputMap<string> Tags
@@ -105,6 +117,7 @@ namespace Pulumi.AliCloud.Dds
     public sealed class GetMongoInstancesResult
     {
         public readonly string? AvailabilityZone;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -116,11 +129,14 @@ namespace Pulumi.AliCloud.Dds
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly string? Status;
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetMongoInstancesResult(
             string? availabilityZone,
+
+            bool? enableDetails,
 
             string id,
 
@@ -138,9 +154,12 @@ namespace Pulumi.AliCloud.Dds
 
             string? outputFile,
 
+            string? status,
+
             ImmutableDictionary<string, string>? tags)
         {
             AvailabilityZone = availabilityZone;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             InstanceClass = instanceClass;
@@ -149,6 +168,7 @@ namespace Pulumi.AliCloud.Dds
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Status = status;
             Tags = tags;
         }
     }

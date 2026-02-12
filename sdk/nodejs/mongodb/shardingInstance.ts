@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  * MongoDB Sharding Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example dds-bp1291daeda44195
+ * $ pulumi import alicloud:mongodb/shardingInstance:ShardingInstance example <id>
  * ```
  */
 export class ShardingInstance extends pulumi.CustomResource {
@@ -117,6 +117,11 @@ export class ShardingInstance extends pulumi.CustomResource {
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     */
+    declare public readonly autoRenewDuration: pulumi.Output<number>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
@@ -171,6 +176,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly engineVersion: pulumi.Output<string>;
     /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     */
+    declare public readonly forceEncryption: pulumi.Output<string>;
+    /**
      * The list of Global Security Group Ids.
      */
     declare public readonly globalSecurityGroupLists: pulumi.Output<string[] | undefined>;
@@ -182,6 +191,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     declare public readonly instanceChargeType: pulumi.Output<string>;
+    /**
+     * (Available since v1.271.0) A list of instance keys.
+     */
+    declare public /*out*/ readonly keyIds: pulumi.Output<string[]>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
@@ -242,6 +255,11 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     */
+    declare public readonly restoreTime: pulumi.Output<string | undefined>;
+    /**
      * (Available since v1.42.0) Instance data backup retention days.
      */
     declare public /*out*/ readonly retentionPeriod: pulumi.Output<number>;
@@ -272,11 +290,9 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      */
+    declare public readonly srcDbInstanceId: pulumi.Output<string | undefined>;
     declare public readonly sslAction: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.259.0) The status of the SSL feature.
@@ -311,6 +327,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      */
     declare public readonly zoneId: pulumi.Output<string>;
+    /**
+     * (Available since v1.271.0) The information of nodes in the zone.
+     */
+    declare public /*out*/ readonly zoneInfos: pulumi.Output<outputs.mongodb.ShardingInstanceZoneInfo[]>;
 
     /**
      * Create a ShardingInstance resource with the given unique name, arguments, and options.
@@ -327,6 +347,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             const state = argsOrState as ShardingInstanceState | undefined;
             resourceInputs["accountPassword"] = state?.accountPassword;
             resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["backupInterval"] = state?.backupInterval;
             resourceInputs["backupPeriods"] = state?.backupPeriods;
             resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
@@ -340,9 +361,11 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = state?.encryptionKey;
             resourceInputs["encryptorName"] = state?.encryptorName;
             resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["forceEncryption"] = state?.forceEncryption;
             resourceInputs["globalSecurityGroupLists"] = state?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = state?.hiddenZoneId;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["keyIds"] = state?.keyIds;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
             resourceInputs["logBackupRetentionPeriod"] = state?.logBackupRetentionPeriod;
@@ -357,6 +380,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["protocolType"] = state?.protocolType;
             resourceInputs["provisionedIops"] = state?.provisionedIops;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["restoreTime"] = state?.restoreTime;
             resourceInputs["retentionPeriod"] = state?.retentionPeriod;
             resourceInputs["roleArn"] = state?.roleArn;
             resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
@@ -364,6 +388,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["securityIpLists"] = state?.securityIpLists;
             resourceInputs["shardLists"] = state?.shardLists;
             resourceInputs["snapshotBackupType"] = state?.snapshotBackupType;
+            resourceInputs["srcDbInstanceId"] = state?.srcDbInstanceId;
             resourceInputs["sslAction"] = state?.sslAction;
             resourceInputs["sslStatus"] = state?.sslStatus;
             resourceInputs["storageEngine"] = state?.storageEngine;
@@ -373,6 +398,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vswitchId"] = state?.vswitchId;
             resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneInfos"] = state?.zoneInfos;
         } else {
             const args = argsOrState as ShardingInstanceArgs | undefined;
             if (args?.engineVersion === undefined && !opts.urn) {
@@ -386,6 +412,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             }
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
             resourceInputs["backupInterval"] = args?.backupInterval;
             resourceInputs["backupPeriods"] = args?.backupPeriods;
             resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
@@ -399,6 +426,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = args?.encryptionKey;
             resourceInputs["encryptorName"] = args?.encryptorName;
             resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["forceEncryption"] = args?.forceEncryption;
             resourceInputs["globalSecurityGroupLists"] = args?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = args?.hiddenZoneId;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
@@ -416,12 +444,14 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["protocolType"] = args?.protocolType;
             resourceInputs["provisionedIops"] = args?.provisionedIops;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["restoreTime"] = args?.restoreTime;
             resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["securityIpLists"] = args?.securityIpLists;
             resourceInputs["shardLists"] = args?.shardLists;
             resourceInputs["snapshotBackupType"] = args?.snapshotBackupType;
+            resourceInputs["srcDbInstanceId"] = args?.srcDbInstanceId;
             resourceInputs["sslAction"] = args?.sslAction;
             resourceInputs["storageEngine"] = args?.storageEngine;
             resourceInputs["storageType"] = args?.storageType;
@@ -430,8 +460,10 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["keyIds"] = undefined /*out*/;
             resourceInputs["retentionPeriod"] = undefined /*out*/;
             resourceInputs["sslStatus"] = undefined /*out*/;
+            resourceInputs["zoneInfos"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
@@ -452,6 +484,11 @@ export interface ShardingInstanceState {
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     autoRenew?: pulumi.Input<boolean>;
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
@@ -506,6 +543,10 @@ export interface ShardingInstanceState {
      */
     engineVersion?: pulumi.Input<string>;
     /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     */
+    forceEncryption?: pulumi.Input<string>;
+    /**
      * The list of Global Security Group Ids.
      */
     globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -517,6 +558,10 @@ export interface ShardingInstanceState {
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * (Available since v1.271.0) A list of instance keys.
+     */
+    keyIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
@@ -577,6 +622,11 @@ export interface ShardingInstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     */
+    restoreTime?: pulumi.Input<string>;
+    /**
      * (Available since v1.42.0) Instance data backup retention days.
      */
     retentionPeriod?: pulumi.Input<number>;
@@ -607,11 +657,9 @@ export interface ShardingInstanceState {
      */
     snapshotBackupType?: pulumi.Input<string>;
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      */
+    srcDbInstanceId?: pulumi.Input<string>;
     sslAction?: pulumi.Input<string>;
     /**
      * (Available since v1.259.0) The status of the SSL feature.
@@ -646,6 +694,10 @@ export interface ShardingInstanceState {
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      */
     zoneId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.271.0) The information of nodes in the zone.
+     */
+    zoneInfos?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceZoneInfo>[]>;
 }
 
 /**
@@ -660,6 +712,11 @@ export interface ShardingInstanceArgs {
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     autoRenew?: pulumi.Input<boolean>;
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
@@ -713,6 +770,10 @@ export interface ShardingInstanceArgs {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion: pulumi.Input<string>;
+    /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     */
+    forceEncryption?: pulumi.Input<string>;
     /**
      * The list of Global Security Group Ids.
      */
@@ -785,6 +846,11 @@ export interface ShardingInstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     */
+    restoreTime?: pulumi.Input<string>;
+    /**
      * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
      */
     roleArn?: pulumi.Input<string>;
@@ -811,11 +877,9 @@ export interface ShardingInstanceArgs {
      */
     snapshotBackupType?: pulumi.Input<string>;
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      */
+    srcDbInstanceId?: pulumi.Input<string>;
     sslAction?: pulumi.Input<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.

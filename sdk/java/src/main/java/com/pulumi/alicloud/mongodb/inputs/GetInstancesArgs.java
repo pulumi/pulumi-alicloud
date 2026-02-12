@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,14 +19,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetInstancesArgs Empty = new GetInstancesArgs();
 
     /**
-     * Instance availability zone.
+     * The zone ID.
      * 
      */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Instance availability zone.
+     * @return The zone ID.
      * 
      */
     public Optional<Output<String>> availabilityZone() {
@@ -33,14 +34,29 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ids list of MongoDB instances
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
+     * 
+     */
+    @Import(name="enableDetails")
+    private @Nullable Output<Boolean> enableDetails;
+
+    /**
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
+    }
+
+    /**
+     * A list of Instance IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return The ids list of MongoDB instances
+     * @return A list of Instance IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -48,14 +64,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Sizing of the instance to be queried.
+     * The instance type.
      * 
      */
     @Import(name="instanceClass")
     private @Nullable Output<String> instanceClass;
 
     /**
-     * @return Sizing of the instance to be queried.
+     * @return The instance type.
      * 
      */
     public Optional<Output<String>> instanceClass() {
@@ -63,14 +79,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+     * The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+     * @return The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -78,14 +94,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A regex string to apply to the instance name.
+     * A regex string to filter results by Instance name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to apply to the instance name.
+     * @return A regex string to filter results by Instance name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -108,6 +124,21 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The instance status.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The instance status.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -126,11 +157,13 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetInstancesArgs(GetInstancesArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
         this.instanceClass = $.instanceClass;
         this.instanceType = $.instanceType;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.status = $.status;
         this.tags = $.tags;
     }
 
@@ -153,7 +186,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availabilityZone Instance availability zone.
+         * @param availabilityZone The zone ID.
          * 
          * @return builder
          * 
@@ -164,7 +197,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availabilityZone Instance availability zone.
+         * @param availabilityZone The zone ID.
          * 
          * @return builder
          * 
@@ -174,7 +207,28 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids The ids list of MongoDB instances
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
+            $.enableDetails = enableDetails;
+            return this;
+        }
+
+        /**
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(Boolean enableDetails) {
+            return enableDetails(Output.of(enableDetails));
+        }
+
+        /**
+         * @param ids A list of Instance IDs.
          * 
          * @return builder
          * 
@@ -185,7 +239,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids The ids list of MongoDB instances
+         * @param ids A list of Instance IDs.
          * 
          * @return builder
          * 
@@ -195,7 +249,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids The ids list of MongoDB instances
+         * @param ids A list of Instance IDs.
          * 
          * @return builder
          * 
@@ -205,7 +259,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceClass Sizing of the instance to be queried.
+         * @param instanceClass The instance type.
          * 
          * @return builder
          * 
@@ -216,7 +270,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceClass Sizing of the instance to be queried.
+         * @param instanceClass The instance type.
          * 
          * @return builder
          * 
@@ -226,7 +280,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceType Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+         * @param instanceType The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
          * 
          * @return builder
          * 
@@ -237,7 +291,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceType Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+         * @param instanceType The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
          * 
          * @return builder
          * 
@@ -247,7 +301,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to apply to the instance name.
+         * @param nameRegex A regex string to filter results by Instance name.
          * 
          * @return builder
          * 
@@ -258,7 +312,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to apply to the instance name.
+         * @param nameRegex A regex string to filter results by Instance name.
          * 
          * @return builder
          * 
@@ -286,6 +340,27 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
+        }
+
+        /**
+         * @param status The instance status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The instance status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

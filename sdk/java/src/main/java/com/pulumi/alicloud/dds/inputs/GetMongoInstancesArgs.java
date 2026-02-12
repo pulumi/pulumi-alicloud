@@ -5,6 +5,7 @@ package com.pulumi.alicloud.dds.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,13 @@ public final class GetMongoInstancesArgs extends com.pulumi.resources.InvokeArgs
 
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+
+    @Import(name="enableDetails")
+    private @Nullable Output<Boolean> enableDetails;
+
+    public Optional<Output<Boolean>> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
 
     @Import(name="ids")
@@ -59,6 +67,13 @@ public final class GetMongoInstancesArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.outputFile);
     }
 
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
@@ -70,11 +85,13 @@ public final class GetMongoInstancesArgs extends com.pulumi.resources.InvokeArgs
 
     private GetMongoInstancesArgs(GetMongoInstancesArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
         this.instanceClass = $.instanceClass;
         this.instanceType = $.instanceType;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.status = $.status;
         this.tags = $.tags;
     }
 
@@ -103,6 +120,15 @@ public final class GetMongoInstancesArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
+        }
+
+        public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
+            $.enableDetails = enableDetails;
+            return this;
+        }
+
+        public Builder enableDetails(Boolean enableDetails) {
+            return enableDetails(Output.of(enableDetails));
         }
 
         public Builder ids(@Nullable Output<List<String>> ids) {
@@ -152,6 +178,15 @@ public final class GetMongoInstancesArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
+        }
+
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public Builder tags(@Nullable Output<Map<String,String>> tags) {

@@ -4182,7 +4182,7 @@ class NodePoolUpgradePolicy(dict):
         :param _builtins.str kubernetes_version: Node Kubernetes version
         :param _builtins.str runtime: Node runtime type
         :param _builtins.str runtime_version: Node Runtime Version
-        :param _builtins.bool use_replace: Whether to use replacement disk upgrade
+        :param _builtins.bool use_replace: Whether to use replacement disk upgrade. Valid values:
         """
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
@@ -4231,7 +4231,7 @@ class NodePoolUpgradePolicy(dict):
     @pulumi.getter(name="useReplace")
     def use_replace(self) -> Optional[_builtins.bool]:
         """
-        Whether to use replacement disk upgrade
+        Whether to use replacement disk upgrade. Valid values:
         """
         return pulumi.get(self, "use_replace")
 

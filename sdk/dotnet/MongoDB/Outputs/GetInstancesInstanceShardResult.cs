@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     public sealed class GetInstancesInstanceShardResult
     {
         /// <summary>
-        /// Shard instance specification.
+        /// The instance type of the shard node.
         /// </summary>
         public readonly string Class;
         /// <summary>
-        /// Shard instance description.
+        /// The description of the shard node.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Shard instance ID.
+        /// The ID of the shard node.
         /// </summary>
         public readonly string NodeId;
         /// <summary>
-        /// Shard disk.
+        /// The storage space of the shard node.
         /// </summary>
         public readonly int Storage;
 

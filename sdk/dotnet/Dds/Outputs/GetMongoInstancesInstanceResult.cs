@@ -28,6 +28,7 @@ namespace Pulumi.AliCloud.Dds.Outputs
         public readonly string NetworkType;
         public readonly string RegionId;
         public readonly string Replication;
+        public readonly ImmutableArray<Outputs.GetMongoInstancesInstanceRestoreRangeResult> RestoreRanges;
         public readonly ImmutableArray<Outputs.GetMongoInstancesInstanceShardResult> Shards;
         public readonly string Status;
         public readonly int Storage;
@@ -65,6 +66,8 @@ namespace Pulumi.AliCloud.Dds.Outputs
 
             string replication,
 
+            ImmutableArray<Outputs.GetMongoInstancesInstanceRestoreRangeResult> restoreRanges,
+
             ImmutableArray<Outputs.GetMongoInstancesInstanceShardResult> shards,
 
             string status,
@@ -88,6 +91,7 @@ namespace Pulumi.AliCloud.Dds.Outputs
             NetworkType = networkType;
             RegionId = regionId;
             Replication = replication;
+            RestoreRanges = restoreRanges;
             Shards = shards;
             Status = status;
             Storage = storage;

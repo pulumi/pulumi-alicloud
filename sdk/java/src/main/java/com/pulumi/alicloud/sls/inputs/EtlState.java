@@ -18,14 +18,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     public static final EtlState Empty = new EtlState();
 
     /**
-     * The ETL configuration. See `configuration` below.
+     * Detailed configuration of the data processing task.   See `configuration` below.
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<EtlConfigurationArgs> configuration;
 
     /**
-     * @return The ETL configuration. See `configuration` below.
+     * @return Detailed configuration of the data processing task.   See `configuration` below.
      * 
      */
     public Optional<Output<EtlConfigurationArgs>> configuration() {
@@ -33,14 +33,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when the data transformation job was created.
+     * The time when the task was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<Integer> createTime;
 
     /**
-     * @return The time when the data transformation job was created.
+     * @return The time when the task was created.
      * 
      */
     public Optional<Output<Integer>> createTime() {
@@ -48,14 +48,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data Processing Task Description.
+     * Description of the data processing task.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Data Processing Task Description.
+     * @return Description of the data processing task.
      * 
      */
     public Optional<Output<String>> description() {
@@ -63,14 +63,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data processing task display name.
+     * The display name of the data processing task.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Data processing task display name.
+     * @return The display name of the data processing task.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -78,14 +78,22 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identification of data processing task.
+     * The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      * 
      */
     @Import(name="jobName")
     private @Nullable Output<String> jobName;
 
     /**
-     * @return Unique identification of data processing task.
+     * @return The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      * 
      */
     public Optional<Output<String>> jobName() {
@@ -93,14 +101,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project Name.
+     * Project name.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Project Name.
+     * @return Project name.
      * 
      */
     public Optional<Output<String>> project() {
@@ -108,14 +116,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the data transformation job.
+     * Task status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the data transformation job.
+     * @return Task status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -153,7 +161,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration The ETL configuration. See `configuration` below.
+         * @param configuration Detailed configuration of the data processing task.   See `configuration` below.
          * 
          * @return builder
          * 
@@ -164,7 +172,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configuration The ETL configuration. See `configuration` below.
+         * @param configuration Detailed configuration of the data processing task.   See `configuration` below.
          * 
          * @return builder
          * 
@@ -174,7 +182,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time when the data transformation job was created.
+         * @param createTime The time when the task was created.
          * 
          * @return builder
          * 
@@ -185,7 +193,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time when the data transformation job was created.
+         * @param createTime The time when the task was created.
          * 
          * @return builder
          * 
@@ -195,7 +203,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Data Processing Task Description.
+         * @param description Description of the data processing task.
          * 
          * @return builder
          * 
@@ -206,7 +214,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Data Processing Task Description.
+         * @param description Description of the data processing task.
          * 
          * @return builder
          * 
@@ -216,7 +224,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Data processing task display name.
+         * @param displayName The display name of the data processing task.
          * 
          * @return builder
          * 
@@ -227,7 +235,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Data processing task display name.
+         * @param displayName The display name of the data processing task.
          * 
          * @return builder
          * 
@@ -237,7 +245,11 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobName Unique identification of data processing task.
+         * @param jobName The job name. Naming rules are as follows:
+         * - Job names must be unique within the same project.
+         * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+         * - Must start and end with a lowercase letter or digit.
+         * - Must be 2 to 64 characters in length.
          * 
          * @return builder
          * 
@@ -248,7 +260,11 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobName Unique identification of data processing task.
+         * @param jobName The job name. Naming rules are as follows:
+         * - Job names must be unique within the same project.
+         * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+         * - Must start and end with a lowercase letter or digit.
+         * - Must be 2 to 64 characters in length.
          * 
          * @return builder
          * 
@@ -258,7 +274,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Project Name.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -269,7 +285,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Project Name.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -279,7 +295,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the data transformation job.
+         * @param status Task status.
          * 
          * @return builder
          * 
@@ -290,7 +306,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the data transformation job.
+         * @param status Task status.
          * 
          * @return builder
          * 

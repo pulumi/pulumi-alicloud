@@ -19,14 +19,14 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
     public static final ScheduledSqlArgs Empty = new ScheduledSqlArgs();
 
     /**
-     * Task Description.
+     * Job description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Task Description.
+     * @return Job description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Task Display Name.
+     * Task display name.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return Task Display Name.
+     * @return Task display name.
      * 
      */
     public Output<String> displayName() {
@@ -49,14 +49,14 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Log project.
+     * A short description of struct.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Log project.
+     * @return A short description of struct.
      * 
      */
     public Output<String> project() {
@@ -64,14 +64,14 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o&#39;clock, cron can be used. See `schedule` below.
+     * Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      * 
      */
     @Import(name="schedule", required=true)
     private Output<ScheduledSqlScheduleArgs> schedule;
 
     /**
-     * @return The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o&#39;clock, cron can be used. See `schedule` below.
+     * @return Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      * 
      */
     public Output<ScheduledSqlScheduleArgs> schedule() {
@@ -79,14 +79,14 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Task Configuration. See `scheduledSqlConfiguration` below.
+     * Task configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     @Import(name="scheduledSqlConfiguration", required=true)
     private Output<ScheduledSqlScheduledSqlConfigurationArgs> scheduledSqlConfiguration;
 
     /**
-     * @return Task Configuration. See `scheduledSqlConfiguration` below.
+     * @return Task configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     public Output<ScheduledSqlScheduledSqlConfigurationArgs> scheduledSqlConfiguration() {
@@ -94,18 +94,41 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timed SQL name.
+     * The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      * 
      */
     @Import(name="scheduledSqlName", required=true)
     private Output<String> scheduledSqlName;
 
     /**
-     * @return Timed SQL name.
+     * @return The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      * 
      */
     public Output<String> scheduledSqlName() {
         return this.scheduledSqlName;
+    }
+
+    /**
+     * The status of the scheduled SQL job.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the scheduled SQL job.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private ScheduledSqlArgs() {}
@@ -117,6 +140,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         this.schedule = $.schedule;
         this.scheduledSqlConfiguration = $.scheduledSqlConfiguration;
         this.scheduledSqlName = $.scheduledSqlName;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -138,7 +162,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Task Description.
+         * @param description Job description.
          * 
          * @return builder
          * 
@@ -149,7 +173,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Task Description.
+         * @param description Job description.
          * 
          * @return builder
          * 
@@ -159,7 +183,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Task Display Name.
+         * @param displayName Task display name.
          * 
          * @return builder
          * 
@@ -170,7 +194,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Task Display Name.
+         * @param displayName Task display name.
          * 
          * @return builder
          * 
@@ -180,7 +204,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Log project.
+         * @param project A short description of struct.
          * 
          * @return builder
          * 
@@ -191,7 +215,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Log project.
+         * @param project A short description of struct.
          * 
          * @return builder
          * 
@@ -201,7 +225,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o&#39;clock, cron can be used. See `schedule` below.
+         * @param schedule Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
          * 
          * @return builder
          * 
@@ -212,7 +236,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o&#39;clock, cron can be used. See `schedule` below.
+         * @param schedule Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
          * 
          * @return builder
          * 
@@ -222,7 +246,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduledSqlConfiguration Task Configuration. See `scheduledSqlConfiguration` below.
+         * @param scheduledSqlConfiguration Task configuration. See `scheduledSqlConfiguration` below.
          * 
          * @return builder
          * 
@@ -233,7 +257,7 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduledSqlConfiguration Task Configuration. See `scheduledSqlConfiguration` below.
+         * @param scheduledSqlConfiguration Task configuration. See `scheduledSqlConfiguration` below.
          * 
          * @return builder
          * 
@@ -243,7 +267,11 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduledSqlName Timed SQL name.
+         * @param scheduledSqlName The job name. The naming rules are as follows:
+         * - Job names must be unique within the same project.
+         * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+         * - The name must start and end with a lowercase letter or digit.
+         * - The length must be between 2 and 64 characters.
          * 
          * @return builder
          * 
@@ -254,13 +282,38 @@ public final class ScheduledSqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduledSqlName Timed SQL name.
+         * @param scheduledSqlName The job name. The naming rules are as follows:
+         * - Job names must be unique within the same project.
+         * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+         * - The name must start and end with a lowercase letter or digit.
+         * - The length must be between 2 and 64 characters.
          * 
          * @return builder
          * 
          */
         public Builder scheduledSqlName(String scheduledSqlName) {
             return scheduledSqlName(Output.of(scheduledSqlName));
+        }
+
+        /**
+         * @param status The status of the scheduled SQL job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the scheduled SQL job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public ScheduledSqlArgs build() {

@@ -18,18 +18,21 @@ from . import outputs
 __all__ = [
     'InstanceParameter',
     'InstanceReplicaSet',
+    'InstanceZoneInfo',
     'PublicNetworkAddressReplicaSet',
     'ServerlessInstanceSecurityIpGroup',
     'ShardingInstanceConfigServerList',
     'ShardingInstanceMongoList',
     'ShardingInstanceParameter',
     'ShardingInstanceShardList',
+    'ShardingInstanceZoneInfo',
     'ShardingNetworkPrivateAddressNetworkAddress',
     'ShardingNetworkPublicAddressNetworkAddress',
     'GetAccountsAccountResult',
     'GetAuditPoliciesPolicyResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceMongoResult',
+    'GetInstancesInstanceRestoreRangeResult',
     'GetInstancesInstanceShardResult',
     'GetServerlessInstancesInstanceResult',
     'GetServerlessInstancesInstanceSecurityIpGroupResult',
@@ -112,7 +115,8 @@ class InstanceReplicaSet(dict):
         """
         :param _builtins.str connection_domain: The connection address of the node.
         :param _builtins.str connection_port: The connection port of the node.
-        :param _builtins.str network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param _builtins.str network_type: The network type of the instance. Valid values: `VPC`.
+               > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         :param _builtins.str replica_set_role: The role of the node.
         :param _builtins.str role_id: The id of the role.
         :param _builtins.str vpc_cloud_instance_id: VPC instance ID.
@@ -156,7 +160,8 @@ class InstanceReplicaSet(dict):
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[_builtins.str]:
         """
-        The network type of the instance. Valid values:`Classic`, `VPC`.
+        The network type of the instance. Valid values: `VPC`.
+        > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         """
         return pulumi.get(self, "network_type")
 
@@ -199,6 +204,102 @@ class InstanceReplicaSet(dict):
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class InstanceZoneInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "insName":
+            suggest = "ins_name"
+        elif key == "nodeType":
+            suggest = "node_type"
+        elif key == "roleId":
+            suggest = "role_id"
+        elif key == "roleType":
+            suggest = "role_type"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceZoneInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceZoneInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceZoneInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ins_name: Optional[_builtins.str] = None,
+                 node_type: Optional[_builtins.str] = None,
+                 role_id: Optional[_builtins.str] = None,
+                 role_type: Optional[_builtins.str] = None,
+                 zone_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ins_name: The ID of the node.
+        :param _builtins.str node_type: The type of the node.
+        :param _builtins.str role_id: The id of the role.
+        :param _builtins.str role_type: The role of the node.
+        :param _builtins.str zone_id: The Zone to launch the DB instance. it supports multiple zone.
+               If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        """
+        if ins_name is not None:
+            pulumi.set(__self__, "ins_name", ins_name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="insName")
+    def ins_name(self) -> Optional[_builtins.str]:
+        """
+        The ID of the node.
+        """
+        return pulumi.get(self, "ins_name")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @_builtins.property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[_builtins.str]:
+        """
+        The id of the role.
+        """
+        return pulumi.get(self, "role_id")
+
+    @_builtins.property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[_builtins.str]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "role_type")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The Zone to launch the DB instance. it supports multiple zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type
@@ -688,6 +789,100 @@ class ShardingInstanceShardList(dict):
 
 
 @pulumi.output_type
+class ShardingInstanceZoneInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "insName":
+            suggest = "ins_name"
+        elif key == "nodeType":
+            suggest = "node_type"
+        elif key == "roleId":
+            suggest = "role_id"
+        elif key == "roleType":
+            suggest = "role_type"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShardingInstanceZoneInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShardingInstanceZoneInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShardingInstanceZoneInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ins_name: Optional[_builtins.str] = None,
+                 node_type: Optional[_builtins.str] = None,
+                 role_id: Optional[_builtins.str] = None,
+                 role_type: Optional[_builtins.str] = None,
+                 zone_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ins_name: The ID of the node.
+        :param _builtins.str node_type: The type of the node.
+        :param _builtins.str role_id: The role ID.
+        :param _builtins.str role_type: The role of the node.
+        :param _builtins.str zone_id: The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+               If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+        if ins_name is not None:
+            pulumi.set(__self__, "ins_name", ins_name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="insName")
+    def ins_name(self) -> Optional[_builtins.str]:
+        """
+        The ID of the node.
+        """
+        return pulumi.get(self, "ins_name")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @_builtins.property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[_builtins.str]:
+        """
+        The role ID.
+        """
+        return pulumi.get(self, "role_id")
+
+    @_builtins.property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[_builtins.str]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "role_type")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
 class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1134,29 +1329,31 @@ class GetInstancesInstanceResult(dict):
                  network_type: _builtins.str,
                  region_id: _builtins.str,
                  replication: _builtins.str,
+                 restore_ranges: Sequence['outputs.GetInstancesInstanceRestoreRangeResult'],
                  shards: Sequence['outputs.GetInstancesInstanceShardResult'],
                  status: _builtins.str,
                  storage: _builtins.int,
                  tags: Mapping[str, _builtins.str]):
         """
-        :param _builtins.str availability_zone: Instance availability zone.
-        :param _builtins.str charge_type: Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-        :param _builtins.str creation_time: Creation time of the instance in RFC3339 format.
-        :param _builtins.str engine: Database engine type. Supported option is `MongoDB`.
-        :param _builtins.str engine_version: Database engine version.
-        :param _builtins.str expiration_time: Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
-        :param _builtins.str id: The ID of the MongoDB instance.
-        :param _builtins.str instance_class: Sizing of the instance to be queried.
-        :param _builtins.str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
-        :param _builtins.str lock_mode: Lock status of the instance.
-        :param Sequence['GetInstancesInstanceMongoArgs'] mongos: Array composed of Mongos.
-        :param _builtins.str name: The name of the MongoDB instance.
-        :param _builtins.str network_type: Classic network or VPC.
-        :param _builtins.str region_id: Region ID the instance belongs to.
-        :param _builtins.str replication: Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
-        :param Sequence['GetInstancesInstanceShardArgs'] shards: Array composed of shards.
-        :param _builtins.str status: Status of the instance.
-        :param _builtins.int storage: Shard disk.
+        :param _builtins.str availability_zone: The zone ID.
+        :param _builtins.str charge_type: The billing method of the instance.
+        :param _builtins.str creation_time: The time when the instance was created.
+        :param _builtins.str engine: The database engine.
+        :param _builtins.str engine_version: The database engine version.
+        :param _builtins.str expiration_time: The time when the instance expires.
+        :param _builtins.str id: The instance ID.
+        :param _builtins.str instance_class: The instance type.
+        :param _builtins.str instance_type: The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+        :param _builtins.str lock_mode: The lock status of the instance.
+        :param Sequence['GetInstancesInstanceMongoArgs'] mongos: The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instance_type` is set to `sharding`.
+        :param _builtins.str name: The name of the instance.
+        :param _builtins.str network_type: The network type of the instance.
+        :param _builtins.str region_id: The region ID of the instance.
+        :param _builtins.str replication: The number of nodes in the instance.
+        :param Sequence['GetInstancesInstanceRestoreRangeArgs'] restore_ranges: (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restore_ranges` takes effect only if `enable_details` is set to `true`.
+        :param Sequence['GetInstancesInstanceShardArgs'] shards: The information of the shard node. **Note:** `shards` takes effect only if `instance_type` is set to `sharding`.
+        :param _builtins.str status: The instance status.
+        :param _builtins.int storage: The storage space of the shard node.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -1174,6 +1371,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "restore_ranges", restore_ranges)
         pulumi.set(__self__, "shards", shards)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "storage", storage)
@@ -1183,7 +1381,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
         """
-        Instance availability zone.
+        The zone ID.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -1191,7 +1389,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> _builtins.str:
         """
-        Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+        The billing method of the instance.
         """
         return pulumi.get(self, "charge_type")
 
@@ -1199,7 +1397,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
         """
-        Creation time of the instance in RFC3339 format.
+        The time when the instance was created.
         """
         return pulumi.get(self, "creation_time")
 
@@ -1207,7 +1405,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def engine(self) -> _builtins.str:
         """
-        Database engine type. Supported option is `MongoDB`.
+        The database engine.
         """
         return pulumi.get(self, "engine")
 
@@ -1215,7 +1413,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> _builtins.str:
         """
-        Database engine version.
+        The database engine version.
         """
         return pulumi.get(self, "engine_version")
 
@@ -1223,7 +1421,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> _builtins.str:
         """
-        Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
+        The time when the instance expires.
         """
         return pulumi.get(self, "expiration_time")
 
@@ -1231,7 +1429,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the MongoDB instance.
+        The instance ID.
         """
         return pulumi.get(self, "id")
 
@@ -1239,7 +1437,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> _builtins.str:
         """
-        Sizing of the instance to be queried.
+        The instance type.
         """
         return pulumi.get(self, "instance_class")
 
@@ -1247,7 +1445,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
         """
-        Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+        The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1255,7 +1453,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="lockMode")
     def lock_mode(self) -> _builtins.str:
         """
-        Lock status of the instance.
+        The lock status of the instance.
         """
         return pulumi.get(self, "lock_mode")
 
@@ -1263,7 +1461,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def mongos(self) -> Sequence['outputs.GetInstancesInstanceMongoResult']:
         """
-        Array composed of Mongos.
+        The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instance_type` is set to `sharding`.
         """
         return pulumi.get(self, "mongos")
 
@@ -1271,7 +1469,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the MongoDB instance.
+        The name of the instance.
         """
         return pulumi.get(self, "name")
 
@@ -1279,7 +1477,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="networkType")
     def network_type(self) -> _builtins.str:
         """
-        Classic network or VPC.
+        The network type of the instance.
         """
         return pulumi.get(self, "network_type")
 
@@ -1287,7 +1485,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
         """
-        Region ID the instance belongs to.
+        The region ID of the instance.
         """
         return pulumi.get(self, "region_id")
 
@@ -1295,15 +1493,23 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def replication(self) -> _builtins.str:
         """
-        Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
+        The number of nodes in the instance.
         """
         return pulumi.get(self, "replication")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreRanges")
+    def restore_ranges(self) -> Sequence['outputs.GetInstancesInstanceRestoreRangeResult']:
+        """
+        (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restore_ranges` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "restore_ranges")
 
     @_builtins.property
     @pulumi.getter
     def shards(self) -> Sequence['outputs.GetInstancesInstanceShardResult']:
         """
-        Array composed of shards.
+        The information of the shard node. **Note:** `shards` takes effect only if `instance_type` is set to `sharding`.
         """
         return pulumi.get(self, "shards")
 
@@ -1311,7 +1517,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Status of the instance.
+        The instance status.
         """
         return pulumi.get(self, "status")
 
@@ -1319,7 +1525,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def storage(self) -> _builtins.int:
         """
-        Shard disk.
+        The storage space of the shard node.
         """
         return pulumi.get(self, "storage")
 
@@ -1339,9 +1545,9 @@ class GetInstancesInstanceMongoResult(dict):
                  description: _builtins.str,
                  node_id: _builtins.str):
         """
-        :param _builtins.str class_: Shard instance specification.
-        :param _builtins.str description: Shard instance description.
-        :param _builtins.str node_id: Shard instance ID.
+        :param _builtins.str class_: The instance type of the shard node.
+        :param _builtins.str description: The description of the shard node.
+        :param _builtins.str node_id: The ID of the shard node.
         """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "description", description)
@@ -1351,7 +1557,7 @@ class GetInstancesInstanceMongoResult(dict):
     @pulumi.getter(name="class")
     def class_(self) -> _builtins.str:
         """
-        Shard instance specification.
+        The instance type of the shard node.
         """
         return pulumi.get(self, "class_")
 
@@ -1359,7 +1565,7 @@ class GetInstancesInstanceMongoResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Shard instance description.
+        The description of the shard node.
         """
         return pulumi.get(self, "description")
 
@@ -1367,9 +1573,49 @@ class GetInstancesInstanceMongoResult(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> _builtins.str:
         """
-        Shard instance ID.
+        The ID of the shard node.
         """
         return pulumi.get(self, "node_id")
+
+
+@pulumi.output_type
+class GetInstancesInstanceRestoreRangeResult(dict):
+    def __init__(__self__, *,
+                 restore_begin_time: _builtins.str,
+                 restore_end_time: _builtins.str,
+                 restore_type: _builtins.str):
+        """
+        :param _builtins.str restore_begin_time: The beginning of the recoverable time range.
+        :param _builtins.str restore_end_time: The end of the recoverable time range.
+        :param _builtins.str restore_type: The restoration method.
+        """
+        pulumi.set(__self__, "restore_begin_time", restore_begin_time)
+        pulumi.set(__self__, "restore_end_time", restore_end_time)
+        pulumi.set(__self__, "restore_type", restore_type)
+
+    @_builtins.property
+    @pulumi.getter(name="restoreBeginTime")
+    def restore_begin_time(self) -> _builtins.str:
+        """
+        The beginning of the recoverable time range.
+        """
+        return pulumi.get(self, "restore_begin_time")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreEndTime")
+    def restore_end_time(self) -> _builtins.str:
+        """
+        The end of the recoverable time range.
+        """
+        return pulumi.get(self, "restore_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreType")
+    def restore_type(self) -> _builtins.str:
+        """
+        The restoration method.
+        """
+        return pulumi.get(self, "restore_type")
 
 
 @pulumi.output_type
@@ -1380,10 +1626,10 @@ class GetInstancesInstanceShardResult(dict):
                  node_id: _builtins.str,
                  storage: _builtins.int):
         """
-        :param _builtins.str class_: Shard instance specification.
-        :param _builtins.str description: Shard instance description.
-        :param _builtins.str node_id: Shard instance ID.
-        :param _builtins.int storage: Shard disk.
+        :param _builtins.str class_: The instance type of the shard node.
+        :param _builtins.str description: The description of the shard node.
+        :param _builtins.str node_id: The ID of the shard node.
+        :param _builtins.int storage: The storage space of the shard node.
         """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "description", description)
@@ -1394,7 +1640,7 @@ class GetInstancesInstanceShardResult(dict):
     @pulumi.getter(name="class")
     def class_(self) -> _builtins.str:
         """
-        Shard instance specification.
+        The instance type of the shard node.
         """
         return pulumi.get(self, "class_")
 
@@ -1402,7 +1648,7 @@ class GetInstancesInstanceShardResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Shard instance description.
+        The description of the shard node.
         """
         return pulumi.get(self, "description")
 
@@ -1410,7 +1656,7 @@ class GetInstancesInstanceShardResult(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> _builtins.str:
         """
-        Shard instance ID.
+        The ID of the shard node.
         """
         return pulumi.get(self, "node_id")
 
@@ -1418,7 +1664,7 @@ class GetInstancesInstanceShardResult(dict):
     @pulumi.getter
     def storage(self) -> _builtins.int:
         """
-        Shard disk.
+        The storage space of the shard node.
         """
         return pulumi.get(self, "storage")
 

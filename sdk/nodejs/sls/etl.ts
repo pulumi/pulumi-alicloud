@@ -97,31 +97,35 @@ export class Etl extends pulumi.CustomResource {
     }
 
     /**
-     * The ETL configuration. See `configuration` below.
+     * Detailed configuration of the data processing task.   See `configuration` below.
      */
     declare public readonly configuration: pulumi.Output<outputs.sls.EtlConfiguration>;
     /**
-     * The time when the data transformation job was created.
+     * The time when the task was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
-     * Data Processing Task Description.
+     * Description of the data processing task.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Data processing task display name.
+     * The display name of the data processing task.
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
-     * Unique identification of data processing task.
+     * The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      */
     declare public readonly jobName: pulumi.Output<string>;
     /**
-     * Project Name.
+     * Project name.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The status of the data transformation job.
+     * Task status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -177,31 +181,35 @@ export class Etl extends pulumi.CustomResource {
  */
 export interface EtlState {
     /**
-     * The ETL configuration. See `configuration` below.
+     * Detailed configuration of the data processing task.   See `configuration` below.
      */
     configuration?: pulumi.Input<inputs.sls.EtlConfiguration>;
     /**
-     * The time when the data transformation job was created.
+     * The time when the task was created.
      */
     createTime?: pulumi.Input<number>;
     /**
-     * Data Processing Task Description.
+     * Description of the data processing task.
      */
     description?: pulumi.Input<string>;
     /**
-     * Data processing task display name.
+     * The display name of the data processing task.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Unique identification of data processing task.
+     * The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      */
     jobName?: pulumi.Input<string>;
     /**
-     * Project Name.
+     * Project name.
      */
     project?: pulumi.Input<string>;
     /**
-     * The status of the data transformation job.
+     * Task status.
      */
     status?: pulumi.Input<string>;
 }
@@ -211,23 +219,27 @@ export interface EtlState {
  */
 export interface EtlArgs {
     /**
-     * The ETL configuration. See `configuration` below.
+     * Detailed configuration of the data processing task.   See `configuration` below.
      */
     configuration: pulumi.Input<inputs.sls.EtlConfiguration>;
     /**
-     * Data Processing Task Description.
+     * Description of the data processing task.
      */
     description?: pulumi.Input<string>;
     /**
-     * Data processing task display name.
+     * The display name of the data processing task.
      */
     displayName: pulumi.Input<string>;
     /**
-     * Unique identification of data processing task.
+     * The job name. Naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+     * - Must start and end with a lowercase letter or digit.
+     * - Must be 2 to 64 characters in length.
      */
     jobName: pulumi.Input<string>;
     /**
-     * Project Name.
+     * Project name.
      */
     project: pulumi.Input<string>;
 }

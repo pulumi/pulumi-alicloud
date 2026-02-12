@@ -33,18 +33,22 @@ class VpcCenTrFirewallArgs:
                  tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcCenTrFirewall resource.
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[_builtins.str] firewall_name: The name of Cloud Firewall.
-        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
-        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: Required in automatic mode,  th CIDR of firewall VPC.
+        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[_builtins.str] firewall_name: The name of the Cloud Firewall.
+        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: The CIDR block of the firewall VPC in automatic mode.
         :param pulumi.Input[_builtins.str] region_no: The region ID of the transit router instance.
-        :param pulumi.Input[_builtins.str] route_mode: The routing pattern. Value: managed: indicates automatic mode
-        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
-        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router instance.
-        :param pulumi.Input[_builtins.str] firewall_description: Firewall description.
-        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the switch.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: Switch standby area.
+        :param pulumi.Input[_builtins.str] route_mode: The routing mode. Valid values:
+        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Transit Router instance.
+        :param pulumi.Input[_builtins.str] firewall_description: The description of the firewall.
+        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: The secondary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "firewall_name", firewall_name)
@@ -66,7 +70,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the CEN instance.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -78,7 +82,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="firewallName")
     def firewall_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of Cloud Firewall.
+        The name of the Cloud Firewall.
         """
         return pulumi.get(self, "firewall_name")
 
@@ -90,7 +94,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="firewallSubnetCidr")
     def firewall_subnet_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+        The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
         """
         return pulumi.get(self, "firewall_subnet_cidr")
 
@@ -102,7 +106,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="firewallVpcCidr")
     def firewall_vpc_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        Required in automatic mode,  th CIDR of firewall VPC.
+        The CIDR block of the firewall VPC in automatic mode.
         """
         return pulumi.get(self, "firewall_vpc_cidr")
 
@@ -126,7 +130,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="routeMode")
     def route_mode(self) -> pulumi.Input[_builtins.str]:
         """
-        The routing pattern. Value: managed: indicates automatic mode
+        The routing mode. Valid values:
         """
         return pulumi.get(self, "route_mode")
 
@@ -138,7 +142,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="trAttachmentMasterCidr")
     def tr_attachment_master_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+        The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_master_cidr")
 
@@ -150,7 +154,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="trAttachmentSlaveCidr")
     def tr_attachment_slave_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+        The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_slave_cidr")
 
@@ -162,7 +166,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the transit router instance.
+        The ID of the Transit Router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -174,7 +178,7 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="firewallDescription")
     def firewall_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Firewall description.
+        The description of the firewall.
         """
         return pulumi.get(self, "firewall_description")
 
@@ -186,7 +190,9 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="trAttachmentMasterZone")
     def tr_attachment_master_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The primary zone of the switch.
+        The primary zone of the vSwitch.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "tr_attachment_master_zone")
 
@@ -198,7 +204,9 @@ class VpcCenTrFirewallArgs:
     @pulumi.getter(name="trAttachmentSlaveZone")
     def tr_attachment_slave_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Switch standby area.
+        The secondary zone of the vSwitch.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "tr_attachment_slave_zone")
 
@@ -212,8 +220,11 @@ class _VpcCenTrFirewallState:
     def __init__(__self__, *,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 firewall_eni_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 firewall_eni_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 firewall_vpc_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
                  firewall_vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  region_no: Optional[pulumi.Input[_builtins.str]] = None,
                  route_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -225,28 +236,41 @@ class _VpcCenTrFirewallState:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcCenTrFirewall resources.
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[_builtins.str] firewall_description: Firewall description.
-        :param pulumi.Input[_builtins.str] firewall_name: The name of Cloud Firewall.
-        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
-        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: Required in automatic mode,  th CIDR of firewall VPC.
+        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[_builtins.str] firewall_description: The description of the firewall.
+        :param pulumi.Input[_builtins.str] firewall_eni_id: The ID of the firewall ENI.
+        :param pulumi.Input[_builtins.str] firewall_eni_vpc_id: The ID of the VPC where the firewall ENI resides.
+        :param pulumi.Input[_builtins.str] firewall_name: The name of the Cloud Firewall.
+        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        :param pulumi.Input[_builtins.str] firewall_vpc_attachment_id: The ID of the firewall VPC connection.
+        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: The CIDR block of the firewall VPC in automatic mode.
         :param pulumi.Input[_builtins.str] region_no: The region ID of the transit router instance.
-        :param pulumi.Input[_builtins.str] route_mode: The routing pattern. Value: managed: indicates automatic mode
-        :param pulumi.Input[_builtins.str] status: Firewall status. Value:
-        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
-        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the switch.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: Switch standby area.
-        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router instance.
+        :param pulumi.Input[_builtins.str] route_mode: The routing mode. Valid values:
+        :param pulumi.Input[_builtins.str] status: The status of the firewall.
+        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: The secondary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Transit Router instance.
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
         if firewall_description is not None:
             pulumi.set(__self__, "firewall_description", firewall_description)
+        if firewall_eni_id is not None:
+            pulumi.set(__self__, "firewall_eni_id", firewall_eni_id)
+        if firewall_eni_vpc_id is not None:
+            pulumi.set(__self__, "firewall_eni_vpc_id", firewall_eni_vpc_id)
         if firewall_name is not None:
             pulumi.set(__self__, "firewall_name", firewall_name)
         if firewall_subnet_cidr is not None:
             pulumi.set(__self__, "firewall_subnet_cidr", firewall_subnet_cidr)
+        if firewall_vpc_attachment_id is not None:
+            pulumi.set(__self__, "firewall_vpc_attachment_id", firewall_vpc_attachment_id)
         if firewall_vpc_cidr is not None:
             pulumi.set(__self__, "firewall_vpc_cidr", firewall_vpc_cidr)
         if region_no is not None:
@@ -270,7 +294,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the CEN instance.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -282,7 +306,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="firewallDescription")
     def firewall_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Firewall description.
+        The description of the firewall.
         """
         return pulumi.get(self, "firewall_description")
 
@@ -291,10 +315,34 @@ class _VpcCenTrFirewallState:
         pulumi.set(self, "firewall_description", value)
 
     @_builtins.property
+    @pulumi.getter(name="firewallEniId")
+    def firewall_eni_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the firewall ENI.
+        """
+        return pulumi.get(self, "firewall_eni_id")
+
+    @firewall_eni_id.setter
+    def firewall_eni_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firewall_eni_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firewallEniVpcId")
+    def firewall_eni_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the VPC where the firewall ENI resides.
+        """
+        return pulumi.get(self, "firewall_eni_vpc_id")
+
+    @firewall_eni_vpc_id.setter
+    def firewall_eni_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firewall_eni_vpc_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="firewallName")
     def firewall_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of Cloud Firewall.
+        The name of the Cloud Firewall.
         """
         return pulumi.get(self, "firewall_name")
 
@@ -306,7 +354,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="firewallSubnetCidr")
     def firewall_subnet_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+        The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
         """
         return pulumi.get(self, "firewall_subnet_cidr")
 
@@ -315,10 +363,22 @@ class _VpcCenTrFirewallState:
         pulumi.set(self, "firewall_subnet_cidr", value)
 
     @_builtins.property
+    @pulumi.getter(name="firewallVpcAttachmentId")
+    def firewall_vpc_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the firewall VPC connection.
+        """
+        return pulumi.get(self, "firewall_vpc_attachment_id")
+
+    @firewall_vpc_attachment_id.setter
+    def firewall_vpc_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firewall_vpc_attachment_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="firewallVpcCidr")
     def firewall_vpc_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required in automatic mode,  th CIDR of firewall VPC.
+        The CIDR block of the firewall VPC in automatic mode.
         """
         return pulumi.get(self, "firewall_vpc_cidr")
 
@@ -342,7 +402,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="routeMode")
     def route_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The routing pattern. Value: managed: indicates automatic mode
+        The routing mode. Valid values:
         """
         return pulumi.get(self, "route_mode")
 
@@ -354,7 +414,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Firewall status. Value:
+        The status of the firewall.
         """
         return pulumi.get(self, "status")
 
@@ -366,7 +426,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="trAttachmentMasterCidr")
     def tr_attachment_master_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+        The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_master_cidr")
 
@@ -378,7 +438,9 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="trAttachmentMasterZone")
     def tr_attachment_master_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The primary zone of the switch.
+        The primary zone of the vSwitch.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "tr_attachment_master_zone")
 
@@ -390,7 +452,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="trAttachmentSlaveCidr")
     def tr_attachment_slave_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+        The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_slave_cidr")
 
@@ -402,7 +464,9 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="trAttachmentSlaveZone")
     def tr_attachment_slave_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Switch standby area.
+        The secondary zone of the vSwitch.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "tr_attachment_slave_zone")
 
@@ -414,7 +478,7 @@ class _VpcCenTrFirewallState:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the transit router instance.
+        The ID of the Transit Router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -559,23 +623,27 @@ class VpcCenTrFirewall(pulumi.CustomResource):
         Cloud Firewall Vpc Cen Tr Firewall can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <id>
+        $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <firewall_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[_builtins.str] firewall_description: Firewall description.
-        :param pulumi.Input[_builtins.str] firewall_name: The name of Cloud Firewall.
-        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
-        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: Required in automatic mode,  th CIDR of firewall VPC.
+        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[_builtins.str] firewall_description: The description of the firewall.
+        :param pulumi.Input[_builtins.str] firewall_name: The name of the Cloud Firewall.
+        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: The CIDR block of the firewall VPC in automatic mode.
         :param pulumi.Input[_builtins.str] region_no: The region ID of the transit router instance.
-        :param pulumi.Input[_builtins.str] route_mode: The routing pattern. Value: managed: indicates automatic mode
-        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
-        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the switch.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: Switch standby area.
-        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router instance.
+        :param pulumi.Input[_builtins.str] route_mode: The routing mode. Valid values:
+        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: The secondary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Transit Router instance.
         """
         ...
     @overload
@@ -700,7 +768,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
         Cloud Firewall Vpc Cen Tr Firewall can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <id>
+        $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <firewall_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -769,6 +837,9 @@ class VpcCenTrFirewall(pulumi.CustomResource):
             if transit_router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'transit_router_id'")
             __props__.__dict__["transit_router_id"] = transit_router_id
+            __props__.__dict__["firewall_eni_id"] = None
+            __props__.__dict__["firewall_eni_vpc_id"] = None
+            __props__.__dict__["firewall_vpc_attachment_id"] = None
             __props__.__dict__["status"] = None
         super(VpcCenTrFirewall, __self__).__init__(
             'alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall',
@@ -782,8 +853,11 @@ class VpcCenTrFirewall(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cen_id: Optional[pulumi.Input[_builtins.str]] = None,
             firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
+            firewall_eni_id: Optional[pulumi.Input[_builtins.str]] = None,
+            firewall_eni_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
             firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
             firewall_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
+            firewall_vpc_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
             firewall_vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
             region_no: Optional[pulumi.Input[_builtins.str]] = None,
             route_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -800,19 +874,26 @@ class VpcCenTrFirewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
-        :param pulumi.Input[_builtins.str] firewall_description: Firewall description.
-        :param pulumi.Input[_builtins.str] firewall_name: The name of Cloud Firewall.
-        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
-        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: Required in automatic mode,  th CIDR of firewall VPC.
+        :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[_builtins.str] firewall_description: The description of the firewall.
+        :param pulumi.Input[_builtins.str] firewall_eni_id: The ID of the firewall ENI.
+        :param pulumi.Input[_builtins.str] firewall_eni_vpc_id: The ID of the VPC where the firewall ENI resides.
+        :param pulumi.Input[_builtins.str] firewall_name: The name of the Cloud Firewall.
+        :param pulumi.Input[_builtins.str] firewall_subnet_cidr: The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        :param pulumi.Input[_builtins.str] firewall_vpc_attachment_id: The ID of the firewall VPC connection.
+        :param pulumi.Input[_builtins.str] firewall_vpc_cidr: The CIDR block of the firewall VPC in automatic mode.
         :param pulumi.Input[_builtins.str] region_no: The region ID of the transit router instance.
-        :param pulumi.Input[_builtins.str] route_mode: The routing pattern. Value: managed: indicates automatic mode
-        :param pulumi.Input[_builtins.str] status: Firewall status. Value:
-        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
-        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the switch.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
-        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: Switch standby area.
-        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router instance.
+        :param pulumi.Input[_builtins.str] route_mode: The routing mode. Valid values:
+        :param pulumi.Input[_builtins.str] status: The status of the firewall.
+        :param pulumi.Input[_builtins.str] tr_attachment_master_cidr: The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_master_zone: The primary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_cidr: The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        :param pulumi.Input[_builtins.str] tr_attachment_slave_zone: The secondary zone of the vSwitch.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Transit Router instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -820,8 +901,11 @@ class VpcCenTrFirewall(pulumi.CustomResource):
 
         __props__.__dict__["cen_id"] = cen_id
         __props__.__dict__["firewall_description"] = firewall_description
+        __props__.__dict__["firewall_eni_id"] = firewall_eni_id
+        __props__.__dict__["firewall_eni_vpc_id"] = firewall_eni_vpc_id
         __props__.__dict__["firewall_name"] = firewall_name
         __props__.__dict__["firewall_subnet_cidr"] = firewall_subnet_cidr
+        __props__.__dict__["firewall_vpc_attachment_id"] = firewall_vpc_attachment_id
         __props__.__dict__["firewall_vpc_cidr"] = firewall_vpc_cidr
         __props__.__dict__["region_no"] = region_no
         __props__.__dict__["route_mode"] = route_mode
@@ -837,7 +921,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the CEN instance.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -845,15 +929,31 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="firewallDescription")
     def firewall_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Firewall description.
+        The description of the firewall.
         """
         return pulumi.get(self, "firewall_description")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallEniId")
+    def firewall_eni_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the firewall ENI.
+        """
+        return pulumi.get(self, "firewall_eni_id")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallEniVpcId")
+    def firewall_eni_vpc_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the VPC where the firewall ENI resides.
+        """
+        return pulumi.get(self, "firewall_eni_vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="firewallName")
     def firewall_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of Cloud Firewall.
+        The name of the Cloud Firewall.
         """
         return pulumi.get(self, "firewall_name")
 
@@ -861,15 +961,23 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="firewallSubnetCidr")
     def firewall_subnet_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+        The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
         """
         return pulumi.get(self, "firewall_subnet_cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallVpcAttachmentId")
+    def firewall_vpc_attachment_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the firewall VPC connection.
+        """
+        return pulumi.get(self, "firewall_vpc_attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="firewallVpcCidr")
     def firewall_vpc_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        Required in automatic mode,  th CIDR of firewall VPC.
+        The CIDR block of the firewall VPC in automatic mode.
         """
         return pulumi.get(self, "firewall_vpc_cidr")
 
@@ -885,7 +993,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="routeMode")
     def route_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The routing pattern. Value: managed: indicates automatic mode
+        The routing mode. Valid values:
         """
         return pulumi.get(self, "route_mode")
 
@@ -893,7 +1001,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Firewall status. Value:
+        The status of the firewall.
         """
         return pulumi.get(self, "status")
 
@@ -901,7 +1009,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="trAttachmentMasterCidr")
     def tr_attachment_master_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+        The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_master_cidr")
 
@@ -909,7 +1017,9 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="trAttachmentMasterZone")
     def tr_attachment_master_zone(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The primary zone of the switch.
+        The primary zone of the vSwitch.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "tr_attachment_master_zone")
 
@@ -917,7 +1027,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="trAttachmentSlaveCidr")
     def tr_attachment_slave_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+        The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_slave_cidr")
 
@@ -925,7 +1035,9 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="trAttachmentSlaveZone")
     def tr_attachment_slave_zone(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Switch standby area.
+        The secondary zone of the vSwitch.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "tr_attachment_slave_zone")
 
@@ -933,7 +1045,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the transit router instance.
+        The ID of the Transit Router instance.
         """
         return pulumi.get(self, "transit_router_id")
 

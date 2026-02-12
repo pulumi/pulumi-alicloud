@@ -17,14 +17,14 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
     public static final CollectionPolicyCentralizeConfigArgs Empty = new CollectionPolicyCentralizeConfigArgs();
 
     /**
-     * When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+     * Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
      * 
      */
     @Import(name="destLogstore")
     private @Nullable Output<String> destLogstore;
 
     /**
-     * @return When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+     * @return Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
      * 
      */
     public Optional<Output<String>> destLogstore() {
@@ -32,14 +32,14 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+     * Destination project for centralized forwarding. Its region must match destRegion.
      * 
      */
     @Import(name="destProject")
     private @Nullable Output<String> destProject;
 
     /**
-     * @return The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+     * @return Destination project for centralized forwarding. Its region must match destRegion.
      * 
      */
     public Optional<Output<String>> destProject() {
@@ -47,14 +47,14 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Centralized transfer destination area.
+     * Destination region for centralized forwarding.
      * 
      */
     @Import(name="destRegion")
     private @Nullable Output<String> destRegion;
 
     /**
-     * @return Centralized transfer destination area.
+     * @return Destination region for centralized forwarding.
      * 
      */
     public Optional<Output<String>> destRegion() {
@@ -62,14 +62,14 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+     * Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
      * 
      */
     @Import(name="destTtl")
     private @Nullable Output<Integer> destTtl;
 
     /**
-     * @return The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+     * @return Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
      * 
      */
     public Optional<Output<Integer>> destTtl() {
@@ -104,7 +104,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destLogstore When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+         * @param destLogstore Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destLogstore When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+         * @param destLogstore Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destProject The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+         * @param destProject Destination project for centralized forwarding. Its region must match destRegion.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destProject The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+         * @param destProject Destination project for centralized forwarding. Its region must match destRegion.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destRegion Centralized transfer destination area.
+         * @param destRegion Destination region for centralized forwarding.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destRegion Centralized transfer destination area.
+         * @param destRegion Destination region for centralized forwarding.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destTtl The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+         * @param destTtl Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class CollectionPolicyCentralizeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param destTtl The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+         * @param destTtl Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
          * 
          * @return builder
          * 

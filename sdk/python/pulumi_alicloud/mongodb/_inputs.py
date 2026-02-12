@@ -19,6 +19,8 @@ __all__ = [
     'InstanceParameterArgsDict',
     'InstanceReplicaSetArgs',
     'InstanceReplicaSetArgsDict',
+    'InstanceZoneInfoArgs',
+    'InstanceZoneInfoArgsDict',
     'PublicNetworkAddressReplicaSetArgs',
     'PublicNetworkAddressReplicaSetArgsDict',
     'ServerlessInstanceSecurityIpGroupArgs',
@@ -31,6 +33,8 @@ __all__ = [
     'ShardingInstanceParameterArgsDict',
     'ShardingInstanceShardListArgs',
     'ShardingInstanceShardListArgsDict',
+    'ShardingInstanceZoneInfoArgs',
+    'ShardingInstanceZoneInfoArgsDict',
     'ShardingNetworkPrivateAddressNetworkAddressArgs',
     'ShardingNetworkPrivateAddressNetworkAddressArgsDict',
     'ShardingNetworkPublicAddressNetworkAddressArgs',
@@ -101,7 +105,8 @@ if not MYPY:
         """
         network_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The network type of the instance. Valid values:`Classic`, `VPC`.
+        The network type of the instance. Valid values: `VPC`.
+        > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         """
         replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -140,7 +145,8 @@ class InstanceReplicaSetArgs:
         """
         :param pulumi.Input[_builtins.str] connection_domain: The connection address of the node.
         :param pulumi.Input[_builtins.str] connection_port: The connection port of the node.
-        :param pulumi.Input[_builtins.str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
+        :param pulumi.Input[_builtins.str] network_type: The network type of the instance. Valid values: `VPC`.
+               > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         :param pulumi.Input[_builtins.str] replica_set_role: The role of the node.
         :param pulumi.Input[_builtins.str] role_id: The id of the role.
         :param pulumi.Input[_builtins.str] vpc_cloud_instance_id: VPC instance ID.
@@ -192,7 +198,8 @@ class InstanceReplicaSetArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network type of the instance. Valid values:`Classic`, `VPC`.
+        The network type of the instance. Valid values: `VPC`.
+        > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         """
         return pulumi.get(self, "network_type")
 
@@ -259,6 +266,124 @@ class InstanceReplicaSetArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+if not MYPY:
+    class InstanceZoneInfoArgsDict(TypedDict):
+        ins_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the node.
+        """
+        node_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The type of the node.
+        """
+        role_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The id of the role.
+        """
+        role_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The role of the node.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Zone to launch the DB instance. it supports multiple zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        """
+elif False:
+    InstanceZoneInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceZoneInfoArgs:
+    def __init__(__self__, *,
+                 ins_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ins_name: The ID of the node.
+        :param pulumi.Input[_builtins.str] node_type: The type of the node.
+        :param pulumi.Input[_builtins.str] role_id: The id of the role.
+        :param pulumi.Input[_builtins.str] role_type: The role of the node.
+        :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
+               If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        """
+        if ins_name is not None:
+            pulumi.set(__self__, "ins_name", ins_name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="insName")
+    def ins_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the node.
+        """
+        return pulumi.get(self, "ins_name")
+
+    @ins_name.setter
+    def ins_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ins_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The id of the role.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "role_type")
+
+    @role_type.setter
+    def role_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Zone to launch the DB instance. it supports multiple zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 if not MYPY:
@@ -872,6 +997,121 @@ class ShardingInstanceShardListArgs:
     @readonly_replicas.setter
     def readonly_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "readonly_replicas", value)
+
+
+if not MYPY:
+    class ShardingInstanceZoneInfoArgsDict(TypedDict):
+        ins_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the node.
+        """
+        node_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The type of the node.
+        """
+        role_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The role ID.
+        """
+        role_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The role of the node.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+elif False:
+    ShardingInstanceZoneInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ShardingInstanceZoneInfoArgs:
+    def __init__(__self__, *,
+                 ins_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ins_name: The ID of the node.
+        :param pulumi.Input[_builtins.str] node_type: The type of the node.
+        :param pulumi.Input[_builtins.str] role_id: The role ID.
+        :param pulumi.Input[_builtins.str] role_type: The role of the node.
+        :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+               If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+        if ins_name is not None:
+            pulumi.set(__self__, "ins_name", ins_name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="insName")
+    def ins_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the node.
+        """
+        return pulumi.get(self, "ins_name")
+
+    @ins_name.setter
+    def ins_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ins_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The role ID.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "role_type")
+
+    @role_type.setter
+    def role_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 if not MYPY:

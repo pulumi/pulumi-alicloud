@@ -12,10 +12,13 @@ namespace Pulumi.AliCloud.MongoDB
     public static class GetInstances
     {
         /// <summary>
-        /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, engine or instance type.
+        /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -25,14 +28,52 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         NameRegex = "dds-.+\\d+",
-        ///         InstanceType = "replicate",
-        ///         InstanceClass = "dds.mongo.mid",
-        ///         AvailabilityZone = "eu-central-1a",
+        ///         NameRegex = "default-NODELETING",
         ///     });
         /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+        ///     {
+        ///         EngineVersion = "4.4",
+        ///         DbInstanceClass = "mdb.shard.2x.xlarge.d",
+        ///         DbInstanceStorage = 20,
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         Name = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Instance" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbInstancesId0"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -40,10 +81,13 @@ namespace Pulumi.AliCloud.MongoDB
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, engine or instance type.
+        /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -53,14 +97,52 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         NameRegex = "dds-.+\\d+",
-        ///         InstanceType = "replicate",
-        ///         InstanceClass = "dds.mongo.mid",
-        ///         AvailabilityZone = "eu-central-1a",
+        ///         NameRegex = "default-NODELETING",
         ///     });
         /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+        ///     {
+        ///         EngineVersion = "4.4",
+        ///         DbInstanceClass = "mdb.shard.2x.xlarge.d",
+        ///         DbInstanceStorage = 20,
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         Name = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Instance" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbInstancesId0"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -68,10 +150,13 @@ namespace Pulumi.AliCloud.MongoDB
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, engine or instance type.
+        /// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.13.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -81,14 +166,52 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         NameRegex = "dds-.+\\d+",
-        ///         InstanceType = "replicate",
-        ///         InstanceClass = "dds.mongo.mid",
-        ///         AvailabilityZone = "eu-central-1a",
+        ///         NameRegex = "default-NODELETING",
         ///     });
         /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+        ///     {
+        ///         EngineVersion = "4.4",
+        ///         DbInstanceClass = "mdb.shard.2x.xlarge.d",
+        ///         DbInstanceStorage = 20,
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         Name = name,
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Instance" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.MongoDB.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbInstancesId0"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -100,16 +223,22 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Instance availability zone.
+        /// The zone ID.
         /// </summary>
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
 
         /// <summary>
-        /// The ids list of MongoDB instances
+        /// A list of Instance IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -118,19 +247,19 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Sizing of the instance to be queried.
+        /// The instance type.
         /// </summary>
         [Input("instanceClass")]
         public string? InstanceClass { get; set; }
 
         /// <summary>
-        /// Type of the instance to be queried. If it is set to `Sharding`, the sharded cluster instances are listed. If it is set to `Replicate`, replica set instances are listed. Default value `Replicate`.
+        /// The instance architecture. Default value: `Replicate`. Valid values: `Replicate`, `Sharding`.
         /// </summary>
         [Input("instanceType")]
         public string? InstanceType { get; set; }
 
         /// <summary>
-        /// A regex string to apply to the instance name.
+        /// A regex string to filter results by Instance name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -140,6 +269,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// The instance status.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
@@ -162,16 +297,22 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Instance availability zone.
+        /// The zone ID.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
 
         /// <summary>
-        /// The ids list of MongoDB instances
+        /// A list of Instance IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -180,19 +321,19 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Sizing of the instance to be queried.
+        /// The instance type.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// Type of the instance to be queried. If it is set to `Sharding`, the sharded cluster instances are listed. If it is set to `Replicate`, replica set instances are listed. Default value `Replicate`.
+        /// The instance architecture. Default value: `Replicate`. Valid values: `Replicate`, `Sharding`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// A regex string to apply to the instance name.
+        /// A regex string to filter results by Instance name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -202,6 +343,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The instance status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -226,40 +373,47 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetInstancesResult
     {
         /// <summary>
-        /// Instance availability zone.
+        /// The zone ID of the instance.
         /// </summary>
         public readonly string? AvailabilityZone;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The ids list of MongoDB instances
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// Sizing of the MongoDB instance.
+        /// The instance type.
         /// </summary>
         public readonly string? InstanceClass;
         /// <summary>
-        /// Instance type. Optional values `Sharding` or `Replicate`.
+        /// The instance architecture.
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// A list of MongoDB instances. Its every element contains the following attributes:
+        /// A list of Instances. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
-        /// The names list of MongoDB instances
+        /// (Available since v1.42.0) A list of Instance names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The instance status.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
+        /// (Available since v1.66.0) The details of the resource tags.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetInstancesResult(
             string? availabilityZone,
+
+            bool? enableDetails,
 
             string id,
 
@@ -277,9 +431,12 @@ namespace Pulumi.AliCloud.MongoDB
 
             string? outputFile,
 
+            string? status,
+
             ImmutableDictionary<string, string>? tags)
         {
             AvailabilityZone = availabilityZone;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             InstanceClass = instanceClass;
@@ -288,6 +445,7 @@ namespace Pulumi.AliCloud.MongoDB
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Status = status;
             Tags = tags;
         }
     }

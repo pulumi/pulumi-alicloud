@@ -53,13 +53,22 @@ namespace Pulumi.AliCloud.MaxCompute
     public partial class TenantRoleUserAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This property does not have a description in the spec, please add it before generating code.
+        /// Account UID
+        /// 
+        /// 1. If the user is a primary account, the AccountId format is UID.
+        /// Example: 200231703336555555
+        /// 
+        /// 2. If the user is a RAM user, the AccountId format is p4_UID.
+        /// Example: P4200531704446555555
+        /// 
+        /// 3. If the user is a RAM role, the AccountId format is v4_UID.
+        /// Example: v4_300007628597555555
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// This property does not have a description in the spec, please add it before generating code.
+        /// Tenant role. By default, admin and SuperAdministrator are available. You can add more roles in the console.
         /// </summary>
         [Output("tenantRole")]
         public Output<string> TenantRole { get; private set; } = null!;
@@ -111,13 +120,22 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class TenantRoleUserAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This property does not have a description in the spec, please add it before generating code.
+        /// Account UID
+        /// 
+        /// 1. If the user is a primary account, the AccountId format is UID.
+        /// Example: 200231703336555555
+        /// 
+        /// 2. If the user is a RAM user, the AccountId format is p4_UID.
+        /// Example: P4200531704446555555
+        /// 
+        /// 3. If the user is a RAM role, the AccountId format is v4_UID.
+        /// Example: v4_300007628597555555
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// This property does not have a description in the spec, please add it before generating code.
+        /// Tenant role. By default, admin and SuperAdministrator are available. You can add more roles in the console.
         /// </summary>
         [Input("tenantRole")]
         public Input<string>? TenantRole { get; set; }
@@ -131,13 +149,22 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class TenantRoleUserAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This property does not have a description in the spec, please add it before generating code.
+        /// Account UID
+        /// 
+        /// 1. If the user is a primary account, the AccountId format is UID.
+        /// Example: 200231703336555555
+        /// 
+        /// 2. If the user is a RAM user, the AccountId format is p4_UID.
+        /// Example: P4200531704446555555
+        /// 
+        /// 3. If the user is a RAM role, the AccountId format is v4_UID.
+        /// Example: v4_300007628597555555
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// This property does not have a description in the spec, please add it before generating code.
+        /// Tenant role. By default, admin and SuperAdministrator are available. You can add more roles in the console.
         /// </summary>
         [Input("tenantRole")]
         public Input<string>? TenantRole { get; set; }

@@ -32,15 +32,18 @@ class CollectionPolicyArgs:
                  resource_directory: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']] = None):
         """
         The set of arguments for constructing a CollectionPolicy resource.
-        :param pulumi.Input[_builtins.str] data_code: Log type encoding.
-        :param pulumi.Input[_builtins.bool] enabled: Whether to open.
+        :param pulumi.Input[_builtins.str] data_code: Log type code.
+        :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
         :param pulumi.Input['CollectionPolicyPolicyConfigArgs'] policy_config: Collection rule configuration. See `policy_config` below.
-        :param pulumi.Input[_builtins.str] policy_name: The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        :param pulumi.Input[_builtins.str] policy_name: The naming rules are as follows:
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+               - It must start with a letter.
+               - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
-        :param pulumi.Input['CollectionPolicyCentralizeConfigArgs'] centralize_config: Centralized transfer configuration. See `centralize_config` below.
-        :param pulumi.Input[_builtins.bool] centralize_enabled: Whether to enable centralized Conversion. The default value is false.
-        :param pulumi.Input['CollectionPolicyDataConfigArgs'] data_config: The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
-        :param pulumi.Input['CollectionPolicyResourceDirectoryArgs'] resource_directory: For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        :param pulumi.Input['CollectionPolicyCentralizeConfigArgs'] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
+        :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
+        :param pulumi.Input['CollectionPolicyDataConfigArgs'] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
+        :param pulumi.Input['CollectionPolicyResourceDirectoryArgs'] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         pulumi.set(__self__, "data_code", data_code)
         pulumi.set(__self__, "enabled", enabled)
@@ -60,7 +63,7 @@ class CollectionPolicyArgs:
     @pulumi.getter(name="dataCode")
     def data_code(self) -> pulumi.Input[_builtins.str]:
         """
-        Log type encoding.
+        Log type code.
         """
         return pulumi.get(self, "data_code")
 
@@ -72,7 +75,7 @@ class CollectionPolicyArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Whether to open.
+        Whether enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -96,7 +99,10 @@ class CollectionPolicyArgs:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        The naming rules are as follows:
+        - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        - It must start with a letter.
+        - Its length must be between 3 and 63 characters.
         """
         return pulumi.get(self, "policy_name")
 
@@ -120,7 +126,7 @@ class CollectionPolicyArgs:
     @pulumi.getter(name="centralizeConfig")
     def centralize_config(self) -> Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']]:
         """
-        Centralized transfer configuration. See `centralize_config` below.
+        Centralized forwarding configuration. See `centralize_config` below.
         """
         return pulumi.get(self, "centralize_config")
 
@@ -132,7 +138,7 @@ class CollectionPolicyArgs:
     @pulumi.getter(name="centralizeEnabled")
     def centralize_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable centralized Conversion. The default value is false.
+        Specifies whether to enable centralized forwarding. Default value: false.
         """
         return pulumi.get(self, "centralize_enabled")
 
@@ -144,7 +150,7 @@ class CollectionPolicyArgs:
     @pulumi.getter(name="dataConfig")
     def data_config(self) -> Optional[pulumi.Input['CollectionPolicyDataConfigArgs']]:
         """
-        The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+        This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         """
         return pulumi.get(self, "data_config")
 
@@ -156,7 +162,7 @@ class CollectionPolicyArgs:
     @pulumi.getter(name="resourceDirectory")
     def resource_directory(self) -> Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']]:
         """
-        For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         return pulumi.get(self, "resource_directory")
 
@@ -179,15 +185,18 @@ class _CollectionPolicyState:
                  resource_directory: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']] = None):
         """
         Input properties used for looking up and filtering CollectionPolicy resources.
-        :param pulumi.Input['CollectionPolicyCentralizeConfigArgs'] centralize_config: Centralized transfer configuration. See `centralize_config` below.
-        :param pulumi.Input[_builtins.bool] centralize_enabled: Whether to enable centralized Conversion. The default value is false.
-        :param pulumi.Input[_builtins.str] data_code: Log type encoding.
-        :param pulumi.Input['CollectionPolicyDataConfigArgs'] data_config: The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
-        :param pulumi.Input[_builtins.bool] enabled: Whether to open.
+        :param pulumi.Input['CollectionPolicyCentralizeConfigArgs'] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
+        :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
+        :param pulumi.Input[_builtins.str] data_code: Log type code.
+        :param pulumi.Input['CollectionPolicyDataConfigArgs'] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
+        :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
         :param pulumi.Input['CollectionPolicyPolicyConfigArgs'] policy_config: Collection rule configuration. See `policy_config` below.
-        :param pulumi.Input[_builtins.str] policy_name: The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        :param pulumi.Input[_builtins.str] policy_name: The naming rules are as follows:
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+               - It must start with a letter.
+               - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
-        :param pulumi.Input['CollectionPolicyResourceDirectoryArgs'] resource_directory: For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        :param pulumi.Input['CollectionPolicyResourceDirectoryArgs'] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         if centralize_config is not None:
             pulumi.set(__self__, "centralize_config", centralize_config)
@@ -212,7 +221,7 @@ class _CollectionPolicyState:
     @pulumi.getter(name="centralizeConfig")
     def centralize_config(self) -> Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']]:
         """
-        Centralized transfer configuration. See `centralize_config` below.
+        Centralized forwarding configuration. See `centralize_config` below.
         """
         return pulumi.get(self, "centralize_config")
 
@@ -224,7 +233,7 @@ class _CollectionPolicyState:
     @pulumi.getter(name="centralizeEnabled")
     def centralize_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable centralized Conversion. The default value is false.
+        Specifies whether to enable centralized forwarding. Default value: false.
         """
         return pulumi.get(self, "centralize_enabled")
 
@@ -236,7 +245,7 @@ class _CollectionPolicyState:
     @pulumi.getter(name="dataCode")
     def data_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Log type encoding.
+        Log type code.
         """
         return pulumi.get(self, "data_code")
 
@@ -248,7 +257,7 @@ class _CollectionPolicyState:
     @pulumi.getter(name="dataConfig")
     def data_config(self) -> Optional[pulumi.Input['CollectionPolicyDataConfigArgs']]:
         """
-        The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+        This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         """
         return pulumi.get(self, "data_config")
 
@@ -260,7 +269,7 @@ class _CollectionPolicyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to open.
+        Whether enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -284,7 +293,10 @@ class _CollectionPolicyState:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        The naming rules are as follows:
+        - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        - It must start with a letter.
+        - Its length must be between 3 and 63 characters.
         """
         return pulumi.get(self, "policy_name")
 
@@ -308,7 +320,7 @@ class _CollectionPolicyState:
     @pulumi.getter(name="resourceDirectory")
     def resource_directory(self) -> Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']]:
         """
-        For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         return pulumi.get(self, "resource_directory")
 
@@ -334,17 +346,17 @@ class CollectionPolicy(pulumi.CustomResource):
                  resource_directory: Optional[pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
                  __props__=None):
         """
-        Provides a SLS Collection Policy resource.
+        Provides a Log Service (SLS) Collection Policy resource.
 
         Orchestration policies for cloud product log collection.
 
-        For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
+        For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
 
         > **NOTE:** Available since v1.232.0.
 
         ## Example Usage
 
-        Enable real-time log query for all of OSS buckets.
+        Basic Usage
 
         ```python
         import pulumi
@@ -484,23 +496,26 @@ class CollectionPolicy(pulumi.CustomResource):
 
         ## Import
 
-        SLS Collection Policy can be imported using the id, e.g.
+        Log Service (SLS) Collection Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <id>
+        $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <policy_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized transfer configuration. See `centralize_config` below.
-        :param pulumi.Input[_builtins.bool] centralize_enabled: Whether to enable centralized Conversion. The default value is false.
-        :param pulumi.Input[_builtins.str] data_code: Log type encoding.
-        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']] data_config: The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
-        :param pulumi.Input[_builtins.bool] enabled: Whether to open.
+        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
+        :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
+        :param pulumi.Input[_builtins.str] data_code: Log type code.
+        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
+        :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
         :param pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']] policy_config: Collection rule configuration. See `policy_config` below.
-        :param pulumi.Input[_builtins.str] policy_name: The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        :param pulumi.Input[_builtins.str] policy_name: The naming rules are as follows:
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+               - It must start with a letter.
+               - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
-        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']] resource_directory: For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         ...
     @overload
@@ -509,17 +524,17 @@ class CollectionPolicy(pulumi.CustomResource):
                  args: CollectionPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a SLS Collection Policy resource.
+        Provides a Log Service (SLS) Collection Policy resource.
 
         Orchestration policies for cloud product log collection.
 
-        For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
+        For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
 
         > **NOTE:** Available since v1.232.0.
 
         ## Example Usage
 
-        Enable real-time log query for all of OSS buckets.
+        Basic Usage
 
         ```python
         import pulumi
@@ -659,10 +674,10 @@ class CollectionPolicy(pulumi.CustomResource):
 
         ## Import
 
-        SLS Collection Policy can be imported using the id, e.g.
+        Log Service (SLS) Collection Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <id>
+        $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <policy_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -743,15 +758,18 @@ class CollectionPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized transfer configuration. See `centralize_config` below.
-        :param pulumi.Input[_builtins.bool] centralize_enabled: Whether to enable centralized Conversion. The default value is false.
-        :param pulumi.Input[_builtins.str] data_code: Log type encoding.
-        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']] data_config: The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
-        :param pulumi.Input[_builtins.bool] enabled: Whether to open.
+        :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
+        :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
+        :param pulumi.Input[_builtins.str] data_code: Log type code.
+        :param pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']] data_config: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
+        :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
         :param pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']] policy_config: Collection rule configuration. See `policy_config` below.
-        :param pulumi.Input[_builtins.str] policy_name: The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        :param pulumi.Input[_builtins.str] policy_name: The naming rules are as follows:
+               - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+               - It must start with a letter.
+               - Its length must be between 3 and 63 characters.
         :param pulumi.Input[_builtins.str] product_code: Product code.
-        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']] resource_directory: For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        :param pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']] resource_directory: Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -772,7 +790,7 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter(name="centralizeConfig")
     def centralize_config(self) -> pulumi.Output['outputs.CollectionPolicyCentralizeConfig']:
         """
-        Centralized transfer configuration. See `centralize_config` below.
+        Centralized forwarding configuration. See `centralize_config` below.
         """
         return pulumi.get(self, "centralize_config")
 
@@ -780,7 +798,7 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter(name="centralizeEnabled")
     def centralize_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to enable centralized Conversion. The default value is false.
+        Specifies whether to enable centralized forwarding. Default value: false.
         """
         return pulumi.get(self, "centralize_enabled")
 
@@ -788,7 +806,7 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter(name="dataCode")
     def data_code(self) -> pulumi.Output[_builtins.str]:
         """
-        Log type encoding.
+        Log type code.
         """
         return pulumi.get(self, "data_code")
 
@@ -796,7 +814,7 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter(name="dataConfig")
     def data_config(self) -> pulumi.Output['outputs.CollectionPolicyDataConfig']:
         """
-        The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `data_config` below.
+        This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         """
         return pulumi.get(self, "data_config")
 
@@ -804,7 +822,7 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to open.
+        Whether enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -820,7 +838,10 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+        The naming rules are as follows:
+        - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        - It must start with a letter.
+        - Its length must be between 3 and 63 characters.
         """
         return pulumi.get(self, "policy_name")
 
@@ -836,7 +857,7 @@ class CollectionPolicy(pulumi.CustomResource):
     @pulumi.getter(name="resourceDirectory")
     def resource_directory(self) -> pulumi.Output['outputs.CollectionPolicyResourceDirectory']:
         """
-        For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resource_directory` below.
+        Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         return pulumi.get(self, "resource_directory")
 

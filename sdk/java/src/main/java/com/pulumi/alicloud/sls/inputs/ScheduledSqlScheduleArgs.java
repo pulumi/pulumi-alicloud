@@ -18,14 +18,14 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
     public static final ScheduledSqlScheduleArgs Empty = new ScheduledSqlScheduleArgs();
 
     /**
-     * Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+     * Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
      * 
      */
     @Import(name="cronExpression")
     private @Nullable Output<String> cronExpression;
 
     /**
-     * @return Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+     * @return Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
      * 
      */
     public Optional<Output<String>> cronExpression() {
@@ -33,14 +33,14 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Delay time.
+     * Delay duration.
      * 
      */
     @Import(name="delay")
     private @Nullable Output<Integer> delay;
 
     /**
-     * @return Delay time.
+     * @return Delay duration.
      * 
      */
     public Optional<Output<Integer>> delay() {
@@ -48,14 +48,14 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Time interval, such as 5m, 1H.
+     * Time interval, such as 5m or 1h.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<String> interval;
 
     /**
-     * @return Time interval, such as 5m, 1H.
+     * @return Time interval, such as 5m or 1h.
      * 
      */
     public Optional<Output<String>> interval() {
@@ -63,14 +63,14 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether to execute the OSS import task immediately after it is created.
+     * Specifies whether to run the OSS import job immediately after it is created.
      * 
      */
     @Import(name="runImmediately")
     private @Nullable Output<Boolean> runImmediately;
 
     /**
-     * @return Whether to execute the OSS import task immediately after it is created.
+     * @return Specifies whether to run the OSS import job immediately after it is created.
      * 
      */
     public Optional<Output<Boolean>> runImmediately() {
@@ -78,14 +78,14 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Time Zone.
+     * Time zone.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return Time Zone.
+     * @return Time zone.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -93,14 +93,24 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+     * The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+     * FixedRate: Checks query and analysis results at fixed intervals.
+     * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+     * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+     * Daily: Checks query and analysis results once at a fixed time each day.
+     * Hourly: Checks query and analysis results once every hour.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+     * @return The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+     * FixedRate: Checks query and analysis results at fixed intervals.
+     * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+     * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+     * Daily: Checks query and analysis results once at a fixed time each day.
+     * Hourly: Checks query and analysis results once every hour.
      * 
      */
     public Optional<Output<String>> type() {
@@ -137,7 +147,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cronExpression Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+         * @param cronExpression Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
          * 
          * @return builder
          * 
@@ -148,7 +158,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cronExpression Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+         * @param cronExpression Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
          * 
          * @return builder
          * 
@@ -158,7 +168,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param delay Delay time.
+         * @param delay Delay duration.
          * 
          * @return builder
          * 
@@ -169,7 +179,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param delay Delay time.
+         * @param delay Delay duration.
          * 
          * @return builder
          * 
@@ -179,7 +189,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param interval Time interval, such as 5m, 1H.
+         * @param interval Time interval, such as 5m or 1h.
          * 
          * @return builder
          * 
@@ -190,7 +200,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param interval Time interval, such as 5m, 1H.
+         * @param interval Time interval, such as 5m or 1h.
          * 
          * @return builder
          * 
@@ -200,7 +210,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param runImmediately Whether to execute the OSS import task immediately after it is created.
+         * @param runImmediately Specifies whether to run the OSS import job immediately after it is created.
          * 
          * @return builder
          * 
@@ -211,7 +221,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param runImmediately Whether to execute the OSS import task immediately after it is created.
+         * @param runImmediately Specifies whether to run the OSS import job immediately after it is created.
          * 
          * @return builder
          * 
@@ -221,7 +231,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param timeZone Time Zone.
+         * @param timeZone Time zone.
          * 
          * @return builder
          * 
@@ -232,7 +242,7 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param timeZone Time Zone.
+         * @param timeZone Time zone.
          * 
          * @return builder
          * 
@@ -242,7 +252,12 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+         * @param type The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+         * FixedRate: Checks query and analysis results at fixed intervals.
+         * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+         * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+         * Daily: Checks query and analysis results once at a fixed time each day.
+         * Hourly: Checks query and analysis results once every hour.
          * 
          * @return builder
          * 
@@ -253,7 +268,12 @@ public final class ScheduledSqlScheduleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+         * @param type The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
+         * FixedRate: Checks query and analysis results at fixed intervals.
+         * Cron: Uses a cron expression to specify the interval and checks query and analysis results accordingly.
+         * Weekly: Checks query and analysis results once at a fixed time on a specific day of the week.
+         * Daily: Checks query and analysis results once at a fixed time each day.
+         * Hourly: Checks query and analysis results once every hour.
          * 
          * @return builder
          * 

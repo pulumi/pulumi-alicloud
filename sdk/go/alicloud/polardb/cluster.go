@@ -23,7 +23,7 @@ type Cluster struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
-	AllowShutDown pulumi.StringPtrOutput `pulumi:"allowShutDown"`
+	AllowShutDown pulumi.StringOutput `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
@@ -52,15 +52,16 @@ type Cluster struct {
 	DbMinorVersion pulumi.StringOutput `pulumi:"dbMinorVersion"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId pulumi.StringPtrOutput `pulumi:"dbNodeId"`
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
 	DbNodeNum pulumi.IntPtrOutput `pulumi:"dbNodeNum"`
 	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
 	DbRevisionVersionLists ClusterDbRevisionVersionListArrayOutput `pulumi:"dbRevisionVersionLists"`
@@ -86,6 +87,8 @@ type Cluster struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrOutput `pulumi:"gdnId"`
+	// The list of global security ip group ids.
+	GlobalSecurityGroupLists pulumi.StringArrayOutput `pulumi:"globalSecurityGroupLists"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringOutput `pulumi:"hotReplicaMode"`
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
@@ -215,7 +218,7 @@ type Cluster struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -289,15 +292,16 @@ type clusterState struct {
 	DbMinorVersion *string `pulumi:"dbMinorVersion"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId *string `pulumi:"dbNodeId"`
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
 	DbRevisionVersionLists []ClusterDbRevisionVersionList `pulumi:"dbRevisionVersionLists"`
@@ -323,6 +327,8 @@ type clusterState struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
+	// The list of global security ip group ids.
+	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode *string `pulumi:"hotReplicaMode"`
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
@@ -488,15 +494,16 @@ type ClusterState struct {
 	DbMinorVersion pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass pulumi.StringPtrInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId pulumi.StringPtrInput
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
 	DbNodeNum pulumi.IntPtrInput
 	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
 	DbRevisionVersionLists ClusterDbRevisionVersionListArrayInput
@@ -522,6 +529,8 @@ type ClusterState struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
+	// The list of global security ip group ids.
+	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringPtrInput
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
@@ -687,15 +696,16 @@ type clusterArgs struct {
 	DbMinorVersion *string `pulumi:"dbMinorVersion"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId *string `pulumi:"dbNodeId"`
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType string `pulumi:"dbType"`
@@ -719,6 +729,8 @@ type clusterArgs struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
+	// The list of global security ip group ids.
+	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode *string `pulumi:"hotReplicaMode"`
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
@@ -873,15 +885,16 @@ type ClusterArgs struct {
 	DbMinorVersion pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass pulumi.StringInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId pulumi.StringPtrInput
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+	// > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
 	DbNodeNum pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringInput
@@ -905,6 +918,8 @@ type ClusterArgs struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
+	// The list of global security ip group ids.
+	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringPtrInput
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
@@ -1119,8 +1134,8 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 }
 
 // Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
-func (o ClusterOutput) AllowShutDown() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AllowShutDown }).(pulumi.StringPtrOutput)
+func (o ClusterOutput) AllowShutDown() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AllowShutDown }).(pulumi.StringOutput)
 }
 
 // Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -1184,8 +1199,8 @@ func (o ClusterOutput) DbMinorVersion() pulumi.StringOutput {
 
 // The dbNodeClass of cluster node.
 // > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 func (o ClusterOutput) DbNodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
 }
@@ -1201,7 +1216,8 @@ func (o ClusterOutput) DbNodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DbNodeId }).(pulumi.StringPtrOutput)
 }
 
-// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+// The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+// > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
 func (o ClusterOutput) DbNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DbNodeNum }).(pulumi.IntPtrOutput)
 }
@@ -1258,6 +1274,11 @@ func (o ClusterOutput) FromTimeService() pulumi.StringPtrOutput {
 // > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 func (o ClusterOutput) GdnId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GdnId }).(pulumi.StringPtrOutput)
+}
+
+// The list of global security ip group ids.
+func (o ClusterOutput) GlobalSecurityGroupLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.GlobalSecurityGroupLists }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
@@ -1539,8 +1560,8 @@ func (o ClusterOutput) VpcId() pulumi.StringOutput {
 
 // The virtual switch ID to launch DB instances in one VPC.
 // > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
-func (o ClusterOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+func (o ClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The Zone to launch the DB cluster. it supports multiple zone.

@@ -23,8 +23,8 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
                  disk_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EcsAutoSnapshotPolicyAttachment resource.
-        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The auto snapshot policy id.
-        :param pulumi.Input[_builtins.str] disk_id: The disk id.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
+        :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         """
         pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         pulumi.set(__self__, "disk_id", disk_id)
@@ -33,7 +33,7 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The auto snapshot policy id.
+        The ID of the automatic snapshot policy that is applied to the cloud disk.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -45,7 +45,7 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
     @pulumi.getter(name="diskId")
     def disk_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The disk id.
+        The ID of the disk.
         """
         return pulumi.get(self, "disk_id")
 
@@ -58,22 +58,26 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
 class _EcsAutoSnapshotPolicyAttachmentState:
     def __init__(__self__, *,
                  auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsAutoSnapshotPolicyAttachment resources.
-        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The auto snapshot policy id.
-        :param pulumi.Input[_builtins.str] disk_id: The disk id.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
+        :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The auto snapshot policy id.
+        The ID of the automatic snapshot policy that is applied to the cloud disk.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -85,13 +89,25 @@ class _EcsAutoSnapshotPolicyAttachmentState:
     @pulumi.getter(name="diskId")
     def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The disk id.
+        The ID of the disk.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
     def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
 
 @pulumi.type_token("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment")
@@ -106,9 +122,11 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         """
         Provides a ECS Auto Snapshot Policy Attachment resource.
 
+        Automatic snapshot policy Mount relationship.
+
         For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
 
-        > **NOTE:** Available in v1.122.0+.
+        > **NOTE:** Available since v1.122.0.
 
         ## Example Usage
 
@@ -118,38 +136,30 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_key = alicloud.kms.Key("example",
-            description="terraform-example",
-            pending_window_in_days=7,
-            status="Enabled")
-        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("example",
-            name="terraform-example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("default",
+            auto_snapshot_policy_name=name,
             repeat_weekdays=[
                 "1",
                 "2",
                 "3",
             ],
-            retention_days=-1,
+            retention_days=1,
             time_points=[
                 "1",
-                "22",
-                "23",
+                "2",
+                "3",
             ])
-        example_ecs_disk = alicloud.ecs.EcsDisk("example",
-            zone_id=example.zones[0].id,
-            disk_name="terraform-example",
-            description="Hello ecs disk.",
-            category="cloud_efficiency",
-            size=30,
-            encrypted=True,
-            kms_key_id=example_key.id,
-            tags={
-                "Name": "terraform-example",
-            })
-        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("example",
-            auto_snapshot_policy_id=example_auto_snapshot_policy.id,
-            disk_id=example_ecs_disk.id)
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
+            zone_id=default.zones[0].id,
+            size=500)
+        default_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("default",
+            auto_snapshot_policy_id=default_auto_snapshot_policy.id,
+            disk_id=default_ecs_disk.id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -159,13 +169,13 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+        $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The auto snapshot policy id.
-        :param pulumi.Input[_builtins.str] disk_id: The disk id.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
+        :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         """
         ...
     @overload
@@ -176,9 +186,11 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         """
         Provides a ECS Auto Snapshot Policy Attachment resource.
 
+        Automatic snapshot policy Mount relationship.
+
         For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
 
-        > **NOTE:** Available in v1.122.0+.
+        > **NOTE:** Available since v1.122.0.
 
         ## Example Usage
 
@@ -188,38 +200,30 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_key = alicloud.kms.Key("example",
-            description="terraform-example",
-            pending_window_in_days=7,
-            status="Enabled")
-        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("example",
-            name="terraform-example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("default",
+            auto_snapshot_policy_name=name,
             repeat_weekdays=[
                 "1",
                 "2",
                 "3",
             ],
-            retention_days=-1,
+            retention_days=1,
             time_points=[
                 "1",
-                "22",
-                "23",
+                "2",
+                "3",
             ])
-        example_ecs_disk = alicloud.ecs.EcsDisk("example",
-            zone_id=example.zones[0].id,
-            disk_name="terraform-example",
-            description="Hello ecs disk.",
-            category="cloud_efficiency",
-            size=30,
-            encrypted=True,
-            kms_key_id=example_key.id,
-            tags={
-                "Name": "terraform-example",
-            })
-        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("example",
-            auto_snapshot_policy_id=example_auto_snapshot_policy.id,
-            disk_id=example_ecs_disk.id)
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
+            zone_id=default.zones[0].id,
+            size=500)
+        default_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("default",
+            auto_snapshot_policy_id=default_auto_snapshot_policy.id,
+            disk_id=default_ecs_disk.id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -229,7 +233,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+        $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -264,6 +268,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__.__dict__["disk_id"] = disk_id
+            __props__.__dict__["region_id"] = None
         super(EcsAutoSnapshotPolicyAttachment, __self__).__init__(
             'alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment',
             resource_name,
@@ -275,7 +280,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsAutoSnapshotPolicyAttachment':
+            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsAutoSnapshotPolicyAttachment':
         """
         Get an existing EcsAutoSnapshotPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -283,8 +289,9 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The auto snapshot policy id.
-        :param pulumi.Input[_builtins.str] disk_id: The disk id.
+        :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that is applied to the cloud disk.
+        :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -292,13 +299,14 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
 
         __props__.__dict__["auto_snapshot_policy_id"] = auto_snapshot_policy_id
         __props__.__dict__["disk_id"] = disk_id
+        __props__.__dict__["region_id"] = region_id
         return EcsAutoSnapshotPolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The auto snapshot policy id.
+        The ID of the automatic snapshot policy that is applied to the cloud disk.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -306,7 +314,15 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="diskId")
     def disk_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The disk id.
+        The ID of the disk.
         """
         return pulumi.get(self, "disk_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+        """
+        return pulumi.get(self, "region_id")
 

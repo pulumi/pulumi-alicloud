@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class CollectionPolicyResourceDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Support all mode all and custom mode custom under this resource directory
+        /// Supports the all (select all) mode and custom mode under this Resource Directory.
         /// </summary>
         [Input("accountGroupType")]
         public Input<string>? AccountGroupType { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputList<string>? _members;
 
         /// <summary>
-        /// When the resource directory is configured in the custom mode, the corresponding member account list
+        /// The list of member accounts when the Resource Directory is configured in custom mode.
         /// </summary>
         public InputList<string> Members
         {

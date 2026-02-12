@@ -13,45 +13,53 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.getZones({
- *     availableResourceCreation: "Instance",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
  * });
- * const exampleGetInstanceTypes = example.then(example => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: example.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const exampleNetwork = new alicloud.vpc.Network("example", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("example", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: example.then(example => example.zones?.[0]?.id),
- * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
- *     name: "terraform-example",
- *     description: "New security group",
- *     vpcId: exampleNetwork.id,
- * });
- * const exampleGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
  *     owners: "system",
  * });
- * const exampleInstance = new alicloud.ecs.Instance("example", {
- *     availabilityZone: example.then(example => example.zones?.[0]?.id),
- *     instanceName: "terraform-example",
- *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
- *     instanceType: exampleGetInstanceTypes.then(exampleGetInstanceTypes => exampleGetInstanceTypes.instanceTypes?.[0]?.id),
- *     securityGroups: [exampleSecurityGroup.id],
- *     vswitchId: exampleSwitch.id,
+ * const defaultGetInstanceTypes = Promise.all([_default, defaultGetImages]).then(([_default, defaultGetImages]) => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     imageId: defaultGetImages.images?.[0]?.id,
+ *     systemDiskCategory: "cloud_efficiency",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
  * });
- * const exampleVpcAccess = new alicloud.apigateway.VpcAccess("example", {
- *     name: "terraform-example",
- *     vpcId: exampleNetwork.id,
- *     instanceId: exampleInstance.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
+ *     description: name,
+ * });
+ * const defaultVpcAccess = new alicloud.apigateway.VpcAccess("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ *     instanceId: defaultInstance.id,
  *     port: 8080,
  * });
  * ```
@@ -60,10 +68,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Api gateway app can be imported using the id, e.g.
+ * Api Gateway Vpc Access can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+ * $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>
  * ```
  */
 export class VpcAccess extends pulumi.CustomResource {
@@ -95,19 +103,19 @@ export class VpcAccess extends pulumi.CustomResource {
     }
 
     /**
-     * ID of the instance in VPC (ECS/Server Load Balance).
+     * The ID of an ECS or SLB instance in the VPC.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * The name of the vpc authorization.
+     * The name of the authorization. The name must be unique.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * ID of the port corresponding to the instance.
+     * The port number that corresponds to the instance.
      */
     declare public readonly port: pulumi.Output<number>;
     /**
-     * The vpc id of the vpc authorization.
+     * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -154,19 +162,19 @@ export class VpcAccess extends pulumi.CustomResource {
  */
 export interface VpcAccessState {
     /**
-     * ID of the instance in VPC (ECS/Server Load Balance).
+     * The ID of an ECS or SLB instance in the VPC.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The name of the vpc authorization.
+     * The name of the authorization. The name must be unique.
      */
     name?: pulumi.Input<string>;
     /**
-     * ID of the port corresponding to the instance.
+     * The port number that corresponds to the instance.
      */
     port?: pulumi.Input<number>;
     /**
-     * The vpc id of the vpc authorization.
+     * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -176,19 +184,19 @@ export interface VpcAccessState {
  */
 export interface VpcAccessArgs {
     /**
-     * ID of the instance in VPC (ECS/Server Load Balance).
+     * The ID of an ECS or SLB instance in the VPC.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The name of the vpc authorization.
+     * The name of the authorization. The name must be unique.
      */
     name?: pulumi.Input<string>;
     /**
-     * ID of the port corresponding to the instance.
+     * The port number that corresponds to the instance.
      */
     port: pulumi.Input<number>;
     /**
-     * The vpc id of the vpc authorization.
+     * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     vpcId: pulumi.Input<string>;
 }

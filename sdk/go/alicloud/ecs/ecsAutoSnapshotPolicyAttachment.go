@@ -14,9 +14,11 @@ import (
 
 // Provides a ECS Auto Snapshot Policy Attachment resource.
 //
+// Automatic snapshot policy Mount relationship.
+//
 // For information about ECS Auto Snapshot Policy Attachment and how to use it, see [What is Auto Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/doc-detail/25531.htm).
 //
-// > **NOTE:** Available in v1.122.0+.
+// > **NOTE:** Available since v1.122.0.
 //
 // ## Example Usage
 //
@@ -29,62 +31,51 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleKey, err := kms.NewKey(ctx, "example", &kms.KeyArgs{
-//				Description:         pulumi.String("terraform-example"),
-//				PendingWindowInDays: pulumi.Int(7),
-//				Status:              pulumi.String("Enabled"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleAutoSnapshotPolicy, err := ecs.NewAutoSnapshotPolicy(ctx, "example", &ecs.AutoSnapshotPolicyArgs{
-//				Name: pulumi.String("terraform-example"),
+//			defaultAutoSnapshotPolicy, err := ecs.NewAutoSnapshotPolicy(ctx, "default", &ecs.AutoSnapshotPolicyArgs{
+//				AutoSnapshotPolicyName: pulumi.String(name),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),
 //					pulumi.String("3"),
 //				},
-//				RetentionDays: pulumi.Int(-1),
+//				RetentionDays: pulumi.Int(1),
 //				TimePoints: pulumi.StringArray{
 //					pulumi.String("1"),
-//					pulumi.String("22"),
-//					pulumi.String("23"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleEcsDisk, err := ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
-//				DiskName:    pulumi.String("terraform-example"),
-//				Description: pulumi.String("Hello ecs disk."),
-//				Category:    pulumi.String("cloud_efficiency"),
-//				Size:        pulumi.Int(30),
-//				Encrypted:   pulumi.Bool(true),
-//				KmsKeyId:    exampleKey.ID(),
-//				Tags: pulumi.StringMap{
-//					"Name": pulumi.String("terraform-example"),
-//				},
+//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
+//				ZoneId: pulumi.String(_default.Zones[0].Id),
+//				Size:   pulumi.Int(500),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "example", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
-//				AutoSnapshotPolicyId: exampleAutoSnapshotPolicy.ID(),
-//				DiskId:               exampleEcsDisk.ID(),
+//			_, err = ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "default", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
+//				AutoSnapshotPolicyId: defaultAutoSnapshotPolicy.ID(),
+//				DiskId:               defaultEcsDisk.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -102,15 +93,17 @@ import (
 // ECS Auto Snapshot Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example s-abcd12345:d-abcd12345
+// $ pulumi import alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment example <auto_snapshot_policy_id>:<disk_id>
 // ```
 type EcsAutoSnapshotPolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// The auto snapshot policy id.
+	// The ID of the automatic snapshot policy that is applied to the cloud disk.
 	AutoSnapshotPolicyId pulumi.StringOutput `pulumi:"autoSnapshotPolicyId"`
-	// The disk id.
+	// The ID of the disk.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
+	// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 }
 
 // NewEcsAutoSnapshotPolicyAttachment registers a new resource with the given unique name, arguments, and options.
@@ -149,17 +142,21 @@ func GetEcsAutoSnapshotPolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsAutoSnapshotPolicyAttachment resources.
 type ecsAutoSnapshotPolicyAttachmentState struct {
-	// The auto snapshot policy id.
+	// The ID of the automatic snapshot policy that is applied to the cloud disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// The disk id.
+	// The ID of the disk.
 	DiskId *string `pulumi:"diskId"`
+	// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+	RegionId *string `pulumi:"regionId"`
 }
 
 type EcsAutoSnapshotPolicyAttachmentState struct {
-	// The auto snapshot policy id.
+	// The ID of the automatic snapshot policy that is applied to the cloud disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput
-	// The disk id.
+	// The ID of the disk.
 	DiskId pulumi.StringPtrInput
+	// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+	RegionId pulumi.StringPtrInput
 }
 
 func (EcsAutoSnapshotPolicyAttachmentState) ElementType() reflect.Type {
@@ -167,17 +164,17 @@ func (EcsAutoSnapshotPolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type ecsAutoSnapshotPolicyAttachmentArgs struct {
-	// The auto snapshot policy id.
+	// The ID of the automatic snapshot policy that is applied to the cloud disk.
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
-	// The disk id.
+	// The ID of the disk.
 	DiskId string `pulumi:"diskId"`
 }
 
 // The set of arguments for constructing a EcsAutoSnapshotPolicyAttachment resource.
 type EcsAutoSnapshotPolicyAttachmentArgs struct {
-	// The auto snapshot policy id.
+	// The ID of the automatic snapshot policy that is applied to the cloud disk.
 	AutoSnapshotPolicyId pulumi.StringInput
-	// The disk id.
+	// The ID of the disk.
 	DiskId pulumi.StringInput
 }
 
@@ -268,14 +265,19 @@ func (o EcsAutoSnapshotPolicyAttachmentOutput) ToEcsAutoSnapshotPolicyAttachment
 	return o
 }
 
-// The auto snapshot policy id.
+// The ID of the automatic snapshot policy that is applied to the cloud disk.
 func (o EcsAutoSnapshotPolicyAttachmentOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsAutoSnapshotPolicyAttachment) pulumi.StringOutput { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
 }
 
-// The disk id.
+// The ID of the disk.
 func (o EcsAutoSnapshotPolicyAttachmentOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsAutoSnapshotPolicyAttachment) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
+func (o EcsAutoSnapshotPolicyAttachmentOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsAutoSnapshotPolicyAttachment) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 type EcsAutoSnapshotPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

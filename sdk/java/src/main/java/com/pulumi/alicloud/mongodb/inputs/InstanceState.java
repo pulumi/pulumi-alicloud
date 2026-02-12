@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.inputs;
 
 import com.pulumi.alicloud.mongodb.inputs.InstanceParameterArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceReplicaSetArgs;
+import com.pulumi.alicloud.mongodb.inputs.InstanceZoneInfoArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -38,7 +39,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     @Import(name="autoRenew")
@@ -46,11 +46,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    @Import(name="autoRenewDuration")
+    private @Nullable Output<Integer> autoRenewDuration;
+
+    /**
+     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewDuration() {
+        return Optional.ofNullable(this.autoRenewDuration);
     }
 
     /**
@@ -283,6 +299,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    @Import(name="forceEncryption")
+    private @Nullable Output<String> forceEncryption;
+
+    /**
+     * @return Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+     * 
+     */
+    public Optional<Output<String>> forceEncryption() {
+        return Optional.ofNullable(this.forceEncryption);
+    }
+
+    /**
      * The list of Global Security Group Ids.
      * 
      */
@@ -325,6 +356,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
+    }
+
+    /**
+     * (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    @Import(name="keyIds")
+    private @Nullable Output<List<String>> keyIds;
+
+    /**
+     * @return (Available since v1.271.0) A list of instance keys.
+     * 
+     */
+    public Optional<Output<List<String>>> keyIds() {
+        return Optional.ofNullable(this.keyIds);
     }
 
     /**
@@ -374,6 +420,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     @Import(name="maintainEndTime")
@@ -381,6 +428,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     public Optional<Output<String>> maintainEndTime() {
@@ -418,14 +466,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network type of the instance. Valid values:`Classic`, `VPC`.
+     * The network type of the instance. Valid values: `VPC`.
+     * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
+     * @return The network type of the instance. Valid values: `VPC`.
+     * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -436,7 +486,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     @Import(name="orderType")
@@ -446,7 +496,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -574,6 +624,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    @Import(name="restoreTime")
+    private @Nullable Output<String> restoreTime;
+
+    /**
+     * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+     * 
+     */
+    public Optional<Output<String>> restoreTime() {
+        return Optional.ofNullable(this.restoreTime);
+    }
+
+    /**
      * Instance data backup retention days. Available since v1.42.0.
      * 
      */
@@ -668,22 +735,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
+     * The source instance ID.
      * 
      */
+    @Import(name="srcDbInstanceId")
+    private @Nullable Output<String> srcDbInstanceId;
+
+    /**
+     * @return The source instance ID.
+     * 
+     */
+    public Optional<Output<String>> srcDbInstanceId() {
+        return Optional.ofNullable(this.srcDbInstanceId);
+    }
+
     @Import(name="sslAction")
     private @Nullable Output<String> sslAction;
 
-    /**
-     * @return Actions performed on SSL functions. Valid values:
-     * - `Open`: turn on SSL encryption.
-     * - `Close`: turn off SSL encryption.
-     * - `Update`: update SSL certificate.
-     * 
-     */
     public Optional<Output<String>> sslAction() {
         return Optional.ofNullable(this.sslAction);
     }
@@ -812,11 +880,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.zoneId);
     }
 
+    /**
+     * (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    @Import(name="zoneInfos")
+    private @Nullable Output<List<InstanceZoneInfoArgs>> zoneInfos;
+
+    /**
+     * @return (Available since v1.271.0) The information of nodes in the zone.
+     * 
+     */
+    public Optional<Output<List<InstanceZoneInfoArgs>>> zoneInfos() {
+        return Optional.ofNullable(this.zoneInfos);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
         this.accountPassword = $.accountPassword;
         this.autoRenew = $.autoRenew;
+        this.autoRenewDuration = $.autoRenewDuration;
         this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
         this.backupRetentionPeriod = $.backupRetentionPeriod;
@@ -832,9 +916,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.encryptionKey = $.encryptionKey;
         this.encryptorName = $.encryptorName;
         this.engineVersion = $.engineVersion;
+        this.forceEncryption = $.forceEncryption;
         this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
+        this.keyIds = $.keyIds;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.logBackupRetentionPeriod = $.logBackupRetentionPeriod;
@@ -851,12 +937,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.replicaSets = $.replicaSets;
         this.replicationFactor = $.replicationFactor;
         this.resourceGroupId = $.resourceGroupId;
+        this.restoreTime = $.restoreTime;
         this.retentionPeriod = $.retentionPeriod;
         this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
         this.snapshotBackupType = $.snapshotBackupType;
+        this.srcDbInstanceId = $.srcDbInstanceId;
         this.sslAction = $.sslAction;
         this.sslStatus = $.sslStatus;
         this.storageEngine = $.storageEngine;
@@ -866,6 +954,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
+        this.zoneInfos = $.zoneInfos;
     }
 
     public static Builder builder() {
@@ -909,7 +998,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
-         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
          * 
          * @return builder
          * 
@@ -921,13 +1009,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
-         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
          * 
          * @return builder
          * 
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(@Nullable Output<Integer> autoRenewDuration) {
+            $.autoRenewDuration = autoRenewDuration;
+            return this;
+        }
+
+        /**
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(Integer autoRenewDuration) {
+            return autoRenewDuration(Output.of(autoRenewDuration));
         }
 
         /**
@@ -1260,6 +1370,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param forceEncryption Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(@Nullable Output<String> forceEncryption) {
+            $.forceEncryption = forceEncryption;
+            return this;
+        }
+
+        /**
+         * @param forceEncryption Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEncryption(String forceEncryption) {
+            return forceEncryption(Output.of(forceEncryption));
+        }
+
+        /**
          * @param globalSecurityGroupLists The list of Global Security Group Ids.
          * 
          * @return builder
@@ -1333,6 +1464,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param keyIds (Available since v1.271.0) A list of instance keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyIds(@Nullable Output<List<String>> keyIds) {
+            $.keyIds = keyIds;
+            return this;
+        }
+
+        /**
+         * @param keyIds (Available since v1.271.0) A list of instance keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyIds(List<String> keyIds) {
+            return keyIds(Output.of(keyIds));
+        }
+
+        /**
+         * @param keyIds (Available since v1.271.0) A list of instance keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyIds(String... keyIds) {
+            return keyIds(List.of(keyIds));
+        }
+
+        /**
          * @param kmsEncryptedPassword An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
          * 
          * @return builder
@@ -1397,6 +1559,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintainEndTime The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
          * 
          * @return builder
          * 
@@ -1408,6 +1571,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintainEndTime The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
          * 
          * @return builder
          * 
@@ -1459,7 +1623,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic`, `VPC`.
+         * @param networkType The network type of the instance. Valid values: `VPC`.
+         * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
          * 
          * @return builder
          * 
@@ -1470,7 +1635,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic`, `VPC`.
+         * @param networkType The network type of the instance. Valid values: `VPC`.
+         * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
          * 
          * @return builder
          * 
@@ -1483,7 +1649,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * - `UPGRADE`: The specifications are upgraded.
          * - `DOWNGRADE`: The specifications are downgraded.
-         *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+         * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1497,7 +1663,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * - `UPGRADE`: The specifications are upgraded.
          * - `DOWNGRADE`: The specifications are downgraded.
-         *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+         * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1695,6 +1861,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreTime(@Nullable Output<String> restoreTime) {
+            $.restoreTime = restoreTime;
+            return this;
+        }
+
+        /**
+         * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreTime(String restoreTime) {
+            return restoreTime(Output.of(restoreTime));
+        }
+
+        /**
          * @param retentionPeriod Instance data backup retention days. Available since v1.42.0.
          * 
          * @return builder
@@ -1835,28 +2024,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslAction Actions performed on SSL functions. Valid values:
-         * - `Open`: turn on SSL encryption.
-         * - `Close`: turn off SSL encryption.
-         * - `Update`: update SSL certificate.
+         * @param srcDbInstanceId The source instance ID.
          * 
          * @return builder
          * 
          */
+        public Builder srcDbInstanceId(@Nullable Output<String> srcDbInstanceId) {
+            $.srcDbInstanceId = srcDbInstanceId;
+            return this;
+        }
+
+        /**
+         * @param srcDbInstanceId The source instance ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceId(String srcDbInstanceId) {
+            return srcDbInstanceId(Output.of(srcDbInstanceId));
+        }
+
         public Builder sslAction(@Nullable Output<String> sslAction) {
             $.sslAction = sslAction;
             return this;
         }
 
-        /**
-         * @param sslAction Actions performed on SSL functions. Valid values:
-         * - `Open`: turn on SSL encryption.
-         * - `Close`: turn off SSL encryption.
-         * - `Update`: update SSL certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslAction(String sslAction) {
             return sslAction(Output.of(sslAction));
         }
@@ -2031,6 +2223,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
+        }
+
+        /**
+         * @param zoneInfos (Available since v1.271.0) The information of nodes in the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneInfos(@Nullable Output<List<InstanceZoneInfoArgs>> zoneInfos) {
+            $.zoneInfos = zoneInfos;
+            return this;
+        }
+
+        /**
+         * @param zoneInfos (Available since v1.271.0) The information of nodes in the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneInfos(List<InstanceZoneInfoArgs> zoneInfos) {
+            return zoneInfos(Output.of(zoneInfos));
+        }
+
+        /**
+         * @param zoneInfos (Available since v1.271.0) The information of nodes in the zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneInfos(InstanceZoneInfoArgs... zoneInfos) {
+            return zoneInfos(List.of(zoneInfos));
         }
 
         public InstanceState build() {

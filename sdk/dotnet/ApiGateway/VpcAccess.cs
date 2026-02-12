@@ -22,63 +22,71 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = "Instance",
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
-    ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
-    ///     {
-    ///         Name = "terraform-example",
-    ///         Description = "New security group",
-    ///         VpcId = exampleNetwork.Id,
-    ///     });
-    /// 
-    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Ecs.Instance("example", new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         InstanceName = "terraform-example",
-    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = exampleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         SecurityGroups = new[]
-    ///         {
-    ///             exampleSecurityGroup.Id,
-    ///         },
-    ///         VswitchId = exampleSwitch.Id,
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
     ///     });
     /// 
-    ///     var exampleVpcAccess = new AliCloud.ApiGateway.VpcAccess("example", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         Name = "terraform-example",
-    ///         VpcId = exampleNetwork.Id,
-    ///         InstanceId = exampleInstance.Id,
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+    ///     {
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var defaultVpcAccess = new AliCloud.ApiGateway.VpcAccess("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         InstanceId = defaultInstance.Id,
     ///         Port = 8080,
     ///     });
     /// 
@@ -89,35 +97,35 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// ## Import
     /// 
-    /// Api gateway app can be imported using the id, e.g.
+    /// Api Gateway Vpc Access can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+    /// $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example &lt;name&gt;:&lt;vpc_id&gt;:&lt;instance_id&gt;:&lt;port&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/vpcAccess:VpcAccess")]
     public partial class VpcAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the instance in VPC (ECS/Server Load Balance).
+        /// The ID of an ECS or SLB instance in the VPC.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the vpc authorization.
+        /// The name of the authorization. The name must be unique.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the port corresponding to the instance.
+        /// The port number that corresponds to the instance.
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The vpc id of the vpc authorization.
+        /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -169,25 +177,25 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class VpcAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the instance in VPC (ECS/Server Load Balance).
+        /// The ID of an ECS or SLB instance in the VPC.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the vpc authorization.
+        /// The name of the authorization. The name must be unique.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the port corresponding to the instance.
+        /// The port number that corresponds to the instance.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The vpc id of the vpc authorization.
+        /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -201,25 +209,25 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class VpcAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the instance in VPC (ECS/Server Load Balance).
+        /// The ID of an ECS or SLB instance in the VPC.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The name of the vpc authorization.
+        /// The name of the authorization. The name must be unique.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// ID of the port corresponding to the instance.
+        /// The port number that corresponds to the instance.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The vpc id of the vpc authorization.
+        /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

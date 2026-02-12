@@ -175,77 +175,119 @@ import javax.annotation.Nullable;
  * Cloud Firewall Vpc Cen Tr Firewall can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example &lt;id&gt;
+ * $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example &lt;firewall_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall")
 public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the CEN instance.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
-     * @return The ID of the CEN instance.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Output<String> cenId() {
         return this.cenId;
     }
     /**
-     * Firewall description.
+     * The description of the firewall.
      * 
      */
     @Export(name="firewallDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firewallDescription;
 
     /**
-     * @return Firewall description.
+     * @return The description of the firewall.
      * 
      */
     public Output<Optional<String>> firewallDescription() {
         return Codegen.optional(this.firewallDescription);
     }
     /**
-     * The name of Cloud Firewall.
+     * The ID of the firewall ENI.
+     * 
+     */
+    @Export(name="firewallEniId", refs={String.class}, tree="[0]")
+    private Output<String> firewallEniId;
+
+    /**
+     * @return The ID of the firewall ENI.
+     * 
+     */
+    public Output<String> firewallEniId() {
+        return this.firewallEniId;
+    }
+    /**
+     * The ID of the VPC where the firewall ENI resides.
+     * 
+     */
+    @Export(name="firewallEniVpcId", refs={String.class}, tree="[0]")
+    private Output<String> firewallEniVpcId;
+
+    /**
+     * @return The ID of the VPC where the firewall ENI resides.
+     * 
+     */
+    public Output<String> firewallEniVpcId() {
+        return this.firewallEniVpcId;
+    }
+    /**
+     * The name of the Cloud Firewall.
      * 
      */
     @Export(name="firewallName", refs={String.class}, tree="[0]")
     private Output<String> firewallName;
 
     /**
-     * @return The name of Cloud Firewall.
+     * @return The name of the Cloud Firewall.
      * 
      */
     public Output<String> firewallName() {
         return this.firewallName;
     }
     /**
-     * Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+     * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      * 
      */
     @Export(name="firewallSubnetCidr", refs={String.class}, tree="[0]")
     private Output<String> firewallSubnetCidr;
 
     /**
-     * @return Required in automatic mode, the CIDR of subnet used to store the firewall ENI in the firewall VPC.
+     * @return The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      * 
      */
     public Output<String> firewallSubnetCidr() {
         return this.firewallSubnetCidr;
     }
     /**
-     * Required in automatic mode,  th CIDR of firewall VPC.
+     * The ID of the firewall VPC connection.
+     * 
+     */
+    @Export(name="firewallVpcAttachmentId", refs={String.class}, tree="[0]")
+    private Output<String> firewallVpcAttachmentId;
+
+    /**
+     * @return The ID of the firewall VPC connection.
+     * 
+     */
+    public Output<String> firewallVpcAttachmentId() {
+        return this.firewallVpcAttachmentId;
+    }
+    /**
+     * The CIDR block of the firewall VPC in automatic mode.
      * 
      */
     @Export(name="firewallVpcCidr", refs={String.class}, tree="[0]")
     private Output<String> firewallVpcCidr;
 
     /**
-     * @return Required in automatic mode,  th CIDR of firewall VPC.
+     * @return The CIDR block of the firewall VPC in automatic mode.
      * 
      */
     public Output<String> firewallVpcCidr() {
@@ -266,98 +308,106 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
         return this.regionNo;
     }
     /**
-     * The routing pattern. Value: managed: indicates automatic mode
+     * The routing mode. Valid values:
      * 
      */
     @Export(name="routeMode", refs={String.class}, tree="[0]")
     private Output<String> routeMode;
 
     /**
-     * @return The routing pattern. Value: managed: indicates automatic mode
+     * @return The routing mode. Valid values:
      * 
      */
     public Output<String> routeMode() {
         return this.routeMode;
     }
     /**
-     * Firewall status. Value:
+     * The status of the firewall.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Firewall status. Value:
+     * @return The status of the firewall.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+     * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
     @Export(name="trAttachmentMasterCidr", refs={String.class}, tree="[0]")
     private Output<String> trAttachmentMasterCidr;
 
     /**
-     * @return Required in automatic mode, the primary CIDR of network used to connect to the TR in the firewall VPC.
+     * @return The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
     public Output<String> trAttachmentMasterCidr() {
         return this.trAttachmentMasterCidr;
     }
     /**
-     * The primary zone of the switch.
+     * The primary zone of the vSwitch.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="trAttachmentMasterZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trAttachmentMasterZone;
 
     /**
-     * @return The primary zone of the switch.
+     * @return The primary zone of the vSwitch.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> trAttachmentMasterZone() {
         return Codegen.optional(this.trAttachmentMasterZone);
     }
     /**
-     * Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      * 
      */
     @Export(name="trAttachmentSlaveCidr", refs={String.class}, tree="[0]")
     private Output<String> trAttachmentSlaveCidr;
 
     /**
-     * @return Required in automatic mode, the the secondary CIDR of the subnet in the firewall VPC used to connect to TR.
+     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      * 
      */
     public Output<String> trAttachmentSlaveCidr() {
         return this.trAttachmentSlaveCidr;
     }
     /**
-     * Switch standby area.
+     * The secondary zone of the vSwitch.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="trAttachmentSlaveZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trAttachmentSlaveZone;
 
     /**
-     * @return Switch standby area.
+     * @return The secondary zone of the vSwitch.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> trAttachmentSlaveZone() {
         return Codegen.optional(this.trAttachmentSlaveZone);
     }
     /**
-     * The ID of the transit router instance.
+     * The ID of the Transit Router instance.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router instance.
+     * @return The ID of the Transit Router instance.
      * 
      */
     public Output<String> transitRouterId() {

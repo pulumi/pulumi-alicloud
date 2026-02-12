@@ -17,9 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a SLS Scheduled SQL resource. Scheduled SQL task.
+ * Provides a Log Service (SLS) Scheduled Sql resource.
  * 
- * For information about SLS Scheduled SQL and how to use it, see [What is Scheduled SQL](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
+ * Scheduled SQL task.
+ * 
+ * For information about Log Service (SLS) Scheduled Sql and how to use it, see [What is Scheduled Sql](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
  * 
  * &gt; **NOTE:** Available since v1.224.0.
  * 
@@ -117,7 +119,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SLS Scheduled SQL can be imported using the id, e.g.
+ * Log Service (SLS) Scheduled Sql can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:sls/scheduledSql:ScheduledSql example &lt;project&gt;:&lt;scheduled_sql_name&gt;
@@ -127,88 +129,110 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sls/scheduledSql:ScheduledSql")
 public class ScheduledSql extends com.pulumi.resources.CustomResource {
     /**
-     * Task Description.
+     * Job description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Task Description.
+     * @return Job description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Task Display Name.
+     * Task display name.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
-     * @return Task Display Name.
+     * @return Task display name.
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * Log project.
+     * A short description of struct.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Log project.
+     * @return A short description of struct.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o&#39;clock, cron can be used. See `schedule` below.
+     * Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      * 
      */
     @Export(name="schedule", refs={ScheduledSqlSchedule.class}, tree="[0]")
     private Output<ScheduledSqlSchedule> schedule;
 
     /**
-     * @return The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o&#39;clock, cron can be used. See `schedule` below.
+     * @return Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      * 
      */
     public Output<ScheduledSqlSchedule> schedule() {
         return this.schedule;
     }
     /**
-     * Task Configuration. See `scheduledSqlConfiguration` below.
+     * Task configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     @Export(name="scheduledSqlConfiguration", refs={ScheduledSqlScheduledSqlConfiguration.class}, tree="[0]")
     private Output<ScheduledSqlScheduledSqlConfiguration> scheduledSqlConfiguration;
 
     /**
-     * @return Task Configuration. See `scheduledSqlConfiguration` below.
+     * @return Task configuration. See `scheduledSqlConfiguration` below.
      * 
      */
     public Output<ScheduledSqlScheduledSqlConfiguration> scheduledSqlConfiguration() {
         return this.scheduledSqlConfiguration;
     }
     /**
-     * Timed SQL name.
+     * The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      * 
      */
     @Export(name="scheduledSqlName", refs={String.class}, tree="[0]")
     private Output<String> scheduledSqlName;
 
     /**
-     * @return Timed SQL name.
+     * @return The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      * 
      */
     public Output<String> scheduledSqlName() {
         return this.scheduledSqlName;
+    }
+    /**
+     * The status of the scheduled SQL job.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The status of the scheduled SQL job.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
 
     /**

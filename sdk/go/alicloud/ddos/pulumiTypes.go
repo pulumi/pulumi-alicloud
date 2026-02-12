@@ -1348,6 +1348,1074 @@ func (o BgpPolicyContentSourceLimitPtrOutput) SynPps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type CooDomainPreciseAccessRuleCondition struct {
+	// Matching content.
+	Content string `pulumi:"content"`
+	// Matching field.
+	Field string `pulumi:"field"`
+	// Custom HTTP header field name.
+	//
+	// > **NOTE:**  Valid only when `Field` is `header`.
+	HeaderName *string `pulumi:"headerName"`
+	// Matching method.
+	MatchMethod string `pulumi:"matchMethod"`
+}
+
+// CooDomainPreciseAccessRuleConditionInput is an input type that accepts CooDomainPreciseAccessRuleConditionArgs and CooDomainPreciseAccessRuleConditionOutput values.
+// You can construct a concrete instance of `CooDomainPreciseAccessRuleConditionInput` via:
+//
+//	CooDomainPreciseAccessRuleConditionArgs{...}
+type CooDomainPreciseAccessRuleConditionInput interface {
+	pulumi.Input
+
+	ToCooDomainPreciseAccessRuleConditionOutput() CooDomainPreciseAccessRuleConditionOutput
+	ToCooDomainPreciseAccessRuleConditionOutputWithContext(context.Context) CooDomainPreciseAccessRuleConditionOutput
+}
+
+type CooDomainPreciseAccessRuleConditionArgs struct {
+	// Matching content.
+	Content pulumi.StringInput `pulumi:"content"`
+	// Matching field.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Custom HTTP header field name.
+	//
+	// > **NOTE:**  Valid only when `Field` is `header`.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+	// Matching method.
+	MatchMethod pulumi.StringInput `pulumi:"matchMethod"`
+}
+
+func (CooDomainPreciseAccessRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooDomainPreciseAccessRuleCondition)(nil)).Elem()
+}
+
+func (i CooDomainPreciseAccessRuleConditionArgs) ToCooDomainPreciseAccessRuleConditionOutput() CooDomainPreciseAccessRuleConditionOutput {
+	return i.ToCooDomainPreciseAccessRuleConditionOutputWithContext(context.Background())
+}
+
+func (i CooDomainPreciseAccessRuleConditionArgs) ToCooDomainPreciseAccessRuleConditionOutputWithContext(ctx context.Context) CooDomainPreciseAccessRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooDomainPreciseAccessRuleConditionOutput)
+}
+
+// CooDomainPreciseAccessRuleConditionArrayInput is an input type that accepts CooDomainPreciseAccessRuleConditionArray and CooDomainPreciseAccessRuleConditionArrayOutput values.
+// You can construct a concrete instance of `CooDomainPreciseAccessRuleConditionArrayInput` via:
+//
+//	CooDomainPreciseAccessRuleConditionArray{ CooDomainPreciseAccessRuleConditionArgs{...} }
+type CooDomainPreciseAccessRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToCooDomainPreciseAccessRuleConditionArrayOutput() CooDomainPreciseAccessRuleConditionArrayOutput
+	ToCooDomainPreciseAccessRuleConditionArrayOutputWithContext(context.Context) CooDomainPreciseAccessRuleConditionArrayOutput
+}
+
+type CooDomainPreciseAccessRuleConditionArray []CooDomainPreciseAccessRuleConditionInput
+
+func (CooDomainPreciseAccessRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CooDomainPreciseAccessRuleCondition)(nil)).Elem()
+}
+
+func (i CooDomainPreciseAccessRuleConditionArray) ToCooDomainPreciseAccessRuleConditionArrayOutput() CooDomainPreciseAccessRuleConditionArrayOutput {
+	return i.ToCooDomainPreciseAccessRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i CooDomainPreciseAccessRuleConditionArray) ToCooDomainPreciseAccessRuleConditionArrayOutputWithContext(ctx context.Context) CooDomainPreciseAccessRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooDomainPreciseAccessRuleConditionArrayOutput)
+}
+
+type CooDomainPreciseAccessRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (CooDomainPreciseAccessRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooDomainPreciseAccessRuleCondition)(nil)).Elem()
+}
+
+func (o CooDomainPreciseAccessRuleConditionOutput) ToCooDomainPreciseAccessRuleConditionOutput() CooDomainPreciseAccessRuleConditionOutput {
+	return o
+}
+
+func (o CooDomainPreciseAccessRuleConditionOutput) ToCooDomainPreciseAccessRuleConditionOutputWithContext(ctx context.Context) CooDomainPreciseAccessRuleConditionOutput {
+	return o
+}
+
+// Matching content.
+func (o CooDomainPreciseAccessRuleConditionOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v CooDomainPreciseAccessRuleCondition) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Matching field.
+func (o CooDomainPreciseAccessRuleConditionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v CooDomainPreciseAccessRuleCondition) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Custom HTTP header field name.
+//
+// > **NOTE:**  Valid only when `Field` is `header`.
+func (o CooDomainPreciseAccessRuleConditionOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CooDomainPreciseAccessRuleCondition) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
+}
+
+// Matching method.
+func (o CooDomainPreciseAccessRuleConditionOutput) MatchMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v CooDomainPreciseAccessRuleCondition) string { return v.MatchMethod }).(pulumi.StringOutput)
+}
+
+type CooDomainPreciseAccessRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (CooDomainPreciseAccessRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CooDomainPreciseAccessRuleCondition)(nil)).Elem()
+}
+
+func (o CooDomainPreciseAccessRuleConditionArrayOutput) ToCooDomainPreciseAccessRuleConditionArrayOutput() CooDomainPreciseAccessRuleConditionArrayOutput {
+	return o
+}
+
+func (o CooDomainPreciseAccessRuleConditionArrayOutput) ToCooDomainPreciseAccessRuleConditionArrayOutputWithContext(ctx context.Context) CooDomainPreciseAccessRuleConditionArrayOutput {
+	return o
+}
+
+func (o CooDomainPreciseAccessRuleConditionArrayOutput) Index(i pulumi.IntInput) CooDomainPreciseAccessRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CooDomainPreciseAccessRuleCondition {
+		return vs[0].([]CooDomainPreciseAccessRuleCondition)[vs[1].(int)]
+	}).(CooDomainPreciseAccessRuleConditionOutput)
+}
+
+type CooWebCcRuleRuleDetail struct {
+	// The action to take when a match occurs. Valid values:
+	Action string `pulumi:"action"`
+	// List of matching conditions.   See `condition` below.
+	Conditions []CooWebCcRuleRuleDetailCondition `pulumi:"conditions"`
+	// Rate limiting statistics. See `rateLimit` below.
+	RateLimit CooWebCcRuleRuleDetailRateLimit `pulumi:"rateLimit"`
+	// Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+	Statistics *CooWebCcRuleRuleDetailStatistics `pulumi:"statistics"`
+	// The HTTP status code. See `statusCode` below.
+	StatusCode *CooWebCcRuleRuleDetailStatusCode `pulumi:"statusCode"`
+}
+
+// CooWebCcRuleRuleDetailInput is an input type that accepts CooWebCcRuleRuleDetailArgs and CooWebCcRuleRuleDetailOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailInput` via:
+//
+//	CooWebCcRuleRuleDetailArgs{...}
+type CooWebCcRuleRuleDetailInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailOutput() CooWebCcRuleRuleDetailOutput
+	ToCooWebCcRuleRuleDetailOutputWithContext(context.Context) CooWebCcRuleRuleDetailOutput
+}
+
+type CooWebCcRuleRuleDetailArgs struct {
+	// The action to take when a match occurs. Valid values:
+	Action pulumi.StringInput `pulumi:"action"`
+	// List of matching conditions.   See `condition` below.
+	Conditions CooWebCcRuleRuleDetailConditionArrayInput `pulumi:"conditions"`
+	// Rate limiting statistics. See `rateLimit` below.
+	RateLimit CooWebCcRuleRuleDetailRateLimitInput `pulumi:"rateLimit"`
+	// Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+	Statistics CooWebCcRuleRuleDetailStatisticsPtrInput `pulumi:"statistics"`
+	// The HTTP status code. See `statusCode` below.
+	StatusCode CooWebCcRuleRuleDetailStatusCodePtrInput `pulumi:"statusCode"`
+}
+
+func (CooWebCcRuleRuleDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetail)(nil)).Elem()
+}
+
+func (i CooWebCcRuleRuleDetailArgs) ToCooWebCcRuleRuleDetailOutput() CooWebCcRuleRuleDetailOutput {
+	return i.ToCooWebCcRuleRuleDetailOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailArgs) ToCooWebCcRuleRuleDetailOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailOutput)
+}
+
+func (i CooWebCcRuleRuleDetailArgs) ToCooWebCcRuleRuleDetailPtrOutput() CooWebCcRuleRuleDetailPtrOutput {
+	return i.ToCooWebCcRuleRuleDetailPtrOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailArgs) ToCooWebCcRuleRuleDetailPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailOutput).ToCooWebCcRuleRuleDetailPtrOutputWithContext(ctx)
+}
+
+// CooWebCcRuleRuleDetailPtrInput is an input type that accepts CooWebCcRuleRuleDetailArgs, CooWebCcRuleRuleDetailPtr and CooWebCcRuleRuleDetailPtrOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailPtrInput` via:
+//
+//	        CooWebCcRuleRuleDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type CooWebCcRuleRuleDetailPtrInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailPtrOutput() CooWebCcRuleRuleDetailPtrOutput
+	ToCooWebCcRuleRuleDetailPtrOutputWithContext(context.Context) CooWebCcRuleRuleDetailPtrOutput
+}
+
+type cooWebCcRuleRuleDetailPtrType CooWebCcRuleRuleDetailArgs
+
+func CooWebCcRuleRuleDetailPtr(v *CooWebCcRuleRuleDetailArgs) CooWebCcRuleRuleDetailPtrInput {
+	return (*cooWebCcRuleRuleDetailPtrType)(v)
+}
+
+func (*cooWebCcRuleRuleDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetail)(nil)).Elem()
+}
+
+func (i *cooWebCcRuleRuleDetailPtrType) ToCooWebCcRuleRuleDetailPtrOutput() CooWebCcRuleRuleDetailPtrOutput {
+	return i.ToCooWebCcRuleRuleDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *cooWebCcRuleRuleDetailPtrType) ToCooWebCcRuleRuleDetailPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailPtrOutput)
+}
+
+type CooWebCcRuleRuleDetailOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetail)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailOutput) ToCooWebCcRuleRuleDetailOutput() CooWebCcRuleRuleDetailOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailOutput) ToCooWebCcRuleRuleDetailOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailOutput) ToCooWebCcRuleRuleDetailPtrOutput() CooWebCcRuleRuleDetailPtrOutput {
+	return o.ToCooWebCcRuleRuleDetailPtrOutputWithContext(context.Background())
+}
+
+func (o CooWebCcRuleRuleDetailOutput) ToCooWebCcRuleRuleDetailPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CooWebCcRuleRuleDetail) *CooWebCcRuleRuleDetail {
+		return &v
+	}).(CooWebCcRuleRuleDetailPtrOutput)
+}
+
+// The action to take when a match occurs. Valid values:
+func (o CooWebCcRuleRuleDetailOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetail) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// List of matching conditions.   See `condition` below.
+func (o CooWebCcRuleRuleDetailOutput) Conditions() CooWebCcRuleRuleDetailConditionArrayOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetail) []CooWebCcRuleRuleDetailCondition { return v.Conditions }).(CooWebCcRuleRuleDetailConditionArrayOutput)
+}
+
+// Rate limiting statistics. See `rateLimit` below.
+func (o CooWebCcRuleRuleDetailOutput) RateLimit() CooWebCcRuleRuleDetailRateLimitOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetail) CooWebCcRuleRuleDetailRateLimit { return v.RateLimit }).(CooWebCcRuleRuleDetailRateLimitOutput)
+}
+
+// Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+func (o CooWebCcRuleRuleDetailOutput) Statistics() CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetail) *CooWebCcRuleRuleDetailStatistics { return v.Statistics }).(CooWebCcRuleRuleDetailStatisticsPtrOutput)
+}
+
+// The HTTP status code. See `statusCode` below.
+func (o CooWebCcRuleRuleDetailOutput) StatusCode() CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetail) *CooWebCcRuleRuleDetailStatusCode { return v.StatusCode }).(CooWebCcRuleRuleDetailStatusCodePtrOutput)
+}
+
+type CooWebCcRuleRuleDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetail)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailPtrOutput) ToCooWebCcRuleRuleDetailPtrOutput() CooWebCcRuleRuleDetailPtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailPtrOutput) ToCooWebCcRuleRuleDetailPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailPtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailPtrOutput) Elem() CooWebCcRuleRuleDetailOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetail) CooWebCcRuleRuleDetail {
+		if v != nil {
+			return *v
+		}
+		var ret CooWebCcRuleRuleDetail
+		return ret
+	}).(CooWebCcRuleRuleDetailOutput)
+}
+
+// The action to take when a match occurs. Valid values:
+func (o CooWebCcRuleRuleDetailPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of matching conditions.   See `condition` below.
+func (o CooWebCcRuleRuleDetailPtrOutput) Conditions() CooWebCcRuleRuleDetailConditionArrayOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetail) []CooWebCcRuleRuleDetailCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(CooWebCcRuleRuleDetailConditionArrayOutput)
+}
+
+// Rate limiting statistics. See `rateLimit` below.
+func (o CooWebCcRuleRuleDetailPtrOutput) RateLimit() CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetail) *CooWebCcRuleRuleDetailRateLimit {
+		if v == nil {
+			return nil
+		}
+		return &v.RateLimit
+	}).(CooWebCcRuleRuleDetailRateLimitPtrOutput)
+}
+
+// Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
+func (o CooWebCcRuleRuleDetailPtrOutput) Statistics() CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetail) *CooWebCcRuleRuleDetailStatistics {
+		if v == nil {
+			return nil
+		}
+		return v.Statistics
+	}).(CooWebCcRuleRuleDetailStatisticsPtrOutput)
+}
+
+// The HTTP status code. See `statusCode` below.
+func (o CooWebCcRuleRuleDetailPtrOutput) StatusCode() CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetail) *CooWebCcRuleRuleDetailStatusCode {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCode
+	}).(CooWebCcRuleRuleDetailStatusCodePtrOutput)
+}
+
+type CooWebCcRuleRuleDetailCondition struct {
+	// Matching content.
+	Content string `pulumi:"content"`
+	// The statistic source. Valid values:
+	Field string `pulumi:"field"`
+	// Set this parameter only when the statistic source is `header`.
+	HeaderName *string `pulumi:"headerName"`
+	// Matching method.
+	MatchMethod string `pulumi:"matchMethod"`
+}
+
+// CooWebCcRuleRuleDetailConditionInput is an input type that accepts CooWebCcRuleRuleDetailConditionArgs and CooWebCcRuleRuleDetailConditionOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailConditionInput` via:
+//
+//	CooWebCcRuleRuleDetailConditionArgs{...}
+type CooWebCcRuleRuleDetailConditionInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailConditionOutput() CooWebCcRuleRuleDetailConditionOutput
+	ToCooWebCcRuleRuleDetailConditionOutputWithContext(context.Context) CooWebCcRuleRuleDetailConditionOutput
+}
+
+type CooWebCcRuleRuleDetailConditionArgs struct {
+	// Matching content.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The statistic source. Valid values:
+	Field pulumi.StringInput `pulumi:"field"`
+	// Set this parameter only when the statistic source is `header`.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+	// Matching method.
+	MatchMethod pulumi.StringInput `pulumi:"matchMethod"`
+}
+
+func (CooWebCcRuleRuleDetailConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailCondition)(nil)).Elem()
+}
+
+func (i CooWebCcRuleRuleDetailConditionArgs) ToCooWebCcRuleRuleDetailConditionOutput() CooWebCcRuleRuleDetailConditionOutput {
+	return i.ToCooWebCcRuleRuleDetailConditionOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailConditionArgs) ToCooWebCcRuleRuleDetailConditionOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailConditionOutput)
+}
+
+// CooWebCcRuleRuleDetailConditionArrayInput is an input type that accepts CooWebCcRuleRuleDetailConditionArray and CooWebCcRuleRuleDetailConditionArrayOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailConditionArrayInput` via:
+//
+//	CooWebCcRuleRuleDetailConditionArray{ CooWebCcRuleRuleDetailConditionArgs{...} }
+type CooWebCcRuleRuleDetailConditionArrayInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailConditionArrayOutput() CooWebCcRuleRuleDetailConditionArrayOutput
+	ToCooWebCcRuleRuleDetailConditionArrayOutputWithContext(context.Context) CooWebCcRuleRuleDetailConditionArrayOutput
+}
+
+type CooWebCcRuleRuleDetailConditionArray []CooWebCcRuleRuleDetailConditionInput
+
+func (CooWebCcRuleRuleDetailConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CooWebCcRuleRuleDetailCondition)(nil)).Elem()
+}
+
+func (i CooWebCcRuleRuleDetailConditionArray) ToCooWebCcRuleRuleDetailConditionArrayOutput() CooWebCcRuleRuleDetailConditionArrayOutput {
+	return i.ToCooWebCcRuleRuleDetailConditionArrayOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailConditionArray) ToCooWebCcRuleRuleDetailConditionArrayOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailConditionArrayOutput)
+}
+
+type CooWebCcRuleRuleDetailConditionOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailCondition)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailConditionOutput) ToCooWebCcRuleRuleDetailConditionOutput() CooWebCcRuleRuleDetailConditionOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailConditionOutput) ToCooWebCcRuleRuleDetailConditionOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailConditionOutput {
+	return o
+}
+
+// Matching content.
+func (o CooWebCcRuleRuleDetailConditionOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailCondition) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The statistic source. Valid values:
+func (o CooWebCcRuleRuleDetailConditionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailCondition) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Set this parameter only when the statistic source is `header`.
+func (o CooWebCcRuleRuleDetailConditionOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailCondition) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
+}
+
+// Matching method.
+func (o CooWebCcRuleRuleDetailConditionOutput) MatchMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailCondition) string { return v.MatchMethod }).(pulumi.StringOutput)
+}
+
+type CooWebCcRuleRuleDetailConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CooWebCcRuleRuleDetailCondition)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailConditionArrayOutput) ToCooWebCcRuleRuleDetailConditionArrayOutput() CooWebCcRuleRuleDetailConditionArrayOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailConditionArrayOutput) ToCooWebCcRuleRuleDetailConditionArrayOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailConditionArrayOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailConditionArrayOutput) Index(i pulumi.IntInput) CooWebCcRuleRuleDetailConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CooWebCcRuleRuleDetailCondition {
+		return vs[0].([]CooWebCcRuleRuleDetailCondition)[vs[1].(int)]
+	}).(CooWebCcRuleRuleDetailConditionOutput)
+}
+
+type CooWebCcRuleRuleDetailRateLimit struct {
+	// Statistical interval. Unit: seconds.
+	Interval int `pulumi:"interval"`
+	// Header field name (required only when the statistic source is `header`).
+	SubKey *string `pulumi:"subKey"`
+	// Statistic source. Valid values:
+	Target string `pulumi:"target"`
+	// The trigger threshold.
+	Threshold int `pulumi:"threshold"`
+	// Block duration. Unit: seconds.
+	Ttl int `pulumi:"ttl"`
+}
+
+// CooWebCcRuleRuleDetailRateLimitInput is an input type that accepts CooWebCcRuleRuleDetailRateLimitArgs and CooWebCcRuleRuleDetailRateLimitOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailRateLimitInput` via:
+//
+//	CooWebCcRuleRuleDetailRateLimitArgs{...}
+type CooWebCcRuleRuleDetailRateLimitInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailRateLimitOutput() CooWebCcRuleRuleDetailRateLimitOutput
+	ToCooWebCcRuleRuleDetailRateLimitOutputWithContext(context.Context) CooWebCcRuleRuleDetailRateLimitOutput
+}
+
+type CooWebCcRuleRuleDetailRateLimitArgs struct {
+	// Statistical interval. Unit: seconds.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// Header field name (required only when the statistic source is `header`).
+	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
+	// Statistic source. Valid values:
+	Target pulumi.StringInput `pulumi:"target"`
+	// The trigger threshold.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+	// Block duration. Unit: seconds.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (CooWebCcRuleRuleDetailRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailRateLimit)(nil)).Elem()
+}
+
+func (i CooWebCcRuleRuleDetailRateLimitArgs) ToCooWebCcRuleRuleDetailRateLimitOutput() CooWebCcRuleRuleDetailRateLimitOutput {
+	return i.ToCooWebCcRuleRuleDetailRateLimitOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailRateLimitArgs) ToCooWebCcRuleRuleDetailRateLimitOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailRateLimitOutput)
+}
+
+func (i CooWebCcRuleRuleDetailRateLimitArgs) ToCooWebCcRuleRuleDetailRateLimitPtrOutput() CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return i.ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailRateLimitArgs) ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailRateLimitOutput).ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(ctx)
+}
+
+// CooWebCcRuleRuleDetailRateLimitPtrInput is an input type that accepts CooWebCcRuleRuleDetailRateLimitArgs, CooWebCcRuleRuleDetailRateLimitPtr and CooWebCcRuleRuleDetailRateLimitPtrOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailRateLimitPtrInput` via:
+//
+//	        CooWebCcRuleRuleDetailRateLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type CooWebCcRuleRuleDetailRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailRateLimitPtrOutput() CooWebCcRuleRuleDetailRateLimitPtrOutput
+	ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(context.Context) CooWebCcRuleRuleDetailRateLimitPtrOutput
+}
+
+type cooWebCcRuleRuleDetailRateLimitPtrType CooWebCcRuleRuleDetailRateLimitArgs
+
+func CooWebCcRuleRuleDetailRateLimitPtr(v *CooWebCcRuleRuleDetailRateLimitArgs) CooWebCcRuleRuleDetailRateLimitPtrInput {
+	return (*cooWebCcRuleRuleDetailRateLimitPtrType)(v)
+}
+
+func (*cooWebCcRuleRuleDetailRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetailRateLimit)(nil)).Elem()
+}
+
+func (i *cooWebCcRuleRuleDetailRateLimitPtrType) ToCooWebCcRuleRuleDetailRateLimitPtrOutput() CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return i.ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *cooWebCcRuleRuleDetailRateLimitPtrType) ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailRateLimitPtrOutput)
+}
+
+type CooWebCcRuleRuleDetailRateLimitOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailRateLimit)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitOutput) ToCooWebCcRuleRuleDetailRateLimitOutput() CooWebCcRuleRuleDetailRateLimitOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitOutput) ToCooWebCcRuleRuleDetailRateLimitOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailRateLimitOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitOutput) ToCooWebCcRuleRuleDetailRateLimitPtrOutput() CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return o.ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitOutput) ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CooWebCcRuleRuleDetailRateLimit) *CooWebCcRuleRuleDetailRateLimit {
+		return &v
+	}).(CooWebCcRuleRuleDetailRateLimitPtrOutput)
+}
+
+// Statistical interval. Unit: seconds.
+func (o CooWebCcRuleRuleDetailRateLimitOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailRateLimit) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// Header field name (required only when the statistic source is `header`).
+func (o CooWebCcRuleRuleDetailRateLimitOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailRateLimit) *string { return v.SubKey }).(pulumi.StringPtrOutput)
+}
+
+// Statistic source. Valid values:
+func (o CooWebCcRuleRuleDetailRateLimitOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailRateLimit) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The trigger threshold.
+func (o CooWebCcRuleRuleDetailRateLimitOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailRateLimit) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+// Block duration. Unit: seconds.
+func (o CooWebCcRuleRuleDetailRateLimitOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailRateLimit) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type CooWebCcRuleRuleDetailRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetailRateLimit)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) ToCooWebCcRuleRuleDetailRateLimitPtrOutput() CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) ToCooWebCcRuleRuleDetailRateLimitPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailRateLimitPtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) Elem() CooWebCcRuleRuleDetailRateLimitOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailRateLimit) CooWebCcRuleRuleDetailRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret CooWebCcRuleRuleDetailRateLimit
+		return ret
+	}).(CooWebCcRuleRuleDetailRateLimitOutput)
+}
+
+// Statistical interval. Unit: seconds.
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Header field name (required only when the statistic source is `header`).
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Statistic source. Valid values:
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The trigger threshold.
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Block duration. Unit: seconds.
+func (o CooWebCcRuleRuleDetailRateLimitPtrOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Ttl
+	}).(pulumi.IntPtrOutput)
+}
+
+type CooWebCcRuleRuleDetailStatistics struct {
+	// The statistic source. Valid values:
+	Field string `pulumi:"field"`
+	// Set this parameter only when the statistic source is `header`.
+	HeaderName *string `pulumi:"headerName"`
+	// The deduplication mode. Valid values:
+	Mode string `pulumi:"mode"`
+}
+
+// CooWebCcRuleRuleDetailStatisticsInput is an input type that accepts CooWebCcRuleRuleDetailStatisticsArgs and CooWebCcRuleRuleDetailStatisticsOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailStatisticsInput` via:
+//
+//	CooWebCcRuleRuleDetailStatisticsArgs{...}
+type CooWebCcRuleRuleDetailStatisticsInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailStatisticsOutput() CooWebCcRuleRuleDetailStatisticsOutput
+	ToCooWebCcRuleRuleDetailStatisticsOutputWithContext(context.Context) CooWebCcRuleRuleDetailStatisticsOutput
+}
+
+type CooWebCcRuleRuleDetailStatisticsArgs struct {
+	// The statistic source. Valid values:
+	Field pulumi.StringInput `pulumi:"field"`
+	// Set this parameter only when the statistic source is `header`.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+	// The deduplication mode. Valid values:
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (CooWebCcRuleRuleDetailStatisticsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailStatistics)(nil)).Elem()
+}
+
+func (i CooWebCcRuleRuleDetailStatisticsArgs) ToCooWebCcRuleRuleDetailStatisticsOutput() CooWebCcRuleRuleDetailStatisticsOutput {
+	return i.ToCooWebCcRuleRuleDetailStatisticsOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailStatisticsArgs) ToCooWebCcRuleRuleDetailStatisticsOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatisticsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailStatisticsOutput)
+}
+
+func (i CooWebCcRuleRuleDetailStatisticsArgs) ToCooWebCcRuleRuleDetailStatisticsPtrOutput() CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return i.ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailStatisticsArgs) ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailStatisticsOutput).ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(ctx)
+}
+
+// CooWebCcRuleRuleDetailStatisticsPtrInput is an input type that accepts CooWebCcRuleRuleDetailStatisticsArgs, CooWebCcRuleRuleDetailStatisticsPtr and CooWebCcRuleRuleDetailStatisticsPtrOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailStatisticsPtrInput` via:
+//
+//	        CooWebCcRuleRuleDetailStatisticsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CooWebCcRuleRuleDetailStatisticsPtrInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailStatisticsPtrOutput() CooWebCcRuleRuleDetailStatisticsPtrOutput
+	ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(context.Context) CooWebCcRuleRuleDetailStatisticsPtrOutput
+}
+
+type cooWebCcRuleRuleDetailStatisticsPtrType CooWebCcRuleRuleDetailStatisticsArgs
+
+func CooWebCcRuleRuleDetailStatisticsPtr(v *CooWebCcRuleRuleDetailStatisticsArgs) CooWebCcRuleRuleDetailStatisticsPtrInput {
+	return (*cooWebCcRuleRuleDetailStatisticsPtrType)(v)
+}
+
+func (*cooWebCcRuleRuleDetailStatisticsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetailStatistics)(nil)).Elem()
+}
+
+func (i *cooWebCcRuleRuleDetailStatisticsPtrType) ToCooWebCcRuleRuleDetailStatisticsPtrOutput() CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return i.ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(context.Background())
+}
+
+func (i *cooWebCcRuleRuleDetailStatisticsPtrType) ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailStatisticsPtrOutput)
+}
+
+type CooWebCcRuleRuleDetailStatisticsOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailStatisticsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailStatistics)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsOutput) ToCooWebCcRuleRuleDetailStatisticsOutput() CooWebCcRuleRuleDetailStatisticsOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsOutput) ToCooWebCcRuleRuleDetailStatisticsOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatisticsOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsOutput) ToCooWebCcRuleRuleDetailStatisticsPtrOutput() CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return o.ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(context.Background())
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsOutput) ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CooWebCcRuleRuleDetailStatistics) *CooWebCcRuleRuleDetailStatistics {
+		return &v
+	}).(CooWebCcRuleRuleDetailStatisticsPtrOutput)
+}
+
+// The statistic source. Valid values:
+func (o CooWebCcRuleRuleDetailStatisticsOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatistics) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Set this parameter only when the statistic source is `header`.
+func (o CooWebCcRuleRuleDetailStatisticsOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatistics) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
+}
+
+// The deduplication mode. Valid values:
+func (o CooWebCcRuleRuleDetailStatisticsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatistics) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type CooWebCcRuleRuleDetailStatisticsPtrOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailStatisticsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetailStatistics)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsPtrOutput) ToCooWebCcRuleRuleDetailStatisticsPtrOutput() CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsPtrOutput) ToCooWebCcRuleRuleDetailStatisticsPtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatisticsPtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatisticsPtrOutput) Elem() CooWebCcRuleRuleDetailStatisticsOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatistics) CooWebCcRuleRuleDetailStatistics {
+		if v != nil {
+			return *v
+		}
+		var ret CooWebCcRuleRuleDetailStatistics
+		return ret
+	}).(CooWebCcRuleRuleDetailStatisticsOutput)
+}
+
+// The statistic source. Valid values:
+func (o CooWebCcRuleRuleDetailStatisticsPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatistics) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set this parameter only when the statistic source is `header`.
+func (o CooWebCcRuleRuleDetailStatisticsPtrOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatistics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The deduplication mode. Valid values:
+func (o CooWebCcRuleRuleDetailStatisticsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatistics) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type CooWebCcRuleRuleDetailStatusCode struct {
+	// Status code. The value range is `100` to `599`:
+	Code int `pulumi:"code"`
+	// When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+	CountThreshold *int `pulumi:"countThreshold"`
+	// Whether the rule is enabled. Valid values:
+	Enabled bool `pulumi:"enabled"`
+	// When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+	RatioThreshold *int `pulumi:"ratioThreshold"`
+	// Whether to use a ratio:
+	UseRatio bool `pulumi:"useRatio"`
+}
+
+// CooWebCcRuleRuleDetailStatusCodeInput is an input type that accepts CooWebCcRuleRuleDetailStatusCodeArgs and CooWebCcRuleRuleDetailStatusCodeOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailStatusCodeInput` via:
+//
+//	CooWebCcRuleRuleDetailStatusCodeArgs{...}
+type CooWebCcRuleRuleDetailStatusCodeInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailStatusCodeOutput() CooWebCcRuleRuleDetailStatusCodeOutput
+	ToCooWebCcRuleRuleDetailStatusCodeOutputWithContext(context.Context) CooWebCcRuleRuleDetailStatusCodeOutput
+}
+
+type CooWebCcRuleRuleDetailStatusCodeArgs struct {
+	// Status code. The value range is `100` to `599`:
+	Code pulumi.IntInput `pulumi:"code"`
+	// When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+	CountThreshold pulumi.IntPtrInput `pulumi:"countThreshold"`
+	// Whether the rule is enabled. Valid values:
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+	RatioThreshold pulumi.IntPtrInput `pulumi:"ratioThreshold"`
+	// Whether to use a ratio:
+	UseRatio pulumi.BoolInput `pulumi:"useRatio"`
+}
+
+func (CooWebCcRuleRuleDetailStatusCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailStatusCode)(nil)).Elem()
+}
+
+func (i CooWebCcRuleRuleDetailStatusCodeArgs) ToCooWebCcRuleRuleDetailStatusCodeOutput() CooWebCcRuleRuleDetailStatusCodeOutput {
+	return i.ToCooWebCcRuleRuleDetailStatusCodeOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailStatusCodeArgs) ToCooWebCcRuleRuleDetailStatusCodeOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatusCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailStatusCodeOutput)
+}
+
+func (i CooWebCcRuleRuleDetailStatusCodeArgs) ToCooWebCcRuleRuleDetailStatusCodePtrOutput() CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return i.ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(context.Background())
+}
+
+func (i CooWebCcRuleRuleDetailStatusCodeArgs) ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailStatusCodeOutput).ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(ctx)
+}
+
+// CooWebCcRuleRuleDetailStatusCodePtrInput is an input type that accepts CooWebCcRuleRuleDetailStatusCodeArgs, CooWebCcRuleRuleDetailStatusCodePtr and CooWebCcRuleRuleDetailStatusCodePtrOutput values.
+// You can construct a concrete instance of `CooWebCcRuleRuleDetailStatusCodePtrInput` via:
+//
+//	        CooWebCcRuleRuleDetailStatusCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CooWebCcRuleRuleDetailStatusCodePtrInput interface {
+	pulumi.Input
+
+	ToCooWebCcRuleRuleDetailStatusCodePtrOutput() CooWebCcRuleRuleDetailStatusCodePtrOutput
+	ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(context.Context) CooWebCcRuleRuleDetailStatusCodePtrOutput
+}
+
+type cooWebCcRuleRuleDetailStatusCodePtrType CooWebCcRuleRuleDetailStatusCodeArgs
+
+func CooWebCcRuleRuleDetailStatusCodePtr(v *CooWebCcRuleRuleDetailStatusCodeArgs) CooWebCcRuleRuleDetailStatusCodePtrInput {
+	return (*cooWebCcRuleRuleDetailStatusCodePtrType)(v)
+}
+
+func (*cooWebCcRuleRuleDetailStatusCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetailStatusCode)(nil)).Elem()
+}
+
+func (i *cooWebCcRuleRuleDetailStatusCodePtrType) ToCooWebCcRuleRuleDetailStatusCodePtrOutput() CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return i.ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(context.Background())
+}
+
+func (i *cooWebCcRuleRuleDetailStatusCodePtrType) ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CooWebCcRuleRuleDetailStatusCodePtrOutput)
+}
+
+type CooWebCcRuleRuleDetailStatusCodeOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailStatusCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CooWebCcRuleRuleDetailStatusCode)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) ToCooWebCcRuleRuleDetailStatusCodeOutput() CooWebCcRuleRuleDetailStatusCodeOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) ToCooWebCcRuleRuleDetailStatusCodeOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatusCodeOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) ToCooWebCcRuleRuleDetailStatusCodePtrOutput() CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return o.ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(context.Background())
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CooWebCcRuleRuleDetailStatusCode) *CooWebCcRuleRuleDetailStatusCode {
+		return &v
+	}).(CooWebCcRuleRuleDetailStatusCodePtrOutput)
+}
+
+// Status code. The value range is `100` to `599`:
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatusCode) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) CountThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatusCode) *int { return v.CountThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Whether the rule is enabled. Valid values:
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatusCode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) RatioThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatusCode) *int { return v.RatioThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Whether to use a ratio:
+func (o CooWebCcRuleRuleDetailStatusCodeOutput) UseRatio() pulumi.BoolOutput {
+	return o.ApplyT(func(v CooWebCcRuleRuleDetailStatusCode) bool { return v.UseRatio }).(pulumi.BoolOutput)
+}
+
+type CooWebCcRuleRuleDetailStatusCodePtrOutput struct{ *pulumi.OutputState }
+
+func (CooWebCcRuleRuleDetailStatusCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CooWebCcRuleRuleDetailStatusCode)(nil)).Elem()
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) ToCooWebCcRuleRuleDetailStatusCodePtrOutput() CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) ToCooWebCcRuleRuleDetailStatusCodePtrOutputWithContext(ctx context.Context) CooWebCcRuleRuleDetailStatusCodePtrOutput {
+	return o
+}
+
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) Elem() CooWebCcRuleRuleDetailStatusCodeOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatusCode) CooWebCcRuleRuleDetailStatusCode {
+		if v != nil {
+			return *v
+		}
+		var ret CooWebCcRuleRuleDetailStatusCode
+		return ret
+	}).(CooWebCcRuleRuleDetailStatusCodeOutput)
+}
+
+// Status code. The value range is `100` to `599`:
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatusCode) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) CountThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatusCode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CountThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the rule is enabled. Valid values:
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatusCode) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) RatioThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatusCode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RatioThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to use a ratio:
+func (o CooWebCcRuleRuleDetailStatusCodePtrOutput) UseRatio() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CooWebCcRuleRuleDetailStatusCode) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseRatio
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DomainResourceProxyType struct {
 	// The port numbers.
 	ProxyPorts []int `pulumi:"proxyPorts"`
@@ -2800,6 +3868,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceBlockListArrayInput)(nil)).Elem(), BgpPolicyContentSourceBlockListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceLimitInput)(nil)).Elem(), BgpPolicyContentSourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceLimitPtrInput)(nil)).Elem(), BgpPolicyContentSourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooDomainPreciseAccessRuleConditionInput)(nil)).Elem(), CooDomainPreciseAccessRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooDomainPreciseAccessRuleConditionArrayInput)(nil)).Elem(), CooDomainPreciseAccessRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailInput)(nil)).Elem(), CooWebCcRuleRuleDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailPtrInput)(nil)).Elem(), CooWebCcRuleRuleDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailConditionInput)(nil)).Elem(), CooWebCcRuleRuleDetailConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailConditionArrayInput)(nil)).Elem(), CooWebCcRuleRuleDetailConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailRateLimitInput)(nil)).Elem(), CooWebCcRuleRuleDetailRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailRateLimitPtrInput)(nil)).Elem(), CooWebCcRuleRuleDetailRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailStatisticsInput)(nil)).Elem(), CooWebCcRuleRuleDetailStatisticsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailStatisticsPtrInput)(nil)).Elem(), CooWebCcRuleRuleDetailStatisticsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailStatusCodeInput)(nil)).Elem(), CooWebCcRuleRuleDetailStatusCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CooWebCcRuleRuleDetailStatusCodePtrInput)(nil)).Elem(), CooWebCcRuleRuleDetailStatusCodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeInput)(nil)).Elem(), DomainResourceProxyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeArrayInput)(nil)).Elem(), DomainResourceProxyTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortConfigInput)(nil)).Elem(), PortConfigArgs{})
@@ -2832,6 +3912,18 @@ func init() {
 	pulumi.RegisterOutputType(BgpPolicyContentSourceBlockListArrayOutput{})
 	pulumi.RegisterOutputType(BgpPolicyContentSourceLimitOutput{})
 	pulumi.RegisterOutputType(BgpPolicyContentSourceLimitPtrOutput{})
+	pulumi.RegisterOutputType(CooDomainPreciseAccessRuleConditionOutput{})
+	pulumi.RegisterOutputType(CooDomainPreciseAccessRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailPtrOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailConditionOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailConditionArrayOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailRateLimitOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailStatisticsOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailStatisticsPtrOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailStatusCodeOutput{})
+	pulumi.RegisterOutputType(CooWebCcRuleRuleDetailStatusCodePtrOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeArrayOutput{})
 	pulumi.RegisterOutputType(PortConfigOutput{})

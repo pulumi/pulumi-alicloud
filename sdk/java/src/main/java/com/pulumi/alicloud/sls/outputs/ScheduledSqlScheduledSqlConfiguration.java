@@ -14,42 +14,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ScheduledSqlScheduledSqlConfiguration {
     /**
-     * @return Write Mode.
+     * @return Write mode.
      * 
      */
     private @Nullable String dataFormat;
     /**
-     * @return Target Endpoint.
+     * @return The destination endpoint.
      * 
      */
     private @Nullable String destEndpoint;
     /**
-     * @return Target Logstore.
+     * @return The destination Logstore.
      * 
      */
     private @Nullable String destLogstore;
     /**
-     * @return Target Project.
+     * @return The destination project.
      * 
      */
     private @Nullable String destProject;
     /**
-     * @return Write target role ARN.
+     * @return Destination write role ARN.
      * 
      */
     private @Nullable String destRoleArn;
     /**
-     * @return Schedule Start Time.
+     * @return The start time of the schedule.
      * 
      */
     private @Nullable Integer fromTime;
     /**
-     * @return SQL time window-start.
+     * @return SQL time window - start.
      * 
      */
     private @Nullable String fromTimeExpr;
     /**
-     * @return Maximum retries.
+     * @return Maximum number of retries.
      * 
      */
     private @Nullable Integer maxRetries;
@@ -64,12 +64,12 @@ public final class ScheduledSqlScheduledSqlConfiguration {
      */
     private @Nullable Map<String,String> parameters;
     /**
-     * @return Resource Pool.
+     * @return Resource pool.
      * 
      */
     private @Nullable String resourcePool;
     /**
-     * @return Read role ARN.
+     * @return Source read role ARN.
      * 
      */
     private @Nullable String roleArn;
@@ -79,7 +79,7 @@ public final class ScheduledSqlScheduledSqlConfiguration {
      */
     private @Nullable String script;
     /**
-     * @return Source Logstore.
+     * @return The source Logstore.
      * 
      */
     private @Nullable String sourceLogstore;
@@ -89,68 +89,68 @@ public final class ScheduledSqlScheduledSqlConfiguration {
      */
     private @Nullable String sqlType;
     /**
-     * @return Time at end of schedule.
+     * @return Scheduled end time.
      * 
      */
     private @Nullable Integer toTime;
     /**
-     * @return SQL time window-end.
+     * @return End of the SQL time window.
      * 
      */
     private @Nullable String toTimeExpr;
 
     private ScheduledSqlScheduledSqlConfiguration() {}
     /**
-     * @return Write Mode.
+     * @return Write mode.
      * 
      */
     public Optional<String> dataFormat() {
         return Optional.ofNullable(this.dataFormat);
     }
     /**
-     * @return Target Endpoint.
+     * @return The destination endpoint.
      * 
      */
     public Optional<String> destEndpoint() {
         return Optional.ofNullable(this.destEndpoint);
     }
     /**
-     * @return Target Logstore.
+     * @return The destination Logstore.
      * 
      */
     public Optional<String> destLogstore() {
         return Optional.ofNullable(this.destLogstore);
     }
     /**
-     * @return Target Project.
+     * @return The destination project.
      * 
      */
     public Optional<String> destProject() {
         return Optional.ofNullable(this.destProject);
     }
     /**
-     * @return Write target role ARN.
+     * @return Destination write role ARN.
      * 
      */
     public Optional<String> destRoleArn() {
         return Optional.ofNullable(this.destRoleArn);
     }
     /**
-     * @return Schedule Start Time.
+     * @return The start time of the schedule.
      * 
      */
     public Optional<Integer> fromTime() {
         return Optional.ofNullable(this.fromTime);
     }
     /**
-     * @return SQL time window-start.
+     * @return SQL time window - start.
      * 
      */
     public Optional<String> fromTimeExpr() {
         return Optional.ofNullable(this.fromTimeExpr);
     }
     /**
-     * @return Maximum retries.
+     * @return Maximum number of retries.
      * 
      */
     public Optional<Integer> maxRetries() {
@@ -171,14 +171,14 @@ public final class ScheduledSqlScheduledSqlConfiguration {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
-     * @return Resource Pool.
+     * @return Resource pool.
      * 
      */
     public Optional<String> resourcePool() {
         return Optional.ofNullable(this.resourcePool);
     }
     /**
-     * @return Read role ARN.
+     * @return Source read role ARN.
      * 
      */
     public Optional<String> roleArn() {
@@ -192,7 +192,7 @@ public final class ScheduledSqlScheduledSqlConfiguration {
         return Optional.ofNullable(this.script);
     }
     /**
-     * @return Source Logstore.
+     * @return The source Logstore.
      * 
      */
     public Optional<String> sourceLogstore() {
@@ -206,14 +206,14 @@ public final class ScheduledSqlScheduledSqlConfiguration {
         return Optional.ofNullable(this.sqlType);
     }
     /**
-     * @return Time at end of schedule.
+     * @return Scheduled end time.
      * 
      */
     public Optional<Integer> toTime() {
         return Optional.ofNullable(this.toTime);
     }
     /**
-     * @return SQL time window-end.
+     * @return End of the SQL time window.
      * 
      */
     public Optional<String> toTimeExpr() {

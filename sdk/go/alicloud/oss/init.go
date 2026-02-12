@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketAccessMonitor{}
 	case "alicloud:oss/bucketAcl:BucketAcl":
 		r = &BucketAcl{}
+	case "alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead":
+		r = &BucketArchiveDirectRead{}
 	case "alicloud:oss/bucketCname:BucketCname":
 		r = &BucketCname{}
 	case "alicloud:oss/bucketCnameToken:BucketCnameToken":
@@ -47,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketMetaQuery{}
 	case "alicloud:oss/bucketObject:BucketObject":
 		r = &BucketObject{}
+	case "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig":
+		r = &BucketOverwriteConfig{}
 	case "alicloud:oss/bucketPolicy:BucketPolicy":
 		r = &BucketPolicy{}
 	case "alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock":
@@ -57,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketReplication{}
 	case "alicloud:oss/bucketRequestPayment:BucketRequestPayment":
 		r = &BucketRequestPayment{}
+	case "alicloud:oss/bucketResponseHeader:BucketResponseHeader":
+		r = &BucketResponseHeader{}
 	case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
 		r = &BucketServerSideEncryption{}
 	case "alicloud:oss/bucketStyle:BucketStyle":
@@ -111,6 +117,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/bucketArchiveDirectRead",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucketCname",
 		&module{version},
 	)
@@ -151,6 +162,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/bucketOverwriteConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucketPolicy",
 		&module{version},
 	)
@@ -172,6 +188,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketRequestPayment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketResponseHeader",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

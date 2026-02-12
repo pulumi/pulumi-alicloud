@@ -21,14 +21,14 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     public static final CollectionPolicyState Empty = new CollectionPolicyState();
 
     /**
-     * Centralized transfer configuration. See `centralizeConfig` below.
+     * Centralized forwarding configuration. See `centralizeConfig` below.
      * 
      */
     @Import(name="centralizeConfig")
     private @Nullable Output<CollectionPolicyCentralizeConfigArgs> centralizeConfig;
 
     /**
-     * @return Centralized transfer configuration. See `centralizeConfig` below.
+     * @return Centralized forwarding configuration. See `centralizeConfig` below.
      * 
      */
     public Optional<Output<CollectionPolicyCentralizeConfigArgs>> centralizeConfig() {
@@ -36,14 +36,14 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to enable centralized Conversion. The default value is false.
+     * Specifies whether to enable centralized forwarding. Default value: false.
      * 
      */
     @Import(name="centralizeEnabled")
     private @Nullable Output<Boolean> centralizeEnabled;
 
     /**
-     * @return Whether to enable centralized Conversion. The default value is false.
+     * @return Specifies whether to enable centralized forwarding. Default value: false.
      * 
      */
     public Optional<Output<Boolean>> centralizeEnabled() {
@@ -51,14 +51,14 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Log type encoding.
+     * Log type code.
      * 
      */
     @Import(name="dataCode")
     private @Nullable Output<String> dataCode;
 
     /**
-     * @return Log type encoding.
+     * @return Log type code.
      * 
      */
     public Optional<Output<String>> dataCode() {
@@ -66,14 +66,14 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      * 
      */
     @Import(name="dataConfig")
     private @Nullable Output<CollectionPolicyDataConfigArgs> dataConfig;
 
     /**
-     * @return The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+     * @return This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      * 
      */
     public Optional<Output<CollectionPolicyDataConfigArgs>> dataConfig() {
@@ -81,14 +81,14 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to open.
+     * Whether enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to open.
+     * @return Whether enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -111,14 +111,20 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+     * @return The naming rules are as follows:
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - It must start with a letter.
+     * - Its length must be between 3 and 63 characters.
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -141,14 +147,14 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     @Import(name="resourceDirectory")
     private @Nullable Output<CollectionPolicyResourceDirectoryArgs> resourceDirectory;
 
     /**
-     * @return For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+     * @return Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      * 
      */
     public Optional<Output<CollectionPolicyResourceDirectoryArgs>> resourceDirectory() {
@@ -188,7 +194,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param centralizeConfig Centralized transfer configuration. See `centralizeConfig` below.
+         * @param centralizeConfig Centralized forwarding configuration. See `centralizeConfig` below.
          * 
          * @return builder
          * 
@@ -199,7 +205,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param centralizeConfig Centralized transfer configuration. See `centralizeConfig` below.
+         * @param centralizeConfig Centralized forwarding configuration. See `centralizeConfig` below.
          * 
          * @return builder
          * 
@@ -209,7 +215,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param centralizeEnabled Whether to enable centralized Conversion. The default value is false.
+         * @param centralizeEnabled Specifies whether to enable centralized forwarding. Default value: false.
          * 
          * @return builder
          * 
@@ -220,7 +226,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param centralizeEnabled Whether to enable centralized Conversion. The default value is false.
+         * @param centralizeEnabled Specifies whether to enable centralized forwarding. Default value: false.
          * 
          * @return builder
          * 
@@ -230,7 +236,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataCode Log type encoding.
+         * @param dataCode Log type code.
          * 
          * @return builder
          * 
@@ -241,7 +247,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataCode Log type encoding.
+         * @param dataCode Log type code.
          * 
          * @return builder
          * 
@@ -251,7 +257,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataConfig The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+         * @param dataConfig This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
          * 
          * @return builder
          * 
@@ -262,7 +268,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataConfig The configuration is supported only when the log type is global. For example, if the productCode is sls, global logs will be collected to the corresponding region during the first configuration. See `dataConfig` below.
+         * @param dataConfig This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
          * 
          * @return builder
          * 
@@ -272,7 +278,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Whether to open.
+         * @param enabled Whether enabled.
          * 
          * @return builder
          * 
@@ -283,7 +289,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Whether to open.
+         * @param enabled Whether enabled.
          * 
          * @return builder
          * 
@@ -314,7 +320,10 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policyName The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+         * @param policyName The naming rules are as follows:
+         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+         * - It must start with a letter.
+         * - Its length must be between 3 and 63 characters.
          * 
          * @return builder
          * 
@@ -325,7 +334,10 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policyName The name of the rule, with a minimum of 3 characters and a maximum of 63 characters, must start with a letter.
+         * @param policyName The naming rules are as follows:
+         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+         * - It must start with a letter.
+         * - Its length must be between 3 and 63 characters.
          * 
          * @return builder
          * 
@@ -356,7 +368,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resourceDirectory For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+         * @param resourceDirectory Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
          * 
          * @return builder
          * 
@@ -367,7 +379,7 @@ public final class CollectionPolicyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resourceDirectory For Resource Directory configuration, the account must have opened the resource directory and be an administrator or a delegated administrator. See `resourceDirectory` below.
+         * @param resourceDirectory Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
          * 
          * @return builder
          * 

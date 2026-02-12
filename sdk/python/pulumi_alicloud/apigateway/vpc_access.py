@@ -25,10 +25,10 @@ class VpcAccessArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcAccess resource.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
-        :param pulumi.Input[_builtins.int] port: ID of the port corresponding to the instance.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc id of the vpc authorization.
-        :param pulumi.Input[_builtins.str] name: The name of the vpc authorization.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
+        :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
+        :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "port", port)
@@ -40,7 +40,7 @@ class VpcAccessArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the instance in VPC (ECS/Server Load Balance).
+        The ID of an ECS or SLB instance in the VPC.
         """
         return pulumi.get(self, "instance_id")
 
@@ -52,7 +52,7 @@ class VpcAccessArgs:
     @pulumi.getter
     def port(self) -> pulumi.Input[_builtins.int]:
         """
-        ID of the port corresponding to the instance.
+        The port number that corresponds to the instance.
         """
         return pulumi.get(self, "port")
 
@@ -64,7 +64,7 @@ class VpcAccessArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The vpc id of the vpc authorization.
+        The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -76,7 +76,7 @@ class VpcAccessArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the vpc authorization.
+        The name of the authorization. The name must be unique.
         """
         return pulumi.get(self, "name")
 
@@ -94,10 +94,10 @@ class _VpcAccessState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcAccess resources.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
-        :param pulumi.Input[_builtins.str] name: The name of the vpc authorization.
-        :param pulumi.Input[_builtins.int] port: ID of the port corresponding to the instance.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc id of the vpc authorization.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
+        :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
+        :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -112,7 +112,7 @@ class _VpcAccessState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the instance in VPC (ECS/Server Load Balance).
+        The ID of an ECS or SLB instance in the VPC.
         """
         return pulumi.get(self, "instance_id")
 
@@ -124,7 +124,7 @@ class _VpcAccessState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the vpc authorization.
+        The name of the authorization. The name must be unique.
         """
         return pulumi.get(self, "name")
 
@@ -136,7 +136,7 @@ class _VpcAccessState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        ID of the port corresponding to the instance.
+        The port number that corresponds to the instance.
         """
         return pulumi.get(self, "port")
 
@@ -148,7 +148,7 @@ class _VpcAccessState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The vpc id of the vpc authorization.
+        The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -177,35 +177,45 @@ class VpcAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.get_zones(available_resource_creation="Instance")
-        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_network = alicloud.vpc.Network("example",
-            vpc_name="terraform-example",
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("example",
-            vswitch_name="terraform-example",
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=example.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            name="terraform-example",
-            description="New security group",
-            vpc_id=example_network.id)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
             owners="system")
-        example_instance = alicloud.ecs.Instance("example",
-            availability_zone=example.zones[0].id,
-            instance_name="terraform-example",
-            image_id=example_get_images.images[0].id,
-            instance_type=example_get_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id)
-        example_vpc_access = alicloud.apigateway.VpcAccess("example",
-            name="terraform-example",
-            vpc_id=example_network.id,
-            instance_id=example_instance.id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id,
+            system_disk_category="cloud_efficiency")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id,
+            instance_name=name,
+            description=name)
+        default_vpc_access = alicloud.apigateway.VpcAccess("default",
+            name=name,
+            vpc_id=default_network.id,
+            instance_id=default_instance.id,
             port=8080)
         ```
 
@@ -213,18 +223,18 @@ class VpcAccess(pulumi.CustomResource):
 
         ## Import
 
-        Api gateway app can be imported using the id, e.g.
+        Api Gateway Vpc Access can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+        $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
-        :param pulumi.Input[_builtins.str] name: The name of the vpc authorization.
-        :param pulumi.Input[_builtins.int] port: ID of the port corresponding to the instance.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc id of the vpc authorization.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
+        :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
+        :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         ...
     @overload
@@ -241,35 +251,45 @@ class VpcAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.get_zones(available_resource_creation="Instance")
-        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        example_network = alicloud.vpc.Network("example",
-            vpc_name="terraform-example",
-            cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("example",
-            vswitch_name="terraform-example",
-            cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
-            zone_id=example.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            name="terraform-example",
-            description="New security group",
-            vpc_id=example_network.id)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
             owners="system")
-        example_instance = alicloud.ecs.Instance("example",
-            availability_zone=example.zones[0].id,
-            instance_name="terraform-example",
-            image_id=example_get_images.images[0].id,
-            instance_type=example_get_instance_types.instance_types[0].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=example_switch.id)
-        example_vpc_access = alicloud.apigateway.VpcAccess("example",
-            name="terraform-example",
-            vpc_id=example_network.id,
-            instance_id=example_instance.id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id,
+            system_disk_category="cloud_efficiency")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id,
+            instance_name=name,
+            description=name)
+        default_vpc_access = alicloud.apigateway.VpcAccess("default",
+            name=name,
+            vpc_id=default_network.id,
+            instance_id=default_instance.id,
             port=8080)
         ```
 
@@ -277,10 +297,10 @@ class VpcAccess(pulumi.CustomResource):
 
         ## Import
 
-        Api gateway app can be imported using the id, e.g.
+        Api Gateway Vpc Access can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example "APiGatewayVpc:vpc-aswcj19ajsz:i-ajdjfsdlf:8080"
+        $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>
         ```
 
         :param str resource_name: The name of the resource.
@@ -342,10 +362,10 @@ class VpcAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
-        :param pulumi.Input[_builtins.str] name: The name of the vpc authorization.
-        :param pulumi.Input[_builtins.int] port: ID of the port corresponding to the instance.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc id of the vpc authorization.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
+        :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
+        :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -361,7 +381,7 @@ class VpcAccess(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the instance in VPC (ECS/Server Load Balance).
+        The ID of an ECS or SLB instance in the VPC.
         """
         return pulumi.get(self, "instance_id")
 
@@ -369,7 +389,7 @@ class VpcAccess(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the vpc authorization.
+        The name of the authorization. The name must be unique.
         """
         return pulumi.get(self, "name")
 
@@ -377,7 +397,7 @@ class VpcAccess(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[_builtins.int]:
         """
-        ID of the port corresponding to the instance.
+        The port number that corresponds to the instance.
         """
         return pulumi.get(self, "port")
 
@@ -385,7 +405,7 @@ class VpcAccess(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The vpc id of the vpc authorization.
+        The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         return pulumi.get(self, "vpc_id")
 

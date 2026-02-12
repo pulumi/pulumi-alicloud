@@ -8822,29 +8822,29 @@ class GetImagesImageResult(dict):
                  usage: _builtins.str,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str architecture: The image architecture. Valid values: `i386` and `x86_64`.
-        :param _builtins.str creation_time: Time of creation.
-        :param _builtins.str description: Description of the image.
-        :param Sequence['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: Description of the system with disks and snapshots under the image.
-        :param _builtins.str id: ID of the image.
+        :param _builtins.str architecture: The image architecture. Valid values: `i386`, `x86_64`, `arm64`.
+        :param _builtins.str creation_time: The creation time.
+        :param _builtins.str description: The description of the image.
+        :param Sequence['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: A `disk_device_mappings` block as defined below. Description of the system with disks and snapshots under the image.
+        :param _builtins.str id: The ID of the image.
         :param _builtins.str image_id: The ID of the image.
-        :param _builtins.str image_owner_alias: Alias of the image owner.
+        :param _builtins.str image_owner_alias: The alias of the image owner.
         :param _builtins.str image_version: Version of the image.
         :param _builtins.bool is_subscribed: Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
         :param _builtins.bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.
-        :param _builtins.str os_name: Display Chinese name of the OS.
-        :param _builtins.str os_name_en: Display English name of the OS.
+        :param _builtins.str os_name: The display Chinese name of the OS.
+        :param _builtins.str os_name_en: The english name of the OS.
         :param _builtins.str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
-        :param _builtins.str product_code: Product code of the image on the image market.
+        :param _builtins.str product_code: The product code of the image on the image market.
         :param _builtins.str progress: Progress of image creation, presented in percentages.
-        :param _builtins.int size: Size of the created disk.
+        :param _builtins.int size: The size of the created disk.
         :param _builtins.str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-               * `Creating`: The image is being created.
-               * `Waiting`: The image is waiting to be processed.
-               * `Available`: The image is available.
-               * `UnAvailable`: The image is unavailable.
-               * `CreateFailed`: The image failed to be created.
-               * `Deprecated`: The image is discontinued.
+               - `Creating`: The image is being created.
+               - `Waiting`: The image is waiting to be processed.
+               - `Available`: The image is available.
+               - `UnAvailable`: The image is unavailable.
+               - `CreateFailed`: The image failed to be created.
+               - `Deprecated`: The image is discontinued.
         :param _builtins.str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
@@ -8878,7 +8878,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def architecture(self) -> _builtins.str:
         """
-        The image architecture. Valid values: `i386` and `x86_64`.
+        The image architecture. Valid values: `i386`, `x86_64`, `arm64`.
         """
         return pulumi.get(self, "architecture")
 
@@ -8886,7 +8886,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
         """
-        Time of creation.
+        The creation time.
         """
         return pulumi.get(self, "creation_time")
 
@@ -8894,7 +8894,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Description of the image.
+        The description of the image.
         """
         return pulumi.get(self, "description")
 
@@ -8902,7 +8902,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="diskDeviceMappings")
     def disk_device_mappings(self) -> Sequence['outputs.GetImagesImageDiskDeviceMappingResult']:
         """
-        Description of the system with disks and snapshots under the image.
+        A `disk_device_mappings` block as defined below. Description of the system with disks and snapshots under the image.
         """
         return pulumi.get(self, "disk_device_mappings")
 
@@ -8910,7 +8910,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the image.
+        The ID of the image.
         """
         return pulumi.get(self, "id")
 
@@ -8926,7 +8926,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="imageOwnerAlias")
     def image_owner_alias(self) -> _builtins.str:
         """
-        Alias of the image owner.
+        The alias of the image owner.
         """
         return pulumi.get(self, "image_owner_alias")
 
@@ -8973,7 +8973,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="osName")
     def os_name(self) -> _builtins.str:
         """
-        Display Chinese name of the OS.
+        The display Chinese name of the OS.
         """
         return pulumi.get(self, "os_name")
 
@@ -8981,7 +8981,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="osNameEn")
     def os_name_en(self) -> _builtins.str:
         """
-        Display English name of the OS.
+        The english name of the OS.
         """
         return pulumi.get(self, "os_name_en")
 
@@ -9002,7 +9002,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="productCode")
     def product_code(self) -> _builtins.str:
         """
-        Product code of the image on the image market.
+        The product code of the image on the image market.
         """
         return pulumi.get(self, "product_code")
 
@@ -9018,7 +9018,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def size(self) -> _builtins.int:
         """
-        Size of the created disk.
+        The size of the created disk.
         """
         return pulumi.get(self, "size")
 
@@ -9032,12 +9032,12 @@ class GetImagesImageResult(dict):
     def status(self) -> _builtins.str:
         """
         The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-        * `Creating`: The image is being created.
-        * `Waiting`: The image is waiting to be processed.
-        * `Available`: The image is available.
-        * `UnAvailable`: The image is unavailable.
-        * `CreateFailed`: The image failed to be created.
-        * `Deprecated`: The image is discontinued.
+        - `Creating`: The image is being created.
+        - `Waiting`: The image is waiting to be processed.
+        - `Available`: The image is available.
+        - `UnAvailable`: The image is unavailable.
+        - `CreateFailed`: The image failed to be created.
+        - `Deprecated`: The image is discontinued.
         """
         return pulumi.get(self, "status")
 
@@ -9065,8 +9065,8 @@ class GetImagesImageDiskDeviceMappingResult(dict):
                  size: _builtins.str,
                  snapshot_id: _builtins.str):
         """
-        :param _builtins.str device: Device information of the created disk: such as /dev/xvdb.
-        :param _builtins.str size: Size of the created disk.
+        :param _builtins.str device: The device information of the created disk: such as /dev/xvdb.
+        :param _builtins.str size: The size of the created disk.
         :param _builtins.str snapshot_id: The ID of the snapshot used to create the custom image.
         """
         pulumi.set(__self__, "device", device)
@@ -9077,7 +9077,7 @@ class GetImagesImageDiskDeviceMappingResult(dict):
     @pulumi.getter
     def device(self) -> _builtins.str:
         """
-        Device information of the created disk: such as /dev/xvdb.
+        The device information of the created disk: such as /dev/xvdb.
         """
         return pulumi.get(self, "device")
 
@@ -9085,7 +9085,7 @@ class GetImagesImageDiskDeviceMappingResult(dict):
     @pulumi.getter
     def size(self) -> _builtins.str:
         """
-        Size of the created disk.
+        The size of the created disk.
         """
         return pulumi.get(self, "size")
 

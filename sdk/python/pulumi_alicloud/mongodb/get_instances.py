@@ -27,10 +27,13 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
+    def __init__(__self__, availability_zone=None, enable_details=None, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -55,6 +58,9 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -63,9 +69,14 @@ class GetInstancesResult:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
         """
-        Instance availability zone.
+        The zone ID of the instance.
         """
         return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_details")
 
     @_builtins.property
     @pulumi.getter
@@ -78,16 +89,13 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        The ids list of MongoDB instances
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[_builtins.str]:
         """
-        Sizing of the MongoDB instance.
+        The instance type.
         """
         return pulumi.get(self, "instance_class")
 
@@ -95,7 +103,7 @@ class GetInstancesResult:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[_builtins.str]:
         """
-        Instance type. Optional values `sharding` or `replicate`.
+        The instance architecture.
         """
         return pulumi.get(self, "instance_type")
 
@@ -103,7 +111,7 @@ class GetInstancesResult:
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
-        A list of MongoDB instances. Its every element contains the following attributes:
+        A list of Instances. Each element contains the following attributes:
         """
         return pulumi.get(self, "instances")
 
@@ -116,7 +124,7 @@ class GetInstancesResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        The names list of MongoDB instances
+        (Available since v1.42.0) A list of Instance names.
         """
         return pulumi.get(self, "names")
 
@@ -127,7 +135,18 @@ class GetInstancesResult:
 
     @_builtins.property
     @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The instance status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.66.0) The details of the resource tags.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -138,6 +157,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             yield self
         return GetInstancesResult(
             availability_zone=self.availability_zone,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             instance_class=self.instance_class,
@@ -146,55 +166,83 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            status=self.status,
             tags=self.tags)
 
 
 def get_instances(availability_zone: Optional[_builtins.str] = None,
+                  enable_details: Optional[_builtins.bool] = None,
                   ids: Optional[Sequence[_builtins.str]] = None,
                   instance_class: Optional[_builtins.str] = None,
                   instance_type: Optional[_builtins.str] = None,
                   name_regex: Optional[_builtins.str] = None,
                   output_file: Optional[_builtins.str] = None,
+                  status: Optional[_builtins.str] = None,
                   tags: Optional[Mapping[str, _builtins.str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `mongodb_get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
-    Filters support regular expression for the instance name, engine or instance type.
+    This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    mongo = alicloud.mongodb.get_instances(name_regex="dds-.+\\\\d+",
-        instance_type="replicate",
-        instance_class="dds.mongo.mid",
-        availability_zone="eu-central-1a")
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.mongodb.get_zones()
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.zones[0].id)
+    default_get_security_groups = alicloud.ecs.get_security_groups(vpc_id=default_get_networks.ids[0])
+    default_instance = alicloud.mongodb.Instance("default",
+        engine_version="4.4",
+        db_instance_class="mdb.shard.2x.xlarge.d",
+        db_instance_storage=20,
+        vswitch_id=default_get_switches.ids[0],
+        name=name,
+        tags={
+            "Created": "TF",
+            "For": "Instance",
+        })
+    ids = alicloud.mongodb.get_instances_output(ids=[default_instance.id])
+    pulumi.export("mongodbInstancesId0", ids.instances[0].id)
     ```
 
 
-    :param _builtins.str availability_zone: Instance availability zone.
-    :param Sequence[_builtins.str] ids: The ids list of MongoDB instances
-    :param _builtins.str instance_class: Sizing of the instance to be queried.
-    :param _builtins.str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
-    :param _builtins.str name_regex: A regex string to apply to the instance name.
+    :param _builtins.str availability_zone: The zone ID.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Instance IDs.
+    :param _builtins.str instance_class: The instance type.
+    :param _builtins.str instance_type: The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+    :param _builtins.str name_regex: A regex string to filter results by Instance name.
     :param _builtins.str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
+    :param _builtins.str status: The instance status.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['instanceClass'] = instance_class
     __args__['instanceType'] = instance_type
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:mongodb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         instance_class=pulumi.get(__ret__, 'instance_class'),
@@ -203,52 +251,80 @@ def get_instances(availability_zone: Optional[_builtins.str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                         enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                          instance_class: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `mongodb_get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
-    Filters support regular expression for the instance name, engine or instance type.
+    This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    mongo = alicloud.mongodb.get_instances(name_regex="dds-.+\\\\d+",
-        instance_type="replicate",
-        instance_class="dds.mongo.mid",
-        availability_zone="eu-central-1a")
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.mongodb.get_zones()
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.zones[0].id)
+    default_get_security_groups = alicloud.ecs.get_security_groups(vpc_id=default_get_networks.ids[0])
+    default_instance = alicloud.mongodb.Instance("default",
+        engine_version="4.4",
+        db_instance_class="mdb.shard.2x.xlarge.d",
+        db_instance_storage=20,
+        vswitch_id=default_get_switches.ids[0],
+        name=name,
+        tags={
+            "Created": "TF",
+            "For": "Instance",
+        })
+    ids = alicloud.mongodb.get_instances_output(ids=[default_instance.id])
+    pulumi.export("mongodbInstancesId0", ids.instances[0].id)
     ```
 
 
-    :param _builtins.str availability_zone: Instance availability zone.
-    :param Sequence[_builtins.str] ids: The ids list of MongoDB instances
-    :param _builtins.str instance_class: Sizing of the instance to be queried.
-    :param _builtins.str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
-    :param _builtins.str name_regex: A regex string to apply to the instance name.
+    :param _builtins.str availability_zone: The zone ID.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Instance IDs.
+    :param _builtins.str instance_class: The instance type.
+    :param _builtins.str instance_type: The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+    :param _builtins.str name_regex: A regex string to filter results by Instance name.
     :param _builtins.str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
+    :param _builtins.str status: The instance status.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['instanceClass'] = instance_class
     __args__['instanceType'] = instance_type
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         instance_class=pulumi.get(__response__, 'instance_class'),
@@ -257,4 +333,5 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[_buil
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),
         output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
         tags=pulumi.get(__response__, 'tags')))

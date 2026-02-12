@@ -21,14 +21,14 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
     public static final EtlConfigurationArgs Empty = new EtlConfigurationArgs();
 
     /**
-     * The beginning of the time range for transformation.
+     * The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
      * 
      */
     @Import(name="fromTime", required=true)
     private Output<Integer> fromTime;
 
     /**
-     * @return The beginning of the time range for transformation.
+     * @return The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
      * 
      */
     public Output<Integer> fromTime() {
@@ -36,14 +36,14 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Data processing syntax type.
+     * The syntax type used for data transformation.
      * 
      */
     @Import(name="lang", required=true)
     private Output<String> lang;
 
     /**
-     * @return Data processing syntax type.
+     * @return The syntax type used for data transformation.
      * 
      */
     public Output<String> lang() {
@@ -51,14 +51,14 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Destination Logstore Name.
+     * The name of the destination Logstore.
      * 
      */
     @Import(name="logstore", required=true)
     private Output<String> logstore;
 
     /**
-     * @return Destination Logstore Name.
+     * @return The name of the destination Logstore.
      * 
      */
     public Output<String> logstore() {
@@ -81,14 +81,14 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ARN role that authorizes writing to the target Logstore.
+     * The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
     /**
-     * @return The ARN role that authorizes writing to the target Logstore.
+     * @return The ARN of the role authorized to write to the destination Logstore.
      * 
      */
     public Output<String> roleArn() {
@@ -111,14 +111,14 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Processing result output target list See `sink` below.
+     * List of output destinations for processing results.   See `sink` below.
      * 
      */
     @Import(name="sinks", required=true)
     private Output<List<EtlConfigurationSinkArgs>> sinks;
 
     /**
-     * @return Processing result output target list See `sink` below.
+     * @return List of output destinations for processing results.   See `sink` below.
      * 
      */
     public Output<List<EtlConfigurationSinkArgs>> sinks() {
@@ -126,14 +126,14 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The end of the time range for transformation.
+     * End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
      * 
      */
     @Import(name="toTime", required=true)
     private Output<Integer> toTime;
 
     /**
-     * @return The end of the time range for transformation.
+     * @return End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
      * 
      */
     public Output<Integer> toTime() {
@@ -172,7 +172,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fromTime The beginning of the time range for transformation.
+         * @param fromTime The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fromTime The beginning of the time range for transformation.
+         * @param fromTime The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param lang Data processing syntax type.
+         * @param lang The syntax type used for data transformation.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param lang Data processing syntax type.
+         * @param lang The syntax type used for data transformation.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logstore Destination Logstore Name.
+         * @param logstore The name of the destination Logstore.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logstore Destination Logstore Name.
+         * @param logstore The name of the destination Logstore.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param roleArn The ARN role that authorizes writing to the target Logstore.
+         * @param roleArn The ARN of the role authorized to write to the destination Logstore.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param roleArn The ARN role that authorizes writing to the target Logstore.
+         * @param roleArn The ARN of the role authorized to write to the destination Logstore.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sinks Processing result output target list See `sink` below.
+         * @param sinks List of output destinations for processing results.   See `sink` below.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sinks Processing result output target list See `sink` below.
+         * @param sinks List of output destinations for processing results.   See `sink` below.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sinks Processing result output target list See `sink` below.
+         * @param sinks List of output destinations for processing results.   See `sink` below.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param toTime The end of the time range for transformation.
+         * @param toTime End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class EtlConfigurationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param toTime The end of the time range for transformation.
+         * @param toTime End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
          * 
          * @return builder
          * 

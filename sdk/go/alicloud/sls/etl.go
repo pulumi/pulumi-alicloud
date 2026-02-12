@@ -105,19 +105,23 @@ import (
 type Etl struct {
 	pulumi.CustomResourceState
 
-	// The ETL configuration. See `configuration` below.
+	// Detailed configuration of the data processing task.   See `configuration` below.
 	Configuration EtlConfigurationOutput `pulumi:"configuration"`
-	// The time when the data transformation job was created.
+	// The time when the task was created.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
-	// Data Processing Task Description.
+	// Description of the data processing task.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Data processing task display name.
+	// The display name of the data processing task.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Unique identification of data processing task.
+	// The job name. Naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// - Must start and end with a lowercase letter or digit.
+	// - Must be 2 to 64 characters in length.
 	JobName pulumi.StringOutput `pulumi:"jobName"`
-	// Project Name.
+	// Project name.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The status of the data transformation job.
+	// Task status.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -163,36 +167,44 @@ func GetEtl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Etl resources.
 type etlState struct {
-	// The ETL configuration. See `configuration` below.
+	// Detailed configuration of the data processing task.   See `configuration` below.
 	Configuration *EtlConfiguration `pulumi:"configuration"`
-	// The time when the data transformation job was created.
+	// The time when the task was created.
 	CreateTime *int `pulumi:"createTime"`
-	// Data Processing Task Description.
+	// Description of the data processing task.
 	Description *string `pulumi:"description"`
-	// Data processing task display name.
+	// The display name of the data processing task.
 	DisplayName *string `pulumi:"displayName"`
-	// Unique identification of data processing task.
+	// The job name. Naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// - Must start and end with a lowercase letter or digit.
+	// - Must be 2 to 64 characters in length.
 	JobName *string `pulumi:"jobName"`
-	// Project Name.
+	// Project name.
 	Project *string `pulumi:"project"`
-	// The status of the data transformation job.
+	// Task status.
 	Status *string `pulumi:"status"`
 }
 
 type EtlState struct {
-	// The ETL configuration. See `configuration` below.
+	// Detailed configuration of the data processing task.   See `configuration` below.
 	Configuration EtlConfigurationPtrInput
-	// The time when the data transformation job was created.
+	// The time when the task was created.
 	CreateTime pulumi.IntPtrInput
-	// Data Processing Task Description.
+	// Description of the data processing task.
 	Description pulumi.StringPtrInput
-	// Data processing task display name.
+	// The display name of the data processing task.
 	DisplayName pulumi.StringPtrInput
-	// Unique identification of data processing task.
+	// The job name. Naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// - Must start and end with a lowercase letter or digit.
+	// - Must be 2 to 64 characters in length.
 	JobName pulumi.StringPtrInput
-	// Project Name.
+	// Project name.
 	Project pulumi.StringPtrInput
-	// The status of the data transformation job.
+	// Task status.
 	Status pulumi.StringPtrInput
 }
 
@@ -201,29 +213,37 @@ func (EtlState) ElementType() reflect.Type {
 }
 
 type etlArgs struct {
-	// The ETL configuration. See `configuration` below.
+	// Detailed configuration of the data processing task.   See `configuration` below.
 	Configuration EtlConfiguration `pulumi:"configuration"`
-	// Data Processing Task Description.
+	// Description of the data processing task.
 	Description *string `pulumi:"description"`
-	// Data processing task display name.
+	// The display name of the data processing task.
 	DisplayName string `pulumi:"displayName"`
-	// Unique identification of data processing task.
+	// The job name. Naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// - Must start and end with a lowercase letter or digit.
+	// - Must be 2 to 64 characters in length.
 	JobName string `pulumi:"jobName"`
-	// Project Name.
+	// Project name.
 	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Etl resource.
 type EtlArgs struct {
-	// The ETL configuration. See `configuration` below.
+	// Detailed configuration of the data processing task.   See `configuration` below.
 	Configuration EtlConfigurationInput
-	// Data Processing Task Description.
+	// Description of the data processing task.
 	Description pulumi.StringPtrInput
-	// Data processing task display name.
+	// The display name of the data processing task.
 	DisplayName pulumi.StringInput
-	// Unique identification of data processing task.
+	// The job name. Naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// - Must start and end with a lowercase letter or digit.
+	// - Must be 2 to 64 characters in length.
 	JobName pulumi.StringInput
-	// Project Name.
+	// Project name.
 	Project pulumi.StringInput
 }
 
@@ -314,37 +334,41 @@ func (o EtlOutput) ToEtlOutputWithContext(ctx context.Context) EtlOutput {
 	return o
 }
 
-// The ETL configuration. See `configuration` below.
+// Detailed configuration of the data processing task.   See `configuration` below.
 func (o EtlOutput) Configuration() EtlConfigurationOutput {
 	return o.ApplyT(func(v *Etl) EtlConfigurationOutput { return v.Configuration }).(EtlConfigurationOutput)
 }
 
-// The time when the data transformation job was created.
+// The time when the task was created.
 func (o EtlOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Etl) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
-// Data Processing Task Description.
+// Description of the data processing task.
 func (o EtlOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Data processing task display name.
+// The display name of the data processing task.
 func (o EtlOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Unique identification of data processing task.
+// The job name. Naming rules are as follows:
+// - Job names must be unique within the same project.
+// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
+// - Must start and end with a lowercase letter or digit.
+// - Must be 2 to 64 characters in length.
 func (o EtlOutput) JobName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.JobName }).(pulumi.StringOutput)
 }
 
-// Project Name.
+// Project name.
 func (o EtlOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The status of the data transformation job.
+// Task status.
 func (o EtlOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

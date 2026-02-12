@@ -32,6 +32,7 @@ from .nat_firewall_control_policy import *
 from .policy_advanced_config import *
 from .private_dns import *
 from .threat_intelligence_switch import *
+from .user_alarm_config import *
 from .vpc_cen_tr_firewall import *
 from .vpc_firewall_acl_engine_mode import *
 from .vpc_firewall_ips_config import *

@@ -37,14 +37,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowShutDown", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> allowShutDown;
+    private Output<String> allowShutDown;
 
     /**
      * @return Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      * 
      */
-    public Output<Optional<String>> allowShutDown() {
-        return Codegen.optional(this.allowShutDown);
+    public Output<String> allowShutDown() {
+        return this.allowShutDown;
     }
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -211,8 +211,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
@@ -221,8 +221,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The dbNodeClass of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
-     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     public Output<String> dbNodeClass() {
@@ -259,14 +259,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbNodeId);
     }
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
      * 
      */
     @Export(name="dbNodeNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dbNodeNum;
 
     /**
-     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * @return The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
      * 
      */
     public Output<Optional<Integer>> dbNodeNum() {
@@ -419,6 +421,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> gdnId() {
         return Codegen.optional(this.gdnId);
+    }
+    /**
+     * The list of global security ip group ids.
+     * 
+     */
+    @Export(name="globalSecurityGroupLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of global security ip group ids.
+     * 
+     */
+    public Output<Optional<List<String>>> globalSecurityGroupLists() {
+        return Codegen.optional(this.globalSecurityGroupLists);
     }
     /**
      * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
@@ -1180,15 +1196,15 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> vswitchId;
+    private Output<String> vswitchId;
 
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
-    public Output<Optional<String>> vswitchId() {
-        return Codegen.optional(this.vswitchId);
+    public Output<String> vswitchId() {
+        return this.vswitchId;
     }
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.

@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a SLS Scheduled SQL resource. Scheduled SQL task.
+// Provides a Log Service (SLS) Scheduled Sql resource.
 //
-// For information about SLS Scheduled SQL and how to use it, see [What is Scheduled SQL](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
+// Scheduled SQL task.
+//
+// For information about Log Service (SLS) Scheduled Sql and how to use it, see [What is Scheduled Sql](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
 //
 // > **NOTE:** Available since v1.224.0.
 //
@@ -111,7 +113,7 @@ import (
 //
 // ## Import
 //
-// SLS Scheduled SQL can be imported using the id, e.g.
+// Log Service (SLS) Scheduled Sql can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:sls/scheduledSql:ScheduledSql example <project>:<scheduled_sql_name>
@@ -119,18 +121,24 @@ import (
 type ScheduledSql struct {
 	pulumi.CustomResourceState
 
-	// Task Description.
+	// Job description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Task Display Name.
+	// Task display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Log project.
+	// A short description of struct.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+	// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
 	Schedule ScheduledSqlScheduleOutput `pulumi:"schedule"`
-	// Task Configuration. See `scheduledSqlConfiguration` below.
+	// Task configuration. See `scheduledSqlConfiguration` below.
 	ScheduledSqlConfiguration ScheduledSqlScheduledSqlConfigurationOutput `pulumi:"scheduledSqlConfiguration"`
-	// Timed SQL name.
+	// The job name. The naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name must start and end with a lowercase letter or digit.
+	// - The length must be between 2 and 64 characters.
 	ScheduledSqlName pulumi.StringOutput `pulumi:"scheduledSqlName"`
+	// The status of the scheduled SQL job.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewScheduledSql registers a new resource with the given unique name, arguments, and options.
@@ -178,33 +186,45 @@ func GetScheduledSql(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ScheduledSql resources.
 type scheduledSqlState struct {
-	// Task Description.
+	// Job description.
 	Description *string `pulumi:"description"`
-	// Task Display Name.
+	// Task display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Log project.
+	// A short description of struct.
 	Project *string `pulumi:"project"`
-	// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+	// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
 	Schedule *ScheduledSqlSchedule `pulumi:"schedule"`
-	// Task Configuration. See `scheduledSqlConfiguration` below.
+	// Task configuration. See `scheduledSqlConfiguration` below.
 	ScheduledSqlConfiguration *ScheduledSqlScheduledSqlConfiguration `pulumi:"scheduledSqlConfiguration"`
-	// Timed SQL name.
+	// The job name. The naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name must start and end with a lowercase letter or digit.
+	// - The length must be between 2 and 64 characters.
 	ScheduledSqlName *string `pulumi:"scheduledSqlName"`
+	// The status of the scheduled SQL job.
+	Status *string `pulumi:"status"`
 }
 
 type ScheduledSqlState struct {
-	// Task Description.
+	// Job description.
 	Description pulumi.StringPtrInput
-	// Task Display Name.
+	// Task display name.
 	DisplayName pulumi.StringPtrInput
-	// Log project.
+	// A short description of struct.
 	Project pulumi.StringPtrInput
-	// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+	// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
 	Schedule ScheduledSqlSchedulePtrInput
-	// Task Configuration. See `scheduledSqlConfiguration` below.
+	// Task configuration. See `scheduledSqlConfiguration` below.
 	ScheduledSqlConfiguration ScheduledSqlScheduledSqlConfigurationPtrInput
-	// Timed SQL name.
+	// The job name. The naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name must start and end with a lowercase letter or digit.
+	// - The length must be between 2 and 64 characters.
 	ScheduledSqlName pulumi.StringPtrInput
+	// The status of the scheduled SQL job.
+	Status pulumi.StringPtrInput
 }
 
 func (ScheduledSqlState) ElementType() reflect.Type {
@@ -212,34 +232,46 @@ func (ScheduledSqlState) ElementType() reflect.Type {
 }
 
 type scheduledSqlArgs struct {
-	// Task Description.
+	// Job description.
 	Description *string `pulumi:"description"`
-	// Task Display Name.
+	// Task display name.
 	DisplayName string `pulumi:"displayName"`
-	// Log project.
+	// A short description of struct.
 	Project string `pulumi:"project"`
-	// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+	// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
 	Schedule ScheduledSqlSchedule `pulumi:"schedule"`
-	// Task Configuration. See `scheduledSqlConfiguration` below.
+	// Task configuration. See `scheduledSqlConfiguration` below.
 	ScheduledSqlConfiguration ScheduledSqlScheduledSqlConfiguration `pulumi:"scheduledSqlConfiguration"`
-	// Timed SQL name.
+	// The job name. The naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name must start and end with a lowercase letter or digit.
+	// - The length must be between 2 and 64 characters.
 	ScheduledSqlName string `pulumi:"scheduledSqlName"`
+	// The status of the scheduled SQL job.
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ScheduledSql resource.
 type ScheduledSqlArgs struct {
-	// Task Description.
+	// Job description.
 	Description pulumi.StringPtrInput
-	// Task Display Name.
+	// Task display name.
 	DisplayName pulumi.StringInput
-	// Log project.
+	// A short description of struct.
 	Project pulumi.StringInput
-	// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+	// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
 	Schedule ScheduledSqlScheduleInput
-	// Task Configuration. See `scheduledSqlConfiguration` below.
+	// Task configuration. See `scheduledSqlConfiguration` below.
 	ScheduledSqlConfiguration ScheduledSqlScheduledSqlConfigurationInput
-	// Timed SQL name.
+	// The job name. The naming rules are as follows:
+	// - Job names must be unique within the same project.
+	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// - The name must start and end with a lowercase letter or digit.
+	// - The length must be between 2 and 64 characters.
 	ScheduledSqlName pulumi.StringInput
+	// The status of the scheduled SQL job.
+	Status pulumi.StringPtrInput
 }
 
 func (ScheduledSqlArgs) ElementType() reflect.Type {
@@ -329,34 +361,43 @@ func (o ScheduledSqlOutput) ToScheduledSqlOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Task Description.
+// Job description.
 func (o ScheduledSqlOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledSql) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Task Display Name.
+// Task display name.
 func (o ScheduledSqlOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledSql) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Log project.
+// A short description of struct.
 func (o ScheduledSqlOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledSql) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+// Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
 func (o ScheduledSqlOutput) Schedule() ScheduledSqlScheduleOutput {
 	return o.ApplyT(func(v *ScheduledSql) ScheduledSqlScheduleOutput { return v.Schedule }).(ScheduledSqlScheduleOutput)
 }
 
-// Task Configuration. See `scheduledSqlConfiguration` below.
+// Task configuration. See `scheduledSqlConfiguration` below.
 func (o ScheduledSqlOutput) ScheduledSqlConfiguration() ScheduledSqlScheduledSqlConfigurationOutput {
 	return o.ApplyT(func(v *ScheduledSql) ScheduledSqlScheduledSqlConfigurationOutput { return v.ScheduledSqlConfiguration }).(ScheduledSqlScheduledSqlConfigurationOutput)
 }
 
-// Timed SQL name.
+// The job name. The naming rules are as follows:
+// - Job names must be unique within the same project.
+// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+// - The name must start and end with a lowercase letter or digit.
+// - The length must be between 2 and 64 characters.
 func (o ScheduledSqlOutput) ScheduledSqlName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduledSql) pulumi.StringOutput { return v.ScheduledSqlName }).(pulumi.StringOutput)
+}
+
+// The status of the scheduled SQL job.
+func (o ScheduledSqlOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledSql) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type ScheduledSqlArrayOutput struct{ *pulumi.OutputState }

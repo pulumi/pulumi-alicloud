@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a SLS Scheduled SQL resource. Scheduled SQL task.
+ * Provides a Log Service (SLS) Scheduled Sql resource.
  *
- * For information about SLS Scheduled SQL and how to use it, see [What is Scheduled SQL](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
+ * Scheduled SQL task.
+ *
+ * For information about Log Service (SLS) Scheduled Sql and how to use it, see [What is Scheduled Sql](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-createscheduledsql).
  *
  * > **NOTE:** Available since v1.224.0.
  *
@@ -75,7 +77,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * SLS Scheduled SQL can be imported using the id, e.g.
+ * Log Service (SLS) Scheduled Sql can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:sls/scheduledSql:ScheduledSql example <project>:<scheduled_sql_name>
@@ -110,29 +112,37 @@ export class ScheduledSql extends pulumi.CustomResource {
     }
 
     /**
-     * Task Description.
+     * Job description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Task Display Name.
+     * Task display name.
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
-     * Log project.
+     * A short description of struct.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+     * Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      */
     declare public readonly schedule: pulumi.Output<outputs.sls.ScheduledSqlSchedule>;
     /**
-     * Task Configuration. See `scheduledSqlConfiguration` below.
+     * Task configuration. See `scheduledSqlConfiguration` below.
      */
     declare public readonly scheduledSqlConfiguration: pulumi.Output<outputs.sls.ScheduledSqlScheduledSqlConfiguration>;
     /**
-     * Timed SQL name.
+     * The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      */
     declare public readonly scheduledSqlName: pulumi.Output<string>;
+    /**
+     * The status of the scheduled SQL job.
+     */
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a ScheduledSql resource with the given unique name, arguments, and options.
@@ -153,6 +163,7 @@ export class ScheduledSql extends pulumi.CustomResource {
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["scheduledSqlConfiguration"] = state?.scheduledSqlConfiguration;
             resourceInputs["scheduledSqlName"] = state?.scheduledSqlName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ScheduledSqlArgs | undefined;
             if (args?.displayName === undefined && !opts.urn) {
@@ -176,6 +187,7 @@ export class ScheduledSql extends pulumi.CustomResource {
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["scheduledSqlConfiguration"] = args?.scheduledSqlConfiguration;
             resourceInputs["scheduledSqlName"] = args?.scheduledSqlName;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScheduledSql.__pulumiType, name, resourceInputs, opts);
@@ -187,29 +199,37 @@ export class ScheduledSql extends pulumi.CustomResource {
  */
 export interface ScheduledSqlState {
     /**
-     * Task Description.
+     * Job description.
      */
     description?: pulumi.Input<string>;
     /**
-     * Task Display Name.
+     * Task display name.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Log project.
+     * A short description of struct.
      */
     project?: pulumi.Input<string>;
     /**
-     * The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+     * Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      */
     schedule?: pulumi.Input<inputs.sls.ScheduledSqlSchedule>;
     /**
-     * Task Configuration. See `scheduledSqlConfiguration` below.
+     * Task configuration. See `scheduledSqlConfiguration` below.
      */
     scheduledSqlConfiguration?: pulumi.Input<inputs.sls.ScheduledSqlScheduledSqlConfiguration>;
     /**
-     * Timed SQL name.
+     * The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      */
     scheduledSqlName?: pulumi.Input<string>;
+    /**
+     * The status of the scheduled SQL job.
+     */
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -217,27 +237,35 @@ export interface ScheduledSqlState {
  */
 export interface ScheduledSqlArgs {
     /**
-     * Task Description.
+     * Job description.
      */
     description?: pulumi.Input<string>;
     /**
-     * Task Display Name.
+     * Task display name.
      */
     displayName: pulumi.Input<string>;
     /**
-     * Log project.
+     * A short description of struct.
      */
     project: pulumi.Input<string>;
     /**
-     * The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+     * Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      */
     schedule: pulumi.Input<inputs.sls.ScheduledSqlSchedule>;
     /**
-     * Task Configuration. See `scheduledSqlConfiguration` below.
+     * Task configuration. See `scheduledSqlConfiguration` below.
      */
     scheduledSqlConfiguration: pulumi.Input<inputs.sls.ScheduledSqlScheduledSqlConfiguration>;
     /**
-     * Timed SQL name.
+     * The job name. The naming rules are as follows:
+     * - Job names must be unique within the same project.
+     * - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+     * - The name must start and end with a lowercase letter or digit.
+     * - The length must be between 2 and 64 characters.
      */
     scheduledSqlName: pulumi.Input<string>;
+    /**
+     * The status of the scheduled SQL job.
+     */
+    status?: pulumi.Input<string>;
 }

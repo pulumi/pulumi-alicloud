@@ -18,14 +18,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     public static final ScheduledSqlScheduledSqlConfigurationArgs Empty = new ScheduledSqlScheduledSqlConfigurationArgs();
 
     /**
-     * Write Mode.
+     * Write mode.
      * 
      */
     @Import(name="dataFormat")
     private @Nullable Output<String> dataFormat;
 
     /**
-     * @return Write Mode.
+     * @return Write mode.
      * 
      */
     public Optional<Output<String>> dataFormat() {
@@ -33,14 +33,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Target Endpoint.
+     * The destination endpoint.
      * 
      */
     @Import(name="destEndpoint")
     private @Nullable Output<String> destEndpoint;
 
     /**
-     * @return Target Endpoint.
+     * @return The destination endpoint.
      * 
      */
     public Optional<Output<String>> destEndpoint() {
@@ -48,14 +48,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Target Logstore.
+     * The destination Logstore.
      * 
      */
     @Import(name="destLogstore")
     private @Nullable Output<String> destLogstore;
 
     /**
-     * @return Target Logstore.
+     * @return The destination Logstore.
      * 
      */
     public Optional<Output<String>> destLogstore() {
@@ -63,14 +63,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Target Project.
+     * The destination project.
      * 
      */
     @Import(name="destProject")
     private @Nullable Output<String> destProject;
 
     /**
-     * @return Target Project.
+     * @return The destination project.
      * 
      */
     public Optional<Output<String>> destProject() {
@@ -78,14 +78,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Write target role ARN.
+     * Destination write role ARN.
      * 
      */
     @Import(name="destRoleArn")
     private @Nullable Output<String> destRoleArn;
 
     /**
-     * @return Write target role ARN.
+     * @return Destination write role ARN.
      * 
      */
     public Optional<Output<String>> destRoleArn() {
@@ -93,14 +93,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Schedule Start Time.
+     * The start time of the schedule.
      * 
      */
     @Import(name="fromTime")
     private @Nullable Output<Integer> fromTime;
 
     /**
-     * @return Schedule Start Time.
+     * @return The start time of the schedule.
      * 
      */
     public Optional<Output<Integer>> fromTime() {
@@ -108,14 +108,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * SQL time window-start.
+     * SQL time window - start.
      * 
      */
     @Import(name="fromTimeExpr")
     private @Nullable Output<String> fromTimeExpr;
 
     /**
-     * @return SQL time window-start.
+     * @return SQL time window - start.
      * 
      */
     public Optional<Output<String>> fromTimeExpr() {
@@ -123,14 +123,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Maximum retries.
+     * Maximum number of retries.
      * 
      */
     @Import(name="maxRetries")
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @return Maximum retries.
+     * @return Maximum number of retries.
      * 
      */
     public Optional<Output<Integer>> maxRetries() {
@@ -168,14 +168,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Resource Pool.
+     * Resource pool.
      * 
      */
     @Import(name="resourcePool")
     private @Nullable Output<String> resourcePool;
 
     /**
-     * @return Resource Pool.
+     * @return Resource pool.
      * 
      */
     public Optional<Output<String>> resourcePool() {
@@ -183,14 +183,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Read role ARN.
+     * Source read role ARN.
      * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
-     * @return Read role ARN.
+     * @return Source read role ARN.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -213,14 +213,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Source Logstore.
+     * The source Logstore.
      * 
      */
     @Import(name="sourceLogstore")
     private @Nullable Output<String> sourceLogstore;
 
     /**
-     * @return Source Logstore.
+     * @return The source Logstore.
      * 
      */
     public Optional<Output<String>> sourceLogstore() {
@@ -243,14 +243,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * Time at end of schedule.
+     * Scheduled end time.
      * 
      */
     @Import(name="toTime")
     private @Nullable Output<Integer> toTime;
 
     /**
-     * @return Time at end of schedule.
+     * @return Scheduled end time.
      * 
      */
     public Optional<Output<Integer>> toTime() {
@@ -258,14 +258,14 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
     }
 
     /**
-     * SQL time window-end.
+     * End of the SQL time window.
      * 
      */
     @Import(name="toTimeExpr")
     private @Nullable Output<String> toTimeExpr;
 
     /**
-     * @return SQL time window-end.
+     * @return End of the SQL time window.
      * 
      */
     public Optional<Output<String>> toTimeExpr() {
@@ -313,7 +313,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param dataFormat Write Mode.
+         * @param dataFormat Write mode.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param dataFormat Write Mode.
+         * @param dataFormat Write mode.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destEndpoint Target Endpoint.
+         * @param destEndpoint The destination endpoint.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destEndpoint Target Endpoint.
+         * @param destEndpoint The destination endpoint.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destLogstore Target Logstore.
+         * @param destLogstore The destination Logstore.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destLogstore Target Logstore.
+         * @param destLogstore The destination Logstore.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destProject Target Project.
+         * @param destProject The destination project.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destProject Target Project.
+         * @param destProject The destination project.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destRoleArn Write target role ARN.
+         * @param destRoleArn Destination write role ARN.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param destRoleArn Write target role ARN.
+         * @param destRoleArn Destination write role ARN.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param fromTime Schedule Start Time.
+         * @param fromTime The start time of the schedule.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param fromTime Schedule Start Time.
+         * @param fromTime The start time of the schedule.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param fromTimeExpr SQL time window-start.
+         * @param fromTimeExpr SQL time window - start.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param fromTimeExpr SQL time window-start.
+         * @param fromTimeExpr SQL time window - start.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param maxRetries Maximum retries.
+         * @param maxRetries Maximum number of retries.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param maxRetries Maximum retries.
+         * @param maxRetries Maximum number of retries.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param resourcePool Resource Pool.
+         * @param resourcePool Resource pool.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param resourcePool Resource Pool.
+         * @param resourcePool Resource pool.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param roleArn Read role ARN.
+         * @param roleArn Source read role ARN.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param roleArn Read role ARN.
+         * @param roleArn Source read role ARN.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param sourceLogstore Source Logstore.
+         * @param sourceLogstore The source Logstore.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param sourceLogstore Source Logstore.
+         * @param sourceLogstore The source Logstore.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param toTime Time at end of schedule.
+         * @param toTime Scheduled end time.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param toTime Time at end of schedule.
+         * @param toTime Scheduled end time.
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param toTimeExpr SQL time window-end.
+         * @param toTimeExpr End of the SQL time window.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
         }
 
         /**
-         * @param toTimeExpr SQL time window-end.
+         * @param toTimeExpr End of the SQL time window.
          * 
          * @return builder
          * 

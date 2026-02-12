@@ -33,7 +33,7 @@ public final class NodePoolUpgradePolicy {
      */
     private @Nullable String runtimeVersion;
     /**
-     * @return Whether to use replacement disk upgrade
+     * @return Whether to use replacement disk upgrade. Valid values:
      * 
      */
     private @Nullable Boolean useReplace;
@@ -68,7 +68,7 @@ public final class NodePoolUpgradePolicy {
         return Optional.ofNullable(this.runtimeVersion);
     }
     /**
-     * @return Whether to use replacement disk upgrade
+     * @return Whether to use replacement disk upgrade. Valid values:
      * 
      */
     public Optional<Boolean> useReplace() {
