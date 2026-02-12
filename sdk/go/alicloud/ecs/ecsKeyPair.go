@@ -78,8 +78,13 @@ type EcsKeyPair struct {
 	FingerPrint pulumi.StringOutput `pulumi:"fingerPrint"`
 	// The key file.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+	//
+	// > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName       pulumi.StringOutput    `pulumi:"keyName"`
+	KeyName pulumi.StringOutput `pulumi:"keyName"`
+	// The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
 	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
@@ -127,8 +132,13 @@ type ecsKeyPairState struct {
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// The key file.
 	KeyFile *string `pulumi:"keyFile"`
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+	//
+	// > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName       *string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
+	// The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
 	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -147,8 +157,13 @@ type EcsKeyPairState struct {
 	FingerPrint pulumi.StringPtrInput
 	// The key file.
 	KeyFile pulumi.StringPtrInput
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+	//
+	// > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName       pulumi.StringPtrInput
+	KeyName pulumi.StringPtrInput
+	// The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix pulumi.StringPtrInput
 	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	KeyPairName pulumi.StringPtrInput
@@ -167,8 +182,13 @@ func (EcsKeyPairState) ElementType() reflect.Type {
 type ecsKeyPairArgs struct {
 	// The key file.
 	KeyFile *string `pulumi:"keyFile"`
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+	//
+	// > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName       *string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
+	// The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
 	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -184,8 +204,13 @@ type ecsKeyPairArgs struct {
 type EcsKeyPairArgs struct {
 	// The key file.
 	KeyFile pulumi.StringPtrInput
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+	//
+	// > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
-	KeyName       pulumi.StringPtrInput
+	KeyName pulumi.StringPtrInput
+	// The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix pulumi.StringPtrInput
 	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	KeyPairName pulumi.StringPtrInput
@@ -299,11 +324,16 @@ func (o EcsKeyPairOutput) KeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.KeyFile }).(pulumi.StringPtrOutput)
 }
 
+// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+//
+// > **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+//
 // Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 func (o EcsKeyPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
 func (o EcsKeyPairOutput) KeyNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.KeyNamePrefix }).(pulumi.StringPtrOutput)
 }

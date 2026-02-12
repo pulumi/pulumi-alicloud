@@ -16,6 +16,131 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
+ * 
+ * For information about GPDB Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifybackuppolicy).
+ * 
+ * &gt; **NOTE:** Available since v1.211.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+ * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.std.inputs.ConcatArgs;
+ * import com.pulumi.alicloud.gpdb.Instance;
+ * import com.pulumi.alicloud.gpdb.InstanceArgs;
+ * import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
+ * import com.pulumi.alicloud.gpdb.BackupPolicy;
+ * import com.pulumi.alicloud.gpdb.BackupPolicyArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = GpdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.ids()[0])
+ *             .build());
+ * 
+ *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(defaultGetNetworks.ids()[0])
+ *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+ *                     .newbits(8)
+ *                     .netnum(8)
+ *                     .build()).result())
+ *                 .zoneId(default_.ids()[0])
+ *                 .vswitchName(name)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *             .input(            
+ *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+ *                 "")
+ *             .build()).result()[0]);
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .dbInstanceCategory("HighAvailability")
+ *             .dbInstanceClass("gpdb.group.segsdx1")
+ *             .dbInstanceMode("StorageElastic")
+ *             .description(name)
+ *             .engine("gpdb")
+ *             .engineVersion("6.0")
+ *             .zoneId(default_.ids()[0])
+ *             .instanceNetworkType("VPC")
+ *             .instanceSpec("2C16G")
+ *             .paymentType("PayAsYouGo")
+ *             .segStorageType("cloud_essd")
+ *             .segNodeNum(4)
+ *             .storageSize(50)
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .vswitchId(vswitchId)
+ *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
+ *                 .securityIpList("127.0.0.1")
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "acceptance test")
+ *             ))
+ *             .build());
+ * 
+ *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()
+ *             .dbInstanceId(defaultInstance.id())
+ *             .recoveryPointPeriod("1")
+ *             .enableRecoveryPoint(true)
+ *             .preferredBackupPeriod("Wednesday")
+ *             .preferredBackupTime("15:00Z-16:00Z")
+ *             .backupRetentionPeriod(7)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.gpdb.BackupPolicy` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.gpdb.BackupPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * GPDB Backup Policy can be imported using the id, e.g.

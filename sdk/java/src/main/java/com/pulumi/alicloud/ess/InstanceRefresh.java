@@ -21,6 +21,148 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESS instance refresh resource.
+ * 
+ * For information about ess instance refresh, see [StartInstanceRefresh](https://www.alibabacloud.com/help/en/auto-scaling/developer-reference/api-startinstancerefresh).
+ * 
+ * &gt; **NOTE:** Available since v1.261.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingConfiguration;
+ * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
+ * import com.pulumi.alicloud.ess.InstanceRefresh;
+ * import com.pulumi.alicloud.ess.InstanceRefreshArgs;
+ * import com.pulumi.alicloud.ess.inputs.InstanceRefreshCheckpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+ * 
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(myName)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         final var default1 = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(myName)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .securityGroupName(myName)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         final var default1GetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubu")
+ *             .mostRecent(true)
+ *             .owners("system")
+ *             .build());
+ * 
+ *         final var default2 = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^aliyun")
+ *             .mostRecent(true)
+ *             .owners("system")
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
+ *             .minSize(0)
+ *             .maxSize(10)
+ *             .scalingGroupName(myName)
+ *             .removalPolicies(            
+ *                 "OldestInstance",
+ *                 "NewestInstance")
+ *             .vswitchIds(defaultSwitch.id())
+ *             .desiredCapacity(1)
+ *             .build());
+ * 
+ *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .imageId(default1GetImages.images()[0].id())
+ *             .instanceType(default1.instanceTypes()[0].id())
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .forceDelete(true)
+ *             .active(true)
+ *             .enable(true)
+ *             .build());
+ * 
+ *         var defaultInstanceRefresh = new InstanceRefresh("defaultInstanceRefresh", InstanceRefreshArgs.builder()
+ *             .scalingGroupId(defaultScalingConfiguration.scalingGroupId())
+ *             .desiredConfigurationImageId(default2.images()[0].id())
+ *             .minHealthyPercentage(90)
+ *             .maxHealthyPercentage(150)
+ *             .checkpointPauseTime(60)
+ *             .skipMatching(false)
+ *             .checkpoints(InstanceRefreshCheckpointArgs.builder()
+ *                 .percentage(100)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Deleting `alicloud.ess.InstanceRefresh` or removing it from your configuration
+ * 
+ * The `alicloud.ess.InstanceRefresh` resource allows you to manage  `status = &#34;RollbackInProgress&#34;`  instance refresh, but Terraform cannot destroy it.
+ * Deleting will remove it from your state file and management, but will not destroy the Instance Refresh.
+ * You can resume managing the instance refresh via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESS instance refresh can be imported using the id, e.g.

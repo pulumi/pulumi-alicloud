@@ -49,6 +49,9 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         /// The engine version of the DBCluster.
         /// </summary>
         public readonly string EngineVersion;
+        /// <summary>
+        /// The resource ID in terraform of DBCluster. It formats as &lt;db_instance_id&gt;:&lt;db_cluster_id&gt;.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The memory resource amount of DBCluster. Depends on `DbClusterClass`.

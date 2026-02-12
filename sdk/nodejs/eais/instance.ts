@@ -7,6 +7,55 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a EAIS Instance resource.
+ *
+ * Instance resource definition.
+ *
+ * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+ *
+ * > **NOTE:** Available since v1.137.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const zoneId = "cn-hangzhou-h";
+ * const _default = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: _default.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: zoneId,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: _default.id,
+ * });
+ * const defaultInstance = new alicloud.eais.Instance("default", {
+ *     instanceType: "eais.ei-a6.2xlarge",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     instanceName: name,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.eais.Instance` or removing it from your configuration
+ *
+ * The `alicloud.eais.Instance` resource allows you to manage  `category = "ei"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * EAIS Instance can be imported using the id, e.g.

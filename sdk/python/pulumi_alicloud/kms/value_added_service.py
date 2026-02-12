@@ -27,6 +27,9 @@ class ValueAddedServiceArgs:
         """
         The set of arguments for constructing a ValueAddedService resource.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.int] period: Prepaid cycle. Unit for year
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in years.
                
                > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -64,6 +67,11 @@ class ValueAddedServiceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Prepaid cycle. Unit for year
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -130,6 +138,9 @@ class _ValueAddedServiceState:
         Input properties used for looking up and filtering ValueAddedService resources.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.int] period: Prepaid cycle. Unit for year
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in years.
                
@@ -188,6 +199,11 @@ class _ValueAddedServiceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Prepaid cycle. Unit for year
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -317,6 +333,9 @@ class ValueAddedService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.int] period: Prepaid cycle. Unit for year
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in years.
                
                > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -440,6 +459,9 @@ class ValueAddedService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.int] period: Prepaid cycle. Unit for year
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in years.
                
@@ -487,6 +509,11 @@ class ValueAddedService(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Prepaid cycle. Unit for year
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "period")
 
     @_builtins.property

@@ -12,6 +12,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a OSS Bucket Acl resource. The Access Control List (ACL) of a specific bucket.
+//
+// For information about OSS Bucket Acl and how to use it, see [What is Bucket Acl](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketacl).
+//
+// > **NOTE:** Available since v1.220.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
+//				StorageClass: pulumi.String("Standard"),
+//				Bucket:       pulumi.Sprintf("%v-%v", name, _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "default", &oss.BucketAclArgs{
+//				Bucket: createBucket.Bucket,
+//				Acl:    pulumi.String("private"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `oss.BucketAcl` or removing it from your configuration
+//
+// Terraform cannot destroy resource `oss.BucketAcl`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // OSS Bucket Acl can be imported using the id, e.g.

@@ -7,6 +7,114 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
+ * environment in the cloud. An PolarDB cluster can contain multiple user-created
+ * databases.
+ *
+ * > **NOTE:** Available since v1.66.0.
+ *
+ * ## Example Usage
+ *
+ * Create a PolarDB MySQL cluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.polardb.getNodeClasses({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     category: "Normal",
+ *     payType: "PostPaid",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.classes?.[0]?.zoneId),
+ *     vswitchName: "terraform-example",
+ * });
+ * const defaultCluster = new alicloud.polardb.Cluster("default", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     dbNodeClass: _default.then(_default => _default.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
+ *     payType: "PostPaid",
+ *     vswitchId: defaultSwitch.id,
+ *     description: "terraform-example",
+ *     dbClusterIpArrays: [
+ *         {
+ *             dbClusterIpArrayName: "default",
+ *             securityIps: [
+ *                 "1.2.3.4",
+ *                 "1.2.3.5",
+ *             ],
+ *         },
+ *         {
+ *             dbClusterIpArrayName: "default2",
+ *             securityIps: ["1.2.3.6"],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
+ * Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const current = alicloud.getAccount({});
+ * const roles = alicloud.ram.getRoles({
+ *     nameRegex: "AliyunRDSInstanceEncryptionDefaultRole",
+ * });
+ * const _default: alicloud.ram.Role[] = [];
+ * roles.then(roles => roles.roles).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         _default.push(new alicloud.ram.Role(`default-${range.value}`, {
+ *             name: "AliyunRDSInstanceEncryptionDefaultRole",
+ *             document: `    {
+ *         \\"Statement\\": [
+ *             {
+ *                \\"Action\\": \\"sts:AssumeRole\\",
+ *                 \\"Effect\\": \\"Allow\\",
+ *                 \\"Principal\\": {
+ *                     \\"Service\\": [
+ *                         \\"rds.aliyuncs.com\\"
+ *                     ]
+ *                 }
+ *             }
+ *         ],
+ *         \\"Version\\": \\"1\\"
+ *     }
+ * `,
+ *             description: "RDS使用此角色来访问您在其他云产品中的资源",
+ *         }));
+ *     }
+ * });
+ * const defaultPolicyAttachment: alicloud.resourcemanager.PolicyAttachment[] = [];
+ * roles.then(roles => roles.roles).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         defaultPolicyAttachment.push(new alicloud.resourcemanager.PolicyAttachment(`default-${range.value}`, {
+ *             policyName: "AliyunRDSInstanceEncryptionRolePolicy",
+ *             policyType: "System",
+ *             principalName: pulumi.all([roles.then(roles => roles.roles).length, roles, current, _default[0].name, current]).apply(([length, roles, current, name, current1]) => length > 0 ? `${roles.roles?.[0]?.name}@role.${current.id}.onaliyunservice.com` : `${name}@role.${current1.id}.onaliyunservice.com`),
+ *             principalType: "ServiceRole",
+ *             resourceGroupId: current.then(current => current.id),
+ *         }));
+ *     }
+ * });
+ * ```
+ *
+ * ### Removing alicloud.polardb.Cluster from your configuration
+ *
+ * The alicloud.polardb.Cluster resource allows you to manage your polardb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the polardb Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * PolarDB cluster can be imported using the id, e.g.

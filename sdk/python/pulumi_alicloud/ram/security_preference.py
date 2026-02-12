@@ -630,12 +630,37 @@ class SecurityPreference(pulumi.CustomResource):
                  verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides a RAM Security Preference resource.
+
+        For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
+
+        > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ram.SecurityPreference("example",
+            enable_save_mfa_ticket=False,
+            allow_user_to_change_password=True)
+        ```
+
+        ### Deleting `ram.SecurityPreference` or removing it from your configuration
+
+        Terraform cannot destroy resource `ram.SecurityPreference`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Security Preference can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/securityPreference:SecurityPreference example 
+        $ terraform import alicloud_ram_security_preference.example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -692,12 +717,37 @@ class SecurityPreference(pulumi.CustomResource):
                  args: Optional[SecurityPreferenceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RAM Security Preference resource.
+
+        For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
+
+        > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ram.SecurityPreference("example",
+            enable_save_mfa_ticket=False,
+            allow_user_to_change_password=True)
+        ```
+
+        ### Deleting `ram.SecurityPreference` or removing it from your configuration
+
+        Terraform cannot destroy resource `ram.SecurityPreference`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Security Preference can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/securityPreference:SecurityPreference example 
+        $ terraform import alicloud_ram_security_preference.example 
         ```
 
         :param str resource_name: The name of the resource.

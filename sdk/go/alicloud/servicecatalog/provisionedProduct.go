@@ -72,7 +72,7 @@ import (
 // Service Catalog Provisioned Product can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example <id>
+// $terraform import alicloud_service_catalog_provisioned_product.example <id>
 // ```
 type ProvisionedProduct struct {
 	pulumi.CustomResourceState

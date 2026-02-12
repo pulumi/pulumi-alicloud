@@ -15,6 +15,59 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Threat Detection Asset Selection Config resource.
+ * 
+ * Asset selection configuration.
+ * 
+ * For information about Threat Detection Asset Selection Config and how to use it, see [What is Asset Selection Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAssetSelectionConfig).
+ * 
+ * &gt; **NOTE:** Available since v1.245.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.AssetSelectionConfig;
+ * import com.pulumi.alicloud.threatdetection.AssetSelectionConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new AssetSelectionConfig("default", AssetSelectionConfigArgs.builder()
+ *             .businessType("agentlesss_vul_white_1")
+ *             .targetType("instance")
+ *             .platform("all")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.threatdetection.AssetSelectionConfig` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.threatdetection.AssetSelectionConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Threat Detection Asset Selection Config can be imported using the id, e.g.

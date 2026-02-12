@@ -1138,6 +1138,7 @@ class GetApisApiResult(dict):
         :param _builtins.str description: The description of the API.
         :param _builtins.str group_id: The ID of the API group.
         :param _builtins.str group_name: The name of the API group.
+        :param _builtins.str id: The resource ID in terraform of API. It formats as `<group_id>:<api_id>`.
         :param _builtins.str name: The name of the API.
         :param _builtins.str region_id: The region ID of the API.
         """
@@ -1184,6 +1185,9 @@ class GetApisApiResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of API. It formats as `<group_id>:<api_id>`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -1292,6 +1296,7 @@ class GetBackendsBackendResult(dict):
         :param _builtins.str backend_type: The type of the Backend.
         :param _builtins.str create_time: The created time of the Backend.
         :param _builtins.str description: The description of the Backend.
+        :param _builtins.str id: The resource ID in terraform of Backend.
         :param _builtins.str modified_time: The modified time of the Backend.
         """
         pulumi.set(__self__, "backend_id", backend_id)
@@ -1345,6 +1350,9 @@ class GetBackendsBackendResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Backend.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -90,6 +90,9 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     declare public readonly isp: pulumi.Output<string>;
+    /**
+     * The resource ID in terraform of VPC Public Ip Address Pool.
+     */
     declare public /*out*/ readonly publicIpAddressPoolId: pulumi.Output<string>;
     /**
      * The name of the VPC Public IP address pool.
@@ -193,6 +196,9 @@ export interface PublicIpAddressPoolState {
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     isp?: pulumi.Input<string>;
+    /**
+     * The resource ID in terraform of VPC Public Ip Address Pool.
+     */
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**
      * The name of the VPC Public IP address pool.

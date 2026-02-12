@@ -238,6 +238,42 @@ class DBAuditInstance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available since v1.62.0+.
+
+        > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_db_audit_instance = alicloud.yundun.DBAuditInstance("default",
+            description="tf-example",
+            plan_code="alpha.professional",
+            period=1,
+            vswitch_id=default_get_switches.ids[0])
+        ```
+
+        ### Deleting `yundun.DBAuditInstance` or removing it from your configuration
+
+        The `yundun.DBAuditInstance` resource allows you to manage yundun dbaudit instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the `yundun_dbaudit_instance`.
+        You can resume managing the subscription yundun_dbaudit_instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Yundun_dbaudit instance can be imported using the id, e.g.
@@ -263,6 +299,42 @@ class DBAuditInstance(pulumi.CustomResource):
                  args: DBAuditInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available since v1.62.0+.
+
+        > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_db_audit_instance = alicloud.yundun.DBAuditInstance("default",
+            description="tf-example",
+            plan_code="alpha.professional",
+            period=1,
+            vswitch_id=default_get_switches.ids[0])
+        ```
+
+        ### Deleting `yundun.DBAuditInstance` or removing it from your configuration
+
+        The `yundun.DBAuditInstance` resource allows you to manage yundun dbaudit instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the `yundun_dbaudit_instance`.
+        You can resume managing the subscription yundun_dbaudit_instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Yundun_dbaudit instance can be imported using the id, e.g.

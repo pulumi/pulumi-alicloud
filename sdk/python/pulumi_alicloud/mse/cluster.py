@@ -814,6 +814,49 @@ class Cluster(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
+
+        > **NOTE:** Available since v1.94.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create resource
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("example",
+            cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_2_0_0",
+            version_code="NACOS_2_3_2_1",
+            instance_count=3,
+            net_type="privatenet",
+            pub_network_flow="1",
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_pro",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        ```
+
+        ### Deleting `mse.Cluster` or removing it from your configuration
+
+        The `mse.Cluster` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MSE Cluster can be imported using the id, e.g.
@@ -870,6 +913,49 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
+
+        > **NOTE:** Available since v1.94.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create resource
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("example",
+            cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_2_0_0",
+            version_code="NACOS_2_3_2_1",
+            instance_count=3,
+            net_type="privatenet",
+            pub_network_flow="1",
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_pro",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        ```
+
+        ### Deleting `mse.Cluster` or removing it from your configuration
+
+        The `mse.Cluster` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MSE Cluster can be imported using the id, e.g.

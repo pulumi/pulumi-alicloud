@@ -10,6 +10,48 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ThreatDetection
 {
     /// <summary>
+    /// Provides a Threat Detection Asset Bind resource.
+    /// 
+    /// Asset Binding Information.
+    /// 
+    /// For information about Threat Detection Asset Bind and how to use it, see [What is Asset Bind](https://next.api.alibabacloud.com/document/Sas/2018-12-03/UpdatePostPaidBindRel).
+    /// 
+    /// &gt; **NOTE:** Available since v1.247.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ThreatDetection.GetAssets.Invoke(new()
+    ///     {
+    ///         MachineTypes = "ecs",
+    ///     });
+    /// 
+    ///     var defaultAssetBind = new AliCloud.ThreatDetection.AssetBind("default", new()
+    ///     {
+    ///         Uuid = @default.Apply(@default =&gt; @default.Apply(getAssetsResult =&gt; getAssetsResult.Assets[0]?.Uuid)),
+    ///         AuthVersion = 5,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.threatdetection.AssetBind` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.threatdetection.AssetBind`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Asset Bind can be imported using the id, e.g.

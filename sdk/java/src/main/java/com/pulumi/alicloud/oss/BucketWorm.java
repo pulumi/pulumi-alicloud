@@ -16,6 +16,67 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a OSS Bucket Worm resource.
+ * 
+ * Bucket Retention Policy.
+ * 
+ * For information about OSS Bucket Worm and how to use it, see [What is Bucket Worm](https://www.alibabacloud.com/help/en/oss/developer-reference/initiatebucketworm).
+ * 
+ * &gt; **NOTE:** Available since v1.240.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketWorm;
+ * import com.pulumi.alicloud.oss.BucketWormArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaulthNMfIF = new Bucket("defaulthNMfIF", BucketArgs.builder()
+ *             .storageClass("Standard")
+ *             .build());
+ * 
+ *         var default_ = new BucketWorm("default", BucketWormArgs.builder()
+ *             .bucket(defaulthNMfIF.bucket())
+ *             .retentionPeriodInDays(1)
+ *             .status("InProgress")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.oss.BucketWorm` or removing it from your configuration
+ * 
+ * The `alicloud.oss.BucketWorm` resource allows you to manage  `status = &#34;Locked&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * OSS Bucket Worm can be imported using the id, e.g.

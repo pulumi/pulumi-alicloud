@@ -18,6 +18,75 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Threat Detection Instance resource.
+ * 
+ * Cloud Security Center instance.
+ * 
+ * For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
+ * 
+ * &gt; **NOTE:** Available since v1.199.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.Instance;
+ * import com.pulumi.alicloud.threatdetection.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .threatAnalysis("10")
+ *             .sasSlsStorage("10")
+ *             .vCore("10")
+ *             .sasSc(false)
+ *             .buyNumber("10")
+ *             .honeypotSwitch("2")
+ *             .paymentType("Subscription")
+ *             .sasSdk("10")
+ *             .sasAntiRansomware("10")
+ *             .renewalStatus("ManualRenewal")
+ *             .period(1)
+ *             .vulSwitch("1")
+ *             .raspCount("1")
+ *             .vulCount("20")
+ *             .versionCode("level3")
+ *             .sasCspm("1000")
+ *             .renewalPeriodUnit("M")
+ *             .containerImageScanNew("100")
+ *             .honeypot("20")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.threatdetection.Instance` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.threatdetection.Instance`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Threat Detection Instance can be imported using the id, e.g.

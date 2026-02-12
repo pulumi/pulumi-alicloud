@@ -12,6 +12,155 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
+//
+// For information about GPDB Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifybackuppolicy).
+//
+// > **NOTE:** Available since v1.211.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := gpdb.GetZones(ctx, &gpdb.GetZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("^default-NODELETING$"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef(_default.Ids[0]),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: defaultGetNetworks.Vpcs[0].CidrBlock,
+// Newbits: 8,
+// Netnum: 8,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if length > 0 {
+// tmp0 = 0
+// } else {
+// tmp0 = 1
+// }
+// var vswitch []*vpc.Switch
+// for index := 0; index < float64(len(defaultGetSwitches.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp0, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// CidrBlock: pulumi.String(invokeCidrsubnet.Result),
+// ZoneId: pulumi.String(_default.Ids[0]),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch = append(vswitch, __res)
+// }
+// var tmp1 *interface{}
+// if length > 0 {
+// tmp1 = defaultGetSwitches.Ids[0]
+// } else {
+// tmp1 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,12-25),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// vswitchId := len(defaultGetSwitches.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp1, nil
+// }).(pulumi.Interface{}PtrOutput)
+// defaultInstance, err := gpdb.NewInstance(ctx, "default", &gpdb.InstanceArgs{
+// DbInstanceCategory: pulumi.String("HighAvailability"),
+// DbInstanceClass: pulumi.String("gpdb.group.segsdx1"),
+// DbInstanceMode: pulumi.String("StorageElastic"),
+// Description: pulumi.String(name),
+// Engine: pulumi.String("gpdb"),
+// EngineVersion: pulumi.String("6.0"),
+// ZoneId: pulumi.String(_default.Ids[0]),
+// InstanceNetworkType: pulumi.String("VPC"),
+// InstanceSpec: pulumi.String("2C16G"),
+// PaymentType: pulumi.String("PayAsYouGo"),
+// SegStorageType: pulumi.String("cloud_essd"),
+// SegNodeNum: pulumi.Int(4),
+// StorageSize: pulumi.Int(50),
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// VswitchId: pulumi.Any(vswitchId),
+// IpWhitelists: gpdb.InstanceIpWhitelistArray{
+// &gpdb.InstanceIpWhitelistArgs{
+// SecurityIpList: pulumi.String("127.0.0.1"),
+// },
+// },
+// Tags: pulumi.StringMap{
+// "Created": pulumi.String("TF"),
+// "For": pulumi.String("acceptance test"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = gpdb.NewBackupPolicy(ctx, "default", &gpdb.BackupPolicyArgs{
+// DbInstanceId: defaultInstance.ID(),
+// RecoveryPointPeriod: pulumi.String("1"),
+// EnableRecoveryPoint: pulumi.Bool(true),
+// PreferredBackupPeriod: pulumi.String("Wednesday"),
+// PreferredBackupTime: pulumi.String("15:00Z-16:00Z"),
+// BackupRetentionPeriod: pulumi.Int(7),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
+// ### Deleting `gpdb.BackupPolicy` or removing it from your configuration
+//
+// Terraform cannot destroy resource `gpdb.BackupPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // GPDB Backup Policy can be imported using the id, e.g.

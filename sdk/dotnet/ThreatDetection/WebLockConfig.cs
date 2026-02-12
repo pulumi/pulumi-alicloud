@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Web Lock Config can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:threatdetection/webLockConfig:WebLockConfig example &lt;id&gt;
+    /// $terraform import alicloud_threat_detection_web_lock_config.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/webLockConfig:WebLockConfig")]

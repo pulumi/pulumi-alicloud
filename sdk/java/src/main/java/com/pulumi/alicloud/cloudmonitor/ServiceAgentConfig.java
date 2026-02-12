@@ -15,12 +15,63 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloud Monitor Service Agent Config resource.
+ * 
+ * Cloud monitoring plug-in global configuration.
+ * 
+ * For information about Cloud Monitor Service Agent Config and how to use it, see [What is Agent Config](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutMonitoringConfig).
+ * 
+ * &gt; **NOTE:** Available since v1.270.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudmonitor.ServiceAgentConfig;
+ * import com.pulumi.alicloud.cloudmonitor.ServiceAgentConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ServiceAgentConfig("default", ServiceAgentConfigArgs.builder()
+ *             .enableInstallAgentNewEcs(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cloudmonitor.ServiceAgentConfig` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cloudmonitor.ServiceAgentConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Agent Config can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig example &lt;Alibaba Cloud Account ID&gt;
+ * $ terraform import alicloud_cloud_monitor_service_agent_config.example &lt;Alibaba Cloud Account ID&gt;
  * ```
  * 
  */

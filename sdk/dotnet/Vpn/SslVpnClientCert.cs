@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// Provides a SSL VPN client cert resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build SSL VPN client certs while it uses `alicloud.vpn.SslVpnClientCert` to build a ssl vpn client certs resource.
+    /// It depends on VPN instance and SSL VPN Server.
+    /// 
+    /// &gt; **NOTE:** Available since v1.15.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

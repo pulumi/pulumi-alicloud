@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Cloud Firewall Vpc Firewall can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall example &lt;id&gt;
+    /// $terraform import alicloud_cloud_firewall_vpc_firewall.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall")]

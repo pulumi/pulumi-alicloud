@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Kms
     public static class GetPlaintext
     {
         /// <summary>
+        /// Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,6 +56,10 @@ namespace Pulumi.AliCloud.Kms
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -92,6 +100,10 @@ namespace Pulumi.AliCloud.Kms
             => global::Pulumi.Deployment.Instance.Invoke<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

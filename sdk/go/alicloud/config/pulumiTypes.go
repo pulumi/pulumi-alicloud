@@ -144,8 +144,9 @@ type AssumeRole struct {
 	// The ARN of a RAM role to assume prior to making API calls.
 	RoleArn string `pulumi:"roleArn"`
 	// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
-	SessionExpiration *int    `pulumi:"sessionExpiration"`
-	SessionName       *string `pulumi:"sessionName"`
+	SessionExpiration *int `pulumi:"sessionExpiration"`
+	// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+	SessionName *string `pulumi:"sessionName"`
 }
 
 // AssumeRoleInput is an input type that accepts AssumeRoleArgs and AssumeRoleOutput values.
@@ -166,8 +167,9 @@ type AssumeRoleArgs struct {
 	// The ARN of a RAM role to assume prior to making API calls.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
-	SessionExpiration pulumi.IntPtrInput    `pulumi:"sessionExpiration"`
-	SessionName       pulumi.StringPtrInput `pulumi:"sessionName"`
+	SessionExpiration pulumi.IntPtrInput `pulumi:"sessionExpiration"`
+	// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+	SessionName pulumi.StringPtrInput `pulumi:"sessionName"`
 }
 
 func (AssumeRoleArgs) ElementType() reflect.Type {
@@ -215,6 +217,7 @@ func (o AssumeRoleOutput) SessionExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
 }
 
+// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
 func (o AssumeRoleOutput) SessionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
 }

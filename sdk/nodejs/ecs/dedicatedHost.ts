@@ -7,6 +7,57 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
+ *
+ * > **NOTE:** Available since v1.91.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.ecs.DedicatedHost("default", {
+ *     dedicatedHostType: "ddh.g6",
+ *     tags: {
+ *         Create: "Terraform",
+ *         For: "DDH",
+ *     },
+ *     description: "From_Terraform",
+ *     dedicatedHostName: "dedicated_host_name",
+ * });
+ * ```
+ *
+ * Create Prepaid DDH
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ecs.DedicatedHost("example", {
+ *     dedicatedHostType: "ddh.g5",
+ *     tags: {
+ *         Create: "Terraform",
+ *         For: "DDH",
+ *     },
+ *     description: "terraform-example",
+ *     dedicatedHostName: "terraform-example",
+ *     paymentType: "PrePaid",
+ *     expiredTime: "1",
+ *     saleCycle: "Month",
+ * });
+ * ```
+ * ### Deleting alicloud.ecs.DedicatedHost or removing it from your configuration
+ *
+ * The alicloud.ecs.DedicatedHost resource allows you to manage paymentType = "PrePaid" dedicated host, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the Dedicated Host.
+ * You can resume managing the subscription dedicated host via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Ecs dedicated host can be imported using the id, e.g.

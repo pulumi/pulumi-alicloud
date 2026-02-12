@@ -152,6 +152,47 @@ class BackupPolicy(pulumi.CustomResource):
                  preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-modifybackuppolicy) cluster backup policy resource and used to configure cluster backup policy.
+
+        > **NOTE:** Available since v1.71.0.
+
+        > Each DB cluster has a backup policy and it will be set default values when destroying the resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch_id = default_get_switches.ids[0]
+        cluster = alicloud.adb.DBCluster("cluster",
+            db_cluster_category="MixedStorage",
+            mode="flexible",
+            compute_resource="8Core32GB",
+            vswitch_id=vswitch_id,
+            description=name)
+        default_backup_policy = alicloud.adb.BackupPolicy("default",
+            db_cluster_id=cluster.id,
+            preferred_backup_periods=[
+                "Tuesday",
+                "Wednesday",
+            ],
+            preferred_backup_time="10:00Z-11:00Z")
+        ```
+        ### Removing adb.Cluster from your configuration
+
+        The adb.BackupPolicy resource allows you to manage your adb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the adb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ADB backup policy can be imported using the id or cluster id, e.g.
@@ -173,6 +214,47 @@ class BackupPolicy(pulumi.CustomResource):
                  args: BackupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-modifybackuppolicy) cluster backup policy resource and used to configure cluster backup policy.
+
+        > **NOTE:** Available since v1.71.0.
+
+        > Each DB cluster has a backup policy and it will be set default values when destroying the resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch_id = default_get_switches.ids[0]
+        cluster = alicloud.adb.DBCluster("cluster",
+            db_cluster_category="MixedStorage",
+            mode="flexible",
+            compute_resource="8Core32GB",
+            vswitch_id=vswitch_id,
+            description=name)
+        default_backup_policy = alicloud.adb.BackupPolicy("default",
+            db_cluster_id=cluster.id,
+            preferred_backup_periods=[
+                "Tuesday",
+                "Wednesday",
+            ],
+            preferred_backup_time="10:00Z-11:00Z")
+        ```
+        ### Removing adb.Cluster from your configuration
+
+        The adb.BackupPolicy resource allows you to manage your adb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the adb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ADB backup policy can be imported using the id or cluster id, e.g.

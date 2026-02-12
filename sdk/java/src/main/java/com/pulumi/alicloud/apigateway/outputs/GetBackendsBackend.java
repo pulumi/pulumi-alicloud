@@ -35,6 +35,10 @@ public final class GetBackendsBackend {
      * 
      */
     private String description;
+    /**
+     * @return The resource ID in terraform of Backend.
+     * 
+     */
     private String id;
     /**
      * @return The modified time of the Backend.
@@ -78,6 +82,10 @@ public final class GetBackendsBackend {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The resource ID in terraform of Backend.
+     * 
+     */
     public String id() {
         return this.id;
     }

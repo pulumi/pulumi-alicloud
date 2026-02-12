@@ -5,6 +5,72 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ApsaraDB for MyBase Dedicated Host resource.
+ *
+ * For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhost).
+ *
+ * > **NOTE:** Available since v1.147.0.
+ *
+ * > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.cddc.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
+ * });
+ * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("default", {
+ *     engine: "MySQL",
+ *     vpcId: defaultNetwork.id,
+ *     cpuAllocationRatio: 101,
+ *     memAllocationRatio: 50,
+ *     diskAllocationRatio: 200,
+ *     allocationPolicy: "Evenly",
+ *     hostReplacePolicy: "Manual",
+ *     dedicatedHostGroupDesc: name,
+ * });
+ * const defaultGetHostEcsLevelInfos = _default.then(_default => alicloud.cddc.getHostEcsLevelInfos({
+ *     dbType: "mysql",
+ *     zoneId: _default.ids?.[0],
+ *     storageType: "cloud_essd",
+ * }));
+ * const defaultDedicatedHost = new alicloud.cddc.DedicatedHost("default", {
+ *     hostName: name,
+ *     dedicatedHostGroupId: defaultDedicatedHostGroup.id,
+ *     hostClass: defaultGetHostEcsLevelInfos.then(defaultGetHostEcsLevelInfos => defaultGetHostEcsLevelInfos.infos?.[0]?.resClassCode),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
+ *     paymentType: "Subscription",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "CDDC_DEDICATED",
+ *     },
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.cddc.DedicatedHost` or removing it from your configuration
+ *
+ * The `alicloud.cddc.DedicatedHost` resource allows you to manage `paymentType = "Subscription"` host instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Host Instance.
+ * You can resume managing the subscription host instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

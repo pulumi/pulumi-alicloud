@@ -43,6 +43,15 @@ class ProtocolServiceArgs:
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or Chinese, and cannot start with `http://` and `https://`.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck the creation request.
+               
+               The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+               
+               Value:
+               - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+               - false (default): Send a normal request and directly create an instance after passing the check.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] protocol_throughput: The throughput of the protocol service. Unit: MB/s.
         :param pulumi.Input[_builtins.str] vpc_id: The VpcId of the protocol service, which must be consistent with the VPC of the file system.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitchId of the protocol service.
@@ -122,6 +131,17 @@ class ProtocolServiceArgs:
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to PreCheck the creation request.
+
+        The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+
+        Value:
+        - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+        - false (default): Send a normal request and directly create an instance after passing the check.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -188,6 +208,15 @@ class _ProtocolServiceState:
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or Chinese, and cannot start with `http://` and `https://`.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck the creation request.
+               
+               The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+               
+               Value:
+               - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+               - false (default): Send a normal request and directly create an instance after passing the check.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] protocol_service_id: Protocol Service ID
         :param pulumi.Input[_builtins.str] protocol_spec: The specification of the protocol machine cluster.
@@ -257,6 +286,17 @@ class _ProtocolServiceState:
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to PreCheck the creation request.
+
+        The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+
+        Value:
+        - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+        - false (default): Send a normal request and directly create an instance after passing the check.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -447,6 +487,15 @@ class ProtocolService(pulumi.CustomResource):
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or Chinese, and cannot start with `http://` and `https://`.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck the creation request.
+               
+               The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+               
+               Value:
+               - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+               - false (default): Send a normal request and directly create an instance after passing the check.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] protocol_spec: The specification of the protocol machine cluster.
                - Value range: General、CL1、CL2
@@ -608,6 +657,15 @@ class ProtocolService(pulumi.CustomResource):
                - Length is 2~128 English or Chinese characters.
                - It must start with an uppercase or lowercase letter or Chinese, and cannot start with `http://` and `https://`.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck the creation request.
+               
+               The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+               
+               Value:
+               - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+               - false (default): Send a normal request and directly create an instance after passing the check.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] protocol_service_id: Protocol Service ID
         :param pulumi.Input[_builtins.str] protocol_spec: The specification of the protocol machine cluster.
@@ -663,6 +721,17 @@ class ProtocolService(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to PreCheck the creation request.
+
+        The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+
+        Value:
+        - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+        - false (default): Send a normal request and directly create an instance after passing the check.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "dry_run")
 
     @_builtins.property

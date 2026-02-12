@@ -3283,7 +3283,8 @@ type GetDhcpOptionsSetsSet struct {
 	// The description of the DHCP options set. The description must be 2 to 256
 	// characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription string `pulumi:"dhcpOptionsSetDescription"`
-	DhcpOptionsSetId          string `pulumi:"dhcpOptionsSetId"`
+	// The resource ID in terraform of Dhcp Options Set.
+	DhcpOptionsSetId string `pulumi:"dhcpOptionsSetId"`
 	// The root domain, for example, example.com. After a DHCP options set is associated with a
 	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
 	// ECS instances in the VPC network.
@@ -3295,7 +3296,8 @@ type GetDhcpOptionsSetsSet struct {
 	// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
 	// addresses must be separated with commas (,).
 	DomainNameServers string `pulumi:"domainNameServers"`
-	Id                string `pulumi:"id"`
+	// The resource ID in terraform of Dhcp Options Set.
+	Id string `pulumi:"id"`
 	// The ID of the account to which the DHCP options set belongs.
 	OwnerId string `pulumi:"ownerId"`
 	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
@@ -3319,7 +3321,8 @@ type GetDhcpOptionsSetsSetArgs struct {
 	// The description of the DHCP options set. The description must be 2 to 256
 	// characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription pulumi.StringInput `pulumi:"dhcpOptionsSetDescription"`
-	DhcpOptionsSetId          pulumi.StringInput `pulumi:"dhcpOptionsSetId"`
+	// The resource ID in terraform of Dhcp Options Set.
+	DhcpOptionsSetId pulumi.StringInput `pulumi:"dhcpOptionsSetId"`
 	// The root domain, for example, example.com. After a DHCP options set is associated with a
 	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
 	// ECS instances in the VPC network.
@@ -3331,7 +3334,8 @@ type GetDhcpOptionsSetsSetArgs struct {
 	// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
 	// addresses must be separated with commas (,).
 	DomainNameServers pulumi.StringInput `pulumi:"domainNameServers"`
-	Id                pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of Dhcp Options Set.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the account to which the DHCP options set belongs.
 	OwnerId pulumi.StringInput `pulumi:"ownerId"`
 	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
@@ -3400,6 +3404,7 @@ func (o GetDhcpOptionsSetsSetOutput) DhcpOptionsSetDescription() pulumi.StringOu
 	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DhcpOptionsSetDescription }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Dhcp Options Set.
 func (o GetDhcpOptionsSetsSetOutput) DhcpOptionsSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DhcpOptionsSetId }).(pulumi.StringOutput)
 }
@@ -3424,6 +3429,7 @@ func (o GetDhcpOptionsSetsSetOutput) DomainNameServers() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.DomainNameServers }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Dhcp Options Set.
 func (o GetDhcpOptionsSetsSetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDhcpOptionsSetsSet) string { return v.Id }).(pulumi.StringOutput)
 }

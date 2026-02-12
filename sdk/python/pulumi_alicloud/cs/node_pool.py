@@ -172,6 +172,9 @@ class NodePoolArgs:
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -214,6 +217,9 @@ class NodePoolArgs:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input['NodePoolUpgradePolicyArgs'] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
                
                > **NOTE:** This parameter only applies during resource update.
@@ -987,6 +993,11 @@ class NodePoolArgs:
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> Optional[pulumi.Input['NodePoolRollingPolicyArgs']]:
+        """
+        Rotary configuration. See `rolling_policy` below.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "rolling_policy")
 
     @rolling_policy.setter
@@ -1336,6 +1347,11 @@ class NodePoolArgs:
     @_builtins.property
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Synchronously update node labels and taints.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "update_nodes")
 
     @update_nodes.setter
@@ -1538,6 +1554,9 @@ class _NodePoolState:
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -1581,6 +1600,9 @@ class _NodePoolState:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input['NodePoolUpgradePolicyArgs'] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
                
                > **NOTE:** This parameter only applies during resource update.
@@ -2371,6 +2393,11 @@ class _NodePoolState:
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> Optional[pulumi.Input['NodePoolRollingPolicyArgs']]:
+        """
+        Rotary configuration. See `rolling_policy` below.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "rolling_policy")
 
     @rolling_policy.setter
@@ -2732,6 +2759,11 @@ class _NodePoolState:
     @_builtins.property
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Synchronously update node labels and taints.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "update_nodes")
 
     @update_nodes.setter
@@ -2864,6 +2896,562 @@ class NodePool(pulumi.CustomResource):
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides a Container Service for Kubernetes (ACK) Nodepool resource.
+
+        This resource will help you to manage node pool in Kubernetes Cluster, see [What is kubernetes node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+
+        > **NOTE:** Available since v1.97.0.
+
+        > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
+
+        > **NOTE:** From version 1.109.1, support remove node pool nodes.
+
+        > **NOTE:** From version 1.111.0, support auto scaling node pool. For more information on how to use auto scaling node pools, see [Use Terraform to create an elastic node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools). With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+
+        > **NOTE:** ACK adds a new RamRole (AliyunCSManagedAutoScalerRole) for the permission control of the node pool with auto-scaling enabled. If you are using a node pool with auto scaling, please click [AliyunCSManagedAutoScalerRole](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedAutoScalerRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedAutoScalerRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+
+        > **NOTE:** ACK adds a new RamRole（AliyunCSManagedNlcRole） for the permission control of the management node pool. If you use the management node pool, please click [AliyunCSManagedNlcRole](https://ram.console.aliyun.com/role/authorization?spm=5176.2020520152.0.0.387f16ddEOZxMv&request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedNlcRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedNlcRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+
+        > **NOTE:** From version 1.123.1, supports the creation of a node pool of spot instance.
+
+        > **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+
+        > **NOTE:** From version 1.127.0, support for adding existing nodes to the node pool. In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+
+        > **NOTE:** From version 1.149.0, support for specifying deploymentSet for node pools.
+
+        > **NOTE:** From version 1.158.0, Support for specifying the desired size of nodes for the node pool, for more information, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3)
+
+        > **NOTE:** From version 1.166.0, Support configuring system disk encryption.
+
+        > **NOTE:** From version 1.177.0+, Support `kms_encryption_context`, `rds_instances`, `system_disk_snapshot_policy_id` and `cpu_policy`, add spot strategy `SpotAsPriceGo` and `NoSpot`.
+
+        > **NOTE:** From version 1.180.0+, Support worker nodes customized kubelet parameters by field `kubelet_configuration` and `rollout_policy`.
+
+        > **NOTE:** From version 1.185.0+, Field `rollout_policy` will be deprecated and please use field `rolling_policy` instead.
+
+        For information about Container Service for Kubernetes (ACK) Nodepool and how to use it, see [What is Nodepool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+
+        > **NOTE:** Available since v1.97.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_efficiency")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=enhanced.zones[0].zone_id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=f"terraform-example-{default['result']}",
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            enable_rrsa=True)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            labels=[
+                {
+                    "key": "test1",
+                    "value": "nodepool",
+                },
+                {
+                    "key": "test2",
+                    "value": "nodepool",
+                },
+            ],
+            taints=[
+                {
+                    "key": "tf",
+                    "effect": "NoSchedule",
+                    "value": "example",
+                },
+                {
+                    "key": "tf2",
+                    "effect": "NoSchedule",
+                    "value": "example2",
+                },
+            ])
+        #The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+        desired_size = alicloud.cs.NodePool("desired_size",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="0")
+        # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+        maintenance = alicloud.cs.NodePool("maintenance",
+            node_pool_name="maintenance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            management={
+                "enable": True,
+                "auto_repair": True,
+                "auto_repair_policy": {
+                    "restart_node": True,
+                },
+                "auto_upgrade": True,
+                "auto_upgrade_policy": {
+                    "auto_upgrade_kubelet": True,
+                },
+                "auto_vul_fix": True,
+                "auto_vul_fix_policy": {
+                    "vul_level": "asap",
+                    "restart_node": True,
+                },
+                "max_unavailable": 1,
+            })
+        #Create a node pool with spot instance.
+        spot_instance = alicloud.cs.NodePool("spot_instance",
+            node_pool_name="spot_instance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[
+                cloud_efficiency.instance_types[0].id,
+                cloud_efficiency.instance_types[1].id,
+            ],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[
+                {
+                    "instance_type": cloud_efficiency.instance_types[0].id,
+                    "price_limit": "0.70",
+                },
+                {
+                    "instance_type": cloud_efficiency.instance_types[1].id,
+                    "price_limit": "0.72",
+                },
+            ])
+        #Use Spot instances to create a node pool with auto-scaling enabled
+        spot_auto_scaling = alicloud.cs.NodePool("spot_auto_scaling",
+            node_pool_name="spot_auto_scaling",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            scaling_config={
+                "min_size": 1,
+                "max_size": 10,
+                "type": "spot",
+            },
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[{
+                "instance_type": cloud_efficiency.instance_types[0].id,
+                "price_limit": "0.70",
+            }])
+        #Create a `PrePaid` node pool.
+        prepaid_node = alicloud.cs.NodePool("prepaid_node",
+            node_pool_name="prepaid_node",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            instance_charge_type="PrePaid",
+            period=1,
+            period_unit="Month",
+            auto_renew=True,
+            auto_renew_period=1,
+            install_cloud_monitor=True)
+        ##Create a node pool with customized kubelet parameters
+        customized_kubelet = alicloud.cs.NodePool("customized_kubelet",
+            node_pool_name="customized_kubelet",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            desired_size="0",
+            kubelet_configuration={
+                "registry_pull_qps": "10",
+                "registry_burst": "5",
+                "event_record_qps": "10",
+                "event_burst": "5",
+                "serialize_image_pulls": "true",
+                "eviction_hard": {
+                    "memory.available": "1024Mi",
+                    "nodefs.available": "10%",
+                    "nodefs.inodesFree": "5%",
+                    "imagefs.available": "10%",
+                },
+                "system_reserved": {
+                    "cpu": "1",
+                    "memory": "1Gi",
+                    "ephemeral-storage": "10Gi",
+                },
+                "kube_reserved": {
+                    "cpu": "500m",
+                    "memory": "1Gi",
+                },
+                "container_log_max_size": "200Mi",
+                "container_log_max_files": "3",
+                "max_pods": "100",
+                "read_only_port": "0",
+                "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
+            },
+            rolling_policy={
+                "max_parallelism": 1,
+            })
+        ```
+
+        ACK Auto Mode NodePool:
+
+        ACK nodepool with Auto Mode
+        Nodepools enable Auto Mode can only be created in Auto Mode clusters. An Auto Mode cluster automatically creates a Auto Mode node pool when creating cluster, which you can import using terraform import. You can also create a new Auto Mode node pool using the following code.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-hangzhou"
+        # The cluster specifications of kubernetes cluster,which can be empty. Valid values:ack.standard : Standard managed clusters; ack.pro.small : Professional managed clusters.
+        cluster_spec = config.get("clusterSpec")
+        if cluster_spec is None:
+            cluster_spec = "ack.pro.small"
+        # The availability zones of vswitches.
+        availability_zone = config.get_object("availabilityZone")
+        if availability_zone is None:
+            availability_zone = [
+                "cn-hangzhou-i",
+                "cn-hangzhou-j",
+                "cn-hangzhou-k",
+            ]
+        # List of existing node vswitch ids for terway.
+        node_vswitch_ids = config.get_object("nodeVswitchIds")
+        if node_vswitch_ids is None:
+            node_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'node_vswitch_ids' is not specified.
+        node_vswitch_cidrs = config.get_object("nodeVswitchCidrs")
+        if node_vswitch_cidrs is None:
+            node_vswitch_cidrs = [
+                "172.16.0.0/23",
+                "172.16.2.0/23",
+                "172.16.4.0/23",
+            ]
+        # List of existing pod vswitch ids for terway.
+        terway_vswitch_ids = config.get_object("terwayVswitchIds")
+        if terway_vswitch_ids is None:
+            terway_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_ids' is not specified.
+        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
+        if terway_vswitch_cidrs is None:
+            terway_vswitch_cidrs = [
+                "172.16.208.0/20",
+                "172.16.224.0/20",
+                "172.16.240.0/20",
+            ]
+        cluster_addons = config.get_object("clusterAddons")
+        if cluster_addons is None:
+            cluster_addons = [
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "metrics-server",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-coredns",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-security-inspector",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "ack-cost-exporter",
+                },
+                {
+                    "config": "{\\"ENITrunking\\":\\"true\\"}",
+                    "disabled": False,
+                    "name": "terway-controlplane",
+                },
+                {
+                    "config": "{\\"NetworkPolicy\\":\\"false\\",\\"ENITrunking\\":\\"true\\",\\"IPVlan\\":\\"false\\"}",
+                    "disabled": False,
+                    "name": "terway-eniip",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "csi-plugin",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-csiprovisioner",
+                },
+                {
+                    "config": "{\\"CnfsOssEnable\\":\\"false\\",\\"CnfsNasEnable\\":\\"false\\"}",
+                    "disabled": False,
+                    "name": "storage-operator",
+                },
+                {
+                    "config": "{\\"IngressDashboardEnabled\\":\\"true\\"}",
+                    "disabled": False,
+                    "name": "loongcollector",
+                },
+                {
+                    "config": "{\\"sls_project_name\\":\\"\\"}",
+                    "disabled": False,
+                    "name": "ack-node-problem-detector",
+                },
+                {
+                    "config": None,
+                    "disabled": True,
+                    "name": "nginx-ingress-controller",
+                },
+                {
+                    "config": "{\\"albIngress\\":{\\"CreateDefaultALBConfig\\":false}}",
+                    "disabled": False,
+                    "name": "alb-ingress-controller",
+                },
+                {
+                    "config": "{\\"prometheusMode\\":\\"default\\"}",
+                    "disabled": False,
+                    "name": "arms-prometheus",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "alicloud-monitor-controller",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-aliyun-acr-credential-helper",
+                },
+            ]
+        # The name prefix used to create managed kubernetes cluster.
+        k8s_name_prefix = config.get("k8sNamePrefix")
+        if k8s_name_prefix is None:
+            k8s_name_prefix = "tf-ack-hangzhou"
+        k8s_name_terway = std.substr(input=std.join(separator="-",
+                input=[
+                    k8s_name_prefix,
+                    "terway",
+                ]).result,
+            offset=0,
+            length=63).result
+        new_vpc_name = "tf-vpc-172-16"
+        nodepool_name = "default-nodepool"
+        default = alicloud.vpc.Network("default",
+            vpc_name=new_vpc_name,
+            cidr_block="172.16.0.0/12")
+        vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(node_vswitch_ids) > 0 else len(node_vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+                vpc_id=default.id,
+                cidr_block=node_vswitch_cidrs[range["value"]],
+                zone_id=availability_zone[range["value"]]))
+        terway_vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                vpc_id=default.id,
+                cidr_block=terway_vswitch_cidrs[range["value"]],
+                zone_id=availability_zone[range["value"]]))
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            addons=[{
+                "name": std.lookup(map=entry["value"],
+                    key="name",
+                    default=cluster_addons).result,
+                "config": std.lookup(map=entry["value"],
+                    key="config",
+                    default=cluster_addons).result,
+                "disabled": std.lookup(map=entry["value"],
+                    key="disabled",
+                    default=cluster_addons).result,
+            } for entry in [{"key": k, "value": v} for k, v in cluster_addons]],
+            name=k8s_name_terway,
+            cluster_spec=cluster_spec,
+            vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            pod_vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            new_nat_gateway=True,
+            service_cidr="10.11.0.0/16",
+            slb_internet_enabled=True,
+            enable_rrsa=True,
+            control_plane_log_components=[
+                "apiserver",
+                "kcm",
+                "scheduler",
+                "ccm",
+            ],
+            auto_mode={
+                "enabled": True,
+            },
+            maintenance_window={
+                "duration": "3h",
+                "weekly_period": "Monday",
+                "enable": True,
+                "maintenance_time": "2025-07-07T00:00:00.000+08:00",
+            },
+            operation_policy={
+                "cluster_auto_upgrade": {
+                    "channel": "stable",
+                    "enabled": True,
+                },
+            })
+        auto_mode_example = alicloud.cs.NodePool("auto_mode_example",
+            node_pool_name=nodepool_name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            auto_mode={
+                "enabled": True,
+            },
+            scaling_config={
+                "max_size": 50,
+                "min_size": 0,
+            },
+            instance_patterns=[{
+                "min_cpu_cores": 4,
+                "max_cpu_cores": 16,
+                "min_memory_size": 8,
+                "max_memory_size": 32,
+                "instance_family_level": "EnterpriseLevel",
+                "instance_type_families": [
+                    "ecs.u1",
+                    "ecs.g6",
+                    "ecs.c6",
+                    "ecs.r6",
+                    "ecs.g7",
+                    "ecs.c7",
+                    "ecs.r7",
+                    "ecs.g8i",
+                    "ecs.c8i",
+                    "ecs.r8i",
+                ],
+                "excluded_instance_types": [
+                    "ecs.c6t.*",
+                    "ecs.g6t.*",
+                    "ecs.t5.*",
+                    "ecs.t6.*",
+                    "ecs.vgn.*",
+                    "ecs.sgn.*",
+                ],
+                "instance_categories": ["General-purpose"],
+                "cpu_architectures": ["X86"],
+            }],
+            data_disks=[{
+                "size": 120,
+                "encrypted": "false",
+                "category": "cloud_essd",
+            }],
+            labels=[
+                {
+                    "key": "example1",
+                    "value": "nodepool",
+                },
+                {
+                    "key": "example2",
+                    "value": "nodepool",
+                },
+            ],
+            taints=[
+                {
+                    "key": "tf",
+                    "effect": "NoSchedule",
+                    "value": "example",
+                },
+                {
+                    "key": "tf2",
+                    "effect": "NoSchedule",
+                    "value": "example2",
+                },
+            ])
+        #Upgrade a node pool with upgrade_policy and rolling_policy
+        upgrade_nodepool = alicloud.cs.NodePool("upgrade_nodepool",
+            node_pool_name="upgrade_nodepool",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            instance_types=["ecs.c6.xlarge"],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            desired_size="2",
+            runtime_name="containerd",
+            runtime_version="1.6.39",
+            image_id="aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd",
+            upgrade_policy={
+                "image_id": "aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd",
+                "runtime": "containerd",
+                "runtime_version": "1.6.39",
+                "kubernetes_version": default_managed_kubernetes.version,
+                "use_replace": True,
+            },
+            rolling_policy={
+                "max_parallelism": 1,
+                "batch_interval": "1",
+                "pause_policy": "NotPause",
+            })
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -2944,6 +3532,9 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -2986,6 +3577,9 @@ class NodePool(pulumi.CustomResource):
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
                
                > **NOTE:** This parameter only applies during resource update.
@@ -2999,6 +3593,562 @@ class NodePool(pulumi.CustomResource):
                  args: NodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Container Service for Kubernetes (ACK) Nodepool resource.
+
+        This resource will help you to manage node pool in Kubernetes Cluster, see [What is kubernetes node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+
+        > **NOTE:** Available since v1.97.0.
+
+        > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
+
+        > **NOTE:** From version 1.109.1, support remove node pool nodes.
+
+        > **NOTE:** From version 1.111.0, support auto scaling node pool. For more information on how to use auto scaling node pools, see [Use Terraform to create an elastic node pool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools). With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+
+        > **NOTE:** ACK adds a new RamRole (AliyunCSManagedAutoScalerRole) for the permission control of the node pool with auto-scaling enabled. If you are using a node pool with auto scaling, please click [AliyunCSManagedAutoScalerRole](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedAutoScalerRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedAutoScalerRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+
+        > **NOTE:** ACK adds a new RamRole（AliyunCSManagedNlcRole） for the permission control of the management node pool. If you use the management node pool, please click [AliyunCSManagedNlcRole](https://ram.console.aliyun.com/role/authorization?spm=5176.2020520152.0.0.387f16ddEOZxMv&request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CS%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCSManagedNlcRole%22%2C%22TemplateId%22%3A%22AliyunCSManagedNlcRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcs.console.aliyun.com%2F%22%7D) to complete the authorization.
+
+        > **NOTE:** From version 1.123.1, supports the creation of a node pool of spot instance.
+
+        > **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+
+        > **NOTE:** From version 1.127.0, support for adding existing nodes to the node pool. In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+
+        > **NOTE:** From version 1.149.0, support for specifying deploymentSet for node pools.
+
+        > **NOTE:** From version 1.158.0, Support for specifying the desired size of nodes for the node pool, for more information, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3)
+
+        > **NOTE:** From version 1.166.0, Support configuring system disk encryption.
+
+        > **NOTE:** From version 1.177.0+, Support `kms_encryption_context`, `rds_instances`, `system_disk_snapshot_policy_id` and `cpu_policy`, add spot strategy `SpotAsPriceGo` and `NoSpot`.
+
+        > **NOTE:** From version 1.180.0+, Support worker nodes customized kubelet parameters by field `kubelet_configuration` and `rollout_policy`.
+
+        > **NOTE:** From version 1.185.0+, Field `rollout_policy` will be deprecated and please use field `rolling_policy` instead.
+
+        For information about Container Service for Kubernetes (ACK) Nodepool and how to use it, see [What is Nodepool](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-create-node-pools).
+
+        > **NOTE:** Available since v1.97.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_efficiency")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=enhanced.zones[0].zone_id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=f"terraform-example-{default['result']}",
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            enable_rrsa=True)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            labels=[
+                {
+                    "key": "test1",
+                    "value": "nodepool",
+                },
+                {
+                    "key": "test2",
+                    "value": "nodepool",
+                },
+            ],
+            taints=[
+                {
+                    "key": "tf",
+                    "effect": "NoSchedule",
+                    "value": "example",
+                },
+                {
+                    "key": "tf2",
+                    "effect": "NoSchedule",
+                    "value": "example2",
+                },
+            ])
+        #The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+        desired_size = alicloud.cs.NodePool("desired_size",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="0")
+        # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+        maintenance = alicloud.cs.NodePool("maintenance",
+            node_pool_name="maintenance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            management={
+                "enable": True,
+                "auto_repair": True,
+                "auto_repair_policy": {
+                    "restart_node": True,
+                },
+                "auto_upgrade": True,
+                "auto_upgrade_policy": {
+                    "auto_upgrade_kubelet": True,
+                },
+                "auto_vul_fix": True,
+                "auto_vul_fix_policy": {
+                    "vul_level": "asap",
+                    "restart_node": True,
+                },
+                "max_unavailable": 1,
+            })
+        #Create a node pool with spot instance.
+        spot_instance = alicloud.cs.NodePool("spot_instance",
+            node_pool_name="spot_instance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[
+                cloud_efficiency.instance_types[0].id,
+                cloud_efficiency.instance_types[1].id,
+            ],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[
+                {
+                    "instance_type": cloud_efficiency.instance_types[0].id,
+                    "price_limit": "0.70",
+                },
+                {
+                    "instance_type": cloud_efficiency.instance_types[1].id,
+                    "price_limit": "0.72",
+                },
+            ])
+        #Use Spot instances to create a node pool with auto-scaling enabled
+        spot_auto_scaling = alicloud.cs.NodePool("spot_auto_scaling",
+            node_pool_name="spot_auto_scaling",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            scaling_config={
+                "min_size": 1,
+                "max_size": 10,
+                "type": "spot",
+            },
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[{
+                "instance_type": cloud_efficiency.instance_types[0].id,
+                "price_limit": "0.70",
+            }])
+        #Create a `PrePaid` node pool.
+        prepaid_node = alicloud.cs.NodePool("prepaid_node",
+            node_pool_name="prepaid_node",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            instance_charge_type="PrePaid",
+            period=1,
+            period_unit="Month",
+            auto_renew=True,
+            auto_renew_period=1,
+            install_cloud_monitor=True)
+        ##Create a node pool with customized kubelet parameters
+        customized_kubelet = alicloud.cs.NodePool("customized_kubelet",
+            node_pool_name="customized_kubelet",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            desired_size="0",
+            kubelet_configuration={
+                "registry_pull_qps": "10",
+                "registry_burst": "5",
+                "event_record_qps": "10",
+                "event_burst": "5",
+                "serialize_image_pulls": "true",
+                "eviction_hard": {
+                    "memory.available": "1024Mi",
+                    "nodefs.available": "10%",
+                    "nodefs.inodesFree": "5%",
+                    "imagefs.available": "10%",
+                },
+                "system_reserved": {
+                    "cpu": "1",
+                    "memory": "1Gi",
+                    "ephemeral-storage": "10Gi",
+                },
+                "kube_reserved": {
+                    "cpu": "500m",
+                    "memory": "1Gi",
+                },
+                "container_log_max_size": "200Mi",
+                "container_log_max_files": "3",
+                "max_pods": "100",
+                "read_only_port": "0",
+                "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
+            },
+            rolling_policy={
+                "max_parallelism": 1,
+            })
+        ```
+
+        ACK Auto Mode NodePool:
+
+        ACK nodepool with Auto Mode
+        Nodepools enable Auto Mode can only be created in Auto Mode clusters. An Auto Mode cluster automatically creates a Auto Mode node pool when creating cluster, which you can import using terraform import. You can also create a new Auto Mode node pool using the following code.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-hangzhou"
+        # The cluster specifications of kubernetes cluster,which can be empty. Valid values:ack.standard : Standard managed clusters; ack.pro.small : Professional managed clusters.
+        cluster_spec = config.get("clusterSpec")
+        if cluster_spec is None:
+            cluster_spec = "ack.pro.small"
+        # The availability zones of vswitches.
+        availability_zone = config.get_object("availabilityZone")
+        if availability_zone is None:
+            availability_zone = [
+                "cn-hangzhou-i",
+                "cn-hangzhou-j",
+                "cn-hangzhou-k",
+            ]
+        # List of existing node vswitch ids for terway.
+        node_vswitch_ids = config.get_object("nodeVswitchIds")
+        if node_vswitch_ids is None:
+            node_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'node_vswitch_ids' is not specified.
+        node_vswitch_cidrs = config.get_object("nodeVswitchCidrs")
+        if node_vswitch_cidrs is None:
+            node_vswitch_cidrs = [
+                "172.16.0.0/23",
+                "172.16.2.0/23",
+                "172.16.4.0/23",
+            ]
+        # List of existing pod vswitch ids for terway.
+        terway_vswitch_ids = config.get_object("terwayVswitchIds")
+        if terway_vswitch_ids is None:
+            terway_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_ids' is not specified.
+        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
+        if terway_vswitch_cidrs is None:
+            terway_vswitch_cidrs = [
+                "172.16.208.0/20",
+                "172.16.224.0/20",
+                "172.16.240.0/20",
+            ]
+        cluster_addons = config.get_object("clusterAddons")
+        if cluster_addons is None:
+            cluster_addons = [
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "metrics-server",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-coredns",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-security-inspector",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "ack-cost-exporter",
+                },
+                {
+                    "config": "{\\"ENITrunking\\":\\"true\\"}",
+                    "disabled": False,
+                    "name": "terway-controlplane",
+                },
+                {
+                    "config": "{\\"NetworkPolicy\\":\\"false\\",\\"ENITrunking\\":\\"true\\",\\"IPVlan\\":\\"false\\"}",
+                    "disabled": False,
+                    "name": "terway-eniip",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "csi-plugin",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-csiprovisioner",
+                },
+                {
+                    "config": "{\\"CnfsOssEnable\\":\\"false\\",\\"CnfsNasEnable\\":\\"false\\"}",
+                    "disabled": False,
+                    "name": "storage-operator",
+                },
+                {
+                    "config": "{\\"IngressDashboardEnabled\\":\\"true\\"}",
+                    "disabled": False,
+                    "name": "loongcollector",
+                },
+                {
+                    "config": "{\\"sls_project_name\\":\\"\\"}",
+                    "disabled": False,
+                    "name": "ack-node-problem-detector",
+                },
+                {
+                    "config": None,
+                    "disabled": True,
+                    "name": "nginx-ingress-controller",
+                },
+                {
+                    "config": "{\\"albIngress\\":{\\"CreateDefaultALBConfig\\":false}}",
+                    "disabled": False,
+                    "name": "alb-ingress-controller",
+                },
+                {
+                    "config": "{\\"prometheusMode\\":\\"default\\"}",
+                    "disabled": False,
+                    "name": "arms-prometheus",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "alicloud-monitor-controller",
+                },
+                {
+                    "config": None,
+                    "disabled": False,
+                    "name": "managed-aliyun-acr-credential-helper",
+                },
+            ]
+        # The name prefix used to create managed kubernetes cluster.
+        k8s_name_prefix = config.get("k8sNamePrefix")
+        if k8s_name_prefix is None:
+            k8s_name_prefix = "tf-ack-hangzhou"
+        k8s_name_terway = std.substr(input=std.join(separator="-",
+                input=[
+                    k8s_name_prefix,
+                    "terway",
+                ]).result,
+            offset=0,
+            length=63).result
+        new_vpc_name = "tf-vpc-172-16"
+        nodepool_name = "default-nodepool"
+        default = alicloud.vpc.Network("default",
+            vpc_name=new_vpc_name,
+            cidr_block="172.16.0.0/12")
+        vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(node_vswitch_ids) > 0 else len(node_vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+                vpc_id=default.id,
+                cidr_block=node_vswitch_cidrs[range["value"]],
+                zone_id=availability_zone[range["value"]]))
+        terway_vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                vpc_id=default.id,
+                cidr_block=terway_vswitch_cidrs[range["value"]],
+                zone_id=availability_zone[range["value"]]))
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            addons=[{
+                "name": std.lookup(map=entry["value"],
+                    key="name",
+                    default=cluster_addons).result,
+                "config": std.lookup(map=entry["value"],
+                    key="config",
+                    default=cluster_addons).result,
+                "disabled": std.lookup(map=entry["value"],
+                    key="disabled",
+                    default=cluster_addons).result,
+            } for entry in [{"key": k, "value": v} for k, v in cluster_addons]],
+            name=k8s_name_terway,
+            cluster_spec=cluster_spec,
+            vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            pod_vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            new_nat_gateway=True,
+            service_cidr="10.11.0.0/16",
+            slb_internet_enabled=True,
+            enable_rrsa=True,
+            control_plane_log_components=[
+                "apiserver",
+                "kcm",
+                "scheduler",
+                "ccm",
+            ],
+            auto_mode={
+                "enabled": True,
+            },
+            maintenance_window={
+                "duration": "3h",
+                "weekly_period": "Monday",
+                "enable": True,
+                "maintenance_time": "2025-07-07T00:00:00.000+08:00",
+            },
+            operation_policy={
+                "cluster_auto_upgrade": {
+                    "channel": "stable",
+                    "enabled": True,
+                },
+            })
+        auto_mode_example = alicloud.cs.NodePool("auto_mode_example",
+            node_pool_name=nodepool_name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            auto_mode={
+                "enabled": True,
+            },
+            scaling_config={
+                "max_size": 50,
+                "min_size": 0,
+            },
+            instance_patterns=[{
+                "min_cpu_cores": 4,
+                "max_cpu_cores": 16,
+                "min_memory_size": 8,
+                "max_memory_size": 32,
+                "instance_family_level": "EnterpriseLevel",
+                "instance_type_families": [
+                    "ecs.u1",
+                    "ecs.g6",
+                    "ecs.c6",
+                    "ecs.r6",
+                    "ecs.g7",
+                    "ecs.c7",
+                    "ecs.r7",
+                    "ecs.g8i",
+                    "ecs.c8i",
+                    "ecs.r8i",
+                ],
+                "excluded_instance_types": [
+                    "ecs.c6t.*",
+                    "ecs.g6t.*",
+                    "ecs.t5.*",
+                    "ecs.t6.*",
+                    "ecs.vgn.*",
+                    "ecs.sgn.*",
+                ],
+                "instance_categories": ["General-purpose"],
+                "cpu_architectures": ["X86"],
+            }],
+            data_disks=[{
+                "size": 120,
+                "encrypted": "false",
+                "category": "cloud_essd",
+            }],
+            labels=[
+                {
+                    "key": "example1",
+                    "value": "nodepool",
+                },
+                {
+                    "key": "example2",
+                    "value": "nodepool",
+                },
+            ],
+            taints=[
+                {
+                    "key": "tf",
+                    "effect": "NoSchedule",
+                    "value": "example",
+                },
+                {
+                    "key": "tf2",
+                    "effect": "NoSchedule",
+                    "value": "example2",
+                },
+            ])
+        #Upgrade a node pool with upgrade_policy and rolling_policy
+        upgrade_nodepool = alicloud.cs.NodePool("upgrade_nodepool",
+            node_pool_name="upgrade_nodepool",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            instance_types=["ecs.c6.xlarge"],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            desired_size="2",
+            runtime_name="containerd",
+            runtime_version="1.6.39",
+            image_id="aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd",
+            upgrade_policy={
+                "image_id": "aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd",
+                "runtime": "containerd",
+                "runtime_version": "1.6.39",
+                "kubernetes_version": default_managed_kubernetes.version,
+                "use_replace": True,
+            },
+            rolling_policy={
+                "max_parallelism": 1,
+                "batch_interval": "1",
+                "pause_policy": "NotPause",
+            })
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -3364,6 +4514,9 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -3407,6 +4560,9 @@ class NodePool(pulumi.CustomResource):
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Union['NodePoolUpgradePolicyArgs', 'NodePoolUpgradePolicyArgsDict']] upgrade_policy: Configuration block for node pool upgrade operations. This is a transient parameter that triggers node pool upgrades when specified. Once the upgrade completes, this block should be removed from your configuration to prevent unintended re-upgrades on subsequent applies. See `upgrade_policy` below.
                
                > **NOTE:** This parameter only applies during resource update.
@@ -3914,6 +5070,11 @@ class NodePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> pulumi.Output[Optional['outputs.NodePoolRollingPolicy']]:
+        """
+        Rotary configuration. See `rolling_policy` below.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "rolling_policy")
 
     @_builtins.property
@@ -4159,6 +5320,11 @@ class NodePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Synchronously update node labels and taints.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "update_nodes")
 
     @_builtins.property

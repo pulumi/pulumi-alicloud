@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a market order resource.
+//
+// > **NOTE:** Terraform will auto build a market order  while it uses `marketplace.Order` to build a market order resource.
+//
+// > **NOTE:** Available since v1.69.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

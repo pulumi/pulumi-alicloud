@@ -49,6 +49,12 @@ export class Domain extends pulumi.CustomResource {
         return obj['__pulumiType'] === Domain.__pulumiType;
     }
 
+    /**
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly accessType: pulumi.Output<string | undefined>;
     /**
      * The CNAME assigned by WAF to the domain name.
@@ -144,6 +150,12 @@ export class Domain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Domain resources.
  */
 export interface DomainState {
+    /**
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     accessType?: pulumi.Input<string>;
     /**
      * The CNAME assigned by WAF to the domain name.
@@ -187,6 +199,12 @@ export interface DomainState {
  * The set of arguments for constructing a Domain resource.
  */
 export interface DomainArgs {
+    /**
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     accessType?: pulumi.Input<string>;
     /**
      * The name of the domain name to query.

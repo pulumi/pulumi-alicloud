@@ -133,16 +133,40 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fileSystemType);
     }
 
+    /**
+     * String of keytab file content encrypted by base64
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="keytab")
     private @Nullable Output<String> keytab;
 
+    /**
+     * @return String of keytab file content encrypted by base64
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> keytab() {
         return Optional.ofNullable(this.keytab);
     }
 
+    /**
+     * String of the keytab file content encrypted by MD5
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="keytabMd5")
     private @Nullable Output<String> keytabMd5;
 
+    /**
+     * @return String of the keytab file content encrypted by MD5
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> keytabMd5() {
         return Optional.ofNullable(this.keytabMd5);
     }
@@ -596,20 +620,52 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
             return fileSystemType(Output.of(fileSystemType));
         }
 
+        /**
+         * @param keytab String of keytab file content encrypted by base64
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keytab(@Nullable Output<String> keytab) {
             $.keytab = keytab;
             return this;
         }
 
+        /**
+         * @param keytab String of keytab file content encrypted by base64
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keytab(String keytab) {
             return keytab(Output.of(keytab));
         }
 
+        /**
+         * @param keytabMd5 String of the keytab file content encrypted by MD5
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keytabMd5(@Nullable Output<String> keytabMd5) {
             $.keytabMd5 = keytabMd5;
             return this;
         }
 
+        /**
+         * @param keytabMd5 String of the keytab file content encrypted by MD5
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keytabMd5(String keytabMd5) {
             return keytabMd5(Output.of(keytabMd5));
         }

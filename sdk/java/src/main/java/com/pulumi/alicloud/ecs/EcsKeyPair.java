@@ -124,6 +124,10 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyFile);
     }
     /**
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
      * @deprecated
      * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
@@ -132,12 +136,26 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
+    /**
+     * @return Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
+     */
     public Output<String> keyName() {
         return this.keyName;
     }
+    /**
+     * The key pair name&#39;s prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     @Export(name="keyNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyNamePrefix;
 
+    /**
+     * @return The key pair name&#39;s prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     public Output<Optional<String>> keyNamePrefix() {
         return Codegen.optional(this.keyNamePrefix);
     }

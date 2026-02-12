@@ -7,6 +7,493 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+ *
+ * For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+ *
+ * > **NOTE:** This resource has a fatal bug in the version v1.155.0. If you want to use new feature, please upgrade it to v1.156.0.
+ * **NOTE:** Available since v1.155.0.
+ *
+ * ## Example Usage
+ *
+ * ### Create RDS MySQL instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: "terraform-example",
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: "terraform-example",
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ * });
+ * ```
+ *
+ * ### Create a RDS MySQL instance with specific parameters
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: "terraform-example",
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: "terraform-example",
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ *     parameters: [
+ *         {
+ *             name: "delayed_insert_timeout",
+ *             value: "600",
+ *         },
+ *         {
+ *             name: "max_length_for_sort_data",
+ *             value: "2048",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Create a High Availability RDS MySQL Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ *         vpcId: exampleNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "172.16.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: example.then(example => example.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: "terraform_example_%d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: "terraform-example",
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: "terraform-example",
+ *     vswitchId: std.joinOutput({
+ *         separator: ",",
+ *         input: exampleSwitch.map(__item => __item.id),
+ *     }).apply(invoke => invoke.result),
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ *     zoneIdSlaveA: example.then(example => example.zones?.[1]?.id),
+ * });
+ * ```
+ *
+ * ### Create a High Availability RDS MySQL Instance with multi zones
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "HighAvailability",
+ *     instanceChargeType: "PostPaid",
+ *     dbInstanceStorageType: "cloud_essd",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ *         vpcId: exampleNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "172.16.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: example.then(example => example.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: "%s_%d",
+ *             args: [
+ *                 name,
+ *                 range.value,
+ *             ],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "HighAvailability",
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     vswitchId: std.joinOutput({
+ *         separator: ",",
+ *         input: exampleSwitch.map(__item => __item.id),
+ *     }).apply(invoke => invoke.result),
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ *     zoneIdSlaveA: example.then(example => example.zones?.[1]?.id),
+ * });
+ * ```
+ *
+ * ### Create an Enterprise Edition RDS MySQL Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     dbInstanceStorageType: "local_ssd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     dbInstanceStorageType: "local_ssd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ *         vpcId: exampleNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "172.16.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: example.then(example => example.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: "%s_%d",
+ *             args: [
+ *                 name,
+ *                 range.value,
+ *             ],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "Finance",
+ *     instanceType: "mysql.n2.xlarge.25",
+ *     instanceStorage: 20,
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     vswitchId: std.joinOutput({
+ *         separator: ",",
+ *         input: exampleSwitch.map(__item => __item.id),
+ *     }).apply(invoke => invoke.result),
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "local_ssd",
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ *     zoneIdSlaveA: example.then(example => example.zones?.[1]?.id),
+ * });
+ * ```
+ *
+ * ### Create a Serverless RDS MySQL Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-accdbinstance";
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "Serverless",
+ *     category: "serverless_basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.ids?.[1],
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "serverless_basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "Serverless",
+ *     commodityCode: "rds_serverless_public_cn",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: example.then(example => example.ids?.[1]),
+ *     vswitchName: name,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceChargeType: "Serverless",
+ *     instanceName: name,
+ *     zoneId: example.then(example => example.ids?.[1]),
+ *     vswitchId: exampleSwitch.id,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     category: "serverless_basic",
+ *     serverlessConfigs: [{
+ *         maxCapacity: 8,
+ *         minCapacity: 0.5,
+ *         autoPause: false,
+ *         switchForce: false,
+ *     }],
+ * });
+ * ```
+ *
+ * ### Create a Serverless RDS PostgreSQL Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-accdbinstance";
+ * const example = alicloud.rds.getZones({
+ *     engine: "PostgreSQL",
+ *     engineVersion: "14.0",
+ *     instanceChargeType: "Serverless",
+ *     category: "serverless_basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.ids?.[1],
+ *     engine: "PostgreSQL",
+ *     engineVersion: "14.0",
+ *     category: "serverless_basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "Serverless",
+ *     commodityCode: "rds_serverless_public_cn",
+ * }));
+ * const _default = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([_default, example]).then(([_default, example]) => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
+ *     zoneId: example.ids?.[1],
+ * }));
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "PostgreSQL",
+ *     engineVersion: "14.0",
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceChargeType: "Serverless",
+ *     instanceName: name,
+ *     zoneId: example.then(example => example.ids?.[1]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     dbInstanceStorageType: "cloud_essd",
+ *     category: "serverless_basic",
+ *     serverlessConfigs: [{
+ *         maxCapacity: 12,
+ *         minCapacity: 0.5,
+ *     }],
+ * });
+ * ```
+ *
+ * ### Create a Serverless RDS SQLServer Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-accdbinstance";
+ * const example = alicloud.rds.getZones({
+ *     engine: "SQLServer",
+ *     engineVersion: "2019_std_sl",
+ *     instanceChargeType: "Serverless",
+ *     category: "serverless_ha",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.ids?.[1],
+ *     engine: "SQLServer",
+ *     engineVersion: "2019_std_sl",
+ *     category: "serverless_ha",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "Serverless",
+ *     commodityCode: "rds_serverless_public_cn",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: example.then(example => example.ids?.[1]),
+ *     vswitchName: name,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
+ *     engine: "SQLServer",
+ *     engineVersion: "2019_std_sl",
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceChargeType: "Serverless",
+ *     instanceName: name,
+ *     zoneId: example.then(example => example.ids?.[1]),
+ *     zoneIdSlaveA: example.then(example => example.ids?.[1]),
+ *     vswitchId: std.joinOutput({
+ *         separator: ",",
+ *         input: [
+ *             exampleSwitch.id,
+ *             exampleSwitch.id,
+ *         ],
+ *     }).apply(invoke => invoke.result),
+ *     dbInstanceStorageType: "cloud_essd",
+ *     category: "serverless_ha",
+ *     serverlessConfigs: [{
+ *         maxCapacity: 8,
+ *         minCapacity: 2,
+ *     }],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.rds.Instance` or removing it from your configuration
+ *
+ * The `alicloud.rds.Instance` resource allows you to manage `instanceChargeType = "Prepaid"` db instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
+ * You can resume managing the subscription db instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RDS instance can be imported using the id, e.g.

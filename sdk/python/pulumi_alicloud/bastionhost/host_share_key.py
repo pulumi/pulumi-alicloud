@@ -243,7 +243,7 @@ class HostShareKey(pulumi.CustomResource):
                     bandwidth="5",
                     period=1,
                     vswitch_id=default_get_switches.ids[0],
-                    security_group_ids=[default_security_group[0].id.apply(lambda id: id)]))
+                    security_group_ids=[default_security_group[0].id]))
 
         len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         instance_id = pulumi.Output.all(
@@ -326,7 +326,7 @@ class HostShareKey(pulumi.CustomResource):
                     bandwidth="5",
                     period=1,
                     vswitch_id=default_get_switches.ids[0],
-                    security_group_ids=[default_security_group[0].id.apply(lambda id: id)]))
+                    security_group_ids=[default_security_group[0].id]))
 
         len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         instance_id = pulumi.Output.all(

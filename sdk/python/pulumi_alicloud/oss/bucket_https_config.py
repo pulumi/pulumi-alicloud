@@ -172,6 +172,45 @@ class BucketHttpsConfig(pulumi.CustomResource):
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides a OSS Bucket Https Config resource.
+
+        Whether the bucket can only be accessed with specific TLS versions.
+
+        For information about OSS Bucket Https Config and how to use it, see [What is Bucket Https Config](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketHttpsConfig).
+
+        > **NOTE:** Available since v1.220.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_https_config = alicloud.oss.BucketHttpsConfig("default",
+            tls_versions=["TLSv1.2"],
+            bucket=create_bucket.bucket,
+            enable=True)
+        ```
+
+        ### Deleting `oss.BucketHttpsConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketHttpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Https Config can be imported using the id, e.g.
@@ -194,6 +233,45 @@ class BucketHttpsConfig(pulumi.CustomResource):
                  args: BucketHttpsConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a OSS Bucket Https Config resource.
+
+        Whether the bucket can only be accessed with specific TLS versions.
+
+        For information about OSS Bucket Https Config and how to use it, see [What is Bucket Https Config](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketHttpsConfig).
+
+        > **NOTE:** Available since v1.220.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_https_config = alicloud.oss.BucketHttpsConfig("default",
+            tls_versions=["TLSv1.2"],
+            bucket=create_bucket.bucket,
+            enable=True)
+        ```
+
+        ### Deleting `oss.BucketHttpsConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketHttpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Https Config can be imported using the id, e.g.

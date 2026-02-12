@@ -12,6 +12,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a OSS Bucket Archive Direct Read resource.
+//
+// Real-time access Archive objects in the bucket without the need to restore the Archive objects.
+//
+// For information about OSS Bucket Archive Direct Read and how to use it, see [What is Bucket Archive Direct Read](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketArchiveDirectRead).
+//
+// > **NOTE:** Available since v1.271.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
+//				StorageClass: pulumi.String("Standard"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketArchiveDirectRead(ctx, "default", &oss.BucketArchiveDirectReadArgs{
+//				Bucket:  createBucket.ID(),
+//				Enabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `oss.BucketArchiveDirectRead` or removing it from your configuration
+//
+// Terraform cannot destroy resource `oss.BucketArchiveDirectRead`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // OSS Bucket Archive Direct Read can be imported using the id, e.g.

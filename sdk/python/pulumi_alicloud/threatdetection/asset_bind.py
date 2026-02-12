@@ -106,6 +106,38 @@ class AssetBind(pulumi.CustomResource):
                  uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Threat Detection Asset Bind resource.
+
+        Asset Binding Information.
+
+        For information about Threat Detection Asset Bind and how to use it, see [What is Asset Bind](https://next.api.alibabacloud.com/document/Sas/2018-12-03/UpdatePostPaidBindRel).
+
+        > **NOTE:** Available since v1.247.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_asset_bind = alicloud.threatdetection.AssetBind("default",
+            uuid=default.assets[0].uuid,
+            auth_version=5)
+        ```
+
+        ### Deleting `threatdetection.AssetBind` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.AssetBind`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Asset Bind can be imported using the id, e.g.
@@ -126,6 +158,38 @@ class AssetBind(pulumi.CustomResource):
                  args: Optional[AssetBindArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Threat Detection Asset Bind resource.
+
+        Asset Binding Information.
+
+        For information about Threat Detection Asset Bind and how to use it, see [What is Asset Bind](https://next.api.alibabacloud.com/document/Sas/2018-12-03/UpdatePostPaidBindRel).
+
+        > **NOTE:** Available since v1.247.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_asset_bind = alicloud.threatdetection.AssetBind("default",
+            uuid=default.assets[0].uuid,
+            auth_version=5)
+        ```
+
+        ### Deleting `threatdetection.AssetBind` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.AssetBind`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Asset Bind can be imported using the id, e.g.

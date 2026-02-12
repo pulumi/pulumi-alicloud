@@ -36,6 +36,9 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly accountType: pulumi.Output<string | undefined>;
+    /**
+     * Use this to mark a terraform configuration file source.
+     */
     declare public readonly configurationSource: pulumi.Output<string | undefined>;
     /**
      * The URI of sidecar credentials service.
@@ -168,6 +171,9 @@ export interface ProviderArgs {
      * The maximum timeout of the client read request.
      */
     clientReadTimeout?: pulumi.Input<number>;
+    /**
+     * Use this to mark a terraform configuration file source.
+     */
     configurationSource?: pulumi.Input<string>;
     /**
      * The URI of sidecar credentials service.

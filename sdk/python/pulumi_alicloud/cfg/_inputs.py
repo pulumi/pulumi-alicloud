@@ -35,20 +35,15 @@ __all__ = [
     'RuleComplianceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AggregateCompliancePackConfigRuleArgsDict(TypedDict):
-        managed_rule_identifier: pulumi.Input[_builtins.str]
-        """
-        The Managed Rule Identifier.
-        """
-        config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
-        """
-        A list of parameter rules. See `config_rule_parameters` below.
-        """
-elif False:
-    AggregateCompliancePackConfigRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AggregateCompliancePackConfigRuleArgsDict(TypedDict):
+    managed_rule_identifier: pulumi.Input[_builtins.str]
+    """
+    The Managed Rule Identifier.
+    """
+    config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
+    """
+    A list of parameter rules. See `config_rule_parameters` below.
+    """
 
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleArgs:
@@ -88,18 +83,15 @@ class AggregateCompliancePackConfigRuleArgs:
         pulumi.set(self, "config_rule_parameters", value)
 
 
-if not MYPY:
-    class AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
-        parameter_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Parameter Name.
-        """
-        parameter_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Parameter Value.
-        """
-elif False:
-    AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict: TypeAlias = Mapping[str, Any]
+class AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
+    parameter_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Parameter Name.
+    """
+    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Parameter Value.
+    """
 
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
@@ -140,14 +132,11 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class AggregateCompliancePackConfigRuleIdArgsDict(TypedDict):
-        config_rule_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rule ID of Aggregate Config Rule.
-        """
-elif False:
-    AggregateCompliancePackConfigRuleIdArgsDict: TypeAlias = Mapping[str, Any]
+class AggregateCompliancePackConfigRuleIdArgsDict(TypedDict):
+    config_rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rule ID of Aggregate Config Rule.
+    """
 
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleIdArgs:
@@ -172,22 +161,19 @@ class AggregateCompliancePackConfigRuleIdArgs:
         pulumi.set(self, "config_rule_id", value)
 
 
-if not MYPY:
-    class AggregatorAggregatorAccountArgsDict(TypedDict):
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The member ID.
-        """
-        account_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The member name.
-        """
-        account_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The affiliation of the member. Valid values: `ResourceDirectory`.
-        """
-elif False:
-    AggregatorAggregatorAccountArgsDict: TypeAlias = Mapping[str, Any]
+class AggregatorAggregatorAccountArgsDict(TypedDict):
+    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The member ID.
+    """
+    account_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The member name.
+    """
+    account_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The affiliation of the member. Valid values: `ResourceDirectory`.
+    """
 
 @pulumi.input_type
 class AggregatorAggregatorAccountArgs:
@@ -244,18 +230,15 @@ class AggregatorAggregatorAccountArgs:
         pulumi.set(self, "account_type", value)
 
 
-if not MYPY:
-    class CompliancePackConfigRuleArgsDict(TypedDict):
-        managed_rule_identifier: pulumi.Input[_builtins.str]
-        """
-        The Managed Rule Identifier.
-        """
-        config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
-        """
-        A list of Config Rule Parameters. See `config_rule_parameters` below.
-        """
-elif False:
-    CompliancePackConfigRuleArgsDict: TypeAlias = Mapping[str, Any]
+class CompliancePackConfigRuleArgsDict(TypedDict):
+    managed_rule_identifier: pulumi.Input[_builtins.str]
+    """
+    The Managed Rule Identifier.
+    """
+    config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
+    """
+    A list of Config Rule Parameters. See `config_rule_parameters` below.
+    """
 
 @pulumi.input_type
 class CompliancePackConfigRuleArgs:
@@ -295,18 +278,15 @@ class CompliancePackConfigRuleArgs:
         pulumi.set(self, "config_rule_parameters", value)
 
 
-if not MYPY:
-    class CompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
-        parameter_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter name.
-        """
-        parameter_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter value.
-        """
-elif False:
-    CompliancePackConfigRuleConfigRuleParameterArgsDict: TypeAlias = Mapping[str, Any]
+class CompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
+    parameter_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameter name.
+    """
+    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameter value.
+    """
 
 @pulumi.input_type
 class CompliancePackConfigRuleConfigRuleParameterArgs:
@@ -347,14 +327,11 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
-if not MYPY:
-    class CompliancePackConfigRuleIdArgsDict(TypedDict):
-        config_rule_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rule ID of Config Rule.
-        """
-elif False:
-    CompliancePackConfigRuleIdArgsDict: TypeAlias = Mapping[str, Any]
+class CompliancePackConfigRuleIdArgsDict(TypedDict):
+    config_rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rule ID of Config Rule.
+    """
 
 @pulumi.input_type
 class CompliancePackConfigRuleIdArgs:
@@ -379,25 +356,22 @@ class CompliancePackConfigRuleIdArgs:
         pulumi.set(self, "config_rule_id", value)
 
 
-if not MYPY:
-    class ReportTemplateReportScopeArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key for reporting scope, currently supported:
-        - AggregatorId
-        - CompliancePackId
-        - RuleId
-        """
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The matching logic. Currently, only In is supported.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
-        """
-elif False:
-    ReportTemplateReportScopeArgsDict: TypeAlias = Mapping[str, Any]
+class ReportTemplateReportScopeArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key for reporting scope, currently supported:
+    - AggregatorId
+    - CompliancePackId
+    - RuleId
+    """
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The matching logic. Currently, only In is supported.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+    """
 
 @pulumi.input_type
 class ReportTemplateReportScopeArgs:
@@ -460,18 +434,15 @@ class ReportTemplateReportScopeArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RuleComplianceArgsDict(TypedDict):
-        compliance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
-        """
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The count of compliance.
-        """
-elif False:
-    RuleComplianceArgsDict: TypeAlias = Mapping[str, Any]
+class RuleComplianceArgsDict(TypedDict):
+    compliance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+    """
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The count of compliance.
+    """
 
 @pulumi.input_type
 class RuleComplianceArgs:

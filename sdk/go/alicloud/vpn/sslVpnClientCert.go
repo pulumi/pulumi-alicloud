@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a SSL VPN client cert resource.
+//
+// > **NOTE:** Terraform will auto build SSL VPN client certs while it uses `vpn.SslVpnClientCert` to build a ssl vpn client certs resource.
+// It depends on VPN instance and SSL VPN Server.
+//
+// > **NOTE:** Available since v1.15.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

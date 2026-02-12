@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -70,7 +68,7 @@ import (
 // Dcdn Kv Namespace can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example
+// $ terraform import alicloud_dcdn_kv_namespace.example
 // ```
 type KvNamespace struct {
 	pulumi.CustomResourceState

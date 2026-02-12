@@ -11,6 +11,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an Application Load Balancer resource.
+//
+// > **NOTE:** Available since v1.123.1.
+//
+// > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
+//
+// > **NOTE:** The supported specifications vary by region. Currently, not all regions support guaranteed-performance instances.
+// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			slbLoadBalancerName := "forSlbLoadBalancer"
+//			if param := cfg.Get("slbLoadBalancerName"); param != "" {
+//				slbLoadBalancerName = param
+//			}
+//			loadBalancer, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			loadBalancerNetwork, err := vpc.NewNetwork(ctx, "load_balancer", &vpc.NetworkArgs{
+//				VpcName: pulumi.String(slbLoadBalancerName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			loadBalancerSwitch, err := vpc.NewSwitch(ctx, "load_balancer", &vpc.SwitchArgs{
+//				VpcId:       loadBalancerNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(loadBalancer.Zones[0].Id),
+//				VswitchName: pulumi.String(slbLoadBalancerName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewApplicationLoadBalancer(ctx, "load_balancer", &slb.ApplicationLoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(slbLoadBalancerName),
+//				AddressType:      pulumi.String("intranet"),
+//				LoadBalancerSpec: pulumi.String("slb.s2.small"),
+//				VswitchId:        loadBalancerSwitch.ID(),
+//				Tags: pulumi.StringMap{
+//					"info": pulumi.String("create for internet"),
+//				},
+//				InstanceChargeType: pulumi.String("PayBySpec"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `slb.ApplicationLoadBalancer` or removing it from your configuration
+//
+// The `slb.ApplicationLoadBalancer` resource allows you to manage `paymentType = "Subscription"` load balancer, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Load Balancer.
+// You can resume managing the subscription load balancer via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Load balancer can be imported using the id, e.g.
@@ -37,7 +116,10 @@ type ApplicationLoadBalancer struct {
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
-	LoadBalancerName   pulumi.StringOutput    `pulumi:"loadBalancerName"`
+	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+	// Terraform will autogenerate a name beginning with `tf-lb`.
+	LoadBalancerName pulumi.StringOutput `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
@@ -118,7 +200,10 @@ type applicationLoadBalancerState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	LoadBalancerName   *string `pulumi:"loadBalancerName"`
+	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+	// Terraform will autogenerate a name beginning with `tf-lb`.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
@@ -170,7 +255,10 @@ type ApplicationLoadBalancerState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType pulumi.StringPtrInput
-	LoadBalancerName   pulumi.StringPtrInput
+	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+	// Terraform will autogenerate a name beginning with `tf-lb`.
+	LoadBalancerName pulumi.StringPtrInput
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
@@ -226,7 +314,10 @@ type applicationLoadBalancerArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	LoadBalancerName   *string `pulumi:"loadBalancerName"`
+	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+	// Terraform will autogenerate a name beginning with `tf-lb`.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
@@ -279,7 +370,10 @@ type ApplicationLoadBalancerArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType pulumi.StringPtrInput
-	LoadBalancerName   pulumi.StringPtrInput
+	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+	// Terraform will autogenerate a name beginning with `tf-lb`.
+	LoadBalancerName pulumi.StringPtrInput
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
@@ -438,6 +532,9 @@ func (o ApplicationLoadBalancerOutput) InternetChargeType() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+// Terraform will autogenerate a name beginning with `tf-lb`.
 func (o ApplicationLoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.LoadBalancerName }).(pulumi.StringOutput)
 }

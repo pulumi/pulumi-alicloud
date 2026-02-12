@@ -10,6 +10,74 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hologram
 {
     /// <summary>
+    /// Provides a Hologres (Hologram) Instance resource.
+    /// 
+    /// For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.213.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var defaultVSwitch = new AliCloud.Vpc.Switch("defaultVSwitch", new()
+    ///     {
+    ///         VpcId = defaultVpc.Id,
+    ///         ZoneId = "cn-hangzhou-j",
+    ///         CidrBlock = "172.16.53.0/24",
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Hologram.Instance("default", new()
+    ///     {
+    ///         InstanceType = "Standard",
+    ///         PricingCycle = "Hour",
+    ///         Cpu = 32,
+    ///         Endpoints = new[]
+    ///         {
+    ///             new AliCloud.Hologram.Inputs.InstanceEndpointArgs
+    ///             {
+    ///                 Type = "Intranet",
+    ///             },
+    ///             new AliCloud.Hologram.Inputs.InstanceEndpointArgs
+    ///             {
+    ///                 Type = "VPCSingleTunnel",
+    ///                 VswitchId = defaultVSwitch.Id,
+    ///                 VpcId = defaultVSwitch.VpcId,
+    ///             },
+    ///         },
+    ///         ZoneId = defaultVSwitch.ZoneId,
+    ///         InstanceName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.hologram.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.hologram.Instance` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Hologram Instance can be imported using the id, e.g.

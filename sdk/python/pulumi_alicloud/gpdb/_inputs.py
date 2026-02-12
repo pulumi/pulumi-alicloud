@@ -35,36 +35,31 @@ __all__ = [
     'InstanceParameterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DbInstancePlanPlanConfigArgsDict(TypedDict):
-        pause: NotRequired[pulumi.Input['DbInstancePlanPlanConfigPauseArgsDict']]
-        """
-        Pause instance plan config. See `pause` below.
-        """
-        resume: NotRequired[pulumi.Input['DbInstancePlanPlanConfigResumeArgsDict']]
-        """
-        Resume instance plan config. See `resume` below.
-        """
-        scale_down: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgsDict']]
-        """
-        Scale down instance plan config. See `scale_down` below.
-        """
-        scale_in: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleInArgsDict']]
-        """
-        Scale In instance plan config. See `scale_in` below.
-        """
-        scale_out: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgsDict']]
-        """
-        Scale out instance plan config. See `scale_out` below.
-        """
-        scale_up: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgsDict']]
-        """
-        Scale up instance plan config. See `scale_up` below.
-        """
-elif False:
-    DbInstancePlanPlanConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigArgsDict(TypedDict):
+    pause: NotRequired[pulumi.Input['DbInstancePlanPlanConfigPauseArgsDict']]
+    """
+    Pause instance plan config. See `pause` below.
+    """
+    resume: NotRequired[pulumi.Input['DbInstancePlanPlanConfigResumeArgsDict']]
+    """
+    Resume instance plan config. See `resume` below.
+    """
+    scale_down: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgsDict']]
+    """
+    Scale down instance plan config. See `scale_down` below.
+    """
+    scale_in: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleInArgsDict']]
+    """
+    Scale In instance plan config. See `scale_in` below.
+    """
+    scale_out: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgsDict']]
+    """
+    Scale out instance plan config. See `scale_out` below.
+    """
+    scale_up: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgsDict']]
+    """
+    Scale up instance plan config. See `scale_up` below.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigArgs:
@@ -169,22 +164,19 @@ class DbInstancePlanPlanConfigArgs:
         pulumi.set(self, "scale_up", value)
 
 
-if not MYPY:
-    class DbInstancePlanPlanConfigPauseArgsDict(TypedDict):
-        execute_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The executed time of the Plan.
-        """
-        plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron Time of the plan.
-        """
-        plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The status of the plan task.
-        """
-elif False:
-    DbInstancePlanPlanConfigPauseArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigPauseArgsDict(TypedDict):
+    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The executed time of the Plan.
+    """
+    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron Time of the plan.
+    """
+    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The status of the plan task.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigPauseArgs:
@@ -241,22 +233,19 @@ class DbInstancePlanPlanConfigPauseArgs:
         pulumi.set(self, "plan_task_status", value)
 
 
-if not MYPY:
-    class DbInstancePlanPlanConfigResumeArgsDict(TypedDict):
-        execute_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The executed time of the Plan.
-        """
-        plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron Time of the plan.
-        """
-        plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The status of the plan task.
-        """
-elif False:
-    DbInstancePlanPlanConfigResumeArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigResumeArgsDict(TypedDict):
+    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The executed time of the Plan.
+    """
+    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron Time of the plan.
+    """
+    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The status of the plan task.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigResumeArgs:
@@ -313,26 +302,23 @@ class DbInstancePlanPlanConfigResumeArgs:
         pulumi.set(self, "plan_task_status", value)
 
 
-if not MYPY:
-    class DbInstancePlanPlanConfigScaleDownArgsDict(TypedDict):
-        execute_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The executed time of the Plan.
-        """
-        instance_spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The specification of segment nodes of the Plan.
-        """
-        plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron Time of the plan.
-        """
-        plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The status of the plan task.
-        """
-elif False:
-    DbInstancePlanPlanConfigScaleDownArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigScaleDownArgsDict(TypedDict):
+    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The executed time of the Plan.
+    """
+    instance_spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The specification of segment nodes of the Plan.
+    """
+    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron Time of the plan.
+    """
+    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The status of the plan task.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleDownArgs:
@@ -405,26 +391,23 @@ class DbInstancePlanPlanConfigScaleDownArgs:
         pulumi.set(self, "plan_task_status", value)
 
 
-if not MYPY:
-    class DbInstancePlanPlanConfigScaleInArgsDict(TypedDict):
-        execute_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The executed time of the Plan.
-        """
-        plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron Time of the plan.
-        """
-        plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The status of the plan task.
-        """
-        segment_node_num: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The segment Node Num of the Plan.
-        """
-elif False:
-    DbInstancePlanPlanConfigScaleInArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigScaleInArgsDict(TypedDict):
+    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The executed time of the Plan.
+    """
+    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron Time of the plan.
+    """
+    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The status of the plan task.
+    """
+    segment_node_num: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The segment Node Num of the Plan.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleInArgs:
@@ -497,26 +480,23 @@ class DbInstancePlanPlanConfigScaleInArgs:
         pulumi.set(self, "segment_node_num", value)
 
 
-if not MYPY:
-    class DbInstancePlanPlanConfigScaleOutArgsDict(TypedDict):
-        execute_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The executed time of the Plan.
-        """
-        plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron Time of the plan.
-        """
-        plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The status of the plan task.
-        """
-        segment_node_num: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The segment Node Num of the Plan.
-        """
-elif False:
-    DbInstancePlanPlanConfigScaleOutArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigScaleOutArgsDict(TypedDict):
+    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The executed time of the Plan.
+    """
+    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron Time of the plan.
+    """
+    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The status of the plan task.
+    """
+    segment_node_num: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The segment Node Num of the Plan.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleOutArgs:
@@ -589,26 +569,23 @@ class DbInstancePlanPlanConfigScaleOutArgs:
         pulumi.set(self, "segment_node_num", value)
 
 
-if not MYPY:
-    class DbInstancePlanPlanConfigScaleUpArgsDict(TypedDict):
-        execute_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The executed time of the Plan.
-        """
-        instance_spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The specification of segment nodes of the Plan.
-        """
-        plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron Time of the plan.
-        """
-        plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The status of the plan task.
-        """
-elif False:
-    DbInstancePlanPlanConfigScaleUpArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstancePlanPlanConfigScaleUpArgsDict(TypedDict):
+    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The executed time of the Plan.
+    """
+    instance_spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The specification of segment nodes of the Plan.
+    """
+    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron Time of the plan.
+    """
+    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The status of the plan task.
+    """
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleUpArgs:
@@ -681,23 +658,20 @@ class DbInstancePlanPlanConfigScaleUpArgs:
         pulumi.set(self, "plan_task_status", value)
 
 
-if not MYPY:
-    class InstanceIpWhitelistArgsDict(TypedDict):
-        ip_group_attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this parameter is empty by default. The attribute of the whitelist group. 
-        If the value contains `hidden`, this white list item will not output.
-        """
-        ip_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP whitelist group name.
-        """
-        security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
-        """
-elif False:
-    InstanceIpWhitelistArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIpWhitelistArgsDict(TypedDict):
+    ip_group_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this parameter is empty by default. The attribute of the whitelist group. 
+    If the value contains `hidden`, this white list item will not output.
+    """
+    ip_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP whitelist group name.
+    """
+    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+    """
 
 @pulumi.input_type
 class InstanceIpWhitelistArgs:
@@ -756,38 +730,35 @@ class InstanceIpWhitelistArgs:
         pulumi.set(self, "security_ip_list", value)
 
 
-if not MYPY:
-    class InstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the parameter.
-        """
-        default_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The default value of the parameter.
-        """
-        force_restart_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) Whether to force restart the instance to config the parameter.
-        """
-        is_changeable_config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) Whether the parameter is changeable.
-        """
-        optional_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The optional range of the parameter.
-        """
-        parameter_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.231.0) The description of the parameter.
-        """
-elif False:
-    InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the parameter.
+    """
+    default_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The default value of the parameter.
+    """
+    force_restart_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+    """
+    is_changeable_config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) Whether the parameter is changeable.
+    """
+    optional_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The optional range of the parameter.
+    """
+    parameter_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.231.0) The description of the parameter.
+    """
 
 @pulumi.input_type
 class InstanceParameterArgs:

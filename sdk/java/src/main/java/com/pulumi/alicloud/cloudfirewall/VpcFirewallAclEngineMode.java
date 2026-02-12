@@ -16,6 +16,114 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloud Firewall Vpc Firewall Acl Engine Mode resource.
+ * 
+ * VPC boundary firewall engine mode.
+ * 
+ * For information about Cloud Firewall Vpc Firewall Acl Engine Mode and how to use it, see [What is Vpc Firewall Acl Engine Mode](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallAclEngineMode).
+ * 
+ * &gt; **NOTE:** Available since v1.269.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+ * import com.pulumi.alicloud.cloudfirewall.VpcFirewallAclEngineMode;
+ * import com.pulumi.alicloud.cloudfirewall.VpcFirewallAclEngineModeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var cen = new Instance("cen", InstanceArgs.builder()
+ *             .description("yqc-example001")
+ *             .cenInstanceName("yqc-example-CenInstance001")
+ *             .build());
+ * 
+ *         var tR = new TransitRouter("TR", TransitRouterArgs.builder()
+ *             .cenId(cen.id())
+ *             .build());
+ * 
+ *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName("yqc-vpc-example-001")
+ *             .build());
+ * 
+ *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+ *             .vpcId(vpc1.id())
+ *             .zoneId("cn-hangzhou-h")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+ *             .vpcId(vpc1.id())
+ *             .zoneId("cn-hangzhou-i")
+ *             .cidrBlock("172.16.2.0/24")
+ *             .build());
+ * 
+ *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+ *             .vpcId(vpc1.id())
+ *             .cenId(cen.id())
+ *             .zoneMappings(            
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .vswitchId(vpc1vsw1.id())
+ *                     .zoneId(vpc1vsw1.zoneId())
+ *                     .build(),
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .vswitchId(vpc1vsw2.id())
+ *                     .zoneId(vpc1vsw2.zoneId())
+ *                     .build())
+ *             .transitRouterVpcAttachmentName("example")
+ *             .transitRouterAttachmentDescription("111")
+ *             .autoPublishRouteEnabled(true)
+ *             .transitRouterId(TR.transitRouterId())
+ *             .build());
+ * 
+ *         var default_ = new VpcFirewallAclEngineMode("default", VpcFirewallAclEngineModeArgs.builder()
+ *             .strictMode(0)
+ *             .vpcFirewallId(cen.id())
+ *             .memberUid("1511928242963727")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cloudfirewall.VpcFirewallAclEngineMode` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.VpcFirewallAclEngineMode`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Firewall Vpc Firewall Acl Engine Mode can be imported using the id, e.g.

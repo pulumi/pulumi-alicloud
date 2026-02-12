@@ -39,22 +39,17 @@ __all__ = [
     'StorageDomainRoutingRuleRouteArgsDict',
 ]
 
-MYPY = False
+class ChainChainConfigArgsDict(TypedDict):
+    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgsDict']]]]
+    """
+    Each node in the delivery chain. See `nodes` below.
 
-if not MYPY:
-    class ChainChainConfigArgsDict(TypedDict):
-        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgsDict']]]]
-        """
-        Each node in the delivery chain. See `nodes` below.
-
-        > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
-        """
-        routers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgsDict']]]]
-        """
-        Execution sequence relationship between delivery chain nodes. See `routers` below.
-        """
-elif False:
-    ChainChainConfigArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+    """
+    routers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgsDict']]]]
+    """
+    Execution sequence relationship between delivery chain nodes. See `routers` below.
+    """
 
 @pulumi.input_type
 class ChainChainConfigArgs:
@@ -99,22 +94,19 @@ class ChainChainConfigArgs:
         pulumi.set(self, "routers", value)
 
 
-if not MYPY:
-    class ChainChainConfigNodeArgsDict(TypedDict):
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the delivery chain node. Valid values: `true`, `false`.
-        """
-        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgsDict']]]]
-        """
-        The configuration of delivery chain node. See `node_config` below.
-        """
-        node_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of delivery chain node.
-        """
-elif False:
-    ChainChainConfigNodeArgsDict: TypeAlias = Mapping[str, Any]
+class ChainChainConfigNodeArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable the delivery chain node. Valid values: `true`, `false`.
+    """
+    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgsDict']]]]
+    """
+    The configuration of delivery chain node. See `node_config` below.
+    """
+    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of delivery chain node.
+    """
 
 @pulumi.input_type
 class ChainChainConfigNodeArgs:
@@ -171,14 +163,11 @@ class ChainChainConfigNodeArgs:
         pulumi.set(self, "node_name", value)
 
 
-if not MYPY:
-    class ChainChainConfigNodeNodeConfigArgsDict(TypedDict):
-        deny_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgsDict']]]]
-        """
-        Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
-        """
-elif False:
-    ChainChainConfigNodeNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ChainChainConfigNodeNodeConfigArgsDict(TypedDict):
+    deny_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgsDict']]]]
+    """
+    Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+    """
 
 @pulumi.input_type
 class ChainChainConfigNodeNodeConfigArgs:
@@ -203,26 +192,23 @@ class ChainChainConfigNodeNodeConfigArgs:
         pulumi.set(self, "deny_policies", value)
 
 
-if not MYPY:
-    class ChainChainConfigNodeNodeConfigDenyPolicyArgsDict(TypedDict):
-        action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
-        """
-        issue_count: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The count of scanning vulnerabilities that triggers blocking.
-        """
-        issue_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
-        """
-        logic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The logic of trigger blocking. Valid values: `AND`, `OR`.
-        """
-elif False:
-    ChainChainConfigNodeNodeConfigDenyPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ChainChainConfigNodeNodeConfigDenyPolicyArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+    """
+    issue_count: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The count of scanning vulnerabilities that triggers blocking.
+    """
+    issue_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+    """
+    logic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The logic of trigger blocking. Valid values: `AND`, `OR`.
+    """
 
 @pulumi.input_type
 class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
@@ -295,18 +281,15 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
         pulumi.set(self, "logic", value)
 
 
-if not MYPY:
-    class ChainChainConfigRouterArgsDict(TypedDict):
-        froms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgsDict']]]]
-        """
-        Source node. See `from` below.
-        """
-        tos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgsDict']]]]
-        """
-        Destination node. See `to` below.
-        """
-elif False:
-    ChainChainConfigRouterArgsDict: TypeAlias = Mapping[str, Any]
+class ChainChainConfigRouterArgsDict(TypedDict):
+    froms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgsDict']]]]
+    """
+    Source node. See `from` below.
+    """
+    tos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgsDict']]]]
+    """
+    Destination node. See `to` below.
+    """
 
 @pulumi.input_type
 class ChainChainConfigRouterArgs:
@@ -347,14 +330,11 @@ class ChainChainConfigRouterArgs:
         pulumi.set(self, "tos", value)
 
 
-if not MYPY:
-    class ChainChainConfigRouterFromArgsDict(TypedDict):
-        node_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
-        """
-elif False:
-    ChainChainConfigRouterFromArgsDict: TypeAlias = Mapping[str, Any]
+class ChainChainConfigRouterFromArgsDict(TypedDict):
+    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+    """
 
 @pulumi.input_type
 class ChainChainConfigRouterFromArgs:
@@ -379,14 +359,11 @@ class ChainChainConfigRouterFromArgs:
         pulumi.set(self, "node_name", value)
 
 
-if not MYPY:
-    class ChainChainConfigRouterToArgsDict(TypedDict):
-        node_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
-        """
-elif False:
-    ChainChainConfigRouterToArgsDict: TypeAlias = Mapping[str, Any]
+class ChainChainConfigRouterToArgsDict(TypedDict):
+    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+    """
 
 @pulumi.input_type
 class ChainChainConfigRouterToArgs:
@@ -411,22 +388,19 @@ class ChainChainConfigRouterToArgs:
         pulumi.set(self, "node_name", value)
 
 
-if not MYPY:
-    class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict']]]]
-        """
-        Domain List
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        enable
-        """
-        endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network Access Endpoint Type
-        """
-elif False:
-    RegistryEnterpriseInstanceInstanceEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict']]]]
+    """
+    Domain List
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    enable
+    """
+    endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network Access Endpoint Type
+    """
 
 @pulumi.input_type
 class RegistryEnterpriseInstanceInstanceEndpointArgs:
@@ -483,18 +457,15 @@ class RegistryEnterpriseInstanceInstanceEndpointArgs:
         pulumi.set(self, "endpoint_type", value)
 
 
-if not MYPY:
-    class RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict(TypedDict):
-        domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain Type
-        """
-elif False:
-    RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict: TypeAlias = Mapping[str, Any]
+class RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict(TypedDict):
+    domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain Type
+    """
 
 @pulumi.input_type
 class RegistryEnterpriseInstanceInstanceEndpointDomainArgs:
@@ -535,22 +506,19 @@ class RegistryEnterpriseInstanceInstanceEndpointDomainArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class RepoDomainListArgsDict(TypedDict):
-        internal: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain of internal endpoint, only in some regions.
-        """
-        public: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain of public endpoint.
-        """
-        vpc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain of vpc endpoint.
-        """
-elif False:
-    RepoDomainListArgsDict: TypeAlias = Mapping[str, Any]
+class RepoDomainListArgsDict(TypedDict):
+    internal: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain of internal endpoint, only in some regions.
+    """
+    public: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain of public endpoint.
+    """
+    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain of vpc endpoint.
+    """
 
 @pulumi.input_type
 class RepoDomainListArgs:
@@ -607,22 +575,19 @@ class RepoDomainListArgs:
         pulumi.set(self, "vpc", value)
 
 
-if not MYPY:
-    class StorageDomainRoutingRuleRouteArgsDict(TypedDict):
-        endpoint_type: pulumi.Input[_builtins.str]
-        """
-        Endpoint Type.
-        """
-        instance_domain: pulumi.Input[_builtins.str]
-        """
-        Instance domain name.
-        """
-        storage_domain: pulumi.Input[_builtins.str]
-        """
-        Storage domain name.
-        """
-elif False:
-    StorageDomainRoutingRuleRouteArgsDict: TypeAlias = Mapping[str, Any]
+class StorageDomainRoutingRuleRouteArgsDict(TypedDict):
+    endpoint_type: pulumi.Input[_builtins.str]
+    """
+    Endpoint Type.
+    """
+    instance_domain: pulumi.Input[_builtins.str]
+    """
+    Instance domain name.
+    """
+    storage_domain: pulumi.Input[_builtins.str]
+    """
+    Storage domain name.
+    """
 
 @pulumi.input_type
 class StorageDomainRoutingRuleRouteArgs:

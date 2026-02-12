@@ -39,6 +39,8 @@ func GetClientConnectTimeout(ctx *pulumi.Context) int {
 func GetClientReadTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "alicloud:clientReadTimeout")
 }
+
+// Use this to mark a terraform configuration file source.
 func GetConfigurationSource(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:configurationSource")
 }

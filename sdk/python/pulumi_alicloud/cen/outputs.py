@@ -3501,6 +3501,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         """
         :param _builtins.bool auto_publish_route_enabled: (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
         :param _builtins.str cen_id: The ID of the CEN instance.
+        :param _builtins.str id: The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
         :param _builtins.str payment_type: The payment type of the resource.
         :param _builtins.str resource_type: The resource type of the Transit Router VPC Attachment.
         :param _builtins.str status: The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
@@ -3545,6 +3546,9 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

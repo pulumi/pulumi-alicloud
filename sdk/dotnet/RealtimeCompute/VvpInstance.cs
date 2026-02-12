@@ -10,6 +10,90 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.RealtimeCompute
 {
     /// <summary>
+    /// Provides a Realtime Compute Vvp Instance resource.
+    /// 
+    /// For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.214.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var zoneId = config.Get("zoneId") ?? "cn-hangzhou-i";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultOSS = new AliCloud.Oss.Bucket("defaultOSS", new()
+    ///     {
+    ///         BucketName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultVvpInstance = new AliCloud.RealtimeCompute.VvpInstance("default", new()
+    ///     {
+    ///         Storage = new AliCloud.RealtimeCompute.Inputs.VvpInstanceStorageArgs
+    ///         {
+    ///             Oss = new AliCloud.RealtimeCompute.Inputs.VvpInstanceStorageOssArgs
+    ///             {
+    ///                 Bucket = defaultOSS.BucketName,
+    ///             },
+    ///         },
+    ///         VvpInstanceName = $"{name}-{defaultInteger.Result}",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = zoneId,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         },
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.realtimecompute.VvpInstance` or removing it from your configuration
+    /// 
+    /// The `alicloud.realtimecompute.VvpInstance` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Realtime Compute Vvp Instance can be imported using the id, e.g.

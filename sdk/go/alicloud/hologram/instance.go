@@ -12,6 +12,86 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Hologres (Hologram) Instance resource.
+//
+// For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+//
+// > **NOTE:** Available since v1.213.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hologram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultVpc.ID(),
+//				ZoneId:      pulumi.String("cn-hangzhou-j"),
+//				CidrBlock:   pulumi.String("172.16.53.0/24"),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hologram.NewInstance(ctx, "default", &hologram.InstanceArgs{
+//				InstanceType: pulumi.String("Standard"),
+//				PricingCycle: pulumi.String("Hour"),
+//				Cpu:          pulumi.Int(32),
+//				Endpoints: hologram.InstanceEndpointArray{
+//					&hologram.InstanceEndpointArgs{
+//						Type: pulumi.String("Intranet"),
+//					},
+//					&hologram.InstanceEndpointArgs{
+//						Type:      pulumi.String("VPCSingleTunnel"),
+//						VswitchId: defaultVSwitch.ID(),
+//						VpcId:     defaultVSwitch.VpcId,
+//					},
+//				},
+//				ZoneId:       defaultVSwitch.ZoneId,
+//				InstanceName: pulumi.String(name),
+//				PaymentType:  pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `hologram.Instance` or removing it from your configuration
+//
+// The `hologram.Instance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Hologram Instance can be imported using the id, e.g.

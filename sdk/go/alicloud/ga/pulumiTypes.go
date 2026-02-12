@@ -5652,7 +5652,8 @@ type GetForwardingRulesForwardingRule struct {
 	ForwardingRuleName string `pulumi:"forwardingRuleName"`
 	// Forwarding Policy Status.
 	ForwardingRuleStatus string `pulumi:"forwardingRuleStatus"`
-	Id                   string `pulumi:"id"`
+	// The resource ID in terraform of Forwarding Rule.
+	Id string `pulumi:"id"`
 	// The ID of the listener.
 	ListenerId string `pulumi:"listenerId"`
 	// Forwarding policy priority.
@@ -5681,7 +5682,8 @@ type GetForwardingRulesForwardingRuleArgs struct {
 	ForwardingRuleName pulumi.StringInput `pulumi:"forwardingRuleName"`
 	// Forwarding Policy Status.
 	ForwardingRuleStatus pulumi.StringInput `pulumi:"forwardingRuleStatus"`
-	Id                   pulumi.StringInput `pulumi:"id"`
+	// The resource ID in terraform of Forwarding Rule.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the listener.
 	ListenerId pulumi.StringInput `pulumi:"listenerId"`
 	// Forwarding policy priority.
@@ -5758,6 +5760,7 @@ func (o GetForwardingRulesForwardingRuleOutput) ForwardingRuleStatus() pulumi.St
 	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.ForwardingRuleStatus }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Forwarding Rule.
 func (o GetForwardingRulesForwardingRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.Id }).(pulumi.StringOutput)
 }

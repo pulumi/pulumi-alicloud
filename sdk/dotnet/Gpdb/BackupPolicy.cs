@@ -10,6 +10,125 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
+    /// Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
+    /// 
+    /// For information about GPDB Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifybackuppolicy).
+    /// 
+    /// &gt; **NOTE:** Available since v1.211.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Gpdb.GetZones.Invoke();
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
+    ///         {
+    ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
+    ///             {
+    ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
+    ///                 Newbits = 8,
+    ///                 Netnum = 8,
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+    ///             VswitchName = name,
+    ///         }));
+    ///     }
+    ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             vswitch.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var defaultGetSwitches = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Gpdb.Instance("default", new()
+    ///     {
+    ///         DbInstanceCategory = "HighAvailability",
+    ///         DbInstanceClass = "gpdb.group.segsdx1",
+    ///         DbInstanceMode = "StorageElastic",
+    ///         Description = name,
+    ///         Engine = "gpdb",
+    ///         EngineVersion = "6.0",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
+    ///         InstanceNetworkType = "VPC",
+    ///         InstanceSpec = "2C16G",
+    ///         PaymentType = "PayAsYouGo",
+    ///         SegStorageType = "cloud_essd",
+    ///         SegNodeNum = 4,
+    ///         StorageSize = 50,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = vswitchId,
+    ///         IpWhitelists = new[]
+    ///         {
+    ///             new AliCloud.Gpdb.Inputs.InstanceIpWhitelistArgs
+    ///             {
+    ///                 SecurityIpList = "127.0.0.1",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance test" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackupPolicy = new AliCloud.Gpdb.BackupPolicy("default", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         RecoveryPointPeriod = "1",
+    ///         EnableRecoveryPoint = true,
+    ///         PreferredBackupPeriod = "Wednesday",
+    ///         PreferredBackupTime = "15:00Z-16:00Z",
+    ///         BackupRetentionPeriod = 7,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.gpdb.BackupPolicy` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.gpdb.BackupPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// GPDB Backup Policy can be imported using the id, e.g.

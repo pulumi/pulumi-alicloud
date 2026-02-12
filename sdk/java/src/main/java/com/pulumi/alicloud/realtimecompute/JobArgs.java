@@ -129,9 +129,21 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Job Stop Policy
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="stopStrategy")
     private @Nullable Output<String> stopStrategy;
 
+    /**
+     * @return Job Stop Policy
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> stopStrategy() {
         return Optional.ofNullable(this.stopStrategy);
     }
@@ -328,11 +340,27 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param stopStrategy Job Stop Policy
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stopStrategy(@Nullable Output<String> stopStrategy) {
             $.stopStrategy = stopStrategy;
             return this;
         }
 
+        /**
+         * @param stopStrategy Job Stop Policy
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stopStrategy(String stopStrategy) {
             return stopStrategy(Output.of(stopStrategy));
         }

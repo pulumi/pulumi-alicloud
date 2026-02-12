@@ -25,24 +25,19 @@ __all__ = [
     'GetPolicyDocumentStatementPrincipalArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class PolicyStatementArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        """
-        effect: pulumi.Input[_builtins.str]
-        """
-        (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        """
-        resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
-        """
-elif False:
-    PolicyStatementArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyStatementArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+    """
+    effect: pulumi.Input[_builtins.str]
+    """
+    (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+    """
+    resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+    """
 
 @pulumi.input_type
 class PolicyStatementArgs:
@@ -96,30 +91,27 @@ class PolicyStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class GetPolicyDocumentStatementArgsDict(TypedDict):
-        actions: Sequence[_builtins.str]
-        """
-        Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
-        """
-        conditions: NotRequired[Sequence['GetPolicyDocumentStatementConditionArgsDict']]
-        """
-        Specifies the condition that are required for a policy to take effect. See `condition` below.
-        """
-        effect: NotRequired[_builtins.str]
-        """
-        This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
-        """
-        principals: NotRequired[Sequence['GetPolicyDocumentStatementPrincipalArgsDict']]
-        """
-        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
-        """
-        resources: NotRequired[Sequence[_builtins.str]]
-        """
-        List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
-        """
-elif False:
-    GetPolicyDocumentStatementArgsDict: TypeAlias = Mapping[str, Any]
+class GetPolicyDocumentStatementArgsDict(TypedDict):
+    actions: Sequence[_builtins.str]
+    """
+    Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+    """
+    conditions: NotRequired[Sequence['GetPolicyDocumentStatementConditionArgsDict']]
+    """
+    Specifies the condition that are required for a policy to take effect. See `condition` below.
+    """
+    effect: NotRequired[_builtins.str]
+    """
+    This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+    """
+    principals: NotRequired[Sequence['GetPolicyDocumentStatementPrincipalArgsDict']]
+    """
+    Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
+    """
+    resources: NotRequired[Sequence[_builtins.str]]
+    """
+    List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+    """
 
 @pulumi.input_type
 class GetPolicyDocumentStatementArgs:
@@ -207,22 +199,19 @@ class GetPolicyDocumentStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class GetPolicyDocumentStatementConditionArgsDict(TypedDict):
-        operator: _builtins.str
-        """
-        The operator of the condition.
-        """
-        values: Sequence[_builtins.str]
-        """
-        The values of the condition.
-        """
-        variable: _builtins.str
-        """
-        The variable of the condition.
-        """
-elif False:
-    GetPolicyDocumentStatementConditionArgsDict: TypeAlias = Mapping[str, Any]
+class GetPolicyDocumentStatementConditionArgsDict(TypedDict):
+    operator: _builtins.str
+    """
+    The operator of the condition.
+    """
+    values: Sequence[_builtins.str]
+    """
+    The values of the condition.
+    """
+    variable: _builtins.str
+    """
+    The variable of the condition.
+    """
 
 @pulumi.input_type
 class GetPolicyDocumentStatementConditionArgs:
@@ -276,18 +265,15 @@ class GetPolicyDocumentStatementConditionArgs:
         pulumi.set(self, "variable", value)
 
 
-if not MYPY:
-    class GetPolicyDocumentStatementPrincipalArgsDict(TypedDict):
-        entity: _builtins.str
-        """
-        The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-        """
-        identifiers: Sequence[_builtins.str]
-        """
-        The identifiers of the principal.
-        """
-elif False:
-    GetPolicyDocumentStatementPrincipalArgsDict: TypeAlias = Mapping[str, Any]
+class GetPolicyDocumentStatementPrincipalArgsDict(TypedDict):
+    entity: _builtins.str
+    """
+    The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+    """
+    identifiers: Sequence[_builtins.str]
+    """
+    The identifiers of the principal.
+    """
 
 @pulumi.input_type
 class GetPolicyDocumentStatementPrincipalArgs:

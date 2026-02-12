@@ -15,6 +15,85 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-modifybackuppolicy) cluster backup policy resource and used to configure cluster backup policy.
+ * 
+ * &gt; **NOTE:** Available since v1.71.0.
+ * 
+ * &gt; Each DB cluster has a backup policy and it will be set default values when destroying the resource.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.adb.AdbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.adb.DBCluster;
+ * import com.pulumi.alicloud.adb.DBClusterArgs;
+ * import com.pulumi.alicloud.adb.BackupPolicy;
+ * import com.pulumi.alicloud.adb.BackupPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.ids()[0])
+ *             .build());
+ * 
+ *         final var vswitchId = defaultGetSwitches.ids()[0];
+ * 
+ *         var cluster = new DBCluster("cluster", DBClusterArgs.builder()
+ *             .dbClusterCategory("MixedStorage")
+ *             .mode("flexible")
+ *             .computeResource("8Core32GB")
+ *             .vswitchId(vswitchId)
+ *             .description(name)
+ *             .build());
+ * 
+ *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()
+ *             .dbClusterId(cluster.id())
+ *             .preferredBackupPeriods(            
+ *                 "Tuesday",
+ *                 "Wednesday")
+ *             .preferredBackupTime("10:00Z-11:00Z")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Removing alicloud.adb.Cluster from your configuration
+ * 
+ * The alicloud.adb.BackupPolicy resource allows you to manage your adb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the adb Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ADB backup policy can be imported using the id or cluster id, e.g.

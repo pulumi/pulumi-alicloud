@@ -291,6 +291,83 @@ class BackupPolicy(pulumi.CustomResource):
                  recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
+
+        For information about GPDB Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifybackuppolicy).
+
+        > **NOTE:** Available since v1.211.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.gpdb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch = []
+        def create_vswitch(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                    vpc_id=default_get_networks.ids[0],
+                    cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                        newbits=8,
+                        netnum=8).result,
+                    zone_id=default.ids[0],
+                    vswitch_name=name))
+
+        len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
+        vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in vswitch],
+            [""],
+        ]).result[0])
+        default_instance = alicloud.gpdb.Instance("default",
+            db_instance_category="HighAvailability",
+            db_instance_class="gpdb.group.segsdx1",
+            db_instance_mode="StorageElastic",
+            description=name,
+            engine="gpdb",
+            engine_version="6.0",
+            zone_id=default.ids[0],
+            instance_network_type="VPC",
+            instance_spec="2C16G",
+            payment_type="PayAsYouGo",
+            seg_storage_type="cloud_essd",
+            seg_node_num=4,
+            storage_size=50,
+            vpc_id=default_get_networks.ids[0],
+            vswitch_id=vswitch_id,
+            ip_whitelists=[{
+                "security_ip_list": "127.0.0.1",
+            }],
+            tags={
+                "Created": "TF",
+                "For": "acceptance test",
+            })
+        default_backup_policy = alicloud.gpdb.BackupPolicy("default",
+            db_instance_id=default_instance.id,
+            recovery_point_period="1",
+            enable_recovery_point=True,
+            preferred_backup_period="Wednesday",
+            preferred_backup_time="15:00Z-16:00Z",
+            backup_retention_period=7)
+        ```
+
+        ### Deleting `gpdb.BackupPolicy` or removing it from your configuration
+
+        Terraform cannot destroy resource `gpdb.BackupPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Backup Policy can be imported using the id, e.g.
@@ -329,6 +406,83 @@ class BackupPolicy(pulumi.CustomResource):
                  args: BackupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
+
+        For information about GPDB Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifybackuppolicy).
+
+        > **NOTE:** Available since v1.211.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.gpdb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch = []
+        def create_vswitch(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                    vpc_id=default_get_networks.ids[0],
+                    cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                        newbits=8,
+                        netnum=8).result,
+                    zone_id=default.ids[0],
+                    vswitch_name=name))
+
+        len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
+        vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in vswitch],
+            [""],
+        ]).result[0])
+        default_instance = alicloud.gpdb.Instance("default",
+            db_instance_category="HighAvailability",
+            db_instance_class="gpdb.group.segsdx1",
+            db_instance_mode="StorageElastic",
+            description=name,
+            engine="gpdb",
+            engine_version="6.0",
+            zone_id=default.ids[0],
+            instance_network_type="VPC",
+            instance_spec="2C16G",
+            payment_type="PayAsYouGo",
+            seg_storage_type="cloud_essd",
+            seg_node_num=4,
+            storage_size=50,
+            vpc_id=default_get_networks.ids[0],
+            vswitch_id=vswitch_id,
+            ip_whitelists=[{
+                "security_ip_list": "127.0.0.1",
+            }],
+            tags={
+                "Created": "TF",
+                "For": "acceptance test",
+            })
+        default_backup_policy = alicloud.gpdb.BackupPolicy("default",
+            db_instance_id=default_instance.id,
+            recovery_point_period="1",
+            enable_recovery_point=True,
+            preferred_backup_period="Wednesday",
+            preferred_backup_time="15:00Z-16:00Z",
+            backup_retention_period=7)
+        ```
+
+        ### Deleting `gpdb.BackupPolicy` or removing it from your configuration
+
+        Terraform cannot destroy resource `gpdb.BackupPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Backup Policy can be imported using the id, e.g.

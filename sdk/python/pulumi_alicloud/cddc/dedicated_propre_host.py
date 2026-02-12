@@ -977,6 +977,134 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a CDDC Dedicated Propre Host resource. MyBase proprietary cluster host resources, you need to add a whitelist to purchase a proprietary version of the cluster.
+
+        For information about CDDC Dedicated Propre Host and how to use it, see [What is Dedicated Propre Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/api-cddc-2020-03-20-creatededicatedhostgroup).
+
+        > **NOTE:** Available since v1.210.0.
+
+        > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6e",
+            network_type="Vpc")
+        default_get_images = alicloud.ecs.get_images(name_regex="^aliyun_3_x64_20G_scc*",
+            owners="system")
+        essd = alicloud.ecs.get_instance_types(cpu_core_count=2,
+            memory_size=4,
+            system_disk_category="cloud_essd")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id="cn-hangzhou-i")
+        default_get_security_groups = alicloud.ecs.get_security_groups(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_security_group = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+                    vpc_id=default_get_switches.vswitches[0].vpc_id,
+                    name="tf-exampleacc-cddc-dedicated_propre_host"))
+
+        len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_ecs_deployment_set = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{range['value']}",
+                    strategy="Availability",
+                    domain="Default",
+                    granularity="Host",
+                    deployment_set_name="tf-exampleacc-cddc-dedicated_propre_host",
+                    description="tf-exampleacc-cddc-dedicated_propre_host"))
+
+        len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_key_pair = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_key_pair.append(alicloud.ecs.KeyPair(f"default-{range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
+
+        len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
+            name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_dedicated_host_group = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{range['value']}",
+                    engine="MySQL",
+                    vpc_id=default_get_networks.ids[0],
+                    cpu_allocation_ratio=101,
+                    mem_allocation_ratio=50,
+                    disk_allocation_ratio=200,
+                    allocation_policy="Evenly",
+                    host_replace_policy="Manual",
+                    dedicated_host_group_desc="tf-exampleacc-cddc-dedicated_propre_host",
+                    open_permission=True))
+
+        len(default_get_dedicated_host_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        alicloud_security_group_id = len(default_get_security_groups.ids).apply(lambda length: default_get_security_groups.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_security_group],
+            [""],
+        ]).result[0])
+        alicloud_ecs_deployment_set_id = len(default_get_ecs_deployment_sets.ids).apply(lambda length: default_get_ecs_deployment_sets.sets[0].deployment_set_id if length > 0 else std.concat(input=[
+            [__item.id for __item in default_ecs_deployment_set],
+            [""],
+        ]).result[0])
+        alicloud_key_pair_id = len(default_get_key_pairs.ids).apply(lambda length: default_get_key_pairs.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_key_pair],
+            [""],
+        ]).result[0])
+        dedicated_host_group_id = len(default_get_dedicated_host_groups.ids).apply(lambda length: default_get_dedicated_host_groups.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_dedicated_host_group],
+            [""],
+        ]).result[0])
+        default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
+            vswitch_id=default_get_switches.ids[0],
+            ecs_instance_name="exampleTf",
+            ecs_deployment_set_id=alicloud_ecs_deployment_set_id,
+            auto_renew="false",
+            security_group_id=alicloud_security_group_id,
+            dedicated_host_group_id=dedicated_host_group_id,
+            ecs_host_name="exampleTf",
+            vpc_id=default_get_networks.ids[0],
+            ecs_unique_suffix="false",
+            password_inherit="false",
+            engine="mysql",
+            period="1",
+            os_password="YourPassword123!",
+            ecs_zone_id="cn-hangzhou-i",
+            ecs_class_lists=[{
+                "disk_type": "cloud_essd",
+                "sys_disk_type": "cloud_essd",
+                "disk_count": 1,
+                "system_disk_performance_level": "PL1",
+                "data_disk_performance_level": "PL1",
+                "disk_capacity": 40,
+                "instance_type": "ecs.c6a.large",
+                "sys_disk_capacity": 40,
+            }],
+            payment_type="Subscription",
+            image_id="m-bp1d13fxs1ymbvw1dk5g",
+            period_type="Monthly")
+        ```
+
+        ### Deleting `cddc.DedicatedPropreHost` or removing it from your configuration
+
+        Terraform cannot destroy resource `cddc.DedicatedPropreHost`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CDDC Dedicated Propre Host can be imported using the id, e.g.
@@ -1038,6 +1166,134 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  args: DedicatedPropreHostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a CDDC Dedicated Propre Host resource. MyBase proprietary cluster host resources, you need to add a whitelist to purchase a proprietary version of the cluster.
+
+        For information about CDDC Dedicated Propre Host and how to use it, see [What is Dedicated Propre Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/api-cddc-2020-03-20-creatededicatedhostgroup).
+
+        > **NOTE:** Available since v1.210.0.
+
+        > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6e",
+            network_type="Vpc")
+        default_get_images = alicloud.ecs.get_images(name_regex="^aliyun_3_x64_20G_scc*",
+            owners="system")
+        essd = alicloud.ecs.get_instance_types(cpu_core_count=2,
+            memory_size=4,
+            system_disk_category="cloud_essd")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id="cn-hangzhou-i")
+        default_get_security_groups = alicloud.ecs.get_security_groups(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_security_group = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+                    vpc_id=default_get_switches.vswitches[0].vpc_id,
+                    name="tf-exampleacc-cddc-dedicated_propre_host"))
+
+        len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_ecs_deployment_set = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{range['value']}",
+                    strategy="Availability",
+                    domain="Default",
+                    granularity="Host",
+                    deployment_set_name="tf-exampleacc-cddc-dedicated_propre_host",
+                    description="tf-exampleacc-cddc-dedicated_propre_host"))
+
+        len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_key_pair = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_key_pair.append(alicloud.ecs.KeyPair(f"default-{range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
+
+        len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
+            name_regex="tf-exampleacc-cddc-dedicated_propre_host")
+        default_dedicated_host_group = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{range['value']}",
+                    engine="MySQL",
+                    vpc_id=default_get_networks.ids[0],
+                    cpu_allocation_ratio=101,
+                    mem_allocation_ratio=50,
+                    disk_allocation_ratio=200,
+                    allocation_policy="Evenly",
+                    host_replace_policy="Manual",
+                    dedicated_host_group_desc="tf-exampleacc-cddc-dedicated_propre_host",
+                    open_permission=True))
+
+        len(default_get_dedicated_host_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        alicloud_security_group_id = len(default_get_security_groups.ids).apply(lambda length: default_get_security_groups.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_security_group],
+            [""],
+        ]).result[0])
+        alicloud_ecs_deployment_set_id = len(default_get_ecs_deployment_sets.ids).apply(lambda length: default_get_ecs_deployment_sets.sets[0].deployment_set_id if length > 0 else std.concat(input=[
+            [__item.id for __item in default_ecs_deployment_set],
+            [""],
+        ]).result[0])
+        alicloud_key_pair_id = len(default_get_key_pairs.ids).apply(lambda length: default_get_key_pairs.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_key_pair],
+            [""],
+        ]).result[0])
+        dedicated_host_group_id = len(default_get_dedicated_host_groups.ids).apply(lambda length: default_get_dedicated_host_groups.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_dedicated_host_group],
+            [""],
+        ]).result[0])
+        default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
+            vswitch_id=default_get_switches.ids[0],
+            ecs_instance_name="exampleTf",
+            ecs_deployment_set_id=alicloud_ecs_deployment_set_id,
+            auto_renew="false",
+            security_group_id=alicloud_security_group_id,
+            dedicated_host_group_id=dedicated_host_group_id,
+            ecs_host_name="exampleTf",
+            vpc_id=default_get_networks.ids[0],
+            ecs_unique_suffix="false",
+            password_inherit="false",
+            engine="mysql",
+            period="1",
+            os_password="YourPassword123!",
+            ecs_zone_id="cn-hangzhou-i",
+            ecs_class_lists=[{
+                "disk_type": "cloud_essd",
+                "sys_disk_type": "cloud_essd",
+                "disk_count": 1,
+                "system_disk_performance_level": "PL1",
+                "data_disk_performance_level": "PL1",
+                "disk_capacity": 40,
+                "instance_type": "ecs.c6a.large",
+                "sys_disk_capacity": 40,
+            }],
+            payment_type="Subscription",
+            image_id="m-bp1d13fxs1ymbvw1dk5g",
+            period_type="Monthly")
+        ```
+
+        ### Deleting `cddc.DedicatedPropreHost` or removing it from your configuration
+
+        Terraform cannot destroy resource `cddc.DedicatedPropreHost`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CDDC Dedicated Propre Host can be imported using the id, e.g.

@@ -30,9 +30,17 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     * 
+     */
     @Import(name="encryptedSecret")
     private @Nullable Output<String> encryptedSecret;
 
+    /**
+     * @return (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     * 
+     */
     public Optional<Output<String>> encryptedSecret() {
         return Optional.ofNullable(this.encryptedSecret);
     }
@@ -189,11 +197,23 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param encryptedSecret (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptedSecret(@Nullable Output<String> encryptedSecret) {
             $.encryptedSecret = encryptedSecret;
             return this;
         }
 
+        /**
+         * @param encryptedSecret (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptedSecret(String encryptedSecret) {
             return encryptedSecret(Output.of(encryptedSecret));
         }

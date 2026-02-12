@@ -11,12 +11,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Vpc Ipam Service resource.
+//
+// Ipam service, used to support automatic provisioning of Terraform.
+//
+// For information about Vpc Ipam Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/OpenVpcIpamService).
+//
+// > **NOTE:** Available since v1.242.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := vpc.NewIpamService(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `vpc.IpamService` or removing it from your configuration
+//
+// Terraform cannot destroy resource `vpc.IpamService`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Vpc Ipam Service can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:vpc/ipamService:IpamService example
+// $ terraform import alicloud_vpc_ipam_service.example
 // ```
 type IpamService struct {
 	pulumi.CustomResourceState

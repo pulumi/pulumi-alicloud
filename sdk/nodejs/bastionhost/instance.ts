@@ -7,6 +7,120 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE:** Since the version 1.132.0, the resource `alicloud.yundun.BastionHostInstance` has been renamed to `alicloud.bastionhost.Instance`.
+ *
+ * Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+ * For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+ *
+ * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+ *
+ * > **NOTE:** Available since v1.132.0.
+ *
+ * > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0])});
+ * const defaultInstance = new alicloud.bastionhost.Instance("default", {
+ *     description: name,
+ *     licenseCode: "bhah_ent_50_asset",
+ *     planCode: "cloudbastion",
+ *     storage: "5",
+ *     bandwidth: "5",
+ *     period: 1,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0])});
+ * const defaultInstance = new alicloud.bastionhost.Instance("default", {
+ *     description: name,
+ *     licenseCode: "bhah_ent_50_asset",
+ *     planCode: "cloudbastion",
+ *     storage: "5",
+ *     bandwidth: "5",
+ *     period: 1,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     adAuthServers: [{
+ *         server: "192.168.1.1",
+ *         standbyServer: "192.168.1.3",
+ *         port: 80,
+ *         domain: "domain",
+ *         account: "cn=Manager,dc=test,dc=com",
+ *         password: "YouPassword123",
+ *         filter: "objectClass=person",
+ *         nameMapping: "nameAttr",
+ *         emailMapping: "emailAttr",
+ *         mobileMapping: "mobileAttr",
+ *         isSsl: false,
+ *         baseDn: "dc=test,dc=com",
+ *     }],
+ *     ldapAuthServers: [{
+ *         server: "192.168.1.1",
+ *         standbyServer: "192.168.1.3",
+ *         port: 80,
+ *         loginNameMapping: "uid",
+ *         account: "cn=Manager,dc=test,dc=com",
+ *         password: "YouPassword123",
+ *         filter: "objectClass=person",
+ *         nameMapping: "nameAttr",
+ *         emailMapping: "emailAttr",
+ *         mobileMapping: "mobileAttr",
+ *         isSsl: false,
+ *         baseDn: "dc=test,dc=com",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.bastionhost.Instance` or removing it from your configuration
+ *
+ * The `alicloud.bastionhost.Instance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the bastionhost instance.
+ * You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Yundun_bastionhost instance can be imported using the id, e.g.
@@ -78,6 +192,17 @@ export class Instance extends pulumi.CustomResource {
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     declare public readonly planCode: pulumi.Output<string>;
+    /**
+     * The public IP address that you want to add to the whitelist.
+     *
+     * > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * ```
+     * # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+     * lifecycle {
+     * ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+     * }
+     * ```
+     */
     declare public readonly publicWhiteLists: pulumi.Output<string[] | undefined>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
@@ -238,6 +363,17 @@ export interface InstanceState {
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     planCode?: pulumi.Input<string>;
+    /**
+     * The public IP address that you want to add to the whitelist.
+     *
+     * > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * ```
+     * # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+     * lifecycle {
+     * ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+     * }
+     * ```
+     */
     publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
@@ -321,6 +457,17 @@ export interface InstanceArgs {
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     planCode: pulumi.Input<string>;
+    /**
+     * The public IP address that you want to add to the whitelist.
+     *
+     * > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * ```
+     * # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+     * lifecycle {
+     * ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+     * }
+     * ```
+     */
     publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.

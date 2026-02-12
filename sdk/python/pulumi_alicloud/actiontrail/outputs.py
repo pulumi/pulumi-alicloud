@@ -112,6 +112,7 @@ class GetHistoryDeliveryJobsJobResult(dict):
         """
         :param _builtins.str create_time: The time when the task was created.
         :param _builtins.str end_time: The time when the task ended.
+        :param _builtins.str history_delivery_job_id: The resource ID in terraform of History Delivery Job.
         :param _builtins.str home_region: The home region of the trail.
         :param _builtins.str id: The ID of the History Delivery Job.
         :param Sequence['GetHistoryDeliveryJobsJobJobStatusArgs'] job_statuses: Detail status of delivery job.
@@ -150,6 +151,9 @@ class GetHistoryDeliveryJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="historyDeliveryJobId")
     def history_delivery_job_id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of History Delivery Job.
+        """
         return pulumi.get(self, "history_delivery_job_id")
 
     @_builtins.property
@@ -762,6 +766,7 @@ class GetSaslUsersUserResult(dict):
                  type: _builtins.str,
                  username: _builtins.str):
         """
+        :param _builtins.str id: (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `<instance_id>:<username>`.
         :param _builtins.str password: The password of the user.
         :param _builtins.str type: (Available since v1.260.0) The type of the user.
         :param _builtins.str username: The username of the user.
@@ -774,6 +779,9 @@ class GetSaslUsersUserResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `<instance_id>:<username>`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

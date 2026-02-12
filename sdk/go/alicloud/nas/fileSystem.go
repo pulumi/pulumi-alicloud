@@ -118,9 +118,15 @@ type FileSystem struct {
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
-	FileSystemType pulumi.StringOutput    `pulumi:"fileSystemType"`
-	Keytab         pulumi.StringPtrOutput `pulumi:"keytab"`
-	KeytabMd5      pulumi.StringPtrOutput `pulumi:"keytabMd5"`
+	FileSystemType pulumi.StringOutput `pulumi:"fileSystemType"`
+	// String of keytab file content encrypted by base64
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Keytab pulumi.StringPtrOutput `pulumi:"keytab"`
+	// String of the keytab file content encrypted by MD5
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	KeytabMd5 pulumi.StringPtrOutput `pulumi:"keytabMd5"`
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
@@ -251,8 +257,14 @@ type fileSystemState struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType *string `pulumi:"fileSystemType"`
-	Keytab         *string `pulumi:"keytab"`
-	KeytabMd5      *string `pulumi:"keytabMd5"`
+	// String of keytab file content encrypted by base64
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Keytab *string `pulumi:"keytab"`
+	// String of the keytab file content encrypted by MD5
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	KeytabMd5 *string `pulumi:"keytabMd5"`
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -348,8 +360,14 @@ type FileSystemState struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType pulumi.StringPtrInput
-	Keytab         pulumi.StringPtrInput
-	KeytabMd5      pulumi.StringPtrInput
+	// String of keytab file content encrypted by base64
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Keytab pulumi.StringPtrInput
+	// String of the keytab file content encrypted by MD5
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	KeytabMd5 pulumi.StringPtrInput
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId pulumi.StringPtrInput
@@ -447,8 +465,14 @@ type fileSystemArgs struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType *string `pulumi:"fileSystemType"`
-	Keytab         *string `pulumi:"keytab"`
-	KeytabMd5      *string `pulumi:"keytabMd5"`
+	// String of keytab file content encrypted by base64
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Keytab *string `pulumi:"keytab"`
+	// String of the keytab file content encrypted by MD5
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	KeytabMd5 *string `pulumi:"keytabMd5"`
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -539,8 +563,14 @@ type FileSystemArgs struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType pulumi.StringPtrInput
-	Keytab         pulumi.StringPtrInput
-	KeytabMd5      pulumi.StringPtrInput
+	// String of keytab file content encrypted by base64
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Keytab pulumi.StringPtrInput
+	// String of the keytab file content encrypted by MD5
+	//
+	// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	KeytabMd5 pulumi.StringPtrInput
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId pulumi.StringPtrInput
@@ -733,10 +763,16 @@ func (o FileSystemOutput) FileSystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.FileSystemType }).(pulumi.StringOutput)
 }
 
+// String of keytab file content encrypted by base64
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o FileSystemOutput) Keytab() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.Keytab }).(pulumi.StringPtrOutput)
 }
 
+// String of the keytab file content encrypted by MD5
+//
+// > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o FileSystemOutput) KeytabMd5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.KeytabMd5 }).(pulumi.StringPtrOutput)
 }

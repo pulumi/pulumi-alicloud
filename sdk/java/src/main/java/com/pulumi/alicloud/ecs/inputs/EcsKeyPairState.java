@@ -62,6 +62,10 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
      * @deprecated
      * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
@@ -71,6 +75,10 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> keyName;
 
     /**
+     * @return Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * 
+     * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
      * @deprecated
      * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
@@ -80,9 +88,17 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.keyName);
     }
 
+    /**
+     * The key pair name&#39;s prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     @Import(name="keyNamePrefix")
     private @Nullable Output<String> keyNamePrefix;
 
+    /**
+     * @return The key pair name&#39;s prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     public Optional<Output<String>> keyNamePrefix() {
         return Optional.ofNullable(this.keyNamePrefix);
     }
@@ -243,6 +259,10 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param keyName Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * 
+         * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -256,6 +276,10 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param keyName Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * 
+         * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -267,11 +291,23 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
             return keyName(Output.of(keyName));
         }
 
+        /**
+         * @param keyNamePrefix The key pair name&#39;s prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyNamePrefix(@Nullable Output<String> keyNamePrefix) {
             $.keyNamePrefix = keyNamePrefix;
             return this;
         }
 
+        /**
+         * @param keyNamePrefix The key pair name&#39;s prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyNamePrefix(String keyNamePrefix) {
             return keyNamePrefix(Output.of(keyNamePrefix));
         }

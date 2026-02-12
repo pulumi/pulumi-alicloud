@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
     [OutputType]
     public sealed class GetSaslUsersUserResult
     {
+        /// <summary>
+        /// (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `&lt;instance_id&gt;:&lt;username&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The password of the user.

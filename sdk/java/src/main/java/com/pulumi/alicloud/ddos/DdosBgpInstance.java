@@ -19,6 +19,61 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Anti-DDoS Pro (DdosBgp) Instance resource.
+ * 
+ * For information about Anti-DDoS Pro (DdosBgp) Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+ * 
+ * &gt; **NOTE:** Available since v1.183.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ddos.DdosBgpInstance;
+ * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var instance = new DdosBgpInstance("instance", DdosBgpInstanceArgs.builder()
+ *             .name(name)
+ *             .baseBandwidth(20)
+ *             .bandwidth(-1)
+ *             .ipCount(100)
+ *             .ipType("IPv4")
+ *             .normalBandwidth(100)
+ *             .type("Enterprise")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.ddos.DdosBgpInstance` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.ddos.DdosBgpInstance`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.

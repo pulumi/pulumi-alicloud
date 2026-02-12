@@ -161,6 +161,11 @@ export class Job extends pulumi.CustomResource {
      * job status See `status` below.
      */
     declare public readonly status: pulumi.Output<outputs.realtimecompute.JobStatus>;
+    /**
+     * Job Stop Policy
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly stopStrategy: pulumi.Output<string | undefined>;
 
     /**
@@ -246,6 +251,11 @@ export interface JobState {
      * job status See `status` below.
      */
     status?: pulumi.Input<inputs.realtimecompute.JobStatus>;
+    /**
+     * Job Stop Policy
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     stopStrategy?: pulumi.Input<string>;
 }
 
@@ -283,5 +293,10 @@ export interface JobArgs {
      * job status See `status` below.
      */
     status?: pulumi.Input<inputs.realtimecompute.JobStatus>;
+    /**
+     * Job Stop Policy
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     stopStrategy?: pulumi.Input<string>;
 }

@@ -1131,6 +1131,112 @@ class Node(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Eflo Node resource.
+
+        Large computing node.
+
+        For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+
+        > **NOTE:** Available since v1.246.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_node = alicloud.eflo.Node("default",
+            period=36,
+            discount_level="36",
+            billing_cycle="1month",
+            classify="gpuserver",
+            zone="cn-hangzhou-b",
+            product_form="instance",
+            payment_ratio="0",
+            hpn_zone="B1",
+            server_arch="bmserver",
+            machine_type="efg1.nvga1n",
+            stage_num="36",
+            renewal_status="AutoRenewal",
+            renew_period=36,
+            status="Unused")
+        ```
+        Creating a PayAsYouGo eflo node
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        payasyougo = alicloud.eflo.Node("payasyougo",
+            machine_type="efg1.nvga8n",
+            payment_type="PayAsYouGo",
+            hpn_zone="A1",
+            product_form="instance",
+            renewal_status="ManualRenewal",
+            zone="cn-wulanchabu-a",
+            tags={
+                "From": "Terraform",
+            },
+            cluster_id="i11922307xxxxxxx",
+            node_group_id="i1254705xxxxxxxx",
+            hostname="terraform-example",
+            login_password="xxxxxxxx",
+            data_disks=[
+                {
+                    "size": 120,
+                    "category": "cloud_essd",
+                    "performance_level": "PL0",
+                },
+                {
+                    "size": 120,
+                    "category": "cloud_essd",
+                    "performance_level": "PL1",
+                },
+            ],
+            ip_allocation_policies=[{
+                "machine_type_policies": [{
+                    "machine_type": "efg1.nvga8n",
+                    "bonds": [
+                        {
+                            "subnet": "subnet-x1xxx",
+                            "name": "example01",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example02",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example03",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example04",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example05",
+                        },
+                    ],
+                }],
+            }])
+        ```
+
+        ### Deleting `eflo.Node` or removing it from your configuration
+
+        The `eflo.Node` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Node can be imported using the id, e.g.
@@ -1201,6 +1307,112 @@ class Node(pulumi.CustomResource):
                  args: Optional[NodeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Eflo Node resource.
+
+        Large computing node.
+
+        For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+
+        > **NOTE:** Available since v1.246.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_node = alicloud.eflo.Node("default",
+            period=36,
+            discount_level="36",
+            billing_cycle="1month",
+            classify="gpuserver",
+            zone="cn-hangzhou-b",
+            product_form="instance",
+            payment_ratio="0",
+            hpn_zone="B1",
+            server_arch="bmserver",
+            machine_type="efg1.nvga1n",
+            stage_num="36",
+            renewal_status="AutoRenewal",
+            renew_period=36,
+            status="Unused")
+        ```
+        Creating a PayAsYouGo eflo node
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        payasyougo = alicloud.eflo.Node("payasyougo",
+            machine_type="efg1.nvga8n",
+            payment_type="PayAsYouGo",
+            hpn_zone="A1",
+            product_form="instance",
+            renewal_status="ManualRenewal",
+            zone="cn-wulanchabu-a",
+            tags={
+                "From": "Terraform",
+            },
+            cluster_id="i11922307xxxxxxx",
+            node_group_id="i1254705xxxxxxxx",
+            hostname="terraform-example",
+            login_password="xxxxxxxx",
+            data_disks=[
+                {
+                    "size": 120,
+                    "category": "cloud_essd",
+                    "performance_level": "PL0",
+                },
+                {
+                    "size": 120,
+                    "category": "cloud_essd",
+                    "performance_level": "PL1",
+                },
+            ],
+            ip_allocation_policies=[{
+                "machine_type_policies": [{
+                    "machine_type": "efg1.nvga8n",
+                    "bonds": [
+                        {
+                            "subnet": "subnet-x1xxx",
+                            "name": "example01",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example02",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example03",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example04",
+                        },
+                        {
+                            "subnet": "subnet-xxxx",
+                            "name": "example05",
+                        },
+                    ],
+                }],
+            }])
+        ```
+
+        ### Deleting `eflo.Node` or removing it from your configuration
+
+        The `eflo.Node` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Node can be imported using the id, e.g.

@@ -11,12 +11,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Firewall IPS Config resource.
+//
+// Support interception mode modification.
+//
+// For information about Cloud Firewall IPS Config and how to use it, see [What is IPS Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeDefaultIPSConfig).
+//
+// > **NOTE:** Available since v1.249.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cloudfirewall.NewInstance(ctx, "default", &cloudfirewall.InstanceArgs{
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewIpsConfig(ctx, "default", &cloudfirewall.IpsConfigArgs{
+//				Lang:       pulumi.String("zh"),
+//				MaxSdl:     pulumi.Int(1000),
+//				BasicRules: pulumi.Int(1),
+//				RunMode:    pulumi.Int(1),
+//				CtiRules:   pulumi.Int(0),
+//				PatchRules: pulumi.Int(0),
+//				RuleClass:  pulumi.Int(1),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudfirewall.IpsConfig` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudfirewall.IpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall IPS Config can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudfirewall/ipsConfig:IpsConfig example
+// $ terraform import alicloud_cloud_firewall_ips_config.example
 // ```
 type IpsConfig struct {
 	pulumi.CustomResourceState

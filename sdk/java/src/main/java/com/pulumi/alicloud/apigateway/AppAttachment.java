@@ -14,6 +14,14 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an app attachment resource.It is used for authorizing a specific api to an app accessing.
+ * 
+ * For information about Api Gateway App attachment and how to use it, see [Add specified API access authorities](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-setappsauthorities)
+ * 
+ * &gt; **NOTE:** Available since v1.23.0.
+ * 
+ * &gt; **NOTE:** Terraform will auto build app attachment while it uses `alicloud.apigateway.AppAttachment` to build.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

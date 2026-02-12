@@ -12,12 +12,72 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Firewall User Alarm Config resource.
+//
+// Configure alarm notifications and contacts.
+//
+// For information about Cloud Firewall User Alarm Config and how to use it, see [What is User Alarm Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeUserAlarmConfig).
+//
+// > **NOTE:** Available since v1.271.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfirewall.NewUserAlarmConfig(ctx, "default", &cloudfirewall.UserAlarmConfigArgs{
+//				AlarmConfigs: cloudfirewall.UserAlarmConfigAlarmConfigArray{
+//					&cloudfirewall.UserAlarmConfigAlarmConfigArgs{
+//						AlarmValue:   pulumi.String("on"),
+//						AlarmType:    pulumi.String("bandwidth"),
+//						AlarmPeriod:  pulumi.String("1"),
+//						AlarmHour:    pulumi.String("0"),
+//						AlarmNotify:  pulumi.String("0"),
+//						AlarmWeekDay: pulumi.String("0"),
+//					},
+//				},
+//				UseDefaultContact: pulumi.String("1"),
+//				NotifyConfigs: cloudfirewall.UserAlarmConfigNotifyConfigArray{
+//					&cloudfirewall.UserAlarmConfigNotifyConfigArgs{
+//						NotifyValue: pulumi.String("13000000000"),
+//						NotifyType:  pulumi.String("sms"),
+//					},
+//				},
+//				AlarmLang: pulumi.String("zh"),
+//				Lang:      pulumi.String("zh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudfirewall.UserAlarmConfig` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudfirewall.UserAlarmConfig`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall User Alarm Config can be imported using the `Account ID`, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig example <Alibaba Cloud Account ID>
+// $ terraform import alicloud_cloud_firewall_user_alarm_config.example <Alibaba Cloud Account ID>
 // ```
 type UserAlarmConfig struct {
 	pulumi.CustomResourceState
@@ -28,10 +88,16 @@ type UserAlarmConfig struct {
 	AlarmLang pulumi.StringPtrOutput `pulumi:"alarmLang"`
 	// Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
 	ContactConfigs UserAlarmConfigContactConfigArrayOutput `pulumi:"contactConfigs"`
-	Lang           pulumi.StringPtrOutput                  `pulumi:"lang"`
+	// The language type. Possible values are `zh`, `en`.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
-	NotifyConfigs     UserAlarmConfigNotifyConfigArrayOutput `pulumi:"notifyConfigs"`
-	UseDefaultContact pulumi.StringPtrOutput                 `pulumi:"useDefaultContact"`
+	NotifyConfigs UserAlarmConfigNotifyConfigArrayOutput `pulumi:"notifyConfigs"`
+	// Whether to Use the default contact.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UseDefaultContact pulumi.StringPtrOutput `pulumi:"useDefaultContact"`
 }
 
 // NewUserAlarmConfig registers a new resource with the given unique name, arguments, and options.
@@ -73,10 +139,16 @@ type userAlarmConfigState struct {
 	AlarmLang *string `pulumi:"alarmLang"`
 	// Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
 	ContactConfigs []UserAlarmConfigContactConfig `pulumi:"contactConfigs"`
-	Lang           *string                        `pulumi:"lang"`
+	// The language type. Possible values are `zh`, `en`.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Lang *string `pulumi:"lang"`
 	// Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
-	NotifyConfigs     []UserAlarmConfigNotifyConfig `pulumi:"notifyConfigs"`
-	UseDefaultContact *string                       `pulumi:"useDefaultContact"`
+	NotifyConfigs []UserAlarmConfigNotifyConfig `pulumi:"notifyConfigs"`
+	// Whether to Use the default contact.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UseDefaultContact *string `pulumi:"useDefaultContact"`
 }
 
 type UserAlarmConfigState struct {
@@ -86,9 +158,15 @@ type UserAlarmConfigState struct {
 	AlarmLang pulumi.StringPtrInput
 	// Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
 	ContactConfigs UserAlarmConfigContactConfigArrayInput
-	Lang           pulumi.StringPtrInput
+	// The language type. Possible values are `zh`, `en`.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Lang pulumi.StringPtrInput
 	// Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
-	NotifyConfigs     UserAlarmConfigNotifyConfigArrayInput
+	NotifyConfigs UserAlarmConfigNotifyConfigArrayInput
+	// Whether to Use the default contact.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	UseDefaultContact pulumi.StringPtrInput
 }
 
@@ -103,10 +181,16 @@ type userAlarmConfigArgs struct {
 	AlarmLang *string `pulumi:"alarmLang"`
 	// Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
 	ContactConfigs []UserAlarmConfigContactConfig `pulumi:"contactConfigs"`
-	Lang           *string                        `pulumi:"lang"`
+	// The language type. Possible values are `zh`, `en`.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Lang *string `pulumi:"lang"`
 	// Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
-	NotifyConfigs     []UserAlarmConfigNotifyConfig `pulumi:"notifyConfigs"`
-	UseDefaultContact *string                       `pulumi:"useDefaultContact"`
+	NotifyConfigs []UserAlarmConfigNotifyConfig `pulumi:"notifyConfigs"`
+	// Whether to Use the default contact.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	UseDefaultContact *string `pulumi:"useDefaultContact"`
 }
 
 // The set of arguments for constructing a UserAlarmConfig resource.
@@ -117,9 +201,15 @@ type UserAlarmConfigArgs struct {
 	AlarmLang pulumi.StringPtrInput
 	// Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
 	ContactConfigs UserAlarmConfigContactConfigArrayInput
-	Lang           pulumi.StringPtrInput
+	// The language type. Possible values are `zh`, `en`.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	Lang pulumi.StringPtrInput
 	// Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
-	NotifyConfigs     UserAlarmConfigNotifyConfigArrayInput
+	NotifyConfigs UserAlarmConfigNotifyConfigArrayInput
+	// Whether to Use the default contact.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	UseDefaultContact pulumi.StringPtrInput
 }
 
@@ -225,6 +315,9 @@ func (o UserAlarmConfigOutput) ContactConfigs() UserAlarmConfigContactConfigArra
 	return o.ApplyT(func(v *UserAlarmConfig) UserAlarmConfigContactConfigArrayOutput { return v.ContactConfigs }).(UserAlarmConfigContactConfigArrayOutput)
 }
 
+// The language type. Possible values are `zh`, `en`.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o UserAlarmConfigOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAlarmConfig) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
@@ -234,6 +327,9 @@ func (o UserAlarmConfigOutput) NotifyConfigs() UserAlarmConfigNotifyConfigArrayO
 	return o.ApplyT(func(v *UserAlarmConfig) UserAlarmConfigNotifyConfigArrayOutput { return v.NotifyConfigs }).(UserAlarmConfigNotifyConfigArrayOutput)
 }
 
+// Whether to Use the default contact.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o UserAlarmConfigOutput) UseDefaultContact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAlarmConfig) pulumi.StringPtrOutput { return v.UseDefaultContact }).(pulumi.StringPtrOutput)
 }

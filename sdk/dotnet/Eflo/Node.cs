@@ -10,6 +10,145 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eflo
 {
     /// <summary>
+    /// Provides a Eflo Node resource.
+    /// 
+    /// Large computing node.
+    /// 
+    /// For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.246.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultNode = new AliCloud.Eflo.Node("default", new()
+    ///     {
+    ///         Period = 36,
+    ///         DiscountLevel = "36",
+    ///         BillingCycle = "1month",
+    ///         Classify = "gpuserver",
+    ///         Zone = "cn-hangzhou-b",
+    ///         ProductForm = "instance",
+    ///         PaymentRatio = "0",
+    ///         HpnZone = "B1",
+    ///         ServerArch = "bmserver",
+    ///         MachineType = "efg1.nvga1n",
+    ///         StageNum = "36",
+    ///         RenewalStatus = "AutoRenewal",
+    ///         RenewPeriod = 36,
+    ///         Status = "Unused",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Creating a PayAsYouGo eflo node
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var payasyougo = new AliCloud.Eflo.Node("payasyougo", new()
+    ///     {
+    ///         MachineType = "efg1.nvga8n",
+    ///         PaymentType = "PayAsYouGo",
+    ///         HpnZone = "A1",
+    ///         ProductForm = "instance",
+    ///         RenewalStatus = "ManualRenewal",
+    ///         Zone = "cn-wulanchabu-a",
+    ///         Tags = 
+    ///         {
+    ///             { "From", "Terraform" },
+    ///         },
+    ///         ClusterId = "i11922307xxxxxxx",
+    ///         NodeGroupId = "i1254705xxxxxxxx",
+    ///         Hostname = "terraform-example",
+    ///         LoginPassword = "xxxxxxxx",
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.Eflo.Inputs.NodeDataDiskArgs
+    ///             {
+    ///                 Size = 120,
+    ///                 Category = "cloud_essd",
+    ///                 PerformanceLevel = "PL0",
+    ///             },
+    ///             new AliCloud.Eflo.Inputs.NodeDataDiskArgs
+    ///             {
+    ///                 Size = 120,
+    ///                 Category = "cloud_essd",
+    ///                 PerformanceLevel = "PL1",
+    ///             },
+    ///         },
+    ///         IpAllocationPolicies = new[]
+    ///         {
+    ///             new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyArgs
+    ///             {
+    ///                 MachineTypePolicies = new[]
+    ///                 {
+    ///                     new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyMachineTypePolicyArgs
+    ///                     {
+    ///                         MachineType = "efg1.nvga8n",
+    ///                         Bonds = new[]
+    ///                         {
+    ///                             new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyMachineTypePolicyBondArgs
+    ///                             {
+    ///                                 Subnet = "subnet-x1xxx",
+    ///                                 Name = "example01",
+    ///                             },
+    ///                             new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyMachineTypePolicyBondArgs
+    ///                             {
+    ///                                 Subnet = "subnet-xxxx",
+    ///                                 Name = "example02",
+    ///                             },
+    ///                             new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyMachineTypePolicyBondArgs
+    ///                             {
+    ///                                 Subnet = "subnet-xxxx",
+    ///                                 Name = "example03",
+    ///                             },
+    ///                             new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyMachineTypePolicyBondArgs
+    ///                             {
+    ///                                 Subnet = "subnet-xxxx",
+    ///                                 Name = "example04",
+    ///                             },
+    ///                             new AliCloud.Eflo.Inputs.NodeIpAllocationPolicyMachineTypePolicyBondArgs
+    ///                             {
+    ///                                 Subnet = "subnet-xxxx",
+    ///                                 Name = "example05",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.eflo.Node` or removing it from your configuration
+    /// 
+    /// The `alicloud.eflo.Node` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eflo Node can be imported using the id, e.g.

@@ -12,6 +12,160 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Max Compute Quota Schedule resource.
+//
+// For information about Max Compute Quota Schedule and how to use it, see [What is Quota Schedule](https://www.alibabacloud.com/help/en/).
+//
+// > **NOTE:** Available since v1.242.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			elasticReservedCu := "0"
+//			if param := cfg.Get("elasticReservedCu"); param != "" {
+//				elasticReservedCu = param
+//			}
+//			quotaNickName := "os_terrform_p"
+//			if param := cfg.Get("quotaNickName"); param != "" {
+//				quotaNickName = param
+//			}
+//			_, err := maxcompute.NewQuotaPlan(ctx, "default", &maxcompute.QuotaPlanArgs{
+//				Quota: &maxcompute.QuotaPlanQuotaArgs{
+//					Parameter: &maxcompute.QuotaPlanQuotaParameterArgs{
+//						ElasticReservedCu: pulumi.Int(50),
+//					},
+//					SubQuotaInfoLists: maxcompute.QuotaPlanQuotaSubQuotaInfoListArray{
+//						&maxcompute.QuotaPlanQuotaSubQuotaInfoListArgs{
+//							NickName: pulumi.String("sub_quota"),
+//							Parameter: &maxcompute.QuotaPlanQuotaSubQuotaInfoListParameterArgs{
+//								MinCu:             pulumi.Int(0),
+//								MaxCu:             pulumi.Int(20),
+//								ElasticReservedCu: pulumi.Int(30),
+//							},
+//						},
+//						&maxcompute.QuotaPlanQuotaSubQuotaInfoListArgs{
+//							NickName: pulumi.String("os_terrform"),
+//							Parameter: &maxcompute.QuotaPlanQuotaSubQuotaInfoListParameterArgs{
+//								MinCu:             pulumi.Int(50),
+//								MaxCu:             pulumi.Int(50),
+//								ElasticReservedCu: pulumi.Int(20),
+//							},
+//						},
+//					},
+//				},
+//				PlanName: pulumi.String("quota_plan1"),
+//				Nickname: pulumi.String("os_terrform_p"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = maxcompute.NewQuotaPlan(ctx, "default2", &maxcompute.QuotaPlanArgs{
+//				Quota: &maxcompute.QuotaPlanQuotaArgs{
+//					Parameter: &maxcompute.QuotaPlanQuotaParameterArgs{
+//						ElasticReservedCu: pulumi.Int(50),
+//					},
+//					SubQuotaInfoLists: maxcompute.QuotaPlanQuotaSubQuotaInfoListArray{
+//						&maxcompute.QuotaPlanQuotaSubQuotaInfoListArgs{
+//							NickName: pulumi.String("sub_quota"),
+//							Parameter: &maxcompute.QuotaPlanQuotaSubQuotaInfoListParameterArgs{
+//								MinCu:             pulumi.Int(0),
+//								MaxCu:             pulumi.Int(20),
+//								ElasticReservedCu: pulumi.Int(20),
+//							},
+//						},
+//						&maxcompute.QuotaPlanQuotaSubQuotaInfoListArgs{
+//							NickName: pulumi.String("os_terrform"),
+//							Parameter: &maxcompute.QuotaPlanQuotaSubQuotaInfoListParameterArgs{
+//								MinCu:             pulumi.Int(50),
+//								MaxCu:             pulumi.Int(50),
+//								ElasticReservedCu: pulumi.Int(30),
+//							},
+//						},
+//					},
+//				},
+//				PlanName: pulumi.String("quota_plan2"),
+//				Nickname: pulumi.String("os_terrform_p"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = maxcompute.NewQuotaPlan(ctx, "default3", &maxcompute.QuotaPlanArgs{
+//				Quota: &maxcompute.QuotaPlanQuotaArgs{
+//					Parameter: &maxcompute.QuotaPlanQuotaParameterArgs{
+//						ElasticReservedCu: pulumi.Int(50),
+//					},
+//					SubQuotaInfoLists: maxcompute.QuotaPlanQuotaSubQuotaInfoListArray{
+//						&maxcompute.QuotaPlanQuotaSubQuotaInfoListArgs{
+//							NickName: pulumi.String("sub_quota"),
+//							Parameter: &maxcompute.QuotaPlanQuotaSubQuotaInfoListParameterArgs{
+//								MinCu:             pulumi.Int(40),
+//								MaxCu:             pulumi.Int(40),
+//								ElasticReservedCu: pulumi.Int(40),
+//							},
+//						},
+//						&maxcompute.QuotaPlanQuotaSubQuotaInfoListArgs{
+//							NickName: pulumi.String("os_terrform"),
+//							Parameter: &maxcompute.QuotaPlanQuotaSubQuotaInfoListParameterArgs{
+//								MinCu:             pulumi.Int(10),
+//								MaxCu:             pulumi.Int(10),
+//								ElasticReservedCu: pulumi.Int(10),
+//							},
+//						},
+//					},
+//				},
+//				PlanName: pulumi.String("quota_plan3"),
+//				Nickname: pulumi.String("os_terrform_p"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = maxcompute.NewQuotaSchedule(ctx, "default", &maxcompute.QuotaScheduleArgs{
+//				Timezone: pulumi.String("UTC+8"),
+//				Nickname: pulumi.String(quotaNickName),
+//				ScheduleLists: maxcompute.QuotaScheduleScheduleListArray{
+//					&maxcompute.QuotaScheduleScheduleListArgs{
+//						Plan: pulumi.String("Default"),
+//						Condition: &maxcompute.QuotaScheduleScheduleListConditionArgs{
+//							At: pulumi.String("00:00"),
+//						},
+//						Type: pulumi.String("daily"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `maxcompute.QuotaSchedule` or removing it from your configuration
+//
+// Terraform cannot destroy resource `maxcompute.QuotaSchedule`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Max Compute Quota Schedule can be imported using the id, e.g.

@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Load balancer domain_extension can be imported using the id, e.g.
+ * Load balancer domainExtension can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:slb/domainExtension:DomainExtension example de-abc123456

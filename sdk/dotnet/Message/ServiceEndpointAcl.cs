@@ -64,6 +64,10 @@ namespace Pulumi.AliCloud.Message
         [Output("aclStrategy")]
         public Output<string> AclStrategy { get; private set; } = null!;
 
+        /// <summary>
+        /// The CIDR block.
+        /// &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
+        /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
 
@@ -127,6 +131,10 @@ namespace Pulumi.AliCloud.Message
         [Input("aclStrategy", required: true)]
         public Input<string> AclStrategy { get; set; } = null!;
 
+        /// <summary>
+        /// The CIDR block.
+        /// &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
+        /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
@@ -152,6 +160,10 @@ namespace Pulumi.AliCloud.Message
         [Input("aclStrategy")]
         public Input<string>? AclStrategy { get; set; }
 
+        /// <summary>
+        /// The CIDR block.
+        /// &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
+        /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 

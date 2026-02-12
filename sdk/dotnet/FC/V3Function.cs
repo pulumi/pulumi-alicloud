@@ -133,6 +133,11 @@ namespace Pulumi.AliCloud.FC
     [AliCloudResourceType("alicloud:fc/v3Function:V3Function")]
     public partial class V3Function : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Function code ZIP package. code and customContainerConfig. See `Code` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("code")]
         public Output<Outputs.V3FunctionCode?> Code { get; private set; } = null!;
 
@@ -428,6 +433,11 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V3FunctionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Function code ZIP package. code and customContainerConfig. See `Code` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("code")]
         public Input<Inputs.V3FunctionCodeArgs>? Code { get; set; }
 
@@ -631,6 +641,11 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V3FunctionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Function code ZIP package. code and customContainerConfig. See `Code` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("code")]
         public Input<Inputs.V3FunctionCodeGetArgs>? Code { get; set; }
 

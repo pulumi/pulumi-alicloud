@@ -355,6 +355,12 @@ public final class KmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getAliases:getAliases", TypeShape.of(GetAliasesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+     * 
+     * &gt; **NOTE:** Available since v1.63.0.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -403,6 +409,12 @@ public final class KmsFunctions {
         return getCiphertext(args, InvokeOptions.Empty);
     }
     /**
+     * Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+     * 
+     * &gt; **NOTE:** Available since v1.63.0.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -451,6 +463,12 @@ public final class KmsFunctions {
         return getCiphertextPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+     * 
+     * &gt; **NOTE:** Available since v1.63.0.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -499,6 +517,12 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("alicloud:kms/getCiphertext:getCiphertext", TypeShape.of(GetCiphertextResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+     * 
+     * &gt; **NOTE:** Available since v1.63.0.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -547,6 +571,12 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("alicloud:kms/getCiphertext:getCiphertext", TypeShape.of(GetCiphertextResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `alicloud.kms.Ciphertext` resource.
+     * 
+     * &gt; **NOTE:** Available since v1.63.0.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -2220,6 +2250,10 @@ public final class KmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kms/getKeys:getKeys", TypeShape.of(GetKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2275,6 +2309,10 @@ public final class KmsFunctions {
         return getPlaintext(args, InvokeOptions.Empty);
     }
     /**
+     * Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2330,6 +2368,10 @@ public final class KmsFunctions {
         return getPlaintextPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2385,6 +2427,10 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("alicloud:kms/getPlaintext:getPlaintext", TypeShape.of(GetPlaintextResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2440,6 +2486,10 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("alicloud:kms/getPlaintext:getPlaintext", TypeShape.of(GetPlaintextResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.
+     * 
+     * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+     * 
      * ## Example Usage
      * 
      * <pre>

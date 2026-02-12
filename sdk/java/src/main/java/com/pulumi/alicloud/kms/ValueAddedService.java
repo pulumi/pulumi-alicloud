@@ -106,9 +106,21 @@ public class ValueAddedService extends com.pulumi.resources.CustomResource {
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * Prepaid cycle. Unit for year
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return Prepaid cycle. Unit for year
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }

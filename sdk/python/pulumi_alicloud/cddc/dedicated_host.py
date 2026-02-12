@@ -508,6 +508,68 @@ class DedicatedHost(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a ApsaraDB for MyBase Dedicated Host resource.
+
+        For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhost).
+
+        > **NOTE:** Available since v1.147.0.
+
+        > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cddc.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.ids[0])
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("default",
+            engine="MySQL",
+            vpc_id=default_network.id,
+            cpu_allocation_ratio=101,
+            mem_allocation_ratio=50,
+            disk_allocation_ratio=200,
+            allocation_policy="Evenly",
+            host_replace_policy="Manual",
+            dedicated_host_group_desc=name)
+        default_get_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
+            zone_id=default.ids[0],
+            storage_type="cloud_essd")
+        default_dedicated_host = alicloud.cddc.DedicatedHost("default",
+            host_name=name,
+            dedicated_host_group_id=default_dedicated_host_group.id,
+            host_class=default_get_host_ecs_level_infos.infos[0].res_class_code,
+            zone_id=default.ids[0],
+            vswitch_id=default_switch.id,
+            payment_type="Subscription",
+            tags={
+                "Created": "TF",
+                "For": "CDDC_DEDICATED",
+            })
+        ```
+
+        ### Deleting `cddc.DedicatedHost` or removing it from your configuration
+
+        The `cddc.DedicatedHost` resource allows you to manage `payment_type = "Subscription"` host instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Host Instance.
+        You can resume managing the subscription host instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.
@@ -542,6 +604,68 @@ class DedicatedHost(pulumi.CustomResource):
                  args: DedicatedHostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ApsaraDB for MyBase Dedicated Host resource.
+
+        For information about ApsaraDB for MyBase Dedicated Host and how to use it, see [What is Dedicated Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhost).
+
+        > **NOTE:** Available since v1.147.0.
+
+        > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cddc.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.ids[0])
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("default",
+            engine="MySQL",
+            vpc_id=default_network.id,
+            cpu_allocation_ratio=101,
+            mem_allocation_ratio=50,
+            disk_allocation_ratio=200,
+            allocation_policy="Evenly",
+            host_replace_policy="Manual",
+            dedicated_host_group_desc=name)
+        default_get_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
+            zone_id=default.ids[0],
+            storage_type="cloud_essd")
+        default_dedicated_host = alicloud.cddc.DedicatedHost("default",
+            host_name=name,
+            dedicated_host_group_id=default_dedicated_host_group.id,
+            host_class=default_get_host_ecs_level_infos.infos[0].res_class_code,
+            zone_id=default.ids[0],
+            vswitch_id=default_switch.id,
+            payment_type="Subscription",
+            tags={
+                "Created": "TF",
+                "For": "CDDC_DEDICATED",
+            })
+        ```
+
+        ### Deleting `cddc.DedicatedHost` or removing it from your configuration
+
+        The `cddc.DedicatedHost` resource allows you to manage `payment_type = "Subscription"` host instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Host Instance.
+        You can resume managing the subscription host instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ApsaraDB for MyBase Dedicated Host can be imported using the id, e.g.

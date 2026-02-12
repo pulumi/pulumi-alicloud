@@ -80,9 +80,17 @@ namespace Pulumi.AliCloud.Ecs
         [Output("keyFile")]
         public Output<string?> KeyFile { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `KeyName` has been deprecated from provider version 1.121.0. New field `KeyPairName` instead.
+        /// 
+        /// &gt; **NOTE:** If `KeyPairName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
+        /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// The key pair name's prefix. It is conflict with `KeyPairName`. If it is specified, terraform will using it to build the only key name.
+        /// </summary>
         [Output("keyNamePrefix")]
         public Output<string?> KeyNamePrefix { get; private set; } = null!;
 
@@ -162,9 +170,17 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyFile")]
         public Input<string>? KeyFile { get; set; }
 
+        /// <summary>
+        /// Field `KeyName` has been deprecated from provider version 1.121.0. New field `KeyPairName` instead.
+        /// 
+        /// &gt; **NOTE:** If `KeyPairName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
+        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// The key pair name's prefix. It is conflict with `KeyPairName`. If it is specified, terraform will using it to build the only key name.
+        /// </summary>
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
@@ -224,9 +240,17 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyFile")]
         public Input<string>? KeyFile { get; set; }
 
+        /// <summary>
+        /// Field `KeyName` has been deprecated from provider version 1.121.0. New field `KeyPairName` instead.
+        /// 
+        /// &gt; **NOTE:** If `KeyPairName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
+        /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// The key pair name's prefix. It is conflict with `KeyPairName`. If it is specified, terraform will using it to build the only key name.
+        /// </summary>
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 

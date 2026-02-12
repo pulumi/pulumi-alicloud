@@ -23,48 +23,43 @@ __all__ = [
     'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ServiceGroupMonitoringAgentProcessAlertConfigArgsDict(TypedDict):
-        comparison_operator: pulumi.Input[_builtins.str]
-        """
-        The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        """
-        escalations_level: pulumi.Input[_builtins.str]
-        """
-        The alert level. Valid values: `critical`, `warn`, `info`.
-        """
-        statistics: pulumi.Input[_builtins.str]
-        """
-        The statistical method for alerts. Valid values: `Average`.
-        """
-        threshold: pulumi.Input[_builtins.str]
-        """
-        The alert threshold.
-        """
-        times: pulumi.Input[_builtins.str]
-        """
-        The number of times for which the threshold can be consecutively exceeded.
-        """
-        effective_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time period during which the alert rule is effective.
-        """
-        silence_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
-        """
-        target_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict']]]]
-        """
-        The alert triggers. See `target_list` below.
-        """
-        webhook: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The callback URL.
-        """
-elif False:
-    ServiceGroupMonitoringAgentProcessAlertConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceGroupMonitoringAgentProcessAlertConfigArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+    """
+    escalations_level: pulumi.Input[_builtins.str]
+    """
+    The alert level. Valid values: `critical`, `warn`, `info`.
+    """
+    statistics: pulumi.Input[_builtins.str]
+    """
+    The statistical method for alerts. Valid values: `Average`.
+    """
+    threshold: pulumi.Input[_builtins.str]
+    """
+    The alert threshold.
+    """
+    times: pulumi.Input[_builtins.str]
+    """
+    The number of times for which the threshold can be consecutively exceeded.
+    """
+    effective_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time period during which the alert rule is effective.
+    """
+    silence_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
+    """
+    target_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict']]]]
+    """
+    The alert triggers. See `target_list` below.
+    """
+    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The callback URL.
+    """
 
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessAlertConfigArgs:
@@ -212,26 +207,23 @@ class ServiceGroupMonitoringAgentProcessAlertConfigArgs:
         pulumi.set(self, "webhook", value)
 
 
-if not MYPY:
-    class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alibaba Cloud Resource Name (ARN) of the resource.
-        """
-        json_params: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameters of the alert callback. Specify the parameters in the JSON format.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        """
-        target_list_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the resource for which alerts are triggered.
-        """
-elif False:
-    ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alibaba Cloud Resource Name (ARN) of the resource.
+    """
+    json_params: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameters of the alert callback. Specify the parameters in the JSON format.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+    """
+    target_list_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the resource for which alerts are triggered.
+    """
 
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
@@ -304,22 +296,19 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
         pulumi.set(self, "target_list_id", value)
 
 
-if not MYPY:
-    class ServiceGroupMonitoringAgentProcessMatchExpressArgsDict(TypedDict):
-        function: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The criteria based on which the instances are matched.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The keyword used to match the instance name.
-        """
-elif False:
-    ServiceGroupMonitoringAgentProcessMatchExpressArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceGroupMonitoringAgentProcessMatchExpressArgsDict(TypedDict):
+    function: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The criteria based on which the instances are matched.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The keyword used to match the instance name.
+    """
 
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessMatchExpressArgs:

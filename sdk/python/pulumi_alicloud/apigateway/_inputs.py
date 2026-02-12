@@ -41,20 +41,15 @@ __all__ = [
     'InstanceZoneVswitchSecurityGroupArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessControlListAclEntryArgsDict(TypedDict):
-        acl_entry_comment: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the ACL.
-        """
-        acl_entry_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
-        """
-elif False:
-    AccessControlListAclEntryArgsDict: TypeAlias = Mapping[str, Any]
+class AccessControlListAclEntryArgsDict(TypedDict):
+    acl_entry_comment: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the ACL.
+    """
+    acl_entry_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+    """
 
 @pulumi.input_type
 class AccessControlListAclEntryArgs:
@@ -95,26 +90,23 @@ class AccessControlListAclEntryArgs:
         pulumi.set(self, "acl_entry_ip", value)
 
 
-if not MYPY:
-    class ApiConstantParameterArgsDict(TypedDict):
-        in_: pulumi.Input[_builtins.str]
-        """
-        Constant parameter location; values: 'HEAD' and 'QUERY'.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Constant parameter name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Constant parameter value.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of Constant parameter.
-        """
-elif False:
-    ApiConstantParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ApiConstantParameterArgsDict(TypedDict):
+    in_: pulumi.Input[_builtins.str]
+    """
+    Constant parameter location; values: 'HEAD' and 'QUERY'.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Constant parameter name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Constant parameter value.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of Constant parameter.
+    """
 
 @pulumi.input_type
 class ApiConstantParameterArgs:
@@ -184,58 +176,55 @@ class ApiConstantParameterArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ApiFcServiceConfigArgsDict(TypedDict):
-        arn_role: pulumi.Input[_builtins.str]
-        """
-        RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The region that the function compute service belongs to.
-        """
-        timeout: pulumi.Input[_builtins.int]
-        """
-        Backend service time-out time; unit: millisecond.
-        """
-        function_base_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base url of function compute service. Required if `function_type` is `HttpTrigger`.
-        """
-        function_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The function name of function compute service. Required if `function_type` is `FCEvent`.
-        """
-        function_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
-        """
-        function_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The http method of function compute service. Required if `function_type` is `HttpTrigger`.
-        """
-        only_business_path: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path of function compute service. Required if `function_type` is `HttpTrigger`.
-        """
-        qualifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The qualifier of function name of compute service.
-        """
-        service_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
-        """
-elif False:
-    ApiFcServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiFcServiceConfigArgsDict(TypedDict):
+    arn_role: pulumi.Input[_builtins.str]
+    """
+    RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The region that the function compute service belongs to.
+    """
+    timeout: pulumi.Input[_builtins.int]
+    """
+    Backend service time-out time; unit: millisecond.
+    """
+    function_base_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+    """
+    function_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The function name of function compute service. Required if `function_type` is `FCEvent`.
+    """
+    function_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+    """
+    function_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+    """
+    only_business_path: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path of function compute service. Required if `function_type` is `HttpTrigger`.
+    """
+    qualifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The qualifier of function name of compute service.
+    """
+    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
+    """
 
 @pulumi.input_type
 class ApiFcServiceConfigArgs:
@@ -433,38 +422,35 @@ class ApiFcServiceConfigArgs:
         pulumi.set(self, "service_name", value)
 
 
-if not MYPY:
-    class ApiHttpServiceConfigArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The address of backend service.
-        """
-        method: pulumi.Input[_builtins.str]
-        """
-        The http method of backend service.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path of backend service.
-        """
-        timeout: pulumi.Input[_builtins.int]
-        """
-        Backend service time-out time; unit: millisecond.
-        """
-        aone_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of aone.
-        """
-        content_type_category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
-        """
-        content_type_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content type value of backend service.
-        """
-elif False:
-    ApiHttpServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiHttpServiceConfigArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The address of backend service.
+    """
+    method: pulumi.Input[_builtins.str]
+    """
+    The http method of backend service.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path of backend service.
+    """
+    timeout: pulumi.Input[_builtins.int]
+    """
+    Backend service time-out time; unit: millisecond.
+    """
+    aone_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of aone.
+    """
+    content_type_category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+    """
+    content_type_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content type value of backend service.
+    """
 
 @pulumi.input_type
 class ApiHttpServiceConfigArgs:
@@ -581,42 +567,39 @@ class ApiHttpServiceConfigArgs:
         pulumi.set(self, "content_type_value", value)
 
 
-if not MYPY:
-    class ApiHttpVpcServiceConfigArgsDict(TypedDict):
-        method: pulumi.Input[_builtins.str]
-        """
-        The http method of backend service.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of vpc instance.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path of backend service.
-        """
-        timeout: pulumi.Input[_builtins.int]
-        """
-        Backend service time-out time. Unit: millisecond.
-        """
-        aone_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of aone.
-        """
-        content_type_category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
-        """
-        content_type_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content type value of backend service.
-        """
-        vpc_scheme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
-        """
-elif False:
-    ApiHttpVpcServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiHttpVpcServiceConfigArgsDict(TypedDict):
+    method: pulumi.Input[_builtins.str]
+    """
+    The http method of backend service.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of vpc instance.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path of backend service.
+    """
+    timeout: pulumi.Input[_builtins.int]
+    """
+    Backend service time-out time. Unit: millisecond.
+    """
+    aone_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of aone.
+    """
+    content_type_category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+    """
+    content_type_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content type value of backend service.
+    """
+    vpc_scheme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+    """
 
 @pulumi.input_type
 class ApiHttpVpcServiceConfigArgs:
@@ -749,18 +732,15 @@ class ApiHttpVpcServiceConfigArgs:
         pulumi.set(self, "vpc_scheme", value)
 
 
-if not MYPY:
-    class ApiMockServiceConfigArgsDict(TypedDict):
-        result: pulumi.Input[_builtins.str]
-        """
-        The result of the mock service.
-        """
-        aone_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of aone.
-        """
-elif False:
-    ApiMockServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiMockServiceConfigArgsDict(TypedDict):
+    result: pulumi.Input[_builtins.str]
+    """
+    The result of the mock service.
+    """
+    aone_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of aone.
+    """
 
 @pulumi.input_type
 class ApiMockServiceConfigArgs:
@@ -800,30 +780,27 @@ class ApiMockServiceConfigArgs:
         pulumi.set(self, "aone_name", value)
 
 
-if not MYPY:
-    class ApiRequestConfigArgsDict(TypedDict):
-        method: pulumi.Input[_builtins.str]
-        """
-        The method of the api, including 'GET','POST','PUT' etc.
-        """
-        mode: pulumi.Input[_builtins.str]
-        """
-        The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The request path of the api.
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
-        """
-        body_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The body format of the api, which support the values of 'STREAM' and 'FORM'.
-        """
-elif False:
-    ApiRequestConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ApiRequestConfigArgsDict(TypedDict):
+    method: pulumi.Input[_builtins.str]
+    """
+    The method of the api, including 'GET','POST','PUT' etc.
+    """
+    mode: pulumi.Input[_builtins.str]
+    """
+    The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The request path of the api.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
+    """
+    body_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The body format of the api, which support the values of 'STREAM' and 'FORM'.
+    """
 
 @pulumi.input_type
 class ApiRequestConfigArgs:
@@ -908,42 +885,39 @@ class ApiRequestConfigArgs:
         pulumi.set(self, "body_format", value)
 
 
-if not MYPY:
-    class ApiRequestParameterArgsDict(TypedDict):
-        in_: pulumi.Input[_builtins.str]
-        """
-        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        """
-        in_service: pulumi.Input[_builtins.str]
-        """
-        Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Request's parameter name.
-        """
-        name_service: pulumi.Input[_builtins.str]
-        """
-        Backend service's parameter name.
-        """
-        required: pulumi.Input[_builtins.str]
-        """
-        Parameter required or not; values: REQUIRED and OPTIONAL.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
-        """
-        default_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default value of the parameter.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of parameter.
-        """
-elif False:
-    ApiRequestParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ApiRequestParameterArgsDict(TypedDict):
+    in_: pulumi.Input[_builtins.str]
+    """
+    Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+    """
+    in_service: pulumi.Input[_builtins.str]
+    """
+    Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Request's parameter name.
+    """
+    name_service: pulumi.Input[_builtins.str]
+    """
+    Backend service's parameter name.
+    """
+    required: pulumi.Input[_builtins.str]
+    """
+    Parameter required or not; values: REQUIRED and OPTIONAL.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
+    """
+    default_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default value of the parameter.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of parameter.
+    """
 
 @pulumi.input_type
 class ApiRequestParameterArgs:
@@ -1074,22 +1048,19 @@ class ApiRequestParameterArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ApiSystemParameterArgsDict(TypedDict):
-        in_: pulumi.Input[_builtins.str]
-        """
-        System parameter location; values: 'HEAD' and 'QUERY'.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
-        """
-        name_service: pulumi.Input[_builtins.str]
-        """
-        Backend service's parameter name.
-        """
-elif False:
-    ApiSystemParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ApiSystemParameterArgsDict(TypedDict):
+    in_: pulumi.Input[_builtins.str]
+    """
+    System parameter location; values: 'HEAD' and 'QUERY'.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+    """
+    name_service: pulumi.Input[_builtins.str]
+    """
+    Backend service's parameter name.
+    """
 
 @pulumi.input_type
 class ApiSystemParameterArgs:
@@ -1143,34 +1114,31 @@ class ApiSystemParameterArgs:
         pulumi.set(self, "name_service", value)
 
 
-if not MYPY:
-    class GroupUserLogConfigArgsDict(TypedDict):
-        jwt_claims: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
-        """
-        query_string: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The query params to be record, support multi query params split by `,`. Set `*` to record all.
-        """
-        request_body: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to record the request body.
-        """
-        request_headers: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
-        """
-        response_body: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to record the response body.
-        """
-        response_headers: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
-        """
-elif False:
-    GroupUserLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class GroupUserLogConfigArgsDict(TypedDict):
+    jwt_claims: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+    """
+    query_string: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The query params to be record, support multi query params split by `,`. Set `*` to record all.
+    """
+    request_body: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to record the request body.
+    """
+    request_headers: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+    """
+    response_body: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to record the response body.
+    """
+    response_headers: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+    """
 
 @pulumi.input_type
 class GroupUserLogConfigArgs:
@@ -1275,26 +1243,23 @@ class GroupUserLogConfigArgs:
         pulumi.set(self, "response_headers", value)
 
 
-if not MYPY:
-    class InstanceToConnectVpcIpBlockArgsDict(TypedDict):
-        cidr_block: pulumi.Input[_builtins.str]
-        """
-        The CIDR block of the VSwitch.
-        """
-        customized: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the IP block is customized.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VSwitch ID.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone ID.
-        """
-elif False:
-    InstanceToConnectVpcIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceToConnectVpcIpBlockArgsDict(TypedDict):
+    cidr_block: pulumi.Input[_builtins.str]
+    """
+    The CIDR block of the VSwitch.
+    """
+    customized: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the IP block is customized.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VSwitch ID.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The zone ID.
+    """
 
 @pulumi.input_type
 class InstanceToConnectVpcIpBlockArgs:
@@ -1366,26 +1331,23 @@ class InstanceToConnectVpcIpBlockArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class InstanceZoneVswitchSecurityGroupArgsDict(TypedDict):
-        cidr_block: pulumi.Input[_builtins.str]
-        """
-        The CIDR block of the VSwitch.
-        """
-        security_group: pulumi.Input[_builtins.str]
-        """
-        The ID of the security group.
-        """
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The VSwitch ID.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The zone ID.
-        """
-elif False:
-    InstanceZoneVswitchSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceZoneVswitchSecurityGroupArgsDict(TypedDict):
+    cidr_block: pulumi.Input[_builtins.str]
+    """
+    The CIDR block of the VSwitch.
+    """
+    security_group: pulumi.Input[_builtins.str]
+    """
+    The ID of the security group.
+    """
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The VSwitch ID.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The zone ID.
+    """
 
 @pulumi.input_type
 class InstanceZoneVswitchSecurityGroupArgs:

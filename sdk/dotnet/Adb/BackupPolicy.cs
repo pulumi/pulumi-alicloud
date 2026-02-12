@@ -10,6 +10,67 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
+    /// Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-modifybackuppolicy) cluster backup policy resource and used to configure cluster backup policy.
+    /// 
+    /// &gt; **NOTE:** Available since v1.71.0.
+    /// 
+    /// &gt; Each DB cluster has a backup policy and it will be set default values when destroying the resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Adb.GetZones.Invoke();
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var vswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
+    /// 
+    ///     var cluster = new AliCloud.Adb.DBCluster("cluster", new()
+    ///     {
+    ///         DbClusterCategory = "MixedStorage",
+    ///         Mode = "flexible",
+    ///         ComputeResource = "8Core32GB",
+    ///         VswitchId = vswitchId,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var defaultBackupPolicy = new AliCloud.Adb.BackupPolicy("default", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         PreferredBackupPeriods = new[]
+    ///         {
+    ///             "Tuesday",
+    ///             "Wednesday",
+    ///         },
+    ///         PreferredBackupTime = "10:00Z-11:00Z",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Removing alicloud.adb.Cluster from your configuration
+    /// 
+    /// The alicloud.adb.BackupPolicy resource allows you to manage your adb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the adb Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ADB backup policy can be imported using the id or cluster id, e.g.

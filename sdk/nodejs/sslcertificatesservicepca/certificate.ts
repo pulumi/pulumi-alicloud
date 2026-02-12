@@ -81,6 +81,11 @@ export class Certificate extends pulumi.CustomResource {
      * > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      */
     declare public readonly algorithm: pulumi.Output<string>;
+    /**
+     * A custom alias for the certificate, used to define a user-friendly name.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly aliasName: pulumi.Output<string | undefined>;
     /**
      * The type of the CA certificate. Default value: `ROOT`. Valid values:
@@ -244,6 +249,11 @@ export interface CertificateState {
      * > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      */
     algorithm?: pulumi.Input<string>;
+    /**
+     * A custom alias for the certificate, used to define a user-friendly name.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     aliasName?: pulumi.Input<string>;
     /**
      * The type of the CA certificate. Default value: `ROOT`. Valid values:
@@ -331,6 +341,11 @@ export interface CertificateArgs {
      * > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      */
     algorithm?: pulumi.Input<string>;
+    /**
+     * A custom alias for the certificate, used to define a user-friendly name.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     aliasName?: pulumi.Input<string>;
     /**
      * The type of the CA certificate. Default value: `ROOT`. Valid values:

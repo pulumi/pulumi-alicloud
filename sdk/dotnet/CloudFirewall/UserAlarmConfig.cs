@@ -10,12 +10,68 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudFirewall
 {
     /// <summary>
+    /// Provides a Cloud Firewall User Alarm Config resource.
+    /// 
+    /// Configure alarm notifications and contacts.
+    /// 
+    /// For information about Cloud Firewall User Alarm Config and how to use it, see [What is User Alarm Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeUserAlarmConfig).
+    /// 
+    /// &gt; **NOTE:** Available since v1.271.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.CloudFirewall.UserAlarmConfig("default", new()
+    ///     {
+    ///         AlarmConfigs = new[]
+    ///         {
+    ///             new AliCloud.CloudFirewall.Inputs.UserAlarmConfigAlarmConfigArgs
+    ///             {
+    ///                 AlarmValue = "on",
+    ///                 AlarmType = "bandwidth",
+    ///                 AlarmPeriod = "1",
+    ///                 AlarmHour = "0",
+    ///                 AlarmNotify = "0",
+    ///                 AlarmWeekDay = "0",
+    ///             },
+    ///         },
+    ///         UseDefaultContact = "1",
+    ///         NotifyConfigs = new[]
+    ///         {
+    ///             new AliCloud.CloudFirewall.Inputs.UserAlarmConfigNotifyConfigArgs
+    ///             {
+    ///                 NotifyValue = "13000000000",
+    ///                 NotifyType = "sms",
+    ///             },
+    ///         },
+    ///         AlarmLang = "zh",
+    ///         Lang = "zh",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cloudfirewall.UserAlarmConfig` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.cloudfirewall.UserAlarmConfig`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall User Alarm Config can be imported using the `Account ID`, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig example &lt;Alibaba Cloud Account ID&gt;
+    /// $ terraform import alicloud_cloud_firewall_user_alarm_config.example &lt;Alibaba Cloud Account ID&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig")]
@@ -39,6 +95,11 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Output("contactConfigs")]
         public Output<ImmutableArray<Outputs.UserAlarmConfigContactConfig>> ContactConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// The language type. Possible values are `Zh`, `En`.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
@@ -48,6 +109,11 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Output("notifyConfigs")]
         public Output<ImmutableArray<Outputs.UserAlarmConfigNotifyConfig>> NotifyConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to Use the default contact.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("useDefaultContact")]
         public Output<string?> UseDefaultContact { get; private set; } = null!;
 
@@ -127,6 +193,11 @@ namespace Pulumi.AliCloud.CloudFirewall
             set => _contactConfigs = value;
         }
 
+        /// <summary>
+        /// The language type. Possible values are `Zh`, `En`.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
@@ -142,6 +213,11 @@ namespace Pulumi.AliCloud.CloudFirewall
             set => _notifyConfigs = value;
         }
 
+        /// <summary>
+        /// Whether to Use the default contact.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("useDefaultContact")]
         public Input<string>? UseDefaultContact { get; set; }
 
@@ -183,6 +259,11 @@ namespace Pulumi.AliCloud.CloudFirewall
             set => _contactConfigs = value;
         }
 
+        /// <summary>
+        /// The language type. Possible values are `Zh`, `En`.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
@@ -198,6 +279,11 @@ namespace Pulumi.AliCloud.CloudFirewall
             set => _notifyConfigs = value;
         }
 
+        /// <summary>
+        /// Whether to Use the default contact.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("useDefaultContact")]
         public Input<string>? UseDefaultContact { get; set; }
 

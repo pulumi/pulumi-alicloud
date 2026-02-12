@@ -15,6 +15,78 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloud Phone Instance resource.
+ * 
+ * cloud phone instance.
+ * 
+ * For information about Cloud Phone Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/DescribeAndroidInstances).
+ * 
+ * &gt; **NOTE:** Available since v1.243.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudphone.Policy;
+ * import com.pulumi.alicloud.cloudphoneinstance.Group;
+ * import com.pulumi.alicloud.cloudphoneinstance.GroupArgs;
+ * import com.pulumi.alicloud.cloudphoneinstance.CloudPhoneInstance;
+ * import com.pulumi.alicloud.cloudphoneinstance.CloudPhoneInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultjZ1gi0 = new Policy("defaultjZ1gi0");
+ * 
+ *         var defaultYHMlTO = new Group("defaultYHMlTO", GroupArgs.builder()
+ *             .instanceGroupSpec("acp.basic.small")
+ *             .policyGroupId(defaultjZ1gi0.id())
+ *             .instanceGroupName("AutoCreateGroupName")
+ *             .period(1)
+ *             .numberOfInstances(1)
+ *             .chargeType("PostPaid")
+ *             .imageId("imgc-075cllfeuazh03tg9")
+ *             .periodUnit("Hour")
+ *             .autoRenew(false)
+ *             .amount(1)
+ *             .autoPay(false)
+ *             .gpuAcceleration(false)
+ *             .build());
+ * 
+ *         var default_ = new CloudPhoneInstance("default", CloudPhoneInstanceArgs.builder()
+ *             .androidInstanceGroupId(defaultYHMlTO.id())
+ *             .androidInstanceName("CreateInstanceName")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cloudphoneinstance.CloudPhoneInstance` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cloudphoneinstance.CloudPhoneInstance`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Phone Instance can be imported using the id, e.g.

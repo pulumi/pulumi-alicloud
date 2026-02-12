@@ -7,6 +7,124 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Max Compute Quota Schedule resource.
+ *
+ * For information about Max Compute Quota Schedule and how to use it, see [What is Quota Schedule](https://www.alibabacloud.com/help/en/).
+ *
+ * > **NOTE:** Available since v1.242.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const elasticReservedCu = config.get("elasticReservedCu") || "0";
+ * const quotaNickName = config.get("quotaNickName") || "os_terrform_p";
+ * const _default = new alicloud.maxcompute.QuotaPlan("default", {
+ *     quota: {
+ *         parameter: {
+ *             elasticReservedCu: 50,
+ *         },
+ *         subQuotaInfoLists: [
+ *             {
+ *                 nickName: "sub_quota",
+ *                 parameter: {
+ *                     minCu: 0,
+ *                     maxCu: 20,
+ *                     elasticReservedCu: 30,
+ *                 },
+ *             },
+ *             {
+ *                 nickName: "os_terrform",
+ *                 parameter: {
+ *                     minCu: 50,
+ *                     maxCu: 50,
+ *                     elasticReservedCu: 20,
+ *                 },
+ *             },
+ *         ],
+ *     },
+ *     planName: "quota_plan1",
+ *     nickname: "os_terrform_p",
+ * });
+ * const default2 = new alicloud.maxcompute.QuotaPlan("default2", {
+ *     quota: {
+ *         parameter: {
+ *             elasticReservedCu: 50,
+ *         },
+ *         subQuotaInfoLists: [
+ *             {
+ *                 nickName: "sub_quota",
+ *                 parameter: {
+ *                     minCu: 0,
+ *                     maxCu: 20,
+ *                     elasticReservedCu: 20,
+ *                 },
+ *             },
+ *             {
+ *                 nickName: "os_terrform",
+ *                 parameter: {
+ *                     minCu: 50,
+ *                     maxCu: 50,
+ *                     elasticReservedCu: 30,
+ *                 },
+ *             },
+ *         ],
+ *     },
+ *     planName: "quota_plan2",
+ *     nickname: "os_terrform_p",
+ * });
+ * const default3 = new alicloud.maxcompute.QuotaPlan("default3", {
+ *     quota: {
+ *         parameter: {
+ *             elasticReservedCu: 50,
+ *         },
+ *         subQuotaInfoLists: [
+ *             {
+ *                 nickName: "sub_quota",
+ *                 parameter: {
+ *                     minCu: 40,
+ *                     maxCu: 40,
+ *                     elasticReservedCu: 40,
+ *                 },
+ *             },
+ *             {
+ *                 nickName: "os_terrform",
+ *                 parameter: {
+ *                     minCu: 10,
+ *                     maxCu: 10,
+ *                     elasticReservedCu: 10,
+ *                 },
+ *             },
+ *         ],
+ *     },
+ *     planName: "quota_plan3",
+ *     nickname: "os_terrform_p",
+ * });
+ * const defaultQuotaSchedule = new alicloud.maxcompute.QuotaSchedule("default", {
+ *     timezone: "UTC+8",
+ *     nickname: quotaNickName,
+ *     scheduleLists: [{
+ *         plan: "Default",
+ *         condition: {
+ *             at: "00:00",
+ *         },
+ *         type: "daily",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.maxcompute.QuotaSchedule` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.maxcompute.QuotaSchedule`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Max Compute Quota Schedule can be imported using the id, e.g.

@@ -91,20 +91,15 @@ __all__ = [
     'ResourceUserAccessParamArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ClusterComponentArgsDict(TypedDict):
-        component_config: NotRequired[pulumi.Input['ClusterComponentComponentConfigArgsDict']]
-        """
-        Component Configuration See `component_config` below.
-        """
-        component_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Component Type
-        """
-elif False:
-    ClusterComponentArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterComponentArgsDict(TypedDict):
+    component_config: NotRequired[pulumi.Input['ClusterComponentComponentConfigArgsDict']]
+    """
+    Component Configuration See `component_config` below.
+    """
+    component_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Component Type
+    """
 
 @pulumi.input_type
 class ClusterComponentArgs:
@@ -145,19 +140,16 @@ class ClusterComponentArgs:
         pulumi.set(self, "component_type", value)
 
 
-if not MYPY:
-    class ClusterComponentComponentConfigArgsDict(TypedDict):
-        basic_args: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Component Basic Parameters
-        """
-        node_units: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
-        ComponentType = "ACKEdge" is required. Other values are empty.
-        """
-elif False:
-    ClusterComponentComponentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterComponentComponentConfigArgsDict(TypedDict):
+    basic_args: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Component Basic Parameters
+    """
+    node_units: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+    ComponentType = "ACKEdge" is required. Other values are empty.
+    """
 
 @pulumi.input_type
 class ClusterComponentComponentConfigArgs:
@@ -200,42 +192,39 @@ class ClusterComponentComponentConfigArgs:
         pulumi.set(self, "node_units", value)
 
 
-if not MYPY:
-    class ClusterNetworksArgsDict(TypedDict):
-        ip_allocation_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgsDict']]]]
-        """
-        IP allocation policy See `ip_allocation_policy` below.
-        """
-        new_vpd_info: NotRequired[pulumi.Input['ClusterNetworksNewVpdInfoArgsDict']]
-        """
-        Vpd configuration information See `new_vpd_info` below.
-        """
-        security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Security group ID
-        """
-        tail_ip_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP version
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC ID
-        """
-        vpd_info: NotRequired[pulumi.Input['ClusterNetworksVpdInfoArgsDict']]
-        """
-        Multiplexing VPD information See `vpd_info` below.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Switch ID
-        """
-        vswitch_zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Switch ZoneID
-        """
-elif False:
-    ClusterNetworksArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksArgsDict(TypedDict):
+    ip_allocation_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgsDict']]]]
+    """
+    IP allocation policy See `ip_allocation_policy` below.
+    """
+    new_vpd_info: NotRequired[pulumi.Input['ClusterNetworksNewVpdInfoArgsDict']]
+    """
+    Vpd configuration information See `new_vpd_info` below.
+    """
+    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Security group ID
+    """
+    tail_ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP version
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC ID
+    """
+    vpd_info: NotRequired[pulumi.Input['ClusterNetworksVpdInfoArgsDict']]
+    """
+    Multiplexing VPD information See `vpd_info` below.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Switch ID
+    """
+    vswitch_zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Switch ZoneID
+    """
 
 @pulumi.input_type
 class ClusterNetworksArgs:
@@ -372,22 +361,19 @@ class ClusterNetworksArgs:
         pulumi.set(self, "vswitch_zone_id", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyArgsDict(TypedDict):
-        bond_policy: NotRequired[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgsDict']]
-        """
-        Bond policy See `bond_policy` below.
-        """
-        machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict']]]]
-        """
-        Model Assignment Policy See `machine_type_policy` below.
-        """
-        node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgsDict']]]]
-        """
-        Node allocation policy See `node_policy` below.
-        """
-elif False:
-    ClusterNetworksIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyArgsDict(TypedDict):
+    bond_policy: NotRequired[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgsDict']]
+    """
+    Bond policy See `bond_policy` below.
+    """
+    machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+    """
+    Model Assignment Policy See `machine_type_policy` below.
+    """
+    node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgsDict']]]]
+    """
+    Node allocation policy See `node_policy` below.
+    """
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyArgs:
@@ -444,18 +430,15 @@ class ClusterNetworksIpAllocationPolicyArgs:
         pulumi.set(self, "node_policies", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyBondPolicyArgsDict(TypedDict):
-        bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default bond cluster subnet
-        """
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-elif False:
-    ClusterNetworksIpAllocationPolicyBondPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyBondPolicyArgsDict(TypedDict):
+    bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default bond cluster subnet
+    """
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyBondPolicyArgs:
@@ -496,18 +479,15 @@ class ClusterNetworksIpAllocationPolicyBondPolicyArgs:
         pulumi.set(self, "bonds", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bond name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bond name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyBondPolicyBondArgs:
@@ -548,15 +528,12 @@ class ClusterNetworksIpAllocationPolicyBondPolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs:
@@ -593,18 +570,15 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bond name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bond name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs:
@@ -645,15 +619,12 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterNetworksIpAllocationPolicyNodePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyNodePolicyArgsDict(TypedDict):
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyNodePolicyArgs:
@@ -690,18 +661,15 @@ class ClusterNetworksIpAllocationPolicyNodePolicyArgs:
         pulumi.set(self, "node_id", value)
 
 
-if not MYPY:
-    class ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bond name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bond name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyNodePolicyBondArgs:
@@ -742,38 +710,35 @@ class ClusterNetworksIpAllocationPolicyNodePolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class ClusterNetworksNewVpdInfoArgsDict(TypedDict):
-        cen_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Enterprise Network ID
-        """
-        cloud_link_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud chain cidr
-        """
-        cloud_link_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud chain ID
-        """
-        monitor_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Proprietary Network
-        """
-        monitor_vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Proprietary network switch
-        """
-        vpd_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster network segment
-        """
-        vpd_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgsDict']]]]
-        """
-        List of cluster subnet ID
-        """
-elif False:
-    ClusterNetworksNewVpdInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksNewVpdInfoArgsDict(TypedDict):
+    cen_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Enterprise Network ID
+    """
+    cloud_link_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud chain cidr
+    """
+    cloud_link_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud chain ID
+    """
+    monitor_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Proprietary Network
+    """
+    monitor_vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Proprietary network switch
+    """
+    vpd_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster network segment
+    """
+    vpd_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgsDict']]]]
+    """
+    List of cluster subnet ID
+    """
 
 @pulumi.input_type
 class ClusterNetworksNewVpdInfoArgs:
@@ -894,19 +859,16 @@ class ClusterNetworksNewVpdInfoArgs:
         pulumi.set(self, "vpd_subnets", value)
 
 
-if not MYPY:
-    class ClusterNetworksNewVpdInfoVpdSubnetArgsDict(TypedDict):
-        subnet_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Subnet cidr
-        """
-        subnet_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Subnet Type
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterNetworksNewVpdInfoVpdSubnetArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksNewVpdInfoVpdSubnetArgsDict(TypedDict):
+    subnet_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Subnet cidr
+    """
+    subnet_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Subnet Type
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterNetworksNewVpdInfoVpdSubnetArgs:
@@ -959,18 +921,15 @@ class ClusterNetworksNewVpdInfoVpdSubnetArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class ClusterNetworksVpdInfoArgsDict(TypedDict):
-        vpd_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC ID
-        """
-        vpd_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of cluster subnet ID
-        """
-elif False:
-    ClusterNetworksVpdInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNetworksVpdInfoArgsDict(TypedDict):
+    vpd_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC ID
+    """
+    vpd_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of cluster subnet ID
+    """
 
 @pulumi.input_type
 class ClusterNetworksVpdInfoArgs:
@@ -1011,38 +970,35 @@ class ClusterNetworksVpdInfoArgs:
         pulumi.set(self, "vpd_subnets", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupArgsDict(TypedDict):
-        image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        System Image ID
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Model
-        """
-        node_group_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Group Description
-        """
-        node_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Group Name
-        """
-        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupNodeArgsDict']]]]
-        """
-        Node List See `nodes` below.
-        """
-        user_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID
-        """
-elif False:
-    ClusterNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupArgsDict(TypedDict):
+    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    System Image ID
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Model
+    """
+    node_group_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Group Description
+    """
+    node_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Group Name
+    """
+    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupNodeArgsDict']]]]
+    """
+    Node List See `nodes` below.
+    """
+    user_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupArgs:
@@ -1163,21 +1119,18 @@ class ClusterNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupNodeArgsDict(TypedDict):
-        hostname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name
-        """
-        login_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Login Password
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterNodeGroupNodeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupNodeArgsDict(TypedDict):
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name
+    """
+    login_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Login Password
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterNodeGroupNodeArgs:
@@ -1254,35 +1207,32 @@ class ClusterNodeGroupNodeArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class ExperimentPlanTemplateTemplatePipelineArgsDict(TypedDict):
-        env_params: pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict']
-        """
-        Contains a series of parameters related to the environment. See `env_params` below.
-        """
-        pipeline_order: pulumi.Input[_builtins.int]
-        """
-        Indicates the sequence number of the pipeline node.
-        """
-        scene: pulumi.Input[_builtins.str]
-        """
-        The use of the template scenario. It can have the following optional parameters:
-        - baseline: benchmark evaluation
-        """
-        workload_id: pulumi.Input[_builtins.int]
-        """
-        Used to uniquely identify a specific payload.
-        """
-        workload_name: pulumi.Input[_builtins.str]
-        """
-        The name used to represent a specific payload.
-        """
-        setting_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Represents additional parameters for the run.
-        """
-elif False:
-    ExperimentPlanTemplateTemplatePipelineArgsDict: TypeAlias = Mapping[str, Any]
+class ExperimentPlanTemplateTemplatePipelineArgsDict(TypedDict):
+    env_params: pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict']
+    """
+    Contains a series of parameters related to the environment. See `env_params` below.
+    """
+    pipeline_order: pulumi.Input[_builtins.int]
+    """
+    Indicates the sequence number of the pipeline node.
+    """
+    scene: pulumi.Input[_builtins.str]
+    """
+    The use of the template scenario. It can have the following optional parameters:
+    - baseline: benchmark evaluation
+    """
+    workload_id: pulumi.Input[_builtins.int]
+    """
+    Used to uniquely identify a specific payload.
+    """
+    workload_name: pulumi.Input[_builtins.str]
+    """
+    The name used to represent a specific payload.
+    """
+    setting_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Represents additional parameters for the run.
+    """
 
 @pulumi.input_type
 class ExperimentPlanTemplateTemplatePipelineArgs:
@@ -1384,46 +1334,43 @@ class ExperimentPlanTemplateTemplatePipelineArgs:
         pulumi.set(self, "setting_params", value)
 
 
-if not MYPY:
-    class ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict(TypedDict):
-        cpu_per_worker: pulumi.Input[_builtins.int]
-        """
-        Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
-        """
-        gpu_per_worker: pulumi.Input[_builtins.int]
-        """
-        Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
-        """
-        memory_per_worker: pulumi.Input[_builtins.int]
-        """
-        The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
-        """
-        share_memory: pulumi.Input[_builtins.int]
-        """
-        Shared memory GB allocation
-        """
-        worker_num: pulumi.Input[_builtins.int]
-        """
-        The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
-        """
-        cuda_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
-        """
-        gpu_driver_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
-        """
-        nccl_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
-        """
-        py_torch_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
-        """
-elif False:
-    ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict: TypeAlias = Mapping[str, Any]
+class ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict(TypedDict):
+    cpu_per_worker: pulumi.Input[_builtins.int]
+    """
+    Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
+    """
+    gpu_per_worker: pulumi.Input[_builtins.int]
+    """
+    Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
+    """
+    memory_per_worker: pulumi.Input[_builtins.int]
+    """
+    The amount of memory available. Memory size has an important impact on the performance and stability of the program, especially when dealing with large data sets or high-dimensional data.
+    """
+    share_memory: pulumi.Input[_builtins.int]
+    """
+    Shared memory GB allocation
+    """
+    worker_num: pulumi.Input[_builtins.int]
+    """
+    The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
+    """
+    cuda_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
+    """
+    gpu_driver_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
+    """
+    nccl_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
+    """
+    py_torch_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
+    """
 
 @pulumi.input_type
 class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
@@ -1571,37 +1518,34 @@ class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
         pulumi.set(self, "py_torch_version", value)
 
 
-if not MYPY:
-    class HyperNodeDataDiskArgsDict(TypedDict):
-        bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable Burst (performance Burst).
-        """
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk type. Value range:
-        - cloud_essd:ESSD cloud disk.
-        """
-        delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the data disk is unsubscribed and deleted with the node.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-        - PL0: maximum random read/write IOPS 10000 for a single disk.
-        - PL1: maximum random read/write IOPS 50000 for a single disk.
-        """
-        provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the disk. The unit is GiB.
-        """
-elif False:
-    HyperNodeDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class HyperNodeDataDiskArgsDict(TypedDict):
+    bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable Burst (performance Burst).
+    """
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk type. Value range:
+    - cloud_essd:ESSD cloud disk.
+    """
+    delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the data disk is unsubscribed and deleted with the node.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+    - PL0: maximum random read/write IOPS 10000 for a single disk.
+    - PL1: maximum random read/write IOPS 50000 for a single disk.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the disk. The unit is GiB.
+    """
 
 @pulumi.input_type
 class HyperNodeDataDiskArgs:
@@ -1712,22 +1656,19 @@ class HyperNodeDataDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class NodeDataDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Data disk type
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance level
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Data disk size
-        """
-elif False:
-    NodeDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class NodeDataDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Data disk type
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance level
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Data disk size
+    """
 
 @pulumi.input_type
 class NodeDataDiskArgs:
@@ -1784,26 +1725,23 @@ class NodeDataDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class NodeGroupAttachmentDataDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type
-        """
-        delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance level
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Data disk size
-        """
-elif False:
-    NodeGroupAttachmentDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupAttachmentDataDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type
+    """
+    delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance level
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Data disk size
+    """
 
 @pulumi.input_type
 class NodeGroupAttachmentDataDiskArgs:
@@ -1876,22 +1814,19 @@ class NodeGroupAttachmentDataDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyArgsDict(TypedDict):
-        bond_policy: NotRequired[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgsDict']]
-        """
-        Specify the cluster subnet ID based on the bond name See `bond_policy` below.
-        """
-        machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict']]]]
-        """
-        Model Assignment Policy See `machine_type_policy` below.
-        """
-        node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgsDict']]]]
-        """
-        Node allocation policy See `node_policy` below.
-        """
-elif False:
-    NodeGroupIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyArgsDict(TypedDict):
+    bond_policy: NotRequired[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgsDict']]
+    """
+    Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+    """
+    machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+    """
+    Model Assignment Policy See `machine_type_policy` below.
+    """
+    node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgsDict']]]]
+    """
+    Node allocation policy See `node_policy` below.
+    """
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyArgs:
@@ -1948,18 +1883,15 @@ class NodeGroupIpAllocationPolicyArgs:
         pulumi.set(self, "node_policies", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyBondPolicyArgsDict(TypedDict):
-        bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default bond cluster subnet
-        """
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-elif False:
-    NodeGroupIpAllocationPolicyBondPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyBondPolicyArgsDict(TypedDict):
+    bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default bond cluster subnet
+    """
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyBondPolicyArgs:
@@ -2000,18 +1932,15 @@ class NodeGroupIpAllocationPolicyBondPolicyArgs:
         pulumi.set(self, "bonds", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bond name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    NodeGroupIpAllocationPolicyBondPolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bond name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyBondPolicyBondArgs:
@@ -2052,18 +1981,15 @@ class NodeGroupIpAllocationPolicyBondPolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Machine type
-        """
-elif False:
-    NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Machine type
+    """
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyMachineTypePolicyArgs:
@@ -2104,18 +2030,15 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bond name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bond name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs:
@@ -2156,15 +2079,12 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    NodeGroupIpAllocationPolicyNodePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyNodePolicyArgsDict(TypedDict):
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyNodePolicyArgs:
@@ -2201,18 +2121,15 @@ class NodeGroupIpAllocationPolicyNodePolicyArgs:
         pulumi.set(self, "node_id", value)
 
 
-if not MYPY:
-    class NodeGroupIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bond name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    NodeGroupIpAllocationPolicyNodePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bond name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyNodePolicyBondArgs:
@@ -2253,30 +2170,27 @@ class NodeGroupIpAllocationPolicyNodePolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class NodeGroupNodeArgsDict(TypedDict):
-        hostname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name
-        """
-        login_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Login Password
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node ID
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC ID
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Switch ID
-        """
-elif False:
-    NodeGroupNodeArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGroupNodeArgsDict(TypedDict):
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name
+    """
+    login_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Login Password
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node ID
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC ID
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Switch ID
+    """
 
 @pulumi.input_type
 class NodeGroupNodeArgs:
@@ -2365,22 +2279,19 @@ class NodeGroupNodeArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyArgsDict(TypedDict):
-        bond_policy: NotRequired[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgsDict']]
-        """
-        Specify the cluster subnet ID based on the bond name See `bond_policy` below.
-        """
-        machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgsDict']]]]
-        """
-        Model Assignment Policy See `machine_type_policy` below.
-        """
-        node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgsDict']]]]
-        """
-        Node allocation policy See `node_policy` below.
-        """
-elif False:
-    NodeIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyArgsDict(TypedDict):
+    bond_policy: NotRequired[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgsDict']]
+    """
+    Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+    """
+    machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+    """
+    Model Assignment Policy See `machine_type_policy` below.
+    """
+    node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgsDict']]]]
+    """
+    Node allocation policy See `node_policy` below.
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyArgs:
@@ -2437,18 +2348,15 @@ class NodeIpAllocationPolicyArgs:
         pulumi.set(self, "node_policies", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyBondPolicyArgsDict(TypedDict):
-        bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default bond cluster subnet
-        """
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-elif False:
-    NodeIpAllocationPolicyBondPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyBondPolicyArgsDict(TypedDict):
+    bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default bond cluster subnet
+    """
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyBondPolicyArgs:
@@ -2489,18 +2397,15 @@ class NodeIpAllocationPolicyBondPolicyArgs:
         pulumi.set(self, "bonds", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Bond Name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    NodeIpAllocationPolicyBondPolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Bond Name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyBondPolicyBondArgs:
@@ -2541,18 +2446,15 @@ class NodeIpAllocationPolicyBondPolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-        machine_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Model
-        """
-elif False:
-    NodeIpAllocationPolicyMachineTypePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
+    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Model
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyMachineTypePolicyArgs:
@@ -2593,18 +2495,15 @@ class NodeIpAllocationPolicyMachineTypePolicyArgs:
         pulumi.set(self, "machine_type", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Bond Name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    NodeIpAllocationPolicyMachineTypePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Bond Name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyMachineTypePolicyBondArgs:
@@ -2645,22 +2544,19 @@ class NodeIpAllocationPolicyMachineTypePolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgsDict']]]]
-        """
-        Bond information See `bonds` below.
-        """
-        hostname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Host name
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node ID
-        """
-elif False:
-    NodeIpAllocationPolicyNodePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyNodePolicyArgsDict(TypedDict):
+    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgsDict']]]]
+    """
+    Bond information See `bonds` below.
+    """
+    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Host name
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node ID
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyNodePolicyArgs:
@@ -2717,18 +2613,15 @@ class NodeIpAllocationPolicyNodePolicyArgs:
         pulumi.set(self, "node_id", value)
 
 
-if not MYPY:
-    class NodeIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Bond Name
-        """
-        subnet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP source cluster subnet
-        """
-elif False:
-    NodeIpAllocationPolicyNodePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+class NodeIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Bond Name
+    """
+    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP source cluster subnet
+    """
 
 @pulumi.input_type
 class NodeIpAllocationPolicyNodePolicyBondArgs:
@@ -2769,50 +2662,47 @@ class NodeIpAllocationPolicyNodePolicyBondArgs:
         pulumi.set(self, "subnet", value)
 
 
-if not MYPY:
-    class ResourceMachineTypesArgsDict(TypedDict):
-        cpu_info: pulumi.Input[_builtins.str]
-        """
-        Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
-        """
-        gpu_info: pulumi.Input[_builtins.str]
-        """
-        Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
-        """
-        bond_num: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
-        """
-        disk_info: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
-        """
-        memory_info: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specification Name.
-        """
-        network_info: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
-        """
-        network_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
-        """
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
-        """
-elif False:
-    ResourceMachineTypesArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMachineTypesArgsDict(TypedDict):
+    cpu_info: pulumi.Input[_builtins.str]
+    """
+    Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
+    """
+    gpu_info: pulumi.Input[_builtins.str]
+    """
+    Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
+    """
+    bond_num: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
+    """
+    disk_info: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
+    """
+    memory_info: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specification Name.
+    """
+    network_info: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
+    """
+    network_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
+    """
+    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
+    """
 
 @pulumi.input_type
 class ResourceMachineTypesArgs:
@@ -2979,26 +2869,23 @@ class ResourceMachineTypesArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ResourceUserAccessParamArgsDict(TypedDict):
-        access_id: pulumi.Input[_builtins.str]
-        """
-        Access keys are important credentials for authentication.
-        """
-        access_key: pulumi.Input[_builtins.str]
-        """
-        A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
-        """
-        workspace_id: pulumi.Input[_builtins.str]
-        """
-        A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
-        """
-elif False:
-    ResourceUserAccessParamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceUserAccessParamArgsDict(TypedDict):
+    access_id: pulumi.Input[_builtins.str]
+    """
+    Access keys are important credentials for authentication.
+    """
+    access_key: pulumi.Input[_builtins.str]
+    """
+    A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
+    """
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
+    """
 
 @pulumi.input_type
 class ResourceUserAccessParamArgs:

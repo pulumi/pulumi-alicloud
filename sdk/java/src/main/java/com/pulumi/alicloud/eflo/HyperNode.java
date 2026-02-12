@@ -117,9 +117,21 @@ public class HyperNode extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="dataDisks", refs={List.class,HyperNodeDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HyperNodeDataDisk>> dataDisks;
 
+    /**
+     * @return List of disk information of attaching to each sub computing node.  See `dataDisk` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<List<HyperNodeDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }

@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * Service Catalog Provisioned Product can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:servicecatalog/provisionedProduct:ProvisionedProduct example &lt;id&gt;
+ * $terraform import alicloud_service_catalog_provisioned_product.example &lt;id&gt;
  * ```
  * 
  */

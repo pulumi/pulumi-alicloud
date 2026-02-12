@@ -53,6 +53,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[_builtins.int] client_read_timeout: The maximum timeout of the client read request.
+        :param pulumi.Input[_builtins.str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[_builtins.str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] max_retry_timeout: The maximum retry timeout of the request.
@@ -216,6 +217,9 @@ class ProviderArgs:
     @_builtins.property
     @pulumi.getter(name="configurationSource")
     def configuration_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Use this to mark a terraform configuration file source.
+        """
         return pulumi.get(self, "configuration_source")
 
     @configuration_source.setter
@@ -477,6 +481,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[_builtins.int] client_read_timeout: The maximum timeout of the client read request.
+        :param pulumi.Input[_builtins.str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[_builtins.str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] max_retry_timeout: The maximum retry timeout of the request.
@@ -615,6 +620,9 @@ class Provider(pulumi.ProviderResource):
     @_builtins.property
     @pulumi.getter(name="configurationSource")
     def configuration_source(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Use this to mark a terraform configuration file source.
+        """
         return pulumi.get(self, "configuration_source")
 
     @_builtins.property

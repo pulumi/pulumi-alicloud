@@ -297,6 +297,13 @@ export class Instance extends pulumi.CustomResource {
      * The source instance ID.
      */
     declare public readonly srcDbInstanceId: pulumi.Output<string | undefined>;
+    /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+     */
     declare public readonly sslAction: pulumi.Output<string | undefined>;
     /**
      * Status of the SSL feature.
@@ -686,6 +693,13 @@ export interface InstanceState {
      * The source instance ID.
      */
     srcDbInstanceId?: pulumi.Input<string>;
+    /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+     */
     sslAction?: pulumi.Input<string>;
     /**
      * Status of the SSL feature.
@@ -914,6 +928,13 @@ export interface InstanceArgs {
      * The source instance ID.
      */
     srcDbInstanceId?: pulumi.Input<string>;
+    /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
+     */
     sslAction?: pulumi.Input<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.

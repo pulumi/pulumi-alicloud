@@ -10,6 +10,61 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a EIP Bandwidth Plan (CBWP) Common Bandwidth Package resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build common bandwidth package instance while it uses `alicloud.vpc.CommonBandwithPackage` to build a common bandwidth package resource.
+    /// 
+    /// For additional details, see the documentation[https://help.aliyun.com/zh/internet-shared-bandwidth/user-guide/internet-shared-bandwidth-overview?spm=a2c4g.11186623.help-menu-55092.d_1_0.492c69ffKLbVqS].
+    /// 
+    /// For information about EIP Bandwidth Plan (CBWP) Common Bandwidth Package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/en/eip-bandwidth-plan).
+    /// 
+    /// &gt; **NOTE:** Available since v1.23.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("default", new()
+    ///     {
+    ///         BandwidthPackageName = name,
+    ///         Description = name,
+    ///         Isp = "BGP",
+    ///         Bandwidth = "1000",
+    ///         Ratio = 100,
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         SecurityProtectionTypes = new[]
+    ///         {
+    ///             "AntiDDoS_Enhanced",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.vpc.CommonBandwithPackage` or removing it from your configuration
+    /// 
+    /// The `alicloud.vpc.CommonBandwithPackage` resource allows you to manage  `InternetChargeType = "PayBy95"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.

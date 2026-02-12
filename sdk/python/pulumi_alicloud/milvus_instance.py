@@ -744,6 +744,67 @@ class MilvusInstance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Milvus Instance resource.
+
+        For information about Milvus Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/milvus/2023-10-12/CreateInstance).
+
+        > **NOTE:** Available since v1.264.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-hangzhou"
+        zone_id = config.get("zoneId")
+        if zone_id is None:
+            zone_id = "cn-hangzhou-j"
+        default_il_xuit = alicloud.vpc.Network("defaultILXuit", cidr_block="172.16.0.0/12")
+        default_n80_m7_s = alicloud.vpc.Switch("defaultN80M7S",
+            vpc_id=default_il_xuit.id,
+            zone_id=zone_id,
+            cidr_block="172.16.1.0/24",
+            vswitch_name="milvus-example")
+        default = alicloud.MilvusInstance("default",
+            zone_id=zone_id,
+            vswitch_ids=[{
+                "vsw_id": default_n80_m7_s.id,
+                "zone_id": default_n80_m7_s.zone_id,
+            }],
+            db_admin_password="Test123456@",
+            components=[{
+                "type": "standalone",
+                "cu_num": 8,
+                "replica": 1,
+                "cu_type": "general",
+            }],
+            instance_name="镇远测试包年包月",
+            db_version="2.4",
+            vpc_id=default_il_xuit.id,
+            ha=False,
+            payment_type="Subscription",
+            multi_zone_mode="Single",
+            payment_duration_unit="year",
+            payment_duration=1)
+        ```
+
+        ### Deleting `MilvusInstance` or removing it from your configuration
+
+        The `MilvusInstance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Milvus Instance can be imported using the id, e.g.
@@ -796,6 +857,67 @@ class MilvusInstance(pulumi.CustomResource):
                  args: MilvusInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Milvus Instance resource.
+
+        For information about Milvus Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/milvus/2023-10-12/CreateInstance).
+
+        > **NOTE:** Available since v1.264.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-hangzhou"
+        zone_id = config.get("zoneId")
+        if zone_id is None:
+            zone_id = "cn-hangzhou-j"
+        default_il_xuit = alicloud.vpc.Network("defaultILXuit", cidr_block="172.16.0.0/12")
+        default_n80_m7_s = alicloud.vpc.Switch("defaultN80M7S",
+            vpc_id=default_il_xuit.id,
+            zone_id=zone_id,
+            cidr_block="172.16.1.0/24",
+            vswitch_name="milvus-example")
+        default = alicloud.MilvusInstance("default",
+            zone_id=zone_id,
+            vswitch_ids=[{
+                "vsw_id": default_n80_m7_s.id,
+                "zone_id": default_n80_m7_s.zone_id,
+            }],
+            db_admin_password="Test123456@",
+            components=[{
+                "type": "standalone",
+                "cu_num": 8,
+                "replica": 1,
+                "cu_type": "general",
+            }],
+            instance_name="镇远测试包年包月",
+            db_version="2.4",
+            vpc_id=default_il_xuit.id,
+            ha=False,
+            payment_type="Subscription",
+            multi_zone_mode="Single",
+            payment_duration_unit="year",
+            payment_duration=1)
+        ```
+
+        ### Deleting `MilvusInstance` or removing it from your configuration
+
+        The `MilvusInstance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Milvus Instance can be imported using the id, e.g.

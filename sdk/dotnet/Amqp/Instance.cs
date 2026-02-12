@@ -10,6 +10,74 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Amqp
 {
     /// <summary>
+    /// Provides a RabbitMQ (AMQP) Instance resource.
+    /// 
+    /// The instance of Amqp.
+    /// 
+    /// For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createinstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.128.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Create a RabbitMQ (AMQP) enterprise edition Instance.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Amqp.Instance("default", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         InstanceType = "enterprise",
+    ///         MaxTps = "1000",
+    ///         QueueCapacity = "50",
+    ///         PeriodCycle = "Year",
+    ///         SupportEip = false,
+    ///         Period = 1,
+    ///         AutoRenew = true,
+    ///         PaymentType = "Subscription",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a RabbitMQ (AMQP) serverless edition Instance.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Amqp.Instance("default", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         ServerlessChargeType = "onDemand",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.amqp.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.amqp.Instance` resource allows you to manage  `PaymentType = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Amqp Instance can be imported using the id, e.g.

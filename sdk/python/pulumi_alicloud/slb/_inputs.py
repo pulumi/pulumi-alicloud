@@ -27,14 +27,9 @@ __all__ = [
     'ServerGroupServerArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AclEntryListArgsDict(TypedDict):
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        entry: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AclEntryListArgsDict: TypeAlias = Mapping[str, Any]
+class AclEntryListArgsDict(TypedDict):
+    comment: NotRequired[pulumi.Input[_builtins.str]]
+    entry: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AclEntryListArgs:
@@ -65,14 +60,11 @@ class AclEntryListArgs:
         pulumi.set(self, "entry", value)
 
 
-if not MYPY:
-    class BackendServerBackendServerArgsDict(TypedDict):
-        server_id: pulumi.Input[_builtins.str]
-        weight: pulumi.Input[_builtins.int]
-        server_ip: NotRequired[pulumi.Input[_builtins.str]]
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    BackendServerBackendServerArgsDict: TypeAlias = Mapping[str, Any]
+class BackendServerBackendServerArgsDict(TypedDict):
+    server_id: pulumi.Input[_builtins.str]
+    weight: pulumi.Input[_builtins.int]
+    server_ip: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class BackendServerBackendServerArgs:
@@ -125,26 +117,23 @@ class BackendServerBackendServerArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ListenerXForwardedForArgsDict(TypedDict):
-        retrive_client_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to retrieve the client ip.
-        """
-        retrive_slb_id: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
-        """
-        retrive_slb_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
-        """
-        retrive_slb_proto: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
-        """
-elif False:
-    ListenerXForwardedForArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerXForwardedForArgsDict(TypedDict):
+    retrive_client_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to retrieve the client ip.
+    """
+    retrive_slb_id: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
+    """
+    retrive_slb_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
+    """
+    retrive_slb_proto: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
+    """
 
 @pulumi.input_type
 class ListenerXForwardedForArgs:
@@ -217,34 +206,31 @@ class ListenerXForwardedForArgs:
         pulumi.set(self, "retrive_slb_proto", value)
 
 
-if not MYPY:
-    class MasterSlaveServerGroupServerArgsDict(TypedDict):
-        port: pulumi.Input[_builtins.int]
-        """
-        The port used by the backend server. Valid value range: [1-65535].
-        """
-        server_id: pulumi.Input[_builtins.str]
-        """
-        A list backend server ID (ECS instance ID).
-        """
-        is_backup: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Determine if the server is executing. Valid value 0, 1.
-        """
-        server_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The server type of the backend server. Valid value Master, Slave.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the backend server. Valid value ecs, eni. Default to eni.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Weight of the backend server. Valid value range: [0-100]. Default to 100.
-        """
-elif False:
-    MasterSlaveServerGroupServerArgsDict: TypeAlias = Mapping[str, Any]
+class MasterSlaveServerGroupServerArgsDict(TypedDict):
+    port: pulumi.Input[_builtins.int]
+    """
+    The port used by the backend server. Valid value range: [1-65535].
+    """
+    server_id: pulumi.Input[_builtins.str]
+    """
+    A list backend server ID (ECS instance ID).
+    """
+    is_backup: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Determine if the server is executing. Valid value 0, 1.
+    """
+    server_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The server type of the backend server. Valid value Master, Slave.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the backend server. Valid value ecs, eni. Default to eni.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Weight of the backend server. Valid value range: [0-100]. Default to 100.
+    """
 
 @pulumi.input_type
 class MasterSlaveServerGroupServerArgs:
@@ -347,26 +333,23 @@ class MasterSlaveServerGroupServerArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class ServerGroupServerArgsDict(TypedDict):
-        port: pulumi.Input[_builtins.int]
-        """
-        The port used by the backend server. Valid values: `1` to `65535`.
-        """
-        server_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
-        """
-elif False:
-    ServerGroupServerArgsDict: TypeAlias = Mapping[str, Any]
+class ServerGroupServerArgsDict(TypedDict):
+    port: pulumi.Input[_builtins.int]
+    """
+    The port used by the backend server. Valid values: `1` to `65535`.
+    """
+    server_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
+    """
 
 @pulumi.input_type
 class ServerGroupServerArgs:

@@ -14,6 +14,14 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a plugin attachment resource.It is used for attaching a specific plugin to an api.
+ * 
+ * For information about Api Gateway Plugin attachment and how to use it, see [Attach Plugin to specified API](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-attachplugin)
+ * 
+ * &gt; **NOTE:** Available since v1.219.0.
+ * 
+ * &gt; **NOTE:** Terraform will auto build plugin attachment while it uses `alicloud.apigateway.PluginAttachment` to build.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

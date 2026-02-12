@@ -130,6 +130,9 @@ export class AccessKey extends pulumi.CustomResource {
      * (Available since v1.246.0) The create time of the AccessKey.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     */
     declare public /*out*/ readonly encryptedSecret: pulumi.Output<string>;
     /**
      * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
@@ -208,6 +211,9 @@ export interface AccessKeyState {
      * (Available since v1.246.0) The create time of the AccessKey.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     */
     encryptedSecret?: pulumi.Input<string>;
     /**
      * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret

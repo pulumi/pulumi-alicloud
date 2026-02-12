@@ -10,12 +10,45 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a Vpc Ipam Service resource.
+    /// 
+    /// Ipam service, used to support automatic provisioning of Terraform.
+    /// 
+    /// For information about Vpc Ipam Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/OpenVpcIpamService).
+    /// 
+    /// &gt; **NOTE:** Available since v1.242.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Vpc.IpamService("default");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.vpc.IpamService` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.vpc.IpamService`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Vpc Ipam Service can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:vpc/ipamService:IpamService example 
+    /// $ terraform import alicloud_vpc_ipam_service.example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipamService:IpamService")]

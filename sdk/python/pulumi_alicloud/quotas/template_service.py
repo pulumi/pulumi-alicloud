@@ -76,12 +76,41 @@ class TemplateService(pulumi.CustomResource):
                  service_status: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a Quotas Template Service resource.
+
+        Quota Template Service.
+
+        For information about Quotas Template Service and how to use it, see [What is Template Service](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-modifyquotatemplateservicestatus).
+
+        > **NOTE:** Available since v1.230.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.TemplateService("default", service_status=1)
+        ```
+
+        ### Deleting `quotas.TemplateService` or removing it from your configuration
+
+        Terraform cannot destroy resource `quotas.TemplateService`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Quotas Template Service can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:quotas/templateService:TemplateService example 
+        $ terraform import alicloud_quotas_template_service.example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -96,12 +125,41 @@ class TemplateService(pulumi.CustomResource):
                  args: TemplateServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Quotas Template Service resource.
+
+        Quota Template Service.
+
+        For information about Quotas Template Service and how to use it, see [What is Template Service](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-modifyquotatemplateservicestatus).
+
+        > **NOTE:** Available since v1.230.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.TemplateService("default", service_status=1)
+        ```
+
+        ### Deleting `quotas.TemplateService` or removing it from your configuration
+
+        Terraform cannot destroy resource `quotas.TemplateService`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Quotas Template Service can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:quotas/templateService:TemplateService example 
+        $ terraform import alicloud_quotas_template_service.example 
         ```
 
         :param str resource_name: The name of the resource.

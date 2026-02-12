@@ -100,7 +100,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         OSS Account Public Access Block can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example 
+        $ terraform import alicloud_oss_account_public_access_block.example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -142,7 +142,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         OSS Account Public Access Block can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example 
+        $ terraform import alicloud_oss_account_public_access_block.example 
         ```
 
         :param str resource_name: The name of the resource.

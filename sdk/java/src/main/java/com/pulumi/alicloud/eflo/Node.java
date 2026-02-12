@@ -21,6 +21,158 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Eflo Node resource.
+ * 
+ * Large computing node.
+ * 
+ * For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+ * 
+ * &gt; **NOTE:** Available since v1.246.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.eflo.Node;
+ * import com.pulumi.alicloud.eflo.NodeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNode = new Node("defaultNode", NodeArgs.builder()
+ *             .period(36)
+ *             .discountLevel("36")
+ *             .billingCycle("1month")
+ *             .classify("gpuserver")
+ *             .zone("cn-hangzhou-b")
+ *             .productForm("instance")
+ *             .paymentRatio("0")
+ *             .hpnZone("B1")
+ *             .serverArch("bmserver")
+ *             .machineType("efg1.nvga1n")
+ *             .stageNum("36")
+ *             .renewalStatus("AutoRenewal")
+ *             .renewPeriod(36)
+ *             .status("Unused")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * Creating a PayAsYouGo eflo node
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eflo.Node;
+ * import com.pulumi.alicloud.eflo.NodeArgs;
+ * import com.pulumi.alicloud.eflo.inputs.NodeDataDiskArgs;
+ * import com.pulumi.alicloud.eflo.inputs.NodeIpAllocationPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var payasyougo = new Node("payasyougo", NodeArgs.builder()
+ *             .machineType("efg1.nvga8n")
+ *             .paymentType("PayAsYouGo")
+ *             .hpnZone("A1")
+ *             .productForm("instance")
+ *             .renewalStatus("ManualRenewal")
+ *             .zone("cn-wulanchabu-a")
+ *             .tags(Map.of("From", "Terraform"))
+ *             .clusterId("i11922307xxxxxxx")
+ *             .nodeGroupId("i1254705xxxxxxxx")
+ *             .hostname("terraform-example")
+ *             .loginPassword("xxxxxxxx")
+ *             .dataDisks(            
+ *                 NodeDataDiskArgs.builder()
+ *                     .size(120)
+ *                     .category("cloud_essd")
+ *                     .performanceLevel("PL0")
+ *                     .build(),
+ *                 NodeDataDiskArgs.builder()
+ *                     .size(120)
+ *                     .category("cloud_essd")
+ *                     .performanceLevel("PL1")
+ *                     .build())
+ *             .ipAllocationPolicies(NodeIpAllocationPolicyArgs.builder()
+ *                 .machineTypePolicies(NodeIpAllocationPolicyMachineTypePolicyArgs.builder()
+ *                     .machineType("efg1.nvga8n")
+ *                     .bonds(                    
+ *                         NodeIpAllocationPolicyMachineTypePolicyBondArgs.builder()
+ *                             .subnet("subnet-x1xxx")
+ *                             .name("example01")
+ *                             .build(),
+ *                         NodeIpAllocationPolicyMachineTypePolicyBondArgs.builder()
+ *                             .subnet("subnet-xxxx")
+ *                             .name("example02")
+ *                             .build(),
+ *                         NodeIpAllocationPolicyMachineTypePolicyBondArgs.builder()
+ *                             .subnet("subnet-xxxx")
+ *                             .name("example03")
+ *                             .build(),
+ *                         NodeIpAllocationPolicyMachineTypePolicyBondArgs.builder()
+ *                             .subnet("subnet-xxxx")
+ *                             .name("example04")
+ *                             .build(),
+ *                         NodeIpAllocationPolicyMachineTypePolicyBondArgs.builder()
+ *                             .subnet("subnet-xxxx")
+ *                             .name("example05")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.eflo.Node` or removing it from your configuration
+ * 
+ * The `alicloud.eflo.Node` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Eflo Node can be imported using the id, e.g.

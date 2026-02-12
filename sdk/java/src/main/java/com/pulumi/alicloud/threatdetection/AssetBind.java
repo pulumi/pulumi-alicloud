@@ -16,6 +16,64 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Threat Detection Asset Bind resource.
+ * 
+ * Asset Binding Information.
+ * 
+ * For information about Threat Detection Asset Bind and how to use it, see [What is Asset Bind](https://next.api.alibabacloud.com/document/Sas/2018-12-03/UpdatePostPaidBindRel).
+ * 
+ * &gt; **NOTE:** Available since v1.247.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+ * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
+ * import com.pulumi.alicloud.threatdetection.AssetBind;
+ * import com.pulumi.alicloud.threatdetection.AssetBindArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+ *             .machineTypes("ecs")
+ *             .build());
+ * 
+ *         var defaultAssetBind = new AssetBind("defaultAssetBind", AssetBindArgs.builder()
+ *             .uuid(default_.assets()[0].uuid())
+ *             .authVersion(5)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.threatdetection.AssetBind` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.threatdetection.AssetBind`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Threat Detection Asset Bind can be imported using the id, e.g.

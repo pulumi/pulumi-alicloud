@@ -104,6 +104,42 @@ class BucketAcl(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a OSS Bucket Acl resource. The Access Control List (ACL) of a specific bucket.
+
+        For information about OSS Bucket Acl and how to use it, see [What is Bucket Acl](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketacl).
+
+        > **NOTE:** Available since v1.220.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=create_bucket.bucket,
+            acl="private")
+        ```
+
+        ### Deleting `oss.BucketAcl` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketAcl`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Acl can be imported using the id, e.g.
@@ -124,6 +160,42 @@ class BucketAcl(pulumi.CustomResource):
                  args: BucketAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a OSS Bucket Acl resource. The Access Control List (ACL) of a specific bucket.
+
+        For information about OSS Bucket Acl and how to use it, see [What is Bucket Acl](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketacl).
+
+        > **NOTE:** Available since v1.220.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=create_bucket.bucket,
+            acl="private")
+        ```
+
+        ### Deleting `oss.BucketAcl` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketAcl`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Acl can be imported using the id, e.g.

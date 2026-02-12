@@ -21,6 +21,101 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.91.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.DedicatedHost;
+ * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new DedicatedHost("default", DedicatedHostArgs.builder()
+ *             .dedicatedHostType("ddh.g6")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Create", "Terraform"),
+ *                 Map.entry("For", "DDH")
+ *             ))
+ *             .description("From_Terraform")
+ *             .dedicatedHostName("dedicated_host_name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Create Prepaid DDH
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.DedicatedHost;
+ * import com.pulumi.alicloud.ecs.DedicatedHostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new DedicatedHost("example", DedicatedHostArgs.builder()
+ *             .dedicatedHostType("ddh.g5")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Create", "Terraform"),
+ *                 Map.entry("For", "DDH")
+ *             ))
+ *             .description("terraform-example")
+ *             .dedicatedHostName("terraform-example")
+ *             .paymentType("PrePaid")
+ *             .expiredTime("1")
+ *             .saleCycle("Month")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Deleting alicloud.ecs.DedicatedHost or removing it from your configuration
+ * 
+ * The alicloud.ecs.DedicatedHost resource allows you to manage paymentType = &#34;PrePaid&#34; dedicated host, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the Dedicated Host.
+ * You can resume managing the subscription dedicated host via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Ecs dedicated host can be imported using the id, e.g.

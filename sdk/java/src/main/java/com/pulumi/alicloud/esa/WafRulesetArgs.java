@@ -62,9 +62,21 @@ public final class WafRulesetArgs extends com.pulumi.resources.ResourceArgs {
         return this.siteId;
     }
 
+    /**
+     * The site version.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
+    /**
+     * @return The site version.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Integer>> siteVersion() {
         return Optional.ofNullable(this.siteVersion);
     }
@@ -175,11 +187,27 @@ public final class WafRulesetArgs extends com.pulumi.resources.ResourceArgs {
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param siteVersion The site version.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteVersion(@Nullable Output<Integer> siteVersion) {
             $.siteVersion = siteVersion;
             return this;
         }
 
+        /**
+         * @param siteVersion The site version.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteVersion(Integer siteVersion) {
             return siteVersion(Output.of(siteVersion));
         }

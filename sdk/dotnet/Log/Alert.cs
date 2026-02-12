@@ -405,6 +405,9 @@ namespace Pulumi.AliCloud.Log
         [Output("condition")]
         public Output<string?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+        /// </summary>
         [Output("dashboard")]
         public Output<string?> Dashboard { get; private set; } = null!;
 
@@ -622,6 +625,9 @@ namespace Pulumi.AliCloud.Log
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
+        /// <summary>
+        /// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+        /// </summary>
         [Input("dashboard")]
         public Input<string>? Dashboard { get; set; }
 
@@ -832,6 +838,9 @@ namespace Pulumi.AliCloud.Log
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
+        /// <summary>
+        /// The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+        /// </summary>
         [Input("dashboard")]
         public Input<string>? Dashboard { get; set; }
 

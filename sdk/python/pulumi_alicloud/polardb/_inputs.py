@@ -25,26 +25,21 @@ __all__ = [
     'ParameterGroupParameterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ClusterDbClusterIpArrayArgsDict(TypedDict):
-        db_cluster_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
-        **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
-        """
-        modify_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
-        **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
-        """
-        security_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        """
-elif False:
-    ClusterDbClusterIpArrayArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterDbClusterIpArrayArgsDict(TypedDict):
+    db_cluster_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+    **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+    """
+    modify_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+    **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
+    """
+    security_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+    """
 
 @pulumi.input_type
 class ClusterDbClusterIpArrayArgs:
@@ -105,26 +100,23 @@ class ClusterDbClusterIpArrayArgs:
         pulumi.set(self, "security_ips", value)
 
 
-if not MYPY:
-    class ClusterDbRevisionVersionListArgsDict(TypedDict):
-        release_note: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
-        """
-        release_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
-        """
-        revision_version_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
-        """
-        revision_version_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Available since v1.216.0) The revision version number of the database engine.
-        """
-elif False:
-    ClusterDbRevisionVersionListArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterDbRevisionVersionListArgsDict(TypedDict):
+    release_note: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+    """
+    release_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
+    """
+    revision_version_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
+    """
+    revision_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Available since v1.216.0) The revision version number of the database engine.
+    """
 
 @pulumi.input_type
 class ClusterDbRevisionVersionListArgs:
@@ -197,18 +189,15 @@ class ClusterDbRevisionVersionListArgs:
         pulumi.set(self, "revision_version_name", value)
 
 
-if not MYPY:
-    class ClusterParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Kernel parameter name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Kernel parameter value.
-        """
-elif False:
-    ClusterParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Kernel parameter name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Kernel parameter value.
+    """
 
 @pulumi.input_type
 class ClusterParameterArgs:
@@ -247,18 +236,15 @@ class ClusterParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ParameterGroupParameterArgsDict(TypedDict):
-        param_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the parameter.
-        """
-        param_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the parameter.
-        """
-elif False:
-    ParameterGroupParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ParameterGroupParameterArgsDict(TypedDict):
+    param_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the parameter.
+    """
+    param_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the parameter.
+    """
 
 @pulumi.input_type
 class ParameterGroupParameterArgs:

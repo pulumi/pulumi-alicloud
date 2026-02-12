@@ -21,6 +21,192 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE:** Since the version 1.132.0, the resource `alicloud.yundun.BastionHostInstance` has been renamed to `alicloud.bastionhost.Instance`.
+ * 
+ * Cloud Bastion Host instance resource (&#34;Yundun_bastionhost&#34; is the short term of this product).
+ * For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+ * 
+ * &gt; **NOTE:** The endpoint of bssopenapi used only support &#34;business.aliyuncs.com&#34; at present.
+ * 
+ * &gt; **NOTE:** Available since v1.132.0.
+ * 
+ * &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Instance;
+ * import com.pulumi.alicloud.bastionhost.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .description(name)
+ *             .licenseCode("bhah_ent_50_asset")
+ *             .planCode("cloudbastion")
+ *             .storage("5")
+ *             .bandwidth("5")
+ *             .period(1)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.bastionhost.Instance;
+ * import com.pulumi.alicloud.bastionhost.InstanceArgs;
+ * import com.pulumi.alicloud.bastionhost.inputs.InstanceAdAuthServerArgs;
+ * import com.pulumi.alicloud.bastionhost.inputs.InstanceLdapAuthServerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .description(name)
+ *             .licenseCode("bhah_ent_50_asset")
+ *             .planCode("cloudbastion")
+ *             .storage("5")
+ *             .bandwidth("5")
+ *             .period(1)
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .adAuthServers(InstanceAdAuthServerArgs.builder()
+ *                 .server("192.168.1.1")
+ *                 .standbyServer("192.168.1.3")
+ *                 .port(80)
+ *                 .domain("domain")
+ *                 .account("cn=Manager,dc=test,dc=com")
+ *                 .password("YouPassword123")
+ *                 .filter("objectClass=person")
+ *                 .nameMapping("nameAttr")
+ *                 .emailMapping("emailAttr")
+ *                 .mobileMapping("mobileAttr")
+ *                 .isSsl(false)
+ *                 .baseDn("dc=test,dc=com")
+ *                 .build())
+ *             .ldapAuthServers(InstanceLdapAuthServerArgs.builder()
+ *                 .server("192.168.1.1")
+ *                 .standbyServer("192.168.1.3")
+ *                 .port(80)
+ *                 .loginNameMapping("uid")
+ *                 .account("cn=Manager,dc=test,dc=com")
+ *                 .password("YouPassword123")
+ *                 .filter("objectClass=person")
+ *                 .nameMapping("nameAttr")
+ *                 .emailMapping("emailAttr")
+ *                 .mobileMapping("mobileAttr")
+ *                 .isSsl(false)
+ *                 .baseDn("dc=test,dc=com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.bastionhost.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.bastionhost.Instance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration
+ * will remove it from your state file and management, but will not destroy the bastionhost instance.
+ * You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Yundun_bastionhost instance can be imported using the id, e.g.
@@ -150,9 +336,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> planCode() {
         return this.planCode;
     }
+    /**
+     * The public IP address that you want to add to the whitelist.
+     * 
+     * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * 
+     */
     @Export(name="publicWhiteLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> publicWhiteLists;
 
+    /**
+     * @return The public IP address that you want to add to the whitelist.
+     * 
+     * &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+     * 
+     */
     public Output<Optional<List<String>>> publicWhiteLists() {
         return Codegen.optional(this.publicWhiteLists);
     }

@@ -19,40 +19,35 @@ __all__ = [
     'PolicyNetRedirectPolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class PolicyNetRedirectPolicyArgsDict(TypedDict):
-        custom_proxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to manually configure the transparent proxy.
-        """
-        host_addr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The transparent proxy IP address. The format is IPv4 address.
-        """
-        net_redirect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enable network redirection.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Transparent proxy port. The Port value range is 1\\~ 65535.
-        """
-        proxy_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The proxy password. The length range is 1\\~ 256. Chinese characters and white space characters are not allowed.
-        """
-        proxy_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Agent protocol type.
-        """
-        proxy_user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The proxy user name. The length range is 1\\~ 256. Chinese characters and white space characters are not allowed.
-        """
-elif False:
-    PolicyNetRedirectPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyNetRedirectPolicyArgsDict(TypedDict):
+    custom_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to manually configure the transparent proxy.
+    """
+    host_addr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The transparent proxy IP address. The format is IPv4 address.
+    """
+    net_redirect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enable network redirection.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Transparent proxy port. The Port value range is 1\\~ 65535.
+    """
+    proxy_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The proxy password. The length range is 1\\~ 256. Chinese characters and white space characters are not allowed.
+    """
+    proxy_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Agent protocol type.
+    """
+    proxy_user_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The proxy user name. The length range is 1\\~ 256. Chinese characters and white space characters are not allowed.
+    """
 
 @pulumi.input_type
 class PolicyNetRedirectPolicyArgs:

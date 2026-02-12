@@ -16,6 +16,92 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Lindorm Public Network resource.
+ * 
+ * Public network connection of Lindorm instance.
+ * 
+ * For information about Lindorm Public Network and how to use it, see [What is Public Network](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/SwitchInstancePublicNetwork).
+ * 
+ * &gt; **NOTE:** Available since v1.250.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.lindorm.Instance;
+ * import com.pulumi.alicloud.lindorm.InstanceArgs;
+ * import com.pulumi.alicloud.lindorm.PublicNetwork;
+ * import com.pulumi.alicloud.lindorm.PublicNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-f");
+ *         final var regionId = config.get("regionId").orElse("cn-shanghai");
+ *         var defaultX7MgJO = new Network("defaultX7MgJO", NetworkArgs.builder()
+ *             .description(name)
+ *             .cidrBlock("10.0.0.0/8")
+ *             .vpcName("amp-example-shanghai")
+ *             .build());
+ * 
+ *         var default45mCzM = new Switch("default45mCzM", SwitchArgs.builder()
+ *             .description(name)
+ *             .vpcId(defaultX7MgJO.id())
+ *             .zoneId(zoneId)
+ *             .cidrBlock("10.0.0.0/24")
+ *             .build());
+ * 
+ *         var defaultQpsLKr = new Instance("defaultQpsLKr", InstanceArgs.builder()
+ *             .paymentType("PayAsYouGo")
+ *             .tableEngineNodeCount(2)
+ *             .instanceStorage("80")
+ *             .zoneId(zoneId)
+ *             .vswitchId(default45mCzM.id())
+ *             .diskCategory("cloud_efficiency")
+ *             .tableEngineSpecification("lindorm.g.xlarge")
+ *             .instanceName("tf-example")
+ *             .vpcId(defaultX7MgJO.id())
+ *             .build());
+ * 
+ *         var default_ = new PublicNetwork("default", PublicNetworkArgs.builder()
+ *             .instanceId(defaultQpsLKr.id())
+ *             .enablePublicNetwork(1)
+ *             .engineType("lindorm")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.lindorm.PublicNetwork` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.lindorm.PublicNetwork`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Lindorm Public Network can be imported using the id, e.g.

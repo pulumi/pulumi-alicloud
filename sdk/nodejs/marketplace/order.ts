@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a market order resource.
+ *
+ * > **NOTE:** Terraform will auto build a market order  while it uses `alicloud.marketplace.Order` to build a market order resource.
+ *
+ * > **NOTE:** Available since v1.69.0.
+ *
  * ## Example Usage
  *
  * Basic Usage

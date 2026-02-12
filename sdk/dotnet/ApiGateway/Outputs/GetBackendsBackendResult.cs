@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// The description of the Backend.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The resource ID in terraform of Backend.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The modified time of the Backend.

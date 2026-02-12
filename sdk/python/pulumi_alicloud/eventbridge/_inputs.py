@@ -63,20 +63,15 @@ __all__ = [
     'RuleTargetParamListArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ApiDestinationHttpApiParametersArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The endpoint of the API destination.
-        """
-        method: pulumi.Input[_builtins.str]
-        """
-        The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-        """
-elif False:
-    ApiDestinationHttpApiParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ApiDestinationHttpApiParametersArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The endpoint of the API destination.
+    """
+    method: pulumi.Input[_builtins.str]
+    """
+    The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+    """
 
 @pulumi.input_type
 class ApiDestinationHttpApiParametersArgs:
@@ -115,26 +110,23 @@ class ApiDestinationHttpApiParametersArgs:
         pulumi.set(self, "method", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersArgsDict(TypedDict):
-        api_key_auth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersApiKeyAuthParametersArgsDict']]
-        """
-        The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
-        """
-        authorization_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the authentication. Valid values: `API_KEY_AUTH`, `BASIC_AUTH`, `OAUTH_AUTH`.
-        """
-        basic_auth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersBasicAuthParametersArgsDict']]
-        """
-        The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
-        """
-        oauth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersArgsDict']]
-        """
-        The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
-        """
-elif False:
-    ConnectionAuthParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersArgsDict(TypedDict):
+    api_key_auth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersApiKeyAuthParametersArgsDict']]
+    """
+    The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+    """
+    authorization_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the authentication. Valid values: `API_KEY_AUTH`, `BASIC_AUTH`, `OAUTH_AUTH`.
+    """
+    basic_auth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersBasicAuthParametersArgsDict']]
+    """
+    The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+    """
+    oauth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersArgsDict']]
+    """
+    The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersArgs:
@@ -207,18 +199,15 @@ class ConnectionAuthParametersArgs:
         pulumi.set(self, "oauth_parameters", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersApiKeyAuthParametersArgsDict(TypedDict):
-        api_key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the API key.
-        """
-        api_key_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the API key.
-        """
-elif False:
-    ConnectionAuthParametersApiKeyAuthParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersApiKeyAuthParametersArgsDict(TypedDict):
+    api_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the API key.
+    """
+    api_key_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the API key.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersApiKeyAuthParametersArgs:
@@ -259,18 +248,15 @@ class ConnectionAuthParametersApiKeyAuthParametersArgs:
         pulumi.set(self, "api_key_value", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersBasicAuthParametersArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password for basic authentication.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username for basic authentication.
-        """
-elif False:
-    ConnectionAuthParametersBasicAuthParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersBasicAuthParametersArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password for basic authentication.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username for basic authentication.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersBasicAuthParametersArgs:
@@ -311,26 +297,23 @@ class ConnectionAuthParametersBasicAuthParametersArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersOauthParametersArgsDict(TypedDict):
-        authorization_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the authorized endpoint.
-        """
-        client_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersClientParametersArgsDict']]
-        """
-        The parameters that are configured for the client. See `client_parameters` below.
-        """
-        http_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-        """
-        oauth_http_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict']]
-        """
-        The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
-        """
-elif False:
-    ConnectionAuthParametersOauthParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersOauthParametersArgsDict(TypedDict):
+    authorization_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the authorized endpoint.
+    """
+    client_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersClientParametersArgsDict']]
+    """
+    The parameters that are configured for the client. See `client_parameters` below.
+    """
+    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+    """
+    oauth_http_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict']]
+    """
+    The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersArgs:
@@ -403,18 +386,15 @@ class ConnectionAuthParametersOauthParametersArgs:
         pulumi.set(self, "oauth_http_parameters", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersOauthParametersClientParametersArgsDict(TypedDict):
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the client.
-        """
-        client_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AccessKey secret of the client.
-        """
-elif False:
-    ConnectionAuthParametersOauthParametersClientParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersOauthParametersClientParametersArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the client.
+    """
+    client_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The AccessKey secret of the client.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersClientParametersArgs:
@@ -455,22 +435,19 @@ class ConnectionAuthParametersOauthParametersClientParametersArgs:
         pulumi.set(self, "client_secret", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict(TypedDict):
-        body_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict']]]]
-        """
-        The parameters that are configured for the request body. See `body_parameters` below.
-        """
-        header_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict']]]]
-        """
-        The parameters that are configured for the request header. See `header_parameters` below.
-        """
-        query_string_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict']]]]
-        """
-        The parameters that are configured for the request path. See `query_string_parameters` below.
-        """
-elif False:
-    ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict(TypedDict):
+    body_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict']]]]
+    """
+    The parameters that are configured for the request body. See `body_parameters` below.
+    """
+    header_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict']]]]
+    """
+    The parameters that are configured for the request header. See `header_parameters` below.
+    """
+    query_string_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict']]]]
+    """
+    The parameters that are configured for the request path. See `query_string_parameters` below.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersArgs:
@@ -527,22 +504,19 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersArgs:
         pulumi.set(self, "query_string_parameters", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict(TypedDict):
-        is_value_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to enable authentication.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the request path.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the request path.
-        """
-elif False:
-    ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict(TypedDict):
+    is_value_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to enable authentication.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the request path.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the request path.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs:
@@ -599,22 +573,19 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArg
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict(TypedDict):
-        is_value_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to enable authentication.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the request path.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the request path.
-        """
-elif False:
-    ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict(TypedDict):
+    is_value_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to enable authentication.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the request path.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the request path.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs:
@@ -671,22 +642,19 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterA
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict(TypedDict):
-        is_value_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to enable authentication.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the request path.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of the request path.
-        """
-elif False:
-    ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict(TypedDict):
+    is_value_secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to enable authentication.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the request path.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the request path.
+    """
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs:
@@ -743,26 +711,23 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectionNetworkParametersArgsDict(TypedDict):
-        network_type: pulumi.Input[_builtins.str]
-        """
-        The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
-        """
-        security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the security group.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VPC.
-        """
-        vswitche_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VSwitch.
-        """
-elif False:
-    ConnectionNetworkParametersArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectionNetworkParametersArgsDict(TypedDict):
+    network_type: pulumi.Input[_builtins.str]
+    """
+    The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+    """
+    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the security group.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VPC.
+    """
+    vswitche_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VSwitch.
+    """
 
 @pulumi.input_type
 class ConnectionNetworkParametersArgs:
@@ -834,53 +799,50 @@ class ConnectionNetworkParametersArgs:
         pulumi.set(self, "vswitche_id", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceHttpEventParametersArgsDict(TypedDict):
-        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
-        """
-        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
-        - GET
-        - POST
-        - PUT
-        - PATCH
-        - DELETE
-        - HEAD
-        - OPTIONS
-        - TRACE
-        - CONNECT
-        """
-        public_web_hook_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The public network request URL.
-        """
-        referers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
-        """
-        security_config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Select the type of security configuration. The optional range is as follows:
-        - none: No configuration is required.
-        - ip:IP segment.
-        - referer: Security domain name.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type supported by the generated Webhook. The value description is as follows:
-        - HTTP
-        - HTTPS
-        - HTTP&HTTPS
-        """
-        vpc_web_hook_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The intranet request URL.
-        """
-elif False:
-    EventSourceV2SourceHttpEventParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceHttpEventParametersArgsDict(TypedDict):
+    ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IP segment security configuration. This parameter must be set only when the SecurityConfig value is ip. You can enter an IP address segment or IP address.
+    """
+    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP request method supported by the generated Webhook. Multiple choices are available, with the following options:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - HEAD
+    - OPTIONS
+    - TRACE
+    - CONNECT
+    """
+    public_web_hook_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The public network request URL.
+    """
+    referers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Security domain name configuration. This parameter must be set only when SecurityConfig is set to referer. You can fill in the domain name.
+    """
+    security_config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Select the type of security configuration. The optional range is as follows:
+    - none: No configuration is required.
+    - ip:IP segment.
+    - referer: Security domain name.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type supported by the generated Webhook. The value description is as follows:
+    - HTTP
+    - HTTPS
+    - HTTP&HTTPS
+    """
+    vpc_web_hook_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The intranet request URL.
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceHttpEventParametersArgs:
@@ -1031,46 +993,43 @@ class EventSourceV2SourceHttpEventParametersArgs:
         pulumi.set(self, "vpc_web_hook_urls", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceKafkaParametersArgsDict(TypedDict):
-        consumer_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Group ID of the consumer who subscribes to the Topic.
-        """
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance ID.
-        """
-        network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network configuration: Default (Default network) and public network (self-built network).
-        """
-        offset_reset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Consumption sites.
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region ID.
-        """
-        security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the security group.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The topic name.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VPC ID.
-        """
-        vswitch_ids: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vSwitch ID.
-        """
-elif False:
-    EventSourceV2SourceKafkaParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceKafkaParametersArgsDict(TypedDict):
+    consumer_group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Group ID of the consumer who subscribes to the Topic.
+    """
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance ID.
+    """
+    network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Network configuration: Default (Default network) and public network (self-built network).
+    """
+    offset_reset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Consumption sites.
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region ID.
+    """
+    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the security group.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The topic name.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VPC ID.
+    """
+    vswitch_ids: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vSwitch ID.
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceKafkaParametersArgs:
@@ -1223,22 +1182,19 @@ class EventSourceV2SourceKafkaParametersArgs:
         pulumi.set(self, "vswitch_ids", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceMnsParametersArgsDict(TypedDict):
-        is_base64_decode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
-        """
-        queue_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Queue of the lightweight message Queue (formerly MNS).
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the lightweight message queue (formerly MNS).
-        """
-elif False:
-    EventSourceV2SourceMnsParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceMnsParametersArgsDict(TypedDict):
+    is_base64_decode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
+    """
+    queue_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Queue of the lightweight message Queue (formerly MNS).
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the lightweight message queue (formerly MNS).
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceMnsParametersArgs:
@@ -1295,22 +1251,19 @@ class EventSourceV2SourceMnsParametersArgs:
         pulumi.set(self, "region_id", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceOssEventParametersArgsDict(TypedDict):
-        event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        OSS event type list.
-        """
-        match_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['EventSourceV2SourceOssEventParametersMatchRuleArgsDict']]]]]]
-        """
-        Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
-        """
-        sts_role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
-        """
-elif False:
-    EventSourceV2SourceOssEventParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceOssEventParametersArgsDict(TypedDict):
+    event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    OSS event type list.
+    """
+    match_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['EventSourceV2SourceOssEventParametersMatchRuleArgsDict']]]]]]
+    """
+    Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
+    """
+    sts_role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceOssEventParametersArgs:
@@ -1367,14 +1320,11 @@ class EventSourceV2SourceOssEventParametersArgs:
         pulumi.set(self, "sts_role_arn", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceOssEventParametersMatchRuleArgsDict(TypedDict):
-        match_state: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    EventSourceV2SourceOssEventParametersMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceOssEventParametersMatchRuleArgsDict(TypedDict):
+    match_state: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class EventSourceV2SourceOssEventParametersMatchRuleArgs:
@@ -1429,26 +1379,23 @@ class EventSourceV2SourceOssEventParametersMatchRuleArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceRabbitMqParametersArgsDict(TypedDict):
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-        """
-        queue_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the RabbitMQ instance.
-        """
-        virtual_host_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-        """
-elif False:
-    EventSourceV2SourceRabbitMqParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceRabbitMqParametersArgsDict(TypedDict):
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+    """
+    queue_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the RabbitMQ instance.
+    """
+    virtual_host_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceRabbitMqParametersArgs:
@@ -1521,78 +1468,75 @@ class EventSourceV2SourceRabbitMqParametersArgs:
         pulumi.set(self, "virtual_host_name", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceRocketmqParametersArgsDict(TypedDict):
-        auth_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ACL or not.
-        """
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Group ID of the RocketMQ version of message queue.
-        """
-        instance_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance access point.
-        """
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-        """
-        instance_network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance network.
-        """
-        instance_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance password.
-        """
-        instance_security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the security group.
-        """
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
-        """
-        instance_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance user name.
-        """
-        instance_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VPC.
-        """
-        instance_vswitch_ids: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vSwitch ID.
-        """
-        offset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consumption point of the message. The value description is as follows:
-        - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
-        - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
-        - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
-        Default value: `CONSUME_FROM_LAST_OFFSET`.
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the RocketMQ instance.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The filter label of the message.
-        """
-        timestamp: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
-        """
-        topic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-        """
-elif False:
-    EventSourceV2SourceRocketmqParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceRocketmqParametersArgsDict(TypedDict):
+    auth_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ACL or not.
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Group ID of the RocketMQ version of message queue.
+    """
+    instance_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instance access point.
+    """
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+    """
+    instance_network: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instance network.
+    """
+    instance_password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance password.
+    """
+    instance_security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the security group.
+    """
+    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance type. Only CLOUD_4 (4.0 instance on the cloud), CLOUD_5 (5.0 instance on the cloud), and SELF_BUILT (user-created MQ).
+    """
+    instance_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance user name.
+    """
+    instance_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VPC.
+    """
+    instance_vswitch_ids: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vSwitch ID.
+    """
+    offset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consumption point of the message. The value description is as follows:
+    - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
+    - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
+    - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
+    Default value: `CONSUME_FROM_LAST_OFFSET`.
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the RocketMQ instance.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The filter label of the message.
+    """
+    timestamp: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
+    """
+    topic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Topic name of the RocketMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceRocketmqParametersArgs:
@@ -1865,22 +1809,19 @@ class EventSourceV2SourceRocketmqParametersArgs:
         pulumi.set(self, "topic", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceScheduledEventParametersArgsDict(TypedDict):
-        schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cron expression
-        """
-        time_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Cron execution time zone.
-        """
-        user_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        JSON string
-        """
-elif False:
-    EventSourceV2SourceScheduledEventParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceScheduledEventParametersArgsDict(TypedDict):
+    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cron expression
+    """
+    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Cron execution time zone.
+    """
+    user_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    JSON string
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceScheduledEventParametersArgs:
@@ -1937,26 +1878,23 @@ class EventSourceV2SourceScheduledEventParametersArgs:
         pulumi.set(self, "user_data", value)
 
 
-if not MYPY:
-    class EventSourceV2SourceSlsParametersArgsDict(TypedDict):
-        consume_position: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
-        """
-        log_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The logstore of log service SLS.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The log project of log service SLS.
-        """
-        role_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
-        """
-elif False:
-    EventSourceV2SourceSlsParametersArgsDict: TypeAlias = Mapping[str, Any]
+class EventSourceV2SourceSlsParametersArgsDict(TypedDict):
+    consume_position: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Start consumption point, which can be the earliest or latest point corresponding to begin and end respectively, or start consumption from a specified time, measured in seconds.
+    """
+    log_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The logstore of log service SLS.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The log project of log service SLS.
+    """
+    role_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
+    """
 
 @pulumi.input_type
 class EventSourceV2SourceSlsParametersArgs:
@@ -2029,37 +1967,34 @@ class EventSourceV2SourceSlsParametersArgs:
         pulumi.set(self, "role_name", value)
 
 
-if not MYPY:
-    class RuleTargetArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The endpoint of the event target.
-        """
-        param_lists: pulumi.Input[Sequence[pulumi.Input['RuleTargetParamListArgsDict']]]
-        """
-        The parameters that are configured for the event target. See `param_list` below.
-        """
-        target_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the custom event target.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
-        **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
-        """
-        dead_letter_queue: NotRequired[pulumi.Input['RuleTargetDeadLetterQueueArgsDict']]
-        """
-        The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
-        """
-        push_retry_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The retry policy that is used to push the event. Valid values:
-        - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
-        - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
-        """
-elif False:
-    RuleTargetArgsDict: TypeAlias = Mapping[str, Any]
+class RuleTargetArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The endpoint of the event target.
+    """
+    param_lists: pulumi.Input[Sequence[pulumi.Input['RuleTargetParamListArgsDict']]]
+    """
+    The parameters that are configured for the event target. See `param_list` below.
+    """
+    target_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the custom event target.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+    **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
+    """
+    dead_letter_queue: NotRequired[pulumi.Input['RuleTargetDeadLetterQueueArgsDict']]
+    """
+    The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+    """
+    push_retry_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The retry policy that is used to push the event. Valid values:
+    - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+    - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
+    """
 
 @pulumi.input_type
 class RuleTargetArgs:
@@ -2166,14 +2101,11 @@ class RuleTargetArgs:
         pulumi.set(self, "push_retry_strategy", value)
 
 
-if not MYPY:
-    class RuleTargetDeadLetterQueueArgsDict(TypedDict):
-        arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
-        """
-elif False:
-    RuleTargetDeadLetterQueueArgsDict: TypeAlias = Mapping[str, Any]
+class RuleTargetDeadLetterQueueArgsDict(TypedDict):
+    arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
+    """
 
 @pulumi.input_type
 class RuleTargetDeadLetterQueueArgs:
@@ -2198,40 +2130,37 @@ class RuleTargetDeadLetterQueueArgs:
         pulumi.set(self, "arn", value)
 
 
-if not MYPY:
-    class RuleTargetParamListArgsDict(TypedDict):
-        form: pulumi.Input[_builtins.str]
-        """
-        The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-        """
-        resource_key: pulumi.Input[_builtins.str]
-        """
-        The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-        """
-        template: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The template of the event target parameter.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the event target parameter.
+class RuleTargetParamListArgsDict(TypedDict):
+    form: pulumi.Input[_builtins.str]
+    """
+    The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+    """
+    resource_key: pulumi.Input[_builtins.str]
+    """
+    The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+    """
+    template: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The template of the event target parameter.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the event target parameter.
 
-        > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+    > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 
-        ```
-        param_list {
-        resource_key = "IsBase64Encode"
-        form         = "CONSTANT"
-        value        = "false"
-        template     = ""
-        }
-        ```
+    ```
+    param_list {
+    resource_key = "IsBase64Encode"
+    form         = "CONSTANT"
+    value        = "false"
+    template     = ""
+    }
+    ```
 
-        In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
-        If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
-        """
-elif False:
-    RuleTargetParamListArgsDict: TypeAlias = Mapping[str, Any]
+    In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+    If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
+    """
 
 @pulumi.input_type
 class RuleTargetParamListArgs:

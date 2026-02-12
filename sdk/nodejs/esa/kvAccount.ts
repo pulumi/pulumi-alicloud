@@ -5,12 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ESA Kv Account resource.
+ *
+ * For information about ESA Kv Account and how to use it, see [What is Kv Account](https://next.api.alibabacloud.com/document/ESA/2024-09-10/OpenErService).
+ *
+ * > **NOTE:** Available since v1.259.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = new alicloud.esa.KvAccount("open", {});
+ * ```
+ *
+ * ### Deleting `alicloud.esa.KvAccount` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.esa.KvAccount`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Kv Account can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:esa/kvAccount:KvAccount example 
+ * $ terraform import alicloud_esa_kv_account.example 
  * ```
  */
 export class KvAccount extends pulumi.CustomResource {

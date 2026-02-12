@@ -487,6 +487,7 @@ class GetDbClustersClusterResult(dict):
         :param _builtins.str db_instance_id: The instance ID.
         :param _builtins.str engine: The Engine of the DBCluster.
         :param _builtins.str engine_version: The engine version of the DBCluster.
+        :param _builtins.str id: The resource ID in terraform of DBCluster. It formats as <db_instance_id>:<db_cluster_id>.
         :param _builtins.int memory: The memory resource amount of DBCluster. Depends on `db_cluster_class`.
         :param Sequence['GetDbClustersClusterParamChangeLogArgs'] param_change_logs: The configuration change logs of parameters.
         :param Sequence['GetDbClustersClusterParamArgs'] params: The details about each parameter in DBCluster returned.
@@ -590,6 +591,9 @@ class GetDbClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of DBCluster. It formats as <db_instance_id>:<db_cluster_id>.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -880,6 +884,7 @@ class GetDbInstancesInstanceResult(dict):
         :param _builtins.str gmt_created: The time when DBInstance is created.
         :param _builtins.str gmt_expired: The time when DBInstance will be expired. Available on `Subscription` DBInstance.
         :param _builtins.str gmt_modified: The time when DBInstance is modified.
+        :param _builtins.str id: The resource ID in terraform of DBInstance.
         :param _builtins.str lock_mode: The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
         :param _builtins.str lock_reason: The reason why the instance is locked.
         :param _builtins.int memory_postpaid: The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
@@ -1034,6 +1039,9 @@ class GetDbInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of DBInstance.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -789,6 +789,59 @@ class Instance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Hologres (Hologram) Instance resource.
+
+        For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+
+        > **NOTE:** Available since v1.213.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default_v_switch = alicloud.vpc.Switch("defaultVSwitch",
+            vpc_id=default_vpc.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="172.16.53.0/24",
+            vswitch_name=name)
+        default = alicloud.hologram.Instance("default",
+            instance_type="Standard",
+            pricing_cycle="Hour",
+            cpu=32,
+            endpoints=[
+                {
+                    "type": "Intranet",
+                },
+                {
+                    "type": "VPCSingleTunnel",
+                    "vswitch_id": default_v_switch.id,
+                    "vpc_id": default_v_switch.vpc_id,
+                },
+            ],
+            zone_id=default_v_switch.zone_id,
+            instance_name=name,
+            payment_type="PayAsYouGo")
+        ```
+
+        ### Deleting `hologram.Instance` or removing it from your configuration
+
+        The `hologram.Instance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hologram Instance can be imported using the id, e.g.
@@ -849,6 +902,59 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Hologres (Hologram) Instance resource.
+
+        For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+
+        > **NOTE:** Available since v1.213.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default_v_switch = alicloud.vpc.Switch("defaultVSwitch",
+            vpc_id=default_vpc.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="172.16.53.0/24",
+            vswitch_name=name)
+        default = alicloud.hologram.Instance("default",
+            instance_type="Standard",
+            pricing_cycle="Hour",
+            cpu=32,
+            endpoints=[
+                {
+                    "type": "Intranet",
+                },
+                {
+                    "type": "VPCSingleTunnel",
+                    "vswitch_id": default_v_switch.id,
+                    "vpc_id": default_v_switch.vpc_id,
+                },
+            ],
+            zone_id=default_v_switch.zone_id,
+            instance_name=name,
+            payment_type="PayAsYouGo")
+        ```
+
+        ### Deleting `hologram.Instance` or removing it from your configuration
+
+        The `hologram.Instance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hologram Instance can be imported using the id, e.g.

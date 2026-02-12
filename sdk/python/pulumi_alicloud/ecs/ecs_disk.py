@@ -1059,6 +1059,47 @@ class EcsDisk(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides an ECS Disk resource.
+
+        For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
+
+        > **NOTE:** Available since v1.122.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_key = alicloud.kms.Key("example",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        example_ecs_disk = alicloud.ecs.EcsDisk("example",
+            zone_id=example.zones[0].id,
+            disk_name="terraform-example",
+            description="terraform-example",
+            category="cloud_efficiency",
+            size=30,
+            encrypted=True,
+            kms_key_id=example_key.id,
+            tags={
+                "Name": "terraform-example",
+            })
+        ```
+
+        ### Deleting `ecs.EcsDisk` or removing it from your configuration
+
+        The `ecs.EcsDisk` resource allows you to manage `payment_type = "Subscription"` and `delete_with_instance = true` disk,
+        but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
+        remove it from your state file and management, but will not destroy it.
+        If you want to delete it, you can change it to `PayAsYouGo` and setting `delete_with_instance = true` and detach it from instance.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Disk can be imported using the id, e.g.
@@ -1122,6 +1163,47 @@ class EcsDisk(pulumi.CustomResource):
                  args: Optional[EcsDiskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an ECS Disk resource.
+
+        For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
+
+        > **NOTE:** Available since v1.122.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_key = alicloud.kms.Key("example",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        example_ecs_disk = alicloud.ecs.EcsDisk("example",
+            zone_id=example.zones[0].id,
+            disk_name="terraform-example",
+            description="terraform-example",
+            category="cloud_efficiency",
+            size=30,
+            encrypted=True,
+            kms_key_id=example_key.id,
+            tags={
+                "Name": "terraform-example",
+            })
+        ```
+
+        ### Deleting `ecs.EcsDisk` or removing it from your configuration
+
+        The `ecs.EcsDisk` resource allows you to manage `payment_type = "Subscription"` and `delete_with_instance = true` disk,
+        but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
+        remove it from your state file and management, but will not destroy it.
+        If you want to delete it, you can change it to `PayAsYouGo` and setting `delete_with_instance = true` and detach it from instance.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Disk can be imported using the id, e.g.

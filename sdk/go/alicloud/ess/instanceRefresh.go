@@ -12,6 +12,157 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESS instance refresh resource.
+//
+// For information about ess instance refresh, see [StartInstanceRefresh](https://www.alibabacloud.com/help/en/auto-scaling/developer-reference/api-startinstancerefresh).
+//
+// > **NOTE:** Available since v1.261.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myName := fmt.Sprintf("%v-%v", name, defaultInteger.Result)
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(myName),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(myName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				SecurityGroupName: pulumi.String(myName),
+//				VpcId:             defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1GetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubu"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default2, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^aliyun"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(0),
+//				MaxSize:          pulumi.Int(10),
+//				ScalingGroupName: pulumi.String(myName),
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				DesiredCapacity: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
+//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ImageId:         pulumi.String(default1GetImages.Images[0].Id),
+//				InstanceType:    pulumi.String(default1.InstanceTypes[0].Id),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				ForceDelete:     pulumi.Bool(true),
+//				Active:          pulumi.Bool(true),
+//				Enable:          pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ess.NewInstanceRefresh(ctx, "default", &ess.InstanceRefreshArgs{
+//				ScalingGroupId:              defaultScalingConfiguration.ScalingGroupId,
+//				DesiredConfigurationImageId: pulumi.String(default2.Images[0].Id),
+//				MinHealthyPercentage:        pulumi.Int(90),
+//				MaxHealthyPercentage:        pulumi.Int(150),
+//				CheckpointPauseTime:         pulumi.Int(60),
+//				SkipMatching:                pulumi.Bool(false),
+//				Checkpoints: ess.InstanceRefreshCheckpointArray{
+//					&ess.InstanceRefreshCheckpointArgs{
+//						Percentage: pulumi.Int(100),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Deleting `ess.InstanceRefresh` or removing it from your configuration
+//
+// The `ess.InstanceRefresh` resource allows you to manage  `status = "RollbackInProgress"`  instance refresh, but Terraform cannot destroy it.
+// Deleting will remove it from your state file and management, but will not destroy the Instance Refresh.
+// You can resume managing the instance refresh via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESS instance refresh can be imported using the id, e.g.

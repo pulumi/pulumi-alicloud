@@ -10,6 +10,84 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud
 {
     /// <summary>
+    /// Provides a Milvus Instance resource.
+    /// 
+    /// For information about Milvus Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/milvus/2023-10-12/CreateInstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.264.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var regionId = config.Get("regionId") ?? "cn-hangzhou";
+    ///     var zoneId = config.Get("zoneId") ?? "cn-hangzhou-j";
+    ///     var defaultILXuit = new AliCloud.Vpc.Network("defaultILXuit", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultN80M7S = new AliCloud.Vpc.Switch("defaultN80M7S", new()
+    ///     {
+    ///         VpcId = defaultILXuit.Id,
+    ///         ZoneId = zoneId,
+    ///         CidrBlock = "172.16.1.0/24",
+    ///         VswitchName = "milvus-example",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.MilvusInstance("default", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             new AliCloud.Inputs.MilvusInstanceVswitchIdArgs
+    ///             {
+    ///                 VswId = defaultN80M7S.Id,
+    ///                 ZoneId = defaultN80M7S.ZoneId,
+    ///             },
+    ///         },
+    ///         DbAdminPassword = "Test123456@",
+    ///         Components = new[]
+    ///         {
+    ///             new AliCloud.Inputs.MilvusInstanceComponentArgs
+    ///             {
+    ///                 Type = "standalone",
+    ///                 CuNum = 8,
+    ///                 Replica = 1,
+    ///                 CuType = "general",
+    ///             },
+    ///         },
+    ///         InstanceName = "镇远测试包年包月",
+    ///         DbVersion = "2.4",
+    ///         VpcId = defaultILXuit.Id,
+    ///         Ha = false,
+    ///         PaymentType = "Subscription",
+    ///         MultiZoneMode = "Single",
+    ///         PaymentDurationUnit = "year",
+    ///         PaymentDuration = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.MilvusInstance` or removing it from your configuration
+    /// 
+    /// The `alicloud.MilvusInstance` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Milvus Instance can be imported using the id, e.g.

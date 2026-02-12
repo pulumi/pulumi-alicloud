@@ -10,6 +10,59 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Governance
 {
     /// <summary>
+    /// Provides a Governance Account resource.
+    /// 
+    /// Member account created by the Cloud Governance Center account factory.
+    /// 
+    /// For information about Governance Account and how to use it, see [What is Account](https://next.api.aliyun.com/document/governance/2021-01-20/EnrollAccount).
+    /// 
+    /// &gt; **NOTE:** Available since v1.228.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultGetBaselines = AliCloud.Governance.GetBaselines.Invoke();
+    /// 
+    ///     var defaultGetFolders = AliCloud.ResourceManager.GetFolders.Invoke();
+    /// 
+    ///     var defaultAccount = new AliCloud.Governance.Account("default", new()
+    ///     {
+    ///         AccountNamePrefix = $"{name}-{defaultInteger.Result}",
+    ///         FolderId = defaultGetFolders.Apply(getFoldersResult =&gt; getFoldersResult.Ids[0]),
+    ///         BaselineId = defaultGetBaselines.Apply(getBaselinesResult =&gt; getBaselinesResult.Ids[0]),
+    ///         PayerAccountId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         DisplayName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.governance.Account` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.governance.Account`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Governance Account can be imported using the id, e.g.

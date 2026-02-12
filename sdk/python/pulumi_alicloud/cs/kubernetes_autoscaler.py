@@ -236,7 +236,95 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  utilization: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a KubernetesAutoscaler resource with the given unique name, props, and options.
+        This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
+
+        > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
+
+        > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
+
+        > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
+
+        > **NOTE:** Available since v1.65.0.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.127.0`. Please use new resource alicloud_cs_autoscaling_config. If you have used resource `cs.KubernetesAutoscaler`, please refer to [Use Terraform to create an auto-scaling node pool](https://www.alibabacloud.com/help/doc-detail/197717.htm) to switch to `cs.AutoscalingConfig`.
+
+        ## Example Usage
+
+        cluster-autoscaler in Kubernetes Cluster.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
+            scaling_group_name=name,
+            min_size=1,
+            max_size=1,
+            vswitch_ids=[default_switch.id],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("default",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True)
+        default_kubernetes_autoscaler = alicloud.cs.KubernetesAutoscaler("default",
+            cluster_id=default_managed_kubernetes.id,
+            utilization="0.5",
+            cool_down_duration="10m",
+            defer_scale_in_duration="10m",
+            nodepools=[{
+                "id": default_scaling_configuration.scaling_group_id,
+                "labels": "a=b",
+            }])
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Ignoring Changes to tags and user_data
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ignore_changes` to create a  a autoscaler group, then ignore any changes to that tags and user_data caused externally (e.g. Application Autoscaling).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
@@ -253,7 +341,95 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  args: KubernetesAutoscalerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a KubernetesAutoscaler resource with the given unique name, props, and options.
+        This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
+
+        > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
+
+        > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
+
+        > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
+
+        > **NOTE:** Available since v1.65.0.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.127.0`. Please use new resource alicloud_cs_autoscaling_config. If you have used resource `cs.KubernetesAutoscaler`, please refer to [Use Terraform to create an auto-scaling node pool](https://www.alibabacloud.com/help/doc-detail/197717.htm) to switch to `cs.AutoscalingConfig`.
+
+        ## Example Usage
+
+        cluster-autoscaler in Kubernetes Cluster.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
+            scaling_group_name=name,
+            min_size=1,
+            max_size=1,
+            vswitch_ids=[default_switch.id],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("default",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True)
+        default_kubernetes_autoscaler = alicloud.cs.KubernetesAutoscaler("default",
+            cluster_id=default_managed_kubernetes.id,
+            utilization="0.5",
+            cool_down_duration="10m",
+            defer_scale_in_duration="10m",
+            nodepools=[{
+                "id": default_scaling_configuration.scaling_group_id,
+                "labels": "a=b",
+            }])
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Ignoring Changes to tags and user_data
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ignore_changes` to create a  a autoscaler group, then ignore any changes to that tags and user_data caused externally (e.g. Application Autoscaling).
+
         :param str resource_name: The name of the resource.
         :param KubernetesAutoscalerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

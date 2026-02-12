@@ -29,6 +29,9 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// The name of the API group.
         /// </summary>
         public readonly string GroupName;
+        /// <summary>
+        /// The resource ID in terraform of API. It formats as `&lt;group_id&gt;:&lt;api_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the API.

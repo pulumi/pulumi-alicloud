@@ -132,9 +132,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.internetChargeType);
     }
 
+    /**
+     * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     * 
+     */
     @Import(name="loadBalancerName")
     private @Nullable Output<String> loadBalancerName;
 
+    /**
+     * @return The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     * 
+     */
     public Optional<Output<String>> loadBalancerName() {
         return Optional.ofNullable(this.loadBalancerName);
     }
@@ -569,11 +581,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
             return internetChargeType(Output.of(internetChargeType));
         }
 
+        /**
+         * @param loadBalancerName The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+         * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+         * Terraform will autogenerate a name beginning with `tf-lb`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loadBalancerName(@Nullable Output<String> loadBalancerName) {
             $.loadBalancerName = loadBalancerName;
             return this;
         }
 
+        /**
+         * @param loadBalancerName The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+         * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+         * Terraform will autogenerate a name beginning with `tf-lb`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loadBalancerName(String loadBalancerName) {
             return loadBalancerName(Output.of(loadBalancerName));
         }

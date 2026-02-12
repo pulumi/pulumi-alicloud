@@ -5,6 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Cloud Firewall Threat Intelligence Switch resource.
+ *
+ * Cloud Firewall Switch Threat Intelligence.
+ *
+ * For information about Cloud Firewall Threat Intelligence Switch and how to use it, see [What is Threat Intelligence Switch](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyThreatIntelligenceSwitch).
+ *
+ * > **NOTE:** Available since v1.260.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cloudfirewall.ThreatIntelligenceSwitch("default", {
+ *     action: "alert",
+ *     enableStatus: 0,
+ *     categoryId: "IpOutThreatTorExit",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.cloudfirewall.ThreatIntelligenceSwitch` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.ThreatIntelligenceSwitch`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Firewall Threat Intelligence Switch can be imported using the id, e.g.

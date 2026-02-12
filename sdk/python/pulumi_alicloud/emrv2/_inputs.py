@@ -73,44 +73,39 @@ __all__ = [
     'ClusterSubscriptionConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ClusterApplicationConfigArgsDict(TypedDict):
-        application_name: pulumi.Input[_builtins.str]
-        """
-        The application name of EMR cluster which has installed.
-        """
-        config_file_name: pulumi.Input[_builtins.str]
-        """
-        The configuration file name of application installed.
-        """
-        config_item_key: pulumi.Input[_builtins.str]
-        """
-        The configuration item key of application installed.
-        """
-        config_item_value: pulumi.Input[_builtins.str]
-        """
-        The configuration item value of application installed.
-        """
-        config_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configuration description of application installed.
-        """
-        config_scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
-        """
-        node_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configuration effected which node group id of emr cluster.
-        """
-        node_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configuration effected which node group name of emr cluster.
-        """
-elif False:
-    ClusterApplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterApplicationConfigArgsDict(TypedDict):
+    application_name: pulumi.Input[_builtins.str]
+    """
+    The application name of EMR cluster which has installed.
+    """
+    config_file_name: pulumi.Input[_builtins.str]
+    """
+    The configuration file name of application installed.
+    """
+    config_item_key: pulumi.Input[_builtins.str]
+    """
+    The configuration item key of application installed.
+    """
+    config_item_value: pulumi.Input[_builtins.str]
+    """
+    The configuration item value of application installed.
+    """
+    config_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configuration description of application installed.
+    """
+    config_scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
+    """
+    node_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configuration effected which node group id of emr cluster.
+    """
+    node_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configuration effected which node group name of emr cluster.
+    """
 
 @pulumi.input_type
 class ClusterApplicationConfigArgs:
@@ -243,38 +238,35 @@ class ClusterApplicationConfigArgs:
         pulumi.set(self, "node_group_name", value)
 
 
-if not MYPY:
-    class ClusterBootstrapScriptArgsDict(TypedDict):
-        execution_fail_strategy: pulumi.Input[_builtins.str]
-        """
-        The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
-        """
-        execution_moment: pulumi.Input[_builtins.str]
-        """
-        The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
-        """
-        node_selector: pulumi.Input['ClusterBootstrapScriptNodeSelectorArgsDict']
-        """
-        The bootstrap scripts execution target. See `node_selector` below.
-        """
-        script_args: pulumi.Input[_builtins.str]
-        """
-        The bootstrap script args, e.g. "--a=b".
-        """
-        script_name: pulumi.Input[_builtins.str]
-        """
-        The bootstrap script name.
-        """
-        script_path: pulumi.Input[_builtins.str]
-        """
-        The bootstrap script path, e.g. "oss://bucket/path".
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The bootstrap scripts priority.
-        """
-elif False:
-    ClusterBootstrapScriptArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterBootstrapScriptArgsDict(TypedDict):
+    execution_fail_strategy: pulumi.Input[_builtins.str]
+    """
+    The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
+    """
+    execution_moment: pulumi.Input[_builtins.str]
+    """
+    The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
+    """
+    node_selector: pulumi.Input['ClusterBootstrapScriptNodeSelectorArgsDict']
+    """
+    The bootstrap scripts execution target. See `node_selector` below.
+    """
+    script_args: pulumi.Input[_builtins.str]
+    """
+    The bootstrap script args, e.g. "--a=b".
+    """
+    script_name: pulumi.Input[_builtins.str]
+    """
+    The bootstrap script name.
+    """
+    script_path: pulumi.Input[_builtins.str]
+    """
+    The bootstrap script path, e.g. "oss://bucket/path".
+    """
+    priority: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The bootstrap scripts priority.
+    """
 
 @pulumi.input_type
 class ClusterBootstrapScriptArgs:
@@ -393,32 +385,29 @@ class ClusterBootstrapScriptArgs:
         pulumi.set(self, "priority", value)
 
 
-if not MYPY:
-    class ClusterBootstrapScriptNodeSelectorArgsDict(TypedDict):
-        node_select_type: pulumi.Input[_builtins.str]
-        """
-        The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        """
-        node_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        node_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The bootstrap scripts execution target node group ids.
-        """
-        node_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        node_group_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The bootstrap scripts execution target node group names.
-        """
-        node_group_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The bootstrap scripts execution target node group types.
-        """
-        node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The bootstrap scripts execution target node names.
-        """
-elif False:
-    ClusterBootstrapScriptNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterBootstrapScriptNodeSelectorArgsDict(TypedDict):
+    node_select_type: pulumi.Input[_builtins.str]
+    """
+    The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+    """
+    node_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The bootstrap scripts execution target node group ids.
+    """
+    node_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_group_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The bootstrap scripts execution target node group names.
+    """
+    node_group_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The bootstrap scripts execution target node group types.
+    """
+    node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The bootstrap scripts execution target node names.
+    """
 
 @pulumi.input_type
 class ClusterBootstrapScriptNodeSelectorArgs:
@@ -538,46 +527,43 @@ class ClusterBootstrapScriptNodeSelectorArgs:
         pulumi.set(self, "node_names", value)
 
 
-if not MYPY:
-    class ClusterNodeAttributeArgsDict(TypedDict):
-        key_pair_name: pulumi.Input[_builtins.str]
-        """
-        The name of the key pair.
-        """
-        ram_role: pulumi.Input[_builtins.str]
-        """
-        Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-        """
-        security_group_id: pulumi.Input[_builtins.str]
-        """
-        Security Group ID for Cluster.
-        """
-        vpc_id: pulumi.Input[_builtins.str]
-        """
-        Used to retrieve instances belong to specified VPC.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        Zone ID, e.g. cn-hangzhou-i
-        """
-        data_disk_encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable data disk encryption.
-        """
-        data_disk_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
-        """
-        system_disk_encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable system disk encryption.
-        """
-        system_disk_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
-        """
-elif False:
-    ClusterNodeAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeAttributeArgsDict(TypedDict):
+    key_pair_name: pulumi.Input[_builtins.str]
+    """
+    The name of the key pair.
+    """
+    ram_role: pulumi.Input[_builtins.str]
+    """
+    Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+    """
+    security_group_id: pulumi.Input[_builtins.str]
+    """
+    Security Group ID for Cluster.
+    """
+    vpc_id: pulumi.Input[_builtins.str]
+    """
+    Used to retrieve instances belong to specified VPC.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    Zone ID, e.g. cn-hangzhou-i
+    """
+    data_disk_encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable data disk encryption.
+    """
+    data_disk_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+    """
+    system_disk_encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable system disk encryption.
+    """
+    system_disk_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+    """
 
 @pulumi.input_type
 class ClusterNodeAttributeArgs:
@@ -725,94 +711,91 @@ class ClusterNodeAttributeArgs:
         pulumi.set(self, "system_disk_kms_key_id", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupArgsDict(TypedDict):
-        data_disks: pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgsDict']]]
-        """
-        Host Ecs data disks information in this node group. See `data_disks` below.
-        """
-        instance_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
-        """
-        node_count: pulumi.Input[_builtins.int]
-        """
-        Host Ecs number in this node group.
-        """
-        node_group_name: pulumi.Input[_builtins.str]
-        """
-        The node group name of emr cluster.
-        """
-        node_group_type: pulumi.Input[_builtins.str]
-        """
-        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
-        """
-        system_disk: pulumi.Input['ClusterNodeGroupSystemDiskArgsDict']
-        """
-        Host Ecs system disk information in this node group. See `system_disk` below.
-        """
-        ack_config: NotRequired[pulumi.Input['ClusterNodeGroupAckConfigArgsDict']]
-        """
-        The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
-        """
-        additional_security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
-        """
-        auto_scaling_policy: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgsDict']]
-        """
-        The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
-        """
-        cost_optimized_config: NotRequired[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgsDict']]
-        """
-        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
-        """
-        deployment_set_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
-        """
-        graceful_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
-        """
-        node_resize_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
-        """
-        payment_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
-        """
-        private_pool_options: NotRequired[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgsDict']]
-        """
-        The node group specific private pool resources. See `private_pool_options` below.
-        """
-        spot_bid_prices: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgsDict']]]]
-        """
-        The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
-        """
-        spot_instance_remedy: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
-        """
-        spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
-        """
-        subscription_config: NotRequired[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgsDict']]
-        """
-        The detail configuration of subscription payment type. See `subscription_config` below.
-        """
-        vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
-        """
-        with_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
-        """
-elif False:
-    ClusterNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupArgsDict(TypedDict):
+    data_disks: pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgsDict']]]
+    """
+    Host Ecs data disks information in this node group. See `data_disks` below.
+    """
+    instance_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
+    """
+    node_count: pulumi.Input[_builtins.int]
+    """
+    Host Ecs number in this node group.
+    """
+    node_group_name: pulumi.Input[_builtins.str]
+    """
+    The node group name of emr cluster.
+    """
+    node_group_type: pulumi.Input[_builtins.str]
+    """
+    The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
+    """
+    system_disk: pulumi.Input['ClusterNodeGroupSystemDiskArgsDict']
+    """
+    Host Ecs system disk information in this node group. See `system_disk` below.
+    """
+    ack_config: NotRequired[pulumi.Input['ClusterNodeGroupAckConfigArgsDict']]
+    """
+    The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+    """
+    additional_security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
+    """
+    auto_scaling_policy: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgsDict']]
+    """
+    The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+    """
+    cost_optimized_config: NotRequired[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgsDict']]
+    """
+    The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+    """
+    deployment_set_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
+    """
+    graceful_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
+    """
+    node_resize_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+    """
+    payment_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+    """
+    private_pool_options: NotRequired[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgsDict']]
+    """
+    The node group specific private pool resources. See `private_pool_options` below.
+    """
+    spot_bid_prices: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgsDict']]]]
+    """
+    The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
+    """
+    spot_instance_remedy: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+    """
+    spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+    """
+    subscription_config: NotRequired[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgsDict']]
+    """
+    The detail configuration of subscription payment type. See `subscription_config` below.
+    """
+    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+    """
+    with_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupArgs:
@@ -1151,78 +1134,75 @@ class ClusterNodeGroupArgs:
         pulumi.set(self, "with_public_ip", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigArgsDict(TypedDict):
-        ack_instance_id: pulumi.Input[_builtins.str]
-        """
-        The ack cluster instance id.
-        """
-        limit_cpu: pulumi.Input[_builtins.float]
-        """
-        The job pod resource of limit cpu.
-        """
-        limit_memory: pulumi.Input[_builtins.float]
-        """
-        The job pod resource of limit memory.
-        """
-        namespace: pulumi.Input[_builtins.str]
-        """
-        The ack cluster namespace.
-        """
-        request_cpu: pulumi.Input[_builtins.float]
-        """
-        The job pod resource of request cpu.
-        """
-        request_memory: pulumi.Input[_builtins.float]
-        """
-        The job pod resource of request memory.
-        """
-        custom_annotations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgsDict']]]]
-        """
-        The ack cluster custom annotations. See `custom_annotations` below.
-        """
-        custom_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgsDict']]]]
-        """
-        The ack cluster custom labels. See `custom_labels` below.
-        """
-        node_affinity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ack cluster node affinity.
-        """
-        node_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgsDict']]]]
-        """
-        The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
-        """
-        pod_affinity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The job pod affinity.
-        """
-        pod_anti_affinity: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The job pod anti-affinity.
-        """
-        pre_start_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The job pod pre start command.
-        """
-        pvcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgsDict']]]]
-        """
-        The ack cluster persistent volume claim. See `pvcs` below.
-        """
-        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgsDict']]]]
-        """
-        The ack cluster tolerations. See `tolerations` below.
-        """
-        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgsDict']]]]
-        """
-        The ack cluster volume mounts. See `volume_mounts` below.
-        """
-        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgsDict']]]]
-        """
-        The ack cluster volumes. See `volumes` below.
-        """
-elif False:
-    ClusterNodeGroupAckConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigArgsDict(TypedDict):
+    ack_instance_id: pulumi.Input[_builtins.str]
+    """
+    The ack cluster instance id.
+    """
+    limit_cpu: pulumi.Input[_builtins.float]
+    """
+    The job pod resource of limit cpu.
+    """
+    limit_memory: pulumi.Input[_builtins.float]
+    """
+    The job pod resource of limit memory.
+    """
+    namespace: pulumi.Input[_builtins.str]
+    """
+    The ack cluster namespace.
+    """
+    request_cpu: pulumi.Input[_builtins.float]
+    """
+    The job pod resource of request cpu.
+    """
+    request_memory: pulumi.Input[_builtins.float]
+    """
+    The job pod resource of request memory.
+    """
+    custom_annotations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgsDict']]]]
+    """
+    The ack cluster custom annotations. See `custom_annotations` below.
+    """
+    custom_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgsDict']]]]
+    """
+    The ack cluster custom labels. See `custom_labels` below.
+    """
+    node_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ack cluster node affinity.
+    """
+    node_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgsDict']]]]
+    """
+    The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+    """
+    pod_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The job pod affinity.
+    """
+    pod_anti_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The job pod anti-affinity.
+    """
+    pre_start_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The job pod pre start command.
+    """
+    pvcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgsDict']]]]
+    """
+    The ack cluster persistent volume claim. See `pvcs` below.
+    """
+    tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgsDict']]]]
+    """
+    The ack cluster tolerations. See `tolerations` below.
+    """
+    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgsDict']]]]
+    """
+    The ack cluster volume mounts. See `volume_mounts` below.
+    """
+    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgsDict']]]]
+    """
+    The ack cluster volumes. See `volumes` below.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigArgs:
@@ -1497,18 +1477,15 @@ class ClusterNodeGroupAckConfigArgs:
         pulumi.set(self, "volumes", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigCustomAnnotationArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The tag key for this scaling rule specific metrics trigger.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag value for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAckConfigCustomAnnotationArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigCustomAnnotationArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The tag key for this scaling rule specific metrics trigger.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag value for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigCustomAnnotationArgs:
@@ -1548,18 +1525,15 @@ class ClusterNodeGroupAckConfigCustomAnnotationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigCustomLabelArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The tag key for this scaling rule specific metrics trigger.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag value for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAckConfigCustomLabelArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigCustomLabelArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The tag key for this scaling rule specific metrics trigger.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag value for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigCustomLabelArgs:
@@ -1599,18 +1573,15 @@ class ClusterNodeGroupAckConfigCustomLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigNodeSelectorArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The tag key for this scaling rule specific metrics trigger.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag value for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAckConfigNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigNodeSelectorArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The tag key for this scaling rule specific metrics trigger.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag value for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigNodeSelectorArgs:
@@ -1650,26 +1621,23 @@ class ClusterNodeGroupAckConfigNodeSelectorArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigPvcArgsDict(TypedDict):
-        data_disk_size: pulumi.Input[_builtins.int]
-        """
-        The ack cluster job pod data disk size of persistent volume claim.
-        """
-        data_disk_storage_class: pulumi.Input[_builtins.str]
-        """
-        The ack cluster job pod data disk storage class of persistent volume claim.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of ack cluster job pod volume mounts.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path of ack cluster job pod volume mounts.
-        """
-elif False:
-    ClusterNodeGroupAckConfigPvcArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigPvcArgsDict(TypedDict):
+    data_disk_size: pulumi.Input[_builtins.int]
+    """
+    The ack cluster job pod data disk size of persistent volume claim.
+    """
+    data_disk_storage_class: pulumi.Input[_builtins.str]
+    """
+    The ack cluster job pod data disk storage class of persistent volume claim.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of ack cluster job pod volume mounts.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path of ack cluster job pod volume mounts.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigPvcArgs:
@@ -1738,26 +1706,23 @@ class ClusterNodeGroupAckConfigPvcArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigTolerationArgsDict(TypedDict):
-        effect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effect of ack cluster tolerations.
-        """
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag key for this scaling rule specific metrics trigger.
-        """
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The operator of ack cluster tolerations.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag value for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAckConfigTolerationArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigTolerationArgsDict(TypedDict):
+    effect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The effect of ack cluster tolerations.
+    """
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag key for this scaling rule specific metrics trigger.
+    """
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The operator of ack cluster tolerations.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag value for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigTolerationArgs:
@@ -1830,22 +1795,19 @@ class ClusterNodeGroupAckConfigTolerationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigVolumeArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of ack cluster job pod volume mounts.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path of ack cluster job pod volume mounts.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The ack cluster job pod volumes type.
-        """
-elif False:
-    ClusterNodeGroupAckConfigVolumeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigVolumeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of ack cluster job pod volume mounts.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path of ack cluster job pod volume mounts.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The ack cluster job pod volumes type.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigVolumeArgs:
@@ -1899,18 +1861,15 @@ class ClusterNodeGroupAckConfigVolumeArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAckConfigVolumeMountArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of ack cluster job pod volume mounts.
-        """
-        path: pulumi.Input[_builtins.str]
-        """
-        The path of ack cluster job pod volume mounts.
-        """
-elif False:
-    ClusterNodeGroupAckConfigVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAckConfigVolumeMountArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of ack cluster job pod volume mounts.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    The path of ack cluster job pod volume mounts.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAckConfigVolumeMountArgs:
@@ -1949,18 +1908,15 @@ class ClusterNodeGroupAckConfigVolumeMountArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyArgsDict(TypedDict):
-        constraints: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict']]
-        """
-        The constraints of auto scaling policy. See `constraints` below.
-        """
-        scaling_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict']]]]
-        """
-        The scaling rules of auto scaling policy. See `scaling_rules` below.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyArgsDict(TypedDict):
+    constraints: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict']]
+    """
+    The constraints of auto scaling policy. See `constraints` below.
+    """
+    scaling_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict']]]]
+    """
+    The scaling rules of auto scaling policy. See `scaling_rules` below.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyArgs:
@@ -2001,18 +1957,15 @@ class ClusterNodeGroupAutoScalingPolicyArgs:
         pulumi.set(self, "scaling_rules", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict(TypedDict):
-        max_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum capacity of constraints for emr node group auto scaling policy.
-        """
-        min_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum capacity of constraints for emr node group auto scaling policy.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict(TypedDict):
+    max_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum capacity of constraints for emr node group auto scaling policy.
+    """
+    min_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum capacity of constraints for emr node group auto scaling policy.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
@@ -2053,42 +2006,39 @@ class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
         pulumi.set(self, "min_capacity", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict(TypedDict):
-        activity_type: pulumi.Input[_builtins.str]
-        """
-        The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
-        """
-        adjustment_value: pulumi.Input[_builtins.int]
-        """
-        The adjustment value of auto scaling policy. The value should between 1 and 5000.
-        """
-        rule_name: pulumi.Input[_builtins.str]
-        """
-        The rule name of auto scaling policy.
-        """
-        trigger_type: pulumi.Input[_builtins.str]
-        """
-        The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
-        """
-        adjustment_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
-        """
-        metrics_trigger: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict']]
-        """
-        The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
-        """
-        min_adjustment_value: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum adjustment value of auto scaling policy.
-        """
-        time_trigger: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict']]
-        """
-        The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict(TypedDict):
+    activity_type: pulumi.Input[_builtins.str]
+    """
+    The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+    """
+    adjustment_value: pulumi.Input[_builtins.int]
+    """
+    The adjustment value of auto scaling policy. The value should between 1 and 5000.
+    """
+    rule_name: pulumi.Input[_builtins.str]
+    """
+    The rule name of auto scaling policy.
+    """
+    trigger_type: pulumi.Input[_builtins.str]
+    """
+    The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+    """
+    adjustment_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+    """
+    metrics_trigger: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict']]
+    """
+    The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+    """
+    min_adjustment_value: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum adjustment value of auto scaling policy.
+    """
+    time_trigger: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict']]
+    """
+    The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
@@ -2221,34 +2171,31 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
         pulumi.set(self, "time_trigger", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict(TypedDict):
-        evaluation_count: pulumi.Input[_builtins.int]
-        """
-        The evaluation count for this scaling rule specific metrics trigger.
-        """
-        time_window: pulumi.Input[_builtins.int]
-        """
-        The time window for this scaling rule specific metrics trigger.
-        """
-        condition_logic_operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
-        """
-        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict']]]]
-        """
-        The conditions for this scaling rule specific metrics trigger. See `conditions` below.
-        """
-        cool_down_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time of cool down interval for this scaling rule specific metrics trigger.
-        """
-        time_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict']]]]
-        """
-        The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict(TypedDict):
+    evaluation_count: pulumi.Input[_builtins.int]
+    """
+    The evaluation count for this scaling rule specific metrics trigger.
+    """
+    time_window: pulumi.Input[_builtins.int]
+    """
+    The time window for this scaling rule specific metrics trigger.
+    """
+    condition_logic_operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+    """
+    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict']]]]
+    """
+    The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+    """
+    cool_down_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time of cool down interval for this scaling rule specific metrics trigger.
+    """
+    time_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict']]]]
+    """
+    The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
@@ -2351,30 +2298,27 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
         pulumi.set(self, "time_constraints", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict(TypedDict):
-        comparison_operator: pulumi.Input[_builtins.str]
-        """
-        The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
-        """
-        metric_name: pulumi.Input[_builtins.str]
-        """
-        The metric name for this scaling rule specific metrics trigger.
-        """
-        statistics: pulumi.Input[_builtins.str]
-        """
-        The statistics for this scaling rule specific metrics trigger.
-        """
-        threshold: pulumi.Input[_builtins.float]
-        """
-        The threshold for this scaling rule specific metrics trigger.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict']]]]
-        """
-        A mapping of tags to assign to the resource.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+    """
+    metric_name: pulumi.Input[_builtins.str]
+    """
+    The metric name for this scaling rule specific metrics trigger.
+    """
+    statistics: pulumi.Input[_builtins.str]
+    """
+    The statistics for this scaling rule specific metrics trigger.
+    """
+    threshold: pulumi.Input[_builtins.float]
+    """
+    The threshold for this scaling rule specific metrics trigger.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict']]]]
+    """
+    A mapping of tags to assign to the resource.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
@@ -2459,18 +2403,15 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The tag key for this scaling rule specific metrics trigger.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag value for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The tag key for this scaling rule specific metrics trigger.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag value for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs:
@@ -2510,18 +2451,15 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The end time for this scaling rule specific metrics trigger.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The start time for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The end time for this scaling rule specific metrics trigger.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The start time for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs:
@@ -2562,34 +2500,31 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintAr
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict(TypedDict):
-        launch_time: pulumi.Input[_builtins.str]
-        """
-        The launch time for this scaling rule specific time trigger.
-        """
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The end time for this scaling rule specific metrics trigger.
-        """
-        launch_expiration_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
-        """
-        recurrence_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
-        """
-        recurrence_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The recurrence value for this scaling rule specific time trigger.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The start time for this scaling rule specific metrics trigger.
-        """
-elif False:
-    ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict(TypedDict):
+    launch_time: pulumi.Input[_builtins.str]
+    """
+    The launch time for this scaling rule specific time trigger.
+    """
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The end time for this scaling rule specific metrics trigger.
+    """
+    launch_expiration_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+    """
+    recurrence_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+    """
+    recurrence_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The recurrence value for this scaling rule specific time trigger.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The start time for this scaling rule specific metrics trigger.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
@@ -2693,22 +2628,19 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupCostOptimizedConfigArgsDict(TypedDict):
-        on_demand_base_capacity: pulumi.Input[_builtins.int]
-        """
-        The cost optimized configuration which on demand based capacity.
-        """
-        on_demand_percentage_above_base_capacity: pulumi.Input[_builtins.int]
-        """
-        The cost optimized configuration which on demand percentage above based capacity.
-        """
-        spot_instance_pools: pulumi.Input[_builtins.int]
-        """
-        The cost optimized configuration with spot instance pools.
-        """
-elif False:
-    ClusterNodeGroupCostOptimizedConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupCostOptimizedConfigArgsDict(TypedDict):
+    on_demand_base_capacity: pulumi.Input[_builtins.int]
+    """
+    The cost optimized configuration which on demand based capacity.
+    """
+    on_demand_percentage_above_base_capacity: pulumi.Input[_builtins.int]
+    """
+    The cost optimized configuration which on demand percentage above based capacity.
+    """
+    spot_instance_pools: pulumi.Input[_builtins.int]
+    """
+    The cost optimized configuration with spot instance pools.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupCostOptimizedConfigArgs:
@@ -2762,26 +2694,23 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
         pulumi.set(self, "spot_instance_pools", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupDataDiskArgsDict(TypedDict):
-        category: pulumi.Input[_builtins.str]
-        """
-        The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
-        """
-        size: pulumi.Input[_builtins.int]
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The count of a data disk.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
-elif False:
-    ClusterNodeGroupDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupDataDiskArgsDict(TypedDict):
+    category: pulumi.Input[_builtins.str]
+    """
+    The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+    """
+    size: pulumi.Input[_builtins.int]
+    """
+    The size of a data disk, at least 40. Unit: GiB.
+    """
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The count of a data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupDataDiskArgs:
@@ -2852,18 +2781,15 @@ class ClusterNodeGroupDataDiskArgs:
         pulumi.set(self, "performance_level", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupPrivatePoolOptionsArgsDict(TypedDict):
-        match_criteria: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
-        """
-        private_pool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The node group specific private pool resource ids.
-        """
-elif False:
-    ClusterNodeGroupPrivatePoolOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupPrivatePoolOptionsArgsDict(TypedDict):
+    match_criteria: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
+    """
+    private_pool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The node group specific private pool resource ids.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupPrivatePoolOptionsArgs:
@@ -2904,18 +2830,15 @@ class ClusterNodeGroupPrivatePoolOptionsArgs:
         pulumi.set(self, "private_pool_ids", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupSpotBidPriceArgsDict(TypedDict):
-        bid_price: pulumi.Input[_builtins.int]
-        """
-        The spot bid price of a PayAsYouGo instance.
-        """
-        instance_type: pulumi.Input[_builtins.str]
-        """
-        Host Ecs instance type.
-        """
-elif False:
-    ClusterNodeGroupSpotBidPriceArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupSpotBidPriceArgsDict(TypedDict):
+    bid_price: pulumi.Input[_builtins.int]
+    """
+    The spot bid price of a PayAsYouGo instance.
+    """
+    instance_type: pulumi.Input[_builtins.str]
+    """
+    Host Ecs instance type.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupSpotBidPriceArgs:
@@ -2954,34 +2877,31 @@ class ClusterNodeGroupSpotBidPriceArgs:
         pulumi.set(self, "instance_type", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupSubscriptionConfigArgsDict(TypedDict):
-        payment_duration: pulumi.Input[_builtins.int]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
-        """
-        payment_duration_unit: pulumi.Input[_builtins.str]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        """
-        auto_pay_order: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
-        """
-        auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        """
-        auto_renew_duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
-        """
-        auto_renew_duration_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        """
-elif False:
-    ClusterNodeGroupSubscriptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupSubscriptionConfigArgsDict(TypedDict):
+    payment_duration: pulumi.Input[_builtins.int]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+    """
+    payment_duration_unit: pulumi.Input[_builtins.str]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+    """
+    auto_pay_order: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
+    """
+    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+    """
+    auto_renew_duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+    """
+    auto_renew_duration_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupSubscriptionConfigArgs:
@@ -3084,26 +3004,23 @@ class ClusterNodeGroupSubscriptionConfigArgs:
         pulumi.set(self, "auto_renew_duration_unit", value)
 
 
-if not MYPY:
-    class ClusterNodeGroupSystemDiskArgsDict(TypedDict):
-        category: pulumi.Input[_builtins.str]
-        """
-        The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
-        """
-        size: pulumi.Input[_builtins.int]
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The count of a data disk.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
-elif False:
-    ClusterNodeGroupSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeGroupSystemDiskArgsDict(TypedDict):
+    category: pulumi.Input[_builtins.str]
+    """
+    The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
+    """
+    size: pulumi.Input[_builtins.int]
+    """
+    The size of a data disk, at least 40. Unit: GiB.
+    """
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The count of a data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+    """
 
 @pulumi.input_type
 class ClusterNodeGroupSystemDiskArgs:
@@ -3174,34 +3091,31 @@ class ClusterNodeGroupSystemDiskArgs:
         pulumi.set(self, "performance_level", value)
 
 
-if not MYPY:
-    class ClusterSubscriptionConfigArgsDict(TypedDict):
-        payment_duration: pulumi.Input[_builtins.int]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
-        """
-        payment_duration_unit: pulumi.Input[_builtins.str]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        """
-        auto_pay_order: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
-        """
-        auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        """
-        auto_renew_duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
-        """
-        auto_renew_duration_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        """
-elif False:
-    ClusterSubscriptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterSubscriptionConfigArgsDict(TypedDict):
+    payment_duration: pulumi.Input[_builtins.int]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+    """
+    payment_duration_unit: pulumi.Input[_builtins.str]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+    """
+    auto_pay_order: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
+    """
+    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+    """
+    auto_renew_duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+    """
+    auto_renew_duration_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+    """
 
 @pulumi.input_type
 class ClusterSubscriptionConfigArgs:

@@ -65,9 +65,17 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.acl);
     }
 
+    /**
+     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     * 
+     */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
+    /**
+     * @return The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     * 
+     */
     public Optional<Output<String>> bucket() {
         return Optional.ofNullable(this.bucket);
     }
@@ -492,11 +500,23 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
             return acl(Output.of(acl));
         }
 
+        /**
+         * @param bucket The name of the bucket. If omitted, Terraform will assign a random and unique name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(@Nullable Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
 
+        /**
+         * @param bucket The name of the bucket. If omitted, Terraform will assign a random and unique name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
         }

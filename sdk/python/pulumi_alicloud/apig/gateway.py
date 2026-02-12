@@ -476,6 +476,59 @@ class Gateway(pulumi.CustomResource):
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]]] = None,
                  __props__=None):
         """
+        Provides a APIG Gateway resource.
+
+        For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+
+        > **NOTE:** Available since v1.240.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
+        default_gateway = alicloud.apig.Gateway("default",
+            network_access_config={
+                "type": "Intranet",
+            },
+            log_config={
+                "sls": {
+                    "enable": False,
+                },
+            },
+            resource_group_id=default.ids[1],
+            spec="apigw.small.x1",
+            vpc={
+                "vpc_id": default_get_networks.ids[0],
+            },
+            zone_config={
+                "select_option": "Auto",
+            },
+            vswitch={
+                "vswitch_id": default_get_switches.ids[0],
+            },
+            payment_type="PayAsYouGo",
+            gateway_name=name)
+        ```
+
+        ### Deleting `apig.Gateway` or removing it from your configuration
+
+        The `apig.Gateway` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         APIG Gateway can be imported using the id, e.g.
@@ -508,6 +561,59 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a APIG Gateway resource.
+
+        For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+
+        > **NOTE:** Available since v1.240.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
+        default_gateway = alicloud.apig.Gateway("default",
+            network_access_config={
+                "type": "Intranet",
+            },
+            log_config={
+                "sls": {
+                    "enable": False,
+                },
+            },
+            resource_group_id=default.ids[1],
+            spec="apigw.small.x1",
+            vpc={
+                "vpc_id": default_get_networks.ids[0],
+            },
+            zone_config={
+                "select_option": "Auto",
+            },
+            vswitch={
+                "vswitch_id": default_get_switches.ids[0],
+            },
+            payment_type="PayAsYouGo",
+            gateway_name=name)
+        ```
+
+        ### Deleting `apig.Gateway` or removing it from your configuration
+
+        The `apig.Gateway` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         APIG Gateway can be imported using the id, e.g.

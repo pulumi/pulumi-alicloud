@@ -10,6 +10,82 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB
 {
     /// <summary>
+    /// Provides a Mongodb Account resource.
+    /// 
+    /// For information about Mongodb Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
+    /// 
+    /// &gt; **NOTE:** Available since v1.148.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+    /// 
+    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
+    ///     {
+    ///         EngineVersion = "4.2",
+    ///         DbInstanceClass = "dds.mongo.mid",
+    ///         DbInstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityIpLists = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "100.69.7.112",
+    ///         },
+    ///         Name = name,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAccount = new AliCloud.MongoDB.Account("default", new()
+    ///     {
+    ///         AccountName = "root",
+    ///         AccountPassword = "Example_123",
+    ///         InstanceId = defaultInstance.Id,
+    ///         AccountDescription = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.mongodb.Account` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.mongodb.Account`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Mongodb Account can be imported using the id, e.g.

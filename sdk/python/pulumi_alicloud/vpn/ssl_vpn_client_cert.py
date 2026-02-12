@@ -185,6 +185,13 @@ class SslVpnClientCert(pulumi.CustomResource):
                  ssl_vpn_server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a SSL VPN client cert resource.
+
+        > **NOTE:** Terraform will auto build SSL VPN client certs while it uses `vpn.SslVpnClientCert` to build a ssl vpn client certs resource.
+        It depends on VPN instance and SSL VPN Server.
+
+        > **NOTE:** Available since v1.15.0.
+
         ## Example Usage
 
         Basic Usage
@@ -252,6 +259,13 @@ class SslVpnClientCert(pulumi.CustomResource):
                  args: SslVpnClientCertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a SSL VPN client cert resource.
+
+        > **NOTE:** Terraform will auto build SSL VPN client certs while it uses `vpn.SslVpnClientCert` to build a ssl vpn client certs resource.
+        It depends on VPN instance and SSL VPN Server.
+
+        > **NOTE:** Available since v1.15.0.
+
         ## Example Usage
 
         Basic Usage

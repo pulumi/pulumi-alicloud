@@ -162,9 +162,21 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:fc/v3Function:V3Function")
 public class V3Function extends com.pulumi.resources.CustomResource {
+    /**
+     * Function code ZIP package. code and customContainerConfig. See `code` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="code", refs={V3FunctionCode.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionCode> code;
 
+    /**
+     * @return Function code ZIP package. code and customContainerConfig. See `code` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<V3FunctionCode>> code() {
         return Codegen.optional(this.code);
     }

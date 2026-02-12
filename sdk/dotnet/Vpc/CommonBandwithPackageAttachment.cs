@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a CBWP Common Bandwidth Package Attachment resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build common bandwidth package attachment while it uses `alicloud.vpc.CommonBandwithPackageAttachment` to build a common bandwidth package attachment resource.
+    /// 
+    /// For information about common bandwidth package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/product/55092.htm).
+    /// 
+    /// &gt; **NOTE:** From version 1.194.0, the resource can set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan by `BandwidthPackageBandwidth`. see [how to use it](https://www.alibabacloud.com/help/en/eip-bandwidth-plan/latest/120327).
+    /// 
+    /// For information about CBWP Common Bandwidth Package Attachment and how to use it, see [What is Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/product/55092.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.94.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

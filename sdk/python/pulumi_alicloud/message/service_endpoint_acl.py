@@ -26,6 +26,8 @@ class ServiceEndpointAclArgs:
         The set of arguments for constructing a ServiceEndpointAcl resource.
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
                - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block.
+               > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type. Value:
                - public: indicates a public access point. (Currently only public is supported)
         """
@@ -49,6 +51,10 @@ class ServiceEndpointAclArgs:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Input[_builtins.str]:
+        """
+        The CIDR block.
+        > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
+        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -79,6 +85,8 @@ class _ServiceEndpointAclState:
         Input properties used for looking up and filtering ServiceEndpointAcl resources.
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
                - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block.
+               > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type. Value:
                - public: indicates a public access point. (Currently only public is supported)
         """
@@ -105,6 +113,10 @@ class _ServiceEndpointAclState:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The CIDR block.
+        > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
+        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -173,6 +185,8 @@ class ServiceEndpointAcl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
                - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block.
+               > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type. Value:
                - public: indicates a public access point. (Currently only public is supported)
         """
@@ -274,6 +288,8 @@ class ServiceEndpointAcl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_strategy: The ACL policy. Valid value:
                - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block.
+               > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type. Value:
                - public: indicates a public access point. (Currently only public is supported)
         """
@@ -298,6 +314,10 @@ class ServiceEndpointAcl(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:
+        """
+        The CIDR block.
+        > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
+        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property

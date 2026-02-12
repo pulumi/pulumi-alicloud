@@ -11,6 +11,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Threat Detection Asset Bind resource.
+//
+// Asset Binding Information.
+//
+// For information about Threat Detection Asset Bind and how to use it, see [What is Asset Bind](https://next.api.alibabacloud.com/document/Sas/2018-12-03/UpdatePostPaidBindRel).
+//
+// > **NOTE:** Available since v1.247.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := threatdetection.GetAssets(ctx, &threatdetection.GetAssetsArgs{
+//				MachineTypes: pulumi.StringRef("ecs"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = threatdetection.NewAssetBind(ctx, "default", &threatdetection.AssetBindArgs{
+//				Uuid:        pulumi.String(_default.Assets[0].Uuid),
+//				AuthVersion: pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `threatdetection.AssetBind` or removing it from your configuration
+//
+// Terraform cannot destroy resource `threatdetection.AssetBind`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection Asset Bind can be imported using the id, e.g.

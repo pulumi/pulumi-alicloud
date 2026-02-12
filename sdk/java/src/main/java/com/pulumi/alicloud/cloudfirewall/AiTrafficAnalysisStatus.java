@@ -14,12 +14,63 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloud Firewall Ai Traffic Analysis Status resource.
+ * 
+ * AI traffic analysis.
+ * 
+ * For information about Cloud Firewall Ai Traffic Analysis Status and how to use it, see [What is Ai Traffic Analysis Status](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/UpdateAITrafficAnalysisStatus).
+ * 
+ * &gt; **NOTE:** Available since v1.263.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudfirewall.AiTrafficAnalysisStatus;
+ * import com.pulumi.alicloud.cloudfirewall.AiTrafficAnalysisStatusArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new AiTrafficAnalysisStatus("default", AiTrafficAnalysisStatusArgs.builder()
+ *             .status("Open")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cloudfirewall.AiTrafficAnalysisStatus` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.AiTrafficAnalysisStatus`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Firewall Ai Traffic Analysis Status can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus example 
+ * $ terraform import alicloud_cloud_firewall_ai_traffic_analysis_status.example 
  * ```
  * 
  */

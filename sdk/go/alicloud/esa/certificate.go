@@ -77,10 +77,19 @@ type Certificate struct {
 	// Certificate content.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Creation time.
-	CreateTime  pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType pulumi.StringOutput `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains    pulumi.StringPtrOutput `pulumi:"domains"`
+	Domains pulumi.StringPtrOutput `pulumi:"domains"`
+	// The certificate private key.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
 	// Region. This parameter is required if the type is CAS.
 	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -139,10 +148,19 @@ type certificateState struct {
 	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
 	// Creation time.
-	CreateTime  *string `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType *string `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains    *string `pulumi:"domains"`
+	Domains *string `pulumi:"domains"`
+	// The certificate private key.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PrivateKey *string `pulumi:"privateKey"`
 	// Region. This parameter is required if the type is CAS.
 	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -166,10 +184,19 @@ type CertificateState struct {
 	// Certificate content.
 	Certificate pulumi.StringPtrInput
 	// Creation time.
-	CreateTime  pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType pulumi.StringPtrInput
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains    pulumi.StringPtrInput
+	Domains pulumi.StringPtrInput
+	// The certificate private key.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PrivateKey pulumi.StringPtrInput
 	// Region. This parameter is required if the type is CAS.
 	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -196,9 +223,18 @@ type certificateArgs struct {
 	CertName *string `pulumi:"certName"`
 	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
-	CreatedType string  `pulumi:"createdType"`
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+	CreatedType string `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains    *string `pulumi:"domains"`
+	Domains *string `pulumi:"domains"`
+	// The certificate private key.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PrivateKey *string `pulumi:"privateKey"`
 	// Region. This parameter is required if the type is CAS.
 	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -220,9 +256,18 @@ type CertificateArgs struct {
 	CertName pulumi.StringPtrInput
 	// Certificate content.
 	Certificate pulumi.StringPtrInput
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	CreatedType pulumi.StringInput
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains    pulumi.StringPtrInput
+	Domains pulumi.StringPtrInput
+	// The certificate private key.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PrivateKey pulumi.StringPtrInput
 	// Region. This parameter is required if the type is CAS.
 	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -346,6 +391,12 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The certificate type.
+// - cas (Certificate Center Certificate)
+// - upload (custom upload certificate)
+// - free( Free certificate).
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o CertificateOutput) CreatedType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreatedType }).(pulumi.StringOutput)
 }
@@ -355,6 +406,9 @@ func (o CertificateOutput) Domains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Domains }).(pulumi.StringPtrOutput)
 }
 
+// The certificate private key.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o CertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }

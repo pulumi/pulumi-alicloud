@@ -17,7 +17,15 @@ public final class OpenApiExplorerApiMcpServerTerraformTool {
      * 
      */
     private @Nullable Boolean async;
+    /**
+     * @return Terraform Tool code. Overview of the HCL Language
+     * 
+     */
     private @Nullable String code;
+    /**
+     * @return Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The cleanup policy applied to temporary resources after task completion, based on the task execution status:
@@ -27,6 +35,10 @@ public final class OpenApiExplorerApiMcpServerTerraformTool {
      * 
      */
     private @Nullable String destroyPolicy;
+    /**
+     * @return The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+     * 
+     */
     private @Nullable String name;
 
     private OpenApiExplorerApiMcpServerTerraformTool() {}
@@ -37,9 +49,17 @@ public final class OpenApiExplorerApiMcpServerTerraformTool {
     public Optional<Boolean> async() {
         return Optional.ofNullable(this.async);
     }
+    /**
+     * @return Terraform Tool code. Overview of the HCL Language
+     * 
+     */
     public Optional<String> code() {
         return Optional.ofNullable(this.code);
     }
+    /**
+     * @return Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -53,6 +73,10 @@ public final class OpenApiExplorerApiMcpServerTerraformTool {
     public Optional<String> destroyPolicy() {
         return Optional.ofNullable(this.destroyPolicy);
     }
+    /**
+     * @return The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

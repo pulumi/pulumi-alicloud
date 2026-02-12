@@ -12,6 +12,71 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Simple Application Server Instance resource.
+//
+// For information about Simple Application Server Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/190440.htm).
+//
+// > **NOTE:** Available since v1.135.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := simpleapplicationserver.GetImages(ctx, &simpleapplicationserver.GetImagesArgs{
+//				Platform: pulumi.StringRef("Linux"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, &simpleapplicationserver.GetServerPlansArgs{
+//				Platform: pulumi.StringRef("Linux"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = simpleapplicationserver.NewInstance(ctx, "default", &simpleapplicationserver.InstanceArgs{
+//				PaymentType:  pulumi.String("Subscription"),
+//				PlanId:       pulumi.String(defaultGetServerPlans.Plans[0].Id),
+//				InstanceName: pulumi.String(name),
+//				ImageId:      pulumi.String(_default.Images[0].Id),
+//				Period:       pulumi.Int(1),
+//				DataDiskSize: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `simpleapplicationserver.Instance` or removing it from your configuration
+//
+// The `simpleapplicationserver.Instance` resource allows you to manage `paymentType = "Subscription"` instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the resource Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Simple Application Server Instance can be imported using the id, e.g.

@@ -21,84 +21,79 @@ __all__ = [
     'InstanceServerlessConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceConfluentConfigArgsDict(TypedDict):
-        connect_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of Connect.
-        """
-        connect_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of Connect.
-        """
-        control_center_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of Control Center.
-        """
-        control_center_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of Control Center.
-        """
-        control_center_storage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The disk capacity of Control Center.
-        """
-        kafka_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of the Kafka broker.
-        """
-        kafka_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of the Kafka broker.
-        """
-        kafka_rest_proxy_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of Kafka Rest Proxy.
-        """
-        kafka_rest_proxy_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of Kafka Rest Proxy.
-        """
-        kafka_storage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The disk capacity of the Kafka broker.
-        """
-        ksql_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of ksqlDB.
-        """
-        ksql_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of ksqlDB.
-        """
-        ksql_storage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The disk capacity of ksqlDB.
-        """
-        schema_registry_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of Schema Registry.
-        """
-        schema_registry_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of Schema Registry.
-        """
-        zookeeper_cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of CPU cores of ZooKeeper.
-        """
-        zookeeper_replica: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas of ZooKeeper.
-        """
-        zookeeper_storage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The disk capacity of ZooKeeper.
-        """
-elif False:
-    InstanceConfluentConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfluentConfigArgsDict(TypedDict):
+    connect_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of Connect.
+    """
+    connect_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of Connect.
+    """
+    control_center_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of Control Center.
+    """
+    control_center_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of Control Center.
+    """
+    control_center_storage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The disk capacity of Control Center.
+    """
+    kafka_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of the Kafka broker.
+    """
+    kafka_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of the Kafka broker.
+    """
+    kafka_rest_proxy_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of Kafka Rest Proxy.
+    """
+    kafka_rest_proxy_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of Kafka Rest Proxy.
+    """
+    kafka_storage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The disk capacity of the Kafka broker.
+    """
+    ksql_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of ksqlDB.
+    """
+    ksql_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of ksqlDB.
+    """
+    ksql_storage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The disk capacity of ksqlDB.
+    """
+    schema_registry_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of Schema Registry.
+    """
+    schema_registry_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of Schema Registry.
+    """
+    zookeeper_cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of CPU cores of ZooKeeper.
+    """
+    zookeeper_replica: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas of ZooKeeper.
+    """
+    zookeeper_storage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The disk capacity of ZooKeeper.
+    """
 
 @pulumi.input_type
 class InstanceConfluentConfigArgs:
@@ -395,18 +390,15 @@ class InstanceConfluentConfigArgs:
         pulumi.set(self, "zookeeper_storage", value)
 
 
-if not MYPY:
-    class InstanceServerlessConfigArgsDict(TypedDict):
-        reserved_publish_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The reserved capacity for publishing messages.
-        """
-        reserved_subscribe_capacity: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The reserved capacity for subscribing to message.
-        """
-elif False:
-    InstanceServerlessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceServerlessConfigArgsDict(TypedDict):
+    reserved_publish_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The reserved capacity for publishing messages.
+    """
+    reserved_subscribe_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The reserved capacity for subscribing to message.
+    """
 
 @pulumi.input_type
 class InstanceServerlessConfigArgs:

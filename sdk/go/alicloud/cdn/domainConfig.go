@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -90,6 +88,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
 // ```
+//
+// **NOTE:** Before provider version 1.132.0, CDN domain config can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>

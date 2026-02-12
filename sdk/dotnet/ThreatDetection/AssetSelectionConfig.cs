@@ -10,6 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ThreatDetection
 {
     /// <summary>
+    /// Provides a Threat Detection Asset Selection Config resource.
+    /// 
+    /// Asset selection configuration.
+    /// 
+    /// For information about Threat Detection Asset Selection Config and how to use it, see [What is Asset Selection Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/CreateAssetSelectionConfig).
+    /// 
+    /// &gt; **NOTE:** Available since v1.245.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.ThreatDetection.AssetSelectionConfig("default", new()
+    ///     {
+    ///         BusinessType = "agentlesss_vul_white_1",
+    ///         TargetType = "instance",
+    ///         Platform = "all",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.threatdetection.AssetSelectionConfig` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.threatdetection.AssetSelectionConfig`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Asset Selection Config can be imported using the id, e.g.

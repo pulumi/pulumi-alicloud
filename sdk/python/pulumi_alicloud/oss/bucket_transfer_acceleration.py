@@ -105,6 +105,42 @@ class BucketTransferAcceleration(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Provides a OSS Bucket Transfer Acceleration resource. Transfer acceleration configuration of a bucket.
+
+        For information about OSS Bucket Transfer Acceleration and how to use it, see [What is Bucket Transfer Acceleration](https://www.alibabacloud.com/help/en/oss/developer-reference/putbuckettransferacceleration).
+
+        > **NOTE:** Available since v1.224.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_transfer_acceleration = alicloud.oss.BucketTransferAcceleration("default",
+            bucket=create_bucket.bucket,
+            enabled=True)
+        ```
+
+        ### Deleting `oss.BucketTransferAcceleration` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketTransferAcceleration`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Transfer Acceleration can be imported using the id, e.g.
@@ -125,6 +161,42 @@ class BucketTransferAcceleration(pulumi.CustomResource):
                  args: BucketTransferAccelerationInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a OSS Bucket Transfer Acceleration resource. Transfer acceleration configuration of a bucket.
+
+        For information about OSS Bucket Transfer Acceleration and how to use it, see [What is Bucket Transfer Acceleration](https://www.alibabacloud.com/help/en/oss/developer-reference/putbuckettransferacceleration).
+
+        > **NOTE:** Available since v1.224.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
+            storage_class="Standard",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_transfer_acceleration = alicloud.oss.BucketTransferAcceleration("default",
+            bucket=create_bucket.bucket,
+            enabled=True)
+        ```
+
+        ### Deleting `oss.BucketTransferAcceleration` or removing it from your configuration
+
+        Terraform cannot destroy resource `oss.BucketTransferAcceleration`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Transfer Acceleration can be imported using the id, e.g.

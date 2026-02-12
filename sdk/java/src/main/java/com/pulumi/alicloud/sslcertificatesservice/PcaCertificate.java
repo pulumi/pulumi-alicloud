@@ -114,9 +114,21 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
     public Output<String> algorithm() {
         return this.algorithm;
     }
+    /**
+     * A custom alias for the certificate, used to define a user-friendly name.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="aliasName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aliasName;
 
+    /**
+     * @return A custom alias for the certificate, used to define a user-friendly name.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> aliasName() {
         return Codegen.optional(this.aliasName);
     }

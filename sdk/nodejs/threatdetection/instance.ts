@@ -7,6 +7,53 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Threat Detection Instance resource.
+ *
+ * Cloud Security Center instance.
+ *
+ * For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
+ *
+ * > **NOTE:** Available since v1.199.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.threatdetection.Instance("default", {
+ *     threatAnalysis: "10",
+ *     sasSlsStorage: "10",
+ *     vCore: "10",
+ *     sasSc: false,
+ *     buyNumber: "10",
+ *     honeypotSwitch: "2",
+ *     paymentType: "Subscription",
+ *     sasSdk: "10",
+ *     sasAntiRansomware: "10",
+ *     renewalStatus: "ManualRenewal",
+ *     period: 1,
+ *     vulSwitch: "1",
+ *     raspCount: "1",
+ *     vulCount: "20",
+ *     versionCode: "level3",
+ *     sasCspm: "1000",
+ *     renewalPeriodUnit: "M",
+ *     containerImageScanNew: "100",
+ *     honeypot: "20",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.threatdetection.Instance` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.threatdetection.Instance`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Threat Detection Instance can be imported using the id, e.g.

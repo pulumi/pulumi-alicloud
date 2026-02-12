@@ -10,6 +10,118 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eais
 {
     /// <summary>
+    /// Provides a EAIS Client Instance Attachment resource.
+    /// 
+    /// Bind an ECS or ECI instance.
+    /// 
+    /// For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
+    /// 
+    /// &gt; **NOTE:** Available since v1.246.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var zone = config.Get("zone") ?? "cn-hangzhou-i";
+    ///     var ecsImage = config.Get("ecsImage") ?? "ubuntu_20_04_x64_20G_alibase_20230316.vhd";
+    ///     var ecsType = config.Get("ecsType") ?? "ecs.g7.large";
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var category = config.Get("category") ?? "ei";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var example = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = "cn-hangzhou-i",
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = "cn-hangzhou-i",
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         SecurityGroupName = name,
+    ///         Description = name,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("example", new()
+    ///     {
+    ///         AvailabilityZone = "cn-hangzhou-i",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 5,
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         InstanceName = name,
+    ///         UserData = "echo 'net.ipv4.ip_forward=1'&gt;&gt; /etc/sysctl.conf",
+    ///     });
+    /// 
+    ///     var eais = new AliCloud.Eais.Instance("eais", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///         SecurityGroupId = exampleSecurityGroup.Id,
+    ///         InstanceType = "eais.ei-a6.2xlarge",
+    ///         Category = "ei",
+    ///     });
+    /// 
+    ///     var defaultClientInstanceAttachment = new AliCloud.Eais.ClientInstanceAttachment("default", new()
+    ///     {
+    ///         InstanceId = eais.Id,
+    ///         ClientInstanceId = exampleInstance.Id,
+    ///         Category = "ei",
+    ///         Status = "Bound",
+    ///         EiInstanceType = "eais.ei-a6.2xlarge",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.eais.ClientInstanceAttachment` or removing it from your configuration
+    /// 
+    /// The `alicloud.eais.ClientInstanceAttachment` resource allows you to manage  `category = "eais"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EAIS Client Instance Attachment can be imported using the id, e.g.

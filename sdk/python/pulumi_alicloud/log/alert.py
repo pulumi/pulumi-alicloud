@@ -58,6 +58,7 @@ class AlertArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
+        :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
         :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert.
         :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries.
         :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert.
@@ -243,6 +244,9 @@ class AlertArgs:
     @pulumi.getter
     @_utilities.deprecated("""Deprecated from 1.161.0+, use dashboardId in query_list""")
     def dashboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+        """
         return pulumi.get(self, "dashboard")
 
     @dashboard.setter
@@ -534,6 +538,7 @@ class _AlertState:
         :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
+        :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
         :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert.
         :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries.
         :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert.
@@ -711,6 +716,9 @@ class _AlertState:
     @pulumi.getter
     @_utilities.deprecated("""Deprecated from 1.161.0+, use dashboardId in query_list""")
     def dashboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+        """
         return pulumi.get(self, "dashboard")
 
     @dashboard.setter
@@ -1282,6 +1290,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]] annotations: Annotations for new alert.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
+        :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
         :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']] group_configuration: Group configuration for new alert.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]] join_configurations: Join configuration for different queries.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]] labels: Labels for new alert.
@@ -1711,6 +1720,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]] annotations: Annotations for new alert.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
+        :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
         :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']] group_configuration: Group configuration for new alert.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]] join_configurations: Join configuration for different queries.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]] labels: Labels for new alert.
@@ -1820,6 +1830,9 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter
     @_utilities.deprecated("""Deprecated from 1.161.0+, use dashboardId in query_list""")
     def dashboard(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+        """
         return pulumi.get(self, "dashboard")
 
     @_builtins.property

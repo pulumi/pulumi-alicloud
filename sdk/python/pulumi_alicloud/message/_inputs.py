@@ -25,20 +25,15 @@ __all__ = [
     'ServiceSubscriptionDlqPolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ServiceEventRuleEndpointArgsDict(TypedDict):
-        endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Message receiving terminal endpoint type
-        """
-        endpoint_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Message Receiving Terminal Endpoint
-        """
-elif False:
-    ServiceEventRuleEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceEventRuleEndpointArgsDict(TypedDict):
+    endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Message receiving terminal endpoint type
+    """
+    endpoint_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Message Receiving Terminal Endpoint
+    """
 
 @pulumi.input_type
 class ServiceEventRuleEndpointArgs:
@@ -79,23 +74,20 @@ class ServiceEventRuleEndpointArgs:
         pulumi.set(self, "endpoint_value", value)
 
 
-if not MYPY:
-    class ServiceEventRuleMatchRuleArgsDict(TypedDict):
-        match_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Match state. valid values: `true`, `false`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prefix matching rule.
-        """
-        suffix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Suffix matching rule.
-        """
-elif False:
-    ServiceEventRuleMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceEventRuleMatchRuleArgsDict(TypedDict):
+    match_state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Match state. valid values: `true`, `false`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prefix matching rule.
+    """
+    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Suffix matching rule.
+    """
 
 @pulumi.input_type
 class ServiceEventRuleMatchRuleArgs:
@@ -164,22 +156,19 @@ class ServiceEventRuleMatchRuleArgs:
         pulumi.set(self, "suffix", value)
 
 
-if not MYPY:
-    class ServiceQueueDlqPolicyArgsDict(TypedDict):
-        dead_letter_target_queue: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The queue to which dead-letter messages are delivered.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
-        """
-        max_receive_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of retries.
-        """
-elif False:
-    ServiceQueueDlqPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceQueueDlqPolicyArgsDict(TypedDict):
+    dead_letter_target_queue: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The queue to which dead-letter messages are delivered.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+    """
+    max_receive_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of retries.
+    """
 
 @pulumi.input_type
 class ServiceQueueDlqPolicyArgs:
@@ -236,18 +225,15 @@ class ServiceQueueDlqPolicyArgs:
         pulumi.set(self, "max_receive_count", value)
 
 
-if not MYPY:
-    class ServiceSubscriptionDlqPolicyArgsDict(TypedDict):
-        dead_letter_target_queue: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The queue to which dead-letter messages are delivered.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
-        """
-elif False:
-    ServiceSubscriptionDlqPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ServiceSubscriptionDlqPolicyArgsDict(TypedDict):
+    dead_letter_target_queue: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The queue to which dead-letter messages are delivered.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+    """
 
 @pulumi.input_type
 class ServiceSubscriptionDlqPolicyArgs:

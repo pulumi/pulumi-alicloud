@@ -10,6 +10,87 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides a ECS Image Pipeline Execution resource.
+    /// 
+    /// The mirror template performs the build mirror task.
+    /// 
+    /// For information about ECS Image Pipeline Execution and how to use it, see [What is Image Pipeline Execution](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-startimagepipelineexecution).
+    /// 
+    /// &gt; **NOTE:** Available since v1.237.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var pipelineExecution_vpc = new AliCloud.Vpc.Network("pipelineExecution-vpc", new()
+    ///     {
+    ///         Description = "example-pipeline",
+    ///         EnableIpv6 = true,
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var vs = new AliCloud.Vpc.Switch("vs", new()
+    ///     {
+    ///         Description = "pipelineExecution-start",
+    ///         VpcId = pipelineExecution_vpc.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ZoneId = "cn-hangzhou-i",
+    ///     });
+    /// 
+    ///     var pipelineExection_pipeline = new AliCloud.Ecs.EcsImagePipeline("pipelineExection-pipeline", new()
+    ///     {
+    ///         BaseImageType = "IMAGE",
+    ///         Description = "example",
+    ///         SystemDiskSize = 40,
+    ///         VswitchId = vs.Id,
+    ///         AddAccounts = new[]
+    ///         {
+    ///             "1284387915995949",
+    ///         },
+    ///         ImageName = "example-image-pipeline",
+    ///         DeleteInstanceOnFailure = true,
+    ///         InternetMaxBandwidthOut = 5,
+    ///         ToRegionIds = new[]
+    ///         {
+    ///             "cn-beijing",
+    ///         },
+    ///         BaseImage = "aliyun_3_x64_20G_dengbao_alibase_20240819.vhd",
+    ///         BuildContent = "COMPONENT ic-bp122acttbs2sxdyq2ky",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Ecs.ImagePipelineExecution("default", new()
+    ///     {
+    ///         ImagePipelineId = pipelineExection_pipeline.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.ecs.ImagePipelineExecution` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.ecs.ImagePipelineExecution`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECS Image Pipeline Execution can be imported using the id, e.g.

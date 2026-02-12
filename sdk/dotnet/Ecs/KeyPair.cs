@@ -78,6 +78,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// The key pair name's prefix. It is conflict with `KeyName`. If it is specified, terraform will using it to build the only key name.
+        /// </summary>
         [Output("keyNamePrefix")]
         public Output<string?> KeyNamePrefix { get; private set; } = null!;
 
@@ -96,6 +99,10 @@ namespace Pulumi.AliCloud.Ecs
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -157,6 +164,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// The key pair name's prefix. It is conflict with `KeyName`. If it is specified, terraform will using it to build the only key name.
+        /// </summary>
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
@@ -177,6 +187,11 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -209,6 +224,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// The key pair name's prefix. It is conflict with `KeyName`. If it is specified, terraform will using it to build the only key name.
+        /// </summary>
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
@@ -229,6 +247,11 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

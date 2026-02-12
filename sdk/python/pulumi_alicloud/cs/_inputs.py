@@ -127,16 +127,11 @@ __all__ = [
     'SwarmNodeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ApplicationServiceArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        version: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ApplicationServiceArgsDict: TypeAlias = Mapping[str, Any]
+class ApplicationServiceArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ApplicationServiceArgs:
@@ -191,15 +186,12 @@ class ApplicationServiceArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ClusterNodeArgsDict(TypedDict):
-        eip: NotRequired[pulumi.Input[_builtins.str]]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        private_ip: NotRequired[pulumi.Input[_builtins.str]]
-        status: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterNodeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterNodeArgsDict(TypedDict):
+    eip: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    private_ip: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterNodeArgs:
@@ -266,39 +258,36 @@ class ClusterNodeArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class EdgeKubernetesAddonArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disables the automatic installation of a component. Default is `false`.
+class EdgeKubernetesAddonArgsDict(TypedDict):
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disables the automatic installation of a component. Default is `false`.
 
-        The following example is the definition of addons block, The type of this field is list:
+    The following example is the definition of addons block, The type of this field is list:
 
-        ```
-        # install nginx ingress, conflict with SLB ingress
-        addons {
-        name = "nginx-ingress-controller"
-        # use internet
-        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        # if use intranet, detail below.
-        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        }
-        ```
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        It specifies the version of the component.
-        """
-elif False:
-    EdgeKubernetesAddonArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    # install nginx ingress, conflict with SLB ingress
+    addons {
+    name = "nginx-ingress-controller"
+    # use internet
+    config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+    # if use intranet, detail below.
+    # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+    }
+    ```
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    It specifies the version of the component.
+    """
 
 @pulumi.input_type
 class EdgeKubernetesAddonArgs:
@@ -397,22 +386,19 @@ class EdgeKubernetesAddonArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class EdgeKubernetesCertificateAuthorityArgsDict(TypedDict):
-        client_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
-        """
-        cluster_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
-        """
-elif False:
-    EdgeKubernetesCertificateAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeKubernetesCertificateAuthorityArgsDict(TypedDict):
+    client_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+    """
+    cluster_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+    """
 
 @pulumi.input_type
 class EdgeKubernetesCertificateAuthorityArgs:
@@ -469,26 +455,23 @@ class EdgeKubernetesCertificateAuthorityArgs:
         pulumi.set(self, "cluster_cert", value)
 
 
-if not MYPY:
-    class EdgeKubernetesConnectionsArgsDict(TypedDict):
-        api_server_internet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Server Internet endpoint.
-        """
-        api_server_intranet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Server Intranet endpoint.
-        """
-        master_public_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Master node SSH IP address.
-        """
-        service_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service Access Domain.
-        """
-elif False:
-    EdgeKubernetesConnectionsArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeKubernetesConnectionsArgsDict(TypedDict):
+    api_server_internet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Server Internet endpoint.
+    """
+    api_server_intranet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Server Intranet endpoint.
+    """
+    master_public_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Master node SSH IP address.
+    """
+    service_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service Access Domain.
+    """
 
 @pulumi.input_type
 class EdgeKubernetesConnectionsArgs:
@@ -561,18 +544,15 @@ class EdgeKubernetesConnectionsArgs:
         pulumi.set(self, "service_domain", value)
 
 
-if not MYPY:
-    class EdgeKubernetesLogConfigArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of collecting logs, only `SLS` are supported currently.
-        """
-        project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Log Service project name, cluster logs will output to this project.
-        """
-elif False:
-    EdgeKubernetesLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeKubernetesLogConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of collecting logs, only `SLS` are supported currently.
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Log Service project name, cluster logs will output to this project.
+    """
 
 @pulumi.input_type
 class EdgeKubernetesLogConfigArgs:
@@ -612,27 +592,24 @@ class EdgeKubernetesLogConfigArgs:
         pulumi.set(self, "project", value)
 
 
-if not MYPY:
-    class EdgeKubernetesRuntimeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the runtime.
+class EdgeKubernetesRuntimeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the runtime.
 
-        The following example is the definition of runtime block:
+    The following example is the definition of runtime block:
 
-        ```
-        runtime = {
-        name = "containerd"
-        version = "1.6.28"
-        }
-        ```
-        """
-elif False:
-    EdgeKubernetesRuntimeArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    runtime = {
+    name = "containerd"
+    version = "1.6.28"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class EdgeKubernetesRuntimeArgs:
@@ -691,46 +668,43 @@ class EdgeKubernetesRuntimeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class EdgeKubernetesWorkerDataDiskArgsDict(TypedDict):
-        auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Worker node data disk auto snapshot policy.
-        """
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        """
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The device of the data disks.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the kms key.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data disks.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        """
-        size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of snapshot.
-        """
-elif False:
-    EdgeKubernetesWorkerDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeKubernetesWorkerDataDiskArgsDict(TypedDict):
+    auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Worker node data disk auto snapshot policy.
+    """
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+    """
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The device of the data disks.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the kms key.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data disks.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+    """
+    size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The size of a data disk, at least 40. Unit: GiB.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of snapshot.
+    """
 
 @pulumi.input_type
 class EdgeKubernetesWorkerDataDiskArgs:
@@ -883,22 +857,19 @@ class EdgeKubernetesWorkerDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class EdgeKubernetesWorkerNodeArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the node.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
-        """
-        private_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private IP address of node.
-        """
-elif False:
-    EdgeKubernetesWorkerNodeArgsDict: TypeAlias = Mapping[str, Any]
+class EdgeKubernetesWorkerNodeArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the node.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kubernetes cluster's name. It is unique in one Alicloud account.
+    """
+    private_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private IP address of node.
+    """
 
 @pulumi.input_type
 class EdgeKubernetesWorkerNodeArgs:
@@ -955,39 +926,36 @@ class EdgeKubernetesWorkerNodeArgs:
         pulumi.set(self, "private_ip", value)
 
 
-if not MYPY:
-    class KubernetesAddonArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disables the automatic installation of a component. Default is `false`.
+class KubernetesAddonArgsDict(TypedDict):
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disables the automatic installation of a component. Default is `false`.
 
-        The following example is the definition of addons block, The type of this field is list:
+    The following example is the definition of addons block, The type of this field is list:
 
-        ```
-        # install nginx ingress, conflict with SLB ingress
-        addons {
-        name = "nginx-ingress-controller"
-        # use internet
-        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        # if use intranet, detail below.
-        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        }
-        ```
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the component.
-        """
-elif False:
-    KubernetesAddonArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    # install nginx ingress, conflict with SLB ingress
+    addons {
+    name = "nginx-ingress-controller"
+    # use internet
+    config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+    # if use intranet, detail below.
+    # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+    }
+    ```
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the component.
+    """
 
 @pulumi.input_type
 class KubernetesAddonArgs:
@@ -1086,22 +1054,19 @@ class KubernetesAddonArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class KubernetesAutoscalerNodepoolArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scaling group id of the groups configured for cluster-autoscaler.
-        """
-        labels: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The labels for the nodes in scaling group.
-        """
-        taints: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The taints for the nodes in scaling group.
-        """
-elif False:
-    KubernetesAutoscalerNodepoolArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesAutoscalerNodepoolArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scaling group id of the groups configured for cluster-autoscaler.
+    """
+    labels: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The labels for the nodes in scaling group.
+    """
+    taints: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The taints for the nodes in scaling group.
+    """
 
 @pulumi.input_type
 class KubernetesAutoscalerNodepoolArgs:
@@ -1158,22 +1123,19 @@ class KubernetesAutoscalerNodepoolArgs:
         pulumi.set(self, "taints", value)
 
 
-if not MYPY:
-    class KubernetesCertificateAuthorityArgsDict(TypedDict):
-        client_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
-        """
-        cluster_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
-        """
-elif False:
-    KubernetesCertificateAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesCertificateAuthorityArgsDict(TypedDict):
+    client_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+    """
+    cluster_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+    """
 
 @pulumi.input_type
 class KubernetesCertificateAuthorityArgs:
@@ -1230,26 +1192,23 @@ class KubernetesCertificateAuthorityArgs:
         pulumi.set(self, "cluster_cert", value)
 
 
-if not MYPY:
-    class KubernetesConnectionsArgsDict(TypedDict):
-        api_server_internet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Server Internet endpoint.
-        """
-        api_server_intranet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Server Intranet endpoint.
-        """
-        master_public_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Master node SSH IP address.
-        """
-        service_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service Access Domain.
-        """
-elif False:
-    KubernetesConnectionsArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesConnectionsArgsDict(TypedDict):
+    api_server_internet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Server Internet endpoint.
+    """
+    api_server_intranet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Server Intranet endpoint.
+    """
+    master_public_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Master node SSH IP address.
+    """
+    service_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service Access Domain.
+    """
 
 @pulumi.input_type
 class KubernetesConnectionsArgs:
@@ -1322,47 +1281,44 @@ class KubernetesConnectionsArgs:
         pulumi.set(self, "service_domain", value)
 
 
-if not MYPY:
-    class KubernetesDeleteOptionArgsDict(TypedDict):
-        delete_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of resources that are created by cluster. Valid values:
-        - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
-        - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
-        - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
-        - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+class KubernetesDeleteOptionArgsDict(TypedDict):
+    delete_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of resources that are created by cluster. Valid values:
+    - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+    - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+    - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+    - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 
-        ```
-        ...
-        // Specify delete_options as below when deleting cluster
-        // delete SLB resources created by the Nginx Ingress Service
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLB"
-        }
-        // delete ALB resources created by the ALB Ingress Controller
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "ALB"
-        }
-        // delete SLS Project used by the cluster logging feature
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_Data"
-        }
-        // delete SLS Project used for the managed cluster control plane logs
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_ControlPlane"
-        }
-        ```
-        """
-elif False:
-    KubernetesDeleteOptionArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    ...
+    // Specify delete_options as below when deleting cluster
+    // delete SLB resources created by the Nginx Ingress Service
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLB"
+    }
+    // delete ALB resources created by the ALB Ingress Controller
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "ALB"
+    }
+    // delete SLS Project used by the cluster logging feature
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLS_Data"
+    }
+    // delete SLS Project used for the managed cluster control plane logs
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLS_ControlPlane"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class KubernetesDeleteOptionArgs:
@@ -1461,22 +1417,19 @@ class KubernetesDeleteOptionArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class KubernetesMasterNodeArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the node.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
-        """
-        private_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private IP address of node.
-        """
-elif False:
-    KubernetesMasterNodeArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesMasterNodeArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the node.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kubernetes cluster's name. It is unique in one Alicloud account.
+    """
+    private_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private IP address of node.
+    """
 
 @pulumi.input_type
 class KubernetesMasterNodeArgs:
@@ -1533,34 +1486,31 @@ class KubernetesMasterNodeArgs:
         pulumi.set(self, "private_ip", value)
 
 
-if not MYPY:
-    class KubernetesPermissionPermissionArgsDict(TypedDict):
-        cluster: pulumi.Input[_builtins.str]
-        """
-        The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
-        """
-        role_name: pulumi.Input[_builtins.str]
-        """
-        Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
-        """
-        role_type: pulumi.Input[_builtins.str]
-        """
-        The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
-        """
-        is_custom: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
-        """
-        is_ram_role: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
-        """
-elif False:
-    KubernetesPermissionPermissionArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesPermissionPermissionArgsDict(TypedDict):
+    cluster: pulumi.Input[_builtins.str]
+    """
+    The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
+    """
+    role_name: pulumi.Input[_builtins.str]
+    """
+    Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+    """
+    role_type: pulumi.Input[_builtins.str]
+    """
+    The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
+    """
+    is_custom: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
+    """
+    is_ram_role: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+    """
 
 @pulumi.input_type
 class KubernetesPermissionPermissionArgs:
@@ -1662,27 +1612,24 @@ class KubernetesPermissionPermissionArgs:
         pulumi.set(self, "namespace", value)
 
 
-if not MYPY:
-    class KubernetesRuntimeArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the runtime.
+class KubernetesRuntimeArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the runtime.
 
-        The following example is the definition of runtime block:
+    The following example is the definition of runtime block:
 
-        ```
-        runtime = {
-        name = "containerd"
-        version = "1.6.28"
-        }
-        ```
-        """
-elif False:
-    KubernetesRuntimeArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    runtime = {
+    name = "containerd"
+    version = "1.6.28"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class KubernetesRuntimeArgs:
@@ -1741,213 +1688,210 @@ class KubernetesRuntimeArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ManagedKubernetesAddonArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        It specifies whether to disable automatic installation. 
+class ManagedKubernetesAddonArgsDict(TypedDict):
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    It specifies whether to disable automatic installation. 
 
-        It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
+    It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 
-        You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
+    You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
 
-        `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
+    `logtail-ds` - You can specify `IngressDashboardEnabled` and `sls_project_name` in config. If you switch on `IngressDashboardEnabled` and `sls_project_name`,then logtail-ds would use `sls_project_name` as default log store.
 
-        `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
+    `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 
-        The `main.tf`:
+    The `main.tf`:
 
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_std as std
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
 
-        k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
-            "name": std.lookup(map=entry["value"],
-                key="name",
-                default=cluster_addons).result,
-            "config": std.lookup(map=entry["value"],
-                key="config",
-                default=cluster_addons).result,
-            "version": std.lookup(map=entry["value"],
-                key="version",
-                default=cluster_addons).result,
-            "disabled": std.lookup(map=entry["value"],
-                key="disabled",
-                default=cluster_addons).result,
-        } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
-        ```
+    k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
+        "name": std.lookup(map=entry["value"],
+            key="name",
+            default=cluster_addons).result,
+        "config": std.lookup(map=entry["value"],
+            key="config",
+            default=cluster_addons).result,
+        "version": std.lookup(map=entry["value"],
+            key="version",
+            default=cluster_addons).result,
+        "disabled": std.lookup(map=entry["value"],
+            key="disabled",
+            default=cluster_addons).result,
+    } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+    ```
 
-        The `varibales.tf`:
+    The `varibales.tf`:
 
-        ```
-        # Network-flannel is required, Conflicts With Network-terway
-        variable "cluster_addons" {
-        description = "Addon components in kubernetes cluster"
+    ```
+    # Network-flannel is required, Conflicts With Network-terway
+    variable "cluster_addons" {
+    description = "Addon components in kubernetes cluster"
 
-        type = list(object({
-        name      = string
-        config    = string
-        }))
+    type = list(object({
+    name      = string
+    config    = string
+    }))
 
-        default = [
-        {
-        "name"     = "flannel",
-        "config"   = "",
-        }
-        ]
-        }
+    default = [
+    {
+    "name"     = "flannel",
+    "config"   = "",
+    }
+    ]
+    }
 
-        # Network-terway is required, Conflicts With Network-flannel
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
+    # Network-terway is required, Conflicts With Network-flannel
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
 
-        default = [
-        {
-        "name"     = "terway-eniip",
-        "config"   = "",
-        }
-        ]
-        }
+    default = [
+    {
+    "name"     = "terway-eniip",
+    "config"   = "",
+    }
+    ]
+    }
 
-        # Storage-csi is required, Conflicts With Storage-flexvolume
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
+    # Storage-csi is required, Conflicts With Storage-flexvolume
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
 
-        default = [
-        {
-        "name"     = "csi-plugin",
-        "config"   = "",
-        },
-        {
-        "name"     = "csi-provisioner",
-        "config"   = "",
-        }
-        ]
-        }
+    default = [
+    {
+    "name"     = "csi-plugin",
+    "config"   = "",
+    },
+    {
+    "name"     = "csi-provisioner",
+    "config"   = "",
+    }
+    ]
+    }
 
-        # Storage-flexvolume is required, Conflicts With Storage-csi
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
-        default = [
-        {
-        "name"     = "flexvolume",
-        "config"   = "",
-        }
-        ]
-        }
+    # Storage-flexvolume is required, Conflicts With Storage-csi
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
+    default = [
+    {
+    "name"     = "flexvolume",
+    "config"   = "",
+    }
+    ]
+    }
 
-        # Log, Optional
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
-        default = [
-        {
-        "name"     = "logtail-ds",
-        "config"   = "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your-sls-project-name\\"}",
-        }
-        ]
-        }
+    # Log, Optional
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
+    default = [
+    {
+    "name"     = "logtail-ds",
+    "config"   = "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your-sls-project-name\\"}",
+    }
+    ]
+    }
 
-        # Ingress,Optional
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
+    # Ingress,Optional
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
 
-        default = [
-        {
-        "name"     = "nginx-ingress-controller",
-        "config"   = "{\\"IngressSlbNetworkType\\":\\"internet\\"}",
-        }
-        ]
-        }
+    default = [
+    {
+    "name"     = "nginx-ingress-controller",
+    "config"   = "{\\"IngressSlbNetworkType\\":\\"internet\\"}",
+    }
+    ]
+    }
 
-        # Ingress-Disable, Optional
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        disabled  = bool
-        }))
+    # Ingress-Disable, Optional
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    disabled  = bool
+    }))
 
-        default = [
-        {
-        "name"     = "nginx-ingress-controller",
-        "config"   = "",
-        "disabled": true,
-        }
-        ]
+    default = [
+    {
+    "name"     = "nginx-ingress-controller",
+    "config"   = "",
+    "disabled": true,
+    }
+    ]
 
-        # Prometheus, Optional.
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
+    # Prometheus, Optional.
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
 
-        default = [
-        {
-        "name"     = "arms-prometheus",
-        "config"   = "",
-        }
-        ]
-        }
+    default = [
+    {
+    "name"     = "arms-prometheus",
+    "config"   = "",
+    }
+    ]
+    }
 
-        # Event Center, Optional.
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
-        default = [
-        {
-        "name"     = "ack-node-problem-detector",
-        "config"   = "{\\"sls_project_name\\":\\"\\"}",
-        }
-        ]
-        }
-        # ACK default alert, Optional.
-        variable "cluster_addons" {
-        type = list(object({
-        name      = string
-        config    = string
-        }))
-        default = [
-        {
-        "name"     = "alicloud-monitor-controller",
-        "config"   = "{\\"group_contact_ids\\":\\"[159]\\"}",
-        }
-        ]
-        }
-        ```
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This parameter specifies the name of the component.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        It specifies the version of the component.
-        """
-elif False:
-    ManagedKubernetesAddonArgsDict: TypeAlias = Mapping[str, Any]
+    # Event Center, Optional.
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
+    default = [
+    {
+    "name"     = "ack-node-problem-detector",
+    "config"   = "{\\"sls_project_name\\":\\"\\"}",
+    }
+    ]
+    }
+    # ACK default alert, Optional.
+    variable "cluster_addons" {
+    type = list(object({
+    name      = string
+    config    = string
+    }))
+    default = [
+    {
+    "name"     = "alicloud-monitor-controller",
+    "config"   = "{\\"group_contact_ids\\":\\"[159]\\"}",
+    }
+    ]
+    }
+    ```
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This parameter specifies the name of the component.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    It specifies the version of the component.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesAddonArgs:
@@ -2394,18 +2338,15 @@ class ManagedKubernetesAddonArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ManagedKubernetesAuditLogConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable audit logging. Valid values: `true`, `false`.
-        """
-        sls_project_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SLS project to which the Logstore storing the cluster audit logs belongs.
-        """
-elif False:
-    ManagedKubernetesAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedKubernetesAuditLogConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable audit logging. Valid values: `true`, `false`.
+    """
+    sls_project_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SLS project to which the Logstore storing the cluster audit logs belongs.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesAuditLogConfigArgs:
@@ -2446,14 +2387,11 @@ class ManagedKubernetesAuditLogConfigArgs:
         pulumi.set(self, "sls_project_name", value)
 
 
-if not MYPY:
-    class ManagedKubernetesAutoModeArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
-        """
-elif False:
-    ManagedKubernetesAutoModeArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedKubernetesAutoModeArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesAutoModeArgs:
@@ -2478,22 +2416,19 @@ class ManagedKubernetesAutoModeArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class ManagedKubernetesCertificateAuthorityArgsDict(TypedDict):
-        client_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
-        """
-        cluster_cert: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
-        """
-elif False:
-    ManagedKubernetesCertificateAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedKubernetesCertificateAuthorityArgsDict(TypedDict):
+    client_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+    """
+    cluster_cert: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesCertificateAuthorityArgs:
@@ -2550,26 +2485,23 @@ class ManagedKubernetesCertificateAuthorityArgs:
         pulumi.set(self, "cluster_cert", value)
 
 
-if not MYPY:
-    class ManagedKubernetesConnectionsArgsDict(TypedDict):
-        api_server_internet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Server Internet endpoint.
-        """
-        api_server_intranet: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Server Intranet endpoint.
-        """
-        master_public_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Master node SSH IP address.
-        """
-        service_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service Access Domain.
-        """
-elif False:
-    ManagedKubernetesConnectionsArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedKubernetesConnectionsArgsDict(TypedDict):
+    api_server_internet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Server Internet endpoint.
+    """
+    api_server_intranet: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Server Intranet endpoint.
+    """
+    master_public_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Master node SSH IP address.
+    """
+    service_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service Access Domain.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesConnectionsArgs:
@@ -2642,47 +2574,44 @@ class ManagedKubernetesConnectionsArgs:
         pulumi.set(self, "service_domain", value)
 
 
-if not MYPY:
-    class ManagedKubernetesDeleteOptionArgsDict(TypedDict):
-        delete_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of resources that are created by cluster. Valid values:
-        - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
-        - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
-        - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
-        - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+class ManagedKubernetesDeleteOptionArgsDict(TypedDict):
+    delete_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of resources that are created by cluster. Valid values:
+    - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+    - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+    - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+    - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 
-        ```
-        ...
-        // Specify delete_options as below when deleting cluster
-        // delete SLB resources created by the Nginx Ingress Service
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLB"
-        }
-        // delete ALB resources created by the ALB Ingress Controller
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "ALB"
-        }
-        // delete SLS Project used by the cluster logging feature
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_Data"
-        }
-        // delete SLS Project used for the managed cluster control plane logs
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_ControlPlane"
-        }
-        ```
-        """
-elif False:
-    ManagedKubernetesDeleteOptionArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    ...
+    // Specify delete_options as below when deleting cluster
+    // delete SLB resources created by the Nginx Ingress Service
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLB"
+    }
+    // delete ALB resources created by the ALB Ingress Controller
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "ALB"
+    }
+    // delete SLS Project used by the cluster logging feature
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLS_Data"
+    }
+    // delete SLS Project used for the managed cluster control plane logs
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLS_ControlPlane"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class ManagedKubernetesDeleteOptionArgs:
@@ -2781,36 +2710,33 @@ class ManagedKubernetesDeleteOptionArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class ManagedKubernetesMaintenanceWindowArgsDict(TypedDict):
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-        """
-        maintenance_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
-        """
-        weekly_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+class ManagedKubernetesMaintenanceWindowArgsDict(TypedDict):
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+    """
+    maintenance_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+    """
+    weekly_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
-        for example:
-        ```
-        maintenance_window {
-        enable            = true
-        maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-        duration          = "3h"
-        weekly_period     = "Monday,Friday"
-        }
-        ```
-        """
-elif False:
-    ManagedKubernetesMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+    for example:
+    ```
+    maintenance_window {
+    enable            = true
+    maintenance_time  = "2024-10-15T12:31:00.000+08:00"
+    duration          = "3h"
+    weekly_period     = "Monday,Friday"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class ManagedKubernetesMaintenanceWindowArgs:
@@ -2903,14 +2829,11 @@ class ManagedKubernetesMaintenanceWindowArgs:
         pulumi.set(self, "weekly_period", value)
 
 
-if not MYPY:
-    class ManagedKubernetesOperationPolicyArgsDict(TypedDict):
-        cluster_auto_upgrade: NotRequired[pulumi.Input['ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict']]
-        """
-        Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
-        """
-elif False:
-    ManagedKubernetesOperationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedKubernetesOperationPolicyArgsDict(TypedDict):
+    cluster_auto_upgrade: NotRequired[pulumi.Input['ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict']]
+    """
+    Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesOperationPolicyArgs:
@@ -2935,28 +2858,25 @@ class ManagedKubernetesOperationPolicyArgs:
         pulumi.set(self, "cluster_auto_upgrade", value)
 
 
-if not MYPY:
-    class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
+class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
-        for example:
-        ```
-        operation_policy {
-        cluster_auto_upgrade {
-        enabled = true
-        channel = "stable"
-        }
-        }
-        ```
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the RRSA feature has been enabled.
-        """
-elif False:
-    ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict: TypeAlias = Mapping[str, Any]
+    for example:
+    ```
+    operation_policy {
+    cluster_auto_upgrade {
+    enabled = true
+    channel = "stable"
+    }
+    }
+    ```
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the RRSA feature has been enabled.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs:
@@ -3017,26 +2937,23 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class ManagedKubernetesRrsaMetadataArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the RRSA feature has been enabled.
-        """
-        ram_oidc_provider_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The arn of OIDC provider that was registered in RAM.
-        """
-        ram_oidc_provider_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of OIDC Provider that was registered in RAM.
-        """
-        rrsa_oidc_issuer_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The issuer URL of RRSA OIDC Token.
-        """
-elif False:
-    ManagedKubernetesRrsaMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class ManagedKubernetesRrsaMetadataArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the RRSA feature has been enabled.
+    """
+    ram_oidc_provider_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The arn of OIDC provider that was registered in RAM.
+    """
+    ram_oidc_provider_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of OIDC Provider that was registered in RAM.
+    """
+    rrsa_oidc_issuer_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The issuer URL of RRSA OIDC Token.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesRrsaMetadataArgs:
@@ -3109,26 +3026,23 @@ class ManagedKubernetesRrsaMetadataArgs:
         pulumi.set(self, "rrsa_oidc_issuer_url", value)
 
 
-if not MYPY:
-    class ManagedKubernetesUpgradePolicyArgsDict(TypedDict):
-        control_plane_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
+class ManagedKubernetesUpgradePolicyArgsDict(TypedDict):
+    control_plane_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
 
-        for example:
-        ```
-        # Upgrade cluster version with control plane only
-        version = "1.32.1-aliyun.1"
+    for example:
+    ```
+    # Upgrade cluster version with control plane only
+    version = "1.32.1-aliyun.1"
 
-        upgrade_policy {
-        control_plane_only = true
-        }
-        ```
+    upgrade_policy {
+    control_plane_only = true
+    }
+    ```
 
-        > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
-        """
-elif False:
-    ManagedKubernetesUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** After the upgrade completes, you may remove the `upgrade_policy` block from your configuration to prevent unintended re-upgrades on subsequent applies.
+    """
 
 @pulumi.input_type
 class ManagedKubernetesUpgradePolicyArgs:
@@ -3177,14 +3091,11 @@ class ManagedKubernetesUpgradePolicyArgs:
         pulumi.set(self, "control_plane_only", value)
 
 
-if not MYPY:
-    class NodePoolAutoModeArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable auto mode. Valid values:
-        """
-elif False:
-    NodePoolAutoModeArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolAutoModeArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable auto mode. Valid values:
+    """
 
 @pulumi.input_type
 class NodePoolAutoModeArgs:
@@ -3209,66 +3120,63 @@ class NodePoolAutoModeArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class NodePoolDataDiskArgsDict(TypedDict):
-        auto_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to automatically mount the data disk. Valid values: true and false.
-        """
-        auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the automatic snapshot policy that you want to apply to the system disk.
-        """
-        bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
-        """
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of data disk. Default value: `cloud_efficiency`. Valid values:
-        """
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-        """
-        file_system: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
-        """
-        mount_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Mount path. Works when auto_format is true.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        """
-        provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
-        """
-elif False:
-    NodePoolDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolDataDiskArgsDict(TypedDict):
+    auto_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to automatically mount the data disk. Valid values: true and false.
+    """
+    auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the automatic snapshot policy that you want to apply to the system disk.
+    """
+    bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+    """
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of data disk. Default value: `cloud_efficiency`. Valid values:
+    """
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+    """
+    file_system: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+    """
+    mount_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Mount path. Works when auto_format is true.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+    """
 
 @pulumi.input_type
 class NodePoolDataDiskArgs:
@@ -3501,18 +3409,15 @@ class NodePoolDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class NodePoolEfloNodeGroupArgsDict(TypedDict):
-        cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
-        """
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
-        """
-elif False:
-    NodePoolEfloNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolEfloNodeGroupArgsDict(TypedDict):
+    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
+    """
 
 @pulumi.input_type
 class NodePoolEfloNodeGroupArgs:
@@ -3553,21 +3458,18 @@ class NodePoolEfloNodeGroupArgs:
         pulumi.set(self, "group_id", value)
 
 
-if not MYPY:
-    class NodePoolInstanceMetadataOptionsArgsDict(TypedDict):
-        http_tokens: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ECS instance metadata access mode configuration. Value range:
+class NodePoolInstanceMetadataOptionsArgsDict(TypedDict):
+    http_tokens: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ECS instance metadata access mode configuration. Value range:
 
-        - 'optional': Compatible with both normal mode and reinforced mode.
-        - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+    - 'optional': Compatible with both normal mode and reinforced mode.
+    - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
 
-        Default value: 'optional '.
+    Default value: 'optional '.
 
-        This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
-        """
-elif False:
-    NodePoolInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+    This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+    """
 
 @pulumi.input_type
 class NodePoolInstanceMetadataOptionsArgs:
@@ -3606,70 +3508,67 @@ class NodePoolInstanceMetadataOptionsArgs:
         pulumi.set(self, "http_tokens", value)
 
 
-if not MYPY:
-    class NodePoolInstancePatternArgsDict(TypedDict):
-        instance_family_level: pulumi.Input[_builtins.str]
-        """
-        Instance specification family level, value range:
-        - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
-        - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
-        """
-        cores: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of vCPU cores of the instance type. Example value: 8.
-        """
-        cpu_architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The CPU architecture of the instance. Value range:
-        - X86
-        - ARM
-        """
-        excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
-        - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
-        - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
-        """
-        instance_categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Instance classification. Value range:
-        - General-purpose: Universal.
-        - Compute-optimized: Compute type.
-        - Memory-optimized: Memory type.
-        - Big data: Big data type.
-        - Local SSDs: Local SSD type.
-        - High Clock Speed: High frequency type.
-        - Enhanced: Enhanced.
-        - Shared: Shared.
-        - ECS Bare Metal: elastic Bare Metal server.
-        - High Performance Compute: High Performance Compute.
-        """
-        instance_type_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
-        """
-        max_cpu_cores: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
-        """
-        max_memory_size: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
-        """
-        memory: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The memory size of the instance type, in GiB. Example value: 8.
-        """
-        min_cpu_cores: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
-        """
-        min_memory_size: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
-        """
-elif False:
-    NodePoolInstancePatternArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolInstancePatternArgsDict(TypedDict):
+    instance_family_level: pulumi.Input[_builtins.str]
+    """
+    Instance specification family level, value range:
+    - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+    - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+    """
+    cores: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of vCPU cores of the instance type. Example value: 8.
+    """
+    cpu_architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The CPU architecture of the instance. Value range:
+    - X86
+    - ARM
+    """
+    excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+    - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+    - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+    """
+    instance_categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Instance classification. Value range:
+    - General-purpose: Universal.
+    - Compute-optimized: Compute type.
+    - Memory-optimized: Memory type.
+    - Big data: Big data type.
+    - Local SSDs: Local SSD type.
+    - High Clock Speed: High frequency type.
+    - Enhanced: Enhanced.
+    - Shared: Shared.
+    - ECS Bare Metal: elastic Bare Metal server.
+    - High Performance Compute: High Performance Compute.
+    """
+    instance_type_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+    """
+    max_cpu_cores: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+    """
+    max_memory_size: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+    """
+    memory: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The memory size of the instance type, in GiB. Example value: 8.
+    """
+    min_cpu_cores: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+    """
+    min_memory_size: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+    """
 
 @pulumi.input_type
 class NodePoolInstancePatternArgs:
@@ -3885,138 +3784,135 @@ class NodePoolInstancePatternArgs:
         pulumi.set(self, "min_memory_size", value)
 
 
-if not MYPY:
-    class NodePoolKubeletConfigurationArgsDict(TypedDict):
-        allowed_unsafe_sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Allowed sysctl mode whitelist.
-        """
-        cluster_dns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of IP addresses of the cluster DNS servers.
-        """
-        container_log_max_files: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum number of log files that can exist in each container.
-        """
-        container_log_max_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum size that can be reached before a log file is rotated.
-        """
-        container_log_max_workers: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the maximum number of concurrent workers required to perform log rotation operations.
-        """
-        container_log_monitor_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the duration for which container logs are monitored for log rotation.
-        """
-        cpu_cfs_quota: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CPU CFS quota constraint switch.
-        """
-        cpu_cfs_quota_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CPU CFS quota period value.
-        """
-        cpu_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
-        """
-        event_burst: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
-        """
-        event_record_qps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
-        """
-        eviction_hard: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-        """
-        eviction_soft: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-        """
-        eviction_soft_grace_period: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
-        """
-        feature_gates: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]
-        """
-        Feature switch to enable configuration of experimental features.
-        """
-        image_gc_high_threshold_percent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If the image usage exceeds this threshold, image garbage collection will continue.
-        """
-        image_gc_low_threshold_percent: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Image garbage collection is not performed when the image usage is below this threshold.
-        """
-        kube_api_burst: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
-        """
-        kube_api_qps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
-        """
-        kube_reserved: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-        """
-        max_pods: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum number of running pods.
-        """
-        memory_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The policy to be used by the memory manager.
-        """
-        pod_pids_limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum number of PIDs that can be used in a Pod.
-        """
-        read_only_port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Read-only port number.
-        """
-        registry_burst: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
-        """
-        registry_pull_qps: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
-        """
-        reserved_memories: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgsDict']]]]
-        """
-        Reserve memory for NUMA nodes. See `reserved_memory` below.
-        """
-        serialize_image_pulls: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
-        """
-        server_tls_bootstrap: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Used to enable the kubelet server certificate signing and rotation via CSR.
-        """
-        system_reserved: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-        """
-        topology_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Topology Manager policy used.
-        """
-        tracing: NotRequired[pulumi.Input['NodePoolKubeletConfigurationTracingArgsDict']]
-        """
-        OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
-        """
-elif False:
-    NodePoolKubeletConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolKubeletConfigurationArgsDict(TypedDict):
+    allowed_unsafe_sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Allowed sysctl mode whitelist.
+    """
+    cluster_dns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of IP addresses of the cluster DNS servers.
+    """
+    container_log_max_files: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum number of log files that can exist in each container.
+    """
+    container_log_max_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum size that can be reached before a log file is rotated.
+    """
+    container_log_max_workers: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the maximum number of concurrent workers required to perform log rotation operations.
+    """
+    container_log_monitor_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the duration for which container logs are monitored for log rotation.
+    """
+    cpu_cfs_quota: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CPU CFS quota constraint switch.
+    """
+    cpu_cfs_quota_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CPU CFS quota period value.
+    """
+    cpu_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+    """
+    event_burst: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+    """
+    event_record_qps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+    """
+    eviction_hard: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+    """
+    eviction_soft: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+    """
+    eviction_soft_grace_period: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+    """
+    feature_gates: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]
+    """
+    Feature switch to enable configuration of experimental features.
+    """
+    image_gc_high_threshold_percent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If the image usage exceeds this threshold, image garbage collection will continue.
+    """
+    image_gc_low_threshold_percent: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Image garbage collection is not performed when the image usage is below this threshold.
+    """
+    kube_api_burst: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+    """
+    kube_api_qps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+    """
+    kube_reserved: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+    """
+    max_pods: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum number of running pods.
+    """
+    memory_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The policy to be used by the memory manager.
+    """
+    pod_pids_limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum number of PIDs that can be used in a Pod.
+    """
+    read_only_port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Read-only port number.
+    """
+    registry_burst: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+    """
+    registry_pull_qps: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+    """
+    reserved_memories: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgsDict']]]]
+    """
+    Reserve memory for NUMA nodes. See `reserved_memory` below.
+    """
+    serialize_image_pulls: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+    """
+    server_tls_bootstrap: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Used to enable the kubelet server certificate signing and rotation via CSR.
+    """
+    system_reserved: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+    """
+    topology_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Topology Manager policy used.
+    """
+    tracing: NotRequired[pulumi.Input['NodePoolKubeletConfigurationTracingArgsDict']]
+    """
+    OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
+    """
 
 @pulumi.input_type
 class NodePoolKubeletConfigurationArgs:
@@ -4537,18 +4433,15 @@ class NodePoolKubeletConfigurationArgs:
         pulumi.set(self, "tracing", value)
 
 
-if not MYPY:
-    class NodePoolKubeletConfigurationReservedMemoryArgsDict(TypedDict):
-        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Memory resource limit.
-        """
-        numa_node: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The NUMA node.
-        """
-elif False:
-    NodePoolKubeletConfigurationReservedMemoryArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolKubeletConfigurationReservedMemoryArgsDict(TypedDict):
+    limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Memory resource limit.
+    """
+    numa_node: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The NUMA node.
+    """
 
 @pulumi.input_type
 class NodePoolKubeletConfigurationReservedMemoryArgs:
@@ -4589,18 +4482,15 @@ class NodePoolKubeletConfigurationReservedMemoryArgs:
         pulumi.set(self, "numa_node", value)
 
 
-if not MYPY:
-    class NodePoolKubeletConfigurationTracingArgsDict(TypedDict):
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The endpoint of the collector.
-        """
-        sampling_rate_per_million: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Number of samples to be collected per million span.
-        """
-elif False:
-    NodePoolKubeletConfigurationTracingArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolKubeletConfigurationTracingArgsDict(TypedDict):
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The endpoint of the collector.
+    """
+    sampling_rate_per_million: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Number of samples to be collected per million span.
+    """
 
 @pulumi.input_type
 class NodePoolKubeletConfigurationTracingArgs:
@@ -4641,18 +4531,15 @@ class NodePoolKubeletConfigurationTracingArgs:
         pulumi.set(self, "sampling_rate_per_million", value)
 
 
-if not MYPY:
-    class NodePoolLabelArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The label key.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The label value.
-        """
-elif False:
-    NodePoolLabelArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolLabelArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The label key.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The label value.
+    """
 
 @pulumi.input_type
 class NodePoolLabelArgs:
@@ -4692,50 +4579,47 @@ class NodePoolLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class NodePoolManagementArgsDict(TypedDict):
-        auto_repair: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
-        """
-        auto_repair_policy: NotRequired[pulumi.Input['NodePoolManagementAutoRepairPolicyArgsDict']]
-        """
-        Automatic repair node policy. See `auto_repair_policy` below.
-        """
-        auto_upgrade: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
-        """
-        auto_upgrade_policy: NotRequired[pulumi.Input['NodePoolManagementAutoUpgradePolicyArgsDict']]
-        """
-        The auto update policy. See `auto_upgrade_policy` below.
-        """
-        auto_vul_fix: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
-        """
-        auto_vul_fix_policy: NotRequired[pulumi.Input['NodePoolManagementAutoVulFixPolicyArgsDict']]
-        """
-        The auto CVE patching policy. See `auto_vul_fix_policy` below.
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
-        """
-        max_unavailable: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of unavailable nodes. Default value: 1. Value range:\\[1,1000\\].
-        """
-        surge: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of additional nodes. You have to specify one of surge, surge_percentage.
-        """
-        surge_percentage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Proportion of additional nodes. You have to specify one of surge, surge_percentage.
-        """
-elif False:
-    NodePoolManagementArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolManagementArgsDict(TypedDict):
+    auto_repair: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+    """
+    auto_repair_policy: NotRequired[pulumi.Input['NodePoolManagementAutoRepairPolicyArgsDict']]
+    """
+    Automatic repair node policy. See `auto_repair_policy` below.
+    """
+    auto_upgrade: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+    """
+    auto_upgrade_policy: NotRequired[pulumi.Input['NodePoolManagementAutoUpgradePolicyArgsDict']]
+    """
+    The auto update policy. See `auto_upgrade_policy` below.
+    """
+    auto_vul_fix: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+    """
+    auto_vul_fix_policy: NotRequired[pulumi.Input['NodePoolManagementAutoVulFixPolicyArgsDict']]
+    """
+    The auto CVE patching policy. See `auto_vul_fix_policy` below.
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+    """
+    max_unavailable: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum number of unavailable nodes. Default value: 1. Value range:\\[1,1000\\].
+    """
+    surge: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of additional nodes. You have to specify one of surge, surge_percentage.
+    """
+    surge_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+    """
 
 @pulumi.input_type
 class NodePoolManagementArgs:
@@ -4912,14 +4796,11 @@ class NodePoolManagementArgs:
         pulumi.set(self, "surge_percentage", value)
 
 
-if not MYPY:
-    class NodePoolManagementAutoRepairPolicyArgsDict(TypedDict):
-        restart_node: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-        """
-elif False:
-    NodePoolManagementAutoRepairPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolManagementAutoRepairPolicyArgsDict(TypedDict):
+    restart_node: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+    """
 
 @pulumi.input_type
 class NodePoolManagementAutoRepairPolicyArgs:
@@ -4944,14 +4825,11 @@ class NodePoolManagementAutoRepairPolicyArgs:
         pulumi.set(self, "restart_node", value)
 
 
-if not MYPY:
-    class NodePoolManagementAutoUpgradePolicyArgsDict(TypedDict):
-        auto_upgrade_kubelet: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-        """
-elif False:
-    NodePoolManagementAutoUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolManagementAutoUpgradePolicyArgsDict(TypedDict):
+    auto_upgrade_kubelet: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+    """
 
 @pulumi.input_type
 class NodePoolManagementAutoUpgradePolicyArgs:
@@ -4976,18 +4854,15 @@ class NodePoolManagementAutoUpgradePolicyArgs:
         pulumi.set(self, "auto_upgrade_kubelet", value)
 
 
-if not MYPY:
-    class NodePoolManagementAutoVulFixPolicyArgsDict(TypedDict):
-        restart_node: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-        """
-        vul_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-        """
-elif False:
-    NodePoolManagementAutoVulFixPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolManagementAutoVulFixPolicyArgsDict(TypedDict):
+    restart_node: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+    """
+    vul_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+    """
 
 @pulumi.input_type
 class NodePoolManagementAutoVulFixPolicyArgs:
@@ -5028,18 +4903,15 @@ class NodePoolManagementAutoVulFixPolicyArgs:
         pulumi.set(self, "vul_level", value)
 
 
-if not MYPY:
-    class NodePoolPrivatePoolOptionsArgsDict(TypedDict):
-        private_pool_options_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the private node pool.
-        """
-        private_pool_options_match_criteria: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
-        """
-elif False:
-    NodePoolPrivatePoolOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolPrivatePoolOptionsArgsDict(TypedDict):
+    private_pool_options_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the private node pool.
+    """
+    private_pool_options_match_criteria: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+    """
 
 @pulumi.input_type
 class NodePoolPrivatePoolOptionsArgs:
@@ -5080,29 +4952,26 @@ class NodePoolPrivatePoolOptionsArgs:
         pulumi.set(self, "private_pool_options_match_criteria", value)
 
 
-if not MYPY:
-    class NodePoolRollingPolicyArgsDict(TypedDict):
-        batch_interval: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
-        """
-        max_parallelism: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
-        """
-        node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specify the list of nodes to be upgraded.
-        """
-        pause_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The auto-pause policy during node upgrade. Valid values:
-        - `FirstBatch`: Pause after the first batch is completed.
-        - `EveryBatch`: Pause after each batch is completed.
-        - `NotPause`: Do not pause during the upgrade process.
-        """
-elif False:
-    NodePoolRollingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolRollingPolicyArgsDict(TypedDict):
+    batch_interval: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The upgrade interval time between batches, in minutes. This parameter only takes effect when `pause_policy` is set to `NotPause`.
+    """
+    max_parallelism: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of nodes that can be upgraded in parallel per batch when updating nodes in the node pool.
+    """
+    node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Specify the list of nodes to be upgraded.
+    """
+    pause_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The auto-pause policy during node upgrade. Valid values:
+    - `FirstBatch`: Pause after the first batch is completed.
+    - `EveryBatch`: Pause after each batch is completed.
+    - `NotPause`: Do not pause during the upgrade process.
+    """
 
 @pulumi.input_type
 class NodePoolRollingPolicyArgs:
@@ -5181,38 +5050,35 @@ class NodePoolRollingPolicyArgs:
         pulumi.set(self, "pause_policy", value)
 
 
-if not MYPY:
-    class NodePoolScalingConfigArgsDict(TypedDict):
-        eip_bandwidth: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
-        """
-        eip_internet_charge_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable automatic scaling. Value:
-        """
-        is_bond_eip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to bind EIP for an instance. Default: `false`.
-        """
-        max_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
-        """
-        min_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Min number of instances in a auto scaling group, its valid value range [0~1000].
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
-        """
-elif False:
-    NodePoolScalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolScalingConfigArgsDict(TypedDict):
+    eip_bandwidth: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+    """
+    eip_internet_charge_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable automatic scaling. Value:
+    """
+    is_bond_eip: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to bind EIP for an instance. Default: `false`.
+    """
+    max_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+    """
+    min_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Min number of instances in a auto scaling group, its valid value range [0~1000].
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+    """
 
 @pulumi.input_type
 class NodePoolScalingConfigArgs:
@@ -5333,18 +5199,15 @@ class NodePoolScalingConfigArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class NodePoolSpotPriceLimitArgsDict(TypedDict):
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the preemptible instance.
-        """
-        price_limit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum price of a single instance.
-        """
-elif False:
-    NodePoolSpotPriceLimitArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolSpotPriceLimitArgsDict(TypedDict):
+    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the preemptible instance.
+    """
+    price_limit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum price of a single instance.
+    """
 
 @pulumi.input_type
 class NodePoolSpotPriceLimitArgs:
@@ -5385,22 +5248,19 @@ class NodePoolSpotPriceLimitArgs:
         pulumi.set(self, "price_limit", value)
 
 
-if not MYPY:
-    class NodePoolTaintArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key of a taint.
-        """
-        effect: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scheduling policy.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of a taint.
-        """
-elif False:
-    NodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolTaintArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of a taint.
+    """
+    effect: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scheduling policy.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of a taint.
+    """
 
 @pulumi.input_type
 class NodePoolTaintArgs:
@@ -5456,14 +5316,11 @@ class NodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class NodePoolTeeConfigArgsDict(TypedDict):
-        tee_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable confidential computing for the cluster.
-        """
-elif False:
-    NodePoolTeeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolTeeConfigArgsDict(TypedDict):
+    tee_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable confidential computing for the cluster.
+    """
 
 @pulumi.input_type
 class NodePoolTeeConfigArgs:
@@ -5488,30 +5345,27 @@ class NodePoolTeeConfigArgs:
         pulumi.set(self, "tee_enable", value)
 
 
-if not MYPY:
-    class NodePoolUpgradePolicyArgsDict(TypedDict):
-        image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node system Image ID
-        """
-        kubernetes_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Kubernetes version
-        """
-        runtime: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node runtime type
-        """
-        runtime_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Node Runtime Version
-        """
-        use_replace: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use replacement disk upgrade. Valid values:
-        """
-elif False:
-    NodePoolUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class NodePoolUpgradePolicyArgsDict(TypedDict):
+    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node system Image ID
+    """
+    kubernetes_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Kubernetes version
+    """
+    runtime: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node runtime type
+    """
+    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Node Runtime Version
+    """
+    use_replace: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use replacement disk upgrade. Valid values:
+    """
 
 @pulumi.input_type
 class NodePoolUpgradePolicyArgs:
@@ -5600,55 +5454,52 @@ class NodePoolUpgradePolicyArgs:
         pulumi.set(self, "use_replace", value)
 
 
-if not MYPY:
-    class ServerlessKubernetesAddonArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disables the automatic installation of a component. Default is `false`.
+class ServerlessKubernetesAddonArgsDict(TypedDict):
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disables the automatic installation of a component. Default is `false`.
 
-        The following example is the definition of addons block, The type of this field is list:
+    The following example is the definition of addons block, The type of this field is list:
 
-        ```
-        # install nginx ingress, conflict with ALB ingress
-        addons {
-        name = "nginx-ingress-controller"
-        # use internet
-        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        # if use intranet, detail below.
-        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        }
-        # install ALB ingress, conflict with nginx ingress
-        addons {
-        name = "alb-ingress-controller"
-        }
-        # install metric server
-        addons {
-        name = "metrics-server"
-        }
-        # install knative
-        addons {
-        name = "knative"
-        }
-        # install prometheus
-        addons {
-        name = "arms-prometheus"
-        }
-        ```
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        It specifies the version of the component.
-        """
-elif False:
-    ServerlessKubernetesAddonArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    # install nginx ingress, conflict with ALB ingress
+    addons {
+    name = "nginx-ingress-controller"
+    # use internet
+    config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+    # if use intranet, detail below.
+    # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+    }
+    # install ALB ingress, conflict with nginx ingress
+    addons {
+    name = "alb-ingress-controller"
+    }
+    # install metric server
+    addons {
+    name = "metrics-server"
+    }
+    # install knative
+    addons {
+    name = "knative"
+    }
+    # install prometheus
+    addons {
+    name = "arms-prometheus"
+    }
+    ```
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    It specifies the version of the component.
+    """
 
 @pulumi.input_type
 class ServerlessKubernetesAddonArgs:
@@ -5779,52 +5630,49 @@ class ServerlessKubernetesAddonArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ServerlessKubernetesDeleteOptionArgsDict(TypedDict):
-        delete_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of resources that are created by cluster. Valid values:
-        - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
-        - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
-        - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
-        - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
-        - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
-        ```
-        ...
-        // Specify delete_options as below when deleting cluster
-        // delete SLB resources created by the Nginx Ingress Service
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLB"
-        }
-        // delete ALB resources created by the ALB Ingress Controller
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "ALB"
-        }
-        // delete SLS Project used by the cluster logging feature
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_Data"
-        }
-        // delete SLS Project used for the managed cluster control plane logs
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_ControlPlane"
-        }
-        // delete PrivateZone resources created by the cluster
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "PrivateZone"
-        }
-        ```
-        """
-elif False:
-    ServerlessKubernetesDeleteOptionArgsDict: TypeAlias = Mapping[str, Any]
+class ServerlessKubernetesDeleteOptionArgsDict(TypedDict):
+    delete_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of resources that are created by cluster. Valid values:
+    - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+    - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+    - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+    - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+    - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+    ```
+    ...
+    // Specify delete_options as below when deleting cluster
+    // delete SLB resources created by the Nginx Ingress Service
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLB"
+    }
+    // delete ALB resources created by the ALB Ingress Controller
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "ALB"
+    }
+    // delete SLS Project used by the cluster logging feature
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLS_Data"
+    }
+    // delete SLS Project used for the managed cluster control plane logs
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "SLS_ControlPlane"
+    }
+    // delete PrivateZone resources created by the cluster
+    delete_options {
+    delete_mode = "delete"
+    resource_type = "PrivateZone"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class ServerlessKubernetesDeleteOptionArgs:
@@ -5933,36 +5781,33 @@ class ServerlessKubernetesDeleteOptionArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class ServerlessKubernetesMaintenanceWindowArgsDict(TypedDict):
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
-        """
-        enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-        """
-        maintenance_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
-        """
-        weekly_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+class ServerlessKubernetesMaintenanceWindowArgsDict(TypedDict):
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+    """
+    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+    """
+    maintenance_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+    """
+    weekly_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
-        for example:
-        ```
-        maintenance_window {
-        enable            = true
-        maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-        duration          = "3h"
-        weekly_period     = "Monday,Friday"
-        }
-        ```
-        """
-elif False:
-    ServerlessKubernetesMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+    for example:
+    ```
+    maintenance_window {
+    enable            = true
+    maintenance_time  = "2024-10-15T12:31:00.000+08:00"
+    duration          = "3h"
+    weekly_period     = "Monday,Friday"
+    }
+    ```
+    """
 
 @pulumi.input_type
 class ServerlessKubernetesMaintenanceWindowArgs:
@@ -6055,14 +5900,11 @@ class ServerlessKubernetesMaintenanceWindowArgs:
         pulumi.set(self, "weekly_period", value)
 
 
-if not MYPY:
-    class ServerlessKubernetesOperationPolicyArgsDict(TypedDict):
-        cluster_auto_upgrade: NotRequired[pulumi.Input['ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict']]
-        """
-        Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
-        """
-elif False:
-    ServerlessKubernetesOperationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class ServerlessKubernetesOperationPolicyArgsDict(TypedDict):
+    cluster_auto_upgrade: NotRequired[pulumi.Input['ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict']]
+    """
+    Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+    """
 
 @pulumi.input_type
 class ServerlessKubernetesOperationPolicyArgs:
@@ -6087,28 +5929,25 @@ class ServerlessKubernetesOperationPolicyArgs:
         pulumi.set(self, "cluster_auto_upgrade", value)
 
 
-if not MYPY:
-    class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict(TypedDict):
-        channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
+class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict(TypedDict):
+    channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
-        for example:
-        ```
-        operation_policy {
-        cluster_auto_upgrade {
-        enabled = true
-        channel = "stable"
-        }
-        }
-        ```
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the RRSA feature has been enabled.
-        """
-elif False:
-    ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict: TypeAlias = Mapping[str, Any]
+    for example:
+    ```
+    operation_policy {
+    cluster_auto_upgrade {
+    enabled = true
+    channel = "stable"
+    }
+    }
+    ```
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the RRSA feature has been enabled.
+    """
 
 @pulumi.input_type
 class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs:
@@ -6169,26 +6008,23 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class ServerlessKubernetesRrsaMetadataArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the RRSA feature has been enabled.
-        """
-        ram_oidc_provider_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The arn of OIDC provider that was registered in RAM.
-        """
-        ram_oidc_provider_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of OIDC Provider that was registered in RAM.
-        """
-        rrsa_oidc_issuer_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The issuer URL of RRSA OIDC Token.
-        """
-elif False:
-    ServerlessKubernetesRrsaMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class ServerlessKubernetesRrsaMetadataArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the RRSA feature has been enabled.
+    """
+    ram_oidc_provider_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The arn of OIDC provider that was registered in RAM.
+    """
+    ram_oidc_provider_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of OIDC Provider that was registered in RAM.
+    """
+    rrsa_oidc_issuer_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The issuer URL of RRSA OIDC Token.
+    """
 
 @pulumi.input_type
 class ServerlessKubernetesRrsaMetadataArgs:
@@ -6261,15 +6097,12 @@ class ServerlessKubernetesRrsaMetadataArgs:
         pulumi.set(self, "rrsa_oidc_issuer_url", value)
 
 
-if not MYPY:
-    class SwarmNodeArgsDict(TypedDict):
-        eip: NotRequired[pulumi.Input[_builtins.str]]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        private_ip: NotRequired[pulumi.Input[_builtins.str]]
-        status: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SwarmNodeArgsDict: TypeAlias = Mapping[str, Any]
+class SwarmNodeArgsDict(TypedDict):
+    eip: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    private_ip: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SwarmNodeArgs:

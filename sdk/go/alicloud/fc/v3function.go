@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -142,6 +140,9 @@ import (
 type V3Function struct {
 	pulumi.CustomResourceState
 
+	// Function code ZIP package. code and customContainerConfig. See `code` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	Code V3FunctionCodePtrOutput `pulumi:"code"`
 	// The code package size of the function returned by the system, in byte Example : 1024
 	CodeSize pulumi.IntOutput `pulumi:"codeSize"`
@@ -263,6 +264,9 @@ func GetV3Function(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V3Function resources.
 type v3functionState struct {
+	// Function code ZIP package. code and customContainerConfig. See `code` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	Code *V3FunctionCode `pulumi:"code"`
 	// The code package size of the function returned by the system, in byte Example : 1024
 	CodeSize *int `pulumi:"codeSize"`
@@ -349,6 +353,9 @@ type v3functionState struct {
 }
 
 type V3FunctionState struct {
+	// Function code ZIP package. code and customContainerConfig. See `code` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	Code V3FunctionCodePtrInput
 	// The code package size of the function returned by the system, in byte Example : 1024
 	CodeSize pulumi.IntPtrInput
@@ -439,6 +446,9 @@ func (V3FunctionState) ElementType() reflect.Type {
 }
 
 type v3functionArgs struct {
+	// Function code ZIP package. code and customContainerConfig. See `code` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	Code *V3FunctionCode `pulumi:"code"`
 	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
 	Cpu *float64 `pulumi:"cpu"`
@@ -502,6 +512,9 @@ type v3functionArgs struct {
 
 // The set of arguments for constructing a V3Function resource.
 type V3FunctionArgs struct {
+	// Function code ZIP package. code and customContainerConfig. See `code` below.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	Code V3FunctionCodePtrInput
 	// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
 	Cpu pulumi.Float64PtrInput
@@ -650,6 +663,9 @@ func (o V3FunctionOutput) ToV3FunctionOutputWithContext(ctx context.Context) V3F
 	return o
 }
 
+// Function code ZIP package. code and customContainerConfig. See `code` below.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o V3FunctionOutput) Code() V3FunctionCodePtrOutput {
 	return o.ApplyT(func(v *V3Function) V3FunctionCodePtrOutput { return v.Code }).(V3FunctionCodePtrOutput)
 }

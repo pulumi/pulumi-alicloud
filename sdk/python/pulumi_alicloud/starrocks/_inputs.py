@@ -25,53 +25,48 @@ __all__ = [
     'InstanceVswitchArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceBackendNodeGroupArgsDict(TypedDict):
-        cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-        """
-        disk_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of disks.
-        """
-        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Local SSD instance specifications.
-        """
-        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resident node number of node group.
-        """
-        spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compute group specification types include the following:
-        - standard
-        - localSSD
-        - bigData
-        - ramEnhanced
-        - networkEnhanced
-        """
-        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance levels of cloud disks include the following values:
-        - pl0: Maximum random read/write IOPS per disk is 10,000.
-        - pl1: Maximum random read/write IOPS per disk is 50,000.
-        - pl2: Maximum random read/write IOPS per disk is 100,000.
-        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-        """
-        storage_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Storage size, measured in GiB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    InstanceBackendNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceBackendNodeGroupArgsDict(TypedDict):
+    cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+    """
+    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of disks.
+    """
+    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Local SSD instance specifications.
+    """
+    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resident node number of node group.
+    """
+    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compute group specification types include the following:
+    - standard
+    - localSSD
+    - bigData
+    - ramEnhanced
+    - networkEnhanced
+    """
+    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance levels of cloud disks include the following values:
+    - pl0: Maximum random read/write IOPS per disk is 10,000.
+    - pl1: Maximum random read/write IOPS per disk is 50,000.
+    - pl2: Maximum random read/write IOPS per disk is 100,000.
+    - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+    """
+    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Storage size, measured in GiB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class InstanceBackendNodeGroupArgs:
@@ -226,48 +221,45 @@ class InstanceBackendNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class InstanceFrontendNodeGroupArgsDict(TypedDict):
-        cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-        """
-        disk_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        DiskNumber
-        """
-        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Local SSD instance specifications.
-        """
-        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resident node number of node group.
-        """
-        spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compute group specification types include the following:
-        - standard
-        - ramEnhanced
-        """
-        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance levels of cloud disks include the following values:
-        - pl0: Maximum random read/write IOPS per disk is 10,000.
-        - pl1: Maximum random read/write IOPS per disk is 50,000.
-        - pl2: Maximum random read/write IOPS per disk is 100,000.
-        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-        """
-        storage_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Storage size, measured in GiB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    InstanceFrontendNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceFrontendNodeGroupArgsDict(TypedDict):
+    cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+    """
+    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    DiskNumber
+    """
+    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Local SSD instance specifications.
+    """
+    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resident node number of node group.
+    """
+    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compute group specification types include the following:
+    - standard
+    - ramEnhanced
+    """
+    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance levels of cloud disks include the following values:
+    - pl0: Maximum random read/write IOPS per disk is 10,000.
+    - pl1: Maximum random read/write IOPS per disk is 50,000.
+    - pl2: Maximum random read/write IOPS per disk is 100,000.
+    - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+    """
+    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Storage size, measured in GiB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class InstanceFrontendNodeGroupArgs:
@@ -416,47 +408,44 @@ class InstanceFrontendNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class InstanceObserverNodeGroupArgsDict(TypedDict):
-        cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-        """
-        disk_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        DiskNumber
-        """
-        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Local SSD instance specifications.
-        """
-        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resident node number of node group.
-        """
-        spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compute group specification types include the following:
-        - standard
-        """
-        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance levels of cloud disks include the following values:
-        - pl0: Maximum random read/write IOPS per disk is 10,000.
-        - pl1: Maximum random read/write IOPS per disk is 50,000.
-        - pl2: Maximum random read/write IOPS per disk is 100,000.
-        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-        """
-        storage_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Storage size, measured in GiB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    InstanceObserverNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceObserverNodeGroupArgsDict(TypedDict):
+    cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+    """
+    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    DiskNumber
+    """
+    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Local SSD instance specifications.
+    """
+    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resident node number of node group.
+    """
+    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compute group specification types include the following:
+    - standard
+    """
+    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance levels of cloud disks include the following values:
+    - pl0: Maximum random read/write IOPS per disk is 10,000.
+    - pl1: Maximum random read/write IOPS per disk is 50,000.
+    - pl2: Maximum random read/write IOPS per disk is 100,000.
+    - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+    """
+    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Storage size, measured in GiB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class InstanceObserverNodeGroupArgs:
@@ -603,18 +592,15 @@ class InstanceObserverNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class InstanceVswitchArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        ID of VSwitch.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID of VSwitch.
-        """
-elif False:
-    InstanceVswitchArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceVswitchArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    ID of VSwitch.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID of VSwitch.
+    """
 
 @pulumi.input_type
 class InstanceVswitchArgs:

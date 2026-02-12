@@ -41,6 +41,9 @@ class DefenseTemplateArgs:
                - **user_custom:** custom template.
         :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_groups: The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         """
         pulumi.set(__self__, "defense_scene", defense_scene)
@@ -159,6 +162,11 @@ class DefenseTemplateArgs:
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the Alibaba Cloud resource group.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
@@ -200,6 +208,9 @@ class _DefenseTemplateState:
         :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_groups: The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
         :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
@@ -305,6 +316,11 @@ class _DefenseTemplateState:
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the Alibaba Cloud resource group.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
@@ -427,6 +443,9 @@ class DefenseTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_groups: The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
         :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
@@ -572,6 +591,9 @@ class DefenseTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_groups: The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
         :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
@@ -647,6 +669,11 @@ class DefenseTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the Alibaba Cloud resource group.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @_builtins.property

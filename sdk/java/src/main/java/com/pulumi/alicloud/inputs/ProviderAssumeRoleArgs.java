@@ -69,9 +69,17 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.sessionExpiration);
     }
 
+    /**
+     * The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+     * 
+     */
     @Import(name="sessionName")
     private @Nullable Output<String> sessionName;
 
+    /**
+     * @return The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+     * 
+     */
     public Optional<Output<String>> sessionName() {
         return Optional.ofNullable(this.sessionName);
     }
@@ -176,11 +184,23 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
             return sessionExpiration(Output.of(sessionExpiration));
         }
 
+        /**
+         * @param sessionName The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionName(@Nullable Output<String> sessionName) {
             $.sessionName = sessionName;
             return this;
         }
 
+        /**
+         * @param sessionName The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionName(String sessionName) {
             return sessionName(Output.of(sessionName));
         }

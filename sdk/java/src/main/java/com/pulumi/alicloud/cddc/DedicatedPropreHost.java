@@ -20,6 +20,213 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a CDDC Dedicated Propre Host resource. MyBase proprietary cluster host resources, you need to add a whitelist to purchase a proprietary version of the cluster.
+ * 
+ * For information about CDDC Dedicated Propre Host and how to use it, see [What is Dedicated Propre Host](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/api-cddc-2020-03-20-creatededicatedhostgroup).
+ * 
+ * &gt; **NOTE:** Available since v1.210.0.
+ * 
+ * &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetSecurityGroupsArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetEcsDeploymentSetsArgs;
+ * import com.pulumi.alicloud.ecs.EcsDeploymentSet;
+ * import com.pulumi.alicloud.ecs.EcsDeploymentSetArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
+ * import com.pulumi.alicloud.ecs.KeyPair;
+ * import com.pulumi.alicloud.ecs.KeyPairArgs;
+ * import com.pulumi.alicloud.cddc.CddcFunctions;
+ * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroup;
+ * import com.pulumi.alicloud.cddc.DedicatedHostGroupArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ConcatArgs;
+ * import com.pulumi.alicloud.cddc.DedicatedPropreHost;
+ * import com.pulumi.alicloud.cddc.DedicatedPropreHostArgs;
+ * import com.pulumi.alicloud.cddc.inputs.DedicatedPropreHostEcsClassListArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .instanceTypeFamily("ecs.g6e")
+ *             .networkType("Vpc")
+ *             .build());
+ * 
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^aliyun_3_x64_20G_scc*")
+ *             .owners("system")
+ *             .build());
+ * 
+ *         final var essd = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .systemDiskCategory("cloud_essd")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId("cn-hangzhou-i")
+ *             .build());
+ * 
+ *         final var defaultGetSecurityGroups = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
+ *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
+ *             .build());
+ * 
+ *         for (var i = 0; i < defaultGetSecurityGroups.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
+ *                 .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+ *                 .name("tf-exampleacc-cddc-dedicated_propre_host")
+ *                 .build());
+ * 
+ *         
+ * }
+ *         final var defaultGetEcsDeploymentSets = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
+ *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
+ *             .build());
+ * 
+ *         for (var i = 0; i < defaultGetEcsDeploymentSets.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new EcsDeploymentSet("defaultEcsDeploymentSet-" + i, EcsDeploymentSetArgs.builder()
+ *                 .strategy("Availability")
+ *                 .domain("Default")
+ *                 .granularity("Host")
+ *                 .deploymentSetName("tf-exampleacc-cddc-dedicated_propre_host")
+ *                 .description("tf-exampleacc-cddc-dedicated_propre_host")
+ *                 .build());
+ * 
+ *         
+ * }
+ *         final var defaultGetKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+ *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
+ *             .build());
+ * 
+ *         for (var i = 0; i < defaultGetKeyPairs.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new KeyPair("defaultKeyPair-" + i, KeyPairArgs.builder()
+ *                 .keyPairName("tf-exampleacc-cddc-dedicated_propre_host")
+ *                 .build());
+ * 
+ *         
+ * }
+ *         final var defaultGetDedicatedHostGroups = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
+ *             .engine("MySQL")
+ *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
+ *             .build());
+ * 
+ *         for (var i = 0; i < defaultGetDedicatedHostGroups.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new DedicatedHostGroup("defaultDedicatedHostGroup-" + i, DedicatedHostGroupArgs.builder()
+ *                 .engine("MySQL")
+ *                 .vpcId(defaultGetNetworks.ids()[0])
+ *                 .cpuAllocationRatio(101)
+ *                 .memAllocationRatio(50)
+ *                 .diskAllocationRatio(200)
+ *                 .allocationPolicy("Evenly")
+ *                 .hostReplacePolicy("Manual")
+ *                 .dedicatedHostGroupDesc("tf-exampleacc-cddc-dedicated_propre_host")
+ *                 .openPermission(true)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         final var alicloudSecurityGroupId = defaultGetSecurityGroups.ids().length().applyValue(_length -> _length > 0 ? defaultGetSecurityGroups.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *             .input(            
+ *                 defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()),
+ *                 "")
+ *             .build()).result()[0]);
+ * 
+ *         final var alicloudEcsDeploymentSetId = defaultGetEcsDeploymentSets.ids().length().applyValue(_length -> _length > 0 ? defaultGetEcsDeploymentSets.sets()[0].deploymentSetId() : StdFunctions.concat(ConcatArgs.builder()
+ *             .input(            
+ *                 defaultEcsDeploymentSet.stream().map(element -> element.id()).collect(toList()),
+ *                 "")
+ *             .build()).result()[0]);
+ * 
+ *         final var alicloudKeyPairId = defaultGetKeyPairs.ids().length().applyValue(_length -> _length > 0 ? defaultGetKeyPairs.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *             .input(            
+ *                 defaultKeyPair.stream().map(element -> element.id()).collect(toList()),
+ *                 "")
+ *             .build()).result()[0]);
+ * 
+ *         final var dedicatedHostGroupId = defaultGetDedicatedHostGroups.ids().length().applyValue(_length -> _length > 0 ? defaultGetDedicatedHostGroups.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *             .input(            
+ *                 defaultDedicatedHostGroup.stream().map(element -> element.id()).collect(toList()),
+ *                 "")
+ *             .build()).result()[0]);
+ * 
+ *         var defaultDedicatedPropreHost = new DedicatedPropreHost("defaultDedicatedPropreHost", DedicatedPropreHostArgs.builder()
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .ecsInstanceName("exampleTf")
+ *             .ecsDeploymentSetId(alicloudEcsDeploymentSetId)
+ *             .autoRenew("false")
+ *             .securityGroupId(alicloudSecurityGroupId)
+ *             .dedicatedHostGroupId(dedicatedHostGroupId)
+ *             .ecsHostName("exampleTf")
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .ecsUniqueSuffix("false")
+ *             .passwordInherit("false")
+ *             .engine("mysql")
+ *             .period("1")
+ *             .osPassword("YourPassword123!")
+ *             .ecsZoneId("cn-hangzhou-i")
+ *             .ecsClassLists(DedicatedPropreHostEcsClassListArgs.builder()
+ *                 .diskType("cloud_essd")
+ *                 .sysDiskType("cloud_essd")
+ *                 .diskCount(1)
+ *                 .systemDiskPerformanceLevel("PL1")
+ *                 .dataDiskPerformanceLevel("PL1")
+ *                 .diskCapacity(40)
+ *                 .instanceType("ecs.c6a.large")
+ *                 .sysDiskCapacity(40)
+ *                 .build())
+ *             .paymentType("Subscription")
+ *             .imageId("m-bp1d13fxs1ymbvw1dk5g")
+ *             .periodType("Monthly")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cddc.DedicatedPropreHost` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cddc.DedicatedPropreHost`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * CDDC Dedicated Propre Host can be imported using the id, e.g.

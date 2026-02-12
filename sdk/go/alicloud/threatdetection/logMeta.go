@@ -12,6 +12,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Threat Detection Log Meta resource.
+//
+// Log analysis shipping status.
+//
+// For information about Threat Detection Log Meta and how to use it, see [What is Log Meta](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ModifyLogMetaStatus).
+//
+// > **NOTE:** Available since v1.245.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := threatdetection.NewLogMeta(ctx, "default", &threatdetection.LogMetaArgs{
+//				Status:      pulumi.String("disabled"),
+//				LogMetaName: pulumi.String("aegis-log-client"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `threatdetection.LogMeta` or removing it from your configuration
+//
+// Terraform cannot destroy resource `threatdetection.LogMeta`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection Log Meta can be imported using the id, e.g.

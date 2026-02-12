@@ -10,6 +10,61 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.cloudPhoneInstance
 {
     /// <summary>
+    /// Provides a Cloud Phone Instance resource.
+    /// 
+    /// cloud phone instance.
+    /// 
+    /// For information about Cloud Phone Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/DescribeAndroidInstances).
+    /// 
+    /// &gt; **NOTE:** Available since v1.243.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultjZ1gi0 = new AliCloud.CloudPhone.Policy("defaultjZ1gi0");
+    /// 
+    ///     var defaultYHMlTO = new AliCloud.CloudPhoneInstance.Group("defaultYHMlTO", new()
+    ///     {
+    ///         InstanceGroupSpec = "acp.basic.small",
+    ///         PolicyGroupId = defaultjZ1gi0.Id,
+    ///         InstanceGroupName = "AutoCreateGroupName",
+    ///         Period = 1,
+    ///         NumberOfInstances = 1,
+    ///         ChargeType = "PostPaid",
+    ///         ImageId = "imgc-075cllfeuazh03tg9",
+    ///         PeriodUnit = "Hour",
+    ///         AutoRenew = false,
+    ///         Amount = 1,
+    ///         AutoPay = false,
+    ///         GpuAcceleration = false,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.CloudPhoneInstance.CloudPhoneInstance("default", new()
+    ///     {
+    ///         AndroidInstanceGroupId = defaultYHMlTO.Id,
+    ///         AndroidInstanceName = "CreateInstanceName",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.cloudphoneinstance.CloudPhoneInstance` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.cloudphoneinstance.CloudPhoneInstance`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Phone Instance can be imported using the id, e.g.

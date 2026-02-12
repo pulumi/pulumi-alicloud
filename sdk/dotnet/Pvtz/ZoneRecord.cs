@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz
 {
     /// <summary>
+    /// Provides a Private Zone Record resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud.pvtz.ZoneRecord` to build a Private Zone Record resource.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

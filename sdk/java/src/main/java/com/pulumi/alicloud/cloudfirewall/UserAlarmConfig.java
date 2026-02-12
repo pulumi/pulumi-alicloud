@@ -19,12 +19,77 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloud Firewall User Alarm Config resource.
+ * 
+ * Configure alarm notifications and contacts.
+ * 
+ * For information about Cloud Firewall User Alarm Config and how to use it, see [What is User Alarm Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeUserAlarmConfig).
+ * 
+ * &gt; **NOTE:** Available since v1.271.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudfirewall.UserAlarmConfig;
+ * import com.pulumi.alicloud.cloudfirewall.UserAlarmConfigArgs;
+ * import com.pulumi.alicloud.cloudfirewall.inputs.UserAlarmConfigAlarmConfigArgs;
+ * import com.pulumi.alicloud.cloudfirewall.inputs.UserAlarmConfigNotifyConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new UserAlarmConfig("default", UserAlarmConfigArgs.builder()
+ *             .alarmConfigs(UserAlarmConfigAlarmConfigArgs.builder()
+ *                 .alarmValue("on")
+ *                 .alarmType("bandwidth")
+ *                 .alarmPeriod("1")
+ *                 .alarmHour("0")
+ *                 .alarmNotify("0")
+ *                 .alarmWeekDay("0")
+ *                 .build())
+ *             .useDefaultContact("1")
+ *             .notifyConfigs(UserAlarmConfigNotifyConfigArgs.builder()
+ *                 .notifyValue("13000000000")
+ *                 .notifyType("sms")
+ *                 .build())
+ *             .alarmLang("zh")
+ *             .lang("zh")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.cloudfirewall.UserAlarmConfig` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.cloudfirewall.UserAlarmConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Firewall User Alarm Config can be imported using the `Account ID`, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig example &lt;Alibaba Cloud Account ID&gt;
+ * $ terraform import alicloud_cloud_firewall_user_alarm_config.example &lt;Alibaba Cloud Account ID&gt;
  * ```
  * 
  */
@@ -72,9 +137,21 @@ public class UserAlarmConfig extends com.pulumi.resources.CustomResource {
     public Output<List<UserAlarmConfigContactConfig>> contactConfigs() {
         return this.contactConfigs;
     }
+    /**
+     * The language type. Possible values are `zh`, `en`.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
+    /**
+     * @return The language type. Possible values are `zh`, `en`.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> lang() {
         return Codegen.optional(this.lang);
     }
@@ -92,9 +169,21 @@ public class UserAlarmConfig extends com.pulumi.resources.CustomResource {
     public Output<List<UserAlarmConfigNotifyConfig>> notifyConfigs() {
         return this.notifyConfigs;
     }
+    /**
+     * Whether to Use the default contact.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="useDefaultContact", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> useDefaultContact;
 
+    /**
+     * @return Whether to Use the default contact.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> useDefaultContact() {
         return Codegen.optional(this.useDefaultContact);
     }

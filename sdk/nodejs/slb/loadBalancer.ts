@@ -130,6 +130,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
     declare public readonly internetChargeType: pulumi.Output<string | undefined>;
+    /**
+     * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     */
     declare public readonly loadBalancerName: pulumi.Output<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
@@ -300,6 +305,11 @@ export interface LoadBalancerState {
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
     internetChargeType?: pulumi.Input<string>;
+    /**
+     * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     */
     loadBalancerName?: pulumi.Input<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
@@ -405,6 +415,11 @@ export interface LoadBalancerArgs {
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
     internetChargeType?: pulumi.Input<string>;
+    /**
+     * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     */
     loadBalancerName?: pulumi.Input<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.

@@ -17,9 +17,21 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
 
     public static final RatePlanInstanceState Empty = new RatePlanInstanceState();
 
+    /**
+     * Specifies whether to enable auto payment.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
+    /**
+     * @return Specifies whether to enable auto payment.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
     }
@@ -210,11 +222,27 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
             $ = new RatePlanInstanceState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoPay Specifies whether to enable auto payment.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
             $.autoPay = autoPay;
             return this;
         }
 
+        /**
+         * @param autoPay Specifies whether to enable auto payment.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
         }

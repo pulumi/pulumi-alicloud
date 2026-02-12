@@ -120,6 +120,8 @@ namespace Pulumi.AliCloud.Slb
     /// $ pulumi import alicloud:slb/listener:Listener example &lt;load_balancer_id&gt;:&lt;protocol&gt;:&lt;frontend_port&gt;
     /// ```
     /// 
+    /// **NOTE:** Before provider version 1.57.1, Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
+    /// 
     /// ```sh
     /// $ pulumi import alicloud:slb/listener:Listener example &lt;load_balancer_id&gt;:&lt;frontend_port&gt;
     /// ```

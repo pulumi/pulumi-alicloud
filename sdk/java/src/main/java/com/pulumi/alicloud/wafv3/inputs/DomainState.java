@@ -19,9 +19,23 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     public static final DomainState Empty = new DomainState();
 
+    /**
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
+    /**
+     * @return The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> accessType() {
         return Optional.ofNullable(this.accessType);
     }
@@ -194,11 +208,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
             $ = new DomainState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessType The mode in which the domain name is added to WAF. Valid values:
+         * share: CNAME record mode. This is the default value.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessType(@Nullable Output<String> accessType) {
             $.accessType = accessType;
             return this;
         }
 
+        /**
+         * @param accessType The mode in which the domain name is added to WAF. Valid values:
+         * share: CNAME record mode. This is the default value.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessType(String accessType) {
             return accessType(Output.of(accessType));
         }

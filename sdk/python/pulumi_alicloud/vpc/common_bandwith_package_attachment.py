@@ -247,6 +247,18 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  ip_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a CBWP Common Bandwidth Package Attachment resource.
+
+        > **NOTE:** Terraform will auto build common bandwidth package attachment while it uses `vpc.CommonBandwithPackageAttachment` to build a common bandwidth package attachment resource.
+
+        For information about common bandwidth package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/product/55092.htm).
+
+        > **NOTE:** From version 1.194.0, the resource can set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan by `bandwidth_package_bandwidth`. see [how to use it](https://www.alibabacloud.com/help/en/eip-bandwidth-plan/latest/120327).
+
+        For information about CBWP Common Bandwidth Package Attachment and how to use it, see [What is Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/product/55092.htm).
+
+        > **NOTE:** Available since v1.94.0.
+
         ## Example Usage
 
         Basic Usage
@@ -302,6 +314,18 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  args: CommonBandwithPackageAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a CBWP Common Bandwidth Package Attachment resource.
+
+        > **NOTE:** Terraform will auto build common bandwidth package attachment while it uses `vpc.CommonBandwithPackageAttachment` to build a common bandwidth package attachment resource.
+
+        For information about common bandwidth package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/product/55092.htm).
+
+        > **NOTE:** From version 1.194.0, the resource can set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan by `bandwidth_package_bandwidth`. see [how to use it](https://www.alibabacloud.com/help/en/eip-bandwidth-plan/latest/120327).
+
+        For information about CBWP Common Bandwidth Package Attachment and how to use it, see [What is Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/product/55092.htm).
+
+        > **NOTE:** Available since v1.94.0.
+
         ## Example Usage
 
         Basic Usage

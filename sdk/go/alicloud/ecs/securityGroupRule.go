@@ -72,6 +72,8 @@ import (
 //
 // ## Import
 //
+// > **NOTE:** Available since v1.224.0.
+//
 // Security Group Rule can be imported using the id, e.g.
 //
 // ```sh

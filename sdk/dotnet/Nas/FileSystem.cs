@@ -127,9 +127,19 @@ namespace Pulumi.AliCloud.Nas
         [Output("fileSystemType")]
         public Output<string> FileSystemType { get; private set; } = null!;
 
+        /// <summary>
+        /// String of keytab file content encrypted by base64
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("keytab")]
         public Output<string?> Keytab { get; private set; } = null!;
 
+        /// <summary>
+        /// String of the keytab file content encrypted by MD5
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("keytabMd5")]
         public Output<string?> KeytabMd5 { get; private set; } = null!;
 
@@ -354,9 +364,19 @@ namespace Pulumi.AliCloud.Nas
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
+        /// <summary>
+        /// String of keytab file content encrypted by base64
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("keytab")]
         public Input<string>? Keytab { get; set; }
 
+        /// <summary>
+        /// String of the keytab file content encrypted by MD5
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("keytabMd5")]
         public Input<string>? KeytabMd5 { get; set; }
 
@@ -549,9 +569,19 @@ namespace Pulumi.AliCloud.Nas
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
+        /// <summary>
+        /// String of keytab file content encrypted by base64
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("keytab")]
         public Input<string>? Keytab { get; set; }
 
+        /// <summary>
+        /// String of the keytab file content encrypted by MD5
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("keytabMd5")]
         public Input<string>? KeytabMd5 { get; set; }
 

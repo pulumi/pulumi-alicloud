@@ -27,24 +27,19 @@ __all__ = [
     'ServerGroupHealthCheckArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ListenerProxyProtocolConfigArgsDict(TypedDict):
-        proxy_protocol_config_private_link_ep_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
-        """
-        proxy_protocol_config_private_link_eps_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
-        """
-        proxy_protocol_config_vpc_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable carrying VpcId to backend servers through Proxy Protocol.
-        """
-elif False:
-    ListenerProxyProtocolConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerProxyProtocolConfigArgsDict(TypedDict):
+    proxy_protocol_config_private_link_ep_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+    """
+    proxy_protocol_config_private_link_eps_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+    """
+    proxy_protocol_config_vpc_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+    """
 
 @pulumi.input_type
 class ListenerProxyProtocolConfigArgs:
@@ -101,25 +96,22 @@ class ListenerProxyProtocolConfigArgs:
         pulumi.set(self, "proxy_protocol_config_vpc_id_enabled", value)
 
 
-if not MYPY:
-    class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable deletion protection. Valid values:
-        """
-        enabled_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Opening time of the configuration read-only mode.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
+class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable deletion protection. Valid values:
+    """
+    enabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Opening time of the configuration read-only mode.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
 
 
-        > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
-        """
-elif False:
-    LoadBalancerDeletionProtectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
+    """
 
 @pulumi.input_type
 class LoadBalancerDeletionProtectionConfigArgs:
@@ -182,28 +174,25 @@ class LoadBalancerDeletionProtectionConfigArgs:
         pulumi.set(self, "reason", value)
 
 
-if not MYPY:
-    class LoadBalancerModificationProtectionConfigArgsDict(TypedDict):
-        enabled_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Opening time of the configuration read-only mode.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
+class LoadBalancerModificationProtectionConfigArgsDict(TypedDict):
+    enabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Opening time of the configuration read-only mode.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
 
-        > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to enable the configuration read-only mode. Valid values:
-        - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
-        - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+    > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to enable the configuration read-only mode. Valid values:
+    - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+    - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
 
-        > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
-        """
-elif False:
-    LoadBalancerModificationProtectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+    """
 
 @pulumi.input_type
 class LoadBalancerModificationProtectionConfigArgs:
@@ -272,51 +261,48 @@ class LoadBalancerModificationProtectionConfigArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class LoadBalancerZoneMappingArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-        You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
-        """
-        allocation_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
-        """
-        eni_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the elastic network interface (ENI).
-        """
-        ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IPv4 Local address list. The list of addresses that NLB interacts with backend services.
-        """
-        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 address of the NLB instance.
-        """
-        ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IPv6 Local address list. The list of addresses that NLB interacts with backend services.
-        """
-        private_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
-        """
-        public_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public IPv4 address of the NLB instance.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone Status
-        """
-elif False:
-    LoadBalancerZoneMappingArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerZoneMappingArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+    You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
+    """
+    allocation_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
+    """
+    eni_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the elastic network interface (ENI).
+    """
+    ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+    """
+    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 address of the NLB instance.
+    """
+    ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+    """
+    private_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
+    """
+    public_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public IPv4 address of the NLB instance.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone Status
+    """
 
 @pulumi.input_type
 class LoadBalancerZoneMappingArgs:
@@ -485,79 +471,76 @@ class LoadBalancerZoneMappingArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class ServerGroupHealthCheckArgsDict(TypedDict):
-        health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port that you want to use for health checks on backend servers.
-        Valid values: `0` to `65535`.
-        Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
-        """
-        health_check_connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
-        """
-        health_check_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain name that you want to use for health checks. Valid values:
-        - `$SERVER_IP`: the private IP address of a backend server.
-        """
-        health_check_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the health check feature. Valid values:
-        """
-        health_check_exp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        health check response character string. The value contains a maximum of 512 characters
-        """
-        health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
+class ServerGroupHealthCheckArgsDict(TypedDict):
+    health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port that you want to use for health checks on backend servers.
+    Valid values: `0` to `65535`.
+    Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
+    """
+    health_check_connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
+    """
+    health_check_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain name that you want to use for health checks. Valid values:
+    - `$SERVER_IP`: the private IP address of a backend server.
+    """
+    health_check_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the health check feature. Valid values:
+    """
+    health_check_exp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    health check response character string. The value contains a maximum of 512 characters
+    """
+    health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
 
-        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
-        """
-        health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which health checks are performed. Unit: seconds.
-        Valid values: `5` to `50`.
-        Default value: `10`.
-        """
-        health_check_req: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UDP healthy check request string, the value is a character string of 512 characters
-        """
-        health_check_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
-        """
-        health_check_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to which health check requests are sent.
+    > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+    """
+    health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which health checks are performed. Unit: seconds.
+    Valid values: `5` to `50`.
+    Default value: `10`.
+    """
+    health_check_req: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UDP healthy check request string, the value is a character string of 512 characters
+    """
+    health_check_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
+    """
+    health_check_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to which health check requests are sent.
 
-        The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+    The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
 
-        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
-        """
-        healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-        Valid values: `2` to `10`.
-        Default value: `2`.
-        """
-        http_check_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+    > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+    """
+    healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+    Valid values: `2` to `10`.
+    Default value: `2`.
+    """
+    http_check_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
 
-        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
-        """
-        unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-        Valid values: `2` to `10`.
-        Default value: `2`.
-        """
-elif False:
-    ServerGroupHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+    """
+    unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+    Valid values: `2` to `10`.
+    Default value: `2`.
+    """
 
 @pulumi.input_type
 class ServerGroupHealthCheckArgs:

@@ -104,6 +104,14 @@ class GroupMembership(pulumi.CustomResource):
                  user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides a RAM Group membership resource.
+
+        > **NOTE:** Available since v1.0.0.
+
+        > **DEPRECATED:**  This resource has been deprecated since version `1.267.0`. Replace by `ram.UserGroupAttachment`.
+
+        > **WARNING:** When you delete this resource, any other users in the group will also be deleted—even if those users were not added to the group via this Terraform resource. Therefore, it is strongly recommended to use `ram.UserGroupAttachment` instead of this resource.
+
         ## Example Usage
 
         ```python
@@ -163,6 +171,14 @@ class GroupMembership(pulumi.CustomResource):
                  args: GroupMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RAM Group membership resource.
+
+        > **NOTE:** Available since v1.0.0.
+
+        > **DEPRECATED:**  This resource has been deprecated since version `1.267.0`. Replace by `ram.UserGroupAttachment`.
+
+        > **WARNING:** When you delete this resource, any other users in the group will also be deleted—even if those users were not added to the group via this Terraform resource. Therefore, it is strongly recommended to use `ram.UserGroupAttachment` instead of this resource.
+
         ## Example Usage
 
         ```python

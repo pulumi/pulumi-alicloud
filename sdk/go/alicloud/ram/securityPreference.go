@@ -11,12 +11,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a RAM Security Preference resource.
+//
+// For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
+//
+// > **NOTE:** Available since v1.152.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewSecurityPreference(ctx, "example", &ram.SecurityPreferenceArgs{
+//				EnableSaveMfaTicket:       pulumi.Bool(false),
+//				AllowUserToChangePassword: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `ram.SecurityPreference` or removing it from your configuration
+//
+// Terraform cannot destroy resource `ram.SecurityPreference`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RAM Security Preference can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/securityPreference:SecurityPreference example
+// $ terraform import alicloud_ram_security_preference.example
 // ```
 type SecurityPreference struct {
 	pulumi.CustomResourceState

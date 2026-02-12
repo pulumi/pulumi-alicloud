@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a MNS topic resource.
+//
+// > **NOTE:** Terraform will auto build a mns topic  while it uses `mns.Topic` to build a mns topic resource.
+//
+// > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_topic.
+//
 // ## Example Usage
 //
 // # Basic Usage

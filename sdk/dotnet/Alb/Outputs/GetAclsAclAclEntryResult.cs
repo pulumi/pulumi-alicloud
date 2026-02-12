@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The resource ID in terraform of Acl.
+        /// </summary>
         public readonly string Entry;
         /// <summary>
         /// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.

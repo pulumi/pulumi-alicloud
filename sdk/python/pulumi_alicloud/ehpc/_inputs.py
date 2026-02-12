@@ -47,52 +47,47 @@ __all__ = [
     'QueueComputeNodeSystemDiskArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ClusterAdditionalVolumeArgsDict(TypedDict):
-        job_queue: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The queue of the nodes to which the additional file system is attached.
-        """
-        local_directory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The local directory on which the additional file system is mounted.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the cluster. Valid value: `PublicCloud`.
-        """
-        remote_directory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remote directory to which the additional file system is mounted.
-        """
-        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgsDict']]]]
-        """
-        The roles. See `roles` below.
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the additional file system.
-        """
-        volume_mount_option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount options of the file system.
-        """
-        volume_mountpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount target of the additional file system.
-        """
-        volume_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-        """
-        volume_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the additional shared storage. Only NAS file systems are supported.
-        """
-elif False:
-    ClusterAdditionalVolumeArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAdditionalVolumeArgsDict(TypedDict):
+    job_queue: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The queue of the nodes to which the additional file system is attached.
+    """
+    local_directory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The local directory on which the additional file system is mounted.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the cluster. Valid value: `PublicCloud`.
+    """
+    remote_directory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The remote directory to which the additional file system is mounted.
+    """
+    roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgsDict']]]]
+    """
+    The roles. See `roles` below.
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the additional file system.
+    """
+    volume_mount_option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount options of the file system.
+    """
+    volume_mountpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount target of the additional file system.
+    """
+    volume_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+    """
+    volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the additional shared storage. Only NAS file systems are supported.
+    """
 
 @pulumi.input_type
 class ClusterAdditionalVolumeArgs:
@@ -261,14 +256,11 @@ class ClusterAdditionalVolumeArgs:
         pulumi.set(self, "volume_type", value)
 
 
-if not MYPY:
-    class ClusterAdditionalVolumeRoleArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the nodes to which the additional file system is attached.
-        """
-elif False:
-    ClusterAdditionalVolumeRoleArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterAdditionalVolumeRoleArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the nodes to which the additional file system is attached.
+    """
 
 @pulumi.input_type
 class ClusterAdditionalVolumeRoleArgs:
@@ -293,14 +285,11 @@ class ClusterAdditionalVolumeRoleArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ClusterApplicationArgsDict(TypedDict):
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag of the software.
-        """
-elif False:
-    ClusterApplicationArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterApplicationArgsDict(TypedDict):
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag of the software.
+    """
 
 @pulumi.input_type
 class ClusterApplicationArgs:
@@ -325,18 +314,15 @@ class ClusterApplicationArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class ClusterPostInstallScriptArgsDict(TypedDict):
-        args: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter that is used to run the script after the cluster is created.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL that is used to download the script after the cluster is created.
-        """
-elif False:
-    ClusterPostInstallScriptArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterPostInstallScriptArgsDict(TypedDict):
+    args: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameter that is used to run the script after the cluster is created.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL that is used to download the script after the cluster is created.
+    """
 
 @pulumi.input_type
 class ClusterPostInstallScriptArgs:
@@ -377,26 +363,23 @@ class ClusterPostInstallScriptArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class ClusterV2AddonArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Customize the specific configuration information of the service component.
-        """
-        version: pulumi.Input[_builtins.str]
-        """
-        Customize the service component version.
-        """
-        resources_spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Customize the resource configuration of the service component.
-        """
-        services_spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Customize the service configuration of the service component.
-        """
-elif False:
-    ClusterV2AddonArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterV2AddonArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Customize the specific configuration information of the service component.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    Customize the service component version.
+    """
+    resources_spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Customize the resource configuration of the service component.
+    """
+    services_spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Customize the service configuration of the service component.
+    """
 
 @pulumi.input_type
 class ClusterV2AddonArgs:
@@ -467,18 +450,15 @@ class ClusterV2AddonArgs:
         pulumi.set(self, "services_spec", value)
 
 
-if not MYPY:
-    class ClusterV2ClusterCredentialsArgsDict(TypedDict):
-        key_pair_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SSH key of root of the cluster node.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
-        """
-elif False:
-    ClusterV2ClusterCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterV2ClusterCredentialsArgsDict(TypedDict):
+    key_pair_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SSH key of root of the cluster node.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+    """
 
 @pulumi.input_type
 class ClusterV2ClusterCredentialsArgs:
@@ -519,26 +499,23 @@ class ClusterV2ClusterCredentialsArgs:
         pulumi.set(self, "password", value)
 
 
-if not MYPY:
-    class ClusterV2ManagerArgsDict(TypedDict):
-        directory_service: NotRequired[pulumi.Input['ClusterV2ManagerDirectoryServiceArgsDict']]
-        """
-        The configurations of the domain account service. See `directory_service` below.
-        """
-        dns: NotRequired[pulumi.Input['ClusterV2ManagerDnsArgsDict']]
-        """
-        The configurations of the domain name resolution service. See `dns` below.
-        """
-        manager_node: NotRequired[pulumi.Input['ClusterV2ManagerManagerNodeArgsDict']]
-        """
-        The hardware configurations of the management node. See `manager_node` below.
-        """
-        scheduler: NotRequired[pulumi.Input['ClusterV2ManagerSchedulerArgsDict']]
-        """
-        The configurations of the scheduler service. See `scheduler` below.
-        """
-elif False:
-    ClusterV2ManagerArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterV2ManagerArgsDict(TypedDict):
+    directory_service: NotRequired[pulumi.Input['ClusterV2ManagerDirectoryServiceArgsDict']]
+    """
+    The configurations of the domain account service. See `directory_service` below.
+    """
+    dns: NotRequired[pulumi.Input['ClusterV2ManagerDnsArgsDict']]
+    """
+    The configurations of the domain name resolution service. See `dns` below.
+    """
+    manager_node: NotRequired[pulumi.Input['ClusterV2ManagerManagerNodeArgsDict']]
+    """
+    The hardware configurations of the management node. See `manager_node` below.
+    """
+    scheduler: NotRequired[pulumi.Input['ClusterV2ManagerSchedulerArgsDict']]
+    """
+    The configurations of the scheduler service. See `scheduler` below.
+    """
 
 @pulumi.input_type
 class ClusterV2ManagerArgs:
@@ -611,21 +588,18 @@ class ClusterV2ManagerArgs:
         pulumi.set(self, "scheduler", value)
 
 
-if not MYPY:
-    class ClusterV2ManagerDirectoryServiceArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scheduler type. Valid values:
+class ClusterV2ManagerDirectoryServiceArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scheduler type. Valid values:
 
-        - SLURM
-        - PBS
-        - OPENGRIDSCHEDULER
-        - LSF_PLUGIN
-        - PBS_PLUGIN
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterV2ManagerDirectoryServiceArgsDict: TypeAlias = Mapping[str, Any]
+    - SLURM
+    - PBS
+    - OPENGRIDSCHEDULER
+    - LSF_PLUGIN
+    - PBS_PLUGIN
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterV2ManagerDirectoryServiceArgs:
@@ -674,21 +648,18 @@ class ClusterV2ManagerDirectoryServiceArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ClusterV2ManagerDnsArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scheduler type. Valid values:
+class ClusterV2ManagerDnsArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scheduler type. Valid values:
 
-        - SLURM
-        - PBS
-        - OPENGRIDSCHEDULER
-        - LSF_PLUGIN
-        - PBS_PLUGIN
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterV2ManagerDnsArgsDict: TypeAlias = Mapping[str, Any]
+    - SLURM
+    - PBS
+    - OPENGRIDSCHEDULER
+    - LSF_PLUGIN
+    - PBS_PLUGIN
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterV2ManagerDnsArgs:
@@ -737,86 +708,83 @@ class ClusterV2ManagerDnsArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
-        auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
-        - true: Automatic renewal.
-        - false: Do not renew automatically (default).
-        """
-        auto_renew_period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The renewal duration of a single automatic renewal. Value range:
-        - When PeriodUnit = Week: 1, 2, 3.
-        - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
+    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+    - true: Automatic renewal.
+    - false: Do not renew automatically (default).
+    """
+    auto_renew_period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The renewal duration of a single automatic renewal. Value range:
+    - When PeriodUnit = Week: 1, 2, 3.
+    - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
 
-        Default value: 1.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The duration of the preemptible instance, in hours. Value:
-        - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
-        - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+    Default value: 1.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The duration of the preemptible instance, in hours. Value:
+    - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+    - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
 
-        Default value: 1.
-        """
-        enable_ht: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        EnableHT
-        """
-        expired_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The expiration time of the management node.
-        """
-        image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ImageId
-        """
-        instance_charge_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance billing method of the management node. Valid values:
+    Default value: 1.
+    """
+    enable_ht: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    EnableHT
+    """
+    expired_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The expiration time of the management node.
+    """
+    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ImageId
+    """
+    instance_charge_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance billing method of the management node. Valid values:
 
-        - PostPaid: pay-as-you-go
-        - PrePaid: subscription
-        """
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance ID of the management node.
-        """
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance type of the management node.
-        """
-        period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
-        - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
-        - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
-        """
-        period_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unit of duration of the year-to-month billing method. Value range:
-        - Week.
-        - Month (default).
-        """
-        spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
-        """
-        spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
-        - NoSpot: normal pay-as-you-go instances (default).
-        - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
-        - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
-        """
-        system_disk: NotRequired[pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgsDict']]
-        """
-        System disk configuration of the management node. See `system_disk` below.
-        """
-elif False:
-    ClusterV2ManagerManagerNodeArgsDict: TypeAlias = Mapping[str, Any]
+    - PostPaid: pay-as-you-go
+    - PrePaid: subscription
+    """
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance ID of the management node.
+    """
+    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance type of the management node.
+    """
+    period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+    - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+    - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+    """
+    period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unit of duration of the year-to-month billing method. Value range:
+    - Week.
+    - Month (default).
+    """
+    spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+    """
+    spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+    - NoSpot: normal pay-as-you-go instances (default).
+    - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+    - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+    """
+    system_disk: NotRequired[pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgsDict']]
+    """
+    System disk configuration of the management node. See `system_disk` below.
+    """
 
 @pulumi.input_type
 class ClusterV2ManagerManagerNodeArgs:
@@ -1089,37 +1057,34 @@ class ClusterV2ManagerManagerNodeArgs:
         pulumi.set(self, "system_disk", value)
 
 
-if not MYPY:
-    class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Manage the system disk configuration of the node. Value range:
-        - cloud_efficiency: The Ultra cloud disk.
-        - cloud_ssd:SSD cloud disk.
-        - cloud_essd:ESSD cloud disk.
-        - cloud: ordinary cloud disk.
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-        - PL0: maximum random read/write IOPS 10000 for a single disk.
-        - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-        - PL2: maximum random read/write IOPS 100000 for a single disk.
-        - PL3: maximum random read/write IOPS 1 million for a single disk.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The system disk size of the management node. Unit: GiB. Value range:
-        - Ordinary cloud tray: 20~500.
-        - ESSD cloud disk:
-        - PL0:1~2048.
-        - PL1:20~2048.
-        - PL2:461~2048.
-        - PL3:1261~2048.
-        - Other cloud disk types: 20~2048.
-        """
-elif False:
-    ClusterV2ManagerManagerNodeSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Manage the system disk configuration of the node. Value range:
+    - cloud_efficiency: The Ultra cloud disk.
+    - cloud_ssd:SSD cloud disk.
+    - cloud_essd:ESSD cloud disk.
+    - cloud: ordinary cloud disk.
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+    - PL0: maximum random read/write IOPS 10000 for a single disk.
+    - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+    - PL2: maximum random read/write IOPS 100000 for a single disk.
+    - PL3: maximum random read/write IOPS 1 million for a single disk.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The system disk size of the management node. Unit: GiB. Value range:
+    - Ordinary cloud tray: 20~500.
+    - ESSD cloud disk:
+    - PL0:1~2048.
+    - PL1:20~2048.
+    - PL2:461~2048.
+    - PL3:1261~2048.
+    - Other cloud disk types: 20~2048.
+    """
 
 @pulumi.input_type
 class ClusterV2ManagerManagerNodeSystemDiskArgs:
@@ -1206,21 +1171,18 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class ClusterV2ManagerSchedulerArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scheduler type. Valid values:
+class ClusterV2ManagerSchedulerArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scheduler type. Valid values:
 
-        - SLURM
-        - PBS
-        - OPENGRIDSCHEDULER
-        - LSF_PLUGIN
-        - PBS_PLUGIN
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ClusterV2ManagerSchedulerArgsDict: TypeAlias = Mapping[str, Any]
+    - SLURM
+    - PBS
+    - OPENGRIDSCHEDULER
+    - LSF_PLUGIN
+    - PBS_PLUGIN
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ClusterV2ManagerSchedulerArgs:
@@ -1269,36 +1231,33 @@ class ClusterV2ManagerSchedulerArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class ClusterV2SharedStorageArgsDict(TypedDict):
-        file_system_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the mounted file system.
-        """
-        mount_directory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The local Mount directory where the file system is mounted.
-        """
-        mount_options: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Storage mount options for the mounted file system.
-        """
-        mount_target_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount point address of the mounted file system.
-        """
-        nas_directory: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remote directory to which the mounted file system needs to be mounted.
-        """
-        protocol_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type of the mounted file system. Value range:
-        - NFS
-        - SMB
-        """
-elif False:
-    ClusterV2SharedStorageArgsDict: TypeAlias = Mapping[str, Any]
+class ClusterV2SharedStorageArgsDict(TypedDict):
+    file_system_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the mounted file system.
+    """
+    mount_directory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The local Mount directory where the file system is mounted.
+    """
+    mount_options: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Storage mount options for the mounted file system.
+    """
+    mount_target_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount point address of the mounted file system.
+    """
+    nas_directory: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The remote directory to which the mounted file system needs to be mounted.
+    """
+    protocol_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type of the mounted file system. Value range:
+    - NFS
+    - SMB
+    """
 
 @pulumi.input_type
 class ClusterV2SharedStorageArgs:
@@ -1407,58 +1366,55 @@ class ClusterV2SharedStorageArgs:
         pulumi.set(self, "protocol_type", value)
 
 
-if not MYPY:
-    class QueueComputeNodeArgsDict(TypedDict):
-        auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        AutoRenew
-        """
-        auto_renew_period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        AutoRenewPeriod
-        """
-        duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Duration
-        """
-        enable_ht: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether HT is enabled for the computing node.
-        """
-        image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ImageId
-        """
-        instance_charge_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InstanceChargeType
-        """
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InstanceTypes
-        """
-        period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Period
-        """
-        period_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PeriodUnit
-        """
-        spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        SpotPriceLimit
-        """
-        spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SpotStrategy
-        """
-        system_disk: NotRequired[pulumi.Input['QueueComputeNodeSystemDiskArgsDict']]
-        """
-        SystemDisk See `system_disk` below.
-        """
-elif False:
-    QueueComputeNodeArgsDict: TypeAlias = Mapping[str, Any]
+class QueueComputeNodeArgsDict(TypedDict):
+    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    AutoRenew
+    """
+    auto_renew_period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    AutoRenewPeriod
+    """
+    duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Duration
+    """
+    enable_ht: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether HT is enabled for the computing node.
+    """
+    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ImageId
+    """
+    instance_charge_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InstanceChargeType
+    """
+    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InstanceTypes
+    """
+    period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Period
+    """
+    period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PeriodUnit
+    """
+    spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    SpotPriceLimit
+    """
+    spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SpotStrategy
+    """
+    system_disk: NotRequired[pulumi.Input['QueueComputeNodeSystemDiskArgsDict']]
+    """
+    SystemDisk See `system_disk` below.
+    """
 
 @pulumi.input_type
 class QueueComputeNodeArgs:
@@ -1659,22 +1615,19 @@ class QueueComputeNodeArgs:
         pulumi.set(self, "system_disk", value)
 
 
-if not MYPY:
-    class QueueComputeNodeSystemDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Category
-        """
-        level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Level
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size
-        """
-elif False:
-    QueueComputeNodeSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+class QueueComputeNodeSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Category
+    """
+    level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Level
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size
+    """
 
 @pulumi.input_type
 class QueueComputeNodeSystemDiskArgs:

@@ -222,6 +222,11 @@ namespace Pulumi.AliCloud.starRocks
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of promotion option.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("promotionOptionNo")]
         public Output<string?> PromotionOptionNo { get; private set; } = null!;
 
@@ -398,6 +403,11 @@ namespace Pulumi.AliCloud.starRocks
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
+        /// <summary>
+        /// ID of promotion option.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }
 
@@ -536,6 +546,11 @@ namespace Pulumi.AliCloud.starRocks
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
+        /// <summary>
+        /// ID of promotion option.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("promotionOptionNo")]
         public Input<string>? PromotionOptionNo { get; set; }
 

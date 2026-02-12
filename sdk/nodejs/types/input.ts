@@ -163,7 +163,13 @@ export interface OpenApiExplorerApiMcpServerTerraformTool {
      * Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
      */
     async?: pulumi.Input<boolean>;
+    /**
+     * Terraform Tool code. Overview of the HCL Language
+     */
     code?: pulumi.Input<string>;
+    /**
+     * Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+     */
     description?: pulumi.Input<string>;
     /**
      * The cleanup policy applied to temporary resources after task completion, based on the task execution status:
@@ -172,6 +178,9 @@ export interface OpenApiExplorerApiMcpServerTerraformTool {
      * - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
      */
     destroyPolicy?: pulumi.Input<string>;
+    /**
+     * The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -189,6 +198,9 @@ export interface ProviderAssumeRole {
      * The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
      */
     sessionExpiration?: pulumi.Input<number>;
+    /**
+     * The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+     */
     sessionName?: pulumi.Input<string>;
 }
 
@@ -3122,7 +3134,7 @@ export namespace bastionhost {
 export namespace bp {
     export interface StudioApplicationInstance {
         /**
-         * The id of the instance.
+         * The resource ID in terraform of Application.
          */
         id?: pulumi.Input<string>;
         /**
@@ -19223,6 +19235,13 @@ export namespace rds {
     }
 
     export interface InstanceServerlessConfig {
+        /**
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+         * > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+         */
         autoPause?: pulumi.Input<boolean>;
         /**
          * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:

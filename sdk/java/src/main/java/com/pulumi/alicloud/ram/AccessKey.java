@@ -181,9 +181,17 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     * 
+     */
     @Export(name="encryptedSecret", refs={String.class}, tree="[0]")
     private Output<String> encryptedSecret;
 
+    /**
+     * @return (Available since v1.47.0) The encrypted secret, base64 encoded. &gt; NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     * 
+     */
     public Output<String> encryptedSecret() {
         return this.encryptedSecret;
     }

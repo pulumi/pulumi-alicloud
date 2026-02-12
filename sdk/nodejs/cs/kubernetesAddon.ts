@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster). For more usage information, see Use Terraform to manage addons.
+ *
+ * > **NOTE:** Available since v1.150.0.
+ *
+ * > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+ *
  * ## Example Usage
  *
  * Basic Usage

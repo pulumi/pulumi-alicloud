@@ -27,24 +27,19 @@ __all__ = [
     'ServerGroupServerArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class LoadBalancerZoneMappingArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The zone ID. You can call the DescribeZones operation to query the most recent zone list.
-        """
-        load_balancer_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]
-        """
-        The information about the IP addresses used by the GWLB instance.
-        """
-elif False:
-    LoadBalancerZoneMappingArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerZoneMappingArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+    """
+    load_balancer_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]
+    """
+    The information about the IP addresses used by the GWLB instance.
+    """
 
 @pulumi.input_type
 class LoadBalancerZoneMappingArgs:
@@ -99,18 +94,15 @@ class LoadBalancerZoneMappingArgs:
         pulumi.set(self, "load_balancer_addresses", value)
 
 
-if not MYPY:
-    class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
-        eni_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the elastic network interface (ENI) used by the GWLB instance.
-        """
-        private_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private IPv4 address.
-        """
-elif False:
-    LoadBalancerZoneMappingLoadBalancerAddressArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
+    eni_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the elastic network interface (ENI) used by the GWLB instance.
+    """
+    private_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private IPv4 address.
+    """
 
 @pulumi.input_type
 class LoadBalancerZoneMappingLoadBalancerAddressArgs:
@@ -151,24 +143,21 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
         pulumi.set(self, "private_ipv4_address", value)
 
 
-if not MYPY:
-    class ServerGroupConnectionDrainConfigArgsDict(TypedDict):
-        connection_drain_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether connection draining is enabled. Valid values:
-        """
-        connection_drain_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period of connection draining.
+class ServerGroupConnectionDrainConfigArgsDict(TypedDict):
+    connection_drain_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether connection draining is enabled. Valid values:
+    """
+    connection_drain_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period of connection draining.
 
-        Unit: seconds
+    Unit: seconds
 
-        Valid values: `1` to `3600`.
+    Valid values: `1` to `3600`.
 
-        Default value: `300`.
-        """
-elif False:
-    ServerGroupConnectionDrainConfigArgsDict: TypeAlias = Mapping[str, Any]
+    Default value: `300`.
+    """
 
 @pulumi.input_type
 class ServerGroupConnectionDrainConfigArgs:
@@ -221,85 +210,82 @@ class ServerGroupConnectionDrainConfigArgs:
         pulumi.set(self, "connection_drain_timeout", value)
 
 
-if not MYPY:
-    class ServerGroupHealthCheckConfigArgsDict(TypedDict):
-        health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The backend server port that is used for health checks.
+class ServerGroupHealthCheckConfigArgsDict(TypedDict):
+    health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The backend server port that is used for health checks.
 
-        Valid values: `1` to `65535`.
+    Valid values: `1` to `65535`.
 
-        Default value: `80`.
-        """
-        health_check_connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum timeout period of a health check response.
+    Default value: `80`.
+    """
+    health_check_connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum timeout period of a health check response.
 
-        Unit: seconds
+    Unit: seconds
 
-        Valid values: `1` to `300`.
+    Valid values: `1` to `300`.
 
-        Default value: `5`.
-        """
-        health_check_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain name that you want to use for health checks. Valid values:
+    Default value: `5`.
+    """
+    health_check_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain name that you want to use for health checks. Valid values:
 
-        *   **$SERVER_IP** (default): the private IP address of a backend server.
-        """
-        health_check_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the health check feature. Valid values:
-        """
-        health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The HTTP status codes that the system returns for health checks.
-        """
-        health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which health checks are performed.
+    *   **$SERVER_IP** (default): the private IP address of a backend server.
+    """
+    health_check_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the health check feature. Valid values:
+    """
+    health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The HTTP status codes that the system returns for health checks.
+    """
+    health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which health checks are performed.
 
-        Unit: seconds
+    Unit: seconds
 
-        Valid values: `1` to `50`.
+    Valid values: `1` to `50`.
 
-        Default value: `10`.
-        """
-        health_check_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL that is used for health checks.
+    Default value: `10`.
+    """
+    health_check_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL that is used for health checks.
 
-        The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \\_ ; ~ ! ( ) \\* \\[ ] @ $ ^ : ' , + =
+    The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \\_ ; ~ ! ( ) \\* \\[ ] @ $ ^ : ' , + =
 
-        The URL must start with a forward slash (/).
+    The URL must start with a forward slash (/).
 
-        > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
-        """
-        health_check_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol that is used for health checks. Valid values:
+    > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+    """
+    health_check_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol that is used for health checks. Valid values:
 
-        - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
-        - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
-        """
-        healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+    - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+    - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+    """
+    healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
 
-        Valid values: `2` to `10`.
+    Valid values: `2` to `10`.
 
-        Default value: `2`.
-        """
-        unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+    Default value: `2`.
+    """
+    unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 
-        Valid values: `2` to `10`.
+    Valid values: `2` to `10`.
 
-        Default value: `2`.
-        """
-elif False:
-    ServerGroupHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
+    Default value: `2`.
+    """
 
 @pulumi.input_type
 class ServerGroupHealthCheckConfigArgs:
@@ -538,42 +524,39 @@ class ServerGroupHealthCheckConfigArgs:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
-if not MYPY:
-    class ServerGroupServerArgsDict(TypedDict):
-        server_id: pulumi.Input[_builtins.str]
-        """
-        The backend server ID.
+class ServerGroupServerArgsDict(TypedDict):
+    server_id: pulumi.Input[_builtins.str]
+    """
+    The backend server ID.
 
-        - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
-        - If the server group is of the `Ip` type, set ServerId to IP addresses.
-        """
-        server_type: pulumi.Input[_builtins.str]
-        """
-        The type of the backend server. Valid values:
+    - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+    - If the server group is of the `Ip` type, set ServerId to IP addresses.
+    """
+    server_type: pulumi.Input[_builtins.str]
+    """
+    The type of the backend server. Valid values:
 
-        - `Ecs`: Elastic Compute Service (ECS) instance
-        - `Eni`: elastic network interface (ENI)
-        - `Eci`: elastic container instance
-        - `Ip`: IP address
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Optional, Computed, Int) The port that is used by the backend server.
-        """
-        server_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The server group ID.
-        """
-        server_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the backend server.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the status of the backend server.
-        """
-elif False:
-    ServerGroupServerArgsDict: TypeAlias = Mapping[str, Any]
+    - `Ecs`: Elastic Compute Service (ECS) instance
+    - `Eni`: elastic network interface (ENI)
+    - `Eci`: elastic container instance
+    - `Ip`: IP address
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Optional, Computed, Int) The port that is used by the backend server.
+    """
+    server_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The server group ID.
+    """
+    server_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the backend server.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Indicates the status of the backend server.
+    """
 
 @pulumi.input_type
 class ServerGroupServerArgs:

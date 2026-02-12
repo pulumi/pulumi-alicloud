@@ -15,6 +15,133 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a EAIS Client Instance Attachment resource.
+ * 
+ * Bind an ECS or ECI instance.
+ * 
+ * For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
+ * 
+ * &gt; **NOTE:** Available since v1.246.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.eais.ClientInstanceAttachment;
+ * import com.pulumi.alicloud.eais.ClientInstanceAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var zone = config.get("zone").orElse("cn-hangzhou-i");
+ *         final var ecsImage = config.get("ecsImage").orElse("ubuntu_20_04_x64_20G_alibase_20230316.vhd");
+ *         final var ecsType = config.get("ecsType").orElse("ecs.g7.large");
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var category = config.get("category").orElse("ei");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone("cn-hangzhou-i")
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_18.*64")
+ *             .owners("system")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId("cn-hangzhou-i")
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .securityGroupName(name)
+ *             .description(name)
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new com.pulumi.alicloud.ecs.Instance("exampleInstance", com.pulumi.alicloud.ecs.InstanceArgs.builder()
+ *             .availabilityZone("cn-hangzhou-i")
+ *             .vswitchId(exampleSwitch.id())
+ *             .imageId(exampleGetImages.images()[0].id())
+ *             .instanceType(example.instanceTypes()[0].id())
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut(5)
+ *             .securityGroups(exampleSecurityGroup.id())
+ *             .instanceName(name)
+ *             .userData("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+ *             .build());
+ * 
+ *         var eais = new com.pulumi.alicloud.eais.Instance("eais", com.pulumi.alicloud.eais.InstanceArgs.builder()
+ *             .instanceName(name)
+ *             .vswitchId(exampleSwitch.id())
+ *             .securityGroupId(exampleSecurityGroup.id())
+ *             .instanceType("eais.ei-a6.2xlarge")
+ *             .category("ei")
+ *             .build());
+ * 
+ *         var defaultClientInstanceAttachment = new ClientInstanceAttachment("defaultClientInstanceAttachment", ClientInstanceAttachmentArgs.builder()
+ *             .instanceId(eais.id())
+ *             .clientInstanceId(exampleInstance.id())
+ *             .category("ei")
+ *             .status("Bound")
+ *             .eiInstanceType("eais.ei-a6.2xlarge")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.eais.ClientInstanceAttachment` or removing it from your configuration
+ * 
+ * The `alicloud.eais.ClientInstanceAttachment` resource allows you to manage  `category = &#34;eais&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * EAIS Client Instance Attachment can be imported using the id, e.g.

@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an Api Gateway Vpc Access resource.
+//
+// For information about Api Gateway Vpc Access and how to use it, see [What is Vpc Access](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-setvpcaccess)
+//
+// > **NOTE:** Available since v1.23.0.
+//
+// > **NOTE:** Terraform will auto build vpc authorization while it uses `apigateway.VpcAccess` to build vpc.
+//
 // ## Example Usage
 //
 // # Basic Usage

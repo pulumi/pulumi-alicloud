@@ -11,6 +11,56 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Firewall Threat Intelligence Switch resource.
+//
+// Cloud Firewall Switch Threat Intelligence.
+//
+// For information about Cloud Firewall Threat Intelligence Switch and how to use it, see [What is Threat Intelligence Switch](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyThreatIntelligenceSwitch).
+//
+// > **NOTE:** Available since v1.260.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudfirewall.NewThreatIntelligenceSwitch(ctx, "default", &cloudfirewall.ThreatIntelligenceSwitchArgs{
+//				Action:       pulumi.String("alert"),
+//				EnableStatus: pulumi.Int(0),
+//				CategoryId:   pulumi.String("IpOutThreatTorExit"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudfirewall.ThreatIntelligenceSwitch` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudfirewall.ThreatIntelligenceSwitch`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Threat Intelligence Switch can be imported using the id, e.g.

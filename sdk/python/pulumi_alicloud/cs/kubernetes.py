@@ -108,6 +108,7 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[_builtins.str] master_period_unit: Master payment period unit, the valid value is `Month`.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[_builtins.str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
@@ -119,6 +120,7 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -615,6 +617,9 @@ class KubernetesArgs:
     @pulumi.getter(name="namePrefix")
     @_utilities.deprecated("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
     def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -756,6 +761,9 @@ class KubernetesArgs:
     @_builtins.property
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        """
         return pulumi.get(self, "retain_resources")
 
     @retain_resources.setter
@@ -992,6 +1000,7 @@ class _KubernetesState:
         :param pulumi.Input[_builtins.str] master_period_unit: Master payment period unit, the valid value is `Month`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
@@ -1004,6 +1013,7 @@ class _KubernetesState:
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -1565,6 +1575,9 @@ class _KubernetesState:
     @pulumi.getter(name="namePrefix")
     @_utilities.deprecated("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
     def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -1718,6 +1731,9 @@ class _KubernetesState:
     @_builtins.property
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        """
         return pulumi.get(self, "retain_resources")
 
     @retain_resources.setter
@@ -2201,6 +2217,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] master_period_unit: Master payment period unit, the valid value is `Month`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[_builtins.str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
@@ -2212,6 +2229,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -2688,6 +2706,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] master_period_unit: Master payment period unit, the valid value is `Month`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
@@ -2700,6 +2719,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[Union['KubernetesRuntimeArgs', 'KubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -3059,6 +3079,9 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="namePrefix")
     @_utilities.deprecated("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
     def name_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        """
         return pulumi.get(self, "name_prefix")
 
     @_builtins.property
@@ -3160,6 +3183,9 @@ class Kubernetes(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        """
         return pulumi.get(self, "retain_resources")
 
     @_builtins.property

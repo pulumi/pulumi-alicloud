@@ -65,32 +65,27 @@ __all__ = [
     'SyntheticTaskMonitorConfWebsiteArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DispatchRuleGroupRuleArgsDict(TypedDict):
-        group_interval: pulumi.Input[_builtins.int]
-        """
-        The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
-        """
-        group_wait_time: pulumi.Input[_builtins.int]
-        """
-        The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
-        """
-        grouping_fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
-        """
-        group_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the group rule.
-        """
-        repeat_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
-        """
-elif False:
-    DispatchRuleGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleGroupRuleArgsDict(TypedDict):
+    group_interval: pulumi.Input[_builtins.int]
+    """
+    The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+    """
+    group_wait_time: pulumi.Input[_builtins.int]
+    """
+    The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
+    """
+    grouping_fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the group rule.
+    """
+    repeat_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
+    """
 
 @pulumi.input_type
 class DispatchRuleGroupRuleArgs:
@@ -176,14 +171,11 @@ class DispatchRuleGroupRuleArgs:
         pulumi.set(self, "repeat_interval", value)
 
 
-if not MYPY:
-    class DispatchRuleLabelMatchExpressionGridArgsDict(TypedDict):
-        label_match_expression_groups: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgsDict']]]
-        """
-        Sets the dispatch rule. See `label_match_expression_groups` below.
-        """
-elif False:
-    DispatchRuleLabelMatchExpressionGridArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleLabelMatchExpressionGridArgsDict(TypedDict):
+    label_match_expression_groups: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgsDict']]]
+    """
+    Sets the dispatch rule. See `label_match_expression_groups` below.
+    """
 
 @pulumi.input_type
 class DispatchRuleLabelMatchExpressionGridArgs:
@@ -207,14 +199,11 @@ class DispatchRuleLabelMatchExpressionGridArgs:
         pulumi.set(self, "label_match_expression_groups", value)
 
 
-if not MYPY:
-    class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgsDict(TypedDict):
-        label_match_expressions: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgsDict']]]
-        """
-        Sets the dispatch rule. See `label_match_expressions` below.
-        """
-elif False:
-    DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgsDict(TypedDict):
+    label_match_expressions: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgsDict']]]
+    """
+    Sets the dispatch rule. See `label_match_expressions` below.
+    """
 
 @pulumi.input_type
 class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
@@ -238,32 +227,29 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
         pulumi.set(self, "label_match_expressions", value)
 
 
-if not MYPY:
-    class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key of the tag of the dispatch rule. Valid values:
-        * _aliyun_arms_userid: user ID
-        * _aliyun_arms_involvedObject_kind: type of the associated object
-        * _aliyun_arms_involvedObject_id: ID of the associated object
-        * _aliyun_arms_involvedObject_name: name of the associated object
-        * _aliyun_arms_alert_name: alert name
-        * _aliyun_arms_alert_rule_id: alert rule ID
-        * _aliyun_arms_alert_type: alert type
-        * _aliyun_arms_alert_level: alert severity
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        The operator used in the dispatch rule. Valid values: 
-        * eq: equals to.
-        * re: matches a regular expression.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the tag.
-        """
-elif False:
-    DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the tag of the dispatch rule. Valid values:
+    * _aliyun_arms_userid: user ID
+    * _aliyun_arms_involvedObject_kind: type of the associated object
+    * _aliyun_arms_involvedObject_id: ID of the associated object
+    * _aliyun_arms_involvedObject_name: name of the associated object
+    * _aliyun_arms_alert_name: alert name
+    * _aliyun_arms_alert_rule_id: alert rule ID
+    * _aliyun_arms_alert_type: alert type
+    * _aliyun_arms_alert_level: alert severity
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    The operator used in the dispatch rule. Valid values: 
+    * eq: equals to.
+    * re: matches a regular expression.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the tag.
+    """
 
 @pulumi.input_type
 class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs:
@@ -337,26 +323,23 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DispatchRuleNotifyRuleArgsDict(TypedDict):
-        notify_channels: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
-        """
-        notify_end_time: pulumi.Input[_builtins.str]
-        """
-        End time of notification.
-        """
-        notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgsDict']]]
-        """
-        Sets the notification object. See `notify_objects` below.
-        """
-        notify_start_time: pulumi.Input[_builtins.str]
-        """
-        Start time of notification.
-        """
-elif False:
-    DispatchRuleNotifyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleNotifyRuleArgsDict(TypedDict):
+    notify_channels: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+    """
+    notify_end_time: pulumi.Input[_builtins.str]
+    """
+    End time of notification.
+    """
+    notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgsDict']]]
+    """
+    Sets the notification object. See `notify_objects` below.
+    """
+    notify_start_time: pulumi.Input[_builtins.str]
+    """
+    Start time of notification.
+    """
 
 @pulumi.input_type
 class DispatchRuleNotifyRuleArgs:
@@ -425,22 +408,19 @@ class DispatchRuleNotifyRuleArgs:
         pulumi.set(self, "notify_start_time", value)
 
 
-if not MYPY:
-    class DispatchRuleNotifyRuleNotifyObjectArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the contact or contact group.
-        """
-        notify_object_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the contact or contact group.
-        """
-        notify_type: pulumi.Input[_builtins.str]
-        """
-        The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-        """
-elif False:
-    DispatchRuleNotifyRuleNotifyObjectArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleNotifyRuleNotifyObjectArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the contact or contact group.
+    """
+    notify_object_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the contact or contact group.
+    """
+    notify_type: pulumi.Input[_builtins.str]
+    """
+    The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+    """
 
 @pulumi.input_type
 class DispatchRuleNotifyRuleNotifyObjectArgs:
@@ -494,46 +474,43 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
         pulumi.set(self, "notify_type", value)
 
 
-if not MYPY:
-    class DispatchRuleNotifyTemplateArgsDict(TypedDict):
-        email_content: pulumi.Input[_builtins.str]
-        """
-        The content of the email notification.
-        """
-        email_recover_content: pulumi.Input[_builtins.str]
-        """
-        The content of the email notification for restored alerts.
-        """
-        email_recover_title: pulumi.Input[_builtins.str]
-        """
-        The title of the email notification for restored alerts.
-        """
-        email_title: pulumi.Input[_builtins.str]
-        """
-        The title of the email notification.
-        """
-        robot_content: pulumi.Input[_builtins.str]
-        """
-        The content of the robot notification.
-        """
-        sms_content: pulumi.Input[_builtins.str]
-        """
-        The content of the SMS notification.
-        """
-        sms_recover_content: pulumi.Input[_builtins.str]
-        """
-        The content of the SMS notification for restored alerts.
-        """
-        tts_content: pulumi.Input[_builtins.str]
-        """
-        The content of the TTS notification.
-        """
-        tts_recover_content: pulumi.Input[_builtins.str]
-        """
-        The content of the TTS notification for restored alerts.
-        """
-elif False:
-    DispatchRuleNotifyTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class DispatchRuleNotifyTemplateArgsDict(TypedDict):
+    email_content: pulumi.Input[_builtins.str]
+    """
+    The content of the email notification.
+    """
+    email_recover_content: pulumi.Input[_builtins.str]
+    """
+    The content of the email notification for restored alerts.
+    """
+    email_recover_title: pulumi.Input[_builtins.str]
+    """
+    The title of the email notification for restored alerts.
+    """
+    email_title: pulumi.Input[_builtins.str]
+    """
+    The title of the email notification.
+    """
+    robot_content: pulumi.Input[_builtins.str]
+    """
+    The content of the robot notification.
+    """
+    sms_content: pulumi.Input[_builtins.str]
+    """
+    The content of the SMS notification.
+    """
+    sms_recover_content: pulumi.Input[_builtins.str]
+    """
+    The content of the SMS notification for restored alerts.
+    """
+    tts_content: pulumi.Input[_builtins.str]
+    """
+    The content of the TTS notification.
+    """
+    tts_recover_content: pulumi.Input[_builtins.str]
+    """
+    The content of the TTS notification for restored alerts.
+    """
 
 @pulumi.input_type
 class DispatchRuleNotifyTemplateArgs:
@@ -677,18 +654,15 @@ class DispatchRuleNotifyTemplateArgs:
         pulumi.set(self, "tts_recover_content", value)
 
 
-if not MYPY:
-    class PrometheusAlertRuleAnnotationArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the annotation.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the annotation.
-        """
-elif False:
-    PrometheusAlertRuleAnnotationArgsDict: TypeAlias = Mapping[str, Any]
+class PrometheusAlertRuleAnnotationArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the annotation.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the annotation.
+    """
 
 @pulumi.input_type
 class PrometheusAlertRuleAnnotationArgs:
@@ -729,18 +703,15 @@ class PrometheusAlertRuleAnnotationArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class PrometheusAlertRuleLabelArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the label.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the label.
-        """
-elif False:
-    PrometheusAlertRuleLabelArgsDict: TypeAlias = Mapping[str, Any]
+class PrometheusAlertRuleLabelArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the label.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the label.
+    """
 
 @pulumi.input_type
 class PrometheusAlertRuleLabelArgs:
@@ -781,26 +752,23 @@ class PrometheusAlertRuleLabelArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class SyntheticTaskAvailableAssertionArgsDict(TypedDict):
-        expect: pulumi.Input[_builtins.str]
-        """
-        Expected value.
-        """
-        operator: pulumi.Input[_builtins.str]
-        """
-        Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
-        """
-        target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
-        """
-elif False:
-    SyntheticTaskAvailableAssertionArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskAvailableAssertionArgsDict(TypedDict):
+    expect: pulumi.Input[_builtins.str]
+    """
+    Expected value.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
+    """
+    target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
+    """
 
 @pulumi.input_type
 class SyntheticTaskAvailableAssertionArgs:
@@ -870,39 +838,36 @@ class SyntheticTaskAvailableAssertionArgs:
         pulumi.set(self, "target", value)
 
 
-if not MYPY:
-    class SyntheticTaskCommonSettingArgsDict(TypedDict):
-        custom_host: NotRequired[pulumi.Input['SyntheticTaskCommonSettingCustomHostArgsDict']]
-        """
-        Custom host. See `custom_host` below.
-        """
-        ip_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        IpType.
-        """
-        is_open_trace: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable link tracking.
-        """
-        monitor_samples: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether the monitoring samples are evenly distributed:
-        - 0: No
-        1: Yes.
-        """
-        trace_client_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Link trace client type:
-        - 0:ARMS Agent
-        - 1:OpenTelemetry
-        - 2:Jaeger.
-        """
-        xtrace_region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The link data is reported to the region.
-        """
-elif False:
-    SyntheticTaskCommonSettingArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskCommonSettingArgsDict(TypedDict):
+    custom_host: NotRequired[pulumi.Input['SyntheticTaskCommonSettingCustomHostArgsDict']]
+    """
+    Custom host. See `custom_host` below.
+    """
+    ip_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    IpType.
+    """
+    is_open_trace: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable link tracking.
+    """
+    monitor_samples: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether the monitoring samples are evenly distributed:
+    - 0: No
+    1: Yes.
+    """
+    trace_client_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Link trace client type:
+    - 0:ARMS Agent
+    - 1:OpenTelemetry
+    - 2:Jaeger.
+    """
+    xtrace_region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The link data is reported to the region.
+    """
 
 @pulumi.input_type
 class SyntheticTaskCommonSettingArgs:
@@ -1017,20 +982,17 @@ class SyntheticTaskCommonSettingArgs:
         pulumi.set(self, "xtrace_region", value)
 
 
-if not MYPY:
-    class SyntheticTaskCommonSettingCustomHostArgsDict(TypedDict):
-        hosts: pulumi.Input[Sequence[pulumi.Input['SyntheticTaskCommonSettingCustomHostHostArgsDict']]]
-        """
-        The host list. See `hosts` below.
-        """
-        select_type: pulumi.Input[_builtins.int]
-        """
-        Selection method:
-        - 0: Random
-        - 1: Polling.
-        """
-elif False:
-    SyntheticTaskCommonSettingCustomHostArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskCommonSettingCustomHostArgsDict(TypedDict):
+    hosts: pulumi.Input[Sequence[pulumi.Input['SyntheticTaskCommonSettingCustomHostHostArgsDict']]]
+    """
+    The host list. See `hosts` below.
+    """
+    select_type: pulumi.Input[_builtins.int]
+    """
+    Selection method:
+    - 0: Random
+    - 1: Polling.
+    """
 
 @pulumi.input_type
 class SyntheticTaskCommonSettingCustomHostArgs:
@@ -1073,22 +1035,19 @@ class SyntheticTaskCommonSettingCustomHostArgs:
         pulumi.set(self, "select_type", value)
 
 
-if not MYPY:
-    class SyntheticTaskCommonSettingCustomHostHostArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        Domain Name.
-        """
-        ip_type: pulumi.Input[_builtins.int]
-        """
-        IpType.
-        """
-        ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The IP list.
-        """
-elif False:
-    SyntheticTaskCommonSettingCustomHostHostArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskCommonSettingCustomHostHostArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    Domain Name.
+    """
+    ip_type: pulumi.Input[_builtins.int]
+    """
+    IpType.
+    """
+    ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The IP list.
+    """
 
 @pulumi.input_type
 class SyntheticTaskCommonSettingCustomHostHostArgs:
@@ -1142,18 +1101,15 @@ class SyntheticTaskCommonSettingCustomHostHostArgs:
         pulumi.set(self, "ips", value)
 
 
-if not MYPY:
-    class SyntheticTaskCustomPeriodArgsDict(TypedDict):
-        end_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        End hours, 0-24.
-        """
-        start_hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Starting hours, 0-24.
-        """
-elif False:
-    SyntheticTaskCustomPeriodArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskCustomPeriodArgsDict(TypedDict):
+    end_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    End hours, 0-24.
+    """
+    start_hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Starting hours, 0-24.
+    """
 
 @pulumi.input_type
 class SyntheticTaskCustomPeriodArgs:
@@ -1194,22 +1150,19 @@ class SyntheticTaskCustomPeriodArgs:
         pulumi.set(self, "start_hour", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorArgsDict(TypedDict):
-        city_code: pulumi.Input[_builtins.str]
-        """
-        The city code of monitor.
-        """
-        client_type: pulumi.Input[_builtins.int]
-        """
-        The type of monitor.
-        """
-        operator_code: pulumi.Input[_builtins.str]
-        """
-        The operator code of monitor.
-        """
-elif False:
-    SyntheticTaskMonitorArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorArgsDict(TypedDict):
+    city_code: pulumi.Input[_builtins.str]
+    """
+    The city code of monitor.
+    """
+    client_type: pulumi.Input[_builtins.int]
+    """
+    The type of monitor.
+    """
+    operator_code: pulumi.Input[_builtins.str]
+    """
+    The operator code of monitor.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorArgs:
@@ -1263,38 +1216,35 @@ class SyntheticTaskMonitorArgs:
         pulumi.set(self, "operator_code", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfArgsDict(TypedDict):
-        api_http: NotRequired[pulumi.Input['SyntheticTaskMonitorConfApiHttpArgsDict']]
-        """
-        HTTP(S) task configuration information. See `api_http` below.
-        """
-        file_download: NotRequired[pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgsDict']]
-        """
-        File download type task configuration. See `file_download` below.
-        """
-        net_dns: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetDnsArgsDict']]
-        """
-        The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
-        """
-        net_icmp: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetIcmpArgsDict']]
-        """
-        ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
-        """
-        net_tcp: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetTcpArgsDict']]
-        """
-        The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
-        """
-        stream: NotRequired[pulumi.Input['SyntheticTaskMonitorConfStreamArgsDict']]
-        """
-        Streaming Media Dial Test Configuration. See `stream` below.
-        """
-        website: NotRequired[pulumi.Input['SyntheticTaskMonitorConfWebsiteArgsDict']]
-        """
-        Website speed measurement type task configuration. See `website` below.
-        """
-elif False:
-    SyntheticTaskMonitorConfArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfArgsDict(TypedDict):
+    api_http: NotRequired[pulumi.Input['SyntheticTaskMonitorConfApiHttpArgsDict']]
+    """
+    HTTP(S) task configuration information. See `api_http` below.
+    """
+    file_download: NotRequired[pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgsDict']]
+    """
+    File download type task configuration. See `file_download` below.
+    """
+    net_dns: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetDnsArgsDict']]
+    """
+    The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
+    """
+    net_icmp: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetIcmpArgsDict']]
+    """
+    ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
+    """
+    net_tcp: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetTcpArgsDict']]
+    """
+    The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
+    """
+    stream: NotRequired[pulumi.Input['SyntheticTaskMonitorConfStreamArgsDict']]
+    """
+    Streaming Media Dial Test Configuration. See `stream` below.
+    """
+    website: NotRequired[pulumi.Input['SyntheticTaskMonitorConfWebsiteArgsDict']]
+    """
+    Website speed measurement type task configuration. See `website` below.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfArgs:
@@ -1415,34 +1365,31 @@ class SyntheticTaskMonitorConfArgs:
         pulumi.set(self, "website", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfApiHttpArgsDict(TypedDict):
-        target_url: pulumi.Input[_builtins.str]
-        """
-        The target URL.
-        """
-        connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-        """
-        method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        HTTP method, GET or POST.
-        """
-        request_body: NotRequired[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict']]
-        """
-        HTTP request body. See `request_body` below.
-        """
-        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        HTTP request header.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-        """
-elif False:
-    SyntheticTaskMonitorConfApiHttpArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfApiHttpArgsDict(TypedDict):
+    target_url: pulumi.Input[_builtins.str]
+    """
+    The target URL.
+    """
+    connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+    """
+    method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    HTTP method, GET or POST.
+    """
+    request_body: NotRequired[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict']]
+    """
+    HTTP request body. See `request_body` below.
+    """
+    request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    HTTP request header.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfApiHttpArgs:
@@ -1546,15 +1493,12 @@ class SyntheticTaskMonitorConfApiHttpArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict(TypedDict):
-        content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict(TypedDict):
+    content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfApiHttpRequestBodyArgs:
@@ -1591,92 +1535,89 @@ class SyntheticTaskMonitorConfApiHttpRequestBodyArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
-        target_url: pulumi.Input[_builtins.str]
-        """
-        The target URL.
-        """
-        connection_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-        """
-        custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Custom header, in JSON Map format.
-        """
-        download_kernel: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Download the kernel.
-        - 1:curl
-        - 0:WinInet
-        Default 1.
-        """
-        ignore_certificate_auth_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-        """
-        ignore_certificate_canceled_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-        """
-        ignore_certificate_out_of_date_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-        """
-        ignore_certificate_status_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-        """
-        ignore_certificate_untrustworthy_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-        """
-        ignore_certificate_using_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-        """
-        ignore_invalid_host_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-        """
-        monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Monitoring timeout, in ms. Not required, 20000 by default.
-        """
-        quick_protocol: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Quick agreement
-        - 1:http1
-        - 2:http2
-        - 3:http3
-        Default 1.
-        """
-        redirection: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-        """
-        transmission_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-        """
-        validate_keywords: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Verify keywords.
-        """
-        verify_way: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The verification method.
-        - 0: Do not validate
-        - 1: Validation string
-        - 2:MD5 validation.
-        """
-        white_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-        """
-elif False:
-    SyntheticTaskMonitorConfFileDownloadArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
+    target_url: pulumi.Input[_builtins.str]
+    """
+    The target URL.
+    """
+    connection_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
+    """
+    custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Custom header, in JSON Map format.
+    """
+    download_kernel: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Download the kernel.
+    - 1:curl
+    - 0:WinInet
+    Default 1.
+    """
+    ignore_certificate_auth_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
+    """
+    ignore_certificate_canceled_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
+    """
+    ignore_certificate_out_of_date_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
+    """
+    ignore_certificate_status_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+    """
+    ignore_certificate_untrustworthy_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+    """
+    ignore_certificate_using_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
+    """
+    ignore_invalid_host_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
+    """
+    monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Monitoring timeout, in ms. Not required, 20000 by default.
+    """
+    quick_protocol: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Quick agreement
+    - 1:http1
+    - 2:http2
+    - 3:http3
+    Default 1.
+    """
+    redirection: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+    """
+    transmission_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
+    """
+    validate_keywords: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Verify keywords.
+    """
+    verify_way: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The verification method.
+    - 0: Do not validate
+    - 1: Validation string
+    - 2:MD5 validation.
+    """
+    white_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfFileDownloadArgs:
@@ -1992,35 +1933,32 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         pulumi.set(self, "white_list", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfNetDnsArgsDict(TypedDict):
-        target_url: pulumi.Input[_builtins.str]
-        """
-        The target URL.
-        """
-        dns_server_ip_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IP address type of the DNS server.
-        - 0 (default):ipv4
-        - 1:ipv6
-        2: Automatic.
-        """
-        ns_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the NS server. The default value is 114.114.114.114.
-        """
-        query_method: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        DNS query method.
-        - 0 (default): Recursive
-        - 1: Iteration.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-        """
-elif False:
-    SyntheticTaskMonitorConfNetDnsArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfNetDnsArgsDict(TypedDict):
+    target_url: pulumi.Input[_builtins.str]
+    """
+    The target URL.
+    """
+    dns_server_ip_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The IP address type of the DNS server.
+    - 0 (default):ipv4
+    - 1:ipv6
+    2: Automatic.
+    """
+    ns_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the NS server. The default value is 114.114.114.114.
+    """
+    query_method: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    DNS query method.
+    - 0 (default): Recursive
+    - 1: Iteration.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfNetDnsArgs:
@@ -2118,46 +2056,43 @@ class SyntheticTaskMonitorConfNetDnsArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfNetIcmpArgsDict(TypedDict):
-        target_url: pulumi.Input[_builtins.str]
-        """
-        The target URL.
-        """
-        interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
-        """
-        package_num: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
-        """
-        package_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
-        """
-        split_package: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to split ICMP(Ping) packets. The default is true.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-        """
-        tracert_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable tracert. The default is true.
-        """
-        tracert_num_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
-        """
-        tracert_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
-        """
-elif False:
-    SyntheticTaskMonitorConfNetIcmpArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfNetIcmpArgsDict(TypedDict):
+    target_url: pulumi.Input[_builtins.str]
+    """
+    The target URL.
+    """
+    interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+    """
+    package_num: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
+    """
+    package_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
+    """
+    split_package: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to split ICMP(Ping) packets. The default is true.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+    """
+    tracert_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable tracert. The default is true.
+    """
+    tracert_num_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+    """
+    tracert_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfNetIcmpArgs:
@@ -2309,38 +2244,35 @@ class SyntheticTaskMonitorConfNetIcmpArgs:
         pulumi.set(self, "tracert_timeout", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfNetTcpArgsDict(TypedDict):
-        target_url: pulumi.Input[_builtins.str]
-        """
-        The target URL.
-        """
-        connect_times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
-        """
-        interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-        """
-        tracert_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable tracert. The default is true.
-        """
-        tracert_num_max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
-        """
-        tracert_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
-        """
-elif False:
-    SyntheticTaskMonitorConfNetTcpArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfNetTcpArgsDict(TypedDict):
+    target_url: pulumi.Input[_builtins.str]
+    """
+    The target URL.
+    """
+    connect_times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+    """
+    interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+    """
+    tracert_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable tracert. The default is true.
+    """
+    tracert_num_max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+    """
+    tracert_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfNetTcpArgs:
@@ -2460,42 +2392,39 @@ class SyntheticTaskMonitorConfNetTcpArgs:
         pulumi.set(self, "tracert_timeout", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfStreamArgsDict(TypedDict):
-        custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Custom header, in JSON Map format.
-        """
-        player_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Player, do not pass the default 12.
-        - 12:VLC
-        - 2:FlashPlayer.
-        """
-        stream_address_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resource address type:
-        - 1: Resource address.
-        - 0: page address, not 0 by default.
-        """
-        stream_monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Monitoring duration, in seconds, up to 60s, not 60 by default.
-        """
-        stream_type: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Audio and video flags: 0-video, 1-audio.
-        """
-        target_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The target URL.
-        """
-        white_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-        """
-elif False:
-    SyntheticTaskMonitorConfStreamArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfStreamArgsDict(TypedDict):
+    custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Custom header, in JSON Map format.
+    """
+    player_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Player, do not pass the default 12.
+    - 12:VLC
+    - 2:FlashPlayer.
+    """
+    stream_address_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resource address type:
+    - 1: Resource address.
+    - 0: page address, not 0 by default.
+    """
+    stream_monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Monitoring duration, in seconds, up to 60s, not 60 by default.
+    """
+    stream_type: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Audio and video flags: 0-video, 1-audio.
+    """
+    target_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The target URL.
+    """
+    white_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfStreamArgs:
@@ -2624,93 +2553,90 @@ class SyntheticTaskMonitorConfStreamArgs:
         pulumi.set(self, "white_list", value)
 
 
-if not MYPY:
-    class SyntheticTaskMonitorConfWebsiteArgsDict(TypedDict):
-        target_url: pulumi.Input[_builtins.str]
-        """
-        The target URL.
-        """
-        automatic_scrolling: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether to support automatic scrolling screen, loading page.
-        - 0 (default): No
-        1: Yes.
-        """
-        custom_header: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Custom header.
-        - 0 (default): Off
-        - 1: Modify the first package
-        - 2: Modify all packages.
-        """
-        custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Custom header, in JSON Map format.
-        """
-        disable_cache: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether to disable caching.
-        - 0: not disabled
-        - 1 (default): Disabled.
-        """
-        disable_compression: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
-        """
-        dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-        """
-        element_blacklist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
-        """
-        filter_invalid_ip: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
-        """
-        flow_hijack_jump_times: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Identify elements: Set the total number of elements on the Browse page.
-        """
-        flow_hijack_logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
-        """
-        ignore_certificate_error: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
-        """
-        monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Monitoring timeout, in ms. Not required, 20000 by default.
-        """
-        page_tamper: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
-        """
-        redirection: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-        """
-        slow_element_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
-        """
-        verify_string_blacklist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-        """
-        verify_string_whitelist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-        """
-        wait_completion_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-        """
-elif False:
-    SyntheticTaskMonitorConfWebsiteArgsDict: TypeAlias = Mapping[str, Any]
+class SyntheticTaskMonitorConfWebsiteArgsDict(TypedDict):
+    target_url: pulumi.Input[_builtins.str]
+    """
+    The target URL.
+    """
+    automatic_scrolling: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether to support automatic scrolling screen, loading page.
+    - 0 (default): No
+    1: Yes.
+    """
+    custom_header: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Custom header.
+    - 0 (default): Off
+    - 1: Modify the first package
+    - 2: Modify all packages.
+    """
+    custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Custom header, in JSON Map format.
+    """
+    disable_cache: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether to disable caching.
+    - 0: not disabled
+    - 1 (default): Disabled.
+    """
+    disable_compression: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+    """
+    dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+    """
+    element_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+    """
+    filter_invalid_ip: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+    """
+    flow_hijack_jump_times: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Identify elements: Set the total number of elements on the Browse page.
+    """
+    flow_hijack_logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+    """
+    ignore_certificate_error: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+    """
+    monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Monitoring timeout, in ms. Not required, 20000 by default.
+    """
+    page_tamper: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+    """
+    redirection: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+    """
+    slow_element_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+    """
+    verify_string_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+    """
+    verify_string_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+    """
+    wait_completion_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+    """
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfWebsiteArgs:

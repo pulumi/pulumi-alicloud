@@ -424,6 +424,12 @@ class Zone(pulumi.CustomResource):
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Private Zone resource.
+
+        > **NOTE:** Terraform will auto Create a Private Zone while it uses `pvtz.Zone` to build a Private Zone resource.
+
+        > **NOTE:** Available since v1.13.0.
+
         ## Example Usage
 
         Basic Usage
@@ -468,6 +474,12 @@ class Zone(pulumi.CustomResource):
                  args: Optional[ZoneArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Private Zone resource.
+
+        > **NOTE:** Terraform will auto Create a Private Zone while it uses `pvtz.Zone` to build a Private Zone resource.
+
+        > **NOTE:** Available since v1.13.0.
+
         ## Example Usage
 
         Basic Usage

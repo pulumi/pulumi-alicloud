@@ -29,6 +29,10 @@ public final class GetForwardingRulesForwardingRule {
      * 
      */
     private String forwardingRuleStatus;
+    /**
+     * @return The resource ID in terraform of Forwarding Rule.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the listener.
@@ -73,6 +77,10 @@ public final class GetForwardingRulesForwardingRule {
     public String forwardingRuleStatus() {
         return this.forwardingRuleStatus;
     }
+    /**
+     * @return The resource ID in terraform of Forwarding Rule.
+     * 
+     */
     public String id() {
         return this.id;
     }

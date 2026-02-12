@@ -12,6 +12,200 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE:** Since the version 1.132.0, the resource `yundun.BastionHostInstance` has been renamed to `bastionhost.Instance`.
+//
+// Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+//
+// > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+//
+// > **NOTE:** Available since v1.132.0.
+//
+// > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//				CidrBlock: pulumi.StringRef("10.4.0.0/16"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				CidrBlock: pulumi.StringRef("10.4.0.0/24"),
+//				VpcId:     pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId:    pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//				CidrBlock: pulumi.StringRef("10.4.0.0/16"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				CidrBlock: pulumi.StringRef("10.4.0.0/24"),
+//				VpcId:     pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId:    pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
+//				Description: pulumi.String(name),
+//				LicenseCode: pulumi.String("bhah_ent_50_asset"),
+//				PlanCode:    pulumi.String("cloudbastion"),
+//				Storage:     pulumi.String("5"),
+//				Bandwidth:   pulumi.String("5"),
+//				Period:      pulumi.Int(1),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+//				AdAuthServers: bastionhost.InstanceAdAuthServerArray{
+//					&bastionhost.InstanceAdAuthServerArgs{
+//						Server:        pulumi.String("192.168.1.1"),
+//						StandbyServer: pulumi.String("192.168.1.3"),
+//						Port:          pulumi.Int(80),
+//						Domain:        pulumi.String("domain"),
+//						Account:       pulumi.String("cn=Manager,dc=test,dc=com"),
+//						Password:      pulumi.String("YouPassword123"),
+//						Filter:        pulumi.String("objectClass=person"),
+//						NameMapping:   pulumi.String("nameAttr"),
+//						EmailMapping:  pulumi.String("emailAttr"),
+//						MobileMapping: pulumi.String("mobileAttr"),
+//						IsSsl:         pulumi.Bool(false),
+//						BaseDn:        pulumi.String("dc=test,dc=com"),
+//					},
+//				},
+//				LdapAuthServers: bastionhost.InstanceLdapAuthServerArray{
+//					&bastionhost.InstanceLdapAuthServerArgs{
+//						Server:           pulumi.String("192.168.1.1"),
+//						StandbyServer:    pulumi.String("192.168.1.3"),
+//						Port:             pulumi.Int(80),
+//						LoginNameMapping: pulumi.String("uid"),
+//						Account:          pulumi.String("cn=Manager,dc=test,dc=com"),
+//						Password:         pulumi.String("YouPassword123"),
+//						Filter:           pulumi.String("objectClass=person"),
+//						NameMapping:      pulumi.String("nameAttr"),
+//						EmailMapping:     pulumi.String("emailAttr"),
+//						MobileMapping:    pulumi.String("mobileAttr"),
+//						IsSsl:            pulumi.Bool(false),
+//						BaseDn:           pulumi.String("dc=test,dc=com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `bastionhost.Instance` or removing it from your configuration
+//
+// The `bastionhost.Instance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration
+// will remove it from your state file and management, but will not destroy the bastionhost instance.
+// You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Yundun_bastionhost instance can be imported using the id, e.g.
@@ -40,7 +234,10 @@ type Instance struct {
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode         pulumi.StringOutput      `pulumi:"planCode"`
+	PlanCode pulumi.StringOutput `pulumi:"planCode"`
+	// The public IP address that you want to add to the whitelist.
+	//
+	// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
 	PublicWhiteLists pulumi.StringArrayOutput `pulumi:"publicWhiteLists"`
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
@@ -136,7 +333,10 @@ type instanceState struct {
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode         *string  `pulumi:"planCode"`
+	PlanCode *string `pulumi:"planCode"`
+	// The public IP address that you want to add to the whitelist.
+	//
+	// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
 	PublicWhiteLists []string `pulumi:"publicWhiteLists"`
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -182,7 +382,10 @@ type InstanceState struct {
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode         pulumi.StringPtrInput
+	PlanCode pulumi.StringPtrInput
+	// The public IP address that you want to add to the whitelist.
+	//
+	// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
 	PublicWhiteLists pulumi.StringArrayInput
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrInput
@@ -232,7 +435,10 @@ type instanceArgs struct {
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode         string   `pulumi:"planCode"`
+	PlanCode string `pulumi:"planCode"`
+	// The public IP address that you want to add to the whitelist.
+	//
+	// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
 	PublicWhiteLists []string `pulumi:"publicWhiteLists"`
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -279,7 +485,10 @@ type InstanceArgs struct {
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode         pulumi.StringInput
+	PlanCode pulumi.StringInput
+	// The public IP address that you want to add to the whitelist.
+	//
+	// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
 	PublicWhiteLists pulumi.StringArrayInput
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrInput
@@ -436,6 +645,9 @@ func (o InstanceOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PlanCode }).(pulumi.StringOutput)
 }
 
+// The public IP address that you want to add to the whitelist.
+//
+// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `adAuthServer` or `ldapAuthServer` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
 func (o InstanceOutput) PublicWhiteLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PublicWhiteLists }).(pulumi.StringArrayOutput)
 }

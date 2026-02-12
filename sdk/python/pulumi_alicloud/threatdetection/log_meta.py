@@ -184,6 +184,37 @@ class LogMeta(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Threat Detection Log Meta resource.
+
+        Log analysis shipping status.
+
+        For information about Threat Detection Log Meta and how to use it, see [What is Log Meta](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ModifyLogMetaStatus).
+
+        > **NOTE:** Available since v1.245.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.LogMeta("default",
+            status="disabled",
+            log_meta_name="aegis-log-client")
+        ```
+
+        ### Deleting `threatdetection.LogMeta` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.LogMeta`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Log Meta can be imported using the id, e.g.
@@ -224,6 +255,37 @@ class LogMeta(pulumi.CustomResource):
                  args: LogMetaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Threat Detection Log Meta resource.
+
+        Log analysis shipping status.
+
+        For information about Threat Detection Log Meta and how to use it, see [What is Log Meta](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ModifyLogMetaStatus).
+
+        > **NOTE:** Available since v1.245.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.threatdetection.LogMeta("default",
+            status="disabled",
+            log_meta_name="aegis-log-client")
+        ```
+
+        ### Deleting `threatdetection.LogMeta` or removing it from your configuration
+
+        Terraform cannot destroy resource `threatdetection.LogMeta`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Log Meta can be imported using the id, e.g.

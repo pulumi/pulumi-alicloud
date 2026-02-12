@@ -369,6 +369,47 @@ class Account(pulumi.CustomResource):
                  payer_account_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a Governance Account resource.
+
+        Member account created by the Cloud Governance Center account factory.
+
+        For information about Governance Account and how to use it, see [What is Account](https://next.api.aliyun.com/document/governance/2021-01-20/EnrollAccount).
+
+        > **NOTE:** Available since v1.228.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.get_account()
+        default_get_baselines = alicloud.governance.get_baselines()
+        default_get_folders = alicloud.resourcemanager.get_folders()
+        default_account = alicloud.governance.Account("default",
+            account_name_prefix=f"{name}-{default_integer['result']}",
+            folder_id=default_get_folders.ids[0],
+            baseline_id=default_get_baselines.ids[0],
+            payer_account_id=default.id,
+            display_name=f"{name}-{default_integer['result']}")
+        ```
+
+        ### Deleting `governance.Account` or removing it from your configuration
+
+        Terraform cannot destroy resource `governance.Account`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Governance Account can be imported using the id, e.g.
@@ -407,6 +448,47 @@ class Account(pulumi.CustomResource):
                  args: AccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Governance Account resource.
+
+        Member account created by the Cloud Governance Center account factory.
+
+        For information about Governance Account and how to use it, see [What is Account](https://next.api.aliyun.com/document/governance/2021-01-20/EnrollAccount).
+
+        > **NOTE:** Available since v1.228.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.get_account()
+        default_get_baselines = alicloud.governance.get_baselines()
+        default_get_folders = alicloud.resourcemanager.get_folders()
+        default_account = alicloud.governance.Account("default",
+            account_name_prefix=f"{name}-{default_integer['result']}",
+            folder_id=default_get_folders.ids[0],
+            baseline_id=default_get_baselines.ids[0],
+            payer_account_id=default.id,
+            display_name=f"{name}-{default_integer['result']}")
+        ```
+
+        ### Deleting `governance.Account` or removing it from your configuration
+
+        Terraform cannot destroy resource `governance.Account`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Governance Account can be imported using the id, e.g.

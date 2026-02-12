@@ -20,6 +20,106 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Realtime Compute Vvp Instance resource.
+ * 
+ * For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+ * 
+ * &gt; **NOTE:** Available since v1.214.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.realtimecompute.VvpInstance;
+ * import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
+ * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageArgs;
+ * import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceStorageOssArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var zoneId = config.get("zoneId").orElse("cn-hangzhou-i");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var defaultOSS = new Bucket("defaultOSS", BucketArgs.builder()
+ *             .bucket(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         var defaultVvpInstance = new VvpInstance("defaultVvpInstance", VvpInstanceArgs.builder()
+ *             .storage(VvpInstanceStorageArgs.builder()
+ *                 .oss(VvpInstanceStorageOssArgs.builder()
+ *                     .bucket(defaultOSS.bucket())
+ *                     .build())
+ *                 .build())
+ *             .vvpInstanceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(zoneId)
+ *             .vswitchIds(defaultGetSwitches.ids()[0])
+ *             .paymentType("PayAsYouGo")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.realtimecompute.VvpInstance` or removing it from your configuration
+ * 
+ * The `alicloud.realtimecompute.VvpInstance` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Realtime Compute Vvp Instance can be imported using the id, e.g.

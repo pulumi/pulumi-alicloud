@@ -59,20 +59,15 @@ __all__ = [
     'GetInstanceClassInfosInfoArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AiInstanceAuthConfigListArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the configuration item.
-        """
-elif False:
-    AiInstanceAuthConfigListArgsDict: TypeAlias = Mapping[str, Any]
+class AiInstanceAuthConfigListArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the configuration item.
+    """
 
 @pulumi.input_type
 class AiInstanceAuthConfigListArgs:
@@ -113,18 +108,15 @@ class AiInstanceAuthConfigListArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AiInstanceStorageConfigListArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the configuration item.
-        """
-elif False:
-    AiInstanceStorageConfigListArgsDict: TypeAlias = Mapping[str, Any]
+class AiInstanceStorageConfigListArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the configuration item.
+    """
 
 @pulumi.input_type
 class AiInstanceStorageConfigListArgs:
@@ -165,25 +157,22 @@ class AiInstanceStorageConfigListArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class CustomDataDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance storage type
-        local_ssd: local SSD disk
-        cloud_essd:ESSD PL1 cloud disk
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud Disk Performance
-        Currently only supports PL1
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Instance storage space. Unit: GB.
-        """
-elif False:
-    CustomDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class CustomDataDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instance storage type
+    local_ssd: local SSD disk
+    cloud_essd:ESSD PL1 cloud disk
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud Disk Performance
+    Currently only supports PL1
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Instance storage space. Unit: GB.
+    """
 
 @pulumi.input_type
 class CustomDataDiskArgs:
@@ -246,18 +235,15 @@ class CustomDataDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class CustomSystemDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
-        """
-        size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
-        """
-elif False:
-    CustomSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+class CustomSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+    """
+    size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+    """
 
 @pulumi.input_type
 class CustomSystemDiskArgs:
@@ -298,18 +284,15 @@ class CustomSystemDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class DbInstanceEndpointNodeItemArgsDict(TypedDict):
-        node_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the node.
-        """
-        weight: pulumi.Input[_builtins.int]
-        """
-        The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
-        """
-elif False:
-    DbInstanceEndpointNodeItemArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstanceEndpointNodeItemArgsDict(TypedDict):
+    node_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the node.
+    """
+    weight: pulumi.Input[_builtins.int]
+    """
+    The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+    """
 
 @pulumi.input_type
 class DbInstanceEndpointNodeItemArgs:
@@ -348,18 +331,15 @@ class DbInstanceEndpointNodeItemArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class DdrInstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The parameter name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The parameter value.
-        """
-elif False:
-    DdrInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class DdrInstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The parameter name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The parameter value.
+    """
 
 @pulumi.input_type
 class DdrInstanceParameterArgs:
@@ -398,47 +378,44 @@ class DdrInstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DdrInstancePgHbaConfArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
-        """
-        method: pulumi.Input[_builtins.str]
-        """
-        The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
-        """
-        priority_id: pulumi.Input[_builtins.int]
-        """
-        The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of connection to the instance. Valid values:
-        * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
-        * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
-        * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+class DdrInstancePgHbaConfArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+    """
+    method: pulumi.Input[_builtins.str]
+    """
+    The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+    """
+    priority_id: pulumi.Input[_builtins.int]
+    """
+    The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of connection to the instance. Valid values:
+    * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+    * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+    * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
 
-        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
-        """
-        user: pulumi.Input[_builtins.str]
-        """
-        The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
-        """
-        mask: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
-        """
-        option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
-        """
-elif False:
-    DdrInstancePgHbaConfArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+    """
+    user: pulumi.Input[_builtins.str]
+    """
+    The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+    """
+    mask: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+    """
+    option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+    """
 
 @pulumi.input_type
 class DdrInstancePgHbaConfArgs:
@@ -579,26 +556,23 @@ class DdrInstancePgHbaConfArgs:
         pulumi.set(self, "option", value)
 
 
-if not MYPY:
-    class InstanceBabelfishConfigArgsDict(TypedDict):
-        babelfish_enabled: pulumi.Input[_builtins.str]
-        """
-        specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
-        """
-        master_user_password: pulumi.Input[_builtins.str]
-        """
-        The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
-        """
-        master_username: pulumi.Input[_builtins.str]
-        """
-        The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
-        """
-        migration_mode: pulumi.Input[_builtins.str]
-        """
-        The migration mode of the instance. Valid values: **single-db** and **multi-db**.
-        """
-elif False:
-    InstanceBabelfishConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceBabelfishConfigArgsDict(TypedDict):
+    babelfish_enabled: pulumi.Input[_builtins.str]
+    """
+    specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+    """
+    master_user_password: pulumi.Input[_builtins.str]
+    """
+    The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+    """
+    master_username: pulumi.Input[_builtins.str]
+    """
+    The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+    """
+    migration_mode: pulumi.Input[_builtins.str]
+    """
+    The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+    """
 
 @pulumi.input_type
 class InstanceBabelfishConfigArgs:
@@ -667,18 +641,15 @@ class InstanceBabelfishConfigArgs:
         pulumi.set(self, "migration_mode", value)
 
 
-if not MYPY:
-    class InstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The parameter name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The parameter value.
-        """
-elif False:
-    InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The parameter name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The parameter value.
+    """
 
 @pulumi.input_type
 class InstanceParameterArgs:
@@ -717,47 +688,44 @@ class InstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InstancePgHbaConfArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
-        """
-        method: pulumi.Input[_builtins.str]
-        """
-        The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
-        """
-        priority_id: pulumi.Input[_builtins.int]
-        """
-        The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of connection to the instance. Valid values:
-        * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
-        * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
-        * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+class InstancePgHbaConfArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+    """
+    method: pulumi.Input[_builtins.str]
+    """
+    The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+    """
+    priority_id: pulumi.Input[_builtins.int]
+    """
+    The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of connection to the instance. Valid values:
+    * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+    * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+    * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
 
-        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
-        """
-        user: pulumi.Input[_builtins.str]
-        """
-        The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
-        """
-        mask: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
-        """
-        option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
-        """
-elif False:
-    InstancePgHbaConfArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+    """
+    user: pulumi.Input[_builtins.str]
+    """
+    The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+    """
+    mask: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+    """
+    option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+    """
 
 @pulumi.input_type
 class InstancePgHbaConfArgs:
@@ -898,33 +866,37 @@ class InstancePgHbaConfArgs:
         pulumi.set(self, "option", value)
 
 
-if not MYPY:
-    class InstanceServerlessConfigArgsDict(TypedDict):
-        max_capacity: pulumi.Input[_builtins.float]
-        """
-        The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
-        - MySQL: 1~8
-        - SQLServer: 2~8
-        - PostgreSQL: 1~12
-        """
-        min_capacity: pulumi.Input[_builtins.float]
-        """
-        The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
-        - MySQL: 0.5~8
-        - SQLServer: 2~8 \\(Supports integers only\\).
-        - PostgreSQL: 0.5~12
-        """
-        auto_pause: NotRequired[pulumi.Input[_builtins.bool]]
-        switch_force: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
-        - true: enables the feature.
-        - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-        > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
-        """
-elif False:
-    InstanceServerlessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceServerlessConfigArgsDict(TypedDict):
+    max_capacity: pulumi.Input[_builtins.float]
+    """
+    The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+    - MySQL: 1~8
+    - SQLServer: 2~8
+    - PostgreSQL: 1~12
+    """
+    min_capacity: pulumi.Input[_builtins.float]
+    """
+    The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+    - MySQL: 0.5~8
+    - SQLServer: 2~8 \\(Supports integers only\\).
+    - PostgreSQL: 0.5~12
+    """
+    auto_pause: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+    - true: enables the feature.
+    - false: disables the feature. This is the default value.
+    > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+    > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+    """
+    switch_force: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
+    - true: enables the feature.
+    - false: disables the feature. This is the default value.
+    > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+    > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+    """
 
 @pulumi.input_type
 class InstanceServerlessConfigArgs:
@@ -942,6 +914,11 @@ class InstanceServerlessConfigArgs:
                - MySQL: 0.5~8
                - SQLServer: 2~8 \\(Supports integers only\\).
                - PostgreSQL: 0.5~12
+        :param pulumi.Input[_builtins.bool] auto_pause: Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+               - true: enables the feature.
+               - false: disables the feature. This is the default value.
+               > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+               > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
         :param pulumi.Input[_builtins.bool] switch_force: Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
@@ -988,6 +965,13 @@ class InstanceServerlessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="autoPause")
     def auto_pause(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+        - true: enables the feature.
+        - false: disables the feature. This is the default value.
+        > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+        > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+        """
         return pulumi.get(self, "auto_pause")
 
     @auto_pause.setter
@@ -1011,18 +995,15 @@ class InstanceServerlessConfigArgs:
         pulumi.set(self, "switch_force", value)
 
 
-if not MYPY:
-    class RdsCloneDbInstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The parameters name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The parameters value.
-        """
-elif False:
-    RdsCloneDbInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class RdsCloneDbInstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The parameters name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The parameters value.
+    """
 
 @pulumi.input_type
 class RdsCloneDbInstanceParameterArgs:
@@ -1061,47 +1042,44 @@ class RdsCloneDbInstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RdsCloneDbInstancePgHbaConfArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
-        """
-        method: pulumi.Input[_builtins.str]
-        """
-        The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
-        """
-        priority_id: pulumi.Input[_builtins.int]
-        """
-        The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of connection to the instance. Valid values:
-        * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
-        * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
-        * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+class RdsCloneDbInstancePgHbaConfArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+    """
+    method: pulumi.Input[_builtins.str]
+    """
+    The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+    """
+    priority_id: pulumi.Input[_builtins.int]
+    """
+    The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of connection to the instance. Valid values:
+    * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+    * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+    * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
 
-        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
-        """
-        user: pulumi.Input[_builtins.str]
-        """
-        The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
-        """
-        mask: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
-        """
-        option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
-        """
-elif False:
-    RdsCloneDbInstancePgHbaConfArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+    """
+    user: pulumi.Input[_builtins.str]
+    """
+    The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+    """
+    mask: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+    """
+    option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+    """
 
 @pulumi.input_type
 class RdsCloneDbInstancePgHbaConfArgs:
@@ -1242,39 +1220,36 @@ class RdsCloneDbInstancePgHbaConfArgs:
         pulumi.set(self, "option", value)
 
 
-if not MYPY:
-    class RdsCloneDbInstanceServerlessConfigArgsDict(TypedDict):
-        max_capacity: pulumi.Input[_builtins.float]
-        """
-        The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
-        - MySQL: 1~8
-        - SQLServer: 2~8
-        - PostgreSQL: 1~12
-        """
-        min_capacity: pulumi.Input[_builtins.float]
-        """
-        The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
-        - MySQL: 0.5~8
-        - SQLServer: 2~8 \\(Supports integers only\\).
-        - PostgreSQL: 0.5~12
-        """
-        auto_pause: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-        - true: enables the feature.
-        - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
-        """
-        switch_force: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
-        - true: enables the feature.
-        - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-        > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
-        """
-elif False:
-    RdsCloneDbInstanceServerlessConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RdsCloneDbInstanceServerlessConfigArgsDict(TypedDict):
+    max_capacity: pulumi.Input[_builtins.float]
+    """
+    The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+    - MySQL: 1~8
+    - SQLServer: 2~8
+    - PostgreSQL: 1~12
+    """
+    min_capacity: pulumi.Input[_builtins.float]
+    """
+    The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+    - MySQL: 0.5~8
+    - SQLServer: 2~8 \\(Supports integers only\\).
+    - PostgreSQL: 0.5~12
+    """
+    auto_pause: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+    - true: enables the feature.
+    - false: disables the feature. This is the default value.
+    > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+    """
+    switch_force: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
+    - true: enables the feature.
+    - false: disables the feature. This is the default value.
+    > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+    > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+    """
 
 @pulumi.input_type
 class RdsCloneDbInstanceServerlessConfigArgs:
@@ -1371,18 +1346,15 @@ class RdsCloneDbInstanceServerlessConfigArgs:
         pulumi.set(self, "switch_force", value)
 
 
-if not MYPY:
-    class RdsDbProxyReadOnlyInstanceWeightArgsDict(TypedDict):
-        instance_id: pulumi.Input[_builtins.str]
-        """
-        The Id of the instance and its read-only instances that can run database.
-        """
-        weight: pulumi.Input[_builtins.str]
-        """
-        Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
-        """
-elif False:
-    RdsDbProxyReadOnlyInstanceWeightArgsDict: TypeAlias = Mapping[str, Any]
+class RdsDbProxyReadOnlyInstanceWeightArgsDict(TypedDict):
+    instance_id: pulumi.Input[_builtins.str]
+    """
+    The Id of the instance and its read-only instances that can run database.
+    """
+    weight: pulumi.Input[_builtins.str]
+    """
+    Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
+    """
 
 @pulumi.input_type
 class RdsDbProxyReadOnlyInstanceWeightArgs:
@@ -1421,18 +1393,15 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class RdsParameterGroupParamDetailArgsDict(TypedDict):
-        param_name: pulumi.Input[_builtins.str]
-        """
-        The name of a parameter.
-        """
-        param_value: pulumi.Input[_builtins.str]
-        """
-        The value of a parameter.
-        """
-elif False:
-    RdsParameterGroupParamDetailArgsDict: TypeAlias = Mapping[str, Any]
+class RdsParameterGroupParamDetailArgsDict(TypedDict):
+    param_name: pulumi.Input[_builtins.str]
+    """
+    The name of a parameter.
+    """
+    param_value: pulumi.Input[_builtins.str]
+    """
+    The value of a parameter.
+    """
 
 @pulumi.input_type
 class RdsParameterGroupParamDetailArgs:
@@ -1471,18 +1440,15 @@ class RdsParameterGroupParamDetailArgs:
         pulumi.set(self, "param_value", value)
 
 
-if not MYPY:
-    class RdsUpgradeDbInstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The parameter name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The parameter value.
-        """
-elif False:
-    RdsUpgradeDbInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class RdsUpgradeDbInstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The parameter name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The parameter value.
+    """
 
 @pulumi.input_type
 class RdsUpgradeDbInstanceParameterArgs:
@@ -1521,47 +1487,44 @@ class RdsUpgradeDbInstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RdsUpgradeDbInstancePgHbaConfArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
-        """
-        method: pulumi.Input[_builtins.str]
-        """
-        The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
-        """
-        priority_id: pulumi.Input[_builtins.int]
-        """
-        The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of connection to the instance. Valid values:
-        * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
-        * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
-        * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+class RdsUpgradeDbInstancePgHbaConfArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+    """
+    method: pulumi.Input[_builtins.str]
+    """
+    The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+    """
+    priority_id: pulumi.Input[_builtins.int]
+    """
+    The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of connection to the instance. Valid values:
+    * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+    * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+    * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
 
-        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
-        """
-        user: pulumi.Input[_builtins.str]
-        """
-        The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
-        """
-        mask: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
-        """
-        option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
-        """
-elif False:
-    RdsUpgradeDbInstancePgHbaConfArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+    """
+    user: pulumi.Input[_builtins.str]
+    """
+    The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+    """
+    mask: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+    """
+    option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+    """
 
 @pulumi.input_type
 class RdsUpgradeDbInstancePgHbaConfArgs:
@@ -1702,18 +1665,15 @@ class RdsUpgradeDbInstancePgHbaConfArgs:
         pulumi.set(self, "option", value)
 
 
-if not MYPY:
-    class ReadOnlyInstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The parameter name.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The parameter value.
-        """
-elif False:
-    ReadOnlyInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ReadOnlyInstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The parameter name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The parameter value.
+    """
 
 @pulumi.input_type
 class ReadOnlyInstanceParameterArgs:
@@ -1752,22 +1712,19 @@ class ReadOnlyInstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class GetCollationTimeZonesCollationTimeZoneArgsDict(TypedDict):
-        description: NotRequired[_builtins.str]
-        """
-        The code of the instance type.
-        """
-        standard_time_offset: NotRequired[_builtins.str]
-        """
-        The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
-        """
-        time_zone: NotRequired[_builtins.str]
-        """
-        The time zone that is available for use in ApsaraDB RDS.
-        """
-elif False:
-    GetCollationTimeZonesCollationTimeZoneArgsDict: TypeAlias = Mapping[str, Any]
+class GetCollationTimeZonesCollationTimeZoneArgsDict(TypedDict):
+    description: NotRequired[_builtins.str]
+    """
+    The code of the instance type.
+    """
+    standard_time_offset: NotRequired[_builtins.str]
+    """
+    The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+    """
+    time_zone: NotRequired[_builtins.str]
+    """
+    The time zone that is available for use in ApsaraDB RDS.
+    """
 
 @pulumi.input_type
 class GetCollationTimeZonesCollationTimeZoneArgs:
@@ -1824,46 +1781,43 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
         pulumi.set(self, "time_zone", value)
 
 
-if not MYPY:
-    class GetInstanceClassInfosInfoArgsDict(TypedDict):
-        class_code: NotRequired[_builtins.str]
-        """
-        The code of the instance type.
-        """
-        class_group: NotRequired[_builtins.str]
-        """
-        The instance family of the instance.
-        """
-        cpu: NotRequired[_builtins.str]
-        """
-        The number of cores that are supported by the instance type. Unit: cores.
-        """
-        instruction_set_arch: NotRequired[_builtins.str]
-        """
-        The architecture of the instance type.
-        """
-        max_connections: NotRequired[_builtins.str]
-        """
-        The maximum number of connections that are supported by the instance type. Unit: connections.
-        """
-        max_iombps: NotRequired[_builtins.str]
-        """
-        The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
-        """
-        max_iops: NotRequired[_builtins.str]
-        """
-        The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
-        """
-        memory_class: NotRequired[_builtins.str]
-        """
-        The memory capacity that is supported by the instance type. Unit: GB.
-        """
-        reference_price: NotRequired[_builtins.str]
-        """
-        The fee that you must pay for the instance type. Unit: cent (USD).
-        """
-elif False:
-    GetInstanceClassInfosInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GetInstanceClassInfosInfoArgsDict(TypedDict):
+    class_code: NotRequired[_builtins.str]
+    """
+    The code of the instance type.
+    """
+    class_group: NotRequired[_builtins.str]
+    """
+    The instance family of the instance.
+    """
+    cpu: NotRequired[_builtins.str]
+    """
+    The number of cores that are supported by the instance type. Unit: cores.
+    """
+    instruction_set_arch: NotRequired[_builtins.str]
+    """
+    The architecture of the instance type.
+    """
+    max_connections: NotRequired[_builtins.str]
+    """
+    The maximum number of connections that are supported by the instance type. Unit: connections.
+    """
+    max_iombps: NotRequired[_builtins.str]
+    """
+    The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+    """
+    max_iops: NotRequired[_builtins.str]
+    """
+    The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+    """
+    memory_class: NotRequired[_builtins.str]
+    """
+    The memory capacity that is supported by the instance type. Unit: GB.
+    """
+    reference_price: NotRequired[_builtins.str]
+    """
+    The fee that you must pay for the instance type. Unit: cent (USD).
+    """
 
 @pulumi.input_type
 class GetInstanceClassInfosInfoArgs:

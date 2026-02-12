@@ -73,32 +73,27 @@ __all__ = [
     'GetEcsDisksOperationLockArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AutoProvisioningGroupLaunchTemplateConfigArgsDict(TypedDict):
-        max_price: pulumi.Input[_builtins.str]
-        """
-        The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        """
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the VSwitch in the Nth extended configurations of the launch template.
-        """
-        weighted_capacity: pulumi.Input[_builtins.str]
-        """
-        The weight of the instance type specified in the Nth extended configurations of the launch template.
-        """
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance type of the Nth extended configurations of the launch template.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        """
-elif False:
-    AutoProvisioningGroupLaunchTemplateConfigArgsDict: TypeAlias = Mapping[str, Any]
+class AutoProvisioningGroupLaunchTemplateConfigArgsDict(TypedDict):
+    max_price: pulumi.Input[_builtins.str]
+    """
+    The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+    """
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the VSwitch in the Nth extended configurations of the launch template.
+    """
+    weighted_capacity: pulumi.Input[_builtins.str]
+    """
+    The weight of the instance type specified in the Nth extended configurations of the launch template.
+    """
+    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance type of the Nth extended configurations of the launch template.
+    """
+    priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+    """
 
 @pulumi.input_type
 class AutoProvisioningGroupLaunchTemplateConfigArgs:
@@ -184,18 +179,15 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
         pulumi.set(self, "priority", value)
 
 
-if not MYPY:
-    class AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
-        """
-elif False:
-    AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+    """
 
 @pulumi.input_type
 class AutoSnapshotPolicyCopyEncryptionConfigurationArgs:
@@ -236,18 +228,15 @@ class AutoSnapshotPolicyCopyEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_id", value)
 
 
-if not MYPY:
-    class DedicatedHostNetworkAttributeArgsDict(TypedDict):
-        slb_udp_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
-        """
-        udp_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
-        """
-elif False:
-    DedicatedHostNetworkAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class DedicatedHostNetworkAttributeArgsDict(TypedDict):
+    slb_udp_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+    """
+    udp_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+    """
 
 @pulumi.input_type
 class DedicatedHostNetworkAttributeArgs:
@@ -288,50 +277,47 @@ class DedicatedHostNetworkAttributeArgs:
         pulumi.set(self, "udp_timeout", value)
 
 
-if not MYPY:
-    class EcsInstanceSetDataDiskArgsDict(TypedDict):
-        disk_size: pulumi.Input[_builtins.int]
-        """
-        The size of the data disk. Unit: GiB. Valid values:
-        - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
-        - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
-        - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
-        - When `disk_category` is `cloud`, Valid values: `5` to `200`.
-        """
-        auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the automatic snapshot policy applied to the system disk.
-        """
-        disk_category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
-        """
-        disk_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data disk.
-        """
-        disk_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data disk.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Encrypted the data in this disk. Default value: `false`.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The KMS key ID corresponding to the data disk.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        """
-elif False:
-    EcsInstanceSetDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class EcsInstanceSetDataDiskArgsDict(TypedDict):
+    disk_size: pulumi.Input[_builtins.int]
+    """
+    The size of the data disk. Unit: GiB. Valid values:
+    - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
+    - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
+    - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
+    - When `disk_category` is `cloud`, Valid values: `5` to `200`.
+    """
+    auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the automatic snapshot policy applied to the system disk.
+    """
+    disk_category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+    """
+    disk_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data disk.
+    """
+    disk_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data disk.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Encrypted the data in this disk. Default value: `false`.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The KMS key ID corresponding to the data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+    """
 
 @pulumi.input_type
 class EcsInstanceSetDataDiskArgs:
@@ -491,18 +477,15 @@ class EcsInstanceSetDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class EcsInstanceSetExcludeInstanceFilterArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
-        """
-elif False:
-    EcsInstanceSetExcludeInstanceFilterArgsDict: TypeAlias = Mapping[str, Any]
+class EcsInstanceSetExcludeInstanceFilterArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+    """
 
 @pulumi.input_type
 class EcsInstanceSetExcludeInstanceFilterArgs:
@@ -541,30 +524,27 @@ class EcsInstanceSetExcludeInstanceFilterArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class EcsInstanceSetNetworkInterfaceArgsDict(TypedDict):
-        security_group_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the security group to which to assign secondary ENI.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of ENI.
-        """
-        network_interface_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of ENI.
-        """
-        primary_ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The primary private IP address of ENI.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the vSwitch to which to connect ENI.
-        """
-elif False:
-    EcsInstanceSetNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+class EcsInstanceSetNetworkInterfaceArgsDict(TypedDict):
+    security_group_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the security group to which to assign secondary ENI.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of ENI.
+    """
+    network_interface_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of ENI.
+    """
+    primary_ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The primary private IP address of ENI.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the vSwitch to which to connect ENI.
+    """
 
 @pulumi.input_type
 class EcsInstanceSetNetworkInterfaceArgs:
@@ -652,50 +632,47 @@ class EcsInstanceSetNetworkInterfaceArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class EcsLaunchTemplateDataDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The category of the disk.
-        """
-        delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the data disk is released with the instance.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data disk.
-        """
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount point of the data disk.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Encrypted the data in this disk.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the KMS key used for the data disk.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data disk.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The performance level of the ESSD used as the data disk.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the data disk.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        """
-elif False:
-    EcsLaunchTemplateDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class EcsLaunchTemplateDataDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The category of the disk.
+    """
+    delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the data disk is released with the instance.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data disk.
+    """
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount point of the data disk.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Encrypted the data in this disk.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the KMS key used for the data disk.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The performance level of the ESSD used as the data disk.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the data disk.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+    """
 
 @pulumi.input_type
 class EcsLaunchTemplateDataDiskArgs:
@@ -864,14 +841,11 @@ class EcsLaunchTemplateDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class EcsLaunchTemplateImageOptionsArgsDict(TypedDict):
-        login_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
-        """
-elif False:
-    EcsLaunchTemplateImageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class EcsLaunchTemplateImageOptionsArgsDict(TypedDict):
+    login_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
+    """
 
 @pulumi.input_type
 class EcsLaunchTemplateImageOptionsArgs:
@@ -896,34 +870,31 @@ class EcsLaunchTemplateImageOptionsArgs:
         pulumi.set(self, "login_as_non_root", value)
 
 
-if not MYPY:
-    class EcsLaunchTemplateNetworkInterfacesArgsDict(TypedDict):
-        delete_on_release: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ENI description.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ENI name.
-        """
-        primary_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The primary private IP address of the ENI.
-        """
-        security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The security group ID must be one in the same VPC.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-        """
-elif False:
-    EcsLaunchTemplateNetworkInterfacesArgsDict: TypeAlias = Mapping[str, Any]
+class EcsLaunchTemplateNetworkInterfacesArgsDict(TypedDict):
+    delete_on_release: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ENI description.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ENI name.
+    """
+    primary_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The primary private IP address of the ENI.
+    """
+    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The security group ID must be one in the same VPC.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+    """
 
 @pulumi.input_type
 class EcsLaunchTemplateNetworkInterfacesArgs:
@@ -1028,46 +999,43 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class EcsLaunchTemplateSystemDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
-        """
-        delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to release the system disk when the instance is released. Default to `true`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        System disk description. It cannot begin with http:// or https://.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the system disk is encrypted.
-        """
-        iops: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Iops.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the KMS key to use for the system disk.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the system disk, measured in GB. Value range: [20, 500].
-        """
-elif False:
-    EcsLaunchTemplateSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+class EcsLaunchTemplateSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+    """
+    delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to release the system disk when the instance is released. Default to `true`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    System disk description. It cannot begin with http:// or https://.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether the system disk is encrypted.
+    """
+    iops: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Iops.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the KMS key to use for the system disk.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Size of the system disk, measured in GB. Value range: [20, 500].
+    """
 
 @pulumi.input_type
 class EcsLaunchTemplateSystemDiskArgs:
@@ -1220,24 +1188,21 @@ class EcsLaunchTemplateSystemDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class EcsPrefixListEntryArgsDict(TypedDict):
-        cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
-        * The total number of entries must not exceed the `max_entries` value.
-        * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
-        * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
-        * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
-        * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
-        * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
-        """
-elif False:
-    EcsPrefixListEntryArgsDict: TypeAlias = Mapping[str, Any]
+class EcsPrefixListEntryArgsDict(TypedDict):
+    cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+    * The total number of entries must not exceed the `max_entries` value.
+    * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+    * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+    * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+    * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+    * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+    """
 
 @pulumi.input_type
 class EcsPrefixListEntryArgs:
@@ -1290,54 +1255,51 @@ class EcsPrefixListEntryArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class ImageDiskDeviceMappingArgsDict(TypedDict):
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The device name of disk N in the custom image. Valid values:
-        - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
-        - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
-        - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
-        - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
-        """
-        format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Image format.
-        """
-        import_oss_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Import the bucket of the OSS to which the image belongs.
-        """
-        import_oss_object: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Import the object of the OSS to which the image file belongs.
-        """
-        progress: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Copy the progress of the task.
-        """
-        remain_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        For an image being replicated, return the remaining time of the replication task, in seconds.
-        """
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
-        - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-        *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-        *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
-        - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of snapshot N to use to create the custom image. .
-        """
-elif False:
-    ImageDiskDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
+class ImageDiskDeviceMappingArgsDict(TypedDict):
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The device name of disk N in the custom image. Valid values:
+    - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+    - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+    - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+    - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
+    """
+    format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Image format.
+    """
+    import_oss_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Import the bucket of the OSS to which the image belongs.
+    """
+    import_oss_object: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Import the object of the OSS to which the image file belongs.
+    """
+    progress: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Copy the progress of the task.
+    """
+    remain_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    For an image being replicated, return the remaining time of the replication task, in seconds.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+    - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+    *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+    *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+    - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of snapshot N to use to create the custom image. .
+    """
 
 @pulumi.input_type
 class ImageDiskDeviceMappingArgs:
@@ -1506,16 +1468,13 @@ class ImageDiskDeviceMappingArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class ImageFeaturesArgsDict(TypedDict):
-        nvme_support: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
-        - supported: The image supports NVMe. Instances created from this image also support NVMe.
-        - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
-        """
-elif False:
-    ImageFeaturesArgsDict: TypeAlias = Mapping[str, Any]
+class ImageFeaturesArgsDict(TypedDict):
+    nvme_support: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+    - supported: The image supports NVMe. Instances created from this image also support NVMe.
+    - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+    """
 
 @pulumi.input_type
 class ImageFeaturesArgs:
@@ -1544,30 +1503,27 @@ class ImageFeaturesArgs:
         pulumi.set(self, "nvme_support", value)
 
 
-if not MYPY:
-    class ImageImportDiskDeviceMappingArgsDict(TypedDict):
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The device name of the disk.
-        """
-        disk_image_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the disk. Default value: `5`.
-        """
-        format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
-        """
-        oss_bucket: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The OSS bucket where the image file is stored.
-        """
-        oss_object: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name (key) of the object that the uploaded image is stored as in the OSS bucket.
-        """
-elif False:
-    ImageImportDiskDeviceMappingArgsDict: TypeAlias = Mapping[str, Any]
+class ImageImportDiskDeviceMappingArgsDict(TypedDict):
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The device name of the disk.
+    """
+    disk_image_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the disk. Default value: `5`.
+    """
+    format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
+    """
+    oss_bucket: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The OSS bucket where the image file is stored.
+    """
+    oss_object: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name (key) of the object that the uploaded image is stored as in the OSS bucket.
+    """
 
 @pulumi.input_type
 class ImageImportDiskDeviceMappingArgs:
@@ -1656,22 +1612,19 @@ class ImageImportDiskDeviceMappingArgs:
         pulumi.set(self, "oss_object", value)
 
 
-if not MYPY:
-    class InstanceCpuOptionsArgsDict(TypedDict):
-        core_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of partitions in the storage set.
-        """
-        threads_per_core: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of threads per CPU core.
-        """
-        topology_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
-        """
-elif False:
-    InstanceCpuOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceCpuOptionsArgsDict(TypedDict):
+    core_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of partitions in the storage set.
+    """
+    threads_per_core: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of threads per CPU core.
+    """
+    topology_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+    """
 
 @pulumi.input_type
 class InstanceCpuOptionsArgs:
@@ -1728,72 +1681,69 @@ class InstanceCpuOptionsArgs:
         pulumi.set(self, "topology_type", value)
 
 
-if not MYPY:
-    class InstanceDataDiskArgsDict(TypedDict):
-        size: pulumi.Input[_builtins.int]
-        """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
-        """
-        auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the automatic snapshot policy applied to the system disk.
-        """
-        bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        """
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The category of the disk:
-        """
-        delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data disk.
-        """
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mount point of the data disk.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Encrypted the data in this disk. Default value: `false`.
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The KMS key ID corresponding to the Nth data disk.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data disk.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The performance level of the ESSD used as data disk:
-        - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        Default to `PL1`.
-        """
-        provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        """
-elif False:
-    InstanceDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDataDiskArgsDict(TypedDict):
+    size: pulumi.Input[_builtins.int]
+    """
+    The size of the data disk.
+    - cloud：[5, 2000]
+    - cloud_efficiency：[20, 32768]
+    - cloud_ssd：[20, 32768]
+    - cloud_essd：[20, 32768]
+    - ephemeral_ssd: [5, 800]
+    """
+    auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the automatic snapshot policy applied to the system disk.
+    """
+    bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the performance burst feature for the system disk. Valid values:
+    """
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The category of the disk:
+    """
+    delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data disk.
+    """
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mount point of the data disk.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Encrypted the data in this disk. Default value: `false`.
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The KMS key ID corresponding to the Nth data disk.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The performance level of the ESSD used as data disk:
+    - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+    - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+    - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+    - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+    Default to `PL1`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+    """
 
 @pulumi.input_type
 class InstanceDataDiskArgs:
@@ -2029,14 +1979,11 @@ class InstanceDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class InstanceImageOptionsArgsDict(TypedDict):
-        login_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow the instance logging in with the ecs-user user.
-        """
-elif False:
-    InstanceImageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceImageOptionsArgsDict(TypedDict):
+    login_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow the instance logging in with the ecs-user user.
+    """
 
 @pulumi.input_type
 class InstanceImageOptionsArgs:
@@ -2061,18 +2008,15 @@ class InstanceImageOptionsArgs:
         pulumi.set(self, "login_as_non_root", value)
 
 
-if not MYPY:
-    class InstanceMaintenanceTimeArgsDict(TypedDict):
-        end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
-        """
-elif False:
-    InstanceMaintenanceTimeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMaintenanceTimeArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
+    """
 
 @pulumi.input_type
 class InstanceMaintenanceTimeArgs:
@@ -2113,36 +2057,33 @@ class InstanceMaintenanceTimeArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class InstanceNetworkInterfacesArgsDict(TypedDict):
-        network_card_index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The index of the network card for Secondary ENI.
-        """
-        network_interface_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Secondary ENI.
-        """
-        network_interface_traffic_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
-        - `Standard`: Uses the TCP communication mode.
-        - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        """
-        queue_pair_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of queues supported by the ERI.
-        """
-        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The ID of security group N to which to assign Secondary ENI N.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the vSwitch to which to connect Secondary ENI N.
-        """
-elif False:
-    InstanceNetworkInterfacesArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkInterfacesArgsDict(TypedDict):
+    network_card_index: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The index of the network card for Secondary ENI.
+    """
+    network_interface_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Secondary ENI.
+    """
+    network_interface_traffic_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
+    - `Standard`: Uses the TCP communication mode.
+    - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
+    """
+    queue_pair_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of queues supported by the ERI.
+    """
+    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The ID of security group N to which to assign Secondary ENI N.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the vSwitch to which to connect Secondary ENI N.
+    """
 
 @pulumi.input_type
 class InstanceNetworkInterfacesArgs:
@@ -2251,57 +2192,54 @@ class InstanceNetworkInterfacesArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class LaunchTemplateDataDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
+class LaunchTemplateDataDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The category of the disk:
+    - cloud: Basic cloud disk.
+    - cloud_efficiency: Ultra cloud disk.
+    - cloud_ssd: SSD cloud Disks.
+    - ephemeral_ssd: local SSD Disks
+    - cloud_essd: ESSD cloud Disks.
 
-        Default to `cloud_efficiency`.
-        """
-        delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+    Default to `cloud_efficiency`.
+    """
+    delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
 
-        Default to true
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the data disk.
-        """
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Encrypted the data in this disk.
+    Default to true
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the data disk.
+    """
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Encrypted the data in this disk.
 
-        Default to false
-        """
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the data disk.
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
-        """
-        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        """
-elif False:
-    LaunchTemplateDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+    Default to false
+    """
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the data disk.
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the data disk.
+    - cloud：[5, 2000]
+    - cloud_efficiency：[20, 32768]
+    - cloud_ssd：[20, 32768]
+    - cloud_essd：[20, 32768]
+    - ephemeral_ssd: [5, 800]
+    """
+    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+    """
 
 @pulumi.input_type
 class LaunchTemplateDataDiskArgs:
@@ -2490,11 +2428,8 @@ class LaunchTemplateDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
-if not MYPY:
-    class LaunchTemplateImageOptionsArgsDict(TypedDict):
-        login_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
-elif False:
-    LaunchTemplateImageOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class LaunchTemplateImageOptionsArgsDict(TypedDict):
+    login_as_non_root: NotRequired[pulumi.Input[_builtins.bool]]
 
 @pulumi.input_type
 class LaunchTemplateImageOptionsArgs:
@@ -2513,31 +2448,28 @@ class LaunchTemplateImageOptionsArgs:
         pulumi.set(self, "login_as_non_root", value)
 
 
-if not MYPY:
-    class LaunchTemplateNetworkInterfacesArgsDict(TypedDict):
-        delete_on_release: NotRequired[pulumi.Input[_builtins.bool]]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ENI description.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ENI name.
-        """
-        primary_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The primary private IP address of the ENI.
-        """
-        security_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The security group ID must be one in the same VPC.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-        """
-elif False:
-    LaunchTemplateNetworkInterfacesArgsDict: TypeAlias = Mapping[str, Any]
+class LaunchTemplateNetworkInterfacesArgsDict(TypedDict):
+    delete_on_release: NotRequired[pulumi.Input[_builtins.bool]]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ENI description.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ENI name.
+    """
+    primary_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The primary private IP address of the ENI.
+    """
+    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The security group ID must be one in the same VPC.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+    """
 
 @pulumi.input_type
 class LaunchTemplateNetworkInterfacesArgs:
@@ -2638,53 +2570,50 @@ class LaunchTemplateNetworkInterfacesArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class LaunchTemplateSystemDiskArgsDict(TypedDict):
-        category: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
+class LaunchTemplateSystemDiskArgsDict(TypedDict):
+    category: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The category of the disk:
+    - cloud: Basic cloud disk.
+    - cloud_efficiency: Ultra cloud disk.
+    - cloud_ssd: SSD cloud Disks.
+    - ephemeral_ssd: local SSD Disks
+    - cloud_essd: ESSD cloud Disks.
 
-        Default to `cloud_efficiency`.
-        """
-        delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+    Default to `cloud_efficiency`.
+    """
+    delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
 
-        Default to true
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        """
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Encrypted the data in this disk.
+    Default to true
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+    """
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Encrypted the data in this disk.
 
-        Default to false
-        """
-        iops: NotRequired[pulumi.Input[_builtins.str]]
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
-        """
-elif False:
-    LaunchTemplateSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+    Default to false
+    """
+    iops: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the data disk.
+    - cloud：[5, 2000]
+    - cloud_efficiency：[20, 32768]
+    - cloud_ssd：[20, 32768]
+    - cloud_essd：[20, 32768]
+    - ephemeral_ssd: [5, 800]
+    """
 
 @pulumi.input_type
 class LaunchTemplateSystemDiskArgs:
@@ -2857,14 +2786,11 @@ class LaunchTemplateSystemDiskArgs:
         pulumi.set(self, "size", value)
 
 
-if not MYPY:
-    class ReservedInstanceOperationLockArgsDict(TypedDict):
-        lock_reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The reason why the reserved instance was locked.
-        """
-elif False:
-    ReservedInstanceOperationLockArgsDict: TypeAlias = Mapping[str, Any]
+class ReservedInstanceOperationLockArgsDict(TypedDict):
+    lock_reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The reason why the reserved instance was locked.
+    """
 
 @pulumi.input_type
 class ReservedInstanceOperationLockArgs:
@@ -2889,12 +2815,9 @@ class ReservedInstanceOperationLockArgs:
         pulumi.set(self, "lock_reason", value)
 
 
-if not MYPY:
-    class SnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
-        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
-        kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    SnapshotPolicyCopyEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class SnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
+    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class SnapshotPolicyCopyEncryptionConfigurationArgs:
@@ -2925,14 +2848,11 @@ class SnapshotPolicyCopyEncryptionConfigurationArgs:
         pulumi.set(self, "kms_key_id", value)
 
 
-if not MYPY:
-    class GetDedicatedHostsOperationLockArgsDict(TypedDict):
-        lock_reason: NotRequired[_builtins.str]
-        """
-        The reason why the dedicated host resource is locked.
-        """
-elif False:
-    GetDedicatedHostsOperationLockArgsDict: TypeAlias = Mapping[str, Any]
+class GetDedicatedHostsOperationLockArgsDict(TypedDict):
+    lock_reason: NotRequired[_builtins.str]
+    """
+    The reason why the dedicated host resource is locked.
+    """
 
 @pulumi.input_type
 class GetDedicatedHostsOperationLockArgs:
@@ -2957,11 +2877,8 @@ class GetDedicatedHostsOperationLockArgs:
         pulumi.set(self, "lock_reason", value)
 
 
-if not MYPY:
-    class GetDisksOperationLockArgsDict(TypedDict):
-        lock_reason: NotRequired[_builtins.str]
-elif False:
-    GetDisksOperationLockArgsDict: TypeAlias = Mapping[str, Any]
+class GetDisksOperationLockArgsDict(TypedDict):
+    lock_reason: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetDisksOperationLockArgs:
@@ -2980,14 +2897,11 @@ class GetDisksOperationLockArgs:
         pulumi.set(self, "lock_reason", value)
 
 
-if not MYPY:
-    class GetEcsDisksOperationLockArgsDict(TypedDict):
-        lock_reason: NotRequired[_builtins.str]
-        """
-        The reason why the disk was locked.
-        """
-elif False:
-    GetEcsDisksOperationLockArgsDict: TypeAlias = Mapping[str, Any]
+class GetEcsDisksOperationLockArgsDict(TypedDict):
+    lock_reason: NotRequired[_builtins.str]
+    """
+    The reason why the disk was locked.
+    """
 
 @pulumi.input_type
 class GetEcsDisksOperationLockArgs:

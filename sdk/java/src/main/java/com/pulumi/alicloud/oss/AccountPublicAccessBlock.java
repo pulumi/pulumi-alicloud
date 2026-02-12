@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * OSS Account Public Access Block can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example 
+ * $ terraform import alicloud_oss_account_public_access_block.example 
  * ```
  * 
  */

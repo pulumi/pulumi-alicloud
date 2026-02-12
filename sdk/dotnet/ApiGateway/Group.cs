@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway
 {
     /// <summary>
+    /// Provides an api group resource.To create an API, you must firstly create a group which is a basic attribute of the API.
+    /// 
+    /// For information about Api Gateway Group and how to use it, see [Create An Api Group](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapigroup)
+    /// 
+    /// &gt; **NOTE:** Available since v1.19.0.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build api group while it uses `alicloud.apigateway.Group` to build api group.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

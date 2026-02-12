@@ -953,15 +953,18 @@ func (o OpenApiExplorerApiMcpServerPromptArgumentArrayOutput) Index(i pulumi.Int
 
 type OpenApiExplorerApiMcpServerTerraformTool struct {
 	// Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
-	Async       *bool   `pulumi:"async"`
-	Code        *string `pulumi:"code"`
+	Async *bool `pulumi:"async"`
+	// Terraform Tool code. Overview of the HCL Language
+	Code *string `pulumi:"code"`
+	// Description of the Terraform Tool. This description will be used as the description for the MCP tool.
 	Description *string `pulumi:"description"`
 	// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
 	// - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
 	// - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
 	// - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
 	DestroyPolicy *string `pulumi:"destroyPolicy"`
-	Name          *string `pulumi:"name"`
+	// The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+	Name *string `pulumi:"name"`
 }
 
 // OpenApiExplorerApiMcpServerTerraformToolInput is an input type that accepts OpenApiExplorerApiMcpServerTerraformToolArgs and OpenApiExplorerApiMcpServerTerraformToolOutput values.
@@ -977,15 +980,18 @@ type OpenApiExplorerApiMcpServerTerraformToolInput interface {
 
 type OpenApiExplorerApiMcpServerTerraformToolArgs struct {
 	// Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
-	Async       pulumi.BoolPtrInput   `pulumi:"async"`
-	Code        pulumi.StringPtrInput `pulumi:"code"`
+	Async pulumi.BoolPtrInput `pulumi:"async"`
+	// Terraform Tool code. Overview of the HCL Language
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Description of the Terraform Tool. This description will be used as the description for the MCP tool.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
 	// - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
 	// - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
 	// - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
 	DestroyPolicy pulumi.StringPtrInput `pulumi:"destroyPolicy"`
-	Name          pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (OpenApiExplorerApiMcpServerTerraformToolArgs) ElementType() reflect.Type {
@@ -1044,10 +1050,12 @@ func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Async() pulumi.BoolPtrOu
 	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *bool { return v.Async }).(pulumi.BoolPtrOutput)
 }
 
+// Terraform Tool code. Overview of the HCL Language
 func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
+// Description of the Terraform Tool. This description will be used as the description for the MCP tool.
 func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1060,6 +1068,7 @@ func (o OpenApiExplorerApiMcpServerTerraformToolOutput) DestroyPolicy() pulumi.S
 	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.DestroyPolicy }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
 func (o OpenApiExplorerApiMcpServerTerraformToolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenApiExplorerApiMcpServerTerraformTool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1091,8 +1100,9 @@ type ProviderAssumeRole struct {
 	// The ARN of a RAM role to assume prior to making API calls.
 	RoleArn string `pulumi:"roleArn"`
 	// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
-	SessionExpiration *int    `pulumi:"sessionExpiration"`
-	SessionName       *string `pulumi:"sessionName"`
+	SessionExpiration *int `pulumi:"sessionExpiration"`
+	// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+	SessionName *string `pulumi:"sessionName"`
 }
 
 // ProviderAssumeRoleInput is an input type that accepts ProviderAssumeRoleArgs and ProviderAssumeRoleOutput values.
@@ -1113,8 +1123,9 @@ type ProviderAssumeRoleArgs struct {
 	// The ARN of a RAM role to assume prior to making API calls.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
-	SessionExpiration pulumi.IntPtrInput    `pulumi:"sessionExpiration"`
-	SessionName       pulumi.StringPtrInput `pulumi:"sessionName"`
+	SessionExpiration pulumi.IntPtrInput `pulumi:"sessionExpiration"`
+	// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+	SessionName pulumi.StringPtrInput `pulumi:"sessionName"`
 }
 
 func (ProviderAssumeRoleArgs) ElementType() reflect.Type {
@@ -1213,6 +1224,7 @@ func (o ProviderAssumeRoleOutput) SessionExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
 }
 
+// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
 func (o ProviderAssumeRoleOutput) SessionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
 }
@@ -1280,6 +1292,7 @@ func (o ProviderAssumeRolePtrOutput) SessionExpiration() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
 func (o ProviderAssumeRolePtrOutput) SessionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAssumeRole) *string {
 		if v == nil {

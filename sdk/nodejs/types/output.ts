@@ -335,7 +335,13 @@ export interface OpenApiExplorerApiMcpServerTerraformTool {
      * Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
      */
     async?: boolean;
+    /**
+     * Terraform Tool code. Overview of the HCL Language
+     */
     code?: string;
+    /**
+     * Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+     */
     description?: string;
     /**
      * The cleanup policy applied to temporary resources after task completion, based on the task execution status:
@@ -344,6 +350,9 @@ export interface OpenApiExplorerApiMcpServerTerraformTool {
      * - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
      */
     destroyPolicy?: string;
+    /**
+     * The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+     */
     name?: string;
 }
 
@@ -534,6 +543,9 @@ export namespace actiontrail {
          * The time when the task ended.
          */
         endTime: string;
+        /**
+         * The resource ID in terraform of History Delivery Job.
+         */
         historyDeliveryJobId: string;
         /**
          * The home region of the trail.
@@ -767,6 +779,9 @@ export namespace actiontrail {
     }
 
     export interface GetSaslUsersUser {
+        /**
+         * (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `<instance_id>:<username>`.
+         */
         id: string;
         /**
          * The password of the user.
@@ -1504,6 +1519,9 @@ export namespace alb {
          * Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
          */
         description: string;
+        /**
+         * The resource ID in terraform of Acl.
+         */
         entry: string;
         /**
          * The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
@@ -4072,6 +4090,9 @@ export namespace apigateway {
          * The name of the API group.
          */
         groupName: string;
+        /**
+         * The resource ID in terraform of API. It formats as `<group_id>:<api_id>`.
+         */
         id: string;
         /**
          * The name of the API.
@@ -4131,6 +4152,9 @@ export namespace apigateway {
          * The description of the Backend.
          */
         description: string;
+        /**
+         * The resource ID in terraform of Backend.
+         */
         id: string;
         /**
          * The modified time of the Backend.
@@ -6210,7 +6234,7 @@ export namespace bp {
 
     export interface StudioApplicationInstance {
         /**
-         * The id of the instance.
+         * The resource ID in terraform of Application.
          */
         id?: string;
         /**
@@ -8343,6 +8367,9 @@ export namespace cen {
          * The ID of the CEN instance.
          */
         cenId: string;
+        /**
+         * The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
+         */
         id: string;
         /**
          * The payment type of the resource.
@@ -12090,6 +12117,9 @@ export namespace cloudstoragegateway {
          * The name of the Express Sync.
          */
         expressSyncName: string;
+        /**
+         * The resource ID in terraform of Express Sync. The value is formate as <express_sync_id>.
+         */
         id: string;
         /**
          * The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
@@ -14640,6 +14670,9 @@ export namespace config {
          * The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
          */
         sessionExpiration?: number;
+        /**
+         * The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+         */
         sessionName?: string;
     }
 
@@ -39892,6 +39925,9 @@ export namespace ga {
          * Forwarding Policy Status.
          */
         forwardingRuleStatus: string;
+        /**
+         * The resource ID in terraform of Forwarding Rule.
+         */
         id: string;
         /**
          * The ID of the listener.
@@ -47938,6 +47974,9 @@ export namespace opensearch {
          * Whether the quota status is under approval. Valid status:
          */
         hasPendingQuotaReviewTask: number;
+        /**
+         * The resource ID in terraform of App Group. It is the same as `appGroupName`.
+         */
         id: string;
         /**
          * The Instance ID.
@@ -52435,6 +52474,13 @@ export namespace rds {
     }
 
     export interface InstanceServerlessConfig {
+        /**
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+         * > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
+         */
         autoPause?: boolean;
         /**
          * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
@@ -56476,6 +56522,9 @@ export namespace selectdb {
          * The engine version of the DBCluster.
          */
         engineVersion: string;
+        /**
+         * The resource ID in terraform of DBCluster. It formats as <db_instance_id>:<db_cluster_id>.
+         */
         id: string;
         /**
          * The memory resource amount of DBCluster. Depends on `dbClusterClass`.
@@ -56634,6 +56683,9 @@ export namespace selectdb {
          * The time when DBInstance is modified.
          */
         gmtModified: string;
+        /**
+         * The resource ID in terraform of DBInstance.
+         */
         id: string;
         /**
          * The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
@@ -61896,6 +61948,9 @@ export namespace vpc {
          * characters in length and cannot start with `http://` or `https://`.
          */
         dhcpOptionsSetDescription: string;
+        /**
+         * The resource ID in terraform of Dhcp Options Set.
+         */
         dhcpOptionsSetId: string;
         /**
          * The root domain, for example, example.com. After a DHCP options set is associated with a
@@ -61914,6 +61969,9 @@ export namespace vpc {
          * addresses must be separated with commas (,).
          */
         domainNameServers: string;
+        /**
+         * The resource ID in terraform of Dhcp Options Set.
+         */
         id: string;
         /**
          * The ID of the account to which the DHCP options set belongs.

@@ -104,6 +104,8 @@ namespace Pulumi.AliCloud.Cen
     /// ```sh
     /// $ pulumi import alicloud:cen/bandwidthLimit:BandwidthLimit example cen-abc123456:cn-beijing:eu-west-1
     /// ```
+    /// 
+    /// -&gt;**NOTE:** The sequence of the RegionId1 and RegionId2 makes no difference when import. But the in the id of the resource, they are sorted lexicographically.
     /// </summary>
     [AliCloudResourceType("alicloud:cen/bandwidthLimit:BandwidthLimit")]
     public partial class BandwidthLimit : global::Pulumi.CustomResource

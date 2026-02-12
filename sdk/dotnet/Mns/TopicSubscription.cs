@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mns
 {
     /// <summary>
+    /// Provides a MNS topic subscription resource.
+    /// 
+    /// &gt; **NOTE:** Terraform will auto build a mns topic subscription  while it uses `alicloud.mns.TopicSubscription` to build a mns topic subscription resource.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_subscription.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

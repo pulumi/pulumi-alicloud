@@ -41,20 +41,15 @@ __all__ = [
     'ShardingNetworkPublicAddressNetworkAddressArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the parameter.
-        """
-elif False:
-    InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the parameter.
+    """
 
 @pulumi.input_type
 class InstanceParameterArgs:
@@ -93,43 +88,40 @@ class InstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class InstanceReplicaSetArgsDict(TypedDict):
-        connection_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection address of the node.
-        """
-        connection_port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection port of the node.
-        """
-        network_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type of the instance. Valid values: `VPC`.
-        > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
-        """
-        replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role of the node.
-        """
-        role_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the role.
-        """
-        vpc_cloud_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC instance ID.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The virtual switch ID to launch DB instances in one VPC.
-        """
-elif False:
-    InstanceReplicaSetArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceReplicaSetArgsDict(TypedDict):
+    connection_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection address of the node.
+    """
+    connection_port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection port of the node.
+    """
+    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type of the instance. Valid values: `VPC`.
+    > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
+    """
+    replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role of the node.
+    """
+    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the role.
+    """
+    vpc_cloud_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC instance ID.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The virtual switch ID to launch DB instances in one VPC.
+    """
 
 @pulumi.input_type
 class InstanceReplicaSetArgs:
@@ -268,32 +260,29 @@ class InstanceReplicaSetArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class InstanceZoneInfoArgsDict(TypedDict):
-        ins_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the node.
-        """
-        node_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the node.
-        """
-        role_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the role.
-        """
-        role_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role of the node.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Zone to launch the DB instance. it supports multiple zone.
-        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
-        """
-elif False:
-    InstanceZoneInfoArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceZoneInfoArgsDict(TypedDict):
+    ins_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the node.
+    """
+    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the node.
+    """
+    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the role.
+    """
+    role_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role of the node.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Zone to launch the DB instance. it supports multiple zone.
+    If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+    The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+    """
 
 @pulumi.input_type
 class InstanceZoneInfoArgs:
@@ -386,34 +375,31 @@ class InstanceZoneInfoArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class PublicNetworkAddressReplicaSetArgsDict(TypedDict):
-        connection_domain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection address of the node.
-        """
-        connection_port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection port of the node.
-        """
-        connection_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection type.
-        """
-        network_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type, should be always "Public".
-        """
-        replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role of the node.
-        """
-        role_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the role.
-        """
-elif False:
-    PublicNetworkAddressReplicaSetArgsDict: TypeAlias = Mapping[str, Any]
+class PublicNetworkAddressReplicaSetArgsDict(TypedDict):
+    connection_domain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection address of the node.
+    """
+    connection_port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection port of the node.
+    """
+    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection type.
+    """
+    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type, should be always "Public".
+    """
+    replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role of the node.
+    """
+    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the role.
+    """
 
 @pulumi.input_type
 class PublicNetworkAddressReplicaSetArgs:
@@ -518,22 +504,19 @@ class PublicNetworkAddressReplicaSetArgs:
         pulumi.set(self, "role_id", value)
 
 
-if not MYPY:
-    class ServerlessInstanceSecurityIpGroupArgsDict(TypedDict):
-        security_ip_group_attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attribute of the IP whitelist. This parameter is empty by default.
-        """
-        security_ip_group_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the IP whitelist.
-        """
-        security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP addresses in the whitelist.
-        """
-elif False:
-    ServerlessInstanceSecurityIpGroupArgsDict: TypeAlias = Mapping[str, Any]
+class ServerlessInstanceSecurityIpGroupArgsDict(TypedDict):
+    security_ip_group_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The attribute of the IP whitelist. This parameter is empty by default.
+    """
+    security_ip_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the IP whitelist.
+    """
+    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP addresses in the whitelist.
+    """
 
 @pulumi.input_type
 class ServerlessInstanceSecurityIpGroupArgs:
@@ -590,42 +573,39 @@ class ServerlessInstanceSecurityIpGroupArgs:
         pulumi.set(self, "security_ip_list", value)
 
 
-if not MYPY:
-    class ShardingInstanceConfigServerListArgsDict(TypedDict):
-        connect_string: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection address of the Config Server node.
-        """
-        max_connections: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The max connections of the Config Server node.
-        """
-        max_iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum IOPS of the Config Server node.
-        """
-        node_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
-        """
-        node_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the Config Server node.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Config Server node.
-        """
-        node_storage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The storage space of the ConfigServer node.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The connection port of the Config Server node.
-        """
-elif False:
-    ShardingInstanceConfigServerListArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingInstanceConfigServerListArgsDict(TypedDict):
+    connect_string: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection address of the Config Server node.
+    """
+    max_connections: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The max connections of the Config Server node.
+    """
+    max_iops: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum IOPS of the Config Server node.
+    """
+    node_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
+    """
+    node_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the Config Server node.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Config Server node.
+    """
+    node_storage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The storage space of the ConfigServer node.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The connection port of the Config Server node.
+    """
 
 @pulumi.input_type
 class ShardingInstanceConfigServerListArgs:
@@ -762,26 +742,23 @@ class ShardingInstanceConfigServerListArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ShardingInstanceMongoListArgsDict(TypedDict):
-        node_class: pulumi.Input[_builtins.str]
-        """
-        The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        """
-        connect_string: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection address of the Config Server node.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Config Server node.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The connection port of the Config Server node.
-        """
-elif False:
-    ShardingInstanceMongoListArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingInstanceMongoListArgsDict(TypedDict):
+    node_class: pulumi.Input[_builtins.str]
+    """
+    The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+    """
+    connect_string: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection address of the Config Server node.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Config Server node.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The connection port of the Config Server node.
+    """
 
 @pulumi.input_type
 class ShardingInstanceMongoListArgs:
@@ -853,18 +830,15 @@ class ShardingInstanceMongoListArgs:
         pulumi.set(self, "port", value)
 
 
-if not MYPY:
-    class ShardingInstanceParameterArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the parameter.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The value of the parameter.
-        """
-elif False:
-    ShardingInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingInstanceParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the parameter.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the parameter.
+    """
 
 @pulumi.input_type
 class ShardingInstanceParameterArgs:
@@ -903,28 +877,25 @@ class ShardingInstanceParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ShardingInstanceShardListArgsDict(TypedDict):
-        node_class: pulumi.Input[_builtins.str]
-        """
-        The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        """
-        node_storage: pulumi.Input[_builtins.int]
-        """
-        The storage space of the shard node.
-        - Custom storage space; value range: [10, 1,000]
-        - 10-GB increments. Unit: GB.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Config Server node.
-        """
-        readonly_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
-        """
-elif False:
-    ShardingInstanceShardListArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingInstanceShardListArgsDict(TypedDict):
+    node_class: pulumi.Input[_builtins.str]
+    """
+    The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+    """
+    node_storage: pulumi.Input[_builtins.int]
+    """
+    The storage space of the shard node.
+    - Custom storage space; value range: [10, 1,000]
+    - 10-GB increments. Unit: GB.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Config Server node.
+    """
+    readonly_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
+    """
 
 @pulumi.input_type
 class ShardingInstanceShardListArgs:
@@ -999,31 +970,28 @@ class ShardingInstanceShardListArgs:
         pulumi.set(self, "readonly_replicas", value)
 
 
-if not MYPY:
-    class ShardingInstanceZoneInfoArgsDict(TypedDict):
-        ins_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the node.
-        """
-        node_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the node.
-        """
-        role_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role ID.
-        """
-        role_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role of the node.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        """
-elif False:
-    ShardingInstanceZoneInfoArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingInstanceZoneInfoArgsDict(TypedDict):
+    ins_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the node.
+    """
+    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the node.
+    """
+    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role ID.
+    """
+    role_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role of the node.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
+    If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+    """
 
 @pulumi.input_type
 class ShardingInstanceZoneInfoArgs:
@@ -1114,50 +1082,47 @@ class ShardingInstanceZoneInfoArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class ShardingNetworkPrivateAddressNetworkAddressArgsDict(TypedDict):
-        expired_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remaining duration of the classic network endpoint.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the instance.
-        """
-        network_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The connection string of the instance.
-        """
-        network_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type of the instance.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Shard node or ConfigServer node.
-        """
-        node_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the node.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port that is used to connect to the instance.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role of the node.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VPC.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the vSwitch in the VPC.
-        """
-elif False:
-    ShardingNetworkPrivateAddressNetworkAddressArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingNetworkPrivateAddressNetworkAddressArgsDict(TypedDict):
+    expired_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The remaining duration of the classic network endpoint.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the instance.
+    """
+    network_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The connection string of the instance.
+    """
+    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type of the instance.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Shard node or ConfigServer node.
+    """
+    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the node.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port that is used to connect to the instance.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role of the node.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VPC.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the vSwitch in the VPC.
+    """
 
 @pulumi.input_type
 class ShardingNetworkPrivateAddressNetworkAddressArgs:
@@ -1326,50 +1291,47 @@ class ShardingNetworkPrivateAddressNetworkAddressArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
-if not MYPY:
-    class ShardingNetworkPublicAddressNetworkAddressArgsDict(TypedDict):
-        expired_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remaining duration of the classic network address. Unit: `seconds`.
-        """
-        ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the instance.
-        """
-        network_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The endpoint of the instance.
-        """
-        network_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type.
-        """
-        node_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
-        """
-        node_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the node.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port number.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role of the node.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VPC.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vSwitch ID of the VPC.
-        """
-elif False:
-    ShardingNetworkPublicAddressNetworkAddressArgsDict: TypeAlias = Mapping[str, Any]
+class ShardingNetworkPublicAddressNetworkAddressArgsDict(TypedDict):
+    expired_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The remaining duration of the classic network address. Unit: `seconds`.
+    """
+    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the instance.
+    """
+    network_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The endpoint of the instance.
+    """
+    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type.
+    """
+    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+    """
+    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the node.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port number.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role of the node.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VPC.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vSwitch ID of the VPC.
+    """
 
 @pulumi.input_type
 class ShardingNetworkPublicAddressNetworkAddressArgs:

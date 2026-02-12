@@ -337,6 +337,8 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly condition: pulumi.Output<string | undefined>;
     /**
+     * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     *
      * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      */
     declare public readonly dashboard: pulumi.Output<string | undefined>;
@@ -552,6 +554,8 @@ export interface AlertState {
      */
     condition?: pulumi.Input<string>;
     /**
+     * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     *
      * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      */
     dashboard?: pulumi.Input<string>;
@@ -682,6 +686,8 @@ export interface AlertArgs {
      */
     condition?: pulumi.Input<string>;
     /**
+     * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     *
      * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      */
     dashboard?: pulumi.Input<string>;

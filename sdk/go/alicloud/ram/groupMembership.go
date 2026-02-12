@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a RAM Group membership resource.
+//
+// > **NOTE:** Available since v1.0.0.
+//
+// > **DEPRECATED:**  This resource has been deprecated since version `1.267.0`. Replace by `ram.UserGroupAttachment`.
+//
+// > **WARNING:** When you delete this resource, any other users in the group will also be deleted—even if those users were not added to the group via this Terraform resource. Therefore, it is strongly recommended to use `ram.UserGroupAttachment` instead of this resource.
+//
 // ## Example Usage
 //
 // ```go

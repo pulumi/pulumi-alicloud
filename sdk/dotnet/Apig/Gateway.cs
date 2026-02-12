@@ -10,6 +10,80 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Apig
 {
     /// <summary>
+    /// Provides a APIG Gateway resource.
+    /// 
+    /// For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+    /// 
+    /// &gt; **NOTE:** Available since v1.240.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.Apig.Gateway("default", new()
+    ///     {
+    ///         NetworkAccessConfig = new AliCloud.Apig.Inputs.GatewayNetworkAccessConfigArgs
+    ///         {
+    ///             Type = "Intranet",
+    ///         },
+    ///         LogConfig = new AliCloud.Apig.Inputs.GatewayLogConfigArgs
+    ///         {
+    ///             Sls = new AliCloud.Apig.Inputs.GatewayLogConfigSlsArgs
+    ///             {
+    ///                 Enable = false,
+    ///             },
+    ///         },
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
+    ///         Spec = "apigw.small.x1",
+    ///         Vpc = new AliCloud.Apig.Inputs.GatewayVpcArgs
+    ///         {
+    ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         },
+    ///         ZoneConfig = new AliCloud.Apig.Inputs.GatewayZoneConfigArgs
+    ///         {
+    ///             SelectOption = "Auto",
+    ///         },
+    ///         Vswitch = new AliCloud.Apig.Inputs.GatewayVswitchArgs
+    ///         {
+    ///             VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         },
+    ///         PaymentType = "PayAsYouGo",
+    ///         GatewayName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.apig.Gateway` or removing it from your configuration
+    /// 
+    /// The `alicloud.apig.Gateway` resource allows you to manage  `PaymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+    /// You can resume managing the subscription instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// APIG Gateway can be imported using the id, e.g.

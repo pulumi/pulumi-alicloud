@@ -493,6 +493,8 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.condition);
     }
     /**
+     * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     * 
      * @deprecated
      * Deprecated from 1.161.0+, use dashboardId in query_list
      * 
@@ -501,6 +503,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     @Export(name="dashboard", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dashboard;
 
+    /**
+     * @return The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
+     * 
+     */
     public Output<Optional<String>> dashboard() {
         return Codegen.optional(this.dashboard);
     }

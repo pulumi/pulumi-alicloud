@@ -49,20 +49,15 @@ __all__ = [
     'VPCRouteEntryRoutePublishTargetArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DhcpOptionsSetAssociateVpcArgsDict(TypedDict):
-        vpc_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the VPC network that is associated with the DHCP options set.
-        """
-        associate_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the VPC associated with the DHCP option set.
-        """
-elif False:
-    DhcpOptionsSetAssociateVpcArgsDict: TypeAlias = Mapping[str, Any]
+class DhcpOptionsSetAssociateVpcArgsDict(TypedDict):
+    vpc_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the VPC network that is associated with the DHCP options set.
+    """
+    associate_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the VPC associated with the DHCP option set.
+    """
 
 @pulumi.input_type
 class DhcpOptionsSetAssociateVpcArgs:
@@ -102,18 +97,15 @@ class DhcpOptionsSetAssociateVpcArgs:
         pulumi.set(self, "associate_status", value)
 
 
-if not MYPY:
-    class NatGatewayAccessModeArgsDict(TypedDict):
-        mode_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mode of Access. Valid values:
-        """
-        tunnel_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
-        """
-elif False:
-    NatGatewayAccessModeArgsDict: TypeAlias = Mapping[str, Any]
+class NatGatewayAccessModeArgsDict(TypedDict):
+    mode_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mode of Access. Valid values:
+    """
+    tunnel_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+    """
 
 @pulumi.input_type
 class NatGatewayAccessModeArgs:
@@ -154,18 +146,15 @@ class NatGatewayAccessModeArgs:
         pulumi.set(self, "tunnel_type", value)
 
 
-if not MYPY:
-    class NetworkAclAttachmentResourceArgsDict(TypedDict):
-        resource_id: pulumi.Input[_builtins.str]
-        """
-        The resource id that the network acl will associate with.
-        """
-        resource_type: pulumi.Input[_builtins.str]
-        """
-        The resource id that the network acl will associate with. Only support `VSwitch` now.
-        """
-elif False:
-    NetworkAclAttachmentResourceArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkAclAttachmentResourceArgsDict(TypedDict):
+    resource_id: pulumi.Input[_builtins.str]
+    """
+    The resource id that the network acl will associate with.
+    """
+    resource_type: pulumi.Input[_builtins.str]
+    """
+    The resource id that the network acl will associate with. Only support `VSwitch` now.
+    """
 
 @pulumi.input_type
 class NetworkAclAttachmentResourceArgs:
@@ -204,56 +193,53 @@ class NetworkAclAttachmentResourceArgs:
         pulumi.set(self, "resource_type", value)
 
 
-if not MYPY:
-    class NetworkAclEgressAclEntryArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the outbound rule.
-        The description must be 1 to 256 characters in length and cannot start with http:// or https.
-        """
-        destination_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination CIDR block.
-        """
-        entry_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The route entry type. Value
-        custom custom rule
-        system system rules
-        service Cloud service rules
-        """
-        ip_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
-        """
-        network_acl_entry_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the outbound rule entry.
-        The name must be 1 to 128 characters in length and cannot start with http:// or https.
-        """
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The action to be performed on network traffic that matches the rule. Valid values:
-        - accept
-        - drop
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination port range of the outbound rule.
-        When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
-        When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type. Value:
-        - icmp: Network Control Message Protocol.
-        - gre: Generic Routing Encapsulation Protocol.
-        - tcp: Transmission Control Protocol.
-        - udp: User Datagram Protocol.
-        - all: Supports all protocols.
-        """
-elif False:
-    NetworkAclEgressAclEntryArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkAclEgressAclEntryArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the outbound rule.
+    The description must be 1 to 256 characters in length and cannot start with http:// or https.
+    """
+    destination_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination CIDR block.
+    """
+    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The route entry type. Value
+    custom custom rule
+    system system rules
+    service Cloud service rules
+    """
+    ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
+    """
+    network_acl_entry_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the outbound rule entry.
+    The name must be 1 to 128 characters in length and cannot start with http:// or https.
+    """
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The action to be performed on network traffic that matches the rule. Valid values:
+    - accept
+    - drop
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination port range of the outbound rule.
+    When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+    When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type. Value:
+    - icmp: Network Control Message Protocol.
+    - gre: Generic Routing Encapsulation Protocol.
+    - tcp: Transmission Control Protocol.
+    - udp: User Datagram Protocol.
+    - all: Supports all protocols.
+    """
 
 @pulumi.input_type
 class NetworkAclEgressAclEntryArgs:
@@ -418,38 +404,35 @@ class NetworkAclEgressAclEntryArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class NetworkAclEntriesEgressArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the egress entry.
-        """
-        destination_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The destination ip of the egress entry.
-        """
-        entry_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the egress entry.
-        """
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The policy of the egress entry. It must be `accept` or `drop`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port of the egress entry.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol of the egress entry.
-        """
-elif False:
-    NetworkAclEntriesEgressArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkAclEntriesEgressArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the egress entry.
+    """
+    destination_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The destination ip of the egress entry.
+    """
+    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the egress entry.
+    """
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The policy of the egress entry. It must be `accept` or `drop`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port of the egress entry.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol of the egress entry.
+    """
 
 @pulumi.input_type
 class NetworkAclEntriesEgressArgs:
@@ -570,38 +553,35 @@ class NetworkAclEntriesEgressArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class NetworkAclEntriesIngressArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the ingress entry.
-        """
-        entry_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the ingress entry.
-        """
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The policy of the ingress entry. It must be `accept` or `drop`.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port of the ingress entry.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol of the ingress entry.
-        """
-        source_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source ip of the ingress entry.
-        """
-elif False:
-    NetworkAclEntriesIngressArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkAclEntriesIngressArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the ingress entry.
+    """
+    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the ingress entry.
+    """
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The policy of the ingress entry. It must be `accept` or `drop`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port of the ingress entry.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol of the ingress entry.
+    """
+    source_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source ip of the ingress entry.
+    """
 
 @pulumi.input_type
 class NetworkAclEntriesIngressArgs:
@@ -722,53 +702,50 @@ class NetworkAclEntriesIngressArgs:
         pulumi.set(self, "source_cidr_ip", value)
 
 
-if not MYPY:
-    class NetworkAclIngressAclEntryArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the inbound rule.
-        The description must be 1 to 256 characters in length and cannot start with http:// or https.
-        """
-        entry_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The route entry type. Value
-        """
-        ip_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
-        """
-        network_acl_entry_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the inbound rule entry.
-        The name must be 1 to 128 characters in length and cannot start with http:// or https.
-        """
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The action to be performed on network traffic that matches the rule. Valid values:
-        - accept
-        - drop
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source port range of the inbound rule.
-        When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
-        When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type. Value:
-        - icmp: Network Control Message Protocol.
-        - gre: Generic Routing Encapsulation Protocol.
-        - tcp: Transmission Control Protocol.
-        - udp: User Datagram Protocol.
-        - all: Supports all protocols.
-        """
-        source_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source CIDR block.
-        """
-elif False:
-    NetworkAclIngressAclEntryArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkAclIngressAclEntryArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the inbound rule.
+    The description must be 1 to 256 characters in length and cannot start with http:// or https.
+    """
+    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The route entry type. Value
+    """
+    ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
+    """
+    network_acl_entry_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the inbound rule entry.
+    The name must be 1 to 128 characters in length and cannot start with http:// or https.
+    """
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The action to be performed on network traffic that matches the rule. Valid values:
+    - accept
+    - drop
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source port range of the inbound rule.
+    When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+    When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol type. Value:
+    - icmp: Network Control Message Protocol.
+    - gre: Generic Routing Encapsulation Protocol.
+    - tcp: Transmission Control Protocol.
+    - udp: User Datagram Protocol.
+    - all: Supports all protocols.
+    """
+    source_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source CIDR block.
+    """
 
 @pulumi.input_type
 class NetworkAclIngressAclEntryArgs:
@@ -927,22 +904,19 @@ class NetworkAclIngressAclEntryArgs:
         pulumi.set(self, "source_cidr_ip", value)
 
 
-if not MYPY:
-    class NetworkAclResourceArgsDict(TypedDict):
-        resource_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the associated resource.
-        """
-        resource_type: pulumi.Input[_builtins.str]
-        """
-        The type of the associated resource.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The state of the network ACL.
-        """
-elif False:
-    NetworkAclResourceArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkAclResourceArgsDict(TypedDict):
+    resource_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the associated resource.
+    """
+    resource_type: pulumi.Input[_builtins.str]
+    """
+    The type of the associated resource.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The state of the network ACL.
+    """
 
 @pulumi.input_type
 class NetworkAclResourceArgs:
@@ -997,26 +971,23 @@ class NetworkAclResourceArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class NetworkIpv6CidrBlockArgsDict(TypedDict):
-        ipv6_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 CIDR block of the default VPC.
+class NetworkIpv6CidrBlockArgsDict(TypedDict):
+    ipv6_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 CIDR block of the default VPC.
 
-        > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
-        """
-        ipv6_isp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 address segment type of the VPC. Value:
-        - `BGP` (default): Alibaba Cloud BGP IPv6.
-        - `ChinaMobile`: China Mobile (single line).
-        - `ChinaUnicom`: China Unicom (single line).
-        - `ChinaTelecom`: China Telecom (single line).
+    > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+    """
+    ipv6_isp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 address segment type of the VPC. Value:
+    - `BGP` (default): Alibaba Cloud BGP IPv6.
+    - `ChinaMobile`: China Mobile (single line).
+    - `ChinaUnicom`: China Unicom (single line).
+    - `ChinaTelecom`: China Telecom (single line).
 
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
-        """
-elif False:
-    NetworkIpv6CidrBlockArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+    """
 
 @pulumi.input_type
 class NetworkIpv6CidrBlockArgs:
@@ -1073,18 +1044,15 @@ class NetworkIpv6CidrBlockArgs:
         pulumi.set(self, "ipv6_isp", value)
 
 
-if not MYPY:
-    class PrefixListEntryArgsDict(TypedDict):
-        cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CIDR address block of the prefix list.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        """
-elif False:
-    PrefixListEntryArgsDict: TypeAlias = Mapping[str, Any]
+class PrefixListEntryArgsDict(TypedDict):
+    cidr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CIDR address block of the prefix list.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+    """
 
 @pulumi.input_type
 class PrefixListEntryArgs:
@@ -1125,42 +1093,39 @@ class PrefixListEntryArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class PrefixListPrefixListAssociationArgsDict(TypedDict):
-        owner_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
-        """
-        prefix_list_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the query Prefix List.
-        """
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Reason when the association fails.
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region ID of the prefix list to be queried.
-        """
-        resource_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the associated resource.
-        """
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
-        """
-        resource_uid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resource attribute fields that represent the status of the resource.
-        """
-elif False:
-    PrefixListPrefixListAssociationArgsDict: TypeAlias = Mapping[str, Any]
+class PrefixListPrefixListAssociationArgsDict(TypedDict):
+    owner_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+    """
+    prefix_list_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the query Prefix List.
+    """
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Reason when the association fails.
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region ID of the prefix list to be queried.
+    """
+    resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the associated resource.
+    """
+    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+    """
+    resource_uid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resource attribute fields that represent the status of the resource.
+    """
 
 @pulumi.input_type
 class PrefixListPrefixListAssociationArgs:
@@ -1297,18 +1262,15 @@ class PrefixListPrefixListAssociationArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class TrafficMirrorFilterEgressRuleArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        protocol: pulumi.Input[_builtins.str]
-        destination_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        destination_port_range: NotRequired[pulumi.Input[_builtins.str]]
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        source_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        source_port_range: NotRequired[pulumi.Input[_builtins.str]]
-        traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TrafficMirrorFilterEgressRuleArgsDict: TypeAlias = Mapping[str, Any]
+class TrafficMirrorFilterEgressRuleArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    protocol: pulumi.Input[_builtins.str]
+    destination_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    destination_port_range: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[_builtins.int]]
+    source_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    source_port_range: NotRequired[pulumi.Input[_builtins.str]]
+    traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TrafficMirrorFilterEgressRuleArgs:
@@ -1409,18 +1371,15 @@ class TrafficMirrorFilterEgressRuleArgs:
         pulumi.set(self, "traffic_mirror_filter_rule_status", value)
 
 
-if not MYPY:
-    class TrafficMirrorFilterIngressRuleArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        protocol: pulumi.Input[_builtins.str]
-        destination_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        destination_port_range: NotRequired[pulumi.Input[_builtins.str]]
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        source_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-        source_port_range: NotRequired[pulumi.Input[_builtins.str]]
-        traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TrafficMirrorFilterIngressRuleArgsDict: TypeAlias = Mapping[str, Any]
+class TrafficMirrorFilterIngressRuleArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    protocol: pulumi.Input[_builtins.str]
+    destination_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    destination_port_range: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[_builtins.int]]
+    source_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    source_port_range: NotRequired[pulumi.Input[_builtins.str]]
+    traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class TrafficMirrorFilterIngressRuleArgs:
@@ -1521,34 +1480,31 @@ class TrafficMirrorFilterIngressRuleArgs:
         pulumi.set(self, "traffic_mirror_filter_rule_status", value)
 
 
-if not MYPY:
-    class VPCRouteEntryNextHopArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Whether the route is available.
-        """
-        next_hop_region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the next instance.
-        """
-        next_hop_related_info: NotRequired[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgsDict']]
-        """
-        Next hop information.
-        """
-        nexthop_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of next hop
-        """
-        nexthop_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        type of next hop
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The weight of the route entry.
-        """
-elif False:
-    VPCRouteEntryNextHopArgsDict: TypeAlias = Mapping[str, Any]
+class VPCRouteEntryNextHopArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Whether the route is available.
+    """
+    next_hop_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the next instance.
+    """
+    next_hop_related_info: NotRequired[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgsDict']]
+    """
+    Next hop information.
+    """
+    nexthop_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of next hop
+    """
+    nexthop_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    type of next hop
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The weight of the route entry.
+    """
 
 @pulumi.input_type
 class VPCRouteEntryNextHopArgs:
@@ -1653,22 +1609,19 @@ class VPCRouteEntryNextHopArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class VPCRouteEntryNextHopNextHopRelatedInfoArgsDict(TypedDict):
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InstanceId
-        """
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        InstanceType
-        """
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the instance associated with the next hop.
-        """
-elif False:
-    VPCRouteEntryNextHopNextHopRelatedInfoArgsDict: TypeAlias = Mapping[str, Any]
+class VPCRouteEntryNextHopNextHopRelatedInfoArgsDict(TypedDict):
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InstanceId
+    """
+    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    InstanceType
+    """
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the instance associated with the next hop.
+    """
 
 @pulumi.input_type
 class VPCRouteEntryNextHopNextHopRelatedInfoArgs:
@@ -1725,22 +1678,19 @@ class VPCRouteEntryNextHopNextHopRelatedInfoArgs:
         pulumi.set(self, "region_id", value)
 
 
-if not MYPY:
-    class VPCRouteEntryRoutePublishTargetArgsDict(TypedDict):
-        target_type: pulumi.Input[_builtins.str]
-        """
-        Route publish target type
-        """
-        publish_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Route Publish Status
-        """
-        target_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Route publish target instance id.
-        """
-elif False:
-    VPCRouteEntryRoutePublishTargetArgsDict: TypeAlias = Mapping[str, Any]
+class VPCRouteEntryRoutePublishTargetArgsDict(TypedDict):
+    target_type: pulumi.Input[_builtins.str]
+    """
+    Route publish target type
+    """
+    publish_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Route Publish Status
+    """
+    target_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Route publish target instance id.
+    """
 
 @pulumi.input_type
 class VPCRouteEntryRoutePublishTargetArgs:

@@ -27,28 +27,23 @@ __all__ = [
     'InstanceWarmNodeConfigurationArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceClientNodeConfigurationArgsDict(TypedDict):
-        amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of disks in the Elasticsearch cluster coordination node
-        """
-        disk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch cluster coordinates node disk size
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch cluster coordination node disk type
-        """
-        spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch cluster coordination node specification
-        """
-elif False:
-    InstanceClientNodeConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceClientNodeConfigurationArgsDict(TypedDict):
+    amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of disks in the Elasticsearch cluster coordination node
+    """
+    disk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch cluster coordinates node disk size
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch cluster coordination node disk type
+    """
+    spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch cluster coordination node specification
+    """
 
 @pulumi.input_type
 class InstanceClientNodeConfigurationArgs:
@@ -121,34 +116,31 @@ class InstanceClientNodeConfigurationArgs:
         pulumi.set(self, "spec", value)
 
 
-if not MYPY:
-    class InstanceDataNodeConfigurationArgsDict(TypedDict):
-        spec: pulumi.Input[_builtins.str]
-        """
-        Elasticsearch data node specification
-        """
-        amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of data nodes in the Elasticsearch cluster
-        """
-        disk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch data node disk size
-        """
-        disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the Elasticsearch data node disk is encrypted
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch cluster data node disk type
-        """
-        performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch cluster data node Essd disk level
-        """
-elif False:
-    InstanceDataNodeConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDataNodeConfigurationArgsDict(TypedDict):
+    spec: pulumi.Input[_builtins.str]
+    """
+    Elasticsearch data node specification
+    """
+    amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of data nodes in the Elasticsearch cluster
+    """
+    disk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch data node disk size
+    """
+    disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the Elasticsearch data node disk is encrypted
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch cluster data node disk type
+    """
+    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch cluster data node Essd disk level
+    """
 
 @pulumi.input_type
 class InstanceDataNodeConfigurationArgs:
@@ -252,22 +244,19 @@ class InstanceDataNodeConfigurationArgs:
         pulumi.set(self, "performance_level", value)
 
 
-if not MYPY:
-    class InstanceKibanaConfigurationArgsDict(TypedDict):
-        spec: pulumi.Input[_builtins.str]
-        """
-        Elasticsearch Kibana node disk specifications
-        """
-        amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of disks of the Elasticsearch Kibana node. The default value is 1.
-        """
-        disk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch Kibana node disk size
-        """
-elif False:
-    InstanceKibanaConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceKibanaConfigurationArgsDict(TypedDict):
+    spec: pulumi.Input[_builtins.str]
+    """
+    Elasticsearch Kibana node disk specifications
+    """
+    amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of disks of the Elasticsearch Kibana node. The default value is 1.
+    """
+    disk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch Kibana node disk size
+    """
 
 @pulumi.input_type
 class InstanceKibanaConfigurationArgs:
@@ -323,26 +312,23 @@ class InstanceKibanaConfigurationArgs:
         pulumi.set(self, "disk", value)
 
 
-if not MYPY:
-    class InstanceMasterConfigurationArgsDict(TypedDict):
-        amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch proprietary master node number of disks
-        """
-        disk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch proprietary master node disk size
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch proprietary master node disk type
-        """
-        spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch proprietary master node specifications
-        """
-elif False:
-    InstanceMasterConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMasterConfigurationArgsDict(TypedDict):
+    amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch proprietary master node number of disks
+    """
+    disk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch proprietary master node disk size
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch proprietary master node disk type
+    """
+    spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch proprietary master node specifications
+    """
 
 @pulumi.input_type
 class InstanceMasterConfigurationArgs:
@@ -415,30 +401,27 @@ class InstanceMasterConfigurationArgs:
         pulumi.set(self, "spec", value)
 
 
-if not MYPY:
-    class InstanceWarmNodeConfigurationArgsDict(TypedDict):
-        amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch cluster cold data node disk number
-        """
-        disk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Elasticsearch cluster cold data node disk size
-        """
-        disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Elasticsearch cluster cold data node Disk encryption
-        """
-        disk_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch cluster cold data node disk type
-        """
-        spec: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Elasticsearch cluster cold data node Disk Specification
-        """
-elif False:
-    InstanceWarmNodeConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceWarmNodeConfigurationArgsDict(TypedDict):
+    amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch cluster cold data node disk number
+    """
+    disk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Elasticsearch cluster cold data node disk size
+    """
+    disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Elasticsearch cluster cold data node Disk encryption
+    """
+    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch cluster cold data node disk type
+    """
+    spec: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Elasticsearch cluster cold data node Disk Specification
+    """
 
 @pulumi.input_type
 class InstanceWarmNodeConfigurationArgs:

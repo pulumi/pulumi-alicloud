@@ -21,6 +21,176 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
+ * environment in the cloud. An PolarDB cluster can contain multiple user-created
+ * databases.
+ * 
+ * &gt; **NOTE:** Available since v1.66.0.
+ * 
+ * ## Example Usage
+ * 
+ * Create a PolarDB MySQL cluster
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.polardb.PolardbFunctions;
+ * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.polardb.Cluster;
+ * import com.pulumi.alicloud.polardb.ClusterArgs;
+ * import com.pulumi.alicloud.polardb.inputs.ClusterDbClusterIpArrayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .category("Normal")
+ *             .payType("PostPaid")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(default_.classes()[0].zoneId())
+ *             .vswitchName("terraform-example")
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .dbNodeClass(default_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
+ *             .payType("PostPaid")
+ *             .vswitchId(defaultSwitch.id())
+ *             .description("terraform-example")
+ *             .dbClusterIpArrays(            
+ *                 ClusterDbClusterIpArrayArgs.builder()
+ *                     .dbClusterIpArrayName("default")
+ *                     .securityIps(                    
+ *                         "1.2.3.4",
+ *                         "1.2.3.5")
+ *                     .build(),
+ *                 ClusterDbClusterIpArrayArgs.builder()
+ *                     .dbClusterIpArrayName("default2")
+ *                     .securityIps("1.2.3.6")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
+ * Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.ram.RamFunctions;
+ * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.resourcemanager.PolicyAttachment;
+ * import com.pulumi.alicloud.resourcemanager.PolicyAttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         final var roles = RamFunctions.getRoles(GetRolesArgs.builder()
+ *             .nameRegex("AliyunRDSInstanceEncryptionDefaultRole")
+ *             .build());
+ * 
+ *         for (var i = 0; i < roles.roles().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) }{{@code
+ *             new Role("default-" + i, RoleArgs.builder()
+ *                 .name("AliyunRDSInstanceEncryptionDefaultRole")
+ *                 .document("""
+ *     }{{@code
+ *         \"Statement\": [
+ *             }{{@code
+ *                \"Action\": \"sts:AssumeRole\",
+ *                 \"Effect\": \"Allow\",
+ *                 \"Principal\": }{{@code
+ *                     \"Service\": [
+ *                         \"rds.aliyuncs.com\"
+ *                     ]
+ *                 }}{@code
+ *             }}{@code
+ *         ],
+ *         \"Version\": \"1\"
+ *     }}{@code
+ *                 """)
+ *                 .description("RDS使用此角色来访问您在其他云产品中的资源")
+ *                 .build());
+ * 
+ *         
+ * }}{@code
+ *         for (var i = 0; i < roles.roles().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) }{{@code
+ *             new PolicyAttachment("defaultPolicyAttachment-" + i, PolicyAttachmentArgs.builder()
+ *                 .policyName("AliyunRDSInstanceEncryptionRolePolicy")
+ *                 .policyType("System")
+ *                 .principalName(Output.tuple(roles.roles().length(), default_[0].name()).applyValue(values -> }{{@code
+ *                     var length = values.t1;
+ *                     var name = values.t2;
+ *                     return length > 0 ? String.format("%s}{@literal @}{@code role.%s.onaliyunservice.com", roles.roles()[0].name(),current.id()) : String.format("%s}{@literal @}{@code role.%s.onaliyunservice.com", name,current.id());
+ *                 }}{@code ))
+ *                 .principalType("ServiceRole")
+ *                 .resourceGroupId(current.id())
+ *                 .build());
+ * 
+ *         
+ * }}{@code
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Removing alicloud.polardb.Cluster from your configuration
+ * 
+ * The alicloud.polardb.Cluster resource allows you to manage your polardb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the polardb Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * PolarDB cluster can be imported using the id, e.g.

@@ -89,11 +89,24 @@ export class Certificate extends pulumi.CustomResource {
      * Creation time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly createdType: pulumi.Output<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
     declare public readonly domains: pulumi.Output<string | undefined>;
+    /**
+     * The certificate private key.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * Region. This parameter is required if the type is CAS.
@@ -189,11 +202,24 @@ export interface CertificateState {
      * Creation time.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     createdType?: pulumi.Input<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
     domains?: pulumi.Input<string>;
+    /**
+     * The certificate private key.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     privateKey?: pulumi.Input<string>;
     /**
      * Region. This parameter is required if the type is CAS.
@@ -235,11 +261,24 @@ export interface CertificateArgs {
      * Certificate content.
      */
     certificate?: pulumi.Input<string>;
+    /**
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     createdType: pulumi.Input<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
     domains?: pulumi.Input<string>;
+    /**
+     * The certificate private key.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     privateKey?: pulumi.Input<string>;
     /**
      * Region. This parameter is required if the type is CAS.

@@ -21,24 +21,19 @@ __all__ = [
     'BastionHostInstanceLdapAuthServerArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class BastionHostInstanceAdAuthServerArgsDict(TypedDict):
-        account: pulumi.Input[_builtins.str]
-        base_dn: pulumi.Input[_builtins.str]
-        domain: pulumi.Input[_builtins.str]
-        is_ssl: pulumi.Input[_builtins.bool]
-        port: pulumi.Input[_builtins.int]
-        server: pulumi.Input[_builtins.str]
-        email_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        mobile_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        name_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        standby_server: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    BastionHostInstanceAdAuthServerArgsDict: TypeAlias = Mapping[str, Any]
+class BastionHostInstanceAdAuthServerArgsDict(TypedDict):
+    account: pulumi.Input[_builtins.str]
+    base_dn: pulumi.Input[_builtins.str]
+    domain: pulumi.Input[_builtins.str]
+    is_ssl: pulumi.Input[_builtins.bool]
+    port: pulumi.Input[_builtins.int]
+    server: pulumi.Input[_builtins.str]
+    email_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    mobile_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    name_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    standby_server: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class BastionHostInstanceAdAuthServerArgs:
@@ -183,22 +178,19 @@ class BastionHostInstanceAdAuthServerArgs:
         pulumi.set(self, "standby_server", value)
 
 
-if not MYPY:
-    class BastionHostInstanceLdapAuthServerArgsDict(TypedDict):
-        account: pulumi.Input[_builtins.str]
-        base_dn: pulumi.Input[_builtins.str]
-        port: pulumi.Input[_builtins.int]
-        server: pulumi.Input[_builtins.str]
-        email_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        is_ssl: NotRequired[pulumi.Input[_builtins.bool]]
-        login_name_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        mobile_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        name_mapping: NotRequired[pulumi.Input[_builtins.str]]
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        standby_server: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    BastionHostInstanceLdapAuthServerArgsDict: TypeAlias = Mapping[str, Any]
+class BastionHostInstanceLdapAuthServerArgsDict(TypedDict):
+    account: pulumi.Input[_builtins.str]
+    base_dn: pulumi.Input[_builtins.str]
+    port: pulumi.Input[_builtins.int]
+    server: pulumi.Input[_builtins.str]
+    email_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    is_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    login_name_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    mobile_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    name_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    standby_server: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class BastionHostInstanceLdapAuthServerArgs:

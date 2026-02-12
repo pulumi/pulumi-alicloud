@@ -59,6 +59,10 @@ public final class GetDbClustersCluster {
      * 
      */
     private String engineVersion;
+    /**
+     * @return The resource ID in terraform of DBCluster. It formats as &lt;db_instance_id&gt;:&lt;db_cluster_id&gt;.
+     * 
+     */
     private String id;
     /**
      * @return The memory resource amount of DBCluster. Depends on `dbClusterClass`.
@@ -165,6 +169,10 @@ public final class GetDbClustersCluster {
     public String engineVersion() {
         return this.engineVersion;
     }
+    /**
+     * @return The resource ID in terraform of DBCluster. It formats as &lt;db_instance_id&gt;:&lt;db_cluster_id&gt;.
+     * 
+     */
     public String id() {
         return this.id;
     }

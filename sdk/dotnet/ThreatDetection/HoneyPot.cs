@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// Threat Detection Honey Pot can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:threatdetection/honeyPot:HoneyPot example &lt;id&gt;
+    /// $terraform import alicloud_threat_detection_honey_pot.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/honeyPot:HoneyPot")]

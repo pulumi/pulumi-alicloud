@@ -10,6 +10,60 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
+    /// Provides a OSS Bucket Https Config resource.
+    /// 
+    /// Whether the bucket can only be accessed with specific TLS versions.
+    /// 
+    /// For information about OSS Bucket Https Config and how to use it, see [What is Bucket Https Config](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketHttpsConfig).
+    /// 
+    /// &gt; **NOTE:** Available since v1.220.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var createBucket = new AliCloud.Oss.Bucket("CreateBucket", new()
+    ///     {
+    ///         StorageClass = "Standard",
+    ///         BucketName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultBucketHttpsConfig = new AliCloud.Oss.BucketHttpsConfig("default", new()
+    ///     {
+    ///         TlsVersions = new[]
+    ///         {
+    ///             "TLSv1.2",
+    ///         },
+    ///         Bucket = createBucket.BucketName,
+    ///         Enable = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.oss.BucketHttpsConfig` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.oss.BucketHttpsConfig`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS Bucket Https Config can be imported using the id, e.g.

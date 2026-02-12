@@ -12,6 +12,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Message Service Endpoint resource.
+//
+// For information about Message Service Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-enableendpoint).
+//
+// > **NOTE:** Available since v1.243.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := message.NewServiceEndpoint(ctx, "default", &message.ServiceEndpointArgs{
+//				EndpointEnabled: pulumi.Bool(true),
+//				EndpointType:    pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `message.ServiceEndpoint` or removing it from your configuration
+//
+// Terraform cannot destroy resource `message.ServiceEndpoint`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Message Service Endpoint can be imported using the id, e.g.

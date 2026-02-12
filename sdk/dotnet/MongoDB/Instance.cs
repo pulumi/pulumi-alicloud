@@ -385,6 +385,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("srcDbInstanceId")]
         public Output<string?> SrcDbInstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
+        /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
+        /// </summary>
         [Output("sslAction")]
         public Output<string?> SslAction { get; private set; } = null!;
 
@@ -803,6 +810,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("srcDbInstanceId")]
         public Input<string>? SrcDbInstanceId { get; set; }
 
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
+        /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
+        /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
@@ -1209,6 +1223,13 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("srcDbInstanceId")]
         public Input<string>? SrcDbInstanceId { get; set; }
 
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
+        /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
+        /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 

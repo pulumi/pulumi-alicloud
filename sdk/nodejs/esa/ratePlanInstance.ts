@@ -70,6 +70,11 @@ export class RatePlanInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === RatePlanInstance.__pulumiType;
     }
 
+    /**
+     * Specifies whether to enable auto payment.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Auto-renewal:
@@ -162,6 +167,11 @@ export class RatePlanInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RatePlanInstance resources.
  */
 export interface RatePlanInstanceState {
+    /**
+     * Specifies whether to enable auto payment.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     autoPay?: pulumi.Input<boolean>;
     /**
      * Auto-renewal:
@@ -214,6 +224,11 @@ export interface RatePlanInstanceState {
  * The set of arguments for constructing a RatePlanInstance resource.
  */
 export interface RatePlanInstanceArgs {
+    /**
+     * Specifies whether to enable auto payment.
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     autoPay?: pulumi.Input<boolean>;
     /**
      * Auto-renewal:

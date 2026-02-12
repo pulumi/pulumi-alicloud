@@ -10,6 +10,46 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
+    /// Provides a Anti-DDoS Pro (DdosBgp) Instance resource.
+    /// 
+    /// For information about Anti-DDoS Pro (DdosBgp) Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.183.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
+    ///     {
+    ///         Name = name,
+    ///         BaseBandwidth = 20,
+    ///         Bandwidth = -1,
+    ///         IpCount = 100,
+    ///         IpType = "IPv4",
+    ///         NormalBandwidth = 100,
+    ///         Type = "Enterprise",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.ddos.DdosBgpInstance` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.ddos.DdosBgpInstance`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.

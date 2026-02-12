@@ -61,6 +61,11 @@ class NodeArgs:
         :param pulumi.Input[_builtins.str] business_info: Additional parameters, business information.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] effective_time: Effective time of configuration change. Value description:
+               - `Immediately` (default): takes effect Immediately.
+               - `MaintainTime`: takes effect during the O & M period of the instance.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] from_app: Request Source, value description:
                - `OpenApi`: The request source is OpenApi.
         :param pulumi.Input[_builtins.int] node_storage: The disk space of the Node. Unit: GB.
@@ -68,12 +73,20 @@ class NodeArgs:
                Value range: `10` to `2000`, with a step size of 10GB.
                
                > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
+        :param pulumi.Input[_builtins.str] order_type: Order type, value description:
+               - `UPGRADE`: UPGRADE.
+               - `DOWNGRADE`: downgrading.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] readonly_replicas: The number of read-only nodes in the Shard.
                
                Value range: `0` to `5` (integer). Default value: **0 * *.
                
                > **NOTE:**  This parameter is currently only supported by China Station.
         :param pulumi.Input[_builtins.bool] shard_direct: Whether to apply for the direct connection address of the Shard node. Value description:
+        :param pulumi.Input[_builtins.str] switch_time: The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
         pulumi.set(__self__, "node_class", node_class)
@@ -207,6 +220,13 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Effective time of configuration change. Value description:
+        - `Immediately` (default): takes effect Immediately.
+        - `MaintainTime`: takes effect during the O & M period of the instance.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
@@ -245,6 +265,13 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Order type, value description:
+        - `UPGRADE`: UPGRADE.
+        - `DOWNGRADE`: downgrading.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "order_type")
 
     @order_type.setter
@@ -282,6 +309,11 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="switchTime")
     def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
@@ -334,6 +366,11 @@ class _NodeState:
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[_builtins.str] effective_time: Effective time of configuration change. Value description:
+               - `Immediately` (default): takes effect Immediately.
+               - `MaintainTime`: takes effect during the O & M period of the instance.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] from_app: Request Source, value description:
                - `OpenApi`: The request source is OpenApi.
         :param pulumi.Input[_builtins.str] node_class: The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
@@ -344,6 +381,11 @@ class _NodeState:
                
                > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
         :param pulumi.Input[_builtins.str] node_type: Node type, value description:
+        :param pulumi.Input[_builtins.str] order_type: Order type, value description:
+               - `UPGRADE`: UPGRADE.
+               - `DOWNGRADE`: downgrading.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] readonly_replicas: The number of read-only nodes in the Shard.
                
                Value range: `0` to `5` (integer). Default value: **0 * *.
@@ -351,6 +393,9 @@ class _NodeState:
                > **NOTE:**  This parameter is currently only supported by China Station.
         :param pulumi.Input[_builtins.bool] shard_direct: Whether to apply for the direct connection address of the Shard node. Value description:
         :param pulumi.Input[_builtins.str] status: Running status of node in sharded cluster
+        :param pulumi.Input[_builtins.str] switch_time: The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -467,6 +512,13 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Effective time of configuration change. Value description:
+        - `Immediately` (default): takes effect Immediately.
+        - `MaintainTime`: takes effect during the O & M period of the instance.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
@@ -541,6 +593,13 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Order type, value description:
+        - `UPGRADE`: UPGRADE.
+        - `DOWNGRADE`: downgrading.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "order_type")
 
     @order_type.setter
@@ -590,6 +649,11 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="switchTime")
     def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
@@ -735,6 +799,11 @@ class Node(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[_builtins.str] effective_time: Effective time of configuration change. Value description:
+               - `Immediately` (default): takes effect Immediately.
+               - `MaintainTime`: takes effect during the O & M period of the instance.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] from_app: Request Source, value description:
                - `OpenApi`: The request source is OpenApi.
         :param pulumi.Input[_builtins.str] node_class: The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
@@ -744,12 +813,20 @@ class Node(pulumi.CustomResource):
                
                > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
         :param pulumi.Input[_builtins.str] node_type: Node type, value description:
+        :param pulumi.Input[_builtins.str] order_type: Order type, value description:
+               - `UPGRADE`: UPGRADE.
+               - `DOWNGRADE`: downgrading.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] readonly_replicas: The number of read-only nodes in the Shard.
                
                Value range: `0` to `5` (integer). Default value: **0 * *.
                
                > **NOTE:**  This parameter is currently only supported by China Station.
         :param pulumi.Input[_builtins.bool] shard_direct: Whether to apply for the direct connection address of the Shard node. Value description:
+        :param pulumi.Input[_builtins.str] switch_time: The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         ...
     @overload
@@ -965,6 +1042,11 @@ class Node(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[_builtins.str] effective_time: Effective time of configuration change. Value description:
+               - `Immediately` (default): takes effect Immediately.
+               - `MaintainTime`: takes effect during the O & M period of the instance.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] from_app: Request Source, value description:
                - `OpenApi`: The request source is OpenApi.
         :param pulumi.Input[_builtins.str] node_class: The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
@@ -975,6 +1057,11 @@ class Node(pulumi.CustomResource):
                
                > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
         :param pulumi.Input[_builtins.str] node_type: Node type, value description:
+        :param pulumi.Input[_builtins.str] order_type: Order type, value description:
+               - `UPGRADE`: UPGRADE.
+               - `DOWNGRADE`: downgrading.
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] readonly_replicas: The number of read-only nodes in the Shard.
                
                Value range: `0` to `5` (integer). Default value: **0 * *.
@@ -982,6 +1069,9 @@ class Node(pulumi.CustomResource):
                > **NOTE:**  This parameter is currently only supported by China Station.
         :param pulumi.Input[_builtins.bool] shard_direct: Whether to apply for the direct connection address of the Shard node. Value description:
         :param pulumi.Input[_builtins.str] status: Running status of node in sharded cluster
+        :param pulumi.Input[_builtins.str] switch_time: The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1067,6 +1157,13 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Effective time of configuration change. Value description:
+        - `Immediately` (default): takes effect Immediately.
+        - `MaintainTime`: takes effect during the O & M period of the instance.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "effective_time")
 
     @_builtins.property
@@ -1117,6 +1214,13 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="orderType")
     def order_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Order type, value description:
+        - `UPGRADE`: UPGRADE.
+        - `DOWNGRADE`: downgrading.
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "order_type")
 
     @_builtins.property
@@ -1150,5 +1254,10 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="switchTime")
     def switch_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "switch_time")
 

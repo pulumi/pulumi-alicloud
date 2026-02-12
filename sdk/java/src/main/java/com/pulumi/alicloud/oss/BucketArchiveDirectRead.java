@@ -15,6 +15,64 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a OSS Bucket Archive Direct Read resource.
+ * 
+ * Real-time access Archive objects in the bucket without the need to restore the Archive objects.
+ * 
+ * For information about OSS Bucket Archive Direct Read and how to use it, see [What is Bucket Archive Direct Read](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketArchiveDirectRead).
+ * 
+ * &gt; **NOTE:** Available since v1.271.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketArchiveDirectRead;
+ * import com.pulumi.alicloud.oss.BucketArchiveDirectReadArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+ *             .storageClass("Standard")
+ *             .build());
+ * 
+ *         var default_ = new BucketArchiveDirectRead("default", BucketArchiveDirectReadArgs.builder()
+ *             .bucket(createBucket.id())
+ *             .enabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.oss.BucketArchiveDirectRead` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.oss.BucketArchiveDirectRead`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * OSS Bucket Archive Direct Read can be imported using the id, e.g.

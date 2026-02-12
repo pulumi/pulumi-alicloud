@@ -69,6 +69,9 @@ namespace Pulumi.AliCloud.SelectDB.Outputs
         /// The time when DBInstance is modified.
         /// </summary>
         public readonly string GmtModified;
+        /// <summary>
+        /// The resource ID in terraform of DBInstance.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.

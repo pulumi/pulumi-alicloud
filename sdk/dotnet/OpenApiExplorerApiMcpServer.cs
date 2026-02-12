@@ -387,6 +387,9 @@ namespace Pulumi.AliCloud
         [Output("systemTools")]
         public Output<ImmutableArray<string>> SystemTools { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `TerraformTools` below.
+        /// </summary>
         [Output("terraformTools")]
         public Output<ImmutableArray<Outputs.OpenApiExplorerApiMcpServerTerraformTool>> TerraformTools { get; private set; } = null!;
 
@@ -561,6 +564,10 @@ namespace Pulumi.AliCloud
 
         [Input("terraformTools")]
         private InputList<Inputs.OpenApiExplorerApiMcpServerTerraformToolArgs>? _terraformTools;
+
+        /// <summary>
+        /// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `TerraformTools` below.
+        /// </summary>
         public InputList<Inputs.OpenApiExplorerApiMcpServerTerraformToolArgs> TerraformTools
         {
             get => _terraformTools ?? (_terraformTools = new InputList<Inputs.OpenApiExplorerApiMcpServerTerraformToolArgs>());
@@ -712,6 +719,10 @@ namespace Pulumi.AliCloud
 
         [Input("terraformTools")]
         private InputList<Inputs.OpenApiExplorerApiMcpServerTerraformToolGetArgs>? _terraformTools;
+
+        /// <summary>
+        /// A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `TerraformTools` below.
+        /// </summary>
         public InputList<Inputs.OpenApiExplorerApiMcpServerTerraformToolGetArgs> TerraformTools
         {
             get => _terraformTools ?? (_terraformTools = new InputList<Inputs.OpenApiExplorerApiMcpServerTerraformToolGetArgs>());

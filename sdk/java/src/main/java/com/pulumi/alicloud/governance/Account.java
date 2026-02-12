@@ -18,6 +18,81 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Governance Account resource.
+ * 
+ * Member account created by the Cloud Governance Center account factory.
+ * 
+ * For information about Governance Account and how to use it, see [What is Account](https://next.api.aliyun.com/document/governance/2021-01-20/EnrollAccount).
+ * 
+ * &gt; **NOTE:** Available since v1.228.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.governance.GovernanceFunctions;
+ * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
+ * import com.pulumi.alicloud.governance.Account;
+ * import com.pulumi.alicloud.governance.AccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         final var defaultGetBaselines = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetFolders = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+ *             .build());
+ * 
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
+ *             .accountNamePrefix(String.format("%s-%s", name,defaultInteger.result()))
+ *             .folderId(defaultGetFolders.ids()[0])
+ *             .baselineId(defaultGetBaselines.ids()[0])
+ *             .payerAccountId(default_.id())
+ *             .displayName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.governance.Account` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.governance.Account`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Governance Account can be imported using the id, e.g.

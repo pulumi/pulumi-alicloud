@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSaslUsersUser {
+    /**
+     * @return (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `&lt;instance_id&gt;:&lt;username&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The password of the user.
@@ -28,6 +32,10 @@ public final class GetSaslUsersUser {
     private String username;
 
     private GetSaslUsersUser() {}
+    /**
+     * @return (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `&lt;instance_id&gt;:&lt;username&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

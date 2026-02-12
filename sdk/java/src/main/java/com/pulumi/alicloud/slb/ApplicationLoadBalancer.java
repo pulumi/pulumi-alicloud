@@ -17,6 +17,84 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an Application Load Balancer resource.
+ * 
+ * &gt; **NOTE:** Available since v1.123.1.
+ * 
+ * &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
+ * 
+ * &gt; **NOTE:** The supported specifications vary by region. Currently, not all regions support guaranteed-performance instances.
+ * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var slbLoadBalancerName = config.get("slbLoadBalancerName").orElse("forSlbLoadBalancer");
+ *         final var loadBalancer = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var loadBalancerNetwork = new Network("loadBalancerNetwork", NetworkArgs.builder()
+ *             .vpcName(slbLoadBalancerName)
+ *             .build());
+ * 
+ *         var loadBalancerSwitch = new Switch("loadBalancerSwitch", SwitchArgs.builder()
+ *             .vpcId(loadBalancerNetwork.id())
+ *             .cidrBlock("172.16.0.0/21")
+ *             .zoneId(loadBalancer.zones()[0].id())
+ *             .vswitchName(slbLoadBalancerName)
+ *             .build());
+ * 
+ *         var loadBalancerApplicationLoadBalancer = new ApplicationLoadBalancer("loadBalancerApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
+ *             .loadBalancerName(slbLoadBalancerName)
+ *             .addressType("intranet")
+ *             .loadBalancerSpec("slb.s2.small")
+ *             .vswitchId(loadBalancerSwitch.id())
+ *             .tags(Map.of("info", "create for internet"))
+ *             .instanceChargeType("PayBySpec")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.slb.ApplicationLoadBalancer` or removing it from your configuration
+ * 
+ * The `alicloud.slb.ApplicationLoadBalancer` resource allows you to manage `paymentType = &#34;Subscription&#34;` load balancer, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Load Balancer.
+ * You can resume managing the subscription load balancer via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Load balancer can be imported using the id, e.g.
@@ -130,9 +208,21 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
+    /**
+     * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     * 
+     */
     @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerName;
 
+    /**
+     * @return The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+     * must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;/&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen. If not specified,
+     * Terraform will autogenerate a name beginning with `tf-lb`.
+     * 
+     */
     public Output<String> loadBalancerName() {
         return this.loadBalancerName;
     }

@@ -23,6 +23,10 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
      * 
      */
     private String cenId;
+    /**
+     * @return The resource ID in terraform of Transit Router VPC Attachment. It formats as `&lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return The payment type of the resource.
@@ -90,6 +94,10 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
     public String cenId() {
         return this.cenId;
     }
+    /**
+     * @return The resource ID in terraform of Transit Router VPC Attachment. It formats as `&lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

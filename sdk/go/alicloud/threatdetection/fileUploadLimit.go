@@ -12,12 +12,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Threat Detection File Upload Limit resource. User-defined file upload limit.
+//
+// For information about Threat Detection File Upload Limit and how to use it, see [What is File Upload Limit](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetFileUploadLimit).
+//
+// > **NOTE:** Available since v1.212.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := threatdetection.NewFileUploadLimit(ctx, "default", &threatdetection.FileUploadLimitArgs{
+//				Limit: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `threatdetection.FileUploadLimit` or removing it from your configuration
+//
+// Terraform cannot destroy resource `threatdetection.FileUploadLimit`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection File Upload Limit can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example
+// $ terraform import alicloud_threat_detection_file_upload_limit.example
 // ```
 type FileUploadLimit struct {
 	pulumi.CustomResourceState

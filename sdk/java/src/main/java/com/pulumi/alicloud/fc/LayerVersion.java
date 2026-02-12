@@ -17,6 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Function Compute Layer Version resource.
+ * 
+ * For information about FC Layer Version and how to use it, see [What is Layer Version](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createlayerversion).
+ * 
+ * &gt; **NOTE:** Available since v1.180.0.
+ * 
+ * &gt; **NOTE: Setting `skipDestroy` to `true` means that the Alicloud Provider will not destroy any layer version, even when running `terraform destroy`. Layer versions are thus intentional dangling resources that are not managed by Terraform and may incur extra expense in your Alicloud account.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

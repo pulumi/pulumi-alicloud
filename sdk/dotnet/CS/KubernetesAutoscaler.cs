@@ -9,6 +9,149 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
+    /// <summary>
+    /// This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
+    /// 
+    /// &gt; **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
+    /// 
+    /// &gt; **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
+    /// 
+    /// &gt; **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
+    /// 
+    /// &gt; **NOTE:** Available since v1.65.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.127.0`. Please use new resource alicloud_cs_autoscaling_config. If you have used resource `alicloud.cs.KubernetesAutoscaler`, please refer to [Use Terraform to create an auto-scaling node pool](https://www.alibabacloud.com/help/doc-detail/197717.htm) to switch to `alicloud.cs.AutoscalingConfig`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// cluster-autoscaler in Kubernetes Cluster.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Worker",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         NamePrefix = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = true,
+    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "10.0.0.0/8",
+    ///             Newbits = 8,
+    ///             Netnum = 36,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "172.16.0.0/16",
+    ///             Newbits = 4,
+    ///             Netnum = 7,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SlbInternetEnabled = true,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
+    ///     {
+    ///         ScalingGroupName = name,
+    ///         MinSize = 1,
+    ///         MaxSize = 1,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         RemovalPolicies = new[]
+    ///         {
+    ///             "OldestInstance",
+    ///             "NewestInstance",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("default", new()
+    ///     {
+    ///         ScalingGroupId = defaultScalingGroup.Id,
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         ForceDelete = true,
+    ///         Active = true,
+    ///     });
+    /// 
+    ///     var defaultKubernetesAutoscaler = new AliCloud.CS.KubernetesAutoscaler("default", new()
+    ///     {
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         Utilization = "0.5",
+    ///         CoolDownDuration = "10m",
+    ///         DeferScaleInDuration = "10m",
+    ///         Nodepools = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
+    ///             {
+    ///                 Id = defaultScalingConfiguration.ScalingGroupId,
+    ///                 Labels = "a=b",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Ignoring Changes to tags and UserData
+    /// 
+    /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `IgnoreChanges` to create a  a autoscaler group, then ignore any changes to that tags and UserData caused externally (e.g. Application Autoscaling).
+    /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler")]
     public partial class KubernetesAutoscaler : global::Pulumi.CustomResource
     {

@@ -169,9 +169,21 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> resourceGroups() {
         return Codegen.optional(this.resourceGroups);
     }
+    /**
+     * The ID of the Alibaba Cloud resource group.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="resourceManagerResourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceManagerResourceGroupId;
 
+    /**
+     * @return The ID of the Alibaba Cloud resource group.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> resourceManagerResourceGroupId() {
         return Codegen.optional(this.resourceManagerResourceGroupId);
     }

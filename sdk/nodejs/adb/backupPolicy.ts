@@ -5,6 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-modifybackuppolicy) cluster backup policy resource and used to configure cluster backup policy.
+ *
+ * > **NOTE:** Available since v1.71.0.
+ *
+ * > Each DB cluster has a backup policy and it will be set default values when destroying the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.adb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const vswitchId = defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]);
+ * const cluster = new alicloud.adb.DBCluster("cluster", {
+ *     dbClusterCategory: "MixedStorage",
+ *     mode: "flexible",
+ *     computeResource: "8Core32GB",
+ *     vswitchId: vswitchId,
+ *     description: name,
+ * });
+ * const defaultBackupPolicy = new alicloud.adb.BackupPolicy("default", {
+ *     dbClusterId: cluster.id,
+ *     preferredBackupPeriods: [
+ *         "Tuesday",
+ *         "Wednesday",
+ *     ],
+ *     preferredBackupTime: "10:00Z-11:00Z",
+ * });
+ * ```
+ * ### Removing alicloud.adb.Cluster from your configuration
+ *
+ * The alicloud.adb.BackupPolicy resource allows you to manage your adb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the adb Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ADB backup policy can be imported using the id or cluster id, e.g.

@@ -88,6 +88,14 @@ namespace Pulumi.AliCloud.Esa
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The certificate type.
+        /// - cas (Certificate Center Certificate)
+        /// - upload (custom upload certificate)
+        /// - free( Free certificate).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("createdType")]
         public Output<string> CreatedType { get; private set; } = null!;
 
@@ -97,6 +105,11 @@ namespace Pulumi.AliCloud.Esa
         [Output("domains")]
         public Output<string?> Domains { get; private set; } = null!;
 
+        /// <summary>
+        /// The certificate private key.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("privateKey")]
         public Output<string?> PrivateKey { get; private set; } = null!;
 
@@ -196,6 +209,14 @@ namespace Pulumi.AliCloud.Esa
         [Input("certificate")]
         public Input<string>? CertificateValue { get; set; }
 
+        /// <summary>
+        /// The certificate type.
+        /// - cas (Certificate Center Certificate)
+        /// - upload (custom upload certificate)
+        /// - free( Free certificate).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("createdType", required: true)]
         public Input<string> CreatedType { get; set; } = null!;
 
@@ -205,6 +226,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("domains")]
         public Input<string>? Domains { get; set; }
 
+        /// <summary>
+        /// The certificate private key.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
@@ -266,6 +292,14 @@ namespace Pulumi.AliCloud.Esa
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The certificate type.
+        /// - cas (Certificate Center Certificate)
+        /// - upload (custom upload certificate)
+        /// - free( Free certificate).
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("createdType")]
         public Input<string>? CreatedType { get; set; }
 
@@ -275,6 +309,11 @@ namespace Pulumi.AliCloud.Esa
         [Input("domains")]
         public Input<string>? Domains { get; set; }
 
+        /// <summary>
+        /// The certificate private key.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 

@@ -5,6 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a EIP Bandwidth Plan (CBWP) Common Bandwidth Package resource.
+ *
+ * > **NOTE:** Terraform will auto build common bandwidth package instance while it uses `alicloud.vpc.CommonBandwithPackage` to build a common bandwidth package resource.
+ *
+ * For additional details, see the documentation[https://help.aliyun.com/zh/internet-shared-bandwidth/user-guide/internet-shared-bandwidth-overview?spm=a2c4g.11186623.help-menu-55092.d_1_0.492c69ffKLbVqS].
+ *
+ * For information about EIP Bandwidth Plan (CBWP) Common Bandwidth Package and how to use it, see [What is Common Bandwidth Package](https://www.alibabacloud.com/help/en/eip-bandwidth-plan).
+ *
+ * > **NOTE:** Available since v1.23.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
+ *     bandwidthPackageName: name,
+ *     description: name,
+ *     isp: "BGP",
+ *     bandwidth: "1000",
+ *     ratio: 100,
+ *     internetChargeType: "PayByBandwidth",
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.vpc.CommonBandwithPackage` or removing it from your configuration
+ *
+ * The `alicloud.vpc.CommonBandwithPackage` resource allows you to manage  `internetChargeType = "PayBy95"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.

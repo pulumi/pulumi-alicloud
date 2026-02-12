@@ -19,24 +19,19 @@ __all__ = [
     'DbInstanceDbInstanceIpArrayArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DbInstanceDbInstanceIpArrayArgsDict(TypedDict):
-        db_instance_ip_array_attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
-        """
-        db_instance_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP ADDRESS whitelist group name.
-        """
-        security_ips: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-        """
-elif False:
-    DbInstanceDbInstanceIpArrayArgsDict: TypeAlias = Mapping[str, Any]
+class DbInstanceDbInstanceIpArrayArgsDict(TypedDict):
+    db_instance_ip_array_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
+    """
+    db_instance_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP ADDRESS whitelist group name.
+    """
+    security_ips: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
+    """
 
 @pulumi.input_type
 class DbInstanceDbInstanceIpArrayArgs:

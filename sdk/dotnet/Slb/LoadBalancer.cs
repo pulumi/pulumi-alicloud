@@ -136,6 +136,11 @@ namespace Pulumi.AliCloud.Slb
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        /// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        /// Terraform will autogenerate a name beginning with `tf-lb`.
+        /// </summary>
         [Output("loadBalancerName")]
         public Output<string> LoadBalancerName { get; private set; } = null!;
 
@@ -319,6 +324,11 @@ namespace Pulumi.AliCloud.Slb
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        /// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        /// Terraform will autogenerate a name beginning with `tf-lb`.
+        /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
@@ -470,6 +480,11 @@ namespace Pulumi.AliCloud.Slb
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        /// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        /// Terraform will autogenerate a name beginning with `tf-lb`.
+        /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 

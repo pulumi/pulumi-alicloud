@@ -11,6 +11,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an ECS Disk resource.
+//
+// For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
+//
+// > **NOTE:** Available since v1.122.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleKey, err := kms.NewKey(ctx, "example", &kms.KeyArgs{
+//				Description:         pulumi.String("terraform-example"),
+//				PendingWindowInDays: pulumi.Int(7),
+//				Status:              pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//				DiskName:    pulumi.String("terraform-example"),
+//				Description: pulumi.String("terraform-example"),
+//				Category:    pulumi.String("cloud_efficiency"),
+//				Size:        pulumi.Int(30),
+//				Encrypted:   pulumi.Bool(true),
+//				KmsKeyId:    exampleKey.ID(),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("terraform-example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `ecs.EcsDisk` or removing it from your configuration
+//
+// The `ecs.EcsDisk` resource allows you to manage `paymentType = "Subscription"` and `deleteWithInstance = true` disk,
+// but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
+// remove it from your state file and management, but will not destroy it.
+// If you want to delete it, you can change it to `PayAsYouGo` and setting `deleteWithInstance = true` and detach it from instance.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ECS Disk can be imported using the id, e.g.

@@ -12,6 +12,199 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
+// environment in the cloud. An PolarDB cluster can contain multiple user-created
+// databases.
+//
+// > **NOTE:** Available since v1.66.0.
+//
+// ## Example Usage
+//
+// # Create a PolarDB MySQL cluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				Category:  pulumi.StringRef("Normal"),
+//				PayType:   "PostPaid",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = polardb.NewCluster(ctx, "default", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				DbNodeClass: pulumi.String(_default.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				PayType:     pulumi.String("PostPaid"),
+//				VswitchId:   defaultSwitch.ID(),
+//				Description: pulumi.String("terraform-example"),
+//				DbClusterIpArrays: polardb.ClusterDbClusterIpArrayArray{
+//					&polardb.ClusterDbClusterIpArrayArgs{
+//						DbClusterIpArrayName: pulumi.String("default"),
+//						SecurityIps: pulumi.StringArray{
+//							pulumi.String("1.2.3.4"),
+//							pulumi.String("1.2.3.5"),
+//						},
+//					},
+//					&polardb.ClusterDbClusterIpArrayArgs{
+//						DbClusterIpArrayName: pulumi.String("default2"),
+//						SecurityIps: pulumi.StringArray{
+//							pulumi.String("1.2.3.6"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
+// Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			roles, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
+//				NameRegex: pulumi.StringRef("AliyunRDSInstanceEncryptionDefaultRole"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var tmp0 float64
+//			if length > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
+//			var _default []*ram.Role
+//			for index := 0; index < float64(len(roles.Roles).ApplyT(func(length int) (float64, error) {
+//				return tmp0, nil
+//			}).(pulumi.Float64Output)); index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := ram.NewRole(ctx, fmt.Sprintf("default-%v", key0), &ram.RoleArgs{
+//					Name: pulumi.String("AliyunRDSInstanceEncryptionDefaultRole"),
+//					Document: pulumi.String(`    {
+//	        \"Statement\": [
+//	            {
+//	               \"Action\": \"sts:AssumeRole\",
+//	                \"Effect\": \"Allow\",
+//	                \"Principal\": {
+//	                    \"Service\": [
+//	                        \"rds.aliyuncs.com\"
+//	                    ]
+//	                }
+//	            }
+//	        ],
+//	        \"Version\": \"1\"
+//	    }
+//
+// `),
+//
+//					Description: pulumi.String("RDS使用此角色来访问您在其他云产品中的资源"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				_default = append(_default, __res)
+//			}
+//			var tmp1 string
+//			if length > 0 {
+//				tmp1 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", roles.Roles[0].Name, current.Id)
+//			} else {
+//				tmp1 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", name, current.Id)
+//			}
+//			var tmp2 float64
+//			if length > 0 {
+//				tmp2 = 0
+//			} else {
+//				tmp2 = 1
+//			}
+//			var defaultPolicyAttachment []*resourcemanager.PolicyAttachment
+//			for index := 0; index < float64(len(roles.Roles).ApplyT(func(length int) (float64, error) {
+//				return tmp2, nil
+//			}).(pulumi.Float64Output)); index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := resourcemanager.NewPolicyAttachment(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.PolicyAttachmentArgs{
+//					PolicyName: pulumi.String("AliyunRDSInstanceEncryptionRolePolicy"),
+//					PolicyType: pulumi.String("System"),
+//					PrincipalName: pulumi.All(len(roles.Roles), _default[0].Name).ApplyT(func(_args []interface{}) (string, error) {
+//						length := _args[0].(int)
+//						name := _args[1].(string)
+//						return tmp1, nil
+//					}).(pulumi.StringOutput),
+//					PrincipalType:   pulumi.String("ServiceRole"),
+//					ResourceGroupId: pulumi.String(current.Id),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultPolicyAttachment = append(defaultPolicyAttachment, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Removing polardb.Cluster from your configuration
+//
+// The polardb.Cluster resource allows you to manage your polardb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the polardb Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // PolarDB cluster can be imported using the id, e.g.

@@ -1298,6 +1298,11 @@ func (o InstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) InstancePgHbaConf
 }
 
 type InstanceServerlessConfig struct {
+	// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+	// - true: enables the feature.
+	// - false: disables the feature. This is the default value.
+	// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+	// > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
 	AutoPause *bool `pulumi:"autoPause"`
 	// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
 	// - MySQL: 1~8
@@ -1329,6 +1334,11 @@ type InstanceServerlessConfigInput interface {
 }
 
 type InstanceServerlessConfigArgs struct {
+	// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+	// - true: enables the feature.
+	// - false: disables the feature. This is the default value.
+	// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+	// > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
 	AutoPause pulumi.BoolPtrInput `pulumi:"autoPause"`
 	// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
 	// - MySQL: 1~8
@@ -1399,6 +1409,11 @@ func (o InstanceServerlessConfigOutput) ToInstanceServerlessConfigOutputWithCont
 	return o
 }
 
+// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
+// - true: enables the feature.
+// - false: disables the feature. This is the default value.
+// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+// > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
 func (o InstanceServerlessConfigOutput) AutoPause() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceServerlessConfig) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
 }

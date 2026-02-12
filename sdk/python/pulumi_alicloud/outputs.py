@@ -559,10 +559,13 @@ class OpenApiExplorerApiMcpServerTerraformTool(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.bool async_: Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+        :param _builtins.str code: Terraform Tool code. Overview of the HCL Language
+        :param _builtins.str description: Description of the Terraform Tool. This description will be used as the description for the MCP tool.
         :param _builtins.str destroy_policy: The cleanup policy applied to temporary resources after task completion, based on the task execution status:
                - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
                - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
                - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+        :param _builtins.str name: The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
         """
         if async_ is not None:
             pulumi.set(__self__, "async_", async_)
@@ -586,11 +589,17 @@ class OpenApiExplorerApiMcpServerTerraformTool(dict):
     @_builtins.property
     @pulumi.getter
     def code(self) -> Optional[_builtins.str]:
+        """
+        Terraform Tool code. Overview of the HCL Language
+        """
         return pulumi.get(self, "code")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -607,6 +616,9 @@ class OpenApiExplorerApiMcpServerTerraformTool(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+        """
         return pulumi.get(self, "name")
 
 

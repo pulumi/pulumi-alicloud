@@ -800,6 +800,62 @@ class Instance(pulumi.CustomResource):
                  tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a RabbitMQ (AMQP) Instance resource.
+
+        The instance of Amqp.
+
+        For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createinstance).
+
+        > **NOTE:** Available since v1.128.0.
+
+        ## Example Usage
+
+        Create a RabbitMQ (AMQP) enterprise edition Instance.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.amqp.Instance("default",
+            instance_name=name,
+            instance_type="enterprise",
+            max_tps="1000",
+            queue_capacity="50",
+            period_cycle="Year",
+            support_eip=False,
+            period=1,
+            auto_renew=True,
+            payment_type="Subscription")
+        ```
+
+        Create a RabbitMQ (AMQP) serverless edition Instance.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.amqp.Instance("default",
+            instance_name=name,
+            payment_type="PayAsYouGo",
+            serverless_charge_type="onDemand")
+        ```
+
+        ### Deleting `amqp.Instance` or removing it from your configuration
+
+        The `amqp.Instance` resource allows you to manage  `payment_type = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Amqp Instance can be imported using the id, e.g.
@@ -848,6 +904,62 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RabbitMQ (AMQP) Instance resource.
+
+        The instance of Amqp.
+
+        For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createinstance).
+
+        > **NOTE:** Available since v1.128.0.
+
+        ## Example Usage
+
+        Create a RabbitMQ (AMQP) enterprise edition Instance.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.amqp.Instance("default",
+            instance_name=name,
+            instance_type="enterprise",
+            max_tps="1000",
+            queue_capacity="50",
+            period_cycle="Year",
+            support_eip=False,
+            period=1,
+            auto_renew=True,
+            payment_type="Subscription")
+        ```
+
+        Create a RabbitMQ (AMQP) serverless edition Instance.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.amqp.Instance("default",
+            instance_name=name,
+            payment_type="PayAsYouGo",
+            serverless_charge_type="onDemand")
+        ```
+
+        ### Deleting `amqp.Instance` or removing it from your configuration
+
+        The `amqp.Instance` resource allows you to manage  `payment_type = "PayAsYouGo"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Amqp Instance can be imported using the id, e.g.

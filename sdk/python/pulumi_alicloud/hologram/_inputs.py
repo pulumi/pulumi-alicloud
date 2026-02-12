@@ -19,40 +19,35 @@ __all__ = [
     'InstanceEndpointArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceEndpointArgsDict(TypedDict):
-        alternative_endpoints: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Some old instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints of both are retained. Therefore, one more field is required to store the Endpoint.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to turn on the network.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Domain name.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network type.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC primary key.
-        """
-        vpc_instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vpc instance ID.
-        """
-        vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the virtual switch.
-        """
-elif False:
-    InstanceEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceEndpointArgsDict(TypedDict):
+    alternative_endpoints: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Some old instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints of both are retained. Therefore, one more field is required to store the Endpoint.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to turn on the network.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Domain name.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network type.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC primary key.
+    """
+    vpc_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vpc instance ID.
+    """
+    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the virtual switch.
+    """
 
 @pulumi.input_type
 class InstanceEndpointArgs:

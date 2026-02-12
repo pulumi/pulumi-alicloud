@@ -19,27 +19,22 @@ __all__ = [
     'ReportTemplateReportScopeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ReportTemplateReportScopeArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key for reporting scope, currently supported:
-        - AggregatorId
-        - CompliancePackId
-        - RuleId
-        """
-        match_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The matching logic. Currently, only In is supported.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
-        """
-elif False:
-    ReportTemplateReportScopeArgsDict: TypeAlias = Mapping[str, Any]
+class ReportTemplateReportScopeArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key for reporting scope, currently supported:
+    - AggregatorId
+    - CompliancePackId
+    - RuleId
+    """
+    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The matching logic. Currently, only In is supported.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+    """
 
 @pulumi.input_type
 class ReportTemplateReportScopeArgs:

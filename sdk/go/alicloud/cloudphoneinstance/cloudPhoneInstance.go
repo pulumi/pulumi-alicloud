@@ -11,6 +11,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Phone Instance resource.
+//
+// cloud phone instance.
+//
+// For information about Cloud Phone Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/DescribeAndroidInstances).
+//
+// > **NOTE:** Available since v1.243.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudphone"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudphoneinstance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultjZ1gi0, err := cloudphone.NewPolicy(ctx, "defaultjZ1gi0", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultYHMlTO, err := cloudphoneinstance.NewGroup(ctx, "defaultYHMlTO", &cloudphoneinstance.GroupArgs{
+//				InstanceGroupSpec: pulumi.String("acp.basic.small"),
+//				PolicyGroupId:     defaultjZ1gi0.ID(),
+//				InstanceGroupName: pulumi.String("AutoCreateGroupName"),
+//				Period:            pulumi.Int(1),
+//				NumberOfInstances: pulumi.Int(1),
+//				ChargeType:        pulumi.String("PostPaid"),
+//				ImageId:           pulumi.String("imgc-075cllfeuazh03tg9"),
+//				PeriodUnit:        pulumi.String("Hour"),
+//				AutoRenew:         pulumi.Bool(false),
+//				Amount:            pulumi.Int(1),
+//				AutoPay:           pulumi.Bool(false),
+//				GpuAcceleration:   pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudphoneinstance.NewCloudPhoneInstance(ctx, "default", &cloudphoneinstance.CloudPhoneInstanceArgs{
+//				AndroidInstanceGroupId: defaultYHMlTO.ID(),
+//				AndroidInstanceName:    pulumi.String("CreateInstanceName"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudphoneinstance.CloudPhoneInstance` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudphoneinstance.CloudPhoneInstance`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Phone Instance can be imported using the id, e.g.

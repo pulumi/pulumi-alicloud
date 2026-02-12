@@ -7,6 +7,62 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a APIG Gateway resource.
+ *
+ * For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+ *
+ * > **NOTE:** Available since v1.240.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ * }));
+ * const defaultGateway = new alicloud.apig.Gateway("default", {
+ *     networkAccessConfig: {
+ *         type: "Intranet",
+ *     },
+ *     logConfig: {
+ *         sls: {
+ *             enable: false,
+ *         },
+ *     },
+ *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
+ *     spec: "apigw.small.x1",
+ *     vpc: {
+ *         vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     },
+ *     zoneConfig: {
+ *         selectOption: "Auto",
+ *     },
+ *     vswitch: {
+ *         vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     },
+ *     paymentType: "PayAsYouGo",
+ *     gatewayName: name,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.apig.Gateway` or removing it from your configuration
+ *
+ * The `alicloud.apig.Gateway` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * APIG Gateway can be imported using the id, e.g.

@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * Express Connect Virtual Physical Connection can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection example <id>
+ * $terraform import alicloud_express_connect_virtual_physical_connection.example <id>
  * ```
  */
 export class VirtualPhysicalConnection extends pulumi.CustomResource {

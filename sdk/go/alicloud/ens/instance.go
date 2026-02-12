@@ -12,6 +12,89 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Ens Instance resource.
+//
+// For information about ENS Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/Ens/2017-11-10/RunInstances).
+//
+// > **NOTE:** Available since v1.216.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ens"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := ens.NewInstance(ctx, "default", &ens.InstanceArgs{
+//				Period: pulumi.Int(1),
+//				DataDisks: ens.InstanceDataDiskArray{
+//					&ens.InstanceDataDiskArgs{
+//						Size:     pulumi.Int(20),
+//						Category: pulumi.String("cloud_efficiency"),
+//					},
+//					&ens.InstanceDataDiskArgs{
+//						Size:     pulumi.Int(30),
+//						Category: pulumi.String("cloud_efficiency"),
+//					},
+//					&ens.InstanceDataDiskArgs{
+//						Size:     pulumi.Int(40),
+//						Category: pulumi.String("cloud_efficiency"),
+//					},
+//				},
+//				PublicIpIdentification:  pulumi.Bool(true),
+//				PeriodUnit:              pulumi.String("Month"),
+//				SchedulingStrategy:      pulumi.String("Concentrate"),
+//				ScheduleAreaLevel:       pulumi.String("Region"),
+//				ImageId:                 pulumi.String("centos_6_08_64_20G_alibase_20171208"),
+//				Carrier:                 pulumi.String("cmcc"),
+//				InstanceType:            pulumi.String("ens.sn1.tiny"),
+//				HostName:                pulumi.String("exampleHost80"),
+//				Password:                pulumi.String("Example123456@@"),
+//				NetDistrictCode:         pulumi.String("100102"),
+//				InternetChargeType:      pulumi.String("95BandwidthByMonth"),
+//				InstanceName:            pulumi.String(name),
+//				InternetMaxBandwidthOut: pulumi.Int(100),
+//				EnsRegionId:             pulumi.String("cn-wuxi-telecom_unicom_cmcc-2"),
+//				SystemDisk: &ens.InstanceSystemDiskArgs{
+//					Size: pulumi.Int(20),
+//				},
+//				SchedulingPriceStrategy: pulumi.String("PriceHighPriority"),
+//				UserData:                pulumi.String("IyEvYmluL3NoCmVjaG8gIkhlbGxvIFdvcmxkLiAgVGhlIHRpbWUgaXMgbm93ICQoZGF0ZSAtUikhIiB8IHRlZSAvcm9vdC9vdXRwdXQudHh0"),
+//				InstanceChargeStrategy:  pulumi.String("user"),
+//				PaymentType:             pulumi.String("Subscription"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `ens.Instance` or removing it from your configuration
+//
+// The `ens.Instance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Ens Instance can be imported using the id, e.g.

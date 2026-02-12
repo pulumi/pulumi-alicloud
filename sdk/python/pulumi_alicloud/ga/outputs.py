@@ -2915,6 +2915,7 @@ class GetForwardingRulesForwardingRuleResult(dict):
         :param _builtins.str forwarding_rule_id: Forwarding Policy ID.
         :param _builtins.str forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
         :param _builtins.str forwarding_rule_status: Forwarding Policy Status.
+        :param _builtins.str id: The resource ID in terraform of Forwarding Rule.
         :param _builtins.str listener_id: The ID of the listener.
         :param _builtins.int priority: Forwarding policy priority.
         :param Sequence['GetForwardingRulesForwardingRuleRuleActionArgs'] rule_actions: The IP protocol used by the GA instance.
@@ -2956,6 +2957,9 @@ class GetForwardingRulesForwardingRuleResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of Forwarding Rule.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

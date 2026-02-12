@@ -117,20 +117,15 @@ __all__ = [
     'ServerGroupUchConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AScriptExtAttributeArgsDict(TypedDict):
-        attribute_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Key to extend attribute
-        """
-        attribute_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the extended attribute
-        """
-elif False:
-    AScriptExtAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class AScriptExtAttributeArgsDict(TypedDict):
+    attribute_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Key to extend attribute
+    """
+    attribute_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the extended attribute
+    """
 
 @pulumi.input_type
 class AScriptExtAttributeArgs:
@@ -171,25 +166,22 @@ class AScriptExtAttributeArgs:
         pulumi.set(self, "attribute_value", value)
 
 
-if not MYPY:
-    class AclAclEntryArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
-        """
-        entry: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address for the ACL entry.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the ACL entry. Valid values:
-        - `Adding`: The ACL entry is being added.
-        - `Available`: The ACL entry is added and available.
-        - `Removing`: The ACL entry is being removed.
-        """
-elif False:
-    AclAclEntryArgsDict: TypeAlias = Mapping[str, Any]
+class AclAclEntryArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+    """
+    entry: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address for the ACL entry.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the ACL entry. Valid values:
+    - `Adding`: The ACL entry is being added.
+    - `Available`: The ACL entry is added and available.
+    - `Removing`: The ACL entry is being removed.
+    """
 
 @pulumi.input_type
 class AclAclEntryArgs:
@@ -252,26 +244,23 @@ class AclAclEntryArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class ListenerAccessLogTracingConfigArgsDict(TypedDict):
-        tracing_enabled: pulumi.Input[_builtins.bool]
-        """
-        Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
+class ListenerAccessLogTracingConfigArgsDict(TypedDict):
+    tracing_enabled: pulumi.Input[_builtins.bool]
+    """
+    Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
 
-        > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
-        """
-        tracing_sample: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
-        """
-        tracing_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Xtrace Type Value Is `Zipkin`.
+    > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the value `true`.
+    """
+    tracing_sample: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
+    """
+    tracing_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Xtrace Type Value Is `Zipkin`.
 
-        > **NOTE:**  `tracingenabled` valued True When Effective.
-        """
-elif False:
-    ListenerAccessLogTracingConfigArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  `tracingenabled` valued True When Effective.
+    """
 
 @pulumi.input_type
 class ListenerAccessLogTracingConfigArgs:
@@ -335,18 +324,15 @@ class ListenerAccessLogTracingConfigArgs:
         pulumi.set(self, "tracing_type", value)
 
 
-if not MYPY:
-    class ListenerAclConfigArgsDict(TypedDict):
-        acl_relations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgsDict']]]]
-        """
-        The ACLs that are associated with the listener. See `acl_relations` below for details.
-        """
-        acl_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-        """
-elif False:
-    ListenerAclConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerAclConfigArgsDict(TypedDict):
+    acl_relations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgsDict']]]]
+    """
+    The ACLs that are associated with the listener. See `acl_relations` below for details.
+    """
+    acl_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+    """
 
 @pulumi.input_type
 class ListenerAclConfigArgs:
@@ -387,18 +373,15 @@ class ListenerAclConfigArgs:
         pulumi.set(self, "acl_type", value)
 
 
-if not MYPY:
-    class ListenerAclConfigAclRelationArgsDict(TypedDict):
-        acl_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Snooping Binding of the Access Policy Group ID List.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Current IP Address of the Listened State
-        """
-elif False:
-    ListenerAclConfigAclRelationArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerAclConfigAclRelationArgsDict(TypedDict):
+    acl_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Snooping Binding of the Access Policy Group ID List.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Current IP Address of the Listened State
+    """
 
 @pulumi.input_type
 class ListenerAclConfigAclRelationArgs:
@@ -439,14 +422,11 @@ class ListenerAclConfigAclRelationArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class ListenerCaCertificateArgsDict(TypedDict):
-        certificate_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the certificate. Currently, only server certificates are supported.
-        """
-elif False:
-    ListenerCaCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerCaCertificateArgsDict(TypedDict):
+    certificate_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the certificate. Currently, only server certificates are supported.
+    """
 
 @pulumi.input_type
 class ListenerCaCertificateArgs:
@@ -471,14 +451,11 @@ class ListenerCaCertificateArgs:
         pulumi.set(self, "certificate_id", value)
 
 
-if not MYPY:
-    class ListenerCertificatesArgsDict(TypedDict):
-        certificate_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the certificate. Currently, only server certificates are supported.
-        """
-elif False:
-    ListenerCertificatesArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerCertificatesArgsDict(TypedDict):
+    certificate_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the certificate. Currently, only server certificates are supported.
+    """
 
 @pulumi.input_type
 class ListenerCertificatesArgs:
@@ -503,18 +480,15 @@ class ListenerCertificatesArgs:
         pulumi.set(self, "certificate_id", value)
 
 
-if not MYPY:
-    class ListenerDefaultActionArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The action type. Value: ForwardGroup, indicating forwarding to the server group.
-        """
-        forward_group_config: NotRequired[pulumi.Input['ListenerDefaultActionForwardGroupConfigArgsDict']]
-        """
-        Forwarding Action Configurations See `forward_group_config` below.
-        """
-elif False:
-    ListenerDefaultActionArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerDefaultActionArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The action type. Value: ForwardGroup, indicating forwarding to the server group.
+    """
+    forward_group_config: NotRequired[pulumi.Input['ListenerDefaultActionForwardGroupConfigArgsDict']]
+    """
+    Forwarding Action Configurations See `forward_group_config` below.
+    """
 
 @pulumi.input_type
 class ListenerDefaultActionArgs:
@@ -554,14 +528,11 @@ class ListenerDefaultActionArgs:
         pulumi.set(self, "forward_group_config", value)
 
 
-if not MYPY:
-    class ListenerDefaultActionForwardGroupConfigArgsDict(TypedDict):
-        server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgsDict']]]
-        """
-        The Forwarding Destination Server Group See `server_group_tuples` below.
-        """
-elif False:
-    ListenerDefaultActionForwardGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerDefaultActionForwardGroupConfigArgsDict(TypedDict):
+    server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgsDict']]]
+    """
+    The Forwarding Destination Server Group See `server_group_tuples` below.
+    """
 
 @pulumi.input_type
 class ListenerDefaultActionForwardGroupConfigArgs:
@@ -585,14 +556,11 @@ class ListenerDefaultActionForwardGroupConfigArgs:
         pulumi.set(self, "server_group_tuples", value)
 
 
-if not MYPY:
-    class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgsDict(TypedDict):
-        server_group_id: pulumi.Input[_builtins.str]
-        """
-        Forwarded to the Destination Server Group ID
-        """
-elif False:
-    ListenerDefaultActionForwardGroupConfigServerGroupTupleArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgsDict(TypedDict):
+    server_group_id: pulumi.Input[_builtins.str]
+    """
+    Forwarded to the Destination Server Group ID
+    """
 
 @pulumi.input_type
 class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs:
@@ -616,18 +584,15 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs:
         pulumi.set(self, "server_group_id", value)
 
 
-if not MYPY:
-    class ListenerQuicConfigArgsDict(TypedDict):
-        quic_listener_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
-        """
-        quic_upgrade_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether to Enable the QuIC Upgrade
-        """
-elif False:
-    ListenerQuicConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerQuicConfigArgsDict(TypedDict):
+    quic_listener_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
+    """
+    quic_upgrade_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether to Enable the QuIC Upgrade
+    """
 
 @pulumi.input_type
 class ListenerQuicConfigArgs:
@@ -668,78 +633,75 @@ class ListenerQuicConfigArgs:
         pulumi.set(self, "quic_upgrade_enabled", value)
 
 
-if not MYPY:
-    class ListenerXForwardedForConfigArgsDict(TypedDict):
-        x_forwarded_for_client_cert_client_verify_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
-        """
-        x_forwarded_for_client_cert_client_verify_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-        """
-        x_forwarded_for_client_cert_finger_print_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
-        """
-        x_forwarded_for_client_cert_finger_print_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-        """
-        x_forwarded_for_client_cert_issuer_dn_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
-        """
-        x_forwarded_for_client_cert_issuer_dn_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        """
-        x_forwarded_for_client_cert_subject_dn_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Custom Header Field Name,
-        """
-        x_forwarded_for_client_cert_subject_dn_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
-        """
-        x_forwarded_for_client_source_ips_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
-        """
-        x_forwarded_for_client_source_ips_trusted: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
-        """
-        x_forwarded_for_client_src_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-        """
-        x_forwarded_for_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-        """
-        x_forwarded_for_host_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
-        """
-        x_forwarded_for_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
-        """
-        x_forwarded_for_proto_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-        """
-        x_forwarded_for_slb_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
-        """
-        x_forwarded_for_slb_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
-        """
-elif False:
-    ListenerXForwardedForConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerXForwardedForConfigArgsDict(TypedDict):
+    x_forwarded_for_client_cert_client_verify_alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Custom Header Field Names Only When xforwardedforclientcertclientverifyenabled Has a Value of True, this Value Will Not Take Effect until.
+    """
+    x_forwarded_for_client_cert_client_verify_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Clientcert-clientverify Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+    """
+    x_forwarded_for_client_cert_finger_print_alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Custom Header Field Names Only When xforwardedforclientcertfingerprintenabled, Which Evaluates to True When the Entry into Force of.
+    """
+    x_forwarded_for_client_cert_finger_print_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Clientcert-fingerprint Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+    """
+    x_forwarded_for_client_cert_issuer_dn_alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Custom Header Field Names Only When xforwardedforclientcertsubjectdnenabled, Which Evaluates to True When the Entry into Force of.
+    """
+    x_forwarded_for_client_cert_issuer_dn_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Clientcert-issuerdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+    """
+    x_forwarded_for_client_cert_subject_dn_alias: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Custom Header Field Name,
+    """
+    x_forwarded_for_client_cert_subject_dn_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Clientcert-subjectdn Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Owner Information.
+    """
+    x_forwarded_for_client_source_ips_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to use the X-Forwarded-Client-Ip header to obtain the source IP address of the server load balancer instance. Value:
+    """
+    x_forwarded_for_client_source_ips_trusted: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specify the trusted proxy IP. Application-oriented load balancing ALB will traverse the X-Forwarded-For from back to front, and select the first IP that is not in the trusted IP list as the real client IP, which will be used for the source IP speed limit.
+    """
+    x_forwarded_for_client_src_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+    """
+    x_forwarded_for_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+    """
+    x_forwarded_for_host_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable the X-Forwarded-Host header field to obtain the domain name of the client accessing the Application Load Balancer. Value:
+    """
+    x_forwarded_for_processing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Schema for processing X-Forwarded-For header fields. This value takes effect only when XForwardedForEnabled is true. Value:
+    """
+    x_forwarded_for_proto_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+    """
+    x_forwarded_for_slb_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
+    """
+    x_forwarded_for_slb_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
+    """
 
 @pulumi.input_type
 class ListenerXForwardedForConfigArgs:
@@ -1020,18 +982,15 @@ class ListenerXForwardedForConfigArgs:
         pulumi.set(self, "x_forwarded_for_slb_port_enabled", value)
 
 
-if not MYPY:
-    class LoadBalancerAccessLogConfigArgsDict(TypedDict):
-        log_project: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The project to which the access log is shipped.
-        """
-        log_store: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Logstore to which the access log is shipped.
-        """
-elif False:
-    LoadBalancerAccessLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerAccessLogConfigArgsDict(TypedDict):
+    log_project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The project to which the access log is shipped.
+    """
+    log_store: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Logstore to which the access log is shipped.
+    """
 
 @pulumi.input_type
 class LoadBalancerAccessLogConfigArgs:
@@ -1072,18 +1031,15 @@ class LoadBalancerAccessLogConfigArgs:
         pulumi.set(self, "log_store", value)
 
 
-if not MYPY:
-    class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Remove the Protection Status
-        """
-        enabled_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
-        """
-elif False:
-    LoadBalancerDeletionProtectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Remove the Protection Status
+    """
+    enabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm: SSZ
+    """
 
 @pulumi.input_type
 class LoadBalancerDeletionProtectionConfigArgs:
@@ -1124,14 +1080,11 @@ class LoadBalancerDeletionProtectionConfigArgs:
         pulumi.set(self, "enabled_time", value)
 
 
-if not MYPY:
-    class LoadBalancerLoadBalancerBillingConfigArgsDict(TypedDict):
-        pay_type: pulumi.Input[_builtins.str]
-        """
-        Pay Type
-        """
-elif False:
-    LoadBalancerLoadBalancerBillingConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerLoadBalancerBillingConfigArgsDict(TypedDict):
+    pay_type: pulumi.Input[_builtins.str]
+    """
+    Pay Type
+    """
 
 @pulumi.input_type
 class LoadBalancerLoadBalancerBillingConfigArgs:
@@ -1155,18 +1108,15 @@ class LoadBalancerLoadBalancerBillingConfigArgs:
         pulumi.set(self, "pay_type", value)
 
 
-if not MYPY:
-    class LoadBalancerModificationProtectionConfigArgsDict(TypedDict):
-        reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Managed Instance
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Load Balancing Modify the Protection Status
-        """
-elif False:
-    LoadBalancerModificationProtectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerModificationProtectionConfigArgsDict(TypedDict):
+    reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Managed Instance
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Load Balancing Modify the Protection Status
+    """
 
 @pulumi.input_type
 class LoadBalancerModificationProtectionConfigArgs:
@@ -1207,42 +1157,39 @@ class LoadBalancerModificationProtectionConfigArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class LoadBalancerZoneMappingArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-        """
-        zone_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the zone to which the SLB instance belongs.
-        """
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address of the IPv4 type.
-        """
-        allocation_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the EIP instance.
-        """
-        eip_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the EIP instance.
-        """
-        intranet_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IPv4 private network address.
-        """
-        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address of the IPv6 type.
-        """
-        load_balancer_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]
-        """
-        The instance address.
-        """
-elif False:
-    LoadBalancerZoneMappingArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerZoneMappingArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+    """
+    zone_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the zone to which the SLB instance belongs.
+    """
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP address of the IPv4 type.
+    """
+    allocation_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the EIP instance.
+    """
+    eip_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the EIP instance.
+    """
+    intranet_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IPv4 private network address.
+    """
+    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP address of the IPv6 type.
+    """
+    load_balancer_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]
+    """
+    The instance address.
+    """
 
 @pulumi.input_type
 class LoadBalancerZoneMappingArgs:
@@ -1377,46 +1324,43 @@ class LoadBalancerZoneMappingArgs:
         pulumi.set(self, "load_balancer_addresses", value)
 
 
-if not MYPY:
-    class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address of the IPv4 type.
-        """
-        allocation_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The elastic IP identifier.
-        """
-        eip_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the public EIP. Value:
-        """
-        intranet_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IPv4 private network address.
-        """
-        intranet_address_hc_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private network IPv4 address detection status of the application-oriented load balancing instance.
-        """
-        ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
-        """
-        ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address of the IPv6 type.
-        """
-        ipv6_address_hc_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 address detection status of the application-based load balancing instance.
-        """
-        ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
-        """
-elif False:
-    LoadBalancerZoneMappingLoadBalancerAddressArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP address of the IPv4 type.
+    """
+    allocation_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The elastic IP identifier.
+    """
+    eip_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the public EIP. Value:
+    """
+    intranet_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IPv4 private network address.
+    """
+    intranet_address_hc_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private network IPv4 address detection status of the application-oriented load balancing instance.
+    """
+    ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+    """
+    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP address of the IPv6 type.
+    """
+    ipv6_address_hc_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 address detection status of the application-based load balancing instance.
+    """
+    ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+    """
 
 @pulumi.input_type
 class LoadBalancerZoneMappingLoadBalancerAddressArgs:
@@ -1569,57 +1513,54 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
         pulumi.set(self, "ipv6_local_addresses", value)
 
 
-if not MYPY:
-    class RuleRuleActionArgsDict(TypedDict):
-        order: pulumi.Input[_builtins.int]
-        """
-        The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-        **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-        **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
-        """
-        cors_config: NotRequired[pulumi.Input['RuleRuleActionCorsConfigArgsDict']]
-        """
-        Request forwarding based on CORS. See `cors_config` below.
-        """
-        fixed_response_config: NotRequired[pulumi.Input['RuleRuleActionFixedResponseConfigArgsDict']]
-        """
-        The configuration of the fixed response. See `fixed_response_config` below.
-        """
-        forward_group_config: NotRequired[pulumi.Input['RuleRuleActionForwardGroupConfigArgsDict']]
-        """
-        The forward response action within ALB. See `forward_group_config` below.
-        """
-        insert_header_config: NotRequired[pulumi.Input['RuleRuleActionInsertHeaderConfigArgsDict']]
-        """
-        The configuration of the inserted header field. See `insert_header_config` below.
-        """
-        redirect_config: NotRequired[pulumi.Input['RuleRuleActionRedirectConfigArgsDict']]
-        """
-        The configuration of the external redirect action. See `redirect_config` below.
-        """
-        remove_header_config: NotRequired[pulumi.Input['RuleRuleActionRemoveHeaderConfigArgsDict']]
-        """
-        The configuration of the inserted header field. See `remove_header_config` below.
-        """
-        rewrite_config: NotRequired[pulumi.Input['RuleRuleActionRewriteConfigArgsDict']]
-        """
-        The redirect action within ALB. See `rewrite_config` below.
-        """
-        traffic_limit_config: NotRequired[pulumi.Input['RuleRuleActionTrafficLimitConfigArgsDict']]
-        """
-        The Flow speed limit. See `traffic_limit_config` below.
-        """
-        traffic_mirror_config: NotRequired[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgsDict']]
-        """
-        The Traffic mirroring. See `traffic_mirror_config` below.
-        """
-elif False:
-    RuleRuleActionArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionArgsDict(TypedDict):
+    order: pulumi.Input[_builtins.int]
+    """
+    The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
+    **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+    **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+    **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+    """
+    cors_config: NotRequired[pulumi.Input['RuleRuleActionCorsConfigArgsDict']]
+    """
+    Request forwarding based on CORS. See `cors_config` below.
+    """
+    fixed_response_config: NotRequired[pulumi.Input['RuleRuleActionFixedResponseConfigArgsDict']]
+    """
+    The configuration of the fixed response. See `fixed_response_config` below.
+    """
+    forward_group_config: NotRequired[pulumi.Input['RuleRuleActionForwardGroupConfigArgsDict']]
+    """
+    The forward response action within ALB. See `forward_group_config` below.
+    """
+    insert_header_config: NotRequired[pulumi.Input['RuleRuleActionInsertHeaderConfigArgsDict']]
+    """
+    The configuration of the inserted header field. See `insert_header_config` below.
+    """
+    redirect_config: NotRequired[pulumi.Input['RuleRuleActionRedirectConfigArgsDict']]
+    """
+    The configuration of the external redirect action. See `redirect_config` below.
+    """
+    remove_header_config: NotRequired[pulumi.Input['RuleRuleActionRemoveHeaderConfigArgsDict']]
+    """
+    The configuration of the inserted header field. See `remove_header_config` below.
+    """
+    rewrite_config: NotRequired[pulumi.Input['RuleRuleActionRewriteConfigArgsDict']]
+    """
+    The redirect action within ALB. See `rewrite_config` below.
+    """
+    traffic_limit_config: NotRequired[pulumi.Input['RuleRuleActionTrafficLimitConfigArgsDict']]
+    """
+    The Flow speed limit. See `traffic_limit_config` below.
+    """
+    traffic_mirror_config: NotRequired[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgsDict']]
+    """
+    The Traffic mirroring. See `traffic_mirror_config` below.
+    """
 
 @pulumi.input_type
 class RuleRuleActionArgs:
@@ -1808,34 +1749,31 @@ class RuleRuleActionArgs:
         pulumi.set(self, "traffic_mirror_config", value)
 
 
-if not MYPY:
-    class RuleRuleActionCorsConfigArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The allowed headers for CORS requests.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-        """
-        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The allowed origins of CORS requests.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The headers that can be exposed.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-        """
-elif False:
-    RuleRuleActionCorsConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionCorsConfigArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The allowed headers for CORS requests.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+    """
+    allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The allowed origins of CORS requests.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The headers that can be exposed.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+    """
 
 @pulumi.input_type
 class RuleRuleActionCorsConfigArgs:
@@ -1940,22 +1878,19 @@ class RuleRuleActionCorsConfigArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class RuleRuleActionFixedResponseConfigArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-        """
-        content_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-        """
-        http_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-        """
-elif False:
-    RuleRuleActionFixedResponseConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionFixedResponseConfigArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+    """
+    content_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+    """
+    http_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+    """
 
 @pulumi.input_type
 class RuleRuleActionFixedResponseConfigArgs:
@@ -2011,18 +1946,15 @@ class RuleRuleActionFixedResponseConfigArgs:
         pulumi.set(self, "http_code", value)
 
 
-if not MYPY:
-    class RuleRuleActionForwardGroupConfigArgsDict(TypedDict):
-        server_group_sticky_session: NotRequired[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgsDict']]
-        """
-        The configuration of session persistence for server groups. See `server_group_sticky_session` below.
-        """
-        server_group_tuples: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgsDict']]]]
-        """
-        The destination server group to which requests are forwarded. See `server_group_tuples` below.
-        """
-elif False:
-    RuleRuleActionForwardGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionForwardGroupConfigArgsDict(TypedDict):
+    server_group_sticky_session: NotRequired[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgsDict']]
+    """
+    The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+    """
+    server_group_tuples: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgsDict']]]]
+    """
+    The destination server group to which requests are forwarded. See `server_group_tuples` below.
+    """
 
 @pulumi.input_type
 class RuleRuleActionForwardGroupConfigArgs:
@@ -2063,18 +1995,15 @@ class RuleRuleActionForwardGroupConfigArgs:
         pulumi.set(self, "server_group_tuples", value)
 
 
-if not MYPY:
-    class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable session persistence.
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-        """
-elif False:
-    RuleRuleActionForwardGroupConfigServerGroupStickySessionArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to enable session persistence.
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+    """
 
 @pulumi.input_type
 class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
@@ -2115,19 +2044,16 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
         pulumi.set(self, "timeout", value)
 
 
-if not MYPY:
-    class RuleRuleActionForwardGroupConfigServerGroupTupleArgsDict(TypedDict):
-        server_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the destination server group to which requests are forwarded.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-        **NOTE:** `weight` is required when the number of `server_group_tuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
-        """
-elif False:
-    RuleRuleActionForwardGroupConfigServerGroupTupleArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionForwardGroupConfigServerGroupTupleArgsDict(TypedDict):
+    server_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the destination server group to which requests are forwarded.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
+    **NOTE:** `weight` is required when the number of `server_group_tuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+    """
 
 @pulumi.input_type
 class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
@@ -2170,19 +2096,16 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class RuleRuleActionInsertHeaderConfigArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        value_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value type of the inserted header field. Valid values:
-        - `UserDefined`: a custom value
-        - `ReferenceHeader`: uses a field of the user request header.
-        - `SystemDefined`: a system value.
-        """
-elif False:
-    RuleRuleActionInsertHeaderConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionInsertHeaderConfigArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value type of the inserted header field. Valid values:
+    - `UserDefined`: a custom value
+    - `ReferenceHeader`: uses a field of the user request header.
+    - `SystemDefined`: a system value.
+    """
 
 @pulumi.input_type
 class RuleRuleActionInsertHeaderConfigArgs:
@@ -2237,34 +2160,31 @@ class RuleRuleActionInsertHeaderConfigArgs:
         pulumi.set(self, "value_type", value)
 
 
-if not MYPY:
-    class RuleRuleActionRedirectConfigArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        """
-        http_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
-        """
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
-        """
-        query: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-        """
-elif False:
-    RuleRuleActionRedirectConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionRedirectConfigArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+    """
+    http_code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
+    """
+    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+    """
+    query: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+    """
 
 @pulumi.input_type
 class RuleRuleActionRedirectConfigArgs:
@@ -2369,11 +2289,8 @@ class RuleRuleActionRedirectConfigArgs:
         pulumi.set(self, "query", value)
 
 
-if not MYPY:
-    class RuleRuleActionRemoveHeaderConfigArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuleRuleActionRemoveHeaderConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionRemoveHeaderConfigArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuleRuleActionRemoveHeaderConfigArgs:
@@ -2392,22 +2309,19 @@ class RuleRuleActionRemoveHeaderConfigArgs:
         pulumi.set(self, "key", value)
 
 
-if not MYPY:
-    class RuleRuleActionRewriteConfigArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-        """
-        query: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-        """
-elif False:
-    RuleRuleActionRewriteConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionRewriteConfigArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+    """
+    query: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+    """
 
 @pulumi.input_type
 class RuleRuleActionRewriteConfigArgs:
@@ -2464,18 +2378,15 @@ class RuleRuleActionRewriteConfigArgs:
         pulumi.set(self, "query", value)
 
 
-if not MYPY:
-    class RuleRuleActionTrafficLimitConfigArgsDict(TypedDict):
-        per_ip_qps: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
-        """
-        qps: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Number of requests per second. Valid values: `1` to `100000`.
-        """
-elif False:
-    RuleRuleActionTrafficLimitConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionTrafficLimitConfigArgsDict(TypedDict):
+    per_ip_qps: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+    """
+    qps: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Number of requests per second. Valid values: `1` to `100000`.
+    """
 
 @pulumi.input_type
 class RuleRuleActionTrafficLimitConfigArgs:
@@ -2516,18 +2427,15 @@ class RuleRuleActionTrafficLimitConfigArgs:
         pulumi.set(self, "qps", value)
 
 
-if not MYPY:
-    class RuleRuleActionTrafficMirrorConfigArgsDict(TypedDict):
-        mirror_group_config: NotRequired[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict']]
-        """
-        The Traffic is mirrored to the server group. See `mirror_group_config` below.
-        """
-        target_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Mirror target type.
-        """
-elif False:
-    RuleRuleActionTrafficMirrorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionTrafficMirrorConfigArgsDict(TypedDict):
+    mirror_group_config: NotRequired[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict']]
+    """
+    The Traffic is mirrored to the server group. See `mirror_group_config` below.
+    """
+    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Mirror target type.
+    """
 
 @pulumi.input_type
 class RuleRuleActionTrafficMirrorConfigArgs:
@@ -2568,14 +2476,11 @@ class RuleRuleActionTrafficMirrorConfigArgs:
         pulumi.set(self, "target_type", value)
 
 
-if not MYPY:
-    class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict(TypedDict):
-        server_group_tuples: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgsDict']]]]
-        """
-        The destination server group to which requests are forwarded. See `server_group_tuples` below.
-        """
-elif False:
-    RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict(TypedDict):
+    server_group_tuples: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgsDict']]]]
+    """
+    The destination server group to which requests are forwarded. See `server_group_tuples` below.
+    """
 
 @pulumi.input_type
 class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
@@ -2600,14 +2505,11 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
         pulumi.set(self, "server_group_tuples", value)
 
 
-if not MYPY:
-    class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgsDict(TypedDict):
-        server_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the destination server group to which requests are forwarded.
-        """
-elif False:
-    RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgsDict(TypedDict):
+    server_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the destination server group to which requests are forwarded.
+    """
 
 @pulumi.input_type
 class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs:
@@ -2632,59 +2534,56 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs:
         pulumi.set(self, "server_group_id", value)
 
 
-if not MYPY:
-    class RuleRuleConditionArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the forwarding rule. Valid values:
-        - `Host`: Requests are forwarded based on hosts.
-        - `Path`: Requests are forwarded based on the path.
-        - `Header`: Requests are forwarded based on the HTTP header field.
-        - `QueryString`: Requests are forwarded based on the query string.
-        - `Method`: Request are forwarded based on the request method.
-        - `Cookie`: Requests are forwarded based on the cookie.
-        - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-        - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-        - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
-        """
-        cookie_config: NotRequired[pulumi.Input['RuleRuleConditionCookieConfigArgsDict']]
-        """
-        The configuration of the cookie. See See `cookie_config` below.
-        """
-        header_config: NotRequired[pulumi.Input['RuleRuleConditionHeaderConfigArgsDict']]
-        """
-        The configuration of the header field. See `header_config` below.
-        """
-        host_config: NotRequired[pulumi.Input['RuleRuleConditionHostConfigArgsDict']]
-        """
-        The configuration of the host field. See `host_config` below.
-        """
-        method_config: NotRequired[pulumi.Input['RuleRuleConditionMethodConfigArgsDict']]
-        """
-        The configuration of the request method. See `method_config` below.
-        """
-        path_config: NotRequired[pulumi.Input['RuleRuleConditionPathConfigArgsDict']]
-        """
-        The configuration of the path for the request to be forwarded. See `path_config` below.
-        """
-        query_string_config: NotRequired[pulumi.Input['RuleRuleConditionQueryStringConfigArgsDict']]
-        """
-        The configuration of the query string. See `query_string_config` below.
-        """
-        response_header_config: NotRequired[pulumi.Input['RuleRuleConditionResponseHeaderConfigArgsDict']]
-        """
-        The configuration of the header field. See `response_header_config` below.
-        """
-        response_status_code_config: NotRequired[pulumi.Input['RuleRuleConditionResponseStatusCodeConfigArgsDict']]
-        """
-        The configuration of the header field. See `response_status_code_config` below.
-        """
-        source_ip_config: NotRequired[pulumi.Input['RuleRuleConditionSourceIpConfigArgsDict']]
-        """
-        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
-        """
-elif False:
-    RuleRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the forwarding rule. Valid values:
+    - `Host`: Requests are forwarded based on hosts.
+    - `Path`: Requests are forwarded based on the path.
+    - `Header`: Requests are forwarded based on the HTTP header field.
+    - `QueryString`: Requests are forwarded based on the query string.
+    - `Method`: Request are forwarded based on the request method.
+    - `Cookie`: Requests are forwarded based on the cookie.
+    - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+    - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+    - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+    """
+    cookie_config: NotRequired[pulumi.Input['RuleRuleConditionCookieConfigArgsDict']]
+    """
+    The configuration of the cookie. See See `cookie_config` below.
+    """
+    header_config: NotRequired[pulumi.Input['RuleRuleConditionHeaderConfigArgsDict']]
+    """
+    The configuration of the header field. See `header_config` below.
+    """
+    host_config: NotRequired[pulumi.Input['RuleRuleConditionHostConfigArgsDict']]
+    """
+    The configuration of the host field. See `host_config` below.
+    """
+    method_config: NotRequired[pulumi.Input['RuleRuleConditionMethodConfigArgsDict']]
+    """
+    The configuration of the request method. See `method_config` below.
+    """
+    path_config: NotRequired[pulumi.Input['RuleRuleConditionPathConfigArgsDict']]
+    """
+    The configuration of the path for the request to be forwarded. See `path_config` below.
+    """
+    query_string_config: NotRequired[pulumi.Input['RuleRuleConditionQueryStringConfigArgsDict']]
+    """
+    The configuration of the query string. See `query_string_config` below.
+    """
+    response_header_config: NotRequired[pulumi.Input['RuleRuleConditionResponseHeaderConfigArgsDict']]
+    """
+    The configuration of the header field. See `response_header_config` below.
+    """
+    response_status_code_config: NotRequired[pulumi.Input['RuleRuleConditionResponseStatusCodeConfigArgsDict']]
+    """
+    The configuration of the header field. See `response_status_code_config` below.
+    """
+    source_ip_config: NotRequired[pulumi.Input['RuleRuleConditionSourceIpConfigArgsDict']]
+    """
+    The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionArgs:
@@ -2870,14 +2769,11 @@ class RuleRuleConditionArgs:
         pulumi.set(self, "source_ip_config", value)
 
 
-if not MYPY:
-    class RuleRuleConditionCookieConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgsDict']]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionCookieConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionCookieConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgsDict']]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionCookieConfigArgs:
@@ -2902,12 +2798,9 @@ class RuleRuleConditionCookieConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionCookieConfigValueArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuleRuleConditionCookieConfigValueArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionCookieConfigValueArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuleRuleConditionCookieConfigValueArgs:
@@ -2938,15 +2831,12 @@ class RuleRuleConditionCookieConfigValueArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RuleRuleConditionHeaderConfigArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionHeaderConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionHeaderConfigArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionHeaderConfigArgs:
@@ -2983,14 +2873,11 @@ class RuleRuleConditionHeaderConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionHostConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionHostConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionHostConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionHostConfigArgs:
@@ -3015,14 +2902,11 @@ class RuleRuleConditionHostConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionMethodConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionMethodConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionMethodConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionMethodConfigArgs:
@@ -3047,14 +2931,11 @@ class RuleRuleConditionMethodConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionPathConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionPathConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionPathConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionPathConfigArgs:
@@ -3079,14 +2960,11 @@ class RuleRuleConditionPathConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionQueryStringConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgsDict']]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionQueryStringConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionQueryStringConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgsDict']]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionQueryStringConfigArgs:
@@ -3111,12 +2989,9 @@ class RuleRuleConditionQueryStringConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionQueryStringConfigValueArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    RuleRuleConditionQueryStringConfigValueArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionQueryStringConfigValueArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class RuleRuleConditionQueryStringConfigValueArgs:
@@ -3147,15 +3022,12 @@ class RuleRuleConditionQueryStringConfigValueArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RuleRuleConditionResponseHeaderConfigArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionResponseHeaderConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionResponseHeaderConfigArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionResponseHeaderConfigArgs:
@@ -3192,14 +3064,11 @@ class RuleRuleConditionResponseHeaderConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionResponseStatusCodeConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionResponseStatusCodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionResponseStatusCodeConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionResponseStatusCodeConfigArgs:
@@ -3224,14 +3093,11 @@ class RuleRuleConditionResponseStatusCodeConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class RuleRuleConditionSourceIpConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        """
-elif False:
-    RuleRuleConditionSourceIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RuleRuleConditionSourceIpConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+    """
 
 @pulumi.input_type
 class RuleRuleConditionSourceIpConfigArgs:
@@ -3256,22 +3122,19 @@ class RuleRuleConditionSourceIpConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class ServerGroupConnectionDrainConfigArgsDict(TypedDict):
-        connection_drain_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable connection draining. Valid values:
-        """
-        connection_drain_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period of connection draining.
+class ServerGroupConnectionDrainConfigArgsDict(TypedDict):
+    connection_drain_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable connection draining. Valid values:
+    """
+    connection_drain_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period of connection draining.
 
-        Valid values: `0` to `900`.
+    Valid values: `0` to `900`.
 
-        Default value: `300`.
-        """
-elif False:
-    ServerGroupConnectionDrainConfigArgsDict: TypeAlias = Mapping[str, Any]
+    Default value: `300`.
+    """
 
 @pulumi.input_type
 class ServerGroupConnectionDrainConfigArgs:
@@ -3320,115 +3183,112 @@ class ServerGroupConnectionDrainConfigArgs:
         pulumi.set(self, "connection_drain_timeout", value)
 
 
-if not MYPY:
-    class ServerGroupHealthCheckConfigArgsDict(TypedDict):
-        health_check_enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies whether to enable the health check feature. Valid values:
-        """
-        health_check_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The status code for a successful health check
-        """
-        health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The backend port that is used for health checks.
+class ServerGroupHealthCheckConfigArgsDict(TypedDict):
+    health_check_enabled: pulumi.Input[_builtins.bool]
+    """
+    Specifies whether to enable the health check feature. Valid values:
+    """
+    health_check_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The status code for a successful health check
+    """
+    health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The backend port that is used for health checks.
 
-        Valid values: `0` to `65535`.
+    Valid values: `0` to `65535`.
 
-        If you set the value to `0`, the backend port is used for health checks.
+    If you set the value to `0`, the backend port is used for health checks.
 
-        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
-        """
-        health_check_host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain name that is used for health checks.
+    > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+    """
+    health_check_host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain name that is used for health checks.
 
-        *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
+    *   **Backend Server Internal IP** (default): Use the internal IP address of backend servers as the health check domain name.
 
-        *   **Custom Domain Name**: Enter a domain name.
+    *   **Custom Domain Name**: Enter a domain name.
 
-        *   The domain name must be 1 to 80 characters in length.
-        *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
-        *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
-        *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
-        *   The domain name cannot start or end with a hyphen (-).
+    *   The domain name must be 1 to 80 characters in length.
+    *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+    *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
+    *   The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
+    *   The domain name cannot start or end with a hyphen (-).
 
-        > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
-        """
-        health_check_http_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP version that is used for health checks. Valid values:
+    > **NOTE:**   This parameter takes effect only if `HealthCheckProtocol` is set to `HTTP`, `HTTPS`, or `gRPC`.
+    """
+    health_check_http_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP version that is used for health checks. Valid values:
 
-        *   **HTTP1.0**
+    *   **HTTP1.0**
 
-        *   **HTTP1.1**
+    *   **HTTP1.1**
 
-        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
-        """
-        health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The interval at which health checks are performed. Unit: seconds.
+    > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+    """
+    health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The interval at which health checks are performed. Unit: seconds.
 
-        Valid values: `1` to `50`.
+    Valid values: `1` to `50`.
 
-        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
-        """
-        health_check_method: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The HTTP method that is used for health checks. Valid values:
+    > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+    """
+    health_check_method: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The HTTP method that is used for health checks. Valid values:
 
-        *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+    *   `GET`: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
 
-        *   `POST`: gRPC health checks use the POST method by default.
+    *   `POST`: gRPC health checks use the POST method by default.
 
-        *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
+    *   `HEAD`: HTTP and HTTPS health checks use the HEAD method by default.
 
-        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
-        """
-        health_check_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL that is used for health checks.
+    > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to true and `HealthCheckProtocol` to `HTTP`, `HTTPS`, or `gRPC`.
+    """
+    health_check_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL that is used for health checks.
 
-        The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
+    The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The URL must start with a forward slash (`/`).
 
-        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
-        """
-        health_check_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol that is used for health checks. Valid values:
+    > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true` and `HealthCheckProtocol` to `HTTP` or `HTTPS`.
+    """
+    health_check_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The protocol that is used for health checks. Valid values:
 
-        - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
-        - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
-        - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
-        - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
-        """
-        health_check_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
+    - `HTTP`: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
+    - `HTTPS`: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS provides higher security than HTTP because HTTPS supports data encryption.
+    - `TCP`: TCP health checks send TCP SYN packets to a backend server to probe the availability of backend servers.
+    - `gRPC`: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
+    """
+    health_check_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
 
-        Valid values: `1` to `300`.
+    Valid values: `1` to `300`.
 
-        > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
-        """
-        healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
+    > **NOTE:**   This parameter takes effect only if you set `HealthCheckEnabled` to `true`.
+    """
+    healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
 
-        Valid values: `2` to `10`.
+    Valid values: `2` to `10`.
 
-        Default value: `3`.
-        """
-        unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
+    Default value: `3`.
+    """
+    unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
 
-        Valid values: `2` to `10`.
+    Valid values: `2` to `10`.
 
-        Default value: `3`.
-        """
-elif False:
-    ServerGroupHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
+    Default value: `3`.
+    """
 
 @pulumi.input_type
 class ServerGroupHealthCheckConfigArgs:
@@ -3742,65 +3602,62 @@ class ServerGroupHealthCheckConfigArgs:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
-if not MYPY:
-    class ServerGroupServerArgsDict(TypedDict):
-        server_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the backend server. You can specify at most 200 servers in each call.
+class ServerGroupServerArgsDict(TypedDict):
+    server_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the backend server. You can specify at most 200 servers in each call.
 
-        *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
+    *   If the server group is of the `Instance` type, set ServerId to the ID of a resource of the `Ecs`, `Eni`, or `Eci` type.
 
-        *   If the server group is of the `Ip` type, set ServerId to IP addresses.
+    *   If the server group is of the `Ip` type, set ServerId to IP addresses.
 
-        > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
-        """
-        server_type: pulumi.Input[_builtins.str]
-        """
-        The type of the backend server. You can specify at most 200 servers in each call. Default values:
+    > **NOTE:**   You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://www.alibabacloud.com/help/en/doc-detail/213627.html) operation to query the type of server groups.
+    """
+    server_type: pulumi.Input[_builtins.str]
+    """
+    The type of the backend server. You can specify at most 200 servers in each call. Default values:
 
-        - `Ecs`: Elastic Compute Service (ECS) instance
-        - `Eni`: elastic network interface (ENI)
-        - `Eci`: elastic container instance
-        - `Ip`: IP address
-        - `Fc`: Function Compute
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
+    - `Ecs`: Elastic Compute Service (ECS) instance
+    - `Eni`: elastic network interface (ENI)
+    - `Eci`: elastic container instance
+    - `Ip`: IP address
+    - `Fc`: Function Compute
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port that is used by the backend server. Valid values: `1` to `65535`. You can specify at most 200 servers in each call.
 
-        > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
-        """
-        remote_ip_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
-        """
-        server_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the server group.
-        """
-        server_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the backend server. You can specify at most 200 servers in each call.
+    > **NOTE:**   This parameter is required if you set `ServerType` to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to set this parameter if `ServerType` is set to `Fc`.
+    """
+    remote_ip_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable the remote IP feature. You can specify at most 200 servers in each call. Default values:
+    """
+    server_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the server group.
+    """
+    server_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the backend server. You can specify at most 200 servers in each call.
 
-        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the resource
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
+    > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the resource
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
-        > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
-        """
-elif False:
-    ServerGroupServerArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
+    > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+    """
 
 @pulumi.input_type
 class ServerGroupServerArgs:
@@ -3989,22 +3846,19 @@ class ServerGroupServerArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class ServerGroupSlowStartConfigArgsDict(TypedDict):
-        slow_start_duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The duration of a slow start.
+class ServerGroupSlowStartConfigArgsDict(TypedDict):
+    slow_start_duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The duration of a slow start.
 
-        Valid values: 30 to 900.
+    Valid values: 30 to 900.
 
-        Default value: 30.
-        """
-        slow_start_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether slow starts are enabled. Valid values:
-        """
-elif False:
-    ServerGroupSlowStartConfigArgsDict: TypeAlias = Mapping[str, Any]
+    Default value: 30.
+    """
+    slow_start_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether slow starts are enabled. Valid values:
+    """
 
 @pulumi.input_type
 class ServerGroupSlowStartConfigArgs:
@@ -4053,46 +3907,43 @@ class ServerGroupSlowStartConfigArgs:
         pulumi.set(self, "slow_start_enabled", value)
 
 
-if not MYPY:
-    class ServerGroupStickySessionConfigArgsDict(TypedDict):
-        cookie: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cookie to be configured on the server.
+class ServerGroupStickySessionConfigArgsDict(TypedDict):
+    cookie: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cookie to be configured on the server.
 
-        The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
+    The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
 
-        > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
-        """
-        cookie_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+    > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` and the `StickySessionType` parameter is set to `Server`.
+    """
+    cookie_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum amount of time to wait before the session cookie expires. Unit: seconds.
 
-        Valid values: `1` to `86400`.
+    Valid values: `1` to `86400`.
 
-        Default value: `1000`.
+    Default value: `1000`.
 
-        > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
-        """
-        sticky_session_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable session persistence. Valid values:
-        """
-        sticky_session_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The method that is used to handle a cookie. Valid values:
+    > **NOTE:**   This parameter takes effect only when `StickySessionEnabled` is set to `true` and `StickySessionType` is set to `Insert`.
+    """
+    sticky_session_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to enable session persistence. Valid values:
+    """
+    sticky_session_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The method that is used to handle a cookie. Valid values:
 
-        *   `Insert`: inserts a cookie.
+    *   `Insert`: inserts a cookie.
 
-        ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
+    ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
 
-        *   `Server`: rewrites a cookie.
+    *   `Server`: rewrites a cookie.
 
-        When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+    When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
 
-        > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
-        """
-elif False:
-    ServerGroupStickySessionConfigArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  This parameter takes effect when the `StickySessionEnabled` parameter is set to `true` for the server group.
+    """
 
 @pulumi.input_type
 class ServerGroupStickySessionConfigArgs:
@@ -4205,18 +4056,15 @@ class ServerGroupStickySessionConfigArgs:
         pulumi.set(self, "sticky_session_type", value)
 
 
-if not MYPY:
-    class ServerGroupUchConfigArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The parameter type. Only QueryString can be filled.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Consistency hash parameter value
-        """
-elif False:
-    ServerGroupUchConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ServerGroupUchConfigArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The parameter type. Only QueryString can be filled.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Consistency hash parameter value
+    """
 
 @pulumi.input_type
 class ServerGroupUchConfigArgs:

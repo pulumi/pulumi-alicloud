@@ -264,9 +264,17 @@ public final class OpenApiExplorerApiMcpServerState extends com.pulumi.resources
         return Optional.ofNullable(this.systemTools);
     }
 
+    /**
+     * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     * 
+     */
     @Import(name="terraformTools")
     private @Nullable Output<List<OpenApiExplorerApiMcpServerTerraformToolArgs>> terraformTools;
 
+    /**
+     * @return A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     * 
+     */
     public Optional<Output<List<OpenApiExplorerApiMcpServerTerraformToolArgs>>> terraformTools() {
         return Optional.ofNullable(this.terraformTools);
     }
@@ -704,15 +712,33 @@ public final class OpenApiExplorerApiMcpServerState extends com.pulumi.resources
             return systemTools(List.of(systemTools));
         }
 
+        /**
+         * @param terraformTools A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformTools(@Nullable Output<List<OpenApiExplorerApiMcpServerTerraformToolArgs>> terraformTools) {
             $.terraformTools = terraformTools;
             return this;
         }
 
+        /**
+         * @param terraformTools A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformTools(List<OpenApiExplorerApiMcpServerTerraformToolArgs> terraformTools) {
             return terraformTools(Output.of(terraformTools));
         }
 
+        /**
+         * @param terraformTools A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder terraformTools(OpenApiExplorerApiMcpServerTerraformToolArgs... terraformTools) {
             return terraformTools(List.of(terraformTools));
         }

@@ -87,6 +87,7 @@ class EdgeKubernetesArgs:
                *Worker params*
         :param pulumi.Input['EdgeKubernetesLogConfigArgs'] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[_builtins.str] password: The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
@@ -94,6 +95,7 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input['EdgeKubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -427,6 +429,9 @@ class EdgeKubernetesArgs:
     @_builtins.property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -520,6 +525,9 @@ class EdgeKubernetesArgs:
     @_builtins.property
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        """
         return pulumi.get(self, "retain_resources")
 
     @retain_resources.setter
@@ -777,6 +785,7 @@ class _EdgeKubernetesState:
                *Worker params*
         :param pulumi.Input['EdgeKubernetesLogConfigArgs'] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
@@ -785,6 +794,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input['EdgeKubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -1137,6 +1147,9 @@ class _EdgeKubernetesState:
     @_builtins.property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -1242,6 +1255,9 @@ class _EdgeKubernetesState:
     @_builtins.property
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        """
         return pulumi.get(self, "retain_resources")
 
     @retain_resources.setter
@@ -1714,6 +1730,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                *Worker params*
         :param pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[_builtins.str] password: The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
@@ -1721,6 +1738,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2084,6 +2102,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                *Worker params*
         :param pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[_builtins.str] name_prefix: The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
@@ -2092,6 +2111,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2319,6 +2339,9 @@ class EdgeKubernetes(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
+        """
         return pulumi.get(self, "name_prefix")
 
     @_builtins.property
@@ -2388,6 +2411,9 @@ class EdgeKubernetes(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="retainResources")
     def retain_resources(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
+        """
         return pulumi.get(self, "retain_resources")
 
     @_builtins.property

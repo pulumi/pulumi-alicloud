@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("sessionExpiration")]
         public Input<int>? SessionExpiration { get; set; }
 
+        /// <summary>
+        /// The session name to use when assuming the role. If omitted, `Terraform` is passed to the AssumeRole call as session name.
+        /// </summary>
         [Input("sessionName")]
         public Input<string>? SessionName { get; set; }
 

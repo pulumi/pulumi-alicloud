@@ -14,6 +14,70 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a OSS Bucket Versioning resource. Configures the versioning state for a bucket.
+ * 
+ * For information about OSS Bucket Versioning and how to use it, see [What is Bucket Versioning](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketversioning).
+ * 
+ * &gt; **NOTE:** Available since v1.222.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketVersioning;
+ * import com.pulumi.alicloud.oss.BucketVersioningArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+ *             .storageClass("Standard")
+ *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *         var defaultBucketVersioning = new BucketVersioning("defaultBucketVersioning", BucketVersioningArgs.builder()
+ *             .status("Enabled")
+ *             .bucket(createBucket.bucket())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.oss.BucketVersioning` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.oss.BucketVersioning`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * OSS Bucket Versioning can be imported using the id, e.g.

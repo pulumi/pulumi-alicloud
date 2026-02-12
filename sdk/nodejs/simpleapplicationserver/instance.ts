@@ -5,6 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Simple Application Server Instance resource.
+ *
+ * For information about Simple Application Server Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/190440.htm).
+ *
+ * > **NOTE:** Available since v1.135.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.simpleapplicationserver.getImages({
+ *     platform: "Linux",
+ * });
+ * const defaultGetServerPlans = alicloud.simpleapplicationserver.getServerPlans({
+ *     platform: "Linux",
+ * });
+ * const defaultInstance = new alicloud.simpleapplicationserver.Instance("default", {
+ *     paymentType: "Subscription",
+ *     planId: defaultGetServerPlans.then(defaultGetServerPlans => defaultGetServerPlans.plans?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: _default.then(_default => _default.images?.[0]?.id),
+ *     period: 1,
+ *     dataDiskSize: 100,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.simpleapplicationserver.Instance` or removing it from your configuration
+ *
+ * The `alicloud.simpleapplicationserver.Instance` resource allows you to manage `paymentType = "Subscription"` instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the resource Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Simple Application Server Instance can be imported using the id, e.g.

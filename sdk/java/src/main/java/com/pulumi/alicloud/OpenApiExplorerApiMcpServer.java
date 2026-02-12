@@ -498,9 +498,17 @@ public class OpenApiExplorerApiMcpServer extends com.pulumi.resources.CustomReso
     public Output<Optional<List<String>>> systemTools() {
         return Codegen.optional(this.systemTools);
     }
+    /**
+     * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     * 
+     */
     @Export(name="terraformTools", refs={List.class,OpenApiExplorerApiMcpServerTerraformTool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OpenApiExplorerApiMcpServerTerraformTool>> terraformTools;
 
+    /**
+     * @return A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
+     * 
+     */
     public Output<Optional<List<OpenApiExplorerApiMcpServerTerraformTool>>> terraformTools() {
         return Codegen.optional(this.terraformTools);
     }

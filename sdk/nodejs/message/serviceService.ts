@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Message Service Service resource.
+ *
+ * MNS Service Open Status.
+ *
+ * For information about Message Service Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+ *
+ * > **NOTE:** Available since v1.252.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.message.ServiceService("default", {});
+ * ```
+ *
+ * ### Creating `alicloud.message.ServiceService`
+ *
+ * The `alicloud.message.ServiceService` resource is unique per account; repeated creation attempts to activate only one instance.
+ *
+ * ### Deleting `alicloud.message.ServiceService` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.message.ServiceService`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ */
 export class ServiceService extends pulumi.CustomResource {
     /**
      * Get an existing ServiceService resource's state with the given name, ID, and optional extra

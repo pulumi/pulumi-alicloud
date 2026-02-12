@@ -123,9 +123,17 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     public Output<String> keyName() {
         return this.keyName;
     }
+    /**
+     * The key pair name&#39;s prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     @Export(name="keyNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyNamePrefix;
 
+    /**
+     * @return The key pair name&#39;s prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     public Output<Optional<String>> keyNamePrefix() {
         return Codegen.optional(this.keyNamePrefix);
     }
@@ -163,9 +171,19 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * A mapping of tags to assign to the resource.
+     * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }

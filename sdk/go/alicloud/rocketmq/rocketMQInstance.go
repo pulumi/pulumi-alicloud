@@ -12,6 +12,125 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a RocketMQ Instance resource.
+//
+// For information about RocketMQ Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstance).
+//
+// > **NOTE:** Available since v1.212.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			createVPC, err := vpc.NewNetwork(ctx, "createVPC", &vpc.NetworkArgs{
+//				Description: pulumi.String("example"),
+//				CidrBlock:   pulumi.String("172.16.0.0/12"),
+//				VpcName:     pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			createVSwitch, err := vpc.NewSwitch(ctx, "createVSwitch", &vpc.SwitchArgs{
+//				Description: pulumi.String("example"),
+//				VpcId:       createVPC.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewRocketMQInstance(ctx, "default", &rocketmq.RocketMQInstanceArgs{
+//				ProductInfo: &rocketmq.RocketMQInstanceProductInfoArgs{
+//					MsgProcessSpec:       pulumi.String("rmq.u2.10xlarge"),
+//					SendReceiveRatio:     pulumi.Float64(0.3),
+//					MessageRetentionTime: pulumi.Int(70),
+//				},
+//				ServiceCode:     pulumi.String("rmq"),
+//				PaymentType:     pulumi.String("PayAsYouGo"),
+//				InstanceName:    pulumi.String(name),
+//				SubSeriesCode:   pulumi.String("cluster_ha"),
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				Remark:          pulumi.String("example"),
+//				IpWhitelists: pulumi.StringArray{
+//					pulumi.String("192.168.0.0/16"),
+//					pulumi.String("10.10.0.0/16"),
+//					pulumi.String("172.168.0.0/16"),
+//				},
+//				Software: &rocketmq.RocketMQInstanceSoftwareArgs{
+//					MaintainTime: pulumi.String("02:00-06:00"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//				SeriesCode: pulumi.String("ultimate"),
+//				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
+//					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
+//						VpcId: createVPC.ID(),
+//						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
+//							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
+//								VswitchId: createVSwitch.ID(),
+//							},
+//						},
+//					},
+//					InternetInfo: &rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs{
+//						InternetSpec:     pulumi.String("enable"),
+//						FlowOutType:      pulumi.String("payByBandwidth"),
+//						FlowOutBandwidth: pulumi.Int(30),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `rocketmq.RocketMQInstance` or removing it from your configuration
+//
+// The `rocketmq.RocketMQInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RocketMQ Instance can be imported using the id, e.g.

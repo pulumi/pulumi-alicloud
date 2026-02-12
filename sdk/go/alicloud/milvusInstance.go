@@ -12,6 +12,101 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Milvus Instance resource.
+//
+// For information about Milvus Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/milvus/2023-10-12/CreateInstance).
+//
+// > **NOTE:** Available since v1.264.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			regionId := "cn-hangzhou"
+//			if param := cfg.Get("regionId"); param != "" {
+//				regionId = param
+//			}
+//			zoneId := "cn-hangzhou-j"
+//			if param := cfg.Get("zoneId"); param != "" {
+//				zoneId = param
+//			}
+//			defaultILXuit, err := vpc.NewNetwork(ctx, "defaultILXuit", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultN80M7S, err := vpc.NewSwitch(ctx, "defaultN80M7S", &vpc.SwitchArgs{
+//				VpcId:       defaultILXuit.ID(),
+//				ZoneId:      pulumi.String(zoneId),
+//				CidrBlock:   pulumi.String("172.16.1.0/24"),
+//				VswitchName: pulumi.String("milvus-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewMilvusInstance(ctx, "default", &alicloud.MilvusInstanceArgs{
+//				ZoneId: pulumi.String(zoneId),
+//				VswitchIds: alicloud.MilvusInstanceVswitchIdArray{
+//					&alicloud.MilvusInstanceVswitchIdArgs{
+//						VswId:  defaultN80M7S.ID(),
+//						ZoneId: defaultN80M7S.ZoneId,
+//					},
+//				},
+//				DbAdminPassword: pulumi.String("Test123456@"),
+//				Components: alicloud.MilvusInstanceComponentArray{
+//					&alicloud.MilvusInstanceComponentArgs{
+//						Type:    pulumi.String("standalone"),
+//						CuNum:   pulumi.Int(8),
+//						Replica: pulumi.Int(1),
+//						CuType:  pulumi.String("general"),
+//					},
+//				},
+//				InstanceName:        pulumi.String("镇远测试包年包月"),
+//				DbVersion:           pulumi.String("2.4"),
+//				VpcId:               defaultILXuit.ID(),
+//				Ha:                  pulumi.Bool(false),
+//				PaymentType:         pulumi.String("Subscription"),
+//				MultiZoneMode:       pulumi.String("Single"),
+//				PaymentDurationUnit: pulumi.String("year"),
+//				PaymentDuration:     pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `MilvusInstance` or removing it from your configuration
+//
+// The `MilvusInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Milvus Instance can be imported using the id, e.g.

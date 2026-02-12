@@ -10,6 +10,168 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.BastionHost
 {
     /// <summary>
+    /// &gt; **NOTE:** Since the version 1.132.0, the resource `alicloud.yundun.BastionHostInstance` has been renamed to `alicloud.bastionhost.Instance`.
+    /// 
+    /// Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+    /// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+    /// 
+    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+    /// 
+    /// &gt; **NOTE:** Available since v1.132.0.
+    /// 
+    /// &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("default", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("default", new()
+    ///     {
+    ///         Description = name,
+    ///         LicenseCode = "bhah_ent_50_asset",
+    ///         PlanCode = "cloudbastion",
+    ///         Storage = "5",
+    ///         Bandwidth = "5",
+    ///         Period = 1,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         AdAuthServers = new[]
+    ///         {
+    ///             new AliCloud.BastionHost.Inputs.InstanceAdAuthServerArgs
+    ///             {
+    ///                 Server = "192.168.1.1",
+    ///                 StandbyServer = "192.168.1.3",
+    ///                 Port = 80,
+    ///                 Domain = "domain",
+    ///                 Account = "cn=Manager,dc=test,dc=com",
+    ///                 Password = "YouPassword123",
+    ///                 Filter = "objectClass=person",
+    ///                 NameMapping = "nameAttr",
+    ///                 EmailMapping = "emailAttr",
+    ///                 MobileMapping = "mobileAttr",
+    ///                 IsSsl = false,
+    ///                 BaseDn = "dc=test,dc=com",
+    ///             },
+    ///         },
+    ///         LdapAuthServers = new[]
+    ///         {
+    ///             new AliCloud.BastionHost.Inputs.InstanceLdapAuthServerArgs
+    ///             {
+    ///                 Server = "192.168.1.1",
+    ///                 StandbyServer = "192.168.1.3",
+    ///                 Port = 80,
+    ///                 LoginNameMapping = "uid",
+    ///                 Account = "cn=Manager,dc=test,dc=com",
+    ///                 Password = "YouPassword123",
+    ///                 Filter = "objectClass=person",
+    ///                 NameMapping = "nameAttr",
+    ///                 EmailMapping = "emailAttr",
+    ///                 MobileMapping = "mobileAttr",
+    ///                 IsSsl = false,
+    ///                 BaseDn = "dc=test,dc=com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.bastionhost.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.bastionhost.Instance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+    /// Deleting the subscription resource or removing it from your configuration
+    /// will remove it from your state file and management, but will not destroy the bastionhost instance.
+    /// You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Yundun_bastionhost instance can be imported using the id, e.g.
@@ -72,6 +234,17 @@ namespace Pulumi.AliCloud.BastionHost
         [Output("planCode")]
         public Output<string> PlanCode { get; private set; } = null!;
 
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// 
+        /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `AdAuthServer` or `LdapAuthServer` to configure auth server, then ignore any changes to that `Password` caused externally (e.g. Application Autoscaling).
+        /// ```
+        /// # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+        /// lifecycle {
+        /// ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+        /// }
+        /// ```
+        /// </summary>
         [Output("publicWhiteLists")]
         public Output<ImmutableArray<string>> PublicWhiteLists { get; private set; } = null!;
 
@@ -245,6 +418,18 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("publicWhiteLists")]
         private InputList<string>? _publicWhiteLists;
+
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// 
+        /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `AdAuthServer` or `LdapAuthServer` to configure auth server, then ignore any changes to that `Password` caused externally (e.g. Application Autoscaling).
+        /// ```
+        /// # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+        /// lifecycle {
+        /// ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+        /// }
+        /// ```
+        /// </summary>
         public InputList<string> PublicWhiteLists
         {
             get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
@@ -395,6 +580,18 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("publicWhiteLists")]
         private InputList<string>? _publicWhiteLists;
+
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// 
+        /// &gt; **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `AdAuthServer` or `LdapAuthServer` to configure auth server, then ignore any changes to that `Password` caused externally (e.g. Application Autoscaling).
+        /// ```
+        /// # ... ignore the change about ad_auth_server.0.password and ldap_auth_server.0.password in alicloud_bastionhost_instance
+        /// lifecycle {
+        /// ignore_changes = [ad_auth_server.0.password,ldap_auth_server.0.password]
+        /// }
+        /// ```
+        /// </summary>
         public InputList<string> PublicWhiteLists
         {
             get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());

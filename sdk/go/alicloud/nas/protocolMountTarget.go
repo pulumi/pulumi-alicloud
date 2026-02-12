@@ -135,7 +135,10 @@ type ProtocolMountTarget struct {
 	// - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
+	// DryRun
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Protocol Service Mount Target ID
 	ExportId pulumi.StringOutput `pulumi:"exportId"`
 	// The ID of the file system.
@@ -220,7 +223,10 @@ type protocolMountTargetState struct {
 	// - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Description *string `pulumi:"description"`
-	DryRun      *bool   `pulumi:"dryRun"`
+	// DryRun
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DryRun *bool `pulumi:"dryRun"`
 	// Protocol Service Mount Target ID
 	ExportId *string `pulumi:"exportId"`
 	// The ID of the file system.
@@ -270,7 +276,10 @@ type ProtocolMountTargetState struct {
 	// - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Description pulumi.StringPtrInput
-	DryRun      pulumi.BoolPtrInput
+	// DryRun
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DryRun pulumi.BoolPtrInput
 	// Protocol Service Mount Target ID
 	ExportId pulumi.StringPtrInput
 	// The ID of the file system.
@@ -322,7 +331,10 @@ type protocolMountTargetArgs struct {
 	// - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Description *string `pulumi:"description"`
-	DryRun      *bool   `pulumi:"dryRun"`
+	// DryRun
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The ID of the Fileset to be mounted.
@@ -367,7 +379,10 @@ type ProtocolMountTargetArgs struct {
 	// - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Description pulumi.StringPtrInput
-	DryRun      pulumi.BoolPtrInput
+	// DryRun
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+	DryRun pulumi.BoolPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput
 	// The ID of the Fileset to be mounted.
@@ -508,6 +523,9 @@ func (o ProtocolMountTargetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProtocolMountTarget) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// DryRun
+//
+// > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o ProtocolMountTargetOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProtocolMountTarget) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }

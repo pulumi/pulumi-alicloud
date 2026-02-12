@@ -93,6 +93,12 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, _builtins.str]] = N
                    plaintext: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCiphertextResult:
     """
+    Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `kms.Ciphertext` resource.
+
+    > **NOTE:** Available since v1.63.0.
+
+    > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+
     ## Example Usage
 
     Basic Usage
@@ -131,6 +137,12 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
                           plaintext: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCiphertextResult]:
     """
+    Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `kms.Ciphertext` resource.
+
+    > **NOTE:** Available since v1.63.0.
+
+    > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
+
     ## Example Usage
 
     Basic Usage

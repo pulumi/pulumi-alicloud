@@ -78,6 +78,11 @@ export class ValueAddedService extends pulumi.CustomResource {
      * The payment type of the resource
      */
     declare public readonly paymentType: pulumi.Output<string>;
+    /**
+     * Prepaid cycle. Unit for year
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The region ID of the resource
@@ -160,6 +165,11 @@ export interface ValueAddedServiceState {
      * The payment type of the resource
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * Prepaid cycle. Unit for year
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     period?: pulumi.Input<number>;
     /**
      * The region ID of the resource
@@ -199,6 +209,11 @@ export interface ValueAddedServiceArgs {
      * The payment type of the resource
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * Prepaid cycle. Unit for year
+     *
+     * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     period?: pulumi.Input<number>;
     /**
      * Automatic renewal period, in years.

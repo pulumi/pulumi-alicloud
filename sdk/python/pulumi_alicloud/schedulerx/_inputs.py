@@ -27,20 +27,15 @@ __all__ = [
     'JobTimeConfigArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class JobJobMonitorInfoArgsDict(TypedDict):
-        contact_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgsDict']]]]
-        """
-        Contact information. See `contact_info` below.
-        """
-        monitor_config: NotRequired[pulumi.Input['JobJobMonitorInfoMonitorConfigArgsDict']]
-        """
-        Alarm switch and threshold configuration. See `monitor_config` below.
-        """
-elif False:
-    JobJobMonitorInfoArgsDict: TypeAlias = Mapping[str, Any]
+class JobJobMonitorInfoArgsDict(TypedDict):
+    contact_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgsDict']]]]
+    """
+    Contact information. See `contact_info` below.
+    """
+    monitor_config: NotRequired[pulumi.Input['JobJobMonitorInfoMonitorConfigArgsDict']]
+    """
+    Alarm switch and threshold configuration. See `monitor_config` below.
+    """
 
 @pulumi.input_type
 class JobJobMonitorInfoArgs:
@@ -81,26 +76,23 @@ class JobJobMonitorInfoArgs:
         pulumi.set(self, "monitor_config", value)
 
 
-if not MYPY:
-    class JobJobMonitorInfoContactInfoArgsDict(TypedDict):
-        ding: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DingTalk swarm robot webhook address
-        """
-        user_mail: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User Email Address
-        """
-        user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user name
-        """
-        user_phone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user's mobile phone number
-        """
-elif False:
-    JobJobMonitorInfoContactInfoArgsDict: TypeAlias = Mapping[str, Any]
+class JobJobMonitorInfoContactInfoArgsDict(TypedDict):
+    ding: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DingTalk swarm robot webhook address
+    """
+    user_mail: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User Email Address
+    """
+    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user name
+    """
+    user_phone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The user's mobile phone number
+    """
 
 @pulumi.input_type
 class JobJobMonitorInfoContactInfoArgs:
@@ -173,38 +165,35 @@ class JobJobMonitorInfoContactInfoArgs:
         pulumi.set(self, "user_phone", value)
 
 
-if not MYPY:
-    class JobJobMonitorInfoMonitorConfigArgsDict(TypedDict):
-        fail_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable failure alarm
-        """
-        miss_worker_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether no available Machine alarm is on
-        """
-        send_channel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Alarm sending form
-        - sms: sms alarm
-        - phone: phone alarm
-        - mail: mail alarm
-        - webhook:webhook alarm
-        """
-        timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout threshold, unit s, default 7200.
-        """
-        timeout_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Time-out alarm switch. The values are as follows:
-        """
-        timeout_kill_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The trigger switch is terminated by timeout and is turned off by default.
-        """
-elif False:
-    JobJobMonitorInfoMonitorConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobJobMonitorInfoMonitorConfigArgsDict(TypedDict):
+    fail_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable failure alarm
+    """
+    miss_worker_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether no available Machine alarm is on
+    """
+    send_channel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Alarm sending form
+    - sms: sms alarm
+    - phone: phone alarm
+    - mail: mail alarm
+    - webhook:webhook alarm
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout threshold, unit s, default 7200.
+    """
+    timeout_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Time-out alarm switch. The values are as follows:
+    """
+    timeout_kill_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The trigger switch is terminated by timeout and is turned off by default.
+    """
 
 @pulumi.input_type
 class JobJobMonitorInfoMonitorConfigArgs:
@@ -317,34 +306,31 @@ class JobJobMonitorInfoMonitorConfigArgs:
         pulumi.set(self, "timeout_kill_enable", value)
 
 
-if not MYPY:
-    class JobMapTaskXattrsArgsDict(TypedDict):
-        consumer_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of threads to execute a single trigger. The default value is 5.
-        """
-        dispatcher_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of subtask distribution threads. The default value is 5.
-        """
-        page_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
-        """
-        queue_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The upper limit of the sub-task queue cache. The default value is 10000.
-        """
-        task_attempt_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Subtask failure retry interval.
-        """
-        task_max_attempt: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of failed sub-task retries.
-        """
-elif False:
-    JobMapTaskXattrsArgsDict: TypeAlias = Mapping[str, Any]
+class JobMapTaskXattrsArgsDict(TypedDict):
+    consumer_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of threads to execute a single trigger. The default value is 5.
+    """
+    dispatcher_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of subtask distribution threads. The default value is 5.
+    """
+    page_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
+    """
+    queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The upper limit of the sub-task queue cache. The default value is 10000.
+    """
+    task_attempt_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Subtask failure retry interval.
+    """
+    task_max_attempt: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of failed sub-task retries.
+    """
 
 @pulumi.input_type
 class JobMapTaskXattrsArgs:
@@ -449,26 +435,23 @@ class JobMapTaskXattrsArgs:
         pulumi.set(self, "task_max_attempt", value)
 
 
-if not MYPY:
-    class JobTimeConfigArgsDict(TypedDict):
-        time_type: pulumi.Input[_builtins.int]
-        """
-        Time configuration type. Currently, the following time types are supported:
-        """
-        calendar: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cron type can optionally fill in a custom calendar.
-        """
-        data_offset: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Cron type can choose time offset, unit s.
-        """
-        time_expression: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time expressions. Currently, the following types of time expressions are supported:
-        """
-elif False:
-    JobTimeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class JobTimeConfigArgsDict(TypedDict):
+    time_type: pulumi.Input[_builtins.int]
+    """
+    Time configuration type. Currently, the following time types are supported:
+    """
+    calendar: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cron type can optionally fill in a custom calendar.
+    """
+    data_offset: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Cron type can choose time offset, unit s.
+    """
+    time_expression: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time expressions. Currently, the following types of time expressions are supported:
+    """
 
 @pulumi.input_type
 class JobTimeConfigArgs:

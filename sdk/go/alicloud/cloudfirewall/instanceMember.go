@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -77,7 +75,7 @@ import (
 // Cloud Firewall Instance Member can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example <id>
+// $terraform import alicloud_cloud_firewall_instance_member.example <id>
 // ```
 type InstanceMember struct {
 	pulumi.CustomResourceState

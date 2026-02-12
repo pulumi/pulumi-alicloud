@@ -23,20 +23,15 @@ __all__ = [
     'GetVirtualBorderRoutersFilterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class RouterExpressConnectRouterRegionArgsDict(TypedDict):
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Representative region ID.
-        """
-        transit_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Represents the forwarding mode of the current region.
-        """
-elif False:
-    RouterExpressConnectRouterRegionArgsDict: TypeAlias = Mapping[str, Any]
+class RouterExpressConnectRouterRegionArgsDict(TypedDict):
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Representative region ID.
+    """
+    transit_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Represents the forwarding mode of the current region.
+    """
 
 @pulumi.input_type
 class RouterExpressConnectRouterRegionArgs:
@@ -77,12 +72,9 @@ class RouterExpressConnectRouterRegionArgs:
         pulumi.set(self, "transit_mode", value)
 
 
-if not MYPY:
-    class GetRouterInterfacesFilterArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        values: NotRequired[Sequence[_builtins.str]]
-elif False:
-    GetRouterInterfacesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetRouterInterfacesFilterArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    values: NotRequired[Sequence[_builtins.str]]
 
 @pulumi.input_type
 class GetRouterInterfacesFilterArgs:
@@ -113,19 +105,16 @@ class GetRouterInterfacesFilterArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class GetVirtualBorderRoutersFilterArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        """
-        The key of the field to filter by, as defined by
-        [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-        """
-        values: NotRequired[Sequence[_builtins.str]]
-        """
-        Set of values that are accepted for the given field.
-        """
-elif False:
-    GetVirtualBorderRoutersFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVirtualBorderRoutersFilterArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    """
+    The key of the field to filter by, as defined by
+    [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+    """
+    values: NotRequired[Sequence[_builtins.str]]
+    """
+    Set of values that are accepted for the given field.
+    """
 
 @pulumi.input_type
 class GetVirtualBorderRoutersFilterArgs:

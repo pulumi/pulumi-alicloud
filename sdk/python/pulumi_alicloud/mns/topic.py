@@ -139,6 +139,12 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a MNS topic resource.
+
+        > **NOTE:** Terraform will auto build a mns topic  while it uses `mns.Topic` to build a mns topic resource.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_topic.
+
         ## Example Usage
 
         Basic Usage
@@ -176,6 +182,12 @@ class Topic(pulumi.CustomResource):
                  args: Optional[TopicArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a MNS topic resource.
+
+        > **NOTE:** Terraform will auto build a mns topic  while it uses `mns.Topic` to build a mns topic resource.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.188.0`. Please use new resource message_service_topic.
+
         ## Example Usage
 
         Basic Usage

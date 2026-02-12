@@ -128,7 +128,17 @@ export class FileSystem extends pulumi.CustomResource {
      * - cpfs: file storage CPFS
      */
     declare public readonly fileSystemType: pulumi.Output<string>;
+    /**
+     * String of keytab file content encrypted by base64
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly keytab: pulumi.Output<string | undefined>;
+    /**
+     * String of the keytab file content encrypted by MD5
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     declare public readonly keytabMd5: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS key.
@@ -347,7 +357,17 @@ export interface FileSystemState {
      * - cpfs: file storage CPFS
      */
     fileSystemType?: pulumi.Input<string>;
+    /**
+     * String of keytab file content encrypted by base64
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     keytab?: pulumi.Input<string>;
+    /**
+     * String of the keytab file content encrypted by MD5
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     keytabMd5?: pulumi.Input<string>;
     /**
      * The ID of the KMS key.
@@ -488,7 +508,17 @@ export interface FileSystemArgs {
      * - cpfs: file storage CPFS
      */
     fileSystemType?: pulumi.Input<string>;
+    /**
+     * String of keytab file content encrypted by base64
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     keytab?: pulumi.Input<string>;
+    /**
+     * String of the keytab file content encrypted by MD5
+     *
+     * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     */
     keytabMd5?: pulumi.Input<string>;
     /**
      * The ID of the KMS key.

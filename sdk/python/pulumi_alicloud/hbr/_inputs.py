@@ -41,16 +41,11 @@ __all__ = [
     'GetServerBackupPlansFilterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class OtsBackupPlanOtsDetailArgsDict(TypedDict):
-        table_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-        """
-elif False:
-    OtsBackupPlanOtsDetailArgsDict: TypeAlias = Mapping[str, Any]
+class OtsBackupPlanOtsDetailArgsDict(TypedDict):
+    table_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+    """
 
 @pulumi.input_type
 class OtsBackupPlanOtsDetailArgs:
@@ -75,31 +70,28 @@ class OtsBackupPlanOtsDetailArgs:
         pulumi.set(self, "table_names", value)
 
 
-if not MYPY:
-    class OtsBackupPlanRuleArgsDict(TypedDict):
-        backup_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Backup type. Valid values: `COMPLETE`.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
-        """
-        retention: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Backup retention days, the minimum is 1.
-        """
-        rule_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-        """
-        schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-        - `startTime` Backup start time, UNIX time seconds.
-        """
-elif False:
-    OtsBackupPlanRuleArgsDict: TypeAlias = Mapping[str, Any]
+class OtsBackupPlanRuleArgsDict(TypedDict):
+    backup_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Backup type. Valid values: `COMPLETE`.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+    """
+    retention: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Backup retention days, the minimum is 1.
+    """
+    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+    """
+    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+    - `startTime` Backup start time, UNIX time seconds.
+    """
 
 @pulumi.input_type
 class OtsBackupPlanRuleArgs:
@@ -190,14 +182,11 @@ class OtsBackupPlanRuleArgs:
         pulumi.set(self, "schedule", value)
 
 
-if not MYPY:
-    class PolicyBindingAdvancedOptionsArgsDict(TypedDict):
-        udm_detail: NotRequired[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgsDict']]
-        """
-        ECS Backup Advanced options See `udm_detail` below.
-        """
-elif False:
-    PolicyBindingAdvancedOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyBindingAdvancedOptionsArgsDict(TypedDict):
+    udm_detail: NotRequired[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgsDict']]
+    """
+    ECS Backup Advanced options See `udm_detail` below.
+    """
 
 @pulumi.input_type
 class PolicyBindingAdvancedOptionsArgs:
@@ -222,22 +211,19 @@ class PolicyBindingAdvancedOptionsArgs:
         pulumi.set(self, "udm_detail", value)
 
 
-if not MYPY:
-    class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
-        destination_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom KMS key ID of encrypted copy
-        """
-        disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of backup disks. If it is empty, all disks are backed up.
-        """
-        exclude_disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of cloud disk IDs that are not backed up
-        """
-elif False:
-    PolicyBindingAdvancedOptionsUdmDetailArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
+    destination_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom KMS key ID of encrypted copy
+    """
+    disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of backup disks. If it is empty, all disks are backed up.
+    """
+    exclude_disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of cloud disk IDs that are not backed up
+    """
 
 @pulumi.input_type
 class PolicyBindingAdvancedOptionsUdmDetailArgs:
@@ -294,58 +280,55 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
         pulumi.set(self, "exclude_disk_id_lists", value)
 
 
-if not MYPY:
-    class PolicyRuleArgsDict(TypedDict):
-        rule_type: pulumi.Input[_builtins.str]
-        """
-        Rule Type
-        """
-        archive_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
-        """
-        backup_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
-        """
-        data_source_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgsDict']]]]
-        """
-        This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
-        """
-        keep_latest_snapshots: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        This parameter is required only when `RuleType` is set to `BACKUP`
-        """
-        replication_region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only when the `RuleType` value is
-        """
-        retention: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention time, in days
-        """
-        retention_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgsDict']]]]
-        """
-        This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
-        """
-        rule_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Rule ID
-        """
-        schedule: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
-        """
-        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgsDict']]]]
-        """
-        This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
-        """
-        vault_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Vault ID
-        """
-elif False:
-    PolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyRuleArgsDict(TypedDict):
+    rule_type: pulumi.Input[_builtins.str]
+    """
+    Rule Type
+    """
+    archive_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
+    """
+    backup_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
+    """
+    data_source_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgsDict']]]]
+    """
+    This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
+    """
+    keep_latest_snapshots: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    This parameter is required only when `RuleType` is set to `BACKUP`
+    """
+    replication_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only when the `RuleType` value is
+    """
+    retention: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Retention time, in days
+    """
+    retention_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgsDict']]]]
+    """
+    This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
+    """
+    rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Rule ID
+    """
+    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+    """
+    tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgsDict']]]]
+    """
+    This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
+    """
+    vault_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vault ID
+    """
 
 @pulumi.input_type
 class PolicyRuleArgs:
@@ -545,14 +528,11 @@ class PolicyRuleArgs:
         pulumi.set(self, "vault_id", value)
 
 
-if not MYPY:
-    class PolicyRuleDataSourceFilterArgsDict(TypedDict):
-        source_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
-        """
-elif False:
-    PolicyRuleDataSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyRuleDataSourceFilterArgsDict(TypedDict):
+    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
+    """
 
 @pulumi.input_type
 class PolicyRuleDataSourceFilterArgs:
@@ -577,18 +557,15 @@ class PolicyRuleDataSourceFilterArgs:
         pulumi.set(self, "source_type", value)
 
 
-if not MYPY:
-    class PolicyRuleRetentionRuleArgsDict(TypedDict):
-        advanced_retention_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
-        """
-        retention: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention time, in days
-        """
-elif False:
-    PolicyRuleRetentionRuleArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyRuleRetentionRuleArgsDict(TypedDict):
+    advanced_retention_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
+    """
+    retention: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Retention time, in days
+    """
 
 @pulumi.input_type
 class PolicyRuleRetentionRuleArgs:
@@ -629,22 +606,19 @@ class PolicyRuleRetentionRuleArgs:
         pulumi.set(self, "retention", value)
 
 
-if not MYPY:
-    class PolicyRuleTagFilterArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tag key.
-        """
-        operator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The label value, which is empty and represents any value.
-        """
-elif False:
-    PolicyRuleTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+class PolicyRuleTagFilterArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tag key.
+    """
+    operator: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The label value, which is empty and represents any value.
+    """
 
 @pulumi.input_type
 class PolicyRuleTagFilterArgs:
@@ -701,14 +675,11 @@ class PolicyRuleTagFilterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class RestoreJobOtsDetailArgsDict(TypedDict):
-        overwrite_existing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-        """
-elif False:
-    RestoreJobOtsDetailArgsDict: TypeAlias = Mapping[str, Any]
+class RestoreJobOtsDetailArgsDict(TypedDict):
+    overwrite_existing: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+    """
 
 @pulumi.input_type
 class RestoreJobOtsDetailArgs:
@@ -733,50 +704,47 @@ class RestoreJobOtsDetailArgs:
         pulumi.set(self, "overwrite_existing", value)
 
 
-if not MYPY:
-    class ServerBackupPlanDetailArgsDict(TypedDict):
-        app_consistent: pulumi.Input[_builtins.bool]
-        """
-        Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
-        """
-        snapshot_group: pulumi.Input[_builtins.bool]
-        """
-        Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
-        """
-        destination_region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-        """
-        destination_retention: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-        """
-        disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
-        """
-        do_copy: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether replicate to another region. Valid values: `true`, `false`.
-        """
-        enable_fs_freeze: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
-        """
-        post_script_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-        """
-        pre_script_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-        """
-        timeout_in_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
-        """
-elif False:
-    ServerBackupPlanDetailArgsDict: TypeAlias = Mapping[str, Any]
+class ServerBackupPlanDetailArgsDict(TypedDict):
+    app_consistent: pulumi.Input[_builtins.bool]
+    """
+    Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+    """
+    snapshot_group: pulumi.Input[_builtins.bool]
+    """
+    Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+    """
+    destination_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+    """
+    destination_retention: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+    """
+    disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+    """
+    do_copy: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether replicate to another region. Valid values: `true`, `false`.
+    """
+    enable_fs_freeze: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+    """
+    post_script_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+    """
+    pre_script_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+    """
+    timeout_in_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+    """
 
 @pulumi.input_type
 class ServerBackupPlanDetailArgs:
@@ -943,24 +911,21 @@ class ServerBackupPlanDetailArgs:
         pulumi.set(self, "timeout_in_seconds", value)
 
 
-if not MYPY:
-    class GetBackupJobsFilterArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        """
-        The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-        """
-        operator: NotRequired[_builtins.str]
-        """
-        The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-        """
-        values: NotRequired[Sequence[_builtins.str]]
-        """
-        Set of values that are accepted for the given field.
+class GetBackupJobsFilterArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    """
+    The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+    """
+    operator: NotRequired[_builtins.str]
+    """
+    The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+    """
+    values: NotRequired[Sequence[_builtins.str]]
+    """
+    Set of values that are accepted for the given field.
 
-        > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
-        """
-elif False:
-    GetBackupJobsFilterArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+    """
 
 @pulumi.input_type
 class GetBackupJobsFilterArgs:
@@ -1021,18 +986,15 @@ class GetBackupJobsFilterArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class GetServerBackupPlansFilterArgsDict(TypedDict):
-        key: NotRequired[_builtins.str]
-        """
-        The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-        """
-        values: NotRequired[Sequence[_builtins.str]]
-        """
-        Set of values that are accepted for the given field.
-        """
-elif False:
-    GetServerBackupPlansFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetServerBackupPlansFilterArgsDict(TypedDict):
+    key: NotRequired[_builtins.str]
+    """
+    The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+    """
+    values: NotRequired[Sequence[_builtins.str]]
+    """
+    Set of values that are accepted for the given field.
+    """
 
 @pulumi.input_type
 class GetServerBackupPlansFilterArgs:

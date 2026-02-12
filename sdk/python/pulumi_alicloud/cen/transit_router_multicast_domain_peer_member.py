@@ -254,7 +254,7 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
+        $terraform import alicloud_cen_transit_router_multicast_domain_peer_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -334,7 +334,7 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
+        $terraform import alicloud_cen_transit_router_multicast_domain_peer_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
         ```
 
         :param str resource_name: The name of the resource.

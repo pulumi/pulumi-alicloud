@@ -179,7 +179,10 @@ type NodeGroup struct {
 	// This is only applicable when payType is set to PrePaid.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-	PricingCycle      pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// ID of promotion option.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PromotionOptionNo pulumi.StringPtrOutput `pulumi:"promotionOptionNo"`
 	// The region ID of the node group.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
@@ -275,7 +278,10 @@ type nodeGroupState struct {
 	// This is only applicable when payType is set to PrePaid.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-	PricingCycle      *string `pulumi:"pricingCycle"`
+	PricingCycle *string `pulumi:"pricingCycle"`
+	// ID of promotion option.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// The region ID of the node group.
 	RegionId *string `pulumi:"regionId"`
@@ -342,7 +348,10 @@ type NodeGroupState struct {
 	// This is only applicable when payType is set to PrePaid.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-	PricingCycle      pulumi.StringPtrInput
+	PricingCycle pulumi.StringPtrInput
+	// ID of promotion option.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PromotionOptionNo pulumi.StringPtrInput
 	// The region ID of the node group.
 	RegionId pulumi.StringPtrInput
@@ -409,7 +418,10 @@ type nodeGroupArgs struct {
 	// This is only applicable when payType is set to PrePaid.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-	PricingCycle      *string `pulumi:"pricingCycle"`
+	PricingCycle *string `pulumi:"pricingCycle"`
+	// ID of promotion option.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// Number of nodes.
 	ResidentNodeNumber *int `pulumi:"residentNodeNumber"`
@@ -469,7 +481,10 @@ type NodeGroupArgs struct {
 	// This is only applicable when payType is set to PrePaid.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-	PricingCycle      pulumi.StringPtrInput
+	PricingCycle pulumi.StringPtrInput
+	// ID of promotion option.
+	//
+	// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 	PromotionOptionNo pulumi.StringPtrInput
 	// Number of nodes.
 	ResidentNodeNumber pulumi.IntPtrInput
@@ -658,6 +673,9 @@ func (o NodeGroupOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
 
+// ID of promotion option.
+//
+// > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
 func (o NodeGroupOutput) PromotionOptionNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringPtrOutput { return v.PromotionOptionNo }).(pulumi.StringPtrOutput)
 }

@@ -31,12 +31,21 @@ class CertificateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[_builtins.str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[_builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[_builtins.str] private_key: The certificate private key.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
@@ -64,6 +73,14 @@ class CertificateArgs:
     @_builtins.property
     @pulumi.getter(name="createdType")
     def created_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The certificate type.
+        - cas (Certificate Center Certificate)
+        - upload (custom upload certificate)
+        - free( Free certificate).
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "created_type")
 
     @created_type.setter
@@ -145,6 +162,11 @@ class CertificateArgs:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The certificate private key.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -200,7 +222,16 @@ class _CertificateState:
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
+        :param pulumi.Input[_builtins.str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[_builtins.str] private_key: The certificate private key.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
@@ -296,6 +327,14 @@ class _CertificateState:
     @_builtins.property
     @pulumi.getter(name="createdType")
     def created_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The certificate type.
+        - cas (Certificate Center Certificate)
+        - upload (custom upload certificate)
+        - free( Free certificate).
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "created_type")
 
     @created_type.setter
@@ -317,6 +356,11 @@ class _CertificateState:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The certificate private key.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -431,7 +475,16 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
+        :param pulumi.Input[_builtins.str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[_builtins.str] private_key: The certificate private key.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
@@ -562,7 +615,16 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
+        :param pulumi.Input[_builtins.str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[_builtins.str] private_key: The certificate private key.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
@@ -631,6 +693,14 @@ class Certificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdType")
     def created_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The certificate type.
+        - cas (Certificate Center Certificate)
+        - upload (custom upload certificate)
+        - free( Free certificate).
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "created_type")
 
     @_builtins.property
@@ -644,6 +714,11 @@ class Certificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The certificate private key.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "private_key")
 
     @_builtins.property

@@ -155,9 +155,21 @@ public final class CheckConfigArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.systemConfig);
     }
 
+    /**
+     * The cloud service providers.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="vendors")
     private @Nullable Output<List<String>> vendors;
 
+    /**
+     * @return The cloud service providers.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<List<String>>> vendors() {
         return Optional.ofNullable(this.vendors);
     }
@@ -398,15 +410,39 @@ public final class CheckConfigArgs extends com.pulumi.resources.ResourceArgs {
             return systemConfig(Output.of(systemConfig));
         }
 
+        /**
+         * @param vendors The cloud service providers.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vendors(@Nullable Output<List<String>> vendors) {
             $.vendors = vendors;
             return this;
         }
 
+        /**
+         * @param vendors The cloud service providers.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vendors(List<String> vendors) {
             return vendors(Output.of(vendors));
         }
 
+        /**
+         * @param vendors The cloud service providers.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vendors(String... vendors) {
             return vendors(List.of(vendors));
         }

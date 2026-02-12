@@ -49,38 +49,33 @@ __all__ = [
     'StarRocksInstanceVswitchArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class MilvusInstanceComponentArgsDict(TypedDict):
-        cu_num: pulumi.Input[_builtins.int]
-        """
-        The number of CU. For example: 4
-        """
-        replica: pulumi.Input[_builtins.int]
-        """
-        The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The component type. Different types need to be configured according to different versions.
-        - Starter version: Array including standalone
-        - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        2.5: proxy ,mix_coordinator,data,query,index
-        2.6 need to configure: proxy,mix_coordinator,data,query,streaming
-        """
-        cu_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The calculation type. The default value is general, and the ram type needs to be opened with a work order.
-        - general: Generic
-        - ram: Capacity
-        """
-        disk_size_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
-        """
-elif False:
-    MilvusInstanceComponentArgsDict: TypeAlias = Mapping[str, Any]
+class MilvusInstanceComponentArgsDict(TypedDict):
+    cu_num: pulumi.Input[_builtins.int]
+    """
+    The number of CU. For example: 4
+    """
+    replica: pulumi.Input[_builtins.int]
+    """
+    The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The component type. Different types need to be configured according to different versions.
+    - Starter version: Array including standalone
+    - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+    2.5: proxy ,mix_coordinator,data,query,index
+    2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+    """
+    cu_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+    - general: Generic
+    - ram: Capacity
+    """
+    disk_size_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+    """
 
 @pulumi.input_type
 class MilvusInstanceComponentArgs:
@@ -178,18 +173,15 @@ class MilvusInstanceComponentArgs:
         pulumi.set(self, "disk_size_type", value)
 
 
-if not MYPY:
-    class MilvusInstanceVswitchIdArgsDict(TypedDict):
-        vsw_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VSwitch id, which must correspond to the zone id.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The availability zone must correspond to the vswId.
-        """
-elif False:
-    MilvusInstanceVswitchIdArgsDict: TypeAlias = Mapping[str, Any]
+class MilvusInstanceVswitchIdArgsDict(TypedDict):
+    vsw_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VSwitch id, which must correspond to the zone id.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The availability zone must correspond to the vswId.
+    """
 
 @pulumi.input_type
 class MilvusInstanceVswitchIdArgs:
@@ -230,49 +222,46 @@ class MilvusInstanceVswitchIdArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
-        api_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The API name, such as ListApiMcpServers.
-        """
-        api_override_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
+    api_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The API name, such as ListApiMcpServers.
+    """
+    api_override_json: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
 
-        > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
-        """
-        api_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API version information, typically in date format, such as 2014-05-26.
-        """
-        const_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict']]]]
-        """
-        Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
-        Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
-        """
-        enable_output_schema: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+    > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+    """
+    api_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API version information, typically in date format, such as 2014-05-26.
+    """
+    const_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict']]]]
+    """
+    Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+    Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
+    """
+    enable_output_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
 
-        > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
-        """
-        execute_cli_command: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
-        - SSE protocol: up to 30 minutes
-        - Streamable HTTP protocol: up to 1 minute
+    > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+    """
+    execute_cli_command: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+    - SSE protocol: up to 30 minutes
+    - Streamable HTTP protocol: up to 1 minute
 
-        For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+    For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
 
-        > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
-        """
-        product: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the cloud product, such as Ecs.
-        """
-elif False:
-    OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+    """
+    product: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the cloud product, such as Ecs.
+    """
 
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
@@ -415,29 +404,26 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
         pulumi.set(self, "product", value)
 
 
-if not MYPY:
-    class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
 
-        For RPC-style APIs, examples include:
-        - Name: sets the Name parameter to a fixed value.
+    For RPC-style APIs, examples include:
+    - Name: sets the Name parameter to a fixed value.
 
-        For ROA-style APIs, examples include:
-        - Name: sets a query or path parameter named Name to a fixed value;
-        - body.Name: sets the Name field within the request body to a fixed value.
+    For ROA-style APIs, examples include:
+    - Name: sets a query or path parameter named Name to a fixed value;
+    - body.Name: sets the Name field within the request body to a fixed value.
 
-        Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+    Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
 
-        > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This property does not have a description in the spec, please add it before generating code.
-        """
-elif False:
-    OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This property does not have a description in the spec, please add it before generating code.
+    """
 
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
@@ -500,22 +486,19 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class OpenApiExplorerApiMcpServerApiArgsDict(TypedDict):
-        api_version: pulumi.Input[_builtins.str]
-        """
-        API version information, typically in date format—for example, the version for ECS is 2014-05-26.
-        """
-        product: pulumi.Input[_builtins.str]
-        """
-        Product code, such as Ecs.
-        """
-        selectors: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
-        """
-elif False:
-    OpenApiExplorerApiMcpServerApiArgsDict: TypeAlias = Mapping[str, Any]
+class OpenApiExplorerApiMcpServerApiArgsDict(TypedDict):
+    api_version: pulumi.Input[_builtins.str]
+    """
+    API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+    """
+    product: pulumi.Input[_builtins.str]
+    """
+    Product code, such as Ecs.
+    """
+    selectors: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+    """
 
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerApiArgs:
@@ -569,26 +552,23 @@ class OpenApiExplorerApiMcpServerApiArgs:
         pulumi.set(self, "selectors", value)
 
 
-if not MYPY:
-    class OpenApiExplorerApiMcpServerPromptArgsDict(TypedDict):
-        arguments: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgsDict']]]]
-        """
-        Parameters for the prompt. See `arguments` below.
-        """
-        content: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the prompt parameter.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the prompt parameter.
-        """
-elif False:
-    OpenApiExplorerApiMcpServerPromptArgsDict: TypeAlias = Mapping[str, Any]
+class OpenApiExplorerApiMcpServerPromptArgsDict(TypedDict):
+    arguments: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgsDict']]]]
+    """
+    Parameters for the prompt. See `arguments` below.
+    """
+    content: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the prompt parameter.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the prompt parameter.
+    """
 
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerPromptArgs:
@@ -661,22 +641,19 @@ class OpenApiExplorerApiMcpServerPromptArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class OpenApiExplorerApiMcpServerPromptArgumentArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the API MCP service.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
-        """
-        required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the prompt parameter is required.
-        """
-elif False:
-    OpenApiExplorerApiMcpServerPromptArgumentArgsDict: TypeAlias = Mapping[str, Any]
+class OpenApiExplorerApiMcpServerPromptArgumentArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the API MCP service.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+    """
+    required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the prompt parameter is required.
+    """
 
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerPromptArgumentArgs:
@@ -733,24 +710,30 @@ class OpenApiExplorerApiMcpServerPromptArgumentArgs:
         pulumi.set(self, "required", value)
 
 
-if not MYPY:
-    class OpenApiExplorerApiMcpServerTerraformToolArgsDict(TypedDict):
-        async_: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
-        """
-        code: NotRequired[pulumi.Input[_builtins.str]]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        destroy_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cleanup policy applied to temporary resources after task completion, based on the task execution status:
-        - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
-        - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
-        - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    OpenApiExplorerApiMcpServerTerraformToolArgsDict: TypeAlias = Mapping[str, Any]
+class OpenApiExplorerApiMcpServerTerraformToolArgsDict(TypedDict):
+    async_: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+    """
+    code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Terraform Tool code. Overview of the HCL Language
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+    """
+    destroy_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+    - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+    - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+    - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+    """
 
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerTerraformToolArgs:
@@ -762,10 +745,13 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] async_: Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+        :param pulumi.Input[_builtins.str] code: Terraform Tool code. Overview of the HCL Language
+        :param pulumi.Input[_builtins.str] description: Description of the Terraform Tool. This description will be used as the description for the MCP tool.
         :param pulumi.Input[_builtins.str] destroy_policy: The cleanup policy applied to temporary resources after task completion, based on the task execution status:
                - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
                - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
                - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+        :param pulumi.Input[_builtins.str] name: The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
         """
         if async_ is not None:
             pulumi.set(__self__, "async_", async_)
@@ -793,6 +779,9 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
     @_builtins.property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Terraform Tool code. Overview of the HCL Language
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -802,6 +791,9 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -826,6 +818,9 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -833,24 +828,24 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ProviderAssumeRoleArgsDict(TypedDict):
-        role_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of a RAM role to assume prior to making API calls.
-        """
-        external_id: NotRequired[pulumi.Input[_builtins.str]]
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
-        """
-        session_expiration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
-        """
-        session_name: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ProviderAssumeRoleArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderAssumeRoleArgsDict(TypedDict):
+    role_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of a RAM role to assume prior to making API calls.
+    """
+    external_id: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
+    """
+    session_expiration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+    """
+    session_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+    """
 
 @pulumi.input_type
 class ProviderAssumeRoleArgs:
@@ -864,6 +859,7 @@ class ProviderAssumeRoleArgs:
         :param pulumi.Input[_builtins.str] role_arn: The ARN of a RAM role to assume prior to making API calls.
         :param pulumi.Input[_builtins.str] policy: The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
         :param pulumi.Input[_builtins.int] session_expiration: The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
+        :param pulumi.Input[_builtins.str] session_name: The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
         """
         pulumi.set(__self__, "role_arn", role_arn)
         if external_id is not None:
@@ -923,6 +919,9 @@ class ProviderAssumeRoleArgs:
     @_builtins.property
     @pulumi.getter(name="sessionName")
     def session_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
+        """
         return pulumi.get(self, "session_name")
 
     @session_name.setter
@@ -930,35 +929,32 @@ class ProviderAssumeRoleArgs:
         pulumi.set(self, "session_name", value)
 
 
-if not MYPY:
-    class ProviderAssumeRoleWithOidcArgsDict(TypedDict):
-        oidc_provider_arn: pulumi.Input[_builtins.str]
-        """
-        ARN of the OIDC IdP.
-        """
-        role_arn: pulumi.Input[_builtins.str]
-        """
-        ARN of a RAM role to assume prior to making API calls.
-        """
-        oidc_token: NotRequired[pulumi.Input[_builtins.str]]
-        oidc_token_file: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The file path of OIDC token that is issued by the external IdP.
-        """
-        policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
-        """
-        role_session_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
-        """
-        session_expiration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
-        """
-elif False:
-    ProviderAssumeRoleWithOidcArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderAssumeRoleWithOidcArgsDict(TypedDict):
+    oidc_provider_arn: pulumi.Input[_builtins.str]
+    """
+    ARN of the OIDC IdP.
+    """
+    role_arn: pulumi.Input[_builtins.str]
+    """
+    ARN of a RAM role to assume prior to making API calls.
+    """
+    oidc_token: NotRequired[pulumi.Input[_builtins.str]]
+    oidc_token_file: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The file path of OIDC token that is issued by the external IdP.
+    """
+    policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+    """
+    role_session_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+    """
+    session_expiration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+    """
 
 @pulumi.input_type
 class ProviderAssumeRoleWithOidcArgs:
@@ -1073,620 +1069,617 @@ class ProviderAssumeRoleWithOidcArgs:
         pulumi.set(self, "session_expiration", value)
 
 
-if not MYPY:
-    class ProviderEndpointArgsDict(TypedDict):
-        acr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
-        """
-        actiontrail: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
-        """
-        adb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
-        """
-        aiworkspace: NotRequired[pulumi.Input[_builtins.str]]
-        alb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
-        """
-        alidfs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
-        """
-        alidns: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
-        """
-        alikafka: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
-        """
-        amqp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
-        """
-        antiddos_public: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
-        """
-        apig: NotRequired[pulumi.Input[_builtins.str]]
-        apigateway: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
-        """
-        arms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
-        """
-        bastionhost: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
-        """
-        beebot: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
-        """
-        bpstudio: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
-        """
-        brain_industrial: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
-        """
-        bssopenapi: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
-        """
-        cas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
-        """
-        cassandra: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
-        """
-        cbn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
-        """
-        cbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
-        """
-        cddc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
-        """
-        cdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
-        """
-        cds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
-        """
-        chatbot: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
-        """
-        clickhouse: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
-        """
-        cloudapi: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
-        """
-        cloudauth: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
-        """
-        cloudfirewall: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
-        """
-        cloudfw: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
-        """
-        cloudphone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
-        """
-        cloudsso: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
-        """
-        cms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
-        """
-        computenest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
-        """
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
-        """
-        cr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
-        """
-        cs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
-        """
-        das: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
-        """
-        datahub: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
-        """
-        dataworks_public: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
-        """
-        dataworkspublic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
-        """
-        dbfs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
-        """
-        dbs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
-        """
-        dcdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
-        """
-        ddosbasic: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
-        """
-        ddosbgp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
-        """
-        ddoscoo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
-        """
-        dds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
-        """
-        devops_rdc: NotRequired[pulumi.Input[_builtins.str]]
-        devopsrdc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
-        """
-        dfs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
-        """
-        dg: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
-        """
-        dm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
-        """
-        dms_enterprise: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
-        """
-        dmsenterprise: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
-        """
-        dns: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
-        """
-        drds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
-        """
-        dts: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
-        """
-        dysms: NotRequired[pulumi.Input[_builtins.str]]
-        dysmsapi: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
-        """
-        eais: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
-        """
-        ebs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
-        """
-        ecd: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
-        """
-        eci: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
-        """
-        ecs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
-        """
-        edas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
-        """
-        edasschedulerx: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
-        """
-        eds_user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
-        """
-        edsuser: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
-        """
-        eflo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
-        """
-        eflo_cnp: NotRequired[pulumi.Input[_builtins.str]]
-        eflo_controller: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
-        """
-        ehpc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
-        """
-        ehs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
-        """
-        eipanycast: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
-        """
-        elasticsearch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
-        """
-        emr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
-        """
-        ens: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
-        """
-        esa: NotRequired[pulumi.Input[_builtins.str]]
-        ess: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
-        """
-        eventbridge: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
-        """
-        fc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
-        """
-        fc_open: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
-        """
-        fnf: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
-        """
-        ga: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
-        """
-        gaplus: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
-        """
-        gdb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
-        """
-        gds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
-        """
-        gpdb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
-        """
-        gwlb: NotRequired[pulumi.Input[_builtins.str]]
-        gwsecd: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
-        """
-        hbr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
-        """
-        hcs_sgw: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
-        """
-        hitsdb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
-        """
-        imm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
-        """
-        imp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
-        """
-        ims: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
-        """
-        iot: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
-        """
-        kms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
-        """
-        kvstore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
-        """
-        log: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
-        """
-        market: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
-        """
-        maxcompute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
-        """
-        mhub: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
-        """
-        mns: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
-        """
-        mns_open: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
-        """
-        mscopensubscription: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
-        """
-        mse: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
-        """
-        nas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
-        """
-        nlb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
-        """
-        oceanbase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
-        """
-        oceanbasepro: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
-        """
-        ons: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
-        """
-        onsproxy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
-        """
-        oos: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
-        """
-        opensearch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
-        """
-        oss: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
-        """
-        ots: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
-        """
-        polardb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
-        """
-        polardbx: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
-        """
-        privatelink: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
-        """
-        pvtz: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
-        """
-        quickbi: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
-        """
-        quickbi_public: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
-        """
-        quotas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
-        """
-        r_kvstore: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
-        """
-        ram: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
-        """
-        rds: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
-        """
-        redisa: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
-        """
-        resourcemanager: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
-        """
-        resourcesharing: NotRequired[pulumi.Input[_builtins.str]]
-        ressharing: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
-        """
-        rocketmq: NotRequired[pulumi.Input[_builtins.str]]
-        ros: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
-        """
-        sae: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
-        """
-        sas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
-        """
-        scdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
-        """
-        schedulerx2: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
-        """
-        sddp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
-        """
-        selectdb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
-        """
-        serverless: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
-        """
-        servicecatalog: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
-        """
-        servicemesh: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
-        """
-        sgw: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
-        """
-        slb: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
-        """
-        smartag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
-        """
-        srvcatalog: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
-        """
-        sts: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
-        """
-        swas: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
-        """
-        swas_open: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
-        """
-        vod: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
-        """
-        vpc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
-        """
-        vpcipam: NotRequired[pulumi.Input[_builtins.str]]
-        vpcpeer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
-        """
-        vs: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
-        """
-        waf: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
-        """
-        waf_openapi: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
-        """
-elif False:
-    ProviderEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderEndpointArgsDict(TypedDict):
+    acr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
+    """
+    actiontrail: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
+    """
+    adb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
+    """
+    aiworkspace: NotRequired[pulumi.Input[_builtins.str]]
+    alb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
+    """
+    alidfs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+    """
+    alidns: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
+    """
+    alikafka: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
+    """
+    amqp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+    """
+    antiddos_public: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+    """
+    apig: NotRequired[pulumi.Input[_builtins.str]]
+    apigateway: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+    """
+    arms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
+    """
+    bastionhost: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
+    """
+    beebot: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+    """
+    bpstudio: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
+    """
+    brain_industrial: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
+    """
+    bssopenapi: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
+    """
+    cas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
+    """
+    cassandra: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
+    """
+    cbn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
+    """
+    cbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+    """
+    cddc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
+    """
+    cdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
+    """
+    cds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
+    """
+    chatbot: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
+    """
+    clickhouse: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+    """
+    cloudapi: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+    """
+    cloudauth: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
+    """
+    cloudfirewall: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
+    """
+    cloudfw: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
+    """
+    cloudphone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
+    """
+    cloudsso: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
+    """
+    cms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
+    """
+    computenest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
+    """
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
+    """
+    cr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
+    """
+    cs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
+    """
+    das: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
+    """
+    datahub: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
+    """
+    dataworks_public: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+    """
+    dataworkspublic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
+    """
+    dbfs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
+    """
+    dbs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
+    """
+    dcdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
+    """
+    ddosbasic: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
+    """
+    ddosbgp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
+    """
+    ddoscoo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
+    """
+    dds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
+    """
+    devops_rdc: NotRequired[pulumi.Input[_builtins.str]]
+    devopsrdc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
+    """
+    dfs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
+    """
+    dg: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
+    """
+    dm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
+    """
+    dms_enterprise: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
+    """
+    dmsenterprise: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
+    """
+    dns: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
+    """
+    drds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+    """
+    dts: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
+    """
+    dysms: NotRequired[pulumi.Input[_builtins.str]]
+    dysmsapi: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
+    """
+    eais: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
+    """
+    ebs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
+    """
+    ecd: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+    """
+    eci: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
+    """
+    ecs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
+    """
+    edas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
+    """
+    edasschedulerx: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+    """
+    eds_user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+    """
+    edsuser: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
+    """
+    eflo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+    """
+    eflo_cnp: NotRequired[pulumi.Input[_builtins.str]]
+    eflo_controller: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+    """
+    ehpc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
+    """
+    ehs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
+    """
+    eipanycast: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
+    """
+    elasticsearch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
+    """
+    emr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
+    """
+    ens: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
+    """
+    esa: NotRequired[pulumi.Input[_builtins.str]]
+    ess: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
+    """
+    eventbridge: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
+    """
+    fc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+    """
+    fc_open: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
+    """
+    fnf: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
+    """
+    ga: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
+    """
+    gaplus: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
+    """
+    gdb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+    """
+    gds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
+    """
+    gpdb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
+    """
+    gwlb: NotRequired[pulumi.Input[_builtins.str]]
+    gwsecd: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
+    """
+    hbr: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
+    """
+    hcs_sgw: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
+    """
+    hitsdb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
+    """
+    imm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
+    """
+    imp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
+    """
+    ims: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
+    """
+    iot: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
+    """
+    kms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
+    """
+    kvstore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
+    """
+    log: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
+    """
+    market: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
+    """
+    maxcompute: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
+    """
+    mhub: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
+    """
+    mns: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+    """
+    mns_open: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
+    """
+    mscopensubscription: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
+    """
+    mse: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
+    """
+    nas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
+    """
+    nlb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
+    """
+    oceanbase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+    """
+    oceanbasepro: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
+    """
+    ons: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
+    """
+    onsproxy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
+    """
+    oos: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
+    """
+    opensearch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
+    """
+    oss: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
+    """
+    ots: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
+    """
+    polardb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
+    """
+    polardbx: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
+    """
+    privatelink: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
+    """
+    pvtz: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
+    """
+    quickbi: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+    """
+    quickbi_public: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
+    """
+    quotas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
+    """
+    r_kvstore: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
+    """
+    ram: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
+    """
+    rds: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
+    """
+    redisa: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
+    """
+    resourcemanager: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
+    """
+    resourcesharing: NotRequired[pulumi.Input[_builtins.str]]
+    ressharing: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+    """
+    rocketmq: NotRequired[pulumi.Input[_builtins.str]]
+    ros: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
+    """
+    sae: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+    """
+    sas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
+    """
+    scdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
+    """
+    schedulerx2: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
+    """
+    sddp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+    """
+    selectdb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+    """
+    serverless: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
+    """
+    servicecatalog: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+    """
+    servicemesh: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
+    """
+    sgw: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
+    """
+    slb: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
+    """
+    smartag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
+    """
+    srvcatalog: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
+    """
+    sts: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
+    """
+    swas: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+    """
+    swas_open: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
+    """
+    vod: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
+    """
+    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
+    """
+    vpcipam: NotRequired[pulumi.Input[_builtins.str]]
+    vpcpeer: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
+    """
+    vs: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
+    """
+    waf: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
+    """
+    waf_openapi: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
+    """
 
 @pulumi.input_type
 class ProviderEndpointArgs:
@@ -4215,12 +4208,9 @@ class ProviderEndpointArgs:
         pulumi.set(self, "waf_openapi", value)
 
 
-if not MYPY:
-    class ProviderSignVersionArgsDict(TypedDict):
-        oss: NotRequired[pulumi.Input[_builtins.str]]
-        sls: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ProviderSignVersionArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderSignVersionArgsDict(TypedDict):
+    oss: NotRequired[pulumi.Input[_builtins.str]]
+    sls: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ProviderSignVersionArgs:
@@ -4251,51 +4241,48 @@ class ProviderSignVersionArgs:
         pulumi.set(self, "sls", value)
 
 
-if not MYPY:
-    class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
-        cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-        """
-        disk_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of disks.
-        """
-        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Local SSD instance specifications.
-        """
-        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resident node number of node group.
-        """
-        spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compute group specification types include the following:
-        - standard
-        - localSSD
-        - bigData
-        - ramEnhanced
-        - networkEnhanced
-        """
-        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance levels of cloud disks include the following values:
-        - pl0: Maximum random read/write IOPS per disk is 10,000.
-        - pl1: Maximum random read/write IOPS per disk is 50,000.
-        - pl2: Maximum random read/write IOPS per disk is 100,000.
-        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-        """
-        storage_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Storage size, measured in GiB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    StarRocksInstanceBackendNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
+    cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+    """
+    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of disks.
+    """
+    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Local SSD instance specifications.
+    """
+    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resident node number of node group.
+    """
+    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compute group specification types include the following:
+    - standard
+    - localSSD
+    - bigData
+    - ramEnhanced
+    - networkEnhanced
+    """
+    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance levels of cloud disks include the following values:
+    - pl0: Maximum random read/write IOPS per disk is 10,000.
+    - pl1: Maximum random read/write IOPS per disk is 50,000.
+    - pl2: Maximum random read/write IOPS per disk is 100,000.
+    - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+    """
+    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Storage size, measured in GiB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class StarRocksInstanceBackendNodeGroupArgs:
@@ -4450,48 +4437,45 @@ class StarRocksInstanceBackendNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class StarRocksInstanceFrontendNodeGroupArgsDict(TypedDict):
-        cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-        """
-        disk_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        DiskNumber
-        """
-        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Local SSD instance specifications.
-        """
-        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resident node number of node group.
-        """
-        spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compute group specification types include the following:
-        - standard
-        - ramEnhanced
-        """
-        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance levels of cloud disks include the following values:
-        - pl0: Maximum random read/write IOPS per disk is 10,000.
-        - pl1: Maximum random read/write IOPS per disk is 50,000.
-        - pl2: Maximum random read/write IOPS per disk is 100,000.
-        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-        """
-        storage_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Storage size, measured in GiB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    StarRocksInstanceFrontendNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class StarRocksInstanceFrontendNodeGroupArgsDict(TypedDict):
+    cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+    """
+    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    DiskNumber
+    """
+    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Local SSD instance specifications.
+    """
+    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resident node number of node group.
+    """
+    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compute group specification types include the following:
+    - standard
+    - ramEnhanced
+    """
+    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance levels of cloud disks include the following values:
+    - pl0: Maximum random read/write IOPS per disk is 10,000.
+    - pl1: Maximum random read/write IOPS per disk is 50,000.
+    - pl2: Maximum random read/write IOPS per disk is 100,000.
+    - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+    """
+    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Storage size, measured in GiB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class StarRocksInstanceFrontendNodeGroupArgs:
@@ -4640,47 +4624,44 @@ class StarRocksInstanceFrontendNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class StarRocksInstanceObserverNodeGroupArgsDict(TypedDict):
-        cu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
-        """
-        disk_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        DiskNumber
-        """
-        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Local SSD instance specifications.
-        """
-        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Resident node number of node group.
-        """
-        spec_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Compute group specification types include the following:
-        - standard
-        """
-        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Performance levels of cloud disks include the following values:
-        - pl0: Maximum random read/write IOPS per disk is 10,000.
-        - pl1: Maximum random read/write IOPS per disk is 50,000.
-        - pl2: Maximum random read/write IOPS per disk is 100,000.
-        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
-        """
-        storage_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Storage size, measured in GiB.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID.
-        """
-elif False:
-    StarRocksInstanceObserverNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+class StarRocksInstanceObserverNodeGroupArgsDict(TypedDict):
+    cu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+    """
+    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    DiskNumber
+    """
+    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Local SSD instance specifications.
+    """
+    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Resident node number of node group.
+    """
+    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Compute group specification types include the following:
+    - standard
+    """
+    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Performance levels of cloud disks include the following values:
+    - pl0: Maximum random read/write IOPS per disk is 10,000.
+    - pl1: Maximum random read/write IOPS per disk is 50,000.
+    - pl2: Maximum random read/write IOPS per disk is 100,000.
+    - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+    """
+    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Storage size, measured in GiB.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID.
+    """
 
 @pulumi.input_type
 class StarRocksInstanceObserverNodeGroupArgs:
@@ -4827,18 +4808,15 @@ class StarRocksInstanceObserverNodeGroupArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class StarRocksInstanceVswitchArgsDict(TypedDict):
-        vswitch_id: pulumi.Input[_builtins.str]
-        """
-        ID of VSwitch.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Zone ID of VSwitch.
-        """
-elif False:
-    StarRocksInstanceVswitchArgsDict: TypeAlias = Mapping[str, Any]
+class StarRocksInstanceVswitchArgsDict(TypedDict):
+    vswitch_id: pulumi.Input[_builtins.str]
+    """
+    ID of VSwitch.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Zone ID of VSwitch.
+    """
 
 @pulumi.input_type
 class StarRocksInstanceVswitchArgs:

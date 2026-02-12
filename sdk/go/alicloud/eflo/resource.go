@@ -12,6 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Eflo Resource resource.
+//
+// For information about Eflo Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createresource).
+//
+// > **NOTE:** Available since v1.248.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eflo.NewResource(ctx, "default", &eflo.ResourceArgs{
+//				UserAccessParam: &eflo.ResourceUserAccessParamArgs{
+//					AccessId:    pulumi.String("your_access_id"),
+//					AccessKey:   pulumi.String("your_access_key"),
+//					WorkspaceId: pulumi.String("your_workspace_id"),
+//					Endpoint:    pulumi.String("your_endpoint"),
+//				},
+//				ClusterId: pulumi.Sprintf("terraform-%v", _default.Result),
+//				MachineTypes: &eflo.ResourceMachineTypesArgs{
+//					MemoryInfo:  pulumi.String("32x 64GB DDR4 4800 Memory"),
+//					Type:        pulumi.String("Private"),
+//					BondNum:     pulumi.Int(5),
+//					NodeCount:   pulumi.Int(1),
+//					CpuInfo:     pulumi.String("2x Intel Saphhire Rapid 8469C 48C CPU"),
+//					NetworkInfo: pulumi.String("1x 200Gbps Dual Port BF3 DPU for VPC 4x 200Gbps Dual Port EIC"),
+//					GpuInfo:     pulumi.String("8x OAM 810 GPU"),
+//					DiskInfo:    pulumi.String("2x 480GB SATA SSD 4x 3.84TB NVMe SSD"),
+//					NetworkMode: pulumi.String("net"),
+//					Name:        pulumi.String("lingjun"),
+//				},
+//				ClusterName: pulumi.String(name),
+//				ClusterDesc: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `eflo.Resource` or removing it from your configuration
+//
+// Terraform cannot destroy resource `eflo.Resource`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Eflo Resource can be imported using the id, e.g.

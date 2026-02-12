@@ -785,6 +785,61 @@ class Gateway(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a VPN gateway resource.
+
+        > **NOTE:** Terraform will auto build vpn instance  while it uses `vpn.Gateway` to build a vpn resource.
+
+        > Currently International-Site account can open `PostPaid` VPN gateway and China-Site account can open `PrePaid` VPN gateway.
+
+        For information about VPN gateway and how to use it, see [What is VPN gateway](https://www.alibabacloud.com/help/en/doc-detail/120365.html).
+
+        > **NOTE:** Available since v1.13.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        [IPsec-VPN connections support the dual-tunnel mode](https://www.alibabacloud.com/help/en/vpn/product-overview/ipsec-vpn-connections-support-the-dual-tunnel-mode)
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        spec = config.get("spec")
+        if spec is None:
+            spec = "20"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[1])
+        default_gateway = alicloud.vpn.Gateway("default",
+            vpn_type="Normal",
+            vpn_gateway_name=name,
+            vswitch_id=default0.ids[0],
+            disaster_recovery_vswitch_id=default1.ids[0],
+            auto_pay=True,
+            vpc_id=default_get_networks.ids[0],
+            network_type="public",
+            payment_type="Subscription",
+            enable_ipsec=True,
+            bandwidth=spec)
+        ```
+
+        ### Deleting `vpn.Gateway` or removing it from your configuration
+
+        The `vpn.Gateway` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN gateway can be imported using the id, e.g.
@@ -824,6 +879,61 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a VPN gateway resource.
+
+        > **NOTE:** Terraform will auto build vpn instance  while it uses `vpn.Gateway` to build a vpn resource.
+
+        > Currently International-Site account can open `PostPaid` VPN gateway and China-Site account can open `PrePaid` VPN gateway.
+
+        For information about VPN gateway and how to use it, see [What is VPN gateway](https://www.alibabacloud.com/help/en/doc-detail/120365.html).
+
+        > **NOTE:** Available since v1.13.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        [IPsec-VPN connections support the dual-tunnel mode](https://www.alibabacloud.com/help/en/vpn/product-overview/ipsec-vpn-connections-support-the-dual-tunnel-mode)
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        spec = config.get("spec")
+        if spec is None:
+            spec = "20"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[1])
+        default_gateway = alicloud.vpn.Gateway("default",
+            vpn_type="Normal",
+            vpn_gateway_name=name,
+            vswitch_id=default0.ids[0],
+            disaster_recovery_vswitch_id=default1.ids[0],
+            auto_pay=True,
+            vpc_id=default_get_networks.ids[0],
+            network_type="public",
+            payment_type="Subscription",
+            enable_ipsec=True,
+            bandwidth=spec)
+        ```
+
+        ### Deleting `vpn.Gateway` or removing it from your configuration
+
+        The `vpn.Gateway` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN gateway can be imported using the id, e.g.

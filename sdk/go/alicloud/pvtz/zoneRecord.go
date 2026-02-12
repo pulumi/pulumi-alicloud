@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Private Zone Record resource.
+//
+// > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `pvtz.ZoneRecord` to build a Private Zone Record resource.
+//
 // ## Example Usage
 //
 // # Basic Usage

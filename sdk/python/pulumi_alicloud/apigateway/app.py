@@ -139,6 +139,14 @@ class App(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides an app resource.It must create an app before calling a third-party API because the app is the identity used to call the third-party API.
+
+        For information about Api Gateway App and how to use it, see [Create An APP](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapp)
+
+        > **NOTE:** Available since v1.22.0.
+
+        > **NOTE:** Terraform will auto build api app while it uses `apigateway.App` to build api app.
+
         ## Example Usage
 
         Basic Usage
@@ -175,6 +183,14 @@ class App(pulumi.CustomResource):
                  args: Optional[AppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an app resource.It must create an app before calling a third-party API because the app is the identity used to call the third-party API.
+
+        For information about Api Gateway App and how to use it, see [Create An APP](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createapp)
+
+        > **NOTE:** Available since v1.22.0.
+
+        > **NOTE:** Terraform will auto build api app while it uses `apigateway.App` to build api app.
+
         ## Example Usage
 
         Basic Usage

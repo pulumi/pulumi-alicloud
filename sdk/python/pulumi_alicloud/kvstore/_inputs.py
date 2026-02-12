@@ -19,20 +19,15 @@ __all__ = [
     'InstanceParameterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceParameterArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
-        """
-elif False:
-    InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceParameterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+    """
 
 @pulumi.input_type
 class InstanceParameterArgs:

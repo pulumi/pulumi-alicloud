@@ -43,9 +43,33 @@ public final class ProtocolServiceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether to PreCheck the creation request.
+     * 
+     * The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+     * 
+     * Value:
+     * - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+     * - false (default): Send a normal request and directly create an instance after passing the check.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
+    /**
+     * @return Whether to PreCheck the creation request.
+     * 
+     * The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+     * 
+     * Value:
+     * - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+     * - false (default): Send a normal request and directly create an instance after passing the check.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
@@ -212,11 +236,39 @@ public final class ProtocolServiceArgs extends com.pulumi.resources.ResourceArgs
             return description(Output.of(description));
         }
 
+        /**
+         * @param dryRun Whether to PreCheck the creation request.
+         * 
+         * The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+         * 
+         * Value:
+         * - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+         * - false (default): Send a normal request and directly create an instance after passing the check.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param dryRun Whether to PreCheck the creation request.
+         * 
+         * The pre-check operation helps you check the validity of parameters and dependency conditions, and does not actually create an instance, nor does it incur costs.
+         * 
+         * Value:
+         * - true: The check request is sent and the protocol service is not created. The check items include whether the required parameters, request format, and business restriction dependency conditions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the 200 HttpCode is returned, but the ProtocolServiceId is empty.
+         * - false (default): Send a normal request and directly create an instance after passing the check.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
         }

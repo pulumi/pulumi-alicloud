@@ -14,12 +14,56 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESA Kv Account resource.
+ * 
+ * For information about ESA Kv Account and how to use it, see [What is Kv Account](https://next.api.alibabacloud.com/document/ESA/2024-09-10/OpenErService).
+ * 
+ * &gt; **NOTE:** Available since v1.259.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.esa.KvAccount;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var open = new KvAccount("open");
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.esa.KvAccount` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.esa.KvAccount`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Kv Account can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:esa/kvAccount:KvAccount example 
+ * $ terraform import alicloud_esa_kv_account.example 
  * ```
  * 
  */

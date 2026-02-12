@@ -68,9 +68,17 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.keyName);
     }
 
+    /**
+     * The key pair name&#39;s prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     @Import(name="keyNamePrefix")
     private @Nullable Output<String> keyNamePrefix;
 
+    /**
+     * @return The key pair name&#39;s prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+     * 
+     */
     public Optional<Output<String>> keyNamePrefix() {
         return Optional.ofNullable(this.keyNamePrefix);
     }
@@ -112,9 +120,19 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -219,11 +237,23 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
             return keyName(Output.of(keyName));
         }
 
+        /**
+         * @param keyNamePrefix The key pair name&#39;s prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyNamePrefix(@Nullable Output<String> keyNamePrefix) {
             $.keyNamePrefix = keyNamePrefix;
             return this;
         }
 
+        /**
+         * @param keyNamePrefix The key pair name&#39;s prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyNamePrefix(String keyNamePrefix) {
             return keyNamePrefix(Output.of(keyNamePrefix));
         }
@@ -279,11 +309,25 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

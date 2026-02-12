@@ -17,7 +17,13 @@ namespace Pulumi.AliCloud.Outputs
         /// Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
         /// </summary>
         public readonly bool? Async;
+        /// <summary>
+        /// Terraform Tool code. Overview of the HCL Language
+        /// </summary>
         public readonly string? Code;
+        /// <summary>
+        /// Description of the Terraform Tool. This description will be used as the description for the MCP tool.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
@@ -26,6 +32,9 @@ namespace Pulumi.AliCloud.Outputs
         /// - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
         /// </summary>
         public readonly string? DestroyPolicy;
+        /// <summary>
+        /// The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

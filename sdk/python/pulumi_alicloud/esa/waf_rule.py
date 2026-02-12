@@ -33,6 +33,12 @@ class WafRuleArgs:
         :param pulumi.Input[_builtins.str] site_id: The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input['WafRuleConfigArgs'] config: The specific configuration of the WAF rule. See `config` below.
         :param pulumi.Input[_builtins.int] ruleset_id: The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
+        :param pulumi.Input['WafRuleSharedArgs'] shared: Shared configuration attributes used across multiple rules. See `shared` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        :param pulumi.Input[_builtins.int] site_version: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         pulumi.set(__self__, "phase", phase)
         pulumi.set(__self__, "site_id", site_id)
@@ -96,6 +102,11 @@ class WafRuleArgs:
     @_builtins.property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input['WafRuleSharedArgs']]:
+        """
+        Shared configuration attributes used across multiple rules. See `shared` below.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -105,6 +116,11 @@ class WafRuleArgs:
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
@@ -127,7 +143,13 @@ class _WafRuleState:
         :param pulumi.Input['WafRuleConfigArgs'] config: The specific configuration of the WAF rule. See `config` below.
         :param pulumi.Input[_builtins.str] phase: The phase in which the WAF processes this rule.
         :param pulumi.Input[_builtins.int] ruleset_id: The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
+        :param pulumi.Input['WafRuleSharedArgs'] shared: Shared configuration attributes used across multiple rules. See `shared` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] site_id: The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.int] site_version: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] waf_rule_id: The unique identifier of the WAF rule.
         """
         if config is not None:
@@ -184,6 +206,11 @@ class _WafRuleState:
     @_builtins.property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input['WafRuleSharedArgs']]:
+        """
+        Shared configuration attributes used across multiple rules. See `shared` below.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -205,6 +232,11 @@ class _WafRuleState:
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
@@ -293,7 +325,13 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']] config: The specific configuration of the WAF rule. See `config` below.
         :param pulumi.Input[_builtins.str] phase: The phase in which the WAF processes this rule.
         :param pulumi.Input[_builtins.int] ruleset_id: The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
+        :param pulumi.Input[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']] shared: Shared configuration attributes used across multiple rules. See `shared` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] site_id: The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.int] site_version: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         ...
     @overload
@@ -420,7 +458,13 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']] config: The specific configuration of the WAF rule. See `config` below.
         :param pulumi.Input[_builtins.str] phase: The phase in which the WAF processes this rule.
         :param pulumi.Input[_builtins.int] ruleset_id: The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
+        :param pulumi.Input[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']] shared: Shared configuration attributes used across multiple rules. See `shared` below.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] site_id: The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.int] site_version: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.int] waf_rule_id: The unique identifier of the WAF rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -463,6 +507,11 @@ class WafRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def shared(self) -> pulumi.Output[Optional['outputs.WafRuleShared']]:
+        """
+        Shared configuration attributes used across multiple rules. See `shared` below.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "shared")
 
     @_builtins.property
@@ -476,6 +525,11 @@ class WafRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "site_version")
 
     @_builtins.property

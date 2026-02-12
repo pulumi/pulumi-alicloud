@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// Forwarding Policy Status.
         /// </summary>
         public readonly string ForwardingRuleStatus;
+        /// <summary>
+        /// The resource ID in terraform of Forwarding Rule.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the listener.

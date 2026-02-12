@@ -149,9 +149,27 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="createdType", refs={String.class}, tree="[0]")
     private Output<String> createdType;
 
+    /**
+     * @return The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<String> createdType() {
         return this.createdType;
     }
@@ -169,9 +187,21 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> domains() {
         return Codegen.optional(this.domains);
     }
+    /**
+     * The certificate private key.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
+    /**
+     * @return The certificate private key.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> privateKey() {
         return Codegen.optional(this.privateKey);
     }

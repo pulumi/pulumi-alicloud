@@ -10,6 +10,163 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MaxCompute
 {
     /// <summary>
+    /// Provides a Max Compute Quota Schedule resource.
+    /// 
+    /// For information about Max Compute Quota Schedule and how to use it, see [What is Quota Schedule](https://www.alibabacloud.com/help/en/).
+    /// 
+    /// &gt; **NOTE:** Available since v1.242.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var elasticReservedCu = config.Get("elasticReservedCu") ?? "0";
+    ///     var quotaNickName = config.Get("quotaNickName") ?? "os_terrform_p";
+    ///     var @default = new AliCloud.MaxCompute.QuotaPlan("default", new()
+    ///     {
+    ///         Quota = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaArgs
+    ///         {
+    ///             Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaParameterArgs
+    ///             {
+    ///                 ElasticReservedCu = 50,
+    ///             },
+    ///             SubQuotaInfoLists = new[]
+    ///             {
+    ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs
+    ///                 {
+    ///                     NickName = "sub_quota",
+    ///                     Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs
+    ///                     {
+    ///                         MinCu = 0,
+    ///                         MaxCu = 20,
+    ///                         ElasticReservedCu = 30,
+    ///                     },
+    ///                 },
+    ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs
+    ///                 {
+    ///                     NickName = "os_terrform",
+    ///                     Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs
+    ///                     {
+    ///                         MinCu = 50,
+    ///                         MaxCu = 50,
+    ///                         ElasticReservedCu = 20,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PlanName = "quota_plan1",
+    ///         Nickname = "os_terrform_p",
+    ///     });
+    /// 
+    ///     var default2 = new AliCloud.MaxCompute.QuotaPlan("default2", new()
+    ///     {
+    ///         Quota = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaArgs
+    ///         {
+    ///             Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaParameterArgs
+    ///             {
+    ///                 ElasticReservedCu = 50,
+    ///             },
+    ///             SubQuotaInfoLists = new[]
+    ///             {
+    ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs
+    ///                 {
+    ///                     NickName = "sub_quota",
+    ///                     Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs
+    ///                     {
+    ///                         MinCu = 0,
+    ///                         MaxCu = 20,
+    ///                         ElasticReservedCu = 20,
+    ///                     },
+    ///                 },
+    ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs
+    ///                 {
+    ///                     NickName = "os_terrform",
+    ///                     Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs
+    ///                     {
+    ///                         MinCu = 50,
+    ///                         MaxCu = 50,
+    ///                         ElasticReservedCu = 30,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PlanName = "quota_plan2",
+    ///         Nickname = "os_terrform_p",
+    ///     });
+    /// 
+    ///     var default3 = new AliCloud.MaxCompute.QuotaPlan("default3", new()
+    ///     {
+    ///         Quota = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaArgs
+    ///         {
+    ///             Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaParameterArgs
+    ///             {
+    ///                 ElasticReservedCu = 50,
+    ///             },
+    ///             SubQuotaInfoLists = new[]
+    ///             {
+    ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs
+    ///                 {
+    ///                     NickName = "sub_quota",
+    ///                     Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs
+    ///                     {
+    ///                         MinCu = 40,
+    ///                         MaxCu = 40,
+    ///                         ElasticReservedCu = 40,
+    ///                     },
+    ///                 },
+    ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs
+    ///                 {
+    ///                     NickName = "os_terrform",
+    ///                     Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs
+    ///                     {
+    ///                         MinCu = 10,
+    ///                         MaxCu = 10,
+    ///                         ElasticReservedCu = 10,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PlanName = "quota_plan3",
+    ///         Nickname = "os_terrform_p",
+    ///     });
+    /// 
+    ///     var defaultQuotaSchedule = new AliCloud.MaxCompute.QuotaSchedule("default", new()
+    ///     {
+    ///         Timezone = "UTC+8",
+    ///         Nickname = quotaNickName,
+    ///         ScheduleLists = new[]
+    ///         {
+    ///             new AliCloud.MaxCompute.Inputs.QuotaScheduleScheduleListArgs
+    ///             {
+    ///                 Plan = "Default",
+    ///                 Condition = new AliCloud.MaxCompute.Inputs.QuotaScheduleScheduleListConditionArgs
+    ///                 {
+    ///                     At = "00:00",
+    ///                 },
+    ///                 Type = "daily",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.maxcompute.QuotaSchedule` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.maxcompute.QuotaSchedule`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Max Compute Quota Schedule can be imported using the id, e.g.

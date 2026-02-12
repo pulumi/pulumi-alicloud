@@ -12,6 +12,79 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This resource has been deprecated and using wafv3.Instance instead.
+//
+// Provides a WAF Instance resource to create instance in the Web Application Firewall.
+//
+// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+//
+// > **NOTE:** Available since v1.83.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := waf.GetInstances(ctx, &waf.GetInstancesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var tmp0 float64
+//			if length > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
+//			var defaultInstance []*waf.Instance
+//			for index := 0; index < float64(len(_default.Instances).ApplyT(func(length int) (float64, error) {
+//				return tmp0, nil
+//			}).(pulumi.Float64Output)); index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := waf.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &waf.InstanceArgs{
+//					BigScreen:           pulumi.String("0"),
+//					ExclusiveIpPackage:  pulumi.String("1"),
+//					ExtBandwidth:        pulumi.String("50"),
+//					ExtDomainPackage:    pulumi.String("1"),
+//					PackageCode:         pulumi.String("version_3"),
+//					PrefessionalService: pulumi.String("false"),
+//					SubscriptionType:    pulumi.String("Subscription"),
+//					Period:              pulumi.Int(1),
+//					WafLog:              pulumi.String("false"),
+//					LogStorage:          pulumi.String("3"),
+//					LogTime:             pulumi.String("180"),
+//					ResourceGroupId:     pulumi.String("rs-abc12345"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultInstance = append(defaultInstance, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `waf.Instance` or removing it from your configuration
+//
+// The `waf.Instance` resource allows you to manage `subscriptionType = "Subscription"` WAF instance, but Terraform cannot destroy it before it is expired.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the WAF Instance.
+// You can resume managing the subscription WAF instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // WAF instance can be imported using the id, e.g.

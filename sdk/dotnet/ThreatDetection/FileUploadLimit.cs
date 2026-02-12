@@ -10,12 +10,46 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ThreatDetection
 {
     /// <summary>
+    /// Provides a Threat Detection File Upload Limit resource. User-defined file upload limit.
+    /// 
+    /// For information about Threat Detection File Upload Limit and how to use it, see [What is File Upload Limit](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetFileUploadLimit).
+    /// 
+    /// &gt; **NOTE:** Available since v1.212.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.ThreatDetection.FileUploadLimit("default", new()
+    ///     {
+    ///         Limit = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.threatdetection.FileUploadLimit` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.threatdetection.FileUploadLimit`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Threat Detection File Upload Limit can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example 
+    /// $ terraform import alicloud_threat_detection_file_upload_limit.example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:threatdetection/fileUploadLimit:FileUploadLimit")]

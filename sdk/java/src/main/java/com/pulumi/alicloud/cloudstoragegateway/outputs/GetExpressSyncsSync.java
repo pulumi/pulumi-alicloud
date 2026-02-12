@@ -40,6 +40,10 @@ public final class GetExpressSyncsSync {
      * 
      */
     private String expressSyncName;
+    /**
+     * @return The resource ID in terraform of Express Sync. The value is formate as &lt;express_sync_id&gt;.
+     * 
+     */
     private String id;
     /**
      * @return The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
@@ -90,6 +94,10 @@ public final class GetExpressSyncsSync {
     public String expressSyncName() {
         return this.expressSyncName;
     }
+    /**
+     * @return The resource ID in terraform of Express Sync. The value is formate as &lt;express_sync_id&gt;.
+     * 
+     */
     public String id() {
         return this.id;
     }

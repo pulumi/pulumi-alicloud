@@ -16,6 +16,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a RAM password policy configuration for entire account. Only one resource per account.
+ * 
+ * &gt; **NOTE:** This resource overwrites an existing configuration. During action `terraform destroy` it sets values the same as defaults for this resource (it does not preserve any preexisted configuration).
+ * 
+ * &gt; **NOTE:** Available since v1.46.0.
+ * 
  * ## Example Usage
  * 
  * Empty resource sets defaults values for every property.
@@ -93,12 +99,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * RAM account password policy can be imported using the `id`, e.g.
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
- * ```
  * 
  */
 @ResourceType(type="alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy")

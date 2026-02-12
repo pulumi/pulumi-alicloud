@@ -18,6 +18,97 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a VPN gateway resource.
+ * 
+ * &gt; **NOTE:** Terraform will auto build vpn instance  while it uses `alicloud.vpn.Gateway` to build a vpn resource.
+ * 
+ * &gt; Currently International-Site account can open `PostPaid` VPN gateway and China-Site account can open `PrePaid` VPN gateway.
+ * 
+ * For information about VPN gateway and how to use it, see [What is VPN gateway](https://www.alibabacloud.com/help/en/doc-detail/120365.html).
+ * 
+ * &gt; **NOTE:** Available since v1.13.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * [IPsec-VPN connections support the dual-tunnel mode](https://www.alibabacloud.com/help/en/vpn/product-overview/ipsec-vpn-connections-support-the-dual-tunnel-mode)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpn.Gateway;
+ * import com.pulumi.alicloud.vpn.GatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var spec = config.get("spec").orElse("20");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         final var default0 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.ids()[0])
+ *             .build());
+ * 
+ *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(default_.ids()[1])
+ *             .build());
+ * 
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+ *             .vpnType("Normal")
+ *             .vpnGatewayName(name)
+ *             .vswitchId(default0.ids()[0])
+ *             .disasterRecoveryVswitchId(default1.ids()[0])
+ *             .autoPay(true)
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .networkType("public")
+ *             .paymentType("Subscription")
+ *             .enableIpsec(true)
+ *             .bandwidth(spec)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.vpn.Gateway` or removing it from your configuration
+ * 
+ * The `alicloud.vpn.Gateway` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * VPN gateway can be imported using the id, e.g.

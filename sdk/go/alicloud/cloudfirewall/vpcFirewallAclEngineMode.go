@@ -12,6 +12,115 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloud Firewall Vpc Firewall Acl Engine Mode resource.
+//
+// VPC boundary firewall engine mode.
+//
+// For information about Cloud Firewall Vpc Firewall Acl Engine Mode and how to use it, see [What is Vpc Firewall Acl Engine Mode](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/ModifyVpcFirewallAclEngineMode).
+//
+// > **NOTE:** Available since v1.269.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//				Description:     pulumi.String("yqc-example001"),
+//				CenInstanceName: pulumi.String("yqc-example-CenInstance001"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			TR, err := cen.NewTransitRouter(ctx, "TR", &cen.TransitRouterArgs{
+//				CenId: cen.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String("yqc-vpc-example-001"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1vsw1, err := vpc.NewSwitch(ctx, "vpc1vsw1", &vpc.SwitchArgs{
+//				VpcId:     vpc1.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-h"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpc1vsw2, err := vpc.NewSwitch(ctx, "vpc1vsw2", &vpc.SwitchArgs{
+//				VpcId:     vpc1.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-i"),
+//				CidrBlock: pulumi.String("172.16.2.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
+//				VpcId: vpc1.ID(),
+//				CenId: cen.ID(),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: vpc1vsw1.ID(),
+//						ZoneId:    vpc1vsw1.ZoneId,
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: vpc1vsw2.ID(),
+//						ZoneId:    vpc1vsw2.ZoneId,
+//					},
+//				},
+//				TransitRouterVpcAttachmentName:     pulumi.String("example"),
+//				TransitRouterAttachmentDescription: pulumi.String("111"),
+//				AutoPublishRouteEnabled:            pulumi.Bool(true),
+//				TransitRouterId:                    TR.TransitRouterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewVpcFirewallAclEngineMode(ctx, "default", &cloudfirewall.VpcFirewallAclEngineModeArgs{
+//				StrictMode:    pulumi.Int(0),
+//				VpcFirewallId: cen.ID(),
+//				MemberUid:     pulumi.String("1511928242963727"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `cloudfirewall.VpcFirewallAclEngineMode` or removing it from your configuration
+//
+// Terraform cannot destroy resource `cloudfirewall.VpcFirewallAclEngineMode`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall Acl Engine Mode can be imported using the id, e.g.

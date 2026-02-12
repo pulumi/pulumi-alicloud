@@ -244,9 +244,21 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pricingCycle);
     }
 
+    /**
+     * ID of promotion option.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="promotionOptionNo")
     private @Nullable Output<String> promotionOptionNo;
 
+    /**
+     * @return ID of promotion option.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<String>> promotionOptionNo() {
         return Optional.ofNullable(this.promotionOptionNo);
     }
@@ -707,11 +719,27 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
             return pricingCycle(Output.of(pricingCycle));
         }
 
+        /**
+         * @param promotionOptionNo ID of promotion option.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder promotionOptionNo(@Nullable Output<String> promotionOptionNo) {
             $.promotionOptionNo = promotionOptionNo;
             return this;
         }
 
+        /**
+         * @param promotionOptionNo ID of promotion option.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder promotionOptionNo(String promotionOptionNo) {
             return promotionOptionNo(Output.of(promotionOptionNo));
         }

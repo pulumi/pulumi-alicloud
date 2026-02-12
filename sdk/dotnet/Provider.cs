@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud
         [Output("accountType")]
         public Output<string?> AccountType { get; private set; } = null!;
 
+        /// <summary>
+        /// Use this to mark a terraform configuration file source.
+        /// </summary>
         [Output("configurationSource")]
         public Output<string?> ConfigurationSource { get; private set; } = null!;
 
@@ -175,6 +178,9 @@ namespace Pulumi.AliCloud
         [Input("clientReadTimeout", json: true)]
         public Input<int>? ClientReadTimeout { get; set; }
 
+        /// <summary>
+        /// Use this to mark a terraform configuration file source.
+        /// </summary>
         [Input("configurationSource")]
         public Input<string>? ConfigurationSource { get; set; }
 

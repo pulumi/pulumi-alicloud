@@ -150,7 +150,8 @@ type GetHistoryDeliveryJobsJob struct {
 	// The time when the task was created.
 	CreateTime string `pulumi:"createTime"`
 	// The time when the task ended.
-	EndTime              string `pulumi:"endTime"`
+	EndTime string `pulumi:"endTime"`
+	// The resource ID in terraform of History Delivery Job.
 	HistoryDeliveryJobId string `pulumi:"historyDeliveryJobId"`
 	// The home region of the trail.
 	HomeRegion string `pulumi:"homeRegion"`
@@ -183,7 +184,8 @@ type GetHistoryDeliveryJobsJobArgs struct {
 	// The time when the task was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The time when the task ended.
-	EndTime              pulumi.StringInput `pulumi:"endTime"`
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The resource ID in terraform of History Delivery Job.
 	HistoryDeliveryJobId pulumi.StringInput `pulumi:"historyDeliveryJobId"`
 	// The home region of the trail.
 	HomeRegion pulumi.StringInput `pulumi:"homeRegion"`
@@ -262,6 +264,7 @@ func (o GetHistoryDeliveryJobsJobOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of History Delivery Job.
 func (o GetHistoryDeliveryJobsJobOutput) HistoryDeliveryJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHistoryDeliveryJobsJob) string { return v.HistoryDeliveryJobId }).(pulumi.StringOutput)
 }
@@ -1347,6 +1350,7 @@ func (o GetSaslAclsAclArrayOutput) Index(i pulumi.IntInput) GetSaslAclsAclOutput
 }
 
 type GetSaslUsersUser struct {
+	// (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `<instance_id>:<username>`.
 	Id string `pulumi:"id"`
 	// The password of the user.
 	Password string `pulumi:"password"`
@@ -1368,6 +1372,7 @@ type GetSaslUsersUserInput interface {
 }
 
 type GetSaslUsersUserArgs struct {
+	// (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `<instance_id>:<username>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The password of the user.
 	Password pulumi.StringInput `pulumi:"password"`
@@ -1428,6 +1433,7 @@ func (o GetSaslUsersUserOutput) ToGetSaslUsersUserOutputWithContext(ctx context.
 	return o
 }
 
+// (Available since v1.260.0) The resource ID in terraform of Sasl User. It formats as `<instance_id>:<username>`.
 func (o GetSaslUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSaslUsersUser) string { return v.Id }).(pulumi.StringOutput)
 }

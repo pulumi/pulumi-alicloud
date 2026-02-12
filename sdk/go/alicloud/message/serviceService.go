@@ -11,6 +11,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Message Service Service resource.
+//
+// MNS Service Open Status.
+//
+// For information about Message Service Service and how to use it, see [What is Service](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
+//
+// > **NOTE:** Available since v1.252.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := message.NewServiceService(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating `message.ServiceService`
+//
+// The `message.ServiceService` resource is unique per account; repeated creation attempts to activate only one instance.
+//
+// ### Deleting `message.ServiceService` or removing it from your configuration
+//
+// Terraform cannot destroy resource `message.ServiceService`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type ServiceService struct {
 	pulumi.CustomResourceState
 

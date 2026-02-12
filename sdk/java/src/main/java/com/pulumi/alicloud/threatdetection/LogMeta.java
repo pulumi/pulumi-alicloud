@@ -14,6 +14,58 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Threat Detection Log Meta resource.
+ * 
+ * Log analysis shipping status.
+ * 
+ * For information about Threat Detection Log Meta and how to use it, see [What is Log Meta](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ModifyLogMetaStatus).
+ * 
+ * &gt; **NOTE:** Available since v1.245.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.threatdetection.LogMeta;
+ * import com.pulumi.alicloud.threatdetection.LogMetaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new LogMeta("default", LogMetaArgs.builder()
+ *             .status("disabled")
+ *             .logMetaName("aegis-log-client")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.threatdetection.LogMeta` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.threatdetection.LogMeta`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Threat Detection Log Meta can be imported using the id, e.g.

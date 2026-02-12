@@ -178,6 +178,41 @@ class BucketWorm(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a OSS Bucket Worm resource.
+
+        Bucket Retention Policy.
+
+        For information about OSS Bucket Worm and how to use it, see [What is Bucket Worm](https://www.alibabacloud.com/help/en/oss/developer-reference/initiatebucketworm).
+
+        > **NOTE:** Available since v1.240.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaulth_n_mf_if = alicloud.oss.Bucket("defaulthNMfIF", storage_class="Standard")
+        default = alicloud.oss.BucketWorm("default",
+            bucket=defaulth_n_mf_if.bucket,
+            retention_period_in_days=1,
+            status="InProgress")
+        ```
+
+        ### Deleting `oss.BucketWorm` or removing it from your configuration
+
+        The `oss.BucketWorm` resource allows you to manage  `status = "Locked"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Worm can be imported using the id, e.g.
@@ -201,6 +236,41 @@ class BucketWorm(pulumi.CustomResource):
                  args: BucketWormArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a OSS Bucket Worm resource.
+
+        Bucket Retention Policy.
+
+        For information about OSS Bucket Worm and how to use it, see [What is Bucket Worm](https://www.alibabacloud.com/help/en/oss/developer-reference/initiatebucketworm).
+
+        > **NOTE:** Available since v1.240.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaulth_n_mf_if = alicloud.oss.Bucket("defaulthNMfIF", storage_class="Standard")
+        default = alicloud.oss.BucketWorm("default",
+            bucket=defaulth_n_mf_if.bucket,
+            retention_period_in_days=1,
+            status="InProgress")
+        ```
+
+        ### Deleting `oss.BucketWorm` or removing it from your configuration
+
+        The `oss.BucketWorm` resource allows you to manage  `status = "Locked"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Worm can be imported using the id, e.g.

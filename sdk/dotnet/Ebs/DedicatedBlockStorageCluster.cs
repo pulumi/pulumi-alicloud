@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ebs
     /// Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster example &lt;id&gt;
+    /// $terraform import alicloud_disk_dedicated_block_storage_cluster.example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster")]

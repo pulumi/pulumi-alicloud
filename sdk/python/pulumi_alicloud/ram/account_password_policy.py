@@ -337,6 +337,12 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  require_uppercase_characters: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Provides a RAM password policy configuration for entire account. Only one resource per account.
+
+        > **NOTE:** This resource overwrites an existing configuration. During action `terraform destroy` it sets values the same as defaults for this resource (it does not preserve any preexisted configuration).
+
+        > **NOTE:** Available since v1.46.0.
+
         ## Example Usage
 
         Empty resource sets defaults values for every property.
@@ -370,12 +376,6 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -396,6 +396,12 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  args: Optional[AccountPasswordPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RAM password policy configuration for entire account. Only one resource per account.
+
+        > **NOTE:** This resource overwrites an existing configuration. During action `terraform destroy` it sets values the same as defaults for this resource (it does not preserve any preexisted configuration).
+
+        > **NOTE:** Available since v1.46.0.
+
         ## Example Usage
 
         Empty resource sets defaults values for every property.
@@ -429,12 +435,6 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
-        ```
 
         :param str resource_name: The name of the resource.
         :param AccountPasswordPolicyArgs args: The arguments to use to populate this resource's properties.

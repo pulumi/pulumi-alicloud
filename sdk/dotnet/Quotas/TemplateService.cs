@@ -10,12 +10,48 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas
 {
     /// <summary>
+    /// Provides a Quotas Template Service resource.
+    /// 
+    /// Quota Template Service.
+    /// 
+    /// For information about Quotas Template Service and how to use it, see [What is Template Service](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-modifyquotatemplateservicestatus).
+    /// 
+    /// &gt; **NOTE:** Available since v1.230.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Quotas.TemplateService("default", new()
+    ///     {
+    ///         ServiceStatus = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.quotas.TemplateService` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.quotas.TemplateService`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Quotas Template Service can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:quotas/templateService:TemplateService example 
+    /// $ terraform import alicloud_quotas_template_service.example 
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:quotas/templateService:TemplateService")]

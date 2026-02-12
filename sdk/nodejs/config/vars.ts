@@ -77,6 +77,9 @@ Object.defineProperty(exports, "clientReadTimeout", {
     enumerable: true,
 });
 
+/**
+ * Use this to mark a terraform configuration file source.
+ */
 export declare const configurationSource: string | undefined;
 Object.defineProperty(exports, "configurationSource", {
     get() {

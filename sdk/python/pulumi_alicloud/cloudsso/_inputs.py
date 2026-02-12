@@ -33,24 +33,19 @@ __all__ = [
     'UserProvisioningUserProvisioningStatisticArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessConfigurationPermissionPolicyArgsDict(TypedDict):
-        permission_policy_name: pulumi.Input[_builtins.str]
-        """
-        The name of the policy.
-        """
-        permission_policy_type: pulumi.Input[_builtins.str]
-        """
-        The type of the policy. Valid values: `System`, `Inline`.
-        """
-        permission_policy_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
-        """
-elif False:
-    AccessConfigurationPermissionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class AccessConfigurationPermissionPolicyArgsDict(TypedDict):
+    permission_policy_name: pulumi.Input[_builtins.str]
+    """
+    The name of the policy.
+    """
+    permission_policy_type: pulumi.Input[_builtins.str]
+    """
+    The type of the policy. Valid values: `System`, `Inline`.
+    """
+    permission_policy_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
+    """
 
 @pulumi.input_type
 class AccessConfigurationPermissionPolicyArgs:
@@ -105,18 +100,15 @@ class AccessConfigurationPermissionPolicyArgs:
         pulumi.set(self, "permission_policy_document", value)
 
 
-if not MYPY:
-    class DirectoryLoginPreferenceArgsDict(TypedDict):
-        allow_user_to_get_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the user can obtain the program access credential in the portal after logging in.
-        """
-        login_network_masks: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP address whitelist
-        """
-elif False:
-    DirectoryLoginPreferenceArgsDict: TypeAlias = Mapping[str, Any]
+class DirectoryLoginPreferenceArgsDict(TypedDict):
+    allow_user_to_get_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the user can obtain the program access credential in the portal after logging in.
+    """
+    login_network_masks: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IP address whitelist
+    """
 
 @pulumi.input_type
 class DirectoryLoginPreferenceArgs:
@@ -157,18 +149,15 @@ class DirectoryLoginPreferenceArgs:
         pulumi.set(self, "login_network_masks", value)
 
 
-if not MYPY:
-    class DirectoryMfaAuthenticationSettingInfoArgsDict(TypedDict):
-        mfa_authentication_advance_settings: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Global MFA validation policy
-        """
-        operation_for_risk_login: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        MFA verification policy for abnormal logon.
-        """
-elif False:
-    DirectoryMfaAuthenticationSettingInfoArgsDict: TypeAlias = Mapping[str, Any]
+class DirectoryMfaAuthenticationSettingInfoArgsDict(TypedDict):
+    mfa_authentication_advance_settings: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Global MFA validation policy
+    """
+    operation_for_risk_login: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    MFA verification policy for abnormal logon.
+    """
 
 @pulumi.input_type
 class DirectoryMfaAuthenticationSettingInfoArgs:
@@ -209,58 +198,55 @@ class DirectoryMfaAuthenticationSettingInfoArgs:
         pulumi.set(self, "operation_for_risk_login", value)
 
 
-if not MYPY:
-    class DirectoryPasswordPolicyArgsDict(TypedDict):
-        hard_expire: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to restrict login after Password Expiration
-        """
-        max_login_attempts: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of password retries.
-        """
-        max_password_age: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Password validity period.
-        """
-        max_password_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum password length.
-        """
-        min_password_different_chars: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of different characters in a password.
-        """
-        min_password_length: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimum password length.
-        """
-        password_not_contain_username: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the user name is not allowed in the password.
-        """
-        password_reuse_prevention: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Historical password check policy.
-        """
-        require_lower_case_chars: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether lowercase letters are required in the password.
-        """
-        require_numbers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether numbers are required in the password.
-        """
-        require_symbols: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether symbols are required in the password.
-        """
-        require_upper_case_chars: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether uppercase letters are required in the password.
-        """
-elif False:
-    DirectoryPasswordPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class DirectoryPasswordPolicyArgsDict(TypedDict):
+    hard_expire: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to restrict login after Password Expiration
+    """
+    max_login_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of password retries.
+    """
+    max_password_age: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Password validity period.
+    """
+    max_password_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum password length.
+    """
+    min_password_different_chars: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of different characters in a password.
+    """
+    min_password_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum password length.
+    """
+    password_not_contain_username: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the user name is not allowed in the password.
+    """
+    password_reuse_prevention: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Historical password check policy.
+    """
+    require_lower_case_chars: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether lowercase letters are required in the password.
+    """
+    require_numbers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether numbers are required in the password.
+    """
+    require_symbols: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether symbols are required in the password.
+    """
+    require_upper_case_chars: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether uppercase letters are required in the password.
+    """
 
 @pulumi.input_type
 class DirectoryPasswordPolicyArgs:
@@ -461,46 +447,43 @@ class DirectoryPasswordPolicyArgs:
         pulumi.set(self, "require_upper_case_chars", value)
 
 
-if not MYPY:
-    class DirectorySamlIdentityProviderConfigurationArgsDict(TypedDict):
-        binding_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Binding method for initiating a SAML request.
-        """
-        certificate_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Certificate ID list
-        """
-        create_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CreateTime
-        """
-        encoded_metadata_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        EncodedMetadataDocument
-        """
-        entity_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        EntityId
-        """
-        login_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        LoginUrl
-        """
-        sso_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SSOStatus
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UpdateTime
-        """
-        want_request_signed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        SP Request whether the signature is required
-        """
-elif False:
-    DirectorySamlIdentityProviderConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class DirectorySamlIdentityProviderConfigurationArgsDict(TypedDict):
+    binding_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Binding method for initiating a SAML request.
+    """
+    certificate_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Certificate ID list
+    """
+    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CreateTime
+    """
+    encoded_metadata_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    EncodedMetadataDocument
+    """
+    entity_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    EntityId
+    """
+    login_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    LoginUrl
+    """
+    sso_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SSOStatus
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UpdateTime
+    """
+    want_request_signed: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    SP Request whether the signature is required
+    """
 
 @pulumi.input_type
 class DirectorySamlIdentityProviderConfigurationArgs:
@@ -653,34 +636,31 @@ class DirectorySamlIdentityProviderConfigurationArgs:
         pulumi.set(self, "want_request_signed", value)
 
 
-if not MYPY:
-    class DirectorySamlServiceProviderArgsDict(TypedDict):
-        acs_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ACS URL of SP.
-        """
-        authn_sign_algo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Signature algorithms supported by AuthNRequest
-        """
-        certificate_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of certificate used for signing in the SSO process
-        """
-        encoded_metadata_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SP metadata document (Base64 encoding).
-        """
-        entity_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SP identity.
-        """
-        support_encrypted_assertion: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether IdP-side encryption of Assertion is supported.
-        """
-elif False:
-    DirectorySamlServiceProviderArgsDict: TypeAlias = Mapping[str, Any]
+class DirectorySamlServiceProviderArgsDict(TypedDict):
+    acs_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ACS URL of SP.
+    """
+    authn_sign_algo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Signature algorithms supported by AuthNRequest
+    """
+    certificate_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of certificate used for signing in the SSO process
+    """
+    encoded_metadata_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SP metadata document (Base64 encoding).
+    """
+    entity_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SP identity.
+    """
+    support_encrypted_assertion: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether IdP-side encryption of Assertion is supported.
+    """
 
 @pulumi.input_type
 class DirectorySamlServiceProviderArgs:
@@ -785,18 +765,15 @@ class DirectorySamlServiceProviderArgs:
         pulumi.set(self, "support_encrypted_assertion", value)
 
 
-if not MYPY:
-    class DirectoryUserProvisioningConfigurationArgsDict(TypedDict):
-        default_landing_page: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration of the Session after the user logs in.
-        """
-        session_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The duration of the Session after the user logs in.
-        """
-elif False:
-    DirectoryUserProvisioningConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class DirectoryUserProvisioningConfigurationArgsDict(TypedDict):
+    default_landing_page: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration of the Session after the user logs in.
+    """
+    session_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The duration of the Session after the user logs in.
+    """
 
 @pulumi.input_type
 class DirectoryUserProvisioningConfigurationArgs:
@@ -837,18 +814,15 @@ class DirectoryUserProvisioningConfigurationArgs:
         pulumi.set(self, "session_duration", value)
 
 
-if not MYPY:
-    class UserProvisioningUserProvisioningStatisticArgsDict(TypedDict):
-        failed_event_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of failed events
-        """
-        gmt_latest_sync: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Last Provisioning time
-        """
-elif False:
-    UserProvisioningUserProvisioningStatisticArgsDict: TypeAlias = Mapping[str, Any]
+class UserProvisioningUserProvisioningStatisticArgsDict(TypedDict):
+    failed_event_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of failed events
+    """
+    gmt_latest_sync: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Last Provisioning time
+    """
 
 @pulumi.input_type
 class UserProvisioningUserProvisioningStatisticArgs:

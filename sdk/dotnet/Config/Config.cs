@@ -94,6 +94,9 @@ namespace Pulumi.AliCloud
         }
 
         private static readonly __Value<string?> _configurationSource = new __Value<string?>(() => __config.Get("configurationSource"));
+        /// <summary>
+        /// Use this to mark a terraform configuration file source.
+        /// </summary>
         public static string? ConfigurationSource
         {
             get => _configurationSource.Get();
@@ -284,6 +287,9 @@ namespace Pulumi.AliCloud
             /// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
             /// </summary>
                 public int? SessionExpiration { get; set; }
+            /// <summary>
+            /// The session name to use when assuming the role. If omitted, `Terraform` is passed to the AssumeRole call as session name.
+            /// </summary>
                 public string? SessionName { get; set; } = null!;
             }
 

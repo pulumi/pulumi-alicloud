@@ -81,6 +81,12 @@ class FileSystemArgs:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -260,6 +266,11 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def keytab(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        String of keytab file content encrypted by base64
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "keytab")
 
     @keytab.setter
@@ -269,6 +280,11 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
     def keytab_md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        String of the keytab file content encrypted by MD5
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "keytab_md5")
 
     @keytab_md5.setter
@@ -509,6 +525,12 @@ class _FileSystemState:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -688,6 +710,11 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def keytab(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        String of keytab file content encrypted by base64
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "keytab")
 
     @keytab.setter
@@ -697,6 +724,11 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
     def keytab_md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        String of the keytab file content encrypted by MD5
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "keytab_md5")
 
     @keytab_md5.setter
@@ -1039,6 +1071,12 @@ class FileSystem(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -1277,6 +1315,12 @@ class FileSystem(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+        :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        :param pulumi.Input[_builtins.str] keytab_md5: String of the keytab file content encrypted by MD5
+               
+               > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
@@ -1417,11 +1461,21 @@ class FileSystem(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def keytab(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        String of keytab file content encrypted by base64
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "keytab")
 
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
     def keytab_md5(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        String of the keytab file content encrypted by MD5
+
+        > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "keytab_md5")
 
     @_builtins.property

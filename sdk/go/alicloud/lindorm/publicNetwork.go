@@ -12,6 +12,96 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Lindorm Public Network resource.
+//
+// Public network connection of Lindorm instance.
+//
+// For information about Lindorm Public Network and how to use it, see [What is Public Network](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/SwitchInstancePublicNetwork).
+//
+// > **NOTE:** Available since v1.250.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/lindorm"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zoneId := "cn-shanghai-f"
+//			if param := cfg.Get("zoneId"); param != "" {
+//				zoneId = param
+//			}
+//			regionId := "cn-shanghai"
+//			if param := cfg.Get("regionId"); param != "" {
+//				regionId = param
+//			}
+//			defaultX7MgJO, err := vpc.NewNetwork(ctx, "defaultX7MgJO", &vpc.NetworkArgs{
+//				Description: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.0.0.0/8"),
+//				VpcName:     pulumi.String("amp-example-shanghai"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default45mCzM, err := vpc.NewSwitch(ctx, "default45mCzM", &vpc.SwitchArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       defaultX7MgJO.ID(),
+//				ZoneId:      pulumi.String(zoneId),
+//				CidrBlock:   pulumi.String("10.0.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultQpsLKr, err := lindorm.NewInstance(ctx, "defaultQpsLKr", &lindorm.InstanceArgs{
+//				PaymentType:              pulumi.String("PayAsYouGo"),
+//				TableEngineNodeCount:     pulumi.Int(2),
+//				InstanceStorage:          pulumi.String("80"),
+//				ZoneId:                   pulumi.String(zoneId),
+//				VswitchId:                default45mCzM.ID(),
+//				DiskCategory:             pulumi.String("cloud_efficiency"),
+//				TableEngineSpecification: pulumi.String("lindorm.g.xlarge"),
+//				InstanceName:             pulumi.String("tf-example"),
+//				VpcId:                    defaultX7MgJO.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = lindorm.NewPublicNetwork(ctx, "default", &lindorm.PublicNetworkArgs{
+//				InstanceId:          defaultQpsLKr.ID(),
+//				EnablePublicNetwork: pulumi.Int(1),
+//				EngineType:          pulumi.String("lindorm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `lindorm.PublicNetwork` or removing it from your configuration
+//
+// Terraform cannot destroy resource `lindorm.PublicNetwork`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Lindorm Public Network can be imported using the id, e.g.

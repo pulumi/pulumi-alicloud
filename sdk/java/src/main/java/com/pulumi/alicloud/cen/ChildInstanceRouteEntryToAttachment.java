@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  * Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment example &lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;
+ * $terraform import alicloud_cen_child_instance_route_entry_to_attachment.example &lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;
  * ```
  * 
  */

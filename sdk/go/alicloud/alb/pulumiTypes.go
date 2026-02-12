@@ -8502,7 +8502,8 @@ func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
 type GetAclsAclAclEntry struct {
 	// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
 	Description string `pulumi:"description"`
-	Entry       string `pulumi:"entry"`
+	// The resource ID in terraform of Acl.
+	Entry string `pulumi:"entry"`
 	// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
 	Status string `pulumi:"status"`
 }
@@ -8521,7 +8522,8 @@ type GetAclsAclAclEntryInput interface {
 type GetAclsAclAclEntryArgs struct {
 	// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
 	Description pulumi.StringInput `pulumi:"description"`
-	Entry       pulumi.StringInput `pulumi:"entry"`
+	// The resource ID in terraform of Acl.
+	Entry pulumi.StringInput `pulumi:"entry"`
 	// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
 	Status pulumi.StringInput `pulumi:"status"`
 }
@@ -8582,6 +8584,7 @@ func (o GetAclsAclAclEntryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The resource ID in terraform of Acl.
 func (o GetAclsAclAclEntryOutput) Entry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Entry }).(pulumi.StringOutput)
 }

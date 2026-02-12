@@ -22,6 +22,10 @@ public final class GetDhcpOptionsSetsSet {
      * 
      */
     private String dhcpOptionsSetDescription;
+    /**
+     * @return The resource ID in terraform of Dhcp Options Set.
+     * 
+     */
     private String dhcpOptionsSetId;
     /**
      * @return The root domain, for example, example.com. After a DHCP options set is associated with a
@@ -43,6 +47,10 @@ public final class GetDhcpOptionsSetsSet {
      * 
      */
     private String domainNameServers;
+    /**
+     * @return The resource ID in terraform of Dhcp Options Set.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the account to which the DHCP options set belongs.
@@ -71,6 +79,10 @@ public final class GetDhcpOptionsSetsSet {
     public String dhcpOptionsSetDescription() {
         return this.dhcpOptionsSetDescription;
     }
+    /**
+     * @return The resource ID in terraform of Dhcp Options Set.
+     * 
+     */
     public String dhcpOptionsSetId() {
         return this.dhcpOptionsSetId;
     }
@@ -100,6 +112,10 @@ public final class GetDhcpOptionsSetsSet {
     public String domainNameServers() {
         return this.domainNameServers;
     }
+    /**
+     * @return The resource ID in terraform of Dhcp Options Set.
+     * 
+     */
     public String id() {
         return this.id;
     }

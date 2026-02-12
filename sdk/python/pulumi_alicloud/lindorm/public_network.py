@@ -153,6 +153,63 @@ class PublicNetwork(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Lindorm Public Network resource.
+
+        Public network connection of Lindorm instance.
+
+        For information about Lindorm Public Network and how to use it, see [What is Public Network](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/SwitchInstancePublicNetwork).
+
+        > **NOTE:** Available since v1.250.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id = config.get("zoneId")
+        if zone_id is None:
+            zone_id = "cn-shanghai-f"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-shanghai"
+        default_x7_mg_jo = alicloud.vpc.Network("defaultX7MgJO",
+            description=name,
+            cidr_block="10.0.0.0/8",
+            vpc_name="amp-example-shanghai")
+        default45m_cz_m = alicloud.vpc.Switch("default45mCzM",
+            description=name,
+            vpc_id=default_x7_mg_jo.id,
+            zone_id=zone_id,
+            cidr_block="10.0.0.0/24")
+        default_qps_l_kr = alicloud.lindorm.Instance("defaultQpsLKr",
+            payment_type="PayAsYouGo",
+            table_engine_node_count=2,
+            instance_storage="80",
+            zone_id=zone_id,
+            vswitch_id=default45m_cz_m.id,
+            disk_category="cloud_efficiency",
+            table_engine_specification="lindorm.g.xlarge",
+            instance_name="tf-example",
+            vpc_id=default_x7_mg_jo.id)
+        default = alicloud.lindorm.PublicNetwork("default",
+            instance_id=default_qps_l_kr.id,
+            enable_public_network=1,
+            engine_type="lindorm")
+        ```
+
+        ### Deleting `lindorm.PublicNetwork` or removing it from your configuration
+
+        Terraform cannot destroy resource `lindorm.PublicNetwork`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Lindorm Public Network can be imported using the id, e.g.
@@ -174,6 +231,63 @@ class PublicNetwork(pulumi.CustomResource):
                  args: PublicNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Lindorm Public Network resource.
+
+        Public network connection of Lindorm instance.
+
+        For information about Lindorm Public Network and how to use it, see [What is Public Network](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/SwitchInstancePublicNetwork).
+
+        > **NOTE:** Available since v1.250.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id = config.get("zoneId")
+        if zone_id is None:
+            zone_id = "cn-shanghai-f"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-shanghai"
+        default_x7_mg_jo = alicloud.vpc.Network("defaultX7MgJO",
+            description=name,
+            cidr_block="10.0.0.0/8",
+            vpc_name="amp-example-shanghai")
+        default45m_cz_m = alicloud.vpc.Switch("default45mCzM",
+            description=name,
+            vpc_id=default_x7_mg_jo.id,
+            zone_id=zone_id,
+            cidr_block="10.0.0.0/24")
+        default_qps_l_kr = alicloud.lindorm.Instance("defaultQpsLKr",
+            payment_type="PayAsYouGo",
+            table_engine_node_count=2,
+            instance_storage="80",
+            zone_id=zone_id,
+            vswitch_id=default45m_cz_m.id,
+            disk_category="cloud_efficiency",
+            table_engine_specification="lindorm.g.xlarge",
+            instance_name="tf-example",
+            vpc_id=default_x7_mg_jo.id)
+        default = alicloud.lindorm.PublicNetwork("default",
+            instance_id=default_qps_l_kr.id,
+            enable_public_network=1,
+            engine_type="lindorm")
+        ```
+
+        ### Deleting `lindorm.PublicNetwork` or removing it from your configuration
+
+        Terraform cannot destroy resource `lindorm.PublicNetwork`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Lindorm Public Network can be imported using the id, e.g.

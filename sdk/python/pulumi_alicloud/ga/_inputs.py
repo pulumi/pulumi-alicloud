@@ -43,20 +43,15 @@ __all__ = [
     'ListenerPortRangeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AclAclEntryArgsDict(TypedDict):
-        entry: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
-        """
-        entry_description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
-        """
-elif False:
-    AclAclEntryArgsDict: TypeAlias = Mapping[str, Any]
+class AclAclEntryArgsDict(TypedDict):
+    entry: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
+    """
+    entry_description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+    """
 
 @pulumi.input_type
 class AclAclEntryArgs:
@@ -97,18 +92,15 @@ class AclAclEntryArgs:
         pulumi.set(self, "entry_description", value)
 
 
-if not MYPY:
-    class CustomRoutingEndpointTrafficPolicyPortRangeArgsDict(TypedDict):
-        from_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
-        """
-        to_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
-        """
-elif False:
-    CustomRoutingEndpointTrafficPolicyPortRangeArgsDict: TypeAlias = Mapping[str, Any]
+class CustomRoutingEndpointTrafficPolicyPortRangeArgsDict(TypedDict):
+    from_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+    """
+    to_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+    """
 
 @pulumi.input_type
 class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
@@ -149,54 +141,51 @@ class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
         pulumi.set(self, "to_port", value)
 
 
-if not MYPY:
-    class EndpointGroupEndpointConfigurationArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The IP address or domain name of Endpoint N in the endpoint group.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of Endpoint N in the endpoint group. Valid values:
-        - `Domain`: A custom domain name.
-        - `Ip`: A custom IP address.
-        - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
-        - `PublicIp`: An Alibaba Cloud public IP address.
-        - `ECS`: An Elastic Compute Service (ECS) instance.
-        - `SLB`: A Classic Load Balancer (CLB) instance.
-        - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
-        - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
-        - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
-        - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
-        """
-        weight: pulumi.Input[_builtins.int]
-        """
-        The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-        > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
-        """
-        enable_clientip_preservation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
-        """
-        enable_proxy_protocol: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
-        """
-        sub_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private IP address of the ENI.
-        > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the VPC.
-        """
-        vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The IDs of vSwitches that are deployed in the VPC.
-        """
-elif False:
-    EndpointGroupEndpointConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointGroupEndpointConfigurationArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The IP address or domain name of Endpoint N in the endpoint group.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of Endpoint N in the endpoint group. Valid values:
+    - `Domain`: A custom domain name.
+    - `Ip`: A custom IP address.
+    - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
+    - `PublicIp`: An Alibaba Cloud public IP address.
+    - `ECS`: An Elastic Compute Service (ECS) instance.
+    - `SLB`: A Classic Load Balancer (CLB) instance.
+    - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+    - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+    - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+    - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
+    """
+    weight: pulumi.Input[_builtins.int]
+    """
+    The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+    > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+    """
+    enable_clientip_preservation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
+    """
+    enable_proxy_protocol: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+    """
+    sub_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private IP address of the ENI.
+    > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the VPC.
+    """
+    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The IDs of vSwitches that are deployed in the VPC.
+    """
 
 @pulumi.input_type
 class EndpointGroupEndpointConfigurationArgs:
@@ -354,18 +343,15 @@ class EndpointGroupEndpointConfigurationArgs:
         pulumi.set(self, "vswitch_ids", value)
 
 
-if not MYPY:
-    class EndpointGroupPortOverridesArgsDict(TypedDict):
-        endpoint_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Forwarding port.
-        """
-        listener_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Listener port.
-        """
-elif False:
-    EndpointGroupPortOverridesArgsDict: TypeAlias = Mapping[str, Any]
+class EndpointGroupPortOverridesArgsDict(TypedDict):
+    endpoint_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Forwarding port.
+    """
+    listener_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Listener port.
+    """
 
 @pulumi.input_type
 class EndpointGroupPortOverridesArgs:
@@ -406,27 +392,24 @@ class EndpointGroupPortOverridesArgs:
         pulumi.set(self, "listener_port", value)
 
 
-if not MYPY:
-    class ForwardingRuleRuleActionArgsDict(TypedDict):
-        order: pulumi.Input[_builtins.int]
-        """
-        Forwarding priority.
-        """
-        rule_action_type: pulumi.Input[_builtins.str]
-        """
-        The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
-        """
-        forward_group_config: NotRequired[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgsDict']]
-        """
-        Forwarding configuration. See `forward_group_config` below.
-        > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
-        """
-        rule_action_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
-        """
-elif False:
-    ForwardingRuleRuleActionArgsDict: TypeAlias = Mapping[str, Any]
+class ForwardingRuleRuleActionArgsDict(TypedDict):
+    order: pulumi.Input[_builtins.int]
+    """
+    Forwarding priority.
+    """
+    rule_action_type: pulumi.Input[_builtins.str]
+    """
+    The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
+    """
+    forward_group_config: NotRequired[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgsDict']]
+    """
+    Forwarding configuration. See `forward_group_config` below.
+    > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
+    """
+    rule_action_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+    """
 
 @pulumi.input_type
 class ForwardingRuleRuleActionArgs:
@@ -499,14 +482,11 @@ class ForwardingRuleRuleActionArgs:
         pulumi.set(self, "rule_action_value", value)
 
 
-if not MYPY:
-    class ForwardingRuleRuleActionForwardGroupConfigArgsDict(TypedDict):
-        server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgsDict']]]
-        """
-        The information about the endpoint group. See `server_group_tuples` below.
-        """
-elif False:
-    ForwardingRuleRuleActionForwardGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ForwardingRuleRuleActionForwardGroupConfigArgsDict(TypedDict):
+    server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgsDict']]]
+    """
+    The information about the endpoint group. See `server_group_tuples` below.
+    """
 
 @pulumi.input_type
 class ForwardingRuleRuleActionForwardGroupConfigArgs:
@@ -530,14 +510,11 @@ class ForwardingRuleRuleActionForwardGroupConfigArgs:
         pulumi.set(self, "server_group_tuples", value)
 
 
-if not MYPY:
-    class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgsDict(TypedDict):
-        endpoint_group_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the endpoint group.
-        """
-elif False:
-    ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgsDict: TypeAlias = Mapping[str, Any]
+class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgsDict(TypedDict):
+    endpoint_group_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the endpoint group.
+    """
 
 @pulumi.input_type
 class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs:
@@ -561,27 +538,24 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs:
         pulumi.set(self, "endpoint_group_id", value)
 
 
-if not MYPY:
-    class ForwardingRuleRuleConditionArgsDict(TypedDict):
-        rule_condition_type: pulumi.Input[_builtins.str]
-        """
-        The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
-        """
-        host_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgsDict']]]]
-        """
-        The configuration of the domain name. See `host_config` below.
-        > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
-        """
-        path_config: NotRequired[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgsDict']]
-        """
-        The configuration of the path. See `path_config` below.
-        """
-        rule_condition_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
-        """
-elif False:
-    ForwardingRuleRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+class ForwardingRuleRuleConditionArgsDict(TypedDict):
+    rule_condition_type: pulumi.Input[_builtins.str]
+    """
+    The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
+    """
+    host_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgsDict']]]]
+    """
+    The configuration of the domain name. See `host_config` below.
+    > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
+    """
+    path_config: NotRequired[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgsDict']]
+    """
+    The configuration of the path. See `path_config` below.
+    """
+    rule_condition_value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+    """
 
 @pulumi.input_type
 class ForwardingRuleRuleConditionArgs:
@@ -655,14 +629,11 @@ class ForwardingRuleRuleConditionArgs:
         pulumi.set(self, "rule_condition_value", value)
 
 
-if not MYPY:
-    class ForwardingRuleRuleConditionHostConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-        """
-elif False:
-    ForwardingRuleRuleConditionHostConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ForwardingRuleRuleConditionHostConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+    """
 
 @pulumi.input_type
 class ForwardingRuleRuleConditionHostConfigArgs:
@@ -687,14 +658,11 @@ class ForwardingRuleRuleConditionHostConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class ForwardingRuleRuleConditionPathConfigArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-        """
-elif False:
-    ForwardingRuleRuleConditionPathConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ForwardingRuleRuleConditionPathConfigArgsDict(TypedDict):
+    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+    """
 
 @pulumi.input_type
 class ForwardingRuleRuleConditionPathConfigArgs:
@@ -719,14 +687,11 @@ class ForwardingRuleRuleConditionPathConfigArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class ListenerCertificateArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the certificate.
-        """
-elif False:
-    ListenerCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerCertificateArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the certificate.
+    """
 
 @pulumi.input_type
 class ListenerCertificateArgs:
@@ -751,30 +716,27 @@ class ListenerCertificateArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class ListenerForwardedForConfigArgsDict(TypedDict):
-        forwarded_for_ga_ap_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
-        """
-        forwarded_for_ga_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
-        """
-        forwarded_for_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
-        """
-        forwarded_for_proto_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
-        """
-        real_ip_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
-        """
-elif False:
-    ListenerForwardedForConfigArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerForwardedForConfigArgsDict(TypedDict):
+    forwarded_for_ga_ap_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+    """
+    forwarded_for_ga_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+    """
+    forwarded_for_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+    """
+    forwarded_for_proto_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+    """
+    real_ip_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+    """
 
 @pulumi.input_type
 class ListenerForwardedForConfigArgs:
@@ -863,18 +825,15 @@ class ListenerForwardedForConfigArgs:
         pulumi.set(self, "real_ip_enabled", value)
 
 
-if not MYPY:
-    class ListenerPortRangeArgsDict(TypedDict):
-        from_port: pulumi.Input[_builtins.int]
-        """
-        The initial listening port used to receive requests and forward them to terminal nodes.
-        """
-        to_port: pulumi.Input[_builtins.int]
-        """
-        The end listening port used to receive requests and forward them to terminal nodes.
-        """
-elif False:
-    ListenerPortRangeArgsDict: TypeAlias = Mapping[str, Any]
+class ListenerPortRangeArgsDict(TypedDict):
+    from_port: pulumi.Input[_builtins.int]
+    """
+    The initial listening port used to receive requests and forward them to terminal nodes.
+    """
+    to_port: pulumi.Input[_builtins.int]
+    """
+    The end listening port used to receive requests and forward them to terminal nodes.
+    """
 
 @pulumi.input_type
 class ListenerPortRangeArgs:

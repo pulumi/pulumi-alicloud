@@ -12,6 +12,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a OSS Bucket Worm resource.
+//
+// Bucket Retention Policy.
+//
+// For information about OSS Bucket Worm and how to use it, see [What is Bucket Worm](https://www.alibabacloud.com/help/en/oss/developer-reference/initiatebucketworm).
+//
+// > **NOTE:** Available since v1.240.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaulthNMfIF, err := oss.NewBucket(ctx, "defaulthNMfIF", &oss.BucketArgs{
+//				StorageClass: pulumi.String("Standard"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketWorm(ctx, "default", &oss.BucketWormArgs{
+//				Bucket:                defaulthNMfIF.Bucket,
+//				RetentionPeriodInDays: pulumi.Int(1),
+//				Status:                pulumi.String("InProgress"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `oss.BucketWorm` or removing it from your configuration
+//
+// The `oss.BucketWorm` resource allows you to manage  `status = "Locked"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // OSS Bucket Worm can be imported using the id, e.g.

@@ -220,15 +220,39 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     public Output<String> fileSystemType() {
         return this.fileSystemType;
     }
+    /**
+     * String of keytab file content encrypted by base64
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="keytab", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keytab;
 
+    /**
+     * @return String of keytab file content encrypted by base64
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> keytab() {
         return Codegen.optional(this.keytab);
     }
+    /**
+     * String of the keytab file content encrypted by MD5
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="keytabMd5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keytabMd5;
 
+    /**
+     * @return String of the keytab file content encrypted by MD5
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> keytabMd5() {
         return Codegen.optional(this.keytabMd5);
     }

@@ -128,6 +128,11 @@ namespace Pulumi.AliCloud.Nas
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// DryRun
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
@@ -265,6 +270,11 @@ namespace Pulumi.AliCloud.Nas
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// DryRun
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
@@ -364,6 +374,11 @@ namespace Pulumi.AliCloud.Nas
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// DryRun
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 

@@ -459,9 +459,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     * 
+     * &gt; **NOTE:**   This parameter is required if you create a subscription instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The subscription duration. Unit: month. The value must be an integral multiple of 12.
+     * 
+     * &gt; **NOTE:**   This parameter is required if you create a subscription instance.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
@@ -519,9 +535,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> renewStatus() {
         return this.renewStatus;
     }
+    /**
+     * Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalPeriodUnit;
 
+    /**
+     * @return Automatic renewal period unit, value:
+     * - M: Month.
+     * - Y: Year.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<String>> renewalPeriodUnit() {
         return Codegen.optional(this.renewalPeriodUnit);
     }

@@ -10,6 +10,223 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
+    /// Provides  Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstances-redis).
+    /// 
+    /// &gt; **NOTE:** Available since v1.14.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.KVStore.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("default", new()
+    ///     {
+    ///         DbInstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "5.0",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Launching a PrePaid instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example-prepaid";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.KVStore.GetZones.Invoke(new()
+    ///     {
+    ///         InstanceChargeType = "PrePaid",
+    ///     });
+    /// 
+    ///     // PrePaid instance can not deleted and there suggests using an existing vpc and vswitch, like default vpc.
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         IsDefault = true,
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("default", new()
+    ///     {
+    ///         DbInstanceName = name,
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SecondaryZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///         InstanceClass = "redis.master.large.default",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "5.0",
+    ///         PaymentType = "PrePaid",
+    ///         Period = "12",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "no" },
+    ///             { "lazyfree-lazy-eviction", "no" },
+    ///             { "EvictionPolicy", "volatile-lru" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Setting Private Connection String
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example-with-connection";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.KVStore.GetZones.Invoke(new()
+    ///     {
+    ///         ProductType = "OnECS",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("default", new()
+    ///     {
+    ///         DbInstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SecondaryZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///         InstanceClass = "redis.shard.small.ce",
+    ///         InstanceType = "Redis",
+    ///         EngineVersion = "7.0",
+    ///         MaintainStartTime = "04:00Z",
+    ///         MaintainEndTime = "06:00Z",
+    ///         BackupPeriods = new[]
+    ///         {
+    ///             "Wednesday",
+    ///         },
+    ///         BackupTime = "11:00Z-12:00Z",
+    ///         PrivateConnectionPrefix = "exampleconnectionprefix",
+    ///         PrivateConnectionPort = "4011",
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.23.12.24",
+    ///         },
+    ///         Config = 
+    ///         {
+    ///             { "appendonly", "yes" },
+    ///             { "lazyfree-lazy-eviction", "yes" },
+    ///             { "EvictionPolicy", "volatile-lru" },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.kvstore.Instance` or removing it from your configuration
+    /// 
+    /// The `alicloud.kvstore.Instance` resource allows you to manage `PaymentType = "Prepaid"` db instance, but Terraform cannot destroy it.
+    /// From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
+    /// from your state file and management, but will not destroy the DB Instance.
+    /// You can resume managing the subscription db instance via the AlibabaCloud Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// KVStore instance can be imported using the id, e.g.

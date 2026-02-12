@@ -30,8 +30,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -78,8 +76,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -155,7 +151,8 @@ type AccessKey struct {
 	pulumi.CustomResourceState
 
 	// (Available since v1.246.0) The create time of the AccessKey.
-	CreateTime      pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
 	EncryptedSecret pulumi.StringOutput `pulumi:"encryptedSecret"`
 	// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
@@ -211,7 +208,8 @@ func GetAccessKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AccessKey resources.
 type accessKeyState struct {
 	// (Available since v1.246.0) The create time of the AccessKey.
-	CreateTime      *string `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
 	EncryptedSecret *string `pulumi:"encryptedSecret"`
 	// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 	KeyFingerprint *string `pulumi:"keyFingerprint"`
@@ -234,7 +232,8 @@ type accessKeyState struct {
 
 type AccessKeyState struct {
 	// (Available since v1.246.0) The create time of the AccessKey.
-	CreateTime      pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
 	EncryptedSecret pulumi.StringPtrInput
 	// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 	KeyFingerprint pulumi.StringPtrInput
@@ -378,6 +377,7 @@ func (o AccessKeyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
 func (o AccessKeyOutput) EncryptedSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.EncryptedSecret }).(pulumi.StringOutput)
 }

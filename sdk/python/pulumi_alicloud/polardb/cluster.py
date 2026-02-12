@@ -2704,6 +2704,109 @@ class Cluster(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
+        environment in the cloud. An PolarDB cluster can contain multiple user-created
+        databases.
+
+        > **NOTE:** Available since v1.66.0.
+
+        ## Example Usage
+
+        Create a PolarDB MySQL cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            category="Normal",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("default",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example",
+            db_cluster_ip_arrays=[
+                {
+                    "db_cluster_ip_array_name": "default",
+                    "security_ips": [
+                        "1.2.3.4",
+                        "1.2.3.5",
+                    ],
+                },
+                {
+                    "db_cluster_ip_array_name": "default2",
+                    "security_ips": ["1.2.3.6"],
+                },
+            ])
+        ```
+
+        When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
+        Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        current = alicloud.get_account()
+        roles = alicloud.ram.get_roles(name_regex="AliyunRDSInstanceEncryptionDefaultRole")
+        default = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default.append(alicloud.ram.Role(f"default-{range['value']}",
+                    name="AliyunRDSInstanceEncryptionDefaultRole",
+                    document=\"\"\"    {
+                \\"Statement\\": [
+                    {
+                       \\"Action\\": \\"sts:AssumeRole\\",
+                        \\"Effect\\": \\"Allow\\",
+                        \\"Principal\\": {
+                            \\"Service\\": [
+                                \\"rds.aliyuncs.com\\"
+                            ]
+                        }
+                    }
+                ],
+                \\"Version\\": \\"1\\"
+            }
+        \"\"\",
+                    description="RDS使用此角色来访问您在其他云产品中的资源"))
+
+        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_policy_attachment = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_policy_attachment.append(alicloud.resourcemanager.PolicyAttachment(f"default-{range['value']}",
+                    policy_name="AliyunRDSInstanceEncryptionRolePolicy",
+                    policy_type="System",
+                    principal_name=pulumi.Output.all(
+                        length=len(roles.roles),
+                        name=default[0].name
+        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
+        ,
+                    principal_type="ServiceRole",
+                    resource_group_id=current.id))
+
+        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        ```
+
+        ### Removing polardb.Cluster from your configuration
+
+        The polardb.Cluster resource allows you to manage your polardb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the polardb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB cluster can be imported using the id, e.g.
@@ -2834,6 +2937,109 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
+        environment in the cloud. An PolarDB cluster can contain multiple user-created
+        databases.
+
+        > **NOTE:** Available since v1.66.0.
+
+        ## Example Usage
+
+        Create a PolarDB MySQL cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            category="Normal",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("default",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example",
+            db_cluster_ip_arrays=[
+                {
+                    "db_cluster_ip_array_name": "default",
+                    "security_ips": [
+                        "1.2.3.4",
+                        "1.2.3.5",
+                    ],
+                },
+                {
+                    "db_cluster_ip_array_name": "default2",
+                    "security_ips": ["1.2.3.6"],
+                },
+            ])
+        ```
+
+        When enabling TDE encryption, it is necessary to ensure that there is an AliyunRDSInstanceEncryptionDefaultRole role, and it is authorized under the account. If not, the following code can be used to create it.
+        Note: If there is only the role AliyunRDSSInceEncryptionDefaultRole under the account, this example may not be applicable.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        current = alicloud.get_account()
+        roles = alicloud.ram.get_roles(name_regex="AliyunRDSInstanceEncryptionDefaultRole")
+        default = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default.append(alicloud.ram.Role(f"default-{range['value']}",
+                    name="AliyunRDSInstanceEncryptionDefaultRole",
+                    document=\"\"\"    {
+                \\"Statement\\": [
+                    {
+                       \\"Action\\": \\"sts:AssumeRole\\",
+                        \\"Effect\\": \\"Allow\\",
+                        \\"Principal\\": {
+                            \\"Service\\": [
+                                \\"rds.aliyuncs.com\\"
+                            ]
+                        }
+                    }
+                ],
+                \\"Version\\": \\"1\\"
+            }
+        \"\"\",
+                    description="RDS使用此角色来访问您在其他云产品中的资源"))
+
+        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_policy_attachment = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_policy_attachment.append(alicloud.resourcemanager.PolicyAttachment(f"default-{range['value']}",
+                    policy_name="AliyunRDSInstanceEncryptionRolePolicy",
+                    policy_type="System",
+                    principal_name=pulumi.Output.all(
+                        length=len(roles.roles),
+                        name=default[0].name
+        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
+        ,
+                    principal_type="ServiceRole",
+                    resource_group_id=current.id))
+
+        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        ```
+
+        ### Removing polardb.Cluster from your configuration
+
+        The polardb.Cluster resource allows you to manage your polardb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the polardb Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB cluster can be imported using the id, e.g.

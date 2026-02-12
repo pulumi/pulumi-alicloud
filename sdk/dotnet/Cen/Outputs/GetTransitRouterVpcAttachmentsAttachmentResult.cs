@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// The ID of the CEN instance.
         /// </summary>
         public readonly string CenId;
+        /// <summary>
+        /// The resource ID in terraform of Transit Router VPC Attachment. It formats as `&lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The payment type of the resource.

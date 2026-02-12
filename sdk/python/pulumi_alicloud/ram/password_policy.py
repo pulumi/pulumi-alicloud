@@ -487,6 +487,46 @@ class PasswordPolicy(pulumi.CustomResource):
                  require_uppercase_characters: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Provides a RAM Password Policy resource.
+
+        Password strength information.
+
+        For information about RAM Password Policy and how to use it, see [What is Password Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetPasswordPolicy).
+
+        > **NOTE:** Available since v1.247.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ram.PasswordPolicy("default",
+            minimum_password_length=8,
+            require_lowercase_characters=False,
+            require_numbers=False,
+            max_password_age=0,
+            password_reuse_prevention=1,
+            max_login_attemps=1,
+            hard_expiry=False,
+            require_uppercase_characters=False,
+            require_symbols=False,
+            password_not_contain_user_name=False,
+            minimum_password_different_character=1)
+        ```
+
+        ### Deleting `ram.PasswordPolicy` or removing it from your configuration
+
+        Terraform cannot destroy resource `ram.PasswordPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Password Policy can be imported using the id, e.g.
@@ -537,6 +577,46 @@ class PasswordPolicy(pulumi.CustomResource):
                  args: Optional[PasswordPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RAM Password Policy resource.
+
+        Password strength information.
+
+        For information about RAM Password Policy and how to use it, see [What is Password Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/SetPasswordPolicy).
+
+        > **NOTE:** Available since v1.247.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ram.PasswordPolicy("default",
+            minimum_password_length=8,
+            require_lowercase_characters=False,
+            require_numbers=False,
+            max_password_age=0,
+            password_reuse_prevention=1,
+            max_login_attemps=1,
+            hard_expiry=False,
+            require_uppercase_characters=False,
+            require_symbols=False,
+            password_not_contain_user_name=False,
+            minimum_password_different_character=1)
+        ```
+
+        ### Deleting `ram.PasswordPolicy` or removing it from your configuration
+
+        Terraform cannot destroy resource `ram.PasswordPolicy`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Password Policy can be imported using the id, e.g.

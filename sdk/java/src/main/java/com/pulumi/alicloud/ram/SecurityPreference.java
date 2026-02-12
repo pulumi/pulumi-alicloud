@@ -18,12 +18,60 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a RAM Security Preference resource.
+ * 
+ * For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.152.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.SecurityPreference;
+ * import com.pulumi.alicloud.ram.SecurityPreferenceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new SecurityPreference("example", SecurityPreferenceArgs.builder()
+ *             .enableSaveMfaTicket(false)
+ *             .allowUserToChangePassword(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.ram.SecurityPreference` or removing it from your configuration
+ * 
+ * Terraform cannot destroy resource `alicloud.ram.SecurityPreference`. Terraform will remove this resource from the state file, however resources may remain.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * RAM Security Preference can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/securityPreference:SecurityPreference example 
+ * $ terraform import alicloud_ram_security_preference.example 
  * ```
  * 
  */

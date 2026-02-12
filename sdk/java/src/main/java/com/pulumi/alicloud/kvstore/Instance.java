@@ -20,6 +20,263 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides  Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance resource. A DB instance is an isolated database environment in the cloud. It support be associated with IP whitelists and backup configuration which are separate resource providers. For information about Alicloud KVStore DBInstance more and how to use it, see [What is Resource Alicloud KVStore DBInstance](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstances-redis).
+ * 
+ * &gt; **NOTE:** Available since v1.14.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         final var defaultGetZones = KvstoreFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .dbInstanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .resourceGroupId(default_.ids()[0])
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .instanceClass("redis.master.large.default")
+ *             .instanceType("Redis")
+ *             .engineVersion("5.0")
+ *             .securityIps("10.23.12.24")
+ *             .config(Map.ofEntries(
+ *                 Map.entry("appendonly", "yes"),
+ *                 Map.entry("lazyfree-lazy-eviction", "yes")
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Launching a PrePaid instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example-prepaid");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         final var defaultGetZones = KvstoreFunctions.getZones(GetZonesArgs.builder()
+ *             .instanceChargeType("PrePaid")
+ *             .build());
+ * 
+ *         // PrePaid instance can not deleted and there suggests using an existing vpc and vswitch, like default vpc.
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .isDefault(true)
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .dbInstanceName(name)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .resourceGroupId(default_.ids()[0])
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .secondaryZoneId(defaultGetZones.zones()[1].id())
+ *             .instanceClass("redis.master.large.default")
+ *             .instanceType("Redis")
+ *             .engineVersion("5.0")
+ *             .paymentType("PrePaid")
+ *             .period("12")
+ *             .securityIps("10.23.12.24")
+ *             .config(Map.ofEntries(
+ *                 Map.entry("appendonly", "no"),
+ *                 Map.entry("lazyfree-lazy-eviction", "no"),
+ *                 Map.entry("EvictionPolicy", "volatile-lru")
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Setting Private Connection String
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+ * import com.pulumi.alicloud.kvstore.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.kvstore.Instance;
+ * import com.pulumi.alicloud.kvstore.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example-with-connection");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         final var defaultGetZones = KvstoreFunctions.getZones(GetZonesArgs.builder()
+ *             .productType("OnECS")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .dbInstanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .resourceGroupId(default_.ids()[0])
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .secondaryZoneId(defaultGetZones.zones()[1].id())
+ *             .instanceClass("redis.shard.small.ce")
+ *             .instanceType("Redis")
+ *             .engineVersion("7.0")
+ *             .maintainStartTime("04:00Z")
+ *             .maintainEndTime("06:00Z")
+ *             .backupPeriods("Wednesday")
+ *             .backupTime("11:00Z-12:00Z")
+ *             .privateConnectionPrefix("exampleconnectionprefix")
+ *             .privateConnectionPort("4011")
+ *             .securityIps("10.23.12.24")
+ *             .config(Map.ofEntries(
+ *                 Map.entry("appendonly", "yes"),
+ *                 Map.entry("lazyfree-lazy-eviction", "yes"),
+ *                 Map.entry("EvictionPolicy", "volatile-lru")
+ *             ))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.kvstore.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.kvstore.Instance` resource allows you to manage `paymentType = &#34;Prepaid&#34;` db instance, but Terraform cannot destroy it.
+ * From version 1.201.0, deleting the subscription resource or removing it from your configuration will remove it
+ * from your state file and management, but will not destroy the DB Instance.
+ * You can resume managing the subscription db instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * KVStore instance can be imported using the id, e.g.

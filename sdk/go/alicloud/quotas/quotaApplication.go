@@ -12,6 +12,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Quotas Quota Application resource. Details of Quota Application.
+//
+// For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplication).
+//
+// > **NOTE:** Available since v1.117.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := quotas.NewQuotaApplication(ctx, "default", &quotas.QuotaApplicationArgs{
+//				QuotaActionCode: pulumi.String("q_desktop-count"),
+//				ProductCode:     pulumi.String("gws"),
+//				QuotaCategory:   pulumi.String("CommonQuota"),
+//				NoticeType:      pulumi.Int(3),
+//				Dimensions: quotas.QuotaApplicationDimensionArray{
+//					&quotas.QuotaApplicationDimensionArgs{
+//						Key:   pulumi.String("regionId"),
+//						Value: pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				DesireValue: pulumi.Float64(1001),
+//				Reason:      pulumi.String("测试"),
+//				EnvLanguage: pulumi.String("zh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `quotas.QuotaApplication` or removing it from your configuration
+//
+// Terraform cannot destroy resource `quotas.QuotaApplication`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Quotas Quota Application can be imported using the id, e.g.

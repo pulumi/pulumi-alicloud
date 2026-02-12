@@ -23,6 +23,127 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a RocketMQ Instance resource.
+ * 
+ * For information about RocketMQ Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstance).
+ * 
+ * &gt; **NOTE:** Available since v1.212.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.rocketmq.RocketMQInstance;
+ * import com.pulumi.alicloud.rocketmq.RocketMQInstanceArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceProductInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceSoftwareArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoInternetInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var createVPC = new Network("createVPC", NetworkArgs.builder()
+ *             .description("example")
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var createVSwitch = new Switch("createVSwitch", SwitchArgs.builder()
+ *             .description("example")
+ *             .vpcId(createVPC.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .vswitchName(name)
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultRocketMQInstance = new RocketMQInstance("defaultRocketMQInstance", RocketMQInstanceArgs.builder()
+ *             .productInfo(RocketMQInstanceProductInfoArgs.builder()
+ *                 .msgProcessSpec("rmq.u2.10xlarge")
+ *                 .sendReceiveRatio(0.3)
+ *                 .messageRetentionTime(70)
+ *                 .build())
+ *             .serviceCode("rmq")
+ *             .paymentType("PayAsYouGo")
+ *             .instanceName(name)
+ *             .subSeriesCode("cluster_ha")
+ *             .resourceGroupId(default_.ids()[0])
+ *             .remark("example")
+ *             .ipWhitelists(            
+ *                 "192.168.0.0/16",
+ *                 "10.10.0.0/16",
+ *                 "172.168.0.0/16")
+ *             .software(RocketMQInstanceSoftwareArgs.builder()
+ *                 .maintainTime("02:00-06:00")
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .seriesCode("ultimate")
+ *             .networkInfo(RocketMQInstanceNetworkInfoArgs.builder()
+ *                 .vpcInfo(RocketMQInstanceNetworkInfoVpcInfoArgs.builder()
+ *                     .vpcId(createVPC.id())
+ *                     .vswitches(RocketMQInstanceNetworkInfoVpcInfoVswitchArgs.builder()
+ *                         .vswitchId(createVSwitch.id())
+ *                         .build())
+ *                     .build())
+ *                 .internetInfo(RocketMQInstanceNetworkInfoInternetInfoArgs.builder()
+ *                     .internetSpec("enable")
+ *                     .flowOutType("payByBandwidth")
+ *                     .flowOutBandwidth(30)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.rocketmq.RocketMQInstance` or removing it from your configuration
+ * 
+ * The `alicloud.rocketmq.RocketMQInstance` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * RocketMQ Instance can be imported using the id, e.g.

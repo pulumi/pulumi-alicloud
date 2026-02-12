@@ -10,6 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ThreatDetection
 {
     /// <summary>
+    /// Provides a Threat Detection Log Meta resource.
+    /// 
+    /// Log analysis shipping status.
+    /// 
+    /// For information about Threat Detection Log Meta and how to use it, see [What is Log Meta](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ModifyLogMetaStatus).
+    /// 
+    /// &gt; **NOTE:** Available since v1.245.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.ThreatDetection.LogMeta("default", new()
+    ///     {
+    ///         Status = "disabled",
+    ///         LogMetaName = "aegis-log-client",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.threatdetection.LogMeta` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.threatdetection.LogMeta`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Log Meta can be imported using the id, e.g.

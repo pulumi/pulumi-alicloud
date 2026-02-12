@@ -5,12 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Cloud Monitor Service Agent Config resource.
+ *
+ * Cloud monitoring plug-in global configuration.
+ *
+ * For information about Cloud Monitor Service Agent Config and how to use it, see [What is Agent Config](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutMonitoringConfig).
+ *
+ * > **NOTE:** Available since v1.270.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cloudmonitor.ServiceAgentConfig("default", {enableInstallAgentNewEcs: false});
+ * ```
+ *
+ * ### Deleting `alicloud.cloudmonitor.ServiceAgentConfig` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.cloudmonitor.ServiceAgentConfig`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Monitor Service Agent Config can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig example <Alibaba Cloud Account ID>
+ * $ terraform import alicloud_cloud_monitor_service_agent_config.example <Alibaba Cloud Account ID>
  * ```
  */
 export class ServiceAgentConfig extends pulumi.CustomResource {

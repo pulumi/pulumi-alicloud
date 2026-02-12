@@ -60,9 +60,21 @@ public final class ProtocolMountTargetArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * DryRun
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
+    /**
+     * @return DryRun
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
@@ -291,11 +303,27 @@ public final class ProtocolMountTargetArgs extends com.pulumi.resources.Resource
             return description(Output.of(description));
         }
 
+        /**
+         * @param dryRun DryRun
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param dryRun DryRun
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
         }

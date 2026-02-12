@@ -15,6 +15,10 @@ public final class GetAclsAclAclEntry {
      * 
      */
     private String description;
+    /**
+     * @return The resource ID in terraform of Acl.
+     * 
+     */
     private String entry;
     /**
      * @return The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
@@ -30,6 +34,10 @@ public final class GetAclsAclAclEntry {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The resource ID in terraform of Acl.
+     * 
+     */
     public String entry() {
         return this.entry;
     }

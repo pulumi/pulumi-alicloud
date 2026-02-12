@@ -6,6 +6,111 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
+ *
+ * > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
+ *
+ * > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
+ *
+ * > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
+ *
+ * > **NOTE:** Available since v1.65.0.
+ *
+ * > **DEPRECATED:**  This resource has been deprecated from version `1.127.0`. Please use new resource alicloud_cs_autoscaling_config. If you have used resource `alicloud.cs.KubernetesAutoscaler`, please refer to [Use Terraform to create an auto-scaling node pool](https://www.alibabacloud.com/help/doc-detail/197717.htm) to switch to `alicloud.cs.AutoscalingConfig`.
+ *
+ * ## Example Usage
+ *
+ * cluster-autoscaler in Kubernetes Cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Worker",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     scalingGroupName: name,
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     vswitchIds: [defaultSwitch.id],
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
+ *     active: true,
+ * });
+ * const defaultKubernetesAutoscaler = new alicloud.cs.KubernetesAutoscaler("default", {
+ *     clusterId: defaultManagedKubernetes.id,
+ *     utilization: "0.5",
+ *     coolDownDuration: "10m",
+ *     deferScaleInDuration: "10m",
+ *     nodepools: [{
+ *         id: defaultScalingConfiguration.scalingGroupId,
+ *         labels: "a=b",
+ *     }],
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## Ignoring Changes to tags and userData
+ *
+ * > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ignoreChanges` to create a  a autoscaler group, then ignore any changes to that tags and userData caused externally (e.g. Application Autoscaling).
+ */
 export class KubernetesAutoscaler extends pulumi.CustomResource {
     /**
      * Get an existing KubernetesAutoscaler resource's state with the given name, ID, and optional extra

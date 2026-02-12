@@ -19,22 +19,17 @@ __all__ = [
     'AppTemplateConfigListArgsDict',
 ]
 
-MYPY = False
+class AppTemplateConfigListArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Configuration item content.
 
-if not MYPY:
-    class AppTemplateConfigListArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Configuration item content.
-
-        > **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
-        """
-elif False:
-    AppTemplateConfigListArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
+    """
 
 @pulumi.input_type
 class AppTemplateConfigListArgs:

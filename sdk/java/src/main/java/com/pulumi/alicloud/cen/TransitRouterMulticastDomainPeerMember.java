@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  * Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember example &lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;peer_transit_router_multicast_domain_id&gt;
+ * $terraform import alicloud_cen_transit_router_multicast_domain_peer_member.example &lt;transit_router_multicast_domain_id&gt;:&lt;group_ip_address&gt;:&lt;peer_transit_router_multicast_domain_id&gt;
  * ```
  * 
  */

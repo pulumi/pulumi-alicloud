@@ -818,9 +818,21 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * Rotary configuration. See `rollingPolicy` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="rollingPolicy")
     private @Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy;
 
+    /**
+     * @return Rotary configuration. See `rollingPolicy` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<NodePoolRollingPolicyArgs>> rollingPolicy() {
         return Optional.ofNullable(this.rollingPolicy);
     }
@@ -1268,9 +1280,21 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.unschedulable);
     }
 
+    /**
+     * Synchronously update node labels and taints.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="updateNodes")
     private @Nullable Output<Boolean> updateNodes;
 
+    /**
+     * @return Synchronously update node labels and taints.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<Boolean>> updateNodes() {
         return Optional.ofNullable(this.updateNodes);
     }
@@ -2551,11 +2575,27 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param rollingPolicy Rotary configuration. See `rollingPolicy` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollingPolicy(@Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy) {
             $.rollingPolicy = rollingPolicy;
             return this;
         }
 
+        /**
+         * @param rollingPolicy Rotary configuration. See `rollingPolicy` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rollingPolicy(NodePoolRollingPolicyArgs rollingPolicy) {
             return rollingPolicy(Output.of(rollingPolicy));
         }
@@ -3205,11 +3245,27 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
             return unschedulable(Output.of(unschedulable));
         }
 
+        /**
+         * @param updateNodes Synchronously update node labels and taints.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateNodes(@Nullable Output<Boolean> updateNodes) {
             $.updateNodes = updateNodes;
             return this;
         }
 
+        /**
+         * @param updateNodes Synchronously update node labels and taints.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateNodes(Boolean updateNodes) {
             return updateNodes(Output.of(updateNodes));
         }

@@ -5,6 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Message Service Endpoint resource.
+ *
+ * For information about Message Service Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-enableendpoint).
+ *
+ * > **NOTE:** Available since v1.243.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.message.ServiceEndpoint("default", {
+ *     endpointEnabled: true,
+ *     endpointType: "public",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.message.ServiceEndpoint` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.message.ServiceEndpoint`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Message Service Endpoint can be imported using the id, e.g.

@@ -5,6 +5,43 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a OSS Bucket Versioning resource. Configures the versioning state for a bucket.
+ *
+ * For information about OSS Bucket Versioning and how to use it, see [What is Bucket Versioning](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketversioning).
+ *
+ * > **NOTE:** Available since v1.222.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const createBucket = new alicloud.oss.Bucket("CreateBucket", {
+ *     storageClass: "Standard",
+ *     bucket: `${name}-${_default.result}`,
+ * });
+ * const defaultBucketVersioning = new alicloud.oss.BucketVersioning("default", {
+ *     status: "Enabled",
+ *     bucket: createBucket.bucket,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.oss.BucketVersioning` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.oss.BucketVersioning`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * OSS Bucket Versioning can be imported using the id, e.g.

@@ -12,6 +12,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
+//
+// > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
+//
+// > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
+//
+// > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
+//
+// > **NOTE:** Available since v1.65.0.
+//
+// > **DEPRECATED:**  This resource has been deprecated from version `1.127.0`. Please use new resource alicloud_cs_autoscaling_config. If you have used resource `cs.KubernetesAutoscaler`, please refer to [Use Terraform to create an auto-scaling node pool](https://www.alibabacloud.com/help/doc-detail/197717.htm) to switch to `cs.AutoscalingConfig`.
+//
+// ## Example Usage
+//
+// cluster-autoscaler in Kubernetes Cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(4),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "10.0.0.0/8",
+//				Newbits: 8,
+//				Netnum:  36,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "172.16.0.0/16",
+//				Newbits: 4,
+//				Netnum:  7,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				NamePrefix:  pulumi.String(name),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				WorkerVswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:      pulumi.Bool(true),
+//				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
+//				ServiceCidr:        pulumi.String(invokeCidrsubnet1.Result),
+//				SlbInternetEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
+//				ScalingGroupName: pulumi.String(name),
+//				MinSize:          pulumi.Int(1),
+//				MaxSize:          pulumi.Int(1),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
+//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				ForceDelete:     pulumi.Bool(true),
+//				Active:          pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewKubernetesAutoscaler(ctx, "default", &cs.KubernetesAutoscalerArgs{
+//				ClusterId:            defaultManagedKubernetes.ID(),
+//				Utilization:          pulumi.String("0.5"),
+//				CoolDownDuration:     pulumi.String("10m"),
+//				DeferScaleInDuration: pulumi.String("10m"),
+//				Nodepools: cs.KubernetesAutoscalerNodepoolArray{
+//					&cs.KubernetesAutoscalerNodepoolArgs{
+//						Id:     defaultScalingConfiguration.ScalingGroupId,
+//						Labels: pulumi.String("a=b"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
+// ## Ignoring Changes to tags and userData
+//
+// > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ignoreChanges` to create a  a autoscaler group, then ignore any changes to that tags and userData caused externally (e.g. Application Autoscaling).
 type KubernetesAutoscaler struct {
 	pulumi.CustomResourceState
 

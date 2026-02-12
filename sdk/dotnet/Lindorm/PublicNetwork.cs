@@ -10,6 +10,74 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Lindorm
 {
     /// <summary>
+    /// Provides a Lindorm Public Network resource.
+    /// 
+    /// Public network connection of Lindorm instance.
+    /// 
+    /// For information about Lindorm Public Network and how to use it, see [What is Public Network](https://next.api.alibabacloud.com/document/hitsdb/2020-06-15/SwitchInstancePublicNetwork).
+    /// 
+    /// &gt; **NOTE:** Available since v1.250.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var zoneId = config.Get("zoneId") ?? "cn-shanghai-f";
+    ///     var regionId = config.Get("regionId") ?? "cn-shanghai";
+    ///     var defaultX7MgJO = new AliCloud.Vpc.Network("defaultX7MgJO", new()
+    ///     {
+    ///         Description = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///         VpcName = "amp-example-shanghai",
+    ///     });
+    /// 
+    ///     var default45mCzM = new AliCloud.Vpc.Switch("default45mCzM", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcId = defaultX7MgJO.Id,
+    ///         ZoneId = zoneId,
+    ///         CidrBlock = "10.0.0.0/24",
+    ///     });
+    /// 
+    ///     var defaultQpsLKr = new AliCloud.Lindorm.Instance("defaultQpsLKr", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         TableEngineNodeCount = 2,
+    ///         InstanceStorage = "80",
+    ///         ZoneId = zoneId,
+    ///         VswitchId = default45mCzM.Id,
+    ///         DiskCategory = "cloud_efficiency",
+    ///         TableEngineSpecification = "lindorm.g.xlarge",
+    ///         InstanceName = "tf-example",
+    ///         VpcId = defaultX7MgJO.Id,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Lindorm.PublicNetwork("default", new()
+    ///     {
+    ///         InstanceId = defaultQpsLKr.Id,
+    ///         EnablePublicNetwork = 1,
+    ///         EngineType = "lindorm",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Deleting `alicloud.lindorm.PublicNetwork` or removing it from your configuration
+    /// 
+    /// Terraform cannot destroy resource `alicloud.lindorm.PublicNetwork`. Terraform will remove this resource from the state file, however resources may remain.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Lindorm Public Network can be imported using the id, e.g.

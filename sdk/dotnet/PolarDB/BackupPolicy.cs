@@ -10,6 +10,72 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
+    /// Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
+    /// 
+    /// &gt; **NOTE:** Available since v1.66.0+. Each PolarDB cluster has a backup policy.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///         Category = "Normal",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+    ///         VswitchName = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("default", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         DbNodeClass = @default.Apply(@default =&gt; @default.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultBackupPolicy = new AliCloud.PolarDB.BackupPolicy("default", new()
+    ///     {
+    ///         DbClusterId = defaultCluster.Id,
+    ///         PreferredBackupPeriods = new[]
+    ///         {
+    ///             "Tuesday",
+    ///             "Wednesday",
+    ///         },
+    ///         PreferredBackupTime = "10:00Z-11:00Z",
+    ///         BackupRetentionPolicyOnClusterDeletion = "NONE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Removing alicloud.polardb.Cluster from your configuration
+    /// 
+    /// The alicloud.polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// PolarDB backup policy can be imported using the id or cluster id, e.g.

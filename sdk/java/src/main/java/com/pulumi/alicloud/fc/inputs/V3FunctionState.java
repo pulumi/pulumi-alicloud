@@ -32,9 +32,21 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
 
     public static final V3FunctionState Empty = new V3FunctionState();
 
+    /**
+     * Function code ZIP package. code and customContainerConfig. See `code` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Import(name="code")
     private @Nullable Output<V3FunctionCodeArgs> code;
 
+    /**
+     * @return Function code ZIP package. code and customContainerConfig. See `code` below.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Optional<Output<V3FunctionCodeArgs>> code() {
         return Optional.ofNullable(this.code);
     }
@@ -719,11 +731,27 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
             $ = new V3FunctionState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param code Function code ZIP package. code and customContainerConfig. See `code` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(@Nullable Output<V3FunctionCodeArgs> code) {
             $.code = code;
             return this;
         }
 
+        /**
+         * @param code Function code ZIP package. code and customContainerConfig. See `code` below.
+         * 
+         * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(V3FunctionCodeArgs code) {
             return code(Output.of(code));
         }

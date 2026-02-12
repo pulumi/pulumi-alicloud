@@ -5,6 +5,117 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Aligreen Oss Stock Task resource.
+ *
+ * OSS stock file scanning task.
+ *
+ * For information about Aligreen Oss Stock Task and how to use it, see [What is Oss Stock Task](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateOssStockTask).
+ *
+ * > **NOTE:** Available since v1.228.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultPyhXOV = new alicloud.oss.Bucket("defaultPyhXOV", {
+ *     storageClass: "Standard",
+ *     bucket: `${name}-${_default.result}`,
+ * });
+ * const defaultJnW8Na = new alicloud.aligreen.Callback("defaultJnW8Na", {
+ *     callbackUrl: "https://www.aliyun.com/",
+ *     cryptType: 0,
+ *     callbackName: `${name}${_default.result}`,
+ *     callbackTypes: ["machineScan"],
+ *     callbackSuggestions: ["block"],
+ * });
+ * const defaultOssStockTask = new alicloud.aligreen.OssStockTask("default", {
+ *     imageOpened: true,
+ *     autoFreezeType: "acl",
+ *     audioMaxSize: 200,
+ *     imageScanLimit: 1,
+ *     videoFrameInterval: 1,
+ *     videoScanLimit: 1000,
+ *     audioScanLimit: 1000,
+ *     videoMaxFrames: 200,
+ *     videoMaxSize: 500,
+ *     startDate: "2024-08-01 00:00:00 +0800",
+ *     endDate: "2024-12-31 09:06:42 +0800",
+ *     buckets: pulumi.jsonStringify([{
+ *         Bucket: defaultPyhXOV.bucket,
+ *         Selected: true,
+ *         Prefixes: [],
+ *     }]),
+ *     imageScenes: ["porn"],
+ *     audioAntispamFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     imageLiveFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     videoTerrorismFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     imageTerrorismFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     callbackId: defaultJnW8Na.id,
+ *     imageAdFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     bizType: "recommend_massmedia_template_01",
+ *     audioScenes: JSON.stringify(["antispam"]),
+ *     imagePornFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     videoLiveFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     videoPornFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     videoVoiceAntispamFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ *     videoScenes: JSON.stringify([
+ *         "ad",
+ *         "terrorism",
+ *         "live",
+ *         "porn",
+ *         "antispam",
+ *     ]),
+ *     videoAdFreezeConfig: JSON.stringify({
+ *         Type: "suggestion",
+ *         Value: "block",
+ *     }),
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.aligreen.OssStockTask` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.aligreen.OssStockTask`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Aligreen Oss Stock Task can be imported using the id, e.g.

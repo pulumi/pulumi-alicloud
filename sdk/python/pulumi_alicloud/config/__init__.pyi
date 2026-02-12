@@ -42,6 +42,9 @@ The maximum timeout of the client read request.
 """
 
 configurationSource: Optional[str]
+"""
+Use this to mark a terraform configuration file source.
+"""
 
 credentialsUri: Optional[str]
 """

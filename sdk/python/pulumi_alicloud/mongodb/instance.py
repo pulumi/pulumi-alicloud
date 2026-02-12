@@ -128,6 +128,11 @@ class InstanceArgs:
                - `Standard`: standard backup.
                - `Flash `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
+               > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -768,6 +773,13 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Actions performed on SSL functions. Valid values:
+        - `Open`: turn on SSL encryption.
+        - `Close`: turn off SSL encryption.
+        - `Update`: update SSL certificate.
+        > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
+        """
         return pulumi.get(self, "ssl_action")
 
     @ssl_action.setter
@@ -981,6 +993,11 @@ class _InstanceState:
                - `Standard`: standard backup.
                - `Flash `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
+               > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] ssl_status: Status of the SSL feature.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
@@ -1686,6 +1703,13 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Actions performed on SSL functions. Valid values:
+        - `Open`: turn on SSL encryption.
+        - `Close`: turn off SSL encryption.
+        - `Update`: update SSL certificate.
+        > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
+        """
         return pulumi.get(self, "ssl_action")
 
     @ssl_action.setter
@@ -1980,6 +2004,11 @@ class Instance(pulumi.CustomResource):
                - `Standard`: standard backup.
                - `Flash `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
+               > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -2331,6 +2360,11 @@ class Instance(pulumi.CustomResource):
                - `Standard`: standard backup.
                - `Flash `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
+               > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] ssl_status: Status of the SSL feature.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
@@ -2796,6 +2830,13 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Actions performed on SSL functions. Valid values:
+        - `Open`: turn on SSL encryption.
+        - `Close`: turn off SSL encryption.
+        - `Update`: update SSL certificate.
+        > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
+        """
         return pulumi.get(self, "ssl_action")
 
     @_builtins.property

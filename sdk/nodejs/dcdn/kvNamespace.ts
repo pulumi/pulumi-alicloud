@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * Dcdn Kv Namespace can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example 
+ * $ terraform import alicloud_dcdn_kv_namespace.example 
  * ```
  */
 export class KvNamespace extends pulumi.CustomResource {

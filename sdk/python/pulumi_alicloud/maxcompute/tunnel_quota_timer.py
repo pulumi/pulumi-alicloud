@@ -156,6 +156,63 @@ class TunnelQuotaTimer(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Max Compute Tunnel Quota Timer resource.
+
+        For information about Max Compute Tunnel Quota Timer and how to use it, see [What is Tunnel Quota Timer](https://www.alibabacloud.com/help/en/).
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.260.0`.
+
+        > **NOTE:** Deprecated since v1.260.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.maxcompute.TunnelQuotaTimer("default",
+            quota_timers=[
+                {
+                    "begin_time": "00:00",
+                    "end_time": "01:00",
+                    "tunnel_quota_parameter": {
+                        "slot_num": 50,
+                        "elastic_reserved_slot_num": 50,
+                    },
+                },
+                {
+                    "begin_time": "01:00",
+                    "end_time": "02:00",
+                    "tunnel_quota_parameter": {
+                        "slot_num": 50,
+                        "elastic_reserved_slot_num": 50,
+                    },
+                },
+                {
+                    "begin_time": "02:00",
+                    "end_time": "24:00",
+                    "tunnel_quota_parameter": {
+                        "slot_num": 50,
+                        "elastic_reserved_slot_num": 50,
+                    },
+                },
+            ],
+            nickname="ot_terraform_p",
+            time_zone="Asia/Shanghai")
+        ```
+
+        ### Deleting `maxcompute.TunnelQuotaTimer` or removing it from your configuration
+
+        Terraform cannot destroy resource `maxcompute.TunnelQuotaTimer`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Tunnel Quota Timer can be imported using the id, e.g.
@@ -181,6 +238,63 @@ class TunnelQuotaTimer(pulumi.CustomResource):
                  args: TunnelQuotaTimerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Max Compute Tunnel Quota Timer resource.
+
+        For information about Max Compute Tunnel Quota Timer and how to use it, see [What is Tunnel Quota Timer](https://www.alibabacloud.com/help/en/).
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.260.0`.
+
+        > **NOTE:** Deprecated since v1.260.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.maxcompute.TunnelQuotaTimer("default",
+            quota_timers=[
+                {
+                    "begin_time": "00:00",
+                    "end_time": "01:00",
+                    "tunnel_quota_parameter": {
+                        "slot_num": 50,
+                        "elastic_reserved_slot_num": 50,
+                    },
+                },
+                {
+                    "begin_time": "01:00",
+                    "end_time": "02:00",
+                    "tunnel_quota_parameter": {
+                        "slot_num": 50,
+                        "elastic_reserved_slot_num": 50,
+                    },
+                },
+                {
+                    "begin_time": "02:00",
+                    "end_time": "24:00",
+                    "tunnel_quota_parameter": {
+                        "slot_num": 50,
+                        "elastic_reserved_slot_num": 50,
+                    },
+                },
+            ],
+            nickname="ot_terraform_p",
+            time_zone="Asia/Shanghai")
+        ```
+
+        ### Deleting `maxcompute.TunnelQuotaTimer` or removing it from your configuration
+
+        Terraform cannot destroy resource `maxcompute.TunnelQuotaTimer`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Tunnel Quota Timer can be imported using the id, e.g.

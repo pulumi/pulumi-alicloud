@@ -5,6 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Cloud Phone Instance resource.
+ *
+ * cloud phone instance.
+ *
+ * For information about Cloud Phone Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/DescribeAndroidInstances).
+ *
+ * > **NOTE:** Available since v1.243.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultjZ1gi0 = new alicloud.cloudphone.Policy("defaultjZ1gi0", {});
+ * const defaultYHMlTO = new alicloud.cloudphoneinstance.Group("defaultYHMlTO", {
+ *     instanceGroupSpec: "acp.basic.small",
+ *     policyGroupId: defaultjZ1gi0.id,
+ *     instanceGroupName: "AutoCreateGroupName",
+ *     period: 1,
+ *     numberOfInstances: 1,
+ *     chargeType: "PostPaid",
+ *     imageId: "imgc-075cllfeuazh03tg9",
+ *     periodUnit: "Hour",
+ *     autoRenew: false,
+ *     amount: 1,
+ *     autoPay: false,
+ *     gpuAcceleration: false,
+ * });
+ * const _default = new alicloud.cloudphoneinstance.CloudPhoneInstance("default", {
+ *     androidInstanceGroupId: defaultYHMlTO.id,
+ *     androidInstanceName: "CreateInstanceName",
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.cloudphoneinstance.CloudPhoneInstance` or removing it from your configuration
+ *
+ * Terraform cannot destroy resource `alicloud.cloudphoneinstance.CloudPhoneInstance`. Terraform will remove this resource from the state file, however resources may remain.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Phone Instance can be imported using the id, e.g.

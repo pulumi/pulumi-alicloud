@@ -29,6 +29,9 @@ class WafRulesetArgs:
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] name: The ruleset name.
+        :param pulumi.Input[_builtins.int] site_version: The site version.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         pulumi.set(__self__, "phase", phase)
@@ -79,6 +82,11 @@ class WafRulesetArgs:
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The site version.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
@@ -113,6 +121,9 @@ class _WafRulesetState:
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.int] ruleset_id: waf rule set id
         :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.int] site_version: The site version.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         if name is not None:
@@ -179,6 +190,11 @@ class _WafRulesetState:
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The site version.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
@@ -254,6 +270,9 @@ class WafRuleset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The ruleset name.
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.int] site_version: The site version.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         ...
@@ -367,6 +386,9 @@ class WafRuleset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.int] ruleset_id: waf rule set id
         :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.int] site_version: The site version.
+               
+               > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -416,6 +438,11 @@ class WafRuleset(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The site version.
+
+        > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "site_version")
 
     @_builtins.property

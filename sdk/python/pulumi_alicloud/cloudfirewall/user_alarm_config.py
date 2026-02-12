@@ -32,7 +32,13 @@ class UserAlarmConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigAlarmConfigArgs']]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigContactConfigArgs']]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
+        :param pulumi.Input[_builtins.str] lang: The language type. Possible values are `zh`, `en`.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigNotifyConfigArgs']]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
+        :param pulumi.Input[_builtins.str] use_default_contact: Whether to Use the default contact.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         pulumi.set(__self__, "alarm_configs", alarm_configs)
         if alarm_lang is not None:
@@ -85,6 +91,11 @@ class UserAlarmConfigArgs:
     @_builtins.property
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language type. Possible values are `zh`, `en`.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "lang")
 
     @lang.setter
@@ -106,6 +117,11 @@ class UserAlarmConfigArgs:
     @_builtins.property
     @pulumi.getter(name="useDefaultContact")
     def use_default_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to Use the default contact.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "use_default_contact")
 
     @use_default_contact.setter
@@ -127,7 +143,13 @@ class _UserAlarmConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigAlarmConfigArgs']]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigContactConfigArgs']]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
+        :param pulumi.Input[_builtins.str] lang: The language type. Possible values are `zh`, `en`.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input['UserAlarmConfigNotifyConfigArgs']]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
+        :param pulumi.Input[_builtins.str] use_default_contact: Whether to Use the default contact.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         if alarm_configs is not None:
             pulumi.set(__self__, "alarm_configs", alarm_configs)
@@ -181,6 +203,11 @@ class _UserAlarmConfigState:
     @_builtins.property
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language type. Possible values are `zh`, `en`.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "lang")
 
     @lang.setter
@@ -202,6 +229,11 @@ class _UserAlarmConfigState:
     @_builtins.property
     @pulumi.getter(name="useDefaultContact")
     def use_default_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to Use the default contact.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "use_default_contact")
 
     @use_default_contact.setter
@@ -223,12 +255,52 @@ class UserAlarmConfig(pulumi.CustomResource):
                  use_default_contact: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Cloud Firewall User Alarm Config resource.
+
+        Configure alarm notifications and contacts.
+
+        For information about Cloud Firewall User Alarm Config and how to use it, see [What is User Alarm Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeUserAlarmConfig).
+
+        > **NOTE:** Available since v1.271.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cloudfirewall.UserAlarmConfig("default",
+            alarm_configs=[{
+                "alarm_value": "on",
+                "alarm_type": "bandwidth",
+                "alarm_period": "1",
+                "alarm_hour": "0",
+                "alarm_notify": "0",
+                "alarm_week_day": "0",
+            }],
+            use_default_contact="1",
+            notify_configs=[{
+                "notify_value": "13000000000",
+                "notify_type": "sms",
+            }],
+            alarm_lang="zh",
+            lang="zh")
+        ```
+
+        ### Deleting `cloudfirewall.UserAlarmConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.UserAlarmConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall User Alarm Config can be imported using the `Account ID`, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig example <Alibaba Cloud Account ID>
+        $ terraform import alicloud_cloud_firewall_user_alarm_config.example <Alibaba Cloud Account ID>
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +308,13 @@ class UserAlarmConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
+        :param pulumi.Input[_builtins.str] lang: The language type. Possible values are `zh`, `en`.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
+        :param pulumi.Input[_builtins.str] use_default_contact: Whether to Use the default contact.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         ...
     @overload
@@ -245,12 +323,52 @@ class UserAlarmConfig(pulumi.CustomResource):
                  args: UserAlarmConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Cloud Firewall User Alarm Config resource.
+
+        Configure alarm notifications and contacts.
+
+        For information about Cloud Firewall User Alarm Config and how to use it, see [What is User Alarm Config](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/DescribeUserAlarmConfig).
+
+        > **NOTE:** Available since v1.271.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cloudfirewall.UserAlarmConfig("default",
+            alarm_configs=[{
+                "alarm_value": "on",
+                "alarm_type": "bandwidth",
+                "alarm_period": "1",
+                "alarm_hour": "0",
+                "alarm_notify": "0",
+                "alarm_week_day": "0",
+            }],
+            use_default_contact="1",
+            notify_configs=[{
+                "notify_value": "13000000000",
+                "notify_type": "sms",
+            }],
+            alarm_lang="zh",
+            lang="zh")
+        ```
+
+        ### Deleting `cloudfirewall.UserAlarmConfig` or removing it from your configuration
+
+        Terraform cannot destroy resource `cloudfirewall.UserAlarmConfig`. Terraform will remove this resource from the state file, however resources may remain.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall User Alarm Config can be imported using the `Account ID`, e.g.
 
         ```sh
-        $ pulumi import alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig example <Alibaba Cloud Account ID>
+        $ terraform import alicloud_cloud_firewall_user_alarm_config.example <Alibaba Cloud Account ID>
         ```
 
         :param str resource_name: The name of the resource.
@@ -317,7 +435,13 @@ class UserAlarmConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict']]]] alarm_configs: The alarm configuration. More details see `alarm_config` below.
         :param pulumi.Input[_builtins.str] alarm_lang: The alarm language. Possible values are `zh`, `en`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict']]]] contact_configs: Conflict with `notify_config`. The contact configuration. More details see `contact_config` below.
+        :param pulumi.Input[_builtins.str] lang: The language type. Possible values are `zh`, `en`.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict']]]] notify_configs: Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
+        :param pulumi.Input[_builtins.str] use_default_contact: Whether to Use the default contact.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -358,6 +482,11 @@ class UserAlarmConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The language type. Possible values are `zh`, `en`.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "lang")
 
     @_builtins.property
@@ -371,5 +500,10 @@ class UserAlarmConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="useDefaultContact")
     def use_default_contact(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Whether to Use the default contact.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "use_default_contact")
 

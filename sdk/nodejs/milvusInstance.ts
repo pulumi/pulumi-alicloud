@@ -7,6 +7,63 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Milvus Instance resource.
+ *
+ * For information about Milvus Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/milvus/2023-10-12/CreateInstance).
+ *
+ * > **NOTE:** Available since v1.264.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const regionId = config.get("regionId") || "cn-hangzhou";
+ * const zoneId = config.get("zoneId") || "cn-hangzhou-j";
+ * const defaultILXuit = new alicloud.vpc.Network("defaultILXuit", {cidrBlock: "172.16.0.0/12"});
+ * const defaultN80M7S = new alicloud.vpc.Switch("defaultN80M7S", {
+ *     vpcId: defaultILXuit.id,
+ *     zoneId: zoneId,
+ *     cidrBlock: "172.16.1.0/24",
+ *     vswitchName: "milvus-example",
+ * });
+ * const _default = new alicloud.MilvusInstance("default", {
+ *     zoneId: zoneId,
+ *     vswitchIds: [{
+ *         vswId: defaultN80M7S.id,
+ *         zoneId: defaultN80M7S.zoneId,
+ *     }],
+ *     dbAdminPassword: "Test123456@",
+ *     components: [{
+ *         type: "standalone",
+ *         cuNum: 8,
+ *         replica: 1,
+ *         cuType: "general",
+ *     }],
+ *     instanceName: "镇远测试包年包月",
+ *     dbVersion: "2.4",
+ *     vpcId: defaultILXuit.id,
+ *     ha: false,
+ *     paymentType: "Subscription",
+ *     multiZoneMode: "Single",
+ *     paymentDurationUnit: "year",
+ *     paymentDuration: 1,
+ * });
+ * ```
+ *
+ * ### Deleting `alicloud.MilvusInstance` or removing it from your configuration
+ *
+ * The `alicloud.MilvusInstance` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Milvus Instance can be imported using the id, e.g.

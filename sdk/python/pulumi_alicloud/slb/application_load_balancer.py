@@ -51,6 +51,9 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[_builtins.str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[_builtins.str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
@@ -205,6 +208,11 @@ class ApplicationLoadBalancerArgs:
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        Terraform will autogenerate a name beginning with `tf-lb`.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -407,6 +415,9 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[_builtins.str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[_builtins.str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
@@ -561,6 +572,11 @@ class _ApplicationLoadBalancerState:
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        Terraform will autogenerate a name beginning with `tf-lb`.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -757,6 +773,51 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides an Application Load Balancer resource.
+
+        > **NOTE:** Available since v1.123.1.
+
+        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
+
+        > **NOTE:** The supported specifications vary by region. Currently, not all regions support guaranteed-performance instances.
+        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        slb_load_balancer_name = config.get("slbLoadBalancerName")
+        if slb_load_balancer_name is None:
+            slb_load_balancer_name = "forSlbLoadBalancer"
+        load_balancer = alicloud.get_zones(available_resource_creation="VSwitch")
+        load_balancer_network = alicloud.vpc.Network("load_balancer", vpc_name=slb_load_balancer_name)
+        load_balancer_switch = alicloud.vpc.Switch("load_balancer",
+            vpc_id=load_balancer_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=load_balancer.zones[0].id,
+            vswitch_name=slb_load_balancer_name)
+        load_balancer_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("load_balancer",
+            load_balancer_name=slb_load_balancer_name,
+            address_type="intranet",
+            load_balancer_spec="slb.s2.small",
+            vswitch_id=load_balancer_switch.id,
+            tags={
+                "info": "create for internet",
+            },
+            instance_charge_type="PayBySpec")
+        ```
+
+        ### Deleting `slb.ApplicationLoadBalancer` or removing it from your configuration
+
+        The `slb.ApplicationLoadBalancer` resource allows you to manage `payment_type = "Subscription"` load balancer, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Load Balancer.
+        You can resume managing the subscription load balancer via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -776,6 +837,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[_builtins.str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
@@ -799,6 +863,51 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
                  args: Optional[ApplicationLoadBalancerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an Application Load Balancer resource.
+
+        > **NOTE:** Available since v1.123.1.
+
+        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
+
+        > **NOTE:** The supported specifications vary by region. Currently, not all regions support guaranteed-performance instances.
+        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        slb_load_balancer_name = config.get("slbLoadBalancerName")
+        if slb_load_balancer_name is None:
+            slb_load_balancer_name = "forSlbLoadBalancer"
+        load_balancer = alicloud.get_zones(available_resource_creation="VSwitch")
+        load_balancer_network = alicloud.vpc.Network("load_balancer", vpc_name=slb_load_balancer_name)
+        load_balancer_switch = alicloud.vpc.Switch("load_balancer",
+            vpc_id=load_balancer_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=load_balancer.zones[0].id,
+            vswitch_name=slb_load_balancer_name)
+        load_balancer_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("load_balancer",
+            load_balancer_name=slb_load_balancer_name,
+            address_type="intranet",
+            load_balancer_spec="slb.s2.small",
+            vswitch_id=load_balancer_switch.id,
+            tags={
+                "info": "create for internet",
+            },
+            instance_charge_type="PayBySpec")
+        ```
+
+        ### Deleting `slb.ApplicationLoadBalancer` or removing it from your configuration
+
+        The `slb.ApplicationLoadBalancer` resource allows you to manage `payment_type = "Subscription"` load balancer, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Load Balancer.
+        You can resume managing the subscription load balancer via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -920,6 +1029,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[_builtins.str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[_builtins.str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
+        :param pulumi.Input[_builtins.str] load_balancer_name: The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+               must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+               Terraform will autogenerate a name beginning with `tf-lb`.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
@@ -1024,6 +1136,11 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
+        must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
+        Terraform will autogenerate a name beginning with `tf-lb`.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @_builtins.property

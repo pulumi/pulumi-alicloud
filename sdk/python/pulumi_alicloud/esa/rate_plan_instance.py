@@ -28,6 +28,9 @@ class RatePlanInstanceArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RatePlanInstance resource.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
@@ -62,6 +65,11 @@ class RatePlanInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable auto payment.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
@@ -165,6 +173,9 @@ class _RatePlanInstanceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RatePlanInstance resources.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         :param pulumi.Input[_builtins.str] create_time: The time when the plan was purchased.
@@ -208,6 +219,11 @@ class _RatePlanInstanceState:
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable auto payment.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
@@ -387,6 +403,9 @@ class RatePlanInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
@@ -516,6 +535,9 @@ class RatePlanInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
+               
+               > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         :param pulumi.Input[_builtins.str] create_time: The time when the plan was purchased.
@@ -554,6 +576,11 @@ class RatePlanInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable auto payment.
+
+        > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        """
         return pulumi.get(self, "auto_pay")
 
     @_builtins.property

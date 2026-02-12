@@ -372,8 +372,9 @@ type GetAppGroupsGroup struct {
 	// Coarse deployment ID.
 	FirstRankAlgoDeploymentId int `pulumi:"firstRankAlgoDeploymentId"`
 	// Whether the quota status is under approval. Valid status:
-	HasPendingQuotaReviewTask int    `pulumi:"hasPendingQuotaReviewTask"`
-	Id                        string `pulumi:"id"`
+	HasPendingQuotaReviewTask int `pulumi:"hasPendingQuotaReviewTask"`
+	// The resource ID in terraform of App Group. It is the same as `appGroupName`.
+	Id string `pulumi:"id"`
 	// The Instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
@@ -437,8 +438,9 @@ type GetAppGroupsGroupArgs struct {
 	// Coarse deployment ID.
 	FirstRankAlgoDeploymentId pulumi.IntInput `pulumi:"firstRankAlgoDeploymentId"`
 	// Whether the quota status is under approval. Valid status:
-	HasPendingQuotaReviewTask pulumi.IntInput    `pulumi:"hasPendingQuotaReviewTask"`
-	Id                        pulumi.StringInput `pulumi:"id"`
+	HasPendingQuotaReviewTask pulumi.IntInput `pulumi:"hasPendingQuotaReviewTask"`
+	// The resource ID in terraform of App Group. It is the same as `appGroupName`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The Instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
@@ -575,6 +577,7 @@ func (o GetAppGroupsGroupOutput) HasPendingQuotaReviewTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.HasPendingQuotaReviewTask }).(pulumi.IntOutput)
 }
 
+// The resource ID in terraform of App Group. It is the same as `appGroupName`.
 func (o GetAppGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }

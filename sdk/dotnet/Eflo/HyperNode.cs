@@ -78,6 +78,11 @@ namespace Pulumi.AliCloud.Eflo
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// List of disk information of attaching to each sub computing node.  See `DataDisk` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.HyperNodeDataDisk>> DataDisks { get; private set; } = null!;
 
@@ -257,6 +262,12 @@ namespace Pulumi.AliCloud.Eflo
 
         [Input("dataDisks")]
         private InputList<Inputs.HyperNodeDataDiskArgs>? _dataDisks;
+
+        /// <summary>
+        /// List of disk information of attaching to each sub computing node.  See `DataDisk` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         public InputList<Inputs.HyperNodeDataDiskArgs> DataDisks
         {
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.HyperNodeDataDiskArgs>());
@@ -407,6 +418,12 @@ namespace Pulumi.AliCloud.Eflo
 
         [Input("dataDisks")]
         private InputList<Inputs.HyperNodeDataDiskGetArgs>? _dataDisks;
+
+        /// <summary>
+        /// List of disk information of attaching to each sub computing node.  See `DataDisk` below.
+        /// 
+        /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
+        /// </summary>
         public InputList<Inputs.HyperNodeDataDiskGetArgs> DataDisks
         {
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.HyperNodeDataDiskGetArgs>());

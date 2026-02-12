@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * Threat Detection Check Config can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:threatdetection/checkConfig:CheckConfig example 
+ * $ terraform import alicloud_threat_detection_check_config.example 
  * ```
  * 
  */
@@ -220,9 +220,21 @@ public class CheckConfig extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> systemConfig() {
         return Codegen.optional(this.systemConfig);
     }
+    /**
+     * The cloud service providers.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     @Export(name="vendors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vendors;
 
+    /**
+     * @return The cloud service providers.
+     * 
+     * &gt; **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
+     * 
+     */
     public Output<Optional<List<String>>> vendors() {
         return Codegen.optional(this.vendors);
     }

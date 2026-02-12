@@ -23,35 +23,30 @@ __all__ = [
     'DomainSourceArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DomainCertInfoArgsDict(TypedDict):
-        cert_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If You Enable HTTPS Here Certificate Name.
-        """
-        cert_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Certificate Type. Value Range: 
-        * upload: Certificate
-        * cas: Certificate Authority Certificate.
-        * free: Free Certificate.
-        """
-        ssl_pri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-        """
-        ssl_protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-        """
-        ssl_pub: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If You Enable HTTPS Here Key.
-        """
-elif False:
-    DomainCertInfoArgsDict: TypeAlias = Mapping[str, Any]
+class DomainCertInfoArgsDict(TypedDict):
+    cert_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If You Enable HTTPS Here Certificate Name.
+    """
+    cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Certificate Type. Value Range: 
+    * upload: Certificate
+    * cas: Certificate Authority Certificate.
+    * free: Free Certificate.
+    """
+    ssl_pri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+    """
+    ssl_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+    """
+    ssl_pub: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If You Enable HTTPS Here Key.
+    """
 
 @pulumi.input_type
 class DomainCertInfoArgs:
@@ -146,18 +141,15 @@ class DomainCertInfoArgs:
         pulumi.set(self, "ssl_pub", value)
 
 
-if not MYPY:
-    class DomainConfigFunctionArgArgsDict(TypedDict):
-        arg_name: pulumi.Input[_builtins.str]
-        """
-        The name of arg.
-        """
-        arg_value: pulumi.Input[_builtins.str]
-        """
-        The value of arg.
-        """
-elif False:
-    DomainConfigFunctionArgArgsDict: TypeAlias = Mapping[str, Any]
+class DomainConfigFunctionArgArgsDict(TypedDict):
+    arg_name: pulumi.Input[_builtins.str]
+    """
+    The name of arg.
+    """
+    arg_value: pulumi.Input[_builtins.str]
+    """
+    The value of arg.
+    """
 
 @pulumi.input_type
 class DomainConfigFunctionArgArgs:
@@ -196,33 +188,30 @@ class DomainConfigFunctionArgArgs:
         pulumi.set(self, "arg_value", value)
 
 
-if not MYPY:
-    class DomainSourceArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        The Back-to-Source Address.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port.
-        """
-        priority: pulumi.Input[_builtins.str]
-        """
-        Priority.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The Origin Server Type. Valid Values: 
-        * ipaddr: IP Source Station
-        * domain: the Domain Name
-        * oss: OSS Bucket as a Source Station.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The source status. Valid values: online, offline.
-        """
-elif False:
-    DomainSourceArgsDict: TypeAlias = Mapping[str, Any]
+class DomainSourceArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The Back-to-Source Address.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port.
+    """
+    priority: pulumi.Input[_builtins.str]
+    """
+    Priority.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The Origin Server Type. Valid Values: 
+    * ipaddr: IP Source Station
+    * domain: the Domain Name
+    * oss: OSS Bucket as a Source Station.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source status. Valid values: online, offline.
+    """
 
 @pulumi.input_type
 class DomainSourceArgs:

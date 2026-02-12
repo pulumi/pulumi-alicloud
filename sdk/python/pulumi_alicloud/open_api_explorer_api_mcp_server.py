@@ -62,6 +62,7 @@ class OpenApiExplorerApiMcpServerArgs:
                - off: disables public network access;
                - follow: inherits the account-level configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] system_tools: Enabled system services.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]] terraform_tools: A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_whitelists: When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
         """
         pulumi.set(__self__, "apis", apis)
@@ -276,6 +277,9 @@ class OpenApiExplorerApiMcpServerArgs:
     @_builtins.property
     @pulumi.getter(name="terraformTools")
     def terraform_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]:
+        """
+        A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
+        """
         return pulumi.get(self, "terraform_tools")
 
     @terraform_tools.setter
@@ -341,6 +345,7 @@ class _OpenApiExplorerApiMcpServerState:
                - off: disables public network access;
                - follow: inherits the account-level configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] system_tools: Enabled system services.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]] terraform_tools: A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_whitelists: When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
         """
         if additional_api_descriptions is not None:
@@ -570,6 +575,9 @@ class _OpenApiExplorerApiMcpServerState:
     @_builtins.property
     @pulumi.getter(name="terraformTools")
     def terraform_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]:
+        """
+        A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
+        """
         return pulumi.get(self, "terraform_tools")
 
     @terraform_tools.setter
@@ -862,6 +870,7 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
                - off: disables public network access;
                - follow: inherits the account-level configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] system_tools: Enabled system services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]] terraform_tools: A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_whitelists: When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
         """
         ...
@@ -1212,6 +1221,7 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
                - off: disables public network access;
                - follow: inherits the account-level configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] system_tools: Enabled system services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]] terraform_tools: A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_whitelists: When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1369,6 +1379,9 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="terraformTools")
     def terraform_tools(self) -> pulumi.Output[Optional[Sequence['outputs.OpenApiExplorerApiMcpServerTerraformTool']]]:
+        """
+        A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
+        """
         return pulumi.get(self, "terraform_tools")
 
     @_builtins.property

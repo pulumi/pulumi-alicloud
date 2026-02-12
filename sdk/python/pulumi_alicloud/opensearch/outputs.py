@@ -210,6 +210,7 @@ class GetAppGroupsGroupResult(dict):
         :param _builtins.str expire_on: Expiration Time.
         :param _builtins.int first_rank_algo_deployment_id: Coarse deployment ID.
         :param _builtins.int has_pending_quota_review_task: Whether the quota status is under approval. Valid status:
+        :param _builtins.str id: The resource ID in terraform of App Group. It is the same as `app_group_name`.
         :param _builtins.str instance_id: The Instance ID.
         :param _builtins.str lock_mode: Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
         :param _builtins.int locked_by_expiration: Instance is automatically locked after expiration.
@@ -343,6 +344,9 @@ class GetAppGroupsGroupResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The resource ID in terraform of App Group. It is the same as `app_group_name`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -33,20 +33,15 @@ __all__ = [
     'SolutionInstanceParameterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable Snapshot replication.
-        """
-        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict']]]]
-        """
-        Destination region for Snapshot replication. See `regions` below.
-        """
-elif False:
-    EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable Snapshot replication.
+    """
+    regions: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict']]]]
+    """
+    Destination region for Snapshot replication. See `regions` below.
+    """
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs:
@@ -87,18 +82,15 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs:
         pulumi.set(self, "regions", value)
 
 
-if not MYPY:
-    class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict(TypedDict):
-        region_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Destination region ID.
-        """
-        retain_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of days of snapshot retention for replication.
-        """
-elif False:
-    EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict(TypedDict):
+    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Destination region ID.
+    """
+    retain_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of days of snapshot retention for replication.
+    """
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
@@ -139,22 +131,19 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
         pulumi.set(self, "retain_days", value)
 
 
-if not MYPY:
-    class EnterpriseSnapshotPolicyRetainRuleArgsDict(TypedDict):
-        number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Retention based on counting method.
-        """
-        time_interval: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time unit.
-        """
-        time_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time-based retention.
-        """
-elif False:
-    EnterpriseSnapshotPolicyRetainRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicyRetainRuleArgsDict(TypedDict):
+    number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Retention based on counting method.
+    """
+    time_interval: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Time unit.
+    """
+    time_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Time-based retention.
+    """
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyRetainRuleArgs:
@@ -211,14 +200,11 @@ class EnterpriseSnapshotPolicyRetainRuleArgs:
         pulumi.set(self, "time_unit", value)
 
 
-if not MYPY:
-    class EnterpriseSnapshotPolicyScheduleArgsDict(TypedDict):
-        cron_expression: pulumi.Input[_builtins.str]
-        """
-        CronTab expression.
-        """
-elif False:
-    EnterpriseSnapshotPolicyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicyScheduleArgsDict(TypedDict):
+    cron_expression: pulumi.Input[_builtins.str]
+    """
+    CronTab expression.
+    """
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyScheduleArgs:
@@ -242,20 +228,17 @@ class EnterpriseSnapshotPolicyScheduleArgs:
         pulumi.set(self, "cron_expression", value)
 
 
-if not MYPY:
-    class EnterpriseSnapshotPolicySpecialRetainRulesArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether special reservations are enabled. Value range:
-        - true
-        - false.
-        """
-        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict']]]]
-        """
-        List of special retention rules. See `rules` below.
-        """
-elif False:
-    EnterpriseSnapshotPolicySpecialRetainRulesArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicySpecialRetainRulesArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether special reservations are enabled. Value range:
+    - true
+    - false.
+    """
+    rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict']]]]
+    """
+    List of special retention rules. See `rules` below.
+    """
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
@@ -300,19 +283,16 @@ class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
         pulumi.set(self, "rules", value)
 
 
-if not MYPY:
-    class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict(TypedDict):
-        special_period_unit: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-        - WEEKS
-        - MONTHS
-        - YEARS.
-        """
-        time_interval: NotRequired[pulumi.Input[_builtins.int]]
-        time_unit: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict(TypedDict):
+    special_period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+    - WEEKS
+    - MONTHS
+    - YEARS.
+    """
+    time_interval: NotRequired[pulumi.Input[_builtins.int]]
+    time_unit: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
@@ -367,14 +347,11 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
         pulumi.set(self, "time_unit", value)
 
 
-if not MYPY:
-    class EnterpriseSnapshotPolicyStorageRuleArgsDict(TypedDict):
-        enable_immediate_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Snapshot speed available.
-        """
-elif False:
-    EnterpriseSnapshotPolicyStorageRuleArgsDict: TypeAlias = Mapping[str, Any]
+class EnterpriseSnapshotPolicyStorageRuleArgsDict(TypedDict):
+    enable_immediate_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Snapshot speed available.
+    """
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyStorageRuleArgs:
@@ -399,18 +376,15 @@ class EnterpriseSnapshotPolicyStorageRuleArgs:
         pulumi.set(self, "enable_immediate_access", value)
 
 
-if not MYPY:
-    class SolutionInstanceParameterArgsDict(TypedDict):
-        parameter_key: pulumi.Input[_builtins.str]
-        """
-        Create parameter Key.
-        """
-        parameter_value: pulumi.Input[_builtins.str]
-        """
-        Create parameter Value.
-        """
-elif False:
-    SolutionInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
+class SolutionInstanceParameterArgsDict(TypedDict):
+    parameter_key: pulumi.Input[_builtins.str]
+    """
+    Create parameter Key.
+    """
+    parameter_value: pulumi.Input[_builtins.str]
+    """
+    Create parameter Value.
+    """
 
 @pulumi.input_type
 class SolutionInstanceParameterArgs:

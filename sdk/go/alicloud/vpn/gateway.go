@@ -12,6 +12,102 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a VPN gateway resource.
+//
+// > **NOTE:** Terraform will auto build vpn instance  while it uses `vpn.Gateway` to build a vpn resource.
+//
+// > Currently International-Site account can open `PostPaid` VPN gateway and China-Site account can open `PrePaid` VPN gateway.
+//
+// For information about VPN gateway and how to use it, see [What is VPN gateway](https://www.alibabacloud.com/help/en/doc-detail/120365.html).
+//
+// > **NOTE:** Available since v1.13.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// [IPsec-VPN connections support the dual-tunnel mode](https://www.alibabacloud.com/help/en/vpn/product-overview/ipsec-vpn-connections-support-the-dual-tunnel-mode)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			spec := "20"
+//			if param := cfg.Get("spec"); param != "" {
+//				spec = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//				CidrBlock: pulumi.StringRef("172.16.0.0/16"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default0, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[1]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
+//				VpnType:                   pulumi.String("Normal"),
+//				VpnGatewayName:            pulumi.String(name),
+//				VswitchId:                 pulumi.String(default0.Ids[0]),
+//				DisasterRecoveryVswitchId: pulumi.String(default1.Ids[0]),
+//				AutoPay:                   pulumi.Bool(true),
+//				VpcId:                     pulumi.String(defaultGetNetworks.Ids[0]),
+//				NetworkType:               pulumi.String("public"),
+//				PaymentType:               pulumi.String("Subscription"),
+//				EnableIpsec:               pulumi.Bool(true),
+//				Bandwidth:                 pulumi.String(spec),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `vpn.Gateway` or removing it from your configuration
+//
+// The `vpn.Gateway` resource allows you to manage  `paymentType = "Subscription"`  instance, but Terraform cannot destroy it.
+// Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+// You can resume managing the subscription instance via the AlibabaCloud Console.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // VPN gateway can be imported using the id, e.g.

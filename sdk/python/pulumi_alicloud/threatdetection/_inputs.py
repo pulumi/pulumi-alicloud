@@ -33,24 +33,19 @@ __all__ = [
     'SasTrailServiceTrailArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AntiBruteForceRuleProtocolTypeArgsDict(TypedDict):
-        rdp: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
-        """
-        sql_server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
-        """
-        ssh: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
-        """
-elif False:
-    AntiBruteForceRuleProtocolTypeArgsDict: TypeAlias = Mapping[str, Any]
+class AntiBruteForceRuleProtocolTypeArgsDict(TypedDict):
+    rdp: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+    """
+    sql_server: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+    """
+    ssh: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+    """
 
 @pulumi.input_type
 class AntiBruteForceRuleProtocolTypeArgs:
@@ -107,30 +102,27 @@ class AntiBruteForceRuleProtocolTypeArgs:
         pulumi.set(self, "ssh", value)
 
 
-if not MYPY:
-    class AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict(TypedDict):
-        asset_sub_type: pulumi.Input[_builtins.int]
-        """
-        Cloud product asset subtype.
-        """
-        asset_type: pulumi.Input[_builtins.int]
-        """
-        The asset type of the cloud product asset.
-        """
-        instance_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the cloud product instance.
-        """
-        region_id: pulumi.Input[_builtins.str]
-        """
-        The region ID of the cloud product.
-        """
-        vendor: pulumi.Input[_builtins.int]
-        """
-        Cloud product asset vendor. Valid values: `0`.
-        """
-elif False:
-    AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict: TypeAlias = Mapping[str, Any]
+class AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict(TypedDict):
+    asset_sub_type: pulumi.Input[_builtins.int]
+    """
+    Cloud product asset subtype.
+    """
+    asset_type: pulumi.Input[_builtins.int]
+    """
+    The asset type of the cloud product asset.
+    """
+    instance_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the cloud product instance.
+    """
+    region_id: pulumi.Input[_builtins.str]
+    """
+    The region ID of the cloud product.
+    """
+    vendor: pulumi.Input[_builtins.int]
+    """
+    Cloud product asset vendor. Valid values: `0`.
+    """
 
 @pulumi.input_type
 class AttackPathSensitiveAssetConfigAttackPathAssetListArgs:
@@ -214,18 +206,15 @@ class AttackPathSensitiveAssetConfigAttackPathAssetListArgs:
         pulumi.set(self, "vendor", value)
 
 
-if not MYPY:
-    class CheckConfigSelectedCheckArgsDict(TypedDict):
-        check_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the check item.
-        """
-        section_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The section ID of the check item.
-        """
-elif False:
-    CheckConfigSelectedCheckArgsDict: TypeAlias = Mapping[str, Any]
+class CheckConfigSelectedCheckArgsDict(TypedDict):
+    check_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the check item.
+    """
+    section_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The section ID of the check item.
+    """
 
 @pulumi.input_type
 class CheckConfigSelectedCheckArgs:
@@ -266,22 +255,19 @@ class CheckConfigSelectedCheckArgs:
         pulumi.set(self, "section_id", value)
 
 
-if not MYPY:
-    class HoneypotPresetMetaArgsDict(TypedDict):
-        burp: pulumi.Input[_builtins.str]
-        """
-        Burp counter.
-        """
-        portrait_option: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Social traceability.
-        """
-        trojan_git: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Git countered.
-        """
-elif False:
-    HoneypotPresetMetaArgsDict: TypeAlias = Mapping[str, Any]
+class HoneypotPresetMetaArgsDict(TypedDict):
+    burp: pulumi.Input[_builtins.str]
+    """
+    Burp counter.
+    """
+    portrait_option: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Social traceability.
+    """
+    trojan_git: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Git countered.
+    """
 
 @pulumi.input_type
 class HoneypotPresetMetaArgs:
@@ -337,18 +323,15 @@ class HoneypotPresetMetaArgs:
         pulumi.set(self, "trojan_git", value)
 
 
-if not MYPY:
-    class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
-        bind_port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgsDict']]]]
-        """
-        List of listening ports.See the following `Block BindPortList`.
-        """
-        honeypot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Honeypot ID.
-        """
-elif False:
-    HoneypotProbeHoneypotBindListArgsDict: TypeAlias = Mapping[str, Any]
+class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
+    bind_port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgsDict']]]]
+    """
+    List of listening ports.See the following `Block BindPortList`.
+    """
+    honeypot_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Honeypot ID.
+    """
 
 @pulumi.input_type
 class HoneypotProbeHoneypotBindListArgs:
@@ -389,30 +372,27 @@ class HoneypotProbeHoneypotBindListArgs:
         pulumi.set(self, "honeypot_id", value)
 
 
-if not MYPY:
-    class HoneypotProbeHoneypotBindListBindPortListArgsDict(TypedDict):
-        bind_port: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to bind the port.
-        """
-        end_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        End port.
-        """
-        fixed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the port is fixed.
-        """
-        start_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Start port.
-        """
-        target_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Destination port.
-        """
-elif False:
-    HoneypotProbeHoneypotBindListBindPortListArgsDict: TypeAlias = Mapping[str, Any]
+class HoneypotProbeHoneypotBindListBindPortListArgsDict(TypedDict):
+    bind_port: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to bind the port.
+    """
+    end_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    End port.
+    """
+    fixed: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the port is fixed.
+    """
+    start_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Start port.
+    """
+    target_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Destination port.
+    """
 
 @pulumi.input_type
 class HoneypotProbeHoneypotBindListBindPortListArgs:
@@ -501,58 +481,55 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
         pulumi.set(self, "target_port", value)
 
 
-if not MYPY:
-    class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
-        agentless: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Agentless Detection Module. Valid values:
-        """
-        anti_ransomware: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Anti-Ransomware Module. Valid values:
-        """
-        basic_service: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Basic service module. Valid values:
-        """
-        cspm: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Cloud Security Configuration Check Module. Valid values:
-        """
-        ctdr: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Threat Analysis and Response Module. Valid values:
-        """
-        ctdr_storage: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Log Management Module. Valid values:
-        """
-        post_host: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Host and Container Security Module. Valid values:
-        """
-        rasp: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Application Protection Module. Valid values:
-        """
-        sdk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Malicious File Detection SDK Module. Valid values:
-        """
-        serverless: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Serverless Security Module. Valid values:
-        """
-        vul: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Vulnerability Repair Module. Valid values:
-        """
-        web_lock: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        File Tamper Protection Module. Valid values:
-        """
-elif False:
-    InstancePostPayModuleSwitchObjArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
+    agentless: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Agentless Detection Module. Valid values:
+    """
+    anti_ransomware: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Anti-Ransomware Module. Valid values:
+    """
+    basic_service: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Basic service module. Valid values:
+    """
+    cspm: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Cloud Security Configuration Check Module. Valid values:
+    """
+    ctdr: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Threat Analysis and Response Module. Valid values:
+    """
+    ctdr_storage: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Log Management Module. Valid values:
+    """
+    post_host: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Host and Container Security Module. Valid values:
+    """
+    rasp: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Application Protection Module. Valid values:
+    """
+    sdk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Malicious File Detection SDK Module. Valid values:
+    """
+    serverless: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Serverless Security Module. Valid values:
+    """
+    vul: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Vulnerability Repair Module. Valid values:
+    """
+    web_lock: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    File Tamper Protection Module. Valid values:
+    """
 
 @pulumi.input_type
 class InstancePostPayModuleSwitchObjArgs:
@@ -753,20 +730,17 @@ class InstancePostPayModuleSwitchObjArgs:
         pulumi.set(self, "web_lock", value)
 
 
-if not MYPY:
-    class SasTrailServiceTrailArgsDict(TypedDict):
-        config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Service tracking on status. The value is:
-        - **on:** Open
-        - **off:** off.
-        """
-        update_time: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The timestamp of the last service update. Unit: milliseconds.
-        """
-elif False:
-    SasTrailServiceTrailArgsDict: TypeAlias = Mapping[str, Any]
+class SasTrailServiceTrailArgsDict(TypedDict):
+    config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Service tracking on status. The value is:
+    - **on:** Open
+    - **off:** off.
+    """
+    update_time: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The timestamp of the last service update. Unit: milliseconds.
+    """
 
 @pulumi.input_type
 class SasTrailServiceTrailArgs:

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Bp.Outputs
     public sealed class StudioApplicationInstance
     {
         /// <summary>
-        /// The id of the instance.
+        /// The resource ID in terraform of Application.
         /// </summary>
         public readonly string? Id;
         /// <summary>

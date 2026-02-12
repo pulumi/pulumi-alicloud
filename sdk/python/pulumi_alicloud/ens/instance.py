@@ -1482,6 +1482,71 @@ class Instance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Ens Instance resource.
+
+        For information about ENS Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/Ens/2017-11-10/RunInstances).
+
+        > **NOTE:** Available since v1.216.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ens.Instance("default",
+            period=1,
+            data_disks=[
+                {
+                    "size": 20,
+                    "category": "cloud_efficiency",
+                },
+                {
+                    "size": 30,
+                    "category": "cloud_efficiency",
+                },
+                {
+                    "size": 40,
+                    "category": "cloud_efficiency",
+                },
+            ],
+            public_ip_identification=True,
+            period_unit="Month",
+            scheduling_strategy="Concentrate",
+            schedule_area_level="Region",
+            image_id="centos_6_08_64_20G_alibase_20171208",
+            carrier="cmcc",
+            instance_type="ens.sn1.tiny",
+            host_name="exampleHost80",
+            password="Example123456@@",
+            net_district_code="100102",
+            internet_charge_type="95BandwidthByMonth",
+            instance_name=name,
+            internet_max_bandwidth_out=100,
+            ens_region_id="cn-wuxi-telecom_unicom_cmcc-2",
+            system_disk={
+                "size": 20,
+            },
+            scheduling_price_strategy="PriceHighPriority",
+            user_data="IyEvYmluL3NoCmVjaG8gIkhlbGxvIFdvcmxkLiAgVGhlIHRpbWUgaXMgbm93ICQoZGF0ZSAtUikhIiB8IHRlZSAvcm9vdC9vdXRwdXQudHh0",
+            instance_charge_strategy="user",
+            payment_type="Subscription")
+        ```
+
+        ### Deleting `ens.Instance` or removing it from your configuration
+
+        The `ens.Instance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ens Instance can be imported using the id, e.g.
@@ -1578,6 +1643,71 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Ens Instance resource.
+
+        For information about ENS Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/Ens/2017-11-10/RunInstances).
+
+        > **NOTE:** Available since v1.216.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ens.Instance("default",
+            period=1,
+            data_disks=[
+                {
+                    "size": 20,
+                    "category": "cloud_efficiency",
+                },
+                {
+                    "size": 30,
+                    "category": "cloud_efficiency",
+                },
+                {
+                    "size": 40,
+                    "category": "cloud_efficiency",
+                },
+            ],
+            public_ip_identification=True,
+            period_unit="Month",
+            scheduling_strategy="Concentrate",
+            schedule_area_level="Region",
+            image_id="centos_6_08_64_20G_alibase_20171208",
+            carrier="cmcc",
+            instance_type="ens.sn1.tiny",
+            host_name="exampleHost80",
+            password="Example123456@@",
+            net_district_code="100102",
+            internet_charge_type="95BandwidthByMonth",
+            instance_name=name,
+            internet_max_bandwidth_out=100,
+            ens_region_id="cn-wuxi-telecom_unicom_cmcc-2",
+            system_disk={
+                "size": 20,
+            },
+            scheduling_price_strategy="PriceHighPriority",
+            user_data="IyEvYmluL3NoCmVjaG8gIkhlbGxvIFdvcmxkLiAgVGhlIHRpbWUgaXMgbm93ICQoZGF0ZSAtUikhIiB8IHRlZSAvcm9vdC9vdXRwdXQudHh0",
+            instance_charge_strategy="user",
+            payment_type="Subscription")
+        ```
+
+        ### Deleting `ens.Instance` or removing it from your configuration
+
+        The `ens.Instance` resource allows you to manage  `payment_type = "Subscription"`  instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+        You can resume managing the subscription instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ens Instance can be imported using the id, e.g.

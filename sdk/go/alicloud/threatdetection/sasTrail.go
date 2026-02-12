@@ -56,7 +56,7 @@ import (
 // Threat Detection Sas Trail can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
+// $ terraform import alicloud_threat_detection_sas_trail.example
 // ```
 type SasTrail struct {
 	pulumi.CustomResourceState

@@ -21,6 +21,93 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Ens Instance resource.
+ * 
+ * For information about ENS Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/Ens/2017-11-10/RunInstances).
+ * 
+ * &gt; **NOTE:** Available since v1.216.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ens.Instance;
+ * import com.pulumi.alicloud.ens.InstanceArgs;
+ * import com.pulumi.alicloud.ens.inputs.InstanceDataDiskArgs;
+ * import com.pulumi.alicloud.ens.inputs.InstanceSystemDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .period(1)
+ *             .dataDisks(            
+ *                 InstanceDataDiskArgs.builder()
+ *                     .size(20)
+ *                     .category("cloud_efficiency")
+ *                     .build(),
+ *                 InstanceDataDiskArgs.builder()
+ *                     .size(30)
+ *                     .category("cloud_efficiency")
+ *                     .build(),
+ *                 InstanceDataDiskArgs.builder()
+ *                     .size(40)
+ *                     .category("cloud_efficiency")
+ *                     .build())
+ *             .publicIpIdentification(true)
+ *             .periodUnit("Month")
+ *             .schedulingStrategy("Concentrate")
+ *             .scheduleAreaLevel("Region")
+ *             .imageId("centos_6_08_64_20G_alibase_20171208")
+ *             .carrier("cmcc")
+ *             .instanceType("ens.sn1.tiny")
+ *             .hostName("exampleHost80")
+ *             .password("Example123456}{@literal @@}{@code ")
+ *             .netDistrictCode("100102")
+ *             .internetChargeType("95BandwidthByMonth")
+ *             .instanceName(name)
+ *             .internetMaxBandwidthOut(100)
+ *             .ensRegionId("cn-wuxi-telecom_unicom_cmcc-2")
+ *             .systemDisk(InstanceSystemDiskArgs.builder()
+ *                 .size(20)
+ *                 .build())
+ *             .schedulingPriceStrategy("PriceHighPriority")
+ *             .userData("IyEvYmluL3NoCmVjaG8gIkhlbGxvIFdvcmxkLiAgVGhlIHRpbWUgaXMgbm93ICQoZGF0ZSAtUikhIiB8IHRlZSAvcm9vdC9vdXRwdXQudHh0")
+ *             .instanceChargeStrategy("user")
+ *             .paymentType("Subscription")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Deleting `alicloud.ens.Instance` or removing it from your configuration
+ * 
+ * The `alicloud.ens.Instance` resource allows you to manage  `paymentType = &#34;Subscription&#34;`  instance, but Terraform cannot destroy it.
+ * Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the Instance.
+ * You can resume managing the subscription instance via the AlibabaCloud Console.
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Ens Instance can be imported using the id, e.g.
