@@ -27,6 +27,7 @@ class Ipv6GatewayArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ipv6Gateway resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
         :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
@@ -140,6 +141,7 @@ class _Ipv6GatewayState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6Gateway resources.
+
         :param pulumi.Input[_builtins.str] business_status: The status of the IPv6 gateway.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
@@ -385,6 +387,7 @@ class Ipv6Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
@@ -444,6 +447,7 @@ class Ipv6Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ipv6GatewayArgs args: The arguments to use to populate this resource's properties.

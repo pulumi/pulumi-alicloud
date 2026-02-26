@@ -36,6 +36,7 @@ class HealthCheckTemplateArgs:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HealthCheckTemplate resource.
+
         :param pulumi.Input[_builtins.str] health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
                true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
@@ -295,6 +296,7 @@ class _HealthCheckTemplateState:
                  unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HealthCheckTemplate resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
                true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
                false (default): Sends a normal request, returns the http_2xx status code after the check, and directly performs the operation.
@@ -591,6 +593,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:alb/healthCheckTemplate:HealthCheckTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
@@ -654,6 +657,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/healthCheckTemplate:HealthCheckTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HealthCheckTemplateArgs args: The arguments to use to populate this resource's properties.

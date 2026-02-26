@@ -25,6 +25,7 @@ class NetworkAclAttachmentArgs:
                  resources: pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]):
         """
         The set of arguments for constructing a NetworkAclAttachment resource.
+
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
@@ -63,6 +64,7 @@ class _NetworkAclAttachmentState:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering NetworkAclAttachment resources.
+
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
@@ -149,6 +151,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
@@ -203,6 +206,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAclAttachmentArgs args: The arguments to use to populate this resource's properties.

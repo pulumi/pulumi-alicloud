@@ -23,6 +23,7 @@ class NetworkAttachmentArgs:
                  sag_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a NetworkAttachment resource.
+
         :param pulumi.Input[_builtins.str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[_builtins.str] sag_id: The ID of the Smart Access Gateway instance.
         """
@@ -61,6 +62,7 @@ class _NetworkAttachmentState:
                  sag_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAttachment resources.
+
         :param pulumi.Input[_builtins.str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[_builtins.str] sag_id: The ID of the Smart Access Gateway instance.
         """
@@ -147,6 +149,7 @@ class NetworkAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ccn_id: The ID of the CCN instance.
@@ -201,6 +204,7 @@ class NetworkAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class V3TriggerArgs:
                  trigger_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3Trigger resource.
+
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.str] qualifier: The version or alias of the function
         :param pulumi.Input[_builtins.str] trigger_type: The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
@@ -170,6 +171,7 @@ class _V3TriggerState:
                  trigger_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3Trigger resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time
         :param pulumi.Input[_builtins.str] description: Description of the trigger
         :param pulumi.Input[_builtins.str] function_name: Function Name
@@ -516,6 +518,7 @@ class V3Trigger(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3Trigger:V3Trigger example <function_name>:<trigger_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the trigger
@@ -650,6 +653,7 @@ class V3Trigger(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3Trigger:V3Trigger example <function_name>:<trigger_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3TriggerArgs args: The arguments to use to populate this resource's properties.

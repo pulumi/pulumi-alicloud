@@ -25,6 +25,7 @@ class ConfigArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Config resource.
+
         :param pulumi.Input[_builtins.str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
         :param pulumi.Input[_builtins.str] description: Abnormal Alarm General Description of the Configuration Item.
         :param pulumi.Input[_builtins.str] lang: The language of the request and response. Valid values: `zh`,`en`.
@@ -97,6 +98,7 @@ class _ConfigState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Config resources.
+
         :param pulumi.Input[_builtins.str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
         :param pulumi.Input[_builtins.str] description: Abnormal Alarm General Description of the Configuration Item.
         :param pulumi.Input[_builtins.str] lang: The language of the request and response. Valid values: `zh`,`en`.
@@ -201,6 +203,7 @@ class Config(pulumi.CustomResource):
         $ pulumi import alicloud:sddp/config:Config example <code>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
@@ -243,6 +246,7 @@ class Config(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sddp/config:Config example <code>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigArgs args: The arguments to use to populate this resource's properties.

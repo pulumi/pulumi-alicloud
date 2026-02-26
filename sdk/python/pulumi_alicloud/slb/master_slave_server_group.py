@@ -27,6 +27,7 @@ class MasterSlaveServerGroupArgs:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None):
         """
         The set of arguments for constructing a MasterSlaveServerGroup resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] name: Name of the master slave server group.
@@ -98,6 +99,7 @@ class _MasterSlaveServerGroupState:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None):
         """
         Input properties used for looking up and filtering MasterSlaveServerGroup resources.
+
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[_builtins.str] name: Name of the master slave server group.
@@ -288,6 +290,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -416,6 +419,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MasterSlaveServerGroupArgs args: The arguments to use to populate this resource's properties.

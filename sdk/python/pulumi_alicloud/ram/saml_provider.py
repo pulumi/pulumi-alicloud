@@ -24,6 +24,7 @@ class SamlProviderArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SamlProvider resource.
+
         :param pulumi.Input[_builtins.str] encodedsaml_metadata_document: The metadata file which is Base64-encoded.
                The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         :param pulumi.Input[_builtins.str] saml_provider_name: The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
@@ -82,6 +83,7 @@ class _SamlProviderState:
                  update_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SamlProvider resources.
+
         :param pulumi.Input[_builtins.str] arn: The identity provider's ARN.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[_builtins.str] encodedsaml_metadata_document: The metadata file which is Base64-encoded.
@@ -203,6 +205,7 @@ class SamlProvider(pulumi.CustomResource):
         $ pulumi import alicloud:ram/samlProvider:SamlProvider example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description.
@@ -246,6 +249,7 @@ class SamlProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/samlProvider:SamlProvider example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SamlProviderArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class TemplateArgs:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Template resource.
+
         :param pulumi.Input[_builtins.str] content: The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         :param pulumi.Input[_builtins.str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
         :param pulumi.Input[_builtins.bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
@@ -140,6 +141,7 @@ class _TemplateState:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Template resources.
+
         :param pulumi.Input[_builtins.bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
         :param pulumi.Input[_builtins.str] content: The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         :param pulumi.Input[_builtins.str] created_by: The creator of the template.
@@ -468,6 +470,7 @@ class Template(pulumi.CustomResource):
         $ pulumi import alicloud:oos/template:Template example template_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
@@ -539,6 +542,7 @@ class Template(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/template:Template example template_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateArgs args: The arguments to use to populate this resource's properties.

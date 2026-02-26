@@ -28,6 +28,7 @@ class BasicDefenseThresholdArgs:
                  pps: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BasicDefenseThreshold resource.
+
         :param pulumi.Input[_builtins.str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
@@ -147,6 +148,7 @@ class _BasicDefenseThresholdState:
                  pps: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BasicDefenseThreshold resources.
+
         :param pulumi.Input[_builtins.int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[_builtins.str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -341,6 +343,7 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -398,6 +401,7 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold example <instance_id>:<instance_type>:<ddos_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicDefenseThresholdArgs args: The arguments to use to populate this resource's properties.

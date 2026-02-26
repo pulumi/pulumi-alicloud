@@ -28,6 +28,7 @@ class RatePlanInstanceArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RatePlanInstance resource.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -173,6 +174,7 @@ class _RatePlanInstanceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RatePlanInstance resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -401,6 +403,7 @@ class RatePlanInstance(pulumi.CustomResource):
         $ pulumi import alicloud:esa/ratePlanInstance:RatePlanInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
@@ -466,6 +469,7 @@ class RatePlanInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/ratePlanInstance:RatePlanInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RatePlanInstanceArgs args: The arguments to use to populate this resource's properties.

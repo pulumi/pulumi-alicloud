@@ -28,6 +28,7 @@ class HostAccountArgs:
                  private_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostAccount resource.
+
         :param pulumi.Input[_builtins.str] host_account_name: The name of the host account. The name can be up to 128 characters in length.
         :param pulumi.Input[_builtins.str] host_id: The ID of the host for which you want to create an account.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastionhost instance where you want to create an account for the host.
@@ -145,6 +146,7 @@ class _HostAccountState:
                  protocol_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostAccount resources.
+
         :param pulumi.Input[_builtins.str] host_account_id: Hosting account ID.
         :param pulumi.Input[_builtins.str] host_account_name: The name of the host account. The name can be up to 128 characters in length.
         :param pulumi.Input[_builtins.str] host_id: The ID of the host for which you want to create an account.
@@ -342,6 +344,7 @@ class HostAccount(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/hostAccount:HostAccount example <instance_id>:<host_account_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] host_account_name: The name of the host account. The name can be up to 128 characters in length.
@@ -417,6 +420,7 @@ class HostAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/hostAccount:HostAccount example <instance_id>:<host_account_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostAccountArgs args: The arguments to use to populate this resource's properties.

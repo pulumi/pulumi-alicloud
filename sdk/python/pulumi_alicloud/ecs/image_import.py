@@ -31,6 +31,7 @@ class ImageImportArgs:
                  platform: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageImport resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]] disk_device_mappings: The information about the custom image. See `disk_device_mapping` below.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
@@ -168,6 +169,7 @@ class _ImageImportState:
                  platform: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageImport resources.
+
         :param pulumi.Input[_builtins.str] architecture: The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         :param pulumi.Input[_builtins.str] description: The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -368,6 +370,7 @@ class ImageImport(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/imageImport:ImageImport example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
@@ -445,6 +448,7 @@ class ImageImport(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/imageImport:ImageImport example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageImportArgs args: The arguments to use to populate this resource's properties.

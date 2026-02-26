@@ -27,6 +27,7 @@ class DomainConfigArgs:
                  parent_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DomainConfig resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
@@ -98,6 +99,7 @@ class _DomainConfigState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainConfig resources.
+
         :param pulumi.Input[_builtins.str] config_id: (Available since v1.132.0) The ID of the domain config function.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below.
@@ -258,6 +260,7 @@ class DomainConfig(pulumi.CustomResource):
         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -326,6 +329,7 @@ class DomainConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example <domain_name>:<function_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainConfigArgs args: The arguments to use to populate this resource's properties.

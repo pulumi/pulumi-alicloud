@@ -39,6 +39,7 @@ class OpenApiExplorerApiMcpServerArgs:
                  vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OpenApiExplorerApiMcpServer resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]] apis: The list of APIs to be included in the API MCP Server. See `apis` below.
         :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]] additional_api_descriptions: Additional OpenAPI description information that can override the default behavior of APIs, including:
                - API name
@@ -321,6 +322,7 @@ class _OpenApiExplorerApiMcpServerState:
                  vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OpenApiExplorerApiMcpServer resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]] additional_api_descriptions: Additional OpenAPI description information that can override the default behavior of APIs, including:
                - API name
                - Modification or removal of API parameter names
@@ -845,6 +847,7 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
         $ pulumi import alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]] additional_api_descriptions: Additional OpenAPI description information that can override the default behavior of APIs, including:
@@ -1103,6 +1106,7 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OpenApiExplorerApiMcpServerArgs args: The arguments to use to populate this resource's properties.

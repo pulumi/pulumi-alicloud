@@ -23,6 +23,7 @@ class DomainArgs:
                  domain: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[_builtins.str] domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         """
@@ -62,6 +63,7 @@ class _DomainState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[_builtins.str] domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         :param pulumi.Input[_builtins.str] status: The status of the resource
@@ -153,6 +155,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
@@ -197,6 +200,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/domain:Domain example <accelerator_id>:<domain>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

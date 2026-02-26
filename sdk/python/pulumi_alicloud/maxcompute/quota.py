@@ -28,6 +28,7 @@ class QuotaArgs:
                  sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]] = None):
         """
         The set of arguments for constructing a Quota resource.
+
         :param pulumi.Input[_builtins.str] commodity_code: Valid values: odps_intl/odpsplus_intl/odps/odpsplus
                - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
@@ -138,6 +139,7 @@ class _QuotaState:
                  sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
+
         :param pulumi.Input[_builtins.str] commodity_code: Valid values: odps_intl/odpsplus_intl/odps/odpsplus
                - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
         :param pulumi.Input[_builtins.str] commodity_data: Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
@@ -342,6 +344,7 @@ class Quota(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/quota:Quota example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] commodity_code: Valid values: odps_intl/odpsplus_intl/odps/odpsplus
@@ -457,6 +460,7 @@ class Quota(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/quota:Quota example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaArgs args: The arguments to use to populate this resource's properties.

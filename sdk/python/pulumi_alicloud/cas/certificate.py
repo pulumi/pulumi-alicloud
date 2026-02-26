@@ -32,6 +32,7 @@ class CertificateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -192,6 +193,7 @@ class _CertificateState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[_builtins.str] name: Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -443,6 +445,7 @@ class Certificate(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
@@ -538,6 +541,7 @@ class Certificate(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

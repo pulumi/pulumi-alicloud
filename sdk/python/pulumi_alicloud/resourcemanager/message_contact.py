@@ -26,6 +26,7 @@ class MessageContactArgs:
                  phone_number: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MessageContact resource.
+
         :param pulumi.Input[_builtins.str] email_address: The email address of the contact.
                After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.
         :param pulumi.Input[_builtins.str] message_contact_name: The name of the contact.
@@ -142,6 +143,7 @@ class _MessageContactState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MessageContact resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the contact was created.
         :param pulumi.Input[_builtins.str] email_address: The email address of the contact.
                After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.
@@ -331,6 +333,7 @@ class MessageContact(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/messageContact:MessageContact example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email_address: The email address of the contact.
@@ -398,6 +401,7 @@ class MessageContact(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/messageContact:MessageContact example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MessageContactArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class EcsBackupClientArgs:
                  use_https: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsBackupClient resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
         :param pulumi.Input[_builtins.str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         :param pulumi.Input[_builtins.str] data_proxy_setting: The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
@@ -215,6 +216,7 @@ class _EcsBackupClientState:
                  use_https: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EcsBackupClient resources.
+
         :param pulumi.Input[_builtins.str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         :param pulumi.Input[_builtins.str] data_proxy_setting: The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
@@ -474,6 +476,7 @@ class EcsBackupClient(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/ecsBackupClient:EcsBackupClient example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_network_type: The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
@@ -566,6 +569,7 @@ class EcsBackupClient(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/ecsBackupClient:EcsBackupClient example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsBackupClientArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class AggregateDeliveryArgs:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AggregateDelivery resource.
+
         :param pulumi.Input[_builtins.str] aggregator_id: Aggregator ID.
         :param pulumi.Input[_builtins.str] delivery_channel_target_arn: The ARN of the delivery destination.  
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
@@ -262,6 +263,7 @@ class _AggregateDeliveryState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AggregateDelivery resources.
+
         :param pulumi.Input[_builtins.str] aggregator_id: Aggregator ID.
         :param pulumi.Input[_builtins.bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
                - true: The specified destination receives resource change logs.
@@ -580,6 +582,7 @@ class AggregateDelivery(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregator_id: Aggregator ID.
@@ -692,6 +695,7 @@ class AggregateDelivery(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/aggregateDelivery:AggregateDelivery example <aggregator_id>:<delivery_channel_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AggregateDeliveryArgs args: The arguments to use to populate this resource's properties.

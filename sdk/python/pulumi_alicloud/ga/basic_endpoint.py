@@ -29,6 +29,7 @@ class BasicEndpointArgs:
                  endpoint_zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BasicEndpoint resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[_builtins.str] endpoint_address: The address of the Basic Endpoint.
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the Basic Endpoint Group.
@@ -163,6 +164,7 @@ class _BasicEndpointState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicEndpoint resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[_builtins.str] basic_endpoint_name: The name of the Basic Endpoint.
         :param pulumi.Input[_builtins.str] endpoint_address: The address of the Basic Endpoint.
@@ -400,6 +402,7 @@ class BasicEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
@@ -485,6 +488,7 @@ class BasicEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/basicEndpoint:BasicEndpoint example <endpoint_group_id>:<endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicEndpointArgs args: The arguments to use to populate this resource's properties.

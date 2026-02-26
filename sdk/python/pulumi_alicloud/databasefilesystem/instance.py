@@ -40,6 +40,7 @@ class InstanceArgs:
                  used_scene: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] category: Category of database file system.
         :param pulumi.Input[_builtins.int] size: Size of database file system, unit GiB.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone to which the database file system belongs.
@@ -351,6 +352,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
         :param pulumi.Input[_builtins.str] category: Category of database file system.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
@@ -734,6 +736,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
@@ -810,6 +813,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:databasefilesystem/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

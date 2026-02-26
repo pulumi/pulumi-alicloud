@@ -38,6 +38,7 @@ class EcsBackupPlanArgs:
                  update_paths: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsBackupPlan resource.
+
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.str] ecs_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
@@ -318,6 +319,7 @@ class _EcsBackupPlanState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsBackupPlan resources.
+
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
@@ -699,6 +701,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
@@ -818,6 +821,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/ecsBackupPlan:EcsBackupPlan example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsBackupPlanArgs args: The arguments to use to populate this resource's properties.

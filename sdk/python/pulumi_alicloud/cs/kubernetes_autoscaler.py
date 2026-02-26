@@ -29,6 +29,7 @@ class KubernetesAutoscalerArgs:
                  use_ecs_ram_role_token: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a KubernetesAutoscaler resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[_builtins.str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
@@ -129,6 +130,7 @@ class _KubernetesAutoscalerState:
                  utilization: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesAutoscaler resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[_builtins.str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
@@ -325,6 +327,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
 
         > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ignore_changes` to create a  a autoscaler group, then ignore any changes to that tags and user_data caused externally (e.g. Application Autoscaling).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
@@ -429,6 +432,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         ## Ignoring Changes to tags and user_data
 
         > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ignore_changes` to create a  a autoscaler group, then ignore any changes to that tags and user_data caused externally (e.g. Application Autoscaling).
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesAutoscalerArgs args: The arguments to use to populate this resource's properties.

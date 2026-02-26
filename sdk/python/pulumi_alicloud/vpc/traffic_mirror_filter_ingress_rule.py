@@ -31,6 +31,7 @@ class TrafficMirrorFilterIngressRuleInitArgs:
                  source_port_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficMirrorFilterIngressRule resource.
+
         :param pulumi.Input[_builtins.str] destination_cidr_block: The destination CIDR block of the inbound traffic.
         :param pulumi.Input[_builtins.int] priority: The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
         :param pulumi.Input[_builtins.str] protocol: The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
@@ -208,6 +209,7 @@ class _TrafficMirrorFilterIngressRuleState:
                  traffic_mirror_filter_ingress_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficMirrorFilterIngressRule resources.
+
         :param pulumi.Input[_builtins.str] action: The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
         :param pulumi.Input[_builtins.str] destination_cidr_block: The destination CIDR block of the inbound traffic.
         :param pulumi.Input[_builtins.str] destination_port_range: The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
@@ -457,6 +459,7 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_ingress_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
@@ -516,6 +519,7 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule example <traffic_mirror_filter_id>:<traffic_mirror_filter_ingress_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficMirrorFilterIngressRuleInitArgs args: The arguments to use to populate this resource's properties.

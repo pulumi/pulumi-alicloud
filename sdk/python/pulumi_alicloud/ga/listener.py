@@ -37,6 +37,7 @@ class ListenerArgs:
                  security_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Listener resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener. See `port_ranges` below.
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
@@ -290,6 +291,7 @@ class _ListenerState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The certificates of the listener. See `certificates` below.
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
@@ -608,6 +610,7 @@ class Listener(pulumi.CustomResource):
         $ pulumi import alicloud:ga/listener:Listener example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
@@ -688,6 +691,7 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/listener:Listener example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.

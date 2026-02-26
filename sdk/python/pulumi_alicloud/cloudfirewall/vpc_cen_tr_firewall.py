@@ -33,6 +33,7 @@ class VpcCenTrFirewallArgs:
                  tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcCenTrFirewall resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] firewall_name: The name of the Cloud Firewall.
         :param pulumi.Input[_builtins.str] firewall_subnet_cidr: The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
@@ -236,6 +237,7 @@ class _VpcCenTrFirewallState:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcCenTrFirewall resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[_builtins.str] firewall_description: The description of the firewall.
         :param pulumi.Input[_builtins.str] firewall_eni_id: The ID of the firewall ENI.
@@ -626,6 +628,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <firewall_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
@@ -770,6 +773,7 @@ class VpcCenTrFirewall(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall example <firewall_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcCenTrFirewallArgs args: The arguments to use to populate this resource's properties.

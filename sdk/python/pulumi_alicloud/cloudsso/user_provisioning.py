@@ -31,6 +31,7 @@ class UserProvisioningArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserProvisioning resource.
+
         :param pulumi.Input[_builtins.str] deletion_strategy: The processing policy for users who have been synchronized when deleting synchronization
         :param pulumi.Input[_builtins.str] directory_id: The ID of the directory to which the synchronization belongs
         :param pulumi.Input[_builtins.str] duplication_strategy: Processing Policy for Synchronization Conflicts
@@ -164,6 +165,7 @@ class _UserProvisioningState:
                  user_provisioning_statistics: Optional[pulumi.Input[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]] = None):
         """
         Input properties used for looking up and filtering UserProvisioning resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the synchronization
         :param pulumi.Input[_builtins.str] deletion_strategy: The processing policy for users who have been synchronized when deleting synchronization
         :param pulumi.Input[_builtins.str] description: Description of User Synchronization
@@ -428,6 +430,7 @@ class UserProvisioning(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/userProvisioning:UserProvisioning example <directory_id>:<user_provisioning_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_strategy: The processing policy for users who have been synchronized when deleting synchronization
@@ -510,6 +513,7 @@ class UserProvisioning(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/userProvisioning:UserProvisioning example <directory_id>:<user_provisioning_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserProvisioningArgs args: The arguments to use to populate this resource's properties.

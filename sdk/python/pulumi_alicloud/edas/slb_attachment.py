@@ -27,6 +27,7 @@ class SlbAttachmentArgs:
                  vserver_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SlbAttachment resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application to which you want to bind an SLB instance.
         :param pulumi.Input[_builtins.str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[_builtins.str] slb_ip: The IP address that is allocated to the bound SLB instance.
@@ -129,6 +130,7 @@ class _SlbAttachmentState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SlbAttachment resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application to which you want to bind an SLB instance.
         :param pulumi.Input[_builtins.int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[_builtins.str] slb_id: The ID of the SLB instance that is going to be bound.
@@ -336,6 +338,7 @@ class SlbAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application to which you want to bind an SLB instance.
@@ -421,6 +424,7 @@ class SlbAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param SlbAttachmentArgs args: The arguments to use to populate this resource's properties.

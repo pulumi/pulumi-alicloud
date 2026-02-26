@@ -25,6 +25,7 @@ class VpcAccessArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcAccess resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
@@ -94,6 +95,7 @@ class _VpcAccessState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcAccess resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
         :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
@@ -237,6 +239,7 @@ class VpcAccess(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
@@ -318,6 +321,7 @@ class VpcAccess(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/vpcAccess:VpcAccess example <name>:<vpc_id>:<instance_id>:<port>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcAccessArgs args: The arguments to use to populate this resource's properties.

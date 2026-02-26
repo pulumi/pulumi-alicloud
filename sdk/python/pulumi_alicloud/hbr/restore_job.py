@@ -48,6 +48,7 @@ class RestoreJobArgs:
                  udm_detail: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestoreJob resource.
+
         :param pulumi.Input[_builtins.str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[_builtins.str] snapshot_hash: The hashcode of Snapshot.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of Snapshot.
@@ -452,6 +453,7 @@ class _RestoreJobState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestoreJob resources.
+
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
@@ -946,6 +948,7 @@ class RestoreJob(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
@@ -1048,6 +1051,7 @@ class RestoreJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RestoreJobArgs args: The arguments to use to populate this resource's properties.

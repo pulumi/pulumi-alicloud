@@ -28,6 +28,7 @@ class ImageTransformArgs:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ImageTransform resource.
+
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -152,6 +153,7 @@ class _ImageTransformState:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ImageTransform resources.
+
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -333,6 +335,7 @@ class ImageTransform(pulumi.CustomResource):
         $ pulumi import alicloud:esa/imageTransform:ImageTransform example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
@@ -390,6 +393,7 @@ class ImageTransform(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/imageTransform:ImageTransform example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageTransformArgs args: The arguments to use to populate this resource's properties.

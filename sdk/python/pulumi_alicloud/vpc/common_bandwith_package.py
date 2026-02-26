@@ -34,6 +34,7 @@ class CommonBandwithPackageArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackage resource.
+
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
                Valid values: `1` to `1000`. Default value: `1`.
         :param pulumi.Input[_builtins.str] bandwidth_package_name: The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -315,6 +316,7 @@ class _CommonBandwithPackageState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackage resources.
+
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
                Valid values: `1` to `1000`. Default value: `1`.
         :param pulumi.Input[_builtins.str] bandwidth_package_name: The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -706,6 +708,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
@@ -807,6 +810,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CommonBandwithPackageArgs args: The arguments to use to populate this resource's properties.

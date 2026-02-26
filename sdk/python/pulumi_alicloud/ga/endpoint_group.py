@@ -41,6 +41,7 @@ class EndpointGroupArgs:
                  traffic_percentage: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a EndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
@@ -351,6 +352,7 @@ class _EndpointGroupState:
                  traffic_percentage: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EndpointGroup resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[_builtins.str] description: The description of the endpoint group.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
@@ -780,6 +782,7 @@ class EndpointGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -899,6 +902,7 @@ class EndpointGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointGroupArgs args: The arguments to use to populate this resource's properties.

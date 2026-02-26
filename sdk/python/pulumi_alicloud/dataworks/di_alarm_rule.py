@@ -30,6 +30,7 @@ class DiAlarmRuleArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DiAlarmRule resource.
+
         :param pulumi.Input[_builtins.str] di_alarm_rule_name: Data Integration alarm rule name
         :param pulumi.Input[_builtins.int] di_job_id: Task ID: the ID of the task associated with the alert rule.
         :param pulumi.Input[_builtins.str] metric_type: Alarm indicator type. Optional enumerated values:
@@ -144,6 +145,7 @@ class _DiAlarmRuleState:
                  trigger_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]] = None):
         """
         Input properties used for looking up and filtering DiAlarmRule resources.
+
         :param pulumi.Input[_builtins.int] di_alarm_rule_id: Resource attribute field representing resource level ID
         :param pulumi.Input[_builtins.str] di_alarm_rule_name: Data Integration alarm rule name
         :param pulumi.Input[_builtins.int] di_job_id: Task ID: the ID of the task associated with the alert rule.
@@ -408,6 +410,7 @@ class DiAlarmRule(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/diAlarmRule:DiAlarmRule example <di_job_id>:<di_alarm_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] di_alarm_rule_name: Data Integration alarm rule name
@@ -553,6 +556,7 @@ class DiAlarmRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/diAlarmRule:DiAlarmRule example <di_job_id>:<di_alarm_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiAlarmRuleArgs args: The arguments to use to populate this resource's properties.

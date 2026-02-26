@@ -27,6 +27,7 @@ class RegistryEnterpriseRepoArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseRepo resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Enterprise Edition instance.
         :param pulumi.Input[_builtins.str] namespace: The name of the namespace to which the image repository belongs.
         :param pulumi.Input[_builtins.str] repo_type: The type of the repository. Valid values:
@@ -132,6 +133,7 @@ class _RegistryEnterpriseRepoState:
                  summary: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseRepo resources.
+
         :param pulumi.Input[_builtins.str] detail: The description of the repository.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Enterprise Edition instance.
         :param pulumi.Input[_builtins.str] name: The name of the image repository.
@@ -313,6 +315,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] detail: The description of the repository.
@@ -385,6 +388,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegistryEnterpriseRepoArgs args: The arguments to use to populate this resource's properties.

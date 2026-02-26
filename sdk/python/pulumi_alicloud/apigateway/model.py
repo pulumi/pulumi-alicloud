@@ -25,6 +25,7 @@ class ModelArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Model resource.
+
         :param pulumi.Input[_builtins.str] group_id: The group of the model belongs to.
         :param pulumi.Input[_builtins.str] model_name: The name of the model.
         :param pulumi.Input[_builtins.str] schema: The schema of the model.
@@ -94,6 +95,7 @@ class _ModelState:
                  schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Model resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the model.
         :param pulumi.Input[_builtins.str] group_id: The group of the model belongs to.
         :param pulumi.Input[_builtins.str] model_name: The name of the model.
@@ -203,6 +205,7 @@ class Model(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the model.
@@ -250,6 +253,7 @@ class Model(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/model:Model example <group_id>:<model_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ModelArgs args: The arguments to use to populate this resource's properties.

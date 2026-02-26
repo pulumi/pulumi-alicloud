@@ -33,6 +33,7 @@ class ImageCacheArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageCache resource.
+
         :param pulumi.Input[_builtins.str] image_cache_name: The name of the image cache.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: The images to be cached. The image name must be versioned.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
@@ -199,6 +200,7 @@ class _ImageCacheState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageCache resources.
+
         :param pulumi.Input[_builtins.str] container_group_id: The ID of the container group job that is used to create the image cache.
         :param pulumi.Input[_builtins.str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         :param pulumi.Input[_builtins.str] image_cache_name: The name of the image cache.
@@ -456,6 +458,7 @@ class ImageCache(pulumi.CustomResource):
         $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
@@ -531,6 +534,7 @@ class ImageCache(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eci/imageCache:ImageCache example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageCacheArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class MountTargetArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MountTarget resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
         :param pulumi.Input[_builtins.bool] dual_stack: Whether to create an IPv6 mount point.
@@ -177,6 +178,7 @@ class _MountTargetState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MountTarget resources.
+
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
         :param pulumi.Input[_builtins.bool] dual_stack: Whether to create an IPv6 mount point.
                
@@ -399,6 +401,7 @@ class MountTarget(pulumi.CustomResource):
         $ pulumi import alicloud:nas/mountTarget:MountTarget example <file_system_id>:<mount_target_domain>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
@@ -478,6 +481,7 @@ class MountTarget(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/mountTarget:MountTarget example <file_system_id>:<mount_target_domain>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MountTargetArgs args: The arguments to use to populate this resource's properties.

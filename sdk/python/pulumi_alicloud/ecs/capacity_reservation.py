@@ -33,6 +33,7 @@ class CapacityReservationArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CapacityReservation resource.
+
         :param pulumi.Input[_builtins.int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
@@ -235,6 +236,7 @@ class _CapacityReservationState:
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CapacityReservation resources.
+
         :param pulumi.Input[_builtins.str] capacity_reservation_name: Capacity reservation service name.
         :param pulumi.Input[_builtins.str] description: description of the capacity reservation instance.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to pre-check the API request. Valid values: `true` and `false`.
@@ -556,6 +558,7 @@ class CapacityReservation(pulumi.CustomResource):
         $terraform import alicloud_ecs_capacity_reservation.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity_reservation_name: Capacity reservation service name.
@@ -620,6 +623,7 @@ class CapacityReservation(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_ecs_capacity_reservation.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CapacityReservationArgs args: The arguments to use to populate this resource's properties.

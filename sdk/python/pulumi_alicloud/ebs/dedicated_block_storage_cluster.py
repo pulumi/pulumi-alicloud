@@ -26,6 +26,7 @@ class DedicatedBlockStorageClusterArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DedicatedBlockStorageCluster resource.
+
         :param pulumi.Input[_builtins.str] dedicated_block_storage_cluster_name: The name of the resource
         :param pulumi.Input[_builtins.str] total_capacity: The total capacity of the dedicated block storage cluster. Unit: GiB.
         :param pulumi.Input[_builtins.str] type: The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
@@ -121,6 +122,7 @@ class _DedicatedBlockStorageClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedBlockStorageCluster resources.
+
         :param pulumi.Input[_builtins.str] available_capacity: The available capacity of the dedicated block storage cluster. Unit: GiB.
         :param pulumi.Input[_builtins.str] category: The type of cloud disk that can be created by a dedicated block storage cluster.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -409,6 +411,7 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         $terraform import alicloud_disk_dedicated_block_storage_cluster.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dedicated_block_storage_cluster_name: The name of the resource
@@ -455,6 +458,7 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_disk_dedicated_block_storage_cluster.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DedicatedBlockStorageClusterArgs args: The arguments to use to populate this resource's properties.

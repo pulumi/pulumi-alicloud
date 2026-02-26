@@ -30,6 +30,7 @@ class LoadBalancerArgs:
                  load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[_builtins.str] ens_region_id: The ID of the ENS node.
         :param pulumi.Input[_builtins.str] load_balancer_spec: Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         :param pulumi.Input[_builtins.str] network_id: The network ID of the created edge load balancing (ELB) instance.
@@ -147,6 +148,7 @@ class _LoadBalancerState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]] backend_servers: The list of backend servers. See `backend_servers` below.
         :param pulumi.Input[_builtins.str] create_time: The creation Time (UTC) of the load balancing instance.
         :param pulumi.Input[_builtins.str] ens_region_id: The ID of the ENS node.
@@ -350,6 +352,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]] backend_servers: The list of backend servers. See `backend_servers` below.
@@ -416,6 +419,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

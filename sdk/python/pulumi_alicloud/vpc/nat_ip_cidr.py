@@ -26,6 +26,7 @@ class NatIpCidrArgs:
                  nat_ip_cidr_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatIpCidr resource.
+
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
         :param pulumi.Input[_builtins.str] nat_ip_cidr: The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
@@ -114,6 +115,7 @@ class _NatIpCidrState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatIpCidr resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
         :param pulumi.Input[_builtins.str] nat_ip_cidr: The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
@@ -267,6 +269,7 @@ class NatIpCidr(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
@@ -328,6 +331,7 @@ class NatIpCidr(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/natIpCidr:NatIpCidr example <nat_gateway_id>:<nat_ip_cidr>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatIpCidrArgs args: The arguments to use to populate this resource's properties.

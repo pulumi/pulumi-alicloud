@@ -30,6 +30,7 @@ class VaultArgs:
                  worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Vault resource.
+
         :param pulumi.Input[_builtins.str] vault_name: The name of Vault.
         :param pulumi.Input[_builtins.str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[_builtins.str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
@@ -192,6 +193,7 @@ class _VaultState:
                  worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Vault resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.243.0) The time when the backup vault was created.
         :param pulumi.Input[_builtins.str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[_builtins.str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
@@ -433,6 +435,7 @@ class Vault(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/vault:Vault example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of Vault. Defaults to an empty string.
@@ -488,6 +491,7 @@ class Vault(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/vault:Vault example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VaultArgs args: The arguments to use to populate this resource's properties.

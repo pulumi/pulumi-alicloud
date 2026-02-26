@@ -24,6 +24,7 @@ class VpcNetworkAclAttachmentArgs:
                  resource_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a VpcNetworkAclAttachment resource.
+
         :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the associated  vswitch instance.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
@@ -78,6 +79,7 @@ class _VpcNetworkAclAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcNetworkAclAttachment resources.
+
         :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the associated  vswitch instance.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
@@ -196,6 +198,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example <network_acl_id>:<resource_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The ID of the network ACL instance.
@@ -252,6 +255,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment example <network_acl_id>:<resource_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcNetworkAclAttachmentArgs args: The arguments to use to populate this resource's properties.

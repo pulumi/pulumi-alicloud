@@ -28,6 +28,7 @@ class AccessPointArgs:
                  vpc_configuration: Optional[pulumi.Input['AccessPointVpcConfigurationArgs']] = None):
         """
         The set of arguments for constructing a AccessPoint resource.
+
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
         :param pulumi.Input[_builtins.str] bucket: The Bucket to which the current access point belongs.
         :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows: 
@@ -118,6 +119,7 @@ class _AccessPointState:
                  vpc_configuration: Optional[pulumi.Input['AccessPointVpcConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering AccessPoint resources.
+
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
         :param pulumi.Input[_builtins.str] bucket: The Bucket to which the current access point belongs.
         :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows: 
@@ -271,6 +273,7 @@ class AccessPoint(pulumi.CustomResource):
         $ pulumi import alicloud:oss/accessPoint:AccessPoint example <bucket>:<access_point_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
@@ -330,6 +333,7 @@ class AccessPoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/accessPoint:AccessPoint example <bucket>:<access_point_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessPointArgs args: The arguments to use to populate this resource's properties.

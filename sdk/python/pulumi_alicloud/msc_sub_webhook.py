@@ -23,6 +23,7 @@ class MscSubWebhookArgs:
                  webhook_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a MscSubWebhook resource.
+
         :param pulumi.Input[_builtins.str] server_url: The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
         :param pulumi.Input[_builtins.str] webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
@@ -61,6 +62,7 @@ class _MscSubWebhookState:
                  webhook_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MscSubWebhook resources.
+
         :param pulumi.Input[_builtins.str] server_url: The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
         :param pulumi.Input[_builtins.str] webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
@@ -140,6 +142,7 @@ class MscSubWebhook(pulumi.CustomResource):
         $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] server_url: The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
@@ -187,6 +190,7 @@ class MscSubWebhook(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:index/mscSubWebhook:MscSubWebhook example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MscSubWebhookArgs args: The arguments to use to populate this resource's properties.

@@ -13038,7 +13038,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get("securityGroupId");
+     *         final var securityGroupId = config.require("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -13102,7 +13102,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get("securityGroupId");
+     *         final var securityGroupId = config.require("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -13166,7 +13166,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get("securityGroupId");
+     *         final var securityGroupId = config.require("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -13230,7 +13230,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get("securityGroupId");
+     *         final var securityGroupId = config.require("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -13294,7 +13294,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get("securityGroupId");
+     *         final var securityGroupId = config.require("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()

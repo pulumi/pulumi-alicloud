@@ -32,6 +32,7 @@ class DefenseRuleArgs:
                  template_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DefenseRule resource.
+
         :param pulumi.Input['DefenseRuleConfigArgs'] config: Rule configuration content, in JSON format, constructed with a series of parameters.
                
                > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
@@ -195,6 +196,7 @@ class _DefenseRuleState:
                  template_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DefenseRule resources.
+
         :param pulumi.Input['DefenseRuleConfigArgs'] config: Rule configuration content, in JSON format, constructed with a series of parameters.
                
                > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
@@ -446,6 +448,7 @@ class DefenseRule(pulumi.CustomResource):
         $ pulumi import alicloud:wafv3/defenseRule:DefenseRule example <instance_id>:<defense_type>:<rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']] config: Rule configuration content, in JSON format, constructed with a series of parameters.
@@ -538,6 +541,7 @@ class DefenseRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:wafv3/defenseRule:DefenseRule example <instance_id>:<defense_type>:<rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DefenseRuleArgs args: The arguments to use to populate this resource's properties.

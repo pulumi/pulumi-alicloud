@@ -31,6 +31,7 @@ class StateConfigurationArgs:
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StateConfiguration resource.
+
         :param pulumi.Input[_builtins.str] schedule_expression: Timing expression.
         :param pulumi.Input[_builtins.str] schedule_type: Timing type. Valid values: `rate`.
         :param pulumi.Input[_builtins.str] targets: The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
@@ -195,6 +196,7 @@ class _StateConfigurationState:
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StateConfiguration resources.
+
         :param pulumi.Input[_builtins.str] configure_mode: Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
         :param pulumi.Input[_builtins.str] description: The description of the resource.
         :param pulumi.Input[_builtins.str] parameters: The parameter of the Template. This field is in the format of JSON strings. For detailed definition instructions, please refer to [Metadata types that are supported by a configuration list](https://www.alibabacloud.com/help/en/doc-detail/208276.html).
@@ -406,6 +408,7 @@ class StateConfiguration(pulumi.CustomResource):
         $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configure_mode: Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
@@ -465,6 +468,7 @@ class StateConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/stateConfiguration:StateConfiguration example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StateConfigurationArgs args: The arguments to use to populate this resource's properties.

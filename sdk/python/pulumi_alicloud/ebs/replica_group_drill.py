@@ -22,6 +22,7 @@ class ReplicaGroupDrillArgs:
                  group_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ReplicaGroupDrill resource.
+
         :param pulumi.Input[_builtins.str] group_id: The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
         """
         pulumi.set(__self__, "group_id", group_id)
@@ -47,6 +48,7 @@ class _ReplicaGroupDrillState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicaGroupDrill resources.
+
         :param pulumi.Input[_builtins.str] group_id: The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
         :param pulumi.Input[_builtins.str] replica_group_drill_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] status: Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
@@ -135,6 +137,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill example <group_id>:<replica_group_drill_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
@@ -176,6 +179,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill example <group_id>:<replica_group_drill_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReplicaGroupDrillArgs args: The arguments to use to populate this resource's properties.

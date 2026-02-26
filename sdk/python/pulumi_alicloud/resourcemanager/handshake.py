@@ -24,6 +24,7 @@ class HandshakeArgs:
                  note: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Handshake resource.
+
         :param pulumi.Input[_builtins.str] target_entity: The ID or logon email address of the account that you want to invite.
         :param pulumi.Input[_builtins.str] target_type: The type of the invited account. Valid values:
                
@@ -93,6 +94,7 @@ class _HandshakeState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Handshake resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the invitation was created. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] expire_time: The time when the invitation expires. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] master_account_id: The ID of the management account of the resource directory.
@@ -296,6 +298,7 @@ class Handshake(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/handshake:Handshake example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] note: The description of the invitation.
@@ -343,6 +346,7 @@ class Handshake(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/handshake:Handshake example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HandshakeArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class ListenerAdditionalCertificateAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ListenerAdditionalCertificateAttachment resource.
+
         :param pulumi.Input[_builtins.str] certificate_id: The ID of additional certificates.
         :param pulumi.Input[_builtins.str] listener_id: The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
@@ -79,6 +80,7 @@ class _ListenerAdditionalCertificateAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListenerAdditionalCertificateAttachment resources.
+
         :param pulumi.Input[_builtins.str] certificate_id: The ID of additional certificates.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] listener_id: The listener ID. You must specify the ID of a listener that uses SSL over TCP.
@@ -333,6 +335,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_id: The ID of additional certificates.
@@ -525,6 +528,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment example <listener_id>:<certificate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerAdditionalCertificateAttachmentArgs args: The arguments to use to populate this resource's properties.

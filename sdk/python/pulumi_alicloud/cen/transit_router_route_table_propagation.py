@@ -24,6 +24,7 @@ class TransitRouterRouteTablePropagationArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTablePropagation resource.
+
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID the transit router attachment.
         :param pulumi.Input[_builtins.str] transit_router_route_table_id: The ID of the transit router route table.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -83,6 +84,7 @@ class _TransitRouterRouteTablePropagationState:
                  transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteTablePropagation resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
                
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
@@ -231,6 +233,7 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -315,6 +318,7 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterRouteTablePropagationArgs args: The arguments to use to populate this resource's properties.

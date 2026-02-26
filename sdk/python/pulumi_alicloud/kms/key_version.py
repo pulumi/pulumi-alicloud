@@ -22,6 +22,7 @@ class KeyVersionArgs:
                  key_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KeyVersion resource.
+
         :param pulumi.Input[_builtins.str] key_id: The id of the master key (CMK).
                
                > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
@@ -50,6 +51,7 @@ class _KeyVersionState:
                  key_version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyVersion resources.
+
         :param pulumi.Input[_builtins.str] key_id: The id of the master key (CMK).
                
                > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
@@ -122,6 +124,7 @@ class KeyVersion(pulumi.CustomResource):
         $ pulumi import alicloud:kms/keyVersion:KeyVersion example 72da539a-2fa8-4f2d-b854-*****
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_id: The id of the master key (CMK).
@@ -160,6 +163,7 @@ class KeyVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/keyVersion:KeyVersion example 72da539a-2fa8-4f2d-b854-*****
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyVersionArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class InterRegionTrafficQosPolicyArgs:
                  inter_region_traffic_qos_policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterRegionTrafficQosPolicy resource.
+
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: Peer Attachment ID.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the forwarding router instance.
         :param pulumi.Input[_builtins.str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
@@ -113,6 +114,7 @@ class _InterRegionTrafficQosPolicyState:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterRegionTrafficQosPolicy resources.
+
         :param pulumi.Input[_builtins.str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
         :param pulumi.Input[_builtins.str] inter_region_traffic_qos_policy_description: The description information of the traffic scheduling policy.
         :param pulumi.Input[_builtins.str] inter_region_traffic_qos_policy_name: The name of the traffic scheduling policy.
@@ -266,6 +268,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
@@ -327,6 +330,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterRegionTrafficQosPolicyArgs args: The arguments to use to populate this resource's properties.

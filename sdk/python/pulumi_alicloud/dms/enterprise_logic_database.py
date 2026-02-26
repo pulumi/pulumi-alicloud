@@ -24,6 +24,7 @@ class EnterpriseLogicDatabaseArgs:
                  logic_database_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseLogicDatabase resource.
+
         :param pulumi.Input[_builtins.str] alias: Logical Library alias.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_ids: Sub-Database ID
         :param pulumi.Input[_builtins.str] logic_database_id: The ID of the logical Library.
@@ -85,6 +86,7 @@ class _EnterpriseLogicDatabaseState:
                  search_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseLogicDatabase resources.
+
         :param pulumi.Input[_builtins.str] alias: Logical Library alias.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_ids: Sub-Database ID
         :param pulumi.Input[_builtins.str] db_type: Database type.
@@ -281,6 +283,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         $terraform import alicloud_dms_enterprise_logic_database.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: Logical Library alias.
@@ -325,6 +328,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_dms_enterprise_logic_database.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseLogicDatabaseArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class BucketStyleArgs:
                  category: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketStyle resource.
+
         :param pulumi.Input[_builtins.str] bucket: Storage space to which the picture style belongs
         :param pulumi.Input[_builtins.str] content: The Image style content can contain single or multiple image processing parameters.
         :param pulumi.Input[_builtins.str] style_name: Image Style Name
@@ -95,6 +96,7 @@ class _BucketStyleState:
                  style_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketStyle resources.
+
         :param pulumi.Input[_builtins.str] bucket: Storage space to which the picture style belongs
         :param pulumi.Input[_builtins.str] category: Style category, valid values: image, document, video.
         :param pulumi.Input[_builtins.str] content: The Image style content can contain single or multiple image processing parameters.
@@ -229,6 +231,7 @@ class BucketStyle(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketStyle:BucketStyle example <bucket>:<style_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: Storage space to which the picture style belongs
@@ -286,6 +289,7 @@ class BucketStyle(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketStyle:BucketStyle example <bucket>:<style_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketStyleArgs args: The arguments to use to populate this resource's properties.

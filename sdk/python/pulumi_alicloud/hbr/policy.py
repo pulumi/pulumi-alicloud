@@ -27,6 +27,7 @@ class PolicyArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
         :param pulumi.Input[_builtins.str] policy_type: The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
@@ -100,6 +101,7 @@ class _PolicyState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] create_time: Policy creation time
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
@@ -238,6 +240,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/policy:Policy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_description: The policy description.
@@ -299,6 +302,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/policy:Policy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

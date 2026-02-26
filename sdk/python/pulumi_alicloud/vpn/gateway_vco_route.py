@@ -26,6 +26,7 @@ class GatewayVcoRouteArgs:
                  overlay_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayVcoRoute resource.
+
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the destination route.
         :param pulumi.Input[_builtins.str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[_builtins.str] vpn_connection_id: The id of the vpn attachment.
@@ -111,6 +112,7 @@ class _GatewayVcoRouteState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GatewayVcoRoute resources.
+
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the destination route.
         :param pulumi.Input[_builtins.str] overlay_mode: The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         :param pulumi.Input[_builtins.str] route_dest: The destination network segment of the destination route.
@@ -319,6 +321,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] next_hop: The next hop of the destination route.
@@ -435,6 +438,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute example <vpn_connection_id>:<route_dest>:<next_hop>:<weight>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayVcoRouteArgs args: The arguments to use to populate this resource's properties.

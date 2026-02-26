@@ -30,6 +30,7 @@ class TrafficMirrorFilterArgs:
                  traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficMirrorFilter resource.
+
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
@@ -155,6 +156,7 @@ class _TrafficMirrorFilterState:
                  traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficMirrorFilter resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
@@ -355,6 +357,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
@@ -431,6 +434,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficMirrorFilterArgs args: The arguments to use to populate this resource's properties.

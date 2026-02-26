@@ -30,6 +30,7 @@ class EnterpriseUserArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseUser resource.
+
         :param pulumi.Input[_builtins.str] uid: The Alibaba Cloud unique ID (UID) of the user to add.
         :param pulumi.Input[_builtins.int] max_execute_count: Maximum number of inquiries on the day.
         :param pulumi.Input[_builtins.int] max_result_count: Query the maximum number of rows on the day.
@@ -185,6 +186,7 @@ class _EnterpriseUserState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseUser resources.
+
         :param pulumi.Input[_builtins.int] max_execute_count: Maximum number of inquiries on the day.
         :param pulumi.Input[_builtins.int] max_result_count: Query the maximum number of rows on the day.
         :param pulumi.Input[_builtins.str] mobile: The DingTalk number or mobile number of the user.
@@ -381,6 +383,7 @@ class EnterpriseUser(pulumi.CustomResource):
         $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] max_execute_count: Maximum number of inquiries on the day.
@@ -436,6 +439,7 @@ class EnterpriseUser(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dms/enterpriseUser:EnterpriseUser example 24356xxx
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseUserArgs args: The arguments to use to populate this resource's properties.

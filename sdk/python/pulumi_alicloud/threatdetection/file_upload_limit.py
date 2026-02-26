@@ -22,6 +22,7 @@ class FileUploadLimitArgs:
                  limit: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a FileUploadLimit resource.
+
         :param pulumi.Input[_builtins.int] limit: File Upload Threshold.
         """
         pulumi.set(__self__, "limit", limit)
@@ -45,6 +46,7 @@ class _FileUploadLimitState:
                  limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FileUploadLimit resources.
+
         :param pulumi.Input[_builtins.int] limit: File Upload Threshold.
         """
         if limit is not None:
@@ -107,6 +109,7 @@ class FileUploadLimit(pulumi.CustomResource):
         $ terraform import alicloud_threat_detection_file_upload_limit.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] limit: File Upload Threshold.
@@ -152,6 +155,7 @@ class FileUploadLimit(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_threat_detection_file_upload_limit.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FileUploadLimitArgs args: The arguments to use to populate this resource's properties.

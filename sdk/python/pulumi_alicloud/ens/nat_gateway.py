@@ -26,6 +26,7 @@ class NatGatewayArgs:
                  nat_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatGateway resource.
+
         :param pulumi.Input[_builtins.str] ens_region_id: The ID of the ENS node.
         :param pulumi.Input[_builtins.str] network_id: The network ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
@@ -112,6 +113,7 @@ class _NatGatewayState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatGateway resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
         :param pulumi.Input[_builtins.str] ens_region_id: The ID of the ENS node.
         :param pulumi.Input[_builtins.str] instance_type: NAT specifications. Value: `enat.default`.
@@ -269,6 +271,7 @@ class NatGateway(pulumi.CustomResource):
         $ pulumi import alicloud:ens/natGateway:NatGateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ens_region_id: The ID of the ENS node.
@@ -334,6 +337,7 @@ class NatGateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/natGateway:NatGateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatGatewayArgs args: The arguments to use to populate this resource's properties.

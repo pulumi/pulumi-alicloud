@@ -24,6 +24,7 @@ class IntegrationExporterArgs:
                  param: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IntegrationExporter resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Prometheus instance.
         :param pulumi.Input[_builtins.str] integration_type: The type of prometheus integration.
         :param pulumi.Input[_builtins.str] param: Exporter configuration parameter json string.
@@ -78,6 +79,7 @@ class _IntegrationExporterState:
                  param: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationExporter resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Prometheus instance.
         :param pulumi.Input[_builtins.int] instance_id: The ID of the Integration Exporter instance.
         :param pulumi.Input[_builtins.str] integration_type: The type of prometheus integration.
@@ -211,6 +213,7 @@ class IntegrationExporter(pulumi.CustomResource):
         $ pulumi import alicloud:arms/integrationExporter:IntegrationExporter example <cluster_id>:<integration_type>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Prometheus instance.
@@ -282,6 +285,7 @@ class IntegrationExporter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/integrationExporter:IntegrationExporter example <cluster_id>:<integration_type>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntegrationExporterArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class AdditionalCertificateArgs:
                  listener_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AdditionalCertificate resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
         :param pulumi.Input[_builtins.str] certificate_id: The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         :param pulumi.Input[_builtins.str] domain: The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
@@ -93,6 +94,7 @@ class _AdditionalCertificateState:
                  listener_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdditionalCertificate resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
         :param pulumi.Input[_builtins.str] certificate_id: The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         :param pulumi.Input[_builtins.str] domain: The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
@@ -302,6 +304,7 @@ class AdditionalCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
@@ -449,6 +452,7 @@ class AdditionalCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/additionalCertificate:AdditionalCertificate example <accelerator_id>:<listener_id>:<domain>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdditionalCertificateArgs args: The arguments to use to populate this resource's properties.

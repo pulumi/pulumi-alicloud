@@ -24,6 +24,7 @@ class TransitRouterMulticastDomainAssociationArgs:
                  vswitch_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a TransitRouterMulticastDomainAssociation resource.
+
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the VPC connection.
         :param pulumi.Input[_builtins.str] transit_router_multicast_domain_id: The ID of the multicast domain.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vSwitch.
@@ -78,6 +79,7 @@ class _TransitRouterMulticastDomainAssociationState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainAssociation resources.
+
         :param pulumi.Input[_builtins.str] status: The status of the Transit Router Multicast Domain Association.
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the VPC connection.
         :param pulumi.Input[_builtins.str] transit_router_multicast_domain_id: The ID of the multicast domain.
@@ -212,6 +214,7 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation example <transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the VPC connection.
@@ -284,6 +287,7 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation example <transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterMulticastDomainAssociationArgs args: The arguments to use to populate this resource's properties.

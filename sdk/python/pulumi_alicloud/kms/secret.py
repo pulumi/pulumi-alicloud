@@ -37,6 +37,7 @@ class SecretArgs:
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Secret resource.
+
         :param pulumi.Input[_builtins.str] secret_data: The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         :param pulumi.Input[_builtins.str] secret_name: The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[_builtins.str] version_id: The version number of the initial version.
@@ -313,6 +314,7 @@ class _SecretState:
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
+
         :param pulumi.Input[_builtins.str] arn: The ARN of the secret.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.224.0) The time when the secret is created.
         :param pulumi.Input[_builtins.str] description: The description of the secret.
@@ -672,6 +674,7 @@ class Secret(pulumi.CustomResource):
         $ pulumi import alicloud:kms/secret:Secret example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the secret.
@@ -738,6 +741,7 @@ class Secret(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/secret:Secret example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretArgs args: The arguments to use to populate this resource's properties.

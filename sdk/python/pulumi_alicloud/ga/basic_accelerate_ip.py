@@ -23,6 +23,7 @@ class BasicAccelerateIpArgs:
                  ip_set_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BasicAccelerateIp resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[_builtins.str] ip_set_id: The ID of the Basic Ip Set.
         """
@@ -63,6 +64,7 @@ class _BasicAccelerateIpState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicAccelerateIp resources.
+
         :param pulumi.Input[_builtins.str] accelerate_ip_address: The address of the Basic Accelerate IP.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[_builtins.str] ip_set_id: The ID of the Basic Ip Set.
@@ -181,6 +183,7 @@ class BasicAccelerateIp(pulumi.CustomResource):
         $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
@@ -237,6 +240,7 @@ class BasicAccelerateIp(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/basicAccelerateIp:BasicAccelerateIp example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicAccelerateIpArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class EndpointAddressArgs:
                  port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EndpointAddress resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
@@ -114,6 +115,7 @@ class _EndpointAddressState:
                  port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointAddress resources.
+
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         :param pulumi.Input[_builtins.str] connection_string: Connection cluster or endpoint string.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
@@ -283,6 +285,7 @@ class EndpointAddress(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
@@ -345,6 +348,7 @@ class EndpointAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointAddressArgs args: The arguments to use to populate this resource's properties.

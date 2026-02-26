@@ -29,6 +29,7 @@ class GroupArgs:
                  vpc_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[_builtins.str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[_builtins.str] instance_id: The id of the api gateway.
@@ -135,6 +136,7 @@ class _GroupState:
                  vpc_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[_builtins.str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[_builtins.str] instance_id: The id of the api gateway.
@@ -312,6 +314,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_path: The base path of the api gateway group. Defaults to `/`.
@@ -367,6 +370,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/group:Group example "ab2351f2ce904edaa8d92a0510832b91"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

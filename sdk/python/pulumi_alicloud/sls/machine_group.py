@@ -29,6 +29,7 @@ class MachineGroupArgs:
                  group_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineGroup resource.
+
         :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
                
                - The name of each machine group in a project must be unique.
@@ -149,6 +150,7 @@ class _MachineGroupState:
                  project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MachineGroup resources.
+
         :param pulumi.Input['MachineGroupGroupAttributeArgs'] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
         :param pulumi.Input[_builtins.str] group_name: The name of the machine group. The name must meet the following requirements:
                
@@ -321,6 +323,7 @@ class MachineGroup(pulumi.CustomResource):
         $ pulumi import alicloud:sls/machineGroup:MachineGroup example <project_name>:<group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']] group_attribute: Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
@@ -391,6 +394,7 @@ class MachineGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/machineGroup:MachineGroup example <project_name>:<group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MachineGroupArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class OriginCaCertificateArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
+
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] name: The certificate name.
@@ -81,6 +82,7 @@ class _OriginCaCertificateState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginCaCertificate resources.
+
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] name: The certificate name.
@@ -244,6 +246,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:esa/originCaCertificate:OriginCaCertificate example <site_id>:<origin_ca_certificate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
@@ -315,6 +318,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/originCaCertificate:OriginCaCertificate example <site_id>:<origin_ca_certificate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OriginCaCertificateArgs args: The arguments to use to populate this resource's properties.

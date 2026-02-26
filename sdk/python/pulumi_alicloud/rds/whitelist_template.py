@@ -23,6 +23,7 @@ class WhitelistTemplateArgs:
                  template_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WhitelistTemplate resource.
+
         :param pulumi.Input[_builtins.str] ip_white_list: IP whitelist, multiple IP addresses should be separated by commas (,) and cannot be duplicated.Supports the following two formats:
                - IP address format, for example: 10.23.XX.XX.
                - CIDR format, for example: 10.23.XX.XX/24 (no inter domain routing, 24 represents the length of the prefix in the address, ranging from 1 to 32).
@@ -65,6 +66,7 @@ class _WhitelistTemplateState:
                  template_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WhitelistTemplate resources.
+
         :param pulumi.Input[_builtins.str] ip_white_list: IP whitelist, multiple IP addresses should be separated by commas (,) and cannot be duplicated.Supports the following two formats:
                - IP address format, for example: 10.23.XX.XX.
                - CIDR format, for example: 10.23.XX.XX/24 (no inter domain routing, 24 represents the length of the prefix in the address, ranging from 1 to 32).
@@ -139,6 +141,7 @@ class WhitelistTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:rds/whitelistTemplate:WhitelistTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_white_list: IP whitelist, multiple IP addresses should be separated by commas (,) and cannot be duplicated.Supports the following two formats:
@@ -179,6 +182,7 @@ class WhitelistTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/whitelistTemplate:WhitelistTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WhitelistTemplateArgs args: The arguments to use to populate this resource's properties.

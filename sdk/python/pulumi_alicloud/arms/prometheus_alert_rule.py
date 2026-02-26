@@ -33,6 +33,7 @@ class PrometheusAlertRuleArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrometheusAlertRule resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster.
         :param pulumi.Input[_builtins.str] duration: The duration of the alert.
         :param pulumi.Input[_builtins.str] expression: The alert rule expression that follows the PromQL syntax.
@@ -198,6 +199,7 @@ class _PrometheusAlertRuleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrometheusAlertRule resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]] annotations: The annotations of the alert rule. See `annotations` below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster.
         :param pulumi.Input[_builtins.str] dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
@@ -444,6 +446,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
         $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]] annotations: The annotations of the alert rule. See `annotations` below.
@@ -508,6 +511,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/prometheusAlertRule:PrometheusAlertRule example <cluster_id>:<prometheus_alert_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrometheusAlertRuleArgs args: The arguments to use to populate this resource's properties.

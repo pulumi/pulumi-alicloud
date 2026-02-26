@@ -24,6 +24,7 @@ class DhcpOptionsSetAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DhcpOptionsSetAttachment resource.
+
         :param pulumi.Input[_builtins.str] dhcp_options_set_id: The ID of the DHCP options set.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network that is to be associated with the DHCP options set..
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request only. Default values: `false`. Valid values:
@@ -79,6 +80,7 @@ class _DhcpOptionsSetAttachmentState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DhcpOptionsSetAttachment resources.
+
         :param pulumi.Input[_builtins.str] dhcp_options_set_id: The ID of the DHCP options set.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to precheck this request only. Default values: `false`. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
@@ -194,6 +196,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dhcp_options_set_id: The ID of the DHCP options set.
@@ -247,6 +250,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DhcpOptionsSetAttachmentArgs args: The arguments to use to populate this resource's properties.

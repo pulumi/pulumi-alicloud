@@ -31,6 +31,7 @@ class TrafficMarkingPolicyArgs:
                  traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None):
         """
         The set of arguments for constructing a TrafficMarkingPolicy resource.
+
         :param pulumi.Input[_builtins.int] marking_dscp: MarkingDscp
         :param pulumi.Input[_builtins.int] priority: Priority
         :param pulumi.Input[_builtins.str] transit_router_id: TransitRouterId
@@ -168,6 +169,7 @@ class _TrafficMarkingPolicyState:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficMarkingPolicy resources.
+
         :param pulumi.Input[_builtins.str] description: TrafficMarkingPolicyDescription
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] force: Whether to forcibly delete the traffic marker policy. Valid values:
@@ -376,6 +378,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: TrafficMarkingPolicyDescription
@@ -431,6 +434,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficMarkingPolicyArgs args: The arguments to use to populate this resource's properties.

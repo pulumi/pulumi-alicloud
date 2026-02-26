@@ -25,6 +25,7 @@ class BackendArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Backend resource.
+
         :param pulumi.Input[_builtins.str] backend_name: The name of the Backend.
         :param pulumi.Input[_builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         :param pulumi.Input[_builtins.bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
@@ -95,6 +96,7 @@ class _BackendState:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backend resources.
+
         :param pulumi.Input[_builtins.str] backend_name: The name of the Backend.
         :param pulumi.Input[_builtins.str] backend_type: The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         :param pulumi.Input[_builtins.bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
@@ -204,6 +206,7 @@ class Backend(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/backend:Backend example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_name: The name of the Backend.
@@ -251,6 +254,7 @@ class Backend(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/backend:Backend example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackendArgs args: The arguments to use to populate this resource's properties.

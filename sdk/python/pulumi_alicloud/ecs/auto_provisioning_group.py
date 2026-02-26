@@ -43,6 +43,7 @@ class AutoProvisioningGroupArgs:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutoProvisioningGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `block-config` below for details.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.str] total_target_capacity: The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
@@ -368,6 +369,7 @@ class _AutoProvisioningGroupState:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutoProvisioningGroup resources.
+
         :param pulumi.Input[_builtins.str] auto_provisioning_group_name: The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
         :param pulumi.Input[_builtins.str] auto_provisioning_group_type: The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
         :param pulumi.Input[_builtins.str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
@@ -757,6 +759,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_provisioning_group_name: The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
@@ -844,6 +847,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup example asg-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutoProvisioningGroupArgs args: The arguments to use to populate this resource's properties.

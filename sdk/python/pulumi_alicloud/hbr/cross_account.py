@@ -24,6 +24,7 @@ class CrossAccountArgs:
                  alias: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CrossAccount resource.
+
         :param pulumi.Input[_builtins.str] cross_account_role_name: The name of RAM role that the backup account authorizes the management account to manage its resources
         :param pulumi.Input[_builtins.int] cross_account_user_id: The uid of the backup account.
         :param pulumi.Input[_builtins.str] alias: Backup account alias
@@ -79,6 +80,7 @@ class _CrossAccountState:
                  cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CrossAccount resources.
+
         :param pulumi.Input[_builtins.str] alias: Backup account alias
         :param pulumi.Input[_builtins.int] create_time: Timestamp of the creation time
         :param pulumi.Input[_builtins.str] cross_account_role_name: The name of RAM role that the backup account authorizes the management account to manage its resources
@@ -189,6 +191,7 @@ class CrossAccount(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/crossAccount:CrossAccount example <cross_account_user_id>:<cross_account_role_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: Backup account alias
@@ -237,6 +240,7 @@ class CrossAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/crossAccount:CrossAccount example <cross_account_user_id>:<cross_account_role_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CrossAccountArgs args: The arguments to use to populate this resource's properties.

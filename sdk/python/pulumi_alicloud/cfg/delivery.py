@@ -31,6 +31,7 @@ class DeliveryArgs:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Delivery resource.
+
         :param pulumi.Input[_builtins.str] delivery_channel_target_arn: The ARN of the delivery destination.  
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
                - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
@@ -245,6 +246,7 @@ class _DeliveryState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Delivery resources.
+
         :param pulumi.Input[_builtins.bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
                - true: The specified destination receives resource change logs.
                - false: The specified destination does not receive resource change logs.
@@ -513,6 +515,7 @@ class Delivery(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/delivery:Delivery example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
@@ -605,6 +608,7 @@ class Delivery(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/delivery:Delivery example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeliveryArgs args: The arguments to use to populate this resource's properties.

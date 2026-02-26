@@ -32,6 +32,7 @@ class RoleArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         :param pulumi.Input[_builtins.str] description: The description of the RAM role.
         :param pulumi.Input[_builtins.str] document: Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
@@ -239,6 +240,7 @@ class _RoleState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.252.0) The time when the RAM role was created.
@@ -542,6 +544,7 @@ class Role(pulumi.CustomResource):
         $ pulumi import alicloud:ram/role:Role example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
@@ -613,6 +616,7 @@ class Role(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/role:Role example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

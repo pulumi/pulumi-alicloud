@@ -25,6 +25,7 @@ class OrganizationArgs:
                  real_pk: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Organization resource.
+
         :param pulumi.Input[_builtins.str] organization_name: Company name.
         :param pulumi.Input[_builtins.str] source: This is organization source information
         :param pulumi.Input[_builtins.int] desired_member_count: The desired member count.
@@ -95,6 +96,7 @@ class _OrganizationState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
+
         :param pulumi.Input[_builtins.int] desired_member_count: The desired member count.
         :param pulumi.Input[_builtins.str] organization_name: Company name.
         :param pulumi.Input[_builtins.str] real_pk: User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
@@ -201,6 +203,7 @@ class Organization(pulumi.CustomResource):
         $ pulumi import alicloud:rdc/organization:Organization example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] desired_member_count: The desired member count.
@@ -245,6 +248,7 @@ class Organization(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rdc/organization:Organization example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.

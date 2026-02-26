@@ -24,6 +24,7 @@ class RoleUserAttachmentArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoleUserAttachment resource.
+
         :param pulumi.Input[_builtins.str] project_name: Project Name
         :param pulumi.Input[_builtins.str] role_name: Role Name, Valid Values: super_administrator, admin, Custom Role
                
@@ -86,6 +87,7 @@ class _RoleUserAttachmentState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoleUserAttachment resources.
+
         :param pulumi.Input[_builtins.str] project_name: Project Name
         :param pulumi.Input[_builtins.str] role_name: Role Name, Valid Values: super_administrator, admin, Custom Role
                
@@ -204,6 +206,7 @@ class RoleUserAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/roleUserAttachment:RoleUserAttachment example <project_name>-<role_name>-<user>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_name: Project Name
@@ -271,6 +274,7 @@ class RoleUserAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/roleUserAttachment:RoleUserAttachment example <project_name>-<role_name>-<user>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleUserAttachmentArgs args: The arguments to use to populate this resource's properties.

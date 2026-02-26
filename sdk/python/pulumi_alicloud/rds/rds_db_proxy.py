@@ -42,6 +42,7 @@ class RdsDbProxyArgs:
                  upgrade_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsDbProxy resource.
+
         :param pulumi.Input[_builtins.int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of the instance. Set the value to VPC.
@@ -416,6 +417,7 @@ class _RdsDbProxyState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsDbProxy resources.
+
         :param pulumi.Input[_builtins.int] db_proxy_connect_string_port: The port number that is associated with the proxy endpoint.
         :param pulumi.Input[_builtins.str] db_proxy_connection_prefix: The new prefix of the proxy endpoint. Enter a prefix.
         :param pulumi.Input[_builtins.str] db_proxy_connection_string: Connection instance string.
@@ -948,6 +950,7 @@ class RdsDbProxy(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsDbProxy:RdsDbProxy example abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] db_proxy_connect_string_port: The port number that is associated with the proxy endpoint.
@@ -1087,6 +1090,7 @@ class RdsDbProxy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsDbProxy:RdsDbProxy example abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsDbProxyArgs args: The arguments to use to populate this resource's properties.

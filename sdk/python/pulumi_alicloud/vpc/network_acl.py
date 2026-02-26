@@ -32,6 +32,7 @@ class NetworkAclArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NetworkAcl resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -195,6 +196,7 @@ class _NetworkAclState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAcl resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
@@ -457,6 +459,7 @@ class NetworkAcl(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -545,6 +548,7 @@ class NetworkAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAclArgs args: The arguments to use to populate this resource's properties.

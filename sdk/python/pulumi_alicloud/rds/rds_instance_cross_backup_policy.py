@@ -25,6 +25,7 @@ class RdsInstanceCrossBackupPolicyArgs:
                  retention: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RdsInstanceCrossBackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] cross_backup_region: The ID of the destination region where the cross-region backup files of the instance are stored.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] log_backup_enabled: The status of the cross-region log backup feature on the instance. Valid values:
@@ -106,6 +107,7 @@ class _RdsInstanceCrossBackupPolicyState:
                  retention: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RdsInstanceCrossBackupPolicy resources.
+
         :param pulumi.Input[_builtins.str] backup_enabled: The status of the overall cross-region backup switch on the instance. Valid values:
                - Disabled
                - Enable
@@ -363,6 +365,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cross_backup_region: The ID of the destination region where the cross-region backup files of the instance are stored.
@@ -437,6 +440,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy example "rm-12345678"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsInstanceCrossBackupPolicyArgs args: The arguments to use to populate this resource's properties.

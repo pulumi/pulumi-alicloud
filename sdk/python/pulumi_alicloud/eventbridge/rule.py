@@ -29,6 +29,7 @@ class RuleArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus.
         :param pulumi.Input[_builtins.str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         :param pulumi.Input[_builtins.str] rule_name: The name of the event rule.
@@ -129,6 +130,7 @@ class _RuleState:
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the event rule.
         :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus.
         :param pulumi.Input[_builtins.str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
@@ -303,6 +305,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import alicloud:eventbridge/rule:Rule example <event_bus_name>:<rule_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the event rule.
@@ -385,6 +388,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eventbridge/rule:Rule example <event_bus_name>:<rule_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

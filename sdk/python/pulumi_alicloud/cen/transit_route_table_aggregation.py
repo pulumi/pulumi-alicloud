@@ -27,6 +27,7 @@ class TransitRouteTableAggregationArgs:
                  transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TransitRouteTableAggregation resource.
+
         :param pulumi.Input[_builtins.str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
                
                > **NOTE:**   The following CIDR blocks are not supported:
@@ -150,6 +151,7 @@ class _TransitRouteTableAggregationState:
                  transit_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouteTableAggregation resources.
+
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
                
@@ -331,6 +333,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>#<transit_route_table_aggregation_cidr>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
@@ -395,6 +398,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>#<transit_route_table_aggregation_cidr>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouteTableAggregationArgs args: The arguments to use to populate this resource's properties.

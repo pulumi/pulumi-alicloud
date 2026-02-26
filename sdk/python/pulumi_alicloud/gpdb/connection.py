@@ -24,6 +24,7 @@ class ConnectionArgs:
                  port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
         :param pulumi.Input[_builtins.str] port: Internet connection port. Valid value: [3200-3999]. Default to 3306.
@@ -81,6 +82,7 @@ class _ConnectionState:
                  port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
         :param pulumi.Input[_builtins.str] connection_string: Connection instance string.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
@@ -226,6 +228,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
@@ -294,6 +297,7 @@ class Connection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/connection:Connection example abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

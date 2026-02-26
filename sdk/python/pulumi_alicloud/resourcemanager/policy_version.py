@@ -24,6 +24,7 @@ class PolicyVersionArgs:
                  is_default_version: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PolicyVersion resource.
+
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
@@ -82,6 +83,7 @@ class _PolicyVersionState:
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyVersion resources.
+
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
@@ -198,6 +200,7 @@ class PolicyVersion(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
@@ -263,6 +266,7 @@ class PolicyVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/policyVersion:PolicyVersion example tftest:v2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyVersionArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class TransitRouterMulticastDomainPeerMemberArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomainPeerMember resource.
+
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         :param pulumi.Input[_builtins.str] peer_transit_router_multicast_domain_id: The IDs of the inter-region multicast domains.
         :param pulumi.Input[_builtins.str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
@@ -95,6 +96,7 @@ class _TransitRouterMulticastDomainPeerMemberState:
                  transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainPeerMember resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether only to precheck the request.
         :param pulumi.Input[_builtins.str] group_ip_address: The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         :param pulumi.Input[_builtins.str] peer_transit_router_multicast_domain_id: The IDs of the inter-region multicast domains.
@@ -257,6 +259,7 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         $terraform import alicloud_cen_transit_router_multicast_domain_peer_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether only to precheck the request.
@@ -336,6 +339,7 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cen_transit_router_multicast_domain_peer_member.example <transit_router_multicast_domain_id>:<group_ip_address>:<peer_transit_router_multicast_domain_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterMulticastDomainPeerMemberArgs args: The arguments to use to populate this resource's properties.

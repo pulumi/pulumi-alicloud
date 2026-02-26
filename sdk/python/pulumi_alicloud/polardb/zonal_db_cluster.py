@@ -39,6 +39,7 @@ class ZonalDbClusterArgs:
                  used_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZonalDbCluster resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] db_cluster_nodes_configs: Map of node needs to be created after DB cluster was launched.
         :param pulumi.Input[_builtins.str] db_node_class: The db_node_class of cluster node.Only effective when the cluster is created for the first time. After the cluster is started, the cluster specification is maintained through the node class.
         :param pulumi.Input[_builtins.str] ens_region_id: The Zone to launch the DB cluster.
@@ -340,6 +341,7 @@ class _ZonalDbClusterState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZonalDbCluster resources.
+
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[_builtins.str] cluster_latest_version: PolarDB zonal cluster latest version.
         :param pulumi.Input[_builtins.str] cluster_version: current DB Cluster revision Version.
@@ -796,6 +798,7 @@ class ZonalDbCluster(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/zonalDbCluster:ZonalDbCluster example pc-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -888,6 +891,7 @@ class ZonalDbCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/zonalDbCluster:ZonalDbCluster example pc-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZonalDbClusterArgs args: The arguments to use to populate this resource's properties.

@@ -38,6 +38,7 @@ class BackupPolicyArgs:
                  preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
@@ -324,6 +325,7 @@ class _BackupPolicyState:
                  preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
@@ -680,6 +682,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
@@ -761,6 +764,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/backupPolicy:BackupPolicy example "rm-12345678"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

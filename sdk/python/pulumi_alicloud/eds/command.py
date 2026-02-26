@@ -26,6 +26,7 @@ class CommandArgs:
                  timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Command resource.
+
         :param pulumi.Input[_builtins.str] command_content: The Contents of the Script to Base64 Encoded Transmission.
         :param pulumi.Input[_builtins.str] command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
         :param pulumi.Input[_builtins.str] desktop_id: The desktop id of the Desktop.
@@ -112,6 +113,7 @@ class _CommandState:
                  timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Command resources.
+
         :param pulumi.Input[_builtins.str] command_content: The Contents of the Script to Base64 Encoded Transmission.
         :param pulumi.Input[_builtins.str] command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
         :param pulumi.Input[_builtins.str] content_encoding: That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
@@ -290,6 +292,7 @@ class Command(pulumi.CustomResource):
         $ pulumi import alicloud:eds/command:Command example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] command_content: The Contents of the Script to Base64 Encoded Transmission.
@@ -376,6 +379,7 @@ class Command(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/command:Command example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CommandArgs args: The arguments to use to populate this resource's properties.

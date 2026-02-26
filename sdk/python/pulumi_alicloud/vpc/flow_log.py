@@ -34,6 +34,7 @@ class FlowLogArgs:
                  traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlowLog resource.
+
         :param pulumi.Input[_builtins.str] log_store_name: The Logstore that stores the captured traffic data.
         :param pulumi.Input[_builtins.str] project_name: The project that manages the captured traffic data.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource.
@@ -265,6 +266,7 @@ class _FlowLogState:
                  traffic_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlowLog resources.
+
         :param pulumi.Input[_builtins.str] aggregation_interval: The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         :param pulumi.Input[_builtins.str] business_status: Business status
         :param pulumi.Input[_builtins.str] create_time: Creation time
@@ -624,6 +626,7 @@ class FlowLog(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregation_interval: The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
@@ -718,6 +721,7 @@ class FlowLog(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlowLogArgs args: The arguments to use to populate this resource's properties.

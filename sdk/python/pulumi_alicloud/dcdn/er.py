@@ -26,6 +26,7 @@ class ErArgs:
                  env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None):
         """
         The set of arguments for constructing a Er resource.
+
         :param pulumi.Input[_builtins.str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         :param pulumi.Input[_builtins.str] description: Routine The description of the routine.
         :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See `env_conf` below.
@@ -81,6 +82,7 @@ class _ErState:
                  er_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Er resources.
+
         :param pulumi.Input[_builtins.str] description: Routine The description of the routine.
         :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[_builtins.str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
@@ -183,6 +185,7 @@ class Er(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/er:Er example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Routine The description of the routine.
@@ -238,6 +241,7 @@ class Er(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/er:Er example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ErArgs args: The arguments to use to populate this resource's properties.

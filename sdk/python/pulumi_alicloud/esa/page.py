@@ -25,6 +25,7 @@ class PageArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Page resource.
+
         :param pulumi.Input[_builtins.str] content_type: The Content-Type field in the HTTP header.
         :param pulumi.Input[_builtins.str] page_name: The name of the custom response page.
         :param pulumi.Input[_builtins.str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
@@ -95,6 +96,7 @@ class _PageState:
                  page_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Page resources.
+
         :param pulumi.Input[_builtins.str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         :param pulumi.Input[_builtins.str] content_type: The Content-Type field in the HTTP header.
         :param pulumi.Input[_builtins.str] description: The description of the custom error page.
@@ -205,6 +207,7 @@ class Page(pulumi.CustomResource):
         $ pulumi import alicloud:esa/page:Page example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
@@ -253,6 +256,7 @@ class Page(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/page:Page example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PageArgs args: The arguments to use to populate this resource's properties.

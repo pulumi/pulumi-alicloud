@@ -28,6 +28,7 @@ class AclArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Acl resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         :param pulumi.Input[_builtins.str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         :param pulumi.Input[_builtins.str] name: Name of the access control list.
@@ -120,6 +121,7 @@ class _AclState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         :param pulumi.Input[_builtins.str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         :param pulumi.Input[_builtins.str] name: Name of the access control list.
@@ -267,6 +269,7 @@ class Acl(pulumi.CustomResource):
         $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict']]]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
@@ -333,6 +336,7 @@ class Acl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.

@@ -52,6 +52,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
@@ -571,6 +572,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
@@ -1358,6 +1360,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
@@ -1479,6 +1482,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

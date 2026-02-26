@@ -25,6 +25,7 @@ class HostGroupAccountUserGroupAttachmentArgs:
                  user_group_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HostGroupAccountUserGroupAttachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_account_names: A list names of the host account.
         :param pulumi.Input[_builtins.str] host_group_id: The ID of the host group.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
@@ -93,6 +94,7 @@ class _HostGroupAccountUserGroupAttachmentState:
                  user_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostGroupAccountUserGroupAttachment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_account_names: A list names of the host account.
         :param pulumi.Input[_builtins.str] host_group_id: The ID of the host group.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
@@ -236,6 +238,7 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment example <instance_id>:<user_group_id>:<host_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_account_names: A list names of the host account.
@@ -317,6 +320,7 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment example <instance_id>:<user_group_id>:<host_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostGroupAccountUserGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

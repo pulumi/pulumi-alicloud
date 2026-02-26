@@ -32,6 +32,7 @@ class EcsSnapshotArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsSnapshot resource.
+
         :param pulumi.Input[_builtins.str] disk_id: The ID of the disk.
         :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[_builtins.str] description: The description of the snapshot.
@@ -230,6 +231,7 @@ class _EcsSnapshotState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshot resources.
+
         :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.239.0) The time when the snapshot was created.
         :param pulumi.Input[_builtins.str] description: The description of the snapshot.
@@ -549,6 +551,7 @@ class EcsSnapshot(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values:
@@ -644,6 +647,7 @@ class EcsSnapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsSnapshotArgs args: The arguments to use to populate this resource's properties.

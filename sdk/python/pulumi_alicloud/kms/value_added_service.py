@@ -26,6 +26,7 @@ class ValueAddedServiceArgs:
                  value_added_service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ValueAddedService resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. Unit for year
                
@@ -136,6 +137,7 @@ class _ValueAddedServiceState:
                  value_added_service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ValueAddedService resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. Unit for year
@@ -330,6 +332,7 @@ class ValueAddedService(pulumi.CustomResource):
         $ pulumi import alicloud:kms/valueAddedService:ValueAddedService example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
@@ -392,6 +395,7 @@ class ValueAddedService(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/valueAddedService:ValueAddedService example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ValueAddedServiceArgs args: The arguments to use to populate this resource's properties.

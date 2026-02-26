@@ -28,6 +28,7 @@ class EcsPrefixListArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsPrefixList resource.
+
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
         :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. The details see Block `entry`.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
@@ -112,6 +113,7 @@ class _EcsPrefixListState:
                  prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsPrefixList resources.
+
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
         :param pulumi.Input[_builtins.str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. The details see Block `entry`.
@@ -238,6 +240,7 @@ class EcsPrefixList(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
@@ -287,6 +290,7 @@ class EcsPrefixList(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsPrefixList:EcsPrefixList example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsPrefixListArgs args: The arguments to use to populate this resource's properties.

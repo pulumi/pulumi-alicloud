@@ -24,6 +24,7 @@ class PublicNetworkAddressArgs:
                  db_instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PublicNetworkAddress resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
@@ -48,6 +49,7 @@ class _PublicNetworkAddressState:
                  replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]] = None):
         """
         Input properties used for looking up and filtering PublicNetworkAddress resources.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]] replica_sets: Replica set instance information.
         """
@@ -139,6 +141,7 @@ class PublicNetworkAddress(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
@@ -198,6 +201,7 @@ class PublicNetworkAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicNetworkAddressArgs args: The arguments to use to populate this resource's properties.

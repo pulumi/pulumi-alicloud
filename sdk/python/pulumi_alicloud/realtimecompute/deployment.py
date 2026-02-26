@@ -37,6 +37,7 @@ class DeploymentArgs:
                  streaming_resource_setting: Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']] = None):
         """
         The set of arguments for constructing a Deployment resource.
+
         :param pulumi.Input['DeploymentArtifactArgs'] artifact: Content of the deployment job See `artifact` below.
         :param pulumi.Input[_builtins.str] deployment_name: Name of the deployment
         :param pulumi.Input['DeploymentDeploymentTargetArgs'] deployment_target: Deployment target See `deployment_target` below.
@@ -265,6 +266,7 @@ class _DeploymentState:
                  streaming_resource_setting: Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
+
         :param pulumi.Input['DeploymentArtifactArgs'] artifact: Content of the deployment job See `artifact` below.
         :param pulumi.Input['DeploymentBatchResourceSettingArgs'] batch_resource_setting: Batch job resource settings See `batch_resource_setting` below.
         :param pulumi.Input[_builtins.str] deployment_id: Resource property field representing the primary resource ID
@@ -589,6 +591,7 @@ class Deployment(pulumi.CustomResource):
         $ pulumi import alicloud:realtimecompute/deployment:Deployment example <resource_id>:<namespace>:<deployment_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']] artifact: Content of the deployment job See `artifact` below.
@@ -686,6 +689,7 @@ class Deployment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:realtimecompute/deployment:Deployment example <resource_id>:<namespace>:<deployment_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeploymentArgs args: The arguments to use to populate this resource's properties.

@@ -36,6 +36,7 @@ class PrivateDnsArgs:
                  standby_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivateDns resource.
+
         :param pulumi.Input[_builtins.str] access_instance_name: The name of Private DNS instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] firewall_types: The type of firewall
         :param pulumi.Input[_builtins.str] private_dns_type: The type of Private DNS instance
@@ -281,6 +282,7 @@ class _PrivateDnsState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateDns resources.
+
         :param pulumi.Input[_builtins.str] access_instance_id: The id of Private DNS instance
         :param pulumi.Input[_builtins.str] access_instance_name: The name of Private DNS instance
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_name_lists: Private DNS domain name list
@@ -622,6 +624,7 @@ class PrivateDns(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/privateDns:PrivateDns example <access_instance_id>:<region_no>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_instance_name: The name of Private DNS instance
@@ -706,6 +709,7 @@ class PrivateDns(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/privateDns:PrivateDns example <access_instance_id>:<region_no>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrivateDnsArgs args: The arguments to use to populate this resource's properties.

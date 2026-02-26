@@ -36,6 +36,7 @@ class InvocationArgs:
                  working_dir: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Invocation resource.
+
         :param pulumi.Input[_builtins.str] command_content: The command content. You need to pay attention:
                - Specify the parameter 'EnableParameter = true' to enable the custom parameter feature in the command content.
                - Define custom parameters in the form of {{}} inclusion, and spaces and line breaks before and after the parameter name in '{{}}' are ignored.
@@ -368,6 +369,7 @@ class _InvocationState:
                  working_dir: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Invocation resources.
+
         :param pulumi.Input[_builtins.str] command_content: The command content. You need to pay attention:
                - Specify the parameter 'EnableParameter = true' to enable the custom parameter feature in the command content.
                - Define custom parameters in the form of {{}} inclusion, and spaces and line breaks before and after the parameter name in '{{}}' are ignored.
@@ -729,6 +731,7 @@ class Invocation(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/invocation:Invocation example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] command_content: The command content. You need to pay attention:
@@ -821,6 +824,7 @@ class Invocation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/invocation:Invocation example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InvocationArgs args: The arguments to use to populate this resource's properties.

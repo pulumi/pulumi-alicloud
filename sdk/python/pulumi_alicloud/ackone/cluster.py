@@ -27,6 +27,7 @@ class ClusterArgs:
                  profile: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input['ClusterNetworkArgs'] network: Cluster network information. See `network` below.
         :param pulumi.Input[_builtins.bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name.
@@ -104,6 +105,7 @@ class _ClusterState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name.
         :param pulumi.Input[_builtins.str] create_time: Cluster creation time.
@@ -258,6 +260,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:ackone/cluster:Cluster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
@@ -318,6 +321,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ackone/cluster:Cluster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

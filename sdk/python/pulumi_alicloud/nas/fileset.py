@@ -26,6 +26,7 @@ class FilesetArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Fileset resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] file_system_path: The path of Fileset.
         :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
@@ -119,6 +120,7 @@ class _FilesetState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Fileset resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when Fileset was created.
         :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
                - true: Enable instance release protection.
@@ -308,6 +310,7 @@ class Fileset(pulumi.CustomResource):
         $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] deletion_protection: The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
@@ -373,6 +376,7 @@ class Fileset(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/fileset:Fileset example <file_system_id>:<fileset_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FilesetArgs args: The arguments to use to populate this resource's properties.

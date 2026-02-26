@@ -46,6 +46,7 @@ class EipArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Eip resource.
+
         :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[_builtins.str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
@@ -422,6 +423,7 @@ class _EipState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
+
         :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[_builtins.str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
@@ -866,6 +868,7 @@ class Eip(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
@@ -927,6 +930,7 @@ class Eip(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EipArgs args: The arguments to use to populate this resource's properties.

@@ -38,6 +38,7 @@ class WorkspaceModelVersionArgs:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceModelVersion resource.
+
         :param pulumi.Input[_builtins.str] model_id: The model ID.
         :param pulumi.Input[_builtins.str] uri: The URI of the model version.
         :param pulumi.Input[_builtins.str] approval_status: The approval status. Valid values:
@@ -330,6 +331,7 @@ class _WorkspaceModelVersionState:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceModelVersion resources.
+
         :param pulumi.Input[_builtins.str] approval_status: The approval status. Valid values:
                - Pending: To be determined.
                - Approved: Allow to go online.
@@ -708,6 +710,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceModelVersion:WorkspaceModelVersion example <model_id>:<version_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] approval_status: The approval status. Valid values:
@@ -836,6 +839,7 @@ class WorkspaceModelVersion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceModelVersion:WorkspaceModelVersion example <model_id>:<version_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceModelVersionArgs args: The arguments to use to populate this resource's properties.

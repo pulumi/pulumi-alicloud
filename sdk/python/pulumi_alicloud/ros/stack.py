@@ -43,6 +43,7 @@ class StackArgs:
                  use_previous_parameters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Stack resource.
+
         :param pulumi.Input[_builtins.str] stack_name: The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param pulumi.Input[_builtins.str] create_option: Specifies whether to delete the stack after it is created.
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
@@ -371,6 +372,7 @@ class _StackState:
                  use_previous_parameters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Stack resources.
+
         :param pulumi.Input[_builtins.str] create_option: Specifies whether to delete the stack after it is created.
         :param pulumi.Input[_builtins.str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
@@ -758,6 +760,7 @@ class Stack(pulumi.CustomResource):
         $ pulumi import alicloud:ros/stack:Stack example <stack_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_option: Specifies whether to delete the stack after it is created.
@@ -828,6 +831,7 @@ class Stack(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ros/stack:Stack example <stack_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StackArgs args: The arguments to use to populate this resource's properties.

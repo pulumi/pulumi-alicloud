@@ -23,6 +23,7 @@ class SecurityGroupArgs:
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
+
         :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] security_group_name: Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         """
@@ -63,6 +64,7 @@ class _SecurityGroupState:
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
+
         :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] security_group_name: Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         """
@@ -139,6 +141,7 @@ class SecurityGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -183,6 +186,7 @@ class SecurityGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/securityGroup:SecurityGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupArgs args: The arguments to use to populate this resource's properties.

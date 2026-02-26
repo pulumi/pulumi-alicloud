@@ -28,6 +28,7 @@ class SolutionInstanceArgs:
                  solution_instance_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SolutionInstance resource.
+
         :param pulumi.Input[_builtins.str] solution_id: Solution ID.
         :param pulumi.Input[_builtins.str] description: Solution Instance Description.
         :param pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]] parameters: Solution Instance Creation Parameters. See `parameters` below.
@@ -117,6 +118,7 @@ class _SolutionInstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SolutionInstance resources.
+
         :param pulumi.Input[_builtins.str] create_time: Solution Instance Creation Time.
         :param pulumi.Input[_builtins.str] description: Solution Instance Description.
         :param pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]] parameters: Solution Instance Creation Parameters. See `parameters` below.
@@ -342,6 +344,7 @@ class SolutionInstance(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/solutionInstance:SolutionInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Solution Instance Description.
@@ -460,6 +463,7 @@ class SolutionInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/solutionInstance:SolutionInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SolutionInstanceArgs args: The arguments to use to populate this resource's properties.

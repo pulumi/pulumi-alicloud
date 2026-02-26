@@ -27,6 +27,7 @@ class TransitRouterPrefixListAssociationArgs:
                  owner_uid: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a TransitRouterPrefixListAssociation resource.
+
         :param pulumi.Input[_builtins.str] next_hop: The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         :param pulumi.Input[_builtins.str] prefix_list_id: The ID of the prefix list.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
@@ -136,6 +137,7 @@ class _TransitRouterPrefixListAssociationState:
                  transit_router_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterPrefixListAssociation resources.
+
         :param pulumi.Input[_builtins.str] next_hop: The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         :param pulumi.Input[_builtins.str] next_hop_type: The type of the next hop. Valid values:
                - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
@@ -310,6 +312,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation default <prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>.
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] next_hop: The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
@@ -373,6 +376,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation default <prefix_list_id>:<transit_router_id>:<transit_router_table_id>:<next_hop>.
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterPrefixListAssociationArgs args: The arguments to use to populate this resource's properties.

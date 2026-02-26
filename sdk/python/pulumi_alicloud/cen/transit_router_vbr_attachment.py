@@ -33,6 +33,7 @@ class TransitRouterVbrAttachmentArgs:
                  vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterVbrAttachment resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN.
         :param pulumi.Input[_builtins.str] vbr_id: The ID of the VBR.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
@@ -245,6 +246,7 @@ class _TransitRouterVbrAttachmentState:
                  vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVbrAttachment resources.
+
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
@@ -541,6 +543,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
@@ -615,6 +618,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterVbrAttachmentArgs args: The arguments to use to populate this resource's properties.

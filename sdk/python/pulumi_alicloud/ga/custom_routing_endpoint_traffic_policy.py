@@ -26,6 +26,7 @@ class CustomRoutingEndpointTrafficPolicyArgs:
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] = None):
         """
         The set of arguments for constructing a CustomRoutingEndpointTrafficPolicy resource.
+
         :param pulumi.Input[_builtins.str] address: The IP address of the destination to which traffic is allowed.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See `port_ranges` below.
@@ -85,6 +86,7 @@ class _CustomRoutingEndpointTrafficPolicyState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomRoutingEndpointTrafficPolicy resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
         :param pulumi.Input[_builtins.str] address: The IP address of the destination to which traffic is allowed.
         :param pulumi.Input[_builtins.str] custom_routing_endpoint_traffic_policy_id: The ID of the Custom Routing Endpoint Traffic Policy.
@@ -304,6 +306,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy example <endpoint_id>:<custom_routing_endpoint_traffic_policy_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The IP address of the destination to which traffic is allowed.
@@ -401,6 +404,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy example <endpoint_id>:<custom_routing_endpoint_traffic_policy_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomRoutingEndpointTrafficPolicyArgs args: The arguments to use to populate this resource's properties.

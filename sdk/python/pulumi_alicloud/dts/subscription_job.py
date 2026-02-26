@@ -60,6 +60,7 @@ class SubscriptionJobArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SubscriptionJob resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
@@ -688,6 +689,7 @@ class _SubscriptionJobState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SubscriptionJob resources.
+
         :param pulumi.Input[_builtins.str] checkpoint: Subscription start time in Unix timestamp format.
         :param pulumi.Input[_builtins.int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         :param pulumi.Input[_builtins.int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
@@ -1424,6 +1426,7 @@ class SubscriptionJob(pulumi.CustomResource):
         $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] checkpoint: Subscription start time in Unix timestamp format.
@@ -1573,6 +1576,7 @@ class SubscriptionJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubscriptionJobArgs args: The arguments to use to populate this resource's properties.

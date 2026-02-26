@@ -29,6 +29,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] accessed_by: The network limitation of accessing instance. Valid values:
                * `Any` - Allow all network to access the instance.
                * `Vpc` - Only can the attached VPC allow to access the instance.
@@ -193,6 +194,7 @@ class _InstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] accessed_by: The network limitation of accessing instance. Valid values:
                * `Any` - Allow all network to access the instance.
                * `Vpc` - Only can the attached VPC allow to access the instance.
@@ -399,6 +401,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accessed_by: The network limitation of accessing instance. Valid values:
@@ -469,6 +472,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ots/instance:Instance foo "my-ots-instance"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

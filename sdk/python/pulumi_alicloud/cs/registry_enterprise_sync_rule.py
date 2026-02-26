@@ -34,6 +34,7 @@ class RegistryEnterpriseSyncRuleArgs:
                  target_user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry source instance.
         :param pulumi.Input[_builtins.str] namespace_name: The namespace name of the source instance.
         :param pulumi.Input[_builtins.str] tag_filter: The regular expression used to filter image tags.
@@ -263,6 +264,7 @@ class _RegistryEnterpriseSyncRuleState:
                  target_user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.240.0) The time when the synchronization rule was created.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry source instance.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
@@ -658,6 +660,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<repo_sync_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry source instance.
@@ -768,6 +771,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<repo_sync_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegistryEnterpriseSyncRuleArgs args: The arguments to use to populate this resource's properties.

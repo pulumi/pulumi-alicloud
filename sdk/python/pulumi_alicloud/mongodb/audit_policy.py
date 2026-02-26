@@ -25,6 +25,7 @@ class AuditPolicyArgs:
                  storage_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AuditPolicy resource.
+
         :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
         :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
         :param pulumi.Input[_builtins.str] filter: The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
@@ -95,6 +96,7 @@ class _AuditPolicyState:
                  storage_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AuditPolicy resources.
+
         :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
         :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
         :param pulumi.Input[_builtins.str] filter: The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
@@ -232,6 +234,7 @@ class AuditPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
@@ -307,6 +310,7 @@ class AuditPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuditPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class TransitRouterMulticastDomainArgs:
                  transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomain resource.
+
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the forwarding router instance.
         :param pulumi.Input['TransitRouterMulticastDomainOptionsArgs'] options: The function options of the multicast domain. See `options` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -117,6 +118,7 @@ class _TransitRouterMulticastDomainState:
                  transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomain resources.
+
         :param pulumi.Input['TransitRouterMulticastDomainOptionsArgs'] options: The function options of the multicast domain. See `options` below.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.242.0) The region ID of the transit router.
         :param pulumi.Input[_builtins.str] status: The status of the Transit Router Multicast Domain.
@@ -280,6 +282,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']] options: The function options of the multicast domain. See `options` below.
@@ -336,6 +339,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterMulticastDomainArgs args: The arguments to use to populate this resource's properties.

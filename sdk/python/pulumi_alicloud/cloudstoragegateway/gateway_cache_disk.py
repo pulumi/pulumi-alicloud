@@ -25,6 +25,7 @@ class GatewayCacheDiskArgs:
                  performance_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayCacheDisk resource.
+
         :param pulumi.Input[_builtins.int] cache_disk_size_in_gb: The capacity of the cache disk.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the gateway.
         :param pulumi.Input[_builtins.str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
@@ -98,6 +99,7 @@ class _GatewayCacheDiskState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GatewayCacheDisk resources.
+
         :param pulumi.Input[_builtins.str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
         :param pulumi.Input[_builtins.int] cache_disk_size_in_gb: The capacity of the cache disk.
         :param pulumi.Input[_builtins.str] cache_id: The ID of the cache disk.
@@ -280,6 +282,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk example <gateway_id>:<cache_id>:<local_file_path>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
@@ -355,6 +358,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk example <gateway_id>:<cache_id>:<local_file_path>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayCacheDiskArgs args: The arguments to use to populate this resource's properties.

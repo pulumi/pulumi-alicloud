@@ -28,6 +28,7 @@ class EipSegmentAddressArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EipSegmentAddress resource.
+
         :param pulumi.Input[_builtins.str] eip_mask: The subnet mask of the contiguous EIP group. Valid values:
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
                - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
@@ -192,6 +193,7 @@ class _EipSegmentAddressState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipSegmentAddress resources.
+
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
                - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
                - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
@@ -438,6 +440,7 @@ class EipSegmentAddress(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
@@ -511,6 +514,7 @@ class EipSegmentAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/eipSegmentAddress:EipSegmentAddress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EipSegmentAddressArgs args: The arguments to use to populate this resource's properties.

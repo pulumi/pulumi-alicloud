@@ -28,6 +28,7 @@ class TopicArgs:
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
                
@@ -163,6 +164,7 @@ class _TopicState:
                  shard_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
                
                **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
@@ -382,6 +384,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
@@ -457,6 +460,7 @@ class Topic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

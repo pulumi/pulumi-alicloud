@@ -23,6 +23,7 @@ class RemoteWriteArgs:
                  remote_write_yaml: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RemoteWrite resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Prometheus instance.
         :param pulumi.Input[_builtins.str] remote_write_yaml: The details of the Remote Write configuration item. Specify the value in the YAML format.
         """
@@ -62,6 +63,7 @@ class _RemoteWriteState:
                  remote_write_yaml: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RemoteWrite resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Prometheus instance.
         :param pulumi.Input[_builtins.str] remote_write_name: The name of the Remote Write configuration item.
         :param pulumi.Input[_builtins.str] remote_write_yaml: The details of the Remote Write configuration item. Specify the value in the YAML format.
@@ -190,6 +192,7 @@ class RemoteWrite(pulumi.CustomResource):
         $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Prometheus instance.
@@ -271,6 +274,7 @@ class RemoteWrite(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/remoteWrite:RemoteWrite example <cluster_id>:<remote_write_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RemoteWriteArgs args: The arguments to use to populate this resource's properties.

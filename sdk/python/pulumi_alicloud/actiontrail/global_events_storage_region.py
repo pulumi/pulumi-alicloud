@@ -22,6 +22,7 @@ class GlobalEventsStorageRegionArgs:
                  storage_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalEventsStorageRegion resource.
+
         :param pulumi.Input[_builtins.str] storage_region: Global Events Storage Region.
         """
         if storage_region is not None:
@@ -46,6 +47,7 @@ class _GlobalEventsStorageRegionState:
                  storage_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalEventsStorageRegion resources.
+
         :param pulumi.Input[_builtins.str] storage_region: Global Events Storage Region.
         """
         if storage_region is not None:
@@ -94,6 +96,7 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
 
         Global events storage region not can be imported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] storage_region: Global Events Storage Region.
@@ -125,6 +128,7 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
         ## Import
 
         Global events storage region not can be imported.
+
 
         :param str resource_name: The name of the resource.
         :param GlobalEventsStorageRegionArgs args: The arguments to use to populate this resource's properties.

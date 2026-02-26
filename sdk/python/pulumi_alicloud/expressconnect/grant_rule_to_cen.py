@@ -24,6 +24,7 @@ class GrantRuleToCenArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GrantRuleToCen resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
         :param pulumi.Input[_builtins.str] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the VBR.
@@ -78,6 +79,7 @@ class _GrantRuleToCenState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GrantRuleToCen resources.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
         :param pulumi.Input[_builtins.str] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The time when the instance was created.
@@ -203,6 +205,7 @@ class GrantRuleToCen(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/grantRuleToCen:GrantRuleToCen example <cen_id>:<cen_owner_id>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
@@ -266,6 +269,7 @@ class GrantRuleToCen(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/grantRuleToCen:GrantRuleToCen example <cen_id>:<cen_owner_id>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GrantRuleToCenArgs args: The arguments to use to populate this resource's properties.

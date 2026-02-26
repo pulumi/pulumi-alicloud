@@ -24,6 +24,7 @@ class PortfolioArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Portfolio resource.
+
         :param pulumi.Input[_builtins.str] portfolio_name: The name of the portfolio
         :param pulumi.Input[_builtins.str] provider_name: The provider name of the portfolio
         :param pulumi.Input[_builtins.str] description: The description of the portfolio
@@ -80,6 +81,7 @@ class _PortfolioState:
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Portfolio resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the portfolio
         :param pulumi.Input[_builtins.str] description: The description of the portfolio
         :param pulumi.Input[_builtins.str] portfolio_arn: The ARN of the portfolio
@@ -202,6 +204,7 @@ class Portfolio(pulumi.CustomResource):
         $ pulumi import alicloud:servicecatalog/portfolio:Portfolio example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the portfolio
@@ -247,6 +250,7 @@ class Portfolio(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:servicecatalog/portfolio:Portfolio example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortfolioArgs args: The arguments to use to populate this resource's properties.

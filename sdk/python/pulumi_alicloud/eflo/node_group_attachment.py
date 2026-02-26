@@ -32,6 +32,7 @@ class NodeGroupAttachmentArgs:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] hostname: Node hostname
         :param pulumi.Input[_builtins.str] vpc_id: Vpc id
         :param pulumi.Input[_builtins.str] vswitch_id: vswitch id
@@ -181,6 +182,7 @@ class _NodeGroupAttachmentState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroupAttachment resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] hostname: Node hostname
@@ -376,6 +378,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment example <cluster_id>:<node_group_id>:<node_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
@@ -434,6 +437,7 @@ class NodeGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment example <cluster_id>:<node_group_id>:<node_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class HttpApiArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpApi resource.
+
         :param pulumi.Input[_builtins.str] http_api_name: The name of the resource
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: API protocol
         :param pulumi.Input[_builtins.str] base_path: API path
@@ -129,6 +130,7 @@ class _HttpApiState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HttpApi resources.
+
         :param pulumi.Input[_builtins.str] base_path: API path
         :param pulumi.Input[_builtins.str] description: Description of API
         :param pulumi.Input[_builtins.str] http_api_name: The name of the resource
@@ -279,6 +281,7 @@ class HttpApi(pulumi.CustomResource):
         $ pulumi import alicloud:apig/httpApi:HttpApi example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_path: API path
@@ -337,6 +340,7 @@ class HttpApi(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apig/httpApi:HttpApi example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpApiArgs args: The arguments to use to populate this resource's properties.

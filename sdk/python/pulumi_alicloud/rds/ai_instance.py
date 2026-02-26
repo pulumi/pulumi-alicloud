@@ -38,6 +38,7 @@ class AiInstanceArgs:
                  storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]] = None):
         """
         The set of arguments for constructing a AiInstance resource.
+
         :param pulumi.Input[_builtins.str] app_name: The name of the new AI application.
         :param pulumi.Input[_builtins.str] app_type: Application type. Currently, only `supabase` is supported.
         :param pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]] auth_config_lists: Authentication information list. See `auth_config_list` below.
@@ -302,6 +303,7 @@ class _AiInstanceState:
                  storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]] = None):
         """
         Input properties used for looking up and filtering AiInstance resources.
+
         :param pulumi.Input[_builtins.str] app_name: The name of the new AI application.
         :param pulumi.Input[_builtins.str] app_type: Application type. Currently, only `supabase` is supported.
         :param pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]] auth_config_lists: Authentication information list. See `auth_config_list` below.
@@ -614,6 +616,7 @@ class AiInstance(pulumi.CustomResource):
         $ pulumi import alicloud:rds/aiInstance:AiInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_name: The name of the new AI application.
@@ -690,6 +693,7 @@ class AiInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/aiInstance:AiInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AiInstanceArgs args: The arguments to use to populate this resource's properties.

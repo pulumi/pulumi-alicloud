@@ -24,6 +24,7 @@ class EnvServiceMonitorArgs:
                  aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvServiceMonitor resource.
+
         :param pulumi.Input[_builtins.str] config_yaml: Yaml configuration string.
         :param pulumi.Input[_builtins.str] environment_id: Environment id.
         :param pulumi.Input[_builtins.str] aliyun_lang: Language environment, default is Chinese zh | en.
@@ -81,6 +82,7 @@ class _EnvServiceMonitorState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvServiceMonitor resources.
+
         :param pulumi.Input[_builtins.str] aliyun_lang: Language environment, default is Chinese zh | en.
         :param pulumi.Input[_builtins.str] config_yaml: Yaml configuration string.
         :param pulumi.Input[_builtins.str] env_service_monitor_name: The name of the resource.
@@ -303,6 +305,7 @@ class EnvServiceMonitor(pulumi.CustomResource):
         $ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aliyun_lang: Language environment, default is Chinese zh | en.
@@ -433,6 +436,7 @@ class EnvServiceMonitor(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/envServiceMonitor:EnvServiceMonitor example <environment_id>:<namespace>:<env_service_monitor_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvServiceMonitorArgs args: The arguments to use to populate this resource's properties.

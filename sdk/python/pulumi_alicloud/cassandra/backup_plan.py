@@ -27,6 +27,7 @@ class BackupPlanArgs:
                  retention_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
+
         :param pulumi.Input[_builtins.str] backup_time: The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster for the backup.
         :param pulumi.Input[_builtins.str] data_center_id: The ID of the data center for the backup in the cluster.
@@ -128,6 +129,7 @@ class _BackupPlanState:
                  retention_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
+
         :param pulumi.Input[_builtins.bool] active: Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
         :param pulumi.Input[_builtins.str] backup_period: The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
         :param pulumi.Input[_builtins.str] backup_time: The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
@@ -251,6 +253,7 @@ class BackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example <cluster_id>:<data_center_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
@@ -282,6 +285,7 @@ class BackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cassandra/backupPlan:BackupPlan example <cluster_id>:<data_center_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPlanArgs args: The arguments to use to populate this resource's properties.

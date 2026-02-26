@@ -29,6 +29,7 @@ class DomainArgs:
                  top_level_domain: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
@@ -144,6 +145,7 @@ class _DomainState:
                  weight: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] cert_name: The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
         :param pulumi.Input[_builtins.str] cname: The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
@@ -432,6 +434,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:vod/domain:Domain example <domain_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] check_url: The URL that is used for health checks.
@@ -491,6 +494,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vod/domain:Domain example <domain_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

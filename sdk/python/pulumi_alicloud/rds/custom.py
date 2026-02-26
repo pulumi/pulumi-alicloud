@@ -56,6 +56,7 @@ class CustomArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Custom resource.
+
         :param pulumi.Input[_builtins.str] instance_type: The type of the created RDS Custom dedicated host instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
                The network type InstanceNetworkType must be VPC.
@@ -613,6 +614,7 @@ class _CustomState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Custom resources.
+
         :param pulumi.Input[_builtins.int] amount: Represents the number of instances created
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
@@ -1291,6 +1293,7 @@ class Custom(pulumi.CustomResource):
         $ pulumi import alicloud:rds/custom:Custom example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: Represents the number of instances created
@@ -1446,6 +1449,7 @@ class Custom(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/custom:Custom example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomArgs args: The arguments to use to populate this resource's properties.

@@ -36,6 +36,7 @@ class PolardbxInstanceArgs:
                  tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolardbxInstance resource.
+
         :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
         :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
@@ -283,6 +284,7 @@ class _PolardbxInstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolardbxInstance resources.
+
         :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -633,6 +635,7 @@ class PolardbxInstance(pulumi.CustomResource):
         $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
@@ -709,6 +712,7 @@ class PolardbxInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:drds/polardbxInstance:PolardbxInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolardbxInstanceArgs args: The arguments to use to populate this resource's properties.

@@ -36,6 +36,7 @@ class AcceleratorArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Accelerator resource.
+
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
@@ -303,6 +304,7 @@ class _AcceleratorState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Accelerator resources.
+
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[_builtins.int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
@@ -617,6 +619,7 @@ class Accelerator(pulumi.CustomResource):
         $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_name: The Name of the GA instance.
@@ -680,6 +683,7 @@ class Accelerator(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/accelerator:Accelerator example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AcceleratorArgs args: The arguments to use to populate this resource's properties.

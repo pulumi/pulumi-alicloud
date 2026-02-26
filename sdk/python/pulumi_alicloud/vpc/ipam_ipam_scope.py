@@ -27,6 +27,7 @@ class IpamIpamScopeArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamScope resource.
+
         :param pulumi.Input[_builtins.str] ipam_id: The id of the Ipam instance.
         :param pulumi.Input[_builtins.str] ipam_scope_description: The description of the IPAM's scope of action.
                It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -143,6 +144,7 @@ class _IpamIpamScopeState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpamScope resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] ipam_id: The id of the Ipam instance.
         :param pulumi.Input[_builtins.str] ipam_scope_description: The description of the IPAM's scope of action.
@@ -345,6 +347,7 @@ class IpamIpamScope(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipamIpamScope:IpamIpamScope example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipam_id: The id of the Ipam instance.
@@ -405,6 +408,7 @@ class IpamIpamScope(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipamIpamScope:IpamIpamScope example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamIpamScopeArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class IngestionArgs:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ingestion resource.
+
         :param pulumi.Input[_builtins.str] display_name: The name displayed on the web page.
         :param pulumi.Input[_builtins.str] ingestion_name: Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
         :param pulumi.Input[_builtins.str] interval: Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
@@ -175,6 +176,7 @@ class _IngestionState:
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ingestion resources.
+
         :param pulumi.Input[_builtins.str] description: Ingestion job description.
         :param pulumi.Input[_builtins.str] display_name: The name displayed on the web page.
         :param pulumi.Input[_builtins.str] ingestion_name: Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
@@ -405,6 +407,7 @@ class Ingestion(pulumi.CustomResource):
         $ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Ingestion job description.
@@ -498,6 +501,7 @@ class Ingestion(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/ingestion:Ingestion example tf-log-project:tf-log-logstore:ingestion_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IngestionArgs args: The arguments to use to populate this resource's properties.

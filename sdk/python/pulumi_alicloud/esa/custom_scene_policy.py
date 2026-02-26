@@ -27,6 +27,7 @@ class CustomScenePolicyArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomScenePolicy resource.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
                The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] custom_scene_policy_name: The policy name.
@@ -130,6 +131,7 @@ class _CustomScenePolicyState:
                  template: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomScenePolicy resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
                The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] custom_scene_policy_name: The policy name.
@@ -284,6 +286,7 @@ class CustomScenePolicy(pulumi.CustomResource):
         $ pulumi import alicloud:esa/customScenePolicy:CustomScenePolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
@@ -344,6 +347,7 @@ class CustomScenePolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/customScenePolicy:CustomScenePolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomScenePolicyArgs args: The arguments to use to populate this resource's properties.

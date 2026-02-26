@@ -26,6 +26,7 @@ class MonitorGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MonitorGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_groups: The alert group to which alert notifications will be sent.
         :param pulumi.Input[_builtins.str] monitor_group_name: The name of the application group.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -114,6 +115,7 @@ class _MonitorGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MonitorGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_groups: The alert group to which alert notifications will be sent.
         :param pulumi.Input[_builtins.str] monitor_group_name: The name of the application group.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -240,6 +242,7 @@ class MonitorGroup(pulumi.CustomResource):
         $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_groups: The alert group to which alert notifications will be sent.
@@ -289,6 +292,7 @@ class MonitorGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/monitorGroup:MonitorGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitorGroupArgs args: The arguments to use to populate this resource's properties.

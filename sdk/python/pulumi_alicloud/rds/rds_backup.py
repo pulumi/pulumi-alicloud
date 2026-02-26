@@ -27,6 +27,7 @@ class RdsBackupArgs:
                  remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RdsBackup resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The db instance id.
         :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
         :param pulumi.Input[_builtins.str] backup_strategy: The policy that you want to use for the backup task. Valid values:
@@ -140,6 +141,7 @@ class _RdsBackupState:
                  store_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsBackup resources.
+
         :param pulumi.Input[_builtins.str] backup_id: The backup id.
         :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
         :param pulumi.Input[_builtins.str] backup_strategy: The policy that you want to use for the backup task. Valid values:
@@ -319,6 +321,7 @@ class RdsBackup(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_method: The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
@@ -372,6 +375,7 @@ class RdsBackup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsBackup:RdsBackup example <db_instance_id>:<backup_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsBackupArgs args: The arguments to use to populate this resource's properties.

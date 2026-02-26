@@ -37,6 +37,7 @@ class InstanceArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] big_screen: Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
         :param pulumi.Input[_builtins.str] exclusive_ip_package: Specify the number of exclusive WAF IP addresses.
         :param pulumi.Input[_builtins.str] ext_bandwidth: The extra bandwidth. Unit: Mbit/s.
@@ -304,6 +305,7 @@ class _InstanceState:
                  waf_log: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] big_screen: Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
         :param pulumi.Input[_builtins.str] exclusive_ip_package: Specify the number of exclusive WAF IP addresses.
         :param pulumi.Input[_builtins.str] ext_bandwidth: The extra bandwidth. Unit: Mbit/s.
@@ -649,6 +651,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] big_screen: Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
@@ -731,6 +734,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

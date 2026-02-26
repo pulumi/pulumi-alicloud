@@ -32,6 +32,7 @@ class QosPolicyArgs:
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosPolicy resource.
+
         :param pulumi.Input[_builtins.str] dest_cidr: The destination CIDR block.
         :param pulumi.Input[_builtins.str] dest_port_range: The destination port range.
         :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol.
@@ -209,6 +210,7 @@ class _QosPolicyState:
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosPolicy resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the QoS policy.
         :param pulumi.Input[_builtins.str] dest_cidr: The destination CIDR block.
         :param pulumi.Input[_builtins.str] dest_port_range: The destination port range.
@@ -450,6 +452,7 @@ class QosPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:sag/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the QoS policy.
@@ -524,6 +527,7 @@ class QosPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sag/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosPolicyArgs args: The arguments to use to populate this resource's properties.

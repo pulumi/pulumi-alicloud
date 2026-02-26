@@ -23,6 +23,7 @@ class BucketPublicAccessBlockArgs:
                  bucket: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketPublicAccessBlock resource.
+
         :param pulumi.Input[_builtins.bool] block_public_access: Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         """
@@ -61,6 +62,7 @@ class _BucketPublicAccessBlockState:
                  bucket: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketPublicAccessBlock resources.
+
         :param pulumi.Input[_builtins.bool] block_public_access: Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         """
@@ -144,6 +146,7 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] block_public_access: Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
@@ -195,6 +198,7 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketPublicAccessBlockArgs args: The arguments to use to populate this resource's properties.

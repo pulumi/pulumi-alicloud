@@ -26,6 +26,7 @@ class AccessRuleArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
+
         :param pulumi.Input[_builtins.str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         :param pulumi.Input[_builtins.str] network_segment: The IP address or network segment of the authorized object.
         :param pulumi.Input[_builtins.int] priority: Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
@@ -112,6 +113,7 @@ class _AccessRuleState:
                  rw_access_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
+
         :param pulumi.Input[_builtins.str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         :param pulumi.Input[_builtins.str] access_rule_id: The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
         :param pulumi.Input[_builtins.str] create_time: Permission rule resource creation time.
@@ -273,6 +275,7 @@ class AccessRule(pulumi.CustomResource):
         $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_id: Permission group resource ID. You must specify the permission group ID when creating a permission rule.
@@ -327,6 +330,7 @@ class AccessRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dfs/accessRule:AccessRule example <access_group_id>:<access_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessRuleArgs args: The arguments to use to populate this resource's properties.

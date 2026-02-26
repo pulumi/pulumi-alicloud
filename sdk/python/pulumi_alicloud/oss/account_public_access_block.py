@@ -22,6 +22,7 @@ class AccountPublicAccessBlockArgs:
                  block_public_access: pulumi.Input[_builtins.bool]):
         """
         The set of arguments for constructing a AccountPublicAccessBlock resource.
+
         :param pulumi.Input[_builtins.bool] block_public_access: Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
         """
         pulumi.set(__self__, "block_public_access", block_public_access)
@@ -45,6 +46,7 @@ class _AccountPublicAccessBlockState:
                  block_public_access: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AccountPublicAccessBlock resources.
+
         :param pulumi.Input[_builtins.bool] block_public_access: Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
         """
         if block_public_access is not None:
@@ -103,6 +105,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         $ terraform import alicloud_oss_account_public_access_block.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] block_public_access: Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
@@ -144,6 +147,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_oss_account_public_access_block.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountPublicAccessBlockArgs args: The arguments to use to populate this resource's properties.

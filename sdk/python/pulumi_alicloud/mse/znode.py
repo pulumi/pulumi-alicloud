@@ -25,6 +25,7 @@ class ZnodeArgs:
                  data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Znode resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Cluster.
         :param pulumi.Input[_builtins.str] path: The Node path. The value must start with a forward slash (/).
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh` or `en`.
@@ -95,6 +96,7 @@ class _ZnodeState:
                  path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Znode resources.
+
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh` or `en`.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Cluster.
         :param pulumi.Input[_builtins.str] data: The Node data.
@@ -221,6 +223,7 @@ class Znode(pulumi.CustomResource):
         $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh` or `en`.
@@ -285,6 +288,7 @@ class Znode(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mse/znode:Znode example <cluster_id>:<path>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZnodeArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class BandwidthPackageAttachmentArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BandwidthPackageAttachment resource.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the bandwidth package.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CEN.
         """
@@ -61,6 +62,7 @@ class _BandwidthPackageAttachmentState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackageAttachment resources.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the bandwidth package.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the CEN.
         """
@@ -139,6 +141,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the bandwidth package.
@@ -185,6 +188,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BandwidthPackageAttachmentArgs args: The arguments to use to populate this resource's properties.

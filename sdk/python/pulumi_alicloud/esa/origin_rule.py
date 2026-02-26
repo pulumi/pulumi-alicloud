@@ -43,6 +43,7 @@ class OriginRuleArgs:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a OriginRule resource.
+
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
         :param pulumi.Input[_builtins.str] follow302_enable: Return Source 302 follow switch. Value range:
@@ -407,6 +408,7 @@ class _OriginRuleState:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering OriginRule resources.
+
         :param pulumi.Input[_builtins.int] config_id: Back-to-source rule configuration ID
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
         :param pulumi.Input[_builtins.str] follow302_enable: Return Source 302 follow switch. Value range:
@@ -829,6 +831,7 @@ class OriginRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/originRule:OriginRule example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
@@ -902,6 +905,7 @@ class OriginRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/originRule:OriginRule example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OriginRuleArgs args: The arguments to use to populate this resource's properties.

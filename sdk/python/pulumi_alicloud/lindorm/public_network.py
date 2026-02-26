@@ -24,6 +24,7 @@ class PublicNetworkArgs:
                  enable_public_network: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a PublicNetwork resource.
+
         :param pulumi.Input[_builtins.str] engine_type: Engine type, value:
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.int] enable_public_network: Open or close the public connection. Value:
@@ -79,6 +80,7 @@ class _PublicNetworkState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicNetwork resources.
+
         :param pulumi.Input[_builtins.int] enable_public_network: Open or close the public connection. Value:
         :param pulumi.Input[_builtins.str] engine_type: Engine type, value:
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
@@ -218,6 +220,7 @@ class PublicNetwork(pulumi.CustomResource):
         $ pulumi import alicloud:lindorm/publicNetwork:PublicNetwork example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] enable_public_network: Open or close the public connection. Value:
@@ -295,6 +298,7 @@ class PublicNetwork(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:lindorm/publicNetwork:PublicNetwork example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicNetworkArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class FcTriggerArgs:
                  function_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FcTrigger resource.
+
         :param pulumi.Input[_builtins.str] event_meta_name: The name of the Event.
         :param pulumi.Input[_builtins.str] event_meta_version: The version of the Event.
         :param pulumi.Input[_builtins.str] notes: The Note information.
@@ -142,6 +143,7 @@ class _FcTriggerState:
                  trigger_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FcTrigger resources.
+
         :param pulumi.Input[_builtins.str] event_meta_name: The name of the Event.
         :param pulumi.Input[_builtins.str] event_meta_version: The version of the Event.
         :param pulumi.Input[_builtins.str] function_arn: The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
@@ -300,6 +302,7 @@ class FcTrigger(pulumi.CustomResource):
         $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] event_meta_name: The name of the Event.
@@ -351,6 +354,7 @@ class FcTrigger(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cdn/fcTrigger:FcTrigger example <trigger_arn>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FcTriggerArgs args: The arguments to use to populate this resource's properties.

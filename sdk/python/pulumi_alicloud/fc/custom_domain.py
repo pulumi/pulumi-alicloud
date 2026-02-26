@@ -27,6 +27,7 @@ class CustomDomainArgs:
                  route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[_builtins.str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
         :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
@@ -101,6 +102,7 @@ class _CustomDomainState:
                  route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomDomain resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account id.
         :param pulumi.Input[_builtins.str] api_version: The api version of Function Compute.
         :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
@@ -341,6 +343,7 @@ class CustomDomain(pulumi.CustomResource):
         $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
@@ -459,6 +462,7 @@ class CustomDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomDomainArgs args: The arguments to use to populate this resource's properties.

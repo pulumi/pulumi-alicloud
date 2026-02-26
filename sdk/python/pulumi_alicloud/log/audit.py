@@ -26,6 +26,7 @@ class AuditArgs:
                  variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Audit resource.
+
         :param pulumi.Input[_builtins.str] aliuid: Aliuid value of your account.
         :param pulumi.Input[_builtins.str] display_name: Name of SLS log audit.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
@@ -112,6 +113,7 @@ class _AuditState:
                  variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Audit resources.
+
         :param pulumi.Input[_builtins.str] aliuid: Aliuid value of your account.
         :param pulumi.Input[_builtins.str] display_name: Name of SLS log audit.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
@@ -379,6 +381,7 @@ class Audit(pulumi.CustomResource):
         $ pulumi import alicloud:log/audit:Audit example tf-audit-example
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aliuid: Aliuid value of your account.
@@ -569,6 +572,7 @@ class Audit(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/audit:Audit example tf-audit-example
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuditArgs args: The arguments to use to populate this resource's properties.

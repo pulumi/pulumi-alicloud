@@ -35,6 +35,7 @@ class EdgeContainerAppArgs:
                  remarks: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeContainerApp resource.
+
         :param pulumi.Input[_builtins.str] edge_container_app_name: The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
         :param pulumi.Input[_builtins.int] service_port: The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
         :param pulumi.Input[_builtins.int] target_port: The server port. Valid values: 1 to 65535.
@@ -286,6 +287,7 @@ class _EdgeContainerAppState:
                  target_port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EdgeContainerApp resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the application was created.
         :param pulumi.Input[_builtins.str] edge_container_app_name: The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
         :param pulumi.Input[_builtins.int] health_check_fail_times: The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
@@ -616,6 +618,7 @@ class EdgeContainerApp(pulumi.CustomResource):
         $ pulumi import alicloud:esa/edgeContainerApp:EdgeContainerApp example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] edge_container_app_name: The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
@@ -694,6 +697,7 @@ class EdgeContainerApp(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/edgeContainerApp:EdgeContainerApp example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EdgeContainerAppArgs args: The arguments to use to populate this resource's properties.

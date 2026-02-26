@@ -27,6 +27,7 @@ class DBAuditInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DBAuditInstance resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -129,6 +130,7 @@ class _DBAuditInstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DBAuditInstance resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -282,6 +284,7 @@ class DBAuditInstance(pulumi.CustomResource):
         $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -342,6 +345,7 @@ class DBAuditInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:yundun/dBAuditInstance:DBAuditInstance example dbaudit-exampe123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DBAuditInstanceArgs args: The arguments to use to populate this resource's properties.

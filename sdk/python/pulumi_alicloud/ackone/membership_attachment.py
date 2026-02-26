@@ -23,6 +23,7 @@ class MembershipAttachmentArgs:
                  sub_cluster_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a MembershipAttachment resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster to which the membership is being attached.
         :param pulumi.Input[_builtins.str] sub_cluster_id: The ID of the member being attached to the cluster.
         """
@@ -61,6 +62,7 @@ class _MembershipAttachmentState:
                  sub_cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MembershipAttachment resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster to which the membership is being attached.
         :param pulumi.Input[_builtins.str] sub_cluster_id: The ID of the member being attached to the cluster.
         """
@@ -181,6 +183,7 @@ class MembershipAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ackone/membershipAttachment:MembershipAttachment example <cluster_id>:<sub_cluster_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster to which the membership is being attached.
@@ -269,6 +272,7 @@ class MembershipAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ackone/membershipAttachment:MembershipAttachment example <cluster_id>:<sub_cluster_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MembershipAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class ZoneArgs:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Zone resource.
+
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[_builtins.str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
@@ -213,6 +214,7 @@ class _ZoneState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
+
         :param pulumi.Input[_builtins.bool] is_ptr: Whether the Private Zone is ptr.
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[_builtins.str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
@@ -451,6 +453,7 @@ class Zone(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/zone:Zone example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lang: The language. Valid values: "zh", "en", "jp".
@@ -500,6 +503,7 @@ class Zone(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/zone:Zone example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.

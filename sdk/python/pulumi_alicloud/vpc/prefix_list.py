@@ -30,6 +30,7 @@ class PrefixListArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PrefixList resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
@@ -155,6 +156,7 @@ class _PrefixListState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PrefixList resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the prefix list was created.
         :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
@@ -399,6 +401,7 @@ class PrefixList(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
@@ -461,6 +464,7 @@ class PrefixList(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrefixListArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class ControlPolicyAttachmentArgs:
                  target_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ControlPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
         :param pulumi.Input[_builtins.str] target_id: The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
                
@@ -69,6 +70,7 @@ class _ControlPolicyAttachmentState:
                  target_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ControlPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
         :param pulumi.Input[_builtins.str] target_id: The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
                
@@ -180,6 +182,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
@@ -255,6 +258,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ControlPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

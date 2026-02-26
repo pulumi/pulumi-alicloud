@@ -31,6 +31,7 @@ class DomainArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: the Origin Server Information. See the following `Block sources`.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
@@ -169,6 +170,7 @@ class _DomainState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
         :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
@@ -351,6 +353,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:scdn/domain:Domain example <domain_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
@@ -407,6 +410,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:scdn/domain:Domain example <domain_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

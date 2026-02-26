@@ -34,6 +34,7 @@ class GrafanaWorkspaceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GrafanaWorkspace resource.
+
         :param pulumi.Input[_builtins.str] grafana_workspace_name: The name of the resource
         :param pulumi.Input[_builtins.str] account_number: Value Description:
                GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -288,6 +289,7 @@ class _GrafanaWorkspaceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GrafanaWorkspace resources.
+
         :param pulumi.Input[_builtins.str] account_number: Value Description:
                GrafanaWorkspaceEdition is standard, this parameter is invalid.
                GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
@@ -629,6 +631,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
         $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_number: Value Description:
@@ -710,6 +713,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GrafanaWorkspaceArgs args: The arguments to use to populate this resource's properties.

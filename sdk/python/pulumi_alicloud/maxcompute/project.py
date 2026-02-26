@@ -34,6 +34,7 @@ class ProjectArgs:
                  three_tier_model: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[_builtins.str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
                If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
@@ -224,6 +225,7 @@ class _ProjectState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[_builtins.str] create_time: Represents the creation time of the project
         :param pulumi.Input[_builtins.str] default_quota: Used to implement computing resource allocation. Valid values: subQuota Nickname
@@ -509,6 +511,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/project:Project example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
@@ -567,6 +570,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/project:Project example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

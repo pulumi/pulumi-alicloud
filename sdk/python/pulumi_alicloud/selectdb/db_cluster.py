@@ -30,6 +30,7 @@ class DbClusterArgs:
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbCluster resource.
+
         :param pulumi.Input[_builtins.int] cache_size: The desired cache size on creating cluster. The number should be divided by 100.
         :param pulumi.Input[_builtins.str] db_cluster_class: The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         :param pulumi.Input[_builtins.str] db_cluster_description: The DBCluster description.
@@ -156,6 +157,7 @@ class _DbClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbCluster resources.
+
         :param pulumi.Input[_builtins.int] cache_size: The desired cache size on creating cluster. The number should be divided by 100.
         :param pulumi.Input[_builtins.int] cpu: The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
         :param pulumi.Input[_builtins.str] create_time: The time when DBCluster is created.
@@ -493,6 +495,7 @@ class DbCluster(pulumi.CustomResource):
         $ pulumi import alicloud:selectdb/dbCluster:DbCluster example <db_instance_id>:<db_cluster_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] cache_size: The desired cache size on creating cluster. The number should be divided by 100.
@@ -558,6 +561,7 @@ class DbCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:selectdb/dbCluster:DbCluster example <db_instance_id>:<db_cluster_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbClusterArgs args: The arguments to use to populate this resource's properties.

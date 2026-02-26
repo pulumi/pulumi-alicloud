@@ -34,6 +34,7 @@ class OssScanConfigArgs:
                  oss_scan_config_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssScanConfig resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
         :param pulumi.Input[_builtins.int] enable: Indicates whether the check policy is enabled. Valid values:
         :param pulumi.Input[_builtins.str] end_time: The end time of the check. The time is in the HH:mm:ss format.
@@ -244,6 +245,7 @@ class _OssScanConfigState:
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssScanConfig resources.
+
         :param pulumi.Input[_builtins.bool] all_key_prefix: Specifies whether to match the prefixes of all objects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
         :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
@@ -539,6 +541,7 @@ class OssScanConfig(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] all_key_prefix: Specifies whether to match the prefixes of all objects.
@@ -637,6 +640,7 @@ class OssScanConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/ossScanConfig:OssScanConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OssScanConfigArgs args: The arguments to use to populate this resource's properties.

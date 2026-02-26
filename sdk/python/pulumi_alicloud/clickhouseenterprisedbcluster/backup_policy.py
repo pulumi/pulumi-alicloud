@@ -25,6 +25,7 @@ class BackupPolicyArgs:
                  preferred_backup_time: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.int] backup_retention_period: Backup retention time.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] preferred_backup_period: Backup period.
@@ -93,6 +94,7 @@ class _BackupPolicyState:
                  preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.int] backup_retention_period: Backup retention time.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] preferred_backup_period: Backup period.
@@ -228,6 +230,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example <db_instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_retention_period: Backup retention time.
@@ -301,6 +304,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy example <db_instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

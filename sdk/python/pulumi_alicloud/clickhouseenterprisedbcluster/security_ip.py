@@ -24,6 +24,7 @@ class SecurityIpArgs:
                  security_ip_list: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SecurityIp resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
         :param pulumi.Input[_builtins.str] group_name: The whitelist name.
         :param pulumi.Input[_builtins.str] security_ip_list: The IP address list under the whitelist group.
@@ -77,6 +78,7 @@ class _SecurityIpState:
                  security_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityIp resources.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
         :param pulumi.Input[_builtins.str] group_name: The whitelist name.
         :param pulumi.Input[_builtins.str] security_ip_list: The IP address list under the whitelist group.
@@ -195,6 +197,7 @@ class SecurityIp(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp example <db_instance_id>:<group_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
@@ -266,6 +269,7 @@ class SecurityIp(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp example <db_instance_id>:<group_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityIpArgs args: The arguments to use to populate this resource's properties.

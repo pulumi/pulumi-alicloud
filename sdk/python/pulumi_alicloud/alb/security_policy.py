@@ -27,6 +27,7 @@ class SecurityPolicyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
         :param pulumi.Input[_builtins.str] security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
@@ -129,6 +130,7 @@ class _SecurityPolicyState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -284,6 +286,7 @@ class SecurityPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:alb/securityPolicy:SecurityPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
@@ -332,6 +335,7 @@ class SecurityPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/securityPolicy:SecurityPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityPolicyArgs args: The arguments to use to populate this resource's properties.

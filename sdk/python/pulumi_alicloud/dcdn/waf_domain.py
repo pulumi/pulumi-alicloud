@@ -23,6 +23,7 @@ class WafDomainArgs:
                  client_ip_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WafDomain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: The accelerated domain name.
         :param pulumi.Input[_builtins.str] client_ip_tag: The client ip tag.
         """
@@ -62,6 +63,7 @@ class _WafDomainState:
                  domain_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafDomain resources.
+
         :param pulumi.Input[_builtins.str] client_ip_tag: The client ip tag.
         :param pulumi.Input[_builtins.str] domain_name: The accelerated domain name.
         """
@@ -152,6 +154,7 @@ class WafDomain(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_ip_tag: The client ip tag.
@@ -210,6 +213,7 @@ class WafDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/wafDomain:WafDomain example <domain_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WafDomainArgs args: The arguments to use to populate this resource's properties.

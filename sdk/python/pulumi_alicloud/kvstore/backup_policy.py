@@ -24,6 +24,7 @@ class BackupPolicyArgs:
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         :param pulumi.Input[_builtins.str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z.
@@ -79,6 +80,7 @@ class _BackupPolicyState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         :param pulumi.Input[_builtins.str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z.
         :param pulumi.Input[_builtins.str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
@@ -202,6 +204,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
@@ -278,6 +281,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

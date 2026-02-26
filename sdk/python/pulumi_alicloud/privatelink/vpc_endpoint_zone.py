@@ -26,6 +26,7 @@ class VpcEndpointZoneArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcEndpointZone resource.
+
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -114,6 +115,7 @@ class _VpcEndpointZoneState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointZone resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID.
         :param pulumi.Input[_builtins.str] eni_ip: The IP address of the endpoint ENI.
@@ -299,6 +301,7 @@ class VpcEndpointZone(pulumi.CustomResource):
         $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -377,6 +380,7 @@ class VpcEndpointZone(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointZoneArgs args: The arguments to use to populate this resource's properties.

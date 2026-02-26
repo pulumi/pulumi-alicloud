@@ -24,6 +24,7 @@ class ShortUrlArgs:
                  source_url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ShortUrl resource.
+
         :param pulumi.Input[_builtins.int] effective_days: Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
         :param pulumi.Input[_builtins.str] short_url_name: The name of the resource.
         :param pulumi.Input[_builtins.str] source_url: The original link address.
@@ -78,6 +79,7 @@ class _ShortUrlState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShortUrl resources.
+
         :param pulumi.Input[_builtins.int] effective_days: Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
         :param pulumi.Input[_builtins.str] short_url_name: The name of the resource.
         :param pulumi.Input[_builtins.str] source_url: The original link address.
@@ -182,6 +184,7 @@ class ShortUrl(pulumi.CustomResource):
         $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] effective_days: Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
@@ -224,6 +227,7 @@ class ShortUrl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sms/shortUrl:ShortUrl example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShortUrlArgs args: The arguments to use to populate this resource's properties.

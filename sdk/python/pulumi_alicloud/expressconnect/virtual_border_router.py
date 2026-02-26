@@ -44,6 +44,7 @@ class VirtualBorderRouterArgs:
                  virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualBorderRouter resource.
+
         :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
         :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
@@ -429,6 +430,7 @@ class _VirtualBorderRouterState:
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VirtualBorderRouter resources.
+
         :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
                - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
@@ -895,6 +897,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
@@ -976,6 +979,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VirtualBorderRouterArgs args: The arguments to use to populate this resource's properties.

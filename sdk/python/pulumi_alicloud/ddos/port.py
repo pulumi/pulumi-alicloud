@@ -29,6 +29,7 @@ class PortArgs:
                  config: Optional[pulumi.Input['PortConfigArgs']] = None):
         """
         The set of arguments for constructing a Port resource.
+
         :param pulumi.Input[_builtins.str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
         :param pulumi.Input[_builtins.str] frontend_protocol: The type of the forwarding protocol to query. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
@@ -135,6 +136,7 @@ class _PortState:
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
+
         :param pulumi.Input[_builtins.str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
         :param pulumi.Input['PortConfigArgs'] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
                - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
@@ -296,6 +298,7 @@ class Port(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
@@ -362,6 +365,7 @@ class Port(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortArgs args: The arguments to use to populate this resource's properties.

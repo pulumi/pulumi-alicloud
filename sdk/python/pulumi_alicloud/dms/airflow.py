@@ -36,6 +36,7 @@ class AirflowArgs:
                  startup_file: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Airflow resource.
+
         :param pulumi.Input[_builtins.str] airflow_name: Name of the Airflow instance
         :param pulumi.Input[_builtins.str] app_spec: Airflow instance specifications
         :param pulumi.Input[_builtins.str] description: Description of the airflow instance
@@ -275,6 +276,7 @@ class _AirflowState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Airflow resources.
+
         :param pulumi.Input[_builtins.str] airflow_id: AirflowId
         :param pulumi.Input[_builtins.str] airflow_name: Name of the Airflow instance
         :param pulumi.Input[_builtins.str] app_spec: Airflow instance specifications
@@ -617,6 +619,7 @@ class Airflow(pulumi.CustomResource):
         $ pulumi import alicloud:dms/airflow:Airflow example <workspace_id>:<airflow_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] airflow_name: Name of the Airflow instance
@@ -702,6 +705,7 @@ class Airflow(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dms/airflow:Airflow example <workspace_id>:<airflow_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AirflowArgs args: The arguments to use to populate this resource's properties.

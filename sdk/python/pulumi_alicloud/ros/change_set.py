@@ -41,6 +41,7 @@ class ChangeSetArgs:
                  use_previous_parameters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ChangeSet resource.
+
         :param pulumi.Input[_builtins.str] change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param pulumi.Input[_builtins.str] change_set_type: The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
@@ -337,6 +338,7 @@ class _ChangeSetState:
                  use_previous_parameters: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ChangeSet resources.
+
         :param pulumi.Input[_builtins.str] change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param pulumi.Input[_builtins.str] change_set_type: The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
         :param pulumi.Input[_builtins.str] description: The description of the change set. The description can be up to 1,024 bytes in length.
@@ -687,6 +689,7 @@ class ChangeSet(pulumi.CustomResource):
         $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -750,6 +753,7 @@ class ChangeSet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ros/changeSet:ChangeSet example <change_set_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChangeSetArgs args: The arguments to use to populate this resource's properties.

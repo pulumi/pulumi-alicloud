@@ -25,6 +25,7 @@ class RoleArgs:
                  max_session_duration: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[_builtins.str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         :param pulumi.Input[_builtins.str] description: The description of the Resource Manager role.
@@ -98,6 +99,7 @@ class _RoleState:
                  update_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] arn: The resource descriptor of the role.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[_builtins.str] description: The description of the Resource Manager role.
@@ -263,6 +265,7 @@ class Role(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/role:Role example testrd
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The content of the permissions strategy that plays a role.
@@ -321,6 +324,7 @@ class Role(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/role:Role example testrd
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

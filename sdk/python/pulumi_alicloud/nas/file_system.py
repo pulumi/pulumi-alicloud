@@ -44,6 +44,7 @@ class FileSystemArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
+
         :param pulumi.Input[_builtins.str] protocol_type: File transfer protocol type.
                - When FileSystemType = standard, the values are NFS and SMB.
                - When FileSystemType = extreme, the value is NFS.
@@ -495,6 +496,7 @@ class _FileSystemState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
+
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
                
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -1040,6 +1042,7 @@ class FileSystem(pulumi.CustomResource):
         $ pulumi import alicloud:nas/fileSystem:FileSystem example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
@@ -1170,6 +1173,7 @@ class FileSystem(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/fileSystem:FileSystem example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FileSystemArgs args: The arguments to use to populate this resource's properties.

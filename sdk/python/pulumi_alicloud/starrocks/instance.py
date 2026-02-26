@@ -44,6 +44,7 @@ class InstanceArgs:
                  vswitches: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVswitchArgs']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] admin_password: Password of admin user.
         :param pulumi.Input[_builtins.str] cluster_zone_id: ZoneId of instance.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
@@ -403,6 +404,7 @@ class _InstanceState:
                  vswitches: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVswitchArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] admin_password: Password of admin user.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBackendNodeGroupArgs']]] backend_node_groups: BackendNodeGroups See `backend_node_groups` below.
@@ -904,6 +906,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:starrocks/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_password: Password of admin user.
@@ -1033,6 +1036,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:starrocks/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

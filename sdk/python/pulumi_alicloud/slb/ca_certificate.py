@@ -26,6 +26,7 @@ class CaCertificateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CaCertificate resource.
+
         :param pulumi.Input[_builtins.str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[_builtins.str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
@@ -117,6 +118,7 @@ class _CaCertificateState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CaCertificate resources.
+
         :param pulumi.Input[_builtins.str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[_builtins.str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
@@ -262,6 +264,7 @@ class CaCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ca_certificate: the content of the CA certificate.
@@ -326,6 +329,7 @@ class CaCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/caCertificate:CaCertificate example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CaCertificateArgs args: The arguments to use to populate this resource's properties.

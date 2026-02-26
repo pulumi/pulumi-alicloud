@@ -40,6 +40,7 @@ class TransitRouterVpcAttachmentArgs:
                  vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: ZoneMappingss See `zone_mappings` below.
                
@@ -348,6 +349,7 @@ class _TransitRouterVpcAttachmentState:
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
+
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
                - **false:** (default)
         :param pulumi.Input[_builtins.str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
@@ -785,6 +787,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
@@ -886,6 +889,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterVpcAttachmentArgs args: The arguments to use to populate this resource's properties.

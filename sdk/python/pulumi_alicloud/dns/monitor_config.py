@@ -31,6 +31,7 @@ class MonitorConfigArgs:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MonitorConfig resource.
+
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool.
         :param pulumi.Input[_builtins.int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.int] interval: The health check interval. Unit: seconds. Valid values: `60`.
@@ -160,6 +161,7 @@ class _MonitorConfigState:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MonitorConfig resources.
+
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool.
         :param pulumi.Input[_builtins.int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[_builtins.int] interval: The health check interval. Unit: seconds. Valid values: `60`.
@@ -377,6 +379,7 @@ class MonitorConfig(pulumi.CustomResource):
         $ pulumi import alicloud:dns/monitorConfig:MonitorConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool.
@@ -472,6 +475,7 @@ class MonitorConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/monitorConfig:MonitorConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitorConfigArgs args: The arguments to use to populate this resource's properties.

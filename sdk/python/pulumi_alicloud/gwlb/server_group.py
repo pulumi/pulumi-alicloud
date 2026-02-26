@@ -34,6 +34,7 @@ class ServerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
                
                > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
@@ -255,6 +256,7 @@ class _ServerGroupState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
+
         :param pulumi.Input['ServerGroupConnectionDrainConfigArgs'] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
         :param pulumi.Input[_builtins.str] create_time: The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -604,6 +606,7 @@ class ServerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:gwlb/serverGroup:ServerGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
@@ -738,6 +741,7 @@ class ServerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gwlb/serverGroup:ServerGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupArgs args: The arguments to use to populate this resource's properties.

@@ -37,6 +37,7 @@ class NodeGroupArgs:
                  storage_size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether auto-renewal is enabled.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -359,6 +360,7 @@ class _NodeGroupState:
                  storage_size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether auto-renewal is enabled.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -828,6 +830,7 @@ class NodeGroup(pulumi.CustomResource):
         $ pulumi import alicloud:starrocks/nodeGroup:NodeGroup example <instance_id>:<node_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether auto-renewal is enabled.
@@ -968,6 +971,7 @@ class NodeGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:starrocks/nodeGroup:NodeGroup example <instance_id>:<node_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeGroupArgs args: The arguments to use to populate this resource's properties.

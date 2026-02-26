@@ -27,6 +27,7 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         :param pulumi.Input[_builtins.str] policy: Log project policy, used to set a policy for a project.
@@ -149,6 +150,7 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] create_time: CreateTime.
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
@@ -379,6 +381,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import alicloud:log/project:Project example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description.
@@ -477,6 +480,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/project:Project example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

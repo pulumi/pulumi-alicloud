@@ -27,6 +27,7 @@ class QueueArgs:
                  visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Queue resource.
+
         :param pulumi.Input[_builtins.int] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
         :param pulumi.Input[_builtins.int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[_builtins.int] message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
@@ -131,6 +132,7 @@ class _QueueState:
                  visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
+
         :param pulumi.Input[_builtins.int] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
         :param pulumi.Input[_builtins.int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[_builtins.int] message_retention_period: Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
@@ -271,6 +273,7 @@ class Queue(pulumi.CustomResource):
         $ pulumi import alicloud:mns/queue:Queue queue queuename
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] delay_seconds: This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
@@ -319,6 +322,7 @@ class Queue(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mns/queue:Queue queue queuename
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QueueArgs args: The arguments to use to populate this resource's properties.

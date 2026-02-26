@@ -27,6 +27,7 @@ class ApiDestinationArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiDestination resource.
+
         :param pulumi.Input[_builtins.str] api_destination_name: The name of the API destination.
         :param pulumi.Input[_builtins.str] connection_name: The name of the connection.
         :param pulumi.Input['ApiDestinationHttpApiParametersArgs'] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
@@ -97,6 +98,7 @@ class _ApiDestinationState:
                  http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None):
         """
         Input properties used for looking up and filtering ApiDestination resources.
+
         :param pulumi.Input[_builtins.str] api_destination_name: The name of the API destination.
         :param pulumi.Input[_builtins.str] connection_name: The name of the connection.
         :param pulumi.Input[_builtins.int] create_time: The creation time of the Api Destination.
@@ -233,6 +235,7 @@ class ApiDestination(pulumi.CustomResource):
         $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_destination_name: The name of the API destination.
@@ -292,6 +295,7 @@ class ApiDestination(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eventbridge/apiDestination:ApiDestination example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiDestinationArgs args: The arguments to use to populate this resource's properties.

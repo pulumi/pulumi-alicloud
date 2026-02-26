@@ -31,6 +31,7 @@ class CertificateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] created_type: The certificate type.
                - cas (Certificate Center Certificate)
                - upload (custom upload certificate)
@@ -217,6 +218,7 @@ class _CertificateState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[_builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
@@ -469,6 +471,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import alicloud:esa/certificate:Certificate example <site_id>:<cert_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cas_id: Cloud certificate ID.
@@ -530,6 +533,7 @@ class Certificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/certificate:Certificate example <site_id>:<cert_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class RouterGrantAssociationArgs:
                  instance_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RouterGrantAssociation resource.
+
         :param pulumi.Input[_builtins.str] ecr_id: The ID of the associated Leased Line Gateway instance.
         :param pulumi.Input[_builtins.int] ecr_owner_ali_uid: The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
@@ -114,6 +115,7 @@ class _RouterGrantAssociationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterGrantAssociation resources.
+
         :param pulumi.Input[_builtins.str] ecr_id: The ID of the associated Leased Line Gateway instance.
         :param pulumi.Input[_builtins.int] ecr_owner_ali_uid: The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the network instance.
@@ -274,6 +276,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation example <ecr_id>:<instance_id>:<instance_region_id>:<ecr_owner_ali_uid>:<instance_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ecr_id: The ID of the associated Leased Line Gateway instance.
@@ -340,6 +343,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation example <ecr_id>:<instance_id>:<instance_region_id>:<ecr_owner_ali_uid>:<instance_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterGrantAssociationArgs args: The arguments to use to populate this resource's properties.

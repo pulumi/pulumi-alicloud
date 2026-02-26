@@ -23,6 +23,7 @@ class BackupArgs:
                  backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Backup resource.
+
         :param pulumi.Input[_builtins.str] instance_id: InstanceId
         :param pulumi.Input[_builtins.int] backup_retention_period: The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
                
@@ -68,6 +69,7 @@ class _BackupState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
+
         :param pulumi.Input[_builtins.int] backup_id: Backup ID.
         :param pulumi.Input[_builtins.int] backup_retention_period: The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
                
@@ -213,6 +215,7 @@ class Backup(pulumi.CustomResource):
         $ pulumi import alicloud:redis/backup:Backup example <instance_id>:<backup_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_retention_period: The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
@@ -294,6 +297,7 @@ class Backup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:redis/backup:Backup example <instance_id>:<backup_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupArgs args: The arguments to use to populate this resource's properties.

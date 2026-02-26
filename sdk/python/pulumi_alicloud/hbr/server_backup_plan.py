@@ -32,6 +32,7 @@ class ServerBackupPlanArgs:
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServerBackupPlan resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]] details: ECS server backup plan details.
         :param pulumi.Input[_builtins.str] ecs_server_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] instance_id: The ID of ECS instance.
@@ -181,6 +182,7 @@ class _ServerBackupPlanState:
                  schedule: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerBackupPlan resources.
+
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[_builtins.int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
@@ -403,6 +405,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
@@ -487,6 +490,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/serverBackupPlan:ServerBackupPlan example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerBackupPlanArgs args: The arguments to use to populate this resource's properties.

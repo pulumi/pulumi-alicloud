@@ -27,6 +27,7 @@ class RouterVbrChildInstanceArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterVbrChildInstance resource.
+
         :param pulumi.Input[_builtins.str] child_instance_id: The ID of the leased line gateway subinstance.
         :param pulumi.Input[_builtins.str] child_instance_region_id: Region of the leased line gateway sub-instance
         :param pulumi.Input[_builtins.str] child_instance_type: The type of the network instance. Value: `VBR`: VBR instance.
@@ -133,6 +134,7 @@ class _RouterVbrChildInstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterVbrChildInstance resources.
+
         :param pulumi.Input[_builtins.str] child_instance_id: The ID of the leased line gateway subinstance.
         :param pulumi.Input[_builtins.str] child_instance_owner_id: The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
                
@@ -319,6 +321,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance example <ecr_id>:<child_instance_id>:<child_instance_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] child_instance_id: The ID of the leased line gateway subinstance.
@@ -381,6 +384,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance example <ecr_id>:<child_instance_id>:<child_instance_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterVbrChildInstanceArgs args: The arguments to use to populate this resource's properties.

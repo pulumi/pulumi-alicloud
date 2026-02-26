@@ -38,6 +38,7 @@ class InstanceArgs:
                  spec: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[_builtins.int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
@@ -336,6 +337,7 @@ class _InstanceState:
                  user_status: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[_builtins.int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[_builtins.bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
@@ -755,6 +757,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
@@ -833,6 +836,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

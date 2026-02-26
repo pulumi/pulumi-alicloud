@@ -38,6 +38,7 @@ class InstanceArgs:
                  vnc_password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] image_id: The ID of the image.
         :param pulumi.Input[_builtins.str] instance_type: The specifications of the ECP instance.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
@@ -318,6 +319,7 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable the auto-payment feature. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable the auto-renewal feature. Valid values:
         :param pulumi.Input[_builtins.str] description: The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
@@ -666,6 +668,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:ecp/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable the auto-payment feature. Valid values:
@@ -755,6 +758,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecp/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

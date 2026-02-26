@@ -25,6 +25,7 @@ class BucketResponseHeaderArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]] = None):
         """
         The set of arguments for constructing a BucketResponseHeader resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]] rules: The container that holds the response header rules. See `rule` below.
         """
@@ -64,6 +65,7 @@ class _BucketResponseHeaderState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering BucketResponseHeader resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]] rules: The container that holds the response header rules. See `rule` below.
         """
@@ -183,6 +185,7 @@ class BucketResponseHeader(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketResponseHeader:BucketResponseHeader example <bucket>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -270,6 +273,7 @@ class BucketResponseHeader(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketResponseHeader:BucketResponseHeader example <bucket>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketResponseHeaderArgs args: The arguments to use to populate this resource's properties.

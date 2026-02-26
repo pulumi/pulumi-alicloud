@@ -29,6 +29,7 @@ class ProtocolServiceArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProtocolService resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] protocol_spec: The specification of the protocol machine cluster.
                - Value range: General、CL1、CL2
@@ -201,6 +202,7 @@ class _ProtocolServiceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProtocolService resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the protocol server service was created. The UTC time.
         :param pulumi.Input[_builtins.str] description: Description of the agreement service.
                
@@ -479,6 +481,7 @@ class ProtocolService(pulumi.CustomResource):
         $ pulumi import alicloud:nas/protocolService:ProtocolService example <file_system_id>:<protocol_service_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the agreement service.
@@ -572,6 +575,7 @@ class ProtocolService(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/protocolService:ProtocolService example <file_system_id>:<protocol_service_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProtocolServiceArgs args: The arguments to use to populate this resource's properties.

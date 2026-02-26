@@ -35,6 +35,7 @@ class VpcEndpointArgs:
                  zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a VpcEndpoint resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the endpoint belongs.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
                - `IPv4` (default): IPv4.
@@ -285,6 +286,7 @@ class _VpcEndpointState:
                  zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VpcEndpoint resources.
+
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
                - `IPv4` (default): IPv4.
                - `DualStack`: dual-stack.
@@ -700,6 +702,7 @@ class VpcEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
@@ -792,6 +795,7 @@ class VpcEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointArgs args: The arguments to use to populate this resource's properties.

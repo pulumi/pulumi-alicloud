@@ -38,6 +38,7 @@ class DdosCooInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DdosCooInstance resource.
+
         :param pulumi.Input[_builtins.str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[_builtins.str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[_builtins.str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
@@ -319,6 +320,7 @@ class _DdosCooInstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DdosCooInstance resources.
+
         :param pulumi.Input[_builtins.str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[_builtins.str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         :param pulumi.Input[_builtins.str] bandwidth_mode: The mitigation plan of the instance. Valid values:
@@ -695,6 +697,7 @@ class DdosCooInstance(pulumi.CustomResource):
         $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_type: The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
@@ -764,6 +767,7 @@ class DdosCooInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DdosCooInstanceArgs args: The arguments to use to populate this resource's properties.

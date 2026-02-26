@@ -32,6 +32,7 @@ class ServiceQueueArgs:
                  visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServiceQueue resource.
+
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         :param pulumi.Input['ServiceQueueDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
@@ -184,6 +185,7 @@ class _ServiceQueueState:
                  visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServiceQueue resources.
+
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.223.2) The time when the queue was created.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         :param pulumi.Input['ServiceQueueDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
@@ -391,6 +393,7 @@ class ServiceQueue(pulumi.CustomResource):
         $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
@@ -446,6 +449,7 @@ class ServiceQueue(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceQueueArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class InstanceAttachmentArgs:
                  vswitch_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance.
         :param pulumi.Input[_builtins.str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching VSwitch to instance.
@@ -78,6 +79,7 @@ class _InstanceAttachmentState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAttachment resources.
+
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of attaching VPC to instance.
         :param pulumi.Input[_builtins.str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
@@ -195,6 +197,7 @@ class InstanceAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance.
@@ -250,6 +253,7 @@ class InstanceAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class CertificateArgs:
                  private_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain that you want to add to WAF.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[_builtins.str] certificate: Certificate file content.
@@ -129,6 +130,7 @@ class _CertificateState:
                  private_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] certificate: Certificate file content.
         :param pulumi.Input[_builtins.str] certificate_id: The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
         :param pulumi.Input[_builtins.str] certificate_name: Certificate file name.
@@ -272,6 +274,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate file content.
@@ -323,6 +326,7 @@ class Certificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:waf/certificate:Certificate example <instance_id>:<domain>:<certificate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

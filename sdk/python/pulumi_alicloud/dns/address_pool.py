@@ -28,6 +28,7 @@ class AddressPoolArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AddressPool resource.
+
         :param pulumi.Input[_builtins.str] address_pool_name: The name of the address pool.
         :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -111,6 +112,7 @@ class _AddressPoolState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressPool resources.
+
         :param pulumi.Input[_builtins.str] address_pool_name: The name of the address pool.
         :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -273,6 +275,7 @@ class AddressPool(pulumi.CustomResource):
         $ pulumi import alicloud:dns/addressPool:AddressPool example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_pool_name: The name of the address pool.
@@ -358,6 +361,7 @@ class AddressPool(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/addressPool:AddressPool example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddressPoolArgs args: The arguments to use to populate this resource's properties.

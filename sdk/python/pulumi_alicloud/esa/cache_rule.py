@@ -47,6 +47,7 @@ class CacheRuleArgs:
                  user_language: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CacheRule resource.
+
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the [ListSites] API.
         :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         :param pulumi.Input[_builtins.str] browser_cache_mode: Browser cache mode. Possible values:
@@ -475,6 +476,7 @@ class _CacheRuleState:
                  user_language: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CacheRule resources.
+
         :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         :param pulumi.Input[_builtins.str] browser_cache_mode: Browser cache mode. Possible values:
         :param pulumi.Input[_builtins.str] browser_cache_ttl: Browser cache expiration time in seconds.
@@ -974,6 +976,7 @@ class CacheRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/cacheRule:CacheRule example <site_id>:<cache_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
@@ -1064,6 +1067,7 @@ class CacheRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/cacheRule:CacheRule example <site_id>:<cache_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CacheRuleArgs args: The arguments to use to populate this resource's properties.

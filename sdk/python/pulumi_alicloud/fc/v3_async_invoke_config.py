@@ -29,6 +29,7 @@ class V3AsyncInvokeConfigArgs:
                  qualifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3AsyncInvokeConfig resource.
+
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.bool] async_task: Whether to enable an asynchronous task
         :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs'] destination_config: Target Configuration See `destination_config` below.
@@ -135,6 +136,7 @@ class _V3AsyncInvokeConfigState:
                  qualifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3AsyncInvokeConfig resources.
+
         :param pulumi.Input[_builtins.bool] async_task: Whether to enable an asynchronous task
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs'] destination_config: Target Configuration See `destination_config` below.
@@ -382,6 +384,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] async_task: Whether to enable an asynchronous task
@@ -492,6 +495,7 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3AsyncInvokeConfigArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class BucketOverwriteConfigArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketOverwriteConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a BucketOverwriteConfig resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[Sequence[pulumi.Input['BucketOverwriteConfigRuleArgs']]] rules: Forbid overwrite rule See `rule` below.
         """
@@ -64,6 +65,7 @@ class _BucketOverwriteConfigState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketOverwriteConfigRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering BucketOverwriteConfig resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[Sequence[pulumi.Input['BucketOverwriteConfigRuleArgs']]] rules: Forbid overwrite rule See `rule` below.
         """
@@ -183,6 +185,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig example <bucket>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -270,6 +273,7 @@ class BucketOverwriteConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig example <bucket>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketOverwriteConfigArgs args: The arguments to use to populate this resource's properties.

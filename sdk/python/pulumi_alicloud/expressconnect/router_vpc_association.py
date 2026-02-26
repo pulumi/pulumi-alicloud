@@ -26,6 +26,7 @@ class RouterVpcAssociationArgs:
                  vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterVpcAssociation resource.
+
         :param pulumi.Input[_builtins.str] association_region_id: The region ID of the resource to be associated.
         :param pulumi.Input[_builtins.str] ecr_id: The ECR ID.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
@@ -116,6 +117,7 @@ class _RouterVpcAssociationState:
                  vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouterVpcAssociation resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
         :param pulumi.Input[_builtins.str] association_id: The ID of the association between the ECR and the VPC.
         :param pulumi.Input[_builtins.str] association_region_id: The region ID of the resource to be associated.
@@ -298,6 +300,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation example <ecr_id>:<association_id>:<vpc_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
@@ -357,6 +360,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation example <ecr_id>:<association_id>:<vpc_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterVpcAssociationArgs args: The arguments to use to populate this resource's properties.

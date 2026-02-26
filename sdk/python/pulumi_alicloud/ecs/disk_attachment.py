@@ -27,6 +27,7 @@ class DiskAttachmentArgs:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskAttachment resource.
+
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
         """
@@ -114,6 +115,7 @@ class _DiskAttachmentState:
                  password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiskAttachment resources.
+
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Instance to attach to.
         """
@@ -263,6 +265,7 @@ class DiskAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] disk_id: ID of the Disk to be attached.
@@ -321,6 +324,7 @@ class DiskAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskAttachmentArgs args: The arguments to use to populate this resource's properties.

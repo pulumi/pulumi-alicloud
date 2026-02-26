@@ -27,6 +27,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] cen_instance_name: The name of the CEN instance.
         :param pulumi.Input[_builtins.str] description: The description of the CEN instance.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
@@ -141,6 +142,7 @@ class _InstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] cen_instance_name: The name of the CEN instance.
         :param pulumi.Input[_builtins.str] create_time: The time when the CEN instance was created.
         :param pulumi.Input[_builtins.str] description: The description of the CEN instance.
@@ -319,6 +321,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:cen/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_instance_name: The name of the CEN instance.
@@ -369,6 +372,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

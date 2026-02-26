@@ -34,6 +34,7 @@ class PeerConnectionArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PeerConnection resource.
+
         :param pulumi.Input[_builtins.str] accepting_region_id: The region ID of the accepter VPC of the VPC peering connection that you want to create.
                
                - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
@@ -285,6 +286,7 @@ class _PeerConnectionState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeerConnection resources.
+
         :param pulumi.Input[_builtins.int] accepting_ali_uid: The ID of the Alibaba Cloud account to which the accepter VPC belongs.
                
                *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
@@ -616,6 +618,7 @@ class PeerConnection(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] accepting_ali_uid: The ID of the Alibaba Cloud account to which the accepter VPC belongs.
@@ -702,6 +705,7 @@ class PeerConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/peerConnection:PeerConnection example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeerConnectionArgs args: The arguments to use to populate this resource's properties.

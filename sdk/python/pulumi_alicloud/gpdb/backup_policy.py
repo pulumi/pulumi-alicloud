@@ -27,6 +27,7 @@ class BackupPolicyArgs:
                  recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
                > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         :param pulumi.Input[_builtins.str] preferred_backup_period: Data backup cycle. Separate multiple values with commas (,). Value Description:
@@ -156,6 +157,7 @@ class _BackupPolicyState:
                  recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup retention days.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
                > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
@@ -376,6 +378,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup retention days.
@@ -490,6 +493,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/backupPolicy:BackupPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

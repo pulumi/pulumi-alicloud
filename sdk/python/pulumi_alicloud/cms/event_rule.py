@@ -35,6 +35,7 @@ class EventRuleArgs:
                  webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None):
         """
         The set of arguments for constructing a EventRule resource.
+
         :param pulumi.Input['EventRuleEventPatternArgs'] event_pattern: Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         :param pulumi.Input[_builtins.str] rule_name: The name of the event-triggered alert rule.
         :param pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]] contact_parameters: The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
@@ -233,6 +234,7 @@ class _EventRuleState:
                  webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None):
         """
         Input properties used for looking up and filtering EventRule resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]] contact_parameters: The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
         :param pulumi.Input[_builtins.str] description: The description of the event-triggered alert rule.
         :param pulumi.Input['EventRuleEventPatternArgs'] event_pattern: Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
@@ -480,6 +482,7 @@ class EventRule(pulumi.CustomResource):
         $ pulumi import alicloud:cms/eventRule:EventRule example <rule_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]] contact_parameters: The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
@@ -545,6 +548,7 @@ class EventRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/eventRule:EventRule example <rule_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EventRuleArgs args: The arguments to use to populate this resource's properties.

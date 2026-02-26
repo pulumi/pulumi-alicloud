@@ -25,6 +25,7 @@ class CustomRoutingEndpointGroupDestinationArgs:
                  to_port: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a CustomRoutingEndpointGroupDestination resource.
+
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group.
         :param pulumi.Input[_builtins.int] from_port: The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
@@ -97,6 +98,7 @@ class _CustomRoutingEndpointGroupDestinationState:
                  to_port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CustomRoutingEndpointGroupDestination resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the GA instance.
         :param pulumi.Input[_builtins.str] custom_routing_endpoint_group_destination_id: The ID of the Custom Routing Endpoint Group Destination.
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group.
@@ -294,6 +296,7 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         $ pulumi import alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination example <endpoint_group_id>:<custom_routing_endpoint_group_destination_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group.
@@ -369,6 +372,7 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination example <endpoint_group_id>:<custom_routing_endpoint_group_destination_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomRoutingEndpointGroupDestinationArgs args: The arguments to use to populate this resource's properties.

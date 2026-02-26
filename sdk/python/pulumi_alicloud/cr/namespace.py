@@ -24,6 +24,7 @@ class NamespaceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
         :param pulumi.Input[_builtins.str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         :param pulumi.Input[_builtins.str] name: Name of Container Registry namespace.
@@ -78,6 +79,7 @@ class _NamespaceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[_builtins.bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
         :param pulumi.Input[_builtins.str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         :param pulumi.Input[_builtins.str] name: Name of Container Registry namespace.
@@ -175,6 +177,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -225,6 +228,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

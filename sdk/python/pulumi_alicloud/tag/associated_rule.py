@@ -24,6 +24,7 @@ class AssociatedRuleArgs:
                  tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AssociatedRule resource.
+
         :param pulumi.Input[_builtins.str] associated_setting_name: The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
         :param pulumi.Input[_builtins.str] status: Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tag_keys: List of tag keys for the associated resource tag rule.
@@ -78,6 +79,7 @@ class _AssociatedRuleState:
                  tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AssociatedRule resources.
+
         :param pulumi.Input[_builtins.str] associated_setting_name: The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
         :param pulumi.Input[_builtins.str] status: Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tag_keys: List of tag keys for the associated resource tag rule.
@@ -171,6 +173,7 @@ class AssociatedRule(pulumi.CustomResource):
         $ pulumi import alicloud:tag/associatedRule:AssociatedRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] associated_setting_name: The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
@@ -217,6 +220,7 @@ class AssociatedRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:tag/associatedRule:AssociatedRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AssociatedRuleArgs args: The arguments to use to populate this resource's properties.

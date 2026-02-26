@@ -313,6 +313,7 @@ class OpenApiImageCache(pulumi.CustomResource):
                  __props__=None):
         """
         Create a OpenApiImageCache resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -324,6 +325,7 @@ class OpenApiImageCache(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a OpenApiImageCache resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param OpenApiImageCacheArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

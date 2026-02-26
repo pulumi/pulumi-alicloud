@@ -24,6 +24,7 @@ class BasicAccelerateIpEndpointRelationArgs:
                  endpoint_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BasicAccelerateIpEndpointRelation resource.
+
         :param pulumi.Input[_builtins.str] accelerate_ip_id: The ID of the Basic Accelerate IP.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Basic Endpoint.
@@ -78,6 +79,7 @@ class _BasicAccelerateIpEndpointRelationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicAccelerateIpEndpointRelation resources.
+
         :param pulumi.Input[_builtins.str] accelerate_ip_id: The ID of the Basic Accelerate IP.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID of the Basic Endpoint.
@@ -232,6 +234,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerate_ip_id: The ID of the Basic Accelerate IP.
@@ -324,6 +327,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation example <accelerator_id>:<accelerate_ip_id>:<endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicAccelerateIpEndpointRelationArgs args: The arguments to use to populate this resource's properties.

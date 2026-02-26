@@ -35,6 +35,7 @@ class SynchronizationInstanceArgs:
                  sync_architecture: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SynchronizationInstance resource.
+
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
@@ -263,6 +264,7 @@ class _SynchronizationInstanceState:
                  sync_architecture: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationInstance resources.
+
         :param pulumi.Input[_builtins.str] auto_pay: Whether to automatically renew when it expires. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] auto_start: Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
@@ -548,6 +550,7 @@ class SynchronizationInstance(pulumi.CustomResource):
         $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_pay: Whether to automatically renew when it expires. Valid values: `true`, `false`.
@@ -606,6 +609,7 @@ class SynchronizationInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/synchronizationInstance:SynchronizationInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SynchronizationInstanceArgs args: The arguments to use to populate this resource's properties.

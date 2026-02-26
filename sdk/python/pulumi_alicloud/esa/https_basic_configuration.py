@@ -36,6 +36,7 @@ class HttpsBasicConfigurationArgs:
                  tls13: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpsBasicConfiguration resource.
+
         :param pulumi.Input[_builtins.str] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         :param pulumi.Input[_builtins.str] ciphersuite_group: Cipher suite group. Default is all cipher suites. Possible values:
@@ -330,6 +331,7 @@ class _HttpsBasicConfigurationState:
                  tls13: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HttpsBasicConfiguration resources.
+
         :param pulumi.Input[_builtins.str] ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         :param pulumi.Input[_builtins.str] ciphersuite_group: Cipher suite group. Default is all cipher suites. Possible values:
                - all: All cipher suites.
@@ -695,6 +697,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         $ pulumi import alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
@@ -795,6 +798,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpsBasicConfigurationArgs args: The arguments to use to populate this resource's properties.

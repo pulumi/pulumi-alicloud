@@ -24,6 +24,7 @@ class DiskInstanceAttachmentArgs:
                  delete_with_instance: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskInstanceAttachment resource.
+
         :param pulumi.Input[_builtins.str] disk_id: The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
         :param pulumi.Input[_builtins.str] delete_with_instance: Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
@@ -78,6 +79,7 @@ class _DiskInstanceAttachmentState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiskInstanceAttachment resources.
+
         :param pulumi.Input[_builtins.str] delete_with_instance: Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
         :param pulumi.Input[_builtins.str] disk_id: The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID.
@@ -192,6 +194,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example <disk_id>:<instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delete_with_instance: Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
@@ -259,6 +262,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment example <disk_id>:<instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskInstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

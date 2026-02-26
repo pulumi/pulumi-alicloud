@@ -31,6 +31,7 @@ class ServerCertificateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerCertificate resource.
+
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
@@ -199,6 +200,7 @@ class _ServerCertificateState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServerCertificate resources.
+
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[_builtins.str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
@@ -429,6 +431,7 @@ class ServerCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
@@ -505,6 +508,7 @@ class ServerCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerCertificateArgs args: The arguments to use to populate this resource's properties.

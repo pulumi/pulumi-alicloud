@@ -28,6 +28,7 @@ class CooDomainPreciseAccessRuleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CooDomainPreciseAccessRule resource.
+
         :param pulumi.Input[_builtins.str] action: Action to take on match. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['CooDomainPreciseAccessRuleConditionArgs']]] conditions: List of matching conditions. See `condition` below.
         :param pulumi.Input[_builtins.str] domain: Domain name of the website service.
@@ -115,6 +116,7 @@ class _CooDomainPreciseAccessRuleState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CooDomainPreciseAccessRule resources.
+
         :param pulumi.Input[_builtins.str] action: Action to take on match. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['CooDomainPreciseAccessRuleConditionArgs']]] conditions: List of matching conditions. See `condition` below.
         :param pulumi.Input[_builtins.str] domain: Domain name of the website service.
@@ -264,6 +266,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule example <domain>:<name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action to take on match. Valid values:
@@ -335,6 +338,7 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule example <domain>:<name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CooDomainPreciseAccessRuleArgs args: The arguments to use to populate this resource's properties.

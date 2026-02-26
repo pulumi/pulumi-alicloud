@@ -24,6 +24,7 @@ class ResourceDirectoryArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceDirectory resource.
+
         :param pulumi.Input[_builtins.str] member_account_display_name_sync_status: The status of the Member Display Name Synchronization feature. Valid values:
                - Enabled
                - Disabled
@@ -92,6 +93,7 @@ class _ResourceDirectoryState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceDirectory resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the resource directory was created
         :param pulumi.Input[_builtins.str] master_account_id: The ID of the master account
         :param pulumi.Input[_builtins.str] master_account_name: The name of the master account
@@ -252,6 +254,7 @@ class ResourceDirectory(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] member_account_display_name_sync_status: The status of the Member Display Name Synchronization feature. Valid values:
@@ -301,6 +304,7 @@ class ResourceDirectory(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceDirectoryArgs args: The arguments to use to populate this resource's properties.

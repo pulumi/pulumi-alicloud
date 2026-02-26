@@ -35,6 +35,7 @@ class EventSourceV2Args:
                  source_sls_parameters: Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']] = None):
         """
         The set of arguments for constructing a EventSourceV2 resource.
+
         :param pulumi.Input[_builtins.str] event_bus_name: Name of the bus associated with the event source
         :param pulumi.Input[_builtins.str] event_source_name: The code name of event source
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
@@ -237,6 +238,7 @@ class _EventSourceV2State:
                  source_sls_parameters: Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']] = None):
         """
         Input properties used for looking up and filtering EventSourceV2 resources.
+
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
         :param pulumi.Input[_builtins.str] event_bus_name: Name of the bus associated with the event source
         :param pulumi.Input[_builtins.str] event_source_name: The code name of event source
@@ -498,6 +500,7 @@ class EventSourceV2(pulumi.CustomResource):
         $ pulumi import alicloud:eventbridge/eventSourceV2:EventSourceV2 example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The detail describe of event source
@@ -575,6 +578,7 @@ class EventSourceV2(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eventbridge/eventSourceV2:EventSourceV2 example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EventSourceV2Args args: The arguments to use to populate this resource's properties.

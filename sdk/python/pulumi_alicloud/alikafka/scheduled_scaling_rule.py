@@ -32,6 +32,7 @@ class ScheduledScalingRuleArgs:
                  weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ScheduledScalingRule resource.
+
         :param pulumi.Input[_builtins.int] duration_minutes: The duration (unit: minutes) of a scheduled elastic task.
                
                > **NOTE:** The parameter value must be at least 15 minutes.
@@ -216,6 +217,7 @@ class _ScheduledScalingRuleState:
                  weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ScheduledScalingRule resources.
+
         :param pulumi.Input[_builtins.int] duration_minutes: The duration (unit: minutes) of a scheduled elastic task.
                
                > **NOTE:** The parameter value must be at least 15 minutes.
@@ -483,6 +485,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule example <instance_id>:<rule_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] duration_minutes: The duration (unit: minutes) of a scheduled elastic task.
@@ -579,6 +582,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule example <instance_id>:<rule_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScheduledScalingRuleArgs args: The arguments to use to populate this resource's properties.

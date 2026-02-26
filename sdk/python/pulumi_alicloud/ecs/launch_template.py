@@ -77,6 +77,7 @@ class LaunchTemplateArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LaunchTemplate resource.
+
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -910,6 +911,7 @@ class _LaunchTemplateState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LaunchTemplate resources.
+
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[_builtins.str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -1831,6 +1833,7 @@ class LaunchTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -1962,6 +1965,7 @@ class LaunchTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/launchTemplate:LaunchTemplate lt lt-abc1234567890000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LaunchTemplateArgs args: The arguments to use to populate this resource's properties.

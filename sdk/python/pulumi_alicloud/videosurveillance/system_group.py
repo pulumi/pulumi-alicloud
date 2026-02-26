@@ -29,6 +29,7 @@ class SystemGroupArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SystemGroup resource.
+
         :param pulumi.Input[_builtins.str] group_name: The Group Name.
         :param pulumi.Input[_builtins.str] in_protocol: The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
         :param pulumi.Input[_builtins.str] out_protocol: The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
@@ -167,6 +168,7 @@ class _SystemGroupState:
                  status: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SystemGroup resources.
+
         :param pulumi.Input[_builtins.str] callback: The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
         :param pulumi.Input[_builtins.int] capture_image: The capture image.
         :param pulumi.Input[_builtins.int] capture_interval: The capture interval.
@@ -443,6 +445,7 @@ class SystemGroup(pulumi.CustomResource):
         $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] callback: The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
@@ -492,6 +495,7 @@ class SystemGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:videosurveillance/systemGroup:SystemGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SystemGroupArgs args: The arguments to use to populate this resource's properties.

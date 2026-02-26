@@ -24,6 +24,7 @@ class AuditLogConfigArgs:
                  retention: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AuditLogConfig resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Instance ID, Call the Describeinstances Get.
         :param pulumi.Input[_builtins.bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
                * true: Default Value, Open.
@@ -93,6 +94,7 @@ class _AuditLogConfigState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuditLogConfig resources.
+
         :param pulumi.Input[_builtins.str] create_time: Instance Creation Time.
         :param pulumi.Input[_builtins.bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
                * true: Default Value, Open.
@@ -253,6 +255,7 @@ class AuditLogConfig(pulumi.CustomResource):
         $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
@@ -330,6 +333,7 @@ class AuditLogConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuditLogConfigArgs args: The arguments to use to populate this resource's properties.

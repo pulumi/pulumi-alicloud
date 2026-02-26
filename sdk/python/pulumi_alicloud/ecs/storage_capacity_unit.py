@@ -27,6 +27,7 @@ class StorageCapacityUnitArgs:
                  storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageCapacityUnit resource.
+
         :param pulumi.Input[_builtins.int] capacity: The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
         :param pulumi.Input[_builtins.str] description: The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.int] period: The validity period of the Storage Capacity Unit. Default value: `1`.
@@ -135,6 +136,7 @@ class _StorageCapacityUnitState:
                  storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageCapacityUnit resources.
+
         :param pulumi.Input[_builtins.int] capacity: The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
         :param pulumi.Input[_builtins.str] description: The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.int] period: The validity period of the Storage Capacity Unit. Default value: `1`.
@@ -291,6 +293,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] capacity: The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
@@ -338,6 +341,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/storageCapacityUnit:StorageCapacityUnit example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageCapacityUnitArgs args: The arguments to use to populate this resource's properties.

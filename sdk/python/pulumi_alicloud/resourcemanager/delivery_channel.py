@@ -28,6 +28,7 @@ class DeliveryChannelArgs:
                  resource_snapshot_delivery: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         The set of arguments for constructing a DeliveryChannel resource.
+
         :param pulumi.Input['DeliveryChannelDeliveryChannelFilterArgs'] delivery_channel_filter: The effective scope of the delivery channel. See `delivery_channel_filter` below.
         :param pulumi.Input[_builtins.str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[_builtins.str] delivery_channel_description: The description of the delivery channel.
@@ -114,6 +115,7 @@ class _DeliveryChannelState:
                  resource_snapshot_delivery: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         Input properties used for looking up and filtering DeliveryChannel resources.
+
         :param pulumi.Input[_builtins.str] delivery_channel_description: The description of the delivery channel.
         :param pulumi.Input['DeliveryChannelDeliveryChannelFilterArgs'] delivery_channel_filter: The effective scope of the delivery channel. See `delivery_channel_filter` below.
         :param pulumi.Input[_builtins.str] delivery_channel_name: The name of the delivery channel.
@@ -262,6 +264,7 @@ class DeliveryChannel(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/deliveryChannel:DeliveryChannel example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_channel_description: The description of the delivery channel.
@@ -333,6 +336,7 @@ class DeliveryChannel(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/deliveryChannel:DeliveryChannel example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeliveryChannelArgs args: The arguments to use to populate this resource's properties.

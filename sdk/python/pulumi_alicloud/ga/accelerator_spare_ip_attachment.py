@@ -24,6 +24,7 @@ class AcceleratorSpareIpAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AcceleratorSpareIpAttachment resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[_builtins.str] spare_ip: The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -79,6 +80,7 @@ class _AcceleratorSpareIpAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AcceleratorSpareIpAttachment resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
         :param pulumi.Input[_builtins.str] spare_ip: The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
@@ -201,6 +203,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
@@ -261,6 +264,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment example <accelerator_id>:<spare_ip>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AcceleratorSpareIpAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class PublishTaskArgs:
                  data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PublishTask resource.
+
         :param pulumi.Input[_builtins.str] biz_type: The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
         :param pulumi.Input[_builtins.str] agent_key: The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_id_lists: Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
@@ -82,6 +83,7 @@ class _PublishTaskState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublishTask resources.
+
         :param pulumi.Input[_builtins.str] agent_key: The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
         :param pulumi.Input[_builtins.str] biz_type: The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
         :param pulumi.Input[_builtins.str] create_time: UTC time of task creation
@@ -216,6 +218,7 @@ class PublishTask(pulumi.CustomResource):
         $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_key: The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
@@ -258,6 +261,7 @@ class PublishTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:chatbot/publishTask:PublishTask example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublishTaskArgs args: The arguments to use to populate this resource's properties.

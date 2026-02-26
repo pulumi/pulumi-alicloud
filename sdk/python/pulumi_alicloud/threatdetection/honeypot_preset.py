@@ -27,6 +27,7 @@ class HoneypotPresetArgs:
                  preset_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HoneypotPreset resource.
+
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name
         :param pulumi.Input['HoneypotPresetMetaArgs'] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[_builtins.str] node_id: Unique id of management node
@@ -96,6 +97,7 @@ class _HoneypotPresetState:
                  preset_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HoneypotPreset resources.
+
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name
         :param pulumi.Input[_builtins.str] honeypot_preset_id: Unique ID of honeypot Template
         :param pulumi.Input['HoneypotPresetMetaArgs'] meta: Honeypot template custom parameters. See `meta` below.
@@ -230,6 +232,7 @@ class HoneypotPreset(pulumi.CustomResource):
         $terraform import alicloud_threat_detection_honeypot_preset.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] honeypot_image_name: Honeypot mirror name
@@ -287,6 +290,7 @@ class HoneypotPreset(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_threat_detection_honeypot_preset.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HoneypotPresetArgs args: The arguments to use to populate this resource's properties.

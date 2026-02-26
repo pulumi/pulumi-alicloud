@@ -27,6 +27,7 @@ class QuotaPlanArgs:
                  quota: Optional[pulumi.Input['QuotaPlanQuotaArgs']] = None):
         """
         The set of arguments for constructing a QuotaPlan resource.
+
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
         :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
@@ -99,6 +100,7 @@ class _QuotaPlanState:
                  quota: Optional[pulumi.Input['QuotaPlanQuotaArgs']] = None):
         """
         Input properties used for looking up and filtering QuotaPlan resources.
+
         :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input[_builtins.str] nickname: Quota Name
@@ -235,6 +237,7 @@ class QuotaPlan(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/quotaPlan:QuotaPlan example <nickname>:<plan_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
@@ -308,6 +311,7 @@ class QuotaPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/quotaPlan:QuotaPlan example <nickname>:<plan_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaPlanArgs args: The arguments to use to populate this resource's properties.

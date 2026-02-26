@@ -25,6 +25,7 @@ class KeyPairAttachmentArgs:
                  key_pair_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyPairAttachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair used to bind.
@@ -96,6 +97,7 @@ class _KeyPairAttachmentState:
                  key_pair_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPairAttachment resources.
+
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] key_name: The name of key pair used to bind.
@@ -177,6 +179,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
         > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -195,6 +198,7 @@ class KeyPairAttachment(pulumi.CustomResource):
         Provides a key pair attachment resource to bind key pair for several ECS instances.
 
         > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+
 
         :param str resource_name: The name of the resource.
         :param KeyPairAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class DomainConfigArgs:
                  function_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DomainConfig resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
@@ -81,6 +82,7 @@ class _DomainConfigState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainConfig resources.
+
         :param pulumi.Input[_builtins.str] config_id: The SCDN domain config id.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
@@ -218,6 +220,7 @@ class DomainConfig(pulumi.CustomResource):
         $ pulumi import alicloud:scdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -278,6 +281,7 @@ class DomainConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:scdn/domainConfig:DomainConfig example <domain_name>:<function_name>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainConfigArgs args: The arguments to use to populate this resource's properties.

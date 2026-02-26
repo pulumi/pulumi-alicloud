@@ -23,6 +23,7 @@ class KeyPairArgs:
                  version: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a KeyPair resource.
+
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
         :param pulumi.Input[_builtins.str] version: The version number.
         """
@@ -61,6 +62,7 @@ class _KeyPairState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPair resources.
+
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
         :param pulumi.Input[_builtins.str] version: The version number.
         """
@@ -137,6 +139,7 @@ class KeyPair(pulumi.CustomResource):
         $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
@@ -181,6 +184,7 @@ class KeyPair(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ens/keyPair:KeyPair example <key_pair_name>:<version>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyPairArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class DomainArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
@@ -155,6 +156,7 @@ class _DomainState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
                share: CNAME record mode. This is the default value.
                
@@ -343,6 +345,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
@@ -376,6 +379,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

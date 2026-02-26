@@ -24,6 +24,7 @@ class NetworkRuleArgs:
                  network_rule_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_private_ips: Allowed private network addresses.
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] network_rule_name: Network Rule Name.
@@ -79,6 +80,7 @@ class _NetworkRuleState:
                  source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering NetworkRule resources.
+
         :param pulumi.Input[_builtins.str] description: Description.
         :param pulumi.Input[_builtins.str] network_rule_name: Network Rule Name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_private_ips: Allowed private network addresses.
@@ -176,6 +178,7 @@ class NetworkRule(pulumi.CustomResource):
         $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description.
@@ -226,6 +229,7 @@ class NetworkRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/networkRule:NetworkRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkRuleArgs args: The arguments to use to populate this resource's properties.

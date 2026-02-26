@@ -24,6 +24,7 @@ class VpdGrantRuleArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a VpdGrantRule resource.
+
         :param pulumi.Input[_builtins.str] er_id: The ID of the ER instance under the cross-account tenant.
         :param pulumi.Input[_builtins.str] grant_tenant_id: Cross-account authorized tenant ID.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID of VPD.
@@ -79,6 +80,7 @@ class _VpdGrantRuleState:
                  region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpdGrantRule resources.
+
         :param pulumi.Input[_builtins.str] create_time: The Creation time.
         :param pulumi.Input[_builtins.str] er_id: The ID of the ER instance under the cross-account tenant.
         :param pulumi.Input[_builtins.str] grant_tenant_id: Cross-account authorized tenant ID.
@@ -211,6 +213,7 @@ class VpdGrantRule(pulumi.CustomResource):
         $ pulumi import alicloud:eflo/vpdGrantRule:VpdGrantRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] er_id: The ID of the ER instance under the cross-account tenant.
@@ -266,6 +269,7 @@ class VpdGrantRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eflo/vpdGrantRule:VpdGrantRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpdGrantRuleArgs args: The arguments to use to populate this resource's properties.

@@ -22,6 +22,7 @@ class DelegateAccountArgs:
                  account_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DelegateAccount resource.
+
         :param pulumi.Input[_builtins.str] account_id: Delegate administrator account Id
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -45,6 +46,7 @@ class _DelegateAccountState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DelegateAccount resources.
+
         :param pulumi.Input[_builtins.str] account_id: Delegate administrator account Id
         """
         if account_id is not None:
@@ -109,6 +111,7 @@ class DelegateAccount(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/delegateAccount:DelegateAccount example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Delegate administrator account Id
@@ -156,6 +159,7 @@ class DelegateAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/delegateAccount:DelegateAccount example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DelegateAccountArgs args: The arguments to use to populate this resource's properties.

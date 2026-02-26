@@ -24,6 +24,7 @@ class EnterpriseWorkspaceArgs:
                  workspace_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EnterpriseWorkspace resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the Workspace.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] workspace_name: The name of the Workspace.
@@ -78,6 +79,7 @@ class _EnterpriseWorkspaceState:
                  workspace_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseWorkspace resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the Workspace.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
@@ -195,6 +197,7 @@ class EnterpriseWorkspace(pulumi.CustomResource):
         $ pulumi import alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Workspace.
@@ -250,6 +253,7 @@ class EnterpriseWorkspace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseWorkspaceArgs args: The arguments to use to populate this resource's properties.

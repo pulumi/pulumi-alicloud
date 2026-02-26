@@ -27,6 +27,7 @@ class ResourceGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the resource group. The name must be 1 to 50 characters in length.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_name: The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
@@ -105,6 +106,7 @@ class _ResourceGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
         :param pulumi.Input[_builtins.str] display_name: The display name of the resource group. The name must be 1 to 50 characters in length.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
@@ -262,6 +264,7 @@ class ResourceGroup(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the resource group. The name must be 1 to 50 characters in length.
@@ -308,6 +311,7 @@ class ResourceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceGroupArgs args: The arguments to use to populate this resource's properties.

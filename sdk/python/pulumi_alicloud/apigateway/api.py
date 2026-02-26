@@ -38,6 +38,7 @@ class ApiArgs:
                  system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None):
         """
         The set of arguments for constructing a Api resource.
+
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[_builtins.str] description: The description of the api. Defaults to null.
         :param pulumi.Input[_builtins.str] group_id: The api gateway that the api belongs to. Defaults to null.
@@ -282,6 +283,7 @@ class _ApiState:
                  system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None):
         """
         Input properties used for looking up and filtering Api resources.
+
         :param pulumi.Input[_builtins.str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
@@ -612,6 +614,7 @@ class Api(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
@@ -700,6 +703,7 @@ class Api(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/api:Api example "ab2351f2ce904edaa8d92a0510832b91:e4f728fca5a94148b023b99a3e5d0b62"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiArgs args: The arguments to use to populate this resource's properties.

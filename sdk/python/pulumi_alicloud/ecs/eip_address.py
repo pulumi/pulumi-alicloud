@@ -46,6 +46,7 @@ class EipAddressArgs:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EipAddress resource.
+
         :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
         :param pulumi.Input[_builtins.str] address_name: The EIP name.
                
@@ -568,6 +569,7 @@ class _EipAddressState:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipAddress resources.
+
         :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
         :param pulumi.Input[_builtins.str] address_name: The EIP name.
                
@@ -1170,6 +1172,7 @@ class EipAddress(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
@@ -1305,6 +1308,7 @@ class EipAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/eipAddress:EipAddress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EipAddressArgs args: The arguments to use to populate this resource's properties.

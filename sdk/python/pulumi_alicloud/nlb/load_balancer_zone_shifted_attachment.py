@@ -24,6 +24,7 @@ class LoadBalancerZoneShiftedAttachmentArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LoadBalancerZoneShiftedAttachment resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: Network load balancer id
         :param pulumi.Input[_builtins.str] vswitch_id: The list of zones and vSwitch mappings
         :param pulumi.Input[_builtins.str] zone_id: ZoneId
@@ -78,6 +79,7 @@ class _LoadBalancerZoneShiftedAttachmentState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerZoneShiftedAttachment resources.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: Network load balancer id
         :param pulumi.Input[_builtins.str] status: Status
         :param pulumi.Input[_builtins.str] vswitch_id: The list of zones and vSwitch mappings
@@ -217,6 +219,7 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment example <load_balancer_id>:<zone_id>:<vswitch_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] load_balancer_id: Network load balancer id
@@ -294,6 +297,7 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment example <load_balancer_id>:<zone_id>:<vswitch_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerZoneShiftedAttachmentArgs args: The arguments to use to populate this resource's properties.

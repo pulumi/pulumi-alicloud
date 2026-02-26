@@ -31,6 +31,7 @@ class ImageCopyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ImageCopy resource.
+
         :param pulumi.Input[_builtins.str] source_image_id: The source image ID.
         :param pulumi.Input[_builtins.str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -197,6 +198,7 @@ class _ImageCopyState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ImageCopy resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates whether to encrypt the image.
         :param pulumi.Input[_builtins.bool] force: Indicates whether to force delete the custom image, Default is `false`. 
@@ -437,6 +439,7 @@ class ImageCopy(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -525,6 +528,7 @@ class ImageCopy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageCopyArgs args: The arguments to use to populate this resource's properties.

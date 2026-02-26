@@ -41,6 +41,7 @@ class DomainArgs:
                  top_level_domain: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
         :param pulumi.Input[_builtins.str] cert_name: The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
@@ -338,6 +339,7 @@ class _DomainState:
                  top_level_domain: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
         :param pulumi.Input[_builtins.str] cert_name: The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         :param pulumi.Input[_builtins.str] cert_region: The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
@@ -715,6 +717,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/domain:Domain example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
@@ -790,6 +793,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/domain:Domain example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

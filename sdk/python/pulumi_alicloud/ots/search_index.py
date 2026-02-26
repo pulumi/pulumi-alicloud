@@ -28,6 +28,7 @@ class SearchIndexArgs:
                  time_to_live: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a SearchIndex resource.
+
         :param pulumi.Input[_builtins.str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
@@ -118,6 +119,7 @@ class _SearchIndexState:
                  time_to_live: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SearchIndex resources.
+
         :param pulumi.Input[_builtins.int] create_time: The search index create time.
         :param pulumi.Input[_builtins.int] current_sync_timestamp: The timestamp for sync phase.
         :param pulumi.Input[_builtins.str] index_id: The index id of the search index which could not be changed.
@@ -382,6 +384,7 @@ class SearchIndex(pulumi.CustomResource):
         $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] index_name: The index name of the OTS Table. If changed, a new index would be created.
@@ -508,6 +511,7 @@ class SearchIndex(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ots/searchIndex:SearchIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SearchIndexArgs args: The arguments to use to populate this resource's properties.

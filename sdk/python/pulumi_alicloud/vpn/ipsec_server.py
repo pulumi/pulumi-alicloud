@@ -33,6 +33,7 @@ class IpsecServerArgs:
                  psk_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IpsecServer resource.
+
         :param pulumi.Input[_builtins.str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[_builtins.str] local_subnet: The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         :param pulumi.Input[_builtins.str] vpn_gateway_id: The ID of the VPN gateway.
@@ -198,6 +199,7 @@ class _IpsecServerState:
                  vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpsecServer resources.
+
         :param pulumi.Input[_builtins.str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
         :param pulumi.Input[_builtins.bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
@@ -421,6 +423,7 @@ class IpsecServer(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
@@ -492,6 +495,7 @@ class IpsecServer(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/ipsecServer:IpsecServer example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpsecServerArgs args: The arguments to use to populate this resource's properties.

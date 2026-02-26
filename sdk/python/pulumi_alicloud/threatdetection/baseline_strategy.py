@@ -29,6 +29,7 @@ class BaselineStrategyArgs:
                  cycle_start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BaselineStrategy resource.
+
         :param pulumi.Input[_builtins.str] baseline_strategy_name: Policy name.
         :param pulumi.Input[_builtins.str] custom_type: The type of policy. Value:
                * **common**: standard policy
@@ -175,6 +176,7 @@ class _BaselineStrategyState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BaselineStrategy resources.
+
         :param pulumi.Input[_builtins.str] baseline_strategy_id: The ID of the baseline check policy.
         :param pulumi.Input[_builtins.str] baseline_strategy_name: Policy name.
         :param pulumi.Input[_builtins.str] custom_type: The type of policy. Value:
@@ -379,6 +381,7 @@ class BaselineStrategy(pulumi.CustomResource):
         $terraform import alicloud_threat_detection_baseline_strategy.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] baseline_strategy_name: Policy name.
@@ -438,6 +441,7 @@ class BaselineStrategy(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_threat_detection_baseline_strategy.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BaselineStrategyArgs args: The arguments to use to populate this resource's properties.

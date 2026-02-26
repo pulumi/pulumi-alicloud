@@ -28,6 +28,7 @@ class SecondaryIndexArgs:
                  defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecondaryIndex resource.
+
         :param pulumi.Input[_builtins.bool] include_base_data: whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
         :param pulumi.Input[_builtins.str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[_builtins.str] index_type: The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
@@ -142,6 +143,7 @@ class _SecondaryIndexState:
                  table_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecondaryIndex resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] defined_columns: A list of defined column for index, referenced from Table's primary keys or predefined columns.
         :param pulumi.Input[_builtins.bool] include_base_data: whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
         :param pulumi.Input[_builtins.str] index_name: The index name of the OTS Table. If changed, a new index would be created.
@@ -356,6 +358,7 @@ class SecondaryIndex(pulumi.CustomResource):
         $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] defined_columns: A list of defined column for index, referenced from Table's primary keys or predefined columns.
@@ -463,6 +466,7 @@ class SecondaryIndex(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ots/secondaryIndex:SecondaryIndex index1 <instance_name>:<table_name>:<index_name>:<index_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecondaryIndexArgs args: The arguments to use to populate this resource's properties.

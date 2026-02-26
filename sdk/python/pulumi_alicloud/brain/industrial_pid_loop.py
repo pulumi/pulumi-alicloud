@@ -28,6 +28,7 @@ class IndustrialPidLoopArgs:
                  pid_loop_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IndustrialPidLoop resource.
+
         :param pulumi.Input[_builtins.str] pid_loop_configuration: The Pid Loop Configuration.
         :param pulumi.Input[_builtins.str] pid_loop_dcs_type: The dcs type of Pid Loop. Valid values: `standard`.
         :param pulumi.Input[_builtins.bool] pid_loop_is_crucial: Whether is crucial Pid Loop.
@@ -143,6 +144,7 @@ class _IndustrialPidLoopState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IndustrialPidLoop resources.
+
         :param pulumi.Input[_builtins.str] pid_loop_configuration: The Pid Loop Configuration.
         :param pulumi.Input[_builtins.str] pid_loop_dcs_type: The dcs type of Pid Loop. Valid values: `standard`.
         :param pulumi.Input[_builtins.str] pid_loop_desc: The desc of Pid Loop.
@@ -314,6 +316,7 @@ class IndustrialPidLoop(pulumi.CustomResource):
         $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] pid_loop_configuration: The Pid Loop Configuration.
@@ -363,6 +366,7 @@ class IndustrialPidLoop(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IndustrialPidLoopArgs args: The arguments to use to populate this resource's properties.

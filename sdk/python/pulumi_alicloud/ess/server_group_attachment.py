@@ -27,6 +27,7 @@ class ServerGroupAttachmentArgs:
                  force_attach: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServerGroupAttachment resource.
+
         :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[_builtins.str] server_group_id: ID of Server Group.
@@ -128,6 +129,7 @@ class _ServerGroupAttachmentState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServerGroupAttachment resources.
+
         :param pulumi.Input[_builtins.bool] force_attach: If instances of scaling group are attached/removed from backend server when
                server group from scaling group. Default to false.
         :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
@@ -321,6 +323,7 @@ class ServerGroupAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_attach: If instances of scaling group are attached/removed from backend server when
@@ -421,6 +424,7 @@ class ServerGroupAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

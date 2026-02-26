@@ -24,6 +24,7 @@ class LogTailAttachmentArgs:
                  project: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LogTailAttachment resource.
+
         :param pulumi.Input[_builtins.str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
         :param pulumi.Input[_builtins.str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
@@ -77,6 +78,7 @@ class _LogTailAttachmentState:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogTailAttachment resources.
+
         :param pulumi.Input[_builtins.str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
         :param pulumi.Input[_builtins.str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
@@ -209,6 +211,7 @@ class LogTailAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
@@ -294,6 +297,7 @@ class LogTailAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogTailAttachmentArgs args: The arguments to use to populate this resource's properties.

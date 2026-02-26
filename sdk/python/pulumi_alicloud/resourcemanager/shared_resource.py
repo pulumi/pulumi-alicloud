@@ -26,6 +26,7 @@ class SharedResourceArgs:
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedResource resource.
+
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
                
@@ -123,6 +124,7 @@ class _SharedResourceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedResource resources.
+
         :param pulumi.Input[_builtins.str] create_time: The time when the shared resource was associated with the resource share.
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
                
@@ -300,6 +302,7 @@ class SharedResource(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission_name: The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
@@ -366,6 +369,7 @@ class SharedResource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SharedResourceArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class ClusterArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster that you want to create.
         :param pulumi.Input[_builtins.int] cluster_type: The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         :param pulumi.Input[_builtins.int] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
@@ -111,6 +112,7 @@ class _ClusterState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster that you want to create.
         :param pulumi.Input[_builtins.int] cluster_type: The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         :param pulumi.Input[_builtins.str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
@@ -240,6 +242,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_name: The name of the cluster that you want to create.
@@ -292,6 +295,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:edas/cluster:Cluster cluster cluster_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

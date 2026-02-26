@@ -22,6 +22,7 @@ class ProductArgs:
                  product_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Product resource.
+
         :param pulumi.Input[_builtins.str] product_name: ProductName.
         """
         pulumi.set(__self__, "product_name", product_name)
@@ -45,6 +46,7 @@ class _ProductState:
                  product_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Product resources.
+
         :param pulumi.Input[_builtins.str] product_name: ProductName.
         """
         if product_name is not None:
@@ -101,6 +103,7 @@ class Product(pulumi.CustomResource):
         $ pulumi import alicloud:mhub/product:Product example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] product_name: ProductName.
@@ -140,6 +143,7 @@ class Product(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mhub/product:Product example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProductArgs args: The arguments to use to populate this resource's properties.

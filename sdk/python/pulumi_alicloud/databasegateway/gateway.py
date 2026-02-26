@@ -23,6 +23,7 @@ class GatewayArgs:
                  gateway_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
+
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway.
         :param pulumi.Input[_builtins.str] gateway_desc: The description of Gateway.
         """
@@ -63,6 +64,7 @@ class _GatewayState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+
         :param pulumi.Input[_builtins.str] gateway_desc: The description of Gateway.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway.
         :param pulumi.Input[_builtins.str] status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
@@ -148,6 +150,7 @@ class Gateway(pulumi.CustomResource):
         $ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gateway_desc: The description of Gateway.
@@ -186,6 +189,7 @@ class Gateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:databasegateway/gateway:Gateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

@@ -45,6 +45,7 @@ class FirewallVpcFirewallControlPolicyArgs:
                  start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a FirewallVpcFirewallControlPolicy resource.
+
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy. Valid values:
@@ -453,6 +454,7 @@ class _FirewallVpcFirewallControlPolicyState:
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallVpcFirewallControlPolicy resources.
+
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] acl_uuid: Access control over VPC firewalls strategy unique identifier.
         :param pulumi.Input[_builtins.str] application_id: Policy specifies the application ID.
@@ -1055,6 +1057,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy example <vpc_firewall_id>:<acl_uuid>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -1152,6 +1155,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy example <vpc_firewall_id>:<acl_uuid>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallVpcFirewallControlPolicyArgs args: The arguments to use to populate this resource's properties.

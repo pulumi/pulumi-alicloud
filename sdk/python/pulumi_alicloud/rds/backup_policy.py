@@ -47,6 +47,7 @@ class BackupPolicyArgs:
                  retention_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         :param pulumi.Input[_builtins.str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
@@ -538,6 +539,7 @@ class _BackupPolicyState:
                  retention_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
+
         :param pulumi.Input[_builtins.int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         :param pulumi.Input[_builtins.str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         :param pulumi.Input[_builtins.int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
@@ -1079,6 +1081,7 @@ class BackupPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example "rm-12345678"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
@@ -1184,6 +1187,7 @@ class BackupPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/backupPolicy:BackupPolicy example "rm-12345678"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BackupPolicyArgs args: The arguments to use to populate this resource's properties.

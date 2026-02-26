@@ -30,6 +30,7 @@ class AggregateCompliancePackArgs:
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a AggregateCompliancePack resource.
+
         :param pulumi.Input[_builtins.str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[_builtins.str] description: The description of compliance package.
@@ -152,6 +153,7 @@ class _AggregateCompliancePackState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AggregateCompliancePack resources.
+
         :param pulumi.Input[_builtins.str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         :param pulumi.Input[_builtins.str] aggregator_compliance_pack_id: The ID of the compliance package.
         :param pulumi.Input[_builtins.str] aggregator_id: The ID of aggregator.
@@ -371,6 +373,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
@@ -449,6 +452,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack example <aggregator_id>:<aggregator_compliance_pack_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AggregateCompliancePackArgs args: The arguments to use to populate this resource's properties.

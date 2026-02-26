@@ -26,6 +26,7 @@ class AccessConfigurationProvisioningArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessConfigurationProvisioning resource.
+
         :param pulumi.Input[_builtins.str] access_configuration_id: The Access configuration ID.
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] target_id: The ID of the target to create the resource range.
@@ -110,6 +111,7 @@ class _AccessConfigurationProvisioningState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessConfigurationProvisioning resources.
+
         :param pulumi.Input[_builtins.str] access_configuration_id: The Access configuration ID.
         :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
@@ -259,6 +261,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_configuration_id: The Access configuration ID.
@@ -331,6 +334,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning example <directory_id>:<access_configuration_id>:<target_type>:<target_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessConfigurationProvisioningArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class NatIpArgs:
                  nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatIp resource.
+
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
         :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
@@ -149,6 +150,7 @@ class _NatIpState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatIp resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         :param pulumi.Input[_builtins.str] nat_ip: The NAT IP address that you want to create. If you do not specify an IP address, the system selects a random IP address from the specified CIDR block.
@@ -356,6 +358,7 @@ class NatIp(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.
@@ -426,6 +429,7 @@ class NatIp(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/natIp:NatIp example <nat_gateway_id>:<nat_ip_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatIpArgs args: The arguments to use to populate this resource's properties.

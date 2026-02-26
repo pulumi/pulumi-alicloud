@@ -26,6 +26,7 @@ class V3AliasArgs:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3Alias resource.
+
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]] additional_version_weight: Grayscale version
         :param pulumi.Input[_builtins.str] alias_name: Function Alias
@@ -115,6 +116,7 @@ class _V3AliasState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3Alias resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]] additional_version_weight: Grayscale version
         :param pulumi.Input[_builtins.str] alias_name: Function Alias
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -279,6 +281,7 @@ class V3Alias(pulumi.CustomResource):
         $ pulumi import alicloud:fc/v3Alias:V3Alias example <function_name>:<alias_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]] additional_version_weight: Grayscale version
@@ -336,6 +339,7 @@ class V3Alias(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/v3Alias:V3Alias example <function_name>:<alias_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V3AliasArgs args: The arguments to use to populate this resource's properties.

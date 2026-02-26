@@ -28,6 +28,7 @@ class BasicEndpointGroupArgs:
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BasicEndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
         :param pulumi.Input[_builtins.str] endpoint_group_region: The ID of the region where you want to create the endpoint group.
         :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -147,6 +148,7 @@ class _BasicEndpointGroupState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicEndpointGroup resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
         :param pulumi.Input[_builtins.str] basic_endpoint_group_name: The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.str] description: The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
@@ -347,6 +349,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ga/basicEndpointGroup:BasicEndpointGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the basic GA instance.
@@ -425,6 +428,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/basicEndpointGroup:BasicEndpointGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicEndpointGroupArgs args: The arguments to use to populate this resource's properties.

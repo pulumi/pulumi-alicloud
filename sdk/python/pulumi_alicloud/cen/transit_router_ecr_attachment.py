@@ -28,6 +28,7 @@ class TransitRouterEcrAttachmentArgs:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterEcrAttachment resource.
+
         :param pulumi.Input[_builtins.str] ecr_id: EcrId
         :param pulumi.Input[_builtins.str] cen_id: CenId
         :param pulumi.Input[_builtins.int] ecr_owner_id: EcrOwnerId
@@ -149,6 +150,7 @@ class _TransitRouterEcrAttachmentState:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterEcrAttachment resources.
+
         :param pulumi.Input[_builtins.str] cen_id: CenId
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] ecr_id: EcrId
@@ -356,6 +358,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: CenId
@@ -426,6 +429,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterEcrAttachmentArgs args: The arguments to use to populate this resource's properties.

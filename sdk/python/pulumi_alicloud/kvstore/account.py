@@ -29,6 +29,7 @@ class AccountArgs:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_name: The name of the account. The name must meet the following requirements:
                * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
                * The name can be up to 100 characters in length.
@@ -178,6 +179,7 @@ class _AccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_name: The name of the account. The name must meet the following requirements:
                * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
                * The name can be up to 100 characters in length.
@@ -407,6 +409,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The name of the account. The name must meet the following requirements:
@@ -492,6 +495,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

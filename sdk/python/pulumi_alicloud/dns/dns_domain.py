@@ -27,6 +27,7 @@ class DnsDomainArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DnsDomain resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.
         :param pulumi.Input[_builtins.str] lang: User language.
@@ -138,6 +139,7 @@ class _DnsDomainState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DnsDomain resources.
+
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[_builtins.str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.
@@ -331,6 +333,7 @@ class DnsDomain(pulumi.CustomResource):
         $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -382,6 +385,7 @@ class DnsDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/dnsDomain:DnsDomain example aliyun.com
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DnsDomainArgs args: The arguments to use to populate this resource's properties.

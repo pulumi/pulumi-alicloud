@@ -23,6 +23,7 @@ class IpamIpamPoolCidrArgs:
                  ipam_pool_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IpamIpamPoolCidr resource.
+
         :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
                
                > **NOTE:**  currently, only IPv4 address segments are supported.
@@ -66,6 +67,7 @@ class _IpamIpamPoolCidrState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpamIpamPoolCidr resources.
+
         :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
                
                > **NOTE:**  currently, only IPv4 address segments are supported.
@@ -168,6 +170,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>:<cidr>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: The CIDR address segment to be preset.
@@ -221,6 +224,7 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr example <ipam_pool_id>:<cidr>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamIpamPoolCidrArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class PhysicalConnectionArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PhysicalConnection resource.
+
         :param pulumi.Input[_builtins.str] access_point_id: The access point ID of the Express Connect circuit.
         :param pulumi.Input[_builtins.str] line_operator: The connectivity provider of the Express Connect circuit. Valid values:
                - `CT`: China Telecom.
@@ -283,6 +284,7 @@ class _PhysicalConnectionState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PhysicalConnection resources.
+
         :param pulumi.Input[_builtins.str] access_point_id: The access point ID of the Express Connect circuit.
         :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the hosted connection.
         :param pulumi.Input[_builtins.str] circuit_code: The circuit code of the Express Connect circuit.
@@ -595,6 +597,7 @@ class PhysicalConnection(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_point_id: The access point ID of the Express Connect circuit.
@@ -678,6 +681,7 @@ class PhysicalConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/physicalConnection:PhysicalConnection example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PhysicalConnectionArgs args: The arguments to use to populate this resource's properties.

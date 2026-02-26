@@ -86,6 +86,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Specifies whether to use a coupon. Default value: `false`.
@@ -1157,6 +1158,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Specifies whether to use a coupon. Default value: `false`.
@@ -2453,6 +2455,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
@@ -2684,6 +2687,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kvstore/instance:Instance example r-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

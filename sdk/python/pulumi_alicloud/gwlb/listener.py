@@ -26,6 +26,7 @@ class ListenerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_id: The GWLB instance ID.
         :param pulumi.Input[_builtins.str] server_group_id: The server group ID.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
@@ -118,6 +119,7 @@ class _ListenerState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] listener_description: The description of the listener.
                
@@ -345,6 +347,7 @@ class Listener(pulumi.CustomResource):
         $ pulumi import alicloud:gwlb/listener:Listener example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
@@ -463,6 +466,7 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gwlb/listener:Listener example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.

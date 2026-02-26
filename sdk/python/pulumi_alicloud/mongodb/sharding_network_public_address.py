@@ -25,6 +25,7 @@ class ShardingNetworkPublicAddressArgs:
                  node_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ShardingNetworkPublicAddress resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
@@ -64,6 +65,7 @@ class _ShardingNetworkPublicAddressState:
                  node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShardingNetworkPublicAddress resources.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]] network_addresses: The endpoint of the instance.
         :param pulumi.Input[_builtins.str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
@@ -192,6 +194,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress example <db_instance_id>:<node_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
@@ -273,6 +276,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress example <db_instance_id>:<node_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShardingNetworkPublicAddressArgs args: The arguments to use to populate this resource's properties.

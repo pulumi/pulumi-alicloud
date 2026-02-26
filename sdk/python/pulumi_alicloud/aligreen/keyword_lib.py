@@ -30,6 +30,7 @@ class KeywordLibArgs:
                  match_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeywordLib resource.
+
         :param pulumi.Input[_builtins.str] keyword_lib_name: The name of the keyword library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
         :param pulumi.Input[_builtins.str] resource_type: The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] biz_types: The business scenario. Example:["bizTypeA","bizTypeB"]
@@ -180,6 +181,7 @@ class _KeywordLibState:
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeywordLib resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] biz_types: The business scenario. Example:["bizTypeA","bizTypeB"]
         :param pulumi.Input[_builtins.str] category: The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
@@ -385,6 +387,7 @@ class KeywordLib(pulumi.CustomResource):
         $ pulumi import alicloud:aligreen/keywordLib:KeywordLib example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] biz_types: The business scenario. Example:["bizTypeA","bizTypeB"]
@@ -453,6 +456,7 @@ class KeywordLib(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:aligreen/keywordLib:KeywordLib example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeywordLibArgs args: The arguments to use to populate this resource's properties.

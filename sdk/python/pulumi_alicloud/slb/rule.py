@@ -43,6 +43,7 @@ class RuleArgs:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         :param pulumi.Input[_builtins.str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
         :param pulumi.Input[_builtins.str] server_group_id: ID of a virtual server group that will be forwarded.
@@ -406,6 +407,7 @@ class _RuleState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         :param pulumi.Input[_builtins.int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
@@ -882,6 +884,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import alicloud:slb/rule:Rule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
@@ -1023,6 +1026,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/rule:Rule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

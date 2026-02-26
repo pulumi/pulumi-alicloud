@@ -41,6 +41,7 @@ class MilvusInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MilvusInstance resource.
+
         :param pulumi.Input[_builtins.str] db_version: Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
         :param pulumi.Input[_builtins.str] instance_name: Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
         :param pulumi.Input[_builtins.str] payment_type: Payment Type ,Enumeration value:
@@ -368,6 +369,7 @@ class _MilvusInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MilvusInstance resources.
+
         :param pulumi.Input[_builtins.bool] auto_backup: Whether to enable automatic backup
         :param pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
@@ -813,6 +815,7 @@ class MilvusInstance(pulumi.CustomResource):
         $ pulumi import alicloud:index/milvusInstance:MilvusInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_backup: Whether to enable automatic backup
@@ -925,6 +928,7 @@ class MilvusInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:index/milvusInstance:MilvusInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MilvusInstanceArgs args: The arguments to use to populate this resource's properties.

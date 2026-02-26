@@ -23,6 +23,7 @@ class OriginProtectionArgs:
                  origin_converge: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OriginProtection resource.
+
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] origin_converge: The IP convergence status.
                
@@ -68,6 +69,7 @@ class _OriginProtectionState:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginProtection resources.
+
         :param pulumi.Input[_builtins.str] origin_converge: The IP convergence status.
                
                - on
@@ -156,6 +158,7 @@ class OriginProtection(pulumi.CustomResource):
         $ pulumi import alicloud:esa/originProtection:OriginProtection example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] origin_converge: The IP convergence status.
@@ -209,6 +212,7 @@ class OriginProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/originProtection:OriginProtection example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OriginProtectionArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class TopicArgs:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the ONS Instance that owns the topics.
         :param pulumi.Input[_builtins.int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[_builtins.int] perm: This attribute has been deprecated.
@@ -162,6 +163,7 @@ class _TopicState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the ONS Instance that owns the topics.
         :param pulumi.Input[_builtins.int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[_builtins.int] perm: This attribute has been deprecated.
@@ -346,6 +348,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the ONS Instance that owns the topics.
@@ -411,6 +414,7 @@ class Topic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/topic:Topic topic MQ_INST_1234567890_Baso1234567:onsTopicDemo
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

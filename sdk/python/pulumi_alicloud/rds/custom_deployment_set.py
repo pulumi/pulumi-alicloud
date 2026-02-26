@@ -26,6 +26,7 @@ class CustomDeploymentSetArgs:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDeploymentSet resource.
+
         :param pulumi.Input[_builtins.str] custom_deployment_set_name: The name of the resource
         :param pulumi.Input[_builtins.str] description: Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[_builtins.int] group_count: Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
@@ -141,6 +142,7 @@ class _CustomDeploymentSetState:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDeploymentSet resources.
+
         :param pulumi.Input[_builtins.str] custom_deployment_set_name: The name of the resource
         :param pulumi.Input[_builtins.str] description: Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[_builtins.int] group_count: Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
@@ -311,6 +313,7 @@ class CustomDeploymentSet(pulumi.CustomResource):
         $ pulumi import alicloud:rds/customDeploymentSet:CustomDeploymentSet example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_deployment_set_name: The name of the resource
@@ -376,6 +379,7 @@ class CustomDeploymentSet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/customDeploymentSet:CustomDeploymentSet example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomDeploymentSetArgs args: The arguments to use to populate this resource's properties.

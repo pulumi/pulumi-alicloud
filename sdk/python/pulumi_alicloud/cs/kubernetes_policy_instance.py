@@ -26,6 +26,7 @@ class KubernetesPolicyInstanceArgs:
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a KubernetesPolicyInstance resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: Target cluster ID
         :param pulumi.Input[_builtins.str] policy_name: Policy Name
         :param pulumi.Input[_builtins.str] action: Policy Governance Implementation Actions
@@ -113,6 +114,7 @@ class _KubernetesPolicyInstanceState:
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesPolicyInstance resources.
+
         :param pulumi.Input[_builtins.str] action: Policy Governance Implementation Actions
         :param pulumi.Input[_builtins.str] cluster_id: Target cluster ID
         :param pulumi.Input[_builtins.str] instance_name: Rule Instance Name
@@ -323,6 +325,7 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
         $ pulumi import alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance example <cluster_id>:<policy_name>:<instance_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Policy Governance Implementation Actions
@@ -441,6 +444,7 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance example <cluster_id>:<policy_name>:<instance_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesPolicyInstanceArgs args: The arguments to use to populate this resource's properties.

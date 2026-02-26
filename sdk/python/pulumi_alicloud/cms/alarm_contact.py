@@ -28,6 +28,7 @@ class AlarmContactArgs:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlarmContact resource.
+
         :param pulumi.Input[_builtins.str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
         :param pulumi.Input[_builtins.str] describe: The description of the alarm contact.
         :param pulumi.Input[_builtins.str] channels_aliim: The TradeManager ID of the alarm contact.
@@ -150,6 +151,7 @@ class _AlarmContactState:
                  lang: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlarmContact resources.
+
         :param pulumi.Input[_builtins.str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
         :param pulumi.Input[_builtins.str] channels_aliim: The TradeManager ID of the alarm contact.
         :param pulumi.Input[_builtins.str] channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
@@ -306,6 +308,7 @@ class AlarmContact(pulumi.CustomResource):
         $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
@@ -353,6 +356,7 @@ class AlarmContact(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/alarmContact:AlarmContact example abc12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlarmContactArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class TemplateApplicationsArgs:
                  notice_type: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a TemplateApplications resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
@@ -239,6 +240,7 @@ class _TemplateApplicationsState:
                  reason: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateApplications resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
@@ -515,6 +517,7 @@ class TemplateApplications(pulumi.CustomResource):
         $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
@@ -596,6 +599,7 @@ class TemplateApplications(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:quotas/templateApplications:TemplateApplications example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateApplicationsArgs args: The arguments to use to populate this resource's properties.

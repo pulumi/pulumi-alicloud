@@ -25,6 +25,7 @@ class AppAttachmentArgs:
                  stage_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AppAttachment resource.
+
         :param pulumi.Input[_builtins.str] api_id: The api_id that app apply to access.
         :param pulumi.Input[_builtins.str] app_id: The app that apply to the authorization.
         :param pulumi.Input[_builtins.str] group_id: The group that the api belongs to.
@@ -93,6 +94,7 @@ class _AppAttachmentState:
                  stage_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppAttachment resources.
+
         :param pulumi.Input[_builtins.str] api_id: The api_id that app apply to access.
         :param pulumi.Input[_builtins.str] app_id: The app that apply to the authorization.
         :param pulumi.Input[_builtins.str] group_id: The group that the api belongs to.
@@ -235,6 +237,7 @@ class AppAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_id: The api_id that app apply to access.
@@ -315,6 +318,7 @@ class AppAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param AppAttachmentArgs args: The arguments to use to populate this resource's properties.

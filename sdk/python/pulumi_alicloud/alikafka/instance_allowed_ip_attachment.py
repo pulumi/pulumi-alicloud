@@ -25,6 +25,7 @@ class InstanceAllowedIpAttachmentArgs:
                  port_range: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a InstanceAllowedIpAttachment resource.
+
         :param pulumi.Input[_builtins.str] allowed_ip: The IP address whitelist. It can be a CIDR block.
         :param pulumi.Input[_builtins.str] allowed_type: The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -101,6 +102,7 @@ class _InstanceAllowedIpAttachmentState:
                  port_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAllowedIpAttachment resources.
+
         :param pulumi.Input[_builtins.str] allowed_ip: The IP address whitelist. It can be a CIDR block.
         :param pulumi.Input[_builtins.str] allowed_type: The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -242,6 +244,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example <instance_id>:<allowed_type>:<port_range>:<allowed_ip>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] allowed_ip: The IP address whitelist. It can be a CIDR block.
@@ -317,6 +320,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment example <instance_id>:<allowed_type>:<port_range>:<allowed_ip>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceAllowedIpAttachmentArgs args: The arguments to use to populate this resource's properties.

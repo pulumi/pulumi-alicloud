@@ -44,6 +44,7 @@ class NatFirewallControlPolicyArgs:
                  start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a NatFirewallControlPolicy resource.
+
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
                - **accept**: Release
                - **drop**: Refused
@@ -501,6 +502,7 @@ class _NatFirewallControlPolicyState:
                  start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NatFirewallControlPolicy resources.
+
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
                - **accept**: Release
                - **drop**: Refused
@@ -1136,6 +1138,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy example <acl_uuid>:<nat_gateway_id>:<direction>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
@@ -1347,6 +1350,7 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy example <acl_uuid>:<nat_gateway_id>:<direction>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatFirewallControlPolicyArgs args: The arguments to use to populate this resource's properties.

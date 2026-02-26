@@ -25,6 +25,7 @@ class NetworkArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.bool] is_default: Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
         :param pulumi.Input[_builtins.str] cidr_block: The CidrBlock of the CCN instance. Defaults to null.
         :param pulumi.Input[_builtins.str] description: The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
@@ -96,6 +97,7 @@ class _NetworkState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The CidrBlock of the CCN instance. Defaults to null.
         :param pulumi.Input[_builtins.str] description: The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
         :param pulumi.Input[_builtins.bool] is_default: Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
@@ -208,6 +210,7 @@ class Network(pulumi.CustomResource):
         $ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The CidrBlock of the CCN instance. Defaults to null.
@@ -258,6 +261,7 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudconnect/network:Network example ccn-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

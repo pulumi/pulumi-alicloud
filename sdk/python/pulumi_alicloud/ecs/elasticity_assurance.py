@@ -36,6 +36,7 @@ class ElasticityAssuranceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ElasticityAssurance resource.
+
         :param pulumi.Input[_builtins.int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
@@ -316,6 +317,7 @@ class _ElasticityAssuranceState:
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ElasticityAssurance resources.
+
         :param pulumi.Input[_builtins.str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
                - true
@@ -743,6 +745,7 @@ class ElasticityAssurance(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
@@ -824,6 +827,7 @@ class ElasticityAssurance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ElasticityAssuranceArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class ExtensionProviderArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ExtensionProvider resource.
+
         :param pulumi.Input[_builtins.str] config: The config of the Service Mesh Extension Provider. The `config` format is json.
         :param pulumi.Input[_builtins.str] extension_provider_name: The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
         :param pulumi.Input[_builtins.str] service_mesh_id: The ID of the Service Mesh.
@@ -93,6 +94,7 @@ class _ExtensionProviderState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExtensionProvider resources.
+
         :param pulumi.Input[_builtins.str] config: The config of the Service Mesh Extension Provider. The `config` format is json.
         :param pulumi.Input[_builtins.str] extension_provider_name: The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
         :param pulumi.Input[_builtins.str] service_mesh_id: The ID of the Service Mesh.
@@ -249,6 +251,7 @@ class ExtensionProvider(pulumi.CustomResource):
         $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The config of the Service Mesh Extension Provider. The `config` format is json.
@@ -343,6 +346,7 @@ class ExtensionProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:servicemesh/extensionProvider:ExtensionProvider example <service_mesh_id>:<type>:<extension_provider_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExtensionProviderArgs args: The arguments to use to populate this resource's properties.

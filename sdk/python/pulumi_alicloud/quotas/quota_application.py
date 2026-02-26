@@ -34,6 +34,7 @@ class QuotaApplicationArgs:
                  quota_category: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QuotaApplication resource.
+
         :param pulumi.Input[_builtins.float] desire_value: The desire value of the quota application.
         :param pulumi.Input[_builtins.str] product_code: The product code.
         :param pulumi.Input[_builtins.str] quota_action_code: The ID of quota action.
@@ -235,6 +236,7 @@ class _QuotaApplicationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QuotaApplication resources.
+
         :param pulumi.Input[_builtins.str] approve_value: The approve value of the quota application.
         :param pulumi.Input[_builtins.str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
                - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
@@ -595,6 +597,7 @@ class QuotaApplication(pulumi.CustomResource):
         $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
@@ -668,6 +671,7 @@ class QuotaApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaApplicationArgs args: The arguments to use to populate this resource's properties.

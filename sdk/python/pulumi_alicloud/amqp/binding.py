@@ -28,6 +28,7 @@ class BindingArgs:
                  argument: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Binding resource.
+
         :param pulumi.Input[_builtins.str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                The binding key must be 1 to 255 characters in length.
@@ -158,6 +159,7 @@ class _BindingState:
                  virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Binding resources.
+
         :param pulumi.Input[_builtins.str] argument: The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
                - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
                - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
@@ -354,6 +356,7 @@ class Binding(pulumi.CustomResource):
         $ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] argument: The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
@@ -435,6 +438,7 @@ class Binding(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:amqp/binding:Binding example <instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BindingArgs args: The arguments to use to populate this resource's properties.

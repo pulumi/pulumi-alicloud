@@ -23,6 +23,7 @@ class AssetBindArgs:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AssetBind resource.
+
         :param pulumi.Input[_builtins.int] auth_version: Bind version.
         :param pulumi.Input[_builtins.str] uuid: The first ID of the resource
         """
@@ -63,6 +64,7 @@ class _AssetBindState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AssetBind resources.
+
         :param pulumi.Input[_builtins.int] auth_version: Bind version.
         :param pulumi.Input[_builtins.str] uuid: The first ID of the resource
         """
@@ -146,6 +148,7 @@ class AssetBind(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/assetBind:AssetBind example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auth_version: Bind version.
@@ -197,6 +200,7 @@ class AssetBind(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/assetBind:AssetBind example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AssetBindArgs args: The arguments to use to populate this resource's properties.

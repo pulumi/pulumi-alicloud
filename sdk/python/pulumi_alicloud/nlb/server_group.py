@@ -37,6 +37,7 @@ class ServerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
+
         :param pulumi.Input[_builtins.str] server_group_name: The new name of the server group.
                The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) to which the server group belongs.
@@ -313,6 +314,7 @@ class _ServerGroupState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
+
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Valid values:
         :param pulumi.Input[_builtins.bool] any_port_enabled: Specifies whether to enable all-port forwarding. Valid values:
         :param pulumi.Input[_builtins.bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
@@ -685,6 +687,7 @@ class ServerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/serverGroup:ServerGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Valid values:
@@ -791,6 +794,7 @@ class ServerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/serverGroup:ServerGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupArgs args: The arguments to use to populate this resource's properties.

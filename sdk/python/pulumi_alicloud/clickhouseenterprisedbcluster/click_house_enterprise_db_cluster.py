@@ -35,6 +35,7 @@ class ClickHouseEnterpriseDbClusterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClickHouseEnterpriseDbCluster resource.
+
         :param pulumi.Input[_builtins.str] description: Cluster description.
         :param pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterMultiZoneArgs']]] multi_zones: The multi-zone configuration. See `multi_zones` below.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
@@ -247,6 +248,7 @@ class _ClickHouseEnterpriseDbClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClickHouseEnterpriseDbCluster resources.
+
         :param pulumi.Input[_builtins.str] category: Instance type.
         :param pulumi.Input[_builtins.str] charge_type: The billing method.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] computing_group_ids: List of computing group IDs.
@@ -719,6 +721,7 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <db_instance_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Cluster description.
@@ -829,6 +832,7 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster example <db_instance_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClickHouseEnterpriseDbClusterArgs args: The arguments to use to populate this resource's properties.

@@ -51,6 +51,7 @@ class ClusterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[_builtins.str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -500,6 +501,7 @@ class _ClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.93.0) The connection string of the ADB cluster.
         :param pulumi.Input[_builtins.str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
@@ -1045,6 +1047,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
@@ -1127,6 +1130,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:adb/cluster:Cluster example am-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class SharedTargetArgs:
                  target_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SharedTarget resource.
+
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] target_id: The ID of the principal.
         """
@@ -63,6 +64,7 @@ class _SharedTargetState:
                  target_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedTarget resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the association of the entity was created.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] status: The status of shared target.
@@ -175,6 +177,7 @@ class SharedTarget(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
@@ -225,6 +228,7 @@ class SharedTarget(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SharedTargetArgs args: The arguments to use to populate this resource's properties.

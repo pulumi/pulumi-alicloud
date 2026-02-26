@@ -23,6 +23,7 @@ class K8sClusterArgs:
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a K8sCluster resource.
+
         :param pulumi.Input[_builtins.str] cs_cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import.
         :param pulumi.Input[_builtins.str] namespace_id: The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
         """
@@ -67,6 +68,7 @@ class _K8sClusterState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering K8sCluster resources.
+
         :param pulumi.Input[_builtins.int] cluster_import_status: The import status of cluster: 
                `1`: success.
                `2`: failed.
@@ -259,6 +261,7 @@ class K8sCluster(pulumi.CustomResource):
         $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cs_cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import.
@@ -336,6 +339,7 @@ class K8sCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:edas/k8sCluster:K8sCluster cluster cluster_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param K8sClusterArgs args: The arguments to use to populate this resource's properties.

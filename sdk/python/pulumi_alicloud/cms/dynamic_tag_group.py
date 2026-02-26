@@ -28,6 +28,7 @@ class DynamicTagGroupArgs:
                  template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DynamicTagGroup resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_group_lists: The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
         :param pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]] match_expresses: The conditional expressions used to create an application group based on the tag. See `match_express` below.
         :param pulumi.Input[_builtins.str] tag_key: The tag keys of the cloud resources.
@@ -114,6 +115,7 @@ class _DynamicTagGroupState:
                  template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DynamicTagGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_group_lists: The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
         :param pulumi.Input[_builtins.str] match_express_filter_relation: The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
         :param pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]] match_expresses: The conditional expressions used to create an application group based on the tag. See `match_express` below.
@@ -258,6 +260,7 @@ class DynamicTagGroup(pulumi.CustomResource):
         $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_group_lists: The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
@@ -310,6 +313,7 @@ class DynamicTagGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/dynamicTagGroup:DynamicTagGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DynamicTagGroupArgs args: The arguments to use to populate this resource's properties.

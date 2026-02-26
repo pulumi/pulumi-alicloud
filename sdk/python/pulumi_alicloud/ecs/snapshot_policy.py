@@ -34,6 +34,7 @@ class SnapshotPolicyArgs:
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SnapshotPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -210,6 +211,7 @@ class _SnapshotPolicyState:
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SnapshotPolicy resources.
+
         :param pulumi.Input[_builtins.str] name: The snapshot policy name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
                - A maximum of seven time points can be selected.
@@ -461,6 +463,7 @@ class SnapshotPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/snapshotPolicy:SnapshotPolicy snapshot sp-abc1234567890000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The snapshot policy name.
@@ -521,6 +524,7 @@ class SnapshotPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/snapshotPolicy:SnapshotPolicy snapshot sp-abc1234567890000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotPolicyArgs args: The arguments to use to populate this resource's properties.

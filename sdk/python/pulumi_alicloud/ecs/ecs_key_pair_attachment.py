@@ -25,6 +25,7 @@ class EcsKeyPairAttachmentArgs:
                  key_pair_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsKeyPairAttachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[_builtins.str] key_name: New field 'key_pair_name' instead.
@@ -100,6 +101,7 @@ class _EcsKeyPairAttachmentState:
                  key_pair_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsKeyPairAttachment resources.
+
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] key_name: New field 'key_pair_name' instead.
@@ -238,6 +240,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -310,6 +313,7 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment example <key_pair_name>:<instance_ids>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsKeyPairAttachmentArgs args: The arguments to use to populate this resource's properties.

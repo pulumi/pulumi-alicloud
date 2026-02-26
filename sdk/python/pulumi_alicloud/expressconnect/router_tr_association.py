@@ -27,6 +27,7 @@ class RouterTrAssociationArgs:
                  transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterTrAssociation resource.
+
         :param pulumi.Input[_builtins.str] association_region_id: The region to which the VPC or TR belongs.
         :param pulumi.Input[_builtins.str] ecr_id: The ID of the leased line gateway instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: List of allowed route prefixes.
@@ -132,6 +133,7 @@ class _RouterTrAssociationState:
                  transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouterTrAssociation resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: List of allowed route prefixes.
         :param pulumi.Input[_builtins.str] association_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] association_region_id: The region to which the VPC or TR belongs.
@@ -344,6 +346,7 @@ class RouterTrAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/routerTrAssociation:RouterTrAssociation example <ecr_id>:<association_id>:<transit_router_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: List of allowed route prefixes.
@@ -419,6 +422,7 @@ class RouterTrAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/routerTrAssociation:RouterTrAssociation example <ecr_id>:<association_id>:<transit_router_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterTrAssociationArgs args: The arguments to use to populate this resource's properties.

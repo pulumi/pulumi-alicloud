@@ -31,6 +31,7 @@ class VirtualPhysicalConnectionArgs:
                  virtual_physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualPhysicalConnection resource.
+
         :param pulumi.Input[_builtins.str] order_mode: The payment method of shared dedicated line. Value:
                - **PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.
                - **PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
@@ -215,6 +216,7 @@ class _VirtualPhysicalConnectionState:
                  vpconn_ali_uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualPhysicalConnection resources.
+
         :param pulumi.Input[_builtins.str] access_point_id: The ID of the access point of the physical connection.
         :param pulumi.Input[_builtins.str] ad_location: The physical location where the physical connection access device is located.
         :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of the physical connection. Unit: Mbps.
@@ -689,6 +691,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         $terraform import alicloud_express_connect_virtual_physical_connection.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the physical connection.
@@ -754,6 +757,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_express_connect_virtual_physical_connection.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VirtualPhysicalConnectionArgs args: The arguments to use to populate this resource's properties.

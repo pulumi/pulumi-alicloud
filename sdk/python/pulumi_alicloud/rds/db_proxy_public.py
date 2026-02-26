@@ -26,6 +26,7 @@ class DbProxyPublicArgs:
                  db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbProxyPublic resource.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix for the new database proxy connection address can be customized.
         :param pulumi.Input[_builtins.str] db_instance_id: Instance ID.
         :param pulumi.Input[_builtins.str] db_proxy_connection_string_net_type: The network type of the new database proxy connection address,This resource defaults to Public.
@@ -110,6 +111,7 @@ class _DbProxyPublicState:
                  db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbProxyPublic resources.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix for the new database proxy connection address can be customized.
         :param pulumi.Input[_builtins.str] db_instance_id: Instance ID.
         :param pulumi.Input[_builtins.str] db_proxy_connection_string_net_type: The network type of the new database proxy connection address,This resource defaults to Public.
@@ -289,6 +291,7 @@ class DbProxyPublic(pulumi.CustomResource):
         $ pulumi import alicloud:rds/dbProxyPublic:DbProxyPublic example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The prefix for the new database proxy connection address can be customized.
@@ -391,6 +394,7 @@ class DbProxyPublic(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/dbProxyPublic:DbProxyPublic example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbProxyPublicArgs args: The arguments to use to populate this resource's properties.

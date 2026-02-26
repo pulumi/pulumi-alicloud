@@ -25,6 +25,7 @@ class VpcEndpointServiceUserArgs:
                  user_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceUser resource.
+
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
         :param pulumi.Input[_builtins.str] user_id: The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -95,6 +96,7 @@ class _VpcEndpointServiceUserState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceUser resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
         :param pulumi.Input[_builtins.str] user_arn: The whitelist in the format of ARN.
@@ -215,6 +217,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -273,6 +276,7 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointServiceUserArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class WorkspaceExperimentArgs:
                  accessibility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceExperiment resource.
+
         :param pulumi.Input[_builtins.str] artifact_uri: ArtifactUri is default OSS storage path of the output of trials in the experiment
         :param pulumi.Input[_builtins.str] experiment_name: Name is the name of the experiment, unique in a namespace
         :param pulumi.Input[_builtins.str] workspace_id: WorkspaceId is the workspace id which contains the experiment
@@ -95,6 +96,7 @@ class _WorkspaceExperimentState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceExperiment resources.
+
         :param pulumi.Input[_builtins.str] accessibility: Experimental Visibility
         :param pulumi.Input[_builtins.str] artifact_uri: ArtifactUri is default OSS storage path of the output of trials in the experiment
         :param pulumi.Input[_builtins.str] create_time: GmtCreateTime is time when this entity is created.
@@ -225,6 +227,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceExperiment:WorkspaceExperiment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accessibility: Experimental Visibility
@@ -278,6 +281,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceExperiment:WorkspaceExperiment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceExperimentArgs args: The arguments to use to populate this resource's properties.

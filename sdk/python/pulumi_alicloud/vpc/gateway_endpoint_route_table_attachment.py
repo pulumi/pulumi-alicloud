@@ -23,6 +23,7 @@ class GatewayEndpointRouteTableAttachmentArgs:
                  route_table_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GatewayEndpointRouteTableAttachment resource.
+
         :param pulumi.Input[_builtins.str] gateway_endpoint_id: The ID of the gateway endpoint instance to which you want to associate the route table.
         :param pulumi.Input[_builtins.str] route_table_id: Routing table ID.
         """
@@ -62,6 +63,7 @@ class _GatewayEndpointRouteTableAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayEndpointRouteTableAttachment resources.
+
         :param pulumi.Input[_builtins.str] gateway_endpoint_id: The ID of the gateway endpoint instance to which you want to associate the route table.
         :param pulumi.Input[_builtins.str] route_table_id: Routing table ID.
         :param pulumi.Input[_builtins.str] status: Status of the gateway endpoint.
@@ -172,6 +174,7 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment example <gateway_endpoint_id>:<route_table_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gateway_endpoint_id: The ID of the gateway endpoint instance to which you want to associate the route table.
@@ -235,6 +238,7 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment example <gateway_endpoint_id>:<route_table_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayEndpointRouteTableAttachmentArgs args: The arguments to use to populate this resource's properties.

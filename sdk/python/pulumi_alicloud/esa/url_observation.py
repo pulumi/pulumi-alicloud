@@ -24,6 +24,7 @@ class UrlObservationArgs:
                  url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UrlObservation resource.
+
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url: The URL of the page to monitor.
@@ -78,6 +79,7 @@ class _UrlObservationState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UrlObservation resources.
+
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
         :param pulumi.Input[_builtins.str] site_id: The site ID.
@@ -194,6 +196,7 @@ class UrlObservation(pulumi.CustomResource):
         $ pulumi import alicloud:esa/urlObservation:UrlObservation example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
@@ -248,6 +251,7 @@ class UrlObservation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/urlObservation:UrlObservation example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UrlObservationArgs args: The arguments to use to populate this resource's properties.

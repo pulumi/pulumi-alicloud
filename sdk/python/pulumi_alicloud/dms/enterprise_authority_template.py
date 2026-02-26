@@ -24,6 +24,7 @@ class EnterpriseAuthorityTemplateArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseAuthorityTemplate resource.
+
         :param pulumi.Input[_builtins.str] authority_template_name: Permission Template name.
         :param pulumi.Input[_builtins.int] tid: Tenant ID.
         :param pulumi.Input[_builtins.str] description: Permission template description information.
@@ -80,6 +81,7 @@ class _EnterpriseAuthorityTemplateState:
                  tid: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EnterpriseAuthorityTemplate resources.
+
         :param pulumi.Input[_builtins.int] authority_template_id: Permission template ID.
         :param pulumi.Input[_builtins.str] authority_template_name: Permission Template name.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
@@ -204,6 +206,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authority_template_name: Permission Template name.
@@ -251,6 +254,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate example <tid>:<authority_template_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseAuthorityTemplateArgs args: The arguments to use to populate this resource's properties.

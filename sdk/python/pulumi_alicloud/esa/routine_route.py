@@ -29,6 +29,7 @@ class RoutineRouteArgs:
                  sequence: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RoutineRoute resource.
+
         :param pulumi.Input[_builtins.str] routine_name: The edge function Routine name.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] bypass: Bypass mode. Value range:
@@ -172,6 +173,7 @@ class _RoutineRouteState:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutineRoute resources.
+
         :param pulumi.Input[_builtins.str] bypass: Bypass mode. Value range:
                - on: Open
                - off: off
@@ -381,6 +383,7 @@ class RoutineRoute(pulumi.CustomResource):
         $ pulumi import alicloud:esa/routineRoute:RoutineRoute example <site_id>:<routine_name>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bypass: Bypass mode. Value range:
@@ -449,6 +452,7 @@ class RoutineRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/routineRoute:RoutineRoute example <site_id>:<routine_name>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoutineRouteArgs args: The arguments to use to populate this resource's properties.

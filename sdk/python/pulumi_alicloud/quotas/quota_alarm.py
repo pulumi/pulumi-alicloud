@@ -31,6 +31,7 @@ class QuotaAlarmArgs:
                  web_hook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QuotaAlarm resource.
+
         :param pulumi.Input[_builtins.str] product_code: The Product Code.
         :param pulumi.Input[_builtins.str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[_builtins.str] quota_alarm_name: The name of Quota Alarm.
@@ -169,6 +170,7 @@ class _QuotaAlarmState:
                  web_hook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QuotaAlarm resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] product_code: The Product Code.
         :param pulumi.Input[_builtins.str] quota_action_code: The Quota Action Code.
@@ -371,6 +373,7 @@ class QuotaAlarm(pulumi.CustomResource):
         $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] product_code: The Product Code.
@@ -434,6 +437,7 @@ class QuotaAlarm(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaAlarmArgs args: The arguments to use to populate this resource's properties.

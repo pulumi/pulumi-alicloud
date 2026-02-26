@@ -30,6 +30,7 @@ class RemoteAdbDataSourceArgs:
                  data_source_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RemoteAdbDataSource resource.
+
         :param pulumi.Input[_builtins.str] local_database: The database of the local instance which connection data.
         :param pulumi.Input[_builtins.str] local_db_instance_id: The instanceId of the local instance which connection data.
         :param pulumi.Input[_builtins.str] manager_user_name: The Management user name of the local instance.
@@ -176,6 +177,7 @@ class _RemoteAdbDataSourceState:
                  user_password: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RemoteAdbDataSource resources.
+
         :param pulumi.Input[_builtins.str] data_source_name: Data Source Name
         :param pulumi.Input[_builtins.str] local_database: The database of the local instance which connection data.
         :param pulumi.Input[_builtins.str] local_db_instance_id: The instanceId of the local instance which connection data.
@@ -453,6 +455,7 @@ class RemoteAdbDataSource(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource example <local_db_instance_id>:<remote_adb_data_source_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_source_name: Data Source Name
@@ -563,6 +566,7 @@ class RemoteAdbDataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource example <local_db_instance_id>:<remote_adb_data_source_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RemoteAdbDataSourceArgs args: The arguments to use to populate this resource's properties.

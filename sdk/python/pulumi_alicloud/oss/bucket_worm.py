@@ -24,6 +24,7 @@ class BucketWormArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketWorm resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.int] retention_period_in_days: The specified number of days to retain the Object.
         :param pulumi.Input[_builtins.str] status: The status of the compliance retention policy. Optional values:
@@ -85,6 +86,7 @@ class _BucketWormState:
                  worm_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketWorm resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.int] retention_period_in_days: The specified number of days to retain the Object.
@@ -221,6 +223,7 @@ class BucketWorm(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketWorm:BucketWorm example <bucket>:<worm_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -278,6 +281,7 @@ class BucketWorm(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketWorm:BucketWorm example <bucket>:<worm_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketWormArgs args: The arguments to use to populate this resource's properties.

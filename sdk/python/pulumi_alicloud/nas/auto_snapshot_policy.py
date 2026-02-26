@@ -26,6 +26,7 @@ class AutoSnapshotPolicyArgs:
                  retention_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repeat_weekdays: The day on which an auto snapshot is created.
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -132,6 +133,7 @@ class _AutoSnapshotPolicyState:
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapshotPolicy resources.
+
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. Limits:
                - The name must be `2` to `128` characters in length,
                - The name must start with a letter.
@@ -315,6 +317,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_name: The name of the automatic snapshot policy. Limits:
@@ -382,6 +385,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutoSnapshotPolicyArgs args: The arguments to use to populate this resource's properties.

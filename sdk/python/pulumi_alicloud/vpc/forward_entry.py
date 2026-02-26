@@ -30,6 +30,7 @@ class ForwardEntryArgs:
                  port_break: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ForwardEntry resource.
+
         :param pulumi.Input[_builtins.str] external_ip: The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[_builtins.str] external_port: The external port, valid value is 1~65535|any.
         :param pulumi.Input[_builtins.str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
@@ -186,6 +187,7 @@ class _ForwardEntryState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ForwardEntry resources.
+
         :param pulumi.Input[_builtins.str] external_ip: The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[_builtins.str] external_port: The external port, valid value is 1~65535|any.
         :param pulumi.Input[_builtins.str] forward_entry_id: The id of the forward entry on the server.
@@ -433,6 +435,7 @@ class ForwardEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] external_ip: The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
@@ -507,6 +510,7 @@ class ForwardEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/forwardEntry:ForwardEntry foo ftb-1aece3:fwd-232ce2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ForwardEntryArgs args: The arguments to use to populate this resource's properties.

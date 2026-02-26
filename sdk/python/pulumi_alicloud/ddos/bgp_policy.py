@@ -26,6 +26,7 @@ class BgpPolicyArgs:
                  content: Optional[pulumi.Input['BgpPolicyContentArgs']] = None):
         """
         The set of arguments for constructing a BgpPolicy resource.
+
         :param pulumi.Input[_builtins.str] policy_name: The name of the resource
         :param pulumi.Input[_builtins.str] type: Type
         :param pulumi.Input['BgpPolicyContentArgs'] content: Configuration Content See `content` below.
@@ -80,6 +81,7 @@ class _BgpPolicyState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpPolicy resources.
+
         :param pulumi.Input['BgpPolicyContentArgs'] content: Configuration Content See `content` below.
         :param pulumi.Input[_builtins.str] policy_name: The name of the resource
         :param pulumi.Input[_builtins.str] type: Type
@@ -193,6 +195,7 @@ class BgpPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/bgpPolicy:BgpPolicy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']] content: Configuration Content See `content` below.
@@ -259,6 +262,7 @@ class BgpPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/bgpPolicy:BgpPolicy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpPolicyArgs args: The arguments to use to populate this resource's properties.

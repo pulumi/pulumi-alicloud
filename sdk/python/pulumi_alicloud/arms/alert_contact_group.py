@@ -23,6 +23,7 @@ class AlertContactGroupArgs:
                  contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AlertContactGroup resource.
+
         :param pulumi.Input[_builtins.str] alert_contact_group_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_ids: The list id of alert contact.
         """
@@ -62,6 +63,7 @@ class _AlertContactGroupState:
                  contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AlertContactGroup resources.
+
         :param pulumi.Input[_builtins.str] alert_contact_group_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contact_ids: The list id of alert contact.
         """
@@ -139,6 +141,7 @@ class AlertContactGroup(pulumi.CustomResource):
         $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_contact_group_name: The name of the resource.
@@ -184,6 +187,7 @@ class AlertContactGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/alertContactGroup:AlertContactGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertContactGroupArgs args: The arguments to use to populate this resource's properties.

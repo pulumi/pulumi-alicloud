@@ -30,6 +30,7 @@ class DispatchRuleArgs:
                  notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None):
         """
         The set of arguments for constructing a DispatchRule resource.
+
         :param pulumi.Input[_builtins.str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
@@ -147,6 +148,7 @@ class _DispatchRuleState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DispatchRule resources.
+
         :param pulumi.Input[_builtins.str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[_builtins.str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
@@ -366,6 +368,7 @@ class DispatchRule(pulumi.CustomResource):
         $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dispatch_rule_name: The name of the dispatch policy.
@@ -463,6 +466,7 @@ class DispatchRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:arms/dispatchRule:DispatchRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DispatchRuleArgs args: The arguments to use to populate this resource's properties.

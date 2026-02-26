@@ -26,6 +26,7 @@ class VpcEndpointLinkedVpcArgs:
                  enable_create_dns_record_in_pvzt: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointLinkedVpc resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] module_name: The name of the module that you want to access. Valid Values:
                - `Registry`: the image repository.
@@ -115,6 +116,7 @@ class _VpcEndpointLinkedVpcState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointLinkedVpc resources.
+
         :param pulumi.Input[_builtins.bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] module_name: The name of the module that you want to access. Valid Values:
@@ -281,6 +283,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example <instance_id>:<vpc_id>:<vswitch_id>:<module_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
@@ -353,6 +356,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc example <instance_id>:<vpc_id>:<vswitch_id>:<module_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcEndpointLinkedVpcArgs args: The arguments to use to populate this resource's properties.

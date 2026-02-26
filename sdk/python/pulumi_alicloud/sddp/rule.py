@@ -35,6 +35,7 @@ class RuleArgs:
                  warn_level: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.int] category: The content type of the sensitive data detection rule. Valid values:
         :param pulumi.Input[_builtins.str] content: The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         :param pulumi.Input[_builtins.str] rule_name: The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
@@ -265,6 +266,7 @@ class _RuleState:
                  warn_level: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.int] category: The content type of the sensitive data detection rule. Valid values:
         :param pulumi.Input[_builtins.str] content: The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         :param pulumi.Input[_builtins.str] content_category: The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
@@ -563,6 +565,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import alicloud:sddp/rule:Rule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] category: The content type of the sensitive data detection rule. Valid values:
@@ -634,6 +637,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sddp/rule:Rule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

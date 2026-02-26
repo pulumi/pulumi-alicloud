@@ -31,6 +31,7 @@ class QosCarArgs:
                  percent_source_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosCar resource.
+
         :param pulumi.Input[_builtins.str] limit_type: The speed limiting method. Valid values: `Absolute`, `Percent`.
         :param pulumi.Input[_builtins.int] priority: The priority of the specified stream.
         :param pulumi.Input[_builtins.str] qos_id: The instance ID of the QoS.
@@ -196,6 +197,7 @@ class _QosCarState:
                  qos_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosCar resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the QoS speed limiting rule.
         :param pulumi.Input[_builtins.str] limit_type: The speed limiting method. Valid values: `Absolute`, `Percent`.
         :param pulumi.Input[_builtins.int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
@@ -414,6 +416,7 @@ class QosCar(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the QoS speed limiting rule.
@@ -475,6 +478,7 @@ class QosCar(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosCarArgs args: The arguments to use to populate this resource's properties.

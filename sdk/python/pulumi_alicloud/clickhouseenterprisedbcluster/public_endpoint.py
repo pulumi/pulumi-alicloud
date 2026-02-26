@@ -24,6 +24,7 @@ class PublicEndpointArgs:
                  net_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PublicEndpoint resource.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The public network connection string prefix of the instance.
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
         :param pulumi.Input[_builtins.str] net_type: Network type of the connection address. Valid values:
@@ -79,6 +80,7 @@ class _PublicEndpointState:
                  net_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicEndpoint resources.
+
         :param pulumi.Input[_builtins.str] connection_string_prefix: The public network connection string prefix of the instance.
         :param pulumi.Input[_builtins.str] db_instance_id: The cluster ID.
         :param pulumi.Input[_builtins.str] net_type: Network type of the connection address. Valid values:
@@ -199,6 +201,7 @@ class PublicEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint example <db_instance_id>:<net_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The public network connection string prefix of the instance.
@@ -271,6 +274,7 @@ class PublicEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint example <db_instance_id>:<net_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PublicEndpointArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class SslVpnClientCertArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslVpnClientCert resource.
+
         :param pulumi.Input[_builtins.str] ssl_vpn_server_id: The ID of the SSL-VPN server.
         :param pulumi.Input[_builtins.str] name: The name of the client certificate.
         """
@@ -67,6 +68,7 @@ class _SslVpnClientCertState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SslVpnClientCert resources.
+
         :param pulumi.Input[_builtins.str] ca_cert: The client ca cert.
         :param pulumi.Input[_builtins.str] client_cert: The client cert.
         :param pulumi.Input[_builtins.str] client_config: The vpn client config.
@@ -247,6 +249,7 @@ class SslVpnClientCert(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the client certificate.
@@ -320,6 +323,7 @@ class SslVpnClientCert(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/sslVpnClientCert:SslVpnClientCert example vsc-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SslVpnClientCertArgs args: The arguments to use to populate this resource's properties.

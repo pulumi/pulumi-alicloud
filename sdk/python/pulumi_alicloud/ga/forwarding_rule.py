@@ -29,6 +29,7 @@ class ForwardingRuleArgs:
                  priority: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ForwardingRule resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action. See `rule_actions` below.
@@ -131,6 +132,7 @@ class _ForwardingRuleState:
                  rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None):
         """
         Input properties used for looking up and filtering ForwardingRule resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[_builtins.str] forwarding_rule_id: The ID of the Forwarding Rule.
         :param pulumi.Input[_builtins.str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
@@ -387,6 +389,7 @@ class ForwardingRule(pulumi.CustomResource):
         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the Global Accelerator instance.
@@ -521,6 +524,7 @@ class ForwardingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <accelerator_id>:<listener_id>:<forwarding_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ForwardingRuleArgs args: The arguments to use to populate this resource's properties.

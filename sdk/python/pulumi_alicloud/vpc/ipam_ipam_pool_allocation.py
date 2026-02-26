@@ -26,6 +26,7 @@ class IpamIpamPoolAllocationArgs:
                  ipam_pool_allocation_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IpamIpamPoolAllocation resource.
+
         :param pulumi.Input[_builtins.str] ipam_pool_id: The ID of the IPAM Pool.
         :param pulumi.Input[_builtins.str] cidr: The allocated address segment.
         :param pulumi.Input[_builtins.int] cidr_mask: Create a custom reserved network segment from The IPAM address pool by entering a mask.
@@ -124,6 +125,7 @@ class _IpamIpamPoolAllocationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpamIpamPoolAllocation resources.
+
         :param pulumi.Input[_builtins.str] cidr: The allocated address segment.
         :param pulumi.Input[_builtins.int] cidr_mask: Create a custom reserved network segment from The IPAM address pool by entering a mask.
                
@@ -314,6 +316,7 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: The allocated address segment.
@@ -376,6 +379,7 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IpamIpamPoolAllocationArgs args: The arguments to use to populate this resource's properties.

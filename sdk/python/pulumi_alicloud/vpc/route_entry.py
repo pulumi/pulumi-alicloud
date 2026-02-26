@@ -27,6 +27,7 @@ class RouteEntryArgs:
                  nexthop_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouteEntry resource.
+
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the Route Table.
         :param pulumi.Input[_builtins.str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] destination_cidrblock: The destination CIDR block of the custom route entry.
@@ -155,6 +156,7 @@ class _RouteEntryState:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] destination_cidrblock: The destination CIDR block of the custom route entry.
         :param pulumi.Input[_builtins.str] name: The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
@@ -375,6 +377,7 @@ class RouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
@@ -472,6 +475,7 @@ class RouteEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteEntryArgs args: The arguments to use to populate this resource's properties.

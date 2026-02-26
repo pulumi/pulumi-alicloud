@@ -26,6 +26,7 @@ class EnterpriseProxyAccessArgs:
                  proxy_access_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseProxyAccess resource.
+
         :param pulumi.Input[_builtins.str] proxy_id: The ID of the security agent.
         :param pulumi.Input[_builtins.str] user_id: The user ID.
         :param pulumi.Input[_builtins.str] indep_account: Database account.
@@ -119,6 +120,7 @@ class _EnterpriseProxyAccessState:
                  user_uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseProxyAccess resources.
+
         :param pulumi.Input[_builtins.str] access_id: The authorized account of the security agent.
         :param pulumi.Input[_builtins.str] access_secret: Secure access agent authorization password.
         :param pulumi.Input[_builtins.str] indep_account: Database account.
@@ -347,6 +349,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         $terraform import alicloud_dms_enterprise_proxy_access.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] indep_account: Database account.
@@ -393,6 +396,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_dms_enterprise_proxy_access.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseProxyAccessArgs args: The arguments to use to populate this resource's properties.

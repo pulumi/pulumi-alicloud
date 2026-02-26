@@ -32,6 +32,7 @@ class ZonalEndpointArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZonalEndpoint resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] db_cluster_nodes_ids: referenced from the db_cluster_nodes_ids attribute of alicloud_polardb_zonal_db_cluster..
         :param pulumi.Input[_builtins.str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
@@ -218,6 +219,7 @@ class _ZonalEndpointState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZonalEndpoint resources.
+
         :param pulumi.Input[_builtins.str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
@@ -534,6 +536,7 @@ class ZonalEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/zonalEndpoint:ZonalEndpoint example pc-abc123456:pe-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
@@ -623,6 +626,7 @@ class ZonalEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/zonalEndpoint:ZonalEndpoint example pc-abc123456:pe-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZonalEndpointArgs args: The arguments to use to populate this resource's properties.

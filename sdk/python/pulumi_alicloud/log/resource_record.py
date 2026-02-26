@@ -25,6 +25,7 @@ class ResourceRecordArgs:
                  value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ResourceRecord resource.
+
         :param pulumi.Input[_builtins.str] record_id: The record's id, should be unique.
         :param pulumi.Input[_builtins.str] resource_name: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         :param pulumi.Input[_builtins.str] tag: The record's tag, can be used for search.
@@ -93,6 +94,7 @@ class _ResourceRecordState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceRecord resources.
+
         :param pulumi.Input[_builtins.str] record_id: The record's id, should be unique.
         :param pulumi.Input[_builtins.str] resource_name: The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
         :param pulumi.Input[_builtins.str] tag: The record's tag, can be used for search.
@@ -236,6 +238,7 @@ class ResourceRecord(pulumi.CustomResource):
         $ pulumi import alicloud:log/resourceRecord:ResourceRecord example <resource_name>:<record_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] record_id: The record's id, should be unique.
@@ -317,6 +320,7 @@ class ResourceRecord(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/resourceRecord:ResourceRecord example <resource_name>:<record_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceRecordArgs args: The arguments to use to populate this resource's properties.

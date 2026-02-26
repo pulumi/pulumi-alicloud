@@ -26,6 +26,7 @@ class AccessControlListArgs:
                  address_ip_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessControlList resource.
+
         :param pulumi.Input[_builtins.str] access_control_list_name: Access control list name.
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
                **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
@@ -87,6 +88,7 @@ class _AccessControlListState:
                  address_ip_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessControlList resources.
+
         :param pulumi.Input[_builtins.str] access_control_list_name: Access control list name.
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
                **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
@@ -191,6 +193,7 @@ class AccessControlList(pulumi.CustomResource):
         $ pulumi import alicloud:apigateway/accessControlList:AccessControlList example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_control_list_name: Access control list name.
@@ -243,6 +246,7 @@ class AccessControlList(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:apigateway/accessControlList:AccessControlList example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessControlListArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class _SasTrailState:
                  service_trail: Optional[pulumi.Input['SasTrailServiceTrailArgs']] = None):
         """
         Input properties used for looking up and filtering SasTrail resources.
+
         :param pulumi.Input[_builtins.int] create_time: The service trace creation timestamp, in milliseconds.
         :param pulumi.Input['SasTrailServiceTrailArgs'] service_trail: Service trace configuration information.
         """
@@ -106,6 +107,7 @@ class SasTrail(pulumi.CustomResource):
         $ terraform import alicloud_threat_detection_sas_trail.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -146,6 +148,7 @@ class SasTrail(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_threat_detection_sas_trail.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SasTrailArgs args: The arguments to use to populate this resource's properties.

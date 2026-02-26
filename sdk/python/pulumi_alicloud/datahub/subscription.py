@@ -24,6 +24,7 @@ class SubscriptionArgs:
                  comment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subscription resource.
+
         :param pulumi.Input[_builtins.str] project_name: The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[_builtins.str] topic_name: The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub subscription. It cannot be longer than 255 characters.
@@ -81,6 +82,7 @@ class _SubscriptionState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
+
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub subscription. It cannot be longer than 255 characters.
         :param pulumi.Input[_builtins.str] create_time: Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[_builtins.str] last_modify_time: Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
@@ -227,6 +229,7 @@ class Subscription(pulumi.CustomResource):
         $ pulumi import alicloud:datahub/subscription:Subscription example tf_datahub_project:tf_datahub_topic:1539073399567UgCzY
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Comment of the datahub subscription. It cannot be longer than 255 characters.
@@ -281,6 +284,7 @@ class Subscription(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:datahub/subscription:Subscription example tf_datahub_project:tf_datahub_topic:1539073399567UgCzY
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubscriptionArgs args: The arguments to use to populate this resource's properties.

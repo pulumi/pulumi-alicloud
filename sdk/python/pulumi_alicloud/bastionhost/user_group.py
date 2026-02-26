@@ -24,6 +24,7 @@ class UserGroupArgs:
                  comment: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserGroup resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Specify the New Group of the Bastion Host of Instance Id.
         :param pulumi.Input[_builtins.str] user_group_name: Specify the New Group Name. Supports up to 128 Characters.
         :param pulumi.Input[_builtins.str] comment: Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -79,6 +80,7 @@ class _UserGroupState:
                  user_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserGroup resources.
+
         :param pulumi.Input[_builtins.str] comment: Specify the New Group of Remark Information. Supports up to 500 Characters.
         :param pulumi.Input[_builtins.str] instance_id: Specify the New Group of the Bastion Host of Instance Id.
         :param pulumi.Input[_builtins.str] user_group_id: The User Group self ID.
@@ -202,6 +204,7 @@ class UserGroup(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -263,6 +266,7 @@ class UserGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/userGroup:UserGroup example <instance_id>:<user_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserGroupArgs args: The arguments to use to populate this resource's properties.

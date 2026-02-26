@@ -25,6 +25,7 @@ class CustomPropertyArgs:
                  property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None):
         """
         The set of arguments for constructing a CustomProperty resource.
+
         :param pulumi.Input[_builtins.str] property_key: The Custom attribute key.
         :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
@@ -64,6 +65,7 @@ class _CustomPropertyState:
                  property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomProperty resources.
+
         :param pulumi.Input[_builtins.str] property_key: The Custom attribute key.
         :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
@@ -140,6 +142,7 @@ class CustomProperty(pulumi.CustomResource):
         $ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] property_key: The Custom attribute key.
@@ -184,6 +187,7 @@ class CustomProperty(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/customProperty:CustomProperty example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomPropertyArgs args: The arguments to use to populate this resource's properties.

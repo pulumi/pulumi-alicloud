@@ -26,6 +26,7 @@ class Ipv6EgressRuleArgs:
                  ipv6_egress_rule_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ipv6EgressRule resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the IPv6 address to which you want to apply the egress-only rule.
         :param pulumi.Input[_builtins.str] ipv6_gateway_id: The ID of the IPv6 gateway.
         :param pulumi.Input[_builtins.str] description: The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -114,6 +115,7 @@ class _Ipv6EgressRuleState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6EgressRule resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the IPv6 address to which you want to apply the egress-only rule.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
@@ -313,6 +315,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipv6EgressRule:Ipv6EgressRule example <ipv6_gateway_id>:<ipv6_egress_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -405,6 +408,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipv6EgressRule:Ipv6EgressRule example <ipv6_gateway_id>:<ipv6_egress_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ipv6EgressRuleArgs args: The arguments to use to populate this resource's properties.

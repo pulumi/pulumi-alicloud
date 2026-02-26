@@ -28,6 +28,7 @@ class OssExportSinkArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssExportSink resource.
+
         :param pulumi.Input['OssExportSinkConfigurationArgs'] configuration: OSSExportConfiguration See `configuration` below.
         :param pulumi.Input[_builtins.str] display_name: The display name of the job.
         :param pulumi.Input[_builtins.str] job_name: The unique identifier of the OSS data shipping job.
@@ -114,6 +115,7 @@ class _OssExportSinkState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssExportSink resources.
+
         :param pulumi.Input['OssExportSinkConfigurationArgs'] configuration: OSSExportConfiguration See `configuration` below.
         :param pulumi.Input[_builtins.int] create_time: Creation time. Example value: 1718787534
         :param pulumi.Input[_builtins.str] description: The description of the job.
@@ -320,6 +322,7 @@ class OssExportSink(pulumi.CustomResource):
         $ pulumi import alicloud:sls/ossExportSink:OssExportSink example <project>:<job_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OssExportSinkConfigurationArgs', 'OssExportSinkConfigurationArgsDict']] configuration: OSSExportConfiguration See `configuration` below.
@@ -419,6 +422,7 @@ class OssExportSink(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/ossExportSink:OssExportSink example <project>:<job_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OssExportSinkArgs args: The arguments to use to populate this resource's properties.

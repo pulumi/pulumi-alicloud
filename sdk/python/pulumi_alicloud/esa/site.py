@@ -44,6 +44,7 @@ class SiteArgs:
                  version_management: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Site resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated package instance.
         :param pulumi.Input[_builtins.str] site_name: The website name.
         :param pulumi.Input[_builtins.str] access_type: The DNS setup. Valid values:
@@ -428,6 +429,7 @@ class _SiteState:
                  version_management: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Site resources.
+
         :param pulumi.Input[_builtins.str] access_type: The DNS setup. Valid values:
                - `NS`
                - `CNAME`
@@ -894,6 +896,7 @@ class Site(pulumi.CustomResource):
         $ pulumi import alicloud:esa/site:Site example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_type: The DNS setup. Valid values:
@@ -979,6 +982,7 @@ class Site(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/site:Site example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SiteArgs args: The arguments to use to populate this resource's properties.

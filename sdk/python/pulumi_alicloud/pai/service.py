@@ -26,6 +26,7 @@ class ServiceArgs:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
         :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
         :param pulumi.Input[_builtins.str] status: Service Current Status.
@@ -115,6 +116,7 @@ class _ServiceState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.str] create_time: Creation time of the service
         :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
@@ -289,6 +291,7 @@ class Service(pulumi.CustomResource):
         $ pulumi import alicloud:pai/service:Service example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
@@ -356,6 +359,7 @@ class Service(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/service:Service example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

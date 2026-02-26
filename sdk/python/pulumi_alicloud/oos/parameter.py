@@ -28,6 +28,7 @@ class ParameterArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Parameter resource.
+
         :param pulumi.Input[_builtins.str] parameter_name: The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
         :param pulumi.Input[_builtins.str] type: The data type of the common parameter. Valid values: `String` and `StringList`.
         :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length.
@@ -153,6 +154,7 @@ class _ParameterState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Parameter resources.
+
         :param pulumi.Input[_builtins.str] constraints: The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
                * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
                * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
@@ -321,6 +323,7 @@ class Parameter(pulumi.CustomResource):
         $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] constraints: The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
@@ -378,6 +381,7 @@ class Parameter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/parameter:Parameter example <parameter_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ParameterArgs args: The arguments to use to populate this resource's properties.

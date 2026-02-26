@@ -35,6 +35,7 @@ class OtsBackupPlanArgs:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OtsBackupPlan resource.
+
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[_builtins.str] retention: Backup retention days, the minimum is 1.
@@ -238,6 +239,7 @@ class _OtsBackupPlanState:
                  vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OtsBackupPlan resources.
+
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[_builtins.str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
@@ -540,6 +542,7 @@ class OtsBackupPlan(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/otsBackupPlan:OtsBackupPlan example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
@@ -655,6 +658,7 @@ class OtsBackupPlan(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/otsBackupPlan:OtsBackupPlan example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OtsBackupPlanArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class _ServiceLinkedRoleState:
                  status: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
+
         :param pulumi.Input[_builtins.bool] status: The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
         """
         if status is not None:
@@ -84,6 +85,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -120,6 +122,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceLinkedRoleArgs args: The arguments to use to populate this resource's properties.

@@ -38,6 +38,7 @@ class DbInstanceArgs:
                  upgraded_engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstance resource.
+
         :param pulumi.Input[_builtins.int] cache_size: The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         :param pulumi.Input[_builtins.str] db_instance_class: The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         :param pulumi.Input[_builtins.str] db_instance_description: The DBInstance description.
@@ -306,6 +307,7 @@ class _DbInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
+
         :param pulumi.Input[_builtins.str] admin_pass: The password for DBInstance using admin account.
         :param pulumi.Input[_builtins.int] cache_size: The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         :param pulumi.Input[_builtins.int] cache_size_postpaid: The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
@@ -893,6 +895,7 @@ class DbInstance(pulumi.CustomResource):
         $ pulumi import alicloud:selectdb/dbInstance:DbInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_pass: The password for DBInstance using admin account.
@@ -962,6 +965,7 @@ class DbInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:selectdb/dbInstance:DbInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DbInstanceArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class AnycastEipAddressArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AnycastEipAddress resource.
+
         :param pulumi.Input[_builtins.str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
         :param pulumi.Input[_builtins.int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps.
@@ -166,6 +167,7 @@ class _AnycastEipAddressState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AnycastEipAddress resources.
+
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
         :param pulumi.Input[_builtins.int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps.
         :param pulumi.Input[_builtins.str] create_time: Anycast EIP instance creation time.
@@ -374,6 +376,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] anycast_eip_address_name: Anycast EIP instance name.
@@ -430,6 +433,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AnycastEipAddressArgs args: The arguments to use to populate this resource's properties.

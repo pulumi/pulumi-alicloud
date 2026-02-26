@@ -28,6 +28,7 @@ class ReplicationVaultArgs:
                  vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReplicationVault resource.
+
         :param pulumi.Input[_builtins.str] replication_source_region_id: The region ID of the source backup vault.
         :param pulumi.Input[_builtins.str] replication_source_vault_id: The vault ID of the source backup vault.
         :param pulumi.Input[_builtins.str] vault_name: The name of the backup vault.
@@ -147,6 +148,7 @@ class _ReplicationVaultState:
                  vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicationVault resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the backup vault.
         :param pulumi.Input[_builtins.str] encrypt_type: The encryption type of the backup vault.
         :param pulumi.Input[_builtins.str] kms_key_id: Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
@@ -344,6 +346,7 @@ class ReplicationVault(pulumi.CustomResource):
         $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the backup vault.
@@ -404,6 +407,7 @@ class ReplicationVault(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:hbr/replicationVault:ReplicationVault example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReplicationVaultArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class RoleArgs:
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] project_name: Project name
         :param pulumi.Input[_builtins.str] role_name: Role Name
                
@@ -104,6 +105,7 @@ class _RoleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] policy: Policy Authorization
                Refer to [Policy-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1) and [Authorization practices](https://www.alibabacloud.com/help/en/maxcompute/use-cases/authorization-practices)
         :param pulumi.Input[_builtins.str] project_name: Project name
@@ -240,6 +242,7 @@ class Role(pulumi.CustomResource):
         $ pulumi import alicloud:maxcompute/role:Role example <project_name>:<role_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy: Policy Authorization
@@ -309,6 +312,7 @@ class Role(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:maxcompute/role:Role example <project_name>:<role_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

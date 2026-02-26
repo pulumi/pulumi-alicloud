@@ -35,6 +35,7 @@ class TrafficQosRuleArgs:
                  src_port_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosRule resource.
+
         :param pulumi.Input[_builtins.int] priority: QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         :param pulumi.Input[_builtins.str] protocol: QoS rule protocol type, value:
                - `ALL`
@@ -349,6 +350,7 @@ class _TrafficQosRuleState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficQosRule resources.
+
         :param pulumi.Input[_builtins.str] dst_cidr: The traffic of the QoS rule matches the Destination IPv4 network segment.
                
                > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
@@ -757,6 +759,7 @@ class TrafficQosRule(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/trafficQosRule:TrafficQosRule example <qos_id>:<queue_id>:<rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dst_cidr: The traffic of the QoS rule matches the Destination IPv4 network segment.
@@ -881,6 +884,7 @@ class TrafficQosRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosRule:TrafficQosRule example <qos_id>:<queue_id>:<rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficQosRuleArgs args: The arguments to use to populate this resource's properties.

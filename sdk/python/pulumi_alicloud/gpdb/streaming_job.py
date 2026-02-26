@@ -42,6 +42,7 @@ class StreamingJobArgs:
                  write_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamingJob resource.
+
         :param pulumi.Input[_builtins.str] data_source_id: The data source ID.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] job_name: The name of the job.
@@ -426,6 +427,7 @@ class _StreamingJobState:
                  write_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamingJob resources.
+
         :param pulumi.Input[_builtins.str] account: The name of the database account.
         :param pulumi.Input[_builtins.str] consistency: The delivery guarantee setting.
                
@@ -990,6 +992,7 @@ class StreamingJob(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/streamingJob:StreamingJob example <db_instance_id>:<job_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account: The name of the database account.
@@ -1172,6 +1175,7 @@ class StreamingJob(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/streamingJob:StreamingJob example <db_instance_id>:<job_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StreamingJobArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class DedicatedHostArgs:
                  used_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DedicatedHost resource.
+
         :param pulumi.Input[_builtins.str] dedicated_host_group_id: The ID of the dedicated cluster.
         :param pulumi.Input[_builtins.str] host_class: The instance type of the host. For more information about the supported instance types of hosts, see [Host specification details](https://www.alibabacloud.com/help/doc-detail/206343.htm).
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`.
@@ -253,6 +254,7 @@ class _DedicatedHostState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHost resources.
+
         :param pulumi.Input[_builtins.str] allocation_status: Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable the auto-renewal feature.
         :param pulumi.Input[_builtins.str] dedicated_host_group_id: The ID of the dedicated cluster.
@@ -578,6 +580,7 @@ class DedicatedHost(pulumi.CustomResource):
         $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example <dedicated_host_group_id>:<dedicated_host_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] allocation_status: Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
@@ -673,6 +676,7 @@ class DedicatedHost(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cddc/dedicatedHost:DedicatedHost example <dedicated_host_group_id>:<dedicated_host_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DedicatedHostArgs args: The arguments to use to populate this resource's properties.

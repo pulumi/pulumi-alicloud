@@ -31,6 +31,7 @@ class ResourceShareArgs:
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceShare resource.
+
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
         :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
                - false (default): Only sharing within the resource directory is allowed.
@@ -189,6 +190,7 @@ class _ResourceShareState:
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceShare resources.
+
         :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
                - false (default): Only sharing within the resource directory is allowed.
                - true: Allow sharing to any account.
@@ -426,6 +428,7 @@ class ResourceShare(pulumi.CustomResource):
         $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
@@ -486,6 +489,7 @@ class ResourceShare(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:resourcemanager/resourceShare:ResourceShare example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceShareArgs args: The arguments to use to populate this resource's properties.

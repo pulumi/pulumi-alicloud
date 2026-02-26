@@ -24,6 +24,7 @@ class NetworkArgs:
                  vswitch_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.str] dw_resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] vpc_id: Virtual Private Cloud ID of network resources
         :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID of the network resource.
@@ -79,6 +80,7 @@ class _NetworkState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.int] create_time: Time when the network resource was created
         :param pulumi.Input[_builtins.str] dw_resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] status: Network Resource Status
@@ -236,6 +238,7 @@ class Network(pulumi.CustomResource):
         $ pulumi import alicloud:dataworks/network:Network example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dw_resource_group_id: The ID of the resource group.
@@ -316,6 +319,7 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dataworks/network:Network example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

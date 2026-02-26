@@ -35,6 +35,7 @@ class DiskReplicaGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DiskReplicaGroup resource.
+
         :param pulumi.Input[_builtins.str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] source_region_id: The ID of the region to which the production site belongs.
@@ -315,6 +316,7 @@ class _DiskReplicaGroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DiskReplicaGroup resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the consistent replication group.
         :param pulumi.Input[_builtins.str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
@@ -644,6 +646,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the consistent replication group.
@@ -733,6 +736,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskReplicaGroupArgs args: The arguments to use to populate this resource's properties.

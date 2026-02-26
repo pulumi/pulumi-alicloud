@@ -26,6 +26,7 @@ class AlbServerGroupAttachmentArgs:
                  force_attach: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlbServerGroupAttachment resource.
+
         :param pulumi.Input[_builtins.str] alb_server_group_id: ID of Alb Server Group.
         :param pulumi.Input[_builtins.int] port: The port will be used for Alb Server Group backend server.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
@@ -112,6 +113,7 @@ class _AlbServerGroupAttachmentState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AlbServerGroupAttachment resources.
+
         :param pulumi.Input[_builtins.str] alb_server_group_id: ID of Alb Server Group.
         :param pulumi.Input[_builtins.bool] force_attach: If instances of scaling group are attached/removed from slb backend server when attach/detach alb
                server group from scaling group. Default to false.
@@ -295,6 +297,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alb_server_group_id: ID of Alb Server Group.
@@ -400,6 +403,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment example asg-xxx:sgp-xxx:5000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlbServerGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

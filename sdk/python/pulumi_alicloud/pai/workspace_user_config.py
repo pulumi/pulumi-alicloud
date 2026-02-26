@@ -25,6 +25,7 @@ class WorkspaceUserConfigArgs:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceUserConfig resource.
+
         :param pulumi.Input[_builtins.str] category_name: The category. Valid values: `DataPrivacyConfig`.
         :param pulumi.Input[_builtins.str] config_key: The key of the configuration.
         :param pulumi.Input[_builtins.str] config_value: The value of the configuration.
@@ -94,6 +95,7 @@ class _WorkspaceUserConfigState:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceUserConfig resources.
+
         :param pulumi.Input[_builtins.str] category_name: The category. Valid values: `DataPrivacyConfig`.
         :param pulumi.Input[_builtins.str] config_key: The key of the configuration.
         :param pulumi.Input[_builtins.str] config_value: The value of the configuration.
@@ -203,6 +205,7 @@ class WorkspaceUserConfig(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceUserConfig:WorkspaceUserConfig example <category_name>:<config_key>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category_name: The category. Valid values: `DataPrivacyConfig`.
@@ -250,6 +253,7 @@ class WorkspaceUserConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceUserConfig:WorkspaceUserConfig example <category_name>:<config_key>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceUserConfigArgs args: The arguments to use to populate this resource's properties.

@@ -39,6 +39,7 @@ class GatewayVpnAttachmentArgs:
                  vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayVpnAttachment resource.
+
         :param pulumi.Input[_builtins.str] local_subnet: The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
                - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
                - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
@@ -341,6 +342,7 @@ class _GatewayVpnAttachmentState:
                  vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayVpnAttachment resources.
+
         :param pulumi.Input['GatewayVpnAttachmentBgpConfigArgs'] bgp_config: Bgp configuration information.
                - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
@@ -838,6 +840,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict']] bgp_config: Bgp configuration information.
@@ -1044,6 +1047,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayVpnAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class StreamingDataServiceArgs:
                  service_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamingDataService resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
         :param pulumi.Input[_builtins.str] service_name: Service Name
         :param pulumi.Input[_builtins.str] service_spec: Resource Specifications
@@ -97,6 +98,7 @@ class _StreamingDataServiceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamingDataService resources.
+
         :param pulumi.Input[_builtins.str] create_time: Create time
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
         :param pulumi.Input[_builtins.str] service_description: The description of the service.
@@ -275,6 +277,7 @@ class StreamingDataService(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the associated instance.
@@ -346,6 +349,7 @@ class StreamingDataService(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/streamingDataService:StreamingDataService example <db_instance_id>:<service_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StreamingDataServiceArgs args: The arguments to use to populate this resource's properties.

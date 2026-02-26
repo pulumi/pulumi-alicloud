@@ -32,6 +32,7 @@ class AccessPointArgs:
                  root_path_permission: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']] = None):
         """
         The set of arguments for constructing a AccessPoint resource.
+
         :param pulumi.Input[_builtins.str] access_group: The name of the permission group.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
@@ -184,6 +185,7 @@ class _AccessPointState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPoint resources.
+
         :param pulumi.Input[_builtins.str] access_group: The name of the permission group.
         :param pulumi.Input[_builtins.str] access_point_id: The ID of the access point.
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point.
@@ -470,6 +472,7 @@ class AccessPoint(pulumi.CustomResource):
         $ pulumi import alicloud:nas/accessPoint:AccessPoint example <file_system_id>:<access_point_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group: The name of the permission group.
@@ -559,6 +562,7 @@ class AccessPoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nas/accessPoint:AccessPoint example <file_system_id>:<access_point_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessPointArgs args: The arguments to use to populate this resource's properties.

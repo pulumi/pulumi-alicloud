@@ -23,6 +23,7 @@ class WafPolicyDomainAttachmentArgs:
                  policy_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WafPolicyDomainAttachment resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Access the accelerated domain name of the specified protection policy.
         :param pulumi.Input[_builtins.str] policy_id: The protection policy ID. Only one input is supported.
         """
@@ -61,6 +62,7 @@ class _WafPolicyDomainAttachmentState:
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafPolicyDomainAttachment resources.
+
         :param pulumi.Input[_builtins.str] domain_name: Access the accelerated domain name of the specified protection policy.
         :param pulumi.Input[_builtins.str] policy_id: The protection policy ID. Only one input is supported.
         """
@@ -162,6 +164,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Access the accelerated domain name of the specified protection policy.
@@ -231,6 +234,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment example policy_id:domain_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WafPolicyDomainAttachmentArgs args: The arguments to use to populate this resource's properties.

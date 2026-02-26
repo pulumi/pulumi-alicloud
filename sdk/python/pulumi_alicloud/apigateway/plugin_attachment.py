@@ -25,6 +25,7 @@ class PluginAttachmentArgs:
                  stage_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PluginAttachment resource.
+
         :param pulumi.Input[_builtins.str] api_id: The api_id that plugin attaches to.
         :param pulumi.Input[_builtins.str] group_id: The group that the api belongs to.
         :param pulumi.Input[_builtins.str] plugin_id: The plugin that attaches to the api.
@@ -93,6 +94,7 @@ class _PluginAttachmentState:
                  stage_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PluginAttachment resources.
+
         :param pulumi.Input[_builtins.str] api_id: The api_id that plugin attaches to.
         :param pulumi.Input[_builtins.str] group_id: The group that the api belongs to.
         :param pulumi.Input[_builtins.str] plugin_id: The plugin that attaches to the api.
@@ -245,6 +247,7 @@ class PluginAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_id: The api_id that plugin attaches to.
@@ -335,6 +338,7 @@ class PluginAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param PluginAttachmentArgs args: The arguments to use to populate this resource's properties.

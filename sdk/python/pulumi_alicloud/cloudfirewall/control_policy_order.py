@@ -24,6 +24,7 @@ class ControlPolicyOrderArgs:
                  order: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a ControlPolicyOrder resource.
+
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
@@ -79,6 +80,7 @@ class _ControlPolicyOrderState:
                  order: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ControlPolicyOrder resources.
+
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
@@ -184,6 +186,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
@@ -241,6 +244,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder example <acl_uuid>:<direction>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ControlPolicyOrderArgs args: The arguments to use to populate this resource's properties.

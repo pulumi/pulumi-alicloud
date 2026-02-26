@@ -33,6 +33,7 @@ class MetricRuleTemplateArgs:
                  webhook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetricRuleTemplate resource.
+
         :param pulumi.Input[_builtins.str] metric_rule_template_name: The name of the alert template.
         :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
@@ -205,6 +206,7 @@ class _MetricRuleTemplateState:
                  webhook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleTemplate resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
@@ -441,6 +443,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:cms/metricRuleTemplate:MetricRuleTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
@@ -508,6 +511,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/metricRuleTemplate:MetricRuleTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetricRuleTemplateArgs args: The arguments to use to populate this resource's properties.

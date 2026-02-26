@@ -28,6 +28,7 @@ class AclArgs:
                  ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Acl resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The type of operations that can be performed on the resource. Valid values:
                - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
                - If `resource_type` is set to `Group`. Valid values: `Sub`.
@@ -146,6 +147,7 @@ class _AclState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The type of operations that can be performed on the resource. Valid values:
                - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
                - If `resource_type` is set to `Group`. Valid values: `Sub`.
@@ -364,6 +366,7 @@ class Acl(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The type of operations that can be performed on the resource. Valid values:
@@ -473,6 +476,7 @@ class Acl(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.

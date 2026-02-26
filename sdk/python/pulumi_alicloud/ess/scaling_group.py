@@ -65,6 +65,7 @@ class ScalingGroupArgs:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ScalingGroup resource.
+
         :param pulumi.Input[_builtins.int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[_builtins.int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -777,6 +778,7 @@ class _ScalingGroupState:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ScalingGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
@@ -1582,6 +1584,7 @@ class ScalingGroup(pulumi.CustomResource):
         $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
@@ -1736,6 +1739,7 @@ class ScalingGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScalingGroupArgs args: The arguments to use to populate this resource's properties.

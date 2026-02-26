@@ -31,6 +31,7 @@ class AddressBookArgs:
                  tag_relation: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AddressBook resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the Address Book.
         :param pulumi.Input[_builtins.str] group_name: The name of the Address Book.
         :param pulumi.Input[_builtins.str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
@@ -166,6 +167,7 @@ class _AddressBookState:
                  tag_relation: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressBook resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lists: The list of addresses.
         :param pulumi.Input[_builtins.int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[_builtins.str] description: The description of the Address Book.
@@ -343,6 +345,7 @@ class AddressBook(pulumi.CustomResource):
         $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lists: The list of addresses.
@@ -397,6 +400,7 @@ class AddressBook(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudfirewall/addressBook:AddressBook example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddressBookArgs args: The arguments to use to populate this resource's properties.

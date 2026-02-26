@@ -62,6 +62,7 @@ class ReadOnlyInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReadOnlyInstance resource.
+
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[_builtins.int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[_builtins.str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -809,6 +810,7 @@ class _ReadOnlyInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReadOnlyInstance resources.
+
         :param pulumi.Input[_builtins.str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
                - perfer
@@ -1664,6 +1666,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
@@ -1829,6 +1832,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReadOnlyInstanceArgs args: The arguments to use to populate this resource's properties.

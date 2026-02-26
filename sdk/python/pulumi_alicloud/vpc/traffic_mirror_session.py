@@ -34,6 +34,7 @@ class TrafficMirrorSessionArgs:
                  virtual_network_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a TrafficMirrorSession resource.
+
         :param pulumi.Input[_builtins.int] priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         :param pulumi.Input[_builtins.str] traffic_mirror_filter_id: The ID of the filter.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] traffic_mirror_source_ids: The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
@@ -250,6 +251,7 @@ class _TrafficMirrorSessionState:
                  virtual_network_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering TrafficMirrorSession resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
                - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request and directly creates a mirror session after checking.
@@ -570,6 +572,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request, value:
@@ -676,6 +679,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/trafficMirrorSession:TrafficMirrorSession example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficMirrorSessionArgs args: The arguments to use to populate this resource's properties.

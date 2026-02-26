@@ -27,6 +27,7 @@ class CacheReserveInstanceArgs:
                  quota_gb: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a CacheReserveInstance resource.
+
         :param pulumi.Input[_builtins.str] payment_type: Specifies whether to enable auto payment.
         :param pulumi.Input[_builtins.bool] auto_pay: Automatic payment.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to auto-renew:
@@ -136,6 +137,7 @@ class _CacheReserveInstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CacheReserveInstance resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Automatic payment.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to auto-renew:
         :param pulumi.Input[_builtins.str] cr_region: Cache holding area
@@ -314,6 +316,7 @@ class CacheReserveInstance(pulumi.CustomResource):
         $ pulumi import alicloud:esa/cacheReserveInstance:CacheReserveInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Automatic payment.
@@ -368,6 +371,7 @@ class CacheReserveInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/cacheReserveInstance:CacheReserveInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CacheReserveInstanceArgs args: The arguments to use to populate this resource's properties.

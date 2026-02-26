@@ -38,6 +38,7 @@ class AutoscalingConfigArgs:
                  utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutoscalingConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.str] cool_down_duration: Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         :param pulumi.Input[_builtins.bool] daemonset_eviction_for_nodes: If true DaemonSet pods will be  terminated from nodes. Default is `false`.
@@ -318,6 +319,7 @@ class _AutoscalingConfigState:
                  utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutoscalingConfig resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[_builtins.str] cool_down_duration: Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         :param pulumi.Input[_builtins.bool] daemonset_eviction_for_nodes: If true DaemonSet pods will be  terminated from nodes. Default is `false`.
@@ -702,6 +704,7 @@ class AutoscalingConfig(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
@@ -829,6 +832,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param AutoscalingConfigArgs args: The arguments to use to populate this resource's properties.

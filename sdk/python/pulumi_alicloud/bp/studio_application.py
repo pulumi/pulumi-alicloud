@@ -30,6 +30,7 @@ class StudioApplicationArgs:
                  variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a StudioApplication resource.
+
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] template_id: The id of the template.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
@@ -149,6 +150,7 @@ class _StudioApplicationState:
                  variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering StudioApplication resources.
+
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
         :param pulumi.Input[_builtins.str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: The configuration of the application.
@@ -335,6 +337,7 @@ class StudioApplication(pulumi.CustomResource):
         $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_name: The name of the application.
@@ -399,6 +402,7 @@ class StudioApplication(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bp/studioApplication:StudioApplication example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StudioApplicationArgs args: The arguments to use to populate this resource's properties.

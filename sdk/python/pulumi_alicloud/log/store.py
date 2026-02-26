@@ -39,6 +39,7 @@ class StoreArgs:
                  telemetry_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Store resource.
+
         :param pulumi.Input[_builtins.bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[_builtins.bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[_builtins.bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
@@ -317,6 +318,7 @@ class _StoreState:
                  telemetry_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Store resources.
+
         :param pulumi.Input[_builtins.bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[_builtins.bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[_builtins.int] create_time: Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
@@ -728,6 +730,7 @@ class Store(pulumi.CustomResource):
         $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
@@ -857,6 +860,7 @@ class Store(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/store:Store example <project_name>:<logstore_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StoreArgs args: The arguments to use to populate this resource's properties.

@@ -46,6 +46,7 @@ class JobArgs:
                  x_attrs: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.str] execute_mode: Task execution mode, the possible results are as follows:
         :param pulumi.Input[_builtins.str] group_id: The application ID, which is obtained from the **application management** page of the console.
         :param pulumi.Input[_builtins.str] job_name: JobName
@@ -421,6 +422,7 @@ class _JobState:
                  x_attrs: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[_builtins.int] attempt_interval: Error retry interval, unit s, default value 30.
         :param pulumi.Input[_builtins.str] class_name: Full path of the task interface class.
                
@@ -933,6 +935,7 @@ class Job(pulumi.CustomResource):
         $ pulumi import alicloud:schedulerx/job:Job example <namespace>:<group_id>:<job_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] attempt_interval: Error retry interval, unit s, default value 30.
@@ -1081,6 +1084,7 @@ class Job(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:schedulerx/job:Job example <namespace>:<group_id>:<job_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

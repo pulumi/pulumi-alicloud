@@ -41,6 +41,7 @@ class AccessStrategyArgs:
                  lines: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]] = None):
         """
         The set of arguments for constructing a AccessStrategy resource.
+
         :param pulumi.Input[_builtins.str] default_addr_pool_type: The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]] default_addr_pools: List of primary address pool collections. See `default_addr_pools` below for details.
         :param pulumi.Input[_builtins.int] default_min_available_addr_num: The minimum number of available addresses for the primary address pool set.
@@ -331,6 +332,7 @@ class _AccessStrategyState:
                  strategy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessStrategy resources.
+
         :param pulumi.Input[_builtins.str] access_mode: The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
         :param pulumi.Input[_builtins.str] default_addr_pool_type: The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]] default_addr_pools: List of primary address pool collections. See `default_addr_pools` below for details.
@@ -722,6 +724,7 @@ class AccessStrategy(pulumi.CustomResource):
         $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
@@ -841,6 +844,7 @@ class AccessStrategy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/accessStrategy:AccessStrategy example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessStrategyArgs args: The arguments to use to populate this resource's properties.

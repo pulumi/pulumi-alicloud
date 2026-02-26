@@ -25,6 +25,7 @@ class Ipv6InternetBandwidthArgs:
                  internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ipv6InternetBandwidth resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
         :param pulumi.Input[_builtins.str] ipv6_address_id: The ID of the IPv6 address instance.
         :param pulumi.Input[_builtins.str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
@@ -95,6 +96,7 @@ class _Ipv6InternetBandwidthState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6InternetBandwidth resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
         :param pulumi.Input[_builtins.str] internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
         :param pulumi.Input[_builtins.str] ipv6_address_id: The ID of the IPv6 address instance.
@@ -257,6 +259,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
@@ -342,6 +345,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ipv6InternetBandwidthArgs args: The arguments to use to populate this resource's properties.

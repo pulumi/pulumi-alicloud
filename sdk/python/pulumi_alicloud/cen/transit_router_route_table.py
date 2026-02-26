@@ -26,6 +26,7 @@ class TransitRouterRouteTableArgs:
                  transit_router_route_table_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTable resource.
+
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -116,6 +117,7 @@ class _TransitRouterRouteTableState:
                  transit_router_route_table_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteTable resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
         :param pulumi.Input[_builtins.str] status: The associating status of the Transit Router.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -283,6 +285,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dry_run: The dry run.
@@ -328,6 +331,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransitRouterRouteTableArgs args: The arguments to use to populate this resource's properties.

@@ -43,6 +43,7 @@ class GtmInstanceArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a GtmInstance resource.
+
         :param pulumi.Input[_builtins.int] health_check_task_count: The quota of detection tasks.
         :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
         :param pulumi.Input[_builtins.str] package_edition: Paid package version. Valid values: `ultimate`, `standard`.
@@ -365,6 +366,7 @@ class _GtmInstanceState:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GtmInstance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_groups: The alert group.
         :param pulumi.Input[_builtins.str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
@@ -748,6 +750,7 @@ class GtmInstance(pulumi.CustomResource):
         $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
@@ -829,6 +832,7 @@ class GtmInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/gtmInstance:GtmInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GtmInstanceArgs args: The arguments to use to populate this resource's properties.

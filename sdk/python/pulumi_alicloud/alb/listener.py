@@ -44,6 +44,7 @@ class ListenerArgs:
                  x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List See `default_actions` below.
         :param pulumi.Input[_builtins.int] listener_port: The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         :param pulumi.Input[_builtins.str] listener_protocol: Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
@@ -392,6 +393,7 @@ class _ListenerState:
                  x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
+
         :param pulumi.Input[_builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
                
                > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
@@ -883,6 +885,7 @@ class Listener(pulumi.CustomResource):
         $ pulumi import alicloud:alb/listener:Listener example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] access_log_record_customized_headers_enabled: Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
@@ -1051,6 +1054,7 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/listener:Listener example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.

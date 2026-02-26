@@ -54,6 +54,7 @@ class OssStockTaskArgs:
                  video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssStockTask resource.
+
         :param pulumi.Input[_builtins.str] audio_antispam_freeze_config: Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
         :param pulumi.Input[_builtins.bool] audio_auto_freeze_opened: Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
         :param pulumi.Input[_builtins.int] audio_max_size: Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
@@ -608,6 +609,7 @@ class _OssStockTaskState:
                  video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssStockTask resources.
+
         :param pulumi.Input[_builtins.str] audio_antispam_freeze_config: Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
         :param pulumi.Input[_builtins.bool] audio_auto_freeze_opened: Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
         :param pulumi.Input[_builtins.int] audio_max_size: Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
@@ -1283,6 +1285,7 @@ class OssStockTask(pulumi.CustomResource):
         $ pulumi import alicloud:aligreen/ossStockTask:OssStockTask example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audio_antispam_freeze_config: Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
@@ -1452,6 +1455,7 @@ class OssStockTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:aligreen/ossStockTask:OssStockTask example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OssStockTaskArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class HttpIncomingRequestHeaderModificationRuleArgs:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpIncomingRequestHeaderModificationRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs']]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -157,6 +158,7 @@ class _HttpIncomingRequestHeaderModificationRuleState:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpIncomingRequestHeaderModificationRule resources.
+
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[Sequence[pulumi.Input['HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs']]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -375,6 +377,7 @@ class HttpIncomingRequestHeaderModificationRule(pulumi.CustomResource):
         $ pulumi import alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs', 'HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict']]]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
@@ -467,6 +470,7 @@ class HttpIncomingRequestHeaderModificationRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpIncomingRequestHeaderModificationRuleArgs args: The arguments to use to populate this resource's properties.

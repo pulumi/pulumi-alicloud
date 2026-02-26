@@ -32,6 +32,7 @@ class ServiceSubscriptionArgs:
                  sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceSubscription resource.
+
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: An HTTP URL that starts with http:// or https://.
                - `Queue Format`: A queue name.
@@ -195,6 +196,7 @@ class _ServiceSubscriptionState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceSubscription resources.
+
         :param pulumi.Input[_builtins.int] create_time: (Available since v1.244.0) The time when the subscription was created.
         :param pulumi.Input['ServiceSubscriptionDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
@@ -421,6 +423,7 @@ class ServiceSubscription(pulumi.CustomResource):
         $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
@@ -488,6 +491,7 @@ class ServiceSubscription(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceSubscriptionArgs args: The arguments to use to populate this resource's properties.

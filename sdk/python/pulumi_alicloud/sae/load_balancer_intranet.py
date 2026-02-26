@@ -26,6 +26,7 @@ class LoadBalancerIntranetArgs:
                  intranet_slb_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerIntranet resource.
+
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]] intranets: The bound private network SLB. See `intranet` below.
         :param pulumi.Input[_builtins.str] intranet_slb_id: The intranet SLB ID.
@@ -81,6 +82,7 @@ class _LoadBalancerIntranetState:
                  intranets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerIntranet resources.
+
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[_builtins.str] intranet_ip: Use designated private network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[_builtins.str] intranet_slb_id: The intranet SLB ID.
@@ -233,6 +235,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
         $ pulumi import alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The target application ID that needs to be bound to the SLB.
@@ -323,6 +326,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerIntranetArgs args: The arguments to use to populate this resource's properties.

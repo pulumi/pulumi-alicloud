@@ -27,6 +27,7 @@ class AccountArgs:
                  database_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_name: The account name.
         :param pulumi.Input[_builtins.str] account_password: AccountPassword
         :param pulumi.Input[_builtins.str] db_instance_id: The Adb pg instance ID.
@@ -143,6 +144,7 @@ class _AccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
         :param pulumi.Input[_builtins.str] account_name: The account name.
         :param pulumi.Input[_builtins.str] account_password: AccountPassword
@@ -337,6 +339,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
@@ -417,6 +420,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:gpdb/account:Account example <db_instance_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

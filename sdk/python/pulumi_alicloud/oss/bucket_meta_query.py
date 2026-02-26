@@ -22,6 +22,7 @@ class BucketMetaQueryArgs:
                  bucket: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketMetaQuery resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -47,6 +48,7 @@ class _BucketMetaQueryState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketMetaQuery resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the metadata index database. The format is mm:ss + TIMEZONE in the YYYY-MM-DDTHH format of RFC 3339. Where YYYY-MM-DD indicates the year, month and day, T indicates the beginning of the time element, HH:mm:ss indicates the hour, minute and second, and TIMEZONE indicates the time zone.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
@@ -142,6 +144,7 @@ class BucketMetaQuery(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketMetaQuery:BucketMetaQuery example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -190,6 +193,7 @@ class BucketMetaQuery(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketMetaQuery:BucketMetaQuery example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketMetaQueryArgs args: The arguments to use to populate this resource's properties.

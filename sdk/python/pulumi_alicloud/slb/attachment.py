@@ -27,6 +27,7 @@ class AttachmentArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Attachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A list of instance ids to added backend server in the SLB.
         :param pulumi.Input[_builtins.str] load_balancer_id: ID of the load balancer.
         :param pulumi.Input[_builtins.str] backend_servers: The backend servers of the load balancer.
@@ -129,6 +130,7 @@ class _AttachmentState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Attachment resources.
+
         :param pulumi.Input[_builtins.str] backend_servers: The backend servers of the load balancer.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A list of instance ids to added backend server in the SLB.
@@ -298,6 +300,7 @@ class Attachment(pulumi.CustomResource):
         $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_servers: The backend servers of the load balancer.
@@ -375,6 +378,7 @@ class Attachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:slb/attachment:Attachment example lb-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class NodeArgs:
                  switch_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Node resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the sharded cluster instance.
         :param pulumi.Input[_builtins.str] node_class: The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
         :param pulumi.Input[_builtins.str] node_type: Node type, value description:
@@ -342,6 +343,7 @@ class _NodeState:
                  switch_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
+
         :param pulumi.Input[_builtins.str] account_name: Account name, value description:
                - Begins with a lowercase letter.
                - Consists of lowercase letters, numbers, or underscores (_).
@@ -773,6 +775,7 @@ class Node(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/node:Node example <db_instance_id>:<node_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: Account name, value description:
@@ -924,6 +927,7 @@ class Node(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/node:Node example <db_instance_id>:<node_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeArgs args: The arguments to use to populate this resource's properties.

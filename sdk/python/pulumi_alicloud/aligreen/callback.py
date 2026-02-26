@@ -26,6 +26,7 @@ class CallbackArgs:
                  crypt_type: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Callback resource.
+
         :param pulumi.Input[_builtins.str] callback_name: The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_suggestions: List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_types: A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
@@ -111,6 +112,7 @@ class _CallbackState:
                  crypt_type: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Callback resources.
+
         :param pulumi.Input[_builtins.str] callback_name: The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_suggestions: List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_types: A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
@@ -263,6 +265,7 @@ class Callback(pulumi.CustomResource):
         $ pulumi import alicloud:aligreen/callback:Callback example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] callback_name: The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
@@ -323,6 +326,7 @@ class Callback(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:aligreen/callback:Callback example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CallbackArgs args: The arguments to use to populate this resource's properties.

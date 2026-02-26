@@ -38,6 +38,7 @@ class TrailDeprecatedArgs:
                  trail_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrailDeprecated resource.
+
         :param pulumi.Input[_builtins.str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         :param pulumi.Input[_builtins.str] name: The name of the trail to be created, which must be unique for an account.
         :param pulumi.Input[_builtins.str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
@@ -296,6 +297,7 @@ class _TrailDeprecatedState:
                  trail_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrailDeprecated resources.
+
         :param pulumi.Input[_builtins.str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         :param pulumi.Input[_builtins.str] name: The name of the trail to be created, which must be unique for an account.
         :param pulumi.Input[_builtins.str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
@@ -613,6 +615,7 @@ class TrailDeprecated(pulumi.CustomResource):
         $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -662,6 +665,7 @@ class TrailDeprecated(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrailDeprecatedArgs args: The arguments to use to populate this resource's properties.

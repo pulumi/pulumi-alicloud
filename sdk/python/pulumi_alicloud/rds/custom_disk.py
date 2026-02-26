@@ -35,6 +35,7 @@ class CustomDiskArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDisk resource.
+
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
         :param pulumi.Input[_builtins.int] size: Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
@@ -294,6 +295,7 @@ class _CustomDiskState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDisk resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
         :param pulumi.Input[_builtins.str] create_time: Creation time.
@@ -662,6 +664,7 @@ class CustomDisk(pulumi.CustomResource):
         $ pulumi import alicloud:rds/customDisk:CustomDisk example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
@@ -745,6 +748,7 @@ class CustomDisk(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/customDisk:CustomDisk example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomDiskArgs args: The arguments to use to populate this resource's properties.

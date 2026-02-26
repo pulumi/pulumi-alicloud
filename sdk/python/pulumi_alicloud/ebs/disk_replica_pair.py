@@ -38,6 +38,7 @@ class DiskReplicaPairArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DiskReplicaPair resource.
+
         :param pulumi.Input[_builtins.str] destination_disk_id: The ID of the standby disk.
         :param pulumi.Input[_builtins.str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[_builtins.str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
@@ -358,6 +359,7 @@ class _DiskReplicaPairState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DiskReplicaPair resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
                - 10240 Kbps: equal to 10 Mbps.
                - 20480 Kbps: equal to 20 Mbps.
@@ -800,6 +802,7 @@ class DiskReplicaPair(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
@@ -917,6 +920,7 @@ class DiskReplicaPair(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DiskReplicaPairArgs args: The arguments to use to populate this resource's properties.

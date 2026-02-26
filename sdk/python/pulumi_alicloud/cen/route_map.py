@@ -49,6 +49,7 @@ class RouteMapArgs:
                  transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouteMap resource.
+
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] cen_region_id: The ID of the region to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] map_result: The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
@@ -502,6 +503,7 @@ class _RouteMapState:
                  transmit_direction: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteMap resources.
+
         :param pulumi.Input[_builtins.str] as_path_match_mode: A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] cen_region_id: The ID of the region to which the CEN instance belongs.
@@ -1073,6 +1075,7 @@ class RouteMap(pulumi.CustomResource):
         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] as_path_match_mode: A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
@@ -1192,6 +1195,7 @@ class RouteMap(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteMapArgs args: The arguments to use to populate this resource's properties.

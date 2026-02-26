@@ -25,6 +25,7 @@ class BucketServerSideEncryptionArgs:
                  kms_master_key_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketServerSideEncryption resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] sse_algorithm: The server-side encryption method. Valid Values: KMS, AES256.
         :param pulumi.Input[_builtins.str] kms_data_encryption: The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
@@ -95,6 +96,7 @@ class _BucketServerSideEncryptionState:
                  sse_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketServerSideEncryption resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] kms_data_encryption: The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
         :param pulumi.Input[_builtins.str] kms_master_key_id: The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
@@ -220,6 +222,7 @@ class BucketServerSideEncryption(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -283,6 +286,7 @@ class BucketServerSideEncryption(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketServerSideEncryptionArgs args: The arguments to use to populate this resource's properties.

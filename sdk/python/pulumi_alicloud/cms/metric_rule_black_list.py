@@ -34,6 +34,7 @@ class MetricRuleBlackListArgs:
                  scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MetricRuleBlackList resource.
+
         :param pulumi.Input[_builtins.str] category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The list of instances of cloud services specified in the alert blacklist policy.
         :param pulumi.Input[_builtins.str] metric_rule_black_list_name: The name of the alert blacklist policy.
@@ -217,6 +218,7 @@ class _MetricRuleBlackListState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleBlackList resources.
+
         :param pulumi.Input[_builtins.str] category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
         :param pulumi.Input[_builtins.str] create_time: The timestamp for creating an alert blacklist policy.Unit: milliseconds.
         :param pulumi.Input[_builtins.str] effective_time: The effective time range of the alert blacklist policy.
@@ -513,6 +515,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         $terraform import alicloud_cms_metric_rule_black_list.example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
@@ -597,6 +600,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_cms_metric_rule_black_list.example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetricRuleBlackListArgs args: The arguments to use to populate this resource's properties.

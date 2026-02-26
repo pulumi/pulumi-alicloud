@@ -32,6 +32,7 @@ class ServiceCertificateArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServiceCertificate resource.
+
         :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
@@ -224,6 +225,7 @@ class _ServiceCertificateState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServiceCertificate resources.
+
         :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
         :param pulumi.Input[_builtins.str] certificate_name: A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificate_name` can be modified.
         :param pulumi.Input[_builtins.str] encrypt_cert: The content of an SM encryption certificate in PEM format.
@@ -503,6 +505,7 @@ class ServiceCertificate(pulumi.CustomResource):
         $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert: The content of a non-SM certificate in PEM format.
@@ -607,6 +610,7 @@ class ServiceCertificate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cas/serviceCertificate:ServiceCertificate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceCertificateArgs args: The arguments to use to populate this resource's properties.

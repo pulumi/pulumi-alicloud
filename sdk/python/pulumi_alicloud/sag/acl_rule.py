@@ -31,6 +31,7 @@ class AclRuleArgs:
                  priority: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AclRule resource.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
         :param pulumi.Input[_builtins.str] dest_cidr: The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
         :param pulumi.Input[_builtins.str] dest_port_range: The range of the destination port. Valid value: 80/80.
@@ -191,6 +192,7 @@ class _AclRuleState:
                  source_port_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclRule resources.
+
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
         :param pulumi.Input[_builtins.str] description: The description of the ACL rule. It must be 1 to 512 characters in length.
         :param pulumi.Input[_builtins.str] dest_cidr: The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
@@ -406,6 +408,7 @@ class AclRule(pulumi.CustomResource):
         $ pulumi import alicloud:sag/aclRule:AclRule example acr-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_id: The ID of the ACL.
@@ -469,6 +472,7 @@ class AclRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sag/aclRule:AclRule example acr-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclRuleArgs args: The arguments to use to populate this resource's properties.

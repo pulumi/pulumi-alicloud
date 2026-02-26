@@ -24,6 +24,7 @@ class IndustrialPidProjectArgs:
                  pid_project_desc: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IndustrialPidProject resource.
+
         :param pulumi.Input[_builtins.str] pid_organization_id: The ID of Pid Organization.
         :param pulumi.Input[_builtins.str] pid_project_name: The name of Pid Project.
         :param pulumi.Input[_builtins.str] pid_project_desc: The description of Pid Project.
@@ -78,6 +79,7 @@ class _IndustrialPidProjectState:
                  pid_project_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IndustrialPidProject resources.
+
         :param pulumi.Input[_builtins.str] pid_organization_id: The ID of Pid Organization.
         :param pulumi.Input[_builtins.str] pid_project_desc: The description of Pid Project.
         :param pulumi.Input[_builtins.str] pid_project_name: The name of Pid Project.
@@ -166,6 +168,7 @@ class IndustrialPidProject(pulumi.CustomResource):
         $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] pid_organization_id: The ID of Pid Organization.
@@ -207,6 +210,7 @@ class IndustrialPidProject(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:brain/industrialPidProject:IndustrialPidProject example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IndustrialPidProjectArgs args: The arguments to use to populate this resource's properties.

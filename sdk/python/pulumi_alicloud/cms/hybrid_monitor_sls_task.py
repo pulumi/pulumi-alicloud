@@ -30,6 +30,7 @@ class HybridMonitorSlsTaskArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HybridMonitorSlsTask resource.
+
         :param pulumi.Input[_builtins.str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[_builtins.str] namespace: The name of the namespace.
         :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs'] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
@@ -146,6 +147,7 @@ class _HybridMonitorSlsTaskState:
                  task_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HybridMonitorSlsTask resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[_builtins.int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[_builtins.str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
@@ -367,6 +369,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
@@ -481,6 +484,7 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HybridMonitorSlsTaskArgs args: The arguments to use to populate this resource's properties.

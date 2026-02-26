@@ -29,6 +29,7 @@ class GatewayEndpointArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GatewayEndpoint resource.
+
         :param pulumi.Input[_builtins.str] service_name: The endpoint service name.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
@@ -167,6 +168,7 @@ class _GatewayEndpointState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayEndpoint resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VPC gateway endpoint.
         :param pulumi.Input[_builtins.str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
                The length of the description information is between 1 and 255 characters.
@@ -393,6 +395,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
@@ -466,6 +469,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/gatewayEndpoint:GatewayEndpoint example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayEndpointArgs args: The arguments to use to populate this resource's properties.

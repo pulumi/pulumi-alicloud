@@ -31,6 +31,7 @@ class TemplateScratchArgs:
                  source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None):
         """
         The set of arguments for constructing a TemplateScratch resource.
+
         :param pulumi.Input[_builtins.str] template_scratch_type: The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
         :param pulumi.Input[_builtins.str] description: The Description of the Template Scratch.
         :param pulumi.Input[_builtins.str] execution_mode: The execution mode. Valid Values: `Async` or `Sync`.
@@ -167,6 +168,7 @@ class _TemplateScratchState:
                  template_scratch_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateScratch resources.
+
         :param pulumi.Input[_builtins.str] description: The Description of the Template Scratch.
         :param pulumi.Input[_builtins.str] execution_mode: The execution mode. Valid Values: `Async` or `Sync`.
         :param pulumi.Input[_builtins.str] logical_id_strategy: Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
@@ -359,6 +361,7 @@ class TemplateScratch(pulumi.CustomResource):
         $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The Description of the Template Scratch.
@@ -414,6 +417,7 @@ class TemplateScratch(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ros/templateScratch:TemplateScratch example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateScratchArgs args: The arguments to use to populate this resource's properties.

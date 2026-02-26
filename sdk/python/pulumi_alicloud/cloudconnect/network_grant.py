@@ -24,6 +24,7 @@ class NetworkGrantArgs:
                  cen_uid: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a NetworkGrant resource.
+
         :param pulumi.Input[_builtins.str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] cen_uid: The ID of the account to which the CEN instance belongs.
@@ -77,6 +78,7 @@ class _NetworkGrantState:
                  cen_uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkGrant resources.
+
         :param pulumi.Input[_builtins.str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[_builtins.str] cen_uid: The ID of the account to which the CEN instance belongs.
@@ -188,6 +190,7 @@ class NetworkGrant(pulumi.CustomResource):
         $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ccn_id: The ID of the CCN instance.
@@ -252,6 +255,7 @@ class NetworkGrant(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkGrantArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class AccountPrivilegeArgs:
                  privilege: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountPrivilege resource.
+
         :param pulumi.Input[_builtins.str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] db_names: List of specified database name.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
@@ -106,6 +107,7 @@ class _AccountPrivilegeState:
                  privilege: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountPrivilege resources.
+
         :param pulumi.Input[_builtins.str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] db_names: List of specified database name.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
@@ -254,6 +256,7 @@ class AccountPrivilege(pulumi.CustomResource):
         $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: A specified account name.
@@ -334,6 +337,7 @@ class AccountPrivilege(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountPrivilegeArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class BucketAccessMonitorInitArgs:
                  status: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketAccessMonitor resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] status: Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
         """
@@ -61,6 +62,7 @@ class _BucketAccessMonitorState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketAccessMonitor resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
         :param pulumi.Input[_builtins.str] status: Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
         """
@@ -148,6 +150,7 @@ class BucketAccessMonitor(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketAccessMonitor:BucketAccessMonitor example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
@@ -203,6 +206,7 @@ class BucketAccessMonitor(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketAccessMonitor:BucketAccessMonitor example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketAccessMonitorInitArgs args: The arguments to use to populate this resource's properties.

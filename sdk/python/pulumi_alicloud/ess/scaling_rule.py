@@ -46,6 +46,7 @@ class ScalingRuleArgs:
                  target_value: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a ScalingRule resource.
+
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[_builtins.str] adjustment_type: Adjustment mode of a scaling rule. Optional values:
                - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
@@ -434,6 +435,7 @@ class _ScalingRuleState:
                  target_value: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering ScalingRule resources.
+
         :param pulumi.Input[_builtins.str] adjustment_type: Adjustment mode of a scaling rule. Optional values:
                - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
                - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
@@ -925,6 +927,7 @@ class ScalingRule(pulumi.CustomResource):
         $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] adjustment_type: Adjustment mode of a scaling rule. Optional values:
@@ -1048,6 +1051,7 @@ class ScalingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ScalingRuleArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class TrafficQosQueueArgs:
                  queue_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosQueue resource.
+
         :param pulumi.Input[_builtins.str] qos_id: The ID of the QoS policy.
         :param pulumi.Input[_builtins.str] queue_type: QoS queue type, value:
                - `High`: High priority queue.
@@ -134,6 +135,7 @@ class _TrafficQosQueueState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficQosQueue resources.
+
         :param pulumi.Input[_builtins.str] bandwidth_percent: QoS queue bandwidth percentage.
                
                - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
@@ -321,6 +323,7 @@ class TrafficQosQueue(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/trafficQosQueue:TrafficQosQueue example <qos_id>:<queue_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_percent: QoS queue bandwidth percentage.
@@ -391,6 +394,7 @@ class TrafficQosQueue(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosQueue:TrafficQosQueue example <qos_id>:<queue_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficQosQueueArgs args: The arguments to use to populate this resource's properties.

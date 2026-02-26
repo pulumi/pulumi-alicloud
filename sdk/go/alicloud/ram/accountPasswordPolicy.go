@@ -81,6 +81,10 @@ import (
 // ## Import
 //
 // RAM account password policy can be imported using the `id`, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
+// ```
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
 

@@ -28,6 +28,7 @@ class RemediationArgs:
                  remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Remediation resource.
+
         :param pulumi.Input[_builtins.str] aggregator_id: The account Group ID.
                For more information about how to obtain the account group ID, see ListAggregators.
         :param pulumi.Input[_builtins.str] config_rule_id: The rule ID.
@@ -167,6 +168,7 @@ class _RemediationState:
                  remediation_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Remediation resources.
+
         :param pulumi.Input[_builtins.str] aggregator_id: The account Group ID.
                For more information about how to obtain the account group ID, see ListAggregators.
         :param pulumi.Input[_builtins.str] config_rule_id: The rule ID.
@@ -422,6 +424,7 @@ class Remediation(pulumi.CustomResource):
         $ pulumi import alicloud:configaggregate/remediation:Remediation example <aggregator_id>:<remediation_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregator_id: The account Group ID.
@@ -538,6 +541,7 @@ class Remediation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:configaggregate/remediation:Remediation example <aggregator_id>:<remediation_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RemediationArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class FirewallRuleArgs:
                  remark: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallRule resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Alibaba Cloud simple application server instance ID.
         :param pulumi.Input[_builtins.str] port: The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
         :param pulumi.Input[_builtins.str] rule_protocol: The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
@@ -95,6 +96,7 @@ class _FirewallRuleState:
                  rule_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
+
         :param pulumi.Input[_builtins.str] firewall_rule_id: The ID of the firewall rule.
         :param pulumi.Input[_builtins.str] instance_id: Alibaba Cloud simple application server instance ID.
         :param pulumi.Input[_builtins.str] port: The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
@@ -229,6 +231,7 @@ class FirewallRule(pulumi.CustomResource):
         $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example <instance_id>:<firewall_rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Alibaba Cloud simple application server instance ID.
@@ -286,6 +289,7 @@ class FirewallRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:simpleapplicationserver/firewallRule:FirewallRule example <instance_id>:<firewall_rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.

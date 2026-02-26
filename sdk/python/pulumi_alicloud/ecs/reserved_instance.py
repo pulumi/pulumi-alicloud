@@ -38,6 +38,7 @@ class ReservedInstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservedInstance resource.
+
         :param pulumi.Input[_builtins.str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
         :param pulumi.Input[_builtins.str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
@@ -305,6 +306,7 @@ class _ReservedInstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservedInstance resources.
+
         :param pulumi.Input[_builtins.str] allocation_status: Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
         :param pulumi.Input[_builtins.str] create_time: The time when the reserved instance was created.
@@ -692,6 +694,7 @@ class ReservedInstance(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_period: The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
@@ -753,6 +756,7 @@ class ReservedInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/reservedInstance:ReservedInstance default ecsri-uf6df4xm0h3licit****
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservedInstanceArgs args: The arguments to use to populate this resource's properties.

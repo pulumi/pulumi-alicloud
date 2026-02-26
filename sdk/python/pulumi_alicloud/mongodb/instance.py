@@ -74,6 +74,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[_builtins.int] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space.
@@ -935,6 +936,7 @@ class _InstanceState:
                  zone_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneInfoArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
@@ -1948,6 +1950,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -2087,6 +2090,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class HostAccountShareKeyAttachmentArgs:
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HostAccountShareKeyAttachment resource.
+
         :param pulumi.Input[_builtins.str] host_account_id: The ID list of the host account.
         :param pulumi.Input[_builtins.str] host_share_key_id: The ID of the host shared key.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastion machine instance.
@@ -77,6 +78,7 @@ class _HostAccountShareKeyAttachmentState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostAccountShareKeyAttachment resources.
+
         :param pulumi.Input[_builtins.str] host_account_id: The ID list of the host account.
         :param pulumi.Input[_builtins.str] host_share_key_id: The ID of the host shared key.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastion machine instance.
@@ -206,6 +208,7 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment example <instance_id>:<host_share_key_id>:<host_account_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] host_account_id: The ID list of the host account.
@@ -288,6 +291,7 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment example <instance_id>:<host_share_key_id>:<host_account_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostAccountShareKeyAttachmentArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class RoleAttachmentArgs:
                  role_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RoleAttachment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
@@ -61,6 +62,7 @@ class _RoleAttachmentState:
                  role_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoleAttachment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[_builtins.str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
@@ -185,6 +187,7 @@ class RoleAttachment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
@@ -277,6 +280,7 @@ class RoleAttachment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param RoleAttachmentArgs args: The arguments to use to populate this resource's properties.

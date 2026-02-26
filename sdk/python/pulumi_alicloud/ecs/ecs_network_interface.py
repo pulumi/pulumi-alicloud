@@ -43,6 +43,7 @@ class EcsNetworkInterfaceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterface resource.
+
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
@@ -424,6 +425,7 @@ class _EcsNetworkInterfaceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterface resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[_builtins.int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
@@ -893,6 +895,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface example eni-abcd12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -980,6 +983,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface example eni-abcd12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsNetworkInterfaceArgs args: The arguments to use to populate this resource's properties.

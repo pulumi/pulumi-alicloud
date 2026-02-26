@@ -25,6 +25,7 @@ class RegistryEnterpriseNamespaceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseNamespace resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry Enterprise Edition instance.
         :param pulumi.Input[_builtins.bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] default_visibility: The default type of the repository that is automatically created. Valid values:
@@ -100,6 +101,7 @@ class _RegistryEnterpriseNamespaceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseNamespace resources.
+
         :param pulumi.Input[_builtins.bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] default_visibility: The default type of the repository that is automatically created. Valid values:
                - `PUBLIC`: A public repository.
@@ -227,6 +229,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
@@ -290,6 +293,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegistryEnterpriseNamespaceArgs args: The arguments to use to populate this resource's properties.

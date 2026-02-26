@@ -32,6 +32,7 @@ class ZoneRecordArgs:
                  user_client_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
+
         :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         :param pulumi.Input[_builtins.str] value: The value of the Private Zone Record.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
@@ -218,6 +219,7 @@ class _ZoneRecordState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneRecord resources.
+
         :param pulumi.Input[_builtins.str] lang: User language.
         :param pulumi.Input[_builtins.int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         :param pulumi.Input[_builtins.str] record_id: The Private Zone Record ID.
@@ -455,6 +457,7 @@ class ZoneRecord(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lang: User language.
@@ -507,6 +510,7 @@ class ZoneRecord(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.

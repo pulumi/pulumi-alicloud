@@ -25,6 +25,7 @@ class MailAddressArgs:
                  reply_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MailAddress resource.
+
         :param pulumi.Input[_builtins.str] account_name: The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
         :param pulumi.Input[_builtins.str] sendtype: Account type. Valid values: `batch`, `trigger`.
         :param pulumi.Input[_builtins.str] password: Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
@@ -96,6 +97,7 @@ class _MailAddressState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MailAddress resources.
+
         :param pulumi.Input[_builtins.str] account_name: The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
         :param pulumi.Input[_builtins.str] password: Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
         :param pulumi.Input[_builtins.str] reply_address: Return address.
@@ -233,6 +235,7 @@ class MailAddress(pulumi.CustomResource):
         $ pulumi import alicloud:directmail/mailAddress:MailAddress example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
@@ -293,6 +296,7 @@ class MailAddress(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:directmail/mailAddress:MailAddress example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MailAddressArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class HostShareKeyArgs:
                  pass_phrase: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostShareKey resource.
+
         :param pulumi.Input[_builtins.str] host_share_key_name: The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastion instance.
         :param pulumi.Input[_builtins.str] private_key: The private key. The value is a Base64-encoded string.
@@ -96,6 +97,7 @@ class _HostShareKeyState:
                  private_key_finger_print: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostShareKey resources.
+
         :param pulumi.Input[_builtins.str] host_share_key_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] host_share_key_name: The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Bastion instance.
@@ -270,6 +272,7 @@ class HostShareKey(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] host_share_key_name: The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
@@ -352,6 +355,7 @@ class HostShareKey(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/hostShareKey:HostShareKey example <instance_id>:<host_share_key_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostShareKeyArgs args: The arguments to use to populate this resource's properties.

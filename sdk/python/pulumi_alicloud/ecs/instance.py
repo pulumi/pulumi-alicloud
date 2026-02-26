@@ -104,6 +104,7 @@ class InstanceArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -1546,6 +1547,7 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
                The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -3238,6 +3240,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
@@ -3466,6 +3469,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/instance:Instance example i-abc12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

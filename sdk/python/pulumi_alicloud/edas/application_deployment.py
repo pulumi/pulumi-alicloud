@@ -25,6 +25,7 @@ class ApplicationDeploymentArgs:
                  package_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationDeployment resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[_builtins.str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         :param pulumi.Input[_builtins.str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
@@ -95,6 +96,7 @@ class _ApplicationDeploymentState:
                  war_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationDeployment resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[_builtins.str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         :param pulumi.Input[_builtins.str] last_package_version: Last package version deployed.
@@ -248,6 +250,7 @@ class ApplicationDeployment(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
@@ -324,6 +327,7 @@ class ApplicationDeployment(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationDeploymentArgs args: The arguments to use to populate this resource's properties.

@@ -42,6 +42,7 @@ class InstanceArgs:
                  tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value: 
                - Subscription: Pre-paid.
                - PayAsYouGo: Post-paid, and for serverless Edition.
@@ -405,6 +406,7 @@ class _InstanceState:
                  tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
@@ -864,6 +866,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:amqp/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
@@ -967,6 +970,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:amqp/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

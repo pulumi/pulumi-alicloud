@@ -26,6 +26,7 @@ class ActivationArgs:
                  time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Activation resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.int] instance_count: The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
         :param pulumi.Input[_builtins.str] instance_name: The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
@@ -118,6 +119,7 @@ class _ActivationState:
                  time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Activation resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.int] instance_count: The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
         :param pulumi.Input[_builtins.str] instance_name: The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
@@ -245,6 +247,7 @@ class Activation(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/activation:Activation example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
@@ -293,6 +296,7 @@ class Activation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/activation:Activation example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ActivationArgs args: The arguments to use to populate this resource's properties.

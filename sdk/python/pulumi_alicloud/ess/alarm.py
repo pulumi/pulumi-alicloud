@@ -40,6 +40,7 @@ class AlarmArgs:
                  threshold: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarm resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
         :param pulumi.Input[_builtins.str] scaling_group_id: The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
         :param pulumi.Input[_builtins.int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
@@ -319,6 +320,7 @@ class _AlarmState:
                  threshold: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
         :param pulumi.Input[_builtins.int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[_builtins.str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
@@ -725,6 +727,7 @@ class Alarm(pulumi.CustomResource):
         $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
@@ -853,6 +856,7 @@ class Alarm(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlarmArgs args: The arguments to use to populate this resource's properties.

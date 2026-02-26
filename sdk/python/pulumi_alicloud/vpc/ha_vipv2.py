@@ -28,6 +28,7 @@ class HaVipv2Args:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HaVipv2 resource.
+
         :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -163,6 +164,7 @@ class _HaVipv2State:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HaVipv2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_eip_addresses: EIP bound to HaVip
         :param pulumi.Input[_builtins.str] associated_instance_type: The type of the instance that is bound to the HaVip. Value:
                - `EcsInstance`: ECS instance.
@@ -473,6 +475,7 @@ class HaVipv2(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
@@ -546,6 +549,7 @@ class HaVipv2(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HaVipv2Args args: The arguments to use to populate this resource's properties.

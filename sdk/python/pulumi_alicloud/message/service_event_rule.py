@@ -28,6 +28,7 @@ class ServiceEventRuleArgs:
                  match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]] = None):
         """
         The set of arguments for constructing a ServiceEventRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] event_types: Event Type List
         :param pulumi.Input[_builtins.str] rule_name: The event notification rule name.
         :param pulumi.Input[_builtins.str] delivery_mode: DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
@@ -116,6 +117,7 @@ class _ServiceEventRuleState:
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEventRule resources.
+
         :param pulumi.Input[_builtins.str] delivery_mode: DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
                - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
         :param pulumi.Input['ServiceEventRuleEndpointArgs'] endpoint: Message Receiving Terminal Endpoint Object. See `endpoint` below.
@@ -283,6 +285,7 @@ class ServiceEventRule(pulumi.CustomResource):
         $ pulumi import alicloud:message/serviceEventRule:ServiceEventRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delivery_mode: DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
@@ -372,6 +375,7 @@ class ServiceEventRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:message/serviceEventRule:ServiceEventRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceEventRuleArgs args: The arguments to use to populate this resource's properties.

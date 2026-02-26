@@ -30,6 +30,7 @@ class SecretParameterArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretParameter resource.
+
         :param pulumi.Input[_builtins.str] secret_parameter_name: The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
         :param pulumi.Input[_builtins.str] value: The value of the encryption parameter. The value must be `1` to `4096` characters in length.
         :param pulumi.Input[_builtins.str] constraints: The constraints of the encryption parameter. By default, this parameter is null. Valid values:
@@ -189,6 +190,7 @@ class _SecretParameterState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretParameter resources.
+
         :param pulumi.Input[_builtins.str] constraints: The constraints of the encryption parameter. By default, this parameter is null. Valid values:
                * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
                * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
@@ -409,6 +411,7 @@ class SecretParameter(pulumi.CustomResource):
         $ pulumi import alicloud:oos/secretParameter:SecretParameter example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] constraints: The constraints of the encryption parameter. By default, this parameter is null. Valid values:
@@ -473,6 +476,7 @@ class SecretParameter(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oos/secretParameter:SecretParameter example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretParameterArgs args: The arguments to use to populate this resource's properties.

@@ -22,6 +22,7 @@ class TemplateServiceArgs:
                  service_status: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a TemplateService resource.
+
         :param pulumi.Input[_builtins.int] service_status: Status of the quota template. Valid values:
                - `-1`: disabled.
         """
@@ -47,6 +48,7 @@ class _TemplateServiceState:
                  service_status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering TemplateService resources.
+
         :param pulumi.Input[_builtins.int] service_status: Status of the quota template. Valid values:
                - `-1`: disabled.
         """
@@ -113,6 +115,7 @@ class TemplateService(pulumi.CustomResource):
         $ terraform import alicloud_quotas_template_service.example 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] service_status: Status of the quota template. Valid values:
@@ -161,6 +164,7 @@ class TemplateService(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_quotas_template_service.example 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TemplateServiceArgs args: The arguments to use to populate this resource's properties.

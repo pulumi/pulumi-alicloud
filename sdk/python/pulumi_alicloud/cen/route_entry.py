@@ -24,6 +24,7 @@ class RouteEntryArgs:
                  route_table_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RouteEntry resource.
+
         :param pulumi.Input[_builtins.str] cidr_block: The destination CIDR block of the route entry to publish.
                
                ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
@@ -85,6 +86,7 @@ class _RouteEntryState:
                  route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
+
         :param pulumi.Input[_builtins.str] cidr_block: The destination CIDR block of the route entry to publish.
                
                ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
@@ -221,6 +223,7 @@ class RouteEntry(pulumi.CustomResource):
         $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The destination CIDR block of the route entry to publish.
@@ -306,6 +309,7 @@ class RouteEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/routeEntry:RouteEntry example cen-abc123456:vtb-abc123:192.168.0.0/24
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteEntryArgs args: The arguments to use to populate this resource's properties.

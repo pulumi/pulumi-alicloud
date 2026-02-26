@@ -22,6 +22,7 @@ class BucketDataRedundancyTransitionArgs:
                  bucket: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a BucketDataRedundancyTransition resource.
+
         :param pulumi.Input[_builtins.str] bucket: Storage space name.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -48,6 +49,7 @@ class _BucketDataRedundancyTransitionState:
                  task_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketDataRedundancyTransition resources.
+
         :param pulumi.Input[_builtins.str] bucket: Storage space name.
         :param pulumi.Input[_builtins.str] create_time: Stores the creation time of the redundant transformation task.
         :param pulumi.Input[_builtins.str] status: Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
@@ -158,6 +160,7 @@ class BucketDataRedundancyTransition(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition example <bucket>:<task_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: Storage space name.
@@ -206,6 +209,7 @@ class BucketDataRedundancyTransition(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition example <bucket>:<task_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketDataRedundancyTransitionArgs args: The arguments to use to populate this resource's properties.

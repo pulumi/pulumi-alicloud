@@ -28,6 +28,7 @@ class ServerGroupServerAttachmentArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServerGroupServerAttachment resource.
+
         :param pulumi.Input[_builtins.str] server_group_id: The ID of the server group.
         :param pulumi.Input[_builtins.str] server_id: The ID of the server.
                
@@ -165,6 +166,7 @@ class _ServerGroupServerAttachmentState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroupServerAttachment resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the servers.
                The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         :param pulumi.Input[_builtins.int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
@@ -393,6 +395,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>_<server_id>_<server_ip>_<server_type>_<port>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the servers.
@@ -475,6 +478,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>_<server_id>_<server_ip>_<server_type>_<port>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupServerAttachmentArgs args: The arguments to use to populate this resource's properties.

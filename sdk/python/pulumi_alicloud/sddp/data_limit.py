@@ -31,6 +31,7 @@ class DataLimitArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataLimit resource.
+
         :param pulumi.Input[_builtins.str] resource_type: The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         :param pulumi.Input[_builtins.int] audit_status: Whether to enable the log auditing feature. Valid values: `0`, `1`.
         :param pulumi.Input[_builtins.str] engine_type: The type of the database. Valid values: `MySQL`, `SQLServer`.
@@ -198,6 +199,7 @@ class _DataLimitState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataLimit resources.
+
         :param pulumi.Input[_builtins.int] audit_status: Whether to enable the log auditing feature. Valid values: `0`, `1`.
         :param pulumi.Input[_builtins.str] engine_type: The type of the database. Valid values: `MySQL`, `SQLServer`.
         :param pulumi.Input[_builtins.str] lang: The lang.
@@ -459,6 +461,7 @@ class DataLimit(pulumi.CustomResource):
         $ pulumi import alicloud:sddp/dataLimit:DataLimit example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] audit_status: Whether to enable the log auditing feature. Valid values: `0`, `1`.
@@ -568,6 +571,7 @@ class DataLimit(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sddp/dataLimit:DataLimit example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataLimitArgs args: The arguments to use to populate this resource's properties.

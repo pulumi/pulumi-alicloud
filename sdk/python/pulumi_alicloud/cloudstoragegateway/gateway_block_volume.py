@@ -36,6 +36,7 @@ class GatewayBlockVolumeArgs:
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a GatewayBlockVolume resource.
+
         :param pulumi.Input[_builtins.str] gateway_block_volume_name: The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
         :param pulumi.Input[_builtins.str] gateway_id: The Gateway ID.
         :param pulumi.Input[_builtins.str] oss_bucket_name: The name of the OSS Bucket.
@@ -281,6 +282,7 @@ class _GatewayBlockVolumeState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayBlockVolume resources.
+
         :param pulumi.Input[_builtins.str] cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         :param pulumi.Input[_builtins.bool] chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         :param pulumi.Input[_builtins.str] chap_in_password: The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
@@ -644,6 +646,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cache_mode: The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
@@ -750,6 +753,7 @@ class GatewayBlockVolume(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume example <gateway_id>:<index_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayBlockVolumeArgs args: The arguments to use to populate this resource's properties.

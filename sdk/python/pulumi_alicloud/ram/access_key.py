@@ -25,6 +25,7 @@ class AccessKeyArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessKey resource.
+
         :param pulumi.Input[_builtins.str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         :param pulumi.Input[_builtins.str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         :param pulumi.Input[_builtins.str] status: The status of the AccessKey. Value:
@@ -105,6 +106,7 @@ class _AccessKeyState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessKey resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.246.0) The create time of the AccessKey.
         :param pulumi.Input[_builtins.str] encrypted_secret: (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
         :param pulumi.Input[_builtins.str] key_fingerprint: (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
@@ -337,6 +339,7 @@ class AccessKey(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
@@ -439,6 +442,7 @@ class AccessKey(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param AccessKeyArgs args: The arguments to use to populate this resource's properties.

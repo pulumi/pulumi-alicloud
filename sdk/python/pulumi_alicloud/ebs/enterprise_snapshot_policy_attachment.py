@@ -23,6 +23,7 @@ class EnterpriseSnapshotPolicyAttachmentArgs:
                  disk_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseSnapshotPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy_id: the enterprise snapshot policy id.
         :param pulumi.Input[_builtins.str] disk_id: Cloud Disk ID.
         """
@@ -62,6 +63,7 @@ class _EnterpriseSnapshotPolicyAttachmentState:
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseSnapshotPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] disk_id: Cloud Disk ID.
         :param pulumi.Input[_builtins.str] policy_id: the enterprise snapshot policy id.
         """
@@ -157,6 +159,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] disk_id: Cloud Disk ID.
@@ -220,6 +223,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment example <policy_id>:<disk_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnterpriseSnapshotPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

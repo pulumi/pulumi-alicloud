@@ -24,6 +24,7 @@ class SwitchDasProArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SwitchDasPro resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the database instance.
         :param pulumi.Input[_builtins.int] sql_retention: The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
         :param pulumi.Input[_builtins.str] user_id: The ID of the Alibaba Cloud account that is used to create the database instance.
@@ -80,6 +81,7 @@ class _SwitchDasProState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SwitchDasPro resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the database instance.
         :param pulumi.Input[_builtins.int] sql_retention: The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
         :param pulumi.Input[_builtins.bool] status: Whether the database instance has DAS professional.
@@ -216,6 +218,7 @@ class SwitchDasPro(pulumi.CustomResource):
         $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the database instance.
@@ -290,6 +293,7 @@ class SwitchDasPro(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:das/switchDasPro:SwitchDasPro example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SwitchDasProArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class HAVipArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HAVip resource.
+
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         :param pulumi.Input[_builtins.str] description: The description of the HaVip instance.
         :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HAVIP.
@@ -159,6 +160,7 @@ class _HAVipState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HAVip resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_eip_addresses: The elastic IP address (EIP) associated with the HAVIP.
         :param pulumi.Input[_builtins.str] associated_instance_type: The type of the instance with which the HAVIP is associated. Valid values:
                - `EcsInstance`: an ECS instance.
@@ -454,6 +456,7 @@ class HAVip(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the HaVip instance.
@@ -514,6 +517,7 @@ class HAVip(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HAVipArgs args: The arguments to use to populate this resource's properties.

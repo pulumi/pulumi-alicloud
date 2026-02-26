@@ -24,6 +24,7 @@ class AlertResourceArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlertResource resource.
+
         :param pulumi.Input[_builtins.str] type: The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
         :param pulumi.Input[_builtins.str] lang: The lang of alert center resource when type is user.
         :param pulumi.Input[_builtins.str] project: The project of alert resource when type is project.
@@ -79,6 +80,7 @@ class _AlertResourceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertResource resources.
+
         :param pulumi.Input[_builtins.str] lang: The lang of alert center resource when type is user.
         :param pulumi.Input[_builtins.str] project: The project of alert resource when type is project.
         :param pulumi.Input[_builtins.str] type: The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
@@ -165,6 +167,7 @@ class AlertResource(pulumi.CustomResource):
         $ pulumi import alicloud:log/alertResource:AlertResource example alert_resource:project:tf-project
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lang: The lang of alert center resource when type is user.
@@ -204,6 +207,7 @@ class AlertResource(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/alertResource:AlertResource example alert_resource:project:tf-project
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertResourceArgs args: The arguments to use to populate this resource's properties.

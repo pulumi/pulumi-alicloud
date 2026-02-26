@@ -35,6 +35,7 @@ class BasicAcceleratorArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BasicAccelerator resource.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
@@ -272,6 +273,7 @@ class _BasicAcceleratorState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BasicAccelerator resources.
+
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
@@ -560,6 +562,7 @@ class BasicAccelerator(pulumi.CustomResource):
         $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
@@ -619,6 +622,7 @@ class BasicAccelerator(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/basicAccelerator:BasicAccelerator example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BasicAcceleratorArgs args: The arguments to use to populate this resource's properties.

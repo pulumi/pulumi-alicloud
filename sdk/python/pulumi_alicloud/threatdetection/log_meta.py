@@ -23,6 +23,7 @@ class LogMetaArgs:
                  status: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LogMeta resource.
+
         :param pulumi.Input[_builtins.str] log_meta_name: The name of the exclusive Logstore where logs are stored. Value:
                - aegis-log-client: client event log
                - aegis-log-crack: Brute Force log
@@ -101,6 +102,7 @@ class _LogMetaState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogMeta resources.
+
         :param pulumi.Input[_builtins.str] log_meta_name: The name of the exclusive Logstore where logs are stored. Value:
                - aegis-log-client: client event log
                - aegis-log-crack: Brute Force log
@@ -223,6 +225,7 @@ class LogMeta(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/logMeta:LogMeta example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] log_meta_name: The name of the exclusive Logstore where logs are stored. Value:
@@ -293,6 +296,7 @@ class LogMeta(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/logMeta:LogMeta example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LogMetaArgs args: The arguments to use to populate this resource's properties.

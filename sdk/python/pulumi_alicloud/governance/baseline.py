@@ -26,6 +26,7 @@ class BaselineArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Baseline resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]] baseline_items: List of baseline items.
                
                You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
@@ -86,6 +87,7 @@ class _BaselineState:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Baseline resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]] baseline_items: List of baseline items.
                
                You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baseline_items` below.
@@ -219,6 +221,7 @@ class Baseline(pulumi.CustomResource):
         $ pulumi import alicloud:governance/baseline:Baseline example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]] baseline_items: List of baseline items.
@@ -303,6 +306,7 @@ class Baseline(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:governance/baseline:Baseline example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BaselineArgs args: The arguments to use to populate this resource's properties.

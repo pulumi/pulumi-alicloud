@@ -33,6 +33,7 @@ class EndpointArgs:
                  ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
@@ -236,6 +237,7 @@ class _EndpointState:
                  ssl_expire_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
+
         :param pulumi.Input[_builtins.str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
         :param pulumi.Input[_builtins.str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
@@ -549,6 +551,7 @@ class Endpoint(pulumi.CustomResource):
         $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -616,6 +619,7 @@ class Endpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:polardb/endpoint:Endpoint example pc-abc123456:pe-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointArgs args: The arguments to use to populate this resource's properties.

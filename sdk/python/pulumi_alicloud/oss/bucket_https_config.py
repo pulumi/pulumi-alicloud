@@ -27,6 +27,7 @@ class BucketHttpsConfigArgs:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BucketHttpsConfig resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
         :param pulumi.Input['BucketHttpsConfigCipherSuitArgs'] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
@@ -97,6 +98,7 @@ class _BucketHttpsConfigState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BucketHttpsConfig resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input['BucketHttpsConfigCipherSuitArgs'] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
@@ -219,6 +221,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketHttpsConfig:BucketHttpsConfig example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -279,6 +282,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketHttpsConfig:BucketHttpsConfig example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketHttpsConfigArgs args: The arguments to use to populate this resource's properties.

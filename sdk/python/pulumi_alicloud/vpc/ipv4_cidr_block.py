@@ -25,6 +25,7 @@ class Ipv4CidrBlockArgs:
                  secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Ipv4CidrBlock resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         :param pulumi.Input[_builtins.str] secondary_cidr_block: Additional network segment information.
@@ -101,6 +102,7 @@ class _Ipv4CidrBlockState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv4CidrBlock resources.
+
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region where the VPC resides.
         :param pulumi.Input[_builtins.str] secondary_cidr_block: Additional network segment information.
@@ -231,6 +233,7 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example <vpc_id>:<secondary_cidr_block>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
@@ -282,6 +285,7 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock example <vpc_id>:<secondary_cidr_block>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ipv4CidrBlockArgs args: The arguments to use to populate this resource's properties.

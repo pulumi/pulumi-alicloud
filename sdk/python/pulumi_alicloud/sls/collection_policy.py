@@ -32,6 +32,7 @@ class CollectionPolicyArgs:
                  resource_directory: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']] = None):
         """
         The set of arguments for constructing a CollectionPolicy resource.
+
         :param pulumi.Input[_builtins.str] data_code: Log type code.
         :param pulumi.Input[_builtins.bool] enabled: Whether enabled.
         :param pulumi.Input['CollectionPolicyPolicyConfigArgs'] policy_config: Collection rule configuration. See `policy_config` below.
@@ -185,6 +186,7 @@ class _CollectionPolicyState:
                  resource_directory: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']] = None):
         """
         Input properties used for looking up and filtering CollectionPolicy resources.
+
         :param pulumi.Input['CollectionPolicyCentralizeConfigArgs'] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
         :param pulumi.Input[_builtins.bool] centralize_enabled: Specifies whether to enable centralized forwarding. Default value: false.
         :param pulumi.Input[_builtins.str] data_code: Log type code.
@@ -502,6 +504,7 @@ class CollectionPolicy(pulumi.CustomResource):
         $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <policy_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']] centralize_config: Centralized forwarding configuration. See `centralize_config` below.
@@ -679,6 +682,7 @@ class CollectionPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/collectionPolicy:CollectionPolicy example <policy_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CollectionPolicyArgs args: The arguments to use to populate this resource's properties.

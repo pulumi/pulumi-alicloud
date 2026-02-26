@@ -40,6 +40,7 @@ class HttpsApplicationConfigurationArgs:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpsApplicationConfiguration resource.
+
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] alt_svc: Function switch, default off. Value range:
         :param pulumi.Input[_builtins.str] alt_svc_clear: Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
@@ -356,6 +357,7 @@ class _HttpsApplicationConfigurationState:
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpsApplicationConfiguration resources.
+
         :param pulumi.Input[_builtins.str] alt_svc: Function switch, default off. Value range:
         :param pulumi.Input[_builtins.str] alt_svc_clear: Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] alt_svc_ma: The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
@@ -738,6 +740,7 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         $ pulumi import alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration example <site_id>:<config_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alt_svc: Function switch, default off. Value range:
@@ -816,6 +819,7 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration example <site_id>:<config_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HttpsApplicationConfigurationArgs args: The arguments to use to populate this resource's properties.

@@ -22,6 +22,7 @@ class ReplicaPairDrillArgs:
                  pair_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ReplicaPairDrill resource.
+
         :param pulumi.Input[_builtins.str] pair_id: Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
         """
         pulumi.set(__self__, "pair_id", pair_id)
@@ -47,6 +48,7 @@ class _ReplicaPairDrillState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicaPairDrill resources.
+
         :param pulumi.Input[_builtins.str] pair_id: Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
         :param pulumi.Input[_builtins.str] replica_pair_drill_id: The first ID of the resource.
         :param pulumi.Input[_builtins.str] status: Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
@@ -135,6 +137,7 @@ class ReplicaPairDrill(pulumi.CustomResource):
         $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] pair_id: Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
@@ -176,6 +179,7 @@ class ReplicaPairDrill(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ebs/replicaPairDrill:ReplicaPairDrill example <pair_id>:<replica_pair_drill_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReplicaPairDrillArgs args: The arguments to use to populate this resource's properties.

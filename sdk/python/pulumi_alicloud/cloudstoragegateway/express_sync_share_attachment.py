@@ -24,6 +24,7 @@ class ExpressSyncShareAttachmentArgs:
                  share_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ExpressSyncShareAttachment resource.
+
         :param pulumi.Input[_builtins.str] express_sync_id: The ID of the ExpressSync.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway.
         :param pulumi.Input[_builtins.str] share_name: The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
@@ -77,6 +78,7 @@ class _ExpressSyncShareAttachmentState:
                  share_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExpressSyncShareAttachment resources.
+
         :param pulumi.Input[_builtins.str] express_sync_id: The ID of the ExpressSync.
         :param pulumi.Input[_builtins.str] gateway_id: The ID of the Gateway.
         :param pulumi.Input[_builtins.str] share_name: The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
@@ -232,6 +234,7 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] express_sync_id: The ID of the ExpressSync.
@@ -340,6 +343,7 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment example <express_sync_id>:<gateway_id>:<share_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExpressSyncShareAttachmentArgs args: The arguments to use to populate this resource's properties.

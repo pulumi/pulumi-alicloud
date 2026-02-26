@@ -43,6 +43,7 @@ class NatGatewayArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatGateway resource.
+
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input['NatGatewayAccessModeArgs'] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
@@ -391,6 +392,7 @@ class _NatGatewayState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatGateway resources.
+
         :param pulumi.Input['NatGatewayAccessModeArgs'] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
@@ -868,6 +870,7 @@ class NatGateway(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
@@ -985,6 +988,7 @@ class NatGateway(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NatGatewayArgs args: The arguments to use to populate this resource's properties.

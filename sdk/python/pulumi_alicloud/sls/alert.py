@@ -30,6 +30,7 @@ class AlertArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alert resource.
+
         :param pulumi.Input[_builtins.str] alert_name: Alert rule ID, unique under Project.
         :param pulumi.Input['AlertConfigurationArgs'] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
         :param pulumi.Input[_builtins.str] display_name: Display name of the alarm rule.
@@ -146,6 +147,7 @@ class _AlertState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
+
         :param pulumi.Input[_builtins.str] alert_name: Alert rule ID, unique under Project.
         :param pulumi.Input['AlertConfigurationArgs'] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
         :param pulumi.Input[_builtins.int] create_time: Alarm rule creation time.
@@ -451,6 +453,7 @@ class Alert(pulumi.CustomResource):
         $ pulumi import alicloud:sls/alert:Alert example <project_name>:<alert_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alert_name: Alert rule ID, unique under Project.
@@ -634,6 +637,7 @@ class Alert(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sls/alert:Alert example <project_name>:<alert_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertArgs args: The arguments to use to populate this resource's properties.

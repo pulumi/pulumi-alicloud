@@ -30,6 +30,7 @@ class DedicatedHostGroupArgs:
                  open_permission: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DedicatedHostGroup resource.
+
         :param pulumi.Input[_builtins.str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         :param pulumi.Input[_builtins.str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         :param pulumi.Input[_builtins.str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -182,6 +183,7 @@ class _DedicatedHostGroupState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHostGroup resources.
+
         :param pulumi.Input[_builtins.str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         :param pulumi.Input[_builtins.int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[_builtins.str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -383,6 +385,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         $ pulumi import alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -446,6 +449,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DedicatedHostGroupArgs args: The arguments to use to populate this resource's properties.

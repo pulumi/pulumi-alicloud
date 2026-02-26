@@ -30,6 +30,7 @@ class ReportTemplateArgs:
                  subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReportTemplate resource.
+
         :param pulumi.Input[_builtins.str] report_template_name: Report Template Name
         :param pulumi.Input[_builtins.str] report_file_formats: Report Format
         :param pulumi.Input[_builtins.str] report_granularity: Report Aggregation Granularity
@@ -177,6 +178,7 @@ class _ReportTemplateState:
                  subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReportTemplate resources.
+
         :param pulumi.Input[_builtins.str] report_file_formats: Report Format
         :param pulumi.Input[_builtins.str] report_granularity: Report Aggregation Granularity
         :param pulumi.Input[_builtins.str] report_language: This property does not have a description in the spec, please add it before generating code.
@@ -377,6 +379,7 @@ class ReportTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:config/reportTemplate:ReportTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] report_file_formats: Report Format
@@ -451,6 +454,7 @@ class ReportTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:config/reportTemplate:ReportTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReportTemplateArgs args: The arguments to use to populate this resource's properties.

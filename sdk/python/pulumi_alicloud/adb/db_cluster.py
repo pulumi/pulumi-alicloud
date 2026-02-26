@@ -51,6 +51,7 @@ class DBClusterArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DBCluster resource.
+
         :param pulumi.Input[_builtins.str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[_builtins.str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
@@ -564,6 +565,7 @@ class _DBClusterState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DBCluster resources.
+
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[_builtins.str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[_builtins.str] connection_string: The connection string of the cluster.
@@ -1169,6 +1171,7 @@ class DBCluster(pulumi.CustomResource):
         $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
@@ -1261,6 +1264,7 @@ class DBCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DBClusterArgs args: The arguments to use to populate this resource's properties.

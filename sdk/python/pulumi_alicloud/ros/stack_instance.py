@@ -31,6 +31,7 @@ class StackInstanceArgs:
                  timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackInstance resource.
+
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[_builtins.str] stack_instance_region_id: The region of the stack instance.
@@ -173,6 +174,7 @@ class _StackInstanceState:
                  timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackInstance resources.
+
         :param pulumi.Input[_builtins.str] operation_description: The operation description.
         :param pulumi.Input[_builtins.str] operation_preferences: The operation preferences. The operation settings. The following fields are supported:
                * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
@@ -403,6 +405,7 @@ class StackInstance(pulumi.CustomResource):
         $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] operation_description: The operation description.
@@ -482,6 +485,7 @@ class StackInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ros/stackInstance:StackInstance example <stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StackInstanceArgs args: The arguments to use to populate this resource's properties.

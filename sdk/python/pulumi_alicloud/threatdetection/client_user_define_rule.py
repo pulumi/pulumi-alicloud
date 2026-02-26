@@ -36,6 +36,7 @@ class ClientUserDefineRuleArgs:
                  registry_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientUserDefineRule resource.
+
         :param pulumi.Input[_builtins.int] action_type: The operation type. Value:
                - **0**: plus White
                - **1**: Plus Black.
@@ -305,6 +306,7 @@ class _ClientUserDefineRuleState:
                  type: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ClientUserDefineRule resources.
+
         :param pulumi.Input[_builtins.int] action_type: The operation type. Value:
                - **0**: plus White
                - **1**: Plus Black.
@@ -636,6 +638,7 @@ class ClientUserDefineRule(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] action_type: The operation type. Value:
@@ -713,6 +716,7 @@ class ClientUserDefineRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientUserDefineRuleArgs args: The arguments to use to populate this resource's properties.

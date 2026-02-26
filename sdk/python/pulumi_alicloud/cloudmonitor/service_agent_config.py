@@ -22,6 +22,7 @@ class ServiceAgentConfigArgs:
                  enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServiceAgentConfig resource.
+
         :param pulumi.Input[_builtins.bool] enable_install_agent_new_ecs: Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
                - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.
                - false: The cloud monitoring plug-in is not automatically installed on the newly purchased ECS host.
@@ -50,6 +51,7 @@ class _ServiceAgentConfigState:
                  enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServiceAgentConfig resources.
+
         :param pulumi.Input[_builtins.bool] enable_install_agent_new_ecs: Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
                - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.
                - false: The cloud monitoring plug-in is not automatically installed on the newly purchased ECS host.
@@ -118,6 +120,7 @@ class ServiceAgentConfig(pulumi.CustomResource):
         $ terraform import alicloud_cloud_monitor_service_agent_config.example <Alibaba Cloud Account ID>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_install_agent_new_ecs: Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
@@ -167,6 +170,7 @@ class ServiceAgentConfig(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_cloud_monitor_service_agent_config.example <Alibaba Cloud Account ID>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceAgentConfigArgs args: The arguments to use to populate this resource's properties.

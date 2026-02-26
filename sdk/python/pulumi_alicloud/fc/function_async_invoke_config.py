@@ -30,6 +30,7 @@ class FunctionAsyncInvokeConfigArgs:
                  stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a FunctionAsyncInvokeConfig resource.
+
         :param pulumi.Input[_builtins.str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[_builtins.str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
         :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See `destination_config` below.
@@ -150,6 +151,7 @@ class _FunctionAsyncInvokeConfigState:
                  stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering FunctionAsyncInvokeConfig resources.
+
         :param pulumi.Input[_builtins.str] created_time: The date this resource was created.
         :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[_builtins.str] function_name: Name of the Function Compute Function.
@@ -413,6 +415,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Configuration block with destination configuration. See `destination_config` below.
@@ -539,6 +542,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FunctionAsyncInvokeConfigArgs args: The arguments to use to populate this resource's properties.

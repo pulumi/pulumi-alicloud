@@ -23,6 +23,7 @@ class AliasArgs:
                  key_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Alias resource.
+
         :param pulumi.Input[_builtins.str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         :param pulumi.Input[_builtins.str] key_id: The id of the key.
                
@@ -73,6 +74,7 @@ class _AliasState:
                  key_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alias resources.
+
         :param pulumi.Input[_builtins.str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         :param pulumi.Input[_builtins.str] key_id: The id of the key.
                
@@ -156,6 +158,7 @@ class Alias(pulumi.CustomResource):
         $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
@@ -201,6 +204,7 @@ class Alias(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:kms/alias:Alias example alias/test_kms_alias
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AliasArgs args: The arguments to use to populate this resource's properties.

@@ -36,6 +36,7 @@ class AppGroupArgs:
                  schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AppGroup resource.
+
         :param pulumi.Input[_builtins.str] app_name: Application Name
         :param pulumi.Input[_builtins.str] group_id: Application ID
         :param pulumi.Input[_builtins.str] namespace: The namespace ID, which is obtained on the namespace page of the console.
@@ -288,6 +289,7 @@ class _AppGroupState:
                  schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AppGroup resources.
+
         :param pulumi.Input[_builtins.str] app_name: Application Name
         :param pulumi.Input[_builtins.int] app_type: Application type.
                - 1, general application.
@@ -607,6 +609,7 @@ class AppGroup(pulumi.CustomResource):
         $ pulumi import alicloud:schedulerx/appGroup:AppGroup example <namespace>:<group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_name: Application Name
@@ -695,6 +698,7 @@ class AppGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:schedulerx/appGroup:AppGroup example <namespace>:<group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppGroupArgs args: The arguments to use to populate this resource's properties.

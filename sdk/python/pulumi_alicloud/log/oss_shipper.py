@@ -42,6 +42,7 @@ class OssShipperArgs:
                  role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssShipper resource.
+
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
@@ -342,6 +343,7 @@ class _OssShipperState:
                  shipper_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssShipper resources.
+
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
         :param pulumi.Input[_builtins.int] buffer_size: Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         :param pulumi.Input[_builtins.str] compress_type: OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
@@ -710,6 +712,7 @@ class OssShipper(pulumi.CustomResource):
         $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] buffer_interval: How often is it delivered every interval.
@@ -801,6 +804,7 @@ class OssShipper(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:log/ossShipper:OssShipper example tf-log-project:tf-log-logstore:tf-log-shipper
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OssShipperArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class TrafficQosAssociationArgs:
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosAssociation resource.
+
         :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated instance.
         :param pulumi.Input[_builtins.str] instance_type: The type of the associated instance. Value: **physical connection** physical connection.
@@ -80,6 +81,7 @@ class _TrafficQosAssociationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficQosAssociation resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated instance.
         :param pulumi.Input[_builtins.str] instance_type: The type of the associated instance. Value: **physical connection** physical connection.
         :param pulumi.Input[_builtins.str] qos_id: The QoS policy ID.
@@ -192,6 +194,7 @@ class TrafficQosAssociation(pulumi.CustomResource):
         $ pulumi import alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation example <qos_id>:<instance_id>:<instance_type>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the associated instance.
@@ -242,6 +245,7 @@ class TrafficQosAssociation(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation example <qos_id>:<instance_id>:<instance_type>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrafficQosAssociationArgs args: The arguments to use to populate this resource's properties.

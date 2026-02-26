@@ -26,6 +26,7 @@ class CustomImageArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomImage resource.
+
         :param pulumi.Input[_builtins.str] custom_image_name: The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] system_snapshot_id: The ID of the system snapshot.
@@ -115,6 +116,7 @@ class _CustomImageState:
                  system_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomImage resources.
+
         :param pulumi.Input[_builtins.str] custom_image_name: The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
         :param pulumi.Input[_builtins.str] description: The description of the Custom Image.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -259,6 +261,7 @@ class CustomImage(pulumi.CustomResource):
         $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_image_name: The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
@@ -324,6 +327,7 @@ class CustomImage(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:simpleapplicationserver/customImage:CustomImage example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomImageArgs args: The arguments to use to populate this resource's properties.

@@ -77,6 +77,7 @@ class RdsUpgradeDbInstanceArgs:
                  zone_id_slave1: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsUpgradeDbInstance resource.
+
         :param pulumi.Input[_builtins.str] collect_stat_mode: The time at which ApsaraDB RDS collects the statistics of the new instance.
                * **Before**: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
                * **After**: ApsaraDB RDS collects the statistics of the new instance after the switchover to accelerate the upgrade. If you access tables for which no statistics are generated, the query plans that you specify may be inaccurately executed. In addition, your database service may be unavailable during peak hours.
@@ -1067,6 +1068,7 @@ class _RdsUpgradeDbInstanceState:
                  zone_id_slave1: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsUpgradeDbInstance resources.
+
         :param pulumi.Input[_builtins.str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[_builtins.str] auto_upgrade_minor_version: How to upgrade the minor version of the instance. Valid values:
                * **Auto**: automatically upgrade the minor version.
@@ -2151,6 +2153,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -2345,6 +2348,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsUpgradeDbInstanceArgs args: The arguments to use to populate this resource's properties.

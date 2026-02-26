@@ -53,6 +53,7 @@ class ContainerGroupArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContainerGroup resource.
+
         :param pulumi.Input[_builtins.str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
@@ -546,6 +547,7 @@ class _ContainerGroupState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[_builtins.bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[_builtins.bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
@@ -1203,6 +1205,7 @@ class ContainerGroup(pulumi.CustomResource):
         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
@@ -1360,6 +1363,7 @@ class ContainerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContainerGroupArgs args: The arguments to use to populate this resource's properties.

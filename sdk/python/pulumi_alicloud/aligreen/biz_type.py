@@ -26,6 +26,7 @@ class BizTypeArgs:
                  industry_info: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BizType resource.
+
         :param pulumi.Input[_builtins.str] biz_type_name: The name of the business scenario defined by the customer. It can contain no more than 32 characters in English, numbers, and underscores.
         :param pulumi.Input[_builtins.str] biz_type_import: The name of the existing business scenario that was imported from when the business scenario was created.
         :param pulumi.Input[_builtins.bool] cite_template: Specifies whether to import the configuration of an industry template. Default value: false. Valid values: true: imports the configuration of an industry template. false: does not import the configuration of an industry template. If the value is true, you must specify the industryInfo parameter.
@@ -113,6 +114,7 @@ class _BizTypeState:
                  industry_info: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BizType resources.
+
         :param pulumi.Input[_builtins.str] biz_type_import: The name of the existing business scenario that was imported from when the business scenario was created.
         :param pulumi.Input[_builtins.str] biz_type_name: The name of the business scenario defined by the customer. It can contain no more than 32 characters in English, numbers, and underscores.
         :param pulumi.Input[_builtins.bool] cite_template: Specifies whether to import the configuration of an industry template. Default value: false. Valid values: true: imports the configuration of an industry template. false: does not import the configuration of an industry template. If the value is true, you must specify the industryInfo parameter.
@@ -240,6 +242,7 @@ class BizType(pulumi.CustomResource):
         $ pulumi import alicloud:aligreen/bizType:BizType example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_type_import: The name of the existing business scenario that was imported from when the business scenario was created.
@@ -290,6 +293,7 @@ class BizType(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:aligreen/bizType:BizType example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BizTypeArgs args: The arguments to use to populate this resource's properties.

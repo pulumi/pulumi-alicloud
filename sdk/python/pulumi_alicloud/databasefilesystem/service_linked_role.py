@@ -22,6 +22,7 @@ class ServiceLinkedRoleArgs:
                  product_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServiceLinkedRole resource.
+
         :param pulumi.Input[_builtins.str] product_name: The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
         """
         pulumi.set(__self__, "product_name", product_name)
@@ -46,6 +47,7 @@ class _ServiceLinkedRoleState:
                  status: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
+
         :param pulumi.Input[_builtins.str] product_name: The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
         :param pulumi.Input[_builtins.bool] status: The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
         """
@@ -113,6 +115,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         $ pulumi import alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] product_name: The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
@@ -148,6 +151,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole example <product_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceLinkedRoleArgs args: The arguments to use to populate this resource's properties.

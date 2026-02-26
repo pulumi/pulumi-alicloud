@@ -27,6 +27,7 @@ class InterRegionTrafficQosQueueArgs:
                  remain_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a InterRegionTrafficQosQueue resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         :param pulumi.Input[_builtins.str] traffic_qos_policy_id: The ID of the traffic scheduling policy.
         :param pulumi.Input[_builtins.str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
@@ -130,6 +131,7 @@ class _InterRegionTrafficQosQueueState:
                  traffic_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterRegionTrafficQosQueue resources.
+
         :param pulumi.Input[_builtins.str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         :param pulumi.Input[_builtins.str] inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
@@ -327,6 +329,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
@@ -417,6 +420,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterRegionTrafficQosQueueArgs args: The arguments to use to populate this resource's properties.

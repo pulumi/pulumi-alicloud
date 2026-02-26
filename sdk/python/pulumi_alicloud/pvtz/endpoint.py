@@ -28,6 +28,7 @@ class EndpointArgs:
                  vpc_region_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Endpoint resource.
+
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
@@ -112,6 +113,7 @@ class _EndpointState:
                  vpc_region_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
+
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]] ip_configs: The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
@@ -282,6 +284,7 @@ class Endpoint(pulumi.CustomResource):
         $ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the resource.
@@ -360,6 +363,7 @@ class Endpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pvtz/endpoint:Endpoint example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointArgs args: The arguments to use to populate this resource's properties.

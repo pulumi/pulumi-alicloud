@@ -24,6 +24,7 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LoadBalancerCommonBandwidthPackageAttachment resource.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the bound shared bandwidth package.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the applied server load balancer instance.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
@@ -79,6 +80,7 @@ class _LoadBalancerCommonBandwidthPackageAttachmentState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerCommonBandwidthPackageAttachment resources.
+
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the bound shared bandwidth package.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the applied server load balancer instance.
@@ -230,6 +232,7 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the bound shared bandwidth package.
@@ -319,6 +322,7 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerCommonBandwidthPackageAttachmentArgs args: The arguments to use to populate this resource's properties.

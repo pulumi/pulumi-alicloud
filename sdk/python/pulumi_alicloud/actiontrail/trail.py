@@ -38,6 +38,7 @@ class TrailArgs:
                  trail_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Trail resource.
+
         :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
         :param pulumi.Input[_builtins.str] event_rw: The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         :param pulumi.Input[_builtins.str] event_selectors: The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
@@ -332,6 +333,7 @@ class _TrailState:
                  trail_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Trail resources.
+
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.256.0) The time when the trail was created.
         :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
         :param pulumi.Input[_builtins.str] event_rw: The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
@@ -703,6 +705,7 @@ class Trail(pulumi.CustomResource):
         $ pulumi import alicloud:actiontrail/trail:Trail example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
@@ -775,6 +778,7 @@ class Trail(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:actiontrail/trail:Trail example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrailArgs args: The arguments to use to populate this resource's properties.

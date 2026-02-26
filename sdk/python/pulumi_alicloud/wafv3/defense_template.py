@@ -31,6 +31,7 @@ class DefenseTemplateArgs:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefenseTemplate resource.
+
         :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
         :param pulumi.Input[_builtins.str] defense_template_name: The name of the protection rule template.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
@@ -202,6 +203,7 @@ class _DefenseTemplateState:
                  template_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefenseTemplate resources.
+
         :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
         :param pulumi.Input[_builtins.int] defense_template_id: Template ID
         :param pulumi.Input[_builtins.str] defense_template_name: The name of the protection rule template.
@@ -436,6 +438,7 @@ class DefenseTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:wafv3/defenseTemplate:DefenseTemplate example <instance_id>:<defense_template_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
@@ -499,6 +502,7 @@ class DefenseTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:wafv3/defenseTemplate:DefenseTemplate example <instance_id>:<defense_template_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DefenseTemplateArgs args: The arguments to use to populate this resource's properties.

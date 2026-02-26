@@ -26,6 +26,7 @@ class NamespaceArgs:
                  namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.str] namespace_name: The Name of Namespace.
         :param pulumi.Input[_builtins.bool] enable_micro_registration: Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.str] namespace_description: The Description of Namespace.
@@ -113,6 +114,7 @@ class _NamespaceState:
                  namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[_builtins.bool] enable_micro_registration: Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.str] namespace_description: The Description of Namespace.
         :param pulumi.Input[_builtins.str] namespace_id: The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
@@ -244,6 +246,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import alicloud:sae/namespace:Namespace example <namespace_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_micro_registration: Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
@@ -298,6 +301,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:sae/namespace:Namespace example <namespace_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

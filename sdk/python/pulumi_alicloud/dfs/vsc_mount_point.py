@@ -26,6 +26,7 @@ class VscMountPointArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VscMountPoint resource.
+
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the HDFS file system resource associated with the VSC mount point.
         :param pulumi.Input[_builtins.str] alias_prefix: Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
         :param pulumi.Input[_builtins.str] description: The description of the Mount point.  The length is 0 to 100 characters.
@@ -83,6 +84,7 @@ class _VscMountPointState:
                  mount_point_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VscMountPoint resources.
+
         :param pulumi.Input[_builtins.str] alias_prefix: Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
         :param pulumi.Input[_builtins.str] description: The description of the Mount point.  The length is 0 to 100 characters.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the HDFS file system resource associated with the VSC mount point.
@@ -218,6 +220,7 @@ class VscMountPoint(pulumi.CustomResource):
         $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias_prefix: Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
@@ -276,6 +279,7 @@ class VscMountPoint(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VscMountPointArgs args: The arguments to use to populate this resource's properties.

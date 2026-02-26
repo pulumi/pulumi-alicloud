@@ -40,6 +40,7 @@ class DesktopArgs:
                  user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Desktop resource.
+
         :param pulumi.Input[_builtins.str] bundle_id: The bundle id of the Desktop.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of the Simple Office Site.
         :param pulumi.Input[_builtins.str] policy_group_id: The policy group id of the Desktop.
@@ -349,6 +350,7 @@ class _DesktopState:
                  user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Desktop resources.
+
         :param pulumi.Input[_builtins.int] amount: The amount of the Desktop.
         :param pulumi.Input[_builtins.bool] auto_pay: The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] auto_renew: The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
@@ -728,6 +730,7 @@ class Desktop(pulumi.CustomResource):
         $ pulumi import alicloud:eds/desktop:Desktop example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The amount of the Desktop.
@@ -820,6 +823,7 @@ class Desktop(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/desktop:Desktop example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DesktopArgs args: The arguments to use to populate this resource's properties.

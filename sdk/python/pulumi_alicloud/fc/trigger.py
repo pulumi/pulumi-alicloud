@@ -30,6 +30,7 @@ class TriggerArgs:
                  source_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Trigger resource.
+
         :param pulumi.Input[_builtins.str] function: The Function Compute function name.
         :param pulumi.Input[_builtins.str] service: The Function Compute service name.
         :param pulumi.Input[_builtins.str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
@@ -189,6 +190,7 @@ class _TriggerState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
+
         :param pulumi.Input[_builtins.str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         :param pulumi.Input[_builtins.str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         :param pulumi.Input[_builtins.str] function: The Function Compute function name.
@@ -892,6 +894,7 @@ class Trigger(pulumi.CustomResource):
         $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
@@ -1424,6 +1427,7 @@ class Trigger(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:fc/trigger:Trigger foo my-fc-service:hello-world:hello-trigger
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TriggerArgs args: The arguments to use to populate this resource's properties.

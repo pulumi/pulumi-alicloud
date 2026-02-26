@@ -29,6 +29,7 @@ class LakeAccountArgs:
                  account_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LakeAccount resource.
+
         :param pulumi.Input[_builtins.str] account_name: The name of the account.
         :param pulumi.Input[_builtins.str] account_password: AccountPassword.
         :param pulumi.Input[_builtins.str] db_cluster_id: The DBCluster ID.
@@ -131,6 +132,7 @@ class _LakeAccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LakeAccount resources.
+
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
         :param pulumi.Input[_builtins.str] account_name: The name of the account.
         :param pulumi.Input[_builtins.str] account_password: AccountPassword.
@@ -338,6 +340,7 @@ class LakeAccount(pulumi.CustomResource):
         $ pulumi import alicloud:adb/lakeAccount:LakeAccount example <db_cluster_id>:<account_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_description: The description of the account.
@@ -438,6 +441,7 @@ class LakeAccount(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:adb/lakeAccount:LakeAccount example <db_cluster_id>:<account_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LakeAccountArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class DeviceGroupArgs:
                  super_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeviceGroup resource.
+
         :param pulumi.Input[_builtins.str] group_name: The GroupName of the device group.
         :param pulumi.Input[_builtins.str] group_desc: The GroupDesc of the device group.
         :param pulumi.Input[_builtins.str] iot_instance_id: The id of the Iot Instance.
@@ -96,6 +97,7 @@ class _DeviceGroupState:
                  super_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeviceGroup resources.
+
         :param pulumi.Input[_builtins.str] group_desc: The GroupDesc of the device group.
         :param pulumi.Input[_builtins.str] group_name: The GroupName of the device group.
         :param pulumi.Input[_builtins.str] iot_instance_id: The id of the Iot Instance.
@@ -202,6 +204,7 @@ class DeviceGroup(pulumi.CustomResource):
         $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_desc: The GroupDesc of the device group.
@@ -246,6 +249,7 @@ class DeviceGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:iot/deviceGroup:DeviceGroup example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeviceGroupArgs args: The arguments to use to populate this resource's properties.

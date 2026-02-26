@@ -26,6 +26,7 @@ class ReplicaSetRoleArgs:
                  connection_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReplicaSetRole resource.
+
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] network_type: The network type of the connection string. Valid values:
                - `VPC`: private network address.
@@ -117,6 +118,7 @@ class _ReplicaSetRoleState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicaSetRole resources.
+
         :param pulumi.Input[_builtins.str] connection_domain: The connection address of the role.
         :param pulumi.Input[_builtins.int] connection_port: The port of the connection string, will be computed if not specified.`
         :param pulumi.Input[_builtins.str] connection_prefix: The prefix of the connection string, will be computed if not specified.
@@ -305,6 +307,7 @@ class ReplicaSetRole(pulumi.CustomResource):
         $ pulumi import alicloud:mongodb/replicaSetRole:ReplicaSetRole example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] connection_port: The port of the connection string, will be computed if not specified.`
@@ -384,6 +387,7 @@ class ReplicaSetRole(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mongodb/replicaSetRole:ReplicaSetRole example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReplicaSetRoleArgs args: The arguments to use to populate this resource's properties.

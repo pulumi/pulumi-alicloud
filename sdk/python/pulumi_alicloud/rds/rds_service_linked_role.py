@@ -22,6 +22,7 @@ class RdsServiceLinkedRoleArgs:
                  service_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RdsServiceLinkedRole resource.
+
         :param pulumi.Input[_builtins.str] service_name: The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
         """
         pulumi.set(__self__, "service_name", service_name)
@@ -48,6 +49,7 @@ class _RdsServiceLinkedRoleState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsServiceLinkedRole resources.
+
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the role.
         :param pulumi.Input[_builtins.str] role_id: The ID of the role.
         :param pulumi.Input[_builtins.str] role_name: The name of the role.
@@ -147,6 +149,7 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
         $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default <service_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] service_name: The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
@@ -184,6 +187,7 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole default <service_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdsServiceLinkedRoleArgs args: The arguments to use to populate this resource's properties.

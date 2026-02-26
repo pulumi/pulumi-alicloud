@@ -24,6 +24,7 @@ class ImageExportArgs:
                  oss_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageExport resource.
+
         :param pulumi.Input[_builtins.str] image_id: The source image ID.
         :param pulumi.Input[_builtins.str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[_builtins.str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
@@ -78,6 +79,7 @@ class _ImageExportState:
                  oss_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageExport resources.
+
         :param pulumi.Input[_builtins.str] image_id: The source image ID.
         :param pulumi.Input[_builtins.str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[_builtins.str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
@@ -193,6 +195,7 @@ class ImageExport(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_id: The source image ID.
@@ -261,6 +264,7 @@ class ImageExport(pulumi.CustomResource):
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param ImageExportArgs args: The arguments to use to populate this resource's properties.

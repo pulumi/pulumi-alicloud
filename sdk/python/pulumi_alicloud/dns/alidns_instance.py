@@ -28,6 +28,7 @@ class AlidnsInstanceArgs:
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlidnsInstance resource.
+
         :param pulumi.Input[_builtins.str] dns_security: Alidns security level. Valid values: `no`, `basic`, `advanced`.
         :param pulumi.Input[_builtins.str] domain_numbers: Number of domain names bound.
         :param pulumi.Input[_builtins.str] version_code: Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
@@ -146,6 +147,7 @@ class _AlidnsInstanceState:
                  version_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlidnsInstance resources.
+
         :param pulumi.Input[_builtins.str] dns_security: Alidns security level. Valid values: `no`, `basic`, `advanced`.
         :param pulumi.Input[_builtins.str] domain_numbers: Number of domain names bound.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
@@ -315,6 +317,7 @@ class AlidnsInstance(pulumi.CustomResource):
         $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dns_security: Alidns security level. Valid values: `no`, `basic`, `advanced`.
@@ -362,6 +365,7 @@ class AlidnsInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dns/alidnsInstance:AlidnsInstance example dns-cn-v0h1ldjhfff
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlidnsInstanceArgs args: The arguments to use to populate this resource's properties.

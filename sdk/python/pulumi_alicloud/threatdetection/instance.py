@@ -59,6 +59,7 @@ class InstanceArgs:
                  vul_switch: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
         :param pulumi.Input[_builtins.str] buy_number: Number of servers.
         :param pulumi.Input[_builtins.str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
@@ -800,6 +801,7 @@ class _InstanceState:
                  vul_switch: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] buy_number: Number of servers.
         :param pulumi.Input[_builtins.str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
                
@@ -1629,6 +1631,7 @@ class Instance(pulumi.CustomResource):
         $ pulumi import alicloud:threatdetection/instance:Instance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] buy_number: Number of servers.
@@ -1804,6 +1807,7 @@ class Instance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:threatdetection/instance:Instance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class GroupArgs:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] image_id: The image ID.
         :param pulumi.Input[_builtins.str] instance_group_spec: Instance group specifications.
         :param pulumi.Input[_builtins.int] amount: The number of instance groups. The default value is 1 and the maximum value is 100.
@@ -282,6 +283,7 @@ class _GroupState:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.int] amount: The number of instance groups. The default value is 1 and the maximum value is 100.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default is false.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. The default is false.
@@ -609,6 +611,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import alicloud:cloudphoneinstance/group:Group example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The number of instance groups. The default value is 1 and the maximum value is 100.
@@ -701,6 +704,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cloudphoneinstance/group:Group example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

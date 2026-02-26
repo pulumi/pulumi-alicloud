@@ -25,6 +25,7 @@ class BgpIpArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpIp resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
         :param pulumi.Input[_builtins.str] ip: The IP address that you want to add.
         :param pulumi.Input[_builtins.str] member_uid: The member to which the asset belongs.
@@ -100,6 +101,7 @@ class _BgpIpState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpIp resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
         :param pulumi.Input[_builtins.str] ip: The IP address that you want to add.
         :param pulumi.Input[_builtins.str] member_uid: The member to which the asset belongs.
@@ -238,6 +240,7 @@ class BgpIp(pulumi.CustomResource):
         $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
@@ -295,6 +298,7 @@ class BgpIp(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpIpArgs args: The arguments to use to populate this resource's properties.

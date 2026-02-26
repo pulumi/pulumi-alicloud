@@ -27,6 +27,7 @@ class BucketWebsiteInitArgs:
                  routing_rules: Optional[pulumi.Input['BucketWebsiteRoutingRulesArgs']] = None):
         """
         The set of arguments for constructing a BucketWebsite resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input['BucketWebsiteErrorDocumentArgs'] error_document: The container that holds the error page configuration information. See `error_document` below.
         :param pulumi.Input['BucketWebsiteIndexDocumentArgs'] index_document: Static Website Default Home Page Configuration See `index_document` below.
@@ -98,6 +99,7 @@ class _BucketWebsiteState:
                  routing_rules: Optional[pulumi.Input['BucketWebsiteRoutingRulesArgs']] = None):
         """
         Input properties used for looking up and filtering BucketWebsite resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input['BucketWebsiteErrorDocumentArgs'] error_document: The container that holds the error page configuration information. See `error_document` below.
         :param pulumi.Input['BucketWebsiteIndexDocumentArgs'] index_document: Static Website Default Home Page Configuration See `index_document` below.
@@ -238,6 +240,7 @@ class BucketWebsite(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketWebsite:BucketWebsite example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket
@@ -316,6 +319,7 @@ class BucketWebsite(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketWebsite:BucketWebsite example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketWebsiteInitArgs args: The arguments to use to populate this resource's properties.

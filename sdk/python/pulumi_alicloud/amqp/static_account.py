@@ -24,6 +24,7 @@ class StaticAccountArgs:
                  secret_key: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a StaticAccount resource.
+
         :param pulumi.Input[_builtins.str] access_key: Access key.
         :param pulumi.Input[_builtins.str] instance_id: Amqp instance ID.
         :param pulumi.Input[_builtins.str] secret_key: Secret key.
@@ -81,6 +82,7 @@ class _StaticAccountState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StaticAccount resources.
+
         :param pulumi.Input[_builtins.str] access_key: Access key.
         :param pulumi.Input[_builtins.int] create_time: The timestamp that indicates when the pair of static username and password was created.
         :param pulumi.Input[_builtins.str] instance_id: Amqp instance ID.
@@ -246,6 +248,7 @@ class StaticAccount(pulumi.CustomResource):
         $terraform import alicloud_amqp_static_account.example <instance_id>:<access_key>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key: Access key.
@@ -304,6 +307,7 @@ class StaticAccount(pulumi.CustomResource):
         ```sh
         $terraform import alicloud_amqp_static_account.example <instance_id>:<access_key>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StaticAccountArgs args: The arguments to use to populate this resource's properties.

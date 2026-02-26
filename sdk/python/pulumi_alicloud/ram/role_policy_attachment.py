@@ -24,6 +24,7 @@ class RolePolicyAttachmentArgs:
                  role_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RolePolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy.
         :param pulumi.Input[_builtins.str] policy_type: Policy type.
                - Custom: Custom policy.
@@ -81,6 +82,7 @@ class _RolePolicyAttachmentState:
                  role_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolePolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy.
         :param pulumi.Input[_builtins.str] policy_type: Policy type.
                - Custom: Custom policy.
@@ -218,6 +220,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:<policy_name>:<policy_type>:<role_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy.
@@ -306,6 +309,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:<policy_name>:<policy_type>:<role_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

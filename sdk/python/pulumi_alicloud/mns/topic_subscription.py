@@ -27,6 +27,7 @@ class TopicSubscriptionArgs:
                  notify_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TopicSubscription resource.
+
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: http://xxx.com/xxx
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -135,6 +136,7 @@ class _TopicSubscriptionState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TopicSubscription resources.
+
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: http://xxx.com/xxx
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -285,6 +287,7 @@ class TopicSubscription(pulumi.CustomResource):
         $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
@@ -340,6 +343,7 @@ class TopicSubscription(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mns/topicSubscription:TopicSubscription subscription tf-example-mnstopic:tf-example-mnstopic-sub
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicSubscriptionArgs args: The arguments to use to populate this resource's properties.

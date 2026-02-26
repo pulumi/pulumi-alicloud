@@ -27,6 +27,7 @@ class AccessLogArgs:
                  sls_region_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccessLog resource.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group instance.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
@@ -126,6 +127,7 @@ class _AccessLogState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessLog resources.
+
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[_builtins.str] endpoint_group_id: The ID of the endpoint group instance.
         :param pulumi.Input[_builtins.str] listener_id: The ID of the listener.
@@ -329,6 +331,7 @@ class AccessLog(pulumi.CustomResource):
         $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The ID of the global acceleration instance.
@@ -425,6 +428,7 @@ class AccessLog(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ga/accessLog:AccessLog example <accelerator_id>:<listener_id>:<endpoint_group_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessLogArgs args: The arguments to use to populate this resource's properties.

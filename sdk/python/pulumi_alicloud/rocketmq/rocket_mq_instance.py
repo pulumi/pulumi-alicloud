@@ -42,6 +42,7 @@ class RocketMQInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RocketMQInstance resource.
+
         :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information See `network_info` below.
         :param pulumi.Input[_builtins.str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
                
@@ -426,6 +427,7 @@ class _RocketMQInstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RocketMQInstance resources.
+
         :param pulumi.Input['RocketMQInstanceAclInfoArgs'] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
@@ -946,6 +948,7 @@ class RocketMQInstance(pulumi.CustomResource):
         $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']] acl_info: The access control list for the instance. See `acl_info` below.
@@ -1097,6 +1100,7 @@ class RocketMQInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:rocketmq/rocketMQInstance:RocketMQInstance example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RocketMQInstanceArgs args: The arguments to use to populate this resource's properties.

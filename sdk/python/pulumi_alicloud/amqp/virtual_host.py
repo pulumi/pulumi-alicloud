@@ -23,6 +23,7 @@ class VirtualHostArgs:
                  virtual_host_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a VirtualHost resource.
+
         :param pulumi.Input[_builtins.str] instance_id: InstanceId.
         :param pulumi.Input[_builtins.str] virtual_host_name: VirtualHostName.
         """
@@ -61,6 +62,7 @@ class _VirtualHostState:
                  virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualHost resources.
+
         :param pulumi.Input[_builtins.str] instance_id: InstanceId.
         :param pulumi.Input[_builtins.str] virtual_host_name: VirtualHostName.
         """
@@ -154,6 +156,7 @@ class VirtualHost(pulumi.CustomResource):
         $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: InstanceId.
@@ -215,6 +218,7 @@ class VirtualHost(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:amqp/virtualHost:VirtualHost example <instance_id>:<virtual_host_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VirtualHostArgs args: The arguments to use to populate this resource's properties.

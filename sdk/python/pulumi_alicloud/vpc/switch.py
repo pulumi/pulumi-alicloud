@@ -32,6 +32,7 @@ class SwitchArgs:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Switch resource.
+
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         :param pulumi.Input[_builtins.str] description: The description of VSwitch.
@@ -227,6 +228,7 @@ class _SwitchState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Switch resources.
+
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.str] cidr_block: The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VSwitch.
@@ -547,6 +549,7 @@ class Switch(pulumi.CustomResource):
         $ pulumi import alicloud:vpc/switch:Switch example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
@@ -647,6 +650,7 @@ class Switch(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:vpc/switch:Switch example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SwitchArgs args: The arguments to use to populate this resource's properties.

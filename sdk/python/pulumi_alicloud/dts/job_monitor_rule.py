@@ -26,6 +26,7 @@ class JobMonitorRuleArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobMonitorRule resource.
+
         :param pulumi.Input[_builtins.str] dts_job_id: Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
         :param pulumi.Input[_builtins.str] type: Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
         :param pulumi.Input[_builtins.str] delay_rule_time: Trigger delay alarm threshold, which is measured in seconds.
@@ -112,6 +113,7 @@ class _JobMonitorRuleState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JobMonitorRule resources.
+
         :param pulumi.Input[_builtins.str] delay_rule_time: Trigger delay alarm threshold, which is measured in seconds.
         :param pulumi.Input[_builtins.str] dts_job_id: Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
         :param pulumi.Input[_builtins.str] phone: The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
@@ -333,6 +335,7 @@ class JobMonitorRule(pulumi.CustomResource):
         $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] delay_rule_time: Trigger delay alarm threshold, which is measured in seconds.
@@ -477,6 +480,7 @@ class JobMonitorRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:dts/jobMonitorRule:JobMonitorRule example <dts_job_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobMonitorRuleArgs args: The arguments to use to populate this resource's properties.

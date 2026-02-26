@@ -27,6 +27,7 @@ class OriginPoolArgs:
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input['OriginPoolOriginArgs']]]] = None):
         """
         The set of arguments for constructing a OriginPool resource.
+
         :param pulumi.Input[_builtins.str] origin_pool_name: The source address pool name.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
@@ -98,6 +99,7 @@ class _OriginPoolState:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginPool resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
         :param pulumi.Input[_builtins.int] origin_pool_id: OriginPool Id
         :param pulumi.Input[_builtins.str] origin_pool_name: The source address pool name.
@@ -273,6 +275,7 @@ class OriginPool(pulumi.CustomResource):
         $ pulumi import alicloud:esa/originPool:OriginPool example <site_id>:<origin_pool_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
@@ -371,6 +374,7 @@ class OriginPool(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:esa/originPool:OriginPool example <site_id>:<origin_pool_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OriginPoolArgs args: The arguments to use to populate this resource's properties.

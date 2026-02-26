@@ -23,6 +23,7 @@ class NetworkPackageArgs:
                  office_site_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a NetworkPackage resource.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of office site.
         """
@@ -63,6 +64,7 @@ class _NetworkPackageState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPackage resources.
+
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type  of  package.
         :param pulumi.Input[_builtins.str] office_site_id: The ID of office site.
@@ -174,6 +176,7 @@ class NetworkPackage(pulumi.CustomResource):
         $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
@@ -223,6 +226,7 @@ class NetworkPackage(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:eds/networkPackage:NetworkPackage example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkPackageArgs args: The arguments to use to populate this resource's properties.

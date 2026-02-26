@@ -40,6 +40,7 @@ class GroupMetricRuleArgs:
                  webhook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupMetricRule resource.
+
         :param pulumi.Input['GroupMetricRuleEscalationsArgs'] escalations: Alarm level. See `escalations` below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the application group.
         :param pulumi.Input[_builtins.str] group_metric_rule_name: The name of the alert rule.
@@ -315,6 +316,7 @@ class _GroupMetricRuleState:
                  webhook: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMetricRule resources.
+
         :param pulumi.Input[_builtins.str] category: The abbreviation of the service name.
         :param pulumi.Input[_builtins.str] contact_groups: Alarm contact group.
         :param pulumi.Input[_builtins.str] dimensions: The dimensions that specify the resources to be associated with the alert rule.
@@ -675,6 +677,7 @@ class GroupMetricRule(pulumi.CustomResource):
         $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] category: The abbreviation of the service name.
@@ -763,6 +766,7 @@ class GroupMetricRule(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cms/groupMetricRule:GroupMetricRule example <rule_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupMetricRuleArgs args: The arguments to use to populate this resource's properties.

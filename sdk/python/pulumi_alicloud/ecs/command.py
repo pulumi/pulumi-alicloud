@@ -28,6 +28,7 @@ class CommandArgs:
                  working_dir: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Command resource.
+
         :param pulumi.Input[_builtins.str] command_content: The Base64-encoded content of the command.
         :param pulumi.Input[_builtins.str] type: The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         :param pulumi.Input[_builtins.str] description: The description of command.
@@ -146,6 +147,7 @@ class _CommandState:
                  working_dir: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Command resources.
+
         :param pulumi.Input[_builtins.str] command_content: The Base64-encoded content of the command.
         :param pulumi.Input[_builtins.str] description: The description of command.
         :param pulumi.Input[_builtins.bool] enable_parameter: Specifies whether to use custom parameters in the command to be created. Default to: false.
@@ -301,6 +303,7 @@ class Command(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/command:Command example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] command_content: The Base64-encoded content of the command.
@@ -349,6 +352,7 @@ class Command(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/command:Command example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CommandArgs args: The arguments to use to populate this resource's properties.

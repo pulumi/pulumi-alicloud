@@ -31,6 +31,7 @@ class HostArgs:
                  source_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Host resource.
+
         :param pulumi.Input[_builtins.str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         :param pulumi.Input[_builtins.str] host_name: Specify the new create a host name of the supports up to 128 characters.
         :param pulumi.Input[_builtins.str] instance_id: Specify the new create a host where the Bastion host ID of.
@@ -201,6 +202,7 @@ class _HostState:
                  source_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Host resources.
+
         :param pulumi.Input[_builtins.str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         :param pulumi.Input[_builtins.str] comment: Specify a host of notes, supports up to 500 characters.
         :param pulumi.Input[_builtins.str] host_id: The host ID.
@@ -446,6 +448,7 @@ class Host(pulumi.CustomResource):
         $ pulumi import alicloud:bastionhost/host:Host example <instance_id>:<host_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
@@ -521,6 +524,7 @@ class Host(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:bastionhost/host:Host example <instance_id>:<host_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HostArgs args: The arguments to use to populate this resource's properties.

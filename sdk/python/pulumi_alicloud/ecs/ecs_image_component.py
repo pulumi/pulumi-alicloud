@@ -29,6 +29,7 @@ class EcsImageComponentArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsImageComponent resource.
+
         :param pulumi.Input[_builtins.str] content: Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         :param pulumi.Input[_builtins.str] component_type: The component type. Supports mirrored build components and test components.
                
@@ -201,6 +202,7 @@ class _EcsImageComponentState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EcsImageComponent resources.
+
         :param pulumi.Input[_builtins.str] component_type: The component type. Supports mirrored build components and test components.
                
                Value range:
@@ -428,6 +430,7 @@ class EcsImageComponent(pulumi.CustomResource):
         $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] component_type: The component type. Supports mirrored build components and test components.
@@ -500,6 +503,7 @@ class EcsImageComponent(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EcsImageComponentArgs args: The arguments to use to populate this resource's properties.

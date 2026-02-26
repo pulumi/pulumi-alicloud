@@ -25,6 +25,7 @@ class K8sSlbAttachmentArgs:
                  slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None):
         """
         The set of arguments for constructing a K8sSlbAttachment resource.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
         :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
@@ -64,6 +65,7 @@ class _K8sSlbAttachmentState:
                  slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering K8sSlbAttachment resources.
+
         :param pulumi.Input[_builtins.str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
         :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
@@ -199,6 +201,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         $ terraform import alicloud_edas_k8s_slb_attachment.example <EDAS k8s app id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
@@ -302,6 +305,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         ```sh
         $ terraform import alicloud_edas_k8s_slb_attachment.example <EDAS k8s app id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param K8sSlbAttachmentArgs args: The arguments to use to populate this resource's properties.

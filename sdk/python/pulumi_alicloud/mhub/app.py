@@ -28,6 +28,7 @@ class AppArgs:
                  package_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a App resource.
+
         :param pulumi.Input[_builtins.str] app_name: AppName.
         :param pulumi.Input[_builtins.str] product_id: The ID of the Product.
         :param pulumi.Input[_builtins.str] type: The type of the Product. Valid values: `Android` and `iOS`.
@@ -145,6 +146,7 @@ class _AppState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering App resources.
+
         :param pulumi.Input[_builtins.str] app_name: AppName.
         :param pulumi.Input[_builtins.str] bundle_id: The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
         :param pulumi.Input[_builtins.str] encoded_icon: Base64 string of picture.
@@ -306,6 +308,7 @@ class App(pulumi.CustomResource):
         $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_name: AppName.
@@ -360,6 +363,7 @@ class App(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:mhub/app:App example <product_id>:<app_key>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

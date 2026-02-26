@@ -26,6 +26,7 @@ class ChartRepositoryArgs:
                  summary: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ChartRepository resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry instance.
         :param pulumi.Input[_builtins.str] repo_name: The name of the repository that you want to create.
         :param pulumi.Input[_builtins.str] repo_namespace_name: The namespace to which the repository belongs.
@@ -111,6 +112,7 @@ class _ChartRepositoryState:
                  summary: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ChartRepository resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry instance.
         :param pulumi.Input[_builtins.str] repo_name: The name of the repository that you want to create.
         :param pulumi.Input[_builtins.str] repo_namespace_name: The namespace to which the repository belongs.
@@ -250,6 +252,7 @@ class ChartRepository(pulumi.CustomResource):
         $ pulumi import alicloud:cr/chartRepository:ChartRepository example <instance_id>:<repo_namespace_name>:<repo_name>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Container Registry instance.
@@ -312,6 +315,7 @@ class ChartRepository(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:cr/chartRepository:ChartRepository example <instance_id>:<repo_namespace_name>:<repo_name>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ChartRepositoryArgs args: The arguments to use to populate this resource's properties.

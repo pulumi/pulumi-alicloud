@@ -25,6 +25,7 @@ class WorkspaceRunArgs:
                  source_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceRun resource.
+
         :param pulumi.Input[_builtins.str] experiment_id: Resource attribute field of the experiment ID to which Run belongs
         :param pulumi.Input[_builtins.str] run_name: The name of the resource
         :param pulumi.Input[_builtins.str] source_id: Attribute Resource field representing the source task ID
@@ -97,6 +98,7 @@ class _WorkspaceRunState:
                  source_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceRun resources.
+
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] experiment_id: Resource attribute field of the experiment ID to which Run belongs
         :param pulumi.Input[_builtins.str] run_name: The name of the resource
@@ -234,6 +236,7 @@ class WorkspaceRun(pulumi.CustomResource):
         $ pulumi import alicloud:pai/workspaceRun:WorkspaceRun example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] experiment_id: Resource attribute field of the experiment ID to which Run belongs
@@ -294,6 +297,7 @@ class WorkspaceRun(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:pai/workspaceRun:WorkspaceRun example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceRunArgs args: The arguments to use to populate this resource's properties.

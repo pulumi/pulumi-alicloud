@@ -23,6 +23,7 @@ class BucketTransferAccelerationInitArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketTransferAcceleration resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
         """
@@ -62,6 +63,7 @@ class _BucketTransferAccelerationState:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketTransferAcceleration resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
         """
@@ -149,6 +151,7 @@ class BucketTransferAcceleration(pulumi.CustomResource):
         $ pulumi import alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the Bucket.
@@ -204,6 +207,7 @@ class BucketTransferAcceleration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BucketTransferAccelerationInitArgs args: The arguments to use to populate this resource's properties.

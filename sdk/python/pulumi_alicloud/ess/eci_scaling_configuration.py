@@ -66,6 +66,7 @@ class EciScalingConfigurationArgs:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None):
         """
         The set of arguments for constructing a EciScalingConfiguration resource.
+
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a eci scaling configuration.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[_builtins.bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
@@ -801,6 +802,7 @@ class _EciScalingConfigurationState:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None):
         """
         Input properties used for looking up and filtering EciScalingConfiguration resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[_builtins.bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
@@ -1610,6 +1612,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationAcrRegistryInfoArgs', 'EciScalingConfigurationAcrRegistryInfoArgsDict']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
@@ -1752,6 +1755,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ess/eciScalingConfiguration:EciScalingConfiguration example asc-abc123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EciScalingConfigurationArgs args: The arguments to use to populate this resource's properties.

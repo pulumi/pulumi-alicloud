@@ -38,6 +38,7 @@ class JobTemplateArgs:
                  variables: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobTemplate resource.
+
         :param pulumi.Input[_builtins.str] command_line: Job Commands.
         :param pulumi.Input[_builtins.str] job_template_name: A Job Template Name.
         :param pulumi.Input[_builtins.str] array_request: Queue Jobs, Is of the Form: 1-10:2.
@@ -316,6 +317,7 @@ class _JobTemplateState:
                  variables: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JobTemplate resources.
+
         :param pulumi.Input[_builtins.str] array_request: Queue Jobs, Is of the Form: 1-10:2.
         :param pulumi.Input[_builtins.str] clock_time: Job Maximum Run Time.
         :param pulumi.Input[_builtins.str] command_line: Job Commands.
@@ -628,6 +630,7 @@ class JobTemplate(pulumi.CustomResource):
         $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] array_request: Queue Jobs, Is of the Form: 1-10:2.
@@ -683,6 +686,7 @@ class JobTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import alicloud:ehpc/jobTemplate:JobTemplate example <id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param JobTemplateArgs args: The arguments to use to populate this resource's properties.
